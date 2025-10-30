@@ -75,10 +75,18 @@ CACHES = {
         "LOCATION": ALT_REDIS_URL,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            # "IGNORE_EXCEPTIONS": True, # Supresses ConnectionError at max
-            # "CONNECTION_POOL_KWARGS": {"max_connections": 5} # See above
-            "SOCKET_CONNECT_TIMEOUT": 5,
-            "SOCKET_TIMEOUT": 60,
+                # "IGNORE_EXCEPTIONS": True, # Supresses ConnectionError at max
+                # If Redis is provided with TLS and the provider uses a non-standard
+                # certificate chain the SSL verification can fail during build-time
+                # (`certificate verify failed: self-signed certificate in certificate chain`).
+                # Setting `ssl_cert_reqs` to None in the connection pool kwargs disables
+                # certificate verification which allows the build-time checks to succeed.
+                # Note: This reduces TLS verification strictness; for production you
+                # should ensure the Redis provider uses a trusted certificate chain.
+                "CONNECTION_POOL_KWARGS": {"ssl_cert_reqs": None},
+                # "CONNECTION_POOL_KWARGS": {"max_connections": 5} # See above
+                "SOCKET_CONNECT_TIMEOUT": 5,
+                "SOCKET_TIMEOUT": 60,
         },
     },
 }
