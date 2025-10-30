@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static debate_tags add_field_css i18n %}
+
+{% block head-title %}<span class="emoji">🎪</span> {% trans "Add Rooms" context "page title" %}
+{% blocktrans trimmed with step=wizard.steps.step1 count=wizard.steps.count %}(Step {{ step }} of {{ count }}){% endblocktrans %}{% endblock %}
+{% block page-title %}{% trans "Add Rooms" context "page title" %}{% endblock %}
+
+{% block content %}
+
+<div class="card">
+  <form action="." method="POST">
+  {% csrf_token %}
+
+    <div class="list-group-item text-info">
+      {% trans "Paste a list of rooms with one room per line and following the format of: <code>name,priority</code>. For example:" %}
+    </div>
+
+    <div class="list-group-item list-group-item-secondary pb-0">
+<pre><code>Room 140,200
+2.9.0,100
+11G,50</code></pre>
+    </div>
+
+    <div class="list-group-item pb-3 pt-3">
+
+      {{ wizard.management_form }}
+
+      {% if wizard.form.venues_raw.errors %}
+        <div class="alert alert-danger">
+          <p>{% trans "There are some problems with the data on this form:" %}</p>
+          {{ wizard.form.venues_raw.errors }}
+        </div>
+      {% endif %}
+
+      <div class="form-group">
+        {{ wizard.form.venues_raw|addcss:"form-control" }}
+      </div>
+
+    </div>
+
+  {% trans "Next Step" as title %}
+  {% include "components/form-submit.html" %}
+
+  </form>
+</div>
+
+{% endblock content %}

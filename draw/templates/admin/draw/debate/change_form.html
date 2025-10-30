@@ -1,0 +1,36 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <style>
+    #debate-team-warning {
+      display: none;
+    }
+  </style>
+{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <script type="text/javascript">
+    // This is a little hack to get the debate-team-warning to display only
+    // when the appropriate tab is selected. It's all hard-coded, so it's
+    // a little fragile.
+
+    function locationHashChanged() {
+      var warning = document.getElementById("debate-team-warning");
+      if (location.hash === '#/tab/inline_0/') {
+        warning.style.display = 'block';
+      } else {
+        warning.style.display = 'none';
+      }
+    }
+
+    window.onhashchange = locationHashChanged;
+    window.onload = locationHashChanged;
+  </script>
+{% endblock %}
+
+{% block after_field_sets %}
+  {% include "admin/draw/debateteam/edit_warning.html" %}
+  {{ block.super }}
+{% endblock %}

@@ -1,0 +1,244 @@
+//------------------------------------------------------------------------------
+// Results Entry
+//------------------------------------------------------------------------------
+
+// BallotsCell.vue
+.ballot-link {
+  white-space: nowrap;
+  padding: 3px 0;
+  display: block;
+}
+
+.ballot-info {
+  margin-top: -4px; /* Tighten spacing to subhead */
+  display: block;
+}
+
+// ballot_set.html
+.scoresheet {
+  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+// ballot_speaks.html
+.srank {
+  width: 75px;
+  flex: none;
+}
+
+//------------------------------------------------------------------------------
+// Availabilities Overview
+//------------------------------------------------------------------------------
+
+.progress {
+  // margin-bottom: 0; // Progress bars have bottom margins; need to offset
+  height: 30px; // Increase height from standard
+  margin-top: 4px;
+  margin-bottom: 0;
+
+  .progress-bar {
+    line-height: 30px;
+  }
+}
+
+.progress-empty span {
+  color: #000; // If its showing 0/x make the text visible and not flush
+  margin-left: 10px;
+}
+
+//------------------------------------------------------------------------------
+// Check-In Scanner
+//------------------------------------------------------------------------------
+
+.scan-container {
+  position: relative;
+
+  video,
+  canvas {
+    max-width: 60%;
+    width: 60%;
+    margin: 0 20%;
+  }
+}
+
+.drawingBuffer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+//------------------------------------------------------------------------------
+// Check-In Status
+//------------------------------------------------------------------------------
+
+.not-viable-checkins-team {
+  background: repeating-linear-gradient(45deg, $primary, $primary 10px, $secondary 10px, $secondary 20px);
+}
+
+.viable-checkins-team {
+  background: repeating-linear-gradient(45deg, $success, $success 10px, $secondary 10px, $secondary 20px);
+}
+
+//------------------------------------------------------------------------------
+// Motions Tab
+//------------------------------------------------------------------------------
+
+.progress-bar-aff {
+  background-color: $aff;
+}
+
+.progress-bar-neg {
+  background-color: $neg;
+}
+
+.progress-bar-og {
+  background-color: $og;
+}
+
+.progress-bar-oo {
+  background-color: $oo;
+}
+
+.progress-bar-cg {
+  background-color: $cg;
+}
+
+.progress-bar-co {
+  background-color: $co;
+}
+
+.progress-bar-advancing {
+  background-color: $green;
+}
+
+.progress-bar-eliminated {
+  background-color: $red;
+}
+
+.progress-bar-opening {
+  background-color: $front;
+}
+
+.progress-bar-closing {
+  background-color: $back;
+}
+
+.progress-bar-gov {
+  background-color: $gov;
+}
+
+.progress-bar-opp {
+  background-color: $opp;
+}
+
+.text-aff {
+  color: $aff;
+}
+
+.text-neg {
+  color: $neg;
+}
+
+.text-og {
+  color: $og;
+}
+
+.text-oo {
+  color: $oo;
+}
+
+.text-cg {
+  color: $cg;
+}
+
+.text-co {
+  color: $co;
+}
+
+.progress-points-3 {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.progress-points-2 {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.progress-points-1 {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.progress-points-0 {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+//------------------------------------------------------------------------------
+// Motions to Division Assignment and Divisions Asssignment
+//------------------------------------------------------------------------------
+
+.divisions-holder {
+  // Align them in equal height rows
+  display: flex;
+  flex-wrap: wrap;
+
+  .col-md-3 {
+    display: flex;
+  }
+
+  // Set the panel body to fill all the available height
+  .panel {
+    display: flex;
+    flex-direction: column;
+
+    .card-body {
+      flex: 1;
+    }
+  }
+}
+
+.assign-motions-lists .list-group-item-text {
+  height: 60px;  // Need to be fixed height so below rows all align
+  overflow: hidden;
+}
+
+.division-footer {
+  // Create a compact <select> element for the bottom of divison boxes
+  padding: 5px 4px;
+
+  select {
+    height: auto;
+    padding: 2px 0;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Draw
+//------------------------------------------------------------------------------
+
+.btn-group form {
+  margin-left: 3px; // Fix for buttons on edit draw page
+}
+
+.btn-stop-scrolling {
+  left: auto;
+}
+
+.draw-xs {
+  font-size: $font-size-base * 0.75;
+}
+
+.draw-s {
+  font-size: $font-size-base * 0.95;
+}
+
+.draw-m {
+  font-size: $font-size-base * 1.15;
+}
+
+.draw-l {
+  font-size: $font-size-base * 1.35;
+}
+
+.draw-xl {
+  font-size: $font-size-base * 1.55;
+}

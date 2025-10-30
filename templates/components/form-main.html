@@ -1,0 +1,33 @@
+{% load debate_tags %}
+
+<div class="list-group-item pt-3 {% if hide_label %}pb-2{% else %}pb-4{% endif %}">
+
+  {% if form.errors %}
+    {% include "components/form-errors.html" with errors=form.non_field_errors %}
+  {% endif %}
+
+  {% if double or triple or quadruple %}<div class="row">{% endif %}
+
+    {% if form.visible_fields %}
+
+      {% for field in form.visible_fields %}
+        {% include "components/form-field.html" %}
+      {% endfor %}
+
+    {% else %}
+
+      {% for field in form %}
+        {% include "components/form-field.html" %}
+      {% endfor %}
+
+    {% endif %}
+
+  {% if double or triple or quadruple %}</div>{% endif %}
+
+  <div hidden>
+    {% for field in form.hidden_fields %}
+      {{ field }}
+    {% endfor %}
+  </div>
+
+</div>

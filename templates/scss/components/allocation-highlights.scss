@@ -1,0 +1,127 @@
+//------------------------------------------------------------------------------
+// Relating to particular states from hover/panels
+//------------------------------------------------------------------------------
+
+// The parent element needed to override team/adj specific default borders
+// Teams we want to have no border to reduce clutter; adjs we want so they
+// appear like draggable buttons/elements
+.conflictable {
+
+  &.hover-histories-1-ago {
+    @include hover-highlights(darken($conflict-history-base, 20%));
+
+    .vue-draggable-muted {
+      color: rgba(255, 255, 255, 0.75); // Override the mute color on the sub items
+    }
+  }
+
+  &.hover-histories-2-ago {
+    @include hover-highlights(lighten($conflict-history-base, 0%));
+
+    .vue-draggable-muted {
+      color: rgba(255, 255, 255, 0.75); // Override the mute color on the sub items
+    }
+  }
+
+  &.hover-histories-3-ago {
+    @include hover-highlights(lighten($conflict-history-base, 15%));
+
+    .vue-draggable-muted {
+      color: rgba(255, 255, 255, 0.75); // Override the mute color on the sub items
+    }
+  }
+
+  &.hover-histories-4-ago {
+    @include hover-highlights(lighten($conflict-history-base, 25%));
+
+    .vue-draggable-muted {
+      color: rgba(255, 255, 255, 0.75); // Override the mute color on the sub items
+    }
+  }
+
+  &.hover-histories-5-ago {
+    @include hover-highlights(lighten($conflict-history-base, 40%), theme-color('dark'));
+  }
+
+  &.hover-histories-6-ago {
+    @include hover-highlights(lighten($conflict-history-base, 44%), theme-color('dark'));
+  }
+
+  &.hover-histories-7-ago,
+  &.hover-histories-8-ago,
+  &.hover-histories-9-ago,
+  &.hover-histories-10-ago,
+  &.hover-histories-11-ago,
+  &.hover-histories-12-ago,
+  &.hover-histories-13-ago,
+  &.hover-histories-14-ago,
+  &.hover-histories-15-ago {
+    @include hover-highlights(lighten($conflict-history-base, 46%), theme-color('dark'));
+  }
+
+  // Must be below histories (to take precedence)
+  &.hover-institution {
+    @include hover-highlights($conflict-institution);
+
+    .vue-draggable-muted {
+      color: rgba(255, 255, 255, 0.75); // Override the mute color on the sub items
+    }
+  }
+
+  // Must be below histories + institutions (ie to take precedence)
+  &.hover-adjudicator,
+  &.hover-team {
+    @include hover-highlights($conflict-clash);
+
+    .vue-draggable-muted {
+      color: rgba(255, 255, 255, 0.75); // Override the mute color on the sub items
+    }
+  }
+
+  &.panel-histories-1-ago {
+    border-color: darken($conflict-history-base, 20%);
+  }
+
+  &.panel-histories-2-ago {
+    border-color: lighten($conflict-history-base, 0%);
+  }
+
+  &.panel-histories-3-ago {
+    border-color: lighten($conflict-history-base, 15%);
+  }
+
+  &.panel-histories-4-ago {
+    border-color: lighten($conflict-history-base, 30%);
+  }
+
+  &.panel-histories-5-ago {
+    border-color: lighten($conflict-history-base, 34%);
+  }
+
+  &.panel-histories-6-ago {
+    border-color: lighten($conflict-history-base, 36%);
+  }
+
+  &.panel-histories-7-ago,
+  &.panel-histories-8-ago,
+  &.panel-histories-9-ago,
+  &.panel-histories-10-ago,
+  &.panel-histories-11-ago,
+  &.panel-histories-12-ago,
+  &.panel-histories-13-ago,
+  &.panel-histories-14-ago,
+  &.panel-histories-15-ago {
+    border-color: lighten($conflict-history-base, 38%);
+  }
+
+  // Must appear after seens
+  &.panel-institution {
+    border-color: darken($conflict-institution, 10%);
+  }
+
+  // Must appear after seens and after institutionals
+  &.panel-adjudicator,
+  &.panel-team, {
+    border-color: darken($conflict-clash, 10%);
+  }
+}

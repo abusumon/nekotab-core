@@ -1,0 +1,85 @@
+//------------------------------------------------------------------------------
+// Emoji
+//------------------------------------------------------------------------------
+
+// Special font for colorfull windows emoji; system for others
+.emoji {
+  font-family: "Segoe UI Emoji", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+span.emoji {
+  // Allows us to use <i> and other elements where layout requirements are loose
+  display: inline-block;
+  margin-right: 1px;
+  min-width: 14px;
+}
+
+.small .emoji {
+  min-width: 13px;
+}
+
+//------------------------------------------------------------------------------
+// Adj symbols (shown on draw page)
+//------------------------------------------------------------------------------
+
+.adj-symbol {
+  @extend .text-monospace;
+
+  color: $gray-700; // not black; but not too gray
+  font-style: normal;
+  font-weight: bold; // ensure it shows on flakey projectors
+  margin-left: 2px;
+}
+
+//------------------------------------------------------------------------------
+// Icon Styles
+//------------------------------------------------------------------------------
+
+.feather {
+  height: 18px; // Line height of default text @13px is ~18.5px
+  width: 18px;
+
+  // Icons should have brighter colors (using text-success is too dull)
+  &.text-success {
+    color: theme-color("success");
+  }
+
+  &.text-danger {
+    color: theme-color("danger");
+  }
+
+  &.text-warning {
+    color: theme-color("warning");
+  }
+
+  &.text-info {
+    color: theme-color("info");
+  }
+
+  &.text-primary {
+    color: theme-color("primary");
+  }
+}
+
+.list-group-item,
+.alert,
+.card-title {
+
+  .feather {
+    margin-top: -2px;
+    margin-right: 10px;
+  }
+
+  .emoji {
+    margin-left: 1px;
+    margin-right: 11px;
+  }
+}
+
+// input-group-addon doesn't like icon (in the table quick find); tweak spacing
+.input-group-text .feather {
+  margin-bottom: -4px;
+  margin-left: -2px;
+}

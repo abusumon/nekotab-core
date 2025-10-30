@@ -1,0 +1,121 @@
+{% load humanize i18n l10n debate_tags %}
+
+<div class="col-sm-12">
+
+{% if motion.ndebates > 0 %}
+
+  <div class="row no-gutters">
+
+    <div class="col-12 col-md-6 mb-2 px-2">
+      <div class="progress">
+        <div class="progress-bar progress-bar-gov"
+             style="width: {% percentage motion.counts_by_bench.gov 3 %}%">
+          {% trans "Government" %} {{ motion.counts_by_bench.gov|floatformat:2 }}
+        </div>
+        <div class="progress-bar progress-bar-opp"
+             style="width: {% percentage motion.counts_by_bench.opp 3 %}%">
+          {% trans "Opposition" %} {{ motion.counts_by_bench.opp|floatformat:2 }}
+        </div>
+      </div>
+      <h6 class="mt-2 text-center text-muted">
+        {% trans "Average Points per bench" %}
+      </h6>
+    </div>
+
+    <div class="col-12 col-md-6 mb-2 px-2">
+      <div class="progress">
+        <div class="progress-bar progress-bar-opening"
+             style="width: {% percentage motion.counts_by_half.top 3 %}%">
+          {% trans "Opening" %} {{ motion.counts_by_half.top|floatformat:2 }}
+        </div>
+        <div class="progress-bar progress-bar-closing"
+             style="width: {% percentage motion.counts_by_half.bottom 3 %}%">
+          {% trans "Closing" %} {{ motion.counts_by_half.bottom|floatformat:2 }}
+        </div>
+      </div>
+      <h6 class="mt-2 text-center text-muted">
+        {% trans "Average Points per half" %}
+      </h6>
+    </div>
+
+
+  </div>
+
+  <div class="row no-gutters">
+    <div class="col-md-12 mb-2 px-2">
+      <div class="progress">
+        {% for side, average, width in motion.averages %}
+          {% if average > 0 %}
+            <div class="progress-bar progress-bar-{{ side }}"
+                 style="width: {{ width|unlocalize }}%">
+              <div>
+                <span class="d-none d-md-inline">{{ side.upper }} </span>
+                {{ average|floatformat:2 }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <h6 class="mt-2 text-center text-muted">
+        {% blocktrans trimmed count ndebates=motion.ndebates %}
+          average points per position ({{ ndebates }} debate)
+        {% plural %}
+          average points per position ({{ ndebates }} debates)
+        {% endblocktrans %}
+      </h6>
+    </div>
+  </div>
+
+  <div class="row no-gutters">
+
+    {% for side, counts_dict in motion.counts_by_side %}
+
+      <div class="col-md-3 col-6 mb-2 px-2">
+        <div class="progress">
+
+          {% for points, count, percentage in counts_dict %}
+
+            {% blocktrans trimmed with side=side.upper percentage=percentage|floatformat count count=count asvar tooltip_text %}
+              {{ count }} result for {{ side }} ({{ percentage }}%) were for {{ points }} points
+            {% plural %}
+              {{ count }} results for {{ side }} ({{ percentage }}%) were for {{ points }} points
+            {% endblocktrans %}
+
+            <div class="progress-bar progress-points-{{ points }}"
+                 style="width: {{ percentage|unlocalize }}%" data-toggle="tooltip"
+                 title="{{ tooltip_text }}">
+              {% if count > 0 %}
+                <span class="d-none d-md-inline">
+                  {{ 4|subtract:points|ordinal }}
+                </span>
+                <span class="d-inline d-md-none">
+                  {{ 4|subtract:points }}
+                </span>
+              {% endif %}
+            </div>
+
+          {% endfor %}
+
+        </div>
+        <h6 class="mt-2 text-center text-{{ side }}">
+          {% blocktrans trimmed with side=side.upper %}
+            {{ side }} results
+          {% endblocktrans %}
+        </h6>
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+{% else %}
+
+  <div class="row">
+    <div class="col text-muted">
+      {% trans "No results for this motion" %}
+    </div>
+  </div>
+
+{% endif %}
+
+</div>

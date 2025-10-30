@@ -1,0 +1,389 @@
+{% extends "base.html" %}
+{% load debate_tags i18n %}
+
+{% block head-title %}📺 {% trans "Display Draw" %}{% endblock %}
+{% block page-title %}{% trans "Display Draw" %}{% endblock %}
+
+{% block page-alerts %}
+  <div class="mb-3">
+    {% include "draw_alerts_venues.html" %}
+    {% include "draw_alerts_adjudicators.html" %}
+    {% include "draw_alerts_teams.html" %}
+  </div>
+{% endblock %}
+
+{% block page-subnav-sections %}
+  <a class="btn btn-outline-primary " href="{% roundurl 'draw' %}">
+    <i data-feather="chevron-left"></i> {% trans "View Draw" %}
+  </a>
+
+  <a href="" class="btn {% if round.starts_at %}btn-outline-primary{% else %}btn-primary{% endif %}"
+     data-toggle="modal" data-target="#editStartTime">
+    {% if round.starts_at %}
+      {% blocktrans trimmed with start_time=round.starts_at %}
+        Debates start at {{ start_time }}
+      {% endblocktrans %}
+    {% else %}
+      {% trans "Add Start Time" %}
+    {% endif %}
+  </a>
+{% endblock %}
+
+{% block page-subnav-actions %}
+  <a href="{% roundurl 'results-round-list' %}" class="btn btn-outline-success">
+    {% trans "Enter Results" %}<i data-feather="chevron-right"></i>
+  </a>
+{% endblock %}
+
+{% block content %}
+
+<div class="row mb-4">
+
+  <div class="col-md col-12 mb-md-0 mb-3">
+    <div class="card">
+
+      <div class="card-body">
+        <h5 class="card-title mb-0">{% trans "Motion Details" %}</h5>
+      </div>
+      <div class="list-group list-group-flush">
+        {% roundurl 'motions-edit' round as url %}
+        {% if round.motion_set.exists %}
+          {% blocktrans trimmed asvar text count motions_count=round.motion_set.count %}
+            {{ motions_count }} motion has been entered.
+          {% plural %}
+            {{ motions_count }} motions have been entered.
+          {% endblocktrans %}
+          {% include "components/item-info.html" with nopad=True type="secondary" %}
+          {% blocktrans trimmed asvar edit_text count counter=expected_nmotions %}
+            Edit the motion
+          {% plural %}
+            Edit motions
+          {% endblocktrans %}
+          {% include "components/item-action.html" with text=edit_text type="primary" %}
+        {% else %}
+          {% if pref.enable_motions %}
+            {% trans "Your configuration/format requires motions to be specified as part of ballot entry. Make sure they are added before results come in!" as text %}
+          {% else %}
+            {% trans "A motion should be added if you want to display it during announcements, print it on your ballots, or to display it (later) on the public motions/statistics pages." as text %}
+          {% endif %}
+          {% include "components/item-info.html" with nopad=True type=pref.enable_motions|yesno:"danger,warning" %}
+          {% blocktranslate trimmed asvar enter_text count counter=expected_nmotions %}
+            Enter a motion
+          {% plural %}
+            Enter motions
+          {% endblocktranslate %}
+          {% include "components/item-action.html" with text=enter_text type="success" to_complete=True  %}
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md col-12 mb-md-0 mb-3">
+    <div class="card">
+
+      <div class="card-body">
+        <h5 class="card-title mb-0">{% trans "Release Draw" %}</h5>
+      </div>
+      <div class="list-group list-group-flush">
+
+        {% if round.draw_status == round.Status.NONE %}
+
+          {% trans "You have not generated a draw for this round yet. There is nothing to release." as text %}
+          {% include "components/item-info.html" with nopad=True type="info" %}
+
+        {% elif round.draw_status == round.Status.DRAFT %}
+
+          {% trans "The draw for this round is still in a draft state. Confirm the draw before releasing it." as text %}
+          {% include "components/item-info.html" with nopad=True type="warning" %}
+
+        {% elif round.draw_status == round.Status.RELEASED %}
+
+          {% trans "Unrelease draw to public" as un_release_text %}
+          <form id="releaseDrawForm" method="POST" action="{% roundurl 'draw-unrelease' %}">{% csrf_token %}</form>
+          {% tournamenturl 'options-tournament-section' section='public_features' as alert_link %}
+
+          {% if pref.public_draw != 'off' %}
+            {% trans "The draw has been released publicly." as text %}
+            {% include "components/item-info.html" with nopad=True type="" %}
+
+            {% trans "View public draw page" as text %}
+            {% if pref.public_draw == 'current' and round == current_round %}
+              {% tournamenturl 'draw-public-current-rounds' as public_link %}
+              {% include "components/item-action.html" with type="info" url=public_link icon="eye" %}
+            {% elif pref.public_draw == 'all-released' %}
+              {% roundurl 'draw-public-for-round' as public_link %}
+              {% include "components/item-action.html" with type="info" url=public_link icon="eye" %}
+            {% endif %}
+          {% elif pref.participant_ballots != 'off' or pref.participant_feedback != 'off' %}
+            {% blocktrans trimmed asvar text %}
+              You have released the draw, so ballots and/or feedback can be submitted from the public forms (if enabled). However, the draw itself will not show to the public unless the "public view of draw" setting is enabled in <a class="alert-link" href="{{ alert_link }}"> this tournament's configuration</a>.
+            {% endblocktrans %}
+            {% include "components/item-info.html" with nopad=True type="" %}
+          {% else %}
+            {% blocktrans trimmed asvar text %}
+              You have released the draw, but it will not show to the public unless the "public view of draw" setting is enabled in <a class="alert-link" href="{{ alert_link }}"> this tournament's configuration</a>.
+            {% endblocktrans %}
+            {% include "components/item-info.html" with nopad=True type="warning" %}
+          {% endif %}
+
+          {% include "components/item-action.html" with id="triggerReleaseDrawForm" url="" text=un_release_text %}
+
+        {% else %}
+
+          {% trans "Release draw to public" as release_text %}
+          <form id="releaseDrawForm" method="POST" action="{% roundurl 'draw-release' %}">{% csrf_token %}</form>
+
+          {% if pref.participant_ballots != 'off' or pref.participant_feedback != 'off' or pref.public_draw != 'off' %}
+
+            {% if pref.participant_ballots != 'off' and pref.participant_feedback != 'off' %}
+              {% trans "Your tournament allows ballots and feedback to be submitted online by adjudicators. The draw must be released before they can do so." as text %}
+              {% include "components/item-info.html" with nopad=True type="danger" %}
+            {% elif pref.participant_ballots != 'off' %}
+              {% trans "Your tournament allows ballots to be submitted online by adjudicators. The draw must be released before they can do so." as text %}
+              {% include "components/item-info.html" with nopad=True type="danger" %}
+            {% elif pref.participant_feedback != 'off' %}
+              {% trans "Your tournament allows feedback to be submitted online by participants. The draw must be released before they can do so." as text %}
+              {% include "components/item-info.html" with nopad=True type="danger" %}
+            {% endif %}
+            {% if pref.public_draw != 'off' %}
+              {% trans "Your tournament is configured to show the draw publicly. Releasing a draw will allow it to show it on the public page." as text %}
+              {% include "components/item-info.html" with nopad=True type="info" %}
+            {% endif %}
+
+            {% include "components/item-action.html" with type="success" id="triggerReleaseDrawForm" text=release_text url="" to_complete=True %}
+
+          {% else %}
+
+            {% trans "Your configuration doesn't have a public draw page or feedback/ballot submissions. There's no reason to release the draw." as text %}
+            {% include "components/item-info.html" with nopad=True type="secondary" %}
+
+            {% include "components/item-action.html" with id="triggerReleaseDrawForm" text=release_text url="" %}
+
+          {% endif %}
+
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md col-12">
+    <div class="card">
+
+      {% blocktranslate trimmed count counter=expected_nmotions asvar release_text %}
+        Release motion to public
+      {% plural %}
+        Release motions to public
+      {% endblocktranslate %}
+      {% blocktranslate trimmed count counter=expected_nmotions asvar unrelease_text %}
+        Unrelease motion to public
+      {% plural %}
+        Unrelease motions to public
+      {% endblocktranslate %}
+
+      <div class="card-body">
+        <h5 class="card-title mb-0">
+          {% blocktranslate trimmed count counter=expected_nmotions %}
+            Release Motion
+          {% plural %}
+            Release Motions
+          {% endblocktranslate %}
+        </h5>
+      </div>
+      <div class="list-group list-group-flush">
+
+        {% if not round.motion_set.exists %}
+          {% blocktranslate trimmed count counter=expected_nmotions asvar text %}
+            No motion is currently set for this round.
+          {% plural %}
+            No motions are currently set for this round.
+          {% endblocktranslate %}
+          {% include "components/item-info.html" with nopad=True type="warning" %}
+        {% endif %}
+
+        {% if not round.motions_released %}
+
+          <form id="releaseMotionsForm" method="POST" hidden
+                action="{% roundurl 'motions-release' %}">{% csrf_token %}</form>
+          {% if pref.participant_ballots != 'off' and pref.enable_motions %}
+            {% trans "Your tournament is configured to require motions to be selected in ballots and to allow ballots to be submitted by adjudicators. Ensure that you release the motions before debates finish, otherwise ballots will not be able to be submitted." as text %}
+            {% include "components/item-info.html" with nopad=True type="danger" %}
+          {% elif pref.participant_ballots != 'off' and pref.motion_vetoes_enabled %}
+            {% trans "Your tournament is configured to allow motions to be vetoed and to allow ballots to be submitted by adjudicators. Ensure that you release the motions before debates finish, otherwise ballots will not be able to nominate vetoes." as text %}
+            {% include "components/item-info.html" with nopad=True type="danger" %}
+          {% elif pref.public_motions %}
+            {% blocktranslate trimmed count counter=expected_nmotions asvar text %}
+              Your tournament is configured to show the motion for each round on the public site. You'll need to first release the motion for it to show there.
+            {% plural %}
+              Your tournament is configured to show the motions for each round on the public site. You'll need to first release the motions for it to show there.
+            {% endblocktranslate %}
+            {% include "components/item-info.html" with nopad=True type="" %}
+          {% else %}
+            {% blocktranslate trimmed count counter=expected_nmotions asvar text %}
+              Your tournament is not configured to show the motion for each round on the public site. There's no need to release the motion.
+            {% plural %}
+              Your tournament is not configured to show the motions for each round on the public site. There's no need to release the motions.
+            {% endblocktranslate %}
+            {% include "components/item-info.html" with nopad=True type="secondary" %}
+          {% endif %}
+
+          {% if round.motion_set.exists %}
+              {% if pref.enable_motions or pref.motion_vetoes_enabled or pref.public_motions %}
+                  {% include "components/item-action.html" with type="success" id="triggerReleaseMotionsForm" text=release_text url="" to_complete=True %}
+              {% else %}
+                  {% include "components/item-action.html" with id="triggerReleaseMotionsForm" text=release_text url="" %}
+              {% endif %}
+          {% endif %}
+
+        {% else %}
+
+          <form id="releaseMotionsForm" method="POST" hidden
+                action="{% roundurl 'motions-unrelease' %}">{% csrf_token %}</form>
+          {# "and" takes precedence over "or" #}
+          {% if pref.public_motions or pref.participant_ballots != 'off' and pref.enable_motions or pref.participant_ballots != 'off' and pref.motion_vetoes_enabled %}
+
+            {% blocktranslate trimmed count counter=expected_nmotions asvar text %}
+              The motion has been released publicly.
+            {% plural %}
+              Motions have been released publicly.
+            {% endblocktranslate %}
+
+            {% include "components/item-info.html" with nopad=True type="" %}
+            {% trans "View public motions page" as text %}
+            {% tournamenturl 'motions-public' as public_link %}
+            {% include "components/item-action.html" with type="info" url=public_link icon="eye" %}
+          {% else %}
+            {% tournamenturl 'options-tournament-section' section='public_features' as alert_link %}
+            {% blocktrans trimmed asvar text %}
+              You have released the motions, but they will not show to the public unless
+              the "public view of motions" setting is enabled in
+              <a class="alert-link" href="{{ alert_link }}">this tournament's configuration</a>.
+            {% endblocktrans %}
+            {% include "components/item-info.html" with nopad=True type="warning" %}
+          {% endif %}
+
+          {% include "components/item-action.html" with id="triggerReleaseMotionsForm" url="" text=unrelease_text %}
+
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+
+      {% trans "(for the briefing room)" as briefing_room_subtext %}
+
+      {% if round.is_current and tournament.current_rounds|length == 1 %}
+
+        {% tournamenturl 'draw-display-current-rounds-by-venue' as url %}
+        {% trans "Display Draw ordered by Room" as text %}
+        {% include "components/item-action.html" with subtext=briefing_room_subtext emoji="🏫" blank=True %}
+
+        {% tournamenturl 'draw-display-current-rounds-by-team' as url %}
+        {% trans "Display Draw ordered by Team" as text %}
+        {% include "components/item-action.html" with subtext=briefing_room_subtext emoji="👭" blank=True %}
+
+      {% else %}
+
+        {% tournamenturl 'draw-display-current-rounds-by-venue' as url %}
+        {% trans "Display Draws for <strong>All Current Rounds</strong> ordered by Room" as text %}
+        {% include "components/item-action.html" with subtext=briefing_room_subtext emoji="🏫" blank=True %}
+
+        {% tournamenturl 'draw-display-current-rounds-by-team' as url %}
+        {% trans "Display Draws for <strong>All Current Rounds</strong> ordered by Team" as text %}
+        {% include "components/item-action.html" with subtext=briefing_room_subtext emoji="👭" blank=True %}
+
+        {% roundurl 'draw-display-specific-round-by-venue' as url %}
+        {% blocktrans trimmed with round=round.name asvar text %}
+          Display Draw for <strong>{{ round }}</strong> ordered by Room
+        {% endblocktrans %}
+        {% include "components/item-action.html" with subtext=briefing_room_subtext emoji="🏫" blank=True %}
+
+        {% roundurl 'draw-display-specific-round-by-team' as url %}
+        {% blocktrans trimmed with round=round.name asvar text %}
+          Display Draw for <strong>{{ round }}</strong> ordered by Team
+        {% endblocktrans %}
+        {% include "components/item-action.html" with subtext=briefing_room_subtext emoji="👭" blank=True %}
+
+      {% endif %}
+
+      {% roundurl 'motions-display' round as url %}
+      {% trans "Display Motions" as text %}
+      {% include "components/item-action.html" with subtext=briefing_room_subtext emoji="📃" blank=True %}
+
+    </ul>
+    <ul class="list-group mt-3">
+
+      {% roundurl 'printing-scoresheets' round as url %}
+      {% include "components/item-action.html" with text="View Ballot Forms" subtext="(for printing)" emoji="💯" %}
+
+      {% roundurl 'printing-feedback' round as url %}
+      {% include "components/item-action.html" with text="View Feedback Forms" subtext="(for printing)" emoji="🙅" %}
+
+    </ul>
+    <ul class="list-group mt-3">
+      {% roundurl 'draw-adj-email' as url %}
+      {% include "components/item-action.html" with text="Email Draw" subtext="(to active adjudicators)" emoji="✉️" %}
+      {% roundurl 'draw-team-email' as url %}
+      {% include "components/item-action.html" with text="Email Draw" subtext="(to active teams)" emoji="✉️" %}
+      {% if pref.enable_motions or pref.motion_vetoes_enabled %}
+        {% trans "Email Motions" as text %}
+      {% else %}
+        {% trans "Email Motion" as text %}
+      {% endif %}
+      {% roundurl 'motions-email' as url %}
+      {% include "components/item-action.html" with emoji="📇" %}
+    </ul>
+  </div>
+</div>
+
+
+<div class="modal fade" id="editStartTime" tabindex="-1" role="dialog" aria-labelledby="editStartTime">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+
+      <form id="startTimeForm" method="POST" action="{% roundurl 'draw-start-time-set' %}">
+        <div class="modal-body list-group list-group-flush">
+
+          {% include "components/form-title.html" with title="Change Start Time" text="" %}
+
+          <div class="list-group-item pb-3">
+            <div class="form-group">
+              <label>{% trans "Start at" %}</label>
+              <input type="datetime-local" class="form-control" name="start_time" value="{% prep_time %}"/>
+            </div>
+          </div>
+
+          {% include "components/form-submit.html" with title="Save" %}
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+  {{ block.super }}
+  <script>
+    $(document).ready( function() { // Use the fake submit buttons as real submission
+      $("#triggerReleaseDrawForm").click( function() {
+        $("#releaseDrawForm").submit();
+        return false;
+      });
+      $("#triggerReleaseMotionsForm").click( function() {
+        $("#releaseMotionsForm").submit();
+        return false;
+      });
+    });
+  </script>
+{% endblock js %}

@@ -1,0 +1,406 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-24 07:48+1000\n"
+"PO-Revision-Date: 2025-05-13 00:04\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /develop/tabbycat/motions/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File-ID: 936\n"
+
+#: motions/apps.py motions/templates/public_motions.html
+msgid "Motions"
+msgstr "Themen"
+
+#: motions/models.py
+msgid "text"
+msgstr "Text"
+
+#: motions/models.py
+msgid "The full motion e.g., \"This House would straighten all bananas\""
+msgstr "Die volle Motion, z.B. \"Dieses Haus würde alle Bananen geradebiegen\""
+
+#: motions/models.py
+msgid "reference"
+msgstr "Referenz"
+
+#: motions/models.py
+msgid "Shortcode for the motion, e.g., \"Bananas\""
+msgstr "Kurzbezeichnung für die Motion, z.B. \"Bananen\""
+
+#: motions/models.py
+msgid "info slide"
+msgstr "Infotext"
+
+#: motions/models.py
+msgid "The information slide for this topic; if it has one"
+msgstr "Der Infotext (Factsheet) für diese Motion, falls vorhanden"
+
+#: motions/models.py
+msgid "tournament"
+msgstr "Turnier"
+
+#: motions/models.py
+msgid "rounds"
+msgstr "runden"
+
+#: motions/models.py
+msgid "motion"
+msgstr "Thema"
+
+#: motions/models.py
+msgid "motions"
+msgstr "Themen"
+
+#: motions/models.py
+msgid "debate team"
+msgstr "Debattierteam"
+
+#: motions/models.py
+msgid "preferences"
+msgstr "Einstellungen"
+
+#: motions/models.py
+msgid "ballot submission"
+msgstr "Ballot-eingabe"
+
+#: motions/models.py
+msgid "debate team motion preference"
+msgstr ""
+
+#: motions/models.py
+msgid "debate team motion preferences"
+msgstr ""
+
+#: motions/models.py
+msgid "round"
+msgstr "runde"
+
+#: motions/models.py
+msgid "sequence number"
+msgstr ""
+
+#: motions/models.py
+msgid "The order in which motions are displayed"
+msgstr "Die Reihenfolge, in der Motions angezeigt werden"
+
+#: motions/models.py
+msgid "round motion"
+msgstr "Motion der Runde"
+
+#: motions/models.py
+msgid "round motions"
+msgstr "Motions der Runde"
+
+#: motions/statistics.py
+msgid "extremely strong evidence"
+msgstr ""
+
+#: motions/statistics.py
+msgid "strong evidence"
+msgstr ""
+
+#: motions/statistics.py
+msgid "moderate evidence"
+msgstr ""
+
+#: motions/statistics.py
+msgid "weak evidence"
+msgstr ""
+
+#: motions/statistics.py
+msgid "very weak evidence"
+msgstr ""
+
+#: motions/statistics.py
+msgid "extremely weak evidence"
+msgstr ""
+
+#: motions/statistics.py
+msgid "balance inconclusive"
+msgstr ""
+
+#: motions/statistics.py
+msgid "too few debates to get a meaningful statistic"
+msgstr "Zu wenige Debatten für statistisches Urteil"
+
+#: motions/statistics.py
+#, python-format
+msgid "imbalanced at %(level)s level"
+msgstr "Unausgeglichen auf %(level)s-Niveau"
+
+#: motions/statistics.py
+#, python-format
+msgid "χ² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced — at a %(level)s level of significance."
+msgstr ""
+
+#: motions/statistics.py
+msgid "probably balanced"
+msgstr "Wahrscheinlich ausgeglichen"
+
+#: motions/statistics.py
+#, python-format
+msgid "χ² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
+msgstr ""
+
+#: motions/templates/motion_global_statistics.html
+#: motions/templates/motion_round_statistics.html
+#: motions/templates/public_motions.html
+msgid "View Info Slide"
+msgstr "Zeige Infotext"
+
+#: motions/templates/motion_statistics_bp_elim.html
+#, python-format
+msgid "results from %(ndebates)s debate"
+msgid_plural "results from %(ndebates)s debates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/motion_statistics_bp_elim.html
+#, python-format
+msgid "%(advancing)s of %(ndebates)s team on %(side)s (%(percentage)s%%) advanced"
+msgid_plural "%(advancing)s of %(ndebates)s teams on %(side)s (%(percentage)s%%) advanced"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/motion_statistics_bp_elim.html
+#, python-format
+msgid "%(eliminated)s of %(ndebates)s team on %(side)s (%(percentage)s%%) were eliminated"
+msgid_plural "%(eliminated)s of %(ndebates)s teams on %(side)s (%(percentage)s%%) were eliminated"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/motion_statistics_bp_elim.html
+msgid "advanced"
+msgstr "Weitergekommen"
+
+#: motions/templates/motion_statistics_bp_elim.html
+msgctxt "abbreviation for 'advanced', used when not enough space"
+msgid "adv."
+msgstr "Weiter"
+
+#: motions/templates/motion_statistics_bp_elim.html
+msgid "eliminated"
+msgstr "Ausgeschieden"
+
+#: motions/templates/motion_statistics_bp_elim.html
+msgctxt "abbreviation for 'eliminated', used when not enough space"
+msgid "elim."
+msgstr "Ausg."
+
+#: motions/templates/motion_statistics_bp_elim.html
+#, python-format
+msgid "%(side)s results distribution"
+msgstr ""
+
+#: motions/templates/motion_statistics_bp_elim.html
+#: motions/templates/motion_statistics_bp_prelim.html
+msgid "No results for this motion"
+msgstr ""
+
+#: motions/templates/motion_statistics_bp_prelim.html
+msgid "Government"
+msgstr "Regierung"
+
+#: motions/templates/motion_statistics_bp_prelim.html
+msgid "Opposition"
+msgstr "Opposition"
+
+#: motions/templates/motion_statistics_bp_prelim.html
+msgid "Average Points per bench"
+msgstr "Durchschnittspunkte je Seite"
+
+#: motions/templates/motion_statistics_bp_prelim.html
+msgid "Opening"
+msgstr "Eröffnende"
+
+#: motions/templates/motion_statistics_bp_prelim.html
+msgid "Closing"
+msgstr "Schließende"
+
+#: motions/templates/motion_statistics_bp_prelim.html
+msgid "Average Points per half"
+msgstr "Durchschnittspunkte je Hälfte"
+
+#: motions/templates/motion_statistics_bp_prelim.html
+#, python-format
+msgid "average points per position (%(ndebates)s debate)"
+msgid_plural "average points per position (%(ndebates)s debates)"
+msgstr[0] ""
+msgstr[1] "Durchschnittspunkte nach Position (in %(ndebates)s Debatten)"
+
+#: motions/templates/motion_statistics_bp_prelim.html
+#, python-format
+msgid "%(count)s result for %(side)s (%(percentage)s%%) were for %(points)s points"
+msgid_plural "%(count)s results for %(side)s (%(percentage)s%%) were for %(points)s points"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/motion_statistics_bp_prelim.html
+#, python-format
+msgid "%(side)s results"
+msgstr ""
+
+#: motions/templates/motion_statistics_twoteam.html
+#, python-format
+msgid "%(count)s %(side)s win"
+msgid_plural "%(count)s %(side)s wins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/motion_statistics_twoteam.html
+msgid "No teams debated this motion"
+msgstr "Diese Motion wurde von keinem Team debattiert"
+
+#: motions/templates/motion_statistics_twoteam.html
+#, python-format
+msgid "%(count)s %(side)s veto"
+msgid_plural "%(count)s %(side)s vetoes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/motion_statistics_twoteam.html
+msgid "No teams vetoed this motion"
+msgstr ""
+
+#: motions/templates/motions_edit.html
+msgid "Edit Motion"
+msgid_plural "Edit Motions"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/motions_edit.html
+msgid "Display Draw"
+msgstr "Zeige Draw an"
+
+#: motions/templates/motions_edit.html
+msgid "This will replace all existing motions for this round. The motions themselves will still be in the database."
+msgstr "Das wird alle Motions in dieser Runde ersetzen; die Motions werden aber weiter in der Datenbank bleiben."
+
+#: motions/templates/motions_edit.html
+msgid "Reuse Motions from Last Round"
+msgstr "Motions aus letzter Runde wiederverwenden"
+
+#: motions/templates/motions_edit.html
+msgid "Use Existing Motions"
+msgstr ""
+
+#: motions/templates/motions_edit.html
+msgid "The motion for this round is currently publicly displayed because it was released. Any changes made here will be publicly visible as well as soon as they are saved."
+msgid_plural "The motions for this round are currently publicly displayed because they were released. Any changes made here will be publicly visible as well as soon as they are saved."
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/motions_edit.html
+msgid "Save Motion"
+msgid_plural "Save Motions"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/motions_info.html
+msgid "Info Slide"
+msgstr "Infotext"
+
+#: motions/templates/public_motions.html
+msgid "There are no motions available for this round."
+msgstr ""
+
+#: motions/templates/public_motions.html
+msgid "The motions for this round have not been released."
+msgstr ""
+
+#: motions/templates/public_motions.html
+msgid "The motion for this round has not been released."
+msgstr ""
+
+#: motions/templates/show.html
+#, python-format
+msgid "Motion for %(round)s"
+msgid_plural "Motions for %(round)s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/show.html
+#, python-format
+msgid "Reveal Info Slide for %(round)s"
+msgid_plural "Reveal Info Slides for %(round)s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/show.html
+#, python-format
+msgid "Reveal Motion for %(round)s"
+msgid_plural "Reveal Motions for %(round)s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/templates/show.html
+msgid "There are no motions for this round entered into Tabbycat."
+msgstr ""
+
+#: motions/utils.py
+msgid "Not all latest ballots have the same motion. The correct motion must be set manually."
+msgstr ""
+
+#: motions/utils.py
+msgid "Motion vetos are inconsistent; they must be set manually."
+msgstr ""
+
+#: motions/views.py
+msgid "The motion has been saved."
+msgstr ""
+
+#: motions/views.py
+#, python-format
+msgid "%(count)d motion has been saved."
+msgid_plural "%(count)d motions have been saved."
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/views.py
+#, python-format
+msgid "%(count)d motion has been deleted."
+msgid_plural "%(count)d motions have been deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/views.py
+msgid "Motions cannot be copied to the first round."
+msgstr ""
+
+#: motions/views.py
+#, python-format
+msgid "Reused the motion from the previous round."
+msgid_plural "Reused the %(count)d motions from the previous round."
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/views.py
+msgid "Released the motion."
+msgid_plural "Released the motions."
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/views.py
+msgid "Unreleased the motion."
+msgid_plural "Unreleased the motions."
+msgstr[0] ""
+msgstr[1] ""
+
+#: motions/views.py
+msgid "Round Motions"
+msgstr ""
+
+#: motions/views.py
+msgid "Motion Statistics"
+msgstr ""
+

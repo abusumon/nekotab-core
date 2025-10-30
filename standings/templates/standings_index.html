@@ -1,0 +1,193 @@
+{% extends "standings_base.html" %}
+{% load static %}
+{% load debate_tags i18n %}
+
+{% block head-title %}<span class="emoji">📊</span>{% trans "Standings" %}{% endblock %}
+{% block page-title %}{% trans "Standings" %}{% endblock %}
+
+{% block standings_active %}active{% endblock %}
+
+{% block content %}
+
+<div class="card-columns">
+
+  <div class="card">
+    <!-- List group -->
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <h5 class="card-title mb-0">{% trans "Top Speaks" %}</h5>
+      </li>
+      {% for top_speak in top_speaks %}
+        <li class="list-group-item">
+          {% blocktrans trimmed with speaker=top_speak.speaker round=top_speak.debate_team.debate.round.abbreviation %}
+          {{ speaker }} in {{ round }}
+          {% endblocktrans %}
+          <span class="badge badge-secondary float-right">{{ top_speak.score|floatformat }}</span>
+        </li>
+      {% empty %}
+        <li class="list-group-item">{% trans "No data yet" %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="card">
+    <!-- List group -->
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <h5 class="card-title mb-0">{% trans "Bottom Speaks" %}</h5>
+      </li>
+      {% for bottom_speak in bottom_speaks %}
+        <li class="list-group-item">
+          {% blocktrans trimmed with speaker=bottom_speak.speaker round=bottom_speak.debate_team.debate.round.abbreviation %}
+          {{ speaker }} in {{ round }}
+          {% endblocktrans %}
+          <span class="badge badge-secondary float-right">{{ bottom_speak.score|floatformat }}</span>
+        </li>
+      {% empty %}
+      <li class="list-group-item">{% trans "No data yet" %}</li>{% endfor %}
+    </ul>
+  </div>
+
+  {% if top_margins %}
+    <div class="card">
+      <!-- List group -->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title mb-0">{% trans "Largest Margins" %}</h5>
+        </li>
+        {% for top_margin in top_margins %}
+          <li class="list-group-item">
+            {% blocktrans trimmed with team=top_margin.debate_team.team.short_name opp=top_margin.debate_team.opponent.team.short_name round=top_margin.debate_team.debate.round.abbreviation %}
+            {{ team }} vs {{ opp }} in {{ round }}
+            {% endblocktrans %}
+            <span class="badge badge-secondary float-right">{{ top_margin.margin|floatformat }}</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item">{% trans "No data yet" %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if bottom_margins %}
+    <div class="card">
+      <!-- List group -->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title mb-0">{% trans "Closest Margins" %}</h5>
+        </li>
+        {% for bottom_margin in bottom_margins %}
+          <li class="list-group-item">
+            {% blocktrans trimmed with team=bottom_margin.debate_team.team.short_name opp=bottom_margin.debate_team.opponent.team.short_name round=bottom_margin.debate_team.debate.round.abbreviation %}
+            {{ team }} vs {{ opp }} in {{ round }}
+            {% endblocktrans %}
+            <span class="badge badge-secondary float-right">{{ bottom_margin.margin|floatformat }}</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item">{% trans "No data yet" %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if top_team_scores %}
+    <div class="card">
+      <!-- List group -->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title mb-0">{% trans "Top Team Scores" %}</h5>
+        </li>
+        {% for top_score in top_team_scores %}
+          <li class="list-group-item">
+            {% blocktrans trimmed with team=top_score.debate_team.team.short_name round=top_score.debate_team.debate.round.abbreviation %}
+            {{ team }} in {{ round }}
+            {% endblocktrans %}
+            <span class="badge badge-secondary float-right">{{ top_score.score }}</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item">{% trans "No data yet" %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if bottom_team_scores %}
+    <div class="card">
+      <!-- List group -->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title mb-0">{% trans "Bottom Team Scores" %}</h5>
+        </li>
+        {% for bottom_score in bottom_team_scores %}
+          <li class="list-group-item">
+            {% blocktrans trimmed with team=bottom_score.debate_team.team.short_name round=bottom_score.debate_team.debate.round.abbreviation %}
+            {{ team }} in {{ round }}
+            {% endblocktrans %}
+            <span class="badge badge-secondary float-right">{{ bottom_score.score }}</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item">{% trans "No data yet" %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if top_motions or bottom_motions %}
+    <div class="card">
+      <!-- List group -->
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title mb-0">{% trans "Most/Least Popular Motions" %}</h5>
+        </li>
+        {% for top_motion in top_motions %}
+          <li class="list-group-item">
+            {{ top_motion.reference }} in
+            {% for round in top_motion.rounds.all %}
+              {{ round.abbreviation }}
+              {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            <span class="badge badge-secondary float-right">{{ top_motion.ballotsubmission__count }}</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item">{% trans "No data yet" %}</li>
+        {% endfor %}
+        <li class="list-group-item disabled">
+        ...
+        </li>
+        {% for bottom_motion in bottom_motions %}
+          <li class="list-group-item">
+            {{ bottom_motion.reference }} in
+            {% for round in bottom_motion.rounds.all %}
+              {{ round.abbreviation }}
+              {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            <span class="badge badge-secondary float-right">{{ bottom_motion.ballotsubmission__count }}</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item">{% trans "No data yet" %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <div class="card">
+    <!-- List group -->
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <h5 class="card-title mb-0">{% trans "Average Speaks" %}</h5>
+      </li>
+      {% if round_speaks %}
+        {% for round_speak in round_speaks %}
+          <li class="list-group-item">
+            {{ round_speak.round }}
+            <span class="badge badge-secondary float-right">{{ round_speak.score|floatformat }}</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item">{% trans "No data yet" %}</li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "tables/base_vue_table.html" %}
+{% load debate_tags i18n %}
+
+{% block page-subnav-sections %}<div class="btn-group flex-wrap"></div>{% endblock %}
+{% block page-subnav-actions %}
+<div class="btn-group flex-wrap">
+  <div class="btn btn-outline-primary disabled">{% trans "Questions for" %}</div>
+  <a class="btn btn-outline-primary" href="{% tournamenturl 'reg-team-questions' %}">
+    {% trans "Teams" %}
+  </a>
+  <a class="btn btn-outline-primary" href="{% tournamenturl 'reg-speaker-questions' %}">
+    {% trans "Speakers" %}
+  </a>
+</div>
+{% endblock %}

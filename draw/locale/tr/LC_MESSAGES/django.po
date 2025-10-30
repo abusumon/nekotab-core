@@ -1,0 +1,1138 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:51\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /develop/tabbycat/draw/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File-ID: 930\n"
+
+#: draw/admin.py
+#, python-format
+msgid "%(count)d debate was marked as having its sides confirmed."
+msgid_plural "%(count)d debates were marked as having their sides confirmed."
+msgstr[0] "%(count)d maçının tarafları onaylandı olarak işaretlendi."
+msgstr[1] "%(count)d maçının tarafları onaylandı olarak işaretlendi."
+
+#: draw/admin.py
+msgid "Mark sides as not confirmed"
+msgstr "Tarafları onaylanmamış olarak işaretle"
+
+#: draw/admin.py
+#, python-format
+msgid "%(count)d debate was marked as having its sides not confirmed."
+msgid_plural "%(count)d debates were marked as having their sides not confirmed."
+msgstr[0] "%(count)d maçının tarafları onaylanmadı olarak işaretlendi."
+msgstr[1] "%(count)d maçının tarafları onaylanmadı olarak işaretlendi."
+
+#: draw/apps.py draw/views.py
+msgid "Draw"
+msgstr "Kura"
+
+#: draw/forms.py
+msgid "Full round name"
+msgstr ""
+
+#: draw/forms.py
+#, python-format
+msgid "You must type '%s' to confirm draw and results deletion."
+msgstr ""
+
+#: draw/generator/__init__.py
+msgid "Too many swaps"
+msgstr "Çok fazla takas"
+
+#: draw/generator/__init__.py
+msgid "One-up-one-down (history)"
+msgstr "Bir-yukarı-bir-aşağı (tarihçe)"
+
+#: draw/generator/__init__.py
+msgid "One-up-one-down (institution)"
+msgstr "Bir-yukarı-bir-aşağı (kurum)"
+
+#: draw/generator/__init__.py
+msgid "One-up-one-down (to accommodate)"
+msgstr "Bir-yukarı-bir-aşağı (uyum sağlamak için)"
+
+#: draw/generator/__init__.py
+msgid "Bubble up (history)"
+msgstr "Yükselen Takımlar (tarihçe)"
+
+#: draw/generator/__init__.py
+msgid "Bubble down (history)"
+msgstr "Düşen Takımlar (geçmiş)"
+
+#: draw/generator/__init__.py
+msgid "Bubble up (institution)"
+msgstr "Yükselen Takımlar (kurum)"
+
+#: draw/generator/__init__.py
+msgid "Bubble down (institution)"
+msgstr "Düşen Takımlar (kurum)"
+
+#: draw/generator/__init__.py
+msgid "Bubble up (to accommodate)"
+msgstr "Yükselen Takımlar (uyum sağlamak için)"
+
+#: draw/generator/__init__.py
+msgid "Bubble down (to accommodate)"
+msgstr "Düşen Takımlar (uyum sağlamak için)"
+
+#: draw/generator/__init__.py
+msgid "Can't bubble up/down"
+msgstr "Yükselen/Düşen Takımlar yapılamıyor"
+
+#: draw/generator/__init__.py
+msgid "Pull-up team"
+msgstr "Çıkma Takımı"
+
+#: draw/generator/bpelimination.py draw/generator/elimination.py
+#, python-format
+msgid "%d debates in the previous round don't have a result."
+msgstr "Bir önceki turdaki %d maçın bir sonucu yok."
+
+#: draw/generator/bpelimination.py
+#, python-format
+msgid "%d debates in the previous round don't have exactly two teams advancing."
+msgstr "Bir önceki turdaki %d maçda tam iki takım ilerlemiyor."
+
+#: draw/generator/bpelimination.py
+#, python-format
+msgid "The room ranks of the partial elimination round indicate that an odd number of teams (%(nbypassing)d) bypassed it."
+msgstr "Kısmi eleme turunun oda sıralamaları, tek sayıda takımın (%(nbypassing)d) atladığını gösteriyor."
+
+#: draw/generator/bpelimination.py
+#, python-format
+msgid "The room ranks of the partial elimination round indicate that %(nbypassing)d teams bypassed it, but %(nadvancing)d teams advanced from it."
+msgstr "Kısmi eleme turunun oda sıralamaları, %(nbypassing)d takımın bunu atladığını, ancak %(nadvancing)d takımın ondan geçtiğini gösteriyor"
+
+#: draw/generator/bpelimination.py
+#, python-format
+msgid "The number of debates (%d) in the last round is not a power of two."
+msgstr "Son turdaki maçların sayısı (%d) ikinin katı değil."
+
+#: draw/generator/bphungarian.py
+#, python-format
+msgid "The Rényi order can't be negative, and it's currently set to %(alpha)f."
+msgstr "Rényi sırası negatif olamaz ve şu anda %(alpha)f olarak ayarlanmıştır."
+
+#: draw/generator/common.py
+#, python-format
+msgid "The number of teams presented for the draw was not a multiple of %(num)d."
+msgstr "Kura çekimi için sunulan takım sayısı %(num)d'nin katı değildi."
+
+#: draw/generator/common.py
+msgid "There were no teams for the draw."
+msgstr "Kura çekimi için takım yoktu."
+
+#: draw/generator/elimination.py
+#, python-format
+msgid "There are only %d teams breaking in this category; there need to be at least two to generate an elimination round draw."
+msgstr "Bu kategoride kırılan sadece %d takım var; bir eleme turu kurası oluşturmak için en az iki tane olması gerekir."
+
+#: draw/generator/elimination.py
+#, python-format
+msgid "The number of teams (%d) in this round is not a power of two."
+msgstr "Bu turdaki takım sayısı (%d) ikinin katı değil."
+
+#: draw/generator/powerpair.py
+#, python-format
+msgid "%(noninteger)d out of %(total)d teams have a noninteger first metric in the team standings. Intermediate brackets require the first team standings metric to be an integer (typically points or wins)."
+msgstr "%(total)d takımdan %(noninteger)d takım sıralamalarında tamsayı olmayan bir ilk metriğe sahiptir. Ara aşamalar, ilk takım sıralamaları metriğinin bir tamsayı olmasını gerektirir (genellikle puan veya galibiyetler)."
+
+#: draw/generator/random.py
+#, python-format
+msgid "There were %(aff_count)d affirmative teams but %(neg_count)d negative teams."
+msgstr "%(aff_count)d olumlu takım vardı ama %(neg_count)d negatif takım vardı."
+
+#: draw/generator/random.py
+msgid "One or more teams had an allocated side that wasn't affirmative or negative."
+msgstr "Bir veya daha fazla takımın olumlu veya olumsuz olmayan tahsis edilmiş bir tarafı vardı."
+
+#: draw/manager.py
+#, python-format
+msgid "The draw type %(type)s can't be used with two-team formats."
+msgstr "%(type)s kura türü iki takımlı formatlarla kullanılamaz."
+
+#: draw/manager.py
+#, python-format
+msgid "The draw type %(type)s can't be used with British Parliamentary."
+msgstr "%(type)s kura türü British Parliamentary ile kullanılamaz."
+
+#: draw/manager.py
+#, python-format
+msgid "Unrecognised \"teams in debate\" option: %(option)s"
+msgstr "Tanınmayan \"maçdaki takımlar\" seçeneği: %(option)s"
+
+#: draw/manager.py
+#, python-format
+msgid "The break size (%(size)d) for this break category was invalid. It must be either six times or four times a power of two."
+msgstr "Bu break kategorisi için break boyutu (%(size)d) geçersizdi. İkinin katının ya altı ya da sekiz katı olmalıdır."
+
+#: draw/models.py
+msgid "none"
+msgstr "hiçbiri"
+
+#: draw/models.py
+msgid "postponed"
+msgstr "Ertelenen"
+
+#: draw/models.py
+msgid "draft"
+msgstr "taslak"
+
+#: draw/models.py
+msgid "confirmed"
+msgstr "onaylanmış"
+
+#: draw/models.py
+msgid "round"
+msgstr "tur"
+
+#: draw/models.py
+msgid "room"
+msgstr "oda"
+
+#: draw/models.py
+msgid "bracket"
+msgstr "aşama"
+
+#: draw/models.py
+msgid "room rank"
+msgstr "oda sıralaması"
+
+#: draw/models.py
+msgid "importance"
+msgstr "önem"
+
+#: draw/models.py
+msgid "result status"
+msgstr "sonuç durumu"
+
+#: draw/models.py
+msgid "sides confirmed"
+msgstr "taraflar onaylandı"
+
+#: draw/models.py
+msgid "If unchecked, the sides assigned to teams in this debate are just placeholders."
+msgstr "İşaretlenmezse, bu tartışmada takımlara atanan taraflar sadece yer tutucudur."
+
+#: draw/models.py
+msgid "debate"
+msgstr "maç"
+
+#: draw/models.py
+msgid "debates"
+msgstr "maçlar"
+
+#. Translators: This is appended to a list of teams, e.g. "Auckland
+#. 1, Vic Wellington 1 (sides not confirmed)". Mind the leading
+#. space.
+#: draw/models.py
+msgid " (sides not confirmed)"
+msgstr " (taraflar onaylanmadı)"
+
+#. Translators: This goes between teams in a debate, e.g. "Auckland 1
+#. vs Vic Wellington 1". Mind the leading and trailing spaces.
+#: draw/models.py
+msgid " vs "
+msgstr " Vs "
+
+#: draw/models.py
+msgid "team"
+msgstr "takım"
+
+#: draw/models.py
+msgid "side sequence"
+msgstr ""
+
+#: draw/models.py
+msgid "debate team"
+msgstr "tartışma ekibi"
+
+#: draw/models.py
+msgid "debate teams"
+msgstr "tartışma ekipleri"
+
+#: draw/models.py
+#, python-format
+msgid "placed %(place)s"
+msgstr "%(place)s oldu"
+
+#: draw/models.py
+msgid "result unknown"
+msgstr "sonucu bilinmiyor"
+
+#: draw/models.py
+msgid "won"
+msgstr "Galibiyet"
+
+#: draw/models.py
+msgid "lost"
+msgstr "Mağlubiyet"
+
+#: draw/models.py
+#, python-format
+msgid "Team %d"
+msgstr ""
+
+#: draw/models.py
+msgid "team side allocation"
+msgstr "takım taraf tahsisi"
+
+#: draw/models.py
+msgid "team side allocations"
+msgstr "takım taraf tahsisleri"
+
+#. Translators: e.g. "Affirmative: Rank", "Government: Draw strength",
+#. "Opening government: Total speaker score", "Closing opposition: Number of firsts"
+#: draw/tables.py
+#, python-format
+msgid "%(side)s: %(metric)s"
+msgstr "%(side)s: %(metric)s"
+
+#: draw/tables.py
+msgid "Bye"
+msgstr ""
+
+#: draw/tables.py
+#, python-format
+msgid "Team %(num)d"
+msgstr "Takım %(num)d"
+
+#: draw/tables.py
+msgid "Room rank of this debate"
+msgstr "Bu maçın oda sıralaması"
+
+#: draw/tables.py
+msgid "Bracket of this debate"
+msgstr "Bu maçın aşamaları"
+
+#: draw/tables.py
+msgid "side history<br>\n"
+"(number of times the team has been on each side before this round)"
+msgstr "Taraf tarihi<br>\n"
+" (takımın bu turdan önce her iki tarafta bulunma sayısı)"
+
+#. Translators: Abbreviation for "side history"
+#: draw/tables.py
+msgid "SH"
+msgstr "SH"
+
+#: draw/tables.py
+msgid "Went from balanced to imbalanced"
+msgstr "Dengeliden dengesizliğe geçti"
+
+#: draw/tables.py
+msgid "Went from imbalanced to balanced"
+msgstr "Dengesizden dengeliye geçti"
+
+#: draw/tables.py
+msgid "Best improvement possible, still imbalanced"
+msgstr "Mümkün olan en iyi geliştirme, hala dengesiz"
+
+#: draw/tables.py
+msgid "Was imbalanced and still imbalanced"
+msgstr "Dengesizdi ve hala dengesiz"
+
+#: draw/tables.py
+msgid "No metrics in the team standings precedence"
+msgstr "Takım sıralaması önceliğinde metrik yok"
+
+#: draw/tables.py
+msgid "Side"
+msgstr "Taraf"
+
+#: draw/tables.py
+msgid "Position this round"
+msgstr "Bu turu konumlandırın"
+
+#: draw/tables.py
+msgid "Before"
+msgstr "Önce"
+
+#: draw/tables.py
+msgid "Side history before this round"
+msgstr "Bu turdan önceki taraf tarihi"
+
+#: draw/tables.py
+msgid "After"
+msgstr "Sonra"
+
+#: draw/tables.py
+msgid "Side history after this round"
+msgstr "Bu turdan sonra taraf tarihi"
+
+#: draw/tables.py
+msgid "Cost"
+msgstr "Maliyet"
+
+#: draw/tables.py
+msgid "Position cost"
+msgstr "Pozisyon maliyeti"
+
+#: draw/tables.py
+msgid "Status"
+msgstr "Durum"
+
+#: draw/tables.py
+msgid "Teams with this many points are permitted in this debate<br>\n"
+"(bracket in bold)"
+msgstr "Bu maça bu kadar puana sahip takımlara katılabilir<br>\n"
+"(aşama kalın)"
+
+#: draw/tables.py
+#, python-format
+msgid "%(team)s: %(metric)s"
+msgstr "%(team)s: %(metric)s"
+
+#: draw/tables.py
+msgid "side history before this round"
+msgstr "bu turdan önceki taraf tarihi"
+
+#: draw/tables.py
+msgid "Sides"
+msgstr "Taraflar"
+
+#: draw/tables.py
+msgid "position cost"
+msgstr "pozisyon maliyeti"
+
+#: draw/templates/admin/draw/debateteam/delete_warning.html
+msgid "STOP!!! Read this first! Deleting debate teams from the database may crash Tabbycat!"
+msgstr "DURUN!!! Önce bunu okuyun! Tartışma ekiplerini veritabanından silmek Tabbycat'i çökertebilir!"
+
+#: draw/templates/admin/draw/debateteam/delete_warning.html
+msgid "Tabbycat requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgstr "Tabbycat, tüm maçların her iki tarafı için <strong>sadece<strong> bir takımın olmasını ve başka hiçbir takımın asla olmamasını gerektirir. Herhangi bir takımı silerseniz, her birini ya aynı maçtaki yeni bir takımla değiştirmeniz veya ilişkili maç nesnelerini silmeniz gerekir. Bunu doğru bir şekilde yapmazsanız, birçok sayfa <strong>çökebilir.</strong>"
+
+#: draw/templates/admin/draw/debateteam/delete_warning.html
+#: draw/templates/admin/draw/debateteam/edit_warning.html
+msgid "This is a common source of errors. If it happens to you, check the debates (under the Draw section in this Edit Database area) and ensure that all of them have exactly one affirmative and one negative team."
+msgstr "Bu sık sık hataya sebep olur. Başınıza gelirse, maçları kontrol edin (Veritabanını Düzenle alanındaki Çizim bölümünün altında) ve hepsinin tam olarak bir olumlu ve bir olumsuz ekibe sahip olduğundan emin olun."
+
+#: draw/templates/admin/draw/debateteam/edit_warning.html
+msgid "WARNING!!! If you are editing debate teams, read this first!"
+msgstr "UYARI!!! maç ekiplerini düzenliyorsanız, önce bunu okuyun!"
+
+#: draw/templates/admin/draw/debateteam/edit_warning.html
+msgid "Tabbycat requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgstr "Tabbycat, tüm maçların her iki tarafı için <strong>sadece<strong> bir takımın olmasını ve başka hiçbir takımın asla olmamasını gerektirir. Herhangi bir takımı silerseniz bunun böyle kalmasını sağlamalısınız. Bunu doğru bir şekilde yapmazsanız, birçok sayfa <strong>çökebilir.</strong>"
+
+#: draw/templates/draw_alerts_adjudicators.html
+#, python-format
+msgid "1 debate does not have a chair."
+msgid_plural "%(ndebates)s debates do not have a chair."
+msgstr[0] "1 maçın başkanı yoktur."
+msgstr[1] "%(ndebates)s maçın başkanı yoktur."
+
+#: draw/templates/draw_alerts_adjudicators.html
+#, python-format
+msgid "<strong>%(adjudicators)s</strong> is adjudicating multiple debates."
+msgid_plural "The following <strong>%(nadjs)s</strong> adjudicators are adjudicating multiple debates: <strong>%(adjudicators)s</strong>"
+msgstr[0] "<strong>%(adjudicators)s</strong> birden fazla maçta jürilik yapıyor."
+msgstr[1] "Aşağıdaki <strong>%(nadjs)s</strong> birden fazla maçta jürilik yapıyor: <strong>%(adjudicators)s</strong>"
+
+#: draw/templates/draw_alerts_adjudicators.html
+#, python-format
+msgid "1 debate has a panel with an even number of adjudicators."
+msgid_plural "%(ndebates)s debates have panels with an even number of adjudicators."
+msgstr[0] "1 maçta çift sayıda jüriden oluşan bir panel var."
+msgstr[1] "%(ndebates)s' maçta çift sayıda jüriden oluşan bir panel var."
+
+#: draw/templates/draw_alerts_adjudicators.html
+#, python-format
+msgid "1 debate has an adjudicator conflict."
+msgid_plural "%(ndebates)s debates have adjudicator conflicts."
+msgstr[0] "1 maçta jüri conflicti var."
+msgstr[1] "%(ndebates)s maçta jüri conflicti var."
+
+#: draw/templates/draw_alerts_adjudicators.html
+#, python-format
+msgid "<strong>%(adjudicators)s</strong> is unavailable this round, but is assigned to a debate."
+msgid_plural "The following <strong>%(nadjs)s</strong> adjudicators are unavailable this round, but are assigned to debates: <strong>%(adjudicators)s</strong>"
+msgstr[0] "<strong>%(adjudicators)s</strong> bu turda kullanılamaz, ancak bir maça atanmış."
+msgstr[1] "Aşağıdaki <strong>%(nadjs)s</strong> jüriler bu turda kullanılamaz, ancak maçlara atanmış: <strong>%(adjudicators)s</strong>"
+
+#: draw/templates/draw_alerts_adjudicators.html
+#, python-format
+msgid "1 adjudicator is available but not assigned to a debate."
+msgid_plural "%(ndebates)s adjudicators are available but not assigned to a debate."
+msgstr[0] "1 jüri uygun ancak bir maça atanmamış."
+msgstr[1] "%(ndebates)s jüri uygun ancak bir maça atanmamış."
+
+#: draw/templates/draw_alerts_teams.html
+#, python-format
+msgid "<strong>%(teams)s</strong> is competing in multiple debates."
+msgid_plural "The following <strong>%(nteams)s</strong> teams are competing in multiple debates: <strong>%(teams)s</strong>"
+msgstr[0] "<strong>%(teams)s</strong> birden fazla maçta yarışıyor."
+msgstr[1] "Aşağıdaki <strong>%(nteams)s</strong> takım birden fazla maçta yarışıyor: <strong>%(teams)s</strong>"
+
+#: draw/templates/draw_alerts_venues.html
+#, python-format
+msgid "1 debate does not have a room."
+msgid_plural "%(ndebates)s debates do not have a room."
+msgstr[0] "1 maçın odası yok."
+msgstr[1] "%(ndebates)s maçın odası yok."
+
+#: draw/templates/draw_alerts_venues.html
+#, python-format
+msgid "There are multiple debates in <strong>%(rooms)s</strong>."
+msgid_plural "The following <strong>%(ndebates)s</strong> rooms have multiple debates in them: <strong>%(rooms)s</strong>"
+msgstr[0] "<strong>%(rooms)s</strong> odada birden fazla maç var."
+msgstr[1] "Aşağıdaki <strong>%(rooms)s</strong> odada birden fazla maç var: <strong>%(rooms)s</strong>"
+
+#: draw/templates/draw_alerts_venues.html
+#, python-format
+msgid "1 debate has a room constraint violation."
+msgid_plural "%(ndebates)s debates have room constraint violations."
+msgstr[0] "1 maçta oda kısıtlaması ihlali var."
+msgstr[1] "%(ndebates)s maçta oda kısıtlaması ihlali var."
+
+#: draw/templates/draw_base.html
+msgid "Availability"
+msgstr "Uygunluk"
+
+#: draw/templates/draw_base.html draw/templates/draw_status_draft.html
+msgid "Edit Sides/Matchups"
+msgstr "Tarafları/Eşleşmeleri Düzenle"
+
+#: draw/templates/draw_base.html
+msgid "Redo Draw"
+msgstr "Kurayı Yeniden Çek"
+
+#: draw/templates/draw_base.html
+msgid "Draw Details"
+msgstr "Kura Detayları"
+
+#: draw/templates/draw_base.html
+msgid "Position Balance"
+msgstr "Taraf Dengesi"
+
+#: draw/templates/draw_base.html draw/templates/draw_display_admin.html
+#: draw/templates/draw_display_assistant.html
+msgid "Display Draw"
+msgstr "Kurayı Göster"
+
+#: draw/templates/draw_confirm_regeneration.html
+msgid "Confirm draw regeneration"
+msgstr "Kura yeniden çekilmesini onayla"
+
+#: draw/templates/draw_confirm_regeneration.html
+#: draw/templates/draw_subpage.html
+msgid "Back to Draw"
+msgstr "Kuraya geri dön"
+
+#: draw/templates/draw_confirm_regeneration.html
+#, python-format
+msgid "Confirm Draw Deletion for %(round)s"
+msgstr "%(round)s için Kura Silme İşlemini Onayla"
+
+#: draw/templates/draw_confirm_regeneration.html
+#, python-format
+msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> —  including their ballots and adjudicator allocations — and cannot be undone. You probably don't want to do this if any results have been entered!"
+msgstr "%(round)s için kurayı yeniden oluşturmak istiyor musunuz? Bu, </strong>mevcut kuradaki tüm maçları</strong> ballotları ve jüri tahsisleri dahil siler ve geri alınamaz. Eğer sonuçlar girildiyse yüksek ihtimalle bunu yapmak istemiyorsunuz!"
+
+#: draw/templates/draw_confirm_regeneration.html
+#, python-format
+msgid "Yes, I want to delete the current draw for %(round)s"
+msgstr "Evet, %(round)s için geçerli kurayı silmek istiyorum"
+
+#: draw/templates/draw_display_admin.html
+msgid "View Draw"
+msgstr "Kurayı Görüntüle"
+
+#: draw/templates/draw_display_admin.html
+#, python-format
+msgid "Debates start at %(start_time)s"
+msgstr "Maçlar %(start_time)s'da başlar"
+
+#: draw/templates/draw_display_admin.html
+msgid "Add Start Time"
+msgstr "Başlangıç Saati Ekle"
+
+#: draw/templates/draw_display_admin.html
+msgid "Enter Results"
+msgstr "Sonuç Gir"
+
+#: draw/templates/draw_display_admin.html
+msgid "Motion Details"
+msgstr "Önerge Detayları"
+
+#: draw/templates/draw_display_admin.html
+#, python-format
+msgid "%(motions_count)s motion has been entered."
+msgid_plural "%(motions_count)s motions have been entered."
+msgstr[0] "%(motions_count)s önerge girildi."
+msgstr[1] "%(motions_count)s önerge girildi."
+
+#: draw/templates/draw_display_admin.html
+msgid "Edit the motion"
+msgid_plural "Edit motions"
+msgstr[0] "Önergeyi Düzenle"
+msgstr[1] "Önergeleri Düzenle"
+
+#: draw/templates/draw_display_admin.html
+msgid "Your configuration/format requires motions to be specified as part of ballot entry. Make sure they are added before results come in!"
+msgstr "Yapılandırmanız/formatınız, önergelerin ballotun bir parçası olarak belirtilmesini gerektirir. Sonuçlar gelmeden önce eklendiğinden emin olun!"
+
+#: draw/templates/draw_display_admin.html
+msgid "A motion should be added if you want to display it during announcements, print it on your ballots, or to display it (later) on the public motions/statistics pages."
+msgstr "Duyurular sırasında görüntülemek, ballotlara yazdırmak veya (daha sonra) herkese açık önergeler/istatistik sayfalarında görüntülemek istiyorsanız bir önerge eklenmelidir."
+
+#: draw/templates/draw_display_admin.html
+msgid "Enter a motion"
+msgid_plural "Enter motions"
+msgstr[0] "Önerge gir"
+msgstr[1] "Önerge gir"
+
+#: draw/templates/draw_display_admin.html
+msgid "Release Draw"
+msgstr "Kurayı Yayınla"
+
+#: draw/templates/draw_display_admin.html
+msgid "You have not generated a draw for this round yet. There is nothing to release."
+msgstr "Bu tur için henüz bir kura oluşturmadınız. Yayınlanacak bir şey yok."
+
+#: draw/templates/draw_display_admin.html
+msgid "The draw for this round is still in a draft state. Confirm the draw before releasing it."
+msgstr "Bu tur için kura çekimi hala taslak halinde. Yayınlamadan önce kurayı onaylayın."
+
+#: draw/templates/draw_display_admin.html
+msgid "Unrelease draw to public"
+msgstr "Kurayı yayından kaldır"
+
+#: draw/templates/draw_display_admin.html
+msgid "The draw has been released publicly."
+msgstr "Kura çekimi herkese açıklandı."
+
+#: draw/templates/draw_display_admin.html
+msgid "View public draw page"
+msgstr "Herkese açık kura sayfasını görüntüle"
+
+#: draw/templates/draw_display_admin.html
+#, python-format
+msgid "You have released the draw, so ballots and/or feedback can be submitted from the public forms (if enabled). However, the draw itself will not show to the public unless the \"public view of draw\" setting is enabled in <a class=\"alert-link\" href=\"%(alert_link)s\"> this tournament's configuration</a>."
+msgstr "Kurayı yayınladınız, böylece ballotlar ve/veya geri bildirimler açık formlardan gönderilebilir (etkinleştirilmişse). Ancak, <a class=\"alert-link\" href=\"%(alert_link)s\"> bu turnuvanın ayarlarında</a> \"Çekiliş Herkese Açık\" ayarı etkinleştirilmediği sürece çekilişin kendisi herkese gösterilmez."
+
+#: draw/templates/draw_display_admin.html
+#, python-format
+msgid "You have released the draw, but it will not show to the public unless the \"public view of draw\" setting is enabled in <a class=\"alert-link\" href=\"%(alert_link)s\"> this tournament's configuration</a>."
+msgstr "Kurayı yayınladınız ancak, <a class=\"alert-link\" href=\"%(alert_link)s\"> bu turnuvanın ayarlarında</a> \"Kura Herkese Açık\" ayarı etkinleştirilmediği sürece çekilişin kendisi herkese gösterilmez."
+
+#: draw/templates/draw_display_admin.html
+msgid "Release draw to public"
+msgstr "Kurayı Herkese Açık Yayınla"
+
+#: draw/templates/draw_display_admin.html
+msgid "Your tournament allows ballots and feedback to be submitted online by adjudicators. The draw must be released before they can do so."
+msgstr "Turnuvanız, ballotların ve geri bildirimlerin jüriler tarafından çevrimiçi olarak gönderilmesine izin verir. Bunu yapabilmeleri için kuranın yayınlanması gerekir."
+
+#: draw/templates/draw_display_admin.html
+msgid "Your tournament allows ballots to be submitted online by adjudicators. The draw must be released before they can do so."
+msgstr "Turnuvanız, ballotların jüriler tarafından çevrimiçi olarak gönderilmesine izin verir. Bunu yapabilmeleri için kuranın yayınlanması gerekir."
+
+#: draw/templates/draw_display_admin.html
+msgid "Your tournament allows feedback to be submitted online by participants. The draw must be released before they can do so."
+msgstr "Turnuvanız, geri bildirimin katılımcılar tarafından çevrimiçi olarak gönderilmesine izin verir. Bunu yapabilmeleri için kuranın yayınlanması gerekir."
+
+#: draw/templates/draw_display_admin.html
+msgid "Your tournament is configured to show the draw publicly. Releasing a draw will allow it to show it on the public page."
+msgstr "Turnuvanız, kurayı herkese açık olarak gösterecek şekilde ayarlıdır. Bir kuranın yayınlanması, genel sayfada gösterilmesine izin verecektir."
+
+#: draw/templates/draw_display_admin.html
+msgid "Your configuration doesn't have a public draw page or feedback/ballot submissions. There's no reason to release the draw."
+msgstr "Ayarlarınızda herkese açık bir kura sayfası veya geri bildirim/ballot gönderimi yok. Kurayı yayınlamak için hiçbir neden yok."
+
+#: draw/templates/draw_display_admin.html
+msgid "Release motion to public"
+msgid_plural "Release motions to public"
+msgstr[0] "Önergeyi halka açık hale getirin"
+msgstr[1] "Önergeleri halka açık hale getirin"
+
+#: draw/templates/draw_display_admin.html
+msgid "Unrelease motion to public"
+msgid_plural "Unrelease motions to public"
+msgstr[0] "Önergeyi halka açık halden çıkartın"
+msgstr[1] "Önergeleri halka açık halden çıkartın"
+
+#: draw/templates/draw_display_admin.html
+msgid "Release Motion"
+msgid_plural "Release Motions"
+msgstr[0] "Önergeyi Yayınla"
+msgstr[1] "Önergeleri Yayınla"
+
+#: draw/templates/draw_display_admin.html
+msgid "No motion is currently set for this round."
+msgid_plural "No motions are currently set for this round."
+msgstr[0] "Bu tur için herhangi bir önerge belirlenmemiştir."
+msgstr[1] "Bu tur için herhangi bir önerge belirlenmemiştir."
+
+#: draw/templates/draw_display_admin.html
+msgid "Your tournament is configured to require motions to be selected in ballots and to allow ballots to be submitted by adjudicators. Ensure that you release the motions before debates finish, otherwise ballots will not be able to be submitted."
+msgstr "Turnuvanız, ballotlarda önergelerin seçilmesi zorunlu ve ballotların jüriler tarafından gönderilebileceği şekilde ayarlanmıştır. Maçlar bitmeden önce önergeleri yayınladığınızdan emin olun, aksi takdirde ballotlar gönderilemez."
+
+#: draw/templates/draw_display_admin.html
+msgid "Your tournament is configured to allow motions to be vetoed and to allow ballots to be submitted by adjudicators. Ensure that you release the motions before debates finish, otherwise ballots will not be able to nominate vetoes."
+msgstr "Turnuvanız, önergelerin veto edilebileceği ve ballotların jüriler tarafından gönderilebileceği şekilde ayarlanmıştır. Maçlar bitmeden önce önergeleri yayınladığınızdan emin olun, aksi takdirde ballotlar veto hakkı veremez."
+
+#: draw/templates/draw_display_admin.html
+msgid "Your tournament is configured to show the motion for each round on the public site. You'll need to first release the motion for it to show there."
+msgid_plural "Your tournament is configured to show the motions for each round on the public site. You'll need to first release the motions for it to show there."
+msgstr[0] "Turnuvanız, herkese açık sitede her turun önergesini gösterecek şekilde ayarlanmıştır. Orada gösterilmesi için önce önergeyi yayınlamanız gerekir."
+msgstr[1] "Turnuvanız, herkese açık sitede her turun önergesini gösterecek şekilde ayarlanmıştır. Orada gösterilmesi için önce önergeyi yayınlamanız gerekir."
+
+#: draw/templates/draw_display_admin.html
+msgid "Your tournament is not configured to show the motion for each round on the public site. There's no need to release the motion."
+msgid_plural "Your tournament is not configured to show the motions for each round on the public site. There's no need to release the motions."
+msgstr[0] "Turnuvanız, herkese açık sitede her turun önergesini gösterilmeyecek şekilde ayarlanmıştır. Önergeyi yayınlamaya gerek yok."
+msgstr[1] "Turnuvanız, herkese açık sitede her turun önergesini gösterilmeyecek şekilde ayarlanmıştır. Önergeleri yayınlamaya gerek yok."
+
+#: draw/templates/draw_display_admin.html
+msgid "The motion has been released publicly."
+msgid_plural "Motions have been released publicly."
+msgstr[0] "Önerge herkese açık yayınlandı."
+msgstr[1] "Önergeler herkese açık yayınlandı."
+
+#: draw/templates/draw_display_admin.html
+msgid "View public motions page"
+msgstr "Açık önergeler sayfasını görüntüle"
+
+#: draw/templates/draw_display_admin.html
+#, python-format
+msgid "You have released the motions, but they will not show to the public unless the \"public view of motions\" setting is enabled in <a class=\"alert-link\" href=\"%(alert_link)s\">this tournament's configuration</a>."
+msgstr "Önergeleri yayınladınız, ancak <a class=\"alert-link\" href=\"%(alert_link)s\">bu turnuvanın ayarlarında</a> \"önergelerin herkese açık görünümü\" ayarı etkinleştirilmediği sürece herkese gösterilmez."
+
+#: draw/templates/draw_display_admin.html
+#: draw/templates/draw_display_assistant.html
+msgid "(for the briefing room)"
+msgstr "(brifing odası için)"
+
+#: draw/templates/draw_display_admin.html
+#: draw/templates/draw_display_assistant.html
+msgid "Display Draw ordered by Room"
+msgstr "Kuraları odaya göre sıralı göster"
+
+#: draw/templates/draw_display_admin.html
+#: draw/templates/draw_display_assistant.html
+msgid "Display Draw ordered by Team"
+msgstr "Kuraları takıma göre sıralı göster"
+
+#: draw/templates/draw_display_admin.html
+#: draw/templates/draw_display_assistant.html
+msgid "Display Draws for <strong>All Current Rounds</strong> ordered by Room"
+msgstr "</strong>Tüm Maçların</strong> Kuralarını odaya göre sıralı göster"
+
+#: draw/templates/draw_display_admin.html
+#: draw/templates/draw_display_assistant.html
+msgid "Display Draws for <strong>All Current Rounds</strong> ordered by Team"
+msgstr "</strong>Tüm Maçların</strong> Kuralarını takıma göre sıralı göster"
+
+#: draw/templates/draw_display_admin.html
+#: draw/templates/draw_display_assistant.html
+#, python-format
+msgid "Display Draw for <strong>%(round)s</strong> ordered by Room"
+msgstr "<strong>%(round)s</strong> İçin Kuraları odaya göre sıralı göster"
+
+#: draw/templates/draw_display_admin.html
+#: draw/templates/draw_display_assistant.html
+#, python-format
+msgid "Display Draw for <strong>%(round)s</strong> ordered by Team"
+msgstr "<strong>%(round)s</strong> İçin Kuraları takıma göre sıralı göster"
+
+#: draw/templates/draw_display_admin.html
+#: draw/templates/draw_display_assistant.html
+msgid "Display Motions"
+msgstr "Önergeleri Görüntüle"
+
+#: draw/templates/draw_display_admin.html
+msgid "Email Motions"
+msgstr "Önergeleri E-postala"
+
+#: draw/templates/draw_display_admin.html
+msgid "Email Motion"
+msgstr "Önergeyi E-postala"
+
+#: draw/templates/draw_display_admin.html
+msgid "Start at"
+msgstr "Şuradan başla:"
+
+#: draw/templates/draw_display_assistant.html
+msgid "(for printing)"
+msgstr "(baskı için)"
+
+#: draw/templates/draw_display_assistant.html
+msgid "View Ballot Forms"
+msgstr "Ballot Formlarını Görüntüle"
+
+#: draw/templates/draw_display_assistant.html
+msgid "View Feedback Forms"
+msgstr "Geri bildirim formlarını görüntüle"
+
+#: draw/templates/draw_display_by.html
+msgid "Scroll Speed"
+msgstr "Kaydırma Hızı"
+
+#: draw/templates/draw_display_by.html
+msgid "Fast"
+msgstr "Hızlı"
+
+#: draw/templates/draw_display_by.html
+msgid "Medium"
+msgstr "Orta"
+
+#: draw/templates/draw_display_by.html
+msgid "Slow"
+msgstr "Yavaş"
+
+#: draw/templates/draw_display_by.html
+msgid "Extra Slow"
+msgstr "Ekstra Yavaş"
+
+#: draw/templates/draw_display_by.html
+msgid "Hide Adjudicators"
+msgstr "Jürileri Gizle"
+
+#: draw/templates/draw_display_by.html
+msgid "Show Adjudicators"
+msgstr "Jürileri Göster"
+
+#: draw/templates/draw_display_by.html
+msgid "Text Size"
+msgstr "Metin Boyutu"
+
+#: draw/templates/draw_display_by.html
+msgid "Tiny"
+msgstr "Küçücük"
+
+#: draw/templates/draw_display_by.html
+msgid "Small"
+msgstr "Küçük"
+
+#: draw/templates/draw_display_by.html
+msgid "Large"
+msgstr "Büyük"
+
+#: draw/templates/draw_display_by.html
+msgid "Huge"
+msgstr "Kocaman"
+
+#: draw/templates/draw_display_by.html
+msgid "Stop Scroll"
+msgstr "Kaydırmayı Durdur"
+
+#: draw/templates/draw_not_released.html
+#, python-format
+msgid "The draw for %(round)s has yet to be released."
+msgstr "%(round)s için kura henüz açıklanmadı."
+
+#: draw/templates/draw_not_released.html
+msgid "The draw for the next round has yet to be released."
+msgstr "Bir sonraki tur için kura henüz açıklanmadı."
+
+#: draw/templates/draw_status_confirmed.html
+msgid "Adjudicator Allocations"
+msgstr "Hakem Tahsisleri"
+
+#: draw/templates/draw_status_confirmed.html
+msgid "There are currently fewer adjudicators checked in than there are rooms."
+msgstr "Şu anda giriş yapılan jürilerin sayısı odalardan daha azdır."
+
+#: draw/templates/draw_status_confirmed.html
+msgid "Allocate adjudicators"
+msgstr "Jürileri tahsis et"
+
+#: draw/templates/draw_status_confirmed.html
+msgid "Edit adjudicator allocation"
+msgstr "Jüri tahsisini düzenle"
+
+#: draw/templates/draw_status_confirmed.html
+msgid "Room Allocations"
+msgstr "Oda Tahsisleri"
+
+#: draw/templates/draw_status_confirmed.html
+msgid "Allocate rooms"
+msgstr "Oda tahsis et"
+
+#: draw/templates/draw_status_confirmed.html
+msgid "Edit room allocation"
+msgstr "Oda tahsisini düzenle"
+
+#: draw/templates/draw_status_confirmed.html
+msgid "Preformed Panels"
+msgstr "Önceden kurulmuş paneller"
+
+#: draw/templates/draw_status_confirmed.html
+#, python-format
+msgid "There is %(npanels)s preformed panel available for this round."
+msgid_plural "There are %(npanels)s preformed panels available for this round."
+msgstr[0] "Bu tur için %(npanels)s önceden kurulmuş panel var."
+msgstr[1] "Bu tur için %(npanels)s önceden kurulmuş panel var."
+
+#: draw/templates/draw_status_confirmed.html
+msgid "There are no preformed panels available for this round"
+msgstr "Bu tur için önceden kurulmuş panel yok"
+
+#: draw/templates/draw_status_confirmed.html
+#, python-format
+msgid "Edit preformed panels for %(round)s"
+msgstr "%(round)s için önceden kurulmuş panelleri düzenle"
+
+#: draw/templates/draw_status_confirmed.html
+msgid "Side Allocations"
+msgstr "Taraf Tahsisleri"
+
+#: draw/templates/draw_status_confirmed.html
+#, python-format
+msgid "1 debate does not have its sides confirmed."
+msgid_plural "%(ndebates)s debates do not have their sides confirmed."
+msgstr[0] "1 maçın tarafları doğrulanmamıştır."
+msgstr[1] "%(ndebates)s maçın tarafları doğrulanmamıştır."
+
+#: draw/templates/draw_status_draft.html
+msgid "Delete Draw"
+msgstr "Kurayı Sil"
+
+#: draw/templates/draw_status_draft.html
+msgid "Confirm Draw"
+msgstr "Kurayı Onayla"
+
+#: draw/templates/draw_status_draft.html
+#, python-format
+msgid "The team standings precedence is empty. This means that teams aren't ranked according to any metrics, so all teams are in a single bracket containing everyone. If this isn't what you intended, set the team standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>, then delete and recreate the draw. In most tournaments, the first metric should be points or wins."
+msgstr "Takım sıralama önceliği girilmemiş. Bu, takımların herhangi bir metriğe göre sıralanmadığı anlamına gelir, bu nedenle tüm takımlar herkesi içeren tek bir aşamadadır. Bunu istemiyorsanız,  <a href=\"%(standings_config_url)s\" class=\"alert-link\">bu turuvananın ayarlarının sıralama kısmından</a> takım sıralama önceliklerini girebilirsiniz, ardından kurayı silin ve yeniden oluşturun. Çoğu turnuvada, ilk metrik puan veya galibiyet olmalıdır."
+
+#: draw/templates/draw_status_draft.html
+#, python-format
+msgid "Brackets are formed using the first metric in the team standings precedence, which is currently set to <strong>%(metric)s</strong>, rather than team points, which is the more usual convention. If this isn't what you wanted, you can <a href=\"%(standings_config_url)s\" class=\"alert-link\">change the team standings precedence in the standings configuration page</a>."
+msgstr "Aşamalar daha sık kullanılan takım puanları yerine takım sıralama önceliğindeki ilk metriğe göre, şuan <strong>%(metric)s</strong>, hazırlanır. Eğer bunu istemiyorsanız <a href=\"%(standings_config_url)s\" class=\"alert-link\">sıralama ayarlama sayfasında takım sıralama önceliğini</a>. değiştirebilirsiniz."
+
+#: draw/templates/draw_status_draft.html
+#, python-format
+msgid "The draw type for this round is set to <strong>manual</strong>, so Tabbycat has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
+msgstr "Bu tur için kura türü <strong>manuel</strong> olarak ayarlandı, bu nedenle Tabbycat kurayı doldurmadı. Doldurmak için <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Taraf/Karşılaşmalar Ayarla</a> adresine gidin."
+
+#: draw/templates/draw_status_draft.html
+#, python-format
+msgid "The adjudicator score range is 0, and so adjudicator scores will be ignored when allocating. You can <a href=\"%(feedback_config_url)s\" class=\"alert-link\">change the adjudicator score range in the feedback configuration page</a>."
+msgstr "Jüri puan aralığı 0 ve bu nedenle tahsis sırasında jüri puanları göz ardı edilir. <a href=\"%(feedback_config_url)s\" class=\"alert-link\">geri bildirim düzenleme sayfasında jüri puan aralığını değiştirebilirsiniz.</a>."
+
+#: draw/templates/draw_status_draft.html
+msgid "Tabbycat assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept Tabbycat's random assignment."
+msgstr "Tabbycat, eleme turlarında rastgele taraflar atar. Bununla birlikte, eleme turlarında, birçok turnuva bir izleyicinin önünde taraflar için kura çektiğinden, taraflar \"onaylanmamış\" olarak işaretlenir, böylece taraflar önceden atanmış gibi görünmez. Kurayı onayladıktan sonra, Tabbycat'in rastgele atamasını kabul etmek isteseniz bile, \"Tarafları / Eşleşmeleri Düzenle\" sayfasında tarafları onaylamanız gerekir."
+
+#: draw/templates/draw_status_draft.html
+msgid "Highlighted cells relate to changes in position balance, as follows: <ul> <li>Red cells indicates that the team could not be allocated a position that maintains position balance.</li> <li>Yellow cells indicate that the team was previously imbalanced, and is given the best position possible in this draw, but is nonetheless still imbalanced.</li> <li>Green cells indicate that the team's previous imbalance is resolved with this draw.</li> </ul>"
+msgstr "Hücreler pozisyon dengesindeki değişikliklere göre şu şekilde işaretlidir: <ul> <li>Kırmızı hücreler takıma pozisyon dengesini koruyan bir pozisyon tahsis edilemediğini gösterir.</li> <li>Sarı hücreler takımın pozisyonunun daha önce dengesiz olduğunu ve bu çekilişte mümkün olan en iyi pozisyonun verildiğini ancak yine de dengesiz kaldığını gösterir.</li> <li>Yeşil hücreler, takımın önceki dengesizliğinin bu kurada çözüldüğünü gösterir.</li> </ul>"
+
+#: draw/templates/draw_status_none.html
+#, python-format
+msgid "A draw for %(round)s hasn't yet been generated. To generate one, go to the <a href=\"%(availability_url)s\" class=\"alert-link\">Availability section</a>."
+msgstr "%(round)s için bir kura henüz oluşturulmadı. Oluşturmak için <a href=\"%(availability_url)s\" class=\"alert-link\">uygunluk bölümüne</a> gidin."
+
+#: draw/templates/position_balance.html
+msgid "It looks like sides aren't confirmed for some debates in this round. This position balance report is generated using the \"unconfirmed sides\" in the database, and as a consequence, may not make much sense. It's best to confirm sides in all debates before looking at this report."
+msgstr "Bu turdaki bazı maçlar için taraflar doğrulanmamış. Bu pozisyon dengesi raporu, veritabanındaki \"onaylanmamış taraflar\" kullanılarak oluşturulur ve sonuç olarak çok mantıklı olmayabilir. Bu rapora bakmadan önce tüm maçlardaki tarafların onaylanması tavsiye edilir."
+
+#: draw/templates/position_balance.html
+#, python-format
+msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
+msgstr "Mevcut pozisyon maliyet fonksiyonunuz <strong>%(exponent)s</strong> üssüne yükseltilmiş <strong>%(cost_func)s</strong>dir.  <a href=\"https://tabbycat.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Pozisyon maliyeti işlevlerinin nasıl çalıştığı hakkında daha fazla bilgi edinmek için tıklayın.</a>"
+
+#: draw/templates/position_balance_break.html
+msgid "Position balance reports aren't computed for elimination rounds."
+msgstr "Pozisyon dengesi raporları eleme turları için hesaplanmaz."
+
+#: draw/templates/position_balance_nonbp.html
+msgid "Position balance reports are only available for British Parliamentary tournaments."
+msgstr "Pozisyon dengesi raporları sadece İngiliz Parlamento turnuvalarında bulunur."
+
+#: draw/templates/position_balance_round1.html
+msgid "Position balance reports aren't computed for the first round of a tournament."
+msgstr "Pozisyon dengesi raporları bir turnuvanın ilk turu için hesaplanmaz."
+
+#: draw/views.py
+msgid "No debates in this round"
+msgstr "Bu turda maç yok"
+
+#: draw/views.py
+#, python-format
+msgid "Draw for %(round)s"
+msgstr "%(round)s için kura"
+
+#: draw/views.py
+msgid "Draws for Current Rounds"
+msgstr "Mevcut Turlar için Kuralar"
+
+#: draw/views.py
+#, python-format
+msgid "debates start at %(time)s (in %(time_zone)s)"
+msgstr "maçlar %(time)s saatinde (%(time_zone)s zaman dilimi) başlar"
+
+#: draw/views.py
+#, python-format
+msgid "start times in time zone: %(time_zone)s"
+msgstr "belirtilen zaman diliminde başlangıç saatleri: %(time_zone)s"
+
+#: draw/views.py
+#, python-format
+msgid "debate starts at %(time)s"
+msgid_plural "debates start at %(time)s"
+msgstr[0] "maç %(time)s'da başlar"
+msgstr[1] "maçlar %(time)s'da başlar"
+
+#: draw/views.py
+msgid "The draw for this round hasn't been released."
+msgstr "Bu turun kurası henüz açıklanmadı."
+
+#: draw/views.py
+#, python-format
+msgid "All Debates for All Rounds of %(tournament)s"
+msgstr "%(tournament)s'ın tüm turları için tüm maçlar"
+
+#: draw/views.py
+msgid "Adjudicator Assignments"
+msgstr "Jüri Tahsisleri"
+
+#: draw/views.py
+msgid "Position"
+msgstr "Konum"
+
+#: draw/views.py
+msgid "Team Pairings"
+msgstr "Takım Eşleştirmeleri"
+
+#: draw/views.py
+msgid "No Draw"
+msgstr "Kura Yok"
+
+#: draw/views.py
+msgid "Draft Draw"
+msgstr "Taslak Kura"
+
+#. Translators: e.g. "Affirmative: Break rank"
+#: draw/views.py
+#, python-format
+msgid "%(side)s: Break rank"
+msgstr "%(side)s: Break olan taraf"
+
+#. Translators: "BR" stands for "Break rank"
+#: draw/views.py
+msgid "BR"
+msgstr "BT"
+
+#: draw/views.py
+msgid "Draw with Details"
+msgstr "Detaylı Kura"
+
+#: draw/views.py
+msgid "Position Balance Report"
+msgstr "Pozisyon Denge Raporu"
+
+#: draw/views.py
+#, python-format
+msgid "Rényi entropy of order %(order)s"
+msgstr "%(order)s düzeninin Rényi entropisi"
+
+#. Translators: This is appended to the string "Rényi entropy of order 1.0"
+#: draw/views.py
+msgid " (<i>i.e.</i>, Shannon entropy)"
+msgstr " (<i>yani.</i>, Shannon entropisi)"
+
+#: draw/views.py
+msgid "Teams with position imbalances"
+msgstr "Pozisyon dengesizlikleri olan takımlar"
+
+#: draw/views.py
+msgid "No teams with position imbalances! Hooray!"
+msgstr "Pozisyon dengesizliği olan takım yok! Yaşasın!"
+
+#: draw/views.py
+msgid "Annotated draw"
+msgstr "Açıklamalı çizim"
+
+#: draw/views.py
+#, python-format
+msgid "Could not create draw for %(round)s, there was already a draw!"
+msgstr "%(round)s için kura oluşturamadı, zaten kura oluşturulmuş!"
+
+#: draw/views.py
+#, python-format
+msgid "<p>The draw could not be created, for the following reason: <em>%(message)s</em></p>\n"
+"<p>Please fix this issue before attempting to create the draw.</p>"
+msgstr "<p> Aşağıdaki nedenlerden dolayı kura oluşturulamadı:<em>%(message)s</em></p>\n"
+"<p>Kurayı oluşturmayı denemeden önce lütfen problemi cözün.</p>"
+
+#: draw/views.py
+#, python-format
+msgid "<p>The draw could not be created, because the following error occurred: <em>%(message)s</em></p>\n"
+"<p>If this issue persists and you're not sure how to resolve it, please contact the developers.</p>"
+msgstr "<p> Aşağıdaki hatadan dolayı kura oluşturulamadı:<em>%(message)s</em></p>\n"
+"<p>Sorun devam ederse ve nasıl çözeceğinizden emin değilseniz yapımcılar ile iletişime geçin.</p>"
+
+#: draw/views.py
+#, python-format
+msgid "<p>The team standings could not be generated, because the following error occurred: <em>%(message)s</em></p>\n"
+"<p>Because generating the draw uses the current team standings, this prevents the draw from being generated.</p>"
+msgstr "<p> Aşağıdaki hatadan dolayı takım sıralamaları oluşturulamadı:<em>%(message)s</em></p>\n"
+"<p>Kura güncel takım sıralamalarını kullandığı için üretilemiyor.</p>"
+
+#: draw/views.py
+msgid "Rooms were not auto-allocated because there are one or more adjudicator room constraints. You should run room allocations after allocating adjudicators."
+msgstr "Odalar otomatik olarak tahsis edilmedi çünkü bir veya daha fazla jüri odası kısıtlaması var. Oda tahsislerini jüri tahsis ettikten sonra yapmalısınız."
+
+#: draw/views.py
+msgid "There is no draw."
+msgstr ""
+
+#: draw/views.py
+msgid "The draw had already been confirmed."
+msgstr ""
+
+#: draw/views.py
+msgid "Deleted the draw. You can now recreate it as normal."
+msgstr "Kura silindi. Normal şekilde yeniden oluşturabilirsiniz."
+
+#: draw/views.py
+msgid "The draw has already been released."
+msgstr ""
+
+#: draw/views.py
+msgid "The draw must be confirmed before being released."
+msgstr ""
+
+#: draw/views.py
+msgid "Released the draw."
+msgstr "Kura yayınlandı."
+
+#: draw/views.py
+msgid "The draw had been unreleased."
+msgstr ""
+
+#: draw/views.py
+msgid "Unreleased the draw."
+msgstr "Kura yayınlanmadı."
+
+#: draw/views.py
+#, python-format
+msgid "Sorry, \"%(input)s\" isn't a valid time. It must be in 24-hour format, with a colon, for example: \"13:57\"."
+msgstr "Maalesef, \"%(input)s\" geçerli bir zaman değil. 24 saat biçiminde, ortasında iki nokta ile formatlanmalıdır. Örneğin: \"13:57\"."
+
+#: draw/views.py
+msgid "Side Pre-Allocations"
+msgstr "Taraf Ön Tahsis"
+
+#: draw/views.py
+msgid "Edit Matchups"
+msgstr "Eşleşmeleri Düzenle"
+

@@ -1,0 +1,339 @@
+//------------------------------------------------------------------------------
+// Top Navbar Customisation
+//------------------------------------------------------------------------------
+
+.navbar-light {
+  background: $navbar-light-bg;
+  border-bottom: 1px solid $navbar-light-border;
+  border-top: 1px solid $navbar-light-border;
+
+  .navbar-brand {
+    font-size: 1rem;
+
+    &:hover {
+      cursor: pointer; // Drop-down links seem to clash with the nav-brand?
+    }
+
+    img {
+      margin-right: 6px;
+      margin-left: -2px;
+    }
+  }
+}
+
+.navbar .dropdown-item .feather {
+  margin-bottom: -3px;
+  margin-right: 5px;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: $navbar-light-color; // Keep consistent with top level
+  background: none;
+
+  &:hover {
+    color: theme-color("primary"); // Keep consistent with top level
+  }
+  // Override standard dropdown highlights
+  &.active,
+  &:focus {
+    color: $navbar-light-active-color;
+  }
+}
+
+.draw-dropdown-menu {
+
+  .dropdown-item:last-child {
+    display: none; // Hide the "no draws element" if other options present
+  }
+
+  .dropdown-item:first-child {
+    display: block; // Show the "no draws element" if no other options present
+  }
+}
+
+//------------------------------------------------------------------------------
+// Admin Sidebar Customisation
+//------------------------------------------------------------------------------
+
+// Used to take the full height appearnce
+.fake-sidebar {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  .list-group-item {
+    width: 100%;
+    background: $sidebar-bg;
+    height: 100%;
+    z-index: 0;
+    border-radius: 0;
+  }
+}
+
+.admin-sidebar > .list-group > .list-group-item {
+  background: $sidebar-bg;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  padding: 0;
+
+  a,
+  form > button {
+    color: $sidebar-muted-text;
+    display: block;
+
+    &:hover {
+      color: lighten(theme-color("primary"), 15%);
+      text-decoration: none;
+    }
+
+    &.active,
+    &[aria-expanded="true"] {
+      background: darken($sidebar-bg, 5%);
+      border-color: darken($sidebar-bg, 10%);
+      color: lighten($sidebar-muted-text, 20%);
+    }
+
+    &[aria-expanded="true"] .feather-chevron-down {
+      display: none !important; // Need to override d-none for mobile
+    }
+
+    &[aria-expanded="false"] .feather-chevron-up {
+      display: none !important; // Need to override d-none for mobile
+    }
+  }
+}
+
+// Sub menu items
+.admin-sidebar .list-group-item > .collapse,
+.admin-sidebar .list-group-item > .collapsing {
+
+  .list-group-item {
+    background: darken($sidebar-bg, 5%);
+    border: 0;
+
+    .feather {
+      display: inline-block;
+      width: 31px;
+      padding-right: 13px;
+      margin-right: 0;
+      overflow: hidden; // Stop jitter on mobile
+    }
+  }
+
+  // Heading item used to organise a tournament's admin/assistant/public links
+  .tournament-areas-title {
+    color: $sidebar-muted-text;
+    font-weight: bold;
+    font-family: $headings-font-family;
+    padding-left: 16px;
+  }
+}
+
+.admin-sidebar .tournament-title {
+  min-height: 70px;
+
+  .logo-large {
+    margin-left: -4px;
+    margin-right: 1px;
+    margin-bottom: -2px;
+  }
+}
+
+.sidebar-expand {
+  float: right;
+  display: inline;
+}
+
+//------------------------------------------------------------------------------
+// Circle Icons
+//------------------------------------------------------------------------------
+
+.circle-icon {
+  display: none; // Hide circle icons in main permanent sidebar menu
+  @extend .d-md-inline;
+
+  z-index: 99; // Float above progress line
+}
+
+.circle-done {
+  stroke: lighten(theme-color("success"), 20);
+  fill: theme-color("success");
+}
+
+.circle-todo {
+  stroke: lighten(theme-color("warning"), 20);
+  fill: theme-color("warning");
+}
+
+.circle-current {
+  stroke: lighten(theme-color("info"), 20);
+  fill: theme-color("info");
+}
+
+.circle-later {
+  stroke: lighten(theme-color("secondary"), 20);
+  fill: theme-color("secondary");
+}
+
+//------------------------------------------------------------------------------
+// Responsive tweaks
+//------------------------------------------------------------------------------
+
+// Applies just to phones
+@include media-breakpoint-up(xs) {
+
+  .admin-sidebar .list-group-item a,
+  .admin-sidebar .list-group-item .tournament-areas-title {
+    font-size: 12px;
+    padding: 0.75rem 0.25rem;
+
+    .feather {
+      width: 12px;
+      height: 12px;
+      margin-right: 0;
+    }
+
+    .feather-chevron-down,
+    .feather-chevron-up {
+      margin-top: 2px;
+      margin-right: 0;
+    }
+  }
+
+  .admin-sidebar .list-group-item > .collapse .list-group-item,
+  .admin-sidebar .list-group-item > .collapsing .list-group-item {
+    font-size: 12px;
+
+    .feather {
+      padding-right: 8px;
+      padding-top: 3px;
+      padding-left: 2px;
+      width: 26px;
+      height: 16px;
+    }
+  }
+
+  .admin-sidebar .collapse .list-group-item,
+  .admin-sidebar .collapsing .list-group-item {
+    font-size: 10px;
+  }
+}
+
+// Applies just to tablets
+@include media-breakpoint-up(md) {
+
+  .admin-sidebar .list-group-item {
+
+    a,
+    form > button {
+      font-size: 12px;
+      padding: 0.5rem 0.5rem;
+
+      .feather {
+        width: 12px;
+        height: 12px;
+        padding-right: 2px;
+        margin-right: 0;
+        padding-bottom: 2px;
+      }
+    }
+  }
+
+  .admin-sidebar .list-group-item > .collapse .list-group-item,
+  .admin-sidebar .list-group-item > .collapsing .list-group-item {
+    font-size: 11px;
+    padding-top: 0.5rem 0.25rem;
+
+    .feather {
+      width: 16px;
+      padding-right: 6px;
+      padding-left: 0;
+      padding-top: 2px;
+    }
+  }
+
+  .admin-sidebar .collapse a.list-group-item,
+  .admin-sidebar .collapsing a.list-group-item {
+    font-size: 14px;
+  }
+}
+
+// Applies just to screens
+@include media-breakpoint-up(lg) {
+
+  .admin-sidebar .list-group-item {
+
+    a,
+    form > button {
+      font-size: $font-size-base;
+      padding: 0.5rem 1rem;
+
+      .feather {
+        width: 20px;
+        height: 16px;
+        padding-right: 4px;
+      }
+
+      .feather-chevron-down,
+      .feather-chevron-up {
+        margin-top: 2px;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .admin-sidebar .collapse .list-group-item,
+  .admin-sidebar .collapsing .list-group-item {
+    font-size: $font-size-sm;
+  }
+
+  .admin-sidebar .list-group-item > .collapse .list-group-item,
+  .admin-sidebar .list-group-item > .collapsing .list-group-item {
+    font-size: 14px;
+
+    .feather {
+      width: 25px;
+      padding-right: 9px;
+      height: 18px;
+    }
+  }
+}
+
+// overlay sub levels on small screens
+@include media-breakpoint-down(sm) {
+
+  .admin-sidebar .list-group-item {
+    z-index: $z_2;
+  }
+
+  .admin-sidebar .list-group .collapse.in,
+  .admin-sidebar .list-group .collapsing,
+  .admin-sidebar .list-group .collapse.show {
+    z-index: $z_2;
+    width: 150px;
+    text-align: left;
+  }
+}
+
+// Change transition animation to width when entire sidebar is toggled
+.admin-sidebar.collapse {
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.admin-sidebar.collapsing {
+  opacity: 0.8;
+  width: 0;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-property: width;
+  -o-transition-property: width;
+  transition-property: width;
+}

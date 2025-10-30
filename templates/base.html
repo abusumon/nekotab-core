@@ -1,0 +1,211 @@
+{% load static statici18n i18n debate_tags %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>{% if tournament %}{{ tournament.short_name }}{% else %}{% trans "Tabbycat" %}{% endif %} | {% if page_title %}{{ page_title }}{% else %}{% block page-title %}{% endblock %}{% endif %}</title>
+
+  {% if tournament %}
+    {% blocktrans trimmed with tournament=tournament.short_name asvar meta_description %}
+      The tab for {{ tournament }} runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats
+    {% endblocktrans %}
+  {% else %}
+    {% blocktrans trimmed asvar meta_description %}
+      This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats
+    {% endblocktrans %}
+  {% endif %}
+  <meta name="description" content="{{ meta_description }}" />
+  <meta property="og:description" content="{{ meta_description }}" />
+  <meta property="og:image" content="{% static 'logo-social.png' %}" />
+
+  {% block noindex %}
+    {% if tournament %}
+            {% if pref.search_engine_indexing != "all" %}
+                <meta name="robots" content="noindex">
+            {% endif %}
+    {% endif %}
+  {% endblock %}
+
+
+  <link rel="preload" href="{% static 'fonts/Inter-Regular.woff2' %}" as="font" type="font/woff2">
+  <link rel="icon" type="image/png" href="{% static 'logo-32x32.png' %}" sizes="32x32" />
+  <link rel="icon" type="image/png" href="{% static 'logo-16x16.png' %}" sizes="16x16" />
+  <link rel="mask-icon" href="{% static 'safari-tab.svg' %}" color="rgb(102, 61, 160)">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  {% block extra-css %}{% endblock %}
+  {% block extra-head %}{% endblock %}
+
+  {% if not hmr %}
+  <link href="{% static 'vue/js/app.js' %}" rel=preload as=script>
+  {% endif %}
+
+  {% if not debug %}<!-- Analytics -->
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-314178-25', 'auto');
+    ga('set', 'dimension1', '{% if tabbycat_version %}{{ tabbycat_version }}{% else %}?{% endif %}');
+    ga('set', 'dimension2', window.location.hostname);
+    ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  </script>
+  {% endif %}
+
+  {% if LANGUAGE_CODE == 'tzl' %}<!-- In-context translations; use Talossan -->
+  <script>
+    var _jipt = [];
+    _jipt.push(['project', 'tabbycat']);
+  </script>
+  <script src="//cdn.crowdin.com/jipt/jipt.js"></script>
+  {% endif %}
+</head>
+
+<body class="{% block body-class %}{% endblock %}">
+
+  {% block nav %}
+    {% if user_role != "admin" %}
+      {% include "nav/top_nav_base.html" %}
+    {% endif %}
+  {% endblock nav %}
+
+  <div class="container-fluid">
+
+    {% if user_role == "admin" %}
+      <!-- Fake full height for menu -->
+      <div class="row">
+        <div class="col-md-2 col-1 float-left pl-0 pr-lg-3 pr-md-3 pr-0 d-none d-sm-block width fake-sidebar">
+          <div class="list-group-item"></div>
+        </div>
+      </div>
+
+      <!-- Insert a second level column structure for a side nav -->
+      <div class="row">
+        <div class="admin-sidebar col-md-2 col-1 float-left pl-0 pr-md-3 pr-0 collapse width show">
+          {% block sidebar %}{% include "nav/admin_nav.html" %}{% endblock %}
+        </div>
+        <main class="col-md-10 col-11 float-left pl-md-0 pl-3 main">
+    {% endif %}
+
+    {% block header %}
+      <div class="row d-print-none {% if user_role == "admin" %}mb-md-3{% endif %}" id="pageTitle">
+
+        <div class="col-md m-3 h2 d-flex align-items-center">
+
+          <div class="min-height: 100px;">
+            {% if page_title %}
+              {% if page_emoji %}<span class="emoji">{{ page_emoji }}</span>{% endif %}
+              {{ page_title }}
+            {% else %}
+              {% block head-title %}{% endblock %}
+            {% endif %}
+            {% if page_subtitle %}
+              <small class="text-muted d-md-inline d-block">{{ page_subtitle }}</small>
+            {% else %}
+              <small class="text-muted d-md-inline d-block">{% block sub-title %}{% endblock %}</small>
+            {% endif %}
+          </div>
+
+        </div>
+
+      </div>
+    {% endblock header %}
+
+    {% block subheader %}
+
+      <div class="row page-navs">
+        <div class="col">
+          <div class="d-lg-flex justify-content-lg-between">
+            {% block page-subnav-sections %}{% endblock %}
+            {% block page-subnav-actions %}{% endblock %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-print-none">
+        <div class="col" id="messages-container">
+          {% if messages %}
+            {% for message in messages %}
+              {% include "components/alert.html" with type=message.tags message=message %}
+            {% endfor %}
+          {% endif %}
+          {% block page-alerts %}{% endblock %}
+        </div>
+      </div>
+
+    {% endblock subheader %}
+
+    <div class="row">
+      <div class="col">
+        {% block content %}{% endblock content %}
+      </div>
+    </div>
+
+    {% if user_role == "admin" %}
+
+        </main>
+      </div>
+
+    {% endif %}
+
+  </div>
+
+  {% if user_role != "admin" %}
+    <footer class="footer">
+      <div class="container-fluid">
+        {% block footer %}{% include "footer.html" %}{% endblock footer %}
+      </div>
+    </footer>
+  {% else %}
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col d-none d-sm-block"></div>
+          <div class="col-sm-10 col">
+            {% block footeradmin %}{% include "footer.html" %}{% endblock footeradmin %}
+          </div>
+        </div>
+      </div>
+    </footer>
+  {% endif %}
+
+  {% block modals %}
+    <div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header h4 text-center"></div>
+          <div class="modal-body"></div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+
+  {% block js %}
+
+    <script src="{% statici18n LANGUAGE_CODE %}"></script>
+    <script>
+      window.buildData = { // Pass to Sentry
+        version: '{% if tabbycat_version %}{{ tabbycat_version }}{% else %}?{% endif %}',
+        sentry: {% if disable_sentry %}false{% else %}true{% endif %}
+      }
+    </script>
+
+    {% if hmr %}
+      <!-- webpack dev server (live js) -->
+      <script type="text/javascript" src="http://localhost:8888/js/app.js"></script>
+      <!-- livereload (live css) -->
+      <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+        ':35729/livereload.js?snipver=1"></' + 'script>')
+      </script>
+    {% else %}
+      <script type="text/javascript" src="{% static 'vue/js/app.js' %}"></script>
+    {% endif %}
+
+  {% endblock js %}
+
+</body>
+</html>

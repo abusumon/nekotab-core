@@ -1,0 +1,356 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:49\n"
+"Last-Translator: philip_tc\n"
+"Language-Team: Arabic\n"
+"Language: ar_SA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Language: ar\n"
+"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-File-ID: 954\n"
+
+#: utils/admin.py utils/tables.py
+msgid "Round"
+msgstr "جولة"
+
+#: utils/admin.py utils/tables.py
+msgid "Team"
+msgstr "فريق"
+
+#: utils/admin.py
+msgid "Speaker"
+msgstr ""
+
+#: utils/admin.py utils/tables.py
+msgid "Tournament"
+msgstr "البطولة"
+
+#: utils/admin.py utils/tables.py
+msgid "Side"
+msgstr "الجانب "
+
+#: utils/admin.py utils/tables.py
+msgid "Motion"
+msgstr "قضايا"
+
+#: utils/admin.py
+msgid "Confirmed"
+msgstr "معتمد"
+
+#: utils/admin.py
+msgid "Adjudicator"
+msgstr "محكم "
+
+#: utils/tables.py
+msgid "No Data Available"
+msgstr "المعلومات غير متاحة"
+
+#: utils/tables.py
+msgid "Ⓒ"
+msgstr ""
+
+#: utils/tables.py
+msgid "Ⓣ"
+msgstr ""
+
+#: utils/tables.py
+msgid "chair"
+msgstr "رئيس الجلسة"
+
+#: utils/tables.py
+msgid "panellist"
+msgstr "عضو لجنة التحكيم"
+
+#: utils/tables.py
+msgid "trainee"
+msgstr "متدرب"
+
+#: utils/tables.py
+msgid "—"
+msgstr ""
+
+#: utils/tables.py
+msgid "Redacted"
+msgstr "منقحة"
+
+#: utils/tables.py
+#, python-format
+msgid "View %(a)s's %(d)s Record"
+msgstr ""
+
+#: utils/tables.py
+#, python-format
+msgid "View %(team)s's Record"
+msgstr ""
+
+#: utils/tables.py
+#, python-format
+msgid "Code name: <strong>%(name)s</strong>"
+msgstr ""
+
+#: utils/tables.py
+#, python-format
+msgid "Real name: <strong>%(name)s</strong>"
+msgstr ""
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s won"
+msgstr "%(team)sفائز"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s lost"
+msgstr "%(team)s خاسر"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s—no result"
+msgstr "%(team)s  — لا توجد نتيجة"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s placed %(place)s"
+msgstr "%(team)s المركز الأول (%(place)s)"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s is advancing"
+msgstr "%(team)s تقدم "
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s was eliminated"
+msgstr "%(team)s تراجع "
+
+#: utils/tables.py
+msgid "View/edit debate ballot"
+msgstr ""
+
+#: utils/tables.py
+msgid "View debate ballot"
+msgstr "عرض النتيجة "
+
+#: utils/tables.py
+#, python-format
+msgid " vs %(opposition)s"
+msgstr "ضد %(opposition)s"
+
+#: utils/tables.py
+#, python-format
+msgid "Won against %(team)s"
+msgstr "فاز على %(team)s"
+
+#: utils/tables.py
+#, python-format
+msgid "Lost to %(team)s"
+msgstr "خسر من %(team)s"
+
+#: utils/tables.py
+#, python-format
+msgid "No result for debate against %(team)s"
+msgstr "لا يوجد نتيجة للفريق %(team)s"
+
+#: utils/tables.py
+#, python-format
+msgid "Total speaker score: <strong>%s</strong>"
+msgstr ""
+
+#: utils/tables.py
+msgid "Teams in debate:"
+msgstr "فرق المناظرة"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s (%(side)s)"
+msgstr "%(team)s(%(side)s)"
+
+#: utils/tables.py
+msgid "??"
+msgstr ""
+
+#: utils/tables.py
+msgid "advancing"
+msgstr "متقدم"
+
+#: utils/tables.py
+msgid "Advancing"
+msgstr "تقدم "
+
+#: utils/tables.py
+msgid "eliminated"
+msgstr "تراجع"
+
+#: utils/tables.py
+msgid "Eliminated"
+msgstr "تراجع "
+
+#: utils/tables.py
+msgid "No result for debate"
+msgstr "لا نتائج لهذه القضية"
+
+#: utils/tables.py
+#, python-format
+msgid "Placed %(place)s"
+msgstr ""
+
+#: utils/tables.py
+msgid "Name"
+msgstr "الاسم"
+
+#: utils/tables.py
+msgid "Institution"
+msgstr "مؤسسة"
+
+#: utils/tables.py
+msgid "Member of the Adjudication Core"
+msgstr "عضو في لجنة التحكيم"
+
+#: utils/tables.py
+msgid "Independent Adjudicator"
+msgstr "محكم المناظرة"
+
+#: utils/tables.py
+msgid "Always Trainee"
+msgstr "متدرب دائم"
+
+#: utils/tables.py
+msgid "in minority"
+msgstr ""
+
+#: utils/tables.py
+msgid "Debate Adjudicators"
+msgstr "الحكام "
+
+#: utils/tables.py
+msgid "Categories"
+msgstr "الفئات"
+
+#: utils/tables.py
+msgid "Category"
+msgstr "الفئة"
+
+#: utils/tables.py
+#, python-format
+msgid "This room %(predicate)s."
+msgstr "هذه القاعة %(predicate)s"
+
+#: utils/tables.py
+#, python-format
+msgid "This room %(predicates)s, and %(last_predicate)s."
+msgstr "هذه القاعة %(predicates)sو %(last_predicate)s"
+
+#: utils/tables.py
+msgid "Room"
+msgstr "قاعة"
+
+#: utils/tables.py
+#, python-format
+msgid "Teams have met once"
+msgid_plural "Teams have met %(count)d times"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: utils/tables.py
+msgid "Teams are from the same institution"
+msgstr "فرق تقابلت أكثر من مرة"
+
+#: utils/tables.py
+msgid "Conflicts/Flags"
+msgstr "تعارضات / أعلام"
+
+#: utils/tables.py
+msgid "The confirmed ballot"
+msgstr ""
+
+#: utils/tables.py
+msgid "No ballot"
+msgstr ""
+
+#: utils/tables.py
+msgid "No scores"
+msgstr ""
+
+#: utils/tables.py
+msgid "View Ballot"
+msgstr "عرض النتائج "
+
+#: utils/tables.py
+msgid "The ballot you submitted"
+msgstr ""
+
+#: utils/tables.py
+msgid "No Ballot"
+msgstr "بدون تصويت "
+
+#: utils/tables.py
+msgid "View/Edit Ballot"
+msgstr "تعديل النتائج "
+
+#: utils/tables.py
+msgid "Result"
+msgstr "النتائج"
+
+#. Translators: "TBC" stands for "to be confirmed".
+#: utils/tables.py
+msgid "TBC"
+msgstr ""
+
+#: utils/tables.py
+msgid "Bye"
+msgstr ""
+
+#: utils/tables.py
+msgid "Team was given a bye this round"
+msgstr ""
+
+#: utils/tables.py
+msgid "Team iron-personed this round and the last."
+msgstr ""
+
+#: utils/tables.py
+msgid "Team iron-personed this round."
+msgstr ""
+
+#: utils/tables.py
+msgid "Team iron-personed last round."
+msgstr ""
+
+#: utils/tables.py
+#, python-format
+msgid "Team %(num)d"
+msgstr "الفريق %(num)d"
+
+#: utils/tables.py
+msgid "Postpone"
+msgstr ""
+
+#: utils/tables.py
+msgid "Event"
+msgstr ""
+
+#: utils/tables.py
+msgid "Start Time"
+msgstr ""
+
+#: utils/tables.py
+msgid "End Time"
+msgstr ""
+
+#: utils/views.py
+msgid "Whoops! You're not meant to type that URL into your browser."
+msgstr ""
+

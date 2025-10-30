@@ -1,0 +1,22 @@
+@media print {
+
+  // Used by private URL pages
+  .printable-page-break {
+    page-break-after: always;
+  }
+
+  .page-header .col-md-12 {
+    padding-left: 0;
+  }
+
+  // Don't split a table across multiple pages
+  table {
+    page-break-before: avoid;
+    page-break-inside: auto;
+
+    tr {
+      page-break-inside: avoid;
+      page-break-after: auto;
+    }
+  }
+}

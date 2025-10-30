@@ -1,0 +1,455 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-06 01:33\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /develop/tabbycat/actionlog/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File-ID: 920\n"
+
+#: actionlog/apps.py
+msgid "Action Log"
+msgstr "Journal des actions"
+
+#: actionlog/models.py
+msgid "Changed adjudicator breaking status"
+msgstr "Changé le statut de qualification d'un(e) juge"
+
+#: actionlog/models.py
+msgid "Created adjudicator"
+msgstr "Créé juge"
+
+#: actionlog/models.py
+msgid "Edited adjudicator"
+msgstr "Modifié juge"
+
+#: actionlog/models.py
+msgid "Set adjudicator note"
+msgstr "Fixé la note pour un juge"
+
+#: actionlog/models.py
+msgid "Auto-allocated adjudicators"
+msgstr "Attribué automatiquement les juges"
+
+#: actionlog/models.py
+msgid "Saved adjudicator allocation"
+msgstr "Enregistré l'attribution des juges"
+
+#: actionlog/models.py
+msgid "Edited adjudicators availability"
+msgstr "Modifié la disponibilité des juges"
+
+#: actionlog/models.py
+msgid "Edited availability"
+msgstr "Modifié disponibilités"
+
+#: actionlog/models.py
+msgid "Edited teams availability"
+msgstr "Modifié la disponibilité des équipes"
+
+#: actionlog/models.py
+msgid "Edited room availability"
+msgstr "Modifié la disponibilité des salles"
+
+#: actionlog/models.py
+msgid "Checked in ballot set"
+msgstr "Enregistré la présence d'un ensemble de feuilles de jugement"
+
+#: actionlog/models.py
+msgid "Confirmed ballot set"
+msgstr "Confirmé un ensemble de feuilles de jugement"
+
+#: actionlog/models.py
+msgid "Created ballot set"
+msgstr "Créé un ensemble de feuilles de jugement"
+
+#: actionlog/models.py
+msgid "Discarded ballot set"
+msgstr "Rejeté un ensemble de feuilles de jugement"
+
+#: actionlog/models.py
+msgid "Edited ballot set"
+msgstr "Modifié un ensemble de feuilles de jugement"
+
+#: actionlog/models.py
+msgid "Submitted ballot set from the public form"
+msgstr "Saisi un ensemble de feuilles de jugement du formulaire publique"
+
+#: actionlog/models.py
+msgid "Edited break categories"
+msgstr "Modifié les catégories de qualification"
+
+#: actionlog/models.py
+msgid "Deleted team break for category"
+msgstr "Supprimé la qualification de l'équipe pour la catégorie"
+
+#: actionlog/models.py
+msgid "Edited breaking team remarks"
+msgstr "Modifié les remarques d'une équipe qualifiant"
+
+#: actionlog/models.py
+msgid "Edited break eligibility"
+msgstr "Modifié l’admissibilité pour la qualification"
+
+#: actionlog/models.py
+msgid "Generated the team break for all categories"
+msgstr "Généré la qualification des équipes pour toutes les catégories"
+
+#: actionlog/models.py
+msgid "Generated the team break for one category"
+msgstr "Généré la qualification des équipes pour une catégorie"
+
+#: actionlog/models.py
+msgid "Edited breaking team remarks and updated all team breaks"
+msgstr "Modifié les remarques d'une équipe qualifiant et mit à jour toutes les qualifications des équipes"
+
+#: actionlog/models.py
+msgid "Edited breaking team remarks and updated this team break"
+msgstr "Modifié les remarques d'une équipe qualifiant et mit à jour cette qualification des équipes"
+
+#: actionlog/models.py
+msgid "Generated check in identifiers for adjudicators"
+msgstr "Généré des identifiants d’enregistrement pour les juges"
+
+#: actionlog/models.py
+msgid "Generated check in identifiers for speakers"
+msgstr "Généré des identifiants d’enregistrement pour les orateurs"
+
+#: actionlog/models.py
+msgid "Generated check in identifiers for rooms"
+msgstr "Généré des identifiants d’enregistrement pour les salles"
+
+#: actionlog/models.py
+msgid "Edited adjudicator-adjudicator conflicts"
+msgstr "Modifié les conflits juge-juge"
+
+#: actionlog/models.py
+msgid "Edited adjudicator-institution conflicts"
+msgstr "Modifié des conflits juge-institution"
+
+#: actionlog/models.py
+msgid "Edited adjudicator-team conflicts"
+msgstr "Modifié les conflits juge-équipe"
+
+#: actionlog/models.py
+msgid "Edited team-institution conflicts"
+msgstr "Modifié des conflits équipe-institution"
+
+#: actionlog/models.py
+msgid "Created debate"
+msgstr "Créé débat"
+
+#: actionlog/models.py
+msgid "Edited debate"
+msgstr "Modifié débat"
+
+#: actionlog/models.py
+msgid "Auto-prioritized debate importance"
+msgstr "Priorisé automatiquement l’importance d'un débat"
+
+#: actionlog/models.py
+msgid "Edited debate importance"
+msgstr "Modifié l'importance d'un débat"
+
+#: actionlog/models.py
+msgid "Saved divisions"
+msgstr "Enregistré les divisions"
+
+#: actionlog/models.py
+msgid "Confirmed draw"
+msgstr "Confirmé un tirage"
+
+#: actionlog/models.py
+msgid "Created draw"
+msgstr "Créé un tirage"
+
+#: actionlog/models.py
+msgid "Regenerated draw"
+msgstr "Régénéré un tirage"
+
+#: actionlog/models.py
+msgid "Released draw"
+msgstr "Publié un tirage"
+
+#: actionlog/models.py
+msgid "Unreleased draw"
+msgstr "Rétracté un tirage"
+
+#: actionlog/models.py
+msgid "Created feedback question"
+msgstr "Créé question d'évaluation"
+
+#: actionlog/models.py
+msgid "Edited feedback question"
+msgstr "Modifié question d'évaluation"
+
+#: actionlog/models.py
+msgid "Saved feedback"
+msgstr "Sauvegardé un évaluation"
+
+#: actionlog/models.py
+msgid "Submitted feedback from the public form"
+msgstr "Saisi un évaluation du formulaire publique"
+
+#: actionlog/models.py
+msgid "Created institution"
+msgstr "Créé institution"
+
+#: actionlog/models.py
+msgid "Edited institution"
+msgstr "Modifié institution"
+
+#: actionlog/models.py
+msgid "Saved a matchup manual edit"
+msgstr "Enregistré une modification manuelle d'un appariement"
+
+#: actionlog/models.py
+msgid "Added/edited motion"
+msgstr "Ajouté/Modifié une motion"
+
+#: actionlog/models.py
+msgid "Released motions"
+msgstr "Publié les motions"
+
+#: actionlog/models.py
+msgid "Unreleased motions"
+msgstr "Rétracté les motions"
+
+#: actionlog/models.py
+msgid "Edited tournament options"
+msgstr "Modifié les options du tournoi"
+
+#: actionlog/models.py
+msgid "Auto-allocated adjudicators to preformed panels"
+msgstr "Attribué automatiquement les juges aux jurys préformés"
+
+#: actionlog/models.py
+msgid "Edited preformed panel adjudicator"
+msgstr "Modifié un juge de jury préformé"
+
+#: actionlog/models.py
+msgid "Created preformed panels"
+msgstr "Créé des jurys préformés"
+
+#: actionlog/models.py
+msgid "Auto-allocated preformed panels to debates"
+msgstr "Attribué automatiquement des jurys préformés aux débats"
+
+#: actionlog/models.py
+msgid "Deleted preformed panels"
+msgstr "Supprimé jurys préformés"
+
+#: actionlog/models.py
+msgid "Auto-prioritized preformed panels"
+msgstr "Classé automatiquement les jurys préformés"
+
+#: actionlog/models.py
+msgid "Edited preformed panel importance"
+msgstr "Modifié l'importance d'un jury préformé"
+
+#: actionlog/models.py
+msgid "Advanced the current round to"
+msgstr "Avancé la joute actuelle à"
+
+#: actionlog/models.py
+msgid "Marked round as completed"
+msgstr "Marqué la joute comme achevée"
+
+#: actionlog/models.py
+msgid "Created round"
+msgstr "Créé joute"
+
+#: actionlog/models.py
+msgid "Edited round"
+msgstr "Modifié joute"
+
+#: actionlog/models.py
+msgid "Set start time"
+msgstr "Fixé l’heure de début"
+
+#: actionlog/models.py
+msgid "Saved the sides status of a matchup"
+msgstr "Enregistré le statut des côtés d'un appariement"
+
+#: actionlog/models.py
+msgid "Imported adjudicators using the simple importer"
+msgstr "Importé les juges avec l’importateur simple"
+
+#: actionlog/models.py
+msgid "Imported institutions using the simple importer"
+msgstr "Importé les institutions avec l’importateur simple"
+
+#: actionlog/models.py
+msgid "Imported teams using the simple importer"
+msgstr "Importé les équipes avec l’importateur simple"
+
+#: actionlog/models.py
+msgid "Imported rooms using the simple importer"
+msgstr "Importé les salles avec l’importateur simple"
+
+#: actionlog/models.py
+msgid "Edited speaker categories"
+msgstr "Modifié les catégories d'orateur"
+
+#: actionlog/models.py
+msgid "Created speaker"
+msgstr "Créé orateur"
+
+#: actionlog/models.py
+msgid "Edited speaker"
+msgstr "Modifié orateur"
+
+#: actionlog/models.py
+msgid "Edited speaker category eligibility"
+msgstr "Modifié l’admissibilité pour les catégories d'orateur"
+
+#: actionlog/models.py
+msgid "Created team"
+msgstr "Créé équipe"
+
+#: actionlog/models.py
+msgid "Edited team"
+msgstr "Modifié équipe"
+
+#: actionlog/models.py
+msgid "Edited adjudicator base score"
+msgstr "Modifié la note de base pour un juge"
+
+#: actionlog/models.py
+msgid "Created tournament"
+msgstr "Créé tournoi"
+
+#: actionlog/models.py
+msgid "Edited tournament"
+msgstr "Modifié tournoi"
+
+#: actionlog/models.py
+msgid "Updated adjudicator scores in bulk"
+msgstr "Mis à jour les notes de juge en masse"
+
+#: actionlog/models.py
+msgid "Invited user to the instance"
+msgstr "Invité un utilisateur au site"
+
+#: actionlog/models.py
+msgid "Edited room categories"
+msgstr "Modifié les catégories de salles"
+
+#: actionlog/models.py
+msgid "Created room category"
+msgstr "Créé catégorie de salle"
+
+#: actionlog/models.py
+msgid "Edited room constraints"
+msgstr "Modifié les contraintes de salle"
+
+#: actionlog/models.py
+msgid "Created room"
+msgstr "Créé salle"
+
+#: actionlog/models.py
+msgid "Edited room"
+msgstr "Modifié salle"
+
+#: actionlog/models.py
+msgid "Auto-allocated rooms"
+msgstr "Attribué automatiquement les salles"
+
+#: actionlog/models.py
+msgid "Saved a room manual edit"
+msgstr "Enregistré une modification manuelle d'une salle"
+
+#: actionlog/models.py
+msgid "Created question"
+msgstr "Créé question"
+
+#: actionlog/models.py
+msgid "Edited question"
+msgstr "Modifié question"
+
+#: actionlog/models.py
+msgid "Registered institution"
+msgstr "Inscrit institution"
+
+#: actionlog/models.py
+msgid "Registered team"
+msgstr "Inscrit équipe"
+
+#: actionlog/models.py
+msgid "Registered adjudicator"
+msgstr "Inscrit juge"
+
+#: actionlog/models.py
+msgid "Registered speaker"
+msgstr "Inscrit orateur"
+
+#: actionlog/models.py
+msgid "API"
+msgstr "IPA"
+
+#: actionlog/models.py
+msgid "Web"
+msgstr "Web"
+
+#: actionlog/models.py
+msgid "type"
+msgstr "type"
+
+#: actionlog/models.py
+msgid "timestamp"
+msgstr "horodatage"
+
+#: actionlog/models.py
+msgid "user"
+msgstr "utilisateur"
+
+#: actionlog/models.py
+msgid "IP address"
+msgstr "adresse IP"
+
+#: actionlog/models.py
+msgid "tournament"
+msgstr "tournoi"
+
+#: actionlog/models.py
+msgid "round"
+msgstr "joute"
+
+#: actionlog/models.py
+msgid "content type"
+msgstr "type de contenu"
+
+#: actionlog/models.py
+msgid "object ID"
+msgstr "identifiant d'objet"
+
+#: actionlog/models.py
+msgid "agent"
+msgstr "agent"
+
+#: actionlog/models.py
+msgid "action log"
+msgstr "journal des actions"
+
+#: actionlog/models.py
+msgid "action log entries"
+msgstr "entrées du journal des actions"
+
+#: actionlog/models.py
+msgid "All log entries require at least one of a user and an IP address."
+msgstr "Toutes les entrées de journal nécessitent au moins un utilisateur ou une adresse IP."
+
+#: actionlog/models.py
+msgid "anonymous"
+msgstr "anonyme"
+

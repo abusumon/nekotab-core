@@ -1,0 +1,113 @@
+//------------------------------------------------------------------------------
+// Buttons
+//------------------------------------------------------------------------------
+
+// Actionable elements (buttons, navs) should be distinct
+.btn .feather {
+  margin-top: -2.5px;
+}
+
+// HoverPanelGroup.vue
+.btn-xs-text {
+  font-size: 12px; // Need to be extra small and can't override the btn style
+}
+
+// Fix bad inheritance
+.list-group-item .btn:not(.btn-link) .feather {
+  margin-right: 0;
+}
+
+// Same as .btn; but .btn-link removes this radius for some reason
+.btn-link {
+  border-radius: $border-radius;
+}
+
+// Disable hovers without using disable class (it dulls)
+.btn-no-hover {
+  pointer-events: none;
+}
+
+// Use mostly transparent backgrounds rather than fully transparent
+@each $color, $value in $theme-colors {
+
+  .btn-outline-#{$color} {
+    background-color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+.btn[data-toggle='tooltip'] span {
+  border-bottom: 0; // Need to prevent dashed lines in glyphicons in btns
+}
+
+//------------------------------------------------------------------------------
+// Inputs (in general)
+//------------------------------------------------------------------------------
+
+.list-group-item .form-group:last-child {
+  margin-bottom: 0; // List group items are already bottom padded
+}
+
+// Center number inputs
+input[type=number] {
+  text-align: center;
+}
+
+input[type="range"] {
+  min-width: 70px; // Fix for IE Edge; doesn't show otherwise
+  width: 85%; // Fix for importance slider
+  margin: 0 0 0 5%;
+}
+
+// Labels in list groups need to vertically center with inputs
+.list-group-item label {
+  padding-top: 10px;
+}
+
+// Don't pad form panels as the elements already have padding
+.card-body.form-panel {
+  padding-bottom: 0;
+}
+
+.text-area-limited {
+  max-height: 75px;
+}
+
+// Inline form errors from django
+.errorlist,
+label.error {
+  color: theme-color("danger");
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+  font-size: $font-size-sm;
+}
+
+.btn-group .btn-success,
+.btn-group .btn-primary,
+.btn-group .btn-secondary {
+  border-right: 3px solid rgba(255, 255, 255, 0.25);
+
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Custom Widgets
+//------------------------------------------------------------------------------
+
+// Welcome message box
+#id_public_features__welcome_message_iframe { /* stylelint-disable-line */
+  padding: 0;
+  border: 0;
+}
+
+// IE Horizontal choice/radio options; align form elements & text horizontally
+.form-spaced-choice {
+
+  .form-control {
+    display: inline-block;
+    width: auto;
+  }
+}

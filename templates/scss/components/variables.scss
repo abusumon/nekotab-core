@@ -1,0 +1,119 @@
+//------------------------------------------------------------------------------
+// Tabbycat Custom Layout Variables
+// Note that these need to come after custom.scss and bootstrap files as they
+// make use of some mixins and variables defined there
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// Custom Colors
+//------------------------------------------------------------------------------
+
+// Layout Colors
+$alt-bg:                  #fff;     // For tables etc
+$table-bg-hover:          #e3e3e3;
+$sidebar-bg:              #333c47;  // Matches that of Jet
+$sidebar-muted-text:      $gray-400;
+$droppable-bg:            $gray-200;
+$navbar-light-bg:         $alt-bg; // Footer and Top Navbar
+$navbar-light-border:     $gray-200; // Footer and Top Navbar
+
+// Gender Highlights
+$male:                    #36b6c0;
+$female:                  #ed6b19;
+$other:                   #dbd302;
+$unknown:                 #868e96;
+
+// Break Category Highlights
+$break-cat-0:             #8347ad;
+$break-cat-1:             #40b5d7;
+$break-cat-2:             #2e39c9;
+$break-cat-3:             #ed6b19;
+$break-cat-4:             #00c79b;
+$break-cat-5:             #ff2983;
+$break-cat-6:             #777;
+
+// Region Category Highlights
+$region-cat-0:            #c70062;
+$region-cat-1:            #00c79b;
+$region-cat-2:            #b1e001;
+$region-cat-3:            #476c5e;
+$region-cat-4:            #ff2983;
+$region-cat-5:            #6a268c;
+$region-cat-6:            #00c0cf;
+$region-cat-7:            #0051cf;
+$region-cat-8:            #777;
+
+// Conflicts Colors
+$conflict-clash:          #e34e42;
+$conflict-institution:    #ef9b08;
+$conflict-history-base:   #3498db;
+$incomplete-panel:        rgba(155, 155, 155, 1); // Needs transparency
+
+// Adj Rankings
+$alpha-ranking-0:           hsla(175, 90%, 40%, 1); // A+
+$alpha-ranking-1:           hsla(140, 90%, 42%, 1); // A
+$alpha-ranking-2:           hsla(90, 90%, 38%, 1); // A-
+$alpha-ranking-3:           hsla(55, 90%, 45%, 1); // B+
+$alpha-ranking-4:           hsla(30, 95%, 60%, 1); // B
+$alpha-ranking-5:           hsla(0, 95%, 48%, 1); // B-
+$alpha-ranking-6:           hsla(0, 100%, 34%, 1); // C+
+$alpha-ranking-7:           hsla(0, 0%, 60%, 1);
+$alpha-ranking-8:           hsla(0, 0%, 50%, 1);
+
+// Type
+$small-font-size: 80%;
+
+// Team Positions
+$aff:                     theme-color("info");
+$neg:                     theme-color("danger");
+
+// BP colors designed according to a perceptual color wheel primaries as sides
+// i.e. red/green and yellow/blue opposites
+// Which then makes halves or benches a 45 degree rotation around that wheel
+// Along with tweaking to account for contrasts
+$og:                      hsla(82, 90%, 32%, 1); // Green
+$oo:                      hsla(28, 95%, 39%, 1); // Orange
+$cg:                      hsla(190, 95%, 33%, 1); // Teal-Blue
+$co:                      hsla(286, 50%, 35%, 1); // Pink
+// Complementary pair
+$gov:                     hsla(136, 100%, 44%, 1); // Green (gren + blue)
+$opp:                     hsla(2, 80%, 54%, 0.8); // Rust Red (pink + orange)
+// Complementary pair
+$front:                   hsla(43, 100%, 50%, 1); // Orange (green + orange)
+$back:                    hsla(217, 95%, 60%, 1); // Navy-Blue (blue + pink)
+
+//------------------------------------------------------------------------------
+// Layout Details
+//------------------------------------------------------------------------------
+
+$tooltip-max-width: 330px;
+$footer-height: 175px;
+
+//------------------------------------------------------------------------------
+// Mixins
+//------------------------------------------------------------------------------
+
+// For diversity and allocation highlights
+@mixin hover-highlights($baseColor, $textColor: #fff) {
+  background-color: $baseColor;
+  border-color: darken($baseColor, 5);
+  color: $textColor;
+
+  h4,
+  .subtitle {
+    color: opacify($textColor, 0.75);
+  }
+}
+@mixin outline-highlights($baseColor) {
+  border-color: $baseColor;
+  color: $baseColor;
+}
+
+//------------------------------------------------------------------------------
+// Z-Index Hierarchy
+//------------------------------------------------------------------------------
+
+$z_1: 2030; // Mostly modals
+$z_2: 1050; // Hover elements like tooltips or the adj info sliderover display
+// Note that boostrap nav items are 1030; so these should be below:
+$z_3: 730; // Fixed floating elements like unallocated spots or fixed headers

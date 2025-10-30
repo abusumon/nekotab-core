@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load debate_tags static i18n %}
+
+{% block head-title %}
+{% person_display_name adjudicator as adjudicator_name %}
+{% blocktrans trimmed with adjudicator=adjudicator_name %}
+  No Result to Enter ({{ adjudicator }})
+{% endblocktrans %}{% endblock %}
+{% block page-title %}{% trans "No Result to Enter" %}{% endblock %}
+{% block noindex %}<meta name="robots" content="noindex" />{% endblock %}
+{% block content %}
+
+  {% include "includes/public_enter_results_info.html" %}
+
+  <div class="lead">
+    {{ message }}
+  </div>
+{% endblock content %}
+
+{% block js %}
+  {{ block.super }}
+  <!-- TODO: bundle -->
+  <script src="{% static 'js/vendor/jquery.validate.js' %}"></script>
+  <script>
+    $(document).ready( function() {
+      {% include "js-bundles/enter_results.js" %}
+    });
+  </script>
+{% endblock %}

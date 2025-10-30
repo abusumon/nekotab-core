@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load add_field_css i18n %}
+
+{% block page-title %}🔓{% trans "Login" context "page title" %}{% endblock %}
+{% block head-title %}{% endblock %}
+
+{% block nav %}{% endblock %}
+{% block page-alerts %}
+<!--[if lte IE 9]>
+<div class="alert alert-warning">
+  Hey it looks like you are running an old version of Internet Explorer. As a
+  result some parts of Tabbycat <strong>may not work properly</strong>. Switch to a newer
+  browser if possible!
+</div>
+<![endif]-->
+{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+
+        <div class="list-group list-group-flush">
+        <form id="login" action="." method="POST">
+
+          {% trans "Log in to Tabbycat" context "page title" as title %}
+          {% include "components/form-title.html" with icon="lock" %}
+
+          <div class="list-group-item pt-4 pb-4">
+
+            {% csrf_token %}
+
+            {% if form.errors %}
+              {% trans "Your username and password didn't match." as message %}
+              {% for error in form.errors %}
+                {% include "components/form-errors.html" with errors=form.errors %}
+              {% endfor %}
+            {% endif %}
+
+            {% if next %}
+
+              {% if user.is_authenticated %}
+                {% trans "Your account doesn't have access to this page. To proceed, please log in with an account that has access." as message %}
+                {% include "components/alert.html" with type="warning" %}
+              {% else %}
+                {% trans "Please log in to see this page." as message %}
+                {% include "components/alert.html" with type="danger" %}
+              {% endif %}
+            {% endif %}
+
+            {% for field in form %}
+              {% include "components/form-field.html" %}
+            {% endfor %}
+
+          </div>
+
+          <input type="hidden" name="next" value="{{ next }}" />
+          {% trans "Log In" context "button" as title %}
+          {% trans "I forgot my password" context "button" as subtitle %}
+          {% url 'password_reset' as suburl %}
+          {% include "components/form-submit.html" %}
+
+        </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+
+  </div>
+
+{% endblock %}

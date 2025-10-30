@@ -1,0 +1,18 @@
+{% extends "standings_base.html" %}
+{% load debate_tags static i18n %}
+
+{% block content %}
+
+  {% if statistics.motions %}
+
+    {% if type == "round" %}
+      {% include "motion_round_statistics.html" %}
+    {% else %}
+      {% include "motion_global_statistics.html" %}
+    {% endif %}
+
+  {% else %}
+    {% include "components/item-info.html" with text="There are no motions in Tabbycat" type="info" %}
+  {% endif %}
+
+{% endblock content %}

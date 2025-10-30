@@ -1,0 +1,420 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:46\n"
+"Last-Translator: philip_tc\n"
+"Language-Team: Italian\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Language: it\n"
+"X-Crowdin-File: /develop/tabbycat/notifications/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-File-ID: 938\n"
+
+#: notifications/apps.py
+msgid "Notifications"
+msgstr "Notifiche"
+
+#: notifications/forms.py
+msgid "Recipient email address"
+msgstr "Indirizzo email di destinazione"
+
+#: notifications/forms.py
+#, python-format
+msgid "Test email from %(host)s"
+msgstr "Email di prova da %(host)s"
+
+#: notifications/forms.py
+#, python-format
+msgid "Congratulations! If you're reading this message, your email backend on %(host)s looks all good to go!"
+msgstr "Congratulazioni! Se stai leggendo questo messaggio, il tuo email backend su %(host)s sembra andare bene!"
+
+#: notifications/forms.py
+msgid "Subject"
+msgstr "Oggetto"
+
+#: notifications/forms.py
+msgid "Message"
+msgstr "Messaggio"
+
+#: notifications/models.py
+msgid "email"
+msgstr "email"
+
+#: notifications/models.py
+msgid "SMS"
+msgstr "SMS"
+
+#: notifications/models.py
+msgid "recipient"
+msgstr "destinatario"
+
+#: notifications/models.py
+msgid "method"
+msgstr "metodo"
+
+#: notifications/models.py
+msgid "context"
+msgstr "contesto"
+
+#: notifications/models.py
+msgid "notification"
+msgstr "notifica"
+
+#: notifications/models.py
+msgid "timestamp"
+msgstr "data e ora"
+
+#: notifications/models.py
+msgid "sent message"
+msgstr "messaggio inviato"
+
+#: notifications/models.py
+msgid "sent messages"
+msgstr "messaggi inviati"
+
+#: notifications/models.py
+msgid "team points"
+msgstr "punti squadra"
+
+#: notifications/models.py
+msgid "ballot confirmed"
+msgstr "ballot confermato"
+
+#: notifications/models.py
+msgid "feedback URL"
+msgstr "URL feedback"
+
+#: notifications/models.py
+msgid "ballot URL"
+msgstr "ballot URL"
+
+#: notifications/models.py
+msgid "landing page URL"
+msgstr "URL pagina di destinazione"
+
+#: notifications/models.py
+msgid "adjudicator draw released"
+msgstr "sorteggio giudice rilasciato"
+
+#: notifications/models.py
+msgid "team registration"
+msgstr "registrazione del team"
+
+#: notifications/models.py
+msgid "adjudicator registration"
+msgstr "registrazione giudice"
+
+#: notifications/models.py
+msgid "motion(s) released"
+msgstr "mozione/i rilasciata/e"
+
+#: notifications/models.py
+msgid "team draw released"
+msgstr "sorteggio della squadra rilasciato"
+
+#: notifications/models.py
+msgid "custom message"
+msgstr "messaggio personalizzato"
+
+#: notifications/models.py
+msgid "event"
+msgstr "evento"
+
+#: notifications/models.py
+msgid "tournament"
+msgstr "torneo"
+
+#: notifications/models.py
+msgid "round"
+msgstr "round"
+
+#: notifications/models.py
+msgid "subject template"
+msgstr "modello oggetto"
+
+#: notifications/models.py
+msgid "body template"
+msgstr "modello corpo"
+
+#: notifications/models.py
+msgid "bulk notification"
+msgstr "notifica di massa"
+
+#: notifications/models.py
+msgid "bulk notifications"
+msgstr "notifiche di massa"
+
+#: notifications/models.py
+msgid "Processed"
+msgstr "Elaborato"
+
+#: notifications/models.py
+msgid "Dropped"
+msgstr "Saltato"
+
+#: notifications/models.py
+msgid "Deferred"
+msgstr "Rinviato"
+
+#: notifications/models.py
+msgid "Delivered"
+msgstr "Consegnato"
+
+#: notifications/models.py
+msgid "Bounced"
+msgstr "Rimbalzato"
+
+#: notifications/models.py
+msgid "Opened"
+msgstr "Aperto"
+
+#: notifications/models.py
+msgid "Clicked"
+msgstr "Cliccato"
+
+#: notifications/models.py
+msgid "Unsubscribed"
+msgstr "Iscrizione annullata"
+
+#: notifications/models.py
+msgid "Marked as spam"
+msgstr "Segnata come Spam"
+
+#: notifications/models.py
+msgid "Unsubscribed from group"
+msgstr "Disiscritto dal gruppo"
+
+#: notifications/models.py
+msgid "Resubscribed to group"
+msgstr "Sottoscritto nuovamente al gruppo"
+
+#: notifications/models.py
+msgid "Failed to send"
+msgstr ""
+
+#: notifications/models.py
+msgid "email message"
+msgstr "messaggio email"
+
+#: notifications/models.py
+msgid "email status"
+msgstr "stato mail"
+
+#: notifications/models.py
+msgid "email statuses"
+msgstr "stato mail"
+
+#: notifications/templates/email_participants.html
+#, python-format
+msgid "You have not specified a reply-to address. This means that participants may not reply to the message if they have questions. Please set one in the <a href=\"%(notifications_options_url)s\">Notifications section of the preferences</a>."
+msgstr "Non hai specificato un indirizzo di risposta. Ciò significa che i partecipanti non potranno rispondere al messaggio se hanno domande. Si prega di impostarne uno nella sezione <a href=\"%(notifications_options_url)s\">Preferenze di notifiche</a>."
+
+#: notifications/templates/email_participants.html
+#, python-format
+msgid "The webhook URL for use in SendGrid is <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. Please point the HTTP POST URL in <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a> to that."
+msgstr "L'URL di webhook da usare in SendGrid è <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. Si prega di indirizzare l'URL HTTP POST in <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a>."
+
+#: notifications/templates/email_participants.html
+msgid "Send Message(s)"
+msgstr "Invia messaggi(o)"
+
+#: notifications/templates/email_statuses.html
+msgid "Emails can be sent by Tabbycat for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
+msgstr "Le email possono essere inviate da Tabbycat per molti motivi. Le email vengono inviate quando vengono abilitate le apposite preferenze (es. abilitando la ricezione del ballot) oppure attraverso azioni disponibili su pagine specifiche (es. la pagina di visualizzazione sorteggio per gli abbinamenti; oppure la pagina dei partecipanti per la registrazione del team). Questa pagina mostra lo stato delle email precedentemente inviate."
+
+#: notifications/templates/notifications_nav.html notifications/views.py
+msgid "Email Statuses"
+msgstr "Stato mail"
+
+#: notifications/templates/notifications_nav.html
+#: notifications/templates/test_email.html
+msgid "Send Test Email"
+msgstr "Invia email di prova"
+
+#: notifications/templates/notifications_nav.html
+msgid "Send Custom Email"
+msgstr "Invia Email Personalizzata"
+
+#: notifications/templates/test_email.html
+msgctxt "page title"
+msgid "Send Test Email"
+msgstr "Invia email di prova"
+
+#: notifications/templates/test_email.html
+msgid "You can use this form to send a test email, to check that your email backend settings are working, before you try to send email notifications to participants."
+msgstr "È possibile utilizzare questo modulo per inviare una e-mail di prova, per controllare che le impostazioni del backend e-mail funzionino, prima di provare a inviare notifiche via mail ai partecipanti."
+
+#: notifications/templates/test_email.html
+#, python-format
+msgid "The email will be sent from: <strong>%(default_from_email)s</strong>. If this doesn't look right, change the <code>DEFAULT_FROM_EMAIL</code> config var in Heroku (or environment variable)."
+msgstr "L'email verrà inviata da: <strong>%(default_from_email)s</strong>. Se questo non sembra corretto, cambiare la variabile <code>DEFAULT_FROM_EMAIL</code> in Heroku (o la variabile d'ambiente)."
+
+#: notifications/templates/test_email.html
+msgid "Go back to the site home page"
+msgstr "Torna alla pagina iniziale"
+
+#: notifications/utils.py
+msgid "the chair"
+msgstr "giudice arbitro"
+
+#: notifications/utils.py
+msgid "the only"
+msgstr "l'unico"
+
+#: notifications/utils.py
+msgid "a panellist"
+msgstr "un giudice"
+
+#: notifications/utils.py
+msgid "a trainee"
+msgstr "un tirocinante"
+
+#: notifications/utils.py
+msgid "TBA"
+msgstr "Da annunciare"
+
+#: notifications/utils.py
+#, python-format
+msgid "%(tournament)s %(round)s @ %(room)s"
+msgstr ""
+
+#: notifications/utils.py
+#, python-format
+msgid "<li>%(side)s: %(team)s (%(points)d points with %(speaks)s total speaks)"
+msgstr "<li>%(side)s: %(team)s (%(points)d punti con %(speaks)s speaker totali)"
+
+#: notifications/utils.py
+#, python-format
+msgid "<li>%(side)s: %(team)s (%(points)s - %(speaks)s total speaks)"
+msgstr "<li>%(side)s: %(team)s (%(points)s - %(speaks)s speech totali)"
+
+#: notifications/utils.py
+msgid "Win"
+msgstr "Vittoria"
+
+#: notifications/utils.py
+msgid "Loss"
+msgstr "Sconfitta"
+
+#: notifications/utils.py
+#, python-format
+msgid "<li>%(pos)s: %(speaker)s (%(score)s)</li>"
+msgstr "<li>%(pos)s: %(speaker)s (%(score)s)</li>"
+
+#: notifications/utils.py
+#, python-format
+msgid "<li>%(text)s (%(ref)s)</li>"
+msgstr "<li>%(text)s (%(ref)s)</li>"
+
+#: notifications/utils.py
+msgid ", "
+msgstr ", "
+
+#: notifications/views.py
+#, python-format
+msgid "The email (SMTP) server returned an error sending the test email: [SMTP code %(code)d] %(error)s"
+msgstr "Il server di posta elettronica (SMTP) ha restituito un errore inviando l'email di prova: [codice SMTP %(code)d] %(error)s"
+
+#: notifications/views.py
+msgid "Hint: If the error is about sender identity verification in SendGrid, and you've already completed the steps in SendGrid, it may be that you need to update the DEFAULT_FROM_EMAIL config var in Heroku to match your verified sender identity."
+msgstr "Suggerimento: se l'errore riguarda la verifica dell'identità del mittente in SendGrid, e hai già completato la procedura in SendGrid, potrebbe essere necessario aggiornare la variabile di config DEFAULT_FROM_EMAIL in Heroku per corrispondere all'identità verificata del mittente."
+
+#: notifications/views.py
+#, python-format
+msgid "There was an error sending the test email: %(error)s"
+msgstr "Si è verificato un errore durante l'invio dell'email di prova: %(error)s"
+
+#: notifications/views.py
+#, python-format
+msgid "A test email has been sent to %(recipient)s."
+msgstr "Un'email di prova è stata inviata a %(recipient)s."
+
+#: notifications/views.py
+msgid "N/A"
+msgstr "N/D"
+
+#: notifications/views.py
+msgid "Not known"
+msgstr "Sconosciuto"
+
+#: notifications/views.py
+#, python-format
+msgid "%(status)s @ %(time)s"
+msgstr "%(status)s @ %(time)s"
+
+#: notifications/views.py
+#, python-format
+msgid "@ %s"
+msgstr ""
+
+#: notifications/views.py
+msgid "Timeline"
+msgstr "Sequenza"
+
+#: notifications/views.py
+msgid "Participant"
+msgstr "Partecipante"
+
+#: notifications/views.py
+msgid "Email address"
+msgstr ""
+
+#: notifications/views.py
+msgid "Status"
+msgstr "Stato"
+
+#: notifications/views.py
+msgid "Time"
+msgstr "Ora"
+
+#: notifications/views.py
+msgid "Email Participants"
+msgstr "Email Partecipanti"
+
+#: notifications/views.py
+#, python-format
+msgid "%(email_count)s email has been queued for sending."
+msgid_plural "%(email_count)s emails have been queued for sending."
+msgstr[0] "%(email_count)s email è stata accodata per l'invio."
+msgstr[1] "%(email_count)s email sono state accodate per l'invio."
+
+#: notifications/views.py
+msgid "No emails were sent — likely because no recipients were selected."
+msgstr "Nessuna email è stata inviata, probabilmente perché non è stato selezionato nessun destinatario."
+
+#: notifications/views.py
+msgid "Send Email"
+msgstr "Invia email"
+
+#: notifications/views.py
+msgid "Not Provided"
+msgstr "Non fornito"
+
+#: notifications/views.py
+msgid "Role"
+msgstr "Ruolo"
+
+#: notifications/views.py
+msgid "Adjudicator"
+msgstr "Giudice"
+
+#: notifications/views.py
+msgid "Speaker"
+msgstr "Speaker"
+
+#: notifications/views.py
+msgid "Speakers"
+msgstr "Speaker"
+
+#: notifications/views.py
+msgid "Adjudicators"
+msgstr "GiudicI"
+

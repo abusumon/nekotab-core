@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load debate_tags i18n %}
+
+{% block page-subnav-sections %}
+  {% if current_round %}
+    <a class="btn btn-primary "
+       href="{% tournamenturl 'options-tournament-index' %}">
+      <i data-feather="chevron-left"></i> {% trans "Back to Configuration" %}
+    </a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<form action="." method="POST">
+  <div class="card">
+    {% csrf_token %}
+
+    {% include 'components/form-main.html' %}
+
+    {% trans "Invite User" context "button" as title %}
+    {% trans "Note: if you submit this multiple times, multiple invite emails will be sent." as subtitle %}
+    {% include "components/form-submit.html" %}
+  </div>
+</form>
+{% endblock %}

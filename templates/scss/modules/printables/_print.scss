@@ -1,0 +1,30 @@
+@media print {
+
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  html {
+    height: auto;
+  }
+
+  .db-page-holder {
+    page-break-inside: avoid; // Needed
+    page-break-after: always; // Needed
+  }
+
+  .db-page {
+    transform: none;
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  // TabbyCat
+  .head-title {
+    display: none;
+  }
+}

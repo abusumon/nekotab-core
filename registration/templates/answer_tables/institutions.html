@@ -1,0 +1,85 @@
+{% extends "tables/base_vue_table.html" %}
+{% load debate_tags i18n %}
+
+{% block page-subnav-sections %}<div class="btn-group flex-wrap"></div>{% endblock %}
+{% block page-subnav-actions %}
+<div class="btn-group flex-wrap">
+  <div class="btn btn-outline-primary disabled">{% trans "Questions for" %}</div>
+  <a class="btn btn-outline-primary" href="{% tournamenturl 'reg-institution-questions' %}">
+    {% trans "Institutions" %}
+  </a>
+  <a class="btn btn-outline-primary" href="{% tournamenturl 'reg-coach-questions' %}">
+    {% trans "Coaches" %}
+  </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title mb-0">{% blocktranslate with num=teams_requested %}Teams Requested: <strong>{{ num }}</strong>{% endblocktranslate %}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title mb-0">{% blocktranslate with num=teams_allocated %}Teams Allocated: <strong>{{ num }}</strong>{% endblocktranslate %}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title mb-0">{% blocktranslate with num=teams_registered %}Teams Registered: <strong>{{ num }}</strong>{% endblocktranslate %}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title mb-0">{% blocktranslate with num=adjs_requested %}Adjudicators Requested: <strong>{{ num }}</strong>{% endblocktranslate %}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title mb-0">{% blocktranslate with num=adjs_allocated %}Adjudicators Allocated: <strong>{{ num }}</strong>{% endblocktranslate %}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title mb-0">{% blocktranslate with num=adjs_registered %}Adjudicators Registered: <strong>{{ num }}</strong>{% endblocktranslate %}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form action="." method="POST">
+  {% csrf_token %}
+
+  {{ block.super }}
+
+  {% if pref.reg_institution_slots %}
+    <div class="card">
+      <div class="card-body row">
+        <button class="btn btn-primary btn-block btn-success" type="submit" name="save_update_all">
+          {% trans "Save allocations" %}
+        </button>
+      </div>
+    </div>
+  {% endif %}
+</form>
+{% endblock %}

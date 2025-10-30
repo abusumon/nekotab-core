@@ -1,0 +1,98 @@
+{% load add_field_css debate_tags humanize i18n %}
+
+<ul class="list-group {% if all_ballotsubs.count > 0 %}mb-3{% endif %}">
+
+  {% with nballotsubs=all_ballotsubs.count %}
+    {% if new and nballotsubs > 0 or nballotsubs > 1 %}
+      <li class="list-group-item list-group-item-warning">
+        <h4 class="list-group-item-heading mb-0">
+          {% blocktrans trimmed with number=nballotsubs|apnumber count nballotsubs=nballotsubs %}
+            There is {{ number }} existing ballot set for this debate.
+          {% plural %}
+            There are {{ number }} existing ballot sets for this debate.
+          {% endblocktrans %}
+        </h4>
+      </li>
+    {% endif %}
+  {% endwith %}
+
+  {% if ballotsub.confirmed %}
+    <li class="list-group-item list-group-item-success">
+      {% trans "This ballot set is <strong>confirmed</strong>." %}
+    </li>
+  {% endif %}
+  {% if ballotsub.discarded %}
+    <li class="list-group-item list-group-item-warning">
+      {% trans "This ballot set is <strong>discarded</strong>." %}
+    </li>
+  {% endif %}
+
+  {% for other in all_ballotsubs %}
+    <li class="list-group-item">
+      {% if other != ballotsub %}
+        {% if user_role == "admin" %}
+          <a href="{% tournamenturl 'results-ballotset-edit' other.id %}">
+        {% else %}
+          <a href="{% tournamenturl 'results-assistant-ballotset-edit' other.id %}">
+        {% endif %}
+      {% endif %}
+
+        {% if other == ballotsub %}
+          <span class="badge badge-success float-right">{% trans "CURRENTLY VIEWING" %}</span>
+        {% endif %}
+
+        {% if other.merged %}
+          <span class="badge badge-success float-right">{% trans "MERGING" %}</span>
+        {% endif %}
+
+        {% blocktrans trimmed with version=other.version %}
+          Version <strong>{{ version }}</strong>,
+        {% endblocktrans %}
+
+        {% if other.submitter_type == ballotsub.Submitter.TABROOM %}
+          {% blocktrans trimmed with submitter=other.submitter %}
+            entered by <strong>{{ submitter }}</strong>,
+          {% endblocktrans %}
+        {% elif other.submitter_type == ballotsub.Submitter.PUBLIC %}
+          {% if other.participant_submitter %}
+            {% blocktrans trimmed with adjudicator=other.participant_submitter %}
+              submitted from <strong>{{ adjudicator }}</strong>'s private URL,
+            {% endblocktrans %}
+          {% else %}
+            {% blocktrans trimmed with ip_address=other.ip_address %}
+              submitted from the public form on {{ ip_address }},
+            {% endblocktrans %}
+          {% endif %}
+        {% endif %}
+
+        {% blocktrans trimmed with timestamp=other.timestamp timeago=other.timestamp|timesince %}
+          {{ timestamp }} ({{ timeago }} ago),
+        {% endblocktrans %}
+
+        {% if other.confirmed %}
+          {% trans "unknown" as confirmer_unknown %}
+          {% blocktrans trimmed with confirmer=other.confirmer|default:confirmer_unknown %}
+            confirmed by <strong>{{ confirmer }}</strong>
+          {% endblocktrans %}
+        {% else %}
+          {% trans "unconfirmed" %}
+        {% endif %}
+
+        {% if other.discarded %}
+          {% trans "(discarded)" %}
+        {% endif %}
+
+        {% if other.identical_ballotsub_versions %}
+          {% blocktrans trimmed with others=other.identical_ballotsub_versions|join:", " count n=other.identical_ballotsub_versions|length %}
+            <em>(identical to version {{ others }})</em>
+          {% plural %}
+            <em>(identical to versions {{ others }})</em>
+          {% endblocktrans %}
+        {% endif %}
+
+      {% if other != ballotsub %}
+        </a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

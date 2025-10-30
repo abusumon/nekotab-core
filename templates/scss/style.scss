@@ -1,0 +1,37 @@
+
+// Boostrap overrides/customisation (load before bootstrap)
+@import 'components/custom';
+
+// Bootstrap (custom module selection)
+@import 'components/bootstrap-custom';
+
+// Tabbycat key variables/mixins (load after bootstrap)
+@import 'components/variables';
+
+// General styles
+@import 'modules/flexbox';
+@import 'modules/footer';
+@import 'modules/forms';
+@import 'modules/icons';
+@import 'modules/interaction';
+@import 'modules/drag-and-drop';
+@import 'modules/layout';
+@import 'modules/nav';
+@import 'modules/print';
+@import 'modules/tables';
+@import 'modules/typography';
+
+// Function specific styles
+@import 'components/allocations';
+@import 'components/datavis';
+@import 'components/page-specific';
+@import 'components/diversity-highlights';
+@import 'components/allocation-highlights';
+
+//------------------------------------------------------------------------------
+// To Refactor
+//------------------------------------------------------------------------------
+
+.ui-helper-hidden-accessible {
+  display: none; // Remove when jquery UI is removed
+}

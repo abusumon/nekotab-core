@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+
+{% block page-subnav-sections %}
+  {% if not for_public %}{% include "standings_menu.html" %}{% endif %}
+{% endblock %}

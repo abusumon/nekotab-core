@@ -1,0 +1,351 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:52\n"
+"Last-Translator: philip_tc\n"
+"Language-Team: Indonesian\n"
+"Language: id_ID\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Language: id\n"
+"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-File-ID: 954\n"
+
+#: utils/admin.py utils/tables.py
+msgid "Round"
+msgstr "Ronde"
+
+#: utils/admin.py utils/tables.py
+msgid "Team"
+msgstr "Tim"
+
+#: utils/admin.py
+msgid "Speaker"
+msgstr "Pendebat"
+
+#: utils/admin.py utils/tables.py
+msgid "Tournament"
+msgstr "Turnamen"
+
+#: utils/admin.py utils/tables.py
+msgid "Side"
+msgstr "Sisi"
+
+#: utils/admin.py utils/tables.py
+msgid "Motion"
+msgstr "Mosi"
+
+#: utils/admin.py
+msgid "Confirmed"
+msgstr "Terkonfirmasi"
+
+#: utils/admin.py
+msgid "Adjudicator"
+msgstr "Juri"
+
+#: utils/tables.py
+msgid "No Data Available"
+msgstr "Tidak ada data yang tersedia"
+
+#: utils/tables.py
+msgid "Ⓒ"
+msgstr "Ⓒ"
+
+#: utils/tables.py
+msgid "Ⓣ"
+msgstr "Ⓣ"
+
+#: utils/tables.py
+msgid "chair"
+msgstr "ketua panel"
+
+#: utils/tables.py
+msgid "panellist"
+msgstr "panelis"
+
+#: utils/tables.py
+msgid "trainee"
+msgstr "trainee"
+
+#: utils/tables.py
+msgid "—"
+msgstr ""
+
+#: utils/tables.py
+msgid "Redacted"
+msgstr "Dihapus"
+
+#: utils/tables.py
+#, python-format
+msgid "View %(a)s's %(d)s Record"
+msgstr "Lihat %(a)s Rekaman %(d)s"
+
+#: utils/tables.py
+#, python-format
+msgid "View %(team)s's Record"
+msgstr "Tampilkan rekam jejak %(team)s"
+
+#: utils/tables.py
+#, python-format
+msgid "Code name: <strong>%(name)s</strong>"
+msgstr "Nama samaran tim: <strong>%(name)s</strong>"
+
+#: utils/tables.py
+#, python-format
+msgid "Real name: <strong>%(name)s</strong>"
+msgstr "Nama asli: <strong>%(name)s</strong>"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s won"
+msgstr "%(team)s menang"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s lost"
+msgstr "%(team)s kalah"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s—no result"
+msgstr "%(team)s—tidak ada hasil"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s placed %(place)s"
+msgstr "%(team)s mendapatkan urutan %(place)s"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s is advancing"
+msgstr "%(team)s lanjut ke babak selanjutnya"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s was eliminated"
+msgstr "%(team)s tereliminasi"
+
+#: utils/tables.py
+msgid "View/edit debate ballot"
+msgstr "Lihat/sunting lembar penilaian"
+
+#: utils/tables.py
+msgid "View debate ballot"
+msgstr "Lihat lembar penilaian"
+
+#: utils/tables.py
+#, python-format
+msgid " vs %(opposition)s"
+msgstr " vs %(opposition)s"
+
+#: utils/tables.py
+#, python-format
+msgid "Won against %(team)s"
+msgstr "Menang melawan %(team)s"
+
+#: utils/tables.py
+#, python-format
+msgid "Lost to %(team)s"
+msgstr "Kalah dari %(team)s"
+
+#: utils/tables.py
+#, python-format
+msgid "No result for debate against %(team)s"
+msgstr "Tidak ada hasil untuk debat melawan %(team)s"
+
+#: utils/tables.py
+#, python-format
+msgid "Total speaker score: <strong>%s</strong>"
+msgstr "Total skor pembicara: <strong>%s</strong>"
+
+#: utils/tables.py
+msgid "Teams in debate:"
+msgstr "Tim dalam debat:"
+
+#: utils/tables.py
+#, python-format
+msgid "%(team)s (%(side)s)"
+msgstr "%(team)s (%(side)s)"
+
+#: utils/tables.py
+msgid "??"
+msgstr "??"
+
+#: utils/tables.py
+msgid "advancing"
+msgstr "maju"
+
+#: utils/tables.py
+msgid "Advancing"
+msgstr "Maju"
+
+#: utils/tables.py
+msgid "eliminated"
+msgstr "tereliminasi"
+
+#: utils/tables.py
+msgid "Eliminated"
+msgstr "Tereliminasi"
+
+#: utils/tables.py
+msgid "No result for debate"
+msgstr "Tak ada hasil untuk debat"
+
+#: utils/tables.py
+#, python-format
+msgid "Placed %(place)s"
+msgstr "Mendapatkan peringkat %(place)s"
+
+#: utils/tables.py
+msgid "Name"
+msgstr "Nama"
+
+#: utils/tables.py
+msgid "Institution"
+msgstr "Institusi"
+
+#: utils/tables.py
+msgid "Member of the Adjudication Core"
+msgstr "Anggota Tim Penjurian Inti"
+
+#: utils/tables.py
+msgid "Independent Adjudicator"
+msgstr "Juri Undangan"
+
+#: utils/tables.py
+msgid "Always Trainee"
+msgstr "Selalu Trainee"
+
+#: utils/tables.py
+msgid "in minority"
+msgstr "sebagai minoritas"
+
+#: utils/tables.py
+msgid "Debate Adjudicators"
+msgstr "Juri Debat"
+
+#: utils/tables.py
+msgid "Categories"
+msgstr "Kategori"
+
+#: utils/tables.py
+msgid "Category"
+msgstr "Kategori"
+
+#: utils/tables.py
+#, python-format
+msgid "This room %(predicate)s."
+msgstr "Ruangan ini %(predicate)s."
+
+#: utils/tables.py
+#, python-format
+msgid "This room %(predicates)s, and %(last_predicate)s."
+msgstr "Ruangan ini %(predicates)s, dan %(last_predicate)s."
+
+#: utils/tables.py
+msgid "Room"
+msgstr "Ruangan"
+
+#: utils/tables.py
+#, python-format
+msgid "Teams have met once"
+msgid_plural "Teams have met %(count)d times"
+msgstr[0] "Tim telah bertemu %(count)d kali"
+
+#: utils/tables.py
+msgid "Teams are from the same institution"
+msgstr "Tim-tim dari institusi yang sama"
+
+#: utils/tables.py
+msgid "Conflicts/Flags"
+msgstr "Konflik/Peringatan"
+
+#: utils/tables.py
+msgid "The confirmed ballot"
+msgstr "Surat suara yang sudah dikonfirmasi"
+
+#: utils/tables.py
+msgid "No ballot"
+msgstr "Tidak ada kertas suara"
+
+#: utils/tables.py
+msgid "No scores"
+msgstr "Tidak ada nilai"
+
+#: utils/tables.py
+msgid "View Ballot"
+msgstr "Lihat Kertas suara"
+
+#: utils/tables.py
+msgid "The ballot you submitted"
+msgstr "Surat suara yang anda serahkan"
+
+#: utils/tables.py
+msgid "No Ballot"
+msgstr "Tidak ada kertas suara"
+
+#: utils/tables.py
+msgid "View/Edit Ballot"
+msgstr "Lihat/Edit Kertas suara"
+
+#: utils/tables.py
+msgid "Result"
+msgstr "Hasil"
+
+#. Translators: "TBC" stands for "to be confirmed".
+#: utils/tables.py
+msgid "TBC"
+msgstr "UDK"
+
+#: utils/tables.py
+msgid "Bye"
+msgstr ""
+
+#: utils/tables.py
+msgid "Team was given a bye this round"
+msgstr ""
+
+#: utils/tables.py
+msgid "Team iron-personed this round and the last."
+msgstr ""
+
+#: utils/tables.py
+msgid "Team iron-personed this round."
+msgstr ""
+
+#: utils/tables.py
+msgid "Team iron-personed last round."
+msgstr ""
+
+#: utils/tables.py
+#, python-format
+msgid "Team %(num)d"
+msgstr "Tim %(num)d"
+
+#: utils/tables.py
+msgid "Postpone"
+msgstr "Menunda"
+
+#: utils/tables.py
+msgid "Event"
+msgstr ""
+
+#: utils/tables.py
+msgid "Start Time"
+msgstr ""
+
+#: utils/tables.py
+msgid "End Time"
+msgstr ""
+
+#: utils/views.py
+msgid "Whoops! You're not meant to type that URL into your browser."
+msgstr "Ups! Anda tidak dimaksudkan untuk mengetik URL itu ke browser Anda."
+

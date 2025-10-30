@@ -1,0 +1,20 @@
+{% load add_field_css %}
+
+<div class="{% if double %}col-lg-6{% endif %}{% if triple %}col-lg-4{% endif %} pt-1">
+
+  {% if not field.is_hidden %}
+    <div class="form-check form-check-inline">
+      {{ field|addcss:"form-check-input" }}
+      <label class="form-check-label pt-0" for="{{ field.id_for_label }}">{{ field.label }}</label>
+    </div>
+  {% endif %}
+
+  {% if field.help_text  %}
+    <small class="form-text text-muted">{{ field.help_text }}</small>
+  {% endif %}
+
+  {% if field.errors %}
+    {{ field.errors }}
+  {% endif %}
+
+</div>

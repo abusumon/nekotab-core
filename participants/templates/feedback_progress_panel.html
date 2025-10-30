@@ -1,0 +1,61 @@
+{% load debate_tags i18n %}
+{# This snippet is used as part of the team_record.html and adjudicator_record.html templates. #}
+
+
+<div class="card mt-4">
+
+  <div class="list-group list-group-flush">
+
+    <div class="list-group-item {% if not pref.feedback_progress %}list-group-item-secondary{% endif %}">
+      <h4 class="card-title mb-0">{% trans "Feedback Returns" %}</h4>
+    </div>
+
+    {% for tracker in feedback_progress.trackers %}
+      {% if tracker.fulfilled %}
+        <div class="list-group-item {% if not pref.feedback_progress %}list-group-item-secondary{% endif %} text-success">
+          <span class="badge badge-secondary">{{ tracker.round.name }}</span>
+          {% person_display_name tracker.submission.adjudicator as adjudicator %}
+          {% blocktrans trimmed with adjudicator=adjudicator %}
+            Has submitted feedback for <strong>{{ adjudicator }}</strong>
+          {% endblocktrans %}
+        </div>
+      {% elif tracker.expected and tracker.count == 0 %}
+        <div class="list-group-item {% if not pref.feedback_progress %}list-group-item-secondary{% endif %} text-danger">
+          <span class="badge badge-secondary">{{ tracker.round.name }}</span>
+          {% if tracker.acceptable_targets|length > 1 %}
+            {% blocktrans trimmed with adjudicators=tracker.acceptable_target_names|join:", " %}
+              Has not submitted feedback for one of: <strong>{{ adjudicators }}</strong>
+              (whoever gave the oral adjudication)
+            {% endblocktrans %}
+          {% else %}
+            {% blocktrans trimmed with adjudicator=tracker.acceptable_target_names.0 %}
+              Has not submitted feedback for <strong>{{ adjudicator }}</strong>
+            {% endblocktrans %}
+          {% endif %}
+        </div>
+      {% elif tracker.expected %}
+        <div class="list-group-item {% if not pref.feedback_progress %}list-group-item-secondary{% endif %} text-warning">
+          <span class="badge badge-secondary">{{ tracker.round.name }}</span>
+          {% trans "More feedback submissions than expected for this debate:" %}
+          {% for submission in tracker.acceptable_submissions %}
+            <strong>{% person_display_name submission.adjudicator %}</strong>{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        </div>
+      {% else %} {# if not tracker.fulfilled and not tracker.expected #}
+        <div class="list-group-item {% if not pref.feedback_progress %}list-group-item-secondary{% endif %} text-warning">
+          <span class="badge badge-secondary">{{ tracker.round.name }}</span>
+          {% person_display_name tracker.submission.adjudicator as adjudicator %}
+          {% blocktrans trimmed with adjudicator=adjudicator %}
+            Unexpected feedback submission for <strong>{{ adjudicator }}</strong>
+          {% endblocktrans %}
+        </div>
+      {% endif %}
+    {% empty %}
+      <div class="list-group-item {% if not pref.feedback_progress %}list-group-item-secondary{% endif %}">
+        <em>{% blocktrans trimmed with name=participant_name %}
+          {{ name }} doesn't have any feedback to submit.
+        {% endblocktrans %}</em>
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title %}<span class="emoji">👋</span> {% trans "Welcome!" %}{% endblock %}
+{% block page-title %}Home{% endblock %}
+
+{% block page-alerts %}
+  {% include 'errors/database_limit_warning.html' %}
+  {% include 'errors/legacy_sendgrid_warning.html' %}
+{% endblock %}
+
+{% block content %}
+
+{% for tournament in tournaments %}
+  {% include "tournament_index_links.html" %}
+{% empty %}
+
+  <div class="list-group">
+    {% if user.is_authenticated and not has_inactive %}
+
+      {% blocktrans trimmed asvar text %}
+        It looks like there aren't any tournaments on this site. Would you like to create one?
+      {% endblocktrans %}
+      {% url 'tournament-create' as url %}
+      {% include "components/item-action.html" with alone=True type="success" to_complete=True %}
+
+    {% else %}
+
+      {% if inactive %}
+        {% blocktrans trimmed asvar p1 %}
+          There are currently no active tournaments set up on this site.
+        {% endblocktrans %}
+      {% else %}
+        {% blocktrans trimmed asvar p1 %}
+          There are currently no tournaments set up on this site.
+        {% endblocktrans %}
+      {% endif %}
+      {% include "components/explainer-card.html" with type="info" %}
+
+    {% endif %}
+  </div>
+
+{% endfor %}
+
+{% if inactive %}
+  <div class="list-group">
+    {% trans '(inactive)' as inactive_subtext %}
+    {% for tournament in inactive %}
+      {% include "tournament_index_links.html" with type="dark" subtext=inactive_subtext %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="list-group mt-2">
+  {% if user.is_superuser %}
+
+    {% trans "New Tournament" as text %}{% url 'tournament-create' as url %}
+    {% include "components/item-action.html" with icon="plus-circle" %}
+
+    {% trans "Edit Database Area" as text %}{% url 'admin:index' as url %}
+    {% include "components/item-action.html" with icon="edit" %}
+
+    {% trans "Send a Test Email" as text %}{% url 'notifications-test-email' as url %}
+    {% include "components/item-action.html" with icon="send" %}
+
+    {% trans "Import DebateXML" as text %}{% url 'importer-archive' as url %}
+    {% include "components/item-action.html" with icon="archive" %}
+
+  {% endif %}
+</div>
+
+<div class="list-group mt-2">
+  {% if user.is_authenticated %}
+
+    {% blocktrans asvar text %}Get API Token / Change Password ({{ user }}){% endblocktrans %}
+    {% url 'password_change' as url %}
+    {% include "components/item-action.html" with icon="rotate-cw" %}
+
+    <form id="logout-link-form" method="post" action="{% url 'logout' %}" class="list-group-item list-group-item-action text-primary">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-link p-0 list-group-item-action text-primary">
+        <div class="row align-items-center">
+          <div class="col-auto pr-1">
+            <i data-feather="log-out"></i>
+          </div>
+
+          <div class="col pl-0 pr-0">
+            {% blocktrans %}Log Out ({{ user }}){% endblocktrans %}
+          </div>
+
+          <div class="col-auto pr-1">
+            <i data-feather="chevron-right"></i>
+          </div>
+        </div>
+      </button>
+    </form>
+
+  {% else %}
+
+    {% trans "Log In as Admin" as text %}{% url 'login' as url %}
+    {% include "components/item-action.html" with icon="log-in" %}
+
+  {% endif %}
+</div>
+
+{% endblock content %}

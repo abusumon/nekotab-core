@@ -1,0 +1,116 @@
+//------------------------------------------------------------------------------
+// Flexbox Utility Classes
+//------------------------------------------------------------------------------
+
+.flex-truncate {
+  // Ensures child elements don't blow width of parent; useful for pseudo tables
+  overflow: hidden;
+}
+
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-vertical-center {
+  align-items: center;
+  display: flex;
+}
+
+.flex-horizontal-center {
+  justify-content: center;
+  display: flex;
+}
+
+.flex-inline {
+  display: inline-flex;
+}
+
+.flex-justify {
+  justify-content: space-between;
+}
+
+.flex-stretch {
+  align-items: stretch;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-grow-2 {
+  flex-grow: 2;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-1-25 {
+  flex: 1.25; // Used for precise control on allocation UIs
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-4 {
+  flex: 4;
+}
+
+.flex-5 {
+  flex: 5;
+}
+
+.flex-6 {
+  flex: 6;
+}
+
+.flex-8 {
+  flex: 8;
+}
+
+.flex-10 {
+  flex: 10;
+}
+
+.flex-12 {
+  flex: 12;
+}
+
+.flex-16 {
+  flex: 16;
+}
+
+.flex-17 {
+  flex: 16;
+}
+
+.flex-18 {
+  flex: 18;
+}
+
+.flex-20 {
+  flex: 20;
+}
+
+.flex-24 {
+  flex: 24;
+}
+
+.flex-36 {
+  flex: 36;
+}
+
+.flex-52 {
+  flex: 52;
+}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n debate_tags static %}
+
+{% block page-title %}{% trans "Dashboard" %}{% endblock %}
+{% block head-title %}<span class="emoji">⏰</span> {% trans "Overview" %}{% endblock %}
+
+{% block sub-title %}
+  {% blocktrans trimmed with round=round.name status=round.get_draw_status_display.lower %}
+    current round: {{ round }}, status: {{ status }}
+  {% endblocktrans %}
+{% endblock %}
+
+{% block page-alerts %}
+  {% include 'errors/database_limit_warning.html' %}
+  {% include 'errors/legacy_sendgrid_warning.html' %}
+{% endblock %}
+
+{% block content %}
+
+  <div id="vueMount">
+    <tournament-overview-container :tournament-slug="tournamentSlug"
+                                   :initial-actions="initialActions"
+                                   :initial-ballots="initialBallots"
+                                   :initial-graph-data="initialGraphData"
+                                   :total-debates="totalDebates"
+                                   :permissions="permissions">
+    </tournament-overview-container>
+  </div>
+
+{% endblock content %}
+
+{% block js %}
+  <script>
+    window.vueData = {
+      tournamentSlug: '{{ tournament_slug }}',
+      totalDebates: {{ total_debates }},
+      initialActions: {{ initialActions|safe }},
+      initialBallots: {{ initialBallots|safe }},
+      initialGraphData: {{ initial_graph_data|safe }},
+      permissions: {{ overview_permissions|safe }}
+    }
+  </script>
+  {{ block.super }}
+{% endblock %}

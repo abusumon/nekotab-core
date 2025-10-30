@@ -1,0 +1,828 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:51\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /develop/tabbycat/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File-ID: 924\n"
+
+#: adjfeedback/admin.py
+msgid "Integer scales must have a minimum and maximum"
+msgstr "Tamsayı ölçeklerinin minimum ve maksimumu olmalıdır"
+
+#: adjfeedback/admin.py
+msgid "Maximum value must be greater than the minimum"
+msgstr ""
+
+#: adjfeedback/admin.py
+msgid "target"
+msgstr "hedef"
+
+#: adjfeedback/admin.py adjfeedback/models.py
+msgid "source adjudicator"
+msgstr "kaynak jüri"
+
+#: adjfeedback/admin.py adjfeedback/models.py
+msgid "source team"
+msgstr "kaynak ekip"
+
+#: adjfeedback/admin.py
+msgid "Source"
+msgstr "Kaynak"
+
+#: adjfeedback/admin.py
+#, python-format
+msgid "1 feedback submission was marked as confirmed. Note that this may have caused other feedback submissions to be marked as unconfirmed."
+msgid_plural "%(count)d feedback submissions were marked as confirmed. Note that this may have caused other feedback submissions to be marked as unconfirmed."
+msgstr[0] "1 geri bildirim gönderimi onaylandı olarak işaretlendi. Bunun, diğer geri bildirim gönderimlerinin onaylanmadı olarak işaretlenmesine neden olabileceğini unutmayın."
+msgstr[1] "%(count)d geri bildirim gönderimi onaylandı olarak işaretlendi. Bunun, diğer geri bildirim gönderimlerinin onaylanmadı olarak işaretlenmesine neden olabileceğini unutmayın."
+
+#: adjfeedback/admin.py
+#, python-format
+msgid "1 feedback submission was not marked as confirmed, probably because other feedback submissions that conflict with it were also marked as confirmed."
+msgid_plural "%(count)d feedback submissions were not marked as confirmed, probably because other feedback submissions that conflict with them were also marked as confirmed."
+msgstr[0] "1 geri bildirim gönderimi onaylandı olarak işaretlenmemiştir, çünkü muhtemelen onunla çakışan diğer geri bildirim gönderimleri de onaylandı olarak işaretlenmiştir."
+msgstr[1] "%(count)d geri bildirim gönderimi onaylandı olarak işaretlenmemiştir, çünkü muhtemelen onunla çakışan diğer geri bildirim gönderimleri de onaylandı olarak işaretlenmiştir."
+
+#: adjfeedback/admin.py
+#, python-format
+msgid "1 feedback submission was marked as unconfirmed."
+msgid_plural "%(count)d feedback submissions were marked as unconfirmed."
+msgstr[0] "1 geri bildirim gönderimi onaylanmadı olarak işaretlendi."
+msgstr[1] "%(count)d geri bildirim gönderimi onaylanmadı olarak işaretlendi."
+
+#: adjfeedback/admin.py
+#, python-format
+msgid "1 feedback submission is now ignored."
+msgid_plural "%(count)d feedback submissions are now ignored."
+msgstr[0] "1 geri bildirim artık gizli."
+msgstr[1] "%(count)d geri bildirim artık gizli."
+
+#: adjfeedback/admin.py
+#, python-format
+msgid "1 feedback submission is now recognized."
+msgid_plural "%(count)d feedback submissions are now recognized."
+msgstr[0] "1 geri bildirim artık tanınıyor."
+msgstr[1] "%(count)d geri bildirim artık tanınıyor."
+
+#: adjfeedback/apps.py
+msgid "Adjudicator Feedback"
+msgstr "Jüri Geri Bildirimi"
+
+#: adjfeedback/forms.py
+msgid "chair"
+msgstr "başkan"
+
+#: adjfeedback/forms.py
+msgid "solo"
+msgstr "Solo"
+
+#: adjfeedback/forms.py
+msgid "panellist"
+msgstr "panelist"
+
+#: adjfeedback/forms.py
+msgid "trainee"
+msgstr "acemi"
+
+#. Translators: Please leave this blank, it should be left for the base Django translations.
+#: adjfeedback/forms.py
+msgid "This field is required."
+msgstr ""
+
+#: adjfeedback/forms.py
+#, python-format
+msgid "Overall score (%(min)d=worst; %(max)d=best)*"
+msgstr "Genel puan (%(min)d=worst; %(max)d=best)*"
+
+#: adjfeedback/forms.py
+msgid "Ignored"
+msgstr "Gizli"
+
+#. Translators: e.g. "Megan Pearson (chair)", with adjpos="chair"
+#: adjfeedback/forms.py
+msgid "Submitted - "
+msgstr "-  Gönderildi"
+
+#. Translators: e.g. "Megan Pearson (panellist)", with round="Round 3", adjpos="panellist"
+#: adjfeedback/forms.py
+#, python-format
+msgid "%(name)s (%(adjpos)s)"
+msgstr "%(name)s (%(adjpos)s)"
+
+#: adjfeedback/forms.py
+msgid "-- Adjudicators --"
+msgstr "-- Jüriler --"
+
+#: adjfeedback/forms.py
+msgid "Adjudicator this feedback is about"
+msgstr "Hakem bu geri bildirim şunu hakkında:"
+
+#: adjfeedback/forms.py
+#, python-format
+msgid "%(name)s"
+msgstr ""
+
+#: adjfeedback/forms.py
+#, python-format
+msgid "%(name)s (chair gave oral)"
+msgstr "%(name)s (başkan karar sebebi açıkladı)"
+
+#: adjfeedback/forms.py
+#, python-format
+msgid "%(name)s (panellist gave oral as chair rolled)"
+msgstr "%(name)s (panelist başkanın verdiği rolle karar sebebi açıkladı)"
+
+#: adjfeedback/forms.py
+#, python-format
+msgid "This line (for %(adjudicator)s) didn't have a score"
+msgstr "Bu satırın (%(adjudicator)s için) bir puanı yoktu"
+
+#: adjfeedback/forms.py
+#, python-format
+msgid "This line (for %(adjudicator)s) had too many columns"
+msgstr "Bu satırda (%(adjudicator)s için) çok fazla sütun vardı"
+
+#: adjfeedback/forms.py
+#, python-format
+msgid "There are several adjudicators called \"%(adjudicator)s\", so you can't use the bulk importer to update their score. Please do so in the Feedback Overview page instead."
+msgstr "\"%(adjudicator)s\" adında birkaç jüri var, bu nedenle puanlarını güncellemek için toplu dışa aktarım kullanamazsınız. Lütfen bunun yerine Geri Bildirim Genel Bakış sayfasını kullanın."
+
+#: adjfeedback/forms.py
+#, python-format
+msgid "There is no adjudicator in this tournament with the name \"%(adjudicator)s\""
+msgstr "Bu turnuvada \"%(adjudicator)s\" isimli bir jüri bulunmamaktadır."
+
+#: adjfeedback/forms.py
+#, python-format
+msgid "The score for %(adjudicator)s, \"%(score)s\", isn't a number"
+msgstr "%(adjudicator)s'un puanı \"%(score)s\" bir sayı değildir."
+
+#: adjfeedback/forms.py
+msgid "There were no scores to import."
+msgstr "İçe aktarılacak puan yoktu."
+
+#: adjfeedback/models.py
+msgid "adjudicator"
+msgstr "jüri"
+
+#: adjfeedback/models.py
+msgid "round"
+msgstr "tur"
+
+#: adjfeedback/models.py
+msgid "score"
+msgstr "Puan"
+
+#: adjfeedback/models.py
+msgid "timestamp"
+msgstr "Zaman damgası"
+
+#: adjfeedback/models.py
+msgid "adjudicator base score history"
+msgstr "hakem temel puan geçmişi"
+
+#: adjfeedback/models.py
+msgid "adjudicator base score histories"
+msgstr "hakem taban puan geçmişleri"
+
+#: adjfeedback/models.py
+msgid "reference"
+msgstr "referans"
+
+#: adjfeedback/models.py
+msgid "Code-compatible reference, e.g., \"agree_with_decision\""
+msgstr "Kod uyumlu referanslar, örneğin \"agree_with_decision\""
+
+#: adjfeedback/models.py
+msgid "from adjudicator"
+msgstr "jüriden"
+
+#: adjfeedback/models.py
+msgid "Adjudicators should be asked this question (about other adjudicators)"
+msgstr "Bu soru jürilere sorulmalıdır (diğer jüriler hakkında)"
+
+#: adjfeedback/models.py
+msgid "from team"
+msgstr "takımdan"
+
+#: adjfeedback/models.py
+msgid "Teams should be asked this question"
+msgstr "Bu soru takımlara sorulmalıdır"
+
+#: adjfeedback/models.py
+msgid "adjudicator feedback question"
+msgstr "jüri geri bildirim sorusu"
+
+#: adjfeedback/models.py
+msgid "adjudicator feedback questions"
+msgstr "jüri geri bildirim soruları"
+
+#: adjfeedback/models.py adjfeedback/views.py
+msgid "ignored"
+msgstr "gizli"
+
+#: adjfeedback/models.py
+msgid "Whether the feedback should affect the adjudicator's score"
+msgstr "Geri bildirimin jürinin puanını etkileyip etkilemeyeceği"
+
+#: adjfeedback/models.py
+msgid "adjudicator feedback"
+msgstr "jüri geri bildirimi"
+
+#: adjfeedback/models.py
+msgid "adjudicator feedbacks"
+msgstr "jüri geri bildirimleri"
+
+#: adjfeedback/models.py
+msgid "Either the source adjudicator or source team wasn't specified."
+msgstr "Kaynak jüri veya kaynak takım belirtilmedi."
+
+#: adjfeedback/models.py
+msgid "There was both a source adjudicator and a source team."
+msgstr "Hem bir kaynak jüri hem de bir kaynak takımı vardı."
+
+#: adjfeedback/models.py
+msgid "There is no adjudicator specified as the target for this feedback. Perhaps they were deleted?"
+msgstr "Bu geri bildirim için hedef olarak belirlenmiş bir jüri yok. Belki silindiler?"
+
+#: adjfeedback/models.py
+msgid "Adjudicator did not see this debate."
+msgstr "Jüri bu maçı görmedi."
+
+#: adjfeedback/tables.py
+msgid "Whether the adj is marked as breaking (click to mark)"
+msgstr "Adj'nin break olarak işaretlenip işaretlenmediği (işaretlemek için tıklayın)"
+
+#: adjfeedback/tables.py
+msgid "N/A"
+msgstr "YOK"
+
+#: adjfeedback/tables.py
+msgid "Current weighted score"
+msgstr "Geçerli ağırlıklı puan"
+
+#: adjfeedback/tables.py
+msgid "This adjudicator's current rating."
+msgstr "Bu jürinin mevcut puanı"
+
+#: adjfeedback/tables.py
+msgid "Base score result"
+msgstr "Temel puan sonucu"
+
+#: adjfeedback/tables.py
+msgid "Click to edit base score"
+msgstr "Temel puanı düzenlemek için tıklayın"
+
+#: adjfeedback/tables.py
+msgid "Assigned base score"
+msgstr "Atanan temel puan"
+
+#: adjfeedback/tables.py
+msgid "Feedback average"
+msgstr ""
+
+#: adjfeedback/tables.py
+msgid "This adjudicator's feedback average"
+msgstr ""
+
+#: adjfeedback/tables.py
+msgid "The current difference between an adjudicator's base score and current score"
+msgstr "Bir jürinin temel puanı ile mevcut puanı arasındaki mevcut fark"
+
+#: adjfeedback/tables.py
+msgid "The difference between this adjudicator's base score and current score"
+msgstr "Bu jürinin taban puanı ile mevcut puanı arasındaki fark"
+
+#: adjfeedback/tables.py
+msgid "The standard deviation of this adjudicator's current scores; with larger numbers meaning less consistent feedback scores."
+msgstr "Bu jürinin mevcut puanlarının standart sapması; daha büyük sayılar daha az tutarlı geri bildirim puanları anlamına gelir."
+
+#: adjfeedback/tables.py
+msgid "The standard deviation of this adjudicator's current scores"
+msgstr "Bu jürinin mevcut puanlarının standart sapması"
+
+#: adjfeedback/tables.py
+msgid "Feedback Per Round"
+msgstr "Tur Başı Geri Bildirim"
+
+#: adjfeedback/tables.py
+msgid "Hover over the data points to show the average score received in that round"
+msgstr "Turda alınan ortalama puanı göstermek için fareyi veri noktalarının üzerine getirin"
+
+#: adjfeedback/tables.py
+#, python-format
+msgid "View %(count)s<br>feedback"
+msgid_plural "View %(count)s<br>feedbacks"
+msgstr[0] "%(count)s<br>geri bildirimi görüntüleyin"
+msgstr[1] "%(count)s<br>geri bildirimlerini görüntüleyin"
+
+#: adjfeedback/tables.py
+msgid "Unsubmitted feedback ballots"
+msgstr "Gönderilmemiş geri bildirim ballotları"
+
+#: adjfeedback/tables.py
+msgid "View Missing Feedback"
+msgstr "Eksik Geri Bildirim Görüntüle"
+
+#: adjfeedback/templates/add_feedback.html
+msgid "Who is the feedback from?"
+msgstr "Geri bildirim kimden geliyor?"
+
+#: adjfeedback/templates/add_feedback.html
+#: adjfeedback/templates/enter_feedback.html
+msgid "Enter Feedback"
+msgstr "Geri Bildirim Girin"
+
+#: adjfeedback/templates/enter_feedback.html
+#: adjfeedback/templates/public_add_feedback.html
+#, python-format
+msgid "Add Feedback from %(name)s"
+msgstr "%(name)s'den geri bildirim ekle"
+
+#: adjfeedback/templates/enter_feedback.html
+#: adjfeedback/templates/feedback_base.html
+msgid "Add Feedback"
+msgstr "Geri bildirim ekle"
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "There are no feedback options because no rounds have been released to the public yet. Check back when they have!"
+msgstr "Geri bildirim seçeneği yoktur, çünkü henüz açık bir tur yayınlanmamıştır. Yayınlanınca tekrar kontrol edin!"
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "This tournament expects you to submit feedback <strong>only on the adjudicator who delivered the adjudication</strong>. Do not submit feedback on other adjudicators."
+msgstr "Bu turnuvaya <strong>yalnızca kararı veren jüri hakkında<strong> geri bildirim göndermeniz gerekiyor. Diğer jüriler hakkında geri bildirim göndermeyin."
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "This tournament expects you to submit feedback on all of the adjudicators on the panel (including trainees)."
+msgstr "Bu turnuvada paneldeki tüm jürilere (acemiler dahil) geri bildirim göndermeniz gerekiyor."
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "This tournament doesn't expect you to submit feedback on any of the adjudicators on the panel (including trainees)."
+msgstr ""
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "There are some problems with this feedback submission. Please review and correct them."
+msgstr "Bu geri bildirimle ilgili bazı sorunlar vardır. Lütfen bunları gözden geçirin ve düzeltin."
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "Save Feedback"
+msgstr ""
+
+#: adjfeedback/templates/enter_feedback.html
+msgid "When submitting this form your IP address will be stored for logging purposes."
+msgstr "Bu formu gönderirken IP adresiniz kayıt amaçlı saklanacaktır."
+
+#: adjfeedback/templates/feedback_base.html
+msgid "Overview"
+msgstr "Genel bakış"
+
+#: adjfeedback/templates/feedback_base.html
+msgid "Latest"
+msgstr "Sonuncu"
+
+#: adjfeedback/templates/feedback_base.html
+msgid "Unsubmitted"
+msgstr "Gönderilmemiş"
+
+#: adjfeedback/templates/feedback_base.html
+msgid "Important"
+msgstr "Önemli"
+
+#: adjfeedback/templates/feedback_base.html
+msgid "Comments"
+msgstr "Yorumlar"
+
+#: adjfeedback/templates/feedback_base.html
+msgid "By Source"
+msgstr "Kaynağa Göre"
+
+#: adjfeedback/templates/feedback_base.html
+msgid "By Target"
+msgstr "Hedefe Göre"
+
+#: adjfeedback/templates/feedback_base.html
+msgid "Bulk Update Scores"
+msgstr "Toplu Güncelleme Puanları"
+
+#: adjfeedback/templates/feedback_by_source.html
+#, python-format
+msgid "Feedback %(source_type)s %(source_name)s"
+msgstr "Geri bildirim %(source_type)s %(source_name)s"
+
+#: adjfeedback/templates/feedback_by_source.html
+#, python-format
+msgid "%(source_name)s hasn't submitted any feedback yet."
+msgstr "%(source_name)s henüz herhangi bir geri bildirim göndermedi."
+
+#: adjfeedback/templates/feedback_by_source.html
+#, python-format
+msgid "%(source_name)s hasn't received any feedback yet."
+msgstr "%(source_name)s henüz herhangi bir geri bildirim almadı."
+
+#: adjfeedback/templates/feedback_card.html
+msgid "This is most likely because the team or adjudicator who submitted this feedback has submitted several times on the same person; or because a team has submitted feedback on multiple panellists (rather than just the orallist)."
+msgstr "Bunun nedeni büyük olasılıkla bu geri bildirimi gönderen ekibin veya jürinin aynı kişiye birkaç kez gönderimde bulunmuş olması veya bir ekibin sadece karar açıklayan jüri dışındaki panelistlere de geri bildirim göndermesi."
+
+#: adjfeedback/templates/feedback_card.html
+msgid "Unconfirmed; will not affect this adjudicator's score."
+msgstr "Doğrulanmamış; hakemin puanını etkilemez."
+
+#: adjfeedback/templates/feedback_card.html
+msgid "The feedback is counted for the adjudicator, but is not taken into account when calculating scores."
+msgstr "Bu geri bildirim hakem için sayılır, ancak puanlar hesaplanırken dikkate alınmaz."
+
+#: adjfeedback/templates/feedback_card.html
+msgid "Ignored; will not affect this adjudicator's score."
+msgstr "Gizli; bu hakemin puanını etkilemeyecektir."
+
+#: adjfeedback/templates/feedback_card.html
+msgid "This feedback is submitted on an adjudicator but it looks like they have been since been removed from the debate. You should probably go to the Edit Database area and delete this feedback."
+msgstr "Bu geri bildirim bir jüriye verilmiş ancak jüri maçtan çıkartılmış. Veritabanını Düzenle alanına gitmeli ve bu geri bildirimi silmelisiniz."
+
+#: adjfeedback/templates/feedback_card.html
+msgid "The score given in this piece of feedback."
+msgstr "Bu geri bildirimde verilen puan."
+
+#: adjfeedback/templates/feedback_card.html
+#, python-format
+msgid "%(round)s %(score)s"
+msgstr "%(round)s %(score)s"
+
+#: adjfeedback/templates/feedback_card.html
+#, python-format
+msgid "On %(adjudicator)s"
+msgstr "%(adjudicator)s jürisi hakkında"
+
+#: adjfeedback/templates/feedback_card.html
+#, python-format
+msgid "Received as %(as_type)s"
+msgstr ""
+
+#: adjfeedback/templates/feedback_card.html
+#, python-format
+msgid "Base %(base)s"
+msgstr "Taban %(base)s"
+
+#: adjfeedback/templates/feedback_card.html
+#, python-format
+msgid "From %(source)s <span class=\"text-secondary small\">(their %(relationship)s)</span>"
+msgstr "%(source)s <span class=\"text-secondary small\">(their %(relationship)s)</span>'den"
+
+#: adjfeedback/templates/feedback_card.html
+#, python-format
+msgid "From %(source)s <span class=\"text-secondary small\">(%(relationship)s from %(side)s)</span>"
+msgstr "%(source)s <span class=\"text-secondary small\">(%(relationship)s from %(side)s)</span>'den"
+
+#: adjfeedback/templates/feedback_card.html
+msgid "From unknown"
+msgstr "Bilinmeyenden"
+
+#: adjfeedback/templates/feedback_card.html
+#, python-format
+msgid "%(time)s"
+msgstr ""
+
+#: adjfeedback/templates/feedback_card.html
+msgid "Unconfirmed feedback is not counted as having been submitted and does not affect this adjudicator's score."
+msgstr "Onaylanmamış geri bildirimler gönderilmemiş sayılır ve jürinin puanını etkilemez."
+
+#: adjfeedback/templates/feedback_card.html
+msgid "Un-confirm"
+msgstr "Onayı kaldır"
+
+#: adjfeedback/templates/feedback_card.html
+msgid "Confirm"
+msgstr "Onayla"
+
+#: adjfeedback/templates/feedback_card.html
+msgid "Ignored feedback is counted as having been submitted, but does not affect this adjudicator's score."
+msgstr "Gizli geri bildirimler gönderilmiş sayılır, ancak jürinin puanını etkilemez."
+
+#: adjfeedback/templates/feedback_card.html
+msgid "Un-ignore"
+msgstr "Gizlemeyi Geri Al"
+
+#: adjfeedback/templates/feedback_card.html
+msgid "Ignore"
+msgstr "Gizle"
+
+#: adjfeedback/templates/feedback_cards_list.html
+msgid "No feedback has been submitted yet"
+msgstr "Henüz geri bildirim gönderilmedi"
+
+#: adjfeedback/templates/feedback_overview.html
+#, python-format
+msgid "<span id=\"c_breaking\">%(c_breaking)s</span> marked as breaking"
+msgstr "<span id=\"c_breaking\">%(c_breaking)s</span> break oldu olarak işaretlendi"
+
+#: adjfeedback/templates/feedback_overview.html
+#, python-format
+msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> allows and expects only chairs to submit feedback (on their panellists and trainees)."
+msgstr "Mevcut  <a href=\"%(option_url)s\" class=\"alert-link\">Geri Bildirim Ayarları</a> yalnızca başkanların (panelistleri ve acemileri hakkında) geri bildirim göndermesine izin verir."
+
+#: adjfeedback/templates/feedback_overview.html
+#, python-format
+msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> allows and expects both chairs and panellists to submit feedback on each other, and also chairs to submit feedback on trainees."
+msgstr "Mevcut <a href=\"%(option_url)s\" class=\"alert-link\">Geri Bildirim Ayarları</a> hem başkanların hem de panelistlerin birbirleri hakkında ve başkanların acemilere geri bildirim göndermelerine izin verir."
+
+#: adjfeedback/templates/feedback_overview.html
+#, python-format
+msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> allows and expects both panellists and trainees to submit feedback on chairs, and chairs to submit feedback on every other member of the panel (including trainees)."
+msgstr "Mevcut  <a href=\"%(option_url)s\" class=\"alert-link\">Geri Bildirim Ayarları</a> hem panelistlerin hem de acemilerin başkanlara ve başkanların panelin diğer tüm üyelerine (acemiler dahil) geri bildirim göndermelerine izin verir."
+
+#: adjfeedback/templates/feedback_overview.html
+#, python-format
+msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> allows and expects all adjudicators (including trainees) to submit feedback on every other member of the panel (including trainees)."
+msgstr "Mevcut <a href=\"%(option_url)s\" class=\"alert-link\">Geri Bildirim Ayarları</a>, tüm jürilerin (acemiler dahil) panelin diğer tüm üyelerine (acemiler dahil) geri bildirim göndermesine izin verir."
+
+#: adjfeedback/templates/feedback_overview.html
+#, python-format
+msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> disallows adjudicators to submit feedback on other members of the panel (including trainees)."
+msgstr ""
+
+#: adjfeedback/templates/feedback_overview.html
+#, python-format
+msgid "There is <strong>%(nadjs_outside_range)s adjudicator</strong> with a score <strong>outside the permitted range</strong> of adjudicator scores, which is currently set as %(min_score)s to %(max_score)s. This can cause adjudicator auto-allocation to behave in unexpected ways. If you'd like to use a wider score range, you can configure this in <a href=\"%(feedback_settings_url)s\" class=\"alert-link\"> feedback settings</a>."
+msgid_plural "There are <strong>%(nadjs_outside_range)s adjudicators</strong> with scores <strong>outside the permitted range</strong> of adjudicator scores, which is currently set as %(min_score)s to %(max_score)s. This can cause adjudicator auto-allocation to behave in unexpected ways. If you'd like to use a wider score range, you can configure this in <a href=\"%(feedback_settings_url)s\" class=\"alert-link\"> feedback settings</a>."
+msgstr[0] "Şuan <strong>%(nadjs_outside_range)s jüri</strong> jüri puanlarının <strong>izin verilen aralığı dışında.</strong> Şuan %(min_score)s ile %(max_score)s arası. Bu jüri otomatik tahsisinin çalışmasını etkileyebilir. Daha geniş bir puan aralığı ayarlamak için <a href=\"%(feedback_settings_url)s\" class=\"alert-link\"> geri bildirim ayarları</a> kullanabilirsiniz."
+msgstr[1] "Şuan <strong>%(nadjs_outside_range)s jüri</strong> jüri puanlarının <strong>izin verilen aralığı dışında.</strong> Şuan %(min_score)s ile %(max_score)s arası. Bu jüri otomatik tahsisinin çalışmasını etkileyebilir. Daha geniş bir puan aralığı ayarlamak için <a href=\"%(feedback_settings_url)s\" class=\"alert-link\"> geri bildirim ayarları</a> kullanabilirsiniz."
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "%(count)s adjudicator currently has a score equal to or above %(min)s and below %(max)s. That is %(percent)s%% of the adjudicator pool."
+msgid_plural "%(count)s adjudicators currently have a score equal to or above %(min)s and below %(max)s. That is %(percent)s%% of the adjudicator pool."
+msgstr[0] "%(count)s jürisi şu anda %(min)s puana eşit veya üstünde ve %(max)s puanın altında bir puana sahiptir. Bu, jüri havuzunun %(percent)s%%'sidir."
+msgstr[1] "%(count)s jürileri şu anda %(min)s puana eşit veya üstünde ve %(max)s puanın altında bir puana sahiptir. Bu, jüriler havuzunun %(percent)s%%'sidir."
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "Score Distributions (range is %(min_score)s–%(max_score)s)"
+msgstr "Puan Dağılımları (range is %(min_score)s–%(max_score)s)"
+
+#: adjfeedback/templates/overview_breakdowns.html
+msgid "Base"
+msgstr "Temel"
+
+#: adjfeedback/templates/overview_breakdowns.html
+msgid "Feedback"
+msgstr "Geri bildirim"
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "The proportion of an adjudicator's score determined by feedback vs the test is set on a per-round basis. Click this link and edit the 'Feedback weight' field to modify this ratio for %(round)s."
+msgstr "Jürinin geri bildirimle ve testle belirlenen puanlarının oranı tur başına belirlenir. Bu bağlantıyı tıklayın ve %(round)s için bu oranı değiştirmek için \"Geri bildirim ağırlığı\" alanını düzenleyin."
+
+#: adjfeedback/templates/overview_breakdowns.html
+msgid "Score Ratio"
+msgstr "Puan Oranı"
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "There is %(c_chairs)s debate per round, so there needs to be %(c_chairs)s chair."
+msgid_plural "There are %(c_chairs)s debates per round, so there need to be %(c_chairs)s chairs."
+msgstr[0] "Tur başına %(c_chairs)s maç var, bu yüzden %(c_chairs)s başkan gerekli."
+msgstr[1] "Tur başına %(c_chairs)s maç var, bu yüzden %(c_chairs)s başkan gerekli."
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "There is %(c_debates)s debate per round, but only %(c_chairs)s above the minimum voting score."
+msgid_plural "There are %(c_debates)s debates per round, but only %(c_chairs)s above the minimum voting score."
+msgstr[0] "Tur başına %(c_debates)s maç var, ancak minimum oy puanının üzerinde sadece %(c_chairs)s var."
+msgstr[1] "Tur başına %(c_debates)s maç var, ancak minimum oy puanının üzerinde sadece %(c_chairs)s var."
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "%(c_chairs)s chair"
+msgid_plural "%(c_chairs)s chairs"
+msgstr[0] "%(c_chairs)s başkan"
+msgstr[1] "%(c_chairs)s başkanlar"
+
+#: adjfeedback/templates/overview_breakdowns.html
+msgid "All adjudicators with a score high enough to vote, but who aren't allocated as chairs, are allocated as panellists by the auto-allocator."
+msgstr "Oy kullanacak kadar yüksek bir puana sahip, ancak sandalye olarak tahsis edilmeyen tüm jüriler, otomatik tahsis tarafından panelist olarak tahsis edilir."
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "%(c_panellists)s panellist"
+msgid_plural "%(c_panellists)s panellists"
+msgstr[0] "%(c_panellists)s panelist"
+msgstr[1] "%(c_panellists)s panelistler"
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "Adjudicators are allocated as trainees by the auto-allocator if their score is less than the 'minimum voting score' (currently %(min_voting)s) set in this tournament's Draw Rules configuration."
+msgstr "Jüriler puanlarının bu turnuvanın Kura Kuralları yapılandırmasında belirlenen 'minimum oylama puanından' (%(min_voting)s) az olması durumunda otomatik tahsis tarafından acemi olarak tahsis edilir."
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "%(c_trainees)s trainee"
+msgid_plural "%(c_trainees)s trainees"
+msgstr[0] "%(c_trainees)s acemi"
+msgstr[1] "%(c_trainees)s acemiler"
+
+#: adjfeedback/templates/overview_breakdowns.html
+#, python-format
+msgid "Auto-Allocate Distributions (%(min_voting_score)s+ to vote)"
+msgstr "Otomatik Tahsis Dağıtımları (oy vermek için %(min_voting_score)s+)"
+
+#: adjfeedback/templates/overview_modals.html
+msgid "Change Base Score"
+msgstr "Temel Puan Değiştir"
+
+#: adjfeedback/templates/overview_modals.html
+#, python-format
+msgid "The score range for adjudicators is between <strong>%(pref.adj_min_score)s</strong> and <strong>%(pref.adj_max_score)s</strong>. Decimals are permitted. This can be configured in <a href=\"%(feedback_options)s\">Feedback settings</a>."
+msgstr "Jüri puan aralığı <strong>%(pref.adj_min_score)s</strong> ve <strong>%(pref.adj_max_score)s</strong> arasındadır. Ondalık sayılara izin verilir. Bu, <a href=\"%(feedback_options)s\">Geri Bildirim Ayarları</a> ile değiştirilebilir."
+
+#: adjfeedback/templates/overview_modals.html
+#, python-format
+msgid "The minimum score require to be allocated as a panellist or chair (when using the auto-allocator) is <strong>%(min_voting_score)s</strong>. This can be configured in <a href=\"%(draw_rules)s\">Draw settings</a>."
+msgstr "Panelist veya başkan olarak tahsis edilmek içiin gereken minimum puan (otomatik tahsis kullanırken)  <strong>%(min_voting_score)s</strong>. Bu, <a href=\"%(draw_rules)s\">Kura Ayarları</a> ile değiştirilebilir."
+
+#: adjfeedback/templates/overview_modals.html
+msgid "Base score"
+msgstr "temel puan"
+
+#: adjfeedback/templates/overview_modals.html
+msgid "Save Base Score"
+msgstr "temel puan kaydet"
+
+#: adjfeedback/templates/public_add_feedback.html
+msgid "Who are you?"
+msgstr "Kimsin?"
+
+#: adjfeedback/templates/public_add_feedback.html
+msgid "click your name or your team on this list"
+msgstr "bu listede adınıza veya takımınıza tıklayın"
+
+#: adjfeedback/templates/update_adjudicator_scores.html
+msgctxt "page title"
+msgid "Update Adjudicator Scores"
+msgstr "Jüri Puanlarını Güncelle"
+
+#: adjfeedback/templates/update_adjudicator_scores.html
+#, python-format
+msgid "There aren't any adjudicators in this tournament, so you can't update any scores. You might want to <a href=\"%(import_url)s\" class=\"alert-link\">import some adjudicators</a> first."
+msgstr "Bu turnuvada herhangi bir jüri yok, bu yüzden puan güncelleyemezsiniz. Önce <a href=\"%(import_url)s\" class=\"alert-link\">jüri aktarmak</a> isteyebilirsiniz."
+
+#: adjfeedback/templates/update_adjudicator_scores.html
+msgid "Paste a list of adjudicators' names and their new scores, in the format: <code>adjudicator,score</code>. For example:"
+msgstr "Jüri adlarının ve yeni puanlarının bir listesini şu biçimde yapıştırın: <code>jüri,puan</code>. Mesela:"
+
+#: adjfeedback/templates/update_adjudicator_scores.html
+msgid "The adjudicators' names must match their names in the tab system exactly."
+msgstr "Jürilerin adları, tab sistemindeki adlarıyla tam olarak eşleşmelidir."
+
+#: adjfeedback/templates/update_adjudicator_scores.html
+msgid "There are some problems with the data on this form:"
+msgstr "Bu formdaki verilerle ilgili bazı sorunlar var:"
+
+#: adjfeedback/templates/update_adjudicator_scores.html
+msgid "Submit"
+msgstr "Gönder"
+
+#: adjfeedback/views.py
+msgid "Feedback Overview"
+msgstr "Geri bildirim genel bakış"
+
+#: adjfeedback/views.py
+msgid "Find Feedback on Adjudicator"
+msgstr "Jüri hakkında geri bildirim ara"
+
+#: adjfeedback/views.py
+#, python-format
+msgid "%(count)d feedback"
+msgid_plural "%(count)d feedbacks"
+msgstr[0] "%(count)d geri bildirim"
+msgstr[1] "%(count)d geri bildirimler"
+
+#: adjfeedback/views.py
+msgid "Feedbacks"
+msgstr "Geri Bildirimler"
+
+#: adjfeedback/views.py
+msgid "Find Feedback"
+msgstr "Geri Bildirim Bul"
+
+#: adjfeedback/views.py
+msgid "From Teams"
+msgstr "Ekiplerden"
+
+#: adjfeedback/views.py
+msgid "From Adjudicators"
+msgstr "Jürilerden"
+
+#: adjfeedback/views.py
+msgid "Latest Feedback"
+msgstr "Son Geri Bildirim"
+
+#: adjfeedback/views.py
+msgid "(30 most recent)"
+msgstr "(Son 30)"
+
+#: adjfeedback/views.py
+msgid "Only Comments"
+msgstr "Sadece Yorumlar"
+
+#: adjfeedback/views.py
+msgid "(250 most recent)"
+msgstr "(Son 250)"
+
+#: adjfeedback/views.py
+msgid "Important Feedback"
+msgstr "Önemli Geri Bildirim"
+
+#: adjfeedback/views.py
+msgid "(rating was much higher/lower than expected)"
+msgstr "(derecelendirme beklenenden çok daha yüksek/düşük)"
+
+#: adjfeedback/views.py
+msgid "A Team"
+msgstr "Bir Takım"
+
+#: adjfeedback/views.py
+msgid "Team"
+msgstr "Takım"
+
+#: adjfeedback/views.py
+msgid "Institution"
+msgstr "Kurum"
+
+#: adjfeedback/views.py
+msgid "An Adjudicator"
+msgstr "Bir jüri"
+
+#: adjfeedback/views.py
+msgid "Adjudicator"
+msgstr "Jüri"
+
+#: adjfeedback/views.py
+#, python-format
+msgid "Feedback from %(source)s on %(target)s added."
+msgstr "%(target)s için %(source)s tarafından geri bildirim eklendi."
+
+#: adjfeedback/views.py
+#, python-format
+msgid "Thanks, %(source)s! Your feedback on %(target)s has been recorded."
+msgstr "Teşekkürler, %(source)s! %(target)s hakkındaki geri bildiriminiz kaydedildi."
+
+#: adjfeedback/views.py
+#, python-format
+msgid "Whoops! I didn't recognise that adjudicator: %(adjudicator)s"
+msgstr "Tanınmayan juri: %(adjudicator)s"
+
+#: adjfeedback/views.py
+msgid "Whoops! The value isn't a valid base score."
+msgstr "Değer geçerli bir temel puan değil."
+
+#: adjfeedback/views.py
+msgid "Feedback Progress"
+msgstr "Geri Bildirim Durumu"
+
+#: adjfeedback/views.py
+#, python-format
+msgid "%(nmissing)d missing feedback submission (%(fulfilled).1f%% returned)"
+msgid_plural "%(nmissing)d missing feedback submissions (%(fulfilled).1f%% returned)"
+msgstr[0] "%(nmissing)d eksik geri bildirim gönderimi (%(fulfilled).1f%% returned)"
+msgstr[1] "%(nmissing)d eksik geri bildirim gönderimleri (%(fulfilled).1f%% returned)"
+
+#: adjfeedback/views.py
+#, python-format
+msgid "Feedback for %(adjudicator)s from %(source)s is now %(result)s."
+msgstr "%(adjudicator)s için %(source)s'den gelen geri bildirim artık %(result)s şeklindedir."
+
+#: adjfeedback/views.py
+msgid "confirmed"
+msgstr "onaylanmış"
+
+#: adjfeedback/views.py
+msgid "un-confirmed"
+msgstr "onaylanmamış"
+
+#: adjfeedback/views.py
+msgid "un-ignored"
+msgstr "gizlenmemiş"
+
+#: adjfeedback/views.py
+#, python-format
+msgid "Updated base score for %(count)d adjudicator."
+msgid_plural "Updated base scores for %(count)d adjudicators."
+msgstr[0] "%(count)d jürisi için temel puan güncellendi."
+msgstr[1] "%(count)d jürileri için temel puanlar güncellendi."
+
+#: adjfeedback/views.py
+msgid "Custom Feedback Questions"
+msgstr ""
+

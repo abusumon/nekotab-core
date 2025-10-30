@@ -1,0 +1,32 @@
+{% extends "feedback_base.html" %}
+{% load debate_tags i18n %}
+
+{% block head-title %}{% blocktrans trimmed %}Feedback {{ source_type }} {{ source_name }}{% endblocktrans %}{% endblock %}
+{% block page-title %}{% blocktrans trimmed %}Feedback {{ source_type }} {{ source_name }}{% endblocktrans %}{% endblock %}
+
+{% block content %}
+
+  {% if feedbacks.count == 0 %}
+
+    {% if source_type == 'from' %}
+      {% blocktrans trimmed asvar message %}
+        {{ source_name }} hasn't submitted any feedback yet.
+      {% endblocktrans %}
+    {% endif %}
+    {% if source_type == 'on' %}
+      {% blocktrans trimmed asvar message %}
+        {{ source_name }} hasn't received any feedback yet.
+      {% endblocktrans %}
+    {% endif %}
+    {% include "components/alert.html" with type="info" %}
+
+  {% endif %}
+
+  <div class="card-columns">
+
+    {% for feedback in feedbacks %}
+      {% include 'feedback_card.html' %}
+    {% endfor %}
+
+  </div>
+{% endblock content %}

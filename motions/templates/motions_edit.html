@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load add_field_css debate_tags i18n %}
+
+{% block head-title %}{% blocktrans trimmed count nmotions=formset|length %}
+  Edit Motion
+{% plural %}
+  Edit Motions
+{% endblocktrans %}{% endblock %}
+
+{% block page-title %}{% blocktrans trimmed count nmotions=formset|length %}
+  Edit Motion
+{% plural %}
+  Edit Motions
+{% endblocktrans %}{% endblock %}
+
+{% block page-subnav-sections %}
+  <a class="btn btn-outline-primary " href="{% roundurl 'draw-display' %}">
+    <i data-feather="chevron-left"></i> {% trans "Display Draw" %}
+  </a>
+
+  {% if pref.enable_motion_reuse %}
+    <div class="btn-group">
+      {% if round.prev %}
+        <form action="{% roundurl 'motions-previous' %}" method="POST">
+          {% csrf_token %}
+          {% if round.roundmotion_set.all.length == 0 %}
+            <button class="btn btn-outline-primary" id="repeatMotions" type="submit">
+          {% else %}
+            <button class="btn btn-outline-primary" id="repeatMotions" type="submit" data-toggle="tooltip" title="{% trans "This will replace all existing motions for this round. The motions themselves will still be in the database." %}">
+          {% endif %}
+            {% trans "Reuse Motions from Last Round" %}
+          </button>
+        </form>
+      {% endif %}
+
+      <a href="{% roundurl 'motions-copy' %}" class="btn btn-outline-primary">
+        {% trans "Use Existing Motions" %}
+      </a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+  {% if formset.errors %}
+    {% include "components/form-errors.html" with errors=formset.non_form_errors %}
+  {% endif %}
+
+  {% if round.motions_released %}
+    {% blocktranslate trimmed count nmotions=formset|length asvar p1 %}
+      The motion for this round is currently publicly displayed because it was released. Any changes made here will be publicly visible as well as soon as they are saved.
+    {% plural %}
+      The motions for this round are currently publicly displayed because they were released. Any changes made here will be publicly visible as well as soon as they are saved.
+    {% endblocktranslate %}
+    {% include "components/explainer-card.html" with type="warning" %}
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <div class="card-deck pr-3 mb-3">
+
+      {{ formset.management_form }}
+
+      {% for form in formset %}
+        <div class="card mr-0">
+          <div class="list-group list-group-flush">
+            <div class="list-group-item">
+
+              {% if formset.non_field_errors %}
+                {% include "components/form-errors.html" with errors=form.non_field_errors %}
+              {% endif %}
+              {% for field in form %}
+                {% include "components/form-field.html" %}
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+
+    </div>
+
+    {% blocktrans trimmed asvar button_text count nmotions=formset|length %}
+      Save Motion
+    {% plural %}
+      Save Motions
+    {% endblocktrans %}
+    {% include "components/form-submit.html" with title=button_text %}
+
+  </form>
+
+{% endblock content %}

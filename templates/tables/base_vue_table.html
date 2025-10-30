@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load debate_tags %}
+
+{% block content %}
+
+  <div id="vueMount">
+    <tables-container :tables-data="tablesData"
+                      orientation="{{ tables_orientation|safe }}">
+    </tables-container>
+  </div>
+
+{% endblock content %}
+
+{% block js %}
+
+  <script>
+    // Set table data as a global from template variable
+    window.vueData = {
+      tablesData: {% if tables_data %}{{ tables_data|safe }}{% else %}null{% endif %}
+    }
+  </script>
+  {{ block.super }}
+
+{% endblock js %}

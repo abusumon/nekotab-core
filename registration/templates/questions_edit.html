@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load add_field_css debate_tags i18n %}
+
+{% block content %}
+
+  {% blocktrans trimmed asvar p1 %}
+    These questions appear as extra fields for participants to answer, in feedback or registration forms.
+  {% endblocktrans %}
+
+  {% url 'admin:registration_question_changelist' as edit_db_url %}
+  {% blocktrans trimmed asvar p2 %}
+    If you want to delete questions (and their associated answers), use the <a href="{{ edit_db_url }}" class="alert-link">Edit Database</a> area.
+  {% endblocktrans %}
+
+  {% include "components/explainer-card.html" with type="info" %}
+
+  {% trans "Save Questions" as save_text %}
+  {% include "components/formset.html" with double=True %}
+
+{% endblock content %}

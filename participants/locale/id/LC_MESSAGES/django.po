@@ -1,0 +1,1010 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:52\n"
+"Last-Translator: philip_tc\n"
+"Language-Team: Indonesian\n"
+"Language: id_ID\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Language: id\n"
+"X-Crowdin-File: /develop/tabbycat/participants/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-File-ID: 942\n"
+
+#: participants/admin.py
+#, python-format
+msgid "The team can't be in a break category of a different tournament. Please remove: %(category)s"
+msgstr "Tim ini tidak dapat berada pada kategori break dari turnamen yang berbeda. Harap hapus %(category)s"
+
+#: participants/admin.py
+msgid "Emoji & Code"
+msgstr ""
+
+#: participants/admin.py
+msgid "Delete URL Key"
+msgstr ""
+
+#: participants/admin.py
+#, python-format
+msgid "%(count)d speaker had their URL key removed."
+msgid_plural "%(count)d speakers had their URL keys removed."
+msgstr[0] "Sebanyak %(count)d pembicara sudah menghapus kunci URL mereka."
+
+#: participants/admin.py
+msgid "Reset emoji"
+msgstr "Reset emoji"
+
+#: participants/admin.py
+#, python-format
+msgid "%(count)d team had their emoji reset."
+msgid_plural "%(count)d teams had their emojis reset."
+msgstr[0] "Sebanyak %(count)d tim me-reset emoji mereka."
+
+#: participants/admin.py
+msgid "Reset code name"
+msgstr "Reset kode nama"
+
+#: participants/admin.py
+#, python-format
+msgid "%(count)d team had their code name reset."
+msgid_plural "%(count)d teams had their code names reset."
+msgstr[0] "Sebanyak %(count)d tim me-reset kode nama mereka."
+
+#: participants/admin.py
+#, python-format
+msgid "%(count)d adjudicator had their URL key removed."
+msgid_plural "%(count)d adjudicators had their URL keys removed."
+msgstr[0] "Sebanyak %(count)d juri sudah menghapus kunci URL mereka."
+
+#: participants/apps.py participants/views.py
+msgid "Participants"
+msgstr "Partisipan"
+
+#: participants/models.py
+msgid "name"
+msgstr "nama"
+
+#: participants/models.py
+msgid "region"
+msgstr "wilayah"
+
+#: participants/models.py
+msgid "regions"
+msgstr "wilayah"
+
+#. Translators: Change the examples to institutions native to your language; keep consistent between strings
+#: participants/models.py
+msgid "The institution's full name, e.g., \"University of Cambridge\", \"Victoria University of Wellington\""
+msgstr "Nama panjang dari insitusi, seperti \"University of Cambridge\", \"Victoria University of Wellington\""
+
+#: participants/models.py
+msgid "code"
+msgstr "kode"
+
+#. Translators: Change the examples to institutions native to your language; keep consistent between strings
+#: participants/models.py
+msgid "What the institution is typically called for short, e.g., \"Cambridge\", \"Vic Wellington\""
+msgstr "Nama institusi secara pendek yang biasa digunakan, seperti \"Cambridge\", \"Vic Wellington\""
+
+#: participants/models.py
+msgid "institution"
+msgstr "institusi"
+
+#: participants/models.py
+msgid "institutions"
+msgstr "institusi"
+
+#: participants/models.py
+msgid "tournament"
+msgstr "turnamen"
+
+#: participants/models.py
+msgid "Team slots requested"
+msgstr ""
+
+#: participants/models.py
+msgid "Team slots allocated"
+msgstr ""
+
+#: participants/models.py
+msgid "Adjudicator slots requested"
+msgstr ""
+
+#: participants/models.py
+msgid "Adjudicator slots allocated"
+msgstr ""
+
+#: participants/models.py
+msgid "tournament institution"
+msgstr ""
+
+#: participants/models.py
+msgid "tournament institutions"
+msgstr ""
+
+#. Translators: Translate ESL to the acronym for "<target language> as a second/foreign language", not "English"
+#: participants/models.py
+msgid "Name to be displayed, e.g., \"Novice\", \"ESL\""
+msgstr "Nama untuk ditampilkan, misal, \"ESL\""
+
+#: participants/models.py
+msgid "slug"
+msgstr "slug"
+
+#. Translators: Translate esl to the acronym for "<target language> as a second/foreign language", not "English"
+#: participants/models.py
+msgid "Slug for URLs, e.g., \"novice\", \"esl\""
+msgstr "Slug untuk URL, misal, \"esl\""
+
+#: participants/models.py
+msgid "sequence number"
+msgstr "nomor urut"
+
+#: participants/models.py
+msgid "The order in which the categories are displayed"
+msgstr "Urutan kategori ditampilkan"
+
+#: participants/models.py
+msgid "limit"
+msgstr "batas"
+
+#: participants/models.py
+msgid "At most this many speakers will be shown on the public tab for this category, or use 0 for no limit"
+msgstr "Maksimal sejumlah pembicara ini akan muncul pada tab publik untuk kategori ini, atau gunakan 0 untuk tidak dibatasi"
+
+#: participants/models.py
+msgid "public"
+msgstr "publik"
+
+#: participants/models.py
+msgid "If checked, this category will be included in the speaker category tabs shown to the public"
+msgstr "Apabila ditandai, kategori ini akan ditampilkan pada publik pada bagian tabulasi pembicara per kategori"
+
+#: participants/models.py
+msgid "speaker category"
+msgstr "kategori pembicara"
+
+#: participants/models.py
+msgid "speaker categories"
+msgstr "kategori pembicara"
+
+#: participants/models.py
+msgid "last name"
+msgstr ""
+
+#: participants/models.py
+msgid "The last name may be used for team names or code names"
+msgstr ""
+
+#: participants/models.py
+msgid "email address"
+msgstr ""
+
+#: participants/models.py
+msgid "phone"
+msgstr "nomor telepon"
+
+#: participants/models.py
+msgid "anonymous"
+msgstr "anonim"
+
+#: participants/models.py
+msgid "Anonymous persons will have their name and team redacted on public tab releases"
+msgstr "Nama dan tim para peserta anonim akan disunting pada rilis tab publik"
+
+#: participants/models.py
+msgid "code name"
+msgstr "kode nama"
+
+#: participants/models.py
+msgid "Name used to obscure real name on public-facing pages"
+msgstr ""
+
+#: participants/models.py
+msgid "URL key"
+msgstr "Kunci URL"
+
+#: participants/models.py
+msgid "male"
+msgstr "pria"
+
+#: participants/models.py
+msgid "female"
+msgstr "wanita"
+
+#: participants/models.py
+msgid "other"
+msgstr "lainnya"
+
+#: participants/models.py
+msgid "gender"
+msgstr "jenis kelamin"
+
+#: participants/models.py
+msgid "Gender is displayed in the adjudicator allocation interface, and nowhere else"
+msgstr "Jenis kelamin akan ditampilkan pada alokasi tampilan untuk juri, dan tidak di tempat lain"
+
+#: participants/models.py
+msgid "pronoun"
+msgstr "kata ganti"
+
+#: participants/models.py
+msgid "If printing ballots using Tabbycat, there is the option to pre-print pronouns"
+msgstr "Jika melakukan cetak kertas suara menggunakan Tabbycat, ada pilihan untuk pracetak kata ganti"
+
+#: participants/models.py
+msgid "person"
+msgstr "orang"
+
+#: participants/models.py
+msgid "persons"
+msgstr "orang"
+
+#: participants/models.py
+msgid "Redacted"
+msgstr "Dihapus"
+
+#: participants/models.py
+msgid "coach"
+msgstr ""
+
+#: participants/models.py
+msgid "coaches"
+msgstr ""
+
+#: participants/models.py
+msgid "full name/suffix"
+msgstr "nama lengkap/nama belakang"
+
+#: participants/models.py
+msgid "Do not include institution name (see \"uses institutional prefix\" below)"
+msgstr "Harap tidak menyertakan nama institusi (lihat \"penggunaan prefiks institusional\" di bawah)"
+
+#: participants/models.py
+msgid "short name/suffix"
+msgstr "nama pendek/nama belakang"
+
+#: participants/models.py
+msgid "The decoded name shown in the draw, not including institution name (see \"uses institutional prefix\" below)"
+msgstr "Nama yang diterjemahkan yang ditampilkan dalam undian, tanpa termasuk nama institusi. (Ini dibuat secara otomatis.)"
+
+#: participants/models.py
+msgid "Name used to obscure institutional identity on public-facing pages"
+msgstr "Nama yang digunakan untuk menyamarkan identitas institusi pada halaman publik"
+
+#: participants/models.py
+msgid "short name"
+msgstr "nama pendek"
+
+#: participants/models.py
+msgid "The decoded name shown in the draw, including institution name. (This is autogenerated.)"
+msgstr "Nama yang diterjemahkan yang ditampilkan dalam undian, termasuk nama institusi. (Ini dibuat secara otomatis.)"
+
+#: participants/models.py
+msgid "long name"
+msgstr "nama panjang"
+
+#: participants/models.py
+msgid "The full name of the team, including institution name. (This is autogenerated.)"
+msgstr "Nama lengkap dari tim, termasuk nama institusi. (Ini dibuat secara otomatis.)"
+
+#: participants/models.py
+msgid "Uses institutional prefix"
+msgstr "Menggunakan nama depan institusi"
+
+#: participants/models.py
+msgid "If ticked, a team called \"1\" from Victoria will be shown as \"Victoria 1\""
+msgstr "Jika ditandai, tim yang dipanggil \"1\" dari Victoria akan tertulis sebagai \"Victoria 1\""
+
+#: participants/models.py
+msgid "break categories"
+msgstr "kategori break"
+
+#: participants/models.py
+msgid "seed"
+msgstr ""
+
+#: participants/models.py
+msgid "Used as initial ranking to power-pair the first round"
+msgstr ""
+
+#: participants/models.py
+msgid "institution conflicts"
+msgstr "konflik institusi"
+
+#: participants/models.py
+msgid "none"
+msgstr "tidak ada"
+
+#: participants/models.py
+msgid "swing"
+msgstr "swing"
+
+#: participants/models.py
+msgid "composite"
+msgstr "komposit"
+
+#: participants/models.py
+msgid "bye"
+msgstr ""
+
+#: participants/models.py
+msgid "type"
+msgstr "tipe"
+
+#: participants/models.py
+msgid "emoji"
+msgstr "emoji"
+
+#: participants/models.py
+msgid "team"
+msgstr "tim"
+
+#: participants/models.py
+msgid "teams"
+msgstr "tim"
+
+#: participants/models.py
+msgid "Teams must have an institution if they are using the institutional prefix."
+msgstr "Tim harus memiliki institusi jika mereka menggunakan nama depan institusi."
+
+#: participants/models.py
+msgid "Teams must have a full name if they don't use the institutional prefix."
+msgstr "Tim harus memiliki nama lengkap jika mereka tidak menggunakan nama depan institusi."
+
+#: participants/models.py
+msgid "speaker"
+msgstr "pembicara"
+
+#: participants/models.py
+msgid "speakers"
+msgstr "pembicara"
+
+#: participants/models.py
+msgid "Adjudicators not assigned to any tournament can be shared between tournaments"
+msgstr "Juri yang tidak terdaftar pada turnamen apapun dapat digunakan antar turnamen"
+
+#: participants/models.py
+msgid "base score"
+msgstr "nilai basis"
+
+#: participants/models.py
+msgid "team conflicts"
+msgstr "konflik tim"
+
+#: participants/models.py
+msgid "adjudicator conflicts"
+msgstr "konflik juri"
+
+#: participants/models.py
+msgid "always trainee"
+msgstr "selalu trainee"
+
+#: participants/models.py
+msgid "If checked, this adjudicator will never be auto-allocated a voting position, regardless of their score"
+msgstr "Apabila ditandai, draw tidak akan mengalokasikan juri ini untuk mendapatkan hak suara, berapapun nilai yang didapat"
+
+#: participants/models.py
+msgid "breaking"
+msgstr "breaking"
+
+#: participants/models.py
+msgid "independent"
+msgstr "independen"
+
+#: participants/models.py
+msgid "adjudication core"
+msgstr "juri inti"
+
+#: participants/models.py
+msgid "adjudicator"
+msgstr "juri debat"
+
+#: participants/models.py
+msgid "adjudicators"
+msgstr "juri"
+
+#: participants/tables.py
+msgid "Points after this debate"
+msgstr "Poin sesudah debat ini"
+
+#: participants/tables.py
+msgid "Wins after this debate"
+msgstr "Jumlah menang sesudah debat ini"
+
+#: participants/tables.py
+msgid "Speaker scores<br>(in speaking order)"
+msgstr "Nilai Pembicara<br>(sesuai urutan giliran berbicara)"
+
+#: participants/tables.py
+msgid "Speaks"
+msgstr "Berbicara"
+
+#: participants/templates/adjudicator_record.html participants/views.py
+#, python-format
+msgid "Record for %(name)s"
+msgstr "Catatan Rekor untuk %(name)s"
+
+#: participants/templates/adjudicator_record.html
+#: participants/templates/team_record.html
+#, python-format
+msgid "About %(name)s"
+msgstr "Tentang %(name)s"
+
+#: participants/templates/adjudicator_registration_card.html
+msgid "Independent adjudicator"
+msgstr "Juri independen"
+
+#: participants/templates/adjudicator_registration_card.html
+msgid "Member of the adjudication core"
+msgstr "Anggota tim penjurian inti"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Institution:"
+msgstr "Institusi:"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Unaffiliated"
+msgstr "Tidak terafiliasi"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Region:"
+msgstr "Wilayah:"
+
+#: participants/templates/adjudicator_registration_card.html
+msgid "The institutional affiliations of adjudicators are not public at this tournament."
+msgstr "Afiliasi untuk institusi para juri tidak bersifat publik pada turnamen ini."
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Custom Questions:"
+msgstr ""
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Institutional Conflicts:"
+msgstr "Konflik Institusi:"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "; "
+msgstr "; "
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "None"
+msgstr "Tidak ada"
+
+#: participants/templates/adjudicator_registration_card.html
+msgid "Team Conflicts:"
+msgstr "Konflik Tim:"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid ", "
+msgstr ", "
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Adjudicator Conflicts:"
+msgstr "Konflik Juri:"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Room Constraints:"
+msgstr "Batasan-batasan Ruangan:"
+
+#: participants/templates/admin/participants/adjudicator/change_form.html
+msgid "<strong>Don't forget:</strong> If this adjudicator should be conflicted against their own institution, you should add this conflict <strong>now</strong> in the <strong>Adjudicator-institution conflicts</strong> tab above, because the own-institution conflict is <strong>not</strong> automatically created when using this form."
+msgstr "<strong>Jangan lupa:</strong> Jika juri ini memiliki konflik dengan institusinya, anda sebaiknya menambahkan konflik ini <strong>sekarang</strong> di bagian tab <strong>Konflik Juri dengan institusi</strong>, karena konflik ini <strong>tidak</strong> dibuat secara otomatis ketika menggunakan formulir ini."
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+#, python-format
+msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete this %(object_name)s</strong>."
+msgstr "<strong>Peringatan:</strong>Jika ada objek \"tim debat\" pada daftar di atas, <strong>mungkin sebaiknya anda jangan menghapus objek %(object_name)s</strong>."
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+#, python-format
+msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete the selected %(objects_name)s</strong>."
+msgstr "<strong>Peringatan:</strong>Jika ada objek \"tim debat\" pada daftar di atas, <strong>mungkin sebaiknya anda jangan menghapus objek %(objects_name)s yang sudah dipilih</strong>."
+
+#. Translators: This follows the above sentence in the same paragraph.
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+msgid "This is especially the case if any team that would be deleted has already participated in a debate. If a team already has a result entered for it, deleting the team also deletes those results, <strong>which normally breaks the tab</strong>, even if you think you don't need those results anymore. If a team has debated and is withdrawing from the tournament, you should <strong>not</strong> delete it. Just mark the team inactive under the “Availability” section of the Tabbycat admin area."
+msgstr "Terutama pada kasus jika ada tim yang akan dihapus ternyata sudah berpartisipasi pada sebuah debat. Jika tim tersebut sudah memiliki hasil yang tercatat, menghapus tim tersebut juga akan menghapus hasil tersebut, <strong>dimana biasanya juga menghapus tab yang ada</strong>, bahkan jika anda sudah tidak membutuhkan lagi hasil tersebut. Jika sebuah tim sudah mengikuti pertandingan dan sedang menunggu hasil dari turnamen tersebut, anda sebaiknya <strong>tidak</strong> menghapus tim tersebut. Anda cukup menandai tim tersebut tidak aktif pada bagian \"Ketersediaan\" di area admin Tabbycat."
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+msgid "Note that deleting an institution also deletes all teams from that institution."
+msgstr "Mohon diingat bahwa menghapus sebuah institusi juga akan menghapus seluruh tim dari institusi tersebut."
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+#, python-format
+msgid "If you're very sure about deleting this %(object_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
+msgstr "Jika anda merasa yakin untuk menghapus objek %(object_name)s, harap hapus objek yang berada di atasnya terlebih dahulu, dan pastikan untuk memperhatikan peringatan yang akan anda lihat pada halaman objek \"tim debat\" sebelum melanjutkan."
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+#, python-format
+msgid "If you're very sure about deleting these %(objects_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
+msgstr "Jika anda merasa yakin untuk menghapus objek %(objects_name)s ini, harap hapus objek yang berada di atasnya terlebih dahulu, dan pastikan untuk memperhatikan peringatan yang akan anda lihat pada halaman objek \"tim debat\" sebelum melanjutkan."
+
+#: participants/templates/admin/participants/team/change_form.html
+msgid "<strong>Don't forget:</strong> If this team should be conflicted against its own institution, you should add this conflict <strong>now</strong> in the <strong>Team-institution conflicts</strong> tab above, because the own-institution conflict is <strong>not</strong> automatically created when using this form."
+msgstr "<strong>Jangan lupa:</strong> Jika timini memiliki konflik dengan institusinya, anda sebaiknya menambahkan konflik ini <strong>sekarang</strong> di bagian tab <strong>Konflik Tim dengan institusi</strong>, karena konflik ini <strong>tidak</strong> dibuat secara otomatis ketika menggunakan formulir ini."
+
+#: participants/templates/current_round/common.html
+#, python-format
+msgid "The round begins at %(start_time)s"
+msgstr "Ronde akan dimulai pada %(start_time)s"
+
+#: participants/templates/current_round/common.html
+msgid "Teams:"
+msgstr "Tim:"
+
+#: participants/templates/current_round/common.html
+msgid "Adjudicator:"
+msgid_plural "Adjudicators:"
+msgstr[0] "Juri:"
+
+#: participants/templates/current_round/common.html
+msgctxt "chair icon"
+msgid "Ⓒ"
+msgstr "Ⓒ"
+
+#: participants/templates/current_round/common.html
+msgctxt "trainee icon"
+msgid "Ⓣ"
+msgstr "Ⓣ"
+
+#: participants/templates/current_round/common.html
+msgid "There are no panellists or trainees assigned to this debate."
+msgstr "Tidak ada panelis atau asisten yang didaftarkan pada debat ini."
+
+#: participants/templates/current_round/common.html
+msgid "Motions are not released to public."
+msgstr "Mosi tidak dirilis ke publik."
+
+#: participants/templates/current_round/common.html
+msgid "Motion:"
+msgstr "Mosi:"
+
+#: participants/templates/current_round/common.html
+msgid "View Info Slide"
+msgstr "Buka Slide Info"
+
+#: participants/templates/current_round/common.html
+msgid "The motion(s) for this round haven't yet been released."
+msgstr "Mosi untuk ronde ini belum dirilis."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s adalah <strong>ketua juri</strong> yang sedang menjadi juri pada %(aff)s vs%(neg)s pada tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s adalah <strong>ketua juri</strong>yang sedang menjadi juri %(aff)s vs %(neg)s di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Anda adalah <strong>ketua juri</strong> yang sedang menjadi juri %(aff)s vs %(neg)s pada tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "Anda adalah <strong>ketua juri</strong> yang sedang menjadi juri %(aff)s vs %(neg)s di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Juri %(adjudicator)s adalah tipe juri <strong>%(type)s</strong> yang sedang menjadi juri %(aff)s vs %(neg)s di tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "Juri %(adjudicator)s adalah tipe juri <strong>%(type)s</strong> yang sedang menjadi juri %(aff)s vs %(neg)s di \n"
+" <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Anda adalah tipe juri <strong>%(type)s</strong> yang sedang menjadi juri %(aff)s vs%(neg)s di tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "Anda adalah tipe juri <strong>%(type)s</strong> yang sedang menjadi juri %(aff)s vs%(neg)s di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s sedang menjadi juri pada debat %(aff)s vs%(neg)s di <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s sedang menjadi juri pada debat %(aff)s vs %(neg)s di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Anda sedang menjadi juri pada debat %(aff)s vs %(neg)s di <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "Anda sedang menjadi juri pada debat %(aff)s vs %(neg)s di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s adalah <strong>juri ketua</strong> yang sedang menjadi juri di tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating in <strong>%(room)s</strong>."
+msgstr "Juri %(adjudicator)s adalah <strong>juri ketua</strong> yang sedang menjadi juri di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are the <strong>chair</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Anda adalah <strong>juri ketua</strong> yang sedang menjadi juri di tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are the <strong>chair</strong> adjudicating in <strong>%(room)s</strong>."
+msgstr "Anda adalah <strong>juri ketua</strong> yang menjadi juri di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Juri %(adjudicator)s adalah tipe juri <strong>%(type)s</strong> yang sedang menjadi juri di tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating in <strong>%(room)s</strong>."
+msgstr "Juri %(adjudicator)s adalah tipe juri <strong>%(type)s</strong> yang sedang menjadi juri di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are a <strong>%(type)s</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Anda adalah tipe juri <strong>%(type)s</strong> yang sedang menjadi juri di tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are a <strong>%(type)s</strong> adjudicating in <strong>%(room)s</strong>."
+msgstr "Anda adalah tipe juri <strong>%(type)s</strong> yang menjadi juri di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "juri %(adjudicator)s sedang menjadi juri di tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is adjudicating in <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s sedang menjadi juri di ruang <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Anda sedang menjadi juri pada <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are adjudicating in <strong>%(room)s</strong>."
+msgstr "Anda sedang menjadi juri di ruang <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s is debating as the <strong>%(side)s</strong> team against <strong>%(opponent)s</strong>."
+msgstr "%(team)s sedang melakukan debat sebagai tim <strong>%(side)s</strong> melawan <strong>%(opponent)s</strong>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "You are debating as the <strong>%(side)s</strong> team against <strong>%(opponent)s</strong>."
+msgstr "Anda sedang melakukan debat sebagai tim <strong>%(side)s</strong> melawan <strong>%(opponent)s</strong>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s is debating against <strong>%(opponent)s</strong>."
+msgstr "Tim %(team)s sedang melakukan debat melawan <strong>%(opponent)s</strong>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "You are debating against <strong>%(opponent)s</strong>."
+msgstr "Anda sedang melakukan debat melawan <strong>%(opponent)s</strong>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s is debating as the <strong>%(side)s</strong> team."
+msgstr "%(team)s sedang melakukan debat sebagai tim <strong>%(side)s</strong>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "You are debating as the <strong>%(side)s</strong> team."
+msgstr "Anda sedang melakukan debat sebagai tim <strong>%(side)s</strong>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s's debate is in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Debat untuk %(team)s berada di tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s's debate is in <strong>%(room)s</strong>."
+msgstr "Debat tim %(team)s berada di <strong>%(room)s</strong>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "Your debate is in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Debat anda berada di tautan <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "Your debate is in <strong>%(room)s</strong>."
+msgstr "Debat anda berada di ruang <strong>%(room)s</strong>."
+
+#: participants/templates/edit_speaker_eligibility.html
+#, python-format
+msgid "It looks like there aren't any speaker categories are defined. If you'd like to produce category-specific speaker tabs, such as a novice or ESL tab, use the <a href=\"%(categories_url)s\" class=\"alert-link\">Speaker Categories</a> page to define them, then return to this page to set speaker eligibility."
+msgstr "Sepertinya belum ada kategori pembicara yang sudah ditentukan. JIka anda ingin membuat tab untuk kategori pembicara yang spesifik, seperti tab pemula atau ESL, gunakan halaman <a href=\"%(categories_url)s\" class=\"alert-link\">Kategori Pembicara</a> untuk membuat kategori tersebut, lalu kembali ke halaman ini untuk menentukan kelayakan pembicara."
+
+#: participants/templates/feedback_progress_panel.html
+msgid "Feedback Returns"
+msgstr "Umpan Balik kembali"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "Has submitted feedback for <strong>%(adjudicator)s</strong>"
+msgstr "Sudah memberikan umpan balik untuk <strong>%(adjudicator)s</strong>"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "Has not submitted feedback for one of: <strong>%(adjudicators)s</strong> (whoever gave the oral adjudication)"
+msgstr "Belum mengumpulkan umpan balik untuk salah satu dari juri: <strong>%(adjudicators)s</strong> (Untuk siapapun juri yang berbicara)"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "Has not submitted feedback for <strong>%(adjudicator)s</strong>"
+msgstr "Belum memberikan umpan balik untuk <strong>%(adjudicator)s</strong>"
+
+#: participants/templates/feedback_progress_panel.html
+msgid "More feedback submissions than expected for this debate:"
+msgstr "Pengumpulan umpan balik melebihi batas yang diijinkan untuk debat ini:"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "Unexpected feedback submission for <strong>%(adjudicator)s</strong>"
+msgstr "Ada pengumpulan umpan balik untuk <strong>%(adjudicator)s</strong> yang tidak diduga"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "%(name)s doesn't have any feedback to submit."
+msgstr "%(name)s tidak memiliki umpan balik untuk diberikan."
+
+#: participants/templates/in_this_round.html
+#, python-format
+msgid "In This Round (%(round)s)"
+msgstr "Pada Ronde Ini (%(round)s)"
+
+#: participants/templates/in_this_round.html
+msgid "In This Round"
+msgstr "Pada Ronde Ini"
+
+#: participants/templates/in_this_round.html
+msgid "(Not Released to Public)"
+msgstr "(Tidak dirilis ke Publik)"
+
+#: participants/templates/in_this_round.html
+msgid "Room TBA"
+msgstr "Ruangan TBA"
+
+#: participants/templates/in_this_round.html
+#, python-format
+msgid "%(adjudicator)s is not adjudicating this round."
+msgstr "Juri %(adjudicator)s tidak menjadi juri pada ronde ini."
+
+#: participants/templates/in_this_round.html
+msgid "You are not adjudicating this round."
+msgstr "Anda tidak menjadi juri pada ronde ini."
+
+#: participants/templates/in_this_round.html
+#, python-format
+msgid "It looks like %(team)s is competing in %(ndebates)s debate this round."
+msgid_plural "It looks like %(team)s is competing in %(ndebates)s debates this round."
+msgstr[0] "Sepertinya tim %(team)s sedang bertanding di debat %(ndebates)s pada ronde ini."
+
+#: participants/templates/in_this_round.html
+msgid "If this is an error, please contact a tab director immediately."
+msgstr "Jika terdapat kesalahan, mohon hubungi pimpinan debat secepatnya."
+
+#: participants/templates/in_this_round.html
+#, python-format
+msgid "%(team)s does not have a debate this round."
+msgstr "Tim %(team)s sedang tidak berdebat pada ronde ini."
+
+#: participants/templates/in_this_round.html
+msgid "You do not have a debate this round."
+msgstr "Anda sedang tidak memiliki debat pada ronde ini."
+
+#: participants/templates/in_this_round.html
+msgid "The draw for this round hasn't yet been released."
+msgstr "Pengundian untuk ronde ini belum dirilis."
+
+#: participants/templates/participants_subnav.html
+msgid "Participants List"
+msgstr "Daftar Partisipan"
+
+#: participants/templates/participants_subnav.html
+msgid "Institutions List"
+msgstr "Daftar Institusi"
+
+#: participants/templates/participants_subnav.html
+msgid "Emails have already been sent."
+msgstr "Email sudah dikirim."
+
+#: participants/templates/participants_subnav.html
+msgid "Email Team Registrations"
+msgstr "Registrasi Email Tim"
+
+#: participants/templates/participants_subnav.html participants/views.py
+msgid "Code Names"
+msgstr "Nama Terkode"
+
+#: participants/templates/participants_subnav.html
+#: participants/templates/speaker_categories_edit.html
+msgid "Speaker Categories"
+msgstr "Kategori Pembicara"
+
+#: participants/templates/participants_subnav.html
+msgid "Speaker Eligibility"
+msgstr "Kelayakan Pembicara"
+
+#: participants/templates/speaker_categories_edit.html
+msgid "Speaker categories allow category-specific speaker tabs to be produced, <i>e.g.</i>, for novice or ESL categories. On this page, you can define what speaker categories exist. After you've defined the categories, you can set speaker eligibility on the Speaker Eligibility page."
+msgstr "Kategori pembicara membolehkan pembicara pada kategori-spesifik untuk diproduksi, <i>contoh</i>, untuk kategori pemula atau ESL. Pada halaman ini, Anda dapat mendefinisikan apa saja kategori pembicara yang tersedia. Setelah Anda mendefinisikan kategori, Anda dapat mengisi kelayakan pada halaman Kelayakan."
+
+#: participants/templates/speaker_categories_edit.html
+#, python-format
+msgid "If you want to delete speaker categories, use the <a href=\"%(edit_db_url)s\" class=\"alert-link\">Edit Database</a> area."
+msgstr "Jika Anda ingin menghapus kategori pembicara, gunakan area <a href=\"%(edit_db_url)s\" class=\"alert-link\">Sunting Basisdata</a>."
+
+#: participants/templates/speaker_categories_edit.html
+msgid "Save Speaker Categories"
+msgstr "Menyimpan Kategori Pembicara"
+
+#: participants/templates/team_registration_card.html
+msgid "Team name:"
+msgstr "Nama tim:"
+
+#: participants/templates/team_registration_card.html
+msgid "Full team name:"
+msgstr ""
+
+#: participants/templates/team_registration_card.html
+msgid "Short team name:"
+msgstr ""
+
+#: participants/templates/team_registration_card.html
+msgid "Code name:"
+msgstr "Kode nama:"
+
+#: participants/templates/team_registration_card.html
+msgid "No code name assigned"
+msgstr ""
+
+#: participants/templates/team_registration_card.html
+msgid "Emoji:"
+msgstr ""
+
+#: participants/templates/team_registration_card.html
+msgid "No emoji assigned"
+msgstr ""
+
+#: participants/templates/team_registration_card.html
+msgid "Speakers:"
+msgstr "Pembicara:"
+
+#: participants/templates/team_registration_card.html
+msgid "Eligible for break categories:"
+msgstr "Memenuhi syarat untuk kategori break:"
+
+#: participants/templates/team_registration_card.html
+msgid "Speaker categories:"
+msgstr "Kategori pembicara:"
+
+#: participants/templatetags/team_name_for_data_entry.py
+#, python-format
+msgid "%(code_name)s <em>(%(real_name)s)</em>"
+msgstr "%(code_name)s<em>(%(real_name)s)</em>"
+
+#: participants/views.py
+msgid "Adjudicators"
+msgstr "Juri"
+
+#: participants/views.py
+msgid "Speakers"
+msgstr "Pembicara"
+
+#: participants/views.py
+msgid "Institutions"
+msgstr "Institusi"
+
+#: participants/views.py
+msgid "Code"
+msgstr "Kode"
+
+#: participants/views.py
+msgid "Full name"
+msgstr "Nama lengkap"
+
+#: participants/views.py
+msgid "Region"
+msgstr "Wilayah"
+
+#: participants/views.py
+msgid "Teams"
+msgstr "Tim"
+
+#: participants/views.py
+msgid "Number of teams"
+msgstr "Jumlah tim"
+
+#: participants/views.py
+msgid "Adjs"
+msgstr "Juri"
+
+#: participants/views.py
+msgid "Number of adjudicators, excluding independents"
+msgstr "Jumlah juri, kecuali juri independen"
+
+#: participants/views.py
+msgid "IAs"
+msgstr "JI"
+
+#: participants/views.py
+msgid "Number of independent adjudicators"
+msgstr "Banyak juri independen"
+
+#: participants/views.py
+msgid "Code name"
+msgstr "Kode nama"
+
+#: participants/views.py
+msgid "Team Registration"
+msgstr "Registrasi Tim"
+
+#: participants/views.py
+msgid "Results"
+msgstr "Hasil"
+
+#: participants/views.py
+msgid "Previous Rounds"
+msgstr "Ronde sebelumnya"
+
+#: participants/views.py
+#, python-format
+msgid "Saved category: %(list)s"
+msgid_plural "Saved categories: %(list)s"
+msgstr[0] "Kategori yang tersimpan: %(list)s"
+
+#: participants/views.py
+msgid "No changes were made to the categories."
+msgstr "Tidak ada perubahan yang dilakukan pada kategori."
+
+#: participants/views.py
+msgid "Speaker Category Eligibility"
+msgstr "Eligibilitas Kategori Pembicara"
+

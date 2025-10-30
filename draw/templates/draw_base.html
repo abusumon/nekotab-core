@@ -1,0 +1,33 @@
+{% extends "tables/base_vue_table.html" %}
+{% load debate_tags i18n %}
+
+{% block page-subnav-sections %}
+  <a class="btn btn-outline-primary " href="{% roundurl 'availability-index' %}">
+    <i data-feather="chevron-left"></i> {% trans "Availability" %}
+  </a>
+
+  <div class="btn-group flex-wrap" role="group">
+    <a href="{% roundurl 'edit-debate-teams' round %}" class="btn btn-outline-primary">
+      {% trans "Edit Sides/Matchups" %}
+    </a>
+  </div>
+  <div class="btn-group flex-wrap" role="group">
+    <a href="{% roundurl 'draw-regenerate' %}" class="btn btn-outline-primary">
+      {% trans "Redo Draw" %}
+    </a>
+    <a href="{% roundurl 'draw-details' %}" class="btn btn-outline-primary">
+      {% trans "Draw Details" %}
+    </a>
+    {% if pref.teams_in_debate == 4 and round.prev and not round.is_break_round %}
+      <a href="{% roundurl 'draw-position-balance' %}" class="btn btn-outline-primary">
+        {% trans "Position Balance" %}
+      </a>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block page-subnav-actions %}
+  <a href="{% roundurl 'draw-display' %}" class="btn btn-outline-success">
+    {% trans "Display Draw" %}<i data-feather="chevron-right"></i>
+  </a>
+{% endblock %}

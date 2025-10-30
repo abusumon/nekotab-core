@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load add_field_css debate_tags i18n  %}
+
+{% block nav %}{% endblock %}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block body-class %}override-sidebar-offset{% endblock %}
+{% block page-title %}
+  {% blocktranslate trimmed with round=round.name count counter=motions|length %}
+    Motion for {{ round }}
+  {% plural %}
+    Motions for {{ round }}
+  {% endblocktranslate %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid d-flex align-items-center justify-content-center"
+       style="width: 100%; height: 95vh;">
+    <div>
+      {% if infos %}
+        <button class="btn btn-lg btn-info btn-block mb-5" data-toggle="modal" data-target="#infoPop">
+          {% blocktrans trimmed with round=round.name count ninfos=infos|length %}
+            Reveal Info Slide for {{ round }}
+          {% plural %}
+            Reveal Info Slides for {{ round }}
+          {% endblocktrans %}
+        </button>
+      {% endif %}
+      <button class="btn btn-lg btn-success btn-block" data-toggle="modal" data-target="#motionPop">
+        {% blocktrans trimmed with round=round.name count nmotions=motions|length %}
+          Reveal Motion for {{ round }}
+        {% plural %}
+          Reveal Motions for {{ round }}
+        {% endblocktrans %}
+      </button>
+    </div>
+  </div>
+
+  <div class="modal fade" id="motionPop" tabindex="-1" role="dialog" aria-labelledby="motionPop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content {% if motions_length > 400 %}display-6{% elif motions_length > 300 %}display-5{% elif motions_length > 160 %}display-4{% elif motions_length > 130 %}display-3{% else %}display-2{% endif %}">
+
+        {% if motions|length == 0 %}
+
+          <div class="modal-body d-flex align-items-center justify-content-center">
+            <div class="display-3 text-danger">
+              😳 {% trans "There are no motions for this round entered into Tabbycat." %}
+            </div>
+          </div>
+
+        {% elif motions|length == 1 %}
+
+          <div class="modal-body d-flex align-items-center justify-content-center text-center">
+            {{ motions.0.motion.text }}
+          </div>
+
+        {% else %}
+
+          <div class="modal-body d-flex flex-column">
+            {% for m in motions %}
+              <div class="d-flex align-items-center flex-grow-1">
+                <div>
+                  {% if motions|length > 1 %}
+                    <span class="text-muted">{{ m.seq }}.</span>
+                  {% endif %}
+                  {{ m.motion.text }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="infoPop" tabindex="-1" role="dialog" aria-labelledby="infoPop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content {% if infos_length > 380 %}display-6{% elif infos_length > 280 %}display-5{% elif infos_length > 160 %}display-4{% elif infos_length > 130 %}display-3{% else %}display-2{% endif %}">
+
+        {% if infos|length == 1 %}
+
+          <div class="modal-body d-flex align-items-center justify-content-center text-center">
+            <small>
+              {% if infos.0.motion.info_slide|slice:":2" == "<p" %}
+                {{ infos.0.motion.info_slide|safe }}
+              {% else %}
+                {{ infos.0.motion.info_slide|linebreaks }}
+              {% endif %}
+            </small>
+          </div>
+
+        {% else %}
+
+          <div class="modal-body d-flex flex-column">
+            {% for info in infos %}
+              <div class="d-flex align-items-center flex-grow-1">
+                <p>
+                  {% if motions|length > 1 %}
+                    <span class="text-muted">{{ info.seq }}.</span>
+                  {% endif %}
+                  <small>
+                    {% if info.motion.info_slide|slice:":2" == "<p" %}
+                      {{ info.motion.info_slide|safe }}
+                    {% else %}
+                      {{ info.motion.info_slide|linebreaks }}
+                    {% endif %}
+                  </small>
+                </p>
+              </div>
+            {% endfor %}
+          </div>
+
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

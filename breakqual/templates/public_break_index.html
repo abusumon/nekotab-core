@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load debate_tags i18n %}
+
+{% block head-title %}<span class="emoji">👑</span> {% trans "Break" %}{% endblock %}
+{% block page-title %}{% trans "Break" %}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+    {% if pref.public_breaking_teams %}
+      {% for category in tournament.breakcategory_set.all %}
+      <li class="list-group-item"><a  href="{% tournamenturl 'breakqual-public-teams' category.slug %}">
+        {% blocktrans trimmed with category=category.name %}
+          {{ category }} Break
+        {% endblocktrans %}
+      </a></li>
+      {% endfor %}
+    {% endif %}
+    {% if pref.public_breaking_adjs %}
+      <li class="list-group-item"><a href="{% tournamenturl 'breakqual-public-adjs' %}">
+        {% trans "Adjudicators" %}
+      </a></li>
+    {% endif %}
+    </ul>
+  </div>
+</div>
+
+{% endblock content %}

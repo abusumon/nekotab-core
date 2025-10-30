@@ -1,0 +1,265 @@
+//------------------------------------------------------------------------------
+// Overall Layout
+//------------------------------------------------------------------------------
+
+.table-search {
+  padding-left: 21px; // Match margin of cards and titles
+}
+
+.table {
+  font-size: $font-size-sm;
+  background: $alt-bg; // For when tables blow out on mobile
+  margin-bottom: 0; // Handled by the container elements
+
+  th {
+    border-top: 0;
+  }
+
+  > tbody > tr:hover td {
+    background-color: $table-bg-hover;
+
+    .hide-underline {
+      border-bottom-color: $table-bg-hover;
+    }
+  }
+
+  &.hide-hover > tbody > tr:hover td {
+    background-color: transparent;
+
+    .hide-underline {
+      border-bottom-color: #ccc;
+    }
+  }
+
+  &.hide-hover .hover-target .tooltip-trigger {
+    border-bottom: 0;
+  }
+}
+
+//------------------------------------------------------------------------------
+// HEADER STYLES
+//------------------------------------------------------------------------------
+
+thead,
+.thead {
+  @extend .subtitle;
+
+  font-size: $font-size-base;
+  line-height: $font-size-base;
+  background: $alt-bg; // Fixed header needs a background while scrolling
+  min-height: 40px; // Must accomodate vue-sort key without resizing
+  position: sticky;
+  inset-block-start: 0;
+}
+
+.vue-sortable {
+
+  .vue-sort-key {
+    width: 16px;
+    height: 18px;
+    display: inline-block;
+  }
+
+  // By default don't show if not hovering or active
+  .feather-chevrons-up,
+  .feather-chevrons-down {
+    display: none;
+    margin-bottom: -3px; // Align with text
+    margin-right: -4px; // Overwrite the padding as it acts as a spacer
+  }
+
+  &:hover {
+    @extend .text-primary;
+
+    cursor: pointer;
+    // By default; if not sorting is active; show sort-desc
+    .vue-sort-key .feather-chevrons-up {
+      display: inline;
+    }
+  }
+
+  // When active show the currently active sort order
+  .vue-sort-active.sort-by-desc {
+
+    .feather-chevrons-down {
+      display: inline;
+    }
+
+    .feather-chevrons-up {
+      display: none;
+    }
+  }
+
+  .vue-sort-active.sort-by-asc {
+
+    .feather-chevrons-up {
+      display: inline;
+    }
+
+    .feather-chevrons-down {
+      display: none;
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+// CELL STYLES
+//------------------------------------------------------------------------------
+
+.table > thead > tr > th,
+.table > tbody > tr > td {
+  padding: 8px 8px 8px 4px;
+}
+
+.table > thead > tr > th,
+.draw-container .thead {
+  padding-bottom: 12px;
+  font-family: $headings-font-family;
+  text-transform: none;
+  font-weight: normal;
+
+  > div {
+    padding-bottom: 2px; // Offset tooltip underline to maintain baseline
+  }
+
+  .tooltip-trigger {
+    margin-bottom: -4px; // Un-Offset tooltip underline
+    padding-bottom: 2px; // Offset tooltip underline
+  }
+}
+
+// Icons in headers
+.table > thead > tr > th .header-icon {
+  width: 16px;
+  height: 16px; // Need to match font size of header text
+  box-sizing: initial;
+  margin-right: -2px; // Bring sort icon closer
+  margin-bottom: 1px;
+
+  &.tooltip-trigger {
+    padding-bottom: 3px;
+    margin-bottom: -4px; // Un-Offset tooltip underline
+  }
+}
+
+// Icons in cells (may as well make them big to match text size)
+.table > tbody > tr > td {
+
+  i,
+  .feather {
+    width: 24px;
+    height: 24px;
+  }
+
+  .feather {
+    margin-bottom: -6px;
+    margin-left: -2px;
+  }
+}
+
+// Bump emoji size in tables
+.table > tbody > tr > td .emoji {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.team-name {
+
+  .emoji {
+    text-align: center;
+    padding-top: 5px;
+    margin-left: -3px; // Sit flush to align with icon
+  }
+}
+
+.venue-name {
+  min-width: 75px; // With BP cells ensure venue names don't get squished
+}
+
+.no-wrap {
+  white-space: nowrap; // For cells that we want to force to display full width
+}
+
+.admin-redacted {
+  text-decoration: line-through;
+}
+
+.table > tbody > tr > th,
+.table > tbody > tr > td {
+  vertical-align: middle;
+
+  &.empty-cell {
+    border: 0;
+  }
+
+  &.unpadded-cell {
+    padding: 0;
+  }
+
+  // For highlighting bracket boundaries
+  &.highlight-row {
+    border-top: 3px solid theme-color("info");
+  }
+
+  // For highlighting boundaries between metrics in "draw with details"
+  &.highlight-col {
+    border-left: 2px dotted $droppable-bg;
+  }
+
+  .result-icon {
+    text-align: right;
+    margin-left: -4px;
+    margin-right: 0;
+  }
+}
+
+.table-check {
+  padding-left: 1.25rem;
+}
+
+//------------------------------------------------------------------------------
+// MOBILE TWEAKS
+//------------------------------------------------------------------------------
+
+// For Phones
+@media (max-width: breakpoint-min(sm, $grid-breakpoints)) {
+
+  // Table widths on mobile devices should span the screen
+  .table-container {
+    margin-left: -20px;
+    margin-right: -15px;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+
+    .card-body {
+      padding-left: 0 !important; // Hard left border on mobile
+    }
+
+    .table > thead > tr > th:first-child,
+    .table > tbody > tr > td:first-child {
+      padding-left: 8px; // Double padding to compensate for smushed borders
+    }
+  }
+
+  // Break venues into new lines on mobile
+  .venue-name {
+    min-width: auto;
+  }
+
+  // Reduce widths of team names on mobile
+  .team-name {
+    white-space: normal;
+  }
+
+  // To save horizontal space; put the emoji in a vertical orientation
+  .team-name .flex-vertical-center {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  // But not in the admin interface
+  .main .table-container {
+    margin-left: 0;
+  }
+}

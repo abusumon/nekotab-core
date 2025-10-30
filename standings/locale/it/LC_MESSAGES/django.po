@@ -1,0 +1,636 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:50\n"
+"Last-Translator: philip_tc\n"
+"Language-Team: Italian\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Language: it\n"
+"X-Crowdin-File: /develop/tabbycat/standings/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-File-ID: 950\n"
+
+#: standings/base.py
+msgid "The same metric would be added twice:"
+msgstr "La stessa metrica verrebbe aggiunta due volte:"
+
+#: standings/base.py
+msgid "The same ranking would be added twice:"
+msgstr "La stessa classifica verrebbe aggiunta due volte:"
+
+#: standings/base.py
+#, python-format
+msgid "Unrecognized metric code: \"%(code)s\""
+msgstr "Codice metrico non riconosciuto: \"%(code)s\""
+
+#: standings/diversity.py
+msgid "All"
+msgstr "Tutti"
+
+#: standings/diversity.py
+msgid "Breaking"
+msgstr "Qualifiche"
+
+#: standings/diversity.py
+#, python-format
+msgid "Not %(category)s"
+msgstr "Non %(category)s"
+
+#: standings/diversity.py
+msgid "All Speakers"
+msgstr "Tutti gli speaker"
+
+#: standings/diversity.py
+msgid "IAs"
+msgstr "IA"
+
+#: standings/diversity.py
+msgid "Chairs"
+msgstr "Arbitri"
+
+#: standings/diversity.py
+msgid "Panellists"
+msgstr "Giudici"
+
+#: standings/diversity.py
+msgid "Trainees"
+msgstr "Apprendista"
+
+#: standings/diversity.py
+msgid "Average Rating"
+msgstr "Punteggio medio"
+
+#: standings/diversity.py
+msgid "Median Rating"
+msgstr "Punteggio mediano"
+
+#: standings/diversity.py
+msgid "Upper Quartile Rating"
+msgstr "Punteggi quartile superiore"
+
+#: standings/diversity.py
+msgid "Lower Quartile Rating"
+msgstr "Punteggi quartile inferiore"
+
+#: standings/diversity.py
+msgid "Average Rating From Teams"
+msgstr "Valutazione media delle squadre"
+
+#: standings/diversity.py
+msgid "Average Rating From Chairs"
+msgstr "Punteggio medio per gli arbitri"
+
+#: standings/diversity.py
+msgid "Average Rating From Panellists"
+msgstr "Punteggio medio per i giudici"
+
+#: standings/diversity.py
+msgid "Average Rating From Trainees"
+msgstr "Punteggio medio per gli apprendisti"
+
+#: standings/diversity.py
+msgid "Average Score"
+msgstr "Punteggio medio"
+
+#: standings/diversity.py
+msgid "Median Score"
+msgstr "Punteggio mediano"
+
+#: standings/diversity.py
+msgid "Upper Quartile Score"
+msgstr "Punteggi quartile superiore"
+
+#: standings/diversity.py
+msgid "Lower Quartile Score"
+msgstr "Punteggi quartile inferiore"
+
+#: standings/diversity.py
+msgid "Reply Speaker Average"
+msgstr "Media arringa speaker"
+
+#: standings/diversity.py
+#, python-format
+msgid "Speaker %(num)d Average"
+msgstr "Media %(num)d speaker"
+
+#: standings/diversity.py
+msgid "Average Finals Score"
+msgstr "Punteggio finali medio"
+
+#: standings/speakers.py
+msgid "total"
+msgstr "totale"
+
+#: standings/speakers.py
+msgid "Total"
+msgstr "Totale"
+
+#: standings/speakers.py
+msgid "average"
+msgstr "media"
+
+#: standings/speakers.py
+msgid "Avg"
+msgstr "Med"
+
+#: standings/speakers.py
+msgid "team points"
+msgstr "punti squadra"
+
+#: standings/speakers.py
+msgid "Team"
+msgstr "Team"
+
+#: standings/speakers.py standings/teams.py standings/views.py
+msgid "Wins"
+msgstr "Vittorie"
+
+#: standings/speakers.py standings/teams.py
+msgid "number of firsts"
+msgstr "numero di primi"
+
+#: standings/speakers.py standings/teams.py
+msgid "1sts"
+msgstr "1mi"
+
+#: standings/speakers.py standings/teams.py
+msgid "number of seconds"
+msgstr "numero di secondi"
+
+#: standings/speakers.py standings/teams.py
+msgid "2nds"
+msgstr "2di"
+
+#: standings/speakers.py standings/teams.py
+msgid "number of thirds"
+msgstr "numero di terzi"
+
+#: standings/speakers.py standings/teams.py
+msgid "3rds"
+msgstr "3zi"
+
+#: standings/speakers.py standings/teams.py
+msgid "number of adjudicators who voted for this team"
+msgstr "numero di giudici che hanno votato per questa squadra"
+
+#: standings/speakers.py standings/teams.py
+msgid "Ballots"
+msgstr "Ballot"
+
+#: standings/speakers.py standings/teams.py
+msgid "votes/ballots carried"
+msgstr "voti/ballot"
+
+#: standings/speakers.py
+msgid "standard deviation"
+msgstr "deviazione standard"
+
+#: standings/speakers.py
+msgid "Stdev"
+msgstr "Devstd"
+
+#: standings/speakers.py
+msgid "number of speeches given"
+msgstr "numero di speech fatti"
+
+#: standings/speakers.py
+msgid "Num"
+msgstr "Num"
+
+#: standings/speakers.py
+msgid "replies given"
+msgstr "arringhe fatte"
+
+#: standings/speakers.py
+msgid "trimmed mean (high-low drop)"
+msgstr "media tagliata (senza alto-basso)"
+
+#: standings/speakers.py
+msgid "Trim"
+msgstr "Tagl"
+
+#: standings/speakers.py
+msgid "speech ranks"
+msgstr "classifica discorsi"
+
+#: standings/speakers.py
+msgid "SRank"
+msgstr "CDiscorsi"
+
+#: standings/teams.py
+msgid "points"
+msgstr "punti"
+
+#: standings/teams.py
+msgid "Pts"
+msgstr "Pti"
+
+#: standings/teams.py
+msgid "wins"
+msgstr "vittorie"
+
+#: standings/teams.py
+msgid "total speaker score"
+msgstr "punteggio totale speaker"
+
+#: standings/teams.py
+msgid "Spk"
+msgstr "Spk"
+
+#: standings/teams.py
+msgid "average total speaker score"
+msgstr "punteggio totale speaker"
+
+#: standings/teams.py
+msgid "ATSS"
+msgstr "PTS"
+
+#: standings/teams.py
+msgid "speaker score standard deviation"
+msgstr "deviazione standard punteggio speaker"
+
+#: standings/teams.py
+msgid "SSD"
+msgstr "DSS"
+
+#: standings/teams.py
+msgid "sum of margins"
+msgstr "somma dei margini"
+
+#: standings/teams.py
+msgid "Marg"
+msgstr "Marg"
+
+#: standings/teams.py
+msgid "average margin"
+msgstr "margine medio"
+
+#: standings/teams.py
+msgid "AWM"
+msgstr "MM"
+
+#: standings/teams.py
+msgid "average individual speaker score"
+msgstr "punteggio medio individuale speaker"
+
+#: standings/teams.py
+msgid "AISS"
+msgstr "PMIS"
+
+#: standings/teams.py
+msgid "draw strength by rank"
+msgstr ""
+
+#: standings/teams.py
+msgid "DSR"
+msgstr ""
+
+#: standings/teams.py
+msgid "draw strength by wins"
+msgstr "forza del sorteggio per vittorie"
+
+#: standings/teams.py
+msgid "DS"
+msgstr "FS"
+
+#: standings/teams.py
+msgid "draw strength by total speaker score"
+msgstr "forza del sorteggio per punteggio totale speaker"
+
+#: standings/teams.py
+msgid "DSS"
+msgstr "FSS"
+
+#: standings/teams.py
+msgid "number of pullups"
+msgstr "numero di pullup"
+
+#: standings/teams.py
+msgid "PU"
+msgstr "NP"
+
+#: standings/teams.py
+msgid "number of times in pullup debates"
+msgstr "numero di volte nei dibattiti pullup"
+
+#: standings/teams.py
+msgid "SPu"
+msgstr "NPu"
+
+#: standings/teams.py
+msgid "number of times ironed"
+msgstr "numero di volte iron"
+
+#: standings/teams.py
+msgid "Irons"
+msgstr "Iron"
+
+#: standings/teams.py
+msgid "Who-beat-whom"
+msgstr "Chi-batte-chi"
+
+#: standings/teams.py
+msgid "WBW"
+msgstr "CBC"
+
+#: standings/teams.py
+msgid "who-beat-whom"
+msgstr "chi-batte-chi"
+
+#: standings/templates/current_standings.html
+msgid "It also excludes results from silent rounds (if any) and from the current round."
+msgstr "Inoltre esclude i risultati dei turni silenziosi (se presenti) e dei turni in corso."
+
+#: standings/templates/current_standings.html
+#, python-format
+msgid "This list is sorted by team points, then alphabetically by team name. It does not indicate each team's ranking within each bracket. %(silent_round_sentence)s"
+msgstr "Questo elenco è ordinato per punti di squadra, poi alfabeticamente per nome di squadra. Non indica la classifica di ogni squadra all'interno di ogni gruppo. %(silent_round_sentence)s"
+
+#: standings/templates/current_standings.html
+#, python-format
+msgid "This list is sorted by number of wins, then alphabetically by team name. It does not indicate each team's ranking within each bracket. %(silent_round_sentence)s"
+msgstr "Questo elenco è ordinato per numeri di vittoria, poi alfabeticamente per nome di squadra. Non indica la classifica di ogni squadra all'interno di ogni gruppo. %(silent_round_sentence)s"
+
+#: standings/templates/current_standings_no_round.html
+msgid "There aren't any rounds for which results are available."
+msgstr "Non ci sono round per i quali sono disponibili risultati."
+
+#: standings/templates/reply_standings.html
+msgid "Reply speakers are ranked by their <strong>average reply score</strong>."
+msgstr "Le arringhe degli speaker sono classificate in base al loro <strong>punteggio medio di risposta</strong>."
+
+#: standings/templates/reply_standings.html
+#, python-format
+msgid "Speakers can miss up to %(count)s reply speeches before they are omitted from the replies tab."
+msgstr "Gli speaker possono perdere fino a %(count)s discorsi di arringa prima di essere omessi dalla scheda risposte."
+
+#: standings/templates/reply_standings.html
+msgid "All reply speakers appear in these standings, no matter how many replies they've missed."
+msgstr "In questa classifica appaiono tutti gli speaker di arringhe, non importa quante arringhe abbiano perso."
+
+#: standings/templates/reply_standings.html
+#: standings/templates/speaker_standings.html
+#, python-format
+msgid "These settings can be changed in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>."
+msgstr "Queste impostazioni possono essere modificate nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Classifiche della configurazione di questo torneo</a>."
+
+#: standings/templates/speaker_standings.html
+#, python-format
+msgid "The speaker standings precedence is empty. This means that speakers aren't ranked according to any metrics, so everyone is first equal. If this isn't what you intended, set the speaker standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>. In most tournaments, the first metric should be total or average."
+msgstr "La classifica dei debater è vuota. Ciò significa che gli speaker non sono classificati in base a nessuna metrica, quindi tutti sono tutti primi a pari merito. Se questo non è quello che volevi, imposta la classifica dei debater nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Configurazione classifiche di questo torneo</a>. Nella maggior parte dei tornei, la prima metrica dovrebbe essere totale o media."
+
+#: standings/templates/speaker_standings.html
+msgid "Speakers are ranked by their <strong>average score</strong>."
+msgstr "Gli speaker sono classificati in base al loro <strong>punteggio medio</strong>."
+
+#: standings/templates/speaker_standings.html
+msgid "Speakers are ranked by their <strong>total score</strong>. Any speaker who misses a single debate will be severely punished in these rankings."
+msgstr "Gli speaker sono classificati in base al loro <strong>punteggio totale</strong>. Ogni oratore che manchi un solo dibattito sarà severamente penalizzato in queste classifiche."
+
+#: standings/templates/speaker_standings.html
+#, python-format
+msgid "Speakers can miss up to %(count)s debates before they are omitted from the speaker tab."
+msgstr "Gli speaker possono perdere fino a %(count)s dibattiti prima di essere omessi dalla scheda speaker."
+
+#: standings/templates/speaker_standings.html
+msgid "All speakers appear in these standings, no matter how many debates they've missed."
+msgstr "In questa classifica appaiono tutti gli speaker, non importa quanti dibattiti abbiano perso."
+
+#: standings/templates/speaker_standings.html
+#, python-format
+msgid "Enforcing the limit on the number of missed debates requires the \"number of speeches given\" metric to be included in the speaker standings calculations, so it's been automatically added. To remove this warning message, add <strong>Number of speeches given</strong> to the <strong>Speaker standings extra metrics</strong> in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>."
+msgstr "L'applicazione del limite al numero di dibattiti non svolti richiede che il \"numero di speech fatti\" sia incluso nei calcoli della classifica degli oratori, quindi è stato aggiunto automaticamente. Per rimuovere questo messaggio di avviso, aggiungi <strong>Numero di discorsi fatti</strong> alle <strong>metriche extra di classifica speaker</strong> nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Configurazione classifiche di questo torneo</a>."
+
+#: standings/templates/standings_diversity.html
+msgid "Diversity Overview"
+msgstr "Panoramica Diversità"
+
+#: standings/templates/standings_diversity.html
+msgid "The results data displayed here is presented without tests for statistical significance. Correlations should not be automatically considered reliable; particularly at small tournaments. A 'region' is a customisable category assigned to a set of institutions, and counted using the number of participants assigned to those institutions."
+msgstr "I dati visualizzati qui sono presentati senza analisi di rilevanza statistica. Le correlazioni non devono essere automaticamente considerate affidabili, in particolare in piccoli tornei. Una 'regione' è una categoria personalizzabile assegnata ad un insieme di istituzioni e contata utilizzando il numero di partecipanti assegnati a tali istituzioni."
+
+#: standings/templates/standings_diversity.html
+msgid "Non-cis male identifying"
+msgstr "Identificatore non maschile"
+
+#: standings/templates/standings_diversity.html
+msgid "Cis-male identifying"
+msgstr "Identificato maschile"
+
+#: standings/templates/standings_diversity.html
+msgid "Unspecified/unrecorded"
+msgstr "Non specificato/non registrato"
+
+#: standings/templates/standings_index.html
+msgid "Standings"
+msgstr "Classifiche"
+
+#: standings/templates/standings_index.html
+msgid "Top Speaks"
+msgstr "Punteggi migliori"
+
+#: standings/templates/standings_index.html
+#, python-format
+msgid "%(speaker)s in %(round)s"
+msgstr "%(speaker)s in %(round)s"
+
+#: standings/templates/standings_index.html
+msgid "No data yet"
+msgstr "Ancora nessun dato"
+
+#: standings/templates/standings_index.html
+msgid "Bottom Speaks"
+msgstr "Punteggi più bassi"
+
+#: standings/templates/standings_index.html
+msgid "Largest Margins"
+msgstr "Margini maggiori"
+
+#: standings/templates/standings_index.html
+#, python-format
+msgid "%(team)s vs %(opp)s in %(round)s"
+msgstr "%(team)s vs %(opp)s in %(round)s"
+
+#: standings/templates/standings_index.html
+msgid "Closest Margins"
+msgstr "Risultati più vicini"
+
+#: standings/templates/standings_index.html
+msgid "Top Team Scores"
+msgstr "Punteggi squadre migliori"
+
+#: standings/templates/standings_index.html
+#, python-format
+msgid "%(team)s in %(round)s"
+msgstr "%(team)s in %(round)s"
+
+#: standings/templates/standings_index.html
+msgid "Bottom Team Scores"
+msgstr "Punteggi squadre peggiori"
+
+#: standings/templates/standings_index.html
+msgid "Most/Least Popular Motions"
+msgstr "Mozioni Più/Meno Popolari"
+
+#: standings/templates/standings_index.html
+msgid "Average Speaks"
+msgstr "Meddia punti speech"
+
+#: standings/templates/standings_menu.html
+msgid "Overview"
+msgstr "Panoramica"
+
+#: standings/templates/standings_menu.html
+msgid "Teams"
+msgstr "Squadre"
+
+#: standings/templates/standings_menu.html
+msgctxt "All [Teams]"
+msgid "All"
+msgstr "Tutti"
+
+#: standings/templates/standings_menu.html
+msgid "Speakers"
+msgstr "Speaker"
+
+#: standings/templates/standings_menu.html
+msgctxt "Substantive speeches"
+msgid "Substantives"
+msgstr "Sostanziali"
+
+#: standings/templates/standings_menu.html
+msgctxt "All [Speakers]"
+msgid "All"
+msgstr "Tutti"
+
+#: standings/templates/standings_menu.html
+msgid "Speakers "
+msgstr "Speaker "
+
+#: standings/templates/standings_menu.html
+#, python-format
+msgid "%(category)s"
+msgstr ""
+
+#: standings/templates/standings_menu.html
+msgid "Replies"
+msgstr "Arringhe"
+
+#: standings/templates/standings_menu.html
+msgid "Motions"
+msgstr "Mozioni"
+
+#: standings/templates/standings_menu.html
+msgid "By Round"
+msgstr "Per Turno"
+
+#: standings/templates/standings_menu.html
+msgid "Diversity"
+msgstr "Diversità"
+
+#: standings/templates/team_standings.html
+#, python-format
+msgid "The team standings precedence is empty. This means that teams aren't ranked according to any metrics, so everyone is first equal. If this isn't what you intended, set the team standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>. In most tournaments, the first metric should be points or wins."
+msgstr "La classifica delle squadre è vuota. Ciò significa che le squadre non sono classificate in base a nessuna metrica, quindi tutti sono tutti primi a pari merito. Se questo non è quello che volevi, imposta la classifica delle squadre nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Configurazione classifiche di questo torneo</a>. Nella maggior parte dei tornei, la prima metrica dovrebbe essere punti o vittorie."
+
+#: standings/views.py
+#, python-format
+msgid "<p>There was an error generating the standings: <em>%(message)s</em></p>"
+msgstr "<p>Si è verificato un errore durante la generazione della classifica: <em>%(message)s</em></p>"
+
+#: standings/views.py
+#, python-format
+msgid "<p>You may need to double-check the <a href=\"%(standings_options_url)s\" class=\"alert-link\">standings configuration under the Setup section</a>. If this issue persists and you're not sure how to fix it, please contact the developers.</p>"
+msgstr "<p>Potrebbe essere necessario ricontrollare la <a href=\"%(standings_options_url)s\" class=\"alert-link\">configurazione classifiche nella sezione Impostazioni</a>. Se il problema persiste e non sai come risolverlo, contatta gli sviluppatori.</p>"
+
+#: standings/views.py
+msgid "<p>The tab director will need to resolve this issue.</p>"
+msgstr "<p>Il tab master dovrà risolvere questo problema.</p>"
+
+#: standings/views.py
+#, python-format
+msgid "as of %(round)s"
+msgstr "come da %(round)s"
+
+#. Translators: 'title' is the main title; "(Top 15 Only)" is just a suffix
+#: standings/views.py
+#, python-format
+msgid "%(title)s (Top %(limit)d Only)"
+msgstr "%(title)s (solo %(limit)d in alto)"
+
+#: standings/views.py
+msgid "The tab can't be displayed because all rounds so far in this tournament are silent."
+msgstr "La scheda non può essere visualizzata perché tutti gli attuali turni in questo torneo sono silenziosi."
+
+#: standings/views.py
+msgid "Speaker Standings"
+msgstr "Classifica speaker"
+
+#: standings/views.py
+msgid "Speaker Tab"
+msgstr "Scheda speaker"
+
+#: standings/views.py
+#, python-format
+msgid "%(category)s Speaker Standings"
+msgstr "%(category)s Classifica speaker"
+
+#: standings/views.py
+#, python-format
+msgid "%(category)s Speaker Tab"
+msgstr "%(category)s scheda speaker"
+
+#: standings/views.py
+msgid "Reply Speaker Standings"
+msgstr "Classifica speaker arringhe"
+
+#: standings/views.py
+msgid "Reply speeches aren't enabled in this tournament."
+msgstr "I discorsi di arringa non sono abilitati in questo torneo."
+
+#: standings/views.py
+msgid "Reply Speaker Tab"
+msgstr "Scheda speaker arringa"
+
+#: standings/views.py
+msgid "Team Standings"
+msgstr "Classifica squadre"
+
+#: standings/views.py
+msgid "Team Tab"
+msgstr "Tab squadre"
+
+#: standings/views.py
+#, python-format
+msgid "%(category)s Team Standings"
+msgstr "%(category)s Classifica squadre"
+
+#: standings/views.py
+#, python-format
+msgid "%(category)s Team Tab"
+msgstr "%(category)s Tab squadra"
+
+#: standings/views.py
+msgid "Current Team Standings"
+msgstr "Classifica Squadra Attuale"
+
+#: standings/views.py
+msgid "Points"
+msgstr "Punti"
+
+#: standings/views.py
+msgid "Feedback Overview"
+msgstr "Panoramica Feedback"
+
+#: standings/views.py
+msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
+msgstr "Il punteggio di un giudice è determinato da un mix personalizzabile tra punteggio base e valutazioni di feedback. L'attuale mix è specificato di seguito come 'componenti del punteggio'. Le valutazioni di feedback sono determinate dalla media dei risultati di tutte le singole parti del feedback in tutti i round. <a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Approfondisci</a>."
+

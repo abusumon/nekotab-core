@@ -1,0 +1,188 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:46\n"
+"Last-Translator: philip_tc\n"
+"Language-Team: Italian\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Language: it\n"
+"X-Crowdin-File: /develop/tabbycat/privateurls/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-File-ID: 946\n"
+
+#: privateurls/apps.py
+msgid "Private URL Management"
+msgstr "Gestione URL privati"
+
+#: privateurls/templates/private_url_landing.html
+msgid "Private URL"
+msgstr "URL PrivatI"
+
+#: privateurls/templates/private_url_landing.html
+#, python-format
+msgid "for %(name)s"
+msgstr "per %(name)s"
+
+#: privateurls/templates/private_url_landing.html
+#, python-format
+msgid "(%(team)s)"
+msgstr ""
+
+#: privateurls/templates/private_url_landing.html
+#, python-format
+msgid "Your team has an incomplete number of speakers. Please share the registration link with your partner(s): <a href=\"%(link)s\">%(link)s</a>"
+msgstr ""
+
+#: privateurls/templates/private_url_landing.html
+#, python-format
+msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can submit results and/or feedback for your debates. You may bookmark this page and return here after each debate for the available actions."
+msgstr "L'URL di questa pagina è personalizzato per te, %(name)s. <strong>Non condividerlo con nessuno;</strong> chiunque abbia questo URL può inviare risultati e/o feedback per i tuoi dibattiti. Salva questa pagina e riaprila dopo ogni dibattito per le azioni disponibili."
+
+#: privateurls/templates/private_url_landing.html
+#, python-format
+msgid "Revoke check-in from %(check_time)s"
+msgstr "Revoca check-in da %(check_time)s"
+
+#: privateurls/templates/private_url_landing.html
+msgid "Check in"
+msgstr "Check in"
+
+#. Translators: Include the full-stop; English doesn't because "a.m." already has a full stop.
+#: privateurls/templates/private_url_landing.html
+#, python-format
+msgid "You have been checked in at %(check_time)s"
+msgstr "Hanno effettuato il check-in per te alle %(check_time)s"
+
+#: privateurls/templates/private_url_landing.html
+msgid "You are not currently checked in."
+msgstr "Attualmente non sei registrato."
+
+#: privateurls/templates/private_url_landing.html
+msgid "Show barcode for check-in"
+msgstr ""
+
+#: privateurls/templates/private_url_landing.html
+#, python-format
+msgid "Submit Ballot for %(round)s"
+msgstr "Invia Ballot per %(round)s"
+
+#: privateurls/templates/private_url_landing.html
+msgid "Submit Feedback"
+msgstr "Invia feedback"
+
+#: privateurls/templates/private_url_landing.html
+#, python-format
+msgid "Registration (%(name)s)"
+msgstr "Registrazione (%(name)s)"
+
+#: privateurls/templates/private_urls.html privateurls/views.py
+msgid "Private URLs"
+msgstr "URL privati"
+
+#: privateurls/templates/private_urls.html
+msgid "The private URLs for ballot and/or feedback submission from participants are given below."
+msgstr "Gli URL privati per i ballot e/o le sottomissioni di feedback dei partecipanti sono riportati di seguito."
+
+#: privateurls/templates/private_urls.html
+msgid "Private URLs are used to allow participants to submit ballots and/or feedback online. You should use them if you have a means of distributing crazy-looking URLs to participants, and are too worried about fraud to use a publicly accessible page where <em>anyone</em> can enter <em>any</em> submission. The URLs will look something like this:"
+msgstr "Gli URL privati sono utilizzati per consentire ai partecipanti di inviare ballot e/o feedback online. Dovresti usarli se hai un mezzo per distribuire URL difficili da ricordare ai partecipanti, e sono troppo preoccupati per le possibil frodi nell'utilizzare una pagina accessibile al pubblico dove <em>chiunque</em> può inserire <em>qualsiasi</em> informazione. Gli URL assomiglieranno a questo:"
+
+#: privateurls/templates/private_urls.html
+msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
+msgstr "Chiunque abbia l'URL può accedere alla relativa pagina di inserimento dati. L'idea è che è difficile indovinare un'altra chiave (il testo dall'aspetto casuale), in modo da rendere ogni URL accessibile solo al partecipante in questione. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Per saperne di più sugli URL privati.</a>"
+
+#: privateurls/templates/private_urls.html
+#, python-format
+msgid "Neither <strong>participant ballot submissions</strong>, <strong>participant feedback submissions</strong>, nor <strong>participant self-checkins</strong> are configured to be from private URLs. Any generated URLs will not be useful unless you configure those settings accordingly on the <a href=\"%(data_entry_options_url)s\">tournament configuration page</a>."
+msgstr "Ne <strong>i form di ballot per partecipanti</strong>, <strong>i feedback dei partecipanti</strong>, né <strong>gli auto-checkins dei partecipanti</strong> sono configurati per essere da URL privati. Qualsiasi URL generato sarà inutile a meno che tu non configuri queste impostazioni di conseguenza nella <a href=\"%(data_entry_options_url)s\">pagina di configurazione del torneo</a>."
+
+#: privateurls/templates/private_urls.html
+msgid "There are no private URLs assigned."
+msgstr "Non ci sono URL privati assegnati."
+
+#: privateurls/templates/private_urls.html
+msgid "Generate Private URLs"
+msgstr "Genera URL Privati"
+
+#: privateurls/templates/private_urls_nav.html
+msgid "View URLs"
+msgstr "Visualizza URL"
+
+#: privateurls/templates/private_urls_nav.html
+msgid "Print Teams' URLs"
+msgstr "Stampa Gli URL Dei Team"
+
+#: privateurls/templates/private_urls_nav.html
+msgid "Print Adjudicators' URLs"
+msgstr "Stampa URL dei giudici"
+
+#: privateurls/templates/private_urls_nav.html
+msgid "All reachable participants have already been sent their private URLs."
+msgstr "Tutti i partecipanti raggiungibili hanno già ricevuto il loro URL privato."
+
+#: privateurls/templates/private_urls_nav.html
+msgid "Email URLs"
+msgstr "Email URL"
+
+#: privateurls/templates/private_urls_nav.html
+msgid "This button only generates private URLs for participants who do not already have one."
+msgstr "Questo pulsante genera solo gli URL privati per i partecipanti che non ne hanno già uno."
+
+#: privateurls/templates/private_urls_nav.html
+msgid "Generate URLs"
+msgstr "Genera URL"
+
+#: privateurls/templates/private_urls_nav.html
+msgid "All participants already have private URLs."
+msgstr "Tutti i partecipanti hanno già un URL privato."
+
+#: privateurls/views.py
+msgid "no URL"
+msgstr "nessun URL"
+
+#: privateurls/views.py
+msgid "URL"
+msgstr "URL"
+
+#: privateurls/views.py
+msgid "Speakers"
+msgstr "Speaker"
+
+#: privateurls/views.py
+msgid "Adjudicators"
+msgstr "GiudicI"
+
+#: privateurls/views.py
+msgid "All participants already have private URLs. If you want to delete them, use the Edit Database area."
+msgstr "Tutti i partecipanti hanno già URL privato. Per eliminarli, utilizzare l'area Modifica database."
+
+#: privateurls/views.py
+#, python-format
+msgid "A private URL was generated for %(nblank_people)d person."
+msgid_plural "Private URLs were generated for all %(nblank_people)d people."
+msgstr[0] "È stato generato un URL privato per %(nblank_people)d persona."
+msgstr[1] "Sono stati generato gli URL privati per %(nblank_people)d persone."
+
+#: privateurls/views.py
+#, python-format
+msgid "The already-existing private URL for %(nexisting_people)d person was left intact."
+msgid_plural "The already-existing private URLs for %(nexisting_people)d people were left intact."
+msgstr[0] "L'URL privato già esistente per %(nexisting_people)d persona è stato lasciato intatto."
+msgstr[1] "Gli URL privati già esistente per %(nexisting_people)d persone sono stati lasciati intatti."
+
+#: privateurls/views.py
+msgid "URL Key"
+msgstr "Chiave URL"
+
+#: privateurls/views.py
+msgid "Debates"
+msgstr "Dibattiti"
+

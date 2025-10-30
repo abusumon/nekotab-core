@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static debate_tags add_field_css i18n %}
+
+{% block head-title %}<span class="emoji">👯</span> {% trans 'Add Adjudicators' context 'page title' %}
+{% blocktrans trimmed with step=wizard.steps.step1 count=wizard.steps.count %}(Step {{ step }} of {{ count }}){% endblocktrans %}{% endblock %}
+{% block page-title %}{% trans 'Add Adjudicators' context 'page title' %}{% endblock %}
+
+{% block content %}
+
+{% if wizard.form.fields|length == 0 %}
+
+  <div class="alert alert-warning" role="alert">
+    {% tournamenturl 'importer-simple-institutions' as import_institutions_url %}
+    {% blocktrans trimmed %}
+      You need to
+      <a href="{{ import_institutions_url }}" class="alert-link">add institutions</a>
+      before adding adjudicators.
+    {% endblocktrans %}
+  </div>
+
+{% else %}
+
+  {% blocktrans trimmed asvar p1 %}
+    Specify the number of new adjudicators to add per institution.
+    In the next step you can specify their names and ratings.
+  {% endblocktrans %}
+  {% blocktrans trimmed asvar p2 %}
+    You can add up to 198 adjudicators at a time. If you have more than 198
+    adjudicators, split them into chunks. (Please don't try to add more than 198
+    in one go; the system will crash, and you will lose data.)
+  {% endblocktrans %}
+  {% include "components/explainer-card.html" with type="info" %}
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ wizard.management_form }}
+
+    {% if wizard.form.errors %}
+      {% include "components/form-errors.html" with errors=wizard.form.non_field_errors %}
+    {% endif %}
+
+    <div class="card pt-3">
+      <ul class="list-group list-group-flush">
+
+        {% for field in wizard.form %}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-sm-2">
+                {{ field|addcss:"form-control" }}
+                {{ field.errors }}
+              </div>
+              <label class="col-sm-10" for="{{ field.id_for_label }}">
+                {{ field.label }}
+              </label>
+            </div>
+          </li>
+        {% endfor %}
+
+        {% trans "Next Step" context "button" as title %}
+        {% include "components/form-submit.html" %}
+
+      </ul>
+    </div>
+  </form>
+
+{% endif %}
+
+{% endblock content %}

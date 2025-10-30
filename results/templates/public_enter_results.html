@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load debate_tags add_field_css humanize static i18n %}
+
+{% block noindex %}<meta name="robots" content="noindex" />{% endblock %}
+{% block page-alerts %}
+
+  {% if form.scoresheets|length > 1 %}
+    {% person_display_name adjudicator as adjudicator_name %}
+    {% blocktrans trimmed with adjudicator=adjudicator_name asvar message %}
+      {{ adjudicator }}, note that you must enter <strong>all of the ballots</strong> from your panel, not just your own!
+    {% endblocktrans %}
+    {% include "components/alert.html" with type="warning" %}
+  {% endif %}
+
+  {% if prefilled %}
+    {% blocktrans trimmed asvar message %}
+      Some information, such as speaker order, shown is based on a previous ballot. If anything is incorrect, please correct it and contact the tab team.
+    {% endblocktrans %}
+    {% include "components/alert.html" with type="warning" %}
+  {% endif %}
+
+  {% with nballotsubs=all_ballotsubs.count %}
+    {% if nballotsubs > 0 %}
+      {% blocktrans trimmed with nsubmissions=nballotsubs|apnumber count counter=nballotsubs asvar message %}
+        This form has already been submitted <strong>once</strong>. Please contact a tab official after submitting your form.
+      {% plural %}
+        This form has already been submitted <strong>{{ nsubmissions }}</strong> times. Please contact a tab official after submitting your form.
+      {% endblocktrans %}
+      {% include "components/alert.html" with type="danger" %}
+    {% endif %}
+  {% endwith %}
+
+{% endblock %}
+
+{% block content %}
+
+  {% include "includes/public_enter_results_info.html" %}
+
+  <form id="resultsForm" action="." method="POST">
+    {% csrf_token %}
+    {% include "ballot/ballot_set.html" %}
+
+
+    <div class="card mt-3">
+      <div class="card-body">
+        {# Password isn't always used. #}
+        {% if form.password %}
+          <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+            <div class="col-sm-9 col-md-6">
+              {{ form.password|addcss:"form-control" }}
+            </div>
+            <div class="col-md-2 col-xs-10">
+              {% if form.password.errors %}
+                <label for="{{ form.password.id_for_label }}">{{ form.password.errors }}</label>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+        <input id="id_debate_result_status" type="hidden" name="debate_result_status" value="{{ debate.STATUS_DRAFT }}" />
+        <input id="id_discarded" type="hidden" name="discarded" />
+        <input id="id_confirmed" type="hidden" name="confirmed" />
+        {% blocktranslate trimmed count counter=form.scoresheets|length asvar button_text %}
+          Submit Ballot
+        {% plural %}
+          Submit Ballots
+        {% endblocktranslate %}
+        <input class="save btn btn-success btn-block " type="submit" value="{{ button_text }}" tabindex="{{ form.nexttabindex }}"/>
+        <div class="text-center pt-3 small text-muted">
+          {% trans "When submitting this form your IP address will be stored for logging purposes." %}
+          {% if pref.enable_ballot_receipts %}
+            <br />
+            {% trans "Emails will be sent to adjudicators when the ballot is confirmed." %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </form>
+{% endblock content %}
+
+{% block js %}
+
+  {{ block.super }}
+  <!-- TODO: bundle -->
+  <script src="{% static 'js/vendor/jquery.validate.js' %}"></script>
+  <script>
+    $(document).ready( function() {
+      {% include "js-bundles/enter_results.js" %}
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load debate_tags i18n %}
+
+{% block content %}
+
+  <div id="vueMount">
+    <checkbox-tables-container  :tables-data=tablesData
+                                :categories=categories
+                                :round-info=roundInfo
+                                :translations=translations
+                                :urls=urls
+                                :navigation=navigation
+                                :hide-auto-save=hideAutoSave
+                                orientation={{ tables_orientation|safe }} >
+    </checkbox-tables-container>
+  </div>
+
+{% endblock content %}
+
+{% block js %}
+
+  <script>
+    window.vueData = {
+      tablesData: {% if tables_data %}{{ tables_data|safe }}{% else %}null{% endif %},
+       roundInfo: {
+        'seq': {{ round.seq }},
+        'break': '{{ round.is_break_round }}',
+        'model': '{{ model }}',
+        'prev': '{{ round.prev.abbreviation }}',
+      },
+      categories: [{id: 0, name: 'Availability'}],
+      urls: {
+        'breakingAdjs': '{% roundurl "availability-checkin-breaking-adjudicators" %}',
+        'save': '{{ saveURL|safe }}'
+      },
+      hideAutoSave: false,
+      translations: {
+        'Select All': '{% trans "Select All" %}',
+        'Select None': '{% trans "Select None" %}',
+        'Check-Ins': '{% trans "Check-Ins" %}',
+        'Check In All Breaking': '{% trans "Check In All Breaking" %}',
+        'Copy from Previous': '{% trans "Copy from Previous" %}',
+        'Save Selected': '{% trans "Save Selected" %}'
+      },
+      navigation: [
+        { title: 'Overview', url: '{% roundurl "availability-index" round %}', back: true }
+      ]
+    }
+  </script>
+  {{ block.super }}
+
+{% endblock js %}

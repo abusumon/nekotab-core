@@ -1,0 +1,11 @@
+{% extends "tables/base_vue_table.html" %}
+{% load debate_tags i18n %}
+
+{% block page-subnav-sections %}<div class="btn-group flex-wrap"></div>{% endblock %}
+{% block page-subnav-actions %}
+<div class="btn-group flex-wrap">
+  <a class="btn btn-outline-primary" href="{% tournamenturl 'reg-adjudicator-questions' %}">
+    {% trans "Questions" %}
+  </a>
+</div>
+{% endblock %}

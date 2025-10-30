@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block noindex %}<meta name="robots" content="noindex" />{% endblock %}
+{% block content %}
+
+  <form id="signupForm" method="POST">
+    {% csrf_token %}
+
+    <div class="card">
+      <div class="list-group list-group-flush">
+        {% trans "Create a new Account" context "page title" as title %}
+
+        {% include "components/form-title.html" with icon="user-plus" %}
+
+        {% include "components/form-main.html" %}
+
+        {% trans "Create Account" as title %}
+        {% include "components/form-submit.html" %}
+
+      </div>
+    </div>
+  </form>
+
+{% endblock content %}

@@ -1,0 +1,83 @@
+{% extends "assistant_tournament_index.html" %}
+{% load i18n debate_tags static %}
+
+{% block content %}
+
+  {% if round.is_break_round %}
+    {% blocktrans trimmed with amount=tournament.billable_teams asvar text %}
+      We hope you've enjoyed using Tabbycat for your tournament. We would appreciate if you would
+      make a donation to the project in order to support its ongoing development and maintenance.
+      For a tournament of this size, we suggest a donation of <strong>${{ amount }}</strong>.
+      <a href="https://opencollective.com/tabbycat">Learn more about donating.</a>
+    {% endblocktrans %}
+    {% include "components/item-info.html" with type="info" icon="heart" %}
+    <hr>
+  {% endif %}
+
+  {% haspermission "add.team" as teams_perm %}
+  {% haspermission "edit.roundavailability.team" as availability_perm %}
+  {% haspermission "edit.debateadjudicator" as allocation_perm %}
+  {% haspermission "add.ballotsubmission" as results_perm %}
+  {% if blank and teams_perm %}
+
+    <div class="card border-info text-info mb-3">
+      <div class="card-body">
+        <h4 class="card-title">{% trans "Welcome to your new tournament!" %}</h4>
+        <p class="card-text">
+          {% blocktrans trimmed %}
+            The next step is to import your initial tournament data: the
+            institutions, teams, adjudicators and rooms that are in your
+            tournament. There are a number of ways to do this. For small-to-medium
+            tournaments, the simple importer is your best bet.
+          {% endblocktrans %}
+          {# Translators: The documentation where the link goes to is in English; translations should mention this with "(in English)" after the link. #}
+          {% blocktrans trimmed %}
+            For more information, please consult our
+            <a href="https://tabbycat.readthedocs.io/en/{{ readthedocs_version }}/use/importing-data.html" class="alert-link" target="_blank">
+            documentation on importing initial data</a>.
+          {% endblocktrans %}
+        </p>
+      </div>
+    </div>
+
+    <div class="list-group">
+      {% tournamenturl 'importer-simple-index' as url %}
+      {% trans "Use the simple importer to add your initial data." as text %}
+      {% include "components/item-action.html" with to_complete=True %}
+    </div>
+
+  {% elif round.draw_status == round.Status.NONE and availability_perm %}
+
+    <div class="list-group">
+      {% roundurl 'availability-index' round as url %}
+      {% blocktrans trimmed with round=round.name asvar text %}
+        Mark participants as available to prepare a draw for {{ round }}
+      {% endblocktrans %}
+      {% include "components/item-action.html" with to_complete=True %}
+    </div>
+
+  {% elif round.draw_status == round.Status.CONFIRMED and allocation_perm %}
+
+    <div class="list-group">
+      {% roundurl 'draw' round as url %}
+      {% blocktrans trimmed with round=round.name asvar text %}
+        Go to the draw area to allocate adjudicators for {{ round }}
+      {% endblocktrans %}
+      {% include "components/item-action.html" with to_complete=True %}
+    </div>
+
+  {% elif round.draw_status == round.Status.RELEASED and results_perm %}
+
+    <div class="list-group">
+      {% roundurl 'results-round-list' round as url %}
+      {% blocktrans trimmed with round=round.name asvar text %}
+        Go to the results area to enter ballots for {{ round }}
+      {% endblocktrans %}
+      {% include "components/item-action.html" with to_complete=True %}
+    </div>
+
+  {% endif %}
+
+  {{ block.super }}
+
+{% endblock content %}

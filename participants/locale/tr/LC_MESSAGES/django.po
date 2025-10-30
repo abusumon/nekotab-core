@@ -1,0 +1,1016 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tabbycat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-06 09:38+1000\n"
+"PO-Revision-Date: 2025-07-05 23:51\n"
+"Last-Translator: philip_tc\n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /develop/tabbycat/participants/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-Project-ID: 364715\n"
+"X-Crowdin-File-ID: 942\n"
+
+#: participants/admin.py
+#, python-format
+msgid "The team can't be in a break category of a different tournament. Please remove: %(category)s"
+msgstr "Takım farklı bir turnuvanın break kategorisinde olamaz. Lütfen şunu kaldırın: %(category)s"
+
+#: participants/admin.py
+msgid "Emoji & Code"
+msgstr "Emoji ve Kod"
+
+#: participants/admin.py
+msgid "Delete URL Key"
+msgstr "URL Anahtarını Sil"
+
+#: participants/admin.py
+#, python-format
+msgid "%(count)d speaker had their URL key removed."
+msgid_plural "%(count)d speakers had their URL keys removed."
+msgstr[0] "%(count)d konuşmacısının URL anahtarı kaldırılmıştır."
+msgstr[1] "%(count)d konuşmacılarının URL anahtarları kaldırıldı."
+
+#: participants/admin.py
+msgid "Reset emoji"
+msgstr "Emojiyi sıfırla"
+
+#: participants/admin.py
+#, python-format
+msgid "%(count)d team had their emoji reset."
+msgid_plural "%(count)d teams had their emojis reset."
+msgstr[0] "%(count)d takımının emojisi sıfırlandı."
+msgstr[1] "%(count)d takımlarının emojileri sıfırlandı."
+
+#: participants/admin.py
+msgid "Reset code name"
+msgstr "Kod ad sıfırla"
+
+#: participants/admin.py
+#, python-format
+msgid "%(count)d team had their code name reset."
+msgid_plural "%(count)d teams had their code names reset."
+msgstr[0] "%(count)d takımının kod adı sıfırlandı."
+msgstr[1] "%(count)d takımlarının kod adları sıfırlandı."
+
+#: participants/admin.py
+#, python-format
+msgid "%(count)d adjudicator had their URL key removed."
+msgid_plural "%(count)d adjudicators had their URL keys removed."
+msgstr[0] "%(count)d jürisinin URL anahtarı kaldırılmıştır."
+msgstr[1] "%(count)d jürilerinin URL anahtarları kaldırıldı."
+
+#: participants/apps.py participants/views.py
+msgid "Participants"
+msgstr "Katılımcılar"
+
+#: participants/models.py
+msgid "name"
+msgstr "isim"
+
+#: participants/models.py
+msgid "region"
+msgstr "bölge"
+
+#: participants/models.py
+msgid "regions"
+msgstr "bölgeler"
+
+#. Translators: Change the examples to institutions native to your language; keep consistent between strings
+#: participants/models.py
+msgid "The institution's full name, e.g., \"University of Cambridge\", \"Victoria University of Wellington\""
+msgstr "Kurumun tam adı, örneğin, \"Cambridge Üniversitesi\", \"Wellington Victoria Üniversitesi\""
+
+#: participants/models.py
+msgid "code"
+msgstr "kod"
+
+#. Translators: Change the examples to institutions native to your language; keep consistent between strings
+#: participants/models.py
+msgid "What the institution is typically called for short, e.g., \"Cambridge\", \"Vic Wellington\""
+msgstr "Kurumun tipik olarak kısa adı, örneğin, \"Cambridge\", \"Vic Wellington\""
+
+#: participants/models.py
+msgid "institution"
+msgstr "kurum"
+
+#: participants/models.py
+msgid "institutions"
+msgstr "kurumlar"
+
+#: participants/models.py
+msgid "tournament"
+msgstr "turnuva"
+
+#: participants/models.py
+msgid "Team slots requested"
+msgstr ""
+
+#: participants/models.py
+msgid "Team slots allocated"
+msgstr ""
+
+#: participants/models.py
+msgid "Adjudicator slots requested"
+msgstr ""
+
+#: participants/models.py
+msgid "Adjudicator slots allocated"
+msgstr ""
+
+#: participants/models.py
+msgid "tournament institution"
+msgstr ""
+
+#: participants/models.py
+msgid "tournament institutions"
+msgstr ""
+
+#. Translators: Translate ESL to the acronym for "<target language> as a second/foreign language", not "English"
+#: participants/models.py
+msgid "Name to be displayed, e.g., \"Novice\", \"ESL\""
+msgstr "Görüntülenecek ad, örneğin \"Acemi\", \"ESL\""
+
+#: participants/models.py
+msgid "slug"
+msgstr "jeton"
+
+#. Translators: Translate esl to the acronym for "<target language> as a second/foreign language", not "English"
+#: participants/models.py
+msgid "Slug for URLs, e.g., \"novice\", \"esl\""
+msgstr "URL'ler için jeton, örneğin \"acemi\", \"esl\""
+
+#: participants/models.py
+msgid "sequence number"
+msgstr "sıra numarası"
+
+#: participants/models.py
+msgid "The order in which the categories are displayed"
+msgstr "Kategorilerin görüntülenme sırası"
+
+#: participants/models.py
+msgid "limit"
+msgstr "sınır"
+
+#: participants/models.py
+msgid "At most this many speakers will be shown on the public tab for this category, or use 0 for no limit"
+msgstr "En fazla bu kadar konuşmacı bu kategorinin herkese açık tabında gösterilir veya sınır olmaması için 0 kullanın"
+
+#: participants/models.py
+msgid "public"
+msgstr "herkese açık"
+
+#: participants/models.py
+msgid "If checked, this category will be included in the speaker category tabs shown to the public"
+msgstr "İşaretlenirse, bu kategori herkese gösterilen konuşmacı kategorisi tablarına dahil edilecektir."
+
+#: participants/models.py
+msgid "speaker category"
+msgstr "konuşmacı kategorisi"
+
+#: participants/models.py
+msgid "speaker categories"
+msgstr "konuşmacı kategorileri"
+
+#: participants/models.py
+msgid "last name"
+msgstr ""
+
+#: participants/models.py
+msgid "The last name may be used for team names or code names"
+msgstr ""
+
+#: participants/models.py
+msgid "email address"
+msgstr ""
+
+#: participants/models.py
+msgid "phone"
+msgstr "Telefon"
+
+#: participants/models.py
+msgid "anonymous"
+msgstr "anonim"
+
+#: participants/models.py
+msgid "Anonymous persons will have their name and team redacted on public tab releases"
+msgstr "Anonim kişilerin adları ve takımları herkese açık tab yayınlamalarında redakte edilecektir"
+
+#: participants/models.py
+msgid "code name"
+msgstr "kod ad"
+
+#: participants/models.py
+msgid "Name used to obscure real name on public-facing pages"
+msgstr "Herkese açık sayfalarda gerçek adı gizlemek için kullanılan ad"
+
+#: participants/models.py
+msgid "URL key"
+msgstr "URL anahtarı"
+
+#: participants/models.py
+msgid "male"
+msgstr "erkek"
+
+#: participants/models.py
+msgid "female"
+msgstr "kadın"
+
+#: participants/models.py
+msgid "other"
+msgstr "diğer"
+
+#: participants/models.py
+msgid "gender"
+msgstr "cinsiyet"
+
+#: participants/models.py
+msgid "Gender is displayed in the adjudicator allocation interface, and nowhere else"
+msgstr "Cinsiyet, jüri tahsisat arayüzünde görüntülenir ve başka hiçbir yerde görüntülenmez"
+
+#: participants/models.py
+msgid "pronoun"
+msgstr "zamir"
+
+#: participants/models.py
+msgid "If printing ballots using Tabbycat, there is the option to pre-print pronouns"
+msgstr "Tabbycat kullanarak ballot yazdırıyorsanız, zamirleri önceden yazdırma seçeneği vardır."
+
+#: participants/models.py
+msgid "person"
+msgstr "kişi"
+
+#: participants/models.py
+msgid "persons"
+msgstr "kişi"
+
+#: participants/models.py
+msgid "Redacted"
+msgstr "Düzeltilmiş"
+
+#: participants/models.py
+msgid "coach"
+msgstr ""
+
+#: participants/models.py
+msgid "coaches"
+msgstr ""
+
+#: participants/models.py
+msgid "full name/suffix"
+msgstr "tam ad/sonek"
+
+#: participants/models.py
+msgid "Do not include institution name (see \"uses institutional prefix\" below)"
+msgstr "Kurum adını eklemeyin (aşağıdaki \"kurumsal önek kullan\" bölümüne bakın)"
+
+#: participants/models.py
+msgid "short name/suffix"
+msgstr "kısa ad/sonek"
+
+#: participants/models.py
+msgid "The decoded name shown in the draw, not including institution name (see \"uses institutional prefix\" below)"
+msgstr "Kurada gösterilen kodsuz ad, kurum adını içermez (aşağıdaki \"kurumsal önek kullan\" bölümüne bakın)"
+
+#: participants/models.py
+msgid "Name used to obscure institutional identity on public-facing pages"
+msgstr "Herkese açık sayfalarda kurumsal kimliği gizlemek için kullanılan ad"
+
+#: participants/models.py
+msgid "short name"
+msgstr "kısa ad"
+
+#: participants/models.py
+msgid "The decoded name shown in the draw, including institution name. (This is autogenerated.)"
+msgstr "Kurum adı da dahil olmak üzere kurada gösterilen kodsuz ad. (Bu otomatik olarak oluşturulur.)"
+
+#: participants/models.py
+msgid "long name"
+msgstr "uzun isim"
+
+#: participants/models.py
+msgid "The full name of the team, including institution name. (This is autogenerated.)"
+msgstr "Kurum adı da dahil olmak üzere takımın tam adı. (Bu otomatik olarak oluşturulur.)"
+
+#: participants/models.py
+msgid "Uses institutional prefix"
+msgstr "Kurumsal önek kullan"
+
+#: participants/models.py
+msgid "If ticked, a team called \"1\" from Victoria will be shown as \"Victoria 1\""
+msgstr "İşaretlenirse, Victoria'dan \"1\" adlı bir takım \"Victoria 1\" olarak gösterilecektir."
+
+#: participants/models.py
+msgid "break categories"
+msgstr "break kategorileri"
+
+#: participants/models.py
+msgid "seed"
+msgstr ""
+
+#: participants/models.py
+msgid "Used as initial ranking to power-pair the first round"
+msgstr ""
+
+#: participants/models.py
+msgid "institution conflicts"
+msgstr "kurum conflictleri"
+
+#: participants/models.py
+msgid "none"
+msgstr "hiçbiri"
+
+#: participants/models.py
+msgid "swing"
+msgstr "swing"
+
+#: participants/models.py
+msgid "composite"
+msgstr "terkip"
+
+#: participants/models.py
+msgid "bye"
+msgstr ""
+
+#: participants/models.py
+msgid "type"
+msgstr "tür"
+
+#: participants/models.py
+msgid "emoji"
+msgstr "emoji"
+
+#: participants/models.py
+msgid "team"
+msgstr "takım"
+
+#: participants/models.py
+msgid "teams"
+msgstr "takımlar"
+
+#: participants/models.py
+msgid "Teams must have an institution if they are using the institutional prefix."
+msgstr "Kurumsal önek kullanan takımların bir kurumu olmalıdır."
+
+#: participants/models.py
+msgid "Teams must have a full name if they don't use the institutional prefix."
+msgstr "Kurumsal önek kullanmayan takımların tam adı olmalıdır."
+
+#: participants/models.py
+msgid "speaker"
+msgstr "konuşmacı"
+
+#: participants/models.py
+msgid "speakers"
+msgstr "konuşmacılar"
+
+#: participants/models.py
+msgid "Adjudicators not assigned to any tournament can be shared between tournaments"
+msgstr "Herhangi bir turnuvaya atanmayan jüriler turnuvalar arasında paylaşılabilir"
+
+#: participants/models.py
+msgid "base score"
+msgstr "temel puan"
+
+#: participants/models.py
+msgid "team conflicts"
+msgstr "takım conflictleri"
+
+#: participants/models.py
+msgid "adjudicator conflicts"
+msgstr "jüri conflictleri"
+
+#: participants/models.py
+msgid "always trainee"
+msgstr "her zaman acemi"
+
+#: participants/models.py
+msgid "If checked, this adjudicator will never be auto-allocated a voting position, regardless of their score"
+msgstr "İşaretlenirse, bu jüriye, puanlarından bağımsız olarak asla otomatik olarak bir oy pozisyonu tahsis edilmeyecektir."
+
+#: participants/models.py
+msgid "breaking"
+msgstr "break olan"
+
+#: participants/models.py
+msgid "independent"
+msgstr "bağımsız"
+
+#: participants/models.py
+msgid "adjudication core"
+msgstr "jüri komitesi"
+
+#: participants/models.py
+msgid "adjudicator"
+msgstr "jüri"
+
+#: participants/models.py
+msgid "adjudicators"
+msgstr "jüriler"
+
+#: participants/tables.py
+msgid "Points after this debate"
+msgstr "Bu tartışmadan sonra puanlar"
+
+#: participants/tables.py
+msgid "Wins after this debate"
+msgstr "Bu tartışmadan sonra galibiyetler"
+
+#: participants/tables.py
+msgid "Speaker scores<br>(in speaking order)"
+msgstr "Konuşmacı puanları<br>(konuşma sırasına göre)"
+
+#: participants/tables.py
+msgid "Speaks"
+msgstr "Konuşuyor"
+
+#: participants/templates/adjudicator_record.html participants/views.py
+#, python-format
+msgid "Record for %(name)s"
+msgstr "%(name)s için kayıtlar"
+
+#: participants/templates/adjudicator_record.html
+#: participants/templates/team_record.html
+#, python-format
+msgid "About %(name)s"
+msgstr "%(name)s hakkında"
+
+#: participants/templates/adjudicator_registration_card.html
+msgid "Independent adjudicator"
+msgstr "Bağımsız jüri"
+
+#: participants/templates/adjudicator_registration_card.html
+msgid "Member of the adjudication core"
+msgstr "jüri komitesi üyesi"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Institution:"
+msgstr "Kurum:"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Unaffiliated"
+msgstr "Bağımsız"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Region:"
+msgstr "Bölge:"
+
+#: participants/templates/adjudicator_registration_card.html
+msgid "The institutional affiliations of adjudicators are not public at this tournament."
+msgstr "Jürilerim kurumsal bağlantıları bu turnuvada herkese açık değildir."
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Custom Questions:"
+msgstr ""
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Institutional Conflicts:"
+msgstr "Kurumsal Conflictler:"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "; "
+msgstr "; "
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "None"
+msgstr "Hiçbiri"
+
+#: participants/templates/adjudicator_registration_card.html
+msgid "Team Conflicts:"
+msgstr "Takım Conflictleri:"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid ", "
+msgstr ", "
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Adjudicator Conflicts:"
+msgstr "Hakem Conflictleri:"
+
+#: participants/templates/adjudicator_registration_card.html
+#: participants/templates/team_registration_card.html
+msgid "Room Constraints:"
+msgstr "Oda Kısıtlamaları:"
+
+#: participants/templates/admin/participants/adjudicator/change_form.html
+msgid "<strong>Don't forget:</strong> If this adjudicator should be conflicted against their own institution, you should add this conflict <strong>now</strong> in the <strong>Adjudicator-institution conflicts</strong> tab above, because the own-institution conflict is <strong>not</strong> automatically created when using this form."
+msgstr "<strong>Unutmayın:</strong> Bu jürinin kendi kurumuyla conflictli olması gerekiyorsa, bu conflicti <strong>şimdi</strong> yukarıdaki <strong>Jüri-kurum conflictleri</strong> sekmesine eklemelisiniz, çünkü kendi kurum conflicti bu formu kullanırken otomatik olarak <strong> yaratılmamıştır.</strong>"
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+#, python-format
+msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete this %(object_name)s</strong>."
+msgstr "<strong>Uyarı:</strong> Yukarıdaki listede \"tartışma takımı\" nesneleri varsa, <strong>muhtemelen bu %(object_name)s</strong> öğesini silmemelisiniz."
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+#, python-format
+msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete the selected %(objects_name)s</strong>."
+msgstr "<strong>Uyarı:</strong> Yukarıdaki listede \"tartışma takımı\" nesneleri varsa, <strong>muhtemelen seçili %(objects_name)s</strong> öğesini silmemelisiniz."
+
+#. Translators: This follows the above sentence in the same paragraph.
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+msgid "This is especially the case if any team that would be deleted has already participated in a debate. If a team already has a result entered for it, deleting the team also deletes those results, <strong>which normally breaks the tab</strong>, even if you think you don't need those results anymore. If a team has debated and is withdrawing from the tournament, you should <strong>not</strong> delete it. Just mark the team inactive under the “Availability” section of the Tabbycat admin area."
+msgstr "Bu, özellikle silinecek herhangi bir takım önceden bir maça katılmışsa geçerlidir. Bir takımın önceden girilmiş bir sonucu varsa, takımı silmek, artık bu sonuçlara ihtiyacınız olmadığını düşünseniz bile, bu sonuçları da siler, <strong>normalde tabı bozar</strong>. Bir takım tartıştıysa ve turnuvadan çekiliyorsa, <strong>silmemelisiniz</strong>. Tabbycat yönetici alanının \"Kullanılabilirlik\" bölümünün altında takımı etkin değil olarak işaretlemeniz yeterlidir."
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+msgid "Note that deleting an institution also deletes all teams from that institution."
+msgstr "Bir kurumu silmenin, o kurumdaki tüm takımları da sileceğini unutmayın."
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+#, python-format
+msgid "If you're very sure about deleting this %(object_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
+msgstr "Bu %(object_name)s'i silme konusunda kararlıysanız, lütfen önce yukarıdaki nesneleri silin ve devam etmeden önce \"tartışma takımı\" nesneleri sayfasında göreceğiniz uyarıyı dikkate aldığınızdan emin olun."
+
+#: participants/templates/admin/participants/delete_debateteam_warning.html
+#, python-format
+msgid "If you're very sure about deleting these %(objects_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
+msgstr "Bu %(objects_name)s'i silme konusunda kararlıysanız, lütfen önce yukarıdaki nesneleri silin ve devam etmeden önce \"tartışma takımı\" nesneleri sayfasında göreceğiniz uyarıyı dikkate aldığınızdan emin olun."
+
+#: participants/templates/admin/participants/team/change_form.html
+msgid "<strong>Don't forget:</strong> If this team should be conflicted against its own institution, you should add this conflict <strong>now</strong> in the <strong>Team-institution conflicts</strong> tab above, because the own-institution conflict is <strong>not</strong> automatically created when using this form."
+msgstr "<strong>Unutmayın:</strong> Bu takımın kendi kurumuyla conflictli olması gerekiyorsa, bu conflicti <strong>şimdi</strong> yukarıdaki <strong>takım-kurum conflictleri</strong> sekmesine eklemelisiniz, çünkü kendi kurum conflicti bu formu kullanırken otomatik olarak <strong> yaratılmamıştır.</strong>"
+
+#: participants/templates/current_round/common.html
+#, python-format
+msgid "The round begins at %(start_time)s"
+msgstr "Tur %(start_time)s saatinde başlar"
+
+#: participants/templates/current_round/common.html
+msgid "Teams:"
+msgstr "Takımlar:"
+
+#: participants/templates/current_round/common.html
+msgid "Adjudicator:"
+msgid_plural "Adjudicators:"
+msgstr[0] "Jüri:"
+msgstr[1] "Jüriler:"
+
+#: participants/templates/current_round/common.html
+msgctxt "chair icon"
+msgid "Ⓒ"
+msgstr "Ⓒ"
+
+#: participants/templates/current_round/common.html
+msgctxt "trainee icon"
+msgid "Ⓣ"
+msgstr "Ⓣ"
+
+#: participants/templates/current_round/common.html
+msgid "There are no panellists or trainees assigned to this debate."
+msgstr "Bu maça atanmış panelist veya acemi yoktur."
+
+#: participants/templates/current_round/common.html
+msgid "Motions are not released to public."
+msgstr "Önergeler herkese yayınlanmaz."
+
+#: participants/templates/current_round/common.html
+msgid "Motion:"
+msgstr "Önerge:"
+
+#: participants/templates/current_round/common.html
+msgid "View Info Slide"
+msgstr "Bilgi Slaytını Görüntüle"
+
+#: participants/templates/current_round/common.html
+msgid "The motion(s) for this round haven't yet been released."
+msgstr "Bu tur için önerge(ler) henüz yayınlanmadı."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s %(aff)s vs %(neg)s için <a href=\"%(url)s\"><strong>%(room)s</strong></a> odada jürilik yapak <strong>başkandır</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s %(aff)s vs %(neg)s için <strong>%(room)s</strong> odada jürilik yapak <strong>başkandır</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Siz %(aff)s vs %(neg)s için <a href=\"%(url)s\"><strong>%(room)s</strong></a> odada jürilik yapak <strong>başkandır</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "Siz %(aff)s vs %(neg)s için <strong>%(room)s</strong> odada jürilik yapan <strong>başkansinız</strong>."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s, <strong>(%(type)s</strong> %(aff)s ile %(neg)s <a href=\"%(url)s\"><strong>%(room)s</strong></a>. karar veren bir s'dir."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s, <strong(%(type)s</strong> %(aff)s ile %(neg)s <strong>%(room)s</strong> karar veren bir s'dir."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Siz  <a href=\"%(url)s\"><strong>%(room)s</strong></a> odasında %(aff)s vs %(neg)s maçında jüri olarak göver alan bir <strong>%(type)s</strong>"
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "Siz <strong>%(room)s</strong> odasında %(aff)s vs %(neg)s maçında jüri olarak göver alan bir <strong>%(type)s</strong>"
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s <a href=\"%(url)s\"><strong>%(room)s</strong></a> odasındaki %(aff)s vs %(neg)s maçında görev alıyor"
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s %(room)s odasındaki %(aff)s vs %(neg)s maçında görev alıyor"
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Siz <a href=\"%(url)s\"><strong>%(room)s</strong></a> odasındaki %(aff)s vs %(neg)s maçında görevlisiniz."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
+msgstr "Siz %(room)s odasındaki %(aff)s vs %(neg)s maçında görevlisiniz."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s <a href=\"%(url)s\"><strong>%(room)s</strong></a> odasında <strong>başkan</strong> olarak görev alıyor."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating in <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s %(room)s odasında <strong>başkan</strong> olarak görev alıyor."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are the <strong>chair</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "<a href=\"%(url)s\"><strong>%(room)s</strong></a> odasında <strong>başkan</strong> olarak görev alıyorsunuz."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are the <strong>chair</strong> adjudicating in <strong>%(room)s</strong>."
+msgstr "%(room)s odasında <strong>başkan</strong> olarak görev alıyorsunuz."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s bir <strong>%(type)s</strong> olarak <a href=\"%(url)s\"><strong>%(room)s</strong></a> odasında görevli."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating in <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s bir <strong>%(type)s</strong> olarak <strong>%(room)s</strong> odasında görevli."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are a <strong>%(type)s</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Siz bir <strong>%(type)s</strong> olarak <a href=\"%(url)s\"><strong>%(room)s</strong></a> odasında görevlisiniz."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are a <strong>%(type)s</strong> adjudicating in <strong>%(room)s</strong>."
+msgstr "Siz bir <strong>%(type)s</strong> olarak <strong>%(room)s</strong> odasında görevlisiniz."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s <a href=\"%(url)s\"><strong>%(room)s</strong></a> odasında görevli."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "%(adjudicator)s is adjudicating in <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s <strong>%(room)s</strong> odasında görevli."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "<a href=\"%(url)s\"><strong>%(room)s</strong></a> odasında görevlisiniz."
+
+#: participants/templates/current_round/round_adj.html
+#, python-format
+msgid "You are adjudicating in <strong>%(room)s</strong>."
+msgstr "<strong>%(room)s</strong> odasında görevlisiniz."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s is debating as the <strong>%(side)s</strong> team against <strong>%(opponent)s</strong>."
+msgstr "%(team)s takımı maçında <strong>%(side)s</strong> takımı olarak <strong>%(opponent)s</strong> takımına karşı."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "You are debating as the <strong>%(side)s</strong> team against <strong>%(opponent)s</strong>."
+msgstr "Siz maçınızda <strong>%(side)s</strong> takımı olarak <strong>%(opponent)s</strong> takımına karşısınız."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s is debating against <strong>%(opponent)s</strong>."
+msgstr "%(team)s maçta <strong>%(opponent)s</strong> rakibine karşı."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "You are debating against <strong>%(opponent)s</strong>."
+msgstr "Maçınız <strong>%(opponent)s</strong> rakibine karşı."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s is debating as the <strong>%(side)s</strong> team."
+msgstr "%(team)s takımı <strong>%(side)s</strong> takımı olarak maçta."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "You are debating as the <strong>%(side)s</strong> team."
+msgstr "<strong>%(side)s</strong> olarak maçtasınız."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s's debate is in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(team)s takımının maçı <a href=\"%(url)s\"><strong>%(room)s</strong></a> odasında."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "%(team)s's debate is in <strong>%(room)s</strong>."
+msgstr "%(team)s takımının tartışması <strong>%(room)s</strong> odasında."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "Your debate is in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Tartışmanız <a href=\"%(url)s\"><strong>%(room)s</strong></a> odasında."
+
+#: participants/templates/current_round/round_team.html
+#, python-format
+msgid "Your debate is in <strong>%(room)s</strong>."
+msgstr "Tartışmanız <strong>%(room)s</strong> odasında."
+
+#: participants/templates/edit_speaker_eligibility.html
+#, python-format
+msgid "It looks like there aren't any speaker categories are defined. If you'd like to produce category-specific speaker tabs, such as a novice or ESL tab, use the <a href=\"%(categories_url)s\" class=\"alert-link\">Speaker Categories</a> page to define them, then return to this page to set speaker eligibility."
+msgstr "Herhangi bir konuşmacı kategorisi tanımlanmamış gibi görünüyor. Acemi veya ESL tabı gibi kategoriye özgü konuşmacı tabları oluşturmak istiyorsanız bunları tanımlamak için <a href=\"%(categories_url)s\" class=\"alert-link\">Konuşmacı Kategorileri</a> sayfasını kullanın, ardından konuşmacı uygunluğunu ayarlamak için bu sayfaya dönün."
+
+#: participants/templates/feedback_progress_panel.html
+msgid "Feedback Returns"
+msgstr "Geri Bildirim İadeleri"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "Has submitted feedback for <strong>%(adjudicator)s</strong>"
+msgstr "<strong>%(adjudicator)s</strong> için geri bildirim gönderdi"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "Has not submitted feedback for one of: <strong>%(adjudicators)s</strong> (whoever gave the oral adjudication)"
+msgstr "Aşağıdakilerden biri için geri bildirim göndermedi: <strong>%(adjudicators)s</strong> (sözlü kararı kim verdiyse)"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "Has not submitted feedback for <strong>%(adjudicator)s</strong>"
+msgstr "strong>%(adjudicator)s</strong> için geri bildirim göndermedi"
+
+#: participants/templates/feedback_progress_panel.html
+msgid "More feedback submissions than expected for this debate:"
+msgstr "Bu tartışma için beklenenden daha fazla geri bildirim gönderilidi:"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "Unexpected feedback submission for <strong>%(adjudicator)s</strong>"
+msgstr "<strong>%(adjudicator)s</strong> için beklenmeyen geri bildirim gönderimi"
+
+#: participants/templates/feedback_progress_panel.html
+#, python-format
+msgid "%(name)s doesn't have any feedback to submit."
+msgstr "%(name)s'in gönderecek herhangi bir geri bildirimi yok."
+
+#: participants/templates/in_this_round.html
+#, python-format
+msgid "In This Round (%(round)s)"
+msgstr "Bu Tur (%(round)s)"
+
+#: participants/templates/in_this_round.html
+msgid "In This Round"
+msgstr "Bu Tur"
+
+#: participants/templates/in_this_round.html
+msgid "(Not Released to Public)"
+msgstr "(Halka Yayınlanmadı)"
+
+#: participants/templates/in_this_round.html
+msgid "Room TBA"
+msgstr "Oda Belirlenmedi"
+
+#: participants/templates/in_this_round.html
+#, python-format
+msgid "%(adjudicator)s is not adjudicating this round."
+msgstr "%(adjudicator)s bu tura dahil değil."
+
+#: participants/templates/in_this_round.html
+msgid "You are not adjudicating this round."
+msgstr "Bu tur jürisiniz."
+
+#: participants/templates/in_this_round.html
+#, python-format
+msgid "It looks like %(team)s is competing in %(ndebates)s debate this round."
+msgid_plural "It looks like %(team)s is competing in %(ndebates)s debates this round."
+msgstr[0] "Görünüşe göre %(team)s, bu tur %(ndebates)s tartışmada yarışıyor."
+msgstr[1] "Görünüşe göre %(team)s, bu tur %(ndebates)s tartışmada yarışıyor."
+
+#: participants/templates/in_this_round.html
+msgid "If this is an error, please contact a tab director immediately."
+msgstr "Bu bir hataysa, lütfen hemen bir tab yöneticisiyle iletişime geçin."
+
+#: participants/templates/in_this_round.html
+#, python-format
+msgid "%(team)s does not have a debate this round."
+msgstr "%(team)s'ın bu turda maçı yok."
+
+#: participants/templates/in_this_round.html
+msgid "You do not have a debate this round."
+msgstr "Bu tur maçınız yok."
+
+#: participants/templates/in_this_round.html
+msgid "The draw for this round hasn't yet been released."
+msgstr "Bu turun kurası henüz açıklanmadı."
+
+#: participants/templates/participants_subnav.html
+msgid "Participants List"
+msgstr "Katılımcı Listesi"
+
+#: participants/templates/participants_subnav.html
+msgid "Institutions List"
+msgstr "Kurum Listesi"
+
+#: participants/templates/participants_subnav.html
+msgid "Emails have already been sent."
+msgstr "E-postalar zaten gönderildi."
+
+#: participants/templates/participants_subnav.html
+msgid "Email Team Registrations"
+msgstr "Ekip Kayıtlarını E-postayla Gönder"
+
+#: participants/templates/participants_subnav.html participants/views.py
+msgid "Code Names"
+msgstr "Kod İsimler"
+
+#: participants/templates/participants_subnav.html
+#: participants/templates/speaker_categories_edit.html
+msgid "Speaker Categories"
+msgstr "konuşmacı kategorileri"
+
+#: participants/templates/participants_subnav.html
+msgid "Speaker Eligibility"
+msgstr "Konuşmacı Uygunluğu"
+
+#: participants/templates/speaker_categories_edit.html
+msgid "Speaker categories allow category-specific speaker tabs to be produced, <i>e.g.</i>, for novice or ESL categories. On this page, you can define what speaker categories exist. After you've defined the categories, you can set speaker eligibility on the Speaker Eligibility page."
+msgstr "Konuşmacı kategorileri, acemi veya ESL gibi kategoriye özgü konuşmacı tablarının üretilmesini sağlar. Bu sayfada, hangi konuşmacı kategorilerinin bulunduğunu tanımlayabilirsiniz. Kategorileri tanımladıktan sonra, Konuşmacı Uygunluğu sayfasından konuşmacı uygunluğunu ayarlayabilirsiniz."
+
+#: participants/templates/speaker_categories_edit.html
+#, python-format
+msgid "If you want to delete speaker categories, use the <a href=\"%(edit_db_url)s\" class=\"alert-link\">Edit Database</a> area."
+msgstr "Konuşmacı kategorilerini silmek istiyorsanız, <a href=\"%(edit_db_url)s\" class=\"alert-link\">Edit Database</a> alanını kullanın."
+
+#: participants/templates/speaker_categories_edit.html
+msgid "Save Speaker Categories"
+msgstr "Konuşmacı Kategorilerini Kaydet"
+
+#: participants/templates/team_registration_card.html
+msgid "Team name:"
+msgstr "Takım adı:"
+
+#: participants/templates/team_registration_card.html
+msgid "Full team name:"
+msgstr "Tam takım adı:"
+
+#: participants/templates/team_registration_card.html
+msgid "Short team name:"
+msgstr "Kısa takım adı:"
+
+#: participants/templates/team_registration_card.html
+msgid "Code name:"
+msgstr "Kod ad:"
+
+#: participants/templates/team_registration_card.html
+msgid "No code name assigned"
+msgstr "Kod adı yok"
+
+#: participants/templates/team_registration_card.html
+msgid "Emoji:"
+msgstr "Emoji:"
+
+#: participants/templates/team_registration_card.html
+msgid "No emoji assigned"
+msgstr "Emoji yok"
+
+#: participants/templates/team_registration_card.html
+msgid "Speakers:"
+msgstr "Konuşmacılar:"
+
+#: participants/templates/team_registration_card.html
+msgid "Eligible for break categories:"
+msgstr "Break kategorileri için uygun:"
+
+#: participants/templates/team_registration_card.html
+msgid "Speaker categories:"
+msgstr "Konuşmacı kategorileri:"
+
+#: participants/templatetags/team_name_for_data_entry.py
+#, python-format
+msgid "%(code_name)s <em>(%(real_name)s)</em>"
+msgstr "%(code_name)s <em>(%(real_name)s)</em>"
+
+#: participants/views.py
+msgid "Adjudicators"
+msgstr "Jüriler"
+
+#: participants/views.py
+msgid "Speakers"
+msgstr "Konuşmacılar"
+
+#: participants/views.py
+msgid "Institutions"
+msgstr "Kurumlar"
+
+#: participants/views.py
+msgid "Code"
+msgstr "Kod"
+
+#: participants/views.py
+msgid "Full name"
+msgstr "Tam ad"
+
+#: participants/views.py
+msgid "Region"
+msgstr "Bölge"
+
+#: participants/views.py
+msgid "Teams"
+msgstr "Takımlar"
+
+#: participants/views.py
+msgid "Number of teams"
+msgstr "Takım sayısı"
+
+#: participants/views.py
+msgid "Adjs"
+msgstr "Jüriler"
+
+#: participants/views.py
+msgid "Number of adjudicators, excluding independents"
+msgstr "Bağımsızlar hariç Jüri sayısı"
+
+#: participants/views.py
+msgid "IAs"
+msgstr "BJ'ler"
+
+#: participants/views.py
+msgid "Number of independent adjudicators"
+msgstr "Bağımsız Jüri sayısı"
+
+#: participants/views.py
+msgid "Code name"
+msgstr "Kod ad"
+
+#: participants/views.py
+msgid "Team Registration"
+msgstr "takım kaydı"
+
+#: participants/views.py
+msgid "Results"
+msgstr "Sonuçlar"
+
+#: participants/views.py
+msgid "Previous Rounds"
+msgstr "Önceki Turlar"
+
+#: participants/views.py
+#, python-format
+msgid "Saved category: %(list)s"
+msgid_plural "Saved categories: %(list)s"
+msgstr[0] "Kaydedilen kategori: %(list)s"
+msgstr[1] "Kaydedilen kategoriler: %(list)s"
+
+#: participants/views.py
+msgid "No changes were made to the categories."
+msgstr "Kategorilerde herhangi bir değişiklik yapılmadı."
+
+#: participants/views.py
+msgid "Speaker Category Eligibility"
+msgstr "Konuşmacı Kategori Uygunluğu"
+

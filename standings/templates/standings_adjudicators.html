@@ -1,0 +1,11 @@
+{% extends "tables/base_vue_table.html" %}
+
+{% block content %}
+
+  <div class="row">
+    {% include "overview_breakdowns.html" %}
+  </div>
+
+  {{ block.super }}
+
+{% endblock %}

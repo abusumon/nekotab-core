@@ -1,0 +1,72 @@
+{% extends "ballot_entry_base.html" %}
+{% load add_field_css debate_tags static i18n team_name_for_data_entry %}
+
+{% block content %}
+
+  <form id="resultsForm" action="." method="POST">
+
+    {% csrf_token %}
+
+    {% include "ballot/ballot_set.html" %}
+
+    <div class="card mt-3">
+      <div class="list-group list-group-flush">
+
+        {% trans "Ballot Status" as title %}
+        {% trans "only the confirmed ballot set will affect this debate's result" as subtitle %}
+        {% include "components/form-title.html" %}
+
+        <div class="list-group-item">
+          <div class="row">
+            {% include "components/form-check.html" with field=form.confirmed double=True %}
+            {% include "components/form-check.html" with field=form.discarded double=True %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card mt-3">
+      <div class="list-group list-group-flush">
+
+        {% blocktrans trimmed asvar title %}
+          Debate Status
+        {% endblocktrans %}
+        {% trans "all debates must be confirmed to complete the round" as subtitle %}
+        {% include "components/form-title.html" %}
+
+        <div class="list-group-item pb-4">
+          {% include "components/form-field.html" with field=form.debate_result_status hide_label=True %}
+        </div>
+
+        <div class="list-group-item pt-3 pb-1">
+          <div class="row">
+            <div class="col-md-6 col form-group">
+              <input id="submit" class="save btn btn-success btn-block " type="submit" value="{% trans "Save Ballot" %}" tabindex="{{ form.nexttabindex }}" />
+            </div>
+            <div class="col-md-6 col form-group">
+              <a class="btn btn-primary btn-block btn-danger" href="{% roundurl 'results-round-list' debate.round %}" tabindex="{{ form.nexttabindex|add:1 }}">{% trans "Cancel Entry" %}</a>
+            </div>
+          </div>
+          <div class="text-center pt-3 small text-muted">
+            {% if pref.enable_ballot_receipts %}
+              {% trans "Emails will be sent to adjudicators when the ballot is confirmed." %}
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+{% endblock content %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="{% static 'js/vendor/jquery.validate.js' %}"></script>
+  <script>
+    $(document).ready( function() {
+      {% include "js-bundles/enter_results.js" %}
+    });
+  </script>
+{% endblock %}

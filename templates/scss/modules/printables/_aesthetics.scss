@@ -1,0 +1,46 @@
+// AESTHETICS
+$fill-in-line-height: 3px;
+$fill-in-line-spacing: 45px;
+
+$border-color: #f4f4f4;
+$fill-in-color: #ccc;
+
+.db-fill-in {
+  border-bottom: $fill-in-line-height solid $fill-in-color;
+}
+
+.db-circle {
+  background: #eee;
+  border-radius: 10px;
+  padding: 3px 6px;
+}
+
+.db-bordered {
+  border: 1px solid $border-color;
+  border-radius: 5px;
+}
+
+.db-bottom-border {
+  border-bottom: 1px solid $border-color;
+}
+
+.db-page {
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  background: #fff;
+  transition: height 0.5s, width 0.5s;
+}
+
+.db-ruled-bg {
+  /* stylelint-disable-next-line declaration-colon-newline-after */
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0) $fill-in-line-spacing,
+    #ccc $fill-in-line-spacing,
+    #ccc $fill-in-line-spacing + $fill-in-line-height
+  );
+
+  &.db-padding-horizontal {
+    margin-right: 20px;
+  }
+}

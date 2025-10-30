@@ -1,0 +1,214 @@
+//------------------------------------------------------------------------------
+// Hover Items
+//------------------------------------------------------------------------------
+
+.hoverable:hover {
+  cursor: pointer; // Generic 'contains action' indicator
+}
+
+.text-unselectable {
+  user-select: none; // Useful to prevent text selection during dragging
+}
+
+// Specific styling for tooltips/popovers
+[data-toggle='tooltip'],
+[data-toggle="popover"],
+.hover-target {
+
+  &:hover {
+    cursor: help; // for tooltips
+    span {
+      border-color: theme-color("primary");
+    }
+  }
+
+  .tooltip-trigger {
+    border-bottom: 2px solid $gray-300;
+  }
+
+  .popover span {
+    border-bottom: 0; // De-inherit (popovers must be children of hover-target)
+  }
+
+  .popover a:hover {
+    cursor: pointer; // De-inherit (popovers must be children of hover-target)
+  }
+}
+
+.popover {
+  max-width: none; // Bootstrap defaults to 270
+
+  h6 {
+    margin-bottom: -2px;
+    line-height: 1;
+  }
+
+  .popover-close {
+    height: 10px;
+  }
+
+  .feather.hoverable {
+    width: 16px;
+    height: 16px;
+    margin: -16px -4px 0 0;
+  }
+
+  .list-group-item {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .bs-tether-element-attached-top::after,
+  .bs-tether-element-attached-top::before {
+    left: 25%;
+  }
+}
+@media (max-width: breakpoint-min(sm, $grid-breakpoints)) {
+
+  .popover {
+    max-width: 350px; // Ensure width of popover doesn't exceed screen width
+  }
+}
+
+.popover-body {
+  // For popovers we use list-groups which need to remove the original padding
+  padding: 0;
+
+  .list-group-item:first-child {
+    border-radius: 0;
+  }
+
+  .list-group-item:last-child {
+    border-bottom: 0;
+  }
+
+  .list-group-item {
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+// Sometimes we need an anchor that covers the entire div so that the popovers
+// target/origin doesn't shift as it gets picked up by sub elements
+.popover-parent {
+  position: relative; // Contain the popover's absolute position
+}
+
+.popover-anchor {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tooltip-vue {
+  // Sometimes we use the Bootstrap CSS to show/hide tooltips but do so via vue
+  opacity: 1; // So override the default hidden opacity
+}
+
+//------------------------------------------------------------------------------
+// For Division Drag and Drops
+//------------------------------------------------------------------------------
+
+.slideover-info {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  position: fixed;
+  width: auto;
+  margin: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: $z_2;
+  border: 0;
+
+  .list-group-item {
+    padding: 7px 3px; // Tighten up spacing of the sub elements
+    border-radius: 0;
+
+    .feather {
+      margin-right: 0;
+    }
+  }
+
+  .list-group-item:first-child {
+    border-top: 0;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Modals
+//------------------------------------------------------------------------------
+
+// Addressses flickering issue in https://github.com/twbs/bootstrap/issues/25206
+.list-group-item,
+.list-group-item:hover {
+  z-index: auto;
+}
+
+.modal-sl { // For motions page; probably feedback also (want super big modals)
+  @extend .modal-lg;
+
+  max-width: 910px;
+}
+
+.modal-xl { // For motions page; probably feedback also (want super big modals)
+  height: 92vh;
+  width: 96vw;
+  max-width: 2500px; // override
+
+  .modal-content {
+    height: 100%;
+    padding: 10px 30px;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Animated Items
+//------------------------------------------------------------------------------
+
+.spinning {
+  animation: spin 1s infinite linear;
+  color: theme-color("primary");
+}
+@keyframes spin {
+
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+// Used by slideover panel
+.slide-over-enter-active,
+.slide-over-leave-active {
+  transition: opacity 0.35s ease;
+}
+
+.slide-over-enter,
+.slide-over-leave-to {
+  opacity: 0;
+}
+
+.auto-save {
+  min-width: 112px; // Don't want it resizing as text updates
+}
+
+.save-flash {
+  animation-name: flash-animation;
+  animation-duration: 5s;
+  animation-timing-function: ease-out;
+}
+@keyframes flash-animation {
+
+  from {
+    color: theme-color("success");
+  }
+
+  to {
+    color: default;
+  }
+}

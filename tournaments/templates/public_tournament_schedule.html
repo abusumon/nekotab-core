@@ -1,0 +1,12 @@
+{% extends 'tables/base_vue_table.html' %}
+{% load i18n %}
+
+{% block content %}
+{% blocktrans trimmed asvar p1 %}
+Schedule is in time zone: {{ schedule_timezone_label }}
+{% endblocktrans %}
+{% include "components/explainer-card.html" with type="info" %}
+
+
+{{ block.super }}
+{% endblock %}

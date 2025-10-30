@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static debate_tags add_field_css i18n %}
+
+{% block head-title %}<span class="emoji">👯</span> {% trans 'Add Adjudicators' context 'page title' %}
+{% blocktrans trimmed with step=wizard.steps.step1 count=wizard.steps.count %}(Step {{ step }} of {{ count }}){% endblocktrans %}{% endblock %}
+{% block page-title %}{% trans 'Add Adjudicators' context 'page title' %}{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+
+  <div class="mb-4">
+    <button type="submit" class="btn btn-outline-primary" name="wizard_goto_step" value="{{ wizard.steps.prev }}"><i data-feather="chevron-left"></i>{% trans "Previous Step" %}</button>
+  </div>
+
+  {% tournamenturl 'options-tournament-section' section='feedback' as options_feedback %}
+  {% tournamenturl 'privateurls-list' as privateurls_url %}
+  {% blocktrans trimmed asvar settings_info with min=pref.adj_min_score max=pref.adj_max_score %}
+    As per <a href="{{ options_feedback }}" class="alert-link">this tournament's
+    configuration</a>, an adjudicator's rating must be between
+    <strong>{{ min }}</strong> and <strong>{{ max }}</strong>.
+    Providing email addresses is optional but can be useful if
+    using <a href="{{ privateurls_url }}" class="alert-link">private URLs</a>
+    for feedback or ballots.
+  {% endblocktrans %}
+
+  {% include "components/explainer-card.html" with type="info" p1=settings_info p2=shared_info %}
+
+  {% csrf_token %}
+  {{ wizard.management_form }}
+  {{ wizard.form.management_form }}
+
+  <div class="list-group list-group-flush">
+    {% if wizard.form.non_form_errors %}
+      {% include "components/form-errors.html" with errors=wizard.form.non_form_errors %}
+    {% endif %}
+  </div>
+
+  {% regroup wizard.form.forms by institution_for_display as forms_by_institution %}
+
+  {% for forms in forms_by_institution %}
+
+    <div class="row">
+      <div class="col">
+        <div class="card mt-3">
+
+          {% if forms.grouper.name %}
+            {% blocktrans trimmed asvar title with institution=forms.grouper.name %}
+              Adjudicators for {{ institution }}
+            {% endblocktrans %}
+          {% else %}
+            {% trans "Unaffiliated Adjudicators" as title %}
+          {% endif %}
+          {% include "components/form-title.html" %}
+
+          <div class="list-group list-group-flush">
+
+            {% for form in forms.list %}
+              {{ form.id }}
+              {% include "components/form-main.html" with triple=True %}
+            {% endfor %}
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+
+  <div class="card mt-3">
+    {% trans 'Save All Adjudicators' as title %}
+    {% include "components/form-submit.html" %}
+  </div>
+
+</form>
+
+{% endblock content %}

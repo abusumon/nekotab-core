@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load debate_tags i18n static %}
+
+{% block nav %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block body-class %}override-sidebar-offset{% endblock %}
+
+{% block page-alerts %}
+
+  {% blocktrans trimmed asvar p1 %}
+    Each of the barcodes below is also an image file that can be downloaded individually. If you want to download them all at once try using a 'bulk downloader' extension/plugin for your browser, such as <a href="https://chrome.google.com/webstore/detail/svg-export/naeaaedieihlkmdajjefioajbbdbdjgp?hl=en-GB">this one (for Chrome)</a>. To download them as a list you can go to Check-Ins section of the Edit Database area and copy/paste from the relevant table.
+  {% endblocktrans %}
+  {% include "components/explainer-card.html" with type="info" %}
+
+  {% blocktrans trimmed asvar p1 %}
+    You can use Ctrl+P for printing or saving the barcodes PDF. Be sure to set the appropriate <strong>page orientation</strong>, to turn off <strong>headers/footers</strong> and turn on <strong>background graphics</strong>. Works best in Chrome.
+  {% endblocktrans %}
+  {% include "components/explainer-card.html" with type="info" %}
+
+{% endblock %}
+
+{% block content %}
+
+  {% for identifier in identifiers %}
+
+    {% if forloop.first or forloop.counter0|divisibleby:18 %}
+      {% if not forloop.first %}</div></div></div>{% endif %}
+      <div class="db-page-holder"><div class="db-page p-4"><div class="row">
+    {% endif %}
+
+    <div class="col-6 p-2">
+      <div class="card text-center">
+        <div class="card-body p-0">
+          <svg id="{{ identifier.barcode }}" title="{{ identifier.owner }}"
+               class="barcode-placeholder" jsbarcode-value="{{ identifier.barcode }}"
+               jsbarcode-text="{{ identifier.barcode }} {{ identifier.owner.name|abbreviatename }}"
+               jsbarcode-width="5" jsbarcode-height="50">
+          </svg>
+        </div>
+        <div class="card-footer">
+          <small>{{ identifier.owner }}, {{ identifier.barcode }}</small>
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+
+  </div></div></div><!-- Close from loop -->
+
+{% endblock content %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="{% static 'js/vendor/JsBarcode.all.min.js' %}"></script>
+  <script>
+    JsBarcode(".barcode-placeholder").init();
+  </script>
+{% endblock js %}
+
+{% block extra-css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/printables.css' %}" />
+{% endblock extra-css %}

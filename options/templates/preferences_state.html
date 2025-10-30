@@ -1,0 +1,33 @@
+{% load add_field_css %}
+
+<div class="card mt-3">
+
+  <div class="card-body text-info border-info">
+    <h4 class="card-title mb-0">
+      <i data-feather="edit"></i> {{ title }}
+    </h4>
+  </div>
+
+  <ul class="list-group list-group-flush">
+
+    {% for preference in preferences %}
+      <li class="list-group-item">
+        <div class="row align-items-center">
+          <div class="col-md col-12">
+            <label class="h5" for="{{ preference.id_for_label }}">{{ preference.label }}</label>
+            <div class="form-text text-muted small">{{ preference.help_text }}</div>
+
+            {% if preference.errors %}
+              {{ preference.errors }}
+            {% endif %}
+          </div>
+          <div class="col-md col-12 form-group">
+            {{ preference|addcss:"form-control" }}
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+
+  </ul>
+
+</div>

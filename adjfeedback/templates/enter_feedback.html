@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% load add_field_css i18n %}
+
+{% block page-title %}🙅 {% trans "Enter Feedback" %}{% endblock %}
+{% block head-title %}
+  <span class="emoji">🙅</span>
+  {% if source_name %}
+    {% blocktrans trimmed with name=source_name %}
+      Add Feedback from {{ name }}
+    {% endblocktrans %}
+  {% else %}
+    {% trans "Add Feedback" %}
+  {% endif %}
+{% endblock %}
+{% block noindex %}<meta name="robots" content="noindex" />{% endblock %}
+
+{% block content %}
+
+  {% if no_rounds_released %} {# only set for public views #}
+    {% trans "There are no feedback options because no rounds have been released to the public yet. Check back when they have!" as message %}
+    {% include "components/alert.html" with type="info" %}
+  {% endif %}
+
+  {% if source_type == 'team' %}
+    {% if pref.feedback_from_teams == 'orallist' %}
+      {% trans "This tournament expects you to submit feedback <strong>only on the adjudicator who delivered the adjudication</strong>. Do not submit feedback on other adjudicators." as message %}
+    {% elif pref.feedback_from_teams == 'all-adjs' %}
+      {% trans "This tournament expects you to submit feedback on all of the adjudicators on the panel (including trainees)." as message %}
+    {% elif pref.feedback_from_teams == 'no-one' %}
+      {% trans "This tournament doesn't expect you to submit feedback on any of the adjudicators on the panel (including trainees)." as message %}
+    {% endif %}
+    {% include "components/alert.html" with type="info" %}
+  {% endif %}
+
+  <form id="feedbackForm" method="POST">
+    {% csrf_token %}
+
+    <div class="card">
+      <div class="list-group list-group-flush">
+
+        <div class="list-group-item pb-4">
+
+          {% if form.errors %}
+            {% trans "There are some problems with this feedback submission. Please review and correct them." as message %}
+            {% include "components/form-errors.html" with errors=form.errors %}
+          {% endif %}
+
+          {% if pref.feedback_introduction %}
+            <p>{{ pref.feedback_introduction|safe }}</p>
+          {% endif %}
+
+
+          {% for field in form %}
+            {% include "components/form-field.html" %}
+          {% endfor %}
+
+        </div>
+
+        {% trans "Save Feedback" as title %}
+        {% trans "When submitting this form your IP address will be stored for logging purposes." as subtitle %}
+        {% include "components/form-submit.html" %}
+
+      </div>
+    </div>
+  </form>
+
+{% endblock content %}
