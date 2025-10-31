@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: vi\n"
-"X-Crowdin-File: /develop/tabbycat/tournaments/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/tournaments/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 952\n"
 
@@ -138,12 +138,12 @@ msgid "Return to Draw"
 msgstr ""
 
 #: tournaments/models.py
-msgid "You can't use this as a tournament slug, because it's reserved for a Tabbycat system URL. Please try another one."
+msgid "You can't use this as a tournament slug, because it's reserved for a NekoTab system URL. Please try another one."
 msgstr ""
 
 #: tournaments/models.py
 msgid "name"
-msgstr "tên"
+msgstr "tÃªn"
 
 #: tournaments/models.py
 msgid "The full name, e.g. \"Australasian Intervarsity Debating Championships 2016\""
@@ -159,7 +159,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "sequence number"
-msgstr "số thứ tự"
+msgstr "sá»‘ thá»© tá»±"
 
 #: tournaments/models.py
 msgid "A number that determines the relative order in which tournaments are displayed on the homepage."
@@ -271,7 +271,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "break category"
-msgstr "bảng xét break"
+msgstr "báº£ng xÃ©t break"
 
 #: tournaments/models.py
 msgid "If elimination round, which break category"
@@ -381,7 +381,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "Other"
-msgstr "Khác"
+msgstr "KhÃ¡c"
 
 #: tournaments/models.py
 msgid "The tournament the event takes place in"
@@ -437,15 +437,15 @@ msgstr ""
 
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Overview"
-msgstr "Tổng quan"
+msgstr "Tá»•ng quan"
 
 #: tournaments/templates/assistant_tournament_index.html
 #, python-format
 msgid "current round: %(round)s, status: %(status)s"
-msgstr "vòng hiện tại: %(round)s, trạng thái: %(status)s"
+msgstr "vÃ²ng hiá»‡n táº¡i: %(round)s, tráº¡ng thÃ¡i: %(status)s"
 
 #: tournaments/templates/blank_site_start.html
-msgid "Welcome to Tabbycat!"
+msgid "Welcome to NekoTab!"
 msgstr ""
 
 #: tournaments/templates/blank_site_start.html
@@ -471,7 +471,7 @@ msgstr ""
 
 #: tournaments/templates/configure_tournament.html
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: tournaments/templates/configure_tournament.html
@@ -487,15 +487,15 @@ msgid "Create New Tournament"
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat is free to use, although <a href=\"https://opencollective.com/tabbycat\">donations</a> are encouraged."
+msgid "NekoTab is free to use, although <a href=\"https://opencollective.com/NekoTab\">donations</a> are encouraged."
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "Just trying out Tabbycat?"
+msgid "Just trying out NekoTab?"
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "If you're learning or playing around with Tabbycat, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
+msgid "If you're learning or playing around with NekoTab, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
@@ -520,7 +520,7 @@ msgid "Debate Team Missing"
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "Tabbycat always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
+msgid "NekoTab always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
@@ -587,13 +587,13 @@ msgid "It looks like all debates are in good shape!"
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of Tabbycat."
+msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of NekoTab."
 msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "Welcome to %(tournament)s"
-msgstr "Chào mừng đến với %(tournament)s"
+msgstr "ChÃ o má»«ng Ä‘áº¿n vá»›i %(tournament)s"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "There is currently no public information available for this tournament."
@@ -601,7 +601,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Tab"
-msgstr "Đội thi"
+msgstr "Äá»™i thi"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
@@ -610,7 +610,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Speaker Tab"
-msgstr "Bảng người nói"
+msgstr "Báº£ng ngÆ°á»i nÃ³i"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
@@ -619,15 +619,15 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Replies Tab"
-msgstr "Bảng Phản Hồi"
+msgstr "Báº£ng Pháº£n Há»“i"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Adjudicator Tab"
-msgstr "Giám khảo"
+msgstr "GiÃ¡m kháº£o"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Motions Tab"
-msgstr "Kiến nghị"
+msgstr "Kiáº¿n nghá»‹"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Sides"
@@ -636,16 +636,16 @@ msgstr ""
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "Bảng đấu cho vòng %(round)s"
+msgstr "Báº£ng Ä‘áº¥u cho vÃ²ng %(round)s"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Draws for Current Rounds"
-msgstr "Bảng đấu cho các vòng hiện tại"
+msgstr "Báº£ng Ä‘áº¥u cho cÃ¡c vÃ²ng hiá»‡n táº¡i"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(round)s's draw has yet to be released"
-msgstr "Bảng đấu của vòng %(round)s chưa được công bố"
+msgstr "Báº£ng Ä‘áº¥u cá»§a vÃ²ng %(round)s chÆ°a Ä‘Æ°á»£c cÃ´ng bá»‘"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "The draw for the next round has yet to be released"
@@ -658,15 +658,15 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Check-Ins"
-msgstr "Điểm danh"
+msgstr "Äiá»ƒm danh"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Results"
-msgstr "Kết quả"
+msgstr "Káº¿t quáº£"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Motions"
-msgstr "Kiến nghị"
+msgstr "Kiáº¿n nghá»‹"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Standings"
@@ -679,7 +679,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Breaking Adjudicators"
-msgstr "Các giám khảo break"
+msgstr "CÃ¡c giÃ¡m kháº£o break"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Diversity"
@@ -687,15 +687,15 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Participants"
-msgstr "Người tham dự"
+msgstr "NgÆ°á»i tham dá»±"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Institutions"
-msgstr "Đơn vị"
+msgstr "ÄÆ¡n vá»‹"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Feedback Progress"
-msgstr "Tiến độ Nhận xét"
+msgstr "Tiáº¿n Ä‘á»™ Nháº­n xÃ©t"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
@@ -704,7 +704,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Enter Feedback"
-msgstr "Nhập phản hồi"
+msgstr "Nháº­p pháº£n há»“i"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Register Institution"
@@ -720,7 +720,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Tournament Staff"
-msgstr "Đội ngũ quản lý giải"
+msgstr "Äá»™i ngÅ© quáº£n lÃ½ giáº£i"
 
 #: tournaments/templates/public_tournament_schedule.html
 #, python-format
@@ -733,7 +733,7 @@ msgstr ""
 
 #: tournaments/templates/round_complete_check.html
 msgid "Enter Results"
-msgstr "Nhập kết quả"
+msgstr "Nháº­p káº¿t quáº£"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Emails have already been sent."
@@ -807,7 +807,7 @@ msgstr ""
 
 #: tournaments/templates/set_current_round.html
 #, python-format
-msgid "No round is currently set. In order for Tabbycat to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
+msgid "No round is currently set. In order for NekoTab to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
 msgstr ""
 
 #: tournaments/templates/set_current_round.html
@@ -841,7 +841,7 @@ msgstr ""
 
 #: tournaments/templates/site_index.html
 msgid "Welcome!"
-msgstr "Chào mừng!"
+msgstr "ChÃ o má»«ng!"
 
 #: tournaments/templates/site_index.html
 msgid "It looks like there aren't any tournaments on this site. Would you like to create one?"
@@ -865,11 +865,11 @@ msgstr ""
 
 #: tournaments/templates/site_index.html
 msgid "Edit Database Area"
-msgstr "Chỉnh sửa dữ liệu"
+msgstr "Chá»‰nh sá»­a dá»¯ liá»‡u"
 
 #: tournaments/templates/site_index.html
 msgid "Send a Test Email"
-msgstr "Gửi Email mẫu"
+msgstr "Gá»­i Email máº«u"
 
 #: tournaments/templates/site_index.html
 msgid "Import DebateXML"
@@ -878,12 +878,12 @@ msgstr ""
 #: tournaments/templates/site_index.html
 #, python-format
 msgid "Get API Token / Change Password (%(user)s)"
-msgstr "API Token/ Đổi mật khẩu (%(user)s)"
+msgstr "API Token/ Äá»•i máº­t kháº©u (%(user)s)"
 
 #: tournaments/templates/site_index.html
 #, python-format
 msgid "Log Out (%(user)s)"
-msgstr "Đăng xuất (%(user)s)"
+msgstr "ÄÄƒng xuáº¥t (%(user)s)"
 
 #: tournaments/templates/site_index.html
 msgid "Log In as Admin"
@@ -891,26 +891,26 @@ msgstr ""
 
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "We hope you've enjoyed using Tabbycat for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/tabbycat\">Learn more about donating.</a>"
+msgid "We hope you've enjoyed using NekoTab for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/NekoTab\">Learn more about donating.</a>"
 msgstr ""
 
 #: tournaments/templates/tournament_index.html
 msgid "Welcome to your new tournament!"
-msgstr "Chào mừng đến với giải đấu mới của bạn!"
+msgstr "ChÃ o má»«ng Ä‘áº¿n vá»›i giáº£i Ä‘áº¥u má»›i cá»§a báº¡n!"
 
 #: tournaments/templates/tournament_index.html
 msgid "The next step is to import your initial tournament data: the institutions, teams, adjudicators and rooms that are in your tournament. There are a number of ways to do this. For small-to-medium tournaments, the simple importer is your best bet."
-msgstr "Bước tiếp theo là thêm dữ liệu cho giải: đơn vị, đội thi đấu, giám khảo và phòng trong giải. Có nhiều cách để làm điều này. Đối với các giải cỡ nhỏ và lớn, bạn nên dùng trình nhập."
+msgstr "BÆ°á»›c tiáº¿p theo lÃ  thÃªm dá»¯ liá»‡u cho giáº£i: Ä‘Æ¡n vá»‹, Ä‘á»™i thi Ä‘áº¥u, giÃ¡m kháº£o vÃ  phÃ²ng trong giáº£i. CÃ³ nhiá»u cÃ¡ch Ä‘á»ƒ lÃ m Ä‘iá»u nÃ y. Äá»‘i vá»›i cÃ¡c giáº£i cá»¡ nhá» vÃ  lá»›n, báº¡n nÃªn dÃ¹ng trÃ¬nh nháº­p."
 
 #. Translators: The documentation where the link goes to is in English; translations should mention this with "(in English)" after the link.
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "For more information, please consult our <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
-msgstr "Để có thêm thông tin, hãy xem <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> tài liệu về thêm dữ liệu</a>."
+msgid "For more information, please consult our <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
+msgstr "Äá»ƒ cÃ³ thÃªm thÃ´ng tin, hÃ£y xem <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> tÃ i liá»‡u vá» thÃªm dá»¯ liá»‡u</a>."
 
 #: tournaments/templates/tournament_index.html
 msgid "Use the simple importer to add your initial data."
-msgstr "Sử dụng trình nhập để thêm dữ liệu."
+msgstr "Sá»­ dá»¥ng trÃ¬nh nháº­p Ä‘á»ƒ thÃªm dá»¯ liá»‡u."
 
 #: tournaments/templates/tournament_index.html
 #, python-format
@@ -930,17 +930,17 @@ msgstr ""
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Administrator area for <strong>%(tn)s</strong>"
-msgstr "Khu vực điều hành viên của <strong>%(tn)s</strong>"
+msgstr "Khu vá»±c Ä‘iá»u hÃ nh viÃªn cá»§a <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Assistant area for <strong>%(tn)s</strong>"
-msgstr "Khu vực trợ lý của <strong>%(tn)s</strong>"
+msgstr "Khu vá»±c trá»£ lÃ½ cá»§a <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Public area for <strong>%(tn)s</strong>"
-msgstr "Khu vực công khai của <strong>%(tn)s</strong>"
+msgstr "Khu vá»±c cÃ´ng khai cá»§a <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_schedule_edit.html
 msgid "This page allows you to set the public schedule for the tournament."
@@ -980,7 +980,7 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "opposition"
-msgstr "phản đối"
+msgstr "pháº£n Ä‘á»‘i"
 
 #: tournaments/utils.py
 msgid "government team"
@@ -1000,7 +1000,7 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "proposition"
-msgstr "ủng hộ"
+msgstr "á»§ng há»™"
 
 #: tournaments/utils.py
 msgid "proposition team"
@@ -1068,19 +1068,19 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "opening government"
-msgstr "ủng hộ thượng viện"
+msgstr "á»§ng há»™ thÆ°á»£ng viá»‡n"
 
 #: tournaments/utils.py
 msgid "opening opposition"
-msgstr "phản đối thượng viện"
+msgstr "pháº£n Ä‘á»‘i thÆ°á»£ng viá»‡n"
 
 #: tournaments/utils.py
 msgid "closing government"
-msgstr "ủng hộ hạ viện"
+msgstr "á»§ng há»™ háº¡ viá»‡n"
 
 #: tournaments/utils.py
 msgid "closing opposition"
-msgstr "phản đối hạ viện"
+msgstr "pháº£n Ä‘á»‘i háº¡ viá»‡n"
 
 #: tournaments/utils.py
 msgid "opening government team"
@@ -1196,4 +1196,5 @@ msgstr ""
 #: tournaments/views.py
 msgid "Tournament Schedule"
 msgstr ""
+
 

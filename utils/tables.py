@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 import warnings
 
 from django.contrib.auth.models import AnonymousUser
@@ -162,14 +162,14 @@ class FakeRequest(object):
     user = AnonymousUser()
 
 
-class TabbycatTableBuilder(BaseTableBuilder):
+class NekoTabTableBuilder(BaseTableBuilder):
     """Extends TableBuilder to add convenience functions specific to
-    Tabbycat."""
+    NekoTab."""
 
     ADJ_SYMBOLS = {
-        AdjudicatorAllocation.POSITION_CHAIR: _("Ⓒ"),
-        AdjudicatorAllocation.POSITION_ONLY: _("Ⓒ"),
-        AdjudicatorAllocation.POSITION_TRAINEE: _("Ⓣ"),
+        AdjudicatorAllocation.POSITION_CHAIR: _("â’¸"),
+        AdjudicatorAllocation.POSITION_ONLY: _("â’¸"),
+        AdjudicatorAllocation.POSITION_TRAINEE: _("â“‰"),
     }
 
     ADJ_POSITION_NAMES = {
@@ -178,7 +178,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
         AdjudicatorAllocation.POSITION_TRAINEE: _("trainee"),
     }
 
-    BLANK_TEXT = _("—")
+    BLANK_TEXT = _("â€”")
     REDACTED_CELL = {'text': "<em>" + _("Redacted") + "</em>", 'class': 'no-wrap'}
 
     def __init__(self, view=None, **kwargs):
@@ -321,7 +321,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
             cell['iconClass'] = "text-danger result-icon"
             cell['sort'] = 1
         else: # None
-            cell['popover']['title'] = _("%(team)s—no result") % {'team': team_name}
+            cell['popover']['title'] = _("%(team)sâ€”no result") % {'team': team_name}
             cell['icon'] = ""
             cell['sort'] = 0
         return cell
@@ -333,7 +333,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
         team_name = cell['popover']['title']
 
         if points is None:
-            cell['popover']['title'] = _("%(team)s—no result") % {'team': team_name}
+            cell['popover']['title'] = _("%(team)sâ€”no result") % {'team': team_name}
             cell['icon'] = ""
             cell['sort'] = 0
             return cell
@@ -358,7 +358,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
             cell['iconClass'] = "text-danger"
             cell['sort'] = 1
         else: # None
-            cell['popover']['title'] = _("%(team)s—no result") % {'team': team_name}
+            cell['popover']['title'] = _("%(team)sâ€”no result") % {'team': team_name}
             cell['icon'] = ""
             cell['sort'] = 0
         return cell
@@ -382,7 +382,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
             return {'text': self.BLANK_TEXT}
 
         opp = ts.debate_team.opponent.team
-        opp_vshort = '<i class="emoji">' + escape(opp.emoji) + '</i>' if opp.emoji else "…"
+        opp_vshort = '<i class="emoji">' + escape(opp.emoji) + '</i>' if opp.emoji else "â€¦"
 
         cell = {
             'text': _(" vs %(opposition)s") % {'opposition': opp_vshort if compress else self._team_short_name(opp)},
@@ -457,7 +457,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
                 cell['text'] = _("eliminated")
                 cell['popover']['title'] = _("Eliminated")
             else:
-                cell['text'] = "–"
+                cell['text'] = "â€“"
                 cell['popover']['title'] = _("No result for debate")
         else:
             cell = self._result_cell_class_four(ts.points, cell, n_teams)
@@ -467,7 +467,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
                 cell['text'] = place
                 cell['popover']['title'] = _("Placed %(place)s") % {'place': place}
             else:
-                cell['text'] = "–"
+                cell['text'] = "â€“"
                 cell['popover']['title'] = _("No result for debate")
 
         if show_score and ts.score is not None:
@@ -557,7 +557,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
                 if symbol:
                     adj_str += "<i class='adj-symbol'>%s</i>" % symbol
                 if a.get('split', False):
-                    adj_str += " <span class='text-danger'>💢</span>"
+                    adj_str += " <span class='text-danger'>ðŸ’¢</span>"
                 if a['adj'] == highlight_adj:
                     adj_str = "<strong>" + adj_str + "</strong>"
                 adj_str += '</span>'
@@ -824,7 +824,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
             row = []
             for key, metric in zip(standings.metric_keys, standing.itermetrics()):
                 if metric is None:
-                    row.append({'text': '—', 'sort': 0})
+                    row.append({'text': 'â€”', 'sort': 0})
                     continue
 
                 if key in integer_score_columns and hasattr(metric, 'is_integer') and metric.is_integer():
@@ -970,7 +970,7 @@ class TabbycatTableBuilder(BaseTableBuilder):
                     cell = self._result_cell_class_four(debateteam.points, cell, len(debate.teams))
 
                 if iron and (debateteam.iron > 0 or debateteam.iron_prev > 0):
-                    cell['text'] = "🗣️" + cell['text']
+                    cell['text'] = "ðŸ—£ï¸" + cell['text']
 
                     popover_text = []
                     if debateteam.iron > 0 and debateteam.iron_prev > 0:
@@ -1039,3 +1039,4 @@ class TabbycatTableBuilder(BaseTableBuilder):
             for ev in schedule_events
         ]
         self.add_column({'title': _("End Time"), 'key': _("End Time")}, ends)
+

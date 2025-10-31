@@ -1,10 +1,10 @@
-{% load debate_tags static i18n %}
+﻿{% load debate_tags static i18n %}
 
 <nav class="navbar navbar-expand-lg navbar-light">
 
   {# Decisions about whether to show items in the menu are based on the role of the user (not the view). #}
   {% blocktrans trimmed asvar logo_alt %}
-    Tabbycat Logo
+    NekoTab Logo
   {% endblocktrans %}
   {% if all_tournaments.count > 1 or user.is_authenticated %}
     <div class="nav-item dropdown">
@@ -16,7 +16,7 @@
         {% else %}
           {% include "nav/logo.html" with width=33 height=33 alt=logo_alt %}
         {% endif %}
-        {% if tournament %}{{ tournament }}{% else %}Tabbycat{% endif %}
+        {% if tournament %}{{ tournament }}{% else %}NekoTab{% endif %}
       </button>
 
       <div class="dropdown-menu" aria-labelledby="tournamentdrop">
@@ -78,7 +78,7 @@
       {% else %}
         <a class="navbar-brand" href="/">
           {% include "nav/logo.html" with width=33 height=33 alt=logo_alt %}
-          Tabbycat
+          NekoTab
         </a>
       {% endif %}
 
@@ -121,3 +121,4 @@
   </div>
 
 </nav>
+

@@ -1,4 +1,4 @@
-from decimal import Decimal
+﻿from decimal import Decimal
 
 from django.core.validators import EmailValidator, MinValueValidator, validate_slug
 from django.forms import SelectMultiple
@@ -268,7 +268,7 @@ class DrawSideAllocations(ChoicePreference):
 
 @tournament_preferences_registry.register
 class DrawPairingMethod(ChoicePreference):
-    help_text = _("Slide: 1 vs 6, 2 vs 7, …. Fold: 1 vs 10, 2 vs 9, …. Adjacent: 1 vs 2, 3 vs 4, ….")
+    help_text = _("Slide: 1 vs 6, 2 vs 7, â€¦. Fold: 1 vs 10, 2 vs 9, â€¦. Adjacent: 1 vs 2, 3 vs 4, â€¦.")
     verbose_name = _("Pairing method")
     section = draw_rules
     name = 'draw_pairing_method'
@@ -344,7 +344,7 @@ class BPPositionCost(ChoicePreference):
     name = 'bp_position_cost'
     choices = (
         ('simple', _("Simple")),
-        ('entropy', _("Rényi entropy")),
+        ('entropy', _("RÃ©nyi entropy")),
         ('variance', _("Population variance")),
     )
     default = 'entropy'
@@ -352,10 +352,10 @@ class BPPositionCost(ChoicePreference):
 
 @tournament_preferences_registry.register
 class BPRenyiOrder(FloatPreference):
-    help_text = _("Rényi order α, if BP position cost uses Rényi entropy. "
-                  "Shannon is α = 1, Hartley is α = 0, collision is α = 2. "
+    help_text = _("RÃ©nyi order Î±, if BP position cost uses RÃ©nyi entropy. "
+                  "Shannon is Î± = 1, Hartley is Î± = 0, collision is Î± = 2. "
                   "See documentation for details.")
-    verbose_name = _("Rényi order (BP)")
+    verbose_name = _("RÃ©nyi order (BP)")
     section = draw_rules
     name = 'bp_renyi_order'
     default = 1.0
@@ -837,7 +837,7 @@ class SpeakerCategoryTabsReleased(BooleanPreference):
 @tournament_preferences_registry.register
 class MotionTabReleased(BooleanPreference):
     help_text = _("Enables public display of all motions and win/loss/selection information. "
-                  "This includes all motions — whether they have been marked as released or not. "
+                  "This includes all motions â€” whether they have been marked as released or not. "
                   "Intended for use after the tournament.")
     verbose_name = _("Release motions tab to public")
     section = tab_release
@@ -1370,7 +1370,7 @@ class EmailWebhookKey(StringPreference):
 
 @tournament_preferences_registry.register
 class EnableEmailBallotReceipts(BooleanPreference):
-    help_text = _("Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in Tabbycat (for confirmation or checking)")
+    help_text = _("Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in NekoTab (for confirmation or checking)")
     verbose_name = _("Ballot receipts")
     section = email
     name = 'enable_ballot_receipts'
@@ -1475,7 +1475,7 @@ class PrivateUrlEmailMessage(LongStringPreference):
     name = 'url_email_message'
     default = ("<p>Hi {{ USER }},</p>"
         "<p>At {{ TOURN }}, we are using an online tabulation system. You can submit "
-        "your ballots and/or feedback at the following URL. This URL is unique to you — do not share it with "
+        "your ballots and/or feedback at the following URL. This URL is unique to you â€” do not share it with "
         "anyone, as anyone who knows it can submit forms on your behalf. This URL "
         "will not change throughout this tournament, so we suggest bookmarking it.</p>"
         "<p>Your personal private URL is:<br />"
@@ -1761,3 +1761,4 @@ class TeamRegisterMessage(LongStringPreference):
     default = ""
     widget = SummernoteWidget(attrs={'height': 150, 'class': 'form-summernote'})
     field_kwargs = {'required': False}
+

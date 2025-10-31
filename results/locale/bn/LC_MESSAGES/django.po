@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:47\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: bn\n"
-"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
@@ -31,11 +31,11 @@ msgstr[1] ""
 
 #: results/admin.py
 msgid "Speaker"
-msgstr "বক্তা"
+msgstr "à¦¬à¦•à§à¦¤à¦¾"
 
 #: results/apps.py results/templates/public_results_index.html results/views.py
 msgid "Results"
-msgstr "ফলাফল"
+msgstr "à¦«à¦²à¦¾à¦«à¦²"
 
 #: results/forms.py
 msgid "Tournament password"
@@ -178,7 +178,7 @@ msgstr ""
 
 #: results/models.py
 msgid "timestamp"
-msgstr "টাইমস্ট্যাম্প"
+msgstr "à¦Ÿà¦¾à¦‡à¦®à¦¸à§à¦Ÿà§à¦¯à¦¾à¦®à§à¦ª"
 
 #: results/models.py
 msgid "version"
@@ -222,11 +222,11 @@ msgstr ""
 
 #: results/models.py
 msgid "debate"
-msgstr "বিতর্ক"
+msgstr "à¦¬à¦¿à¦¤à¦°à§à¦•"
 
 #: results/models.py
 msgid "motion"
-msgstr "প্রস্তাব"
+msgstr "à¦ªà§à¦°à¦¸à§à¦¤à¦¾à¦¬"
 
 #: results/models.py
 msgid "discarded"
@@ -267,7 +267,7 @@ msgstr ""
 
 #: results/models.py
 msgid "debate adjudicator"
-msgstr "বিতর্কের বিচারক"
+msgstr "à¦¬à¦¿à¦¤à¦°à§à¦•à§‡à¦° à¦¬à¦¿à¦šà¦¾à¦°à¦•"
 
 #: results/models.py
 msgid "debate team"
@@ -283,7 +283,7 @@ msgstr ""
 
 #: results/models.py
 msgid "score"
-msgstr "স্কোর/ফলাফল"
+msgstr "à¦¸à§à¦•à§‹à¦°/à¦«à¦²à¦¾à¦«à¦²"
 
 #: results/models.py
 msgid "team score by adjudicator"
@@ -299,7 +299,7 @@ msgstr ""
 
 #: results/models.py
 msgid "position"
-msgstr "অবস্থান"
+msgstr "à¦…à¦¬à¦¸à§à¦¥à¦¾à¦¨"
 
 #: results/models.py
 msgid "speaker score by adjudicator"
@@ -335,7 +335,7 @@ msgstr ""
 
 #: results/models.py
 msgid "speaker"
-msgstr "বক্তা"
+msgstr "à¦¬à¦•à§à¦¤à¦¾"
 
 #: results/models.py
 msgid "rank"
@@ -367,7 +367,7 @@ msgstr ""
 
 #: results/models.py
 msgid "tournament"
-msgstr "প্রতিযোগিতা"
+msgstr "à¦ªà§à¦°à¦¤à¦¿à¦¯à§‹à¦—à¦¿à¦¤à¦¾"
 
 #: results/models.py
 msgid "sequence"
@@ -496,7 +496,7 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr ""
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
@@ -629,16 +629,16 @@ msgstr ""
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 msgid "Chair"
-msgstr "স্পিকার"
+msgstr "à¦¸à§à¦ªà¦¿à¦•à¦¾à¦°"
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 msgid "Panellist"
-msgstr "প্যানেলিস্ট"
+msgstr "à¦ªà§à¦¯à¦¾à¦¨à§‡à¦²à¦¿à¦¸à§à¦Ÿ"
 
 #: results/templates/ballot/ballot_set.html
 msgid "Trainee"
-msgstr "নবিশ বিচারক"
+msgstr "à¦¨à¦¬à¦¿à¦¶ à¦¬à¦¿à¦šà¦¾à¦°à¦•"
 
 #: results/templates/ballot/ballot_set.html
 msgid "Assign sides before entering scores"
@@ -731,7 +731,7 @@ msgstr ""
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
 msgstr ""
 
 #: results/templates/ballot_entry_form.html
@@ -850,7 +850,7 @@ msgstr ""
 
 #: results/templates/public_ballot_set.html
 msgid "Motion"
-msgstr "প্রস্তাব"
+msgstr "à¦ªà§à¦°à¦¸à§à¦¤à¦¾à¦¬"
 
 #: results/templates/public_ballot_set.html
 #, python-format
@@ -904,7 +904,7 @@ msgstr[1] ""
 
 #: results/templates/public_enter_results.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
-msgstr "এই ফর্মটি জমা দেওয়ার সময় আপনার আইপি ঠিকানাটি লগিংয়ের উদ্দেশ্যে সংরক্ষণ করা হবে।"
+msgstr "à¦à¦‡ à¦«à¦°à§à¦®à¦Ÿà¦¿ à¦œà¦®à¦¾ à¦¦à§‡à¦“à¦¯à¦¼à¦¾à¦° à¦¸à¦®à¦¯à¦¼ à¦†à¦ªà¦¨à¦¾à¦° à¦†à¦‡à¦ªà¦¿ à¦ à¦¿à¦•à¦¾à¦¨à¦¾à¦Ÿà¦¿ à¦²à¦—à¦¿à¦‚à¦¯à¦¼à§‡à¦° à¦‰à¦¦à§à¦¦à§‡à¦¶à§à¦¯à§‡ à¦¸à¦‚à¦°à¦•à§à¦·à¦£ à¦•à¦°à¦¾ à¦¹à¦¬à§‡à¥¤"
 
 #: results/templates/public_enter_results_error.html
 #, python-format
@@ -1045,7 +1045,7 @@ msgstr ""
 
 #: results/utils.py
 msgid "Reply"
-msgstr "যুক্তিখণ্ডন"
+msgstr "à¦¯à§à¦•à§à¦¤à¦¿à¦–à¦£à§à¦¡à¦¨"
 
 #: results/views.py
 msgid " vs "
@@ -1167,9 +1167,10 @@ msgstr ""
 
 #: results/views.py
 msgid "Adjudicator"
-msgstr "বিচারক"
+msgstr "à¦¬à¦¿à¦šà¦¾à¦°à¦•"
 
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
+
 

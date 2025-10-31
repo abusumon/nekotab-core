@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2024-08-29 17:02\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ro\n"
-"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
 msgid "There are no available adjudicators. Ensure there are adjudicators who have been marked as available for this round before auto-allocating."
-msgstr "Nu există arbitri disponibili. Verificați că destui arbitri sunt marcați ca disponibili pentru runda curentă înaintea folosirii alocării automate. "
+msgstr "Nu existÄƒ arbitri disponibili. VerificaÈ›i cÄƒ destui arbitri sunt marcaÈ›i ca disponibili pentru runda curentÄƒ Ã®naintea folosirii alocÄƒrii automate. "
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
@@ -33,13 +33,13 @@ msgstr[2] ""
 #, python-format
 msgid "%(count)s score is smaller than the minimum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are smaller than the minimum permitted adjudicator score (%(score).1f)."
-msgstr[0] "%(count)s scorul arbitrului este mai mic decât scorul minim admis %(score).1f"
+msgstr[0] "%(count)s scorul arbitrului este mai mic decÃ¢t scorul minim admis %(score).1f"
 msgstr[1] ""
 msgstr[2] ""
 
 #: adjallocation/allocators/hungarian.py
 msgid "There are no adjudicators eligible to be a chair or panellist. Try changing the \"Minimum feedback score required to be allocated as chair or panellist\" setting to something lower than at least some adjudicators' current scores, and try again."
-msgstr "Nu există arbitri eligibili pentru a fi arbitru principal sau secundar. Încercați modificarea opțiunii „Scorul minim al unui arbitru pentru a fi alocat ca arbitru principal sau secundar” la o valoare mai mică decât valoarea scorurilor unor arbitri și încercați încă o dată. "
+msgstr "Nu existÄƒ arbitri eligibili pentru a fi arbitru principal sau secundar. ÃŽncercaÈ›i modificarea opÈ›iunii â€žScorul minim al unui arbitru pentru a fi alocat ca arbitru principal sau secundarâ€ la o valoare mai micÄƒ decÃ¢t valoarea scorurilor unor arbitri È™i Ã®ncercaÈ›i Ã®ncÄƒ o datÄƒ. "
 
 #: adjallocation/allocators/hungarian.py
 msgid "There are no debates for this round. Maybe you haven't created a draw yet?"
@@ -58,7 +58,7 @@ msgstr ""
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "There are %(debates_count)s debates but only %(voting_count)s voting adjudicators."
-msgstr "Există %(debates_count)s meciuri însă doar %(voting_count)s arbitri eligibili pentru poziția de arbitru principal sau secundar."
+msgstr "ExistÄƒ %(debates_count)s meciuri Ã®nsÄƒ doar %(voting_count)s arbitri eligibili pentru poziÈ›ia de arbitru principal sau secundar."
 
 #: adjallocation/apps.py
 msgid "Adjudicator Allocation"
@@ -460,4 +460,5 @@ msgstr[2] ""
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
 msgstr ""
+
 

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:40+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,23 +11,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: vi\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 934\n"
 
 #: api/apps.py
 msgid "Application Programming Interface"
-msgstr "Giao diện Lập trình Ứng dụng"
+msgstr "Giao diá»‡n Láº­p trÃ¬nh á»¨ng dá»¥ng"
 
 #: checkins/admin.py
 msgid "Type"
-msgstr "Loại"
+msgstr "Loáº¡i"
 
 #: checkins/admin.py
 msgid "Checkin time"
-msgstr "Giờ điểm danh"
+msgstr "Giá» Ä‘iá»ƒm danh"
 
 #: checkins/apps.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
@@ -36,23 +36,23 @@ msgstr "Check-In"
 
 #: checkins/consumers.py
 msgid "Sent checkin identifier doesn't exist"
-msgstr "Định danh checkin được gửi không tồn tại"
+msgstr "Äá»‹nh danh checkin Ä‘Æ°á»£c gá»­i khÃ´ng tá»“n táº¡i"
 
 #: checkins/consumers.py
 msgid "Checkins"
-msgstr "Điểm danh"
+msgstr "Äiá»ƒm danh"
 
 #: checkins/consumers.py
 msgid "No checkin identifiers exist for sent barcodes"
-msgstr "Không có định danh checkin tồn tại với mã vạch được gửi"
+msgstr "KhÃ´ng cÃ³ Ä‘á»‹nh danh checkin tá»“n táº¡i vá»›i mÃ£ váº¡ch Ä‘Æ°á»£c gá»­i"
 
 #: checkins/models.py
 msgid "The barcode must contain exactly six digits."
-msgstr "Mã vạch phải có 6 ký tự."
+msgstr "MÃ£ váº¡ch pháº£i cÃ³ 6 kÃ½ tá»±."
 
 #: checkins/models.py
 msgid "barcode"
-msgstr "mã vạch"
+msgstr "mÃ£ váº¡ch"
 
 #: checkins/models.py
 msgid "<Not the child instance>"
@@ -65,75 +65,75 @@ msgstr ""
 
 #: checkins/models.py
 msgid "person"
-msgstr "người"
+msgstr "ngÆ°á»i"
 
 #: checkins/models.py
 msgid "person identifier"
-msgstr "định danh người"
+msgstr "Ä‘á»‹nh danh ngÆ°á»i"
 
 #: checkins/models.py
 msgid "person identifiers"
-msgstr "định danh người"
+msgstr "Ä‘á»‹nh danh ngÆ°á»i"
 
 #: checkins/models.py
 msgid "debate"
-msgstr "trận tranh biện"
+msgstr "tráº­n tranh biá»‡n"
 
 #: checkins/models.py
 msgid "debate identifier"
-msgstr "định danh tranh biện"
+msgstr "Ä‘á»‹nh danh tranh biá»‡n"
 
 #: checkins/models.py
 msgid "debate identifiers"
-msgstr "định danh tranh biện"
+msgstr "Ä‘á»‹nh danh tranh biá»‡n"
 
 #: checkins/models.py
 msgid "room identifier"
-msgstr "định danh phòng"
+msgstr "Ä‘á»‹nh danh phÃ²ng"
 
 #: checkins/models.py
 msgid "room identifiers"
-msgstr "định danh phòng"
+msgstr "Ä‘á»‹nh danh phÃ²ng"
 
 #: checkins/models.py
 msgid "identifier"
-msgstr "định danh"
+msgstr "Ä‘á»‹nh danh"
 
 #: checkins/models.py
 msgid "check-in time"
-msgstr "giờ điểm danh"
+msgstr "giá» Ä‘iá»ƒm danh"
 
 #: checkins/models.py registration/models.py users/models.py
 msgid "tournament"
-msgstr "giải đấu"
+msgstr "giáº£i Ä‘áº¥u"
 
 #: checkins/models.py
 msgid "check-in event"
-msgstr "sự kiện check-in"
+msgstr "sá»± kiá»‡n check-in"
 
 #: checkins/models.py
 msgid "check-in events"
-msgstr "sự kiện check-in"
+msgstr "sá»± kiá»‡n check-in"
 
 #: checkins/templates/checkin_ids.html
 msgid "With identifiers"
-msgstr "Với định danh"
+msgstr "Vá»›i Ä‘á»‹nh danh"
 
 #: checkins/templates/checkin_ids.html
 msgid "View as barcodes"
-msgstr "Xem như mã vạch"
+msgstr "Xem nhÆ° mÃ£ váº¡ch"
 
 #: checkins/templates/checkin_ids.html
 msgid "Generate missing identifiers"
-msgstr "Tạo định danh còn thiếu"
+msgstr "Táº¡o Ä‘á»‹nh danh cÃ²n thiáº¿u"
 
 #: checkins/templates/checkin_ids.html
 msgid "Generate all identifiers"
-msgstr "Tạo tất cả định danh"
+msgstr "Táº¡o táº¥t cáº£ Ä‘á»‹nh danh"
 
 #: checkins/templates/checkin_ids.html
 msgid "There are no identifiers available to view. An admin will need to generate them."
-msgstr "Không có định danh tương thích để xem. Một quản trị viên cần phải tạo chúng."
+msgstr "KhÃ´ng cÃ³ Ä‘á»‹nh danh tÆ°Æ¡ng thÃ­ch Ä‘á»ƒ xem. Má»™t quáº£n trá»‹ viÃªn cáº§n pháº£i táº¡o chÃºng."
 
 #: checkins/templates/checkin_printables.html
 msgid "Each of the barcodes below is also an image file that can be downloaded individually. If you want to download them all at once try using a 'bulk downloader' extension/plugin for your browser, such as <a href=\"https://chrome.google.com/webstore/detail/svg-export/naeaaedieihlkmdajjefioajbbdbdjgp?hl=en-GB\">this one (for Chrome)</a>. To download them as a list you can go to Check-Ins section of the Edit Database area and copy/paste from the relevant table."
@@ -174,7 +174,7 @@ msgstr ""
 #: checkins/views.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html
 msgid "Scan Identifiers"
-msgstr "Quét định danh"
+msgstr "QuÃ©t Ä‘á»‹nh danh"
 
 #: checkins/views.py
 msgid "People's Check-In Statuses"
@@ -186,21 +186,21 @@ msgstr ""
 
 #: checkins/views.py templates/nav/admin_nav.html
 msgid "Make Identifiers"
-msgstr "Tạo định danh"
+msgstr "Táº¡o Ä‘á»‹nh danh"
 
 #: checkins/views.py registration/templates/answer_tables/teams.html
 #: templates/nav/admin_nav.html
 msgid "Speakers"
-msgstr "Tranh biện viên"
+msgstr "Tranh biá»‡n viÃªn"
 
 #: checkins/views.py registration/views.py templates/nav/admin_nav.html
 #: templates/nav/public_nav.html
 msgid "Adjudicators"
-msgstr "Giám khảo"
+msgstr "GiÃ¡m kháº£o"
 
 #: checkins/views.py
 msgid "Rooms"
-msgstr "Phòng"
+msgstr "PhÃ²ng"
 
 #: checkins/views.py
 #, python-format
@@ -212,7 +212,7 @@ msgid "Identifiers"
 msgstr ""
 
 #: checkins/views.py
-msgid "Could not check you in as you do not have an identifying code — your tab director may need to make you an identifier."
+msgid "Could not check you in as you do not have an identifying code â€” your tab director may need to make you an identifier."
 msgstr ""
 
 #: checkins/views.py
@@ -221,7 +221,7 @@ msgstr ""
 
 #: checkins/views.py
 msgid "Whoops! Looks like your check-in was already revoked."
-msgstr "Whoops! Có vẻ check-in của bạn đã bị thu hồi."
+msgstr "Whoops! CÃ³ váº» check-in cá»§a báº¡n Ä‘Ã£ bá»‹ thu há»“i."
 
 #: checkins/views.py
 msgid "Whoops! Looks like you're already checked in."
@@ -229,7 +229,7 @@ msgstr ""
 
 #: checkins/views.py
 msgid "You are now checked in."
-msgstr "Bạn đã được điểm danh."
+msgstr "Báº¡n Ä‘Ã£ Ä‘Æ°á»£c Ä‘iá»ƒm danh."
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
@@ -312,7 +312,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "text"
-msgstr "văn bản"
+msgstr "vÄƒn báº£n"
 
 #: registration/models.py
 msgid "long text"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "sequence number"
-msgstr "số thứ tự"
+msgstr "sá»‘ thá»© tá»±"
 
 #: registration/models.py
 msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
@@ -352,7 +352,7 @@ msgstr ""
 
 #: registration/models.py users/models.py
 msgid "name"
-msgstr "tên"
+msgstr "tÃªn"
 
 #: registration/models.py
 msgid "A short name for the question, e.g., \"Agree with decision\""
@@ -400,11 +400,11 @@ msgstr ""
 
 #: registration/models.py
 msgid "institution"
-msgstr "đơn vị"
+msgstr "Ä‘Æ¡n vá»‹"
 
 #: registration/models.py
 msgid "team"
-msgstr "đội"
+msgstr "Ä‘á»™i"
 
 #: registration/models.py
 msgid "URL key"
@@ -447,7 +447,7 @@ msgstr ""
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 #: templates/nav/public_nav.html
 msgid "Institutions"
-msgstr "Đơn vị"
+msgstr "ÄÆ¡n vá»‹"
 
 #: registration/templates/answer_tables/institutions.html
 msgid "Coaches"
@@ -490,7 +490,7 @@ msgstr ""
 #: registration/templates/answer_tables/teams.html registration/views.py
 #: templates/nav/admin_nav.html
 msgid "Teams"
-msgstr "Đội"
+msgstr "Äá»™i"
 
 #: registration/templates/coach_private_url.html
 msgid "Private URL"
@@ -610,7 +610,7 @@ msgstr ""
 
 #: registration/views.py
 msgid "Name"
-msgstr "Tên"
+msgstr "TÃªn"
 
 #: registration/views.py
 msgid "Coach"
@@ -802,16 +802,16 @@ msgid "I forgot my password"
 msgstr ""
 
 #: templates/base.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: templates/base.html
 #, python-format
-msgid "The tab for %(tournament)s runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "The tab for %(tournament)s runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr ""
 
 #: templates/base.html
-msgid "This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "This tab runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr ""
 
 #: templates/components/form-errors.html
@@ -838,7 +838,7 @@ msgid_plural "You're currently using %(nrows)s rows in your database. If you hav
 msgstr[0] ""
 
 #: templates/errors/legacy_sendgrid_warning.html
-msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of Tabbycat. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
+msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of NekoTab. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
 msgstr ""
 
 #: templates/errors/public_403.html
@@ -853,29 +853,29 @@ msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "%(tournament)s runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
-msgstr "%(tournament)s đang chạy trên Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgid "%(tournament)s runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
+msgstr "%(tournament)s Ä‘ang cháº¡y trÃªn NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
 
 #: templates/footer.html
 #, python-format
-msgid "This site runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
-msgstr "Trang này chạy trên Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgid "This site runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
+msgstr "Trang nÃ y cháº¡y trÃªn NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
 
 #: templates/footer.html
-msgid "Tabbycat is an open-source project developed by volunteers and is free to use."
+msgid "NekoTab is an open-source project developed by volunteers and is free to use."
 msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
+msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
 msgstr ""
 
 #: templates/footer.html
 msgid "Learn more about donating."
-msgstr "Tìm hiểu về donate."
+msgstr "TÃ¬m hiá»ƒu vá» donate."
 
 #: templates/footer.html
-msgid "<a href=\"https://opencollective.com/tabbycat\">Donations to Tabbycat from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain Tabbycat."
+msgid "<a href=\"https://opencollective.com/NekoTab\">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab."
 msgstr ""
 
 #: templates/footer.html
@@ -884,7 +884,7 @@ msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
 msgstr ""
 
 #: templates/footer.html
@@ -892,12 +892,12 @@ msgid "Our Organisation"
 msgstr ""
 
 #: templates/footer.html
-msgid "Tabbycat is supported by the <a href=\"https://tabbycat-debate.org/\">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology."
+msgid "NekoTab is supported by the <a href=\"https://NekoTab-debate.org/\">NekoTab Debate Association</a>, a non-profit for advancing open debate technology."
 msgstr ""
 
 #: templates/footer.html users/groups.py
 msgid "Language"
-msgstr "Ngôn ngữ"
+msgstr "NgÃ´n ngá»¯"
 
 #: templates/footer.html
 msgid "GitHub"
@@ -905,11 +905,11 @@ msgstr ""
 
 #: templates/footer.html
 msgid "Documentation"
-msgstr "Tài liệu hướng dẫn"
+msgstr "TÃ i liá»‡u hÆ°á»›ng dáº«n"
 
 #: templates/footer.html
 msgid "Support"
-msgstr "Hỗ trợ"
+msgstr "Há»— trá»£"
 
 #: templates/footer.html
 msgid "Facebook"
@@ -921,64 +921,64 @@ msgstr ""
 
 #: templates/footer.html
 msgid "Change Language"
-msgstr "Thay đổi ngôn ngữ"
+msgstr "Thay Ä‘á»•i ngÃ´n ngá»¯"
 
 #: templates/footer.html
 msgid "Use this language"
-msgstr "Dùng ngôn ngữ"
+msgstr "DÃ¹ng ngÃ´n ngá»¯"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
-msgid "Tabbycat Logo"
+msgid "NekoTab Logo"
 msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Site Home"
-msgstr "Trang chủ"
+msgstr "Trang chá»§"
 
 #: templates/nav/admin_nav.html
 msgid "New Tournament"
-msgstr "Tạo giải đấu"
+msgstr "Táº¡o giáº£i Ä‘áº¥u"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Edit Database"
-msgstr "Chỉnh sửa dữ liệu"
+msgstr "Chá»‰nh sá»­a dá»¯ liá»‡u"
 
 #: templates/nav/admin_nav.html
 msgid "Admin Area"
-msgstr "Khu vực điều hành"
+msgstr "Khu vá»±c Ä‘iá»u hÃ nh"
 
 #: templates/nav/admin_nav.html
 msgid "Assistant Area"
-msgstr "Khu vực hỗ trợ"
+msgstr "Khu vá»±c há»— trá»£"
 
 #: templates/nav/admin_nav.html
 msgid "Public Area"
-msgstr "Khu vực công khai"
+msgstr "Khu vá»±c cÃ´ng khai"
 
 #: templates/nav/admin_nav.html
 msgid "Overview"
-msgstr "Tổng quan"
+msgstr "Tá»•ng quan"
 
 #: templates/nav/admin_nav.html
 msgid "Setup"
-msgstr "Cài đặt"
+msgstr "CÃ i Ä‘áº·t"
 
 #: templates/nav/admin_nav.html
 msgid "Configuration"
-msgstr "Cấu hình"
+msgstr "Cáº¥u hÃ¬nh"
 
 #: templates/nav/admin_nav.html
 msgid "Import Data"
-msgstr "Thêm dữ liệu"
+msgstr "ThÃªm dá»¯ liá»‡u"
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 #: templates/nav/public_nav.html
 msgid "Participants"
-msgstr "Người tham dự"
+msgstr "NgÆ°á»i tham dá»±"
 
 #: templates/nav/admin_nav.html
 msgid "Private URLs"
-msgstr "URL cá nhân"
+msgstr "URL cÃ¡ nhÃ¢n"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Schedule"
@@ -990,7 +990,7 @@ msgstr "Email"
 
 #: templates/nav/admin_nav.html
 msgid "Preformed Panels"
-msgstr "Bàn giám khảo chỉ định"
+msgstr "BÃ n giÃ¡m kháº£o chá»‰ Ä‘á»‹nh"
 
 #: templates/nav/admin_nav.html
 msgid "Export XML"
@@ -1006,35 +1006,35 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 msgid "People's Status"
-msgstr "Tình trạng người"
+msgstr "TÃ¬nh tráº¡ng ngÆ°á»i"
 
 #: templates/nav/admin_nav.html
 msgid "Rooms' Status"
-msgstr "Tình trạng phòng"
+msgstr "TÃ¬nh tráº¡ng phÃ²ng"
 
 #: templates/nav/admin_nav.html
 msgid "Feedback"
-msgstr "Phản hồi"
+msgstr "Pháº£n há»“i"
 
 #: templates/nav/admin_nav.html
 msgid "Latest"
-msgstr "Mới nhất"
+msgstr "Má»›i nháº¥t"
 
 #: templates/nav/admin_nav.html
 msgid "Important"
-msgstr "Quan trọng"
+msgstr "Quan trá»ng"
 
 #: templates/nav/admin_nav.html
 msgid "Comments"
-msgstr "Bình luận"
+msgstr "BÃ¬nh luáº­n"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Source"
-msgstr "Tìm theo nguồn"
+msgstr "TÃ¬m theo nguá»“n"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Target"
-msgstr "Tìm theo mục"
+msgstr "TÃ¬m theo má»¥c"
 
 #: templates/nav/admin_nav.html
 msgid "Unsubmitted"
@@ -1046,7 +1046,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Add Feedback"
-msgstr "Thêm phản hồi"
+msgstr "ThÃªm pháº£n há»“i"
 
 #: templates/nav/admin_nav.html
 msgid "Bulk Update"
@@ -1054,7 +1054,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Standings"
-msgstr "Xếp hạng"
+msgstr "Xáº¿p háº¡ng"
 
 #: templates/nav/admin_nav.html
 msgid "All Teams"
@@ -1063,7 +1063,7 @@ msgstr ""
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Teams"
-msgstr "Đội %(category)s"
+msgstr "Äá»™i %(category)s"
 
 #: templates/nav/admin_nav.html
 msgid "All Speakers"
@@ -1076,11 +1076,11 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Replies"
-msgstr "Lượt phản hồi"
+msgstr "LÆ°á»£t pháº£n há»“i"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Motions"
-msgstr "Kiến nghị"
+msgstr "Kiáº¿n nghá»‹"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Diversity"
@@ -1109,19 +1109,19 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Log Out"
-msgstr "Đăng xuất"
+msgstr "ÄÄƒng xuáº¥t"
 
 #: templates/nav/assistant_nav.html
 msgid "Enter Results"
-msgstr "Nhập kết quả"
+msgstr "Nháº­p káº¿t quáº£"
 
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Enter Feedback"
-msgstr "Nhập phản hồi"
+msgstr "Nháº­p pháº£n há»“i"
 
 #: templates/nav/assistant_nav.html
 msgid "Participants List"
-msgstr "Danh sách"
+msgstr "Danh sÃ¡ch"
 
 #: templates/nav/assistant_nav.html
 msgid "Code Names"
@@ -1129,7 +1129,7 @@ msgstr ""
 
 #: templates/nav/assistant_nav.html
 msgid "View Identifiers"
-msgstr "Xem định danh"
+msgstr "Xem Ä‘á»‹nh danh"
 
 #: templates/nav/assistant_nav.html
 msgid "Room's Status"
@@ -1137,27 +1137,27 @@ msgstr ""
 
 #: templates/nav/assistant_nav.html
 msgid "Display/Print Draw"
-msgstr "Hiển thị/In bảng đấu"
+msgstr "Hiá»ƒn thá»‹/In báº£ng Ä‘áº¥u"
 
 #: templates/nav/public_nav.html
 msgid "Team Tab"
-msgstr "Đội thi"
+msgstr "Äá»™i thi"
 
 #: templates/nav/public_nav.html
 msgid "Speaker Tab"
-msgstr "Bảng người nói"
+msgstr "Báº£ng ngÆ°á»i nÃ³i"
 
 #: templates/nav/public_nav.html
 msgid "Replies Tab"
-msgstr "Bảng Phản Hồi"
+msgstr "Báº£ng Pháº£n Há»“i"
 
 #: templates/nav/public_nav.html
 msgid "Adjudicator Tab"
-msgstr "Giám khảo"
+msgstr "GiÃ¡m kháº£o"
 
 #: templates/nav/public_nav.html
 msgid "Motions Tab"
-msgstr "Kiến nghị"
+msgstr "Kiáº¿n nghá»‹"
 
 #: templates/nav/public_nav.html
 msgid "By round"
@@ -1178,7 +1178,7 @@ msgstr ""
 #: templates/nav/public_nav.html
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "Bảng đấu cho %(round)s"
+msgstr "Báº£ng Ä‘áº¥u cho %(round)s"
 
 #: templates/nav/public_nav.html
 msgid "Current Draws"
@@ -1186,7 +1186,7 @@ msgstr ""
 
 #: templates/nav/public_nav.html templates/nav/round_panel.html
 msgid "Results"
-msgstr "Kết quả"
+msgstr "Káº¿t quáº£"
 
 #: templates/nav/public_nav.html
 msgid "Break"
@@ -1194,7 +1194,7 @@ msgstr ""
 
 #: templates/nav/public_nav.html
 msgid "Feedback Progress"
-msgstr "Tình trạng feedback"
+msgstr "TÃ¬nh tráº¡ng feedback"
 
 #: templates/nav/public_nav.html
 msgid "Enter Ballot"
@@ -1202,34 +1202,34 @@ msgstr ""
 
 #: templates/nav/round_panel.html
 msgid "Availability"
-msgstr "Khả dụng"
+msgstr "Kháº£ dá»¥ng"
 
 #: templates/nav/round_panel.html
 msgid "Draw"
-msgstr "Bảng đấu"
+msgstr "Báº£ng Ä‘áº¥u"
 
 #: templates/nav/round_panel.html
 msgid "Display"
-msgstr "Hiển thị"
+msgstr "Hiá»ƒn thá»‹"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Administrator area for <strong>%(tournament)s</strong>"
-msgstr "Khu vực điều hành của <strong>%(tournament)s</strong>"
+msgstr "Khu vá»±c Ä‘iá»u hÃ nh cá»§a <strong>%(tournament)s</strong>"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Assistant area for <strong>%(tournament)s</strong>"
-msgstr "Khu vực trợ lý của <strong>%(tournament)s</strong>"
+msgstr "Khu vá»±c trá»£ lÃ½ cá»§a <strong>%(tournament)s</strong>"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Public area for <strong>%(tournament)s</strong>"
-msgstr "Khu vực công khai của <strong>%(tournament)s</strong>"
+msgstr "Khu vá»±c cÃ´ng khai cá»§a <strong>%(tournament)s</strong>"
 
 #: templates/nav/top_nav_base.html
 msgid "Login"
-msgstr "Đăng nhập"
+msgstr "ÄÄƒng nháº­p"
 
 #: templates/registration/logged_out.html
 msgid "Goodbye"
@@ -1243,11 +1243,11 @@ msgstr ""
 #: templates/registration/login.html
 msgctxt "page title"
 msgid "Login"
-msgstr "Đăng nhập"
+msgstr "ÄÄƒng nháº­p"
 
 #: templates/registration/login.html
 msgctxt "page title"
-msgid "Log in to Tabbycat"
+msgid "Log in to NekoTab"
 msgstr ""
 
 #: templates/registration/login.html
@@ -1357,7 +1357,7 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "Someone asked for a password reset for the email address %(email)s on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "Someone asked for a password reset for the email address %(email)s on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: templates/registration/password_reset_email.html
@@ -1366,7 +1366,7 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: templates/registration/password_reset_form.html
@@ -1388,12 +1388,12 @@ msgstr ""
 
 #: templates/registration/password_reset_subject.txt
 #, python-format
-msgid "Password reset on Tabbycat site at %(domain)s"
+msgid "Password reset on NekoTab site at %(domain)s"
 msgstr ""
 
 #: urls.py
 #, python-format
-msgid "Hi, %(user)s — you just logged in!"
+msgid "Hi, %(user)s â€” you just logged in!"
 msgstr ""
 
 #: urls.py
@@ -1938,7 +1938,7 @@ msgstr ""
 
 #: users/templates/account_invitation_email.html
 #, python-format
-msgid "An administrator for the Tabbycat site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
+msgid "An administrator for the NekoTab site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: users/templates/account_invitation_email.html
@@ -1951,11 +1951,11 @@ msgstr ""
 
 #: users/templates/account_invitation_subject.txt
 #, python-format
-msgid "Invitation to join Tabbycat site for %(name)s"
+msgid "Invitation to join NekoTab site for %(name)s"
 msgstr ""
 
 #: users/templates/admin/auth/delete_user_warning.html
-msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the “Permissions” tab, unchecked the “Active” box, and save the user."
+msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the â€œPermissionsâ€ tab, unchecked the â€œActiveâ€ box, and save the user."
 msgstr ""
 
 #: users/templates/invite_user.html
@@ -2000,4 +2000,5 @@ msgstr ""
 #: users/views.py
 msgid "Accept Invitation"
 msgstr ""
+
 

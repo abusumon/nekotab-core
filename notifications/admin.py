@@ -1,9 +1,9 @@
-from typing import Callable, Type, TYPE_CHECKING
+﻿from typing import Callable, Type, TYPE_CHECKING
 
 from django.contrib import admin
 from django.utils import timezone
 
-from utils.admin import ModelAdmin, TabbycatModelAdminFieldsMixin
+from utils.admin import ModelAdmin, NekoTabModelAdminFieldsMixin
 
 from .models import BulkNotification, EmailStatus, SentMessage
 
@@ -20,7 +20,7 @@ def precise_timestamp_isoformat(model: Type['Model'], field_name: str) -> Callab
 
 
 @admin.register(SentMessage)
-class SentMessageAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class SentMessageAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('recipient', 'email', 'precise_timestamp', 'notification')
     list_filter = ('notification__round', 'method', 'notification__event')
     search_fields = ('message_id', 'recipient__name', 'email', 'recipient__email')
@@ -33,7 +33,7 @@ class SentMessageAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
 
 
 @admin.register(BulkNotification)
-class BulkNotificationAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class BulkNotificationAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('precise_timestamp', 'event', 'round', 'tournament')
     list_filter = ('tournament', 'round', 'event')
     ordering = ('-timestamp',)
@@ -45,10 +45,11 @@ class BulkNotificationAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
 
 
 @admin.register(EmailStatus)
-class EmailStatusAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class EmailStatusAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('email', 'event', 'precise_timestamp')
     list_filter = ('event',)
     ordering = ('-timestamp',)
     search_fields = ('email__message_id', 'email__recipient__name', 'email__email', 'email__recipient__email')
 
     precise_timestamp = precise_timestamp_isoformat(EmailStatus, 'timestamp')
+

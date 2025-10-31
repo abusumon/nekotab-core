@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:48\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: it\n"
-"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
@@ -496,7 +496,7 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr ""
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
@@ -731,7 +731,7 @@ msgstr ""
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
 msgstr ""
 
 #: results/templates/ballot_entry_form.html
@@ -793,7 +793,7 @@ msgstr ""
 #: results/templates/includes/public_enter_results_info.html
 #, python-format
 msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can submit results and/or feedback for your debates. You may bookmark this page and return here after each debate for the available actions."
-msgstr "L'URL di questa pagina è personalizzato per te, %(name)s. <strong>Non condividerlo con nessuno;</strong> chiunque abbia questo URL può inviare risultati e/o feedback per i tuoi dibattiti. Salva questa pagina e riaprila dopo ogni dibattito per le azioni disponibili."
+msgstr "L'URL di questa pagina Ã¨ personalizzato per te, %(name)s. <strong>Non condividerlo con nessuno;</strong> chiunque abbia questo URL puÃ² inviare risultati e/o feedback per i tuoi dibattiti. Salva questa pagina e riaprila dopo ogni dibattito per le azioni disponibili."
 
 #: results/templates/privateurl_ballot_set.html
 #: results/templates/privateurl_ballot_set_error.html
@@ -904,7 +904,7 @@ msgstr[1] ""
 
 #: results/templates/public_enter_results.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
-msgstr "Quando si invia questo modulo il tuo indirizzo IP sarà memorizzato per motivi di logging."
+msgstr "Quando si invia questo modulo il tuo indirizzo IP sarÃ  memorizzato per motivi di logging."
 
 #: results/templates/public_enter_results_error.html
 #, python-format
@@ -1172,4 +1172,5 @@ msgstr "Giudice"
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
+
 

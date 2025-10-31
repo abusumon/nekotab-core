@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /develop/tabbycat/tournaments/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/tournaments/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 952\n"
 
@@ -32,11 +32,11 @@ msgstr "Nombre d'equips al tall obert"
 
 #: tournaments/forms.py
 msgid "Leave blank if there are no break rounds."
-msgstr "Deixeu en blanc si no hi ha rondes eliminatòries."
+msgstr "Deixeu en blanc si no hi ha rondes eliminatÃ²ries."
 
 #: tournaments/forms.py
 msgid "Did you agree with their decision?"
-msgstr "Estaveu d'acord amb la seva decisió?"
+msgstr "Estaveu d'acord amb la seva decisiÃ³?"
 
 #: tournaments/forms.py
 msgid "Agree?"
@@ -53,7 +53,7 @@ msgstr "Obre"
 
 #: tournaments/forms.py
 msgid "Format Configuration"
-msgstr "Configuració del format"
+msgstr "ConfiguraciÃ³ del format"
 
 #: tournaments/forms.py
 msgid "Apply a standard set of settings to match a common debate format. These can be changed afterwards and should be checked for your needs."
@@ -61,11 +61,11 @@ msgstr ""
 
 #: tournaments/forms.py
 msgid "Public Configuration"
-msgstr "Configuració pública"
+msgstr "ConfiguraciÃ³ pÃºblica"
 
 #: tournaments/forms.py
 msgid "Show non-sensitive information on the public-facing side of this site, like draws (once released) and the motions of previous rounds"
-msgstr "Mostra informació no sensible a la part pública d'aquest lloc, com ara els sortejos (un cop publicats) i les mocions de les rondes anteriors"
+msgstr "Mostra informaciÃ³ no sensible a la part pÃºblica d'aquest lloc, com ara els sortejos (un cop publicats) i les mocions de les rondes anteriors"
 
 #: tournaments/forms.py
 msgid "Participant Data Entry"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: tournaments/forms.py
 msgid "<strong>Tabulation:</strong> [list tabulation staff here]<br /><strong>Equity:</strong> [list equity members here]<br /><strong>Organisation:</strong> [list organising committee members here]<br /><strong>Adjudication:</strong> [list chief adjudicators here]"
-msgstr "<strong>Tabulació</strong> [llista l'equip de tabulació aquí]<br /><strong>Equitat</strong> [llista l'equip d'equitat aquí]<br /><strong>Organització:</strong> [llista l'equip d'Organització aquí]<br /><strong>Adjudicació:</strong> [llista l'equip d'adjudicació aquí]"
+msgstr "<strong>TabulaciÃ³</strong> [llista l'equip de tabulaciÃ³ aquÃ­]<br /><strong>Equitat</strong> [llista l'equip d'equitat aquÃ­]<br /><strong>OrganitzaciÃ³:</strong> [llista l'equip d'OrganitzaciÃ³ aquÃ­]<br /><strong>AdjudicaciÃ³:</strong> [llista l'equip d'adjudicaciÃ³ aquÃ­]"
 
 #: tournaments/forms.py
 msgid "Current preliminary round"
@@ -90,20 +90,20 @@ msgstr "S'han completat totes les rondes preliminars"
 #: tournaments/forms.py
 #, python-format
 msgid "Current elimination round in <strong>%(category)s</strong> <em>(only if all preliminary rounds have been completed)</em>"
-msgstr "Actual ronda eliminatòria <strong>%(category)s</strong> <em>(només si s'han completat totes les rondes preliminars)</em>"
+msgstr "Actual ronda eliminatÃ²ria <strong>%(category)s</strong> <em>(nomÃ©s si s'han completat totes les rondes preliminars)</em>"
 
 #: tournaments/forms.py
 #, python-format
 msgid "All elimination rounds in %(category)s have been completed"
-msgstr "S'han completat totes les rondes eliminatòries en %(category)s"
+msgstr "S'han completat totes les rondes eliminatÃ²ries en %(category)s"
 
 #: tournaments/forms.py
 msgid "If the current round is a preliminary round, this field must be blank."
-msgstr "Si la ronda actual és una ronda preliminar, aquest camp ha d'estar en blanc."
+msgstr "Si la ronda actual Ã©s una ronda preliminar, aquest camp ha d'estar en blanc."
 
 #: tournaments/forms.py
 msgid "If all preliminary rounds have been completed, this field is required."
-msgstr "Si s'han completat totes les rondes preliminars, aquest camp és obligatori."
+msgstr "Si s'han completat totes les rondes preliminars, aquest camp Ã©s obligatori."
 
 #: tournaments/forms.py
 #, python-format
@@ -138,7 +138,7 @@ msgid "Return to Draw"
 msgstr "Tornar a Aparellaments"
 
 #: tournaments/models.py
-msgid "You can't use this as a tournament slug, because it's reserved for a Tabbycat system URL. Please try another one."
+msgid "You can't use this as a tournament slug, because it's reserved for a NekoTab system URL. Please try another one."
 msgstr ""
 
 #: tournaments/models.py
@@ -159,7 +159,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "sequence number"
-msgstr "número de seqüència"
+msgstr "nÃºmero de seqÃ¼Ã¨ncia"
 
 #: tournaments/models.py
 msgid "A number that determines the relative order in which tournaments are displayed on the homepage."
@@ -203,7 +203,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "Elimination"
-msgstr "Eliminació"
+msgstr "EliminaciÃ³"
 
 #: tournaments/models.py
 msgid "Seeded"
@@ -437,7 +437,7 @@ msgstr ""
 
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Overview"
-msgstr "Visió general"
+msgstr "VisiÃ³ general"
 
 #: tournaments/templates/assistant_tournament_index.html
 #, python-format
@@ -445,7 +445,7 @@ msgid "current round: %(round)s, status: %(status)s"
 msgstr "ronda actual: %(round)s, estat: %(status)s"
 
 #: tournaments/templates/blank_site_start.html
-msgid "Welcome to Tabbycat!"
+msgid "Welcome to NekoTab!"
 msgstr ""
 
 #: tournaments/templates/blank_site_start.html
@@ -471,7 +471,7 @@ msgstr ""
 
 #: tournaments/templates/configure_tournament.html
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: tournaments/templates/configure_tournament.html
@@ -487,15 +487,15 @@ msgid "Create New Tournament"
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat is free to use, although <a href=\"https://opencollective.com/tabbycat\">donations</a> are encouraged."
+msgid "NekoTab is free to use, although <a href=\"https://opencollective.com/NekoTab\">donations</a> are encouraged."
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "Just trying out Tabbycat?"
+msgid "Just trying out NekoTab?"
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "If you're learning or playing around with Tabbycat, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
+msgid "If you're learning or playing around with NekoTab, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
@@ -520,7 +520,7 @@ msgid "Debate Team Missing"
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "Tabbycat always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
+msgid "NekoTab always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
@@ -587,7 +587,7 @@ msgid "It looks like all debates are in good shape!"
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of Tabbycat."
+msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of NekoTab."
 msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
@@ -649,7 +649,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "The draw for the next round has yet to be released"
-msgstr "Els aparellaments per a la següent ronda encara no han estat revelats"
+msgstr "Els aparellaments per a la segÃ¼ent ronda encara no han estat revelats"
 
 #: tournaments/templates/public_tournament_index.html
 #: tournaments/templates/tournament_schedule_edit.html
@@ -670,7 +670,7 @@ msgstr "Mocions"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Standings"
-msgstr "Classificació d'equips"
+msgstr "ClassificaciÃ³ d'equips"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
@@ -695,7 +695,7 @@ msgstr "Institucions"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Feedback Progress"
-msgstr "Progrés en les retroalimentacions"
+msgstr "ProgrÃ©s en les retroalimentacions"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
@@ -704,7 +704,7 @@ msgstr "Enviar Taula de resultats per %(round)s"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Enter Feedback"
-msgstr "Introduir retroalimentació"
+msgstr "Introduir retroalimentaciÃ³"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Register Institution"
@@ -805,11 +805,11 @@ msgstr ""
 
 #: tournaments/templates/set_current_round.html
 msgid "Back to Configuration"
-msgstr "Tornar a la configuració"
+msgstr "Tornar a la configuraciÃ³"
 
 #: tournaments/templates/set_current_round.html
 #, python-format
-msgid "No round is currently set. In order for Tabbycat to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
+msgid "No round is currently set. In order for NekoTab to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
 msgstr ""
 
 #: tournaments/templates/set_current_round.html
@@ -871,7 +871,7 @@ msgstr "Edita la base de dades"
 
 #: tournaments/templates/site_index.html
 msgid "Send a Test Email"
-msgstr "Envia un correu electrònic de prova"
+msgstr "Envia un correu electrÃ²nic de prova"
 
 #: tournaments/templates/site_index.html
 msgid "Import DebateXML"
@@ -885,15 +885,15 @@ msgstr ""
 #: tournaments/templates/site_index.html
 #, python-format
 msgid "Log Out (%(user)s)"
-msgstr "Tancar sessió (%(user)s)"
+msgstr "Tancar sessiÃ³ (%(user)s)"
 
 #: tournaments/templates/site_index.html
 msgid "Log In as Admin"
-msgstr "Inicieu sessió com a Administrador"
+msgstr "Inicieu sessiÃ³ com a Administrador"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "We hope you've enjoyed using Tabbycat for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/tabbycat\">Learn more about donating.</a>"
+msgid "We hope you've enjoyed using NekoTab for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/NekoTab\">Learn more about donating.</a>"
 msgstr ""
 
 #: tournaments/templates/tournament_index.html
@@ -907,7 +907,7 @@ msgstr ""
 #. Translators: The documentation where the link goes to is in English; translations should mention this with "(in English)" after the link.
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "For more information, please consult our <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
+msgid "For more information, please consult our <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
 msgstr ""
 
 #: tournaments/templates/tournament_index.html
@@ -922,7 +922,7 @@ msgstr ""
 #: tournaments/templates/tournament_index.html
 #, python-format
 msgid "Go to the draw area to allocate adjudicators for %(round)s"
-msgstr "Aneu a l'àrea de generació de ronda per assignar als Jutges per a la ronda %(round)s"
+msgstr "Aneu a l'Ã rea de generaciÃ³ de ronda per assignar als Jutges per a la ronda %(round)s"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
@@ -932,17 +932,17 @@ msgstr ""
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Administrator area for <strong>%(tn)s</strong>"
-msgstr "Àrea d'administrador per a <strong>%(tn)s</strong>"
+msgstr "Ã€rea d'administrador per a <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Assistant area for <strong>%(tn)s</strong>"
-msgstr "Àrea d'assistent per a <strong>%(tn)s</strong>"
+msgstr "Ã€rea d'assistent per a <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Public area for <strong>%(tn)s</strong>"
-msgstr "Àrea pública per a <strong>%(tn)s</strong>"
+msgstr "Ã€rea pÃºblica per a <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_schedule_edit.html
 msgid "This page allows you to set the public schedule for the tournament."
@@ -982,7 +982,7 @@ msgstr "govern"
 
 #: tournaments/utils.py
 msgid "opposition"
-msgstr "oposició"
+msgstr "oposiciÃ³"
 
 #: tournaments/utils.py
 msgid "government team"
@@ -990,7 +990,7 @@ msgstr "equip de govern"
 
 #: tournaments/utils.py
 msgid "opposition team"
-msgstr "equip d'oposició"
+msgstr "equip d'oposiciÃ³"
 
 #: tournaments/utils.py
 msgid "Gov"
@@ -1002,11 +1002,11 @@ msgstr "Opo"
 
 #: tournaments/utils.py
 msgid "proposition"
-msgstr "proposició"
+msgstr "proposiciÃ³"
 
 #: tournaments/utils.py
 msgid "proposition team"
-msgstr "equip de proposició"
+msgstr "equip de proposiciÃ³"
 
 #: tournaments/utils.py
 msgid "Prop"
@@ -1074,7 +1074,7 @@ msgstr "Alta de Govern"
 
 #: tournaments/utils.py
 msgid "opening opposition"
-msgstr "Alta d'Oposició"
+msgstr "Alta d'OposiciÃ³"
 
 #: tournaments/utils.py
 msgid "closing government"
@@ -1082,7 +1082,7 @@ msgstr "Baixa de Govern"
 
 #: tournaments/utils.py
 msgid "closing opposition"
-msgstr "Baixa d'Oposició"
+msgstr "Baixa d'OposiciÃ³"
 
 #: tournaments/utils.py
 msgid "opening government team"
@@ -1090,7 +1090,7 @@ msgstr "equip d'alta de govern"
 
 #: tournaments/utils.py
 msgid "opening opposition team"
-msgstr "equip d'alta d'oposició"
+msgstr "equip d'alta d'oposiciÃ³"
 
 #: tournaments/utils.py
 msgid "closing government team"
@@ -1098,7 +1098,7 @@ msgstr "equip de baixa de govern"
 
 #: tournaments/utils.py
 msgid "closing opposition team"
-msgstr "equip de baixa d'oposició"
+msgstr "equip de baixa d'oposiciÃ³"
 
 #: tournaments/utils.py
 msgctxt "BP position"
@@ -1198,4 +1198,5 @@ msgstr ""
 #: tournaments/views.py
 msgid "Tournament Schedule"
 msgstr ""
+
 

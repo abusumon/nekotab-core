@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:40+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: bn\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 934\n"
 
 #: api/apps.py
@@ -32,7 +32,7 @@ msgstr ""
 #: checkins/apps.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Check-Ins"
-msgstr "চেক ইন"
+msgstr "à¦šà§‡à¦• à¦‡à¦¨"
 
 #: checkins/consumers.py
 msgid "Sent checkin identifier doesn't exist"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: checkins/models.py
 msgid "debate"
-msgstr "বিতর্ক"
+msgstr "à¦¬à¦¿à¦¤à¦°à§à¦•"
 
 #: checkins/models.py
 msgid "debate identifier"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: checkins/models.py registration/models.py users/models.py
 msgid "tournament"
-msgstr "প্রতিযোগিতা"
+msgstr "à¦ªà§à¦°à¦¤à¦¿à¦¯à§‹à¦—à¦¿à¦¤à¦¾"
 
 #: checkins/models.py
 msgid "check-in event"
@@ -196,7 +196,7 @@ msgstr ""
 #: checkins/views.py registration/views.py templates/nav/admin_nav.html
 #: templates/nav/public_nav.html
 msgid "Adjudicators"
-msgstr "বিচারকমন্ডলী"
+msgstr "à¦¬à¦¿à¦šà¦¾à¦°à¦•à¦®à¦¨à§à¦¡à¦²à§€"
 
 #: checkins/views.py
 msgid "Rooms"
@@ -212,7 +212,7 @@ msgid "Identifiers"
 msgstr ""
 
 #: checkins/views.py
-msgid "Could not check you in as you do not have an identifying code — your tab director may need to make you an identifier."
+msgid "Could not check you in as you do not have an identifying code â€” your tab director may need to make you an identifier."
 msgstr ""
 
 #: checkins/views.py
@@ -252,11 +252,11 @@ msgstr ""
 
 #: registration/forms.py
 msgid "Unseeded"
-msgstr "বীজহীন"
+msgstr "à¦¬à§€à¦œà¦¹à§€à¦¨"
 
 #: registration/forms.py
 msgid "Free seed"
-msgstr "বিনামূল্যে বীজ"
+msgstr "à¦¬à¦¿à¦¨à¦¾à¦®à§‚à¦²à§à¦¯à§‡ à¦¬à§€à¦œ"
 
 #: registration/forms.py
 msgid "Half seed"
@@ -272,7 +272,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "content type"
-msgstr "বিষয় / সূচি টাইপ"
+msgstr "à¦¬à¦¿à¦·à¦¯à¦¼ / à¦¸à§‚à¦šà¦¿ à¦Ÿà¦¾à¦‡à¦ª"
 
 #: registration/models.py
 msgid "object id"
@@ -312,7 +312,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "text"
-msgstr "মূলপাঠ/পাঠ্য"
+msgstr "à¦®à§‚à¦²à¦ªà¦¾à¦ /à¦ªà¦¾à¦ à§à¦¯"
 
 #: registration/models.py
 msgid "long text"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "sequence number"
-msgstr "ক্রম সংখ্যা"
+msgstr "à¦•à§à¦°à¦® à¦¸à¦‚à¦–à§à¦¯à¦¾"
 
 #: registration/models.py
 msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
@@ -352,7 +352,7 @@ msgstr ""
 
 #: registration/models.py users/models.py
 msgid "name"
-msgstr "নাম"
+msgstr "à¦¨à¦¾à¦®"
 
 #: registration/models.py
 msgid "A short name for the question, e.g., \"Agree with decision\""
@@ -388,7 +388,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "choices"
-msgstr "পছন্দ"
+msgstr "à¦ªà¦›à¦¨à§à¦¦"
 
 #: registration/models.py
 msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
@@ -400,11 +400,11 @@ msgstr ""
 
 #: registration/models.py
 msgid "institution"
-msgstr "প্রতিষ্ঠান"
+msgstr "à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦¨"
 
 #: registration/models.py
 msgid "team"
-msgstr "দল"
+msgstr "à¦¦à¦²"
 
 #: registration/models.py
 msgid "URL key"
@@ -490,7 +490,7 @@ msgstr ""
 #: registration/templates/answer_tables/teams.html registration/views.py
 #: templates/nav/admin_nav.html
 msgid "Teams"
-msgstr "দলসমূহ"
+msgstr "à¦¦à¦²à¦¸à¦®à§‚à¦¹"
 
 #: registration/templates/coach_private_url.html
 msgid "Private URL"
@@ -804,16 +804,16 @@ msgid "I forgot my password"
 msgstr ""
 
 #: templates/base.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: templates/base.html
 #, python-format
-msgid "The tab for %(tournament)s runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "The tab for %(tournament)s runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr ""
 
 #: templates/base.html
-msgid "This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "This tab runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr ""
 
 #: templates/components/form-errors.html
@@ -841,7 +841,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: templates/errors/legacy_sendgrid_warning.html
-msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of Tabbycat. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
+msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of NekoTab. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
 msgstr ""
 
 #: templates/errors/public_403.html
@@ -856,87 +856,87 @@ msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "%(tournament)s runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
-msgstr "%(tournament)s Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s) ভিত্তি করে চলছে"
+msgid "%(tournament)s runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
+msgstr "%(tournament)s NekoTab %(NekoTab_version)s (%(NekoTab_codename)s) à¦­à¦¿à¦¤à§à¦¤à¦¿ à¦•à¦°à§‡ à¦šà¦²à¦›à§‡"
 
 #: templates/footer.html
 #, python-format
-msgid "This site runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgid "This site runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
 msgstr ""
 
 #: templates/footer.html
-msgid "Tabbycat is an open-source project developed by volunteers and is free to use."
+msgid "NekoTab is an open-source project developed by volunteers and is free to use."
 msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
+msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
 msgstr ""
 
 #: templates/footer.html
 msgid "Learn more about donating."
-msgstr "অনুদান প্রদান সম্পর্কে আরো জানুন।"
+msgstr "à¦…à¦¨à§à¦¦à¦¾à¦¨ à¦ªà§à¦°à¦¦à¦¾à¦¨ à¦¸à¦®à§à¦ªà¦°à§à¦•à§‡ à¦†à¦°à§‹ à¦œà¦¾à¦¨à§à¦¨à¥¤"
 
 #: templates/footer.html
-msgid "<a href=\"https://opencollective.com/tabbycat\">Donations to Tabbycat from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain Tabbycat."
+msgid "<a href=\"https://opencollective.com/NekoTab\">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab."
 msgstr ""
 
 #: templates/footer.html
 msgid "Still timing debates with the stopwatch app?"
-msgstr "এখনো থামাঘড়ি দিয়ে বিতর্কের সময় রক্ষা করছেন?"
+msgstr "à¦à¦–à¦¨à§‹ à¦¥à¦¾à¦®à¦¾à¦˜à§œà¦¿ à¦¦à¦¿à§Ÿà§‡ à¦¬à¦¿à¦¤à¦°à§à¦•à§‡à¦° à¦¸à¦®à§Ÿ à¦°à¦•à§à¦·à¦¾ à¦•à¦°à¦›à§‡à¦¨?"
 
 #: templates/footer.html
 #, python-format
-msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
-msgstr "বিতর্কের জন্যই তৈরি সময় রক্ষক অ্যাপ ব্যবহার বিতর্ক ও বিচারকার্য সহজ করবে! দেখে আসতে পারেন <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">টাইমকেপ্ট</a> (আইফোন/আইপ্যাড), <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">ডিবেটকিপার</a> (অ্যান্ড্রয়েড) বা <a href=\"https://top.gg/bot/706179030977740810r\">হিয়ার! হিয়ার! বট</a> (ডিস্কর্ড)"
+msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgstr "à¦¬à¦¿à¦¤à¦°à§à¦•à§‡à¦° à¦œà¦¨à§à¦¯à¦‡ à¦¤à§ˆà¦°à¦¿ à¦¸à¦®à§Ÿ à¦°à¦•à§à¦·à¦• à¦…à§à¦¯à¦¾à¦ª à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦¬à¦¿à¦¤à¦°à§à¦• à¦“ à¦¬à¦¿à¦šà¦¾à¦°à¦•à¦¾à¦°à§à¦¯ à¦¸à¦¹à¦œ à¦•à¦°à¦¬à§‡! à¦¦à§‡à¦–à§‡ à¦†à¦¸à¦¤à§‡ à¦ªà¦¾à¦°à§‡à¦¨ <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">à¦Ÿà¦¾à¦‡à¦®à¦•à§‡à¦ªà§à¦Ÿ</a> (à¦†à¦‡à¦«à§‹à¦¨/à¦†à¦‡à¦ªà§à¦¯à¦¾à¦¡), <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">à¦¡à¦¿à¦¬à§‡à¦Ÿà¦•à¦¿à¦ªà¦¾à¦°</a> (à¦…à§à¦¯à¦¾à¦¨à§à¦¡à§à¦°à§Ÿà§‡à¦¡) à¦¬à¦¾ <a href=\"https://top.gg/bot/706179030977740810r\">à¦¹à¦¿à§Ÿà¦¾à¦°! à¦¹à¦¿à§Ÿà¦¾à¦°! à¦¬à¦Ÿ</a> (à¦¡à¦¿à¦¸à§à¦•à¦°à§à¦¡)"
 
 #: templates/footer.html
 msgid "Our Organisation"
 msgstr ""
 
 #: templates/footer.html
-msgid "Tabbycat is supported by the <a href=\"https://tabbycat-debate.org/\">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology."
+msgid "NekoTab is supported by the <a href=\"https://NekoTab-debate.org/\">NekoTab Debate Association</a>, a non-profit for advancing open debate technology."
 msgstr ""
 
 #: templates/footer.html users/groups.py
 msgid "Language"
-msgstr "ভাষা"
+msgstr "à¦­à¦¾à¦·à¦¾"
 
 #: templates/footer.html
 msgid "GitHub"
-msgstr "গিটহাব"
+msgstr "à¦—à¦¿à¦Ÿà¦¹à¦¾à¦¬"
 
 #: templates/footer.html
 msgid "Documentation"
-msgstr "ব্যবহার বিধি"
+msgstr "à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦¬à¦¿à¦§à¦¿"
 
 #: templates/footer.html
 msgid "Support"
-msgstr "সহায়তা"
+msgstr "à¦¸à¦¹à¦¾à§Ÿà¦¤à¦¾"
 
 #: templates/footer.html
 msgid "Facebook"
-msgstr "ফেসবুক"
+msgstr "à¦«à§‡à¦¸à¦¬à§à¦•"
 
 #: templates/footer.html
 msgid "Set Up A Copy"
-msgstr "একটি কপি তৈরী করুন।"
+msgstr "à¦à¦•à¦Ÿà¦¿ à¦•à¦ªà¦¿ à¦¤à§ˆà¦°à§€ à¦•à¦°à§à¦¨à¥¤"
 
 #: templates/footer.html
 msgid "Change Language"
-msgstr "ভাষা পরিবর্তন করুন"
+msgstr "à¦­à¦¾à¦·à¦¾ à¦ªà¦°à¦¿à¦¬à¦°à§à¦¤à¦¨ à¦•à¦°à§à¦¨"
 
 #: templates/footer.html
 msgid "Use this language"
-msgstr "এই ভাষাটি সক্রিয় করুন"
+msgstr "à¦à¦‡ à¦­à¦¾à¦·à¦¾à¦Ÿà¦¿ à¦¸à¦•à§à¦°à¦¿à§Ÿ à¦•à¦°à§à¦¨"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
-msgid "Tabbycat Logo"
+msgid "NekoTab Logo"
 msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Site Home"
-msgstr "মূল পাতা"
+msgstr "à¦®à§‚à¦² à¦ªà¦¾à¦¤à¦¾"
 
 #: templates/nav/admin_nav.html
 msgid "New Tournament"
@@ -960,7 +960,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Overview"
-msgstr "সংক্ষিপ্ত বিবরণ"
+msgstr "à¦¸à¦‚à¦•à§à¦·à¦¿à¦ªà§à¦¤ à¦¬à¦¿à¦¬à¦°à¦£"
 
 #: templates/nav/admin_nav.html
 msgid "Setup"
@@ -977,7 +977,7 @@ msgstr ""
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 #: templates/nav/public_nav.html
 msgid "Participants"
-msgstr "অংশগ্রহণকারী"
+msgstr "à¦…à¦‚à¦¶à¦—à§à¦°à¦¹à¦£à¦•à¦¾à¦°à§€"
 
 #: templates/nav/admin_nav.html
 msgid "Private URLs"
@@ -993,7 +993,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Preformed Panels"
-msgstr "পূর্বগঠিত প্যানেল"
+msgstr "à¦ªà§‚à¦°à§à¦¬à¦—à¦ à¦¿à¦¤ à¦ªà§à¦¯à¦¾à¦¨à§‡à¦²"
 
 #: templates/nav/admin_nav.html
 msgid "Export XML"
@@ -1001,7 +1001,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Sides"
-msgstr "পক্ষ"
+msgstr "à¦ªà¦•à§à¦·"
 
 #: templates/nav/admin_nav.html users/groups.py
 msgid "Registration"
@@ -1017,19 +1017,19 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Feedback"
-msgstr "প্রতিক্রিয়া"
+msgstr "à¦ªà§à¦°à¦¤à¦¿à¦•à§à¦°à¦¿à¦¯à¦¼à¦¾"
 
 #: templates/nav/admin_nav.html
 msgid "Latest"
-msgstr "সর্বশেষ:"
+msgstr "à¦¸à¦°à§à¦¬à¦¶à§‡à¦·:"
 
 #: templates/nav/admin_nav.html
 msgid "Important"
-msgstr "গুরুত্বপূর্ণ"
+msgstr "à¦—à§à¦°à§à¦¤à§à¦¬à¦ªà§‚à¦°à§à¦£"
 
 #: templates/nav/admin_nav.html
 msgid "Comments"
-msgstr "মন্তব্য"
+msgstr "à¦®à¦¨à§à¦¤à¦¬à§à¦¯"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Source"
@@ -1041,7 +1041,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Unsubmitted"
-msgstr "জমাকৃত নয়"
+msgstr "à¦œà¦®à¦¾à¦•à§ƒà¦¤ à¦¨à§Ÿ"
 
 #: templates/nav/admin_nav.html
 msgid "Feedback Questions"
@@ -1049,7 +1049,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Add Feedback"
-msgstr "প্রতিক্রিয়া যোগ করুন"
+msgstr "à¦ªà§à¦°à¦¤à¦¿à¦•à§à¦°à¦¿à¦¯à¦¼à¦¾ à¦¯à§‹à¦— à¦•à¦°à§à¦¨"
 
 #: templates/nav/admin_nav.html
 msgid "Bulk Update"
@@ -1066,7 +1066,7 @@ msgstr ""
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Teams"
-msgstr "%(category)s দলসমূহ"
+msgstr "%(category)s à¦¦à¦²à¦¸à¦®à§‚à¦¹"
 
 #: templates/nav/admin_nav.html
 msgid "All Speakers"
@@ -1075,7 +1075,7 @@ msgstr ""
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Speakers"
-msgstr "%(category)s বক্তাসমূহ"
+msgstr "%(category)s à¦¬à¦•à§à¦¤à¦¾à¦¸à¦®à§‚à¦¹"
 
 #: templates/nav/admin_nav.html
 msgid "Replies"
@@ -1083,7 +1083,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Motions"
-msgstr "প্রস্তাবসমূহ"
+msgstr "à¦ªà§à¦°à¦¸à§à¦¤à¦¾à¦¬à¦¸à¦®à§‚à¦¹"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Diversity"
@@ -1112,7 +1112,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Log Out"
-msgstr "লগ আউট"
+msgstr "à¦²à¦— à¦†à¦‰à¦Ÿ"
 
 #: templates/nav/assistant_nav.html
 msgid "Enter Results"
@@ -1120,7 +1120,7 @@ msgstr ""
 
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Enter Feedback"
-msgstr "প্রতিক্রিয়া লিখুন"
+msgstr "à¦ªà§à¦°à¦¤à¦¿à¦•à§à¦°à¦¿à¦¯à¦¼à¦¾ à¦²à¦¿à¦–à§à¦¨"
 
 #: templates/nav/assistant_nav.html
 msgid "Participants List"
@@ -1144,23 +1144,23 @@ msgstr ""
 
 #: templates/nav/public_nav.html
 msgid "Team Tab"
-msgstr "দলসমূহ"
+msgstr "à¦¦à¦²à¦¸à¦®à§‚à¦¹"
 
 #: templates/nav/public_nav.html
 msgid "Speaker Tab"
-msgstr "বক্তাসমূহ"
+msgstr "à¦¬à¦•à§à¦¤à¦¾à¦¸à¦®à§‚à¦¹"
 
 #: templates/nav/public_nav.html
 msgid "Replies Tab"
-msgstr "যুক্তি খন্ডন ট্যাব"
+msgstr "à¦¯à§à¦•à§à¦¤à¦¿ à¦–à¦¨à§à¦¡à¦¨ à¦Ÿà§à¦¯à¦¾à¦¬"
 
 #: templates/nav/public_nav.html
 msgid "Adjudicator Tab"
-msgstr "বিচারকমণ্ডলী"
+msgstr "à¦¬à¦¿à¦šà¦¾à¦°à¦•à¦®à¦£à§à¦¡à¦²à§€"
 
 #: templates/nav/public_nav.html
 msgid "Motions Tab"
-msgstr "প্রস্তাব ট্যাব"
+msgstr "à¦ªà§à¦°à¦¸à§à¦¤à¦¾à¦¬ à¦Ÿà§à¦¯à¦¾à¦¬"
 
 #: templates/nav/public_nav.html
 msgid "By round"
@@ -1189,15 +1189,15 @@ msgstr ""
 
 #: templates/nav/public_nav.html templates/nav/round_panel.html
 msgid "Results"
-msgstr "ফলাফল"
+msgstr "à¦«à¦²à¦¾à¦«à¦²"
 
 #: templates/nav/public_nav.html
 msgid "Break"
-msgstr "ব্রেক"
+msgstr "à¦¬à§à¦°à§‡à¦•"
 
 #: templates/nav/public_nav.html
 msgid "Feedback Progress"
-msgstr "প্রতিক্রিয়া অগ্রগতি"
+msgstr "à¦ªà§à¦°à¦¤à¦¿à¦•à§à¦°à¦¿à¦¯à¦¼à¦¾ à¦…à¦—à§à¦°à¦—à¦¤à¦¿"
 
 #: templates/nav/public_nav.html
 msgid "Enter Ballot"
@@ -1205,11 +1205,11 @@ msgstr ""
 
 #: templates/nav/round_panel.html
 msgid "Availability"
-msgstr "উপস্থিতি"
+msgstr "à¦‰à¦ªà¦¸à§à¦¥à¦¿à¦¤à¦¿"
 
 #: templates/nav/round_panel.html
 msgid "Draw"
-msgstr "ড্র"
+msgstr "à¦¡à§à¦°"
 
 #: templates/nav/round_panel.html
 msgid "Display"
@@ -1218,17 +1218,17 @@ msgstr ""
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Administrator area for <strong>%(tournament)s</strong>"
-msgstr "প্রশাসক অঞ্চল <strong>%(tournament)s</strong>"
+msgstr "à¦ªà§à¦°à¦¶à¦¾à¦¸à¦• à¦…à¦žà§à¦šà¦² <strong>%(tournament)s</strong>"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Assistant area for <strong>%(tournament)s</strong>"
-msgstr "সহায়ক অঞ্চল <strong>%(tournament)s</strong>"
+msgstr "à¦¸à¦¹à¦¾à§Ÿà¦• à¦…à¦žà§à¦šà¦² <strong>%(tournament)s</strong>"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Public area for <strong>%(tournament)s</strong>"
-msgstr "গণ অঞ্চল <strong>%(tournament)s</strong>"
+msgstr "à¦—à¦£ à¦…à¦žà§à¦šà¦² <strong>%(tournament)s</strong>"
 
 #: templates/nav/top_nav_base.html
 msgid "Login"
@@ -1250,7 +1250,7 @@ msgstr ""
 
 #: templates/registration/login.html
 msgctxt "page title"
-msgid "Log in to Tabbycat"
+msgid "Log in to NekoTab"
 msgstr ""
 
 #: templates/registration/login.html
@@ -1360,7 +1360,7 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "Someone asked for a password reset for the email address %(email)s on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "Someone asked for a password reset for the email address %(email)s on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: templates/registration/password_reset_email.html
@@ -1369,7 +1369,7 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: templates/registration/password_reset_form.html
@@ -1391,12 +1391,12 @@ msgstr ""
 
 #: templates/registration/password_reset_subject.txt
 #, python-format
-msgid "Password reset on Tabbycat site at %(domain)s"
+msgid "Password reset on NekoTab site at %(domain)s"
 msgstr ""
 
 #: urls.py
 #, python-format
-msgid "Hi, %(user)s — you just logged in!"
+msgid "Hi, %(user)s â€” you just logged in!"
 msgstr ""
 
 #: urls.py
@@ -1445,7 +1445,7 @@ msgstr ""
 
 #: users/models.py
 msgid "user"
-msgstr "ব্যবহারকারী"
+msgstr "à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦°à¦•à¦¾à¦°à§€"
 
 #: users/models.py
 msgid "permission"
@@ -1941,7 +1941,7 @@ msgstr ""
 
 #: users/templates/account_invitation_email.html
 #, python-format
-msgid "An administrator for the Tabbycat site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
+msgid "An administrator for the NekoTab site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: users/templates/account_invitation_email.html
@@ -1954,11 +1954,11 @@ msgstr ""
 
 #: users/templates/account_invitation_subject.txt
 #, python-format
-msgid "Invitation to join Tabbycat site for %(name)s"
+msgid "Invitation to join NekoTab site for %(name)s"
 msgstr ""
 
 #: users/templates/admin/auth/delete_user_warning.html
-msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the “Permissions” tab, unchecked the “Active” box, and save the user."
+msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the â€œPermissionsâ€ tab, unchecked the â€œActiveâ€ box, and save the user."
 msgstr ""
 
 #: users/templates/invite_user.html
@@ -2003,4 +2003,5 @@ msgstr ""
 #: users/views.py
 msgid "Accept Invitation"
 msgstr ""
+
 

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2025-06-05 20:31\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: zh-TW\n"
-"X-Crowdin-File: /develop/tabbycat/printing/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/printing/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 944\n"
 
@@ -41,11 +41,11 @@ msgstr ""
 
 #: printing/templates/feedback_list.html
 #, python-format
-msgid "%(first_sentence)s Check the <a href=\"https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">documentation</a> for information on how to add these (otherwise these forms will be quite bare)."
+msgid "%(first_sentence)s Check the <a href=\"https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">documentation</a> for information on how to add these (otherwise these forms will be quite bare)."
 msgstr ""
 
 #: printing/templates/feedback_list.html
-msgid "There are no feedback sheets available — perhaps adjudicators have not been allocated?"
+msgid "There are no feedback sheets available â€” perhaps adjudicators have not been allocated?"
 msgstr ""
 
 #: printing/templates/printables_list.html
@@ -84,7 +84,7 @@ msgid "Edit Motion(s)"
 msgstr ""
 
 #: printing/templates/scoresheet_list.html
-msgid "There are no scoresheets available — perhaps the round has not been drawn?"
+msgid "There are no scoresheets available â€” perhaps the round has not been drawn?"
 msgstr ""
 
 #: printing/templates/scoresheet_list.html
@@ -96,7 +96,7 @@ msgid "&times;"
 msgstr ""
 
 #: printing/templates/scoresheet_list.html
-msgid "Editing motions here will not save them permanently — it will only update the text used in the printed ballots below. This can be useful if using placeholder motions (to ensure confidentiality) in Tabbycat, but you still want to print ballots with correct motions."
+msgid "Editing motions here will not save them permanently â€” it will only update the text used in the printed ballots below. This can be useful if using placeholder motions (to ensure confidentiality) in NekoTab, but you still want to print ballots with correct motions."
 msgstr ""
 
 #: printing/templates/scoresheet_list.html
@@ -122,4 +122,5 @@ msgstr ""
 #: printing/views.py
 msgid "Team"
 msgstr ""
+
 

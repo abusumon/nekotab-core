@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-24 07:48+1000\n"
 "PO-Revision-Date: 2024-06-23 21:58\n"
@@ -11,19 +11,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/motions/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/motions/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 936\n"
 
 #: motions/apps.py motions/templates/public_motions.html
 msgid "Motions"
-msgstr "话题"
+msgstr "è¯é¢˜"
 
 #: motions/models.py
 msgid "text"
-msgstr "文本"
+msgstr "æ–‡æœ¬"
 
 #: motions/models.py
 msgid "The full motion e.g., \"This House would straighten all bananas\""
@@ -47,19 +47,19 @@ msgstr ""
 
 #: motions/models.py
 msgid "tournament"
-msgstr "比赛"
+msgstr "æ¯”èµ›"
 
 #: motions/models.py
 msgid "rounds"
-msgstr "赛"
+msgstr "èµ›"
 
 #: motions/models.py
 msgid "motion"
-msgstr "话题"
+msgstr "è¯é¢˜"
 
 #: motions/models.py
 msgid "motions"
-msgstr "话题"
+msgstr "è¯é¢˜"
 
 #: motions/models.py
 msgid "debate team"
@@ -83,7 +83,7 @@ msgstr ""
 
 #: motions/models.py
 msgid "round"
-msgstr "赛"
+msgstr "èµ›"
 
 #: motions/models.py
 msgid "sequence number"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: motions/statistics.py
 #, python-format
-msgid "χ² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced — at a %(level)s level of significance."
+msgid "Ï‡Â² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced â€” at a %(level)s level of significance."
 msgstr ""
 
 #: motions/statistics.py
@@ -149,7 +149,7 @@ msgstr ""
 
 #: motions/statistics.py
 #, python-format
-msgid "χ² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
+msgid "Ï‡Â² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
 msgstr ""
 
 #: motions/templates/motion_global_statistics.html
@@ -178,21 +178,21 @@ msgstr[0] ""
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgid "advanced"
-msgstr "推进了"
+msgstr "æŽ¨è¿›äº†"
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgctxt "abbreviation for 'advanced', used when not enough space"
 msgid "adv."
-msgstr "推进了"
+msgstr "æŽ¨è¿›äº†"
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgid "eliminated"
-msgstr "淘汰了"
+msgstr "æ·˜æ±°äº†"
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgctxt "abbreviation for 'eliminated', used when not enough space"
 msgid "elim."
-msgstr "淘汰"
+msgstr "æ·˜æ±°"
 
 #: motions/templates/motion_statistics_bp_elim.html
 #, python-format
@@ -206,11 +206,11 @@ msgstr ""
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Government"
-msgstr "政府"
+msgstr "æ”¿åºœ"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Opposition"
-msgstr "反对党"
+msgstr "åå¯¹å…š"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Average Points per bench"
@@ -218,11 +218,11 @@ msgstr ""
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Opening"
-msgstr "上议院"
+msgstr "ä¸Šè®®é™¢"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Closing"
-msgstr "下议院"
+msgstr "ä¸‹è®®é™¢"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Average Points per half"
@@ -294,7 +294,7 @@ msgstr[0] ""
 #: motions/templates/motions_edit.html
 msgid "Save Motion"
 msgid_plural "Save Motions"
-msgstr[0] "保存话题"
+msgstr[0] "ä¿å­˜è¯é¢˜"
 
 #: motions/templates/motions_info.html
 msgid "Info Slide"
@@ -331,7 +331,7 @@ msgid_plural "Reveal Motions for %(round)s"
 msgstr[0] ""
 
 #: motions/templates/show.html
-msgid "There are no motions for this round entered into Tabbycat."
+msgid "There are no motions for this round entered into NekoTab."
 msgstr ""
 
 #: motions/utils.py
@@ -385,4 +385,5 @@ msgstr ""
 #: motions/views.py
 msgid "Motion Statistics"
 msgstr ""
+
 

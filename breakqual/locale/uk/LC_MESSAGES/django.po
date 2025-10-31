@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:48\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: uk\n"
-"X-Crowdin-File: /develop/tabbycat/breakqual/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/breakqual/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 928\n"
 
 #: breakqual/apps.py
@@ -32,7 +32,7 @@ msgstr[3] ""
 
 #: breakqual/models.py
 msgid "tournament"
-msgstr "турнір"
+msgstr "Ñ‚ÑƒÑ€Ð½Ñ–Ñ€"
 
 #: breakqual/models.py
 msgid "name"
@@ -223,7 +223,7 @@ msgid "Breaks"
 msgstr ""
 
 #: breakqual/templates/breaking_index.html
-msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://tabbycat.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
+msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://NekoTab.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
 msgstr ""
 
 #: breakqual/templates/breaking_index.html
@@ -289,12 +289,12 @@ msgstr ""
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "There are <strong>0 teams marked as eligible</strong> for this category — you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
+msgid "There are <strong>0 teams marked as eligible</strong> for this category â€” you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "This break uses the <strong>%(category)s</strong> rule — if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
+msgid "This break uses the <strong>%(category)s</strong> rule â€” if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
@@ -308,7 +308,7 @@ msgid "The <strong>public breaking teams</strong> configuration setting is enabl
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
-msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious — you can regenerate it later."
+msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious â€” you can regenerate it later."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
@@ -546,4 +546,5 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
+
 

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: kk\n"
-"X-Crowdin-File: /develop/tabbycat/breakqual/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/breakqual/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 928\n"
 
 #: breakqual/apps.py
@@ -30,11 +30,11 @@ msgstr[1] ""
 
 #: breakqual/models.py
 msgid "tournament"
-msgstr "турнир"
+msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: breakqual/models.py
 msgid "name"
-msgstr "аты"
+msgstr "Ð°Ñ‚Ñ‹"
 
 #: breakqual/models.py
 msgid "Name to be displayed, e.g., \"ESL\""
@@ -82,7 +82,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "priority"
-msgstr "басымдық"
+msgstr "Ð±Ð°ÑÑ‹Ð¼Ð´Ñ‹Ò›"
 
 #: breakqual/models.py
 msgid "If a team breaks in multiple categories, higher priority numbers take precedence; teams can break into multiple categories if and only if they all have the same priority"
@@ -118,7 +118,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "rule"
-msgstr "ереже"
+msgstr "ÐµÑ€ÐµÐ¶Ðµ"
 
 #: breakqual/models.py
 msgid "Rule for how the break is calculated (most tournaments should use \"Standard\")"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "breaking teams"
-msgstr "іріктелген топтар"
+msgstr "Ñ–Ñ€Ñ–ÐºÑ‚ÐµÐ»Ð³ÐµÐ½ Ñ‚Ð¾Ð¿Ñ‚Ð°Ñ€"
 
 #: breakqual/models.py
 msgid "break category"
@@ -138,11 +138,11 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "team"
-msgstr "топ"
+msgstr "Ñ‚Ð¾Ð¿"
 
 #: breakqual/models.py
 msgid "rank"
-msgstr "орын"
+msgstr "Ð¾Ñ€Ñ‹Ð½"
 
 #: breakqual/models.py
 msgid "break rank"
@@ -221,7 +221,7 @@ msgid "Breaks"
 msgstr ""
 
 #: breakqual/templates/breaking_index.html
-msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://tabbycat.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
+msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://NekoTab.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
 msgstr ""
 
 #: breakqual/templates/breaking_index.html
@@ -247,7 +247,7 @@ msgstr ""
 
 #: breakqual/templates/breaking_index.html
 msgid "Breaking"
-msgstr "Іріктеуден өткендер"
+msgstr "Ð†Ñ€Ñ–ÐºÑ‚ÐµÑƒÐ´ÐµÐ½ Ó©Ñ‚ÐºÐµÐ½Ð´ÐµÑ€"
 
 #: breakqual/templates/breaking_index.html
 msgid "Excluded"
@@ -271,11 +271,11 @@ msgstr ""
 
 #: breakqual/templates/breaking_teams.html
 msgid "publicly visible"
-msgstr "көпшілікке көрінетін"
+msgstr "ÐºÓ©Ð¿ÑˆÑ–Ð»Ñ–ÐºÐºÐµ ÐºÓ©Ñ€Ñ–Ð½ÐµÑ‚Ñ–Ð½"
 
 #: breakqual/templates/breaking_teams.html
 msgid "not publicly visible"
-msgstr "көпшілікке көрінбейтін"
+msgstr "ÐºÓ©Ð¿ÑˆÑ–Ð»Ñ–ÐºÐºÐµ ÐºÓ©Ñ€Ñ–Ð½Ð±ÐµÐ¹Ñ‚Ñ–Ð½"
 
 #: breakqual/templates/breaking_teams.html
 msgid "Delete and Regenerate All Breaks"
@@ -287,12 +287,12 @@ msgstr ""
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "There are <strong>0 teams marked as eligible</strong> for this category — you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
+msgid "There are <strong>0 teams marked as eligible</strong> for this category â€” you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "This break uses the <strong>%(category)s</strong> rule — if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
+msgid "This break uses the <strong>%(category)s</strong> rule â€” if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
@@ -306,7 +306,7 @@ msgid "The <strong>public breaking teams</strong> configuration setting is enabl
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
-msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious — you can regenerate it later."
+msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious â€” you can regenerate it later."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
@@ -333,7 +333,7 @@ msgstr ""
 
 #: breakqual/templates/breakqual_subnav.html
 msgid "Adjudicators' Break"
-msgstr "Іріктеуден өткен төрешілер"
+msgstr "Ð†Ñ€Ñ–ÐºÑ‚ÐµÑƒÐ´ÐµÐ½ Ó©Ñ‚ÐºÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€"
 
 #: breakqual/templates/edit_break_eligibility.html
 #, python-format
@@ -342,38 +342,38 @@ msgstr ""
 
 #: breakqual/templates/public_break_index.html breakqual/views.py
 msgid "Break"
-msgstr "Іріктеуден өткендер"
+msgstr "Ð†Ñ€Ñ–ÐºÑ‚ÐµÑƒÐ´ÐµÐ½ Ó©Ñ‚ÐºÐµÐ½Ð´ÐµÑ€"
 
 #: breakqual/templates/public_break_index.html
 msgid "Adjudicators"
-msgstr "Төрешілер"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€"
 
 #. Translators: abbreviation for "grand final"
 #: breakqual/utils.py
 msgid "Grand Final"
-msgstr "Финал"
+msgstr "Ð¤Ð¸Ð½Ð°Ð»"
 
 #: breakqual/utils.py
 msgid "GF"
-msgstr "Ф"
+msgstr "Ð¤"
 
 #. Translators: abbreviation for "semifinals"
 #: breakqual/utils.py
 msgid "Semifinals"
-msgstr "Жартылай финал"
+msgstr "Ð–Ð°Ñ€Ñ‚Ñ‹Ð»Ð°Ð¹ Ñ„Ð¸Ð½Ð°Ð»"
 
 #: breakqual/utils.py
 msgid "SF"
-msgstr "ЖФ"
+msgstr "Ð–Ð¤"
 
 #. Translators: abbreviation for "quarterfinals"
 #: breakqual/utils.py
 msgid "Quarterfinals"
-msgstr "Ширек финал"
+msgstr "Ð¨Ð¸Ñ€ÐµÐº Ñ„Ð¸Ð½Ð°Ð»"
 
 #: breakqual/utils.py
 msgid "QF"
-msgstr "ШФ"
+msgstr "Ð¨Ð¤"
 
 #. Translators: abbreviation for "octofinals"
 #: breakqual/utils.py
@@ -411,13 +411,13 @@ msgstr ""
 #: breakqual/utils.py
 #, python-format
 msgid "%sF"
-msgstr "Финал %s"
+msgstr "Ð¤Ð¸Ð½Ð°Ð» %s"
 
 #. Translators: abbreviation for "semifinals" - first character of category name
 #: breakqual/utils.py
 #, python-format
 msgid "%s Semifinals"
-msgstr "Жартылай финал %s"
+msgstr "Ð–Ð°Ñ€Ñ‚Ñ‹Ð»Ð°Ð¹ Ñ„Ð¸Ð½Ð°Ð» %s"
 
 #: breakqual/utils.py
 #, python-format
@@ -428,23 +428,23 @@ msgstr ""
 #: breakqual/utils.py
 #, python-format
 msgid "%s Quarterfinals"
-msgstr "Ширек финал %s"
+msgstr "Ð¨Ð¸Ñ€ÐµÐº Ñ„Ð¸Ð½Ð°Ð» %s"
 
 #: breakqual/utils.py
 #, python-format
 msgid "%sQF"
-msgstr "ШФ %s"
+msgstr "Ð¨Ð¤ %s"
 
 #. Translators: abbreviation for "octofinals" - first character of category name
 #: breakqual/utils.py
 #, python-format
 msgid "%s Octofinals"
-msgstr "Әшмүшке финал %s"
+msgstr "Ó˜ÑˆÐ¼Ò¯ÑˆÐºÐµ Ñ„Ð¸Ð½Ð°Ð» %s"
 
 #: breakqual/utils.py
 #, python-format
 msgid "%sOF"
-msgstr "Әф %s"
+msgstr "Ó˜Ñ„ %s"
 
 #. Translators: abbreviation for "double-octofinals" - first character of category name
 #: breakqual/utils.py
@@ -521,7 +521,7 @@ msgstr ""
 
 #: breakqual/views.py
 msgid "Breaking Adjudicators"
-msgstr "Іріктеуден өткен төрешілер"
+msgstr "Ð†Ñ€Ñ–ÐºÑ‚ÐµÑƒÐ´ÐµÐ½ Ó©Ñ‚ÐºÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€"
 
 #: breakqual/views.py
 msgid "Four-team formats require the break size to be either six times or four times a power of two."
@@ -542,4 +542,5 @@ msgid "Team has %(nspeakers)s speaker with the %(category)s speaker category ass
 msgid_plural "Team has %(nspeakers)s speakers with the %(category)s speaker category assigned"
 msgstr[0] ""
 msgstr[1] ""
+
 

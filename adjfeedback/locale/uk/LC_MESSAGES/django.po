@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:48\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: uk\n"
-"X-Crowdin-File: /develop/tabbycat/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 924\n"
 
 #: adjfeedback/admin.py
@@ -92,7 +92,7 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "chair"
-msgstr "чейр"
+msgstr "Ñ‡ÐµÐ¹Ñ€"
 
 #: adjfeedback/forms.py
 msgid "solo"
@@ -100,11 +100,11 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "panellist"
-msgstr "вінг"
+msgstr "Ð²Ñ–Ð½Ð³"
 
 #: adjfeedback/forms.py
 msgid "trainee"
-msgstr "трейні"
+msgstr "Ñ‚Ñ€ÐµÐ¹Ð½Ñ–"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: adjfeedback/forms.py
@@ -185,11 +185,11 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "adjudicator"
-msgstr "суддя"
+msgstr "ÑÑƒÐ´Ð´Ñ"
 
 #: adjfeedback/models.py
 msgid "round"
-msgstr "раунд"
+msgstr "Ñ€Ð°ÑƒÐ½Ð´"
 
 #: adjfeedback/models.py
 msgid "score"
@@ -197,7 +197,7 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "timestamp"
-msgstr "відмітка часу"
+msgstr "Ð²Ñ–Ð´Ð¼Ñ–Ñ‚ÐºÐ° Ñ‡Ð°ÑÑƒ"
 
 #: adjfeedback/models.py
 msgid "adjudicator base score history"
@@ -410,7 +410,7 @@ msgstr ""
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Important"
-msgstr "Важливе"
+msgstr "Ð’Ð°Ð¶Ð»Ð¸Ð²Ðµ"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Comments"
@@ -524,15 +524,15 @@ msgstr ""
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Un-ignore"
-msgstr "Не ігнорувати"
+msgstr "ÐÐµ Ñ–Ð³Ð½Ð¾Ñ€ÑƒÐ²Ð°Ñ‚Ð¸"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Ignore"
-msgstr "Ігнорувати"
+msgstr "Ð†Ð³Ð½Ð¾Ñ€ÑƒÐ²Ð°Ñ‚Ð¸"
 
 #: adjfeedback/templates/feedback_cards_list.html
 msgid "No feedback has been submitted yet"
-msgstr "Жодного відгуку ще не було надіслано"
+msgstr "Ð–Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ð²Ñ–Ð´Ð³ÑƒÐºÑƒ Ñ‰Ðµ Ð½Ðµ Ð±ÑƒÐ»Ð¾ Ð½Ð°Ð´Ñ–ÑÐ»Ð°Ð½Ð¾"
 
 #: adjfeedback/templates/feedback_overview.html
 #, python-format
@@ -584,7 +584,7 @@ msgstr[3] ""
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
-msgid "Score Distributions (range is %(min_score)s–%(max_score)s)"
+msgid "Score Distributions (range is %(min_score)sâ€“%(max_score)s)"
 msgstr ""
 
 #: adjfeedback/templates/overview_breakdowns.html
@@ -770,7 +770,7 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "Important Feedback"
-msgstr "Важливий Відгук"
+msgstr "Ð’Ð°Ð¶Ð»Ð¸Ð²Ð¸Ð¹ Ð’Ñ–Ð´Ð³ÑƒÐº"
 
 #: adjfeedback/views.py
 msgid "(rating was much higher/lower than expected)"
@@ -857,4 +857,5 @@ msgstr[3] ""
 #: adjfeedback/views.py
 msgid "Custom Feedback Questions"
 msgstr ""
+
 

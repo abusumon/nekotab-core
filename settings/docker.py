@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # Docker
 # ==============================================================================
 
@@ -9,9 +9,9 @@ ALLOWED_HOSTS = ["*"]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tabbycat',
-        'USER': 'tabbycat',
-        'PASSWORD': 'tabbycat',
+        'NAME': 'NekoTab',
+        'USER': 'NekoTab',
+        'PASSWORD': 'NekoTab',
         'HOST': 'db',
         'PORT': 5432, # Non-standard to prevent collisions,
     }
@@ -39,3 +39,4 @@ if bool(int(os.environ['DOCKER_REDIS'])) if 'DOCKER_REDIS' in os.environ else Fa
             },
         },
     }
+

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2025-06-30 16:27\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: uk\n"
-"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
@@ -25,10 +25,10 @@ msgstr ""
 #, python-format
 msgid "%(count)s score is larger than the maximum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are larger than the maximum permitted adjudicator score (%(score).1f)."
-msgstr[0] "%(count)s бал більший, ніж максимально дозволений бал судді (%(score).1f)."
-msgstr[1] "%(count)s бали більше, ніж максимально дозволений бал судді (%(score).1f)."
-msgstr[2] "%(count)s балів більший, ніж максимально дозволений бал судді (%(score).1f)."
-msgstr[3] "%(count)s бали більший, ніж максимально дозволений бал судді (%(score).1f)."
+msgstr[0] "%(count)s Ð±Ð°Ð» Ð±Ñ–Ð»ÑŒÑˆÐ¸Ð¹, Ð½Ñ–Ð¶ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ Ð´Ð¾Ð·Ð²Ð¾Ð»ÐµÐ½Ð¸Ð¹ Ð±Ð°Ð» ÑÑƒÐ´Ð´Ñ– (%(score).1f)."
+msgstr[1] "%(count)s Ð±Ð°Ð»Ð¸ Ð±Ñ–Ð»ÑŒÑˆÐµ, Ð½Ñ–Ð¶ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ Ð´Ð¾Ð·Ð²Ð¾Ð»ÐµÐ½Ð¸Ð¹ Ð±Ð°Ð» ÑÑƒÐ´Ð´Ñ– (%(score).1f)."
+msgstr[2] "%(count)s Ð±Ð°Ð»Ñ–Ð² Ð±Ñ–Ð»ÑŒÑˆÐ¸Ð¹, Ð½Ñ–Ð¶ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ Ð´Ð¾Ð·Ð²Ð¾Ð»ÐµÐ½Ð¸Ð¹ Ð±Ð°Ð» ÑÑƒÐ´Ð´Ñ– (%(score).1f)."
+msgstr[3] "%(count)s Ð±Ð°Ð»Ð¸ Ð±Ñ–Ð»ÑŒÑˆÐ¸Ð¹, Ð½Ñ–Ð¶ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ Ð´Ð¾Ð·Ð²Ð¾Ð»ÐµÐ½Ð¸Ð¹ Ð±Ð°Ð» ÑÑƒÐ´Ð´Ñ– (%(score).1f)."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
@@ -142,39 +142,39 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "chair"
-msgstr "чейр"
+msgstr "Ñ‡ÐµÐ¹Ñ€"
 
 #: adjallocation/models.py
 msgid "panellist"
-msgstr "вінг"
+msgstr "Ð²Ñ–Ð½Ð³"
 
 #: adjallocation/models.py
 msgid "trainee"
-msgstr "трейні"
+msgstr "Ñ‚Ñ€ÐµÐ¹Ð½Ñ–"
 
 #: adjallocation/models.py
 msgid "debate"
-msgstr "дебати"
+msgstr "Ð´ÐµÐ±Ð°Ñ‚Ð¸"
 
 #: adjallocation/models.py
 msgid "adjudicator"
-msgstr "суддя"
+msgstr "ÑÑƒÐ´Ð´Ñ"
 
 #: adjallocation/models.py
 msgid "type"
-msgstr "тип"
+msgstr "Ñ‚Ð¸Ð¿"
 
 #: adjallocation/models.py
 msgid "available?"
-msgstr "наявний?"
+msgstr "Ð½Ð°ÑÐ²Ð½Ð¸Ð¹?"
 
 #: adjallocation/models.py
 msgid "debate adjudicator"
-msgstr "суддя дебатів"
+msgstr "ÑÑƒÐ´Ð´Ñ Ð´ÐµÐ±Ð°Ñ‚Ñ–Ð²"
 
 #: adjallocation/models.py
 msgid "debate adjudicators"
-msgstr "судді дебатів"
+msgstr "ÑÑƒÐ´Ð´Ñ– Ð´ÐµÐ±Ð°Ñ‚Ñ–Ð²"
 
 #: adjallocation/models.py
 msgid "team"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "institution"
-msgstr "інституція"
+msgstr "Ñ–Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ†Ñ–Ñ"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflict"
@@ -226,11 +226,11 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "round"
-msgstr "раунд"
+msgstr "Ñ€Ð°ÑƒÐ½Ð´"
 
 #: adjallocation/models.py
 msgid "importance"
-msgstr "пріоритет"
+msgstr "Ð¿Ñ€Ñ–Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚"
 
 #: adjallocation/models.py
 msgid "minimum bracket"
@@ -472,4 +472,5 @@ msgstr[3] ""
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
 msgstr ""
+
 

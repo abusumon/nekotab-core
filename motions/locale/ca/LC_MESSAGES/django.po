@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-24 07:48+1000\n"
 "PO-Revision-Date: 2024-06-23 21:58\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /develop/tabbycat/motions/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/motions/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 936\n"
 
 #: motions/apps.py motions/templates/public_motions.html
@@ -27,23 +27,23 @@ msgstr "text"
 
 #: motions/models.py
 msgid "The full motion e.g., \"This House would straighten all bananas\""
-msgstr "La moció completa e.g., \"Aquesta Casa redreçaria tots els plàtans\""
+msgstr "La mociÃ³ completa e.g., \"Aquesta Casa redreÃ§aria tots els plÃ tans\""
 
 #: motions/models.py
 msgid "reference"
-msgstr "referència"
+msgstr "referÃ¨ncia"
 
 #: motions/models.py
 msgid "Shortcode for the motion, e.g., \"Bananas\""
-msgstr "Etiqueta per a la moció, e.g., \"Plàtans\""
+msgstr "Etiqueta per a la mociÃ³, e.g., \"PlÃ tans\""
 
 #: motions/models.py
 msgid "info slide"
-msgstr "diapositiva d'informació"
+msgstr "diapositiva d'informaciÃ³"
 
 #: motions/models.py
 msgid "The information slide for this topic; if it has one"
-msgstr "La diapositiva d'informació per la moció, si en té"
+msgstr "La diapositiva d'informaciÃ³ per la mociÃ³, si en tÃ©"
 
 #: motions/models.py
 msgid "tournament"
@@ -55,7 +55,7 @@ msgstr "ronda"
 
 #: motions/models.py
 msgid "motion"
-msgstr "moció"
+msgstr "mociÃ³"
 
 #: motions/models.py
 msgid "motions"
@@ -67,7 +67,7 @@ msgstr "equip de debat"
 
 #: motions/models.py
 msgid "preferences"
-msgstr "preferències"
+msgstr "preferÃ¨ncies"
 
 #: motions/models.py
 msgid "ballot submission"
@@ -87,15 +87,15 @@ msgstr "ronda"
 
 #: motions/models.py
 msgid "sequence number"
-msgstr "número de seqüència"
+msgstr "nÃºmero de seqÃ¼Ã¨ncia"
 
 #: motions/models.py
 msgid "The order in which motions are displayed"
-msgstr "L'ordre en què es mostren les mocions"
+msgstr "L'ordre en quÃ¨ es mostren les mocions"
 
 #: motions/models.py
 msgid "round motion"
-msgstr "moció de la ronda"
+msgstr "mociÃ³ de la ronda"
 
 #: motions/models.py
 msgid "round motions"
@@ -103,35 +103,35 @@ msgstr "mocions de la ronda"
 
 #: motions/statistics.py
 msgid "extremely strong evidence"
-msgstr "evidència molt forta"
+msgstr "evidÃ¨ncia molt forta"
 
 #: motions/statistics.py
 msgid "strong evidence"
-msgstr "evidència forta"
+msgstr "evidÃ¨ncia forta"
 
 #: motions/statistics.py
 msgid "moderate evidence"
-msgstr "evidència moderada"
+msgstr "evidÃ¨ncia moderada"
 
 #: motions/statistics.py
 msgid "weak evidence"
-msgstr "evidència dèbil"
+msgstr "evidÃ¨ncia dÃ¨bil"
 
 #: motions/statistics.py
 msgid "very weak evidence"
-msgstr "evidència molt dèbil"
+msgstr "evidÃ¨ncia molt dÃ¨bil"
 
 #: motions/statistics.py
 msgid "extremely weak evidence"
-msgstr "evidència extremadament dèbil"
+msgstr "evidÃ¨ncia extremadament dÃ¨bil"
 
 #: motions/statistics.py
 msgid "balance inconclusive"
-msgstr "balanç inconclús"
+msgstr "balanÃ§ inconclÃºs"
 
 #: motions/statistics.py
 msgid "too few debates to get a meaningful statistic"
-msgstr "massa pocs debats per obtenir una estadística significativa"
+msgstr "massa pocs debats per obtenir una estadÃ­stica significativa"
 
 #: motions/statistics.py
 #, python-format
@@ -140,8 +140,8 @@ msgstr "desequilibrat al %(level)s"
 
 #: motions/statistics.py
 #, python-format
-msgid "χ² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced — at a %(level)s level of significance."
-msgstr "χ² estadística és %(chisq).3f, provant %(evidence)s per suggerir que la moció està desequilibrada — en un nivell de %(level)s de significació."
+msgid "Ï‡Â² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced â€” at a %(level)s level of significance."
+msgstr "Ï‡Â² estadÃ­stica Ã©s %(chisq).3f, provant %(evidence)s per suggerir que la mociÃ³ estÃ  desequilibrada â€” en un nivell de %(level)s de significaciÃ³."
 
 #: motions/statistics.py
 msgid "probably balanced"
@@ -149,14 +149,14 @@ msgstr "probablement equilibrat"
 
 #: motions/statistics.py
 #, python-format
-msgid "χ² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
-msgstr "χ² estadístic és %(chisq).3f, provant que la moció està desequilibrada en tots els nivells de significació."
+msgid "Ï‡Â² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
+msgstr "Ï‡Â² estadÃ­stic Ã©s %(chisq).3f, provant que la mociÃ³ estÃ  desequilibrada en tots els nivells de significaciÃ³."
 
 #: motions/templates/motion_global_statistics.html
 #: motions/templates/motion_round_statistics.html
 #: motions/templates/public_motions.html
 msgid "View Info Slide"
-msgstr "Veure Diapositiva d'informació"
+msgstr "Veure Diapositiva d'informaciÃ³"
 
 #: motions/templates/motion_statistics_bp_elim.html
 #, python-format
@@ -169,19 +169,19 @@ msgstr[1] "resultats per %(ndebates)s debats"
 #, python-format
 msgid "%(advancing)s of %(ndebates)s team on %(side)s (%(percentage)s%%) advanced"
 msgid_plural "%(advancing)s of %(ndebates)s teams on %(side)s (%(percentage)s%%) advanced"
-msgstr[0] "%(advancing)s de %(ndebates)s equip a %(side)s (%(percentage)s%%) avança"
+msgstr[0] "%(advancing)s de %(ndebates)s equip a %(side)s (%(percentage)s%%) avanÃ§a"
 msgstr[1] "%(advancing)s de %(ndebates)s equips a %(side)s (%(percentage)s%%) avancen"
 
 #: motions/templates/motion_statistics_bp_elim.html
 #, python-format
 msgid "%(eliminated)s of %(ndebates)s team on %(side)s (%(percentage)s%%) were eliminated"
 msgid_plural "%(eliminated)s of %(ndebates)s teams on %(side)s (%(percentage)s%%) were eliminated"
-msgstr[0] "%(eliminated)s de %(ndebates)s equip a %(side)s (%(percentage)s%%) avança"
+msgstr[0] "%(eliminated)s de %(ndebates)s equip a %(side)s (%(percentage)s%%) avanÃ§a"
 msgstr[1] "%(eliminated)s de %(ndebates)s equips a %(side)s (%(percentage)s%%) avancen"
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgid "advanced"
-msgstr "avança"
+msgstr "avanÃ§a"
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgctxt "abbreviation for 'advanced', used when not enough space"
@@ -200,12 +200,12 @@ msgstr "elim."
 #: motions/templates/motion_statistics_bp_elim.html
 #, python-format
 msgid "%(side)s results distribution"
-msgstr "%(side)s distribució de resultats"
+msgstr "%(side)s distribuciÃ³ de resultats"
 
 #: motions/templates/motion_statistics_bp_elim.html
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "No results for this motion"
-msgstr "No hi ha resultats per a aquesta moció"
+msgstr "No hi ha resultats per a aquesta mociÃ³"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Government"
@@ -213,7 +213,7 @@ msgstr "Govern"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Opposition"
-msgstr "Oposició"
+msgstr "OposiciÃ³"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Average Points per bench"
@@ -235,8 +235,8 @@ msgstr "Mitjana de punts per costat"
 #, python-format
 msgid "average points per position (%(ndebates)s debate)"
 msgid_plural "average points per position (%(ndebates)s debates)"
-msgstr[0] "mitjana de punts per posició (%(ndebates)s debat)"
-msgstr[1] "mitjana de punts per posició (%(ndebates)s debats)"
+msgstr[0] "mitjana de punts per posiciÃ³ (%(ndebates)s debat)"
+msgstr[1] "mitjana de punts per posiciÃ³ (%(ndebates)s debats)"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 #, python-format
@@ -259,7 +259,7 @@ msgstr[1] "%(count)s %(side)s guanyen"
 
 #: motions/templates/motion_statistics_twoteam.html
 msgid "No teams debated this motion"
-msgstr "No hi ha equips que debatin aquesta moció"
+msgstr "No hi ha equips que debatin aquesta mociÃ³"
 
 #: motions/templates/motion_statistics_twoteam.html
 #, python-format
@@ -270,12 +270,12 @@ msgstr[1] "%(count)s %(side)s vetos"
 
 #: motions/templates/motion_statistics_twoteam.html
 msgid "No teams vetoed this motion"
-msgstr "Cap equip va vetar aquesta moció"
+msgstr "Cap equip va vetar aquesta mociÃ³"
 
 #: motions/templates/motions_edit.html
 msgid "Edit Motion"
 msgid_plural "Edit Motions"
-msgstr[0] "Editar moció"
+msgstr[0] "Editar mociÃ³"
 msgstr[1] ""
 
 #: motions/templates/motions_edit.html
@@ -284,7 +284,7 @@ msgstr "Mostrar aparellaments"
 
 #: motions/templates/motions_edit.html
 msgid "This will replace all existing motions for this round. The motions themselves will still be in the database."
-msgstr "Això substituirà totes les mocions existents per a aquesta ronda. Les mocions en si mateixes continuaran estant a la base de dades."
+msgstr "AixÃ² substituirÃ  totes les mocions existents per a aquesta ronda. Les mocions en si mateixes continuaran estant a la base de dades."
 
 #: motions/templates/motions_edit.html
 msgid "Reuse Motions from Last Round"
@@ -297,18 +297,18 @@ msgstr "Utilitza les mocions existents"
 #: motions/templates/motions_edit.html
 msgid "The motion for this round is currently publicly displayed because it was released. Any changes made here will be publicly visible as well as soon as they are saved."
 msgid_plural "The motions for this round are currently publicly displayed because they were released. Any changes made here will be publicly visible as well as soon as they are saved."
-msgstr[0] "La moció per a aquesta ronda està actualment visible públicament perquè ha estat publicada. Qualsevol canvi realitzat aquí serà visible públicament tan aviat com es guardi."
-msgstr[1] "Les mocions per a aquesta ronda són visibles públicament perquè han estat publicades. Qualsevol canvi realitzat aquí serà visible públicament tan aviat com es guardi."
+msgstr[0] "La mociÃ³ per a aquesta ronda estÃ  actualment visible pÃºblicament perquÃ¨ ha estat publicada. Qualsevol canvi realitzat aquÃ­ serÃ  visible pÃºblicament tan aviat com es guardi."
+msgstr[1] "Les mocions per a aquesta ronda sÃ³n visibles pÃºblicament perquÃ¨ han estat publicades. Qualsevol canvi realitzat aquÃ­ serÃ  visible pÃºblicament tan aviat com es guardi."
 
 #: motions/templates/motions_edit.html
 msgid "Save Motion"
 msgid_plural "Save Motions"
-msgstr[0] "Guarda la moció"
+msgstr[0] "Guarda la mociÃ³"
 msgstr[1] "Guarda les mocions"
 
 #: motions/templates/motions_info.html
 msgid "Info Slide"
-msgstr "Diapositiva d'informació"
+msgstr "Diapositiva d'informaciÃ³"
 
 #: motions/templates/public_motions.html
 msgid "There are no motions available for this round."
@@ -320,32 +320,32 @@ msgstr "Les mocions per aquesta ronda no han estat publicades."
 
 #: motions/templates/public_motions.html
 msgid "The motion for this round has not been released."
-msgstr "La moció per aquesta ronda no ha estat publicada."
+msgstr "La mociÃ³ per aquesta ronda no ha estat publicada."
 
 #: motions/templates/show.html
 #, python-format
 msgid "Motion for %(round)s"
 msgid_plural "Motions for %(round)s"
-msgstr[0] "Moció per %(round)s"
+msgstr[0] "MociÃ³ per %(round)s"
 msgstr[1] "Mocions per %(round)s"
 
 #: motions/templates/show.html
 #, python-format
 msgid "Reveal Info Slide for %(round)s"
 msgid_plural "Reveal Info Slides for %(round)s"
-msgstr[0] "Revela la diapositiva d'informació per %(round)s"
-msgstr[1] "Revela les diapositives d'informació per %(round)s"
+msgstr[0] "Revela la diapositiva d'informaciÃ³ per %(round)s"
+msgstr[1] "Revela les diapositives d'informaciÃ³ per %(round)s"
 
 #: motions/templates/show.html
 #, python-format
 msgid "Reveal Motion for %(round)s"
 msgid_plural "Reveal Motions for %(round)s"
-msgstr[0] "Revela la moció per %(round)s"
+msgstr[0] "Revela la mociÃ³ per %(round)s"
 msgstr[1] "Revela les mocions per %(round)s"
 
 #: motions/templates/show.html
-msgid "There are no motions for this round entered into Tabbycat."
-msgstr "No hi ha mocions introduïdes per a aquesta ronda a Tabbycat."
+msgid "There are no motions for this round entered into NekoTab."
+msgstr "No hi ha mocions introduÃ¯des per a aquesta ronda a NekoTab."
 
 #: motions/utils.py
 msgid "Not all latest ballots have the same motion. The correct motion must be set manually."
@@ -357,7 +357,7 @@ msgstr ""
 
 #: motions/views.py
 msgid "The motion has been saved."
-msgstr "La moció ha estat guardada."
+msgstr "La mociÃ³ ha estat guardada."
 
 #: motions/views.py
 #, python-format
@@ -403,4 +403,5 @@ msgstr ""
 #: motions/views.py
 msgid "Motion Statistics"
 msgstr ""
+
 

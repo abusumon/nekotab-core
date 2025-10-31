@@ -1,11 +1,11 @@
-from itertools import groupby
+﻿from itertools import groupby
 
 from django.contrib import admin
 from django.db.models import OuterRef, Prefetch, Subquery
 from django.utils.translation import gettext_lazy as _, ngettext_lazy
 
 from draw.models import DebateTeam
-from utils.admin import ModelAdmin, TabbycatModelAdminFieldsMixin
+from utils.admin import ModelAdmin, NekoTabModelAdminFieldsMixin
 
 from .models import BallotSubmission, ScoreCriterion, SpeakerCriterionScore, SpeakerCriterionScoreByAdj, SpeakerScore, SpeakerScoreByAdj, TeamScore, TeamScoreByAdj
 from .prefetch import populate_results
@@ -16,7 +16,7 @@ from .prefetch import populate_results
 # ==============================================================================
 
 @admin.register(BallotSubmission)
-class BallotSubmissionAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class BallotSubmissionAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('id', 'debate', 'version', 'get_round', 'timestamp',
             'submitter_type', 'submitter', 'confirmer', 'confirmed')
     list_editable = ('confirmed',)
@@ -52,7 +52,7 @@ class BallotSubmissionAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
 # ==============================================================================
 
 @admin.register(TeamScore)
-class TeamScoreAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class TeamScoreAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('id', 'ballot_submission', 'get_round', 'get_team', 'points', 'win', 'score')
     search_fields = ('debate_team__debate__round__seq', 'debate_team__debate__round__tournament__name',
                      'debate_team__team__short_name', 'debate_team__team__institution__name')
@@ -72,7 +72,7 @@ class TeamScoreAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
 # ==============================================================================
 
 @admin.register(TeamScoreByAdj)
-class TeamScoreByAdjAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class TeamScoreByAdjAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('id', 'ballot_submission', 'get_round', 'get_adj_name', 'get_team', 'win', 'margin', 'score')
     search_fields = ('debate_team__debate__round__seq', 'debate_team__debate__round__tournament__name',
                      'debate_team__team__short_name', 'debate_team__team__institution__name')
@@ -95,7 +95,7 @@ class TeamScoreByAdjAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
 # ==============================================================================
 
 @admin.register(SpeakerScore)
-class SpeakerScoreAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class SpeakerScoreAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('id', 'ballot_submission', 'get_round', 'get_team', 'position',
                     'get_speaker_name', 'score', 'ghost')
     search_fields = ('debate_team__debate__round__abbreviation',
@@ -118,7 +118,7 @@ class SpeakerScoreAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
 # ==============================================================================
 
 @admin.register(SpeakerScoreByAdj)
-class SpeakerScoreByAdjAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class SpeakerScoreByAdjAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('id', 'ballot_submission', 'get_round', 'get_adj_name', 'get_team', 'position', 'get_speaker_name', 'score')
     search_fields = ('debate_team__debate__round__seq',
                      'debate_team__team__short_name', 'debate_team__team__institution__name',
@@ -155,7 +155,7 @@ class SpeakerScoreByAdjAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
 # ==============================================================================
 
 @admin.register(SpeakerCriterionScore)
-class SpeakerCriterionScoreAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class SpeakerCriterionScoreAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('id', 'criterion', 'speaker_score', 'score')
     search_fields = ('criterion', 'score', 'speaker_score')
 
@@ -165,7 +165,7 @@ class SpeakerCriterionScoreAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
 # ==============================================================================
 
 @admin.register(SpeakerCriterionScoreByAdj)
-class SpeakerCriterionScoreByAdjAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class SpeakerCriterionScoreByAdjAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('id', 'criterion', 'speaker_score_by_adj', 'score')
     search_fields = ('criterion', 'score', 'speaker_score_by_adj')
 
@@ -175,6 +175,7 @@ class SpeakerCriterionScoreByAdjAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin)
 # ==============================================================================
 
 @admin.register(ScoreCriterion)
-class ScoreCriterionAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class ScoreCriterionAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('id', 'tournament', 'name', 'seq')
     search_fields = ('tournament', 'name')
+

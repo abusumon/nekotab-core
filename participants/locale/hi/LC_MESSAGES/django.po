@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: hi\n"
-"X-Crowdin-File: /develop/tabbycat/participants/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/participants/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 942\n"
 
@@ -69,45 +69,45 @@ msgstr[1] ""
 
 #: participants/apps.py participants/views.py
 msgid "Participants"
-msgstr "प्रतिभागी"
+msgstr "à¤ªà¥à¤°à¤¤à¤¿à¤­à¤¾à¤—à¥€"
 
 #: participants/models.py
 msgid "name"
-msgstr "नाम"
+msgstr "à¤¨à¤¾à¤®"
 
 #: participants/models.py
 msgid "region"
-msgstr "क्षेत्र"
+msgstr "à¤•à¥à¤·à¥‡à¤¤à¥à¤°"
 
 #: participants/models.py
 msgid "regions"
-msgstr "क्षेत्र"
+msgstr "à¤•à¥à¤·à¥‡à¤¤à¥à¤°"
 
 #. Translators: Change the examples to institutions native to your language; keep consistent between strings
 #: participants/models.py
 msgid "The institution's full name, e.g., \"University of Cambridge\", \"Victoria University of Wellington\""
-msgstr "संस्थान का पूरा नाम, जैसे, \"किरोड़ीमल महाविद्यालय\", \"कथन सूरी\""
+msgstr "à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨ à¤•à¤¾ à¤ªà¥‚à¤°à¤¾ à¤¨à¤¾à¤®, à¤œà¥ˆà¤¸à¥‡, \"à¤•à¤¿à¤°à¥‹à¤¡à¤¼à¥€à¤®à¤² à¤®à¤¹à¤¾à¤µà¤¿à¤¦à¥à¤¯à¤¾à¤²à¤¯\", \"à¤•à¤¥à¤¨ à¤¸à¥‚à¤°à¥€\""
 
 #: participants/models.py
 msgid "code"
-msgstr "कोड"
+msgstr "à¤•à¥‹à¤¡"
 
 #. Translators: Change the examples to institutions native to your language; keep consistent between strings
 #: participants/models.py
 msgid "What the institution is typically called for short, e.g., \"Cambridge\", \"Vic Wellington\""
-msgstr "संस्था को आम तौर पर संक्षेप में क्या कहा जाता है, उदाहरण के लिए, \"KMC\", \"KMC2\""
+msgstr "à¤¸à¤‚à¤¸à¥à¤¥à¤¾ à¤•à¥‹ à¤†à¤® à¤¤à¥Œà¤° à¤ªà¤° à¤¸à¤‚à¤•à¥à¤·à¥‡à¤ª à¤®à¥‡à¤‚ à¤•à¥à¤¯à¤¾ à¤•à¤¹à¤¾ à¤œà¤¾à¤¤à¤¾ à¤¹à¥ˆ, à¤‰à¤¦à¤¾à¤¹à¤°à¤£ à¤•à¥‡ à¤²à¤¿à¤, \"KMC\", \"KMC2\""
 
 #: participants/models.py
 msgid "institution"
-msgstr "संस्थान"
+msgstr "à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨"
 
 #: participants/models.py
 msgid "institutions"
-msgstr "संस्थान"
+msgstr "à¤¸à¤‚à¤¸à¥à¤¥à¤¾à¤¨"
 
 #: participants/models.py
 msgid "tournament"
-msgstr "प्रतियोगिता"
+msgstr "à¤ªà¥à¤°à¤¤à¤¿à¤¯à¥‹à¤—à¤¿à¤¤à¤¾"
 
 #: participants/models.py
 msgid "Team slots requested"
@@ -136,7 +136,7 @@ msgstr ""
 #. Translators: Translate ESL to the acronym for "<target language> as a second/foreign language", not "English"
 #: participants/models.py
 msgid "Name to be displayed, e.g., \"Novice\", \"ESL\""
-msgstr "प्रदर्शित नाम, जैसे, \"नवगंतुक\", \"उद्भव\""
+msgstr "à¤ªà¥à¤°à¤¦à¤°à¥à¤¶à¤¿à¤¤ à¤¨à¤¾à¤®, à¤œà¥ˆà¤¸à¥‡, \"à¤¨à¤µà¤—à¤‚à¤¤à¥à¤•\", \"à¤‰à¤¦à¥à¤­à¤µ\""
 
 #: participants/models.py
 msgid "slug"
@@ -157,7 +157,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "limit"
-msgstr "सीमा"
+msgstr "à¤¸à¥€à¤®à¤¾"
 
 #: participants/models.py
 msgid "At most this many speakers will be shown on the public tab for this category, or use 0 for no limit"
@@ -240,7 +240,7 @@ msgid "pronoun"
 msgstr ""
 
 #: participants/models.py
-msgid "If printing ballots using Tabbycat, there is the option to pre-print pronouns"
+msgid "If printing ballots using NekoTab, there is the option to pre-print pronouns"
 msgstr ""
 
 #: participants/models.py
@@ -514,17 +514,17 @@ msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete this %(object_name)s</strong>."
+msgid "<strong>Warning:</strong> If there are â€œdebate teamâ€ objects in the above list, <strong>you probably shouldn't delete this %(object_name)s</strong>."
 msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete the selected %(objects_name)s</strong>."
+msgid "<strong>Warning:</strong> If there are â€œdebate teamâ€ objects in the above list, <strong>you probably shouldn't delete the selected %(objects_name)s</strong>."
 msgstr ""
 
 #. Translators: This follows the above sentence in the same paragraph.
 #: participants/templates/admin/participants/delete_debateteam_warning.html
-msgid "This is especially the case if any team that would be deleted has already participated in a debate. If a team already has a result entered for it, deleting the team also deletes those results, <strong>which normally breaks the tab</strong>, even if you think you don't need those results anymore. If a team has debated and is withdrawing from the tournament, you should <strong>not</strong> delete it. Just mark the team inactive under the “Availability” section of the Tabbycat admin area."
+msgid "This is especially the case if any team that would be deleted has already participated in a debate. If a team already has a result entered for it, deleting the team also deletes those results, <strong>which normally breaks the tab</strong>, even if you think you don't need those results anymore. If a team has debated and is withdrawing from the tournament, you should <strong>not</strong> delete it. Just mark the team inactive under the â€œAvailabilityâ€ section of the NekoTab admin area."
 msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
@@ -533,12 +533,12 @@ msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "If you're very sure about deleting this %(object_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
+msgid "If you're very sure about deleting this %(object_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the â€œdebate teamâ€ objects page before proceeding."
 msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "If you're very sure about deleting these %(objects_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
+msgid "If you're very sure about deleting these %(objects_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the â€œdebate teamâ€ objects page before proceeding."
 msgstr ""
 
 #: participants/templates/admin/participants/team/change_form.html
@@ -562,12 +562,12 @@ msgstr[1] ""
 
 #: participants/templates/current_round/common.html
 msgctxt "chair icon"
-msgid "Ⓒ"
+msgid "â’¸"
 msgstr ""
 
 #: participants/templates/current_round/common.html
 msgctxt "trainee icon"
-msgid "Ⓣ"
+msgid "â“‰"
 msgstr ""
 
 #: participants/templates/current_round/common.html
@@ -1013,4 +1013,5 @@ msgstr ""
 #: participants/views.py
 msgid "Speaker Category Eligibility"
 msgstr ""
+
 

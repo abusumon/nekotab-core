@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -11,31 +11,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/tabbycat/draw/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/draw/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 930\n"
 
 #: draw/admin.py
 #, python-format
 msgid "%(count)d debate was marked as having its sides confirmed."
 msgid_plural "%(count)d debates were marked as having their sides confirmed."
-msgstr[0] "%(count)d試合のサイドが決定されています。"
+msgstr[0] "%(count)dè©¦åˆã®ã‚µã‚¤ãƒ‰ãŒæ±ºå®šã•ã‚Œã¦ã„ã¾ã™ã€‚"
 
 #: draw/admin.py
 msgid "Mark sides as not confirmed"
-msgstr "サイドを未決定とする"
+msgstr "ã‚µã‚¤ãƒ‰ã‚’æœªæ±ºå®šã¨ã™ã‚‹"
 
 #: draw/admin.py
 #, python-format
 msgid "%(count)d debate was marked as having its sides not confirmed."
 msgid_plural "%(count)d debates were marked as having their sides not confirmed."
-msgstr[0] "%(count)d試合のサイドが決定されていません。"
+msgstr[0] "%(count)dè©¦åˆã®ã‚µã‚¤ãƒ‰ãŒæ±ºå®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/apps.py draw/views.py
 msgid "Draw"
-msgstr "対戦表"
+msgstr "å¯¾æˆ¦è¡¨"
 
 #: draw/forms.py
 msgid "Full round name"
@@ -48,249 +48,249 @@ msgstr ""
 
 #: draw/generator/__init__.py
 msgid "Too many swaps"
-msgstr "入れ替えが多すぎる"
+msgstr "å…¥ã‚Œæ›¿ãˆãŒå¤šã™ãŽã‚‹"
 
 #: draw/generator/__init__.py
 msgid "One-up-one-down (history)"
-msgstr "One-up-one-down（対戦歴）"
+msgstr "One-up-one-downï¼ˆå¯¾æˆ¦æ­´ï¼‰"
 
 #: draw/generator/__init__.py
 msgid "One-up-one-down (institution)"
-msgstr "One-up-one-down（インステ競合）"
+msgstr "One-up-one-downï¼ˆã‚¤ãƒ³ã‚¹ãƒ†ç«¶åˆï¼‰"
 
 #: draw/generator/__init__.py
 msgid "One-up-one-down (to accommodate)"
-msgstr "One-up-one-down（最適化）"
+msgstr "One-up-one-downï¼ˆæœ€é©åŒ–ï¼‰"
 
 #: draw/generator/__init__.py
 msgid "Bubble up (history)"
-msgstr "Bubble up（対戦歴）"
+msgstr "Bubble upï¼ˆå¯¾æˆ¦æ­´ï¼‰"
 
 #: draw/generator/__init__.py
 msgid "Bubble down (history)"
-msgstr "Bubble down（対戦歴）"
+msgstr "Bubble downï¼ˆå¯¾æˆ¦æ­´ï¼‰"
 
 #: draw/generator/__init__.py
 msgid "Bubble up (institution)"
-msgstr "Bubble up（インステ競合）"
+msgstr "Bubble upï¼ˆã‚¤ãƒ³ã‚¹ãƒ†ç«¶åˆï¼‰"
 
 #: draw/generator/__init__.py
 msgid "Bubble down (institution)"
-msgstr "Bubble down（インステ競合）"
+msgstr "Bubble downï¼ˆã‚¤ãƒ³ã‚¹ãƒ†ç«¶åˆï¼‰"
 
 #: draw/generator/__init__.py
 msgid "Bubble up (to accommodate)"
-msgstr "Bubble up（最適化）"
+msgstr "Bubble upï¼ˆæœ€é©åŒ–ï¼‰"
 
 #: draw/generator/__init__.py
 msgid "Bubble down (to accommodate)"
-msgstr "Bubble down（最適化）"
+msgstr "Bubble downï¼ˆæœ€é©åŒ–ï¼‰"
 
 #: draw/generator/__init__.py
 msgid "Can't bubble up/down"
-msgstr "Bubble up/downできない"
+msgstr "Bubble up/downã§ããªã„"
 
 #: draw/generator/__init__.py
 msgid "Pull-up team"
-msgstr "プルアップチーム"
+msgstr "ãƒ—ãƒ«ã‚¢ãƒƒãƒ—ãƒãƒ¼ãƒ "
 
 #: draw/generator/bpelimination.py draw/generator/elimination.py
 #, python-format
 msgid "%d debates in the previous round don't have a result."
-msgstr "前のラウンドの%d試合の結果が出ていません。"
+msgstr "å‰ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®%dè©¦åˆã®çµæžœãŒå‡ºã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/generator/bpelimination.py
 #, python-format
 msgid "%d debates in the previous round don't have exactly two teams advancing."
-msgstr "前のラウンドの%d試合が、2チーム進出となるような結果になっていません。"
+msgstr "å‰ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®%dè©¦åˆãŒã€2ãƒãƒ¼ãƒ é€²å‡ºã¨ãªã‚‹ã‚ˆã†ãªçµæžœã«ãªã£ã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/generator/bpelimination.py
 #, python-format
 msgid "The room ranks of the partial elimination round indicate that an odd number of teams (%(nbypassing)d) bypassed it."
-msgstr "奇数（%(nbypassing)d）チームがこの勝ち抜きラウンドで試合をせずに通過したようです。"
+msgstr "å¥‡æ•°ï¼ˆ%(nbypassing)dï¼‰ãƒãƒ¼ãƒ ãŒã“ã®å‹ã¡æŠœããƒ©ã‚¦ãƒ³ãƒ‰ã§è©¦åˆã‚’ã›ãšã«é€šéŽã—ãŸã‚ˆã†ã§ã™ã€‚"
 
 #: draw/generator/bpelimination.py
 #, python-format
 msgid "The room ranks of the partial elimination round indicate that %(nbypassing)d teams bypassed it, but %(nadvancing)d teams advanced from it."
-msgstr "%(nbypassing)dチームがこの勝ち抜きラウンドで試合をせずに通過しましたが、%(nadvancing)dチームが試合をして通過したようです。"
+msgstr "%(nbypassing)dãƒãƒ¼ãƒ ãŒã“ã®å‹ã¡æŠœããƒ©ã‚¦ãƒ³ãƒ‰ã§è©¦åˆã‚’ã›ãšã«é€šéŽã—ã¾ã—ãŸãŒã€%(nadvancing)dãƒãƒ¼ãƒ ãŒè©¦åˆã‚’ã—ã¦é€šéŽã—ãŸã‚ˆã†ã§ã™ã€‚"
 
 #: draw/generator/bpelimination.py
 #, python-format
 msgid "The number of debates (%d) in the last round is not a power of two."
-msgstr "前のラウンドの試合数（%d）が2のべき乗ではありません。"
+msgstr "å‰ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®è©¦åˆæ•°ï¼ˆ%dï¼‰ãŒ2ã®ã¹ãä¹—ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/generator/bphungarian.py
 #, python-format
-msgid "The Rényi order can't be negative, and it's currently set to %(alpha)f."
-msgstr "Rényi orderは非負の数である必要がありますが、現在%(alpha)fに設定されています。"
+msgid "The RÃ©nyi order can't be negative, and it's currently set to %(alpha)f."
+msgstr "RÃ©nyi orderã¯éžè² ã®æ•°ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ãŒã€ç¾åœ¨%(alpha)fã«è¨­å®šã•ã‚Œã¦ã„ã¾ã™ã€‚"
 
 #: draw/generator/common.py
 #, python-format
 msgid "The number of teams presented for the draw was not a multiple of %(num)d."
-msgstr "対戦表に与えられたチーム数が%(num)dの倍数ではありません。"
+msgstr "å¯¾æˆ¦è¡¨ã«ä¸Žãˆã‚‰ã‚ŒãŸãƒãƒ¼ãƒ æ•°ãŒ%(num)dã®å€æ•°ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/generator/common.py
 msgid "There were no teams for the draw."
-msgstr "対戦表を作るチームがありません。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’ä½œã‚‹ãƒãƒ¼ãƒ ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/generator/elimination.py
 #, python-format
 msgid "There are only %d teams breaking in this category; there need to be at least two to generate an elimination round draw."
-msgstr "%dチームしかこのカテゴリーでブレイクしませんが、勝ち抜きラウンドの対戦表を生成するには最低2チーム必要です。"
+msgstr "%dãƒãƒ¼ãƒ ã—ã‹ã“ã®ã‚«ãƒ†ã‚´ãƒªãƒ¼ã§ãƒ–ãƒ¬ã‚¤ã‚¯ã—ã¾ã›ã‚“ãŒã€å‹ã¡æŠœããƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆã™ã‚‹ã«ã¯æœ€ä½Ž2ãƒãƒ¼ãƒ å¿…è¦ã§ã™ã€‚"
 
 #: draw/generator/elimination.py
 #, python-format
 msgid "The number of teams (%d) in this round is not a power of two."
-msgstr "このラウンドのチーム数（%d）が2のべき乗ではありません。"
+msgstr "ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®ãƒãƒ¼ãƒ æ•°ï¼ˆ%dï¼‰ãŒ2ã®ã¹ãä¹—ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/generator/powerpair.py
 #, python-format
 msgid "%(noninteger)d out of %(total)d teams have a noninteger first metric in the team standings. Intermediate brackets require the first team standings metric to be an integer (typically points or wins)."
-msgstr "チーム順位を計算するための第一指標が%(total)dチーム中%(noninteger)dチームで整数ではありません。中間ブラケットを生成するには、最初の順位指標が整数（通常勝ち数または点数）である必要があります。"
+msgstr "ãƒãƒ¼ãƒ é †ä½ã‚’è¨ˆç®—ã™ã‚‹ãŸã‚ã®ç¬¬ä¸€æŒ‡æ¨™ãŒ%(total)dãƒãƒ¼ãƒ ä¸­%(noninteger)dãƒãƒ¼ãƒ ã§æ•´æ•°ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ä¸­é–“ãƒ–ãƒ©ã‚±ãƒƒãƒˆã‚’ç”Ÿæˆã™ã‚‹ã«ã¯ã€æœ€åˆã®é †ä½æŒ‡æ¨™ãŒæ•´æ•°ï¼ˆé€šå¸¸å‹ã¡æ•°ã¾ãŸã¯ç‚¹æ•°ï¼‰ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: draw/generator/random.py
 #, python-format
 msgid "There were %(aff_count)d affirmative teams but %(neg_count)d negative teams."
-msgstr "肯定が%(aff_count)dチーム、否定が%(neg_count)dチームいます。"
+msgstr "è‚¯å®šãŒ%(aff_count)dãƒãƒ¼ãƒ ã€å¦å®šãŒ%(neg_count)dãƒãƒ¼ãƒ ã„ã¾ã™ã€‚"
 
 #: draw/generator/random.py
 msgid "One or more teams had an allocated side that wasn't affirmative or negative."
-msgstr "肯定でも否定でもないサイドに配置されたチームがあります。"
+msgstr "è‚¯å®šã§ã‚‚å¦å®šã§ã‚‚ãªã„ã‚µã‚¤ãƒ‰ã«é…ç½®ã•ã‚ŒãŸãƒãƒ¼ãƒ ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: draw/manager.py
 #, python-format
 msgid "The draw type %(type)s can't be used with two-team formats."
-msgstr "%(type)sの対戦表方式は2チーム試合形式に対応していません。"
+msgstr "%(type)sã®å¯¾æˆ¦è¡¨æ–¹å¼ã¯2ãƒãƒ¼ãƒ è©¦åˆå½¢å¼ã«å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/manager.py
 #, python-format
 msgid "The draw type %(type)s can't be used with British Parliamentary."
-msgstr "%(type)sの対戦表方式はBritish Parliamentary形式に対応していません。"
+msgstr "%(type)sã®å¯¾æˆ¦è¡¨æ–¹å¼ã¯British Parliamentaryå½¢å¼ã«å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/manager.py
 #, python-format
 msgid "Unrecognised \"teams in debate\" option: %(option)s"
-msgstr "無効な試合当たりのチーム数設定：%(option)s"
+msgstr "ç„¡åŠ¹ãªè©¦åˆå½“ãŸã‚Šã®ãƒãƒ¼ãƒ æ•°è¨­å®šï¼š%(option)s"
 
 #: draw/manager.py
 #, python-format
 msgid "The break size (%(size)d) for this break category was invalid. It must be either six times or four times a power of two."
-msgstr "指定されたブレイクサイズ（%(size)d）は無効です。2のべき乗の4または6倍である必要があります。"
+msgstr "æŒ‡å®šã•ã‚ŒãŸãƒ–ãƒ¬ã‚¤ã‚¯ã‚µã‚¤ã‚ºï¼ˆ%(size)dï¼‰ã¯ç„¡åŠ¹ã§ã™ã€‚2ã®ã¹ãä¹—ã®4ã¾ãŸã¯6å€ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: draw/models.py
 msgid "none"
-msgstr "なし"
+msgstr "ãªã—"
 
 #: draw/models.py
 msgid "postponed"
-msgstr "延期"
+msgstr "å»¶æœŸ"
 
 #: draw/models.py
 msgid "draft"
-msgstr "下書き"
+msgstr "ä¸‹æ›¸ã"
 
 #: draw/models.py
 msgid "confirmed"
-msgstr "承認済み"
+msgstr "æ‰¿èªæ¸ˆã¿"
 
 #: draw/models.py
 msgid "round"
-msgstr "ラウンド"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰"
 
 #: draw/models.py
 msgid "room"
-msgstr "部屋"
+msgstr "éƒ¨å±‹"
 
 #: draw/models.py
 msgid "bracket"
-msgstr "ブラケット"
+msgstr "ãƒ–ãƒ©ã‚±ãƒƒãƒˆ"
 
 #: draw/models.py
 msgid "room rank"
-msgstr "部屋ランク"
+msgstr "éƒ¨å±‹ãƒ©ãƒ³ã‚¯"
 
 #: draw/models.py
 msgid "importance"
-msgstr "重要度"
+msgstr "é‡è¦åº¦"
 
 #: draw/models.py
 msgid "result status"
-msgstr "結果状況"
+msgstr "çµæžœçŠ¶æ³"
 
 #: draw/models.py
 msgid "sides confirmed"
-msgstr "サイド確定済み"
+msgstr "ã‚µã‚¤ãƒ‰ç¢ºå®šæ¸ˆã¿"
 
 #: draw/models.py
 msgid "If unchecked, the sides assigned to teams in this debate are just placeholders."
-msgstr "チェックをしない場合、この試合のチームに割り振られたサイドは確定しません。"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚’ã—ãªã„å ´åˆã€ã“ã®è©¦åˆã®ãƒãƒ¼ãƒ ã«å‰²ã‚ŠæŒ¯ã‚‰ã‚ŒãŸã‚µã‚¤ãƒ‰ã¯ç¢ºå®šã—ã¾ã›ã‚“ã€‚"
 
 #: draw/models.py
 msgid "debate"
-msgstr "試合"
+msgstr "è©¦åˆ"
 
 #: draw/models.py
 msgid "debates"
-msgstr "試合"
+msgstr "è©¦åˆ"
 
 #. Translators: This is appended to a list of teams, e.g. "Auckland
 #. 1, Vic Wellington 1 (sides not confirmed)". Mind the leading
 #. space.
 #: draw/models.py
 msgid " (sides not confirmed)"
-msgstr "（サイド未確定）"
+msgstr "ï¼ˆã‚µã‚¤ãƒ‰æœªç¢ºå®šï¼‰"
 
 #. Translators: This goes between teams in a debate, e.g. "Auckland 1
 #. vs Vic Wellington 1". Mind the leading and trailing spaces.
 #: draw/models.py
 msgid " vs "
-msgstr "対"
+msgstr "å¯¾"
 
 #: draw/models.py
 msgid "team"
-msgstr "チーム"
+msgstr "ãƒãƒ¼ãƒ "
 
 #: draw/models.py
 msgid "side sequence"
-msgstr "サイドの順番"
+msgstr "ã‚µã‚¤ãƒ‰ã®é †ç•ª"
 
 #: draw/models.py
 msgid "debate team"
-msgstr "ディベートチーム"
+msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆãƒãƒ¼ãƒ "
 
 #: draw/models.py
 msgid "debate teams"
-msgstr "ディベートチーム"
+msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆãƒãƒ¼ãƒ "
 
 #: draw/models.py
 #, python-format
 msgid "placed %(place)s"
-msgstr "%(place)s位"
+msgstr "%(place)sä½"
 
 #: draw/models.py
 msgid "result unknown"
-msgstr "結果不明"
+msgstr "çµæžœä¸æ˜Ž"
 
 #: draw/models.py
 msgid "won"
-msgstr "勝ち"
+msgstr "å‹ã¡"
 
 #: draw/models.py
 msgid "lost"
-msgstr "負け"
+msgstr "è² ã‘"
 
 #: draw/models.py
 #, python-format
 msgid "Team %d"
-msgstr "チーム%d"
+msgstr "ãƒãƒ¼ãƒ %d"
 
 #: draw/models.py
 msgid "team side allocation"
-msgstr "サイド"
+msgstr "ã‚µã‚¤ãƒ‰"
 
 #: draw/models.py
 msgid "team side allocations"
-msgstr "サイド"
+msgstr "ã‚µã‚¤ãƒ‰"
 
 #. Translators: e.g. "Affirmative: Rank", "Government: Draw strength",
 #. "Opening government: Total speaker score", "Closing opposition: Number of firsts"
@@ -306,86 +306,86 @@ msgstr ""
 #: draw/tables.py
 #, python-format
 msgid "Team %(num)d"
-msgstr "チーム%(num)d"
+msgstr "ãƒãƒ¼ãƒ %(num)d"
 
 #: draw/tables.py
 msgid "Room rank of this debate"
-msgstr "この試合の部屋ランク"
+msgstr "ã“ã®è©¦åˆã®éƒ¨å±‹ãƒ©ãƒ³ã‚¯"
 
 #: draw/tables.py
 msgid "Bracket of this debate"
-msgstr "この試合のブラケット"
+msgstr "ã“ã®è©¦åˆã®ãƒ–ãƒ©ã‚±ãƒƒãƒˆ"
 
 #: draw/tables.py
 msgid "side history<br>\n"
 "(number of times the team has been on each side before this round)"
-msgstr "サイド経験回数"
+msgstr "ã‚µã‚¤ãƒ‰çµŒé¨“å›žæ•°"
 
 #. Translators: Abbreviation for "side history"
 #: draw/tables.py
 msgid "SH"
-msgstr "サイド経験"
+msgstr "ã‚µã‚¤ãƒ‰çµŒé¨“"
 
 #: draw/tables.py
 msgid "Went from balanced to imbalanced"
-msgstr "サイドバランスの偏り発生"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ã®åã‚Šç™ºç”Ÿ"
 
 #: draw/tables.py
 msgid "Went from imbalanced to balanced"
-msgstr "サイドバランスの偏り解消"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ã®åã‚Šè§£æ¶ˆ"
 
 #: draw/tables.py
 msgid "Best improvement possible, still imbalanced"
-msgstr "サイドバランスの偏り改善（依然偏りあり）"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ã®åã‚Šæ”¹å–„ï¼ˆä¾ç„¶åã‚Šã‚ã‚Šï¼‰"
 
 #: draw/tables.py
 msgid "Was imbalanced and still imbalanced"
-msgstr "サイドバランスの偏り継続"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ã®åã‚Šç¶™ç¶š"
 
 #: draw/tables.py
 msgid "No metrics in the team standings precedence"
-msgstr "チームの順位付けの指標無し"
+msgstr "ãƒãƒ¼ãƒ ã®é †ä½ä»˜ã‘ã®æŒ‡æ¨™ç„¡ã—"
 
 #: draw/tables.py
 msgid "Side"
-msgstr "サイド"
+msgstr "ã‚µã‚¤ãƒ‰"
 
 #: draw/tables.py
 msgid "Position this round"
-msgstr "このラウンドのサイド"
+msgstr "ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®ã‚µã‚¤ãƒ‰"
 
 #: draw/tables.py
 msgid "Before"
-msgstr "依然"
+msgstr "ä¾ç„¶"
 
 #: draw/tables.py
 msgid "Side history before this round"
-msgstr "これまでのサイド経験"
+msgstr "ã“ã‚Œã¾ã§ã®ã‚µã‚¤ãƒ‰çµŒé¨“"
 
 #: draw/tables.py
 msgid "After"
-msgstr "現在"
+msgstr "ç¾åœ¨"
 
 #: draw/tables.py
 msgid "Side history after this round"
-msgstr "これ以降のサイド経験"
+msgstr "ã“ã‚Œä»¥é™ã®ã‚µã‚¤ãƒ‰çµŒé¨“"
 
 #: draw/tables.py
 msgid "Cost"
-msgstr "コスト"
+msgstr "ã‚³ã‚¹ãƒˆ"
 
 #: draw/tables.py
 msgid "Position cost"
-msgstr "サイドコスト"
+msgstr "ã‚µã‚¤ãƒ‰ã‚³ã‚¹ãƒˆ"
 
 #: draw/tables.py
 msgid "Status"
-msgstr "状態"
+msgstr "çŠ¶æ…‹"
 
 #: draw/tables.py
 msgid "Teams with this many points are permitted in this debate<br>\n"
 "(bracket in bold)"
-msgstr "この試合にいるのはこの点数のチームです<br>（太字はブラケット）"
+msgstr "ã“ã®è©¦åˆã«ã„ã‚‹ã®ã¯ã“ã®ç‚¹æ•°ã®ãƒãƒ¼ãƒ ã§ã™<br>ï¼ˆå¤ªå­—ã¯ãƒ–ãƒ©ã‚±ãƒƒãƒˆï¼‰"
 
 #: draw/tables.py
 #, python-format
@@ -394,592 +394,592 @@ msgstr ""
 
 #: draw/tables.py
 msgid "side history before this round"
-msgstr "これまでのサイド経験"
+msgstr "ã“ã‚Œã¾ã§ã®ã‚µã‚¤ãƒ‰çµŒé¨“"
 
 #: draw/tables.py
 msgid "Sides"
-msgstr "サイド"
+msgstr "ã‚µã‚¤ãƒ‰"
 
 #: draw/tables.py
 msgid "position cost"
-msgstr "サイドコスト"
+msgstr "ã‚µã‚¤ãƒ‰ã‚³ã‚¹ãƒˆ"
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "STOP!!! Read this first! Deleting debate teams from the database may crash Tabbycat!"
-msgstr "警告！データベースからチームを消すとクラッシュする可能性があります。"
+msgid "STOP!!! Read this first! Deleting debate teams from the database may crash NekoTab!"
+msgstr "è­¦å‘Šï¼ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰ãƒãƒ¼ãƒ ã‚’æ¶ˆã™ã¨ã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã™ã‚‹å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "Tabbycat requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
-msgstr "すべての試合で<strong>1サイドに1チーム</strong>過不足なく存在する必要があります。ディベートチームを消した場合、新しいディベートチームを入れるか試合を削除する必要があります。これをしないと複数のページが<strong>確実に</strong>クラッシュします。"
+msgid "NekoTab requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgstr "ã™ã¹ã¦ã®è©¦åˆã§<strong>1ã‚µã‚¤ãƒ‰ã«1ãƒãƒ¼ãƒ </strong>éŽä¸è¶³ãªãå­˜åœ¨ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆãƒãƒ¼ãƒ ã‚’æ¶ˆã—ãŸå ´åˆã€æ–°ã—ã„ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆãƒãƒ¼ãƒ ã‚’å…¥ã‚Œã‚‹ã‹è©¦åˆã‚’å‰Šé™¤ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã“ã‚Œã‚’ã—ãªã„ã¨è¤‡æ•°ã®ãƒšãƒ¼ã‚¸ãŒ<strong>ç¢ºå®Ÿã«</strong>ã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã—ã¾ã™ã€‚"
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
 #: draw/templates/admin/draw/debateteam/edit_warning.html
 msgid "This is a common source of errors. If it happens to you, check the debates (under the Draw section in this Edit Database area) and ensure that all of them have exactly one affirmative and one negative team."
-msgstr "これは頻繁に起きるエラーの原因です。もしこれが起きている場合、試合設定（データベース編集エリアの対戦表セクションにあります）を確認し、すべての試合に肯定・否定チームがそれぞれ設定されているか確認してください。"
+msgstr "ã“ã‚Œã¯é »ç¹ã«èµ·ãã‚‹ã‚¨ãƒ©ãƒ¼ã®åŽŸå› ã§ã™ã€‚ã‚‚ã—ã“ã‚ŒãŒèµ·ãã¦ã„ã‚‹å ´åˆã€è©¦åˆè¨­å®šï¼ˆãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã®å¯¾æˆ¦è¡¨ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã«ã‚ã‚Šã¾ã™ï¼‰ã‚’ç¢ºèªã—ã€ã™ã¹ã¦ã®è©¦åˆã«è‚¯å®šãƒ»å¦å®šãƒãƒ¼ãƒ ãŒãã‚Œãžã‚Œè¨­å®šã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèªã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/admin/draw/debateteam/edit_warning.html
 msgid "WARNING!!! If you are editing debate teams, read this first!"
-msgstr "警告：ディベートチームを編集する場合、必ず読んでください！"
+msgstr "è­¦å‘Šï¼šãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆãƒãƒ¼ãƒ ã‚’ç·¨é›†ã™ã‚‹å ´åˆã€å¿…ãšèª­ã‚“ã§ãã ã•ã„ï¼"
 
 #: draw/templates/admin/draw/debateteam/edit_warning.html
-msgid "Tabbycat requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
-msgstr "すべての試合で<strong>1サイドに1チーム</strong>過不足なく存在する必要があります。ディベートチームを消した場合、新しいディベートチームを入れるか試合を削除する必要があります。これをしないと複数のページが<strong>確実に</strong>クラッシュします。"
+msgid "NekoTab requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgstr "ã™ã¹ã¦ã®è©¦åˆã§<strong>1ã‚µã‚¤ãƒ‰ã«1ãƒãƒ¼ãƒ </strong>éŽä¸è¶³ãªãå­˜åœ¨ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆãƒãƒ¼ãƒ ã‚’æ¶ˆã—ãŸå ´åˆã€æ–°ã—ã„ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆãƒãƒ¼ãƒ ã‚’å…¥ã‚Œã‚‹ã‹è©¦åˆã‚’å‰Šé™¤ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã“ã‚Œã‚’ã—ãªã„ã¨è¤‡æ•°ã®ãƒšãƒ¼ã‚¸ãŒ<strong>ç¢ºå®Ÿã«</strong>ã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã—ã¾ã™ã€‚"
 
 #: draw/templates/draw_alerts_adjudicators.html
 #, python-format
 msgid "1 debate does not have a chair."
 msgid_plural "%(ndebates)s debates do not have a chair."
-msgstr[0] "%(ndebates)s試合にチェアがいません"
+msgstr[0] "%(ndebates)sè©¦åˆã«ãƒã‚§ã‚¢ãŒã„ã¾ã›ã‚“"
 
 #: draw/templates/draw_alerts_adjudicators.html
 #, python-format
 msgid "<strong>%(adjudicators)s</strong> is adjudicating multiple debates."
 msgid_plural "The following <strong>%(nadjs)s</strong> adjudicators are adjudicating multiple debates: <strong>%(adjudicators)s</strong>"
-msgstr[0] "以下の<strong>%(nadjs)s</strong>人は複数の試合のジャッジを同時にしています：<strong>%(adjudicators)s</strong>"
+msgstr[0] "ä»¥ä¸‹ã®<strong>%(nadjs)s</strong>äººã¯è¤‡æ•°ã®è©¦åˆã®ã‚¸ãƒ£ãƒƒã‚¸ã‚’åŒæ™‚ã«ã—ã¦ã„ã¾ã™ï¼š<strong>%(adjudicators)s</strong>"
 
 #: draw/templates/draw_alerts_adjudicators.html
 #, python-format
 msgid "1 debate has a panel with an even number of adjudicators."
 msgid_plural "%(ndebates)s debates have panels with an even number of adjudicators."
-msgstr[0] "%(ndebates)s試合に奇数人のパネルがいます"
+msgstr[0] "%(ndebates)sè©¦åˆã«å¥‡æ•°äººã®ãƒ‘ãƒãƒ«ãŒã„ã¾ã™"
 
 #: draw/templates/draw_alerts_adjudicators.html
 #, python-format
 msgid "1 debate has an adjudicator conflict."
 msgid_plural "%(ndebates)s debates have adjudicator conflicts."
-msgstr[0] "%(ndebates)s試合にコンフリクトがあります"
+msgstr[0] "%(ndebates)sè©¦åˆã«ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆãŒã‚ã‚Šã¾ã™"
 
 #: draw/templates/draw_alerts_adjudicators.html
 #, python-format
 msgid "<strong>%(adjudicators)s</strong> is unavailable this round, but is assigned to a debate."
 msgid_plural "The following <strong>%(nadjs)s</strong> adjudicators are unavailable this round, but are assigned to debates: <strong>%(adjudicators)s</strong>"
-msgstr[0] "以下の<strong>%(nadjs)s</strong>人のジャッジはこのラウンドに参加できませんが配置されています：<strong>%(adjudicators)s</strong>"
+msgstr[0] "ä»¥ä¸‹ã®<strong>%(nadjs)s</strong>äººã®ã‚¸ãƒ£ãƒƒã‚¸ã¯ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã«å‚åŠ ã§ãã¾ã›ã‚“ãŒé…ç½®ã•ã‚Œã¦ã„ã¾ã™ï¼š<strong>%(adjudicators)s</strong>"
 
 #: draw/templates/draw_alerts_adjudicators.html
 #, python-format
 msgid "1 adjudicator is available but not assigned to a debate."
 msgid_plural "%(ndebates)s adjudicators are available but not assigned to a debate."
-msgstr[0] "%(ndebates)s人のジャッジがこのラウンドに参加できますが配置されていません"
+msgstr[0] "%(ndebates)säººã®ã‚¸ãƒ£ãƒƒã‚¸ãŒã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã«å‚åŠ ã§ãã¾ã™ãŒé…ç½®ã•ã‚Œã¦ã„ã¾ã›ã‚“"
 
 #: draw/templates/draw_alerts_teams.html
 #, python-format
 msgid "<strong>%(teams)s</strong> is competing in multiple debates."
 msgid_plural "The following <strong>%(nteams)s</strong> teams are competing in multiple debates: <strong>%(teams)s</strong>"
-msgstr[0] "以下の<strong>%(nteams)s</strong>チームは複数の試合を同時にしています：<strong>%(teams)s</strong>"
+msgstr[0] "ä»¥ä¸‹ã®<strong>%(nteams)s</strong>ãƒãƒ¼ãƒ ã¯è¤‡æ•°ã®è©¦åˆã‚’åŒæ™‚ã«ã—ã¦ã„ã¾ã™ï¼š<strong>%(teams)s</strong>"
 
 #: draw/templates/draw_alerts_venues.html
 #, python-format
 msgid "1 debate does not have a room."
 msgid_plural "%(ndebates)s debates do not have a room."
-msgstr[0] "%(ndebates)s試合に部屋が設定されていません。"
+msgstr[0] "%(ndebates)sè©¦åˆã«éƒ¨å±‹ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_alerts_venues.html
 #, python-format
 msgid "There are multiple debates in <strong>%(rooms)s</strong>."
 msgid_plural "The following <strong>%(ndebates)s</strong> rooms have multiple debates in them: <strong>%(rooms)s</strong>"
-msgstr[0] "以下の<strong>%(ndebates)s</strong>試合には複数の部屋が設定されています：<strong>%(rooms)s</strong>"
+msgstr[0] "ä»¥ä¸‹ã®<strong>%(ndebates)s</strong>è©¦åˆã«ã¯è¤‡æ•°ã®éƒ¨å±‹ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã™ï¼š<strong>%(rooms)s</strong>"
 
 #: draw/templates/draw_alerts_venues.html
 #, python-format
 msgid "1 debate has a room constraint violation."
 msgid_plural "%(ndebates)s debates have room constraint violations."
-msgstr[0] "%(ndebates)s試合が部屋の制約条件を満たしていません。"
+msgstr[0] "%(ndebates)sè©¦åˆãŒéƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶ã‚’æº€ãŸã—ã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_base.html
 msgid "Availability"
-msgstr "参加・利用状況"
+msgstr "å‚åŠ ãƒ»åˆ©ç”¨çŠ¶æ³"
 
 #: draw/templates/draw_base.html draw/templates/draw_status_draft.html
 msgid "Edit Sides/Matchups"
-msgstr "対戦表を編集"
+msgstr "å¯¾æˆ¦è¡¨ã‚’ç·¨é›†"
 
 #: draw/templates/draw_base.html
 msgid "Redo Draw"
-msgstr "対戦表を再生成"
+msgstr "å¯¾æˆ¦è¡¨ã‚’å†ç”Ÿæˆ"
 
 #: draw/templates/draw_base.html
 msgid "Draw Details"
-msgstr "対戦表の詳細"
+msgstr "å¯¾æˆ¦è¡¨ã®è©³ç´°"
 
 #: draw/templates/draw_base.html
 msgid "Position Balance"
-msgstr "サイドバランス"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹"
 
 #: draw/templates/draw_base.html draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Draw"
-msgstr "対戦表を公開"
+msgstr "å¯¾æˆ¦è¡¨ã‚’å…¬é–‹"
 
 #: draw/templates/draw_confirm_regeneration.html
 msgid "Confirm draw regeneration"
-msgstr "対戦表再生成を行う"
+msgstr "å¯¾æˆ¦è¡¨å†ç”Ÿæˆã‚’è¡Œã†"
 
 #: draw/templates/draw_confirm_regeneration.html
 #: draw/templates/draw_subpage.html
 msgid "Back to Draw"
-msgstr "対戦表に戻る"
+msgstr "å¯¾æˆ¦è¡¨ã«æˆ»ã‚‹"
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
 msgid "Confirm Draw Deletion for %(round)s"
-msgstr "%(round)sの対戦表を削除"
+msgstr "%(round)sã®å¯¾æˆ¦è¡¨ã‚’å‰Šé™¤"
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
-msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> —  including their ballots and adjudicator allocations — and cannot be undone. You probably don't want to do this if any results have been entered!"
-msgstr "%(round)sの対戦表を本当に削除しますか？現在の対戦表の<strong>すべての試合（バロットと配置を含む）</strong>を削除することになり、復元できません。もし既に結果が出ている場合、削除するのは恐らく悪手です！"
+msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> â€”  including their ballots and adjudicator allocations â€” and cannot be undone. You probably don't want to do this if any results have been entered!"
+msgstr "%(round)sã®å¯¾æˆ¦è¡¨ã‚’æœ¬å½“ã«å‰Šé™¤ã—ã¾ã™ã‹ï¼Ÿç¾åœ¨ã®å¯¾æˆ¦è¡¨ã®<strong>ã™ã¹ã¦ã®è©¦åˆï¼ˆãƒãƒ­ãƒƒãƒˆã¨é…ç½®ã‚’å«ã‚€ï¼‰</strong>ã‚’å‰Šé™¤ã™ã‚‹ã“ã¨ã«ãªã‚Šã€å¾©å…ƒã§ãã¾ã›ã‚“ã€‚ã‚‚ã—æ—¢ã«çµæžœãŒå‡ºã¦ã„ã‚‹å ´åˆã€å‰Šé™¤ã™ã‚‹ã®ã¯æã‚‰ãæ‚ªæ‰‹ã§ã™ï¼"
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
 msgid "Yes, I want to delete the current draw for %(round)s"
-msgstr "はい、%(round)sの対戦表を削除します"
+msgstr "ã¯ã„ã€%(round)sã®å¯¾æˆ¦è¡¨ã‚’å‰Šé™¤ã—ã¾ã™"
 
 #: draw/templates/draw_display_admin.html
 msgid "View Draw"
-msgstr "対戦表を確認"
+msgstr "å¯¾æˆ¦è¡¨ã‚’ç¢ºèª"
 
 #: draw/templates/draw_display_admin.html
 #, python-format
 msgid "Debates start at %(start_time)s"
-msgstr "%(start_time)sにラウンド開始"
+msgstr "%(start_time)sã«ãƒ©ã‚¦ãƒ³ãƒ‰é–‹å§‹"
 
 #: draw/templates/draw_display_admin.html
 msgid "Add Start Time"
-msgstr "開始時刻を追加"
+msgstr "é–‹å§‹æ™‚åˆ»ã‚’è¿½åŠ "
 
 #: draw/templates/draw_display_admin.html
 msgid "Enter Results"
-msgstr "結果入力"
+msgstr "çµæžœå…¥åŠ›"
 
 #: draw/templates/draw_display_admin.html
 msgid "Motion Details"
-msgstr "論題の設定"
+msgstr "è«–é¡Œã®è¨­å®š"
 
 #: draw/templates/draw_display_admin.html
 #, python-format
 msgid "%(motions_count)s motion has been entered."
 msgid_plural "%(motions_count)s motions have been entered."
-msgstr[0] "%(motions_count)sつの論題が入力されています。"
+msgstr[0] "%(motions_count)sã¤ã®è«–é¡ŒãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã™ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Edit the motion"
 msgid_plural "Edit motions"
-msgstr[0] "論題を修正"
+msgstr[0] "è«–é¡Œã‚’ä¿®æ­£"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your configuration/format requires motions to be specified as part of ballot entry. Make sure they are added before results come in!"
-msgstr "バロットを入力する際にモーションが必要な設定になっています。試合終了までに論題を入力してください。"
+msgstr "ãƒãƒ­ãƒƒãƒˆã‚’å…¥åŠ›ã™ã‚‹éš›ã«ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãŒå¿…è¦ãªè¨­å®šã«ãªã£ã¦ã„ã¾ã™ã€‚è©¦åˆçµ‚äº†ã¾ã§ã«è«–é¡Œã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "A motion should be added if you want to display it during announcements, print it on your ballots, or to display it (later) on the public motions/statistics pages."
-msgstr "論題発表時に表示、バロットに印刷、あるいはタブ公開時に論題の統計データを表示したい場合、論題を追加してください。"
+msgstr "è«–é¡Œç™ºè¡¨æ™‚ã«è¡¨ç¤ºã€ãƒãƒ­ãƒƒãƒˆã«å°åˆ·ã€ã‚ã‚‹ã„ã¯ã‚¿ãƒ–å…¬é–‹æ™‚ã«è«–é¡Œã®çµ±è¨ˆãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ç¤ºã—ãŸã„å ´åˆã€è«–é¡Œã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Enter a motion"
 msgid_plural "Enter motions"
-msgstr[0] "論題を入力"
+msgstr[0] "è«–é¡Œã‚’å…¥åŠ›"
 
 #: draw/templates/draw_display_admin.html
 msgid "Release Draw"
-msgstr "対戦表を公開"
+msgstr "å¯¾æˆ¦è¡¨ã‚’å…¬é–‹"
 
 #: draw/templates/draw_display_admin.html
 msgid "You have not generated a draw for this round yet. There is nothing to release."
-msgstr "まだこのラウンドの対戦表を生成していないので公開できません。"
+msgstr "ã¾ã ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆã—ã¦ã„ãªã„ã®ã§å…¬é–‹ã§ãã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "The draw for this round is still in a draft state. Confirm the draw before releasing it."
-msgstr "このラウンドの対戦表はまだ下書き状態です。公開する前に承認してください。"
+msgstr "ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ã¯ã¾ã ä¸‹æ›¸ãçŠ¶æ…‹ã§ã™ã€‚å…¬é–‹ã™ã‚‹å‰ã«æ‰¿èªã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Unrelease draw to public"
-msgstr "対戦表を非公開"
+msgstr "å¯¾æˆ¦è¡¨ã‚’éžå…¬é–‹"
 
 #: draw/templates/draw_display_admin.html
 msgid "The draw has been released publicly."
-msgstr "対戦表を公開しました。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’å…¬é–‹ã—ã¾ã—ãŸã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "View public draw page"
-msgstr "参加者向けの対戦表ページを表示"
+msgstr "å‚åŠ è€…å‘ã‘ã®å¯¾æˆ¦è¡¨ãƒšãƒ¼ã‚¸ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_admin.html
 #, python-format
 msgid "You have released the draw, so ballots and/or feedback can be submitted from the public forms (if enabled). However, the draw itself will not show to the public unless the \"public view of draw\" setting is enabled in <a class=\"alert-link\" href=\"%(alert_link)s\"> this tournament's configuration</a>."
-msgstr "対戦表をリリースしたので、公開フォームからバロットやフィードバックを提出できます。ただし、<a class=\"alert-link\" href=\"%(alert_link)s\">大会設定</a>で「対戦表の公開」を有効にしないと参加者が閲覧することはできません。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’ãƒªãƒªãƒ¼ã‚¹ã—ãŸã®ã§ã€å…¬é–‹ãƒ•ã‚©ãƒ¼ãƒ ã‹ã‚‰ãƒãƒ­ãƒƒãƒˆã‚„ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã¾ã™ã€‚ãŸã ã—ã€<a class=\"alert-link\" href=\"%(alert_link)s\">å¤§ä¼šè¨­å®š</a>ã§ã€Œå¯¾æˆ¦è¡¨ã®å…¬é–‹ã€ã‚’æœ‰åŠ¹ã«ã—ãªã„ã¨å‚åŠ è€…ãŒé–²è¦§ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_display_admin.html
 #, python-format
 msgid "You have released the draw, but it will not show to the public unless the \"public view of draw\" setting is enabled in <a class=\"alert-link\" href=\"%(alert_link)s\"> this tournament's configuration</a>."
-msgstr "対戦表をリリースしましたが、<a class=\"alert-link\" href=\"%(alert_link)s\">大会設定</a>で「対戦表の公開」を有効にしないと参加者が閲覧することはできません。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’ãƒªãƒªãƒ¼ã‚¹ã—ã¾ã—ãŸãŒã€<a class=\"alert-link\" href=\"%(alert_link)s\">å¤§ä¼šè¨­å®š</a>ã§ã€Œå¯¾æˆ¦è¡¨ã®å…¬é–‹ã€ã‚’æœ‰åŠ¹ã«ã—ãªã„ã¨å‚åŠ è€…ãŒé–²è¦§ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Release draw to public"
-msgstr "対戦表を公開"
+msgstr "å¯¾æˆ¦è¡¨ã‚’å…¬é–‹"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your tournament allows ballots and feedback to be submitted online by adjudicators. The draw must be released before they can do so."
-msgstr "この大会ではオンラインでバロットやフィードバックを提出できます。可能にするためには、事前に対戦表を公開してください。"
+msgstr "ã“ã®å¤§ä¼šã§ã¯ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã§ãƒãƒ­ãƒƒãƒˆã‚„ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã¾ã™ã€‚å¯èƒ½ã«ã™ã‚‹ãŸã‚ã«ã¯ã€äº‹å‰ã«å¯¾æˆ¦è¡¨ã‚’å…¬é–‹ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your tournament allows ballots to be submitted online by adjudicators. The draw must be released before they can do so."
-msgstr "この大会ではオンラインでバロットを提出できます。可能にするためには、事前に対戦表を公開してください。"
+msgstr "ã“ã®å¤§ä¼šã§ã¯ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã§ãƒãƒ­ãƒƒãƒˆã‚’æå‡ºã§ãã¾ã™ã€‚å¯èƒ½ã«ã™ã‚‹ãŸã‚ã«ã¯ã€äº‹å‰ã«å¯¾æˆ¦è¡¨ã‚’å…¬é–‹ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your tournament allows feedback to be submitted online by participants. The draw must be released before they can do so."
-msgstr "この大会ではオンラインでフィードバックを提出できます。可能にするためには、事前に対戦表を公開してください。"
+msgstr "ã“ã®å¤§ä¼šã§ã¯ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã§ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã¾ã™ã€‚å¯èƒ½ã«ã™ã‚‹ãŸã‚ã«ã¯ã€äº‹å‰ã«å¯¾æˆ¦è¡¨ã‚’å…¬é–‹ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your tournament is configured to show the draw publicly. Releasing a draw will allow it to show it on the public page."
-msgstr "対戦表を公開するように設定されています。対戦表をリリースすると、公開ページで閲覧できます。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’å…¬é–‹ã™ã‚‹ã‚ˆã†ã«è¨­å®šã•ã‚Œã¦ã„ã¾ã™ã€‚å¯¾æˆ¦è¡¨ã‚’ãƒªãƒªãƒ¼ã‚¹ã™ã‚‹ã¨ã€å…¬é–‹ãƒšãƒ¼ã‚¸ã§é–²è¦§ã§ãã¾ã™ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your configuration doesn't have a public draw page or feedback/ballot submissions. There's no reason to release the draw."
-msgstr "対戦表ページの公開もバロット・フィードバック提出もできません。対戦表をリリースする必要がありません。"
+msgstr "å¯¾æˆ¦è¡¨ãƒšãƒ¼ã‚¸ã®å…¬é–‹ã‚‚ãƒãƒ­ãƒƒãƒˆãƒ»ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯æå‡ºã‚‚ã§ãã¾ã›ã‚“ã€‚å¯¾æˆ¦è¡¨ã‚’ãƒªãƒªãƒ¼ã‚¹ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Release motion to public"
 msgid_plural "Release motions to public"
-msgstr[0] "論題を公開"
+msgstr[0] "è«–é¡Œã‚’å…¬é–‹"
 
 #: draw/templates/draw_display_admin.html
 msgid "Unrelease motion to public"
 msgid_plural "Unrelease motions to public"
-msgstr[0] "論題を非公開"
+msgstr[0] "è«–é¡Œã‚’éžå…¬é–‹"
 
 #: draw/templates/draw_display_admin.html
 msgid "Release Motion"
 msgid_plural "Release Motions"
-msgstr[0] "論題を公開"
+msgstr[0] "è«–é¡Œã‚’å…¬é–‹"
 
 #: draw/templates/draw_display_admin.html
 msgid "No motion is currently set for this round."
 msgid_plural "No motions are currently set for this round."
-msgstr[0] "このラウンドの論題がありません。"
+msgstr[0] "ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®è«–é¡ŒãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your tournament is configured to require motions to be selected in ballots and to allow ballots to be submitted by adjudicators. Ensure that you release the motions before debates finish, otherwise ballots will not be able to be submitted."
-msgstr "バロットを入力する際にモーション選択が必要かつジャッジがバロットを提出できる設定になっています。バロットを出せなくなるので、試合が終わるまで論題をリリースしてください。"
+msgstr "ãƒãƒ­ãƒƒãƒˆã‚’å…¥åŠ›ã™ã‚‹éš›ã«ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³é¸æŠžãŒå¿…è¦ã‹ã¤ã‚¸ãƒ£ãƒƒã‚¸ãŒãƒãƒ­ãƒƒãƒˆã‚’æå‡ºã§ãã‚‹è¨­å®šã«ãªã£ã¦ã„ã¾ã™ã€‚ãƒãƒ­ãƒƒãƒˆã‚’å‡ºã›ãªããªã‚‹ã®ã§ã€è©¦åˆãŒçµ‚ã‚ã‚‹ã¾ã§è«–é¡Œã‚’ãƒªãƒªãƒ¼ã‚¹ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your tournament is configured to allow motions to be vetoed and to allow ballots to be submitted by adjudicators. Ensure that you release the motions before debates finish, otherwise ballots will not be able to nominate vetoes."
-msgstr "モーションの拒否（veto）が可能かつジャッジがバロットを提出できる設定になっています。バロットにvetoを入力できなくなるので、試合が終わるまで論題をリリースしてください。"
+msgstr "ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®æ‹’å¦ï¼ˆvetoï¼‰ãŒå¯èƒ½ã‹ã¤ã‚¸ãƒ£ãƒƒã‚¸ãŒãƒãƒ­ãƒƒãƒˆã‚’æå‡ºã§ãã‚‹è¨­å®šã«ãªã£ã¦ã„ã¾ã™ã€‚ãƒãƒ­ãƒƒãƒˆã«vetoã‚’å…¥åŠ›ã§ããªããªã‚‹ã®ã§ã€è©¦åˆãŒçµ‚ã‚ã‚‹ã¾ã§è«–é¡Œã‚’ãƒªãƒªãƒ¼ã‚¹ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your tournament is configured to show the motion for each round on the public site. You'll need to first release the motion for it to show there."
 msgid_plural "Your tournament is configured to show the motions for each round on the public site. You'll need to first release the motions for it to show there."
-msgstr[0] "各ラウンドの論題を公開する設定になっています。公開するには、まずリリースしてください。"
+msgstr[0] "å„ãƒ©ã‚¦ãƒ³ãƒ‰ã®è«–é¡Œã‚’å…¬é–‹ã™ã‚‹è¨­å®šã«ãªã£ã¦ã„ã¾ã™ã€‚å…¬é–‹ã™ã‚‹ã«ã¯ã€ã¾ãšãƒªãƒªãƒ¼ã‚¹ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your tournament is not configured to show the motion for each round on the public site. There's no need to release the motion."
 msgid_plural "Your tournament is not configured to show the motions for each round on the public site. There's no need to release the motions."
-msgstr[0] "各ラウンドの論題を公開しない設定になっています。論題をリリースする必要がありません。"
+msgstr[0] "å„ãƒ©ã‚¦ãƒ³ãƒ‰ã®è«–é¡Œã‚’å…¬é–‹ã—ãªã„è¨­å®šã«ãªã£ã¦ã„ã¾ã™ã€‚è«–é¡Œã‚’ãƒªãƒªãƒ¼ã‚¹ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "The motion has been released publicly."
 msgid_plural "Motions have been released publicly."
-msgstr[0] "論題を公開しました。"
+msgstr[0] "è«–é¡Œã‚’å…¬é–‹ã—ã¾ã—ãŸã€‚"
 
 #: draw/templates/draw_display_admin.html
 msgid "View public motions page"
-msgstr "参加者向けの論題ページを表示"
+msgstr "å‚åŠ è€…å‘ã‘ã®è«–é¡Œãƒšãƒ¼ã‚¸ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_admin.html
 #, python-format
 msgid "You have released the motions, but they will not show to the public unless the \"public view of motions\" setting is enabled in <a class=\"alert-link\" href=\"%(alert_link)s\">this tournament's configuration</a>."
-msgstr "論題をリリースしましたが、<a class=\"alert-link\" href=\"%(alert_link)s\">大会設定</a>で「論題の公開」を有効にしないと参加者が閲覧することはできません。"
+msgstr "è«–é¡Œã‚’ãƒªãƒªãƒ¼ã‚¹ã—ã¾ã—ãŸãŒã€<a class=\"alert-link\" href=\"%(alert_link)s\">å¤§ä¼šè¨­å®š</a>ã§ã€Œè«–é¡Œã®å…¬é–‹ã€ã‚’æœ‰åŠ¹ã«ã—ãªã„ã¨å‚åŠ è€…ãŒé–²è¦§ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "(for the briefing room)"
-msgstr "（OR向け）"
+msgstr "ï¼ˆORå‘ã‘ï¼‰"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Draw ordered by Room"
-msgstr "部屋ごとに分けられた対戦表を表示"
+msgstr "éƒ¨å±‹ã”ã¨ã«åˆ†ã‘ã‚‰ã‚ŒãŸå¯¾æˆ¦è¡¨ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Draw ordered by Team"
-msgstr "チームごとに分けられた対戦表を表示"
+msgstr "ãƒãƒ¼ãƒ ã”ã¨ã«åˆ†ã‘ã‚‰ã‚ŒãŸå¯¾æˆ¦è¡¨ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Draws for <strong>All Current Rounds</strong> ordered by Room"
-msgstr "部屋ごとに分けられた<strong>現在進行中の全ラウンドの</strong>対戦表を表示"
+msgstr "éƒ¨å±‹ã”ã¨ã«åˆ†ã‘ã‚‰ã‚ŒãŸ<strong>ç¾åœ¨é€²è¡Œä¸­ã®å…¨ãƒ©ã‚¦ãƒ³ãƒ‰ã®</strong>å¯¾æˆ¦è¡¨ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Draws for <strong>All Current Rounds</strong> ordered by Team"
-msgstr "チームごとに分けられた<strong>現在進行中の全ラウンドの</strong>対戦表を表示"
+msgstr "ãƒãƒ¼ãƒ ã”ã¨ã«åˆ†ã‘ã‚‰ã‚ŒãŸ<strong>ç¾åœ¨é€²è¡Œä¸­ã®å…¨ãƒ©ã‚¦ãƒ³ãƒ‰ã®</strong>å¯¾æˆ¦è¡¨ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 #, python-format
 msgid "Display Draw for <strong>%(round)s</strong> ordered by Room"
-msgstr "部屋ごとに分けられた<strong>%(round)sの</strong>対戦表を表示"
+msgstr "éƒ¨å±‹ã”ã¨ã«åˆ†ã‘ã‚‰ã‚ŒãŸ<strong>%(round)sã®</strong>å¯¾æˆ¦è¡¨ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 #, python-format
 msgid "Display Draw for <strong>%(round)s</strong> ordered by Team"
-msgstr "チームごとに分けられた<strong>%(round)sの</strong>対戦表を表示"
+msgstr "ãƒãƒ¼ãƒ ã”ã¨ã«åˆ†ã‘ã‚‰ã‚ŒãŸ<strong>%(round)sã®</strong>å¯¾æˆ¦è¡¨ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Motions"
-msgstr "論題を表示"
+msgstr "è«–é¡Œã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_admin.html
 msgid "Email Motions"
-msgstr "論題をメール送信"
+msgstr "è«–é¡Œã‚’ãƒ¡ãƒ¼ãƒ«é€ä¿¡"
 
 #: draw/templates/draw_display_admin.html
 msgid "Email Motion"
-msgstr "論題をメール送信"
+msgstr "è«–é¡Œã‚’ãƒ¡ãƒ¼ãƒ«é€ä¿¡"
 
 #: draw/templates/draw_display_admin.html
 msgid "Start at"
-msgstr "開始"
+msgstr "é–‹å§‹"
 
 #: draw/templates/draw_display_assistant.html
 msgid "(for printing)"
-msgstr "（印刷用）"
+msgstr "ï¼ˆå°åˆ·ç”¨ï¼‰"
 
 #: draw/templates/draw_display_assistant.html
 msgid "View Ballot Forms"
-msgstr "バロットフォームを表示"
+msgstr "ãƒãƒ­ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_assistant.html
 msgid "View Feedback Forms"
-msgstr "フィードバックフォームを表示"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãƒ•ã‚©ãƒ¼ãƒ ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_by.html
 msgid "Scroll Speed"
-msgstr "スクロール速度"
+msgstr "ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é€Ÿåº¦"
 
 #: draw/templates/draw_display_by.html
 msgid "Fast"
-msgstr "速い"
+msgstr "é€Ÿã„"
 
 #: draw/templates/draw_display_by.html
 msgid "Medium"
-msgstr "普通"
+msgstr "æ™®é€š"
 
 #: draw/templates/draw_display_by.html
 msgid "Slow"
-msgstr "遅い"
+msgstr "é…ã„"
 
 #: draw/templates/draw_display_by.html
 msgid "Extra Slow"
-msgstr "非常に遅い"
+msgstr "éžå¸¸ã«é…ã„"
 
 #: draw/templates/draw_display_by.html
 msgid "Hide Adjudicators"
-msgstr "ジャッジを非表示"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚’éžè¡¨ç¤º"
 
 #: draw/templates/draw_display_by.html
 msgid "Show Adjudicators"
-msgstr "ジャッジを表示"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚’è¡¨ç¤º"
 
 #: draw/templates/draw_display_by.html
 msgid "Text Size"
-msgstr "文字の大きさ"
+msgstr "æ–‡å­—ã®å¤§ãã•"
 
 #: draw/templates/draw_display_by.html
 msgid "Tiny"
-msgstr "極小"
+msgstr "æ¥µå°"
 
 #: draw/templates/draw_display_by.html
 msgid "Small"
-msgstr "小"
+msgstr "å°"
 
 #: draw/templates/draw_display_by.html
 msgid "Large"
-msgstr "大"
+msgstr "å¤§"
 
 #: draw/templates/draw_display_by.html
 msgid "Huge"
-msgstr "極大"
+msgstr "æ¥µå¤§"
 
 #: draw/templates/draw_display_by.html
 msgid "Stop Scroll"
-msgstr "スクロール中止"
+msgstr "ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä¸­æ­¢"
 
 #: draw/templates/draw_not_released.html
 #, python-format
 msgid "The draw for %(round)s has yet to be released."
-msgstr "%(round)sの対戦表はまだ公開されていません。"
+msgstr "%(round)sã®å¯¾æˆ¦è¡¨ã¯ã¾ã å…¬é–‹ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_not_released.html
 msgid "The draw for the next round has yet to be released."
-msgstr "次のラウンドの対戦表はまだ公開されていません。"
+msgstr "æ¬¡ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ã¯ã¾ã å…¬é–‹ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Adjudicator Allocations"
-msgstr "ジャッジの配置"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®é…ç½®"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "There are currently fewer adjudicators checked in than there are rooms."
-msgstr "現在、部屋の数よりチェックイン済みのジャッジの数の方が少ないです。"
+msgstr "ç¾åœ¨ã€éƒ¨å±‹ã®æ•°ã‚ˆã‚Šãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³æ¸ˆã¿ã®ã‚¸ãƒ£ãƒƒã‚¸ã®æ•°ã®æ–¹ãŒå°‘ãªã„ã§ã™ã€‚"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Allocate adjudicators"
-msgstr "ジャッジを配置"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚’é…ç½®"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Edit adjudicator allocation"
-msgstr "ジャッジ配置を編集"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸é…ç½®ã‚’ç·¨é›†"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Room Allocations"
-msgstr "部屋の配置"
+msgstr "éƒ¨å±‹ã®é…ç½®"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Allocate rooms"
-msgstr "部屋を配置"
+msgstr "éƒ¨å±‹ã‚’é…ç½®"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Edit room allocation"
-msgstr "部屋配置を編集"
+msgstr "éƒ¨å±‹é…ç½®ã‚’ç·¨é›†"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Preformed Panels"
-msgstr "事前設定されたパネル"
+msgstr "äº‹å‰è¨­å®šã•ã‚ŒãŸãƒ‘ãƒãƒ«"
 
 #: draw/templates/draw_status_confirmed.html
 #, python-format
 msgid "There is %(npanels)s preformed panel available for this round."
 msgid_plural "There are %(npanels)s preformed panels available for this round."
-msgstr[0] "%(npanels)sつの事前設定されたパネルがあります。"
+msgstr[0] "%(npanels)sã¤ã®äº‹å‰è¨­å®šã•ã‚ŒãŸãƒ‘ãƒãƒ«ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "There are no preformed panels available for this round"
-msgstr "事前設定されたパネルがありません。"
+msgstr "äº‹å‰è¨­å®šã•ã‚ŒãŸãƒ‘ãƒãƒ«ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_status_confirmed.html
 #, python-format
 msgid "Edit preformed panels for %(round)s"
-msgstr "%(round)sの事前設定されたパネルを編集"
+msgstr "%(round)sã®äº‹å‰è¨­å®šã•ã‚ŒãŸãƒ‘ãƒãƒ«ã‚’ç·¨é›†"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Side Allocations"
-msgstr "サイドの配置"
+msgstr "ã‚µã‚¤ãƒ‰ã®é…ç½®"
 
 #: draw/templates/draw_status_confirmed.html
 #, python-format
 msgid "1 debate does not have its sides confirmed."
 msgid_plural "%(ndebates)s debates do not have their sides confirmed."
-msgstr[0] "%(ndebates)s試合のサイドが確定していません。"
+msgstr[0] "%(ndebates)sè©¦åˆã®ã‚µã‚¤ãƒ‰ãŒç¢ºå®šã—ã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/templates/draw_status_draft.html
 msgid "Delete Draw"
-msgstr "対戦表を削除"
+msgstr "å¯¾æˆ¦è¡¨ã‚’å‰Šé™¤"
 
 #: draw/templates/draw_status_draft.html
 msgid "Confirm Draw"
-msgstr "対戦表を承認"
+msgstr "å¯¾æˆ¦è¡¨ã‚’æ‰¿èª"
 
 #: draw/templates/draw_status_draft.html
 #, python-format
 msgid "The team standings precedence is empty. This means that teams aren't ranked according to any metrics, so all teams are in a single bracket containing everyone. If this isn't what you intended, set the team standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>, then delete and recreate the draw. In most tournaments, the first metric should be points or wins."
-msgstr "チームの順位付けの指標がありません。すなわち、チームは何の指標でも順位付けできず、すべてのチームは横ばいで一つのブラケットに入ります。これを意図していない場合、チームの順位付けの指標を<a href=\"%(standings_config_url)s\" class=\"alert-link\">大会設定の順位セクション</a>から変更してください。多くの大会では、最初の指標は勝ち数または点数になるはずです。"
+msgstr "ãƒãƒ¼ãƒ ã®é †ä½ä»˜ã‘ã®æŒ‡æ¨™ãŒã‚ã‚Šã¾ã›ã‚“ã€‚ã™ãªã‚ã¡ã€ãƒãƒ¼ãƒ ã¯ä½•ã®æŒ‡æ¨™ã§ã‚‚é †ä½ä»˜ã‘ã§ããšã€ã™ã¹ã¦ã®ãƒãƒ¼ãƒ ã¯æ¨ªã°ã„ã§ä¸€ã¤ã®ãƒ–ãƒ©ã‚±ãƒƒãƒˆã«å…¥ã‚Šã¾ã™ã€‚ã“ã‚Œã‚’æ„å›³ã—ã¦ã„ãªã„å ´åˆã€ãƒãƒ¼ãƒ ã®é †ä½ä»˜ã‘ã®æŒ‡æ¨™ã‚’<a href=\"%(standings_config_url)s\" class=\"alert-link\">å¤§ä¼šè¨­å®šã®é †ä½ã‚»ã‚¯ã‚·ãƒ§ãƒ³</a>ã‹ã‚‰å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚å¤šãã®å¤§ä¼šã§ã¯ã€æœ€åˆã®æŒ‡æ¨™ã¯å‹ã¡æ•°ã¾ãŸã¯ç‚¹æ•°ã«ãªã‚‹ã¯ãšã§ã™ã€‚"
 
 #: draw/templates/draw_status_draft.html
 #, python-format
 msgid "Brackets are formed using the first metric in the team standings precedence, which is currently set to <strong>%(metric)s</strong>, rather than team points, which is the more usual convention. If this isn't what you wanted, you can <a href=\"%(standings_config_url)s\" class=\"alert-link\">change the team standings precedence in the standings configuration page</a>."
-msgstr "ブラケットはチームの点数ではなくチーム順位の第一指標（<strong>%(metric)s</strong>に設定）をもとに算出されます。これを意図していない場合、チームの順位付けの指標を<a href=\"%(standings_config_url)s\" class=\"alert-link\">大会設定の順位セクション</a>から変更してください。"
+msgstr "ãƒ–ãƒ©ã‚±ãƒƒãƒˆã¯ãƒãƒ¼ãƒ ã®ç‚¹æ•°ã§ã¯ãªããƒãƒ¼ãƒ é †ä½ã®ç¬¬ä¸€æŒ‡æ¨™ï¼ˆ<strong>%(metric)s</strong>ã«è¨­å®šï¼‰ã‚’ã‚‚ã¨ã«ç®—å‡ºã•ã‚Œã¾ã™ã€‚ã“ã‚Œã‚’æ„å›³ã—ã¦ã„ãªã„å ´åˆã€ãƒãƒ¼ãƒ ã®é †ä½ä»˜ã‘ã®æŒ‡æ¨™ã‚’<a href=\"%(standings_config_url)s\" class=\"alert-link\">å¤§ä¼šè¨­å®šã®é †ä½ã‚»ã‚¯ã‚·ãƒ§ãƒ³</a>ã‹ã‚‰å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_status_draft.html
 #, python-format
-msgid "The draw type for this round is set to <strong>manual</strong>, so Tabbycat has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
-msgstr "このラウンドの対戦表は<strong>手動</strong>で作成する設定になっているので、空の対戦表を生成しました。<a href=\"%(edit_matchups_url)s\" class=\"alert-link\">対戦表の編集画面</a>から編集してください。"
+msgid "The draw type for this round is set to <strong>manual</strong>, so NekoTab has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
+msgstr "ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ã¯<strong>æ‰‹å‹•</strong>ã§ä½œæˆã™ã‚‹è¨­å®šã«ãªã£ã¦ã„ã‚‹ã®ã§ã€ç©ºã®å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆã—ã¾ã—ãŸã€‚<a href=\"%(edit_matchups_url)s\" class=\"alert-link\">å¯¾æˆ¦è¡¨ã®ç·¨é›†ç”»é¢</a>ã‹ã‚‰ç·¨é›†ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_status_draft.html
 #, python-format
 msgid "The adjudicator score range is 0, and so adjudicator scores will be ignored when allocating. You can <a href=\"%(feedback_config_url)s\" class=\"alert-link\">change the adjudicator score range in the feedback configuration page</a>."
-msgstr "ジャッジのスコアの範囲が0に設定されているので、配置の際ジャッジスコアは考慮されません。<a href=\"%(feedback_config_url)s\" class=\"alert-link\">フィードバック設定ページ</a>から変更できます。"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ã‚¹ã‚³ã‚¢ã®ç¯„å›²ãŒ0ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã®ã§ã€é…ç½®ã®éš›ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢ã¯è€ƒæ…®ã•ã‚Œã¾ã›ã‚“ã€‚<a href=\"%(feedback_config_url)s\" class=\"alert-link\">ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯è¨­å®šãƒšãƒ¼ã‚¸</a>ã‹ã‚‰å¤‰æ›´ã§ãã¾ã™ã€‚"
 
 #: draw/templates/draw_status_draft.html
-msgid "Tabbycat assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept Tabbycat's random assignment."
-msgstr "勝ち抜けラウンドではサイドはランダムに配置されます。しかし、多くの大会の本戦では聴衆の前でサイドを決めるため、サイドは未確定の状態にしてあります。対戦表を確定させた後、「対戦表を編集」ページからサイドを確定させてください。"
+msgid "NekoTab assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept NekoTab's random assignment."
+msgstr "å‹ã¡æŠœã‘ãƒ©ã‚¦ãƒ³ãƒ‰ã§ã¯ã‚µã‚¤ãƒ‰ã¯ãƒ©ãƒ³ãƒ€ãƒ ã«é…ç½®ã•ã‚Œã¾ã™ã€‚ã—ã‹ã—ã€å¤šãã®å¤§ä¼šã®æœ¬æˆ¦ã§ã¯è´è¡†ã®å‰ã§ã‚µã‚¤ãƒ‰ã‚’æ±ºã‚ã‚‹ãŸã‚ã€ã‚µã‚¤ãƒ‰ã¯æœªç¢ºå®šã®çŠ¶æ…‹ã«ã—ã¦ã‚ã‚Šã¾ã™ã€‚å¯¾æˆ¦è¡¨ã‚’ç¢ºå®šã•ã›ãŸå¾Œã€ã€Œå¯¾æˆ¦è¡¨ã‚’ç·¨é›†ã€ãƒšãƒ¼ã‚¸ã‹ã‚‰ã‚µã‚¤ãƒ‰ã‚’ç¢ºå®šã•ã›ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/draw_status_draft.html
 msgid "Highlighted cells relate to changes in position balance, as follows: <ul> <li>Red cells indicates that the team could not be allocated a position that maintains position balance.</li> <li>Yellow cells indicate that the team was previously imbalanced, and is given the best position possible in this draw, but is nonetheless still imbalanced.</li> <li>Green cells indicate that the team's previous imbalance is resolved with this draw.</li> </ul>"
-msgstr "色付きのセルはサイドの偏りに以下のような変化があったセルです：<ul><li>赤色：サイドバランスを維持するような割り当てが出来ませんでした。</li><li>黄色：それまでもサイドバランスが偏っており、最善を尽くしましたが解消できませんでした。</li><li>緑：それまではバランスが偏っていましたが、この対戦表で解決できました。</li></ul>"
+msgstr "è‰²ä»˜ãã®ã‚»ãƒ«ã¯ã‚µã‚¤ãƒ‰ã®åã‚Šã«ä»¥ä¸‹ã®ã‚ˆã†ãªå¤‰åŒ–ãŒã‚ã£ãŸã‚»ãƒ«ã§ã™ï¼š<ul><li>èµ¤è‰²ï¼šã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ã‚’ç¶­æŒã™ã‚‹ã‚ˆã†ãªå‰²ã‚Šå½“ã¦ãŒå‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸã€‚</li><li>é»„è‰²ï¼šãã‚Œã¾ã§ã‚‚ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ãŒåã£ã¦ãŠã‚Šã€æœ€å–„ã‚’å°½ãã—ã¾ã—ãŸãŒè§£æ¶ˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚</li><li>ç·‘ï¼šãã‚Œã¾ã§ã¯ãƒãƒ©ãƒ³ã‚¹ãŒåã£ã¦ã„ã¾ã—ãŸãŒã€ã“ã®å¯¾æˆ¦è¡¨ã§è§£æ±ºã§ãã¾ã—ãŸã€‚</li></ul>"
 
 #: draw/templates/draw_status_none.html
 #, python-format
 msgid "A draw for %(round)s hasn't yet been generated. To generate one, go to the <a href=\"%(availability_url)s\" class=\"alert-link\">Availability section</a>."
-msgstr "%(round)sの対戦表はまだありません。<a href=\"%(availability_url)s\" class=\"alert-link\">参加・利用状況</a>から生成してください。"
+msgstr "%(round)sã®å¯¾æˆ¦è¡¨ã¯ã¾ã ã‚ã‚Šã¾ã›ã‚“ã€‚<a href=\"%(availability_url)s\" class=\"alert-link\">å‚åŠ ãƒ»åˆ©ç”¨çŠ¶æ³</a>ã‹ã‚‰ç”Ÿæˆã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/position_balance.html
 msgid "It looks like sides aren't confirmed for some debates in this round. This position balance report is generated using the \"unconfirmed sides\" in the database, and as a consequence, may not make much sense. It's best to confirm sides in all debates before looking at this report."
-msgstr "一部の試合のサイドが確定していないようです。このサイドバランス報告はデータベースの未確定なサイドも含み計算しているため、あまり意味を持ちません。この報告を見る前にサイドを確定させてください。"
+msgstr "ä¸€éƒ¨ã®è©¦åˆã®ã‚µã‚¤ãƒ‰ãŒç¢ºå®šã—ã¦ã„ãªã„ã‚ˆã†ã§ã™ã€‚ã“ã®ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹å ±å‘Šã¯ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®æœªç¢ºå®šãªã‚µã‚¤ãƒ‰ã‚‚å«ã¿è¨ˆç®—ã—ã¦ã„ã‚‹ãŸã‚ã€ã‚ã¾ã‚Šæ„å‘³ã‚’æŒã¡ã¾ã›ã‚“ã€‚ã“ã®å ±å‘Šã‚’è¦‹ã‚‹å‰ã«ã‚µã‚¤ãƒ‰ã‚’ç¢ºå®šã•ã›ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/position_balance.html
 #, python-format
-msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
-msgstr "現在のサイドコスト関数は<strong>%(cost_func)s</strong>の<strong>%(exponent)s</strong>乗です。<a href=\"https://tabbycat.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">サイドコストの計算方法について詳しく知る</a>にはドキュメンテーションを参照してください。"
+msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
+msgstr "ç¾åœ¨ã®ã‚µã‚¤ãƒ‰ã‚³ã‚¹ãƒˆé–¢æ•°ã¯<strong>%(cost_func)s</strong>ã®<strong>%(exponent)s</strong>ä¹—ã§ã™ã€‚<a href=\"https://NekoTab.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">ã‚µã‚¤ãƒ‰ã‚³ã‚¹ãƒˆã®è¨ˆç®—æ–¹æ³•ã«ã¤ã„ã¦è©³ã—ãçŸ¥ã‚‹</a>ã«ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/templates/position_balance_break.html
 msgid "Position balance reports aren't computed for elimination rounds."
-msgstr "勝ち抜けラウンドではサイドバランス報告はありません。"
+msgstr "å‹ã¡æŠœã‘ãƒ©ã‚¦ãƒ³ãƒ‰ã§ã¯ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹å ±å‘Šã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/templates/position_balance_nonbp.html
 msgid "Position balance reports are only available for British Parliamentary tournaments."
-msgstr "サイドバランス報告はBritish Parliamentary形式の大会でのみ閲覧できます。"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹å ±å‘Šã¯British Parliamentaryå½¢å¼ã®å¤§ä¼šã§ã®ã¿é–²è¦§ã§ãã¾ã™ã€‚"
 
 #: draw/templates/position_balance_round1.html
 msgid "Position balance reports aren't computed for the first round of a tournament."
-msgstr "サイドバランス報告は2試合目以降閲覧できます。"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹å ±å‘Šã¯2è©¦åˆç›®ä»¥é™é–²è¦§ã§ãã¾ã™ã€‚"
 
 #: draw/views.py
 msgid "No debates in this round"
-msgstr "試合がありません"
+msgstr "è©¦åˆãŒã‚ã‚Šã¾ã›ã‚“"
 
 #: draw/views.py
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "%(round)sの対戦表"
+msgstr "%(round)sã®å¯¾æˆ¦è¡¨"
 
 #: draw/views.py
 msgid "Draws for Current Rounds"
-msgstr "現在進行中のラウンドの対戦表"
+msgstr "ç¾åœ¨é€²è¡Œä¸­ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨"
 
 #: draw/views.py
 #, python-format
 msgid "debates start at %(time)s (in %(time_zone)s)"
-msgstr "%(time_zone)s時間の%(time)sに試合開始"
+msgstr "%(time_zone)sæ™‚é–“ã®%(time)sã«è©¦åˆé–‹å§‹"
 
 #: draw/views.py
 #, python-format
 msgid "start times in time zone: %(time_zone)s"
-msgstr "%(time_zone)s時間の開始時刻"
+msgstr "%(time_zone)sæ™‚é–“ã®é–‹å§‹æ™‚åˆ»"
 
 #: draw/views.py
 #, python-format
 msgid "debate starts at %(time)s"
 msgid_plural "debates start at %(time)s"
-msgstr[0] "%(time)sに試合開始"
+msgstr[0] "%(time)sã«è©¦åˆé–‹å§‹"
 
 #: draw/views.py
 msgid "The draw for this round hasn't been released."
-msgstr "このラウンドの対戦表は公開されていません。"
+msgstr "ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ã¯å…¬é–‹ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: draw/views.py
 #, python-format
 msgid "All Debates for All Rounds of %(tournament)s"
-msgstr "%(tournament)sの全ラウンドの全試合"
+msgstr "%(tournament)sã®å…¨ãƒ©ã‚¦ãƒ³ãƒ‰ã®å…¨è©¦åˆ"
 
 #: draw/views.py
 msgid "Adjudicator Assignments"
-msgstr "ジャッジの配置"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®é…ç½®"
 
 #: draw/views.py
 msgid "Position"
-msgstr "サイド"
+msgstr "ã‚µã‚¤ãƒ‰"
 
 #: draw/views.py
 msgid "Team Pairings"
@@ -987,17 +987,17 @@ msgstr ""
 
 #: draw/views.py
 msgid "No Draw"
-msgstr "対戦表がありません"
+msgstr "å¯¾æˆ¦è¡¨ãŒã‚ã‚Šã¾ã›ã‚“"
 
 #: draw/views.py
 msgid "Draft Draw"
-msgstr "仮の対戦表"
+msgstr "ä»®ã®å¯¾æˆ¦è¡¨"
 
 #. Translators: e.g. "Affirmative: Break rank"
 #: draw/views.py
 #, python-format
 msgid "%(side)s: Break rank"
-msgstr "%(side)s：ブレイク順位"
+msgstr "%(side)sï¼šãƒ–ãƒ¬ã‚¤ã‚¯é †ä½"
 
 #. Translators: "BR" stands for "Break rank"
 #: draw/views.py
@@ -1006,103 +1006,104 @@ msgstr ""
 
 #: draw/views.py
 msgid "Draw with Details"
-msgstr "詳細な対戦表"
+msgstr "è©³ç´°ãªå¯¾æˆ¦è¡¨"
 
 #: draw/views.py
 msgid "Position Balance Report"
-msgstr "サイドバランス報告"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹å ±å‘Š"
 
 #: draw/views.py
 #, python-format
-msgid "Rényi entropy of order %(order)s"
-msgstr "オーダー%(order)sのRényiエントロピー"
+msgid "RÃ©nyi entropy of order %(order)s"
+msgstr "ã‚ªãƒ¼ãƒ€ãƒ¼%(order)sã®RÃ©nyiã‚¨ãƒ³ãƒˆãƒ­ãƒ”ãƒ¼"
 
-#. Translators: This is appended to the string "Rényi entropy of order 1.0"
+#. Translators: This is appended to the string "RÃ©nyi entropy of order 1.0"
 #: draw/views.py
 msgid " (<i>i.e.</i>, Shannon entropy)"
-msgstr " (<i>i.e.</i>, シャノンのエントロピー)"
+msgstr " (<i>i.e.</i>, ã‚·ãƒ£ãƒŽãƒ³ã®ã‚¨ãƒ³ãƒˆãƒ­ãƒ”ãƒ¼)"
 
 #: draw/views.py
 msgid "Teams with position imbalances"
-msgstr "サイドバランスに偏りのあるチーム"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ã«åã‚Šã®ã‚ã‚‹ãƒãƒ¼ãƒ "
 
 #: draw/views.py
 msgid "No teams with position imbalances! Hooray!"
-msgstr "おめでとう！サイドバランスに偏りはありません！"
+msgstr "ãŠã‚ã§ã¨ã†ï¼ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ã«åã‚Šã¯ã‚ã‚Šã¾ã›ã‚“ï¼"
 
 #: draw/views.py
 msgid "Annotated draw"
-msgstr "情報付き対戦表"
+msgstr "æƒ…å ±ä»˜ãå¯¾æˆ¦è¡¨"
 
 #: draw/views.py
 #, python-format
 msgid "Could not create draw for %(round)s, there was already a draw!"
-msgstr "%(round)sの対戦表は既に存在したので新たに生成できませんでした。"
+msgstr "%(round)sã®å¯¾æˆ¦è¡¨ã¯æ—¢ã«å­˜åœ¨ã—ãŸã®ã§æ–°ãŸã«ç”Ÿæˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚"
 
 #: draw/views.py
 #, python-format
 msgid "<p>The draw could not be created, for the following reason: <em>%(message)s</em></p>\n"
 "<p>Please fix this issue before attempting to create the draw.</p>"
-msgstr "<p>以下の理由で対戦表を生成できませんでした：<em>%(message)s</em></p><p>再生成する前にこれらの問題を修正してください。</p>"
+msgstr "<p>ä»¥ä¸‹ã®ç†ç”±ã§å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆã§ãã¾ã›ã‚“ã§ã—ãŸï¼š<em>%(message)s</em></p><p>å†ç”Ÿæˆã™ã‚‹å‰ã«ã“ã‚Œã‚‰ã®å•é¡Œã‚’ä¿®æ­£ã—ã¦ãã ã•ã„ã€‚</p>"
 
 #: draw/views.py
 #, python-format
 msgid "<p>The draw could not be created, because the following error occurred: <em>%(message)s</em></p>\n"
 "<p>If this issue persists and you're not sure how to resolve it, please contact the developers.</p>"
-msgstr "<p>以下のエラーのため対戦表を生成できませんでした：<em>%(message)s</em></p><p>もし解決方法がわからない場合、開発者に連絡してください。</p>"
+msgstr "<p>ä»¥ä¸‹ã®ã‚¨ãƒ©ãƒ¼ã®ãŸã‚å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆã§ãã¾ã›ã‚“ã§ã—ãŸï¼š<em>%(message)s</em></p><p>ã‚‚ã—è§£æ±ºæ–¹æ³•ãŒã‚ã‹ã‚‰ãªã„å ´åˆã€é–‹ç™ºè€…ã«é€£çµ¡ã—ã¦ãã ã•ã„ã€‚</p>"
 
 #: draw/views.py
 #, python-format
 msgid "<p>The team standings could not be generated, because the following error occurred: <em>%(message)s</em></p>\n"
 "<p>Because generating the draw uses the current team standings, this prevents the draw from being generated.</p>"
-msgstr "<p>以下のエラーのためチームの順位を計算できませんでした：<em>%(message)s</em></p><p>対戦表はチームの順位をもとに計算するため、対戦表も生成できません。</p>"
+msgstr "<p>ä»¥ä¸‹ã®ã‚¨ãƒ©ãƒ¼ã®ãŸã‚ãƒãƒ¼ãƒ ã®é †ä½ã‚’è¨ˆç®—ã§ãã¾ã›ã‚“ã§ã—ãŸï¼š<em>%(message)s</em></p><p>å¯¾æˆ¦è¡¨ã¯ãƒãƒ¼ãƒ ã®é †ä½ã‚’ã‚‚ã¨ã«è¨ˆç®—ã™ã‚‹ãŸã‚ã€å¯¾æˆ¦è¡¨ã‚‚ç”Ÿæˆã§ãã¾ã›ã‚“ã€‚</p>"
 
 #: draw/views.py
 msgid "Rooms were not auto-allocated because there are one or more adjudicator room constraints. You should run room allocations after allocating adjudicators."
-msgstr "部屋の制約条件があるジャッジがいたため、自動で部屋を割りふれれませんでした。ジャッジを配置した後に部屋を配置してください。"
+msgstr "éƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶ãŒã‚ã‚‹ã‚¸ãƒ£ãƒƒã‚¸ãŒã„ãŸãŸã‚ã€è‡ªå‹•ã§éƒ¨å±‹ã‚’å‰²ã‚Šãµã‚Œã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚ã‚¸ãƒ£ãƒƒã‚¸ã‚’é…ç½®ã—ãŸå¾Œã«éƒ¨å±‹ã‚’é…ç½®ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/views.py
 msgid "There is no draw."
-msgstr "対戦表がありません。"
+msgstr "å¯¾æˆ¦è¡¨ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: draw/views.py
 msgid "The draw had already been confirmed."
-msgstr "対戦表は既に承認済みです。"
+msgstr "å¯¾æˆ¦è¡¨ã¯æ—¢ã«æ‰¿èªæ¸ˆã¿ã§ã™ã€‚"
 
 #: draw/views.py
 msgid "Deleted the draw. You can now recreate it as normal."
-msgstr "対戦表を削除しました。再び生成できます。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’å‰Šé™¤ã—ã¾ã—ãŸã€‚å†ã³ç”Ÿæˆã§ãã¾ã™ã€‚"
 
 #: draw/views.py
 msgid "The draw has already been released."
-msgstr "対戦表は既にリリースされています。"
+msgstr "å¯¾æˆ¦è¡¨ã¯æ—¢ã«ãƒªãƒªãƒ¼ã‚¹ã•ã‚Œã¦ã„ã¾ã™ã€‚"
 
 #: draw/views.py
 msgid "The draw must be confirmed before being released."
-msgstr "対戦表をリリースする前に承認してください。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’ãƒªãƒªãƒ¼ã‚¹ã™ã‚‹å‰ã«æ‰¿èªã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/views.py
 msgid "Released the draw."
-msgstr "対戦表を公開しました。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’å…¬é–‹ã—ã¾ã—ãŸã€‚"
 
 #: draw/views.py
 msgid "The draw had been unreleased."
-msgstr "対戦表を非公開にしました。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’éžå…¬é–‹ã«ã—ã¾ã—ãŸã€‚"
 
 #: draw/views.py
 msgid "Unreleased the draw."
-msgstr "対戦表を非公開にしました。"
+msgstr "å¯¾æˆ¦è¡¨ã‚’éžå…¬é–‹ã«ã—ã¾ã—ãŸã€‚"
 
 #: draw/views.py
 #, python-format
 msgid "Sorry, \"%(input)s\" isn't a valid time. It must be in 24-hour format, with a colon, for example: \"13:57\"."
-msgstr "「%(input)s」は有効な時間設定ではありません。「13:57」のようにコロン区切りの24時間形式で入力してください。"
+msgstr "ã€Œ%(input)sã€ã¯æœ‰åŠ¹ãªæ™‚é–“è¨­å®šã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ã€Œ13:57ã€ã®ã‚ˆã†ã«ã‚³ãƒ­ãƒ³åŒºåˆ‡ã‚Šã®24æ™‚é–“å½¢å¼ã§å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚"
 
 #: draw/views.py
 msgid "Side Pre-Allocations"
-msgstr "サイドの事前配置"
+msgstr "ã‚µã‚¤ãƒ‰ã®äº‹å‰é…ç½®"
 
 #: draw/views.py
 msgid "Edit Matchups"
-msgstr "対戦表を編集"
+msgstr "å¯¾æˆ¦è¡¨ã‚’ç·¨é›†"
+
 

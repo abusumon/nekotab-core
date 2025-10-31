@@ -1,4 +1,4 @@
-import json
+﻿import json
 import logging
 
 from django.conf import settings
@@ -25,7 +25,7 @@ from tournaments.models import Round
 from users.permissions import Permission
 from utils.misc import redirect_tournament, reverse_tournament
 from utils.mixins import AdministratorMixin, AssistantMixin
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 from utils.views import ModelFormSetView, VueTableTemplateView
 
 from .models import Adjudicator, Institution, Speaker, SpeakerCategory, Team
@@ -42,11 +42,11 @@ logger = logging.getLogger(__name__)
 class BaseParticipantsListView(TournamentMixin, VueTableTemplateView):
 
     page_title = gettext_lazy("Participants")
-    page_emoji = '🚌'
+    page_emoji = 'ðŸšŒ'
 
     def get_tables(self):
         adjudicators = self.tournament.adjudicator_set.select_related('institution')
-        adjs_table = TabbycatTableBuilder(view=self, title=_("Adjudicators"), sort_key="name")
+        adjs_table = NekoTabTableBuilder(view=self, title=_("Adjudicators"), sort_key="name")
         adjs_table.add_adjudicator_columns(adjudicators)
 
         speakers = Speaker.objects.filter(team__tournament=self.tournament).select_related(
@@ -55,7 +55,7 @@ class BaseParticipantsListView(TournamentMixin, VueTableTemplateView):
             speakers = speakers.order_by('team__code_name')
         else:
             speakers = speakers.order_by('team__short_name')
-        speakers_table = TabbycatTableBuilder(view=self, title=_("Speakers"),
+        speakers_table = NekoTabTableBuilder(view=self, title=_("Speakers"),
                 sort_key="team", admin=self.admin)
         speakers_table.add_speaker_columns(speakers)
         speakers_table.add_team_columns([speaker.team for speaker in speakers])
@@ -88,7 +88,7 @@ class PublicParticipantsListView(PublicTournamentPageMixin, BaseParticipantsList
 class BaseInstitutionsListView(TournamentMixin, VueTableTemplateView):
 
     page_title = gettext_lazy("Institutions")
-    page_emoji = '🏫'
+    page_emoji = 'ðŸ«'
 
     def get_table(self):
         institutions = Institution.objects.select_related('region').filter(
@@ -102,12 +102,12 @@ class BaseInstitutionsListView(TournamentMixin, VueTableTemplateView):
                 adjudicator__tournament=self.tournament, adjudicator__independent=True), distinct=True),
         ).distinct()
 
-        table = TabbycatTableBuilder(view=self, sort_key='code')
+        table = NekoTabTableBuilder(view=self, sort_key='code')
         table.add_column({'key': 'code', 'title': _("Code")}, [escape(i.code) for i in institutions])
         table.add_column({'key': 'name', 'title': _("Full name")}, [escape(i.name) for i in institutions])
         if any(i.region is not None for i in institutions):
             table.add_column({'key': 'region', 'title': _("Region")},
-                [escape(i.region.name) if i.region else "—" for i in institutions])
+                [escape(i.region.name) if i.region else "â€”" for i in institutions])
         table.add_column({'key': 'nteams', 'title': _("Teams"), 'tooltip': _("Number of teams")},
             [i.nteams for i in institutions])
         table.add_column({'key': 'nadjs', 'title': _("Adjs"),
@@ -138,15 +138,15 @@ class PublicInstitutionsListView(PublicTournamentPageMixin, BaseInstitutionsList
 class BaseCodeNamesListView(TournamentMixin, VueTableTemplateView):
 
     page_title = gettext_lazy("Code Names")
-    page_emoji = '🕵'
+    page_emoji = 'ðŸ•µ'
 
     def get_table(self):
         t = self.tournament
         teams = t.team_set.select_related('institution').prefetch_related('speaker_set')
-        table = TabbycatTableBuilder(view=self, sort_key='code_name')
+        table = NekoTabTableBuilder(view=self, sort_key='code_name')
         table.add_column(
             {'key': 'code_name', 'title': _("Code name")},
-            [{'text': escape(t.code_name) or "—"} for t in teams],
+            [{'text': escape(t.code_name) or "â€”"} for t in teams],
         )
         table.add_team_columns(teams)
         return table
@@ -262,7 +262,7 @@ class BaseAdjudicatorRecordView(BaseRecordView):
     model = Adjudicator
     model_kwarg = 'debateadjudications'
     template_name = 'adjudicator_record.html'
-    page_emoji = '⚖'
+    page_emoji = 'âš–'
 
     table_title = _("Previous Rounds")
 
@@ -392,11 +392,11 @@ class EditSpeakerCategoryEligibilityView(AdministratorMixin, TournamentMixin, Vu
     # form_class = forms.SpeakerCategoryEligibilityForm
     template_name = 'edit_speaker_eligibility.html'
     page_title = _("Speaker Category Eligibility")
-    page_emoji = '🍯'
+    page_emoji = 'ðŸ¯'
     edit_permission = Permission.EDIT_SPEAKER_ELIGIBILITY
 
     def get_table(self):
-        table = TabbycatTableBuilder(view=self, sort_key='team')
+        table = NekoTabTableBuilder(view=self, sort_key='team')
         speakers = Speaker.objects.filter(team__tournament=self.tournament).select_related(
             'team', 'team__institution').prefetch_related('categories', 'team__speaker_set')
         table.add_speaker_columns(speakers, categories=False)
@@ -452,3 +452,4 @@ class UpdateEligibilityEditView(LogActionMixin, AdministratorMixin, TournamentMi
             return JsonResponse({'status': 'false', 'message': message}, status=500)
 
         return JsonResponse(json.dumps(True), safe=False)
+

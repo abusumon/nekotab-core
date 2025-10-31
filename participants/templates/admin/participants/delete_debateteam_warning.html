@@ -1,18 +1,18 @@
-{% load i18n %}
+﻿{% load i18n %}
 
 {% if protected %}
   <div style="background-color: #f0dada; padding: 15px 15px 5px; margin-bottom: 20px; border-radius: 4px;">
     <p>
       {% if object_name %}
         {% blocktrans trimmed %}
-          <strong>Warning:</strong> If there are “debate team” objects in the
+          <strong>Warning:</strong> If there are â€œdebate teamâ€ objects in the
           above list, <strong>you probably shouldn't delete this
           {{ object_name }}</strong>.
         {% endblocktrans %}
       {% else %}
         {# objects_name can be either singular or plural (because that's how Django works) #}
         {% blocktrans trimmed %}
-          <strong>Warning:</strong> If there are “debate team” objects in the
+          <strong>Warning:</strong> If there are â€œdebate teamâ€ objects in the
           above list, <strong>you probably shouldn't delete the selected
           {{ objects_name }}</strong>.
         {% endblocktrans %}
@@ -25,7 +25,7 @@
         normally breaks the tab</strong>, even if you think you don't need those
         results anymore. If a team has debated and is withdrawing from the
         tournament, you should <strong>not</strong> delete it. Just mark the
-        team inactive under the “Availability” section of the Tabbycat admin area.
+        team inactive under the â€œAvailabilityâ€ section of the NekoTab admin area.
       {% endblocktrans %}
     </p>
     {% if opts.model_name == 'institution' %}
@@ -41,15 +41,16 @@
         {% blocktrans trimmed %}
           If you're very sure about deleting this {{ object_name }}, please
           delete the above objects first, and be sure to heed the warning that
-          you will see on the “debate team” objects page before proceeding.
+          you will see on the â€œdebate teamâ€ objects page before proceeding.
         {% endblocktrans %}
       {% else %}
         {% blocktrans trimmed %}
           If you're very sure about deleting these {{ objects_name }}, please
           delete the above objects first, and be sure to heed the warning that
-          you will see on the “debate team” objects page before proceeding.
+          you will see on the â€œdebate teamâ€ objects page before proceeding.
         {% endblocktrans %}
       {% endif %}
     </p>
   </div>
 {% endif %}
+

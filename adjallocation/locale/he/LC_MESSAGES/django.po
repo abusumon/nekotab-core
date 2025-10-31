@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2023-08-10 12:47\n"
@@ -11,21 +11,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: he\n"
-"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
 msgid "There are no available adjudicators. Ensure there are adjudicators who have been marked as available for this round before auto-allocating."
-msgstr "אין שופטים זמינים. וודאו כי סימנתם שופטים כ\"זמינים\" עבור סיבוב זה לפני הפעלת שיבוץ אוטומטי."
+msgstr "××™×Ÿ ×©×•×¤×˜×™× ×–×ž×™× ×™×. ×•×•×“××• ×›×™ ×¡×™×ž× ×ª× ×©×•×¤×˜×™× ×›\"×–×ž×™× ×™×\" ×¢×‘×•×¨ ×¡×™×‘×•×‘ ×–×” ×œ×¤× ×™ ×”×¤×¢×œ×ª ×©×™×‘×•×¥ ××•×˜×•×ž×˜×™."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "%(count)s score is larger than the maximum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are larger than the maximum permitted adjudicator score (%(score).1f)."
-msgstr[0] "הניקוד %(count)s גבוה יותר מניקוד השופט המירבי שהותר (%(score).1f)."
+msgstr[0] "×”× ×™×§×•×“ %(count)s ×’×‘×•×” ×™×•×ª×¨ ×ž× ×™×§×•×“ ×”×©×•×¤×˜ ×”×ž×™×¨×‘×™ ×©×”×•×ª×¨ (%(score).1f)."
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
@@ -34,23 +34,23 @@ msgstr[3] ""
 #, python-format
 msgid "%(count)s score is smaller than the minimum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are smaller than the minimum permitted adjudicator score (%(score).1f)."
-msgstr[0] "%(count)s הניקוד נמוך מניקוד השופט המזערי שהותר (%(score).1f)."
+msgstr[0] "%(count)s ×”× ×™×§×•×“ × ×ž×•×š ×ž× ×™×§×•×“ ×”×©×•×¤×˜ ×”×ž×–×¢×¨×™ ×©×”×•×ª×¨ (%(score).1f)."
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
 #: adjallocation/allocators/hungarian.py
 msgid "There are no adjudicators eligible to be a chair or panellist. Try changing the \"Minimum feedback score required to be allocated as chair or panellist\" setting to something lower than at least some adjudicators' current scores, and try again."
-msgstr "אין שופטים המתאימים להיות יו\"ר או חבר ועד. נסו לשנות את השדה \"ניקוד משוב מינימלי נדרש לשיבוץ כיו\"ר או חבר ועד\" לערך נמוך יותר מכמה שופטים, ונסו שנית."
+msgstr "××™×Ÿ ×©×•×¤×˜×™× ×”×ž×ª××™×ž×™× ×œ×”×™×•×ª ×™×•\"×¨ ××• ×—×‘×¨ ×•×¢×“. × ×¡×• ×œ×©× ×•×ª ××ª ×”×©×“×” \"× ×™×§×•×“ ×ž×©×•×‘ ×ž×™× ×™×ž×œ×™ × ×“×¨×© ×œ×©×™×‘×•×¥ ×›×™×•\"×¨ ××• ×—×‘×¨ ×•×¢×“\" ×œ×¢×¨×š × ×ž×•×š ×™×•×ª×¨ ×ž×›×ž×” ×©×•×¤×˜×™×, ×•× ×¡×• ×©× ×™×ª."
 
 #: adjallocation/allocators/hungarian.py
 msgid "There are no debates for this round. Maybe you haven't created a draw yet?"
-msgstr "אין דיבייטים בסיבוב זה. האם יצרת כבר שיבוץ?"
+msgstr "××™×Ÿ ×“×™×‘×™×™×˜×™× ×‘×¡×™×‘×•×‘ ×–×”. ×”×× ×™×¦×¨×ª ×›×‘×¨ ×©×™×‘×•×¥?"
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "There are %(debate_count)s debates but only %(adj_count)s voting adjudicators."
-msgstr "יש %(debate_count)s חדרי דיבייט אך רק %(adj_count)s שופטים.ות עם זכות הצבעה."
+msgstr "×™×© %(debate_count)s ×—×“×¨×™ ×“×™×‘×™×™×˜ ××š ×¨×§ %(adj_count)s ×©×•×¤×˜×™×.×•×ª ×¢× ×–×›×•×ª ×”×¦×‘×¢×”."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
@@ -178,7 +178,7 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "team"
-msgstr "קבוצה"
+msgstr "×§×‘×•×¦×”"
 
 #: adjallocation/models.py
 msgid "adjudicator-team conflict"
@@ -226,7 +226,7 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "round"
-msgstr "סיבוב"
+msgstr "×¡×™×‘×•×‘"
 
 #: adjallocation/models.py
 msgid "importance"
@@ -472,4 +472,5 @@ msgstr[3] ""
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
 msgstr ""
+
 

@@ -1,4 +1,4 @@
-{% extends "tables/base_vue_table.html" %}
+﻿{% extends "tables/base_vue_table.html" %}
 {% load debate_tags i18n standingsformat %}
 
 {% block page-subnav-sections %}
@@ -51,7 +51,7 @@
   {% if round.draw_type == round.DrawType.MANUAL and round.debate_set.count == 0 %}
     {% roundurl 'edit-debate-teams' round as edit_matchups_url %}
     {% blocktrans trimmed asvar message %}
-      The draw type for this round is set to <strong>manual</strong>, so Tabbycat has just made a
+      The draw type for this round is set to <strong>manual</strong>, so NekoTab has just made a
       blank draw. Head on over to
       <a href="{{ edit_matchups_url }}" class="alert-link">Edit Sides/Matchups</a>
       to fill it in.
@@ -72,7 +72,7 @@
 
   {% if round.is_break_round %}
     {% blocktrans trimmed asvar p1 %}
-      Tabbycat assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as "unconfirmed", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the "Edit Sides/Matchups" page, even if you wish to accept Tabbycat's random assignment.
+      NekoTab assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as "unconfirmed", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the "Edit Sides/Matchups" page, even if you wish to accept NekoTab's random assignment.
     {% endblocktrans %}
     {% include "components/explainer-card.html" with type="warning" %}
   {% endif %}
@@ -93,3 +93,4 @@
 
   {{ block.super }}
 {% endblock %}
+

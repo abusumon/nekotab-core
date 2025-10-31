@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 from typing import Union
 
 from django.core.exceptions import ValidationError
@@ -27,7 +27,7 @@ PROHIBITED_TOURNAMENT_SLUGS = [
 def validate_tournament_slug(value):
     if value in PROHIBITED_TOURNAMENT_SLUGS:
         raise ValidationError(_("You can't use this as a tournament slug, "
-            "because it's reserved for a Tabbycat system URL. Please try "
+            "because it's reserved for a NekoTab system URL. Please try "
             "another one."))
 
 
@@ -621,3 +621,4 @@ class ScheduleEvent(models.Model):
 
     def __str__(self):
         return "[%s] %s (%s)" % (self.tournament, self.title, self.start_time)
+

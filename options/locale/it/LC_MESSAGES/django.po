@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: it\n"
-"X-Crowdin-File: /develop/tabbycat/options/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/options/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 940\n"
 
@@ -84,7 +84,7 @@ msgstr "Intervallo tra i punteggi consentito per speech sostanziali, es. punti i
 
 #: options/preferences.py
 msgid "The largest amount by which one team can beat another (0 means no limit)"
-msgstr "La più grande quantità con la quale una squadra può battere un'altra (0 significa nessun limite)"
+msgstr "La piÃ¹ grande quantitÃ  con la quale una squadra puÃ² battere un'altra (0 significa nessun limite)"
 
 #: options/preferences.py
 msgid "Maximum margin"
@@ -144,7 +144,7 @@ msgstr "Regole del sorteggio"
 
 #: options/preferences.py
 msgid "The auto-allocator will only take adjudicators at or above this score as voting panellists"
-msgstr "Il sistema automatico prenderà solo gli giudici a questo punteggio o superiore come giudici votanti"
+msgstr "Il sistema automatico prenderÃ  solo gli giudici a questo punteggio o superiore come giudici votanti"
 
 #: options/preferences.py
 msgid "Minimum adjudicator score to vote"
@@ -152,47 +152,47 @@ msgstr "Punteggio minimo giudice per votare"
 
 #: options/preferences.py
 msgid "Penalty applied by adjudicator auto-allocator for conflicts"
-msgstr "Penalità applicata a causa conflitti dal sistema automatico dei giudici"
+msgstr "PenalitÃ  applicata a causa conflitti dal sistema automatico dei giudici"
 
 #: options/preferences.py
 msgid "Adjudicator conflict penalty"
-msgstr "Penalità conflitto giudice"
+msgstr "PenalitÃ  conflitto giudice"
 
 #: options/preferences.py
 msgid "Penalty applied by adjudicator auto-allocator for history"
-msgstr "Penalità applicata a causa di cronologia dal sistema automatico dei giudici"
+msgstr "PenalitÃ  applicata a causa di cronologia dal sistema automatico dei giudici"
 
 #: options/preferences.py
 msgid "Adjudicator history penalty"
-msgstr "Penalità cronologia giudice"
+msgstr "PenalitÃ  cronologia giudice"
 
 #: options/preferences.py
 msgid "Penality applied by preformed panel auto-allocator for priority mismatch"
-msgstr "Penalità applicata dal sistema automatico del pannello preformato per la mancata corrispondenza di priorità"
+msgstr "PenalitÃ  applicata dal sistema automatico del pannello preformato per la mancata corrispondenza di prioritÃ "
 
 #: options/preferences.py
 msgid "Importance mismatch penalty"
-msgstr "Penalità di disallineamento importanza"
+msgstr "PenalitÃ  di disallineamento importanza"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams seeing their own institution"
-msgstr "Penalità applicata con metodo di prevenzione dei conflitti per le squadre che incontrano il proprio istituto"
+msgstr "PenalitÃ  applicata con metodo di prevenzione dei conflitti per le squadre che incontrano il proprio istituto"
 
 #: options/preferences.py
 msgid "Team institution penalty"
-msgstr "Penalità istituto squadra"
+msgstr "PenalitÃ  istituto squadra"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams seeing each other twice or more"
-msgstr "Penalità applicata con metodo di prevenzione dei conflitti per le squadre che si incontrano due o più volte"
+msgstr "PenalitÃ  applicata con metodo di prevenzione dei conflitti per le squadre che si incontrano due o piÃ¹ volte"
 
 #: options/preferences.py
 msgid "Team history penalty"
-msgstr "Penalità cronologia squadra"
+msgstr "PenalitÃ  cronologia squadra"
 
 #: options/preferences.py
 msgid "If checked, the draw will try to avoid pairing teams against their own institution"
-msgstr "Se selezionato, il sorteggio cercherà di evitare l'accoppiamento di squadre contro il proprio istituto"
+msgstr "Se selezionato, il sorteggio cercherÃ  di evitare l'accoppiamento di squadre contro il proprio istituto"
 
 #: options/preferences.py
 msgid "Avoid same institution"
@@ -200,7 +200,7 @@ msgstr "Evitare lo stesso istituto"
 
 #: options/preferences.py
 msgid "If checked, the draw will try to avoid having teams see each other twice"
-msgstr "Se selezionato, il sorteggio cercherà di evitare che le squadre si incontrino due volte"
+msgstr "Se selezionato, il sorteggio cercherÃ  di evitare che le squadre si incontrino due volte"
 
 #: options/preferences.py
 msgid "Avoid team history"
@@ -311,8 +311,8 @@ msgid "Manually enter from ballot"
 msgstr "Inserimento manuale dal ballot"
 
 #: options/preferences.py
-msgid "Slide: 1 vs 6, 2 vs 7, …. Fold: 1 vs 10, 2 vs 9, …. Adjacent: 1 vs 2, 3 vs 4, …."
-msgstr "Scivola: 1 vs 6, 2 vs 7, …. Incrocia: 1 vs 10, 2 vs 9, …. Adiacente: 1 vs 2, 3 vs 4, …."
+msgid "Slide: 1 vs 6, 2 vs 7, â€¦. Fold: 1 vs 10, 2 vs 9, â€¦. Adjacent: 1 vs 2, 3 vs 4, â€¦."
+msgstr "Scivola: 1 vs 6, 2 vs 7, â€¦. Incrocia: 1 vs 10, 2 vs 9, â€¦. Adiacente: 1 vs 2, 3 vs 4, â€¦."
 
 #: options/preferences.py
 msgid "Pairing method"
@@ -336,7 +336,7 @@ msgstr "Incrocia in alto, il resto adiacente"
 
 #: options/preferences.py
 msgid "Method used to try to avoid teams facing each other multiple times or their own institution (see documentation for further details)"
-msgstr "Metodo utilizzato per cercare di evitare che le squadre si affrontino più volte o il proprio istituto (vedi documentazione per ulteriori dettagli)"
+msgstr "Metodo utilizzato per cercare di evitare che le squadre si affrontino piÃ¹ volte o il proprio istituto (vedi documentazione per ulteriori dettagli)"
 
 #: options/preferences.py
 msgid "Conflict avoidance method"
@@ -348,7 +348,7 @@ msgstr "Off"
 
 #: options/preferences.py
 msgid "One-up-one-down"
-msgstr "Uno sù-uno giù"
+msgstr "Uno sÃ¹-uno giÃ¹"
 
 #: options/preferences.py
 msgid "Minimum cost matching (pullups determined beforehand)"
@@ -376,7 +376,7 @@ msgstr "Scegli tra le squadre che sono state tirate in alto il minor numero di v
 
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by wins so far"
-msgstr "Scegli tra squadre con la forza dei dibattiti vinti più bassi finora"
+msgstr "Scegli tra squadre con la forza dei dibattiti vinti piÃ¹ bassi finora"
 
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by speaks so far"
@@ -392,7 +392,7 @@ msgstr ""
 
 #: options/preferences.py
 msgid "In BP, how pullups are distributed. Only \"Anywhere\" is WUDC-compliant."
-msgstr "In BP, come vengono distribuiti gli spostamenti. Solo \"Dovunque\" è conforme a WUDC."
+msgstr "In BP, come vengono distribuiti gli spostamenti. Solo \"Dovunque\" Ã¨ conforme a WUDC."
 
 #: options/preferences.py
 msgid "BP pullup distribution"
@@ -419,24 +419,24 @@ msgid "Simple"
 msgstr "Semplice"
 
 #: options/preferences.py
-msgid "Rényi entropy"
-msgstr "Rényi entropy"
+msgid "RÃ©nyi entropy"
+msgstr "RÃ©nyi entropy"
 
 #: options/preferences.py
 msgid "Population variance"
 msgstr "Varianza di popolazione"
 
 #: options/preferences.py
-msgid "Rényi order α, if BP position cost uses Rényi entropy. Shannon is α = 1, Hartley is α = 0, collision is α = 2. See documentation for details."
-msgstr "Rényi order α, se il costo di una posizione BP usa Rényi entropy. Shannon è α = 1, Hartley è α = 0, la collisione è α = 2. Vedere la documentazione per i dettagli."
+msgid "RÃ©nyi order Î±, if BP position cost uses RÃ©nyi entropy. Shannon is Î± = 1, Hartley is Î± = 0, collision is Î± = 2. See documentation for details."
+msgstr "RÃ©nyi order Î±, se il costo di una posizione BP usa RÃ©nyi entropy. Shannon Ã¨ Î± = 1, Hartley Ã¨ Î± = 0, la collisione Ã¨ Î± = 2. Vedere la documentazione per i dettagli."
 
 #: options/preferences.py
-msgid "Rényi order (BP)"
-msgstr "Rényi order (BP)"
+msgid "RÃ©nyi order (BP)"
+msgstr "RÃ©nyi order (BP)"
 
 #: options/preferences.py
 msgid "The BP position cost is raised to this power; higher exponents bias towards resolving fewer large position imbalances over more small ones. See documentation for details."
-msgstr "Il costo della posizione BP è aumentato a questa base: esponenti più elevati tendono a risolvere meno squilibri di posizione di grandi dimensioni su quelli più piccoli. Vedere la documentazione per i dettagli."
+msgstr "Il costo della posizione BP Ã¨ aumentato a questa base: esponenti piÃ¹ elevati tendono a risolvere meno squilibri di posizione di grandi dimensioni su quelli piÃ¹ piccoli. Vedere la documentazione per i dettagli."
 
 #: options/preferences.py
 msgid "BP position cost exponent"
@@ -863,7 +863,7 @@ msgid "Top replies cutoff"
 msgstr ""
 
 #: options/preferences.py
-msgid "Enables public display of all motions and win/loss/selection information. This includes all motions — whether they have been marked as released or not. Intended for use after the tournament."
+msgid "Enables public display of all motions and win/loss/selection information. This includes all motions â€” whether they have been marked as released or not. Intended for use after the tournament."
 msgstr ""
 
 #: options/preferences.py
@@ -1375,7 +1375,7 @@ msgid "Email status secret key"
 msgstr ""
 
 #: options/preferences.py
-msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in Tabbycat (for confirmation or checking)"
+msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in NekoTab (for confirmation or checking)"
 msgstr ""
 
 #: options/preferences.py
@@ -1823,7 +1823,7 @@ msgid "Manually Set Current Round"
 msgstr ""
 
 #: options/templates/preferences_index.html
-msgid "Tabbycat will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
+msgid "NekoTab will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
 msgstr ""
 
 #: options/templates/preferences_index.html
@@ -1911,4 +1911,5 @@ msgstr ""
 #, python-format
 msgid "Tournament options saved based on preset %(name)s."
 msgstr ""
+
 

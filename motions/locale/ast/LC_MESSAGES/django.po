@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-24 07:48+1000\n"
 "PO-Revision-Date: 2024-06-23 21:59\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ast\n"
-"X-Crowdin-File: /develop/tabbycat/motions/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/motions/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 936\n"
 
 #: motions/apps.py motions/templates/public_motions.html
@@ -140,7 +140,7 @@ msgstr ""
 
 #: motions/statistics.py
 #, python-format
-msgid "χ² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced — at a %(level)s level of significance."
+msgid "Ï‡Â² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced â€” at a %(level)s level of significance."
 msgstr ""
 
 #: motions/statistics.py
@@ -149,7 +149,7 @@ msgstr ""
 
 #: motions/statistics.py
 #, python-format
-msgid "χ² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
+msgid "Ï‡Â² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
 msgstr ""
 
 #: motions/templates/motion_global_statistics.html
@@ -191,7 +191,7 @@ msgstr ""
 #: motions/templates/motion_statistics_bp_elim.html
 msgid "eliminated"
 msgstr "\t\n"
-"barriáu"
+"barriÃ¡u"
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgctxt "abbreviation for 'eliminated', used when not enough space"
@@ -214,11 +214,11 @@ msgstr "Gobiernu"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Opposition"
-msgstr "Oposición"
+msgstr "OposiciÃ³n"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Average Points per bench"
-msgstr "Puntos permediu per cámares (alt. vs bax.)"
+msgstr "Puntos permediu per cÃ¡mares (alt. vs bax.)"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Opening"
@@ -236,15 +236,15 @@ msgstr "Puntos permediu per bancada (go. vs opo.)"
 #, python-format
 msgid "average points per position (%(ndebates)s debate)"
 msgid_plural "average points per position (%(ndebates)s debates)"
-msgstr[0] "puntos permediu per posición (%(ndebates)s debate)"
-msgstr[1] "puntos permediu per posición (%(ndebates)s debates)"
+msgstr[0] "puntos permediu per posiciÃ³n (%(ndebates)s debate)"
+msgstr[1] "puntos permediu per posiciÃ³n (%(ndebates)s debates)"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 #, python-format
 msgid "%(count)s result for %(side)s (%(percentage)s%%) were for %(points)s points"
 msgid_plural "%(count)s results for %(side)s (%(percentage)s%%) were for %(points)s points"
-msgstr[0] "%(count)s resultáu pa %(side)s (%(percentage)s%%) fueron per %(points)s puntos"
-msgstr[1] "%(count)s resultáu pa %(side)s (%(percentage)s%%) fueron per %(points)s puntos"
+msgstr[0] "%(count)s resultÃ¡u pa %(side)s (%(percentage)s%%) fueron per %(points)s puntos"
+msgstr[1] "%(count)s resultÃ¡u pa %(side)s (%(percentage)s%%) fueron per %(points)s puntos"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 #, python-format
@@ -345,7 +345,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: motions/templates/show.html
-msgid "There are no motions for this round entered into Tabbycat."
+msgid "There are no motions for this round entered into NekoTab."
 msgstr ""
 
 #: motions/utils.py
@@ -403,5 +403,6 @@ msgstr ""
 
 #: motions/views.py
 msgid "Motion Statistics"
-msgstr "Estadístiques de les mociones"
+msgstr "EstadÃ­stiques de les mociones"
+
 

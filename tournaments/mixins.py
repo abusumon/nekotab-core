@@ -1,4 +1,4 @@
-import json
+﻿import json
 import logging
 
 from asgiref.sync import async_to_sync
@@ -25,7 +25,7 @@ from participants.serializers import InstitutionSerializer
 from tournaments.serializers import RoundSerializer, TournamentSerializer
 from utils.misc import (add_query_string_parameter, redirect_tournament,
                         reverse_round, reverse_tournament)
-from utils.mixins import AssistantMixin, CacheMixin, TabbycatPageTitlesMixin
+from utils.mixins import AssistantMixin, CacheMixin, NekoTabPageTitlesMixin
 from utils.serializers import django_rest_json_render
 
 from .models import Round, Tournament
@@ -73,7 +73,7 @@ class TournamentFromUrlMixin:
         return tournament
 
 
-class TournamentMixin(TabbycatPageTitlesMixin, TournamentFromUrlMixin):
+class TournamentMixin(NekoTabPageTitlesMixin, TournamentFromUrlMixin):
     """Mixin for views that relate to a tournament, and are specified as
     relating to a tournament in the URL.
 
@@ -99,7 +99,7 @@ class TournamentMixin(TabbycatPageTitlesMixin, TournamentFromUrlMixin):
 
         if not getattr(settings, 'DISABLE_SENTRY', False):
             from sentry_sdk import set_context
-            set_context("Tabbycat debug info", {
+            set_context("NekoTab debug info", {
                 "Tab director email": getattr(settings, 'TAB_DIRECTOR_EMAIL', "not provided"),
                 "Tournament preferences": self.tournament.preferences.all(),
             })
@@ -119,7 +119,7 @@ class TournamentMixin(TabbycatPageTitlesMixin, TournamentFromUrlMixin):
                     "for the tournament %(tournament)s. Please contact a "
                     "tab director and ask them to investigate.") %
                     {'tournament': t.name})
-                url = add_query_string_parameter(reverse('tabbycat-index'), 'redirect', 'false')
+                url = add_query_string_parameter(reverse('NekoTab-index'), 'redirect', 'false')
                 return redirect(url)
 
         try:
@@ -503,3 +503,4 @@ class DebateDragAndDropMixin(DragAndDropMixin):
         if self.prefetch_teams:
             populate_win_counts([dt.team for debate in draw for dt in debate.debateteam_set.all()])
         return draw
+

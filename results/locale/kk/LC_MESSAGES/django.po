@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:47\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: kk\n"
-"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
@@ -35,7 +35,7 @@ msgstr ""
 
 #: results/apps.py results/templates/public_results_index.html results/views.py
 msgid "Results"
-msgstr "Нәтиже"
+msgstr "ÐÓ™Ñ‚Ð¸Ð¶Ðµ"
 
 #: results/forms.py
 msgid "Tournament password"
@@ -190,7 +190,7 @@ msgstr ""
 
 #: results/models.py
 msgid "confirmed"
-msgstr "бекітілген"
+msgstr "Ð±ÐµÐºÑ–Ñ‚Ñ–Ð»Ð³ÐµÐ½"
 
 #: results/models.py
 msgid "from private URL"
@@ -222,11 +222,11 @@ msgstr ""
 
 #: results/models.py
 msgid "debate"
-msgstr "пікірсайыс"
+msgstr "Ð¿Ñ–ÐºÑ–Ñ€ÑÐ°Ð¹Ñ‹Ñ"
 
 #: results/models.py
 msgid "motion"
-msgstr "қарар"
+msgstr "Ò›Ð°Ñ€Ð°Ñ€"
 
 #: results/models.py
 msgid "discarded"
@@ -250,7 +250,7 @@ msgstr ""
 
 #: results/models.py
 msgid "ballot submission"
-msgstr "төреші парағын тапсыру"
+msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð¿Ð°Ñ€Ð°Ò“Ñ‹Ð½ Ñ‚Ð°Ð¿ÑÑ‹Ñ€Ñƒ"
 
 #: results/models.py
 msgid "ballot submissions"
@@ -267,15 +267,15 @@ msgstr ""
 
 #: results/models.py
 msgid "debate adjudicator"
-msgstr "ойын төрешісі"
+msgstr "Ð¾Ð¹Ñ‹Ð½ Ñ‚Ó©Ñ€ÐµÑˆÑ–ÑÑ–"
 
 #: results/models.py
 msgid "debate team"
-msgstr "пікірталастырушы топ"
+msgstr "Ð¿Ñ–ÐºÑ–Ñ€Ñ‚Ð°Ð»Ð°ÑÑ‚Ñ‹Ñ€ÑƒÑˆÑ‹ Ñ‚Ð¾Ð¿"
 
 #: results/models.py
 msgid "win"
-msgstr "жеңіс"
+msgstr "Ð¶ÐµÒ£Ñ–Ñ"
 
 #: results/models.py
 msgid "margin"
@@ -283,7 +283,7 @@ msgstr ""
 
 #: results/models.py
 msgid "score"
-msgstr "ұпай"
+msgstr "Ò±Ð¿Ð°Ð¹"
 
 #: results/models.py
 msgid "team score by adjudicator"
@@ -311,7 +311,7 @@ msgstr ""
 
 #: results/models.py
 msgid "points"
-msgstr "ұпайлар"
+msgstr "Ò±Ð¿Ð°Ð¹Ð»Ð°Ñ€"
 
 #: results/models.py
 msgid "votes given"
@@ -339,7 +339,7 @@ msgstr ""
 
 #: results/models.py
 msgid "rank"
-msgstr "орын"
+msgstr "Ð¾Ñ€Ñ‹Ð½"
 
 #: results/models.py
 msgid "ghost"
@@ -367,7 +367,7 @@ msgstr ""
 
 #: results/models.py
 msgid "tournament"
-msgstr "турнир"
+msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: results/models.py
 msgid "sequence"
@@ -447,7 +447,7 @@ msgstr ""
 
 #: results/templates/admin_results.html
 msgid "Display Draw"
-msgstr "Кестені көрсету"
+msgstr "ÐšÐµÑÑ‚ÐµÐ½Ñ– ÐºÓ©Ñ€ÑÐµÑ‚Ñƒ"
 
 #: results/templates/admin_results.html
 msgid "Check-In Ballots"
@@ -496,7 +496,7 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr ""
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
@@ -553,7 +553,7 @@ msgstr ""
 
 #: results/templates/assistant_results.html results/views.py
 msgid "Enter Results"
-msgstr "Нәтижелерді толтыру"
+msgstr "ÐÓ™Ñ‚Ð¸Ð¶ÐµÐ»ÐµÑ€Ð´Ñ– Ñ‚Ð¾Ð»Ñ‚Ñ‹Ñ€Ñƒ"
 
 #: results/templates/assistant_results.html
 msgid "This page automatically updates with the new ballot entries and checkins as they occur."
@@ -591,11 +591,11 @@ msgstr ""
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Result"
-msgstr "Нәтиже"
+msgstr "ÐÓ™Ñ‚Ð¸Ð¶Ðµ"
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Rank"
-msgstr "Орын"
+msgstr "ÐžÑ€Ñ‹Ð½"
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Margin"
@@ -731,7 +731,7 @@ msgstr ""
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
 msgstr ""
 
 #: results/templates/ballot_entry_form.html
@@ -1049,7 +1049,7 @@ msgstr ""
 
 #: results/views.py
 msgid " vs "
-msgstr " қарсы "
+msgstr " Ò›Ð°Ñ€ÑÑ‹ "
 
 #: results/views.py
 #, python-format
@@ -1167,9 +1167,10 @@ msgstr ""
 
 #: results/views.py
 msgid "Adjudicator"
-msgstr "Төреші"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–"
 
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
+
 

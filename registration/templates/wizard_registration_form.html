@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load add_field_css i18n %}
 
 {% block content %}
@@ -33,7 +33,7 @@
           {% trans "Register" context "button" as title %}
         {% endif %}
         {% trans "Cancel and go back to the site home page" as subtitle %}
-        {% url 'tabbycat-index' as suburl %}
+        {% url 'NekoTab-index' as suburl %}
         {% include "components/form-submit.html" %}
       </div>
 
@@ -42,3 +42,4 @@
 </div>
 
 {% endblock %}
+

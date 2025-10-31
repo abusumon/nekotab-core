@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:40+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 934\n"
 
 #: api/apps.py
@@ -32,27 +32,27 @@ msgstr ""
 #: checkins/apps.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Check-Ins"
-msgstr "Регистрации"
+msgstr "Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸"
 
 #: checkins/consumers.py
 msgid "Sent checkin identifier doesn't exist"
-msgstr "Отправленный идентификатор регистрации не существует"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ð¹ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚"
 
 #: checkins/consumers.py
 msgid "Checkins"
-msgstr "Регистрации"
+msgstr "Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸"
 
 #: checkins/consumers.py
 msgid "No checkin identifiers exist for sent barcodes"
-msgstr "Не существует идентификаторов регистрации для отправленных штрих-кодов"
+msgstr "ÐÐµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð² Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ð´Ð»Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… ÑˆÑ‚Ñ€Ð¸Ñ…-ÐºÐ¾Ð´Ð¾Ð²"
 
 #: checkins/models.py
 msgid "The barcode must contain exactly six digits."
-msgstr "Штрих-код должен содержать ровно шесть цифр."
+msgstr "Ð¨Ñ‚Ñ€Ð¸Ñ…-ÐºÐ¾Ð´ Ð´Ð¾Ð»Ð¶ÐµÐ½ ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‚ÑŒ Ñ€Ð¾Ð²Ð½Ð¾ ÑˆÐµÑÑ‚ÑŒ Ñ†Ð¸Ñ„Ñ€."
 
 #: checkins/models.py
 msgid "barcode"
-msgstr "штрих-код"
+msgstr "ÑˆÑ‚Ñ€Ð¸Ñ…-ÐºÐ¾Ð´"
 
 #: checkins/models.py
 msgid "<Not the child instance>"
@@ -65,75 +65,75 @@ msgstr "%(classname)s %(barcode)s"
 
 #: checkins/models.py
 msgid "person"
-msgstr "человек"
+msgstr "Ñ‡ÐµÐ»Ð¾Ð²ÐµÐº"
 
 #: checkins/models.py
 msgid "person identifier"
-msgstr "идентификатор личности"
+msgstr "Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð»Ð¸Ñ‡Ð½Ð¾ÑÑ‚Ð¸"
 
 #: checkins/models.py
 msgid "person identifiers"
-msgstr "идентификатор личностей"
+msgstr "Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð»Ð¸Ñ‡Ð½Ð¾ÑÑ‚ÐµÐ¹"
 
 #: checkins/models.py
 msgid "debate"
-msgstr "дебаты"
+msgstr "Ð´ÐµÐ±Ð°Ñ‚Ñ‹"
 
 #: checkins/models.py
 msgid "debate identifier"
-msgstr "индентификатор дебатера"
+msgstr "Ð¸Ð½Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð´ÐµÐ±Ð°Ñ‚ÐµÑ€Ð°"
 
 #: checkins/models.py
 msgid "debate identifiers"
-msgstr "индентификаторы дебатера"
+msgstr "Ð¸Ð½Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹ Ð´ÐµÐ±Ð°Ñ‚ÐµÑ€Ð°"
 
 #: checkins/models.py
 msgid "room identifier"
-msgstr "идентификатор аудитории"
+msgstr "Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸"
 
 #: checkins/models.py
 msgid "room identifiers"
-msgstr "идентификаторы аудиторий"
+msgstr "Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹"
 
 #: checkins/models.py
 msgid "identifier"
-msgstr "идентификатор"
+msgstr "Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€"
 
 #: checkins/models.py
 msgid "check-in time"
-msgstr "время регистрации"
+msgstr "Ð²Ñ€ÐµÐ¼Ñ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸"
 
 #: checkins/models.py registration/models.py users/models.py
 msgid "tournament"
-msgstr "турнир"
+msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: checkins/models.py
 msgid "check-in event"
-msgstr "событие регистрации"
+msgstr "ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ðµ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸"
 
 #: checkins/models.py
 msgid "check-in events"
-msgstr "события регистрации"
+msgstr "ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸"
 
 #: checkins/templates/checkin_ids.html
 msgid "With identifiers"
-msgstr "С идентификаторами"
+msgstr "Ð¡ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð°Ð¼Ð¸"
 
 #: checkins/templates/checkin_ids.html
 msgid "View as barcodes"
-msgstr "Просмотр как штрих-кодов"
+msgstr "ÐŸÑ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ ÐºÐ°Ðº ÑˆÑ‚Ñ€Ð¸Ñ…-ÐºÐ¾Ð´Ð¾Ð²"
 
 #: checkins/templates/checkin_ids.html
 msgid "Generate missing identifiers"
-msgstr "Создать отсутствующие идентификаторы"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹"
 
 #: checkins/templates/checkin_ids.html
 msgid "Generate all identifiers"
-msgstr "Создать все идентификаторы"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð²ÑÐµ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹"
 
 #: checkins/templates/checkin_ids.html
 msgid "There are no identifiers available to view. An admin will need to generate them."
-msgstr "Нет доступных для просмотра идентификаторов. Администратору нужно будет сгенерировать их."
+msgstr "ÐÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð². ÐÐ´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ñƒ Ð½ÑƒÐ¶Ð½Ð¾ Ð±ÑƒÐ´ÐµÑ‚ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¸Ñ…."
 
 #: checkins/templates/checkin_printables.html
 msgid "Each of the barcodes below is also an image file that can be downloaded individually. If you want to download them all at once try using a 'bulk downloader' extension/plugin for your browser, such as <a href=\"https://chrome.google.com/webstore/detail/svg-export/naeaaedieihlkmdajjefioajbbdbdjgp?hl=en-GB\">this one (for Chrome)</a>. To download them as a list you can go to Check-Ins section of the Edit Database area and copy/paste from the relevant table."
@@ -141,110 +141,110 @@ msgstr ""
 
 #: checkins/templates/checkin_printables.html
 msgid "You can use Ctrl+P for printing or saving the barcodes PDF. Be sure to set the appropriate <strong>page orientation</strong>, to turn off <strong>headers/footers</strong> and turn on <strong>background graphics</strong>. Works best in Chrome."
-msgstr "Используйте Ctrl+P для распечатки или сохранения штрих кодов в PDF. Не забудьте установить нужное <strong> положение страницы</strong>, выключить <strong> верхние и нижние колонтитулы</strong> и включить <strong> фоновую графику</strong>. Лучше всего работает в Chrome."
+msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ Ctrl+P Ð´Ð»Ñ Ñ€Ð°ÑÐ¿ÐµÑ‡Ð°Ñ‚ÐºÐ¸ Ð¸Ð»Ð¸ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ ÑˆÑ‚Ñ€Ð¸Ñ… ÐºÐ¾Ð´Ð¾Ð² Ð² PDF. ÐÐµ Ð·Ð°Ð±ÑƒÐ´ÑŒÑ‚Ðµ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð½ÑƒÐ¶Ð½Ð¾Ðµ <strong> Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹</strong>, Ð²Ñ‹ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ <strong> Ð²ÐµÑ€Ñ…Ð½Ð¸Ðµ Ð¸ Ð½Ð¸Ð¶Ð½Ð¸Ðµ ÐºÐ¾Ð»Ð¾Ð½Ñ‚Ð¸Ñ‚ÑƒÐ»Ñ‹</strong> Ð¸ Ð²ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ <strong> Ñ„Ð¾Ð½Ð¾Ð²ÑƒÑŽ Ð³Ñ€Ð°Ñ„Ð¸ÐºÑƒ</strong>. Ð›ÑƒÑ‡ÑˆÐµ Ð²ÑÐµÐ³Ð¾ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ð² Chrome."
 
 #: checkins/templates/checkin_scan.html
 msgid "To scan an identifier type the number below (it will auto-submit). You can also use a barcode scanner (configured to work as a keyboard) or scan from a webcam or phone camera using the button below."
-msgstr "Для сканирования наберите число, указанное ниже (он автоматически будет отправляться). Вы также можете использовать сканер штрих-кода (настроенный на работу как клавиатура) или сканировать с веб-камеры или телефонной камеры с помощью кнопки ниже."
+msgstr "Ð”Ð»Ñ ÑÐºÐ°Ð½Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð½Ð°Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾, ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ðµ Ð½Ð¸Ð¶Ðµ (Ð¾Ð½ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð±ÑƒÐ´ÐµÑ‚ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒÑÑ). Ð’Ñ‹ Ñ‚Ð°ÐºÐ¶Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÑÐºÐ°Ð½ÐµÑ€ ÑˆÑ‚Ñ€Ð¸Ñ…-ÐºÐ¾Ð´Ð° (Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐ½Ð½Ñ‹Ð¹ Ð½Ð° Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ ÐºÐ°Ðº ÐºÐ»Ð°Ð²Ð¸Ð°Ñ‚ÑƒÑ€Ð°) Ð¸Ð»Ð¸ ÑÐºÐ°Ð½Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ Ð²ÐµÐ±-ÐºÐ°Ð¼ÐµÑ€Ñ‹ Ð¸Ð»Ð¸ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ð½Ð¾Ð¹ ÐºÐ°Ð¼ÐµÑ€Ñ‹ Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ ÐºÐ½Ð¾Ð¿ÐºÐ¸ Ð½Ð¸Ð¶Ðµ."
 
 #: checkins/utils.py
 #, python-format
 msgid "Not checked in (barcode %(barcode)s)"
-msgstr "Не зарегистрирован (штрих-код %(barcode)s)"
+msgstr "ÐÐµ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½ (ÑˆÑ‚Ñ€Ð¸Ñ…-ÐºÐ¾Ð´ %(barcode)s)"
 
 #: checkins/utils.py
 msgid "Not checked in; no barcode assigned"
-msgstr "Не зарегистрирован; штрих-код не назначен"
+msgstr "ÐÐµ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½; ÑˆÑ‚Ñ€Ð¸Ñ…-ÐºÐ¾Ð´ Ð½Ðµ Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½"
 
 #: checkins/utils.py
 #, python-format
 msgid "checked in at %(time)s"
-msgstr "зарегистрирован в %(time)s"
+msgstr "Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð² %(time)s"
 
 #: checkins/utils.py
 #, python-format
 msgid "%(speaker)s checked in at %(time)s."
-msgstr "%(speaker)s зарегистрирован в %(time)s."
+msgstr "%(speaker)s Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð² %(time)s."
 
 #: checkins/utils.py
 #, python-format
 msgid "%(speaker)s is missing."
-msgstr "%(speaker)s отсутствует."
+msgstr "%(speaker)s Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚."
 
 #: checkins/views.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html
 msgid "Scan Identifiers"
-msgstr "Сканировать идентификаторы"
+msgstr "Ð¡ÐºÐ°Ð½Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹"
 
 #: checkins/views.py
 msgid "People's Check-In Statuses"
-msgstr "Статусы регистрации пользователей"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑÑ‹ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÐµÐ¹"
 
 #: checkins/views.py
 msgid "Rooms' Check-In Statuses"
-msgstr "Статус регистрации аудиторий"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹"
 
 #: checkins/views.py templates/nav/admin_nav.html
 msgid "Make Identifiers"
-msgstr "Создать идентификаторы"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹"
 
 #: checkins/views.py registration/templates/answer_tables/teams.html
 #: templates/nav/admin_nav.html
 msgid "Speakers"
-msgstr "Спикеры"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: checkins/views.py registration/views.py templates/nav/admin_nav.html
 #: templates/nav/public_nav.html
 msgid "Adjudicators"
-msgstr "Судьи"
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸"
 
 #: checkins/views.py
 msgid "Rooms"
-msgstr "Аудитории"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸"
 
 #: checkins/views.py
 #, python-format
 msgid "Generated identifiers for %s"
-msgstr "Сгенерированные идентификаторы для %s"
+msgstr "Ð¡Ð³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹ Ð´Ð»Ñ %s"
 
 #: checkins/views.py
 msgid "Identifiers"
-msgstr "Идентификаторы"
+msgstr "Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹"
 
 #: checkins/views.py
-msgid "Could not check you in as you do not have an identifying code — your tab director may need to make you an identifier."
-msgstr "Не удалось зарегистрировать вас, так как у вас нет идентифицирующего кода - возможно, необходимо чтобы тэбмастер сделал для вас идентификатор."
+msgid "Could not check you in as you do not have an identifying code â€” your tab director may need to make you an identifier."
+msgstr "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð²Ð°Ñ, Ñ‚Ð°Ðº ÐºÐ°Ðº Ñƒ Ð²Ð°Ñ Ð½ÐµÑ‚ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€ÑƒÑŽÑ‰ÐµÐ³Ð¾ ÐºÐ¾Ð´Ð° - Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾, Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€ ÑÐ´ÐµÐ»Ð°Ð» Ð´Ð»Ñ Ð²Ð°Ñ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€."
 
 #: checkins/views.py
 msgid "You have revoked your check-in."
-msgstr "Вы отозвали свою регистрацию."
+msgstr "Ð’Ñ‹ Ð¾Ñ‚Ð¾Ð·Ð²Ð°Ð»Ð¸ ÑÐ²Ð¾ÑŽ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÑŽ."
 
 #: checkins/views.py
 msgid "Whoops! Looks like your check-in was already revoked."
-msgstr "Упс! Похоже, ваша регистрация уже была отозвана."
+msgstr "Ð£Ð¿Ñ! ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ, Ð²Ð°ÑˆÐ° Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð° Ð¾Ñ‚Ð¾Ð·Ð²Ð°Ð½Ð°."
 
 #: checkins/views.py
 msgid "Whoops! Looks like you're already checked in."
-msgstr "Упс! Похоже, вы уже зарегистрированы."
+msgstr "Ð£Ð¿Ñ! ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ, Ð²Ñ‹ ÑƒÐ¶Ðµ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹."
 
 #: checkins/views.py
 msgid "You are now checked in."
-msgstr "Вы зарегистрированы."
+msgstr "Ð’Ñ‹ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹."
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "Yes"
-msgstr "Да"
+msgstr "Ð”Ð°"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "No"
-msgstr "Нет"
+msgstr "ÐÐµÑ‚"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "This field is required."
-msgstr "Это поле является обязательным."
+msgstr "Ð­Ñ‚Ð¾ Ð¿Ð¾Ð»Ðµ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¼."
 
 #: registration/forms.py
 msgid "Coach name"
@@ -272,11 +272,11 @@ msgstr ""
 
 #: registration/models.py
 msgid "content type"
-msgstr "тип контента"
+msgstr "Ñ‚Ð¸Ð¿ ÐºÐ¾Ð½Ñ‚ÐµÐ½Ñ‚Ð°"
 
 #: registration/models.py
 msgid "object id"
-msgstr "id объекта"
+msgstr "id Ð¾Ð±ÑŠÐµÐºÑ‚Ð°"
 
 #: registration/models.py
 msgid "question"
@@ -312,7 +312,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "text"
-msgstr "текст"
+msgstr "Ñ‚ÐµÐºÑÑ‚"
 
 #: registration/models.py
 msgid "long text"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "sequence number"
-msgstr "порядковый номер"
+msgstr "Ð¿Ð¾Ñ€ÑÐ´ÐºÐ¾Ð²Ñ‹Ð¹ Ð½Ð¾Ð¼ÐµÑ€"
 
 #: registration/models.py
 msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
@@ -352,7 +352,7 @@ msgstr ""
 
 #: registration/models.py users/models.py
 msgid "name"
-msgstr "название"
+msgstr "Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: registration/models.py
 msgid "A short name for the question, e.g., \"Agree with decision\""
@@ -388,7 +388,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "choices"
-msgstr "выборы"
+msgstr "Ð²Ñ‹Ð±Ð¾Ñ€Ñ‹"
 
 #: registration/models.py
 msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
@@ -400,15 +400,15 @@ msgstr ""
 
 #: registration/models.py
 msgid "institution"
-msgstr "клуб"
+msgstr "ÐºÐ»ÑƒÐ±"
 
 #: registration/models.py
 msgid "team"
-msgstr "команда"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°"
 
 #: registration/models.py
 msgid "URL key"
-msgstr "Ключ URL"
+msgstr "ÐšÐ»ÑŽÑ‡ URL"
 
 #: registration/models.py
 msgid "created on"
@@ -432,7 +432,7 @@ msgstr ""
 #: templates/registration/password_change_form.html
 #: templates/registration/password_reset_confirm.html
 msgid "Cancel and go back to the site home page"
-msgstr "Отменить и вернуться на главную страницу сайта"
+msgstr "ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸ Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð° Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ ÑÐ°Ð¹Ñ‚Ð°"
 
 #: registration/templates/answer_tables/adjudicators.html
 msgid "Questions"
@@ -447,7 +447,7 @@ msgstr ""
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 #: templates/nav/public_nav.html
 msgid "Institutions"
-msgstr "Клубы"
+msgstr "ÐšÐ»ÑƒÐ±Ñ‹"
 
 #: registration/templates/answer_tables/institutions.html
 msgid "Coaches"
@@ -490,11 +490,11 @@ msgstr ""
 #: registration/templates/answer_tables/teams.html registration/views.py
 #: templates/nav/admin_nav.html
 msgid "Teams"
-msgstr "Команды"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: registration/templates/coach_private_url.html
 msgid "Private URL"
-msgstr "Личный URL"
+msgstr "Ð›Ð¸Ñ‡Ð½Ñ‹Ð¹ URL"
 
 #: registration/templates/coach_private_url.html
 #, python-format
@@ -616,7 +616,7 @@ msgstr ""
 
 #: registration/views.py
 msgid "Name"
-msgstr "Название"
+msgstr "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: registration/views.py
 msgid "Coach"
@@ -652,12 +652,12 @@ msgstr ""
 
 #: registration/views.py
 msgid "Team Registration"
-msgstr "Регистрация команд"
+msgstr "Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: registration/views.py
 #, python-format
 msgid "Speaker %d"
-msgstr "Спикер %d"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ %d"
 
 #: registration/views.py
 msgid "Email"
@@ -682,7 +682,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Arabic"
-msgstr "Арабский"
+msgstr "ÐÑ€Ð°Ð±ÑÐºÐ¸Ð¹"
 
 #: settings/core.py
 msgid "Asturian"
@@ -710,15 +710,15 @@ msgstr ""
 
 #: settings/core.py
 msgid "English"
-msgstr "Английский"
+msgstr "ÐÐ½Ð³Ð»Ð¸Ð¹ÑÐºÐ¸Ð¹"
 
 #: settings/core.py
 msgid "Spanish"
-msgstr "Испанский"
+msgstr "Ð˜ÑÐ¿Ð°Ð½ÑÐºÐ¸Ð¹"
 
 #: settings/core.py
 msgid "French"
-msgstr "Французский"
+msgstr "Ð¤Ñ€Ð°Ð½Ñ†ÑƒÐ·ÑÐºÐ¸Ð¹"
 
 #: settings/core.py
 msgid "Hebrew"
@@ -738,7 +738,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Japanese"
-msgstr "Японский"
+msgstr "Ð¯Ð¿Ð¾Ð½ÑÐºÐ¸Ð¹"
 
 #: settings/core.py
 msgid "Kazakh"
@@ -750,7 +750,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Portuguese"
-msgstr "Португальский"
+msgstr "ÐŸÐ¾Ñ€Ñ‚ÑƒÐ³Ð°Ð»ÑŒÑÐºÐ¸Ð¹"
 
 #: settings/core.py
 msgid "Romanian"
@@ -758,7 +758,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Russian"
-msgstr "Русский"
+msgstr "Ð ÑƒÑÑÐºÐ¸Ð¹"
 
 #: settings/core.py
 msgid "Turkish"
@@ -778,135 +778,135 @@ msgstr ""
 
 #: templates/admin/delete_protected_message.html
 msgid "You need to delete the above objects first."
-msgstr "Сначала необходимо удалить представленные выше объекты."
+msgstr "Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ðµ Ð²Ñ‹ÑˆÐµ Ð¾Ð±ÑŠÐµÐºÑ‚Ñ‹."
 
 #: templates/admin/style_guide.html
 msgid "This style of info card announces critical information. <a href=\"\">Link</a>."
-msgstr "Этот стиль информационной карты анонсирует критически важную информацию. <a href=\"\">Ссылка</a>."
+msgstr "Ð­Ñ‚Ð¾Ñ‚ ÑÑ‚Ð¸Ð»ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¾Ð½Ð½Ð¾Ð¹ ÐºÐ°Ñ€Ñ‚Ñ‹ Ð°Ð½Ð¾Ð½ÑÐ¸Ñ€ÑƒÐµÑ‚ ÐºÑ€Ð¸Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð²Ð°Ð¶Ð½ÑƒÑŽ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ. <a href=\"\">Ð¡ÑÑ‹Ð»ÐºÐ°</a>."
 
 #: templates/admin/style_guide.html
 msgid "This style of info card announces general <a href=\"\">information</a>."
-msgstr "Этот стиль информационной карты анонсирует общую <a href=\"\">информацию</a>."
+msgstr "Ð­Ñ‚Ð¾Ñ‚ ÑÑ‚Ð¸Ð»ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¾Ð½Ð½Ð¾Ð¹ ÐºÐ°Ñ€Ñ‚Ñ‹ Ð°Ð½Ð¾Ð½ÑÐ¸Ñ€ÑƒÐµÑ‚ Ð¾Ð±Ñ‰ÑƒÑŽ <a href=\"\">Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ</a>."
 
 #: templates/admin/style_guide.html
 msgctxt "page title"
 msgid "Form Title"
-msgstr "Заголовок формы"
+msgstr "Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ñ„Ð¾Ñ€Ð¼Ñ‹"
 
 #: templates/admin/style_guide.html
 msgid "Sub Title Title"
-msgstr "Подзаголовок"
+msgstr "ÐŸÐ¾Ð´Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº"
 
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
 msgid "Log In"
-msgstr "Войти"
+msgstr "Ð’Ð¾Ð¹Ñ‚Ð¸"
 
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
 msgid "I forgot my password"
-msgstr "Я забыл свой пароль"
+msgstr "Ð¯ Ð·Ð°Ð±Ñ‹Ð» ÑÐ²Ð¾Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ"
 
 #: templates/base.html
-msgid "Tabbycat"
-msgstr "Tabbycat"
+msgid "NekoTab"
+msgstr "NekoTab"
 
 #: templates/base.html
 #, python-format
-msgid "The tab for %(tournament)s runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
-msgstr "Тэб для %(tournament)s ведется в Tabbycat - открытой системе тэба для разных форматов парламентских дебатов"
+msgid "The tab for %(tournament)s runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
+msgstr "Ð¢ÑÐ± Ð´Ð»Ñ %(tournament)s Ð²ÐµÐ´ÐµÑ‚ÑÑ Ð² NekoTab - Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¾Ð¹ ÑÐ¸ÑÑ‚ÐµÐ¼Ðµ Ñ‚ÑÐ±Ð° Ð´Ð»Ñ Ñ€Ð°Ð·Ð½Ñ‹Ñ… Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ð¾Ð² Ð¿Ð°Ñ€Ð»Ð°Ð¼ÐµÐ½Ñ‚ÑÐºÐ¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: templates/base.html
-msgid "This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
-msgstr "Тэб для ведется в Tabbycat - открытой системе тэба для разных форматов парламентских дебатов"
+msgid "This tab runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
+msgstr "Ð¢ÑÐ± Ð´Ð»Ñ Ð²ÐµÐ´ÐµÑ‚ÑÑ Ð² NekoTab - Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¾Ð¹ ÑÐ¸ÑÑ‚ÐµÐ¼Ðµ Ñ‚ÑÐ±Ð° Ð´Ð»Ñ Ñ€Ð°Ð·Ð½Ñ‹Ñ… Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ð¾Ð² Ð¿Ð°Ñ€Ð»Ð°Ð¼ÐµÐ½Ñ‚ÑÐºÐ¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: templates/components/form-errors.html
 msgid "Whoops! There was an error with one or more fields."
-msgstr "Упс! Произошла ошибка с одним или несколькими полями."
+msgstr "Ð£Ð¿Ñ! ÐŸÑ€Ð¾Ð¸Ð·Ð¾ÑˆÐ»Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ° Ñ Ð¾Ð´Ð½Ð¸Ð¼ Ð¸Ð»Ð¸ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¸Ð¼Ð¸ Ð¿Ð¾Ð»ÑÐ¼Ð¸."
 
 #: templates/components/formset.html
 msgid "Save and Add More"
-msgstr "Сохранить и добавить ещё"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÐµÑ‰Ñ‘"
 
 #: templates/errors/assistant_403.html templates/errors/public_403.html
 msgid "Permission Denied (403)"
-msgstr "Доступ запрещен (403)"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿ Ð·Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½ (403)"
 
 #: templates/errors/assistant_403.html
 #, python-format
 msgid "This assistant page isn't enabled for this tournament. <a href=\"%(url)s\">Back to the assistant home page.</a>"
-msgstr "Эта страница помощника не включена для этого турнира. <a href=\"%(url)s\">Вернуться к домашней странице помощника.</a>"
+msgstr "Ð­Ñ‚Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð¿Ð¾Ð¼Ð¾Ñ‰Ð½Ð¸ÐºÐ° Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð° Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°. <a href=\"%(url)s\">Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº Ð´Ð¾Ð¼Ð°ÑˆÐ½ÐµÐ¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð½Ð¸ÐºÐ°.</a>"
 
 #: templates/errors/database_limit_warning.html
 #, python-format
 msgid "You're currently using %(nrows)s row in your database. If you haven't already upgraded your Heroku database to a paid tier, it's limited to a maximum of 10,000 rows. As you're close to this limit, you should <strong>not create new tournaments</strong> on this site unless and until you've <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">upgraded your database</a> to a paid tier."
 msgid_plural "You're currently using %(nrows)s rows in your database. If you haven't already upgraded your Heroku database to a paid tier, it's limited to a maximum of 10,000 rows. As you're close to this limit, you should <strong>not create new tournaments</strong> on this site unless and until you've <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">upgraded your database</a> to a paid tier."
-msgstr[0] "На данный момент вы используете %(nrows)s строку в вашей базе данных. Если вы не обновили вашу базу данных Heroky до платного уровня, вы можете использовать до 10 000 строк. Если вы близки к этому лимиту, вам не стоит <strong> создавать новые урниры</strong> на этом сайте пока вы <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\"> не обновите вашу базу данных </a> до платного уровня."
-msgstr[1] "На данный момент вы используете %(nrows)s строк в вашей базе данных. Если вы не обновили вашу базу данных Heroky до платного уровня, вы можете использовать до 10 000 строк. Если вы близки к этому лимиту, вам не стоит <strong> создавать новые урниры</strong> на этом сайте пока вы <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\"> не обновите вашу базу данных </a> до платного уровня."
-msgstr[2] "На данный момент вы используете %(nrows)s строк в вашей базе данных. Если вы не обновили вашу базу данных Heroky до платного уровня, вы можете использовать до 10 000 строк. Если вы близки к этому лимиту, вам не стоит <strong> создавать новые урниры</strong> на этом сайте пока вы <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\"> не обновите вашу базу данных </a> до платного уровня."
-msgstr[3] "На данный момент вы используете %(nrows)s строк в вашей базе данных. Если вы не обновили вашу базу данных Heroky до платного уровня, вы можете использовать до 10 000 строк. Если вы близки к этому лимиту, вам не стоит <strong> создавать новые урниры</strong> на этом сайте пока вы <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\"> не обновите вашу базу данных </a> до платного уровня."
+msgstr[0] "ÐÐ° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð²Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚Ðµ %(nrows)s ÑÑ‚Ñ€Ð¾ÐºÑƒ Ð² Ð²Ð°ÑˆÐµÐ¹ Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð½Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ð»Ð¸ Ð²Ð°ÑˆÑƒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ… Heroky Ð´Ð¾ Ð¿Ð»Ð°Ñ‚Ð½Ð¾Ð³Ð¾ ÑƒÑ€Ð¾Ð²Ð½Ñ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ 10 000 ÑÑ‚Ñ€Ð¾Ðº. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð±Ð»Ð¸Ð·ÐºÐ¸ Ðº ÑÑ‚Ð¾Ð¼Ñƒ Ð»Ð¸Ð¼Ð¸Ñ‚Ñƒ, Ð²Ð°Ð¼ Ð½Ðµ ÑÑ‚Ð¾Ð¸Ñ‚ <strong> ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ðµ ÑƒÑ€Ð½Ð¸Ñ€Ñ‹</strong> Ð½Ð° ÑÑ‚Ð¾Ð¼ ÑÐ°Ð¹Ñ‚Ðµ Ð¿Ð¾ÐºÐ° Ð²Ñ‹ <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\"> Ð½Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð²Ð°ÑˆÑƒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ… </a> Ð´Ð¾ Ð¿Ð»Ð°Ñ‚Ð½Ð¾Ð³Ð¾ ÑƒÑ€Ð¾Ð²Ð½Ñ."
+msgstr[1] "ÐÐ° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð²Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚Ðµ %(nrows)s ÑÑ‚Ñ€Ð¾Ðº Ð² Ð²Ð°ÑˆÐµÐ¹ Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð½Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ð»Ð¸ Ð²Ð°ÑˆÑƒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ… Heroky Ð´Ð¾ Ð¿Ð»Ð°Ñ‚Ð½Ð¾Ð³Ð¾ ÑƒÑ€Ð¾Ð²Ð½Ñ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ 10 000 ÑÑ‚Ñ€Ð¾Ðº. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð±Ð»Ð¸Ð·ÐºÐ¸ Ðº ÑÑ‚Ð¾Ð¼Ñƒ Ð»Ð¸Ð¼Ð¸Ñ‚Ñƒ, Ð²Ð°Ð¼ Ð½Ðµ ÑÑ‚Ð¾Ð¸Ñ‚ <strong> ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ðµ ÑƒÑ€Ð½Ð¸Ñ€Ñ‹</strong> Ð½Ð° ÑÑ‚Ð¾Ð¼ ÑÐ°Ð¹Ñ‚Ðµ Ð¿Ð¾ÐºÐ° Ð²Ñ‹ <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\"> Ð½Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð²Ð°ÑˆÑƒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ… </a> Ð´Ð¾ Ð¿Ð»Ð°Ñ‚Ð½Ð¾Ð³Ð¾ ÑƒÑ€Ð¾Ð²Ð½Ñ."
+msgstr[2] "ÐÐ° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð²Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚Ðµ %(nrows)s ÑÑ‚Ñ€Ð¾Ðº Ð² Ð²Ð°ÑˆÐµÐ¹ Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð½Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ð»Ð¸ Ð²Ð°ÑˆÑƒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ… Heroky Ð´Ð¾ Ð¿Ð»Ð°Ñ‚Ð½Ð¾Ð³Ð¾ ÑƒÑ€Ð¾Ð²Ð½Ñ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ 10 000 ÑÑ‚Ñ€Ð¾Ðº. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð±Ð»Ð¸Ð·ÐºÐ¸ Ðº ÑÑ‚Ð¾Ð¼Ñƒ Ð»Ð¸Ð¼Ð¸Ñ‚Ñƒ, Ð²Ð°Ð¼ Ð½Ðµ ÑÑ‚Ð¾Ð¸Ñ‚ <strong> ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ðµ ÑƒÑ€Ð½Ð¸Ñ€Ñ‹</strong> Ð½Ð° ÑÑ‚Ð¾Ð¼ ÑÐ°Ð¹Ñ‚Ðµ Ð¿Ð¾ÐºÐ° Ð²Ñ‹ <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\"> Ð½Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð²Ð°ÑˆÑƒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ… </a> Ð´Ð¾ Ð¿Ð»Ð°Ñ‚Ð½Ð¾Ð³Ð¾ ÑƒÑ€Ð¾Ð²Ð½Ñ."
+msgstr[3] "ÐÐ° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð²Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚Ðµ %(nrows)s ÑÑ‚Ñ€Ð¾Ðº Ð² Ð²Ð°ÑˆÐµÐ¹ Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð½Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ð»Ð¸ Ð²Ð°ÑˆÑƒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ… Heroky Ð´Ð¾ Ð¿Ð»Ð°Ñ‚Ð½Ð¾Ð³Ð¾ ÑƒÑ€Ð¾Ð²Ð½Ñ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ 10 000 ÑÑ‚Ñ€Ð¾Ðº. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð±Ð»Ð¸Ð·ÐºÐ¸ Ðº ÑÑ‚Ð¾Ð¼Ñƒ Ð»Ð¸Ð¼Ð¸Ñ‚Ñƒ, Ð²Ð°Ð¼ Ð½Ðµ ÑÑ‚Ð¾Ð¸Ñ‚ <strong> ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ðµ ÑƒÑ€Ð½Ð¸Ñ€Ñ‹</strong> Ð½Ð° ÑÑ‚Ð¾Ð¼ ÑÐ°Ð¹Ñ‚Ðµ Ð¿Ð¾ÐºÐ° Ð²Ñ‹ <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\"> Ð½Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð²Ð°ÑˆÑƒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ… </a> Ð´Ð¾ Ð¿Ð»Ð°Ñ‚Ð½Ð¾Ð³Ð¾ ÑƒÑ€Ð¾Ð²Ð½Ñ."
 
 #: templates/errors/legacy_sendgrid_warning.html
-msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of Tabbycat. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
+msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of NekoTab. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
 msgstr ""
 
 #: templates/errors/public_403.html
 #, python-format
 msgid "Whoops! This page isn't enabled for this tournament. <a href=\"%(url)s\">Back to the tournament home page.</a>"
-msgstr "Упс! Эти страница не включена для этого турнира. <a href=\"%(url)s\">Вернуться к домашней странице турнира</a>"
+msgstr "Ð£Ð¿Ñ! Ð­Ñ‚Ð¸ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð° Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°. <a href=\"%(url)s\">Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº Ð´Ð¾Ð¼Ð°ÑˆÐ½ÐµÐ¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°</a>"
 
 #: templates/errors/public_403.html
 #, python-format
 msgid "Whoops! This page isn't enabled for this tournament. <a href=\"%(url)s\">Back to the home page.</a>"
-msgstr "Упс! Эти страница не включена для этого турнира. <a href=\"%(url)s\">Вернуться к домашней странице</a>"
+msgstr "Ð£Ð¿Ñ! Ð­Ñ‚Ð¸ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð° Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°. <a href=\"%(url)s\">Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº Ð´Ð¾Ð¼Ð°ÑˆÐ½ÐµÐ¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ</a>"
 
 #: templates/footer.html
 #, python-format
-msgid "%(tournament)s runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
-msgstr "%(tournament)s работает на Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgid "%(tournament)s runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
+msgstr "%(tournament)s Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ð½Ð° NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
 
 #: templates/footer.html
 #, python-format
-msgid "This site runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
-msgstr "Этот сайт работает на Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgid "This site runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
+msgstr "Ð­Ñ‚Ð¾Ñ‚ ÑÐ°Ð¹Ñ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ð½Ð° NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
 
 #: templates/footer.html
-msgid "Tabbycat is an open-source project developed by volunteers and is free to use."
+msgid "NekoTab is an open-source project developed by volunteers and is free to use."
 msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
+msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
 msgstr ""
 
 #: templates/footer.html
 msgid "Learn more about donating."
-msgstr "Узнать больше о донатах."
+msgstr "Ð£Ð·Ð½Ð°Ñ‚ÑŒ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð¾ Ð´Ð¾Ð½Ð°Ñ‚Ð°Ñ…."
 
 #: templates/footer.html
-msgid "<a href=\"https://opencollective.com/tabbycat\">Donations to Tabbycat from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain Tabbycat."
+msgid "<a href=\"https://opencollective.com/NekoTab\">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab."
 msgstr ""
 
 #: templates/footer.html
 msgid "Still timing debates with the stopwatch app?"
-msgstr "Все ещё используйте приложение-секундомер для тайминга дебатов?"
+msgstr "Ð’ÑÐµ ÐµÑ‰Ñ‘ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ-ÑÐµÐºÑƒÐ½Ð´Ð¾Ð¼ÐµÑ€ Ð´Ð»Ñ Ñ‚Ð°Ð¹Ð¼Ð¸Ð½Ð³Ð° Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²?"
 
 #: templates/footer.html
 #, python-format
-msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
-msgstr "Использование приложения, созданного для таймкиперов дебатов делает игру и судейство проще. Ознакомьтесь с <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\"> Timekept </a> (iPhone/iPad) или <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ, ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð´Ð»Ñ Ñ‚Ð°Ð¹Ð¼ÐºÐ¸Ð¿ÐµÑ€Ð¾Ð² Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð´ÐµÐ»Ð°ÐµÑ‚ Ð¸Ð³Ñ€Ñƒ Ð¸ ÑÑƒÐ´ÐµÐ¹ÑÑ‚Ð²Ð¾ Ð¿Ñ€Ð¾Ñ‰Ðµ. ÐžÐ·Ð½Ð°ÐºÐ¾Ð¼ÑŒÑ‚ÐµÑÑŒ Ñ <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\"> Timekept </a> (iPhone/iPad) Ð¸Ð»Ð¸ <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
 
 #: templates/footer.html
 msgid "Our Organisation"
 msgstr ""
 
 #: templates/footer.html
-msgid "Tabbycat is supported by the <a href=\"https://tabbycat-debate.org/\">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology."
+msgid "NekoTab is supported by the <a href=\"https://NekoTab-debate.org/\">NekoTab Debate Association</a>, a non-profit for advancing open debate technology."
 msgstr ""
 
 #: templates/footer.html users/groups.py
 msgid "Language"
-msgstr "Язык"
+msgstr "Ð¯Ð·Ñ‹Ðº"
 
 #: templates/footer.html
 msgid "GitHub"
@@ -914,11 +914,11 @@ msgstr "GitHub"
 
 #: templates/footer.html
 msgid "Documentation"
-msgstr "Документация"
+msgstr "Ð”Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸Ñ"
 
 #: templates/footer.html
 msgid "Support"
-msgstr "Поддержка"
+msgstr "ÐŸÐ¾Ð´Ð´ÐµÑ€Ð¶ÐºÐ°"
 
 #: templates/footer.html
 msgid "Facebook"
@@ -926,68 +926,68 @@ msgstr "Facebook"
 
 #: templates/footer.html
 msgid "Set Up A Copy"
-msgstr "Настроить копию"
+msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¿Ð¸ÑŽ"
 
 #: templates/footer.html
 msgid "Change Language"
-msgstr "Изменить язык"
+msgstr "Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÐ·Ñ‹Ðº"
 
 #: templates/footer.html
 msgid "Use this language"
-msgstr "Использовать этот язык"
+msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ ÑÐ·Ñ‹Ðº"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
-msgid "Tabbycat Logo"
-msgstr "Логотип Tabbycat"
+msgid "NekoTab Logo"
+msgstr "Ð›Ð¾Ð³Ð¾Ñ‚Ð¸Ð¿ NekoTab"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Site Home"
-msgstr "Домашняя страница сайта"
+msgstr "Ð”Ð¾Ð¼Ð°ÑˆÐ½ÑÑ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° ÑÐ°Ð¹Ñ‚Ð°"
 
 #: templates/nav/admin_nav.html
 msgid "New Tournament"
-msgstr "Новый турнир"
+msgstr "ÐÐ¾Ð²Ñ‹Ð¹ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Edit Database"
-msgstr "Изменить базу данных"
+msgstr "Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…"
 
 #: templates/nav/admin_nav.html
 msgid "Admin Area"
-msgstr "Панель администрирования"
+msgstr "ÐŸÐ°Ð½ÐµÐ»ÑŒ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ"
 
 #: templates/nav/admin_nav.html
 msgid "Assistant Area"
-msgstr "Панель помощника"
+msgstr "ÐŸÐ°Ð½ÐµÐ»ÑŒ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð½Ð¸ÐºÐ°"
 
 #: templates/nav/admin_nav.html
 msgid "Public Area"
-msgstr "Публичная область"
+msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ"
 
 #: templates/nav/admin_nav.html
 msgid "Overview"
-msgstr "Обзор"
+msgstr "ÐžÐ±Ð·Ð¾Ñ€"
 
 #: templates/nav/admin_nav.html
 msgid "Setup"
-msgstr "Установка"
+msgstr "Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ°"
 
 #: templates/nav/admin_nav.html
 msgid "Configuration"
-msgstr "Настройки"
+msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸"
 
 #: templates/nav/admin_nav.html
 msgid "Import Data"
-msgstr "Импорт данных"
+msgstr "Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð´Ð°Ð½Ð½Ñ‹Ñ…"
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 #: templates/nav/public_nav.html
 msgid "Participants"
-msgstr "Участники"
+msgstr "Ð£Ñ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸"
 
 #: templates/nav/admin_nav.html
 msgid "Private URLs"
-msgstr "Личные URL"
+msgstr "Ð›Ð¸Ñ‡Ð½Ñ‹Ðµ URL"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Schedule"
@@ -995,11 +995,11 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Emails"
-msgstr "Адреса email"
+msgstr "ÐÐ´Ñ€ÐµÑÐ° email"
 
 #: templates/nav/admin_nav.html
 msgid "Preformed Panels"
-msgstr "Заранее сформированные коллегии"
+msgstr "Ð—Ð°Ñ€Ð°Ð½ÐµÐµ ÑÑ„Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸Ð¸"
 
 #: templates/nav/admin_nav.html
 msgid "Export XML"
@@ -1007,7 +1007,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Sides"
-msgstr "Стороны"
+msgstr "Ð¡Ñ‚Ð¾Ñ€Ð¾Ð½Ñ‹"
 
 #: templates/nav/admin_nav.html users/groups.py
 msgid "Registration"
@@ -1015,39 +1015,39 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 msgid "People's Status"
-msgstr "Статус людей"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð»ÑŽÐ´ÐµÐ¹"
 
 #: templates/nav/admin_nav.html
 msgid "Rooms' Status"
-msgstr "Статус аудиторий"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹"
 
 #: templates/nav/admin_nav.html
 msgid "Feedback"
-msgstr "Обратная связь"
+msgstr "ÐžÐ±Ñ€Ð°Ñ‚Ð½Ð°Ñ ÑÐ²ÑÐ·ÑŒ"
 
 #: templates/nav/admin_nav.html
 msgid "Latest"
-msgstr "Последние"
+msgstr "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ"
 
 #: templates/nav/admin_nav.html
 msgid "Important"
-msgstr "Важное"
+msgstr "Ð’Ð°Ð¶Ð½Ð¾Ðµ"
 
 #: templates/nav/admin_nav.html
 msgid "Comments"
-msgstr "Комментарии"
+msgstr "ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Source"
-msgstr "Найти по источнику"
+msgstr "ÐÐ°Ð¹Ñ‚Ð¸ Ð¿Ð¾ Ð¸ÑÑ‚Ð¾Ñ‡Ð½Ð¸ÐºÑƒ"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Target"
-msgstr "Найти по цели"
+msgstr "ÐÐ°Ð¹Ñ‚Ð¸ Ð¿Ð¾ Ñ†ÐµÐ»Ð¸"
 
 #: templates/nav/admin_nav.html
 msgid "Unsubmitted"
-msgstr "Неотправленные"
+msgstr "ÐÐµÐ¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ðµ"
 
 #: templates/nav/admin_nav.html
 msgid "Feedback Questions"
@@ -1055,49 +1055,49 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Add Feedback"
-msgstr "Добавить обратную связь"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¾Ð±Ñ€Ð°Ñ‚Ð½ÑƒÑŽ ÑÐ²ÑÐ·ÑŒ"
 
 #: templates/nav/admin_nav.html
 msgid "Bulk Update"
-msgstr "Массовое обновление"
+msgstr "ÐœÐ°ÑÑÐ¾Ð²Ð¾Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Standings"
-msgstr "Результаты"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: templates/nav/admin_nav.html
 msgid "All Teams"
-msgstr "Все команды"
+msgstr "Ð’ÑÐµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Teams"
-msgstr "%(category)s команды"
+msgstr "%(category)s ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: templates/nav/admin_nav.html
 msgid "All Speakers"
-msgstr "Все спикеры"
+msgstr "Ð’ÑÐµ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Speakers"
-msgstr "%(category)s спикеры"
+msgstr "%(category)s ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: templates/nav/admin_nav.html
 msgid "Replies"
-msgstr "Ответы"
+msgstr "ÐžÑ‚Ð²ÐµÑ‚Ñ‹"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Motions"
-msgstr "Темы"
+msgstr "Ð¢ÐµÐ¼Ñ‹"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Diversity"
-msgstr "Дайверсити"
+msgstr "Ð”Ð°Ð¹Ð²ÐµÑ€ÑÐ¸Ñ‚Ð¸"
 
 #: templates/nav/admin_nav.html
 msgid "Breaks"
-msgstr "Брейки"
+msgstr "Ð‘Ñ€ÐµÐ¹ÐºÐ¸"
 
 #: templates/nav/admin_nav.html
 #, python-format
@@ -1118,27 +1118,27 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Log Out"
-msgstr "Выйти"
+msgstr "Ð’Ñ‹Ð¹Ñ‚Ð¸"
 
 #: templates/nav/assistant_nav.html
 msgid "Enter Results"
-msgstr "Ввести результаты"
+msgstr "Ð’Ð²ÐµÑÑ‚Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Enter Feedback"
-msgstr "Введите обратную связь"
+msgstr "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¾Ð±Ñ€Ð°Ñ‚Ð½ÑƒÑŽ ÑÐ²ÑÐ·ÑŒ"
 
 #: templates/nav/assistant_nav.html
 msgid "Participants List"
-msgstr "Список участников"
+msgstr "Ð¡Ð¿Ð¸ÑÐ¾Ðº ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð²"
 
 #: templates/nav/assistant_nav.html
 msgid "Code Names"
-msgstr "Кодовые имена"
+msgstr "ÐšÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð°"
 
 #: templates/nav/assistant_nav.html
 msgid "View Identifiers"
-msgstr "Посмотреть идентификаторы"
+msgstr "ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹"
 
 #: templates/nav/assistant_nav.html
 msgid "Room's Status"
@@ -1146,27 +1146,27 @@ msgstr ""
 
 #: templates/nav/assistant_nav.html
 msgid "Display/Print Draw"
-msgstr "Показать/Распечатать сетку"
+msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ/Ð Ð°ÑÐ¿ÐµÑ‡Ð°Ñ‚Ð°Ñ‚ÑŒ ÑÐµÑ‚ÐºÑƒ"
 
 #: templates/nav/public_nav.html
 msgid "Team Tab"
-msgstr "Командный тэб"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ñ‚ÑÐ±"
 
 #: templates/nav/public_nav.html
 msgid "Speaker Tab"
-msgstr "Спикерский тэб"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ñ‚ÑÐ±"
 
 #: templates/nav/public_nav.html
 msgid "Replies Tab"
-msgstr "Вкладка ответов"
+msgstr "Ð’ÐºÐ»Ð°Ð´ÐºÐ° Ð¾Ñ‚Ð²ÐµÑ‚Ð¾Ð²"
 
 #: templates/nav/public_nav.html
 msgid "Adjudicator Tab"
-msgstr "Тэб судей"
+msgstr "Ð¢ÑÐ± ÑÑƒÐ´ÐµÐ¹"
 
 #: templates/nav/public_nav.html
 msgid "Motions Tab"
-msgstr "Тэб тем"
+msgstr "Ð¢ÑÐ± Ñ‚ÐµÐ¼"
 
 #: templates/nav/public_nav.html
 msgid "By round"
@@ -1178,116 +1178,116 @@ msgstr ""
 
 #: templates/nav/public_nav.html
 msgid "Draws"
-msgstr "Сетки"
+msgstr "Ð¡ÐµÑ‚ÐºÐ¸"
 
 #: templates/nav/public_nav.html
 msgid "No Draws Available"
-msgstr "Сетка недоступна"
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð°"
 
 #: templates/nav/public_nav.html
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "Сетка на %(round)s"
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½Ð° %(round)s"
 
 #: templates/nav/public_nav.html
 msgid "Current Draws"
-msgstr "Текущая сетка"
+msgstr "Ð¢ÐµÐºÑƒÑ‰Ð°Ñ ÑÐµÑ‚ÐºÐ°"
 
 #: templates/nav/public_nav.html templates/nav/round_panel.html
 msgid "Results"
-msgstr "Результаты"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: templates/nav/public_nav.html
 msgid "Break"
-msgstr "Брейк"
+msgstr "Ð‘Ñ€ÐµÐ¹Ðº"
 
 #: templates/nav/public_nav.html
 msgid "Feedback Progress"
-msgstr "Прогресс отправки форм обратной связи"
+msgstr "ÐŸÑ€Ð¾Ð³Ñ€ÐµÑÑ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ñ„Ð¾Ñ€Ð¼ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
 
 #: templates/nav/public_nav.html
 msgid "Enter Ballot"
-msgstr "Ввести бэллот"
+msgstr "Ð’Ð²ÐµÑÑ‚Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚"
 
 #: templates/nav/round_panel.html
 msgid "Availability"
-msgstr "Доступность"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ"
 
 #: templates/nav/round_panel.html
 msgid "Draw"
-msgstr "Сетка"
+msgstr "Ð¡ÐµÑ‚ÐºÐ°"
 
 #: templates/nav/round_panel.html
 msgid "Display"
-msgstr "Показать"
+msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Administrator area for <strong>%(tournament)s</strong>"
-msgstr "Область администратора для <strong>%(tournament)s</strong>"
+msgstr "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð° Ð´Ð»Ñ <strong>%(tournament)s</strong>"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Assistant area for <strong>%(tournament)s</strong>"
-msgstr "Область ассистентаа для <strong>%(tournament)s</strong>"
+msgstr "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð°ÑÑÐ¸ÑÑ‚ÐµÐ½Ñ‚Ð°Ð° Ð´Ð»Ñ <strong>%(tournament)s</strong>"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Public area for <strong>%(tournament)s</strong>"
-msgstr "Публичная область для <strong>%(tournament)s</strong>"
+msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ Ð´Ð»Ñ <strong>%(tournament)s</strong>"
 
 #: templates/nav/top_nav_base.html
 msgid "Login"
-msgstr "Логин"
+msgstr "Ð›Ð¾Ð³Ð¸Ð½"
 
 #: templates/registration/logged_out.html
 msgid "Goodbye"
-msgstr "До свидания"
+msgstr "Ð”Ð¾ ÑÐ²Ð¸Ð´Ð°Ð½Ð¸Ñ"
 
 #: templates/registration/logged_out.html
 #, python-format
 msgid "You have been logged out. <a href=\"%(login_url)s\">Log in again?</a>"
-msgstr "Вы вышли из системы. <a href=\"%(login_url)s\">Войти снова?</a>"
+msgstr "Ð’Ñ‹ Ð²Ñ‹ÑˆÐ»Ð¸ Ð¸Ð· ÑÐ¸ÑÑ‚ÐµÐ¼Ñ‹. <a href=\"%(login_url)s\">Ð’Ð¾Ð¹Ñ‚Ð¸ ÑÐ½Ð¾Ð²Ð°?</a>"
 
 #: templates/registration/login.html
 msgctxt "page title"
 msgid "Login"
-msgstr "Логин"
+msgstr "Ð›Ð¾Ð³Ð¸Ð½"
 
 #: templates/registration/login.html
 msgctxt "page title"
-msgid "Log in to Tabbycat"
-msgstr "Войти в Tabbycat"
+msgid "Log in to NekoTab"
+msgstr "Ð’Ð¾Ð¹Ñ‚Ð¸ Ð² NekoTab"
 
 #: templates/registration/login.html
 msgid "Your username and password didn't match."
-msgstr "Ваше имя пользователя и пароль не совпадают."
+msgstr "Ð’Ð°ÑˆÐµ Ð¸Ð¼Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð¸ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð½Ðµ ÑÐ¾Ð²Ð¿Ð°Ð´Ð°ÑŽÑ‚."
 
 #: templates/registration/login.html
 msgid "Your account doesn't have access to this page. To proceed, please log in with an account that has access."
-msgstr "У вашей учетной записи нет доступа к этой странице. Чтобы продолжить, войдите в систему с учетной записью, имеющей доступ."
+msgstr "Ð£ Ð²Ð°ÑˆÐµÐ¹ ÑƒÑ‡ÐµÑ‚Ð½Ð¾Ð¹ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð½ÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° Ðº ÑÑ‚Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ. Ð§Ñ‚Ð¾Ð±Ñ‹ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶Ð¸Ñ‚ÑŒ, Ð²Ð¾Ð¹Ð´Ð¸Ñ‚Ðµ Ð² ÑÐ¸ÑÑ‚ÐµÐ¼Ñƒ Ñ ÑƒÑ‡ÐµÑ‚Ð½Ð¾Ð¹ Ð·Ð°Ð¿Ð¸ÑÑŒÑŽ, Ð¸Ð¼ÐµÑŽÑ‰ÐµÐ¹ Ð´Ð¾ÑÑ‚ÑƒÐ¿."
 
 #: templates/registration/login.html
 msgid "Please log in to see this page."
-msgstr "Пожалуйста, войдите в систему, чтобы получить доступ к этой странице."
+msgstr "ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð¾Ð¹Ð´Ð¸Ñ‚Ðµ Ð² ÑÐ¸ÑÑ‚ÐµÐ¼Ñƒ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð´Ð¾ÑÑ‚ÑƒÐ¿ Ðº ÑÑ‚Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ."
 
 #: templates/registration/password_change_done.html
 msgctxt "page title"
 msgid "Password changed"
-msgstr "Пароль изменен"
+msgstr "ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½"
 
 #: templates/registration/password_change_done.html
 msgid "Your password has been changed."
-msgstr "Ваш пароль изменен."
+msgstr "Ð’Ð°Ñˆ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½."
 
 #: templates/registration/password_change_done.html
 msgid "Go to the home page"
-msgstr "Перейти на домашнюю страницу"
+msgstr "ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ð½Ð° Ð´Ð¾Ð¼Ð°ÑˆÐ½ÑŽÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ"
 
 #: templates/registration/password_change_form.html
 msgctxt "page title"
 msgid "Password Change"
-msgstr "Изменения пароля"
+msgstr "Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð¿Ð°Ñ€Ð¾Ð»Ñ"
 
 #: templates/registration/password_change_form.html
 #, python-format
@@ -1300,64 +1300,64 @@ msgstr ""
 
 #: templates/registration/password_change_form.html
 msgid "Please enter your old password, then enter a new one."
-msgstr "Пожалуйста, введите старый пароль, а затем введите новый."
+msgstr "ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ð°Ñ€Ñ‹Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ, Ð° Ð·Ð°Ñ‚ÐµÐ¼ Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ñ‹Ð¹."
 
 #: templates/registration/password_change_form.html
 #: templates/registration/password_reset_confirm.html
 msgctxt "button"
 msgid "Change my password"
-msgstr "Изменить мой пароль"
+msgstr "Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¼Ð¾Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ"
 
 #: templates/registration/password_reset_complete.html
 msgctxt "page title"
 msgid "Password reset complete"
-msgstr "Изменение пароля прошло успешно"
+msgstr "Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾"
 
 #: templates/registration/password_reset_complete.html
 msgid "Your password has been reset."
-msgstr "Пароль изменен."
+msgstr "ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½."
 
 #: templates/registration/password_reset_complete.html
 #: templates/registration/password_reset_done.html
 msgid "Go to the login page"
-msgstr "Перейти на страницу авторизации"
+msgstr "ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸"
 
 #: templates/registration/password_reset_confirm.html
 msgctxt "page title"
 msgid "Password Reset Confirmation"
-msgstr "Подтверждение изменения пароля"
+msgstr "ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð¿Ð°Ñ€Ð¾Ð»Ñ"
 
 #: templates/registration/password_reset_confirm.html
 #: templates/registration/password_reset_form.html
 msgctxt "page title"
 msgid "Password Reset"
-msgstr "Восстановление пароля"
+msgstr "Ð’Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ñ"
 
 #: templates/registration/password_reset_confirm.html
 msgid "Please enter a new password (twice):"
-msgstr "Пожалуйста, введите новый пароль (дважды):"
+msgstr "ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ñ‹Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ (Ð´Ð²Ð°Ð¶Ð´Ñ‹):"
 
 #: templates/registration/password_reset_confirm.html
 msgid "The password reset link was invalid, possibly because it has already been used.  Please request a new password reset."
-msgstr "Ссылка для изменения пароля была неверна, возможно, потому что она уже была использована. Пожалуйста, запросите новое изменение пароля."
+msgstr "Ð¡ÑÑ‹Ð»ÐºÐ° Ð´Ð»Ñ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð¿Ð°Ñ€Ð¾Ð»Ñ Ð±Ñ‹Ð»Ð° Ð½ÐµÐ²ÐµÑ€Ð½Ð°, Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾, Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ Ð¾Ð½Ð° ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð° Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð°. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð·Ð°Ð¿Ñ€Ð¾ÑÐ¸Ñ‚Ðµ Ð½Ð¾Ð²Ð¾Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ñ."
 
 #: templates/registration/password_reset_done.html
 msgctxt "page title"
 msgid "Password reset email sent"
-msgstr "Отправлено электронное письмо об изменении пароля"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¾ ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ðµ Ð¿Ð¸ÑÑŒÐ¼Ð¾ Ð¾Ð± Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¸ Ð¿Ð°Ñ€Ð¾Ð»Ñ"
 
 #: templates/registration/password_reset_done.html
 msgid "We've emailed you instructions for setting your password, if an account exists with the email address you entered. You should receive them shortly."
-msgstr "Мы выслали вам инструкцию для настройки пароля. Если учетная запись с указанным вами адресом электронной почты существует, вскоре вы получите инструкцию."
+msgstr "ÐœÑ‹ Ð²Ñ‹ÑÐ»Ð°Ð»Ð¸ Ð²Ð°Ð¼ Ð¸Ð½ÑÑ‚Ñ€ÑƒÐºÑ†Ð¸ÑŽ Ð´Ð»Ñ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¿Ð°Ñ€Ð¾Ð»Ñ. Ð•ÑÐ»Ð¸ ÑƒÑ‡ÐµÑ‚Ð½Ð°Ñ Ð·Ð°Ð¿Ð¸ÑÑŒ Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ñ‹Ð¼ Ð²Ð°Ð¼Ð¸ Ð°Ð´Ñ€ÐµÑÐ¾Ð¼ ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ñ‹ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚, Ð²ÑÐºÐ¾Ñ€Ðµ Ð²Ñ‹ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚Ðµ Ð¸Ð½ÑÑ‚Ñ€ÑƒÐºÑ†Ð¸ÑŽ."
 
 #: templates/registration/password_reset_done.html
 msgid "If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder."
-msgstr "Если вы не получили инструкцию, убедитесь, что вы ввели тот адрес электронный почты, на который зарегистрирована учетная запись и проверьте папку со спамом."
+msgstr "Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð½Ðµ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð»Ð¸ Ð¸Ð½ÑÑ‚Ñ€ÑƒÐºÑ†Ð¸ÑŽ, ÑƒÐ±ÐµÐ´Ð¸Ñ‚ÐµÑÑŒ, Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ð²Ð²ÐµÐ»Ð¸ Ñ‚Ð¾Ñ‚ Ð°Ð´Ñ€ÐµÑ ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ñ‹Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ñ‹, Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð° ÑƒÑ‡ÐµÑ‚Ð½Ð°Ñ Ð·Ð°Ð¿Ð¸ÑÑŒ Ð¸ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ð¿Ð°Ð¿ÐºÑƒ ÑÐ¾ ÑÐ¿Ð°Ð¼Ð¾Ð¼."
 
 #: templates/registration/password_reset_email.html
 #, python-format
 msgid "Hi, %(user)s!"
-msgstr "Здравствуйте, %(user)s!"
+msgstr "Ð—Ð´Ñ€Ð°Ð²ÑÑ‚Ð²ÑƒÐ¹Ñ‚Ðµ, %(user)s!"
 
 #: templates/registration/password_reset_email.html
 #, python-format
@@ -1366,52 +1366,52 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "Someone asked for a password reset for the email address %(email)s on the Tabbycat site at %(protocol)s://%(domain)s."
-msgstr "Кто-то попросил изменить пароль для адреса электронной почты %(email)s на сайте Tabbycat на сайте %(protocol)s://%(domain)s."
+msgid "Someone asked for a password reset for the email address %(email)s on the NekoTab site at %(protocol)s://%(domain)s."
+msgstr "ÐšÑ‚Ð¾-Ñ‚Ð¾ Ð¿Ð¾Ð¿Ñ€Ð¾ÑÐ¸Ð» Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð´Ð»Ñ Ð°Ð´Ñ€ÐµÑÐ° ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ñ‹ %(email)s Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ NekoTab Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ %(protocol)s://%(domain)s."
 
 #: templates/registration/password_reset_email.html
 msgid "If this was you, follow the link below to reset your password:"
-msgstr "Если это были вы, воспользуйтесь ссылкой ниже чтобы изменить свой пароль:"
+msgstr "Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾ Ð±Ñ‹Ð»Ð¸ Ð²Ñ‹, Ð²Ð¾ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚ÐµÑÑŒ ÑÑÑ‹Ð»ÐºÐ¾Ð¹ Ð½Ð¸Ð¶Ðµ Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÐ²Ð¾Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ:"
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the Tabbycat site at %(protocol)s://%(domain)s."
-msgstr "Если это были не вы, это, скорее всего, значит, что кто-то другой вбил ваш e-mail адрес в форму изменения пароля на сайте Tabbycat %(protocol)s//%(domain)s."
+msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the NekoTab site at %(protocol)s://%(domain)s."
+msgstr "Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾ Ð±Ñ‹Ð»Ð¸ Ð½Ðµ Ð²Ñ‹, ÑÑ‚Ð¾, ÑÐºÐ¾Ñ€ÐµÐµ Ð²ÑÐµÐ³Ð¾, Ð·Ð½Ð°Ñ‡Ð¸Ñ‚, Ñ‡Ñ‚Ð¾ ÐºÑ‚Ð¾-Ñ‚Ð¾ Ð´Ñ€ÑƒÐ³Ð¾Ð¹ Ð²Ð±Ð¸Ð» Ð²Ð°Ñˆ e-mail Ð°Ð´Ñ€ÐµÑ Ð² Ñ„Ð¾Ñ€Ð¼Ñƒ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð¿Ð°Ñ€Ð¾Ð»Ñ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ NekoTab %(protocol)s//%(domain)s."
 
 #: templates/registration/password_reset_form.html
 msgid "Password Reset"
-msgstr "Восстановление пароля"
+msgstr "Ð’Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ñ"
 
 #: templates/registration/password_reset_form.html
 msgid "Enter your email address below, and we'll email you a password reset link."
-msgstr "Введите свой адрес электронной почты ниже, и мы отправим вам ссылку на восстановление пароля."
+msgstr "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÐ²Ð¾Ð¹ Ð°Ð´Ñ€ÐµÑ ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ñ‹ Ð½Ð¸Ð¶Ðµ, Ð¸ Ð¼Ñ‹ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ð¼ Ð²Ð°Ð¼ ÑÑÑ‹Ð»ÐºÑƒ Ð½Ð° Ð²Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ñ."
 
 #: templates/registration/password_reset_form.html
 msgctxt "button"
 msgid "Reset my password"
-msgstr "Восстановить мой пароль"
+msgstr "Ð’Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¼Ð¾Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ"
 
 #: templates/registration/password_reset_form.html
 msgid "Back to the login page"
-msgstr "Вернуться на страницу входа"
+msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð²Ñ…Ð¾Ð´Ð°"
 
 #: templates/registration/password_reset_subject.txt
 #, python-format
-msgid "Password reset on Tabbycat site at %(domain)s"
-msgstr "Восстановление пароля на сайте Tabbycat на %(domain)s"
+msgid "Password reset on NekoTab site at %(domain)s"
+msgstr "Ð’Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ñ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ NekoTab Ð½Ð° %(domain)s"
 
 #: urls.py
 #, python-format
-msgid "Hi, %(user)s — you just logged in!"
-msgstr "Привет, %(user)s - вы только что вошли!"
+msgid "Hi, %(user)s â€” you just logged in!"
+msgstr "ÐŸÑ€Ð¸Ð²ÐµÑ‚, %(user)s - Ð²Ñ‹ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ñ‚Ð¾ Ð²Ð¾ÑˆÐ»Ð¸!"
 
 #: urls.py
 msgid "Welcome! You just logged in!"
-msgstr "Добро пожаловать! Вы только что вошли!"
+msgstr "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ! Ð’Ñ‹ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ñ‚Ð¾ Ð²Ð¾ÑˆÐ»Ð¸!"
 
 #: users/admin.py
 msgid "Users with staff status can view and edit the Edit Database area. This is potentially dangerous and should be reserved for the actual tab director(s)."
-msgstr "Пользователи со статусом персонала могут просматривать и редактировать область базы данных. Это потенциально опасно и должно быть зарезервировано только для фактического тэбмастера (ов)."
+msgstr "ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ð¸ ÑÐ¾ ÑÑ‚Ð°Ñ‚ÑƒÑÐ¾Ð¼ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð° Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾ÑÐ¼Ð°Ñ‚Ñ€Ð¸Ð²Ð°Ñ‚ÑŒ Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ Ð±Ð°Ð·Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ñ…. Ð­Ñ‚Ð¾ Ð¿Ð¾Ñ‚ÐµÐ½Ñ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð¸ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ð·Ð°Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¾ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ñ„Ð°ÐºÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð³Ð¾ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð° (Ð¾Ð²)."
 
 #: users/admin.py
 msgid "Personal info"
@@ -1451,7 +1451,7 @@ msgstr ""
 
 #: users/models.py
 msgid "user"
-msgstr "пользователь"
+msgstr "Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ"
 
 #: users/models.py
 msgid "permission"
@@ -1947,7 +1947,7 @@ msgstr ""
 
 #: users/templates/account_invitation_email.html
 #, python-format
-msgid "An administrator for the Tabbycat site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
+msgid "An administrator for the NekoTab site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: users/templates/account_invitation_email.html
@@ -1960,16 +1960,16 @@ msgstr ""
 
 #: users/templates/account_invitation_subject.txt
 #, python-format
-msgid "Invitation to join Tabbycat site for %(name)s"
+msgid "Invitation to join NekoTab site for %(name)s"
 msgstr ""
 
 #: users/templates/admin/auth/delete_user_warning.html
-msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the “Permissions” tab, unchecked the “Active” box, and save the user."
+msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the â€œPermissionsâ€ tab, unchecked the â€œActiveâ€ box, and save the user."
 msgstr ""
 
 #: users/templates/invite_user.html
 msgid "Back to Configuration"
-msgstr "Вернуться к настройкам"
+msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°Ð¼"
 
 #: users/templates/invite_user.html
 msgctxt "button"
@@ -1987,7 +1987,7 @@ msgstr ""
 
 #: users/templates/signup.html
 msgid "Create Account"
-msgstr "Создать учетную запись"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ ÑƒÑ‡ÐµÑ‚Ð½ÑƒÑŽ Ð·Ð°Ð¿Ð¸ÑÑŒ"
 
 #: users/views.py
 msgid "Whoops! It looks like someone's already created the first user account. Please log in."
@@ -2009,4 +2009,5 @@ msgstr ""
 #: users/views.py
 msgid "Accept Invitation"
 msgstr ""
+
 

@@ -1,4 +1,4 @@
-from django.db.models import Max, Prefetch
+﻿from django.db.models import Max, Prefetch
 from django.db.models.functions import Coalesce
 from django.utils.html import escape
 from django.utils.translation import gettext as _
@@ -10,10 +10,10 @@ from results.models import SpeakerScore, TeamScore
 from results.prefetch import populate_confirmed_ballots, populate_wins
 from standings.templatetags.standingsformat import metricformat
 from tournaments.models import Round
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 
 
-class TeamResultTableBuilder(TabbycatTableBuilder):
+class TeamResultTableBuilder(NekoTabTableBuilder):
 
     def add_cumulative_team_points_column(self, teamscores):
         """It is assumed that `teamscores` is ordered by round number; the
@@ -22,7 +22,7 @@ class TeamResultTableBuilder(TabbycatTableBuilder):
         data = []
         for teamscore in teamscores:
             if teamscore.points is None:
-                data.append("—")
+                data.append("â€”")
             else:
                 cumul += (teamscore.points or 0) * teamscore.debate_team.debate.round.weight
                 data.append(cumul)
@@ -36,7 +36,7 @@ class TeamResultTableBuilder(TabbycatTableBuilder):
 
     def add_speaker_scores_column(self, teamscores):
         data = [{
-            'text': ", ".join([metricformat(ss.score) for ss in ts.debate_team.speaker_scores]) or "—",
+            'text': ", ".join([metricformat(ss.score) for ss in ts.debate_team.speaker_scores]) or "â€”",
             'tooltip': "<br>".join(["%s for %s" % (metricformat(ss.score), escape(ss.speaker)) for ss in ts.debate_team.speaker_scores]),
         } for ts in teamscores]
         header = {'key': 'speaks', 'tooltip': _("Speaker scores<br>(in speaking order)"), 'text': _("Speaks")}
@@ -48,7 +48,7 @@ class AdjudicatorDebateTable:
     @classmethod
     def get_table(cls, view, participant):
         """On adjudicator record pages, the table is the previous debates table."""
-        table = TabbycatTableBuilder(view=view, title=view.table_title, sort_key="round")
+        table = NekoTabTableBuilder(view=view, title=view.table_title, sort_key="round")
 
         debateadjs = DebateAdjudicator.objects.filter(
             adjudicator=participant,
@@ -135,3 +135,4 @@ class TeamDebateTable:
             table.add_speaker_debate_ballot_link_column(debates)
 
         return table
+

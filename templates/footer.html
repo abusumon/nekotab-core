@@ -1,4 +1,4 @@
-{% load debate_tags static i18n cache %}
+﻿{% load debate_tags static i18n cache %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% cache 600 footer tournament LANGUAGE_CODE %}
@@ -10,26 +10,26 @@
 
       <div class="col-lg-6 col-md-5">
         <h6 class="d-inline-block">
-          {% if tournament and tabbycat_codename %}
-            {% blocktrans trimmed %}{{ tournament }} runs on Tabbycat {{ tabbycat_version }} ({{ tabbycat_codename }}) {% endblocktrans %}
+          {% if tournament and NekoTab_codename %}
+            {% blocktrans trimmed %}{{ tournament }} runs on NekoTab {{ NekoTab_version }} ({{ NekoTab_codename }}) {% endblocktrans %}
           {% else %}
-            {% blocktrans trimmed %}This site runs on Tabbycat {{ tabbycat_version }} ({{ tabbycat_codename }}) {% endblocktrans %}
+            {% blocktrans trimmed %}This site runs on NekoTab {{ NekoTab_version }} ({{ NekoTab_codename }}) {% endblocktrans %}
           {% endif %}
         </h6>
         <p class="text-muted">
           {% blocktrans trimmed %}
-            Tabbycat is an open-source project developed by volunteers and is free to use.
+            NekoTab is an open-source project developed by volunteers and is free to use.
           {% endblocktrans %}
           {% if tournament and tournament.billable_teams > 0 %}
             {% blocktrans trimmed with amount=tournament.billable_teams %}
-              For a tournament of this size, we suggest <a href="https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount={{ amount }}">a donation of <strong>${{ amount }}</strong></a>.
+              For a tournament of this size, we suggest <a href="https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount={{ amount }}">a donation of <strong>${{ amount }}</strong></a>.
             {% endblocktrans %}
-            <a href="https://opencollective.com/tabbycat">
+            <a href="https://opencollective.com/NekoTab">
               {% trans "Learn more about donating." %}
             </a>
           {% else %}
             {% blocktrans trimmed %}
-              <a href="https://opencollective.com/tabbycat">Donations to Tabbycat from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain Tabbycat.
+              <a href="https://opencollective.com/NekoTab">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab.
             {% endblocktrans %}
           {% endif %}
         </p>
@@ -40,8 +40,8 @@
         <p class="text-muted">
           {% blocktrans trimmed %}
             Using an app designed for debate timekeeping makes speaking and adjudicating easier!
-            Check out <a href="https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%20Installs&mt=8">Timekept</a> (iPhone/iPad)
-            or <a href="https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%3Dtabbycat%26utm_medium%3Dfooter">Debatekeeper</a> (Android).
+            Check out <a href="https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%20Installs&mt=8">Timekept</a> (iPhone/iPad)
+            or <a href="https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%3DNekoTab%26utm_medium%3Dfooter">Debatekeeper</a> (Android).
           {% endblocktrans %}
         </p>
       </div>
@@ -50,7 +50,7 @@
         <h6 class="d-inline-block">{% blocktrans trimmed %}Our Organisation{% endblocktrans %}</h6>
         <p class="text-muted">
           {% blocktrans trimmed %}
-            Tabbycat is supported by the <a href="https://tabbycat-debate.org/">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology.
+            NekoTab is supported by the <a href="https://NekoTab-debate.org/">NekoTab Debate Association</a>, a non-profit for advancing open debate technology.
           {% endblocktrans %}
         </p>
       </div>
@@ -68,31 +68,31 @@
           </li>
           <li class="nav-item p-2">
             <i data-feather="github"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://github.com/TabbycatDebate/tabbycat/">
+            <a class="nav-link p-0 d-inline-block" href="https://github.com/NekoTabDebate/NekoTab/">
               {% trans "GitHub" %}
             </a>
           </li>
           <li class="nav-item p-2">
             <i data-feather="book"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://tabbycat.readthedocs.io/en/stable/">
+            <a class="nav-link p-0 d-inline-block" href="https://NekoTab.readthedocs.io/en/stable/">
               {% trans "Documentation" %}
             </a>
           </li>
           <li class="nav-item p-2">
             <i data-feather="help-circle"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://tabbycat.readthedocs.io/en/stable/about/support.html">
+            <a class="nav-link p-0 d-inline-block" href="https://NekoTab.readthedocs.io/en/stable/about/support.html">
               {% trans "Support" %}
             </a>
           </li>
           <li class="nav-item p-2">
             <i data-feather="facebook"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://www.facebook.com/TabbycatDebate/">
+            <a class="nav-link p-0 d-inline-block" href="https://www.facebook.com/NekoTabDebate/">
               {% trans "Facebook" %}
             </a>
           </li>
           <li class="nav-item p-2">
             <i data-feather="upload-cloud"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://github.com/TabbycatDebate/tabbycat#%EF%B8%8F-installation">
+            <a class="nav-link p-0 d-inline-block" href="https://github.com/NekoTabDebate/NekoTab#%EF%B8%8F-installation">
               {% trans "Set Up A Copy" %}
             </a>
           </li>
@@ -131,3 +131,4 @@
   </div>
 </div>
 {% endcache %}
+

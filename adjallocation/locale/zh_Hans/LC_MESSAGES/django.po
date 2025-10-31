@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2023-02-05 00:56\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
 msgid "There are no available adjudicators. Ensure there are adjudicators who have been marked as available for this round before auto-allocating."
-msgstr "当前没有可用裁判。请确保在本回合自动分配前已有裁判可用。"
+msgstr "å½“å‰æ²¡æœ‰å¯ç”¨è£åˆ¤ã€‚è¯·ç¡®ä¿åœ¨æœ¬å›žåˆè‡ªåŠ¨åˆ†é…å‰å·²æœ‰è£åˆ¤å¯ç”¨ã€‚"
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
@@ -130,27 +130,27 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "chair"
-msgstr "主席"
+msgstr "ä¸»å¸­"
 
 #: adjallocation/models.py
 msgid "panellist"
-msgstr "成员"
+msgstr "æˆå‘˜"
 
 #: adjallocation/models.py
 msgid "trainee"
-msgstr "实习生"
+msgstr "å®žä¹ ç”Ÿ"
 
 #: adjallocation/models.py
 msgid "debate"
-msgstr "辩论"
+msgstr "è¾©è®º"
 
 #: adjallocation/models.py
 msgid "adjudicator"
-msgstr "裁判"
+msgstr "è£åˆ¤"
 
 #: adjallocation/models.py
 msgid "type"
-msgstr "职务"
+msgstr "èŒåŠ¡"
 
 #: adjallocation/models.py
 msgid "available?"
@@ -166,7 +166,7 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "team"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: adjallocation/models.py
 msgid "adjudicator-team conflict"
@@ -178,11 +178,11 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "adjudicator 1"
-msgstr "裁判1"
+msgstr "è£åˆ¤1"
 
 #: adjallocation/models.py
 msgid "adjudicator 2"
-msgstr "裁判2"
+msgstr "è£åˆ¤2"
 
 #: adjallocation/models.py
 msgid "adjudicator-adjudicator conflict"
@@ -214,7 +214,7 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "round"
-msgstr "赛"
+msgstr "èµ›"
 
 #: adjallocation/models.py
 msgid "importance"
@@ -262,7 +262,7 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "panel"
-msgstr "裁判组"
+msgstr "è£åˆ¤ç»„"
 
 #: adjallocation/models.py
 msgid "preformed panel adjudicator"
@@ -315,11 +315,11 @@ msgstr ""
 
 #: adjallocation/views.py
 msgid "Male"
-msgstr "男性"
+msgstr "ç”·æ€§"
 
 #: adjallocation/views.py
 msgid "Female"
-msgstr "女性"
+msgstr "å¥³æ€§"
 
 #: adjallocation/views.py
 msgid "Other"
@@ -327,7 +327,7 @@ msgstr ""
 
 #: adjallocation/views.py
 msgid "Unknown"
-msgstr "未知"
+msgstr "æœªçŸ¥"
 
 #: adjallocation/views.py
 msgid "Edit Allocation"
@@ -436,4 +436,5 @@ msgstr[0] ""
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
 msgstr ""
+
 

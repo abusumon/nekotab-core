@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:47\n"
@@ -12,19 +12,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: cs\n"
-"X-Crowdin-File: /develop/tabbycat/privateurls/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/privateurls/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 946\n"
 
 #: privateurls/apps.py
 msgid "Private URL Management"
-msgstr "Správa soukromých URL"
+msgstr "SprÃ¡va soukromÃ½ch URL"
 
 #: privateurls/templates/private_url_landing.html
 msgid "Private URL"
-msgstr "Soukromá URL"
+msgstr "SoukromÃ¡ URL"
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
@@ -44,30 +44,30 @@ msgstr ""
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can submit results and/or feedback for your debates. You may bookmark this page and return here after each debate for the available actions."
-msgstr "URL této stránky je přizpůsobeno právě vám, %(name)s. <strong>S nikým ji nesdílejte;</strong> kdokoli zná tuto URL může posílat výsledky a/nebo zpětnou vazbu pro vaše debaty. Můžete si tuto stránku uložit do oblíbených a vrátit se sem po každé debatě pro dostupné funkce."
+msgstr "URL tÃ©to strÃ¡nky je pÅ™izpÅ¯sobeno prÃ¡vÄ› vÃ¡m, %(name)s. <strong>S nikÃ½m ji nesdÃ­lejte;</strong> kdokoli znÃ¡ tuto URL mÅ¯Å¾e posÃ­lat vÃ½sledky a/nebo zpÄ›tnou vazbu pro vaÅ¡e debaty. MÅ¯Å¾ete si tuto strÃ¡nku uloÅ¾it do oblÃ­benÃ½ch a vrÃ¡tit se sem po kaÅ¾dÃ© debatÄ› pro dostupnÃ© funkce."
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "Revoke check-in from %(check_time)s"
-msgstr "Zrušit potvrzení přítomnozti z %(check_time)s"
+msgstr "ZruÅ¡it potvrzenÃ­ pÅ™Ã­tomnozti z %(check_time)s"
 
 #: privateurls/templates/private_url_landing.html
 msgid "Check in"
-msgstr "Potvrdit přítomnost"
+msgstr "Potvrdit pÅ™Ã­tomnost"
 
 #. Translators: Include the full-stop; English doesn't because "a.m." already has a full stop.
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "You have been checked in at %(check_time)s"
-msgstr "Potvrdili jste svou přítomnost v %(check_time)s"
+msgstr "Potvrdili jste svou pÅ™Ã­tomnost v %(check_time)s"
 
 #: privateurls/templates/private_url_landing.html
 msgid "You are not currently checked in."
-msgstr "Aktuálně jste nepotvrdil svou přítomnost."
+msgstr "AktuÃ¡lnÄ› jste nepotvrdil svou pÅ™Ã­tomnost."
 
 #: privateurls/templates/private_url_landing.html
 msgid "Show barcode for check-in"
-msgstr "Zobrazit čárový kód pro potvrzení přítomnosti"
+msgstr "Zobrazit ÄÃ¡rovÃ½ kÃ³d pro potvrzenÃ­ pÅ™Ã­tomnosti"
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
@@ -76,7 +76,7 @@ msgstr "Odeslat ballot pro %(round)s"
 
 #: privateurls/templates/private_url_landing.html
 msgid "Submit Feedback"
-msgstr "Odeslat zpětnou vazbu"
+msgstr "Odeslat zpÄ›tnou vazbu"
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
@@ -85,7 +85,7 @@ msgstr "Registrace (%(name)s)"
 
 #: privateurls/templates/private_urls.html privateurls/views.py
 msgid "Private URLs"
-msgstr "Soukromé URL"
+msgstr "SoukromÃ© URL"
 
 #: privateurls/templates/private_urls.html
 msgid "The private URLs for ballot and/or feedback submission from participants are given below."
@@ -96,7 +96,7 @@ msgid "Private URLs are used to allow participants to submit ballots and/or feed
 msgstr ""
 
 #: privateurls/templates/private_urls.html
-msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
+msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
 msgstr ""
 
 #: privateurls/templates/private_urls.html
@@ -110,7 +110,7 @@ msgstr ""
 
 #: privateurls/templates/private_urls.html
 msgid "Generate Private URLs"
-msgstr "Vygenerovat soukromé URL"
+msgstr "Vygenerovat soukromÃ© URL"
 
 #: privateurls/templates/private_urls_nav.html
 msgid "View URLs"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: privateurls/templates/private_urls_nav.html
 msgid "All reachable participants have already been sent their private URLs."
-msgstr "Všem dosažitelným účastníkům již byly rozeslány jejich soukromé URL."
+msgstr "VÅ¡em dosaÅ¾itelnÃ½m ÃºÄastnÃ­kÅ¯m jiÅ¾ byly rozeslÃ¡ny jejich soukromÃ© URL."
 
 #: privateurls/templates/private_urls_nav.html
 msgid "Email URLs"
@@ -142,11 +142,11 @@ msgstr "Vygenerovat URL"
 
 #: privateurls/templates/private_urls_nav.html
 msgid "All participants already have private URLs."
-msgstr "Všichni účastníci již mají soukromé URL."
+msgstr "VÅ¡ichni ÃºÄastnÃ­ci jiÅ¾ majÃ­ soukromÃ© URL."
 
 #: privateurls/views.py
 msgid "no URL"
-msgstr "žádná URL"
+msgstr "Å¾Ã¡dnÃ¡ URL"
 
 #: privateurls/views.py
 msgid "URL"
@@ -154,11 +154,11 @@ msgstr "URL"
 
 #: privateurls/views.py
 msgid "Speakers"
-msgstr "Mluvčí"
+msgstr "MluvÄÃ­"
 
 #: privateurls/views.py
 msgid "Adjudicators"
-msgstr "Rozhodčí"
+msgstr "RozhodÄÃ­"
 
 #: privateurls/views.py
 msgid "All participants already have private URLs. If you want to delete them, use the Edit Database area."
@@ -168,19 +168,19 @@ msgstr ""
 #, python-format
 msgid "A private URL was generated for %(nblank_people)d person."
 msgid_plural "Private URLs were generated for all %(nblank_people)d people."
-msgstr[0] "Soukromá URL byla vygenerována pro %(nblank_people)d osobu."
-msgstr[1] "Soukromé URL byly vygenerovány pro všechny %(nblank_people)d osoby."
-msgstr[2] "Soukromé URL byly vygenerovány pro všech %(nblank_people)d osob."
-msgstr[3] "Soukromé URL byly vygenerovány pro všech %(nblank_people)d osob."
+msgstr[0] "SoukromÃ¡ URL byla vygenerovÃ¡na pro %(nblank_people)d osobu."
+msgstr[1] "SoukromÃ© URL byly vygenerovÃ¡ny pro vÅ¡echny %(nblank_people)d osoby."
+msgstr[2] "SoukromÃ© URL byly vygenerovÃ¡ny pro vÅ¡ech %(nblank_people)d osob."
+msgstr[3] "SoukromÃ© URL byly vygenerovÃ¡ny pro vÅ¡ech %(nblank_people)d osob."
 
 #: privateurls/views.py
 #, python-format
 msgid "The already-existing private URL for %(nexisting_people)d person was left intact."
 msgid_plural "The already-existing private URLs for %(nexisting_people)d people were left intact."
-msgstr[0] "Již existující soukromá URL pro %(nexisting_people)d osobu byla ponechána nedotčená."
-msgstr[1] "Již existující soukromé URL pro %(nexisting_people)d osoby byly ponechány nedotčené."
-msgstr[2] "Již existující soukromé URL pro %(nexisting_people)d osob byly ponechány nedotčené."
-msgstr[3] "Již existující soukromé URL pro %(nexisting_people)d osob byly ponechány nedotčené."
+msgstr[0] "JiÅ¾ existujÃ­cÃ­ soukromÃ¡ URL pro %(nexisting_people)d osobu byla ponechÃ¡na nedotÄenÃ¡."
+msgstr[1] "JiÅ¾ existujÃ­cÃ­ soukromÃ© URL pro %(nexisting_people)d osoby byly ponechÃ¡ny nedotÄenÃ©."
+msgstr[2] "JiÅ¾ existujÃ­cÃ­ soukromÃ© URL pro %(nexisting_people)d osob byly ponechÃ¡ny nedotÄenÃ©."
+msgstr[3] "JiÅ¾ existujÃ­cÃ­ soukromÃ© URL pro %(nexisting_people)d osob byly ponechÃ¡ny nedotÄenÃ©."
 
 #: privateurls/views.py
 msgid "URL Key"
@@ -189,4 +189,5 @@ msgstr ""
 #: privateurls/views.py
 msgid "Debates"
 msgstr "Debat"
+
 

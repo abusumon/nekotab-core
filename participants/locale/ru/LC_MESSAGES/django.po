@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -12,16 +12,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/participants/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/participants/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 942\n"
 
 #: participants/admin.py
 #, python-format
 msgid "The team can't be in a break category of a different tournament. Please remove: %(category)s"
-msgstr "Команда не может быть в брейковой категории на другом турнире. Пожалуйста, удалите: %(category)s"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð² Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð½Ð° Ð´Ñ€ÑƒÐ³Ð¾Ð¼ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ðµ. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑƒÐ´Ð°Ð»Ð¸Ñ‚Ðµ: %(category)s"
 
 #: participants/admin.py
 msgid "Emoji & Code"
@@ -35,10 +35,10 @@ msgstr ""
 #, python-format
 msgid "%(count)d speaker had their URL key removed."
 msgid_plural "%(count)d speakers had their URL keys removed."
-msgstr[0] "%(count)d URL-ключ этого спикера был удален."
-msgstr[1] "%(count)d URL-ключ этих спикеров был удален."
-msgstr[2] "%(count)d URL-ключ этих спикеров был удален."
-msgstr[3] "%(count)d URL-ключ этих спикеров был удален."
+msgstr[0] "%(count)d URL-ÐºÐ»ÑŽÑ‡ ÑÑ‚Ð¾Ð³Ð¾ ÑÐ¿Ð¸ÐºÐµÑ€Ð° Ð±Ñ‹Ð» ÑƒÐ´Ð°Ð»ÐµÐ½."
+msgstr[1] "%(count)d URL-ÐºÐ»ÑŽÑ‡ ÑÑ‚Ð¸Ñ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð±Ñ‹Ð» ÑƒÐ´Ð°Ð»ÐµÐ½."
+msgstr[2] "%(count)d URL-ÐºÐ»ÑŽÑ‡ ÑÑ‚Ð¸Ñ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð±Ñ‹Ð» ÑƒÐ´Ð°Ð»ÐµÐ½."
+msgstr[3] "%(count)d URL-ÐºÐ»ÑŽÑ‡ ÑÑ‚Ð¸Ñ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð±Ñ‹Ð» ÑƒÐ´Ð°Ð»ÐµÐ½."
 
 #: participants/admin.py
 msgid "Reset emoji"
@@ -70,52 +70,52 @@ msgstr[3] ""
 #, python-format
 msgid "%(count)d adjudicator had their URL key removed."
 msgid_plural "%(count)d adjudicators had their URL keys removed."
-msgstr[0] "%(count)d URL-ключ этого судьи был удален."
-msgstr[1] "%(count)d URL-ключ этих судей был удален."
-msgstr[2] "%(count)d URL-ключ этих судей был удален."
-msgstr[3] "%(count)d URL-ключ этих судей был удален."
+msgstr[0] "%(count)d URL-ÐºÐ»ÑŽÑ‡ ÑÑ‚Ð¾Ð³Ð¾ ÑÑƒÐ´ÑŒÐ¸ Ð±Ñ‹Ð» ÑƒÐ´Ð°Ð»ÐµÐ½."
+msgstr[1] "%(count)d URL-ÐºÐ»ÑŽÑ‡ ÑÑ‚Ð¸Ñ… ÑÑƒÐ´ÐµÐ¹ Ð±Ñ‹Ð» ÑƒÐ´Ð°Ð»ÐµÐ½."
+msgstr[2] "%(count)d URL-ÐºÐ»ÑŽÑ‡ ÑÑ‚Ð¸Ñ… ÑÑƒÐ´ÐµÐ¹ Ð±Ñ‹Ð» ÑƒÐ´Ð°Ð»ÐµÐ½."
+msgstr[3] "%(count)d URL-ÐºÐ»ÑŽÑ‡ ÑÑ‚Ð¸Ñ… ÑÑƒÐ´ÐµÐ¹ Ð±Ñ‹Ð» ÑƒÐ´Ð°Ð»ÐµÐ½."
 
 #: participants/apps.py participants/views.py
 msgid "Participants"
-msgstr "Участники"
+msgstr "Ð£Ñ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸"
 
 #: participants/models.py
 msgid "name"
-msgstr "название"
+msgstr "Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: participants/models.py
 msgid "region"
-msgstr "регион"
+msgstr "Ñ€ÐµÐ³Ð¸Ð¾Ð½"
 
 #: participants/models.py
 msgid "regions"
-msgstr "регионы"
+msgstr "Ñ€ÐµÐ³Ð¸Ð¾Ð½Ñ‹"
 
 #. Translators: Change the examples to institutions native to your language; keep consistent between strings
 #: participants/models.py
 msgid "The institution's full name, e.g., \"University of Cambridge\", \"Victoria University of Wellington\""
-msgstr "Полное название клуба, например \"Университет Кембриджа\" или \"Университет Виктории в Веллингтоне\""
+msgstr "ÐŸÐ¾Ð»Ð½Ð¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ»ÑƒÐ±Ð°, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ \"Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ ÐšÐµÐ¼Ð±Ñ€Ð¸Ð´Ð¶Ð°\" Ð¸Ð»Ð¸ \"Ð£Ð½Ð¸Ð²ÐµÑ€ÑÐ¸Ñ‚ÐµÑ‚ Ð’Ð¸ÐºÑ‚Ð¾Ñ€Ð¸Ð¸ Ð² Ð’ÐµÐ»Ð»Ð¸Ð½Ð³Ñ‚Ð¾Ð½Ðµ\""
 
 #: participants/models.py
 msgid "code"
-msgstr "код"
+msgstr "ÐºÐ¾Ð´"
 
 #. Translators: Change the examples to institutions native to your language; keep consistent between strings
 #: participants/models.py
 msgid "What the institution is typically called for short, e.g., \"Cambridge\", \"Vic Wellington\""
-msgstr "Как обычно кратко называют клуб, например \"Кембридж\" или \"Вик Веллингтон\""
+msgstr "ÐšÐ°Ðº Ð¾Ð±Ñ‹Ñ‡Ð½Ð¾ ÐºÑ€Ð°Ñ‚ÐºÐ¾ Ð½Ð°Ð·Ñ‹Ð²Ð°ÑŽÑ‚ ÐºÐ»ÑƒÐ±, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ \"ÐšÐµÐ¼Ð±Ñ€Ð¸Ð´Ð¶\" Ð¸Ð»Ð¸ \"Ð’Ð¸Ðº Ð’ÐµÐ»Ð»Ð¸Ð½Ð³Ñ‚Ð¾Ð½\""
 
 #: participants/models.py
 msgid "institution"
-msgstr "клуб"
+msgstr "ÐºÐ»ÑƒÐ±"
 
 #: participants/models.py
 msgid "institutions"
-msgstr "клубы"
+msgstr "ÐºÐ»ÑƒÐ±Ñ‹"
 
 #: participants/models.py
 msgid "tournament"
-msgstr "турнир"
+msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: participants/models.py
 msgid "Team slots requested"
@@ -144,48 +144,48 @@ msgstr ""
 #. Translators: Translate ESL to the acronym for "<target language> as a second/foreign language", not "English"
 #: participants/models.py
 msgid "Name to be displayed, e.g., \"Novice\", \"ESL\""
-msgstr "Отображаемое название, например, \"ESL\", \"Новички\""
+msgstr "ÐžÑ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÐ¼Ð¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, \"ESL\", \"ÐÐ¾Ð²Ð¸Ñ‡ÐºÐ¸\""
 
 #: participants/models.py
 msgid "slug"
-msgstr "краткое название"
+msgstr "ÐºÑ€Ð°Ñ‚ÐºÐ¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #. Translators: Translate esl to the acronym for "<target language> as a second/foreign language", not "English"
 #: participants/models.py
 msgid "Slug for URLs, e.g., \"novice\", \"esl\""
-msgstr "Краткое название для URL, например, \"esl\", \"новички\""
+msgstr "ÐšÑ€Ð°Ñ‚ÐºÐ¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð´Ð»Ñ URL, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, \"esl\", \"Ð½Ð¾Ð²Ð¸Ñ‡ÐºÐ¸\""
 
 #: participants/models.py
 msgid "sequence number"
-msgstr "порядковый номер"
+msgstr "Ð¿Ð¾Ñ€ÑÐ´ÐºÐ¾Ð²Ñ‹Ð¹ Ð½Ð¾Ð¼ÐµÑ€"
 
 #: participants/models.py
 msgid "The order in which the categories are displayed"
-msgstr "Порядок, в котором демонстрируются категории"
+msgstr "ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼ Ð´ÐµÐ¼Ð¾Ð½ÑÑ‚Ñ€Ð¸Ñ€ÑƒÑŽÑ‚ÑÑ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸"
 
 #: participants/models.py
 msgid "limit"
-msgstr "лимит"
+msgstr "Ð»Ð¸Ð¼Ð¸Ñ‚"
 
 #: participants/models.py
 msgid "At most this many speakers will be shown on the public tab for this category, or use 0 for no limit"
-msgstr "Такое максимальное количество спикеров будет показано в публичном тэбе для этой категории или используйте 0 для отсутствия лимита"
+msgstr "Ð¢Ð°ÐºÐ¾Ðµ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð±ÑƒÐ´ÐµÑ‚ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ð¾ Ð² Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾Ð¼ Ñ‚ÑÐ±Ðµ Ð´Ð»Ñ ÑÑ‚Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð¸Ð»Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ 0 Ð´Ð»Ñ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²Ð¸Ñ Ð»Ð¸Ð¼Ð¸Ñ‚Ð°"
 
 #: participants/models.py
 msgid "public"
-msgstr "публично"
+msgstr "Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾"
 
 #: participants/models.py
 msgid "If checked, this category will be included in the speaker category tabs shown to the public"
-msgstr "При этом выборе эта категория будет включена в категории спикерских тэбов, которые будут показаны публично"
+msgstr "ÐŸÑ€Ð¸ ÑÑ‚Ð¾Ð¼ Ð²Ñ‹Ð±Ð¾Ñ€Ðµ ÑÑ‚Ð° ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ Ð±ÑƒÐ´ÐµÑ‚ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð° Ð² ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ñ… Ñ‚ÑÐ±Ð¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±ÑƒÐ´ÑƒÑ‚ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ñ‹ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾"
 
 #: participants/models.py
 msgid "speaker category"
-msgstr "категория спикера"
+msgstr "ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð°"
 
 #: participants/models.py
 msgid "speaker categories"
-msgstr "категории спикеров"
+msgstr "ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: participants/models.py
 msgid "last name"
@@ -201,19 +201,19 @@ msgstr ""
 
 #: participants/models.py
 msgid "phone"
-msgstr "номер телефона"
+msgstr "Ð½Ð¾Ð¼ÐµÑ€ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ð°"
 
 #: participants/models.py
 msgid "anonymous"
-msgstr "анонимно"
+msgstr "Ð°Ð½Ð¾Ð½Ð¸Ð¼Ð½Ð¾"
 
 #: participants/models.py
 msgid "Anonymous persons will have their name and team redacted on public tab releases"
-msgstr "Имена анонимных людей и названия их команд будут отредактированы при публикации тэба"
+msgstr "Ð˜Ð¼ÐµÐ½Ð° Ð°Ð½Ð¾Ð½Ð¸Ð¼Ð½Ñ‹Ñ… Ð»ÑŽÐ´ÐµÐ¹ Ð¸ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ Ð¸Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð±ÑƒÐ´ÑƒÑ‚ Ð¾Ñ‚Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð¿Ñ€Ð¸ Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ†Ð¸Ð¸ Ñ‚ÑÐ±Ð°"
 
 #: participants/models.py
 msgid "code name"
-msgstr "кодовое имя"
+msgstr "ÐºÐ¾Ð´Ð¾Ð²Ð¾Ðµ Ð¸Ð¼Ñ"
 
 #: participants/models.py
 msgid "Name used to obscure real name on public-facing pages"
@@ -221,47 +221,47 @@ msgstr ""
 
 #: participants/models.py
 msgid "URL key"
-msgstr "Ключ URL"
+msgstr "ÐšÐ»ÑŽÑ‡ URL"
 
 #: participants/models.py
 msgid "male"
-msgstr "мужской"
+msgstr "Ð¼ÑƒÐ¶ÑÐºÐ¾Ð¹"
 
 #: participants/models.py
 msgid "female"
-msgstr "женский"
+msgstr "Ð¶ÐµÐ½ÑÐºÐ¸Ð¹"
 
 #: participants/models.py
 msgid "other"
-msgstr "другой"
+msgstr "Ð´Ñ€ÑƒÐ³Ð¾Ð¹"
 
 #: participants/models.py
 msgid "gender"
-msgstr "гендер"
+msgstr "Ð³ÐµÐ½Ð´ÐµÑ€"
 
 #: participants/models.py
 msgid "Gender is displayed in the adjudicator allocation interface, and nowhere else"
-msgstr "Гендер отображается в интерфейсе расстановки судей и больше нигде"
+msgstr "Ð“ÐµÐ½Ð´ÐµÑ€ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÑ‚ÑÑ Ð² Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐµ Ñ€Ð°ÑÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ¸ ÑÑƒÐ´ÐµÐ¹ Ð¸ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½Ð¸Ð³Ð´Ðµ"
 
 #: participants/models.py
 msgid "pronoun"
-msgstr "произношение"
+msgstr "Ð¿Ñ€Ð¾Ð¸Ð·Ð½Ð¾ÑˆÐµÐ½Ð¸Ðµ"
 
 #: participants/models.py
-msgid "If printing ballots using Tabbycat, there is the option to pre-print pronouns"
-msgstr "Если печатать бэллоты с помощью Tabbycat, то есть возможность предварительно распечатать произношения"
+msgid "If printing ballots using NekoTab, there is the option to pre-print pronouns"
+msgstr "Ð•ÑÐ»Ð¸ Ð¿ÐµÑ‡Ð°Ñ‚Ð°Ñ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ NekoTab, Ñ‚Ð¾ ÐµÑÑ‚ÑŒ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÑŒ Ð¿Ñ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ€Ð°ÑÐ¿ÐµÑ‡Ð°Ñ‚Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð¸Ð·Ð½Ð¾ÑˆÐµÐ½Ð¸Ñ"
 
 #: participants/models.py
 msgid "person"
-msgstr "человек"
+msgstr "Ñ‡ÐµÐ»Ð¾Ð²ÐµÐº"
 
 #: participants/models.py
 msgid "persons"
-msgstr "люди"
+msgstr "Ð»ÑŽÐ´Ð¸"
 
 #: participants/models.py
 msgid "Redacted"
-msgstr "Редактировано"
+msgstr "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¾"
 
 #: participants/models.py
 msgid "coach"
@@ -273,15 +273,15 @@ msgstr ""
 
 #: participants/models.py
 msgid "full name/suffix"
-msgstr "полное имя"
+msgstr "Ð¿Ð¾Ð»Ð½Ð¾Ðµ Ð¸Ð¼Ñ"
 
 #: participants/models.py
 msgid "Do not include institution name (see \"uses institutional prefix\" below)"
-msgstr "Не указывать название клуба (см. \"Клуб в названии команды\" ниже)"
+msgstr "ÐÐµ ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ»ÑƒÐ±Ð° (ÑÐ¼. \"ÐšÐ»ÑƒÐ± Ð² Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹\" Ð½Ð¸Ð¶Ðµ)"
 
 #: participants/models.py
 msgid "short name/suffix"
-msgstr "краткое название"
+msgstr "ÐºÑ€Ð°Ñ‚ÐºÐ¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: participants/models.py
 msgid "The decoded name shown in the draw, not including institution name (see \"uses institutional prefix\" below)"
@@ -289,11 +289,11 @@ msgstr ""
 
 #: participants/models.py
 msgid "Name used to obscure institutional identity on public-facing pages"
-msgstr "Кодовое название, которое используется для того, чтобы скрыть, к какому клубу относится команда (на страницах в открытом доступе)"
+msgstr "ÐšÐ¾Ð´Ð¾Ð²Ð¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð´Ð»Ñ Ñ‚Ð¾Ð³Ð¾, Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑÐºÑ€Ñ‹Ñ‚ÑŒ, Ðº ÐºÐ°ÐºÐ¾Ð¼Ñƒ ÐºÐ»ÑƒÐ±Ñƒ Ð¾Ñ‚Ð½Ð¾ÑÐ¸Ñ‚ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° (Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°Ñ… Ð² Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¾Ð¼ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ðµ)"
 
 #: participants/models.py
 msgid "short name"
-msgstr "краткое название"
+msgstr "ÐºÑ€Ð°Ñ‚ÐºÐ¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: participants/models.py
 msgid "The decoded name shown in the draw, including institution name. (This is autogenerated.)"
@@ -301,23 +301,23 @@ msgstr ""
 
 #: participants/models.py
 msgid "long name"
-msgstr "длинное имя"
+msgstr "Ð´Ð»Ð¸Ð½Ð½Ð¾Ðµ Ð¸Ð¼Ñ"
 
 #: participants/models.py
 msgid "The full name of the team, including institution name. (This is autogenerated.)"
-msgstr "Полное название команды, включая название клуба (генерируется автоматически)"
+msgstr "ÐŸÐ¾Ð»Ð½Ð¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹, Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ»ÑƒÐ±Ð° (Ð³ÐµÐ½ÐµÑ€Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸)"
 
 #: participants/models.py
 msgid "Uses institutional prefix"
-msgstr "Клуб в названии команды"
+msgstr "ÐšÐ»ÑƒÐ± Ð² Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: participants/models.py
 msgid "If ticked, a team called \"1\" from Victoria will be shown as \"Victoria 1\""
-msgstr "Если стоит отметка, команда \"1\" из Виктории будет показана как \"Виктория 1\""
+msgstr "Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾Ð¸Ñ‚ Ð¾Ñ‚Ð¼ÐµÑ‚ÐºÐ°, ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° \"1\" Ð¸Ð· Ð’Ð¸ÐºÑ‚Ð¾Ñ€Ð¸Ð¸ Ð±ÑƒÐ´ÐµÑ‚ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ð° ÐºÐ°Ðº \"Ð’Ð¸ÐºÑ‚Ð¾Ñ€Ð¸Ñ 1\""
 
 #: participants/models.py
 msgid "break categories"
-msgstr "категории брейка"
+msgstr "ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð±Ñ€ÐµÐ¹ÐºÐ°"
 
 #: participants/models.py
 msgid "seed"
@@ -329,19 +329,19 @@ msgstr ""
 
 #: participants/models.py
 msgid "institution conflicts"
-msgstr "конфликты с клубами"
+msgstr "ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ Ñ ÐºÐ»ÑƒÐ±Ð°Ð¼Ð¸"
 
 #: participants/models.py
 msgid "none"
-msgstr "нет"
+msgstr "Ð½ÐµÑ‚"
 
 #: participants/models.py
 msgid "swing"
-msgstr "свинг"
+msgstr "ÑÐ²Ð¸Ð½Ð³"
 
 #: participants/models.py
 msgid "composite"
-msgstr "составной"
+msgstr "ÑÐ¾ÑÑ‚Ð°Ð²Ð½Ð¾Ð¹"
 
 #: participants/models.py
 msgid "bye"
@@ -349,47 +349,47 @@ msgstr ""
 
 #: participants/models.py
 msgid "type"
-msgstr "тип"
+msgstr "Ñ‚Ð¸Ð¿"
 
 #: participants/models.py
 msgid "emoji"
-msgstr "эмоджи"
+msgstr "ÑÐ¼Ð¾Ð´Ð¶Ð¸"
 
 #: participants/models.py
 msgid "team"
-msgstr "команда"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°"
 
 #: participants/models.py
 msgid "teams"
-msgstr "команды"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: participants/models.py
 msgid "Teams must have an institution if they are using the institutional prefix."
-msgstr "Если в названии команды указывается название клуба, для таких команд должен быть указан клуб."
+msgstr "Ð•ÑÐ»Ð¸ Ð² Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ÑÑ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ»ÑƒÐ±Ð°, Ð´Ð»Ñ Ñ‚Ð°ÐºÐ¸Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ ÑƒÐºÐ°Ð·Ð°Ð½ ÐºÐ»ÑƒÐ±."
 
 #: participants/models.py
 msgid "Teams must have a full name if they don't use the institutional prefix."
-msgstr "Если в названии команды не указывается название клуба, у команды должно быть полное название."
+msgstr "Ð•ÑÐ»Ð¸ Ð² Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð½Ðµ ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ÑÑ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ»ÑƒÐ±Ð°, Ñƒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ð¿Ð¾Ð»Ð½Ð¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ."
 
 #: participants/models.py
 msgid "speaker"
-msgstr "спикер"
+msgstr "ÑÐ¿Ð¸ÐºÐµÑ€"
 
 #: participants/models.py
 msgid "speakers"
-msgstr "спикеры"
+msgstr "ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: participants/models.py
 msgid "Adjudicators not assigned to any tournament can be shared between tournaments"
-msgstr "Аудитории, не привязанные ни к одному турниру, могут быть разделены между турнирами"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ð½Ñ‹Ðµ Ð½Ð¸ Ðº Ð¾Ð´Ð½Ð¾Ð¼Ñƒ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñƒ, Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ñ‹ Ð¼ÐµÐ¶Ð´Ñƒ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°Ð¼Ð¸"
 
 #: participants/models.py
 msgid "base score"
-msgstr "исходный рейтинг"
+msgstr "Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³"
 
 #: participants/models.py
 msgid "team conflicts"
-msgstr "конфликты команд"
+msgstr "ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: participants/models.py
 msgid "adjudicator conflicts"
@@ -397,81 +397,81 @@ msgstr ""
 
 #: participants/models.py
 msgid "always trainee"
-msgstr "всегда винг без права голоса"
+msgstr "Ð²ÑÐµÐ³Ð´Ð° Ð²Ð¸Ð½Ð³ Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
 
 #: participants/models.py
 msgid "If checked, this adjudicator will never be auto-allocated a voting position, regardless of their score"
-msgstr "При этом выборе этот судья никогда не будет автоматически распределен на позицию с правом голоса, независимо от его балла"
+msgstr "ÐŸÑ€Ð¸ ÑÑ‚Ð¾Ð¼ Ð²Ñ‹Ð±Ð¾Ñ€Ðµ ÑÑ‚Ð¾Ñ‚ ÑÑƒÐ´ÑŒÑ Ð½Ð¸ÐºÐ¾Ð³Ð´Ð° Ð½Ðµ Ð±ÑƒÐ´ÐµÑ‚ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½ Ð½Ð° Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ Ñ Ð¿Ñ€Ð°Ð²Ð¾Ð¼ Ð³Ð¾Ð»Ð¾ÑÐ°, Ð½ÐµÐ·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ Ð¾Ñ‚ ÐµÐ³Ð¾ Ð±Ð°Ð»Ð»Ð°"
 
 #: participants/models.py
 msgid "breaking"
-msgstr "брейкающиеся"
+msgstr "Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸ÐµÑÑ"
 
 #: participants/models.py
 msgid "independent"
-msgstr "независимый"
+msgstr "Ð½ÐµÐ·Ð°Ð²Ð¸ÑÐ¸Ð¼Ñ‹Ð¹"
 
 #: participants/models.py
 msgid "adjudication core"
-msgstr "судейский пул"
+msgstr "ÑÑƒÐ´ÐµÐ¹ÑÐºÐ¸Ð¹ Ð¿ÑƒÐ»"
 
 #: participants/models.py
 msgid "adjudicator"
-msgstr "судья"
+msgstr "ÑÑƒÐ´ÑŒÑ"
 
 #: participants/models.py
 msgid "adjudicators"
-msgstr "судьи"
+msgstr "ÑÑƒÐ´ÑŒÐ¸"
 
 #: participants/tables.py
 msgid "Points after this debate"
-msgstr "Баллов после этого раунда"
+msgstr "Ð‘Ð°Ð»Ð»Ð¾Ð² Ð¿Ð¾ÑÐ»Ðµ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°"
 
 #: participants/tables.py
 msgid "Wins after this debate"
-msgstr "Побед после этого раунда"
+msgstr "ÐŸÐ¾Ð±ÐµÐ´ Ð¿Ð¾ÑÐ»Ðµ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°"
 
 #: participants/tables.py
 msgid "Speaker scores<br>(in speaking order)"
-msgstr "Спикерские баллы<br>(в порядке выступления)"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ðµ Ð±Ð°Ð»Ð»Ñ‹<br>(Ð² Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ Ð²Ñ‹ÑÑ‚ÑƒÐ¿Ð»ÐµÐ½Ð¸Ñ)"
 
 #: participants/tables.py
 msgid "Speaks"
-msgstr "Спикерские"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ðµ"
 
 #: participants/templates/adjudicator_record.html participants/views.py
 #, python-format
 msgid "Record for %(name)s"
-msgstr "Запись для %(name)s"
+msgstr "Ð—Ð°Ð¿Ð¸ÑÑŒ Ð´Ð»Ñ %(name)s"
 
 #: participants/templates/adjudicator_record.html
 #: participants/templates/team_record.html
 #, python-format
 msgid "About %(name)s"
-msgstr "О %(name)s"
+msgstr "Ðž %(name)s"
 
 #: participants/templates/adjudicator_registration_card.html
 msgid "Independent adjudicator"
-msgstr "Независимый судья"
+msgstr "ÐÐµÐ·Ð°Ð²Ð¸ÑÐ¸Ð¼Ñ‹Ð¹ ÑÑƒÐ´ÑŒÑ"
 
 #: participants/templates/adjudicator_registration_card.html
 msgid "Member of the adjudication core"
-msgstr "Член судейского пула"
+msgstr "Ð§Ð»ÐµÐ½ ÑÑƒÐ´ÐµÐ¹ÑÐºÐ¾Ð³Ð¾ Ð¿ÑƒÐ»Ð°"
 
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
 msgid "Institution:"
-msgstr "Клуб:"
+msgstr "ÐšÐ»ÑƒÐ±:"
 
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
 msgid "Unaffiliated"
-msgstr "Неаффилированный"
+msgstr "ÐÐµÐ°Ñ„Ñ„Ð¸Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹"
 
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
 msgid "Region:"
-msgstr "Регион:"
+msgstr "Ð ÐµÐ³Ð¸Ð¾Ð½:"
 
 #: participants/templates/adjudicator_registration_card.html
 msgid "The institutional affiliations of adjudicators are not public at this tournament."
@@ -485,7 +485,7 @@ msgstr ""
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
 msgid "Institutional Conflicts:"
-msgstr "Конфликты с клубами:"
+msgstr "ÐšÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ Ñ ÐºÐ»ÑƒÐ±Ð°Ð¼Ð¸:"
 
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
@@ -495,11 +495,11 @@ msgstr "; "
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
 msgid "None"
-msgstr "Нет"
+msgstr "ÐÐµÑ‚"
 
 #: participants/templates/adjudicator_registration_card.html
 msgid "Team Conflicts:"
-msgstr "Конфликты команд:"
+msgstr "ÐšÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´:"
 
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
@@ -509,216 +509,216 @@ msgstr ", "
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
 msgid "Adjudicator Conflicts:"
-msgstr "Конфликты судей:"
+msgstr "ÐšÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ ÑÑƒÐ´ÐµÐ¹:"
 
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
 msgid "Room Constraints:"
-msgstr "Ограничения аудиторий:"
+msgstr "ÐžÐ³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ñ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹:"
 
 #: participants/templates/admin/participants/adjudicator/change_form.html
 msgid "<strong>Don't forget:</strong> If this adjudicator should be conflicted against their own institution, you should add this conflict <strong>now</strong> in the <strong>Adjudicator-institution conflicts</strong> tab above, because the own-institution conflict is <strong>not</strong> automatically created when using this form."
-msgstr "<strong>Не забудьте:</strong> Если у этого судьи должен быть конфликт с его клубом, его нужно <strong>сейчас</strong> добавить на вкладке <strong>\"Конфликты между судьями и клубами\"</strong>, поскольку эта форма <strong>не</strong> добавляет судье конфликт с его клубом автоматически."
+msgstr "<strong>ÐÐµ Ð·Ð°Ð±ÑƒÐ´ÑŒÑ‚Ðµ:</strong> Ð•ÑÐ»Ð¸ Ñƒ ÑÑ‚Ð¾Ð³Ð¾ ÑÑƒÐ´ÑŒÐ¸ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚ Ñ ÐµÐ³Ð¾ ÐºÐ»ÑƒÐ±Ð¾Ð¼, ÐµÐ³Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ <strong>ÑÐµÐ¹Ñ‡Ð°Ñ</strong> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÐµ <strong>\"ÐšÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ Ð¼ÐµÐ¶Ð´Ñƒ ÑÑƒÐ´ÑŒÑÐ¼Ð¸ Ð¸ ÐºÐ»ÑƒÐ±Ð°Ð¼Ð¸\"</strong>, Ð¿Ð¾ÑÐºÐ¾Ð»ÑŒÐºÑƒ ÑÑ‚Ð° Ñ„Ð¾Ñ€Ð¼Ð° <strong>Ð½Ðµ</strong> Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ ÑÑƒÐ´ÑŒÐµ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚ Ñ ÐµÐ³Ð¾ ÐºÐ»ÑƒÐ±Ð¾Ð¼ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸."
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete this %(object_name)s</strong>."
-msgstr "<strong>Предупреждение:</strong>Если в списке выше объекты \"команда\", <strong>вам, возможно, не стоит удалять это %(object_name)s</strong>."
+msgid "<strong>Warning:</strong> If there are â€œdebate teamâ€ objects in the above list, <strong>you probably shouldn't delete this %(object_name)s</strong>."
+msgstr "<strong>ÐŸÑ€ÐµÐ´ÑƒÐ¿Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸Ðµ:</strong>Ð•ÑÐ»Ð¸ Ð² ÑÐ¿Ð¸ÑÐºÐµ Ð²Ñ‹ÑˆÐµ Ð¾Ð±ÑŠÐµÐºÑ‚Ñ‹ \"ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°\", <strong>Ð²Ð°Ð¼, Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾, Ð½Ðµ ÑÑ‚Ð¾Ð¸Ñ‚ ÑƒÐ´Ð°Ð»ÑÑ‚ÑŒ ÑÑ‚Ð¾ %(object_name)s</strong>."
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete the selected %(objects_name)s</strong>."
-msgstr "<strong>Предупреждение:</strong>Если в списке выше объекты \"команда\", <strong>вам, возможно, не стоит удалять это %(objects_name)s</strong>."
+msgid "<strong>Warning:</strong> If there are â€œdebate teamâ€ objects in the above list, <strong>you probably shouldn't delete the selected %(objects_name)s</strong>."
+msgstr "<strong>ÐŸÑ€ÐµÐ´ÑƒÐ¿Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸Ðµ:</strong>Ð•ÑÐ»Ð¸ Ð² ÑÐ¿Ð¸ÑÐºÐµ Ð²Ñ‹ÑˆÐµ Ð¾Ð±ÑŠÐµÐºÑ‚Ñ‹ \"ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°\", <strong>Ð²Ð°Ð¼, Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾, Ð½Ðµ ÑÑ‚Ð¾Ð¸Ñ‚ ÑƒÐ´Ð°Ð»ÑÑ‚ÑŒ ÑÑ‚Ð¾ %(objects_name)s</strong>."
 
 #. Translators: This follows the above sentence in the same paragraph.
 #: participants/templates/admin/participants/delete_debateteam_warning.html
-msgid "This is especially the case if any team that would be deleted has already participated in a debate. If a team already has a result entered for it, deleting the team also deletes those results, <strong>which normally breaks the tab</strong>, even if you think you don't need those results anymore. If a team has debated and is withdrawing from the tournament, you should <strong>not</strong> delete it. Just mark the team inactive under the “Availability” section of the Tabbycat admin area."
-msgstr "Это особенно важна в случаях, если какая-то команда, которая уже участвует в дебатах, будет удалена. Если результаты команды уже вбиты, удаление этой команды также удаляет эти результаты, <strong> что обычно приводит к сбоям тэба</strong>, даже если вы думаете, что вам больше не нужны эти результаты. Если команда дебатировала, но покинула турнир, вам <strong> не нужно </strong> её удалять. Просто отметьте эту команду как неактивную в секции \"Доступность\" в области администратора в Tabbycat."
+msgid "This is especially the case if any team that would be deleted has already participated in a debate. If a team already has a result entered for it, deleting the team also deletes those results, <strong>which normally breaks the tab</strong>, even if you think you don't need those results anymore. If a team has debated and is withdrawing from the tournament, you should <strong>not</strong> delete it. Just mark the team inactive under the â€œAvailabilityâ€ section of the NekoTab admin area."
+msgstr "Ð­Ñ‚Ð¾ Ð¾ÑÐ¾Ð±ÐµÐ½Ð½Ð¾ Ð²Ð°Ð¶Ð½Ð° Ð² ÑÐ»ÑƒÑ‡Ð°ÑÑ…, ÐµÑÐ»Ð¸ ÐºÐ°ÐºÐ°Ñ-Ñ‚Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ ÑƒÐ¶Ðµ ÑƒÑ‡Ð°ÑÑ‚Ð²ÑƒÐµÑ‚ Ð² Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ…, Ð±ÑƒÐ´ÐµÑ‚ ÑƒÐ´Ð°Ð»ÐµÐ½Ð°. Ð•ÑÐ»Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ ÑƒÐ¶Ðµ Ð²Ð±Ð¸Ñ‚Ñ‹, ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ ÑÑ‚Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ñ‚Ð°ÐºÐ¶Ðµ ÑƒÐ´Ð°Ð»ÑÐµÑ‚ ÑÑ‚Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹, <strong> Ñ‡Ñ‚Ð¾ Ð¾Ð±Ñ‹Ñ‡Ð½Ð¾ Ð¿Ñ€Ð¸Ð²Ð¾Ð´Ð¸Ñ‚ Ðº ÑÐ±Ð¾ÑÐ¼ Ñ‚ÑÐ±Ð°</strong>, Ð´Ð°Ð¶Ðµ ÐµÑÐ»Ð¸ Ð²Ñ‹ Ð´ÑƒÐ¼Ð°ÐµÑ‚Ðµ, Ñ‡Ñ‚Ð¾ Ð²Ð°Ð¼ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½Ðµ Ð½ÑƒÐ¶Ð½Ñ‹ ÑÑ‚Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹. Ð•ÑÐ»Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð´ÐµÐ±Ð°Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð»Ð°, Ð½Ð¾ Ð¿Ð¾ÐºÐ¸Ð½ÑƒÐ»Ð° Ñ‚ÑƒÑ€Ð½Ð¸Ñ€, Ð²Ð°Ð¼ <strong> Ð½Ðµ Ð½ÑƒÐ¶Ð½Ð¾ </strong> ÐµÑ‘ ÑƒÐ´Ð°Ð»ÑÑ‚ÑŒ. ÐŸÑ€Ð¾ÑÑ‚Ð¾ Ð¾Ñ‚Ð¼ÐµÑ‚ÑŒÑ‚Ðµ ÑÑ‚Ñƒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ ÐºÐ°Ðº Ð½ÐµÐ°ÐºÑ‚Ð¸Ð²Ð½ÑƒÑŽ Ð² ÑÐµÐºÑ†Ð¸Ð¸ \"Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ\" Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð° Ð² NekoTab."
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 msgid "Note that deleting an institution also deletes all teams from that institution."
-msgstr "Обратите внимание, что при удалении клуба также удаляются все команды из этого клуба."
+msgstr "ÐžÐ±Ñ€Ð°Ñ‚Ð¸Ñ‚Ðµ Ð²Ð½Ð¸Ð¼Ð°Ð½Ð¸Ðµ, Ñ‡Ñ‚Ð¾ Ð¿Ñ€Ð¸ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ð¸ ÐºÐ»ÑƒÐ±Ð° Ñ‚Ð°ÐºÐ¶Ðµ ÑƒÐ´Ð°Ð»ÑÑŽÑ‚ÑÑ Ð²ÑÐµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸Ð· ÑÑ‚Ð¾Ð³Ð¾ ÐºÐ»ÑƒÐ±Ð°."
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "If you're very sure about deleting this %(object_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
-msgstr "Если вы очень уверены, что хотите удалить это %(object_name)s, пожалуйста, сначала удалите вышеупомянутые объекты и будьте уверены, что вы увидите на странице «команда дебатов» объектов перед продолжением."
+msgid "If you're very sure about deleting this %(object_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the â€œdebate teamâ€ objects page before proceeding."
+msgstr "Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð¾Ñ‡ÐµÐ½ÑŒ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾ %(object_name)s, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑƒÐ´Ð°Ð»Ð¸Ñ‚Ðµ Ð²Ñ‹ÑˆÐµÑƒÐ¿Ð¾Ð¼ÑÐ½ÑƒÑ‚Ñ‹Ðµ Ð¾Ð±ÑŠÐµÐºÑ‚Ñ‹ Ð¸ Ð±ÑƒÐ´ÑŒÑ‚Ðµ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ð²Ñ‹ ÑƒÐ²Ð¸Ð´Ð¸Ñ‚Ðµ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Â«ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²Â» Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² Ð¿ÐµÑ€ÐµÐ´ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸ÐµÐ¼."
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "If you're very sure about deleting these %(objects_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
-msgstr "Если вы точно уверены, что хотите удалить эти объекты %(objects_name)s, пожалуйста, сначала удалите объекты, расположенные выше и внимательно отнеситесь к предупреждению, которую вы увидите на странице объектов \"дебатирующие команды\" перед продолжением."
+msgid "If you're very sure about deleting these %(objects_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the â€œdebate teamâ€ objects page before proceeding."
+msgstr "Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ñ‚Ð¾Ñ‡Ð½Ð¾ ÑƒÐ²ÐµÑ€ÐµÐ½Ñ‹, Ñ‡Ñ‚Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚Ñ‹ %(objects_name)s, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑƒÐ´Ð°Ð»Ð¸Ñ‚Ðµ Ð¾Ð±ÑŠÐµÐºÑ‚Ñ‹, Ñ€Ð°ÑÐ¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð½Ñ‹Ðµ Ð²Ñ‹ÑˆÐµ Ð¸ Ð²Ð½Ð¸Ð¼Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð¾Ñ‚Ð½ÐµÑÐ¸Ñ‚ÐµÑÑŒ Ðº Ð¿Ñ€ÐµÐ´ÑƒÐ¿Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸ÑŽ, ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð²Ñ‹ ÑƒÐ²Ð¸Ð´Ð¸Ñ‚Ðµ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² \"Ð´ÐµÐ±Ð°Ñ‚Ð¸Ñ€ÑƒÑŽÑ‰Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹\" Ð¿ÐµÑ€ÐµÐ´ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸ÐµÐ¼."
 
 #: participants/templates/admin/participants/team/change_form.html
 msgid "<strong>Don't forget:</strong> If this team should be conflicted against its own institution, you should add this conflict <strong>now</strong> in the <strong>Team-institution conflicts</strong> tab above, because the own-institution conflict is <strong>not</strong> automatically created when using this form."
-msgstr "<strong>Не забудьте:</strong> Если у этой команды должен быть конфликт с её клубом, его нужно <strong>сейчас</strong> добавить на вкладке <strong>\"Конфликты между командами и клубами\"</strong>, поскольку эта форма <strong>не</strong> добавляет команде конфликт с её клубом автоматически."
+msgstr "<strong>ÐÐµ Ð·Ð°Ð±ÑƒÐ´ÑŒÑ‚Ðµ:</strong> Ð•ÑÐ»Ð¸ Ñƒ ÑÑ‚Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚ Ñ ÐµÑ‘ ÐºÐ»ÑƒÐ±Ð¾Ð¼, ÐµÐ³Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ <strong>ÑÐµÐ¹Ñ‡Ð°Ñ</strong> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÐµ <strong>\"ÐšÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ Ð¼ÐµÐ¶Ð´Ñƒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼Ð¸ Ð¸ ÐºÐ»ÑƒÐ±Ð°Ð¼Ð¸\"</strong>, Ð¿Ð¾ÑÐºÐ¾Ð»ÑŒÐºÑƒ ÑÑ‚Ð° Ñ„Ð¾Ñ€Ð¼Ð° <strong>Ð½Ðµ</strong> Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´Ðµ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚ Ñ ÐµÑ‘ ÐºÐ»ÑƒÐ±Ð¾Ð¼ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸."
 
 #: participants/templates/current_round/common.html
 #, python-format
 msgid "The round begins at %(start_time)s"
-msgstr "Раунд начинается в %(start_time)s"
+msgstr "Ð Ð°ÑƒÐ½Ð´ Ð½Ð°Ñ‡Ð¸Ð½Ð°ÐµÑ‚ÑÑ Ð² %(start_time)s"
 
 #: participants/templates/current_round/common.html
 msgid "Teams:"
-msgstr "Команды:"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹:"
 
 #: participants/templates/current_round/common.html
 msgid "Adjudicator:"
 msgid_plural "Adjudicators:"
-msgstr[0] "Судья:"
-msgstr[1] "Судьи:"
-msgstr[2] "Судьи:"
-msgstr[3] "Судьи:"
+msgstr[0] "Ð¡ÑƒÐ´ÑŒÑ:"
+msgstr[1] "Ð¡ÑƒÐ´ÑŒÐ¸:"
+msgstr[2] "Ð¡ÑƒÐ´ÑŒÐ¸:"
+msgstr[3] "Ð¡ÑƒÐ´ÑŒÐ¸:"
 
 #: participants/templates/current_round/common.html
 msgctxt "chair icon"
-msgid "Ⓒ"
-msgstr "Ⓒ"
+msgid "â’¸"
+msgstr "â’¸"
 
 #: participants/templates/current_round/common.html
 msgctxt "trainee icon"
-msgid "Ⓣ"
-msgstr "Ⓣ"
+msgid "â“‰"
+msgstr "â“‰"
 
 #: participants/templates/current_round/common.html
 msgid "There are no panellists or trainees assigned to this debate."
-msgstr "В этих дебатах нет вингов или вингов без права голоса."
+msgstr "Ð’ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð½ÐµÑ‚ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð¸Ð»Ð¸ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°."
 
 #: participants/templates/current_round/common.html
 msgid "Motions are not released to public."
-msgstr "Темы не публикуются."
+msgstr "Ð¢ÐµÐ¼Ñ‹ Ð½Ðµ Ð¿ÑƒÐ±Ð»Ð¸ÐºÑƒÑŽÑ‚ÑÑ."
 
 #: participants/templates/current_round/common.html
 msgid "Motion:"
-msgstr "Тема:"
+msgstr "Ð¢ÐµÐ¼Ð°:"
 
 #: participants/templates/current_round/common.html
 msgid "View Info Slide"
-msgstr "Посмотреть инфослайд"
+msgstr "ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð¸Ð½Ñ„Ð¾ÑÐ»Ð°Ð¹Ð´"
 
 #: participants/templates/current_round/common.html
 msgid "The motion(s) for this round haven't yet been released."
-msgstr "Тема(ы) на этот раунд ещё не опубликованы."
+msgstr "Ð¢ÐµÐ¼Ð°(Ñ‹) Ð½Ð° ÑÑ‚Ð¾Ñ‚ Ñ€Ð°ÑƒÐ½Ð´ ÐµÑ‰Ñ‘ Ð½Ðµ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ñ‹."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "%(adjudicator)s в качестве <strong>чэйра</strong> судит %(aff)s против %(neg)s в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s Ð² ÐºÐ°Ñ‡ÐµÑÑ‚Ð²Ðµ <strong>Ñ‡ÑÐ¹Ñ€Ð°</strong> ÑÑƒÐ´Ð¸Ñ‚ %(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
-msgstr "%(adjudicator)s в качестве <strong>чэйра</strong> судит %(aff)s против %(neg)s в <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s Ð² ÐºÐ°Ñ‡ÐµÑÑ‚Ð²Ðµ <strong>Ñ‡ÑÐ¹Ñ€Ð°</strong> ÑÑƒÐ´Ð¸Ñ‚ %(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "Вы <strong>судите</strong>чэйром%(aff)s против %(neg)s в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Ð’Ñ‹ <strong>ÑÑƒÐ´Ð¸Ñ‚Ðµ</strong>Ñ‡ÑÐ¹Ñ€Ð¾Ð¼%(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are the <strong>chair</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
-msgstr "Вы <strong>судите</strong>чэйром%(aff)s против %(neg)s в <strong>%(room)s</strong>."
+msgstr "Ð’Ñ‹ <strong>ÑÑƒÐ´Ð¸Ñ‚Ðµ</strong>Ñ‡ÑÐ¹Ñ€Ð¾Ð¼%(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "%(adjudicator)s в качестве <strong>%(type)s</strong>судит%(aff)s против %(neg)s в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s Ð² ÐºÐ°Ñ‡ÐµÑÑ‚Ð²Ðµ <strong>%(type)s</strong>ÑÑƒÐ´Ð¸Ñ‚%(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
-msgstr "%(adjudicator)s в качестве <strong>%(type)s</strong>судит%(aff)s против %(neg)s в <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s Ð² ÐºÐ°Ñ‡ÐµÑÑ‚Ð²Ðµ <strong>%(type)s</strong>ÑÑƒÐ´Ð¸Ñ‚%(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "Вы в качестве <strong>%(type)s</strong> судите %(aff)s против %(neg)s в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Ð’Ñ‹ Ð² ÐºÐ°Ñ‡ÐµÑÑ‚Ð²Ðµ <strong>%(type)s</strong> ÑÑƒÐ´Ð¸Ñ‚Ðµ %(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are a <strong>%(type)s</strong> adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
-msgstr "Вы в качестве <strong>%(type)s</strong> судите %(aff)s против %(neg)s в <strong>%(room)s</strong>."
+msgstr "Ð’Ñ‹ Ð² ÐºÐ°Ñ‡ÐµÑÑ‚Ð²Ðµ <strong>%(type)s</strong> ÑÑƒÐ´Ð¸Ñ‚Ðµ %(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "%(adjudicator)s судит %(aff)s против %(neg)s в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s ÑÑƒÐ´Ð¸Ñ‚ %(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
-msgstr "%(adjudicator)s судит %(aff)s против %(neg)s в <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s ÑÑƒÐ´Ð¸Ñ‚ %(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are adjudicating %(aff)s vs %(neg)s in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "Вы судите %(aff)s против %(neg)s в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Ð’Ñ‹ ÑÑƒÐ´Ð¸Ñ‚Ðµ %(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are adjudicating %(aff)s vs %(neg)s in <strong>%(room)s</strong>."
-msgstr "Вы судите %(aff)s против %(neg)s в <strong>%(room)s</strong>."
+msgstr "Ð’Ñ‹ ÑÑƒÐ´Ð¸Ñ‚Ðµ %(aff)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(neg)s Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "%(adjudicator)s - <strong>чэйр</strong> в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s - <strong>Ñ‡ÑÐ¹Ñ€</strong> Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating in <strong>%(room)s</strong>."
-msgstr "%(adjudicator)s - <strong>чэйр</strong> в <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s - <strong>Ñ‡ÑÐ¹Ñ€</strong> Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are the <strong>chair</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "Вы <strong> чэйр</strong> в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Ð’Ñ‹ <strong> Ñ‡ÑÐ¹Ñ€</strong> Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are the <strong>chair</strong> adjudicating in <strong>%(room)s</strong>."
-msgstr "Вы <strong> чэйр</strong>в<strong>%(room)s</strong>."
+msgstr "Ð’Ñ‹ <strong> Ñ‡ÑÐ¹Ñ€</strong>Ð²<strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "%(adjudicator)s является<strong>%(type)s</strong>судьей в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s ÑÐ²Ð»ÑÐµÑ‚ÑÑ<strong>%(type)s</strong>ÑÑƒÐ´ÑŒÐµÐ¹ Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating in <strong>%(room)s</strong>."
-msgstr "%(adjudicator)s является<strong>%(type)s</strong>судьей в <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s ÑÐ²Ð»ÑÐµÑ‚ÑÑ<strong>%(type)s</strong>ÑÑƒÐ´ÑŒÐµÐ¹ Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are a <strong>%(type)s</strong> adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "Вы <strong>%(type)s</strong>судите в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Ð’Ñ‹ <strong>%(type)s</strong>ÑÑƒÐ´Ð¸Ñ‚Ðµ Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are a <strong>%(type)s</strong> adjudicating in <strong>%(room)s</strong>."
-msgstr "Вы <strong>%(type)s</strong>судите в <strong>%(room)s</strong>."
+msgstr "Ð’Ñ‹ <strong>%(type)s</strong>ÑÑƒÐ´Ð¸Ñ‚Ðµ Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "%(adjudicator)s судит в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "%(adjudicator)s ÑÑƒÐ´Ð¸Ñ‚ Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is adjudicating in <strong>%(room)s</strong>."
-msgstr "%(adjudicator)s судит в <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s ÑÑƒÐ´Ð¸Ñ‚ Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are adjudicating in <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
-msgstr "Вы судите в <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
+msgstr "Ð’Ñ‹ ÑÑƒÐ´Ð¸Ñ‚Ðµ Ð² <a href=\"%(url)s\"><strong>%(room)s</strong></a>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "You are adjudicating in <strong>%(room)s</strong>."
-msgstr "Вы судите в <strong>%(room)s</strong>."
+msgstr "Ð’Ñ‹ ÑÑƒÐ´Ð¸Ñ‚Ðµ Ð² <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_team.html
 #, python-format
@@ -728,7 +728,7 @@ msgstr ""
 #: participants/templates/current_round/round_team.html
 #, python-format
 msgid "You are debating as the <strong>%(side)s</strong> team against <strong>%(opponent)s</strong>."
-msgstr "Вы играете на позиции <strong>%(side)s</strong> против <strong>%(opponent)s</strong>."
+msgstr "Ð’Ñ‹ Ð¸Ð³Ñ€Ð°ÐµÑ‚Ðµ Ð½Ð° Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ <strong>%(side)s</strong> Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² <strong>%(opponent)s</strong>."
 
 #: participants/templates/current_round/round_team.html
 #, python-format
@@ -773,45 +773,45 @@ msgstr ""
 #: participants/templates/edit_speaker_eligibility.html
 #, python-format
 msgid "It looks like there aren't any speaker categories are defined. If you'd like to produce category-specific speaker tabs, such as a novice or ESL tab, use the <a href=\"%(categories_url)s\" class=\"alert-link\">Speaker Categories</a> page to define them, then return to this page to set speaker eligibility."
-msgstr "Похоже что категории спикеров не были заданы. Если вы хотите создать отдельные спикерские тэбы для каждой категории, например, ESL-тэб или тэб молодых команд, используйте <a href=\"%(categories_url)s\" class=\"alert-link\"> страницу Категории спикеров</a>, чтобы задать их, а затем вернитесь на эту страницу, чтобы установить доступность спикеров."
+msgstr "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ Ñ‡Ñ‚Ð¾ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð½Ðµ Ð±Ñ‹Ð»Ð¸ Ð·Ð°Ð´Ð°Ð½Ñ‹. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ñ‹Ðµ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ðµ Ñ‚ÑÐ±Ñ‹ Ð´Ð»Ñ ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, ESL-Ñ‚ÑÐ± Ð¸Ð»Ð¸ Ñ‚ÑÐ± Ð¼Ð¾Ð»Ð¾Ð´Ñ‹Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ <a href=\"%(categories_url)s\" class=\"alert-link\"> ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²</a>, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð·Ð°Ð´Ð°Ñ‚ÑŒ Ð¸Ñ…, Ð° Ð·Ð°Ñ‚ÐµÐ¼ Ð²ÐµÑ€Ð½Ð¸Ñ‚ÐµÑÑŒ Ð½Ð° ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²."
 
 #: participants/templates/feedback_progress_panel.html
 msgid "Feedback Returns"
-msgstr "Возвраты обратной связи"
+msgstr "Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‚Ñ‹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
 
 #: participants/templates/feedback_progress_panel.html
 #, python-format
 msgid "Has submitted feedback for <strong>%(adjudicator)s</strong>"
-msgstr "Обратная связь отправлена на <strong>%(adjudicator)s</strong>"
+msgstr "ÐžÐ±Ñ€Ð°Ñ‚Ð½Ð°Ñ ÑÐ²ÑÐ·ÑŒ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð° Ð½Ð° <strong>%(adjudicator)s</strong>"
 
 #: participants/templates/feedback_progress_panel.html
 #, python-format
 msgid "Has not submitted feedback for one of: <strong>%(adjudicators)s</strong> (whoever gave the oral adjudication)"
-msgstr "Обратная связь не отправлена на одного из <strong>%(adjudicators)s</strong> (того, кто давал разбор)"
+msgstr "ÐžÐ±Ñ€Ð°Ñ‚Ð½Ð°Ñ ÑÐ²ÑÐ·ÑŒ Ð½Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð° Ð½Ð° Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ð¸Ð· <strong>%(adjudicators)s</strong> (Ñ‚Ð¾Ð³Ð¾, ÐºÑ‚Ð¾ Ð´Ð°Ð²Ð°Ð» Ñ€Ð°Ð·Ð±Ð¾Ñ€)"
 
 #: participants/templates/feedback_progress_panel.html
 #, python-format
 msgid "Has not submitted feedback for <strong>%(adjudicator)s</strong>"
-msgstr "Обратная связь не отправлена на <strong>%(adjudicator)s</strong>"
+msgstr "ÐžÐ±Ñ€Ð°Ñ‚Ð½Ð°Ñ ÑÐ²ÑÐ·ÑŒ Ð½Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð° Ð½Ð° <strong>%(adjudicator)s</strong>"
 
 #: participants/templates/feedback_progress_panel.html
 msgid "More feedback submissions than expected for this debate:"
-msgstr "Получено больше форм обратной связи, чем ожидалось для этих дебатов:"
+msgstr "ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¾ Ð±Ð¾Ð»ÑŒÑˆÐµ Ñ„Ð¾Ñ€Ð¼ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸, Ñ‡ÐµÐ¼ Ð¾Ð¶Ð¸Ð´Ð°Ð»Ð¾ÑÑŒ Ð´Ð»Ñ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²:"
 
 #: participants/templates/feedback_progress_panel.html
 #, python-format
 msgid "Unexpected feedback submission for <strong>%(adjudicator)s</strong>"
-msgstr "Непредвиденная форма обратной связи на <strong>%(adjudicator)s</strong>"
+msgstr "ÐÐµÐ¿Ñ€ÐµÐ´Ð²Ð¸Ð´ÐµÐ½Ð½Ð°Ñ Ñ„Ð¾Ñ€Ð¼Ð° Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð½Ð° <strong>%(adjudicator)s</strong>"
 
 #: participants/templates/feedback_progress_panel.html
 #, python-format
 msgid "%(name)s doesn't have any feedback to submit."
-msgstr "%(name)s не имеет формы обратной связи для отправки."
+msgstr "%(name)s Ð½Ðµ Ð¸Ð¼ÐµÐµÑ‚ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð´Ð»Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸."
 
 #: participants/templates/in_this_round.html
 #, python-format
 msgid "In This Round (%(round)s)"
-msgstr "В этом раунде (%(round)s)"
+msgstr "Ð’ ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ (%(round)s)"
 
 #: participants/templates/in_this_round.html
 msgid "In This Round"
@@ -819,92 +819,92 @@ msgstr ""
 
 #: participants/templates/in_this_round.html
 msgid "(Not Released to Public)"
-msgstr "(Не выпущено публично)"
+msgstr "(ÐÐµ Ð²Ñ‹Ð¿ÑƒÑ‰ÐµÐ½Ð¾ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾)"
 
 #: participants/templates/in_this_round.html
 msgid "Room TBA"
-msgstr "Аудитория будет анонсирована позже"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ Ð±ÑƒÐ´ÐµÑ‚ Ð°Ð½Ð¾Ð½ÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð° Ð¿Ð¾Ð·Ð¶Ðµ"
 
 #: participants/templates/in_this_round.html
 #, python-format
 msgid "%(adjudicator)s is not adjudicating this round."
-msgstr "%(adjudicator)s не судит этот раунд."
+msgstr "%(adjudicator)s Ð½Ðµ ÑÑƒÐ´Ð¸Ñ‚ ÑÑ‚Ð¾Ñ‚ Ñ€Ð°ÑƒÐ½Ð´."
 
 #: participants/templates/in_this_round.html
 msgid "You are not adjudicating this round."
-msgstr "Вы не судите этот раунд."
+msgstr "Ð’Ñ‹ Ð½Ðµ ÑÑƒÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ð¾Ñ‚ Ñ€Ð°ÑƒÐ½Ð´."
 
 #: participants/templates/in_this_round.html
 #, python-format
 msgid "It looks like %(team)s is competing in %(ndebates)s debate this round."
 msgid_plural "It looks like %(team)s is competing in %(ndebates)s debates this round."
-msgstr[0] "Похоже что %(team)s участвует в %(ndebates)s дебатах в этом раунде."
-msgstr[1] "Похоже что %(team)s участвует в %(ndebates)s дебатах в этом раунде."
-msgstr[2] "Похоже что %(team)s участвует в %(ndebates)s дебатах в этом раунде."
-msgstr[3] "Похоже что %(team)s участвует в %(ndebates)s дебатах в этом раунде."
+msgstr[0] "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ Ñ‡Ñ‚Ð¾ %(team)s ÑƒÑ‡Ð°ÑÑ‚Ð²ÑƒÐµÑ‚ Ð² %(ndebates)s Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
+msgstr[1] "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ Ñ‡Ñ‚Ð¾ %(team)s ÑƒÑ‡Ð°ÑÑ‚Ð²ÑƒÐµÑ‚ Ð² %(ndebates)s Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
+msgstr[2] "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ Ñ‡Ñ‚Ð¾ %(team)s ÑƒÑ‡Ð°ÑÑ‚Ð²ÑƒÐµÑ‚ Ð² %(ndebates)s Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
+msgstr[3] "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ Ñ‡Ñ‚Ð¾ %(team)s ÑƒÑ‡Ð°ÑÑ‚Ð²ÑƒÐµÑ‚ Ð² %(ndebates)s Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
 
 #: participants/templates/in_this_round.html
 msgid "If this is an error, please contact a tab director immediately."
-msgstr "Если это ошибка, немедленно свяжитесь с тэбмастером."
+msgstr "Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾ Ð¾ÑˆÐ¸Ð±ÐºÐ°, Ð½ÐµÐ¼ÐµÐ´Ð»ÐµÐ½Ð½Ð¾ ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼."
 
 #: participants/templates/in_this_round.html
 #, python-format
 msgid "%(team)s does not have a debate this round."
-msgstr "%(team)s не дебатировала в этом раунде."
+msgstr "%(team)s Ð½Ðµ Ð´ÐµÐ±Ð°Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð»Ð° Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
 
 #: participants/templates/in_this_round.html
 msgid "You do not have a debate this round."
-msgstr "В этом раунде нет дебатов."
+msgstr "Ð’ ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ Ð½ÐµÑ‚ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²."
 
 #: participants/templates/in_this_round.html
 msgid "The draw for this round hasn't yet been released."
-msgstr "Сетка на этот раунд ещё не была опубликована."
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½Ð° ÑÑ‚Ð¾Ñ‚ Ñ€Ð°ÑƒÐ½Ð´ ÐµÑ‰Ñ‘ Ð½Ðµ Ð±Ñ‹Ð»Ð° Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°."
 
 #: participants/templates/participants_subnav.html
 msgid "Participants List"
-msgstr "Список участников"
+msgstr "Ð¡Ð¿Ð¸ÑÐ¾Ðº ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð²"
 
 #: participants/templates/participants_subnav.html
 msgid "Institutions List"
-msgstr "Список клубов"
+msgstr "Ð¡Ð¿Ð¸ÑÐ¾Ðº ÐºÐ»ÑƒÐ±Ð¾Ð²"
 
 #: participants/templates/participants_subnav.html
 msgid "Emails have already been sent."
-msgstr "Email уже были отправлены."
+msgstr "Email ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹."
 
 #: participants/templates/participants_subnav.html
 msgid "Email Team Registrations"
-msgstr "Отправить регистрации команд по email"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¿Ð¾ email"
 
 #: participants/templates/participants_subnav.html participants/views.py
 msgid "Code Names"
-msgstr "Кодовые имена"
+msgstr "ÐšÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð°"
 
 #: participants/templates/participants_subnav.html
 #: participants/templates/speaker_categories_edit.html
 msgid "Speaker Categories"
-msgstr "Категории спикеров"
+msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: participants/templates/participants_subnav.html
 msgid "Speaker Eligibility"
-msgstr "Доступность спикеров"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: participants/templates/speaker_categories_edit.html
 msgid "Speaker categories allow category-specific speaker tabs to be produced, <i>e.g.</i>, for novice or ESL categories. On this page, you can define what speaker categories exist. After you've defined the categories, you can set speaker eligibility on the Speaker Eligibility page."
-msgstr "Категории спикеров позволяют создавать тэбы, специфичные для каждой категории <i>например</i> для ESL или молодых команд. На этой странице вы можете задать, какие будут категории спикеров. После задания категорий вы можете установить доступность спикеров для них на странице Доступность Спикеров."
+msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð¿Ð¾Ð·Ð²Ð¾Ð»ÑÑŽÑ‚ ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ñ‚ÑŒ Ñ‚ÑÐ±Ñ‹, ÑÐ¿ÐµÑ†Ð¸Ñ„Ð¸Ñ‡Ð½Ñ‹Ðµ Ð´Ð»Ñ ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ <i>Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€</i> Ð´Ð»Ñ ESL Ð¸Ð»Ð¸ Ð¼Ð¾Ð»Ð¾Ð´Ñ‹Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´. ÐÐ° ÑÑ‚Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð·Ð°Ð´Ð°Ñ‚ÑŒ, ÐºÐ°ÐºÐ¸Ðµ Ð±ÑƒÐ´ÑƒÑ‚ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð². ÐŸÐ¾ÑÐ»Ðµ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹ Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð´Ð»Ñ Ð½Ð¸Ñ… Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ Ð¡Ð¿Ð¸ÐºÐµÑ€Ð¾Ð²."
 
 #: participants/templates/speaker_categories_edit.html
 #, python-format
 msgid "If you want to delete speaker categories, use the <a href=\"%(edit_db_url)s\" class=\"alert-link\">Edit Database</a> area."
-msgstr "Если вы хотите удалить категории спикеров, используйте область <a href=\"%(edit_db_url)s\" class=\"alert-link\">Редактировать базу данных</a>."
+msgstr "Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð², Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ <a href=\"%(edit_db_url)s\" class=\"alert-link\">Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…</a>."
 
 #: participants/templates/speaker_categories_edit.html
 msgid "Save Speaker Categories"
-msgstr "Сохранить категории спикеров"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: participants/templates/team_registration_card.html
 msgid "Team name:"
-msgstr "Название команды:"
+msgstr "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹:"
 
 #: participants/templates/team_registration_card.html
 msgid "Full team name:"
@@ -916,7 +916,7 @@ msgstr ""
 
 #: participants/templates/team_registration_card.html
 msgid "Code name:"
-msgstr "Кодовое имя:"
+msgstr "ÐšÐ¾Ð´Ð¾Ð²Ð¾Ðµ Ð¸Ð¼Ñ:"
 
 #: participants/templates/team_registration_card.html
 msgid "No code name assigned"
@@ -932,15 +932,15 @@ msgstr ""
 
 #: participants/templates/team_registration_card.html
 msgid "Speakers:"
-msgstr "Спикеры:"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹:"
 
 #: participants/templates/team_registration_card.html
 msgid "Eligible for break categories:"
-msgstr "Доступны для брейковых категорий:"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ñ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹:"
 
 #: participants/templates/team_registration_card.html
 msgid "Speaker categories:"
-msgstr "Категории спикеров:"
+msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²:"
 
 #: participants/templatetags/team_name_for_data_entry.py
 #, python-format
@@ -949,82 +949,83 @@ msgstr "%(code_name)s<em>(%(real_name)s)</em>"
 
 #: participants/views.py
 msgid "Adjudicators"
-msgstr "Судьи"
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸"
 
 #: participants/views.py
 msgid "Speakers"
-msgstr "Спикеры"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: participants/views.py
 msgid "Institutions"
-msgstr "Клубы"
+msgstr "ÐšÐ»ÑƒÐ±Ñ‹"
 
 #: participants/views.py
 msgid "Code"
-msgstr "Код"
+msgstr "ÐšÐ¾Ð´"
 
 #: participants/views.py
 msgid "Full name"
-msgstr "Полное имя"
+msgstr "ÐŸÐ¾Ð»Ð½Ð¾Ðµ Ð¸Ð¼Ñ"
 
 #: participants/views.py
 msgid "Region"
-msgstr "Регион"
+msgstr "Ð ÐµÐ³Ð¸Ð¾Ð½"
 
 #: participants/views.py
 msgid "Teams"
-msgstr "Команды"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: participants/views.py
 msgid "Number of teams"
-msgstr "Количество команд"
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: participants/views.py
 msgid "Adjs"
-msgstr "Судьи"
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸"
 
 #: participants/views.py
 msgid "Number of adjudicators, excluding independents"
-msgstr "Количество судей, за исключением независимых"
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑƒÐ´ÐµÐ¹, Ð·Ð° Ð¸ÑÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸ÐµÐ¼ Ð½ÐµÐ·Ð°Ð²Ð¸ÑÐ¸Ð¼Ñ‹Ñ…"
 
 #: participants/views.py
 msgid "IAs"
-msgstr "НС"
+msgstr "ÐÐ¡"
 
 #: participants/views.py
 msgid "Number of independent adjudicators"
-msgstr "Количество независимых судей"
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð½ÐµÐ·Ð°Ð²Ð¸ÑÐ¸Ð¼Ñ‹Ñ… ÑÑƒÐ´ÐµÐ¹"
 
 #: participants/views.py
 msgid "Code name"
-msgstr "Кодовое имя"
+msgstr "ÐšÐ¾Ð´Ð¾Ð²Ð¾Ðµ Ð¸Ð¼Ñ"
 
 #: participants/views.py
 msgid "Team Registration"
-msgstr "Регистрация команд"
+msgstr "Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: participants/views.py
 msgid "Results"
-msgstr "Результаты"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: participants/views.py
 msgid "Previous Rounds"
-msgstr "Предыдущие раунды"
+msgstr "ÐŸÑ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰Ð¸Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹"
 
 #: participants/views.py
 #, python-format
 msgid "Saved category: %(list)s"
 msgid_plural "Saved categories: %(list)s"
-msgstr[0] "Сохранена категория: %(list)s"
-msgstr[1] "Сохранена категории: %(list)s"
-msgstr[2] "Сохранена категории: %(list)s"
-msgstr[3] "Сохранена категории: %(list)s"
+msgstr[0] "Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð° ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ: %(list)s"
+msgstr[1] "Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð° ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸: %(list)s"
+msgstr[2] "Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð° ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸: %(list)s"
+msgstr[3] "Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð° ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸: %(list)s"
 
 #: participants/views.py
 msgid "No changes were made to the categories."
-msgstr "В категории не было внесено никаких изменений."
+msgstr "Ð’ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð½Ðµ Ð±Ñ‹Ð»Ð¾ Ð²Ð½ÐµÑÐµÐ½Ð¾ Ð½Ð¸ÐºÐ°ÐºÐ¸Ñ… Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¹."
 
 #: participants/views.py
 msgid "Speaker Category Eligibility"
-msgstr "Доступность спикера для категории"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÑÐ¿Ð¸ÐºÐµÑ€Ð° Ð´Ð»Ñ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸"
+
 

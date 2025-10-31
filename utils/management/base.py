@@ -1,13 +1,13 @@
-import logging
+﻿import logging
 
 from django.core.management.base import BaseCommand, CommandError
 
-from settings import TABBYCAT_APPS
+from settings import NekoTab_APPS
 from tournaments.models import Round, Tournament
 
 
 def _set_log_level(level):
-    for app in TABBYCAT_APPS:
+    for app in NekoTab_APPS:
         logging.getLogger(app).setLevel(level)
 
 
@@ -232,3 +232,4 @@ class RoundCommand(TournamentCommand):
     def handle_tournament(self, tournament, **options):
         raise NotImplementedError(
             "subclasses of RoundCommand do not use handle_tournament().")
+

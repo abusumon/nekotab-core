@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/tournaments/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/tournaments/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 952\n"
 
 #: tournaments/apps.py
 msgid "Tournaments"
-msgstr "比赛"
+msgstr "æ¯”èµ›"
 
 #: tournaments/forms.py
 msgid "Number of preliminary rounds"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: tournaments/forms.py
 msgid "Agree?"
-msgstr "同意吗？"
+msgstr "åŒæ„å—ï¼Ÿ"
 
 #: tournaments/forms.py
 msgid "Comments"
@@ -138,12 +138,12 @@ msgid "Return to Draw"
 msgstr ""
 
 #: tournaments/models.py
-msgid "You can't use this as a tournament slug, because it's reserved for a Tabbycat system URL. Please try another one."
+msgid "You can't use this as a tournament slug, because it's reserved for a NekoTab system URL. Please try another one."
 msgstr ""
 
 #: tournaments/models.py
 msgid "name"
-msgstr "名称"
+msgstr "åç§°"
 
 #: tournaments/models.py
 msgid "The full name, e.g. \"Australasian Intervarsity Debating Championships 2016\""
@@ -175,15 +175,15 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "active"
-msgstr "现行"
+msgstr "çŽ°è¡Œ"
 
 #: tournaments/models.py
 msgid "tournament"
-msgstr "比赛"
+msgstr "æ¯”èµ›"
 
 #: tournaments/models.py
 msgid "tournaments"
-msgstr "比赛"
+msgstr "æ¯”èµ›"
 
 #: tournaments/models.py
 msgid "Random"
@@ -199,11 +199,11 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "Power-paired"
-msgstr "实力匹配"
+msgstr "å®žåŠ›åŒ¹é…"
 
 #: tournaments/models.py
 msgid "Elimination"
-msgstr "淘汰"
+msgstr "æ·˜æ±°"
 
 #: tournaments/models.py
 msgid "Seeded"
@@ -211,15 +211,15 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "Preliminary"
-msgstr "预"
+msgstr "é¢„"
 
 #: tournaments/models.py
 msgid "None"
-msgstr "无"
+msgstr "æ— "
 
 #: tournaments/models.py
 msgid "Draft"
-msgstr "草稿"
+msgstr "è‰ç¨¿"
 
 #: tournaments/models.py
 msgid "Confirmed"
@@ -251,7 +251,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "e.g. \"R1\""
-msgstr "例如“R1”"
+msgstr "ä¾‹å¦‚â€œR1â€"
 
 #: tournaments/models.py
 msgid "stage"
@@ -271,7 +271,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "break category"
-msgstr "类别的资格"
+msgstr "ç±»åˆ«çš„èµ„æ ¼"
 
 #: tournaments/models.py
 msgid "If elimination round, which break category"
@@ -325,11 +325,11 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "round"
-msgstr "赛"
+msgstr "èµ›"
 
 #: tournaments/models.py
 msgid "rounds"
-msgstr "赛"
+msgstr "èµ›"
 
 #: tournaments/models.py
 msgid "The \"Elimination\" draw type is only for elimination rounds, where it is mandatory."
@@ -445,7 +445,7 @@ msgid "current round: %(round)s, status: %(status)s"
 msgstr ""
 
 #: tournaments/templates/blank_site_start.html
-msgid "Welcome to Tabbycat!"
+msgid "Welcome to NekoTab!"
 msgstr ""
 
 #: tournaments/templates/blank_site_start.html
@@ -471,7 +471,7 @@ msgstr ""
 
 #: tournaments/templates/configure_tournament.html
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: tournaments/templates/configure_tournament.html
@@ -487,15 +487,15 @@ msgid "Create New Tournament"
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat is free to use, although <a href=\"https://opencollective.com/tabbycat\">donations</a> are encouraged."
+msgid "NekoTab is free to use, although <a href=\"https://opencollective.com/NekoTab\">donations</a> are encouraged."
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "Just trying out Tabbycat?"
+msgid "Just trying out NekoTab?"
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "If you're learning or playing around with Tabbycat, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
+msgid "If you're learning or playing around with NekoTab, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
@@ -520,7 +520,7 @@ msgid "Debate Team Missing"
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "Tabbycat always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
+msgid "NekoTab always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
@@ -571,7 +571,7 @@ msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "No teams"
-msgstr "没有队伍"
+msgstr "æ²¡æœ‰é˜Ÿä¼"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Multiple teams"
@@ -587,7 +587,7 @@ msgid "It looks like all debates are in good shape!"
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of Tabbycat."
+msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of NekoTab."
 msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
@@ -631,7 +631,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Sides"
-msgstr "方"
+msgstr "æ–¹"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
@@ -666,7 +666,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Motions"
-msgstr "话题"
+msgstr "è¯é¢˜"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Standings"
@@ -675,11 +675,11 @@ msgstr ""
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(category)s Break"
-msgstr "%(category)s的资格"
+msgstr "%(category)sçš„èµ„æ ¼"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Breaking Adjudicators"
-msgstr "有资格的裁判"
+msgstr "æœ‰èµ„æ ¼çš„è£åˆ¤"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Diversity"
@@ -807,7 +807,7 @@ msgstr ""
 
 #: tournaments/templates/set_current_round.html
 #, python-format
-msgid "No round is currently set. In order for Tabbycat to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
+msgid "No round is currently set. In order for NekoTab to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
 msgstr ""
 
 #: tournaments/templates/set_current_round.html
@@ -841,7 +841,7 @@ msgstr ""
 
 #: tournaments/templates/site_index.html
 msgid "Welcome!"
-msgstr "欢迎光临！"
+msgstr "æ¬¢è¿Žå…‰ä¸´ï¼"
 
 #: tournaments/templates/site_index.html
 msgid "It looks like there aren't any tournaments on this site. Would you like to create one?"
@@ -883,15 +883,15 @@ msgstr ""
 #: tournaments/templates/site_index.html
 #, python-format
 msgid "Log Out (%(user)s)"
-msgstr "登出（%(user)s）"
+msgstr "ç™»å‡ºï¼ˆ%(user)sï¼‰"
 
 #: tournaments/templates/site_index.html
 msgid "Log In as Admin"
-msgstr "登录的管理"
+msgstr "ç™»å½•çš„ç®¡ç†"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "We hope you've enjoyed using Tabbycat for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/tabbycat\">Learn more about donating.</a>"
+msgid "We hope you've enjoyed using NekoTab for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/NekoTab\">Learn more about donating.</a>"
 msgstr ""
 
 #: tournaments/templates/tournament_index.html
@@ -905,7 +905,7 @@ msgstr ""
 #. Translators: The documentation where the link goes to is in English; translations should mention this with "(in English)" after the link.
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "For more information, please consult our <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
+msgid "For more information, please consult our <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
 msgstr ""
 
 #: tournaments/templates/tournament_index.html
@@ -976,27 +976,27 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "government"
-msgstr "政府"
+msgstr "æ”¿åºœ"
 
 #: tournaments/utils.py
 msgid "opposition"
-msgstr "反对党"
+msgstr "åå¯¹å…š"
 
 #: tournaments/utils.py
 msgid "government team"
-msgstr "政府队伍"
+msgstr "æ”¿åºœé˜Ÿä¼"
 
 #: tournaments/utils.py
 msgid "opposition team"
-msgstr "反对党队伍"
+msgstr "åå¯¹å…šé˜Ÿä¼"
 
 #: tournaments/utils.py
 msgid "Gov"
-msgstr "政府"
+msgstr "æ”¿åºœ"
 
 #: tournaments/utils.py
 msgid "Opp"
-msgstr "反对党"
+msgstr "åå¯¹å…š"
 
 #: tournaments/utils.py
 msgid "proposition"
@@ -1068,70 +1068,70 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "opening government"
-msgstr "上议院政府"
+msgstr "ä¸Šè®®é™¢æ”¿åºœ"
 
 #: tournaments/utils.py
 msgid "opening opposition"
-msgstr "上议院反对党"
+msgstr "ä¸Šè®®é™¢åå¯¹å…š"
 
 #: tournaments/utils.py
 msgid "closing government"
-msgstr "下议院政府"
+msgstr "ä¸‹è®®é™¢æ”¿åºœ"
 
 #: tournaments/utils.py
 msgid "closing opposition"
-msgstr "下议院反对党"
+msgstr "ä¸‹è®®é™¢åå¯¹å…š"
 
 #: tournaments/utils.py
 msgid "opening government team"
-msgstr "上议院政府队伍"
+msgstr "ä¸Šè®®é™¢æ”¿åºœé˜Ÿä¼"
 
 #: tournaments/utils.py
 msgid "opening opposition team"
-msgstr "上议院反对党队伍"
+msgstr "ä¸Šè®®é™¢åå¯¹å…šé˜Ÿä¼"
 
 #: tournaments/utils.py
 msgid "closing government team"
-msgstr "下议院政府队伍"
+msgstr "ä¸‹è®®é™¢æ”¿åºœé˜Ÿä¼"
 
 #: tournaments/utils.py
 msgid "closing opposition team"
-msgstr "下议院反对党队伍"
+msgstr "ä¸‹è®®é™¢åå¯¹å…šé˜Ÿä¼"
 
 #: tournaments/utils.py
 msgctxt "BP position"
 msgid "OG"
-msgstr "上政府"
+msgstr "ä¸Šæ”¿åºœ"
 
 #: tournaments/utils.py
 msgctxt "BP position"
 msgid "OO"
-msgstr "上反对党"
+msgstr "ä¸Šåå¯¹å…š"
 
 #: tournaments/utils.py
 msgctxt "BP position"
 msgid "CG"
-msgstr "下政府"
+msgstr "ä¸‹æ”¿åºœ"
 
 #: tournaments/utils.py
 msgctxt "BP position"
 msgid "CO"
-msgstr "下反对党"
+msgstr "ä¸‹åå¯¹å…š"
 
 #: tournaments/utils.py
 #, python-format
 msgid "Round %(number)d"
-msgstr "赛%(number)d"
+msgstr "èµ›%(number)d"
 
 #. Translators: This stands for "Round %(number)d".
 #: tournaments/utils.py
 #, python-format
 msgid "R%(number)d"
-msgstr "赛%(number)d"
+msgstr "èµ›%(number)d"
 
 #: tournaments/utils.py
 msgid "bye"
-msgstr "轮空"
+msgstr "è½®ç©º"
 
 #: tournaments/utils.py
 #, python-format
@@ -1196,4 +1196,5 @@ msgstr ""
 #: tournaments/views.py
 msgid "Tournament Schedule"
 msgstr ""
+
 

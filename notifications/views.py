@@ -1,4 +1,4 @@
-import json
+﻿import json
 import logging
 from datetime import datetime, timezone
 from smtplib import SMTPException, SMTPResponseException
@@ -22,7 +22,7 @@ from participants.models import Person
 from tournaments.mixins import RoundMixin, TournamentMixin
 from users.permissions import Permission
 from utils.mixins import AdministratorMixin, WarnAboutLegacySendgridConfigVarsMixin
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 from utils.views import VueTableTemplateView
 
 from .forms import BasicEmailForm, TestEmailForm
@@ -84,7 +84,7 @@ class TestEmailView(WarnAboutLegacySendgridConfigVarsMixin, AdministratorMixin, 
 
 class EmailStatusView(AdministratorMixin, TournamentMixin, VueTableTemplateView):
     page_title = gettext_lazy("Email Statuses")
-    page_emoji = '📤'
+    page_emoji = 'ðŸ“¤'
     template_name = 'email_statuses.html'
     view_permission = Permission.VIEW_EMAIL_STATUSES
 
@@ -121,7 +121,7 @@ class EmailStatusView(AdministratorMixin, TournamentMixin, VueTableTemplateView)
             EmailStatus.EventType.ASM_RESUBSCRIBED: None,
         }[event]
 
-    def get_tables(self) -> List[TabbycatTableBuilder]:
+    def get_tables(self) -> List[NekoTabTableBuilder]:
         tables = []
 
         # notifications.sentmessage_set.first().emailstatus_set.first().latest_statuses will be a list
@@ -145,7 +145,7 @@ class EmailStatusView(AdministratorMixin, TournamentMixin, VueTableTemplateView)
             else:
                 subtitle = _("@ %s") % formats.time_format(notification.timestamp.astimezone(tz=site_tz), use_l10n=True)
 
-            table = TabbycatTableBuilder(view=self, title=notification.get_event_display().capitalize(), subtitle=subtitle)
+            table = NekoTabTableBuilder(view=self, title=notification.get_event_display().capitalize(), subtitle=subtitle)
 
             emails_recipient = []
             emails_addresses = []
@@ -193,7 +193,7 @@ class EmailEventWebhookView(TournamentMixin, View):
 
         data = json.loads(request.body)
 
-        # Ignore all objects without a Tabbycat-specified hook ID
+        # Ignore all objects without a NekoTab-specified hook ID
         data = [obj for obj in data if 'hook-id' in obj and obj['hook-id'] is not None]
         records = SentMessage.objects.filter(hook_id__in=[obj['hook-id'] for obj in data])
         record_lookup = {smr.hook_id: smr.id for smr in records}
@@ -214,7 +214,7 @@ class EmailEventWebhookView(TournamentMixin, View):
 class BaseSelectPeopleEmailView(AdministratorMixin, TournamentMixin, VueTableTemplateView, FormView):
     template_name = "email_participants.html"
     page_title = gettext_lazy("Email Participants")
-    page_emoji = '📤'
+    page_emoji = 'ðŸ“¤'
     edit_permission = Permission.SEND_EMAILS
 
     form_class = BasicEmailForm
@@ -249,13 +249,13 @@ class BaseSelectPeopleEmailView(AdministratorMixin, TournamentMixin, VueTableTem
         if email_count > 0:
             messages.success(self.request, text)
         else:
-            messages.warning(self.request, _("No emails were sent — likely because no recipients were selected."))
+            messages.warning(self.request, _("No emails were sent â€” likely because no recipients were selected."))
 
     def get_person_type(self, person: Person, **kwargs) -> str:
         return 'adj' if kwargs['mixed'] and hasattr(person, 'adjudicator') else 'spk'
 
-    def get_table(self, mixed_participants: bool = False) -> TabbycatTableBuilder:
-        table = TabbycatTableBuilder(view=self, sort_key='name')
+    def get_table(self, mixed_participants: bool = False) -> NekoTabTableBuilder:
+        table = NekoTabTableBuilder(view=self, sort_key='name')
 
         queryset = self.get_queryset()
         default_send_queryset = self.get_default_send_queryset()
@@ -286,7 +286,7 @@ class BaseSelectPeopleEmailView(AdministratorMixin, TournamentMixin, VueTableTem
 class RoleColumnMixin:
     """Mixin to have a column Adjudicator/Speaker for email"""
 
-    def get_table(self, mixed_participants: bool = True) -> TabbycatTableBuilder:
+    def get_table(self, mixed_participants: bool = True) -> NekoTabTableBuilder:
         table = super().get_table(mixed_participants)
 
         table.add_column({'key': 'role', 'title': _("Role")}, [{
@@ -367,3 +367,4 @@ class RoundTemplateEmailCreateView(TemplateEmailCreateView, RoundMixin):
     def get_extra(self) -> Dict[str, Any]:
         extra = {'round_id': self.round.id}
         return extra
+

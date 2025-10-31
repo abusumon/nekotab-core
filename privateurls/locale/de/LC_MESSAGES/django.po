@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:47\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: de\n"
-"X-Crowdin-File: /develop/tabbycat/privateurls/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/privateurls/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 946\n"
 
@@ -29,7 +29,7 @@ msgstr "Tablink"
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "for %(name)s"
-msgstr "für %(name)s"
+msgstr "fÃ¼r %(name)s"
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
@@ -44,12 +44,12 @@ msgstr ""
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can submit results and/or feedback for your debates. You may bookmark this page and return here after each debate for the available actions."
-msgstr "Die URL dieser Seite ist auf dich (%(name)s) personalisiert. <strong>Gebe sie nicht an andere weiter,</strong> wer die URL kennt kann auch in deinem Namen Ballots und Feedback einreichen. Du kannst diese Seite auch im Browser speichern und später zu ihr zurückkehren."
+msgstr "Die URL dieser Seite ist auf dich (%(name)s) personalisiert. <strong>Gebe sie nicht an andere weiter,</strong> wer die URL kennt kann auch in deinem Namen Ballots und Feedback einreichen. Du kannst diese Seite auch im Browser speichern und spÃ¤ter zu ihr zurÃ¼ckkehren."
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "Revoke check-in from %(check_time)s"
-msgstr "Check-in von %(check_time)s zurücknehmen"
+msgstr "Check-in von %(check_time)s zurÃ¼cknehmen"
 
 #: privateurls/templates/private_url_landing.html
 msgid "Check in"
@@ -67,12 +67,12 @@ msgstr "Du bist zur Zeit nicht eingecheckt."
 
 #: privateurls/templates/private_url_landing.html
 msgid "Show barcode for check-in"
-msgstr "Zeige Barcode für Check-in"
+msgstr "Zeige Barcode fÃ¼r Check-in"
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "Submit Ballot for %(round)s"
-msgstr "Ballot für %(round)s abgeben"
+msgstr "Ballot fÃ¼r %(round)s abgeben"
 
 #: privateurls/templates/private_url_landing.html
 msgid "Submit Feedback"
@@ -96,7 +96,7 @@ msgid "Private URLs are used to allow participants to submit ballots and/or feed
 msgstr ""
 
 #: privateurls/templates/private_urls.html
-msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
+msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
 msgstr ""
 
 #: privateurls/templates/private_urls.html
@@ -134,7 +134,7 @@ msgstr "URLs mailen"
 
 #: privateurls/templates/private_urls_nav.html
 msgid "This button only generates private URLs for participants who do not already have one."
-msgstr "Dieser Button erstellt Tablinks nur für Teilnehmende, die noch keine haben."
+msgstr "Dieser Button erstellt Tablinks nur fÃ¼r Teilnehmende, die noch keine haben."
 
 #: privateurls/templates/private_urls_nav.html
 msgid "Generate URLs"
@@ -162,7 +162,7 @@ msgstr "Juroren"
 
 #: privateurls/views.py
 msgid "All participants already have private URLs. If you want to delete them, use the Edit Database area."
-msgstr "Alle Teilnehmenden haben bereits Tablinks. Falls du sie löschen möchtest, nutze den Bereich zum bearbeiten der Datenbank."
+msgstr "Alle Teilnehmenden haben bereits Tablinks. Falls du sie lÃ¶schen mÃ¶chtest, nutze den Bereich zum bearbeiten der Datenbank."
 
 #: privateurls/views.py
 #, python-format
@@ -185,4 +185,5 @@ msgstr ""
 #: privateurls/views.py
 msgid "Debates"
 msgstr "Debatten"
+
 

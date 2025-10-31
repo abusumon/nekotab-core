@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:48\n"
@@ -11,30 +11,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/importer/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/importer/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 932\n"
 
 #: importer/forms.py
 #, python-format
 msgid "line %(lineno)d: %(message)s"
-msgstr "سطر%(lineno)d:%(message)s"
+msgstr "Ø³Ø·Ø±%(lineno)d:%(message)s"
 
 #: importer/forms.py
 #, python-format
 msgid "This line (for %(institution)s) didn't have a code"
-msgstr "هذا السطر من البيانات (للمنتخب%(institution)s) لا تحتوي على رمز"
+msgstr "Ù‡Ø°Ø§ Ø§Ù„Ø³Ø·Ø± Ù…Ù† Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª (Ù„Ù„Ù…Ù†ØªØ®Ø¨%(institution)s) Ù„Ø§ ØªØ­ØªÙˆÙŠ Ø¹Ù„Ù‰ Ø±Ù…Ø²"
 
 #: importer/forms.py
 #, python-format
 msgid "This line (for %(institution)s) had too many columns"
-msgstr "هذا السطر من البيانات (للمنتخب%(institution)s) تجاوز فيه عدد الخانات."
+msgstr "Ù‡Ø°Ø§ Ø§Ù„Ø³Ø·Ø± Ù…Ù† Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª (Ù„Ù„Ù…Ù†ØªØ®Ø¨%(institution)s) ØªØ¬Ø§ÙˆØ² ÙÙŠÙ‡ Ø¹Ø¯Ø¯ Ø§Ù„Ø®Ø§Ù†Ø§Øª."
 
 #: importer/forms.py
 msgid "There were no institutions to import."
-msgstr "لم تكن هناك مؤسسات لاستيرادها."
+msgstr "Ù„Ù… ØªÙƒÙ† Ù‡Ù†Ø§Ùƒ Ù…Ø¤Ø³Ø³Ø§Øª Ù„Ø§Ø³ØªÙŠØ±Ø§Ø¯Ù‡Ø§."
 
 #: importer/forms.py
 #, python-format
@@ -49,7 +49,7 @@ msgstr[5] ""
 
 #: importer/forms.py
 msgid "There were no rooms to import."
-msgstr "لا توجد قاعات للتوريد"
+msgstr "Ù„Ø§ ØªÙˆØ¬Ø¯ Ù‚Ø§Ø¹Ø§Øª Ù„Ù„ØªÙˆØ±ÙŠØ¯"
 
 #: importer/forms.py
 #, python-format
@@ -64,7 +64,7 @@ msgstr[5] ""
 
 #: importer/forms.py
 msgid "Speakers' names"
-msgstr "أسماء المتحدثين"
+msgstr "Ø£Ø³Ù…Ø§Ø¡ Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ†"
 
 #: importer/forms.py
 msgid "Can be separated by newlines, tabs, commas or ampersands"
@@ -72,41 +72,41 @@ msgstr ""
 
 #: importer/forms.py
 msgid "Speakers' email addresses"
-msgstr "البريد الالكتروني للمتحدثين"
+msgstr "Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø§Ù„ÙƒØªØ±ÙˆÙ†ÙŠ Ù„Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ†"
 
 #: importer/forms.py
 msgid "Optional, useful to include if distributing private URLs, list in same order as speakers' names"
-msgstr "اختياري ، مفيد لتضمينها في حالة توزيع عناوين URL خاصة ، وإدراجها بنفس ترتيب أسماء المتحدثين"
+msgstr "Ø§Ø®ØªÙŠØ§Ø±ÙŠ ØŒ Ù…ÙÙŠØ¯ Ù„ØªØ¶Ù…ÙŠÙ†Ù‡Ø§ ÙÙŠ Ø­Ø§Ù„Ø© ØªÙˆØ²ÙŠØ¹ Ø¹Ù†Ø§ÙˆÙŠÙ† URL Ø®Ø§ØµØ© ØŒ ÙˆØ¥Ø¯Ø±Ø§Ø¬Ù‡Ø§ Ø¨Ù†ÙØ³ ØªØ±ØªÙŠØ¨ Ø£Ø³Ù…Ø§Ø¡ Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ†"
 
 #: importer/forms.py
 msgid "Name (excluding institution name)"
-msgstr "الاسم (باستثناء اسم المؤسسة)"
+msgstr "Ø§Ù„Ø§Ø³Ù… (Ø¨Ø§Ø³ØªØ«Ù†Ø§Ø¡ Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ø³Ø³Ø©)"
 
 #: importer/forms.py
 msgid "Prefix team name with institution name?"
-msgstr "وضع اسم الفريق مع اسم المؤسسة ؟"
+msgstr "ÙˆØ¶Ø¹ Ø§Ø³Ù… Ø§Ù„ÙØ±ÙŠÙ‚ Ù…Ø¹ Ø§Ø³Ù… Ø§Ù„Ù…Ø¤Ø³Ø³Ø© ØŸ"
 
 #: importer/forms.py
 msgid "Do not include institution name (check the \"Prefix team name with institution name?\" field instead)"
-msgstr "لا تقم بوضع اسم المنتخب (قم باختيار \"وضع اسم الفريق مع اسم المنتخب ؟\" بدل ذلك)"
+msgstr "Ù„Ø§ ØªÙ‚Ù… Ø¨ÙˆØ¶Ø¹ Ø§Ø³Ù… Ø§Ù„Ù…Ù†ØªØ®Ø¨ (Ù‚Ù… Ø¨Ø§Ø®ØªÙŠØ§Ø± \"ÙˆØ¶Ø¹ Ø§Ø³Ù… Ø§Ù„ÙØ±ÙŠÙ‚ Ù…Ø¹ Ø§Ø³Ù… Ø§Ù„Ù…Ù†ØªØ®Ø¨ ØŸ\" Ø¨Ø¯Ù„ Ø°Ù„Ùƒ)"
 
 #: importer/forms.py
 msgid "(Not applicable to unaffiliated teams)"
-msgstr "(لا ينطبق على الفرق المستقلة)"
+msgstr "(Ù„Ø§ ÙŠÙ†Ø·Ø¨Ù‚ Ø¹Ù„Ù‰ Ø§Ù„ÙØ±Ù‚ Ø§Ù„Ù…Ø³ØªÙ‚Ù„Ø©)"
 
 #: importer/forms.py
 msgid "One speaker's name per line"
-msgstr "اسم متحدث واحد في كل سطر"
+msgstr "Ø§Ø³Ù… Ù…ØªØ­Ø¯Ø« ÙˆØ§Ø­Ø¯ ÙÙŠ ÙƒÙ„ Ø³Ø·Ø±"
 
 #: importer/forms.py
 #, python-format
 msgid "Speaker %d"
-msgstr "متحدث%d"
+msgstr "Ù…ØªØ­Ø¯Ø«%d"
 
 #: importer/forms.py
 #, python-format
 msgid "speaker%d@example.edu"
-msgstr "المتحدث %d  d@example.edu"
+msgstr "Ø§Ù„Ù…ØªØ­Ø¯Ø« %d  d@example.edu"
 
 #: importer/forms.py
 msgid "Unseeded"
@@ -126,33 +126,33 @@ msgstr ""
 
 #: importer/forms.py
 msgid "There must be at least one speaker."
-msgstr "لا بد من وجود متحدث واحد على الأقل"
+msgstr "Ù„Ø§ Ø¨Ø¯ Ù…Ù† ÙˆØ¬ÙˆØ¯ Ù…ØªØ­Ø¯Ø« ÙˆØ§Ø­Ø¯ Ø¹Ù„Ù‰ Ø§Ù„Ø£Ù‚Ù„"
 
 #: importer/forms.py
 #, python-format
 msgid "%(email)s is not a valid email address."
-msgstr "%(email)s بريد الاكتروني غير صحيح"
+msgstr "%(email)s Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø§ÙƒØªØ±ÙˆÙ†ÙŠ ØºÙŠØ± ØµØ­ÙŠØ­"
 
 #: importer/forms.py
 msgid "There are more email addresses than speakers."
-msgstr "عدد الايميلات أكثر من عدد المتحدثين."
+msgstr "Ø¹Ø¯Ø¯ Ø§Ù„Ø§ÙŠÙ…ÙŠÙ„Ø§Øª Ø£ÙƒØ«Ø± Ù…Ù† Ø¹Ø¯Ø¯ Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ†."
 
 #: importer/forms.py
 msgid "Every team in a single tournament from the same institution must have a different name. Please correct the duplicate data."
-msgstr "لا بد أن تكون أسماء الفرق للمنتخب الواحد مختلفة في البطولة. الرجاء تعديل خطأ التكرار"
+msgstr "Ù„Ø§ Ø¨Ø¯ Ø£Ù† ØªÙƒÙˆÙ† Ø£Ø³Ù…Ø§Ø¡ Ø§Ù„ÙØ±Ù‚ Ù„Ù„Ù…Ù†ØªØ®Ø¨ Ø§Ù„ÙˆØ§Ø­Ø¯ Ù…Ø®ØªÙ„ÙØ© ÙÙŠ Ø§Ù„Ø¨Ø·ÙˆÙ„Ø©. Ø§Ù„Ø±Ø¬Ø§Ø¡ ØªØ¹Ø¯ÙŠÙ„ Ø®Ø·Ø£ Ø§Ù„ØªÙƒØ±Ø§Ø±"
 
 #: importer/forms.py
 msgid "Rating"
-msgstr "تصنيف"
+msgstr "ØªØµÙ†ÙŠÙ"
 
 #: importer/forms.py
 #, python-format
 msgid "This value must be between %(min)d and %(max)d."
-msgstr "لا بد أن تكون هذه القيمة بين %(min)dو%(max)d."
+msgstr "Ù„Ø§ Ø¨Ø¯ Ø£Ù† ØªÙƒÙˆÙ† Ù‡Ø°Ù‡ Ø§Ù„Ù‚ÙŠÙ…Ø© Ø¨ÙŠÙ† %(min)dÙˆ%(max)d."
 
 #: importer/forms.py
 msgid "Unaffiliated (no institution)"
-msgstr "مستقل (دون مؤسسة)"
+msgstr "Ù…Ø³ØªÙ‚Ù„ (Ø¯ÙˆÙ† Ù…Ø¤Ø³Ø³Ø©)"
 
 #: importer/forms.py
 #, python-format
@@ -194,7 +194,7 @@ msgid "Export Tournament Archive"
 msgstr ""
 
 #: importer/templates/archive_export_index.html
-msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside Tabbycat."
+msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside NekoTab."
 msgstr ""
 
 #: importer/templates/archive_export_index.html
@@ -222,7 +222,7 @@ msgstr ""
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgctxt "page title"
 msgid "Add Adjudicators"
-msgstr "إضافة محكمين"
+msgstr "Ø¥Ø¶Ø§ÙØ© Ù…Ø­ÙƒÙ…ÙŠÙ†"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_adjudicators_numbers.html
@@ -234,14 +234,14 @@ msgstr "إضافة محكمين"
 #: importer/templates/simple_import_venues_raw.html
 #, python-format
 msgid "(Step %(step)s of %(count)s)"
-msgstr "(خطوة%(step)sمن%(count)s)"
+msgstr "(Ø®Ø·ÙˆØ©%(step)sÙ…Ù†%(count)s)"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_institutions_details.html
 #: importer/templates/simple_import_teams_details.html
 #: importer/templates/simple_import_venues_details.html
 msgid "Previous Step"
-msgstr "الخطوة السابقة"
+msgstr "Ø§Ù„Ø®Ø·ÙˆØ© Ø§Ù„Ø³Ø§Ø¨Ù‚Ø©"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #, python-format
@@ -255,20 +255,20 @@ msgstr "%(institution)s"
 
 #: importer/templates/simple_import_adjudicators_details.html
 msgid "Unaffiliated Adjudicators"
-msgstr "محكمين مستقلين"
+msgstr "Ù…Ø­ÙƒÙ…ÙŠÙ† Ù…Ø³ØªÙ‚Ù„ÙŠÙ†"
 
 #: importer/templates/simple_import_adjudicators_details.html
 msgid "Save All Adjudicators"
-msgstr "حفظ كافة المحكمين"
+msgstr "Ø­ÙØ¸ ÙƒØ§ÙØ© Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ†"
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 #, python-format
 msgid "You need to <a href=\"%(import_institutions_url)s\" class=\"alert-link\">add institutions</a> before adding adjudicators."
-msgstr "لا بد من <a href=\"%(import_institutions_url)s\" class=\"alert-link\">إضافة منتخبات</a> قبل إضافة محكمين"
+msgstr "Ù„Ø§ Ø¨Ø¯ Ù…Ù† <a href=\"%(import_institutions_url)s\" class=\"alert-link\">Ø¥Ø¶Ø§ÙØ© Ù…Ù†ØªØ®Ø¨Ø§Øª</a> Ù‚Ø¨Ù„ Ø¥Ø¶Ø§ÙØ© Ù…Ø­ÙƒÙ…ÙŠÙ†"
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgid "Specify the number of new adjudicators to add per institution. In the next step you can specify their names and ratings."
-msgstr "حدد عدد المحكمين الجدد لكل منتخب. في الخطوة القادمة يمكنك تحديد أسمائهم ودرجاتهم."
+msgstr "Ø­Ø¯Ø¯ Ø¹Ø¯Ø¯ Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ† Ø§Ù„Ø¬Ø¯Ø¯ Ù„ÙƒÙ„ Ù…Ù†ØªØ®Ø¨. ÙÙŠ Ø§Ù„Ø®Ø·ÙˆØ© Ø§Ù„Ù‚Ø§Ø¯Ù…Ø© ÙŠÙ…ÙƒÙ†Ùƒ ØªØ­Ø¯ÙŠØ¯ Ø£Ø³Ù…Ø§Ø¦Ù‡Ù… ÙˆØ¯Ø±Ø¬Ø§ØªÙ‡Ù…."
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgid "You can add up to 198 adjudicators at a time. If you have more than 198 adjudicators, split them into chunks. (Please don't try to add more than 198 in one go; the system will crash, and you will lose data.)"
@@ -278,39 +278,39 @@ msgstr ""
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "button"
 msgid "Next Step"
-msgstr "الخطوة التالية"
+msgstr "Ø§Ù„Ø®Ø·ÙˆØ© Ø§Ù„ØªØ§Ù„ÙŠØ©"
 
 #: importer/templates/simple_import_index.html
 msgid "Simple Importer"
-msgstr "المورد البسيط"
+msgstr "Ø§Ù„Ù…ÙˆØ±Ø¯ Ø§Ù„Ø¨Ø³ÙŠØ·"
 
 #: importer/templates/simple_import_index.html
-msgid "There are <a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into Tabbycat</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
-msgstr "هنالك <a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">طرق متعددة لتوريد البيانات في Tabbycat</a>. يعتمد الأنسب لك حسب حجم البطولة وخلفيتك التقنية. هذا <strong>المورد البسيط</strong> هو الأسهل في الاستخدام ويعمل جيدا مع بطولات ذوي الأحجام الصغيرة والمتوسطة."
+msgid "There are <a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into NekoTab</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
+msgstr "Ù‡Ù†Ø§Ù„Ùƒ <a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">Ø·Ø±Ù‚ Ù…ØªØ¹Ø¯Ø¯Ø© Ù„ØªÙˆØ±ÙŠØ¯ Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª ÙÙŠ NekoTab</a>. ÙŠØ¹ØªÙ…Ø¯ Ø§Ù„Ø£Ù†Ø³Ø¨ Ù„Ùƒ Ø­Ø³Ø¨ Ø­Ø¬Ù… Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© ÙˆØ®Ù„ÙÙŠØªÙƒ Ø§Ù„ØªÙ‚Ù†ÙŠØ©. Ù‡Ø°Ø§ <strong>Ø§Ù„Ù…ÙˆØ±Ø¯ Ø§Ù„Ø¨Ø³ÙŠØ·</strong> Ù‡Ùˆ Ø§Ù„Ø£Ø³Ù‡Ù„ ÙÙŠ Ø§Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù… ÙˆÙŠØ¹Ù…Ù„ Ø¬ÙŠØ¯Ø§ Ù…Ø¹ Ø¨Ø·ÙˆÙ„Ø§Øª Ø°ÙˆÙŠ Ø§Ù„Ø£Ø­Ø¬Ø§Ù… Ø§Ù„ØµØºÙŠØ±Ø© ÙˆØ§Ù„Ù…ØªÙˆØ³Ø·Ø©."
 
 #: importer/templates/simple_import_index.html
 msgid "Add Institutions"
-msgstr "إضافة منتخبات"
+msgstr "Ø¥Ø¶Ø§ÙØ© Ù…Ù†ØªØ®Ø¨Ø§Øª"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Teams"
-msgstr "إضافة فرق"
+msgstr "Ø¥Ø¶Ø§ÙØ© ÙØ±Ù‚"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Adjudicators"
-msgstr "إضافة محكمين"
+msgstr "Ø¥Ø¶Ø§ÙØ© Ù…Ø­ÙƒÙ…ÙŠÙ†"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Rooms"
-msgstr "إضافة قاعات المناظرة"
+msgstr "Ø¥Ø¶Ø§ÙØ© Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Room Categories"
-msgstr "إضافة/تعديل فئات القاعات"
+msgstr "Ø¥Ø¶Ø§ÙØ©/ØªØ¹Ø¯ÙŠÙ„ ÙØ¦Ø§Øª Ø§Ù„Ù‚Ø§Ø¹Ø§Øª"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Room Constraints"
-msgstr "إضافة/تعديل قيود القاعات"
+msgstr "Ø¥Ø¶Ø§ÙØ©/ØªØ¹Ø¯ÙŠÙ„ Ù‚ÙŠÙˆØ¯ Ø§Ù„Ù‚Ø§Ø¹Ø§Øª"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Adjudicator-Team Conflicts"
@@ -340,49 +340,49 @@ msgstr ""
 #: importer/templates/simple_import_institutions_raw.html
 msgctxt "page title"
 msgid "Add Institutions"
-msgstr "إضافة منتخبات"
+msgstr "Ø¥Ø¶Ø§ÙØ© Ù…Ù†ØªØ®Ø¨Ø§Øª"
 
 #: importer/templates/simple_import_institutions_details.html
 msgid "Save All Institutions"
-msgstr "حفظ جميع المنتخبات"
+msgstr "Ø­ÙØ¸ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ù†ØªØ®Ø¨Ø§Øª"
 
 #: importer/templates/simple_import_institutions_raw.html
 #: importer/templates/simple_import_venues_raw.html
 msgid "There are some problems with the data on this form:"
-msgstr "هنالك مشاكل مع البينات الموجودة على هذا النموذج:"
+msgstr "Ù‡Ù†Ø§Ù„Ùƒ Ù…Ø´Ø§ÙƒÙ„ Ù…Ø¹ Ø§Ù„Ø¨ÙŠÙ†Ø§Øª Ø§Ù„Ù…ÙˆØ¬ÙˆØ¯Ø© Ø¹Ù„Ù‰ Ù‡Ø°Ø§ Ø§Ù„Ù†Ù…ÙˆØ°Ø¬:"
 
 #: importer/templates/simple_import_institutions_raw.html
 #: importer/templates/simple_import_venues_raw.html
 msgid "Next Step"
-msgstr "الخطوة التالية"
+msgstr "Ø§Ù„Ø®Ø·ÙˆØ© Ø§Ù„ØªØ§Ù„ÙŠØ©"
 
 #: importer/templates/simple_import_teams_details.html
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "page title"
 msgid "Add Teams"
-msgstr "إضافة فرق"
+msgstr "Ø¥Ø¶Ø§ÙØ© ÙØ±Ù‚"
 
 #: importer/templates/simple_import_teams_details.html
 #, python-format
 msgid "Teams for %(institution)s"
-msgstr "فرق من%(institution)s"
+msgstr "ÙØ±Ù‚ Ù…Ù†%(institution)s"
 
 #: importer/templates/simple_import_teams_details.html
 msgid "Unaffiliated Teams"
-msgstr "فرق مستقلة"
+msgstr "ÙØ±Ù‚ Ù…Ø³ØªÙ‚Ù„Ø©"
 
 #: importer/templates/simple_import_teams_details.html
 msgid "Save All Teams"
-msgstr "حفظ كافة الفرق"
+msgstr "Ø­ÙØ¸ ÙƒØ§ÙØ© Ø§Ù„ÙØ±Ù‚"
 
 #: importer/templates/simple_import_teams_numbers.html
 #, python-format
 msgid "You need to <a href=\"%(import_institutions_url)s\" class=\"alert-link\">add institutions</a> before adding teams."
-msgstr "لا بد من <a href=\"%(import_institutions_url)s\" class=\"alert-link\">إضافة منتخب</a> قبل إضافة فرق"
+msgstr "Ù„Ø§ Ø¨Ø¯ Ù…Ù† <a href=\"%(import_institutions_url)s\" class=\"alert-link\">Ø¥Ø¶Ø§ÙØ© Ù…Ù†ØªØ®Ø¨</a> Ù‚Ø¨Ù„ Ø¥Ø¶Ø§ÙØ© ÙØ±Ù‚"
 
 #: importer/templates/simple_import_teams_numbers.html
 msgid "Specify the number of new teams to add per institution. In the next step you can specify team and speaker names."
-msgstr "حدد عدد الفرق الجديدة لكل منتخب. في الخطوة القادمة ستستطيع تحديد أسماء الفرق والمتحدثينز"
+msgstr "Ø­Ø¯Ø¯ Ø¹Ø¯Ø¯ Ø§Ù„ÙØ±Ù‚ Ø§Ù„Ø¬Ø¯ÙŠØ¯Ø© Ù„ÙƒÙ„ Ù…Ù†ØªØ®Ø¨. ÙÙŠ Ø§Ù„Ø®Ø·ÙˆØ© Ø§Ù„Ù‚Ø§Ø¯Ù…Ø© Ø³ØªØ³ØªØ·ÙŠØ¹ ØªØ­Ø¯ÙŠØ¯ Ø£Ø³Ù…Ø§Ø¡ Ø§Ù„ÙØ±Ù‚ ÙˆØ§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ†Ø²"
 
 #: importer/templates/simple_import_teams_numbers.html
 msgid "You can add up to 141 teams at a time. If you have more than 141 teams, split them into chunks. (Please don't try to add more than 141 in one go; the system will crash, and you will lose data.)"
@@ -392,7 +392,7 @@ msgstr ""
 #: importer/templates/simple_import_venues_raw.html
 msgctxt "page title"
 msgid "Add Rooms"
-msgstr "إضافة قاعات المناظرة"
+msgstr "Ø¥Ø¶Ø§ÙØ© Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: importer/templates/simple_import_venues_details.html
 msgid "Priorities indicate how much you want to use the room. Larger numbers indicate higher priority. If you have more rooms than debates, the rooms with the lowest priorities will not be used."
@@ -400,7 +400,7 @@ msgstr ""
 
 #: importer/templates/simple_import_venues_details.html
 msgid "Save All Rooms"
-msgstr "حفظ جميع القاعات"
+msgstr "Ø­ÙØ¸ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù‚Ø§Ø¹Ø§Øª"
 
 #: importer/templates/simple_import_venues_raw.html
 msgid "Paste a list of rooms with one room per line and following the format of: <code>name,priority</code>. For example:"
@@ -442,7 +442,7 @@ msgstr[5] ""
 #: importer/views.py
 #, python-format
 msgid "Adjudicator %(number)d"
-msgstr "محكم رقم %(number)d"
+msgstr "Ù…Ø­ÙƒÙ… Ø±Ù‚Ù… %(number)d"
 
 #: importer/views.py
 #, python-format
@@ -466,4 +466,5 @@ msgstr ""
 #: importer/views.py
 msgid "Tournament archive has been imported."
 msgstr ""
+
 

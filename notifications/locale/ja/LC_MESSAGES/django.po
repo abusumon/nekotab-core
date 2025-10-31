@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -12,41 +12,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/tabbycat/notifications/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/notifications/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 938\n"
 
 #: notifications/apps.py
 msgid "Notifications"
-msgstr "通知"
+msgstr "é€šçŸ¥"
 
 #: notifications/forms.py
 msgid "Recipient email address"
-msgstr "受信者のメールアドレス"
+msgstr "å—ä¿¡è€…ã®ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹"
 
 #: notifications/forms.py
 #, python-format
 msgid "Test email from %(host)s"
-msgstr "%(host)sからのテストメール"
+msgstr "%(host)sã‹ã‚‰ã®ãƒ†ã‚¹ãƒˆãƒ¡ãƒ¼ãƒ«"
 
 #: notifications/forms.py
 #, python-format
 msgid "Congratulations! If you're reading this message, your email backend on %(host)s looks all good to go!"
-msgstr "おめでとうございます！%(host)sのメール用のバックエンドサービスが正常に動作しているようです！"
+msgstr "ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™ï¼%(host)sã®ãƒ¡ãƒ¼ãƒ«ç”¨ã®ãƒãƒƒã‚¯ã‚¨ãƒ³ãƒ‰ã‚µãƒ¼ãƒ“ã‚¹ãŒæ­£å¸¸ã«å‹•ä½œã—ã¦ã„ã‚‹ã‚ˆã†ã§ã™ï¼"
 
 #: notifications/forms.py
 msgid "Subject"
-msgstr "件名"
+msgstr "ä»¶å"
 
 #: notifications/forms.py
 msgid "Message"
-msgstr "メッセージ"
+msgstr "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"
 
 #: notifications/models.py
 msgid "email"
-msgstr "メール"
+msgstr "ãƒ¡ãƒ¼ãƒ«"
 
 #: notifications/models.py
 msgid "SMS"
@@ -54,147 +54,147 @@ msgstr "SMS"
 
 #: notifications/models.py
 msgid "recipient"
-msgstr "受取人"
+msgstr "å—å–äºº"
 
 #: notifications/models.py
 msgid "method"
-msgstr "方法"
+msgstr "æ–¹æ³•"
 
 #: notifications/models.py
 msgid "context"
-msgstr "コンテキスト"
+msgstr "ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ"
 
 #: notifications/models.py
 msgid "notification"
-msgstr "通知"
+msgstr "é€šçŸ¥"
 
 #: notifications/models.py
 msgid "timestamp"
-msgstr "タイムスタンプ"
+msgstr "ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—"
 
 #: notifications/models.py
 msgid "sent message"
-msgstr "送信済みメッセージ"
+msgstr "é€ä¿¡æ¸ˆã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"
 
 #: notifications/models.py
 msgid "sent messages"
-msgstr "送信済みメッセージ"
+msgstr "é€ä¿¡æ¸ˆã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"
 
 #: notifications/models.py
 msgid "team points"
-msgstr "チームの点数"
+msgstr "ãƒãƒ¼ãƒ ã®ç‚¹æ•°"
 
 #: notifications/models.py
 msgid "ballot confirmed"
-msgstr "バロットを承認済み"
+msgstr "ãƒãƒ­ãƒƒãƒˆã‚’æ‰¿èªæ¸ˆã¿"
 
 #: notifications/models.py
 msgid "feedback URL"
-msgstr "フィードバックのURL"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®URL"
 
 #: notifications/models.py
 msgid "ballot URL"
-msgstr "バロットのURL"
+msgstr "ãƒãƒ­ãƒƒãƒˆã®URL"
 
 #: notifications/models.py
 msgid "landing page URL"
-msgstr "ランディングページのURL"
+msgstr "ãƒ©ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒšãƒ¼ã‚¸ã®URL"
 
 #: notifications/models.py
 msgid "adjudicator draw released"
-msgstr "ジャッジの対戦表を公開"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®å¯¾æˆ¦è¡¨ã‚’å…¬é–‹"
 
 #: notifications/models.py
 msgid "team registration"
-msgstr "チーム登録"
+msgstr "ãƒãƒ¼ãƒ ç™»éŒ²"
 
 #: notifications/models.py
 msgid "adjudicator registration"
-msgstr "ジャッジ登録"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ç™»éŒ²"
 
 #: notifications/models.py
 msgid "motion(s) released"
-msgstr "論題リリース"
+msgstr "è«–é¡Œãƒªãƒªãƒ¼ã‚¹"
 
 #: notifications/models.py
 msgid "team draw released"
-msgstr "チームの対戦表を公開"
+msgstr "ãƒãƒ¼ãƒ ã®å¯¾æˆ¦è¡¨ã‚’å…¬é–‹"
 
 #: notifications/models.py
 msgid "custom message"
-msgstr "カスタムメッセージ"
+msgstr "ã‚«ã‚¹ã‚¿ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"
 
 #: notifications/models.py
 msgid "event"
-msgstr "イベント"
+msgstr "ã‚¤ãƒ™ãƒ³ãƒˆ"
 
 #: notifications/models.py
 msgid "tournament"
-msgstr "大会"
+msgstr "å¤§ä¼š"
 
 #: notifications/models.py
 msgid "round"
-msgstr "ラウンド"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰"
 
 #: notifications/models.py
 msgid "subject template"
-msgstr "件名テンプレート"
+msgstr "ä»¶åãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ"
 
 #: notifications/models.py
 msgid "body template"
-msgstr "本文テンプレート"
+msgstr "æœ¬æ–‡ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ"
 
 #: notifications/models.py
 msgid "bulk notification"
-msgstr "一括通知"
+msgstr "ä¸€æ‹¬é€šçŸ¥"
 
 #: notifications/models.py
 msgid "bulk notifications"
-msgstr "一括通知"
+msgstr "ä¸€æ‹¬é€šçŸ¥"
 
 #: notifications/models.py
 msgid "Processed"
-msgstr "処理済み"
+msgstr "å‡¦ç†æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Dropped"
-msgstr "ドロップ済み"
+msgstr "ãƒ‰ãƒ­ãƒƒãƒ—æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Deferred"
-msgstr "延期済み"
+msgstr "å»¶æœŸæ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Delivered"
-msgstr "配信済み"
+msgstr "é…ä¿¡æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Bounced"
-msgstr "バウンス済み"
+msgstr "ãƒã‚¦ãƒ³ã‚¹æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Opened"
-msgstr "開封済み"
+msgstr "é–‹å°æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Clicked"
-msgstr "クリック済み"
+msgstr "ã‚¯ãƒªãƒƒã‚¯æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Unsubscribed"
-msgstr "購読解除済み"
+msgstr "è³¼èª­è§£é™¤æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Marked as spam"
-msgstr "スパムとしてマーク済み"
+msgstr "ã‚¹ãƒ‘ãƒ ã¨ã—ã¦ãƒžãƒ¼ã‚¯æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Unsubscribed from group"
-msgstr "グループから購読解除済み"
+msgstr "ã‚°ãƒ«ãƒ¼ãƒ—ã‹ã‚‰è³¼èª­è§£é™¤æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Resubscribed to group"
-msgstr "グループに再購読済み"
+msgstr "ã‚°ãƒ«ãƒ¼ãƒ—ã«å†è³¼èª­æ¸ˆã¿"
 
 #: notifications/models.py
 msgid "Failed to send"
@@ -202,84 +202,84 @@ msgstr ""
 
 #: notifications/models.py
 msgid "email message"
-msgstr "メールのメッセージ"
+msgstr "ãƒ¡ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"
 
 #: notifications/models.py
 msgid "email status"
-msgstr "メールの状況"
+msgstr "ãƒ¡ãƒ¼ãƒ«ã®çŠ¶æ³"
 
 #: notifications/models.py
 msgid "email statuses"
-msgstr "メールの状況"
+msgstr "ãƒ¡ãƒ¼ãƒ«ã®çŠ¶æ³"
 
 #: notifications/templates/email_participants.html
 #, python-format
 msgid "You have not specified a reply-to address. This means that participants may not reply to the message if they have questions. Please set one in the <a href=\"%(notifications_options_url)s\">Notifications section of the preferences</a>."
-msgstr "返信先のアドレスを指定していません。これにより、参加者が質問がある場合にメッセージに返信できない可能性があります。<a href=\"%(notifications_options_url)s\">通知設定</a>で設定してください。"
+msgstr "è¿”ä¿¡å…ˆã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æŒ‡å®šã—ã¦ã„ã¾ã›ã‚“ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€å‚åŠ è€…ãŒè³ªå•ãŒã‚ã‚‹å ´åˆã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«è¿”ä¿¡ã§ããªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚<a href=\"%(notifications_options_url)s\">é€šçŸ¥è¨­å®š</a>ã§è¨­å®šã—ã¦ãã ã•ã„ã€‚"
 
 #: notifications/templates/email_participants.html
 #, python-format
 msgid "The webhook URL for use in SendGrid is <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. Please point the HTTP POST URL in <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a> to that."
-msgstr "SendGridで使用するWebhook URLは<a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>です。<a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a>のHTTP POST URLをそれに設定してください。"
+msgstr "SendGridã§ä½¿ç”¨ã™ã‚‹Webhook URLã¯<a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>ã§ã™ã€‚<a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a>ã®HTTP POST URLã‚’ãã‚Œã«è¨­å®šã—ã¦ãã ã•ã„ã€‚"
 
 #: notifications/templates/email_participants.html
 msgid "Send Message(s)"
-msgstr "メッセージを送信"
+msgstr "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡"
 
 #: notifications/templates/email_statuses.html
-msgid "Emails can be sent by Tabbycat for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
-msgstr "さまざまな目的でTabbycatからメールを送信できます。特定の設定（e.g. バロットレシート）を有効にした場合や、特定のページで行うアクションを通じて（e.g. 対戦表の表示ページやチーム登録のための参加者ページ）メールが送信されます。このページでは、以前に送信されたメールの状況を表示しています。"
+msgid "Emails can be sent by NekoTab for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
+msgstr "ã•ã¾ã–ã¾ãªç›®çš„ã§NekoTabã‹ã‚‰ãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡ã§ãã¾ã™ã€‚ç‰¹å®šã®è¨­å®šï¼ˆe.g. ãƒãƒ­ãƒƒãƒˆãƒ¬ã‚·ãƒ¼ãƒˆï¼‰ã‚’æœ‰åŠ¹ã«ã—ãŸå ´åˆã‚„ã€ç‰¹å®šã®ãƒšãƒ¼ã‚¸ã§è¡Œã†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’é€šã˜ã¦ï¼ˆe.g. å¯¾æˆ¦è¡¨ã®è¡¨ç¤ºãƒšãƒ¼ã‚¸ã‚„ãƒãƒ¼ãƒ ç™»éŒ²ã®ãŸã‚ã®å‚åŠ è€…ãƒšãƒ¼ã‚¸ï¼‰ãƒ¡ãƒ¼ãƒ«ãŒé€ä¿¡ã•ã‚Œã¾ã™ã€‚ã“ã®ãƒšãƒ¼ã‚¸ã§ã¯ã€ä»¥å‰ã«é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒ¼ãƒ«ã®çŠ¶æ³ã‚’è¡¨ç¤ºã—ã¦ã„ã¾ã™ã€‚"
 
 #: notifications/templates/notifications_nav.html notifications/views.py
 msgid "Email Statuses"
-msgstr "メール状況"
+msgstr "ãƒ¡ãƒ¼ãƒ«çŠ¶æ³"
 
 #: notifications/templates/notifications_nav.html
 #: notifications/templates/test_email.html
 msgid "Send Test Email"
-msgstr "テストメールを送信"
+msgstr "ãƒ†ã‚¹ãƒˆãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡"
 
 #: notifications/templates/notifications_nav.html
 msgid "Send Custom Email"
-msgstr "カスタムメールを送信"
+msgstr "ã‚«ã‚¹ã‚¿ãƒ ãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡"
 
 #: notifications/templates/test_email.html
 msgctxt "page title"
 msgid "Send Test Email"
-msgstr "テストメールを送信"
+msgstr "ãƒ†ã‚¹ãƒˆãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡"
 
 #: notifications/templates/test_email.html
 msgid "You can use this form to send a test email, to check that your email backend settings are working, before you try to send email notifications to participants."
-msgstr "このフォームからテストメールを送信し、参加者にメール通知を送信する前にメールのバックエンド設定が正常か確認できます。"
+msgstr "ã“ã®ãƒ•ã‚©ãƒ¼ãƒ ã‹ã‚‰ãƒ†ã‚¹ãƒˆãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡ã—ã€å‚åŠ è€…ã«ãƒ¡ãƒ¼ãƒ«é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹å‰ã«ãƒ¡ãƒ¼ãƒ«ã®ãƒãƒƒã‚¯ã‚¨ãƒ³ãƒ‰è¨­å®šãŒæ­£å¸¸ã‹ç¢ºèªã§ãã¾ã™ã€‚"
 
 #: notifications/templates/test_email.html
 #, python-format
 msgid "The email will be sent from: <strong>%(default_from_email)s</strong>. If this doesn't look right, change the <code>DEFAULT_FROM_EMAIL</code> config var in Heroku (or environment variable)."
-msgstr "メールは<strong>%(default_from_email)s</strong>から送信されます。これが正しくない場合は、Herokuの<code>DEFAULT_FROM_EMAIL</code>設定変数（または環境変数）を変更してください。"
+msgstr "ãƒ¡ãƒ¼ãƒ«ã¯<strong>%(default_from_email)s</strong>ã‹ã‚‰é€ä¿¡ã•ã‚Œã¾ã™ã€‚ã“ã‚ŒãŒæ­£ã—ããªã„å ´åˆã¯ã€Herokuã®<code>DEFAULT_FROM_EMAIL</code>è¨­å®šå¤‰æ•°ï¼ˆã¾ãŸã¯ç’°å¢ƒå¤‰æ•°ï¼‰ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚"
 
 #: notifications/templates/test_email.html
 msgid "Go back to the site home page"
-msgstr "ホームページに戻る"
+msgstr "ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸ã«æˆ»ã‚‹"
 
 #: notifications/utils.py
 msgid "the chair"
-msgstr "チェア"
+msgstr "ãƒã‚§ã‚¢"
 
 #: notifications/utils.py
 msgid "the only"
-msgstr "唯一の"
+msgstr "å”¯ä¸€ã®"
 
 #: notifications/utils.py
 msgid "a panellist"
-msgstr "パネル"
+msgstr "ãƒ‘ãƒãƒ«"
 
 #: notifications/utils.py
 msgid "a trainee"
-msgstr "トレイニー"
+msgstr "ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼"
 
 #: notifications/utils.py
 msgid "TBA"
-msgstr "未定"
+msgstr "æœªå®š"
 
 #: notifications/utils.py
 #, python-format
@@ -289,20 +289,20 @@ msgstr ""
 #: notifications/utils.py
 #, python-format
 msgid "<li>%(side)s: %(team)s (%(points)d points with %(speaks)s total speaks)"
-msgstr "<li>%(side)s: %(team)s （%(points)d点、スピーカースコア合計%(speaks)s）"
+msgstr "<li>%(side)s: %(team)s ï¼ˆ%(points)dç‚¹ã€ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢åˆè¨ˆ%(speaks)sï¼‰"
 
 #: notifications/utils.py
 #, python-format
 msgid "<li>%(side)s: %(team)s (%(points)s - %(speaks)s total speaks)"
-msgstr "<li>%(side)s: %(team)s （%(points)s点、スピーカースコア合計%(speaks)s）"
+msgstr "<li>%(side)s: %(team)s ï¼ˆ%(points)sç‚¹ã€ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢åˆè¨ˆ%(speaks)sï¼‰"
 
 #: notifications/utils.py
 msgid "Win"
-msgstr "勝ち"
+msgstr "å‹ã¡"
 
 #: notifications/utils.py
 msgid "Loss"
-msgstr "負け"
+msgstr "è² ã‘"
 
 #: notifications/utils.py
 #, python-format
@@ -321,29 +321,29 @@ msgstr ""
 #: notifications/views.py
 #, python-format
 msgid "The email (SMTP) server returned an error sending the test email: [SMTP code %(code)d] %(error)s"
-msgstr "テストメールの送信中にメール（SMTP）サーバーがエラーを返しました：[SMTPコード %(code)d] %(error)s"
+msgstr "ãƒ†ã‚¹ãƒˆãƒ¡ãƒ¼ãƒ«ã®é€ä¿¡ä¸­ã«ãƒ¡ãƒ¼ãƒ«ï¼ˆSMTPï¼‰ã‚µãƒ¼ãƒãƒ¼ãŒã‚¨ãƒ©ãƒ¼ã‚’è¿”ã—ã¾ã—ãŸï¼š[SMTPã‚³ãƒ¼ãƒ‰ %(code)d] %(error)s"
 
 #: notifications/views.py
 msgid "Hint: If the error is about sender identity verification in SendGrid, and you've already completed the steps in SendGrid, it may be that you need to update the DEFAULT_FROM_EMAIL config var in Heroku to match your verified sender identity."
-msgstr "ヒント：エラーがSendGridでの送信者の身元確認に関するものであり、SendGridでの手順を既に完了している場合、HerokuのDEFAULT_FROM_EMAIL設定変数を確認済みの送信者の身元に一致するように更新する必要があるかもしれません。"
+msgstr "ãƒ’ãƒ³ãƒˆï¼šã‚¨ãƒ©ãƒ¼ãŒSendGridã§ã®é€ä¿¡è€…ã®èº«å…ƒç¢ºèªã«é–¢ã™ã‚‹ã‚‚ã®ã§ã‚ã‚Šã€SendGridã§ã®æ‰‹é †ã‚’æ—¢ã«å®Œäº†ã—ã¦ã„ã‚‹å ´åˆã€Herokuã®DEFAULT_FROM_EMAILè¨­å®šå¤‰æ•°ã‚’ç¢ºèªæ¸ˆã¿ã®é€ä¿¡è€…ã®èº«å…ƒã«ä¸€è‡´ã™ã‚‹ã‚ˆã†ã«æ›´æ–°ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚"
 
 #: notifications/views.py
 #, python-format
 msgid "There was an error sending the test email: %(error)s"
-msgstr "テストメールの送信中にエラーが発生しました：%(error)s"
+msgstr "ãƒ†ã‚¹ãƒˆãƒ¡ãƒ¼ãƒ«ã®é€ä¿¡ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸï¼š%(error)s"
 
 #: notifications/views.py
 #, python-format
 msgid "A test email has been sent to %(recipient)s."
-msgstr "テストメールを%(recipient)sに送信しました。"
+msgstr "ãƒ†ã‚¹ãƒˆãƒ¡ãƒ¼ãƒ«ã‚’%(recipient)sã«é€ä¿¡ã—ã¾ã—ãŸã€‚"
 
 #: notifications/views.py
 msgid "N/A"
-msgstr "該当なし"
+msgstr "è©²å½“ãªã—"
 
 #: notifications/views.py
 msgid "Not known"
-msgstr "不明"
+msgstr "ä¸æ˜Ž"
 
 #: notifications/views.py
 #, python-format
@@ -357,11 +357,11 @@ msgstr ""
 
 #: notifications/views.py
 msgid "Timeline"
-msgstr "タイムライン"
+msgstr "ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³"
 
 #: notifications/views.py
 msgid "Participant"
-msgstr "参加者"
+msgstr "å‚åŠ è€…"
 
 #: notifications/views.py
 msgid "Email address"
@@ -369,51 +369,52 @@ msgstr ""
 
 #: notifications/views.py
 msgid "Status"
-msgstr "状態"
+msgstr "çŠ¶æ…‹"
 
 #: notifications/views.py
 msgid "Time"
-msgstr "時間"
+msgstr "æ™‚é–“"
 
 #: notifications/views.py
 msgid "Email Participants"
-msgstr "参加者にメールを送信"
+msgstr "å‚åŠ è€…ã«ãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡"
 
 #: notifications/views.py
 #, python-format
 msgid "%(email_count)s email has been queued for sending."
 msgid_plural "%(email_count)s emails have been queued for sending."
-msgstr[0] "%(email_count)s 件のメールを送信待ちキューに追加しました。"
+msgstr[0] "%(email_count)s ä»¶ã®ãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡å¾…ã¡ã‚­ãƒ¥ãƒ¼ã«è¿½åŠ ã—ã¾ã—ãŸã€‚"
 
 #: notifications/views.py
-msgid "No emails were sent — likely because no recipients were selected."
-msgstr "メールを送信しませんでした。おそらく受信者を選択していないためです。"
+msgid "No emails were sent â€” likely because no recipients were selected."
+msgstr "ãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡ã—ã¾ã›ã‚“ã§ã—ãŸã€‚ãŠãã‚‰ãå—ä¿¡è€…ã‚’é¸æŠžã—ã¦ã„ãªã„ãŸã‚ã§ã™ã€‚"
 
 #: notifications/views.py
 msgid "Send Email"
-msgstr "メールを送信"
+msgstr "ãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡"
 
 #: notifications/views.py
 msgid "Not Provided"
-msgstr "なし"
+msgstr "ãªã—"
 
 #: notifications/views.py
 msgid "Role"
-msgstr "役割"
+msgstr "å½¹å‰²"
 
 #: notifications/views.py
 msgid "Adjudicator"
-msgstr "ジャッジ"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸"
 
 #: notifications/views.py
 msgid "Speaker"
-msgstr "スピーカー"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼"
 
 #: notifications/views.py
 msgid "Speakers"
-msgstr "スピーカー"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼"
 
 #: notifications/views.py
 msgid "Adjudicators"
-msgstr "ジャッジ"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸"
+
 

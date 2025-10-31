@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: kk\n"
-"X-Crowdin-File: /develop/tabbycat/importer/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/importer/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 932\n"
 
 #: importer/forms.py
@@ -56,7 +56,7 @@ msgstr[1] ""
 
 #: importer/forms.py
 msgid "Speakers' names"
-msgstr "Ойыншылардың аттары"
+msgstr "ÐžÐ¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€Ð´Ñ‹Ò£ Ð°Ñ‚Ñ‚Ð°Ñ€Ñ‹"
 
 #: importer/forms.py
 msgid "Can be separated by newlines, tabs, commas or ampersands"
@@ -64,7 +64,7 @@ msgstr ""
 
 #: importer/forms.py
 msgid "Speakers' email addresses"
-msgstr "Ойыншылардың электронды пошталары"
+msgstr "ÐžÐ¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€Ð´Ñ‹Ò£ ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð´Ñ‹ Ð¿Ð¾ÑˆÑ‚Ð°Ð»Ð°Ñ€Ñ‹"
 
 #: importer/forms.py
 msgid "Optional, useful to include if distributing private URLs, list in same order as speakers' names"
@@ -178,12 +178,12 @@ msgid "Export Tournament Archive"
 msgstr ""
 
 #: importer/templates/archive_export_index.html
-msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside Tabbycat."
+msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside NekoTab."
 msgstr ""
 
 #: importer/templates/archive_export_index.html
 msgid "Export all data"
-msgstr "Барлық ақпаратты шығару"
+msgstr "Ð‘Ð°Ñ€Ð»Ñ‹Ò› Ð°Ò›Ð¿Ð°Ñ€Ð°Ñ‚Ñ‚Ñ‹ ÑˆÑ‹Ò“Ð°Ñ€Ñƒ"
 
 #: importer/templates/archive_importer.html
 msgctxt "page title"
@@ -262,31 +262,31 @@ msgstr ""
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "button"
 msgid "Next Step"
-msgstr "Келесі қадам"
+msgstr "ÐšÐµÐ»ÐµÑÑ– Ò›Ð°Ð´Ð°Ð¼"
 
 #: importer/templates/simple_import_index.html
 msgid "Simple Importer"
 msgstr ""
 
 #: importer/templates/simple_import_index.html
-msgid "There are <a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into Tabbycat</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
+msgid "There are <a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into NekoTab</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
 msgstr ""
 
 #: importer/templates/simple_import_index.html
 msgid "Add Institutions"
-msgstr "Қауымдастықтарды қосу"
+msgstr "ÒšÐ°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò›Ñ‚Ð°Ñ€Ð´Ñ‹ Ò›Ð¾ÑÑƒ"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Teams"
-msgstr "Топтарды қосу"
+msgstr "Ð¢Ð¾Ð¿Ñ‚Ð°Ñ€Ð´Ñ‹ Ò›Ð¾ÑÑƒ"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Adjudicators"
-msgstr "Төрешілерді қосу"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€Ð´Ñ– Ò›Ð¾ÑÑƒ"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Rooms"
-msgstr "Аудиторияларды қосу"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸ÑÐ»Ð°Ñ€Ð´Ñ‹ Ò›Ð¾ÑÑƒ"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Room Categories"
@@ -324,11 +324,11 @@ msgstr ""
 #: importer/templates/simple_import_institutions_raw.html
 msgctxt "page title"
 msgid "Add Institutions"
-msgstr "Қауымдастықтарды қосу"
+msgstr "ÒšÐ°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò›Ñ‚Ð°Ñ€Ð´Ñ‹ Ò›Ð¾ÑÑƒ"
 
 #: importer/templates/simple_import_institutions_details.html
 msgid "Save All Institutions"
-msgstr "Барлық қауымдастықты сақтау"
+msgstr "Ð‘Ð°Ñ€Ð»Ñ‹Ò› Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò›Ñ‚Ñ‹ ÑÐ°Ò›Ñ‚Ð°Ñƒ"
 
 #: importer/templates/simple_import_institutions_raw.html
 #: importer/templates/simple_import_venues_raw.html
@@ -338,13 +338,13 @@ msgstr ""
 #: importer/templates/simple_import_institutions_raw.html
 #: importer/templates/simple_import_venues_raw.html
 msgid "Next Step"
-msgstr "Келесі қадам"
+msgstr "ÐšÐµÐ»ÐµÑÑ– Ò›Ð°Ð´Ð°Ð¼"
 
 #: importer/templates/simple_import_teams_details.html
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "page title"
 msgid "Add Teams"
-msgstr "Топтарды қосу"
+msgstr "Ð¢Ð¾Ð¿Ñ‚Ð°Ñ€Ð´Ñ‹ Ò›Ð¾ÑÑƒ"
 
 #: importer/templates/simple_import_teams_details.html
 #, python-format
@@ -357,7 +357,7 @@ msgstr ""
 
 #: importer/templates/simple_import_teams_details.html
 msgid "Save All Teams"
-msgstr "Барлық топты сақтау"
+msgstr "Ð‘Ð°Ñ€Ð»Ñ‹Ò› Ñ‚Ð¾Ð¿Ñ‚Ñ‹ ÑÐ°Ò›Ñ‚Ð°Ñƒ"
 
 #: importer/templates/simple_import_teams_numbers.html
 #, python-format
@@ -376,7 +376,7 @@ msgstr ""
 #: importer/templates/simple_import_venues_raw.html
 msgctxt "page title"
 msgid "Add Rooms"
-msgstr "Аудиторияларды қосу"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸ÑÐ»Ð°Ñ€Ð´Ñ‹ Ò›Ð¾ÑÑƒ"
 
 #: importer/templates/simple_import_venues_details.html
 msgid "Priorities indicate how much you want to use the room. Larger numbers indicate higher priority. If you have more rooms than debates, the rooms with the lowest priorities will not be used."
@@ -384,7 +384,7 @@ msgstr ""
 
 #: importer/templates/simple_import_venues_details.html
 msgid "Save All Rooms"
-msgstr "Барлық аудиторияны сақтау"
+msgstr "Ð‘Ð°Ñ€Ð»Ñ‹Ò› Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸ÑÐ½Ñ‹ ÑÐ°Ò›Ñ‚Ð°Ñƒ"
 
 #: importer/templates/simple_import_venues_raw.html
 msgid "Paste a list of rooms with one room per line and following the format of: <code>name,priority</code>. For example:"
@@ -434,4 +434,5 @@ msgstr ""
 #: importer/views.py
 msgid "Tournament archive has been imported."
 msgstr ""
+
 

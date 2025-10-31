@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -12,115 +12,115 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/tabbycat/options/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/options/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 940\n"
 
 #: options/apps.py
 msgid "Tournament Options"
-msgstr "大会設定"
+msgstr "å¤§ä¼šè¨­å®š"
 
 #: options/forms.py
 msgid "Mininum score must be less than maximum score"
-msgstr "スコアの最低値はスコアの最大値よりも小さくなければなりません"
+msgstr "ã‚¹ã‚³ã‚¢ã®æœ€ä½Žå€¤ã¯ã‚¹ã‚³ã‚¢ã®æœ€å¤§å€¤ã‚ˆã‚Šã‚‚å°ã•ããªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“"
 
 #: options/forms.py
 msgid "Intermediate 1 or 2 require preallocated sides"
-msgstr "Intermediate 1または2を使用するには事前にサイドを割り当ててください"
+msgstr "Intermediate 1ã¾ãŸã¯2ã‚’ä½¿ç”¨ã™ã‚‹ã«ã¯äº‹å‰ã«ã‚µã‚¤ãƒ‰ã‚’å‰²ã‚Šå½“ã¦ã¦ãã ã•ã„"
 
 #: options/forms.py
 msgid "Four-team formats require consensus ballots"
-msgstr "4チーム形式ではコンセンサスバロットが必要です"
+msgstr "4ãƒãƒ¼ãƒ å½¢å¼ã§ã¯ã‚³ãƒ³ã‚»ãƒ³ã‚µã‚¹ãƒãƒ­ãƒƒãƒˆãŒå¿…è¦ã§ã™"
 
 #: options/forms.py
 msgid "Must set a password if using a password is enabled"
-msgstr "提出時にパスワードを使用する場合は、パスワードを設定する必要があります"
+msgstr "æå‡ºæ™‚ã«ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™"
 
 #: options/forms.py
 msgid "Showing team institutions defeats the purpose of code names"
-msgstr "チームのインステを表示するとコードネームを使用する意味がありません"
+msgstr "ãƒãƒ¼ãƒ ã®ã‚¤ãƒ³ã‚¹ãƒ†ã‚’è¡¨ç¤ºã™ã‚‹ã¨ã‚³ãƒ¼ãƒ‰ãƒãƒ¼ãƒ ã‚’ä½¿ç”¨ã™ã‚‹æ„å‘³ãŒã‚ã‚Šã¾ã›ã‚“"
 
 #: options/models.py
 msgid "instance"
-msgstr "インスタンス"
+msgstr "ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹"
 
 #: options/models.py
 msgid "tournament preference"
-msgstr "大会設定"
+msgstr "å¤§ä¼šè¨­å®š"
 
 #: options/models.py
 msgid "tournament preferences"
-msgstr "大会設定"
+msgstr "å¤§ä¼šè¨­å®š"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Score Rules"
-msgstr "スコア設定"
+msgstr "ã‚¹ã‚³ã‚¢è¨­å®š"
 
 #: options/preferences.py
 msgid "Minimum allowed score for substantive speeches"
-msgstr "通常スピーチのスコアの下限"
+msgstr "é€šå¸¸ã‚¹ãƒ”ãƒ¼ãƒã®ã‚¹ã‚³ã‚¢ã®ä¸‹é™"
 
 #: options/preferences.py
 msgid "Minimum speaker score"
-msgstr "スピーカースコアの最小値"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã®æœ€å°å€¤"
 
 #: options/preferences.py
 msgid "Maximum speaker score"
-msgstr "スピーカースコアの最大値"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã®æœ€å¤§å€¤"
 
 #: options/preferences.py
 msgid "Maximum allowed score for substantive speeches"
-msgstr "通常スピーチの上限"
+msgstr "é€šå¸¸ã‚¹ãƒ”ãƒ¼ãƒã®ä¸Šé™"
 
 #: options/preferences.py
 msgid "Speaker score step"
-msgstr "スピーカースコアの点数間隔"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã®ç‚¹æ•°é–“éš”"
 
 #: options/preferences.py
 msgid "Score steps allowed for substantive speeches, e.g. full points (1) or half points (0.5)"
-msgstr "通常スピーチのスコアの間隔（e.g. 1点または0.5点）"
+msgstr "é€šå¸¸ã‚¹ãƒ”ãƒ¼ãƒã®ã‚¹ã‚³ã‚¢ã®é–“éš”ï¼ˆe.g. 1ç‚¹ã¾ãŸã¯0.5ç‚¹ï¼‰"
 
 #: options/preferences.py
 msgid "The largest amount by which one team can beat another (0 means no limit)"
-msgstr "チーム間のスコアの差の最大値（制限なしの場合0）"
+msgstr "ãƒãƒ¼ãƒ é–“ã®ã‚¹ã‚³ã‚¢ã®å·®ã®æœ€å¤§å€¤ï¼ˆåˆ¶é™ãªã—ã®å ´åˆ0ï¼‰"
 
 #: options/preferences.py
 msgid "Maximum margin"
-msgstr "スコアマージンの最大値"
+msgstr "ã‚¹ã‚³ã‚¢ãƒžãƒ¼ã‚¸ãƒ³ã®æœ€å¤§å€¤"
 
 #: options/preferences.py
 msgid "Minimum allowed score for reply speeches"
-msgstr "リプライスピーチのスコアの下限"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¹ãƒ”ãƒ¼ãƒã®ã‚¹ã‚³ã‚¢ã®ä¸‹é™"
 
 #: options/preferences.py
 msgid "Minimum reply score"
-msgstr "リプライスコアの最小値"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¹ã‚³ã‚¢ã®æœ€å°å€¤"
 
 #: options/preferences.py
 msgid "Maximum allowed score for reply speeches"
-msgstr "リプライスピーチの上限"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¹ãƒ”ãƒ¼ãƒã®ä¸Šé™"
 
 #: options/preferences.py
 msgid "Maximum reply score"
-msgstr "リプライスコアの最大値"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¹ã‚³ã‚¢ã®æœ€å¤§å€¤"
 
 #: options/preferences.py
 msgid "Score steps allowed for reply speeches, e.g. full points (1) or half points (0.5)"
-msgstr "リプライスピーチのスコアの間隔（e.g. 1点または0.5点）"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¹ãƒ”ãƒ¼ãƒã®ã‚¹ã‚³ã‚¢ã®é–“éš”ï¼ˆe.g. 1ç‚¹ã¾ãŸã¯0.5ç‚¹ï¼‰"
 
 #: options/preferences.py
 msgid "Reply score step"
-msgstr "リプライスコアの点数間隔"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¹ã‚³ã‚¢ã®ç‚¹æ•°é–“éš”"
 
 #: options/preferences.py
 msgid "If checked, a team's winning margin includes dissenting adjudicators"
-msgstr "チェックした場合、チームの勝利マージンには異議を唱えるジャッジが含まれます"
+msgstr "ãƒã‚§ãƒƒã‚¯ã—ãŸå ´åˆã€ãƒãƒ¼ãƒ ã®å‹åˆ©ãƒžãƒ¼ã‚¸ãƒ³ã«ã¯ç•°è­°ã‚’å”±ãˆã‚‹ã‚¸ãƒ£ãƒƒã‚¸ãŒå«ã¾ã‚Œã¾ã™"
 
 #: options/preferences.py
 msgid "Margin includes dissenters"
-msgstr "マージンに異議者を含める"
+msgstr "ãƒžãƒ¼ã‚¸ãƒ³ã«ç•°è­°è€…ã‚’å«ã‚ã‚‹"
 
 #: options/preferences.py
 msgid "Any explanatory text needed to introduce the ballot form, e.g. speaker scale"
@@ -132,103 +132,103 @@ msgstr ""
 
 #: options/preferences.py
 msgid "If checked, all speaker scores, including for duplicate speeches, will be counted for team scores"
-msgstr "チェックした場合、重複スピーチを含むすべてのスピーカースコアがチームスコアに加算されます"
+msgstr "ãƒã‚§ãƒƒã‚¯ã—ãŸå ´åˆã€é‡è¤‡ã‚¹ãƒ”ãƒ¼ãƒã‚’å«ã‚€ã™ã¹ã¦ã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ãŒãƒãƒ¼ãƒ ã‚¹ã‚³ã‚¢ã«åŠ ç®—ã•ã‚Œã¾ã™"
 
 #: options/preferences.py
 msgid "Team score includes ghosts"
-msgstr "重複スピーチをチームスコアに含める"
+msgstr "é‡è¤‡ã‚¹ãƒ”ãƒ¼ãƒã‚’ãƒãƒ¼ãƒ ã‚¹ã‚³ã‚¢ã«å«ã‚ã‚‹"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Draw Rules"
-msgstr "対戦表設定"
+msgstr "å¯¾æˆ¦è¡¨è¨­å®š"
 
 #: options/preferences.py
 msgid "The auto-allocator will only take adjudicators at or above this score as voting panellists"
-msgstr "ジャッジの自動配置の際、このスコア以上のジャッジのみを投票権を持つパネルとして配置します"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®è‡ªå‹•é…ç½®ã®éš›ã€ã“ã®ã‚¹ã‚³ã‚¢ä»¥ä¸Šã®ã‚¸ãƒ£ãƒƒã‚¸ã®ã¿ã‚’æŠ•ç¥¨æ¨©ã‚’æŒã¤ãƒ‘ãƒãƒ«ã¨ã—ã¦é…ç½®ã—ã¾ã™"
 
 #: options/preferences.py
 msgid "Minimum adjudicator score to vote"
-msgstr "投票権を持つジャッジスコアの下限"
+msgstr "æŠ•ç¥¨æ¨©ã‚’æŒã¤ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢ã®ä¸‹é™"
 
 #: options/preferences.py
 msgid "Penalty applied by adjudicator auto-allocator for conflicts"
-msgstr "ジャッジの自動配置の際、コンフリクトに与えられるペナルティコスト"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®è‡ªå‹•é…ç½®ã®éš›ã€ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã«ä¸Žãˆã‚‰ã‚Œã‚‹ãƒšãƒŠãƒ«ãƒ†ã‚£ã‚³ã‚¹ãƒˆ"
 
 #: options/preferences.py
 msgid "Adjudicator conflict penalty"
-msgstr "ジャッジのコンフリクトペナルティ"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆãƒšãƒŠãƒ«ãƒ†ã‚£"
 
 #: options/preferences.py
 msgid "Penalty applied by adjudicator auto-allocator for history"
-msgstr "ジャッジの自動配置の際、ジャッジ経験に与えられるペナルティコスト"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®è‡ªå‹•é…ç½®ã®éš›ã€ã‚¸ãƒ£ãƒƒã‚¸çµŒé¨“ã«ä¸Žãˆã‚‰ã‚Œã‚‹ãƒšãƒŠãƒ«ãƒ†ã‚£ã‚³ã‚¹ãƒˆ"
 
 #: options/preferences.py
 msgid "Adjudicator history penalty"
-msgstr "ジャッジ履歴ペナルティ"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸å±¥æ­´ãƒšãƒŠãƒ«ãƒ†ã‚£"
 
 #: options/preferences.py
 msgid "Penality applied by preformed panel auto-allocator for priority mismatch"
-msgstr "事前設定されたパネルを自動で配置する際、優先度の不一致に寄るペナルティ"
+msgstr "äº‹å‰è¨­å®šã•ã‚ŒãŸãƒ‘ãƒãƒ«ã‚’è‡ªå‹•ã§é…ç½®ã™ã‚‹éš›ã€å„ªå…ˆåº¦ã®ä¸ä¸€è‡´ã«å¯„ã‚‹ãƒšãƒŠãƒ«ãƒ†ã‚£"
 
 #: options/preferences.py
 msgid "Importance mismatch penalty"
-msgstr "重要度ミスマッチペナルティ"
+msgstr "é‡è¦åº¦ãƒŸã‚¹ãƒžãƒƒãƒãƒšãƒŠãƒ«ãƒ†ã‚£"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams seeing their own institution"
-msgstr "チームの配置の際、同じインステのチーム同士の試合にかかるペナルティコスト"
+msgstr "ãƒãƒ¼ãƒ ã®é…ç½®ã®éš›ã€åŒã˜ã‚¤ãƒ³ã‚¹ãƒ†ã®ãƒãƒ¼ãƒ åŒå£«ã®è©¦åˆã«ã‹ã‹ã‚‹ãƒšãƒŠãƒ«ãƒ†ã‚£ã‚³ã‚¹ãƒˆ"
 
 #: options/preferences.py
 msgid "Team institution penalty"
-msgstr "チーム・インステペナルティ"
+msgstr "ãƒãƒ¼ãƒ ãƒ»ã‚¤ãƒ³ã‚¹ãƒ†ãƒšãƒŠãƒ«ãƒ†ã‚£"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams seeing each other twice or more"
-msgstr "チームの配置の際、既に対戦したチームと再び対戦することにかかるペナルティコスト"
+msgstr "ãƒãƒ¼ãƒ ã®é…ç½®ã®éš›ã€æ—¢ã«å¯¾æˆ¦ã—ãŸãƒãƒ¼ãƒ ã¨å†ã³å¯¾æˆ¦ã™ã‚‹ã“ã¨ã«ã‹ã‹ã‚‹ãƒšãƒŠãƒ«ãƒ†ã‚£ã‚³ã‚¹ãƒˆ"
 
 #: options/preferences.py
 msgid "Team history penalty"
-msgstr "チーム履歴ペナルティ"
+msgstr "ãƒãƒ¼ãƒ å±¥æ­´ãƒšãƒŠãƒ«ãƒ†ã‚£"
 
 #: options/preferences.py
 msgid "If checked, the draw will try to avoid pairing teams against their own institution"
-msgstr "チェックした場合、同じインステのチーム同士の試合を極力回避します。"
+msgstr "ãƒã‚§ãƒƒã‚¯ã—ãŸå ´åˆã€åŒã˜ã‚¤ãƒ³ã‚¹ãƒ†ã®ãƒãƒ¼ãƒ åŒå£«ã®è©¦åˆã‚’æ¥µåŠ›å›žé¿ã—ã¾ã™ã€‚"
 
 #: options/preferences.py
 msgid "Avoid same institution"
-msgstr "同インステを回避"
+msgstr "åŒã‚¤ãƒ³ã‚¹ãƒ†ã‚’å›žé¿"
 
 #: options/preferences.py
 msgid "If checked, the draw will try to avoid having teams see each other twice"
-msgstr "チェックした場合、既に対戦したチームと再び対戦することを極力回避します。"
+msgstr "ãƒã‚§ãƒƒã‚¯ã—ãŸå ´åˆã€æ—¢ã«å¯¾æˆ¦ã—ãŸãƒãƒ¼ãƒ ã¨å†ã³å¯¾æˆ¦ã™ã‚‹ã“ã¨ã‚’æ¥µåŠ›å›žé¿ã—ã¾ã™ã€‚"
 
 #: options/preferences.py
 msgid "Avoid team history"
-msgstr "対戦済みチームを回避"
+msgstr "å¯¾æˆ¦æ¸ˆã¿ãƒãƒ¼ãƒ ã‚’å›žé¿"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams being in a pullup many times. Leave 0 for no penalty."
-msgstr "チームの配置の際、同じチームが何度もプルアップされることに対するペナルティコスト。ペナルティなしの場合は0。"
+msgstr "ãƒãƒ¼ãƒ ã®é…ç½®ã®éš›ã€åŒã˜ãƒãƒ¼ãƒ ãŒä½•åº¦ã‚‚ãƒ—ãƒ«ã‚¢ãƒƒãƒ—ã•ã‚Œã‚‹ã“ã¨ã«å¯¾ã™ã‚‹ãƒšãƒŠãƒ«ãƒ†ã‚£ã‚³ã‚¹ãƒˆã€‚ãƒšãƒŠãƒ«ãƒ†ã‚£ãªã—ã®å ´åˆã¯0ã€‚"
 
 #: options/preferences.py
 msgid "Previously saw pullup penalty"
-msgstr "プルアップ回避ペナルティ"
+msgstr "ãƒ—ãƒ«ã‚¢ãƒƒãƒ—å›žé¿ãƒšãƒŠãƒ«ãƒ†ã‚£"
 
 #: options/preferences.py
 msgid "Penalty applied by minimum cost matching to prefer pairings that balance sides."
-msgstr "チームの配置の際の最小コストマッチングで、サイドバランスを均等にするためのペナルティコスト"
+msgstr "ãƒãƒ¼ãƒ ã®é…ç½®ã®éš›ã®æœ€å°ã‚³ã‚¹ãƒˆãƒžãƒƒãƒãƒ³ã‚°ã§ã€ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ã‚’å‡ç­‰ã«ã™ã‚‹ãŸã‚ã®ãƒšãƒŠãƒ«ãƒ†ã‚£ã‚³ã‚¹ãƒˆ"
 
 #: options/preferences.py
 msgid "Side balance penalty"
-msgstr "サイドバランスペナルティ"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ©ãƒ³ã‚¹ãƒšãƒŠãƒ«ãƒ†ã‚£"
 
 #: options/preferences.py
 msgid "Penalty applied by minimum cost matching to prefer pairings that follow the draw pairing method."
-msgstr "チームの配置の際の最小コストマッチングで、ペアリング方法から逸れた配置をすることによるペナルティコスト"
+msgstr "ãƒãƒ¼ãƒ ã®é…ç½®ã®éš›ã®æœ€å°ã‚³ã‚¹ãƒˆãƒžãƒƒãƒãƒ³ã‚°ã§ã€ãƒšã‚¢ãƒªãƒ³ã‚°æ–¹æ³•ã‹ã‚‰é€¸ã‚ŒãŸé…ç½®ã‚’ã™ã‚‹ã“ã¨ã«ã‚ˆã‚‹ãƒšãƒŠãƒ«ãƒ†ã‚£ã‚³ã‚¹ãƒˆ"
 
 #: options/preferences.py
 msgid "Pairing deviation penalty"
-msgstr "ペアリング差分ペナルティ"
+msgstr "ãƒšã‚¢ãƒªãƒ³ã‚°å·®åˆ†ãƒšãƒŠãƒ«ãƒ†ã‚£"
 
 #: options/preferences.py
 msgid "Hard preference applied by minimum cost matching to disallow pairings where a team would debate                   more than this many times on the same side. WARNING: if you set this to a low value, the draw                   algorithm may be unable to find a valid draw."
@@ -240,43 +240,43 @@ msgstr ""
 
 #: options/preferences.py
 msgid "How odd brackets are resolved (see documentation for further details)"
-msgstr "奇数チームのブラケットの解決方法（詳細はドキュメンテーションを参照）"
+msgstr "å¥‡æ•°ãƒãƒ¼ãƒ ã®ãƒ–ãƒ©ã‚±ãƒƒãƒˆã®è§£æ±ºæ–¹æ³•ï¼ˆè©³ç´°ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‚ç…§ï¼‰"
 
 #: options/preferences.py
 msgid "Odd bracket resolution method"
-msgstr "奇数ブラケット解決方法"
+msgstr "å¥‡æ•°ãƒ–ãƒ©ã‚±ãƒƒãƒˆè§£æ±ºæ–¹æ³•"
 
 #: options/preferences.py
 msgid "Pull up from top"
-msgstr "最上位をプルアップ"
+msgstr "æœ€ä¸Šä½ã‚’ãƒ—ãƒ«ã‚¢ãƒƒãƒ—"
 
 #: options/preferences.py
 msgid "Pull up from bottom"
-msgstr "最下位をプルアップ"
+msgstr "æœ€ä¸‹ä½ã‚’ãƒ—ãƒ«ã‚¢ãƒƒãƒ—"
 
 #: options/preferences.py
 msgid "Pull up from middle"
-msgstr "中央をプルアップ"
+msgstr "ä¸­å¤®ã‚’ãƒ—ãƒ«ã‚¢ãƒƒãƒ—"
 
 #: options/preferences.py
 msgid "Pull up at random"
-msgstr "ランダムにプルアップ"
+msgstr "ãƒ©ãƒ³ãƒ€ãƒ ã«ãƒ—ãƒ«ã‚¢ãƒƒãƒ—"
 
 #: options/preferences.py
 msgid "Intermediate brackets"
-msgstr "中間ブラケット"
+msgstr "ä¸­é–“ãƒ–ãƒ©ã‚±ãƒƒãƒˆ"
 
 #: options/preferences.py
 msgid "Intermediate brackets with bubble-up-bubble-down"
-msgstr "バブルアップバブルダウンの中間ブラケット"
+msgstr "ãƒãƒ–ãƒ«ã‚¢ãƒƒãƒ—ãƒãƒ–ãƒ«ãƒ€ã‚¦ãƒ³ã®ä¸­é–“ãƒ–ãƒ©ã‚±ãƒƒãƒˆ"
 
 #: options/preferences.py
 msgid "Intermediate 1 (pre-allocated sides)"
-msgstr "Intermediate 1（事前にサイド割り当て）"
+msgstr "Intermediate 1ï¼ˆäº‹å‰ã«ã‚µã‚¤ãƒ‰å‰²ã‚Šå½“ã¦ï¼‰"
 
 #: options/preferences.py
 msgid "Intermediate 2 (pre-allocated sides)"
-msgstr "Intermediate 2（事前にサイド割り当て）"
+msgstr "Intermediate 2ï¼ˆäº‹å‰ã«ã‚µã‚¤ãƒ‰å‰²ã‚Šå½“ã¦ï¼‰"
 
 #: options/preferences.py
 msgid "Pull up from the lowest draw strength by rank"
@@ -288,63 +288,63 @@ msgstr ""
 
 #: options/preferences.py
 msgid "How affirmative/negative positions are assigned (see documentation for further details)"
-msgstr "肯定/否定のサイドの割り当て方法（詳細はドキュメンテーションを参照）"
+msgstr "è‚¯å®š/å¦å®šã®ã‚µã‚¤ãƒ‰ã®å‰²ã‚Šå½“ã¦æ–¹æ³•ï¼ˆè©³ç´°ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‚ç…§ï¼‰"
 
 #: options/preferences.py
 msgid "Side allocations method"
-msgstr "サイド割り当て方法"
+msgstr "ã‚µã‚¤ãƒ‰å‰²ã‚Šå½“ã¦æ–¹æ³•"
 
 #: options/preferences.py
 msgid "Random"
-msgstr "ランダム"
+msgstr "ãƒ©ãƒ³ãƒ€ãƒ "
 
 #: options/preferences.py
 msgid "Balance"
-msgstr "バランス"
+msgstr "ãƒãƒ©ãƒ³ã‚¹"
 
 #: options/preferences.py
 msgid "Pre-allocated"
-msgstr "事前割り当て"
+msgstr "äº‹å‰å‰²ã‚Šå½“ã¦"
 
 #: options/preferences.py
 msgid "Manually enter from ballot"
-msgstr "バロットから手動で入力"
+msgstr "ãƒãƒ­ãƒƒãƒˆã‹ã‚‰æ‰‹å‹•ã§å…¥åŠ›"
 
 #: options/preferences.py
-msgid "Slide: 1 vs 6, 2 vs 7, …. Fold: 1 vs 10, 2 vs 9, …. Adjacent: 1 vs 2, 3 vs 4, …."
-msgstr "スライド：1対6、2対7、…。折りたたみ：1対10、2対9、…。隣接：1対2、3対4、…。"
+msgid "Slide: 1 vs 6, 2 vs 7, â€¦. Fold: 1 vs 10, 2 vs 9, â€¦. Adjacent: 1 vs 2, 3 vs 4, â€¦."
+msgstr "ã‚¹ãƒ©ã‚¤ãƒ‰ï¼š1å¯¾6ã€2å¯¾7ã€â€¦ã€‚æŠ˜ã‚ŠãŸãŸã¿ï¼š1å¯¾10ã€2å¯¾9ã€â€¦ã€‚éš£æŽ¥ï¼š1å¯¾2ã€3å¯¾4ã€â€¦ã€‚"
 
 #: options/preferences.py
 msgid "Pairing method"
-msgstr "ペアリング方法"
+msgstr "ãƒšã‚¢ãƒªãƒ³ã‚°æ–¹æ³•"
 
 #: options/preferences.py
 msgid "Slide"
-msgstr "スライド"
+msgstr "ã‚¹ãƒ©ã‚¤ãƒ‰"
 
 #: options/preferences.py
 msgid "Fold"
-msgstr "折りたたみ"
+msgstr "æŠ˜ã‚ŠãŸãŸã¿"
 
 #: options/preferences.py
 msgid "Adjacent"
-msgstr "隣接"
+msgstr "éš£æŽ¥"
 
 #: options/preferences.py
 msgid "Fold top, adjacent rest"
-msgstr "上を折りたたみ、残りを隣接"
+msgstr "ä¸Šã‚’æŠ˜ã‚ŠãŸãŸã¿ã€æ®‹ã‚Šã‚’éš£æŽ¥"
 
 #: options/preferences.py
 msgid "Method used to try to avoid teams facing each other multiple times or their own institution (see documentation for further details)"
-msgstr "既に対戦したチーム同士や同じインステのチーム同士の対戦を回避する方法（詳細はドキュメンテーションを参照）"
+msgstr "æ—¢ã«å¯¾æˆ¦ã—ãŸãƒãƒ¼ãƒ åŒå£«ã‚„åŒã˜ã‚¤ãƒ³ã‚¹ãƒ†ã®ãƒãƒ¼ãƒ åŒå£«ã®å¯¾æˆ¦ã‚’å›žé¿ã™ã‚‹æ–¹æ³•ï¼ˆè©³ç´°ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‚ç…§ï¼‰"
 
 #: options/preferences.py
 msgid "Conflict avoidance method"
-msgstr "コンフリクト回避方法"
+msgstr "ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆå›žé¿æ–¹æ³•"
 
 #: options/preferences.py
 msgid "Off"
-msgstr "なし"
+msgstr "ãªã—"
 
 #: options/preferences.py
 msgid "One-up-one-down"
@@ -360,27 +360,27 @@ msgstr ""
 
 #: options/preferences.py
 msgid "If using pull-ups, restrict which teams can be pulled up. Two-team formats only. Has no effect on BP or intermediate brackets."
-msgstr "プルアップをする場合、プルアップの条件を付与します。2チーム形式のみ有効、BPや中間ブラケットの設定では影響なし。"
+msgstr "ãƒ—ãƒ«ã‚¢ãƒƒãƒ—ã‚’ã™ã‚‹å ´åˆã€ãƒ—ãƒ«ã‚¢ãƒƒãƒ—ã®æ¡ä»¶ã‚’ä»˜ä¸Žã—ã¾ã™ã€‚2ãƒãƒ¼ãƒ å½¢å¼ã®ã¿æœ‰åŠ¹ã€BPã‚„ä¸­é–“ãƒ–ãƒ©ã‚±ãƒƒãƒˆã®è¨­å®šã§ã¯å½±éŸ¿ãªã—ã€‚"
 
 #: options/preferences.py
 msgid "Pullup restriction"
-msgstr "プルアップ制限"
+msgstr "ãƒ—ãƒ«ã‚¢ãƒƒãƒ—åˆ¶é™"
 
 #: options/preferences.py
 msgid "No restriction"
-msgstr "制限なし"
+msgstr "åˆ¶é™ãªã—"
 
 #: options/preferences.py
 msgid "Choose from teams who have been pulled up the fewest times so far"
-msgstr "最もプルアップ回数が少ないチームから選択"
+msgstr "æœ€ã‚‚ãƒ—ãƒ«ã‚¢ãƒƒãƒ—å›žæ•°ãŒå°‘ãªã„ãƒãƒ¼ãƒ ã‹ã‚‰é¸æŠž"
 
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by wins so far"
-msgstr "最も対戦相手の勝ち数の合計が少ないチームから選択"
+msgstr "æœ€ã‚‚å¯¾æˆ¦ç›¸æ‰‹ã®å‹ã¡æ•°ã®åˆè¨ˆãŒå°‘ãªã„ãƒãƒ¼ãƒ ã‹ã‚‰é¸æŠž"
 
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by speaks so far"
-msgstr "最も対戦相手のスピーカースコアの合計が少ないチームから選択"
+msgstr "æœ€ã‚‚å¯¾æˆ¦ç›¸æ‰‹ã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã®åˆè¨ˆãŒå°‘ãªã„ãƒãƒ¼ãƒ ã‹ã‚‰é¸æŠž"
 
 #: options/preferences.py
 msgid "Penalty applied when determining which teams to pull up (for minimum cost matching)"
@@ -392,67 +392,67 @@ msgstr ""
 
 #: options/preferences.py
 msgid "In BP, how pullups are distributed. Only \"Anywhere\" is WUDC-compliant."
-msgstr "BP形式のプルアップの分配方法。「どこでも」のみがWUDC準拠です。"
+msgstr "BPå½¢å¼ã®ãƒ—ãƒ«ã‚¢ãƒƒãƒ—ã®åˆ†é…æ–¹æ³•ã€‚ã€Œã©ã“ã§ã‚‚ã€ã®ã¿ãŒWUDCæº–æ‹ ã§ã™ã€‚"
 
 #: options/preferences.py
 msgid "BP pullup distribution"
-msgstr "BPプルアップ分配"
+msgstr "BPãƒ—ãƒ«ã‚¢ãƒƒãƒ—åˆ†é…"
 
 #: options/preferences.py
 msgid "Anywhere in bracket"
-msgstr "ブラケット内のどこでも"
+msgstr "ãƒ–ãƒ©ã‚±ãƒƒãƒˆå†…ã®ã©ã“ã§ã‚‚"
 
 #: options/preferences.py
 msgid "All in the same room (not WUDC-compliant)"
-msgstr "一つの部屋に全プルアップ（WUDC非準拠）"
+msgstr "ä¸€ã¤ã®éƒ¨å±‹ã«å…¨ãƒ—ãƒ«ã‚¢ãƒƒãƒ—ï¼ˆWUDCéžæº–æ‹ ï¼‰"
 
 #: options/preferences.py
 msgid "In BP, which position cost function to use (see documentation for details)"
-msgstr "BP形式で使用するサイドコスト関数（詳細はドキュメンテーションを参照）"
+msgstr "BPå½¢å¼ã§ä½¿ç”¨ã™ã‚‹ã‚µã‚¤ãƒ‰ã‚³ã‚¹ãƒˆé–¢æ•°ï¼ˆè©³ç´°ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‚ç…§ï¼‰"
 
 #: options/preferences.py
 msgid "BP position cost"
-msgstr "BPサイドコスト"
+msgstr "BPã‚µã‚¤ãƒ‰ã‚³ã‚¹ãƒˆ"
 
 #: options/preferences.py
 msgid "Simple"
-msgstr "シンプル"
+msgstr "ã‚·ãƒ³ãƒ—ãƒ«"
 
 #: options/preferences.py
-msgid "Rényi entropy"
-msgstr "Rényiエントロピー"
+msgid "RÃ©nyi entropy"
+msgstr "RÃ©nyiã‚¨ãƒ³ãƒˆãƒ­ãƒ”ãƒ¼"
 
 #: options/preferences.py
 msgid "Population variance"
 msgstr ""
 
 #: options/preferences.py
-msgid "Rényi order α, if BP position cost uses Rényi entropy. Shannon is α = 1, Hartley is α = 0, collision is α = 2. See documentation for details."
-msgstr "BPサイドコストの算出にRényiエントロピーを使用する場合のRényi order αの値。シャノンはα=1、ハートリーはα=0、コリジョンはα=2（詳細はドキュメンテーションを参照）。"
+msgid "RÃ©nyi order Î±, if BP position cost uses RÃ©nyi entropy. Shannon is Î± = 1, Hartley is Î± = 0, collision is Î± = 2. See documentation for details."
+msgstr "BPã‚µã‚¤ãƒ‰ã‚³ã‚¹ãƒˆã®ç®—å‡ºã«RÃ©nyiã‚¨ãƒ³ãƒˆãƒ­ãƒ”ãƒ¼ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã®RÃ©nyi order Î±ã®å€¤ã€‚ã‚·ãƒ£ãƒŽãƒ³ã¯Î±=1ã€ãƒãƒ¼ãƒˆãƒªãƒ¼ã¯Î±=0ã€ã‚³ãƒªã‚¸ãƒ§ãƒ³ã¯Î±=2ï¼ˆè©³ç´°ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‚ç…§ï¼‰ã€‚"
 
 #: options/preferences.py
-msgid "Rényi order (BP)"
-msgstr "Rényiオーダー（BP）"
+msgid "RÃ©nyi order (BP)"
+msgstr "RÃ©nyiã‚ªãƒ¼ãƒ€ãƒ¼ï¼ˆBPï¼‰"
 
 #: options/preferences.py
 msgid "The BP position cost is raised to this power; higher exponents bias towards resolving fewer large position imbalances over more small ones. See documentation for details."
-msgstr "BPサイドコストをこの値乗します。この値を高く設定した場合、たくさんの小さな不均衡を是正するよりも、少ないがより大きな不均衡を修正しようとする傾向になります（詳細はドキュメンテーションを参照）。"
+msgstr "BPã‚µã‚¤ãƒ‰ã‚³ã‚¹ãƒˆã‚’ã“ã®å€¤ä¹—ã—ã¾ã™ã€‚ã“ã®å€¤ã‚’é«˜ãè¨­å®šã—ãŸå ´åˆã€ãŸãã•ã‚“ã®å°ã•ãªä¸å‡è¡¡ã‚’æ˜¯æ­£ã™ã‚‹ã‚ˆã‚Šã‚‚ã€å°‘ãªã„ãŒã‚ˆã‚Šå¤§ããªä¸å‡è¡¡ã‚’ä¿®æ­£ã—ã‚ˆã†ã¨ã™ã‚‹å‚¾å‘ã«ãªã‚Šã¾ã™ï¼ˆè©³ç´°ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‚ç…§ï¼‰ã€‚"
 
 #: options/preferences.py
 msgid "BP position cost exponent"
-msgstr "BPサイドコストの指数"
+msgstr "BPã‚µã‚¤ãƒ‰ã‚³ã‚¹ãƒˆã®æŒ‡æ•°"
 
 #: options/preferences.py
 msgid "In BP, which method to use to solve the assignment problem. Only Hungarian with preshuffling is WUDC-compliant."
-msgstr "BPで、配置問題を解決するために使用する方法。Hungarian with preshufflingのみがWUDC準拠です。"
+msgstr "BPã§ã€é…ç½®å•é¡Œã‚’è§£æ±ºã™ã‚‹ãŸã‚ã«ä½¿ç”¨ã™ã‚‹æ–¹æ³•ã€‚Hungarian with preshufflingã®ã¿ãŒWUDCæº–æ‹ ã§ã™ã€‚"
 
 #: options/preferences.py
 msgid "BP assignment method"
-msgstr "BP配置方法"
+msgstr "BPé…ç½®æ–¹æ³•"
 
 #: options/preferences.py
 msgid "Hungarian algorithm (not WUDC-compliant)"
-msgstr "Hungarian algorithm（WUDC非準拠）"
+msgstr "Hungarian algorithmï¼ˆWUDCéžæº–æ‹ ï¼‰"
 
 #: options/preferences.py
 msgid "Hungarian algorithm with preshuffling"
@@ -460,63 +460,63 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Automatically make all adjudicators available for all rounds"
-msgstr "すべてのラウンドで自動的にすべてのジャッジを参加可能状態にする"
+msgstr "ã™ã¹ã¦ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã§è‡ªå‹•çš„ã«ã™ã¹ã¦ã®ã‚¸ãƒ£ãƒƒã‚¸ã‚’å‚åŠ å¯èƒ½çŠ¶æ…‹ã«ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Skip adjudicator check-ins"
-msgstr "ジャッジのチェックインをスキップ"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚’ã‚¹ã‚­ãƒƒãƒ—"
 
 #: options/preferences.py
 msgid "Hide panellist positions in the UI (and don't allocate them)"
-msgstr "UIでパネルを非表示にし配置を回避"
+msgstr "UIã§ãƒ‘ãƒãƒ«ã‚’éžè¡¨ç¤ºã«ã—é…ç½®ã‚’å›žé¿"
 
 #: options/preferences.py
 msgid "No panellist adjudicators"
-msgstr "パネルなし"
+msgstr "ãƒ‘ãƒãƒ«ãªã—"
 
 #: options/preferences.py
 msgid "Hide trainee positions in the UI (and don't allocate them)"
-msgstr "UIでトレイニーを非表示にし配置を回避"
+msgstr "UIã§ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ã‚’éžè¡¨ç¤ºã«ã—é…ç½®ã‚’å›žé¿"
 
 #: options/preferences.py
 msgid "No trainee adjudicators"
-msgstr "トレイニーなし"
+msgstr "ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ãªã—"
 
 #: options/preferences.py
 msgid "How to handle teams who were marked available yet excluded froma round (a bye)"
-msgstr "参加可能だがラウンドから除外されたチーム（byeチーム）の処理方法"
+msgstr "å‚åŠ å¯èƒ½ã ãŒãƒ©ã‚¦ãƒ³ãƒ‰ã‹ã‚‰é™¤å¤–ã•ã‚ŒãŸãƒãƒ¼ãƒ ï¼ˆbyeãƒãƒ¼ãƒ ï¼‰ã®å‡¦ç†æ–¹æ³•"
 
 #: options/preferences.py
 msgid "Bye team results"
-msgstr "byeチームの結果処理"
+msgstr "byeãƒãƒ¼ãƒ ã®çµæžœå‡¦ç†"
 
 #: options/preferences.py
 msgid "Treat bye teams as absent"
-msgstr "byeチームを不在として扱う"
+msgstr "byeãƒãƒ¼ãƒ ã‚’ä¸åœ¨ã¨ã—ã¦æ‰±ã†"
 
 #: options/preferences.py
 msgid "Attribute a win to bye teams, without speaks"
-msgstr "byeチームをスピーカースコアなしで勝ちとして扱う"
+msgstr "byeãƒãƒ¼ãƒ ã‚’ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ãªã—ã§å‹ã¡ã¨ã—ã¦æ‰±ã†"
 
 #: options/preferences.py
 msgid "If creating a draw with an uneven number of teams, how to decide who gets the bye (won't be allocated)"
-msgstr "チーム数が奇数の場合、どのチームが配置されずbyeチームになるかをの決定方法"
+msgstr "ãƒãƒ¼ãƒ æ•°ãŒå¥‡æ•°ã®å ´åˆã€ã©ã®ãƒãƒ¼ãƒ ãŒé…ç½®ã•ã‚Œãšbyeãƒãƒ¼ãƒ ã«ãªã‚‹ã‹ã‚’ã®æ±ºå®šæ–¹æ³•"
 
 #: options/preferences.py
 msgid "Bye team selection method"
-msgstr "byeチームの選択方法"
+msgstr "byeãƒãƒ¼ãƒ ã®é¸æŠžæ–¹æ³•"
 
 #: options/preferences.py
 msgid "Don't choose bye teams"
-msgstr "byeチームなし"
+msgstr "byeãƒãƒ¼ãƒ ãªã—"
 
 #: options/preferences.py
 msgid "Choose bye teams randomly"
-msgstr "ランダムに選択"
+msgstr "ãƒ©ãƒ³ãƒ€ãƒ ã«é¸æŠž"
 
 #: options/preferences.py
 msgid "Choose lowest ranking teams"
-msgstr "最下位のチームを選択"
+msgstr "æœ€ä¸‹ä½ã®ãƒãƒ¼ãƒ ã‚’é¸æŠž"
 
 #: options/preferences.py
 msgid "A limit for the side imbalance, where a pairing will not be made if that requires a team to debate more times on one side than the selected number. For use with the graph generator, with 0 as disabled."
@@ -528,39 +528,39 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Feedback"
-msgstr "フィードバック"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
 
 #: options/preferences.py
 msgid "Minimum possible adjudicator score that can be given"
-msgstr "ジャッジスコアの下限"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢ã®ä¸‹é™"
 
 #: options/preferences.py
 msgid "Minimum adjudicator score"
-msgstr "ジャッジスコアの最小値"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢ã®æœ€å°å€¤"
 
 #: options/preferences.py
 msgid "Maximum possible adjudicator score that can be given"
-msgstr "ジャッジスコアの上限"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢ã®ä¸Šé™"
 
 #: options/preferences.py
 msgid "Maximum adjudicator score"
-msgstr "ジャッジスコアの最大値"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢ã®æœ€å¤§å€¤"
 
 #: options/preferences.py
 msgid "Used to inform available choices in the feedback forms for adjudicators (both online and printed) and feedback progress"
-msgstr "ジャッジのフィードバックのフォーム（オンライン・印刷両方）の選択肢およびフィードバック進行状況の更新に使用されます"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®ãƒ•ã‚©ãƒ¼ãƒ ï¼ˆã‚ªãƒ³ãƒ©ã‚¤ãƒ³ãƒ»å°åˆ·ä¸¡æ–¹ï¼‰ã®é¸æŠžè‚¢ãŠã‚ˆã³ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯é€²è¡ŒçŠ¶æ³ã®æ›´æ–°ã«ä½¿ç”¨ã•ã‚Œã¾ã™"
 
 #: options/preferences.py
 msgid "Allow and expect feedback to be submitted by"
-msgstr "ジャッジ間フィードバックの選択肢"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸é–“ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®é¸æŠžè‚¢"
 
 #: options/preferences.py
 msgid "Chairs on panellists and trainees"
-msgstr "チェアから全員"
+msgstr "ãƒã‚§ã‚¢ã‹ã‚‰å…¨å“¡"
 
 #: options/preferences.py
 msgid "Panellists on chairs, chairs on panellists and trainees"
-msgstr "パネルからチェア、チェアから全員"
+msgstr "ãƒ‘ãƒãƒ«ã‹ã‚‰ãƒã‚§ã‚¢ã€ãƒã‚§ã‚¢ã‹ã‚‰å…¨å“¡"
 
 #: options/preferences.py
 msgid "Panellists and trainees on chairs, chairs on panellists and trainees"
@@ -568,179 +568,179 @@ msgstr ""
 
 #: options/preferences.py
 msgid "All adjudicators (including trainees) on each other"
-msgstr "全員（トレイニー含む）が互いに"
+msgstr "å…¨å“¡ï¼ˆãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼å«ã‚€ï¼‰ãŒäº’ã„ã«"
 
 #: options/preferences.py
 msgid "Panellists on eachother and chairs, trainees on chairs, chairs on everyone"
-msgstr "パネルが互いおよびチェアに、トレイニーからチェア、チェアから全員"
+msgstr "ãƒ‘ãƒãƒ«ãŒäº’ã„ãŠã‚ˆã³ãƒã‚§ã‚¢ã«ã€ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ã‹ã‚‰ãƒã‚§ã‚¢ã€ãƒã‚§ã‚¢ã‹ã‚‰å…¨å“¡"
 
 #: options/preferences.py
 msgid "Neither chairs, nor panellists nor trainees"
-msgstr "ジャッジ間フィードバックなし"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸é–“ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãªã—"
 
 #: options/preferences.py
 msgid "Expect feedback to be submitted by teams on"
-msgstr "チームからジャッジへのフィードバックの選択肢"
+msgstr "ãƒãƒ¼ãƒ ã‹ã‚‰ã‚¸ãƒ£ãƒƒã‚¸ã¸ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®é¸æŠžè‚¢"
 
 #: options/preferences.py
 msgid "Used to inform available choices in the feedback forms for teams (both online and printed) and feedback progress; this option is used by, e.g., UADC"
-msgstr "チームのフィードバックのフォーム（オンライン・印刷両方）の選択肢およびフィードバック進行状況の更新に使用されます。UADC等で使用されます"
+msgstr "ãƒãƒ¼ãƒ ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®ãƒ•ã‚©ãƒ¼ãƒ ï¼ˆã‚ªãƒ³ãƒ©ã‚¤ãƒ³ãƒ»å°åˆ·ä¸¡æ–¹ï¼‰ã®é¸æŠžè‚¢ãŠã‚ˆã³ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯é€²è¡ŒçŠ¶æ³ã®æ›´æ–°ã«ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚UADCç­‰ã§ä½¿ç”¨ã•ã‚Œã¾ã™"
 
 #: options/preferences.py
 msgid "Orallist only (voting panellists permitted, with prompts to select orallist)"
-msgstr "講評（OA）を行った人のみ（パネル含め講評者を選択可）"
+msgstr "è¬›è©•ï¼ˆOAï¼‰ã‚’è¡Œã£ãŸäººã®ã¿ï¼ˆãƒ‘ãƒãƒ«å«ã‚è¬›è©•è€…ã‚’é¸æŠžå¯ï¼‰"
 
 #: options/preferences.py
 msgid "All adjudicators in their panels (including trainees)"
-msgstr "全ジャッジ（トレイニーを含む）に"
+msgstr "å…¨ã‚¸ãƒ£ãƒƒã‚¸ï¼ˆãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ã‚’å«ã‚€ï¼‰ã«"
 
 #: options/preferences.py
 msgid "No one"
-msgstr "チームからのフィードバックなし"
+msgstr "ãƒãƒ¼ãƒ ã‹ã‚‰ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãªã—"
 
 #: options/preferences.py
 msgid "Show unexpected feedback submissions in participants pages"
-msgstr "参加者ページに異常なフィードバックを表示"
+msgstr "å‚åŠ è€…ãƒšãƒ¼ã‚¸ã«ç•°å¸¸ãªãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Displays unexpected feedback with a question mark symbol; only relevant if public participants and feedback progress are both enabled"
-msgstr "異常と思われるフィードバックを疑問符付きで表示します。参加者ページとフィードバック状況ページの両方が有効な場合にのみ関係あります"
+msgstr "ç•°å¸¸ã¨æ€ã‚ã‚Œã‚‹ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’ç–‘å•ç¬¦ä»˜ãã§è¡¨ç¤ºã—ã¾ã™ã€‚å‚åŠ è€…ãƒšãƒ¼ã‚¸ã¨ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯çŠ¶æ³ãƒšãƒ¼ã‚¸ã®ä¸¡æ–¹ãŒæœ‰åŠ¹ãªå ´åˆã«ã®ã¿é–¢ä¿‚ã‚ã‚Šã¾ã™"
 
 #: options/preferences.py
 msgid "Show if an adjudicator is a trainee (unaccredited)"
-msgstr "ジャッジがトレイニーであるかどうかを表示する"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãŒãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ã§ã‚ã‚‹ã‹ã©ã†ã‹ã‚’è¡¨ç¤ºã™ã‚‹"
 
 #: options/preferences.py
 msgid "Show unaccredited"
-msgstr "未認定を表示する"
+msgstr "æœªèªå®šã‚’è¡¨ç¤ºã™ã‚‹"
 
 #: options/preferences.py
 msgid "Any explanatory text needed to introduce the feedback form"
-msgstr "フィードバックフォームの冒頭に来る説明文"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãƒ•ã‚©ãƒ¼ãƒ ã®å†’é ­ã«æ¥ã‚‹èª¬æ˜Žæ–‡"
 
 #: options/preferences.py
 msgid "Feedback introduction/explanation"
-msgstr "フィードバックの冒頭説明"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®å†’é ­èª¬æ˜Ž"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Debate Rules"
-msgstr "試合ルール設定"
+msgstr "è©¦åˆãƒ«ãƒ¼ãƒ«è¨­å®š"
 
 #: options/preferences.py
 msgid "How many teams are in each debate (normally 2 but 4 for BP)"
-msgstr "各試合のチーム数（通常は2チームですが、BPでは4チーム）"
+msgstr "å„è©¦åˆã®ãƒãƒ¼ãƒ æ•°ï¼ˆé€šå¸¸ã¯2ãƒãƒ¼ãƒ ã§ã™ãŒã€BPã§ã¯4ãƒãƒ¼ãƒ ï¼‰"
 
 #: options/preferences.py
 msgid "Number of teams per debate"
-msgstr "各試合のチーム数"
+msgstr "å„è©¦åˆã®ãƒãƒ¼ãƒ æ•°"
 
 #: options/preferences.py
 msgid "Whether panels submit a ballot each or a single ballot for a debate during the preliminary rounds. Note: BP must use one per debate."
-msgstr "予選ラウンドで、チェア・パネルは各々バロットを提出するか、あるいは試合ごとに1つのバロットを提出するか。注：BPではディベートごとに1つを使用する必要があります。"
+msgstr "äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ã§ã€ãƒã‚§ã‚¢ãƒ»ãƒ‘ãƒãƒ«ã¯å„ã€…ãƒãƒ­ãƒƒãƒˆã‚’æå‡ºã™ã‚‹ã‹ã€ã‚ã‚‹ã„ã¯è©¦åˆã”ã¨ã«1ã¤ã®ãƒãƒ­ãƒƒãƒˆã‚’æå‡ºã™ã‚‹ã‹ã€‚æ³¨ï¼šBPã§ã¯ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã”ã¨ã«1ã¤ã‚’ä½¿ç”¨ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: options/preferences.py
 msgid "Ballots per debate, preliminary rounds"
-msgstr "試合のバロット（予選ラウンド）"
+msgstr "è©¦åˆã®ãƒãƒ­ãƒƒãƒˆï¼ˆäºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ï¼‰"
 
 #: options/preferences.py
 msgid "One ballot per voting adjudicator"
-msgstr "各ジャッジが各々提出"
+msgstr "å„ã‚¸ãƒ£ãƒƒã‚¸ãŒå„ã€…æå‡º"
 
 #: options/preferences.py
 msgid "Consensus ballot (one ballot per debate)"
-msgstr "試合ごとに1つ（コンセンサスバロット）"
+msgstr "è©¦åˆã”ã¨ã«1ã¤ï¼ˆã‚³ãƒ³ã‚»ãƒ³ã‚µã‚¹ãƒãƒ­ãƒƒãƒˆï¼‰"
 
 #: options/preferences.py
 msgid "Whether panels submit a ballot each or a single ballot for a debate during the elimination rounds. Note: BP must use one per debate."
-msgstr "本戦ラウンドで、チェア・パネルは各々バロットを提出するか、あるいは試合ごとに1つのバロットを提出するか。注：BPではディベートごとに1つを使用する必要があります。"
+msgstr "æœ¬æˆ¦ãƒ©ã‚¦ãƒ³ãƒ‰ã§ã€ãƒã‚§ã‚¢ãƒ»ãƒ‘ãƒãƒ«ã¯å„ã€…ãƒãƒ­ãƒƒãƒˆã‚’æå‡ºã™ã‚‹ã‹ã€ã‚ã‚‹ã„ã¯è©¦åˆã”ã¨ã«1ã¤ã®ãƒãƒ­ãƒƒãƒˆã‚’æå‡ºã™ã‚‹ã‹ã€‚æ³¨ï¼šBPã§ã¯ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã”ã¨ã«1ã¤ã‚’ä½¿ç”¨ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: options/preferences.py
 msgid "Ballots per debate, elimination rounds"
-msgstr "試合のバロット（本戦ラウンド）"
+msgstr "è©¦åˆã®ãƒãƒ­ãƒƒãƒˆï¼ˆæœ¬æˆ¦ãƒ©ã‚¦ãƒ³ãƒ‰ï¼‰"
 
 #: options/preferences.py
 msgid "Whether adjudicator(s) must select the winning team in their ballot, and how it should be treated. Note: Not supported in BP."
-msgstr "ジャッジがバロットで別途勝利チームを選択する必要があるかどうか、およびそれをどのように扱うべきか。注：BP非対応"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãŒãƒãƒ­ãƒƒãƒˆã§åˆ¥é€”å‹åˆ©ãƒãƒ¼ãƒ ã‚’é¸æŠžã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã©ã†ã‹ã€ãŠã‚ˆã³ãã‚Œã‚’ã©ã®ã‚ˆã†ã«æ‰±ã†ã¹ãã‹ã€‚æ³¨ï¼šBPéžå¯¾å¿œ"
 
 #: options/preferences.py
 msgid "Winner Declaration in ballot(s)"
-msgstr "バロットの勝者宣言"
+msgstr "ãƒãƒ­ãƒƒãƒˆã®å‹è€…å®£è¨€"
 
 #: options/preferences.py
 msgid "Do not require separate winner selection"
-msgstr "勝者選択を必要としない"
+msgstr "å‹è€…é¸æŠžã‚’å¿…è¦ã¨ã—ãªã„"
 
 #: options/preferences.py
 msgid "Require separate winner selection as a check on correct scores"
-msgstr "勝者選択を必要とする・スコアの確認のためのみ"
+msgstr "å‹è€…é¸æŠžã‚’å¿…è¦ã¨ã™ã‚‹ãƒ»ã‚¹ã‚³ã‚¢ã®ç¢ºèªã®ãŸã‚ã®ã¿"
 
 #: options/preferences.py
 msgid "Require winner selection to break tied-point debates"
-msgstr "勝者選択を必要とする・同点の場合タイブレーカーとなりうる"
+msgstr "å‹è€…é¸æŠžã‚’å¿…è¦ã¨ã™ã‚‹ãƒ»åŒç‚¹ã®å ´åˆã‚¿ã‚¤ãƒ–ãƒ¬ãƒ¼ã‚«ãƒ¼ã¨ãªã‚Šã†ã‚‹"
 
 #: options/preferences.py
 msgid "Require winner selection, overriding scores"
-msgstr "勝者選択を必要とする・勝敗をこの選択で決定する"
+msgstr "å‹è€…é¸æŠžã‚’å¿…è¦ã¨ã™ã‚‹ãƒ»å‹æ•—ã‚’ã“ã®é¸æŠžã§æ±ºå®šã™ã‚‹"
 
 #: options/preferences.py
 msgid "When ballots should ask for speaker scores."
-msgstr "バロットでスピーカースコアを求めるべき時"
+msgstr "ãƒãƒ­ãƒƒãƒˆã§ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã‚’æ±‚ã‚ã‚‹ã¹ãæ™‚"
 
 #: options/preferences.py
 msgid "Require speaker scores"
-msgstr "スピーカースコアの記入要求"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã®è¨˜å…¥è¦æ±‚"
 
 #: options/preferences.py
 msgid "Always require speaker scores"
-msgstr "常にスピーカースコアの入力を要求"
+msgstr "å¸¸ã«ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã®å…¥åŠ›ã‚’è¦æ±‚"
 
 #: options/preferences.py
 msgid "Only require speaker scores in preliminary rounds"
-msgstr "予選ラウンドでのみスピーカースコアの入力を要求"
+msgstr "äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ã§ã®ã¿ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã®å…¥åŠ›ã‚’è¦æ±‚"
 
 #: options/preferences.py
 msgid "Never require speaker scores"
-msgstr "スピーカースコアの入力を要求しない"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã®å…¥åŠ›ã‚’è¦æ±‚ã—ãªã„"
 
 #: options/preferences.py
 msgid "How many substantive speakers on a team"
-msgstr "チームに何人の実質的なスピーカーがいるか"
+msgstr "ãƒãƒ¼ãƒ ã«ä½•äººã®å®Ÿè³ªçš„ãªã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ãŒã„ã‚‹ã‹"
 
 #: options/preferences.py
 msgid "Substantive speakers"
-msgstr "通常のスピーカー数"
+msgstr "é€šå¸¸ã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼æ•°"
 
 #: options/preferences.py
 msgid "What to call the teams"
-msgstr "サイドを何と呼ぶか"
+msgstr "ã‚µã‚¤ãƒ‰ã‚’ä½•ã¨å‘¼ã¶ã‹"
 
 #: options/preferences.py
 msgid "Side names"
-msgstr "サイド名"
+msgstr "ã‚µã‚¤ãƒ‰å"
 
 #: options/preferences.py
 msgid "Whether this style features scored reply speeches"
-msgstr "この試合形式で採点ありのリプライスピーチを導入しているか"
+msgstr "ã“ã®è©¦åˆå½¢å¼ã§æŽ¡ç‚¹ã‚ã‚Šã®ãƒªãƒ—ãƒ©ã‚¤ã‚¹ãƒ”ãƒ¼ãƒã‚’å°Žå…¥ã—ã¦ã„ã‚‹ã‹"
 
 #: options/preferences.py
 msgid "Reply scores"
-msgstr "リプライスコアを要求"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¹ã‚³ã‚¢ã‚’è¦æ±‚"
 
 #: options/preferences.py
 msgid "Whether to limit reply speeches to speakers who gave a substantive speech in the debate"
-msgstr "試合内で通常のスピーチを行ったスピーカーのみがリプライをできるかどうか"
+msgstr "è©¦åˆå†…ã§é€šå¸¸ã®ã‚¹ãƒ”ãƒ¼ãƒã‚’è¡Œã£ãŸã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®ã¿ãŒãƒªãƒ—ãƒ©ã‚¤ã‚’ã§ãã‚‹ã‹ã©ã†ã‹"
 
 #: options/preferences.py
 msgid "Require reply speaker to have given a substantive speech"
-msgstr "リプライスピーカーは通常のスピーチも行っている必要あり"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã¯é€šå¸¸ã®ã‚¹ãƒ”ãƒ¼ãƒã‚‚è¡Œã£ã¦ã„ã‚‹å¿…è¦ã‚ã‚Š"
 
 #: options/preferences.py
 msgid "Whether and how to use speech ranks within a debate"
-msgstr "ディベート内でスピーチランクを使用するかどうか、およびその用途"
+msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆå†…ã§ã‚¹ãƒ”ãƒ¼ãƒãƒ©ãƒ³ã‚¯ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹ã€ãŠã‚ˆã³ãã®ç”¨é€”"
 
 #: options/preferences.py
 msgid "Use of speech ranks"
-msgstr "スピーチランクの使用"
+msgstr "ã‚¹ãƒ”ãƒ¼ãƒãƒ©ãƒ³ã‚¯ã®ä½¿ç”¨"
 
 #: options/preferences.py
 msgid "How long, in minutes, after motion release does the round start (-1 to deactivate)"
@@ -748,7 +748,7 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Preparation Time"
-msgstr "準備時間"
+msgstr "æº–å‚™æ™‚é–“"
 
 #: options/preferences.py
 msgid "Whether there should be an option in ballot forms to mark a team as having forfeitted a round, rendering the debate win/loss without speaker scores"
@@ -760,251 +760,251 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Standings"
-msgstr "順位設定"
+msgstr "é †ä½è¨­å®š"
 
 #: options/preferences.py
 msgid "The number of substantive speeches a speaker can miss and still be on the speaker tab (-1 means no limit)"
-msgstr "いくつの通常スピーチなら欠席してもスピーカータブに名前が掲載されるか（-1：制限なし）"
+msgstr "ã„ãã¤ã®é€šå¸¸ã‚¹ãƒ”ãƒ¼ãƒãªã‚‰æ¬ å¸­ã—ã¦ã‚‚ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¿ãƒ–ã«åå‰ãŒæŽ²è¼‰ã•ã‚Œã‚‹ã‹ï¼ˆ-1ï¼šåˆ¶é™ãªã—ï¼‰"
 
 #: options/preferences.py
 msgid "Speeches missable for standings eligibility"
-msgstr "順位獲得のために欠席可能なスピーチ数"
+msgstr "é †ä½ç²å¾—ã®ãŸã‚ã«æ¬ å¸­å¯èƒ½ãªã‚¹ãƒ”ãƒ¼ãƒæ•°"
 
 #: options/preferences.py
 msgid "The number of reply speeches a speaker can miss and still be on the replies tab (-1 means no limit)"
-msgstr "いくつのリプライスピーチなら欠席してもスピーカータブに名前が掲載されるか（-1：制限なし）"
+msgstr "ã„ãã¤ã®ãƒªãƒ—ãƒ©ã‚¤ã‚¹ãƒ”ãƒ¼ãƒãªã‚‰æ¬ å¸­ã—ã¦ã‚‚ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¿ãƒ–ã«åå‰ãŒæŽ²è¼‰ã•ã‚Œã‚‹ã‹ï¼ˆ-1ï¼šåˆ¶é™ãªã—ï¼‰"
 
 #: options/preferences.py
 msgid "Replies missable for standings eligibility"
-msgstr "順位資格のために欠席可能なリプライ数"
+msgstr "é †ä½è³‡æ ¼ã®ãŸã‚ã«æ¬ å¸­å¯èƒ½ãªãƒªãƒ—ãƒ©ã‚¤æ•°"
 
 #: options/preferences.py
 msgid "Metrics to use to rank teams (see documentation for further details)"
-msgstr "チームの順位を計算するために使用する指標（詳細はドキュメントを参照）"
+msgstr "ãƒãƒ¼ãƒ ã®é †ä½ã‚’è¨ˆç®—ã™ã‚‹ãŸã‚ã«ä½¿ç”¨ã™ã‚‹æŒ‡æ¨™ï¼ˆè©³ç´°ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’å‚ç…§ï¼‰"
 
 #: options/preferences.py
 msgid "Team standings precedence"
-msgstr "チーム順位計算の指標の優先度"
+msgstr "ãƒãƒ¼ãƒ é †ä½è¨ˆç®—ã®æŒ‡æ¨™ã®å„ªå…ˆåº¦"
 
 #: options/preferences.py
 msgid "Metrics to calculate, but not used to rank teams"
-msgstr "表示はするが、チームの順位付けには考慮されない指標"
+msgstr "è¡¨ç¤ºã¯ã™ã‚‹ãŒã€ãƒãƒ¼ãƒ ã®é †ä½ä»˜ã‘ã«ã¯è€ƒæ…®ã•ã‚Œãªã„æŒ‡æ¨™"
 
 #: options/preferences.py
 msgid "Team standings extra metrics"
-msgstr "追加のチームの指標"
+msgstr "è¿½åŠ ã®ãƒãƒ¼ãƒ ã®æŒ‡æ¨™"
 
 #: options/preferences.py
 msgid "Metrics to use to rank speakers (see documentation for further details)"
-msgstr "スピーカーの順位を計算するために使用する指標（詳細はドキュメントを参照）"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®é †ä½ã‚’è¨ˆç®—ã™ã‚‹ãŸã‚ã«ä½¿ç”¨ã™ã‚‹æŒ‡æ¨™ï¼ˆè©³ç´°ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’å‚ç…§ï¼‰"
 
 #: options/preferences.py
 msgid "Speaker standings precedence"
-msgstr "スピーカー順位計算の指標の優先度"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼é †ä½è¨ˆç®—ã®æŒ‡æ¨™ã®å„ªå…ˆåº¦"
 
 #: options/preferences.py
 msgid "Metrics to calculate, but not used to rank speakers"
-msgstr "表示はするが、スピーカーの順位付けには考慮されない指標"
+msgstr "è¡¨ç¤ºã¯ã™ã‚‹ãŒã€ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®é †ä½ä»˜ã‘ã«ã¯è€ƒæ…®ã•ã‚Œãªã„æŒ‡æ¨™"
 
 #: options/preferences.py
 msgid "Speaker standings extra metrics"
-msgstr "追加のスピーカーの指標"
+msgstr "è¿½åŠ ã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®æŒ‡æ¨™"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Tab Release"
-msgstr "タブリリース設定"
+msgstr "ã‚¿ãƒ–ãƒªãƒªãƒ¼ã‚¹è¨­å®š"
 
 #: options/preferences.py
 msgid "Enables public display of the team tab. Intended for use after the tournament."
-msgstr "チームタブを公開します。大会終了後の使用を想定。"
+msgstr "ãƒãƒ¼ãƒ ã‚¿ãƒ–ã‚’å…¬é–‹ã—ã¾ã™ã€‚å¤§ä¼šçµ‚äº†å¾Œã®ä½¿ç”¨ã‚’æƒ³å®šã€‚"
 
 #: options/preferences.py
 msgid "Release team tab to public"
-msgstr "チームタブを公開"
+msgstr "ãƒãƒ¼ãƒ ã‚¿ãƒ–ã‚’å…¬é–‹"
 
 #: options/preferences.py
 msgid "Only show scores for the top X teams in the public tab (set to 0 to show all teams)."
-msgstr "チームタブで上位Xチームのスコアのみを表示（0：すべてのチームを表示）。"
+msgstr "ãƒãƒ¼ãƒ ã‚¿ãƒ–ã§ä¸Šä½Xãƒãƒ¼ãƒ ã®ã‚¹ã‚³ã‚¢ã®ã¿ã‚’è¡¨ç¤ºï¼ˆ0ï¼šã™ã¹ã¦ã®ãƒãƒ¼ãƒ ã‚’è¡¨ç¤ºï¼‰ã€‚"
 
 #: options/preferences.py
 msgid "Top teams cutoff"
-msgstr "表示チームの制限"
+msgstr "è¡¨ç¤ºãƒãƒ¼ãƒ ã®åˆ¶é™"
 
 #: options/preferences.py
 msgid "Enables public display of the speaker tab. Intended for use after the tournament."
-msgstr "スピーカータブを公開します。大会終了後の使用を想定。"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¿ãƒ–ã‚’å…¬é–‹ã—ã¾ã™ã€‚å¤§ä¼šçµ‚äº†å¾Œã®ä½¿ç”¨ã‚’æƒ³å®šã€‚"
 
 #: options/preferences.py
 msgid "Release speaker tab to public"
-msgstr "スピーカータブを公開"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¿ãƒ–ã‚’å…¬é–‹"
 
 #: options/preferences.py
 msgid "Only show scores for the top X speakers in the public tab (set to 0 to show all speakers)."
-msgstr "スピーカータブで上位X人のスピーカーのスコアのみを表示します（0：すべてのスピーカーを表示）。"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¿ãƒ–ã§ä¸Šä½Xäººã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®ã‚¹ã‚³ã‚¢ã®ã¿ã‚’è¡¨ç¤ºã—ã¾ã™ï¼ˆ0ï¼šã™ã¹ã¦ã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚’è¡¨ç¤ºï¼‰ã€‚"
 
 #: options/preferences.py
 msgid "Top speakers cutoff"
-msgstr "表示スピーカーの制限"
+msgstr "è¡¨ç¤ºã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®åˆ¶é™"
 
 #: options/preferences.py
 msgid "Enables public display of the replies tab. Intended for use after the tournament."
-msgstr "リプライタブを公開します。大会終了後の使用を想定。"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¿ãƒ–ã‚’å…¬é–‹ã—ã¾ã™ã€‚å¤§ä¼šçµ‚äº†å¾Œã®ä½¿ç”¨ã‚’æƒ³å®šã€‚"
 
 #: options/preferences.py
 msgid "Release replies tab to public"
-msgstr "リプライタブを公開"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¿ãƒ–ã‚’å…¬é–‹"
 
 #: options/preferences.py
 msgid "Only show scores for the top X repliers in the public tab (set to 0 to show all repliers)."
-msgstr "リプライタブで上位X人のリプライのスコアのみを表示します（0：すべてのリプライスピーカーを表示）。"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¿ãƒ–ã§ä¸Šä½Xäººã®ãƒªãƒ—ãƒ©ã‚¤ã®ã‚¹ã‚³ã‚¢ã®ã¿ã‚’è¡¨ç¤ºã—ã¾ã™ï¼ˆ0ï¼šã™ã¹ã¦ã®ãƒªãƒ—ãƒ©ã‚¤ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚’è¡¨ç¤ºï¼‰ã€‚"
 
 #: options/preferences.py
 msgid "Top replies cutoff"
-msgstr "表示リプライスピーカーの制限"
+msgstr "è¡¨ç¤ºãƒªãƒ—ãƒ©ã‚¤ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®åˆ¶é™"
 
 #: options/preferences.py
-msgid "Enables public display of all motions and win/loss/selection information. This includes all motions — whether they have been marked as released or not. Intended for use after the tournament."
-msgstr "すべての論題およびその勝敗・選択情報を公開します。これには、リリースされているかに関わらず、すべてのモーションが含まれます。大会終了後の使用を想定。"
+msgid "Enables public display of all motions and win/loss/selection information. This includes all motions â€” whether they have been marked as released or not. Intended for use after the tournament."
+msgstr "ã™ã¹ã¦ã®è«–é¡ŒãŠã‚ˆã³ãã®å‹æ•—ãƒ»é¸æŠžæƒ…å ±ã‚’å…¬é–‹ã—ã¾ã™ã€‚ã“ã‚Œã«ã¯ã€ãƒªãƒªãƒ¼ã‚¹ã•ã‚Œã¦ã„ã‚‹ã‹ã«é–¢ã‚ã‚‰ãšã€ã™ã¹ã¦ã®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãŒå«ã¾ã‚Œã¾ã™ã€‚å¤§ä¼šçµ‚äº†å¾Œã®ä½¿ç”¨ã‚’æƒ³å®šã€‚"
 
 #: options/preferences.py
 msgid "Release motions tab to public"
-msgstr "モーションタブを公開"
+msgstr "ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã‚¿ãƒ–ã‚’å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables public display of the feedback scores of all adjudicators"
-msgstr "すべてのジャッジのフィードバックスコアを公開します"
+msgstr "ã™ã¹ã¦ã®ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚¹ã‚³ã‚¢ã‚’å…¬é–‹ã—ã¾ã™"
 
 #: options/preferences.py
 msgid "Release adjudicator tab to public"
-msgstr "ジャッジタブを公開"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¿ãƒ–ã‚’å…¬é–‹"
 
 #: options/preferences.py
 msgid "What (if released) the adjudicator tab shows"
-msgstr "ジャッジタブに表示する内容（リリースされた場合）"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¿ãƒ–ã«è¡¨ç¤ºã™ã‚‹å†…å®¹ï¼ˆãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸå ´åˆï¼‰"
 
 #: options/preferences.py
 msgid "Adjudicator tab displays"
-msgstr "ジャッジタブの表示内容"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¿ãƒ–ã®è¡¨ç¤ºå†…å®¹"
 
 #: options/preferences.py
 msgid "Only shows base score"
-msgstr "ベーススコアのみを表示"
+msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã®ã¿ã‚’è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Only shows final score"
-msgstr "最終スコアのみ表示"
+msgstr "æœ€çµ‚ã‚¹ã‚³ã‚¢ã®ã¿è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Shows base, final, and per-round scores"
-msgstr "ベーススコア、最終スコア、およびラウンドごとのスコアを表示"
+msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã€æœ€çµ‚ã‚¹ã‚³ã‚¢ã€ãŠã‚ˆã³ãƒ©ã‚¦ãƒ³ãƒ‰ã”ã¨ã®ã‚¹ã‚³ã‚¢ã‚’è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Enables public display of every adjudicator's ballot. Intended for use after the tournament."
-msgstr "すべてのジャッジのバロットを公開します。大会終了後の使用を想定。"
+msgstr "ã™ã¹ã¦ã®ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒãƒ­ãƒƒãƒˆã‚’å…¬é–‹ã—ã¾ã™ã€‚å¤§ä¼šçµ‚äº†å¾Œã®ä½¿ç”¨ã‚’æƒ³å®šã€‚"
 
 #: options/preferences.py
 msgid "Release ballots to public"
-msgstr "バロットを公開"
+msgstr "ãƒãƒ­ãƒƒãƒˆã‚’å…¬é–‹"
 
 #: options/preferences.py
 msgid "This releases all the results for all rounds (including silent and break rounds). Do so only after the tournament is finished!"
-msgstr "これにより、すべてのラウンド（サイレントラウンドおよびブレイクラウンドを含む）の結果が公開されます。大会が終了した後にのみ行ってください！"
+msgstr "ã“ã‚Œã«ã‚ˆã‚Šã€ã™ã¹ã¦ã®ãƒ©ã‚¦ãƒ³ãƒ‰ï¼ˆã‚µã‚¤ãƒ¬ãƒ³ãƒˆãƒ©ã‚¦ãƒ³ãƒ‰ãŠã‚ˆã³ãƒ–ãƒ¬ã‚¤ã‚¯ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’å«ã‚€ï¼‰ã®çµæžœãŒå…¬é–‹ã•ã‚Œã¾ã™ã€‚å¤§ä¼šãŒçµ‚äº†ã—ãŸå¾Œã«ã®ã¿è¡Œã£ã¦ãã ã•ã„ï¼"
 
 #: options/preferences.py
 msgid "Release all round results to public"
-msgstr "すべてのラウンド結果を公開"
+msgstr "ã™ã¹ã¦ã®ãƒ©ã‚¦ãƒ³ãƒ‰çµæžœã‚’å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables display of confirmed ballots through private URLs. Intended for use after the tournament."
-msgstr "プライベートURLを通じて承認済みのバロットの閲覧を可能にします。大会終了後の使用を想定。"
+msgstr "ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆURLã‚’é€šã˜ã¦æ‰¿èªæ¸ˆã¿ã®ãƒãƒ­ãƒƒãƒˆã®é–²è¦§ã‚’å¯èƒ½ã«ã—ã¾ã™ã€‚å¤§ä¼šçµ‚äº†å¾Œã®ä½¿ç”¨ã‚’æƒ³å®šã€‚"
 
 #: options/preferences.py
 msgid "Release ballots through private URLs"
-msgstr "プライベートURLを通じてバロットを公開"
+msgstr "ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆURLã‚’é€šã˜ã¦ãƒãƒ­ãƒƒãƒˆã‚’å…¬é–‹"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Data Entry"
-msgstr "データ入力設定"
+msgstr "ãƒ‡ãƒ¼ã‚¿å…¥åŠ›è¨­å®š"
 
 #: options/preferences.py
 msgid "Whether adjudicators can submit ballots themselves, and how they do so"
-msgstr "ジャッジが自分でバロットを提出できるかどうか、およびその方法"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãŒè‡ªåˆ†ã§ãƒãƒ­ãƒƒãƒˆã‚’æå‡ºã§ãã‚‹ã‹ã©ã†ã‹ã€ãŠã‚ˆã³ãã®æ–¹æ³•"
 
 #: options/preferences.py
 msgid "Ballot submissions from adjudicators"
-msgstr "ジャッジのバロット提出"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒãƒ­ãƒƒãƒˆæå‡º"
 
 #: options/preferences.py options/presets.py
 msgid "Disabled (tab staff only)"
-msgstr "無効（タブスタッフのみ）"
+msgstr "ç„¡åŠ¹ï¼ˆã‚¿ãƒ–ã‚¹ã‚¿ãƒƒãƒ•ã®ã¿ï¼‰"
 
 #: options/preferences.py options/presets.py
 msgid "Use private URLs"
-msgstr "Private URLを使用"
+msgstr "Private URLã‚’ä½¿ç”¨"
 
 #: options/preferences.py options/presets.py
 msgid "Use publicly accessible form"
-msgstr "公開されたフォームを使用"
+msgstr "å…¬é–‹ã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒ ã‚’ä½¿ç”¨"
 
 #: options/preferences.py
 msgid "Whether participants can submit feedback themselves, and how they do so"
-msgstr "参加者が自分でフィードバックを提出できるかどうか、およびその方法"
+msgstr "å‚åŠ è€…ãŒè‡ªåˆ†ã§ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã‚‹ã‹ã©ã†ã‹ã€ãŠã‚ˆã³ãã®æ–¹æ³•"
 
 #: options/preferences.py
 msgid "Feedback submissions from participants"
-msgstr "参加者のフィードバック提出"
+msgstr "å‚åŠ è€…ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯æå‡º"
 
 #: options/preferences.py
 msgid "If checked, users must enter a password when submitting public feedback and ballots"
-msgstr "チェックすると、フィードバック・バロットを出す前に参加者はパスワードを入力する必要があります。"
+msgstr "ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã¨ã€ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãƒ»ãƒãƒ­ãƒƒãƒˆã‚’å‡ºã™å‰ã«å‚åŠ è€…ã¯ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å…¥åŠ›ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: options/preferences.py
 msgid "Require password for submission"
-msgstr "送信時にパスワードを要求"
+msgstr "é€ä¿¡æ™‚ã«ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¦æ±‚"
 
 #: options/preferences.py
 msgid "Value of the password required for public submissions, if passwords are required"
-msgstr "パスワードを要求する場合、公開入力に必要なパスワードの値"
+msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¦æ±‚ã™ã‚‹å ´åˆã€å…¬é–‹å…¥åŠ›ã«å¿…è¦ãªãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®å€¤"
 
 #: options/preferences.py
 msgid "Password for public submission"
-msgstr "公開入力用のパスワード"
+msgstr "å…¬é–‹å…¥åŠ›ç”¨ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰"
 
 #: options/preferences.py
 msgid "Bypasses double checking by setting ballots to be automatically confirmed"
-msgstr "バロットを自動で承認しダブルチェックを省略"
+msgstr "ãƒãƒ­ãƒƒãƒˆã‚’è‡ªå‹•ã§æ‰¿èªã—ãƒ€ãƒ–ãƒ«ãƒã‚§ãƒƒã‚¯ã‚’çœç•¥"
 
 #: options/preferences.py
 msgid "Bypass double checking"
-msgstr "ダブルチェックを省略"
+msgstr "ãƒ€ãƒ–ãƒ«ãƒã‚§ãƒƒã‚¯ã‚’çœç•¥"
 
 #: options/preferences.py
 msgid "Requires scores of draft ballots to be re-entered as part of the confirmation stage (to create more stringent check). Only applies to BP formats."
-msgstr "承認時により厳密にチェックするため、下書き状態のバロットのスコアの再入力を求める。BP形式のみ。"
+msgstr "æ‰¿èªæ™‚ã«ã‚ˆã‚ŠåŽ³å¯†ã«ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãŸã‚ã€ä¸‹æ›¸ãçŠ¶æ…‹ã®ãƒãƒ­ãƒƒãƒˆã®ã‚¹ã‚³ã‚¢ã®å†å…¥åŠ›ã‚’æ±‚ã‚ã‚‹ã€‚BPå½¢å¼ã®ã¿ã€‚"
 
 #: options/preferences.py
 msgid "Enforce blind confirmations"
-msgstr "ブラインド承認を実施"
+msgstr "ãƒ–ãƒ©ã‚¤ãƒ³ãƒ‰æ‰¿èªã‚’å®Ÿæ–½"
 
 #: options/preferences.py
 msgid "Whether assistants can access pages that can reveal matchups and motions ahead of public release (these pages are useful for displaying draws/motions to the public and for printing ballots)."
-msgstr "アシスタントが公開前に対戦表や論題を表示するページにアクセスできるかどうか（対戦表・論題を公表したりバロットを印刷したりするのに便利です）"
+msgstr "ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆãŒå…¬é–‹å‰ã«å¯¾æˆ¦è¡¨ã‚„è«–é¡Œã‚’è¡¨ç¤ºã™ã‚‹ãƒšãƒ¼ã‚¸ã«ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã‹ã©ã†ã‹ï¼ˆå¯¾æˆ¦è¡¨ãƒ»è«–é¡Œã‚’å…¬è¡¨ã—ãŸã‚Šãƒãƒ­ãƒƒãƒˆã‚’å°åˆ·ã—ãŸã‚Šã™ã‚‹ã®ã«ä¾¿åˆ©ã§ã™ï¼‰"
 
 #: options/preferences.py
 msgid "Assistant user access"
-msgstr "アシスタントユーザーのアクセス権"
+msgstr "ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ã‚¢ã‚¯ã‚»ã‚¹æ¨©"
 
 #: options/preferences.py
 msgid "All areas (results entry, draw display, and motions)"
-msgstr "すべて（結果入力、対戦表・論題表示）"
+msgstr "ã™ã¹ã¦ï¼ˆçµæžœå…¥åŠ›ã€å¯¾æˆ¦è¡¨ãƒ»è«–é¡Œè¡¨ç¤ºï¼‰"
 
 #: options/preferences.py
 msgid "Just results entry and draw display"
-msgstr "結果入力と対戦表表示のみ"
+msgstr "çµæžœå…¥åŠ›ã¨å¯¾æˆ¦è¡¨è¡¨ç¤ºã®ã¿"
 
 #: options/preferences.py
 msgid "Only results entry"
-msgstr "結果入力のみ"
+msgstr "çµæžœå…¥åŠ›ã®ã¿"
 
 #: options/preferences.py
 msgid "No access"
@@ -1012,71 +1012,71 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Whether participants can check themselves in/out through their private URL."
-msgstr "参加者が自身のPrivate URLを通じて自らチェックイン・アウトできるかどうか"
+msgstr "å‚åŠ è€…ãŒè‡ªèº«ã®Private URLã‚’é€šã˜ã¦è‡ªã‚‰ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ãƒ»ã‚¢ã‚¦ãƒˆã§ãã‚‹ã‹ã©ã†ã‹"
 
 #: options/preferences.py
 msgid "Participant self-checkin"
-msgstr "参加者のセルフチェックイン"
+msgstr "å‚åŠ è€…ã®ã‚»ãƒ«ãƒ•ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³"
 
 #: options/preferences.py
 msgid "The amount of time (in hours) before a speaker or adjudicator's check-in event expires"
-msgstr "スピーカー・ジャッジのチェックインイベントが失効するまでの時間（時間）"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ãƒ»ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚¤ãƒ™ãƒ³ãƒˆãŒå¤±åŠ¹ã™ã‚‹ã¾ã§ã®æ™‚é–“ï¼ˆæ™‚é–“ï¼‰"
 
 #: options/preferences.py
 msgid "Check-In Window (People)"
-msgstr "チェックインウィンドウ（参加者）"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ï¼ˆå‚åŠ è€…ï¼‰"
 
 #: options/preferences.py
 msgid "The amount of time (in hours) before a room's check-in event expires"
-msgstr "部屋のチェックインイベントが失効するまでの時間（時間）"
+msgstr "éƒ¨å±‹ã®ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚¤ãƒ™ãƒ³ãƒˆãŒå¤±åŠ¹ã™ã‚‹ã¾ã§ã®æ™‚é–“ï¼ˆæ™‚é–“ï¼‰"
 
 #: options/preferences.py
 msgid "Check-In Window (Rooms)"
-msgstr "チェックインウィンドウ（部屋）"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ï¼ˆéƒ¨å±‹ï¼‰"
 
 #: options/preferences.py
 msgid "Whether the printed scoresheets should show the 'circle digits' prompt to help check bad handwriting"
-msgstr "印刷したスコアシートに、悪筆をチェックするための「数字を丸で囲む」プロンプトを表示するかどうか"
+msgstr "å°åˆ·ã—ãŸã‚¹ã‚³ã‚¢ã‚·ãƒ¼ãƒˆã«ã€æ‚ªç­†ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãŸã‚ã®ã€Œæ•°å­—ã‚’ä¸¸ã§å›²ã‚€ã€ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹"
 
 #: options/preferences.py
 msgid "Ballot Digit Checks"
-msgstr "バロットの桁チェック"
+msgstr "ãƒãƒ­ãƒƒãƒˆã®æ¡ãƒã‚§ãƒƒã‚¯"
 
 #: options/preferences.py
 msgid "The location to return scoresheets to, printed on pre-printed ballots. Set to 'TBA' to hide."
-msgstr "バロットに印刷される、スコアシートの返却先。隠すには「TBA」に指定"
+msgstr "ãƒãƒ­ãƒƒãƒˆã«å°åˆ·ã•ã‚Œã‚‹ã€ã‚¹ã‚³ã‚¢ã‚·ãƒ¼ãƒˆã®è¿”å´å…ˆã€‚éš ã™ã«ã¯ã€ŒTBAã€ã«æŒ‡å®š"
 
 #: options/preferences.py
 msgid "Score return location"
-msgstr "スコア返却口"
+msgstr "ã‚¹ã‚³ã‚¢è¿”å´å£"
 
 #: options/preferences.py
 msgid "The location to return feedback to, printed on pre-printed feedback forms. Set to 'TBA' to hide."
-msgstr "フィードバックに印刷される、スコアシートの返却先。隠すには「TBA」に指定"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã«å°åˆ·ã•ã‚Œã‚‹ã€ã‚¹ã‚³ã‚¢ã‚·ãƒ¼ãƒˆã®è¿”å´å…ˆã€‚éš ã™ã«ã¯ã€ŒTBAã€ã«æŒ‡å®š"
 
 #: options/preferences.py
 msgid "Feedback return location"
-msgstr "フィードバック返却口"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯è¿”å´å£"
 
 #: options/preferences.py
 msgid "Lets debates have their status as postponed, as to not block draw generation."
-msgstr "対戦表生成を妨げないように試合を延期状態にすることができます"
+msgstr "å¯¾æˆ¦è¡¨ç”Ÿæˆã‚’å¦¨ã’ãªã„ã‚ˆã†ã«è©¦åˆã‚’å»¶æœŸçŠ¶æ…‹ã«ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™"
 
 #: options/preferences.py
 msgid "Enable postponements"
-msgstr "試合延期を許可"
+msgstr "è©¦åˆå»¶æœŸã‚’è¨±å¯"
 
 #: options/preferences.py
 msgid "Have each voting adjudicator submit a separate ballot."
-msgstr "投票する各ジャッジに別々のバロットの提出を求める。"
+msgstr "æŠ•ç¥¨ã™ã‚‹å„ã‚¸ãƒ£ãƒƒã‚¸ã«åˆ¥ã€…ã®ãƒãƒ­ãƒƒãƒˆã®æå‡ºã‚’æ±‚ã‚ã‚‹ã€‚"
 
 #: options/preferences.py
 msgid "Individual voting ballots"
-msgstr "別々の投票バロット"
+msgstr "åˆ¥ã€…ã®æŠ•ç¥¨ãƒãƒ­ãƒƒãƒˆ"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Public Features"
-msgstr "公開設定"
+msgstr "å…¬é–‹è¨­å®š"
 
 #: options/preferences.py
 msgid "Adds a flag signaling search engines to not include tournament pages in search results.Note that it may get ignored, and the other available settings will provide greater privacy."
@@ -1100,127 +1100,127 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Enables the public page listing all participants in the tournament"
-msgstr "大会のすべての参加者を記したページを公開する"
+msgstr "å¤§ä¼šã®ã™ã¹ã¦ã®å‚åŠ è€…ã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Enable public view of participants list"
-msgstr "参加者リストの公開"
+msgstr "å‚åŠ è€…ãƒªã‚¹ãƒˆã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page listing all institutions in the tournament"
-msgstr "大会のすべてのインステを記したページを公開する"
+msgstr "å¤§ä¼šã®ã™ã¹ã¦ã®ã‚¤ãƒ³ã‚¹ãƒ†ã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Enable public view of institutions list"
-msgstr "インステリストの公開"
+msgstr "ã‚¤ãƒ³ã‚¹ãƒ†ãƒªã‚¹ãƒˆã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page listing diversity statistics"
-msgstr "ダイバーシティーに関する統計を記したページを公開する"
+msgstr "ãƒ€ã‚¤ãƒãƒ¼ã‚·ãƒ†ã‚£ãƒ¼ã«é–¢ã™ã‚‹çµ±è¨ˆã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Enable public view of diversity info"
-msgstr "ダイバーシティー情報の公開"
+msgstr "ãƒ€ã‚¤ãƒãƒ¼ã‚·ãƒ†ã‚£ãƒ¼æƒ…å ±ã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page showing checkin statuses for individuals, institutions, and teams. Note that this page can be slow when used at very large tournaments."
-msgstr "参加者・インステ・個人のチェックイン状況を記したページを公開する。とても大きな大会の場合、動作が遅くなる場合があります。"
+msgstr "å‚åŠ è€…ãƒ»ã‚¤ãƒ³ã‚¹ãƒ†ãƒ»å€‹äººã®ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³çŠ¶æ³ã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹ã€‚ã¨ã¦ã‚‚å¤§ããªå¤§ä¼šã®å ´åˆã€å‹•ä½œãŒé…ããªã‚‹å ´åˆãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: options/preferences.py
 msgid "Enable public view of the checkin statuses"
-msgstr "チェックイン状況の公開"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³çŠ¶æ³ã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "If the participants list is enabled, displays break category eligibility on that page"
-msgstr "参加者リストが公開されてる場合、そのページにブレイクカテゴリーの資格の有無を表示する"
+msgstr "å‚åŠ è€…ãƒªã‚¹ãƒˆãŒå…¬é–‹ã•ã‚Œã¦ã‚‹å ´åˆã€ãã®ãƒšãƒ¼ã‚¸ã«ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®è³‡æ ¼ã®æœ‰ç„¡ã‚’è¡¨ç¤ºã™ã‚‹"
 
 #: options/preferences.py
 msgid "Show break categories on participants page"
-msgstr "参加者リストにブレイクカテゴリーを表示"
+msgstr "å‚åŠ è€…ãƒªã‚¹ãƒˆã«ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Enables the public page listing pre-allocated sides"
-msgstr "事前に割り当てたサイドを記したページを公開する"
+msgstr "äº‹å‰ã«å‰²ã‚Šå½“ã¦ãŸã‚µã‚¤ãƒ‰ã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Show pre-allocated sides to public"
-msgstr "事前に割り当てたサイドを公開"
+msgstr "äº‹å‰ã«å‰²ã‚Šå½“ã¦ãŸã‚µã‚¤ãƒ‰ã‚’å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page showing released draws"
-msgstr "リリース済みの対戦表を記したページを公開する"
+msgstr "ãƒªãƒªãƒ¼ã‚¹æ¸ˆã¿ã®å¯¾æˆ¦è¡¨ã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Enable public view of draw"
-msgstr "対戦表の公開"
+msgstr "å¯¾æˆ¦è¡¨ã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Disabled"
-msgstr "公開しない"
+msgstr "å…¬é–‹ã—ãªã„"
 
 #: options/preferences.py
 msgid "Show a single page for the current round's draw"
-msgstr "現在進行中のラウンドの対戦表を1ページに表示"
+msgstr "ç¾åœ¨é€²è¡Œä¸­ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ã‚’1ãƒšãƒ¼ã‚¸ã«è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Show individual pages for all released draws"
-msgstr "リリース済みのすべての対戦表を個別に表示"
+msgstr "ãƒªãƒªãƒ¼ã‚¹æ¸ˆã¿ã®ã™ã¹ã¦ã®å¯¾æˆ¦è¡¨ã‚’å€‹åˆ¥ã«è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Enables the public page showing results of non-silent rounds"
-msgstr "サイレントでないラウンドの結果を記したページを公開する"
+msgstr "ã‚µã‚¤ãƒ¬ãƒ³ãƒˆã§ãªã„ãƒ©ã‚¦ãƒ³ãƒ‰ã®çµæžœã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Enable public view of results"
-msgstr "試合結果の公開"
+msgstr "è©¦åˆçµæžœã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page showing motions that have been explicitly released to the public"
-msgstr "リリース済みの論題を記したページを公開する"
+msgstr "ãƒªãƒªãƒ¼ã‚¹æ¸ˆã¿ã®è«–é¡Œã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Enable public view of motions"
-msgstr "論題の公開"
+msgstr "è«–é¡Œã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page showing team standings, showing wins only (not speaker scores or ranking)"
-msgstr "チームの勝ち数・点数のみを記した順位ページを公開する（スピーカースコアや実際の順位は表示されません）"
+msgstr "ãƒãƒ¼ãƒ ã®å‹ã¡æ•°ãƒ»ç‚¹æ•°ã®ã¿ã‚’è¨˜ã—ãŸé †ä½ãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹ï¼ˆã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã‚„å®Ÿéš›ã®é †ä½ã¯è¡¨ç¤ºã•ã‚Œã¾ã›ã‚“ï¼‰"
 
 #: options/preferences.py
 msgid "Enable public view of team standings"
-msgstr "チームの順位の公開"
+msgstr "ãƒãƒ¼ãƒ ã®é †ä½ã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page for each team and adjudicator showing their records"
-msgstr "各チーム・ジャッジの履歴を記したページを公開する"
+msgstr "å„ãƒãƒ¼ãƒ ãƒ»ã‚¸ãƒ£ãƒƒã‚¸ã®å±¥æ­´ã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Enable public record pages"
-msgstr "個々の履歴の公開"
+msgstr "å€‹ã€…ã®å±¥æ­´ã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page showing the team breaks. Intended for use after the break announcement."
-msgstr "ブレイクしたチームを記したページを公開する。ブレイクアナウンスメント後の仕様を想定。"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã—ãŸãƒãƒ¼ãƒ ã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹ã€‚ãƒ–ãƒ¬ã‚¤ã‚¯ã‚¢ãƒŠã‚¦ãƒ³ã‚¹ãƒ¡ãƒ³ãƒˆå¾Œã®ä»•æ§˜ã‚’æƒ³å®šã€‚"
 
 #: options/preferences.py
 msgid "Release team breaks to public"
-msgstr "ブレイクしたチームの公開"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã—ãŸãƒãƒ¼ãƒ ã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page showing breaking adjudicators. Intended for use after the break announcement."
-msgstr "ブレイクしたジャッジを記したページを公開する。ブレイクアナウンスメント後の仕様を想定。"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã—ãŸã‚¸ãƒ£ãƒƒã‚¸ã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹ã€‚ãƒ–ãƒ¬ã‚¤ã‚¯ã‚¢ãƒŠã‚¦ãƒ³ã‚¹ãƒ¡ãƒ³ãƒˆå¾Œã®ä»•æ§˜ã‚’æƒ³å®šã€‚"
 
 #: options/preferences.py
 msgid "Release adjudicators break to public"
-msgstr "ブレイクしたジャッジの公開"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã—ãŸã‚¸ãƒ£ãƒƒã‚¸ã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page detailing who has unsubmitted feedback"
-msgstr "フィードバックを提出していない人を記したページを公開する"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã—ã¦ã„ãªã„äººã‚’è¨˜ã—ãŸãƒšãƒ¼ã‚¸ã‚’å…¬é–‹ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Enable public view of unsubmitted feedback"
-msgstr "未提出フィードバックの公開"
+msgstr "æœªæå‡ºãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®å…¬é–‹"
 
 #: options/preferences.py
 msgid "Enables the public page showing the schedule"
@@ -1232,243 +1232,243 @@ msgstr ""
 
 #: options/preferences.py
 msgid "List of tournament staff, to be displayed on the tournament home page. Leave this blank or with the default text if you want to not show this information."
-msgstr "大会のホームページに表示される大会スタッフ一覧。表示したくない場合空欄にしてください。"
+msgstr "å¤§ä¼šã®ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸ã«è¡¨ç¤ºã•ã‚Œã‚‹å¤§ä¼šã‚¹ã‚¿ãƒƒãƒ•ä¸€è¦§ã€‚è¡¨ç¤ºã—ãŸããªã„å ´åˆç©ºæ¬„ã«ã—ã¦ãã ã•ã„ã€‚"
 
 #: options/preferences.py
 msgid "Tournament staff"
-msgstr "大会スタッフ"
+msgstr "å¤§ä¼šã‚¹ã‚¿ãƒƒãƒ•"
 
 #: options/preferences.py
 msgid "Message to be displayed on the tournament home page"
-msgstr "大会のホームページに表示されるメッセージ"
+msgstr "å¤§ä¼šã®ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸ã«è¡¨ç¤ºã•ã‚Œã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"
 
 #: options/preferences.py
 msgid "Welcome message"
-msgstr "ウェルカムメッセージ"
+msgstr "ã‚¦ã‚§ãƒ«ã‚«ãƒ ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "UI Options"
-msgstr "UI設定"
+msgstr "UIè¨­å®š"
 
 #: options/preferences.py
 msgid "If showing results to public, show splitting adjudicators in them"
-msgstr "結果を公開する場合、スプリットしたジャッジを表示する"
+msgstr "çµæžœã‚’å…¬é–‹ã™ã‚‹å ´åˆã€ã‚¹ãƒ—ãƒªãƒƒãƒˆã—ãŸã‚¸ãƒ£ãƒƒã‚¸ã‚’è¡¨ç¤ºã™ã‚‹"
 
 #: options/preferences.py
 msgid "Show splitting adjudicators"
-msgstr "スプリットしたジャッジの表示"
+msgstr "ã‚¹ãƒ—ãƒªãƒƒãƒˆã—ãŸã‚¸ãƒ£ãƒƒã‚¸ã®è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Whether and how to use code names for teams"
-msgstr "コード名をチームに使用するか、およびその方法"
+msgstr "ã‚³ãƒ¼ãƒ‰åã‚’ãƒãƒ¼ãƒ ã«ä½¿ç”¨ã™ã‚‹ã‹ã€ãŠã‚ˆã³ãã®æ–¹æ³•"
 
 #: options/preferences.py
 msgid "Team code names"
-msgstr "チームのコード名"
+msgstr "ãƒãƒ¼ãƒ ã®ã‚³ãƒ¼ãƒ‰å"
 
 #: options/preferences.py
 msgid "Do not use code names"
-msgstr "コード名を使用しない"
+msgstr "ã‚³ãƒ¼ãƒ‰åã‚’ä½¿ç”¨ã—ãªã„"
 
 #: options/preferences.py
 msgid "Use real names everywhere, and show code names in tooltips"
-msgstr "本名を使用・ヒントにコード名を表示"
+msgstr "æœ¬åã‚’ä½¿ç”¨ãƒ»ãƒ’ãƒ³ãƒˆã«ã‚³ãƒ¼ãƒ‰åã‚’è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Use code names for public; real names with code names in tooltips for admins"
-msgstr "公にはコード名を使用・管理者のヒントにはコード名付きの本名を使用"
+msgstr "å…¬ã«ã¯ã‚³ãƒ¼ãƒ‰åã‚’ä½¿ç”¨ãƒ»ç®¡ç†è€…ã®ãƒ’ãƒ³ãƒˆã«ã¯ã‚³ãƒ¼ãƒ‰åä»˜ãã®æœ¬åã‚’ä½¿ç”¨"
 
 #: options/preferences.py
 msgid "Use code names for public; code names with real names in tooltips for admins"
-msgstr "公にはコード名を使用・管理者のヒントには本名付きのコード名を使用"
+msgstr "å…¬ã«ã¯ã‚³ãƒ¼ãƒ‰åã‚’ä½¿ç”¨ãƒ»ç®¡ç†è€…ã®ãƒ’ãƒ³ãƒˆã«ã¯æœ¬åä»˜ãã®ã‚³ãƒ¼ãƒ‰åã‚’ä½¿ç”¨"
 
 #: options/preferences.py
 msgid "Use code names everywhere; do not use tooltips (real names show in some admin views)"
-msgstr "コード名のみを使用・ヒントなし（但し一部のページでは管理者に見えます）"
+msgstr "ã‚³ãƒ¼ãƒ‰åã®ã¿ã‚’ä½¿ç”¨ãƒ»ãƒ’ãƒ³ãƒˆãªã—ï¼ˆä½†ã—ä¸€éƒ¨ã®ãƒšãƒ¼ã‚¸ã§ã¯ç®¡ç†è€…ã«è¦‹ãˆã¾ã™ï¼‰"
 
 #: options/preferences.py
 msgid "Whether and how to use code names for participants"
-msgstr "コード名を参加者に使用するか、およびその方法"
+msgstr "ã‚³ãƒ¼ãƒ‰åã‚’å‚åŠ è€…ã«ä½¿ç”¨ã™ã‚‹ã‹ã€ãŠã‚ˆã³ãã®æ–¹æ³•"
 
 #: options/preferences.py
 msgid "Participant code names"
-msgstr "参加者のコード名"
+msgstr "å‚åŠ è€…ã®ã‚³ãƒ¼ãƒ‰å"
 
 #: options/preferences.py
 msgid "Display team emoji in the public and admin interfaces"
-msgstr "パブリック・管理者のUIでチームの絵文字を表示"
+msgstr "ãƒ‘ãƒ–ãƒªãƒƒã‚¯ãƒ»ç®¡ç†è€…ã®UIã§ãƒãƒ¼ãƒ ã®çµµæ–‡å­—ã‚’è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Show emoji"
-msgstr "絵文字の表示"
+msgstr "çµµæ–‡å­—ã®è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "In tables listing teams, adds a column showing their institutions"
-msgstr "参加するチームを記した表にインステを記した列を追加する"
+msgstr "å‚åŠ ã™ã‚‹ãƒãƒ¼ãƒ ã‚’è¨˜ã—ãŸè¡¨ã«ã‚¤ãƒ³ã‚¹ãƒ†ã‚’è¨˜ã—ãŸåˆ—ã‚’è¿½åŠ ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Show team institutions"
-msgstr "チームのインステの表示"
+msgstr "ãƒãƒ¼ãƒ ã®ã‚¤ãƒ³ã‚¹ãƒ†ã®è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Hide the institutions of adjudicators on public pages and on printed ballots"
-msgstr "参加するジャッジを記した表にインステを記した列を追加する"
+msgstr "å‚åŠ ã™ã‚‹ã‚¸ãƒ£ãƒƒã‚¸ã‚’è¨˜ã—ãŸè¡¨ã«ã‚¤ãƒ³ã‚¹ãƒ†ã‚’è¨˜ã—ãŸåˆ—ã‚’è¿½åŠ ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Show adjudicator institutions"
-msgstr "ジャッジのインステの表示"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ã‚¤ãƒ³ã‚¹ãƒ†ã®è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Enables a hover element on every team's name showing that team's speakers"
-msgstr "チーム名にマウスをかざすとそのチームのスピーカーを表示する"
+msgstr "ãƒãƒ¼ãƒ åã«ãƒžã‚¦ã‚¹ã‚’ã‹ã–ã™ã¨ãã®ãƒãƒ¼ãƒ ã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹"
 
 #: options/preferences.py
 msgid "Show speakers in draw"
-msgstr "スピーカーのポップアップ"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—"
 
 #: options/preferences.py
 msgid "Input team seed in simple team importer"
-msgstr "簡易入力でチームのシード値の入力を求める"
+msgstr "ç°¡æ˜“å…¥åŠ›ã§ãƒãƒ¼ãƒ ã®ã‚·ãƒ¼ãƒ‰å€¤ã®å…¥åŠ›ã‚’æ±‚ã‚ã‚‹"
 
 #: options/preferences.py
 msgid "Enable team seed in importer"
-msgstr "簡易入力でチームシードを求める"
+msgstr "ç°¡æ˜“å…¥åŠ›ã§ãƒãƒ¼ãƒ ã‚·ãƒ¼ãƒ‰ã‚’æ±‚ã‚ã‚‹"
 
 #: options/preferences.py
 msgid "Do not ask for team seed"
-msgstr "チームシードを求めない"
+msgstr "ãƒãƒ¼ãƒ ã‚·ãƒ¼ãƒ‰ã‚’æ±‚ã‚ãªã„"
 
 #: options/preferences.py
 msgid "Ask for numeric team seed"
-msgstr "数字をチームシードとして求める"
+msgstr "æ•°å­—ã‚’ãƒãƒ¼ãƒ ã‚·ãƒ¼ãƒ‰ã¨ã—ã¦æ±‚ã‚ã‚‹"
 
 #: options/preferences.py
 msgid "Ask for descriptive team seed name"
-msgstr "文字列をチームシードとして求める"
+msgstr "æ–‡å­—åˆ—ã‚’ãƒãƒ¼ãƒ ã‚·ãƒ¼ãƒ‰ã¨ã—ã¦æ±‚ã‚ã‚‹"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Notifications"
-msgstr "通知設定"
+msgstr "é€šçŸ¥è¨­å®š"
 
 #: options/preferences.py
 msgid "The name of the organizer tasked with managing emails (in case of replies)"
-msgstr "メールの管理者の名前（返信の場合）"
+msgstr "ãƒ¡ãƒ¼ãƒ«ã®ç®¡ç†è€…ã®åå‰ï¼ˆè¿”ä¿¡ã®å ´åˆï¼‰"
 
 #: options/preferences.py
 msgid "Reply-to name"
-msgstr "返信先の名前"
+msgstr "è¿”ä¿¡å…ˆã®åå‰"
 
 #: options/preferences.py
 msgid "The email address for handling replies"
-msgstr "返信を転送するメールアドレス"
+msgstr "è¿”ä¿¡ã‚’è»¢é€ã™ã‚‹ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹"
 
 #: options/preferences.py
 msgid "Reply-to address"
-msgstr "返信先メールアドレス"
+msgstr "è¿”ä¿¡å…ˆãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹"
 
 #: options/preferences.py
 msgid "A secret key to accept email status events"
-msgstr "メール状況のイベントを受信するための秘密鍵"
+msgstr "ãƒ¡ãƒ¼ãƒ«çŠ¶æ³ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’å—ä¿¡ã™ã‚‹ãŸã‚ã®ç§˜å¯†éµ"
 
 #: options/preferences.py
 msgid "Email status secret key"
-msgstr "メール状況の秘密鍵"
+msgstr "ãƒ¡ãƒ¼ãƒ«çŠ¶æ³ã®ç§˜å¯†éµ"
 
 #: options/preferences.py
-msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in Tabbycat (for confirmation or checking)"
-msgstr "確認のためにジャッジ宛に提出したバロットのコピーを送信する"
+msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in NekoTab (for confirmation or checking)"
+msgstr "ç¢ºèªã®ãŸã‚ã«ã‚¸ãƒ£ãƒƒã‚¸å®›ã«æå‡ºã—ãŸãƒãƒ­ãƒƒãƒˆã®ã‚³ãƒ”ãƒ¼ã‚’é€ä¿¡ã™ã‚‹"
 
 #: options/preferences.py
 msgid "Ballot receipts"
-msgstr "バロットレシート"
+msgstr "ãƒãƒ­ãƒƒãƒˆãƒ¬ã‚·ãƒ¼ãƒˆ"
 
 #: options/preferences.py
 msgid "The subject line for emails sent to adjudicators with their submitted ballot. Use '{{ DEBATE }}' as a placeholder for the associated debate"
-msgstr "バロットレシートで送るメールの件名。「{{ DEBATE }}」は試合の情報に置換されます。"
+msgstr "ãƒãƒ­ãƒƒãƒˆãƒ¬ã‚·ãƒ¼ãƒˆã§é€ã‚‹ãƒ¡ãƒ¼ãƒ«ã®ä»¶åã€‚ã€Œ{{ DEBATE }}ã€ã¯è©¦åˆã®æƒ…å ±ã«ç½®æ›ã•ã‚Œã¾ã™ã€‚"
 
 #: options/preferences.py
 msgid "Ballot receipt subject line"
-msgstr "バロットレシートの件名"
+msgstr "ãƒãƒ­ãƒƒãƒˆãƒ¬ã‚·ãƒ¼ãƒˆã®ä»¶å"
 
 #: options/preferences.py
 msgid "The message body for emails sent to adjudicators with their submitted ballot."
-msgstr "バロットレシートで送るメールの本文。"
+msgstr "ãƒãƒ­ãƒƒãƒˆãƒ¬ã‚·ãƒ¼ãƒˆã§é€ã‚‹ãƒ¡ãƒ¼ãƒ«ã®æœ¬æ–‡ã€‚"
 
 #: options/preferences.py
 msgid "Ballot receipt message"
-msgstr "バロットレシートの本文"
+msgstr "ãƒãƒ­ãƒƒãƒˆãƒ¬ã‚·ãƒ¼ãƒˆã®æœ¬æ–‡"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Motions"
-msgstr "論題"
+msgstr "è«–é¡Œ"
 
 #: options/preferences.py
 msgid "If checked, ballots require a motion to be entered"
-msgstr "チェックすると、バロットに論題の入力が必要になります"
+msgstr "ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã¨ã€ãƒãƒ­ãƒƒãƒˆã«è«–é¡Œã®å…¥åŠ›ãŒå¿…è¦ã«ãªã‚Šã¾ã™"
 
 #: options/preferences.py
 msgid "Enable motions"
-msgstr "論題の有効化"
+msgstr "è«–é¡Œã®æœ‰åŠ¹åŒ–"
 
 #: options/preferences.py
 msgid "Whether the printed scoresheets should hide the text of motions (even if they have been entered and released)"
-msgstr "印刷したスコアシートに論題の内容を表示しない（既に入力・リリースされた場合でも）"
+msgstr "å°åˆ·ã—ãŸã‚¹ã‚³ã‚¢ã‚·ãƒ¼ãƒˆã«è«–é¡Œã®å†…å®¹ã‚’è¡¨ç¤ºã—ãªã„ï¼ˆæ—¢ã«å…¥åŠ›ãƒ»ãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸå ´åˆã§ã‚‚ï¼‰"
 
 #: options/preferences.py
 msgid "Ballot Hide Motions"
-msgstr "バロットで論題を隠す"
+msgstr "ãƒãƒ­ãƒƒãƒˆã§è«–é¡Œã‚’éš ã™"
 
 #: options/preferences.py
 msgid "Enables the motion veto field on ballots, to track veto statistics"
-msgstr "拒否（veto）の統計情報を得るためにバロットで拒否論題を選択する欄を表示するか"
+msgstr "æ‹’å¦ï¼ˆvetoï¼‰ã®çµ±è¨ˆæƒ…å ±ã‚’å¾—ã‚‹ãŸã‚ã«ãƒãƒ­ãƒƒãƒˆã§æ‹’å¦è«–é¡Œã‚’é¸æŠžã™ã‚‹æ¬„ã‚’è¡¨ç¤ºã™ã‚‹ã‹"
 
 #: options/preferences.py
 msgid "Motion vetoes"
-msgstr "論題の拒否（veto）"
+msgstr "è«–é¡Œã®æ‹’å¦ï¼ˆvetoï¼‰"
 
 #: options/preferences.py
 msgid "If showing results to public, show which motions were selected in the record"
-msgstr "結果を公開する場合、選択された論題も表示する"
+msgstr "çµæžœã‚’å…¬é–‹ã™ã‚‹å ´åˆã€é¸æŠžã•ã‚ŒãŸè«–é¡Œã‚‚è¡¨ç¤ºã™ã‚‹"
 
 #: options/preferences.py
 msgid "Show motions in results"
-msgstr "結果に選択された論題の表示"
+msgstr "çµæžœã«é¸æŠžã•ã‚ŒãŸè«–é¡Œã®è¡¨ç¤º"
 
 #: options/preferences.py
 msgid "Order in which are listed by round in the public view"
-msgstr "公開ページに記される順番"
+msgstr "å…¬é–‹ãƒšãƒ¼ã‚¸ã«è¨˜ã•ã‚Œã‚‹é †ç•ª"
 
 #: options/preferences.py
 msgid "Order to display motions"
-msgstr "論題の順序"
+msgstr "è«–é¡Œã®é †åº"
 
 #: options/preferences.py
 msgid "Earliest round first"
-msgstr "最初のラウンドが一番上"
+msgstr "æœ€åˆã®ãƒ©ã‚¦ãƒ³ãƒ‰ãŒä¸€ç•ªä¸Š"
 
 #: options/preferences.py
 msgid "Latest round first"
-msgstr "最後のラウンドが一番上"
+msgstr "æœ€å¾Œã®ãƒ©ã‚¦ãƒ³ãƒ‰ãŒä¸€ç•ªä¸Š"
 
 #: options/preferences.py
 msgid "Whether motions can be reused from one round to another."
-msgstr "他のラウンドの論題の使いまわしを認めるか"
+msgstr "ä»–ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®è«–é¡Œã®ä½¿ã„ã¾ã‚ã—ã‚’èªã‚ã‚‹ã‹"
 
 #: options/preferences.py
 msgid "Allow motion reuse"
-msgstr "論題の再利用"
+msgstr "è«–é¡Œã®å†åˆ©ç”¨"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Global Settings"
-msgstr "全体設定"
+msgstr "å…¨ä½“è¨­å®š"
 
 #: options/preferences.py
 msgid "Enables external applications to access the site through a dedicated interface, subject to public information settings."
-msgstr "公開情報の設定に基づき、外部アプリケーションが専用インターフェイスを介してサイトにアクセスできるようにする。"
+msgstr "å…¬é–‹æƒ…å ±ã®è¨­å®šã«åŸºã¥ãã€å¤–éƒ¨ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãŒå°‚ç”¨ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’ä»‹ã—ã¦ã‚µã‚¤ãƒˆã«ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚"
 
 #: options/preferences.py
 msgid "Enable API access"
-msgstr "APIアクセスの有効化"
+msgstr "APIã‚¢ã‚¯ã‚»ã‚¹ã®æœ‰åŠ¹åŒ–"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Registration"
@@ -1548,7 +1548,7 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Gender"
-msgstr "ジェンダー"
+msgstr "ã‚¸ã‚§ãƒ³ãƒ€ãƒ¼"
 
 #: options/preferences.py
 msgid "Public speaker categories"
@@ -1644,151 +1644,151 @@ msgstr ""
 
 #: options/presets.py
 msgid "Enable Public Information"
-msgstr "公開を有効化"
+msgstr "å…¬é–‹ã‚’æœ‰åŠ¹åŒ–"
 
 #: options/presets.py
 msgid "Disable Public Information"
-msgstr "公開を無効化"
+msgstr "å…¬é–‹ã‚’ç„¡åŠ¹åŒ–"
 
 #: options/presets.py
 msgid "Australs Rules"
-msgstr "Australs形式"
+msgstr "Australså½¢å¼"
 
 #: options/presets.py
 msgid "3 vs 3 with replies, chosen motions, intermediate brackets, one-up-one-down. Compliant with AIDA rules."
-msgstr "3対3、リプライあり、論題選択あり、中間ブラケット、one-up-one-down方式。AIDA準拠。"
+msgstr "3å¯¾3ã€ãƒªãƒ—ãƒ©ã‚¤ã‚ã‚Šã€è«–é¡Œé¸æŠžã‚ã‚Šã€ä¸­é–“ãƒ–ãƒ©ã‚±ãƒƒãƒˆã€one-up-one-downæ–¹å¼ã€‚AIDAæº–æ‹ ã€‚"
 
 #: options/presets.py
 msgid "British Parliamentary Rules"
-msgstr "British Parliamentary形式"
+msgstr "British Parliamentaryå½¢å¼"
 
 #: options/presets.py
 msgid "2 vs 2 vs 2 vs 2. Compliant with WUDC rules."
-msgstr "2対2対2対2。WUDC準拠。"
+msgstr "2å¯¾2å¯¾2å¯¾2ã€‚WUDCæº–æ‹ ã€‚"
 
 #: options/presets.py
 msgid "Canadian Parliamentary Rules"
-msgstr "Canadian Parliamentary形式"
+msgstr "Canadian Parliamentaryå½¢å¼"
 
 #: options/presets.py
 msgid "2 vs 2 with replies (unscored) and POIs. May require additional configuration depending on regional variations."
-msgstr "2対2、リプライ（スコアなし）、POIあり。地域固有の設定に改編する必要がある場合があります。"
+msgstr "2å¯¾2ã€ãƒªãƒ—ãƒ©ã‚¤ï¼ˆã‚¹ã‚³ã‚¢ãªã—ï¼‰ã€POIã‚ã‚Šã€‚åœ°åŸŸå›ºæœ‰ã®è¨­å®šã«æ”¹ç·¨ã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: options/presets.py
 msgid "Australian Easters Rules"
-msgstr "Australian Easters形式"
+msgstr "Australian Easterså½¢å¼"
 
 #: options/presets.py
 msgid "3 vs 3 without replies, set motions, novices, intermediate bubbles, one-up-one-down. Compliant with AIDA rules."
-msgstr "3対3、リプライあり、セットされた論題、ノビス、中間バブル、one-up-one-down方式。AIDA準拠。"
+msgstr "3å¯¾3ã€ãƒªãƒ—ãƒ©ã‚¤ã‚ã‚Šã€ã‚»ãƒƒãƒˆã•ã‚ŒãŸè«–é¡Œã€ãƒŽãƒ“ã‚¹ã€ä¸­é–“ãƒãƒ–ãƒ«ã€one-up-one-downæ–¹å¼ã€‚AIDAæº–æ‹ ã€‚"
 
 #: options/presets.py
 msgid "2 vs 2 Impromptu"
-msgstr "即興型2対2"
+msgstr "å³èˆˆåž‹2å¯¾2"
 
 #: options/presets.py
 msgid "2 vs 2 with replies, chosen motions, chosen sides, and novice statuses."
-msgstr "2対2、リプライあり、論題選択あり、サイド選択あり、ノビス。"
+msgstr "2å¯¾2ã€ãƒªãƒ—ãƒ©ã‚¤ã‚ã‚Šã€è«–é¡Œé¸æŠžã‚ã‚Šã€ã‚µã‚¤ãƒ‰é¸æŠžã‚ã‚Šã€ãƒŽãƒ“ã‚¹ã€‚"
 
 #: options/presets.py
 msgid "3 vs 3 Prepared"
-msgstr "準備型3対3"
+msgstr "æº–å‚™åž‹3å¯¾3"
 
 #: options/presets.py
 msgid "3 vs 3 with preallocated sides, publicly displayed sides and motions, and novice statuses."
-msgstr "3対3、事前に決定・公開されたサイド、事前に公開された論題、ノビス。"
+msgstr "3å¯¾3ã€äº‹å‰ã«æ±ºå®šãƒ»å…¬é–‹ã•ã‚ŒãŸã‚µã‚¤ãƒ‰ã€äº‹å‰ã«å…¬é–‹ã•ã‚ŒãŸè«–é¡Œã€ãƒŽãƒ“ã‚¹ã€‚"
 
 #: options/presets.py
 msgid "UADC Rules"
-msgstr "UADC形式"
+msgstr "UADCå½¢å¼"
 
 #: options/presets.py
 msgid "3 vs 3 with replies, chosen motions, and all adjudicators can receive feedback from teams."
-msgstr "3対3、リプライあり、論題選択あり、チームはすべてのジャッジへフィードバック"
+msgstr "3å¯¾3ã€ãƒªãƒ—ãƒ©ã‚¤ã‚ã‚Šã€è«–é¡Œé¸æŠžã‚ã‚Šã€ãƒãƒ¼ãƒ ã¯ã™ã¹ã¦ã®ã‚¸ãƒ£ãƒƒã‚¸ã¸ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
 
 #: options/presets.py
 msgid "WSDC Rules"
-msgstr "WSDC形式"
+msgstr "WSDCå½¢å¼"
 
 #: options/presets.py
 msgid "3 vs 3 with replies, chosen motions, prop/opp side labels, and all adjudicators can receive feedback from teams."
-msgstr "3対3、リプライあり、論題選択あり、サイド名prop/opp、チームはすべてのジャッジへフィードバック"
+msgstr "3å¯¾3ã€ãƒªãƒ—ãƒ©ã‚¤ã‚ã‚Šã€è«–é¡Œé¸æŠžã‚ã‚Šã€ã‚µã‚¤ãƒ‰åprop/oppã€ãƒãƒ¼ãƒ ã¯ã™ã¹ã¦ã®ã‚¸ãƒ£ãƒƒã‚¸ã¸ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
 
 #: options/presets.py
 msgid "APDA Rules"
-msgstr "APDA形式"
+msgstr "APDAå½¢å¼"
 
 #: options/presets.py
 msgid "2 vs 2 with speech rankings and byes"
-msgstr "2対2、スピーチランクあり、byeチームあり"
+msgstr "2å¯¾2ã€ã‚¹ãƒ”ãƒ¼ãƒãƒ©ãƒ³ã‚¯ã‚ã‚Šã€byeãƒãƒ¼ãƒ ã‚ã‚Š"
 
 #: options/presets.py
 msgid "Public Speaking"
-msgstr "パブリックスピーキング"
+msgstr "ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¹ãƒ”ãƒ¼ã‚­ãƒ³ã‚°"
 
 #: options/presets.py
 msgid "Arbitrary number of teams per room, one speech each, no team points"
-msgstr "1試合当たり任意のチーム数、1スピーチずつ、チームスコアなし"
+msgstr "1è©¦åˆå½“ãŸã‚Šä»»æ„ã®ãƒãƒ¼ãƒ æ•°ã€1ã‚¹ãƒ”ãƒ¼ãƒãšã¤ã€ãƒãƒ¼ãƒ ã‚¹ã‚³ã‚¢ãªã—"
 
 #: options/presets.py
 msgid "Public Information Options"
-msgstr "情報公開設定"
+msgstr "æƒ…å ±å…¬é–‹è¨­å®š"
 
 #: options/presets.py
 msgid "For tournaments hosted online: this sets it up so that people can access the draw and other generally useful information via the tab site."
-msgstr "オンライン大会用：タブサイトを通じて対戦表などの便利な情報の閲覧を可能にします"
+msgstr "ã‚ªãƒ³ãƒ©ã‚¤ãƒ³å¤§ä¼šç”¨ï¼šã‚¿ãƒ–ã‚µã‚¤ãƒˆã‚’é€šã˜ã¦å¯¾æˆ¦è¡¨ãªã©ã®ä¾¿åˆ©ãªæƒ…å ±ã®é–²è¦§ã‚’å¯èƒ½ã«ã—ã¾ã™"
 
 #: options/presets.py
 msgid "Tab Release Options"
-msgstr "タブリリース設定"
+msgstr "ã‚¿ãƒ–ãƒªãƒªãƒ¼ã‚¹è¨­å®š"
 
 #: options/presets.py
 msgid "For when a tab is ready to be released. This will publicly display the results of all rounds, the team tab, the speaker tab, etc"
-msgstr "タブを公開するときに使用。すべてのラウンドの結果、チームタブ、スピーカータブなどを公開します。"
+msgstr "ã‚¿ãƒ–ã‚’å…¬é–‹ã™ã‚‹ã¨ãã«ä½¿ç”¨ã€‚ã™ã¹ã¦ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®çµæžœã€ãƒãƒ¼ãƒ ã‚¿ãƒ–ã€ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¿ãƒ–ãªã©ã‚’å…¬é–‹ã—ã¾ã™ã€‚"
 
 #: options/presets.py
 msgid "Use Private URLs"
-msgstr "Private URLの使用"
+msgstr "Private URLã®ä½¿ç”¨"
 
 #: options/presets.py
 msgid "Enables participant data entry through private URLs."
-msgstr "Private URLを通じて参加者がデータを入力できます"
+msgstr "Private URLã‚’é€šã˜ã¦å‚åŠ è€…ãŒãƒ‡ãƒ¼ã‚¿ã‚’å…¥åŠ›ã§ãã¾ã™"
 
 #: options/presets.py
 msgid "Use Public Forms"
-msgstr "公開されたフォームの使用"
+msgstr "å…¬é–‹ã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒ ã®ä½¿ç”¨"
 
 #: options/presets.py
 msgid "Enables participant data entry through public forms."
-msgstr "公開されたフォームを通して参加者がデータを入力できます"
+msgstr "å…¬é–‹ã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒ ã‚’é€šã—ã¦å‚åŠ è€…ãŒãƒ‡ãƒ¼ã‚¿ã‚’å…¥åŠ›ã§ãã¾ã™"
 
 #: options/templates/preferences_index.html
 msgid "Configuration"
-msgstr "設定"
+msgstr "è¨­å®š"
 
 #: options/templates/preferences_index.html
 msgid "The range of scores that can awarded to speeches, replies, and teams"
-msgstr "スピーチ、リプライやチームに付けられる点数の範囲"
+msgstr "ã‚¹ãƒ”ãƒ¼ãƒã€ãƒªãƒ—ãƒ©ã‚¤ã‚„ãƒãƒ¼ãƒ ã«ä»˜ã‘ã‚‰ã‚Œã‚‹ç‚¹æ•°ã®ç¯„å›²"
 
 #: options/templates/preferences_index.html
 msgid "How teams are paired in the draw and how adjudicators are auto-allocated"
-msgstr "対戦表でどのようにチームが組まれ、ジャッジが自動配置されるか"
+msgstr "å¯¾æˆ¦è¡¨ã§ã©ã®ã‚ˆã†ã«ãƒãƒ¼ãƒ ãŒçµ„ã¾ã‚Œã€ã‚¸ãƒ£ãƒƒã‚¸ãŒè‡ªå‹•é…ç½®ã•ã‚Œã‚‹ã‹"
 
 #: options/templates/preferences_index.html
 msgid "How many speeches in a debate, how motions are decided, and whether reply speeches are used"
-msgstr "試合のスピーチ数、論題の決定方法、リプライの有無"
+msgstr "è©¦åˆã®ã‚¹ãƒ”ãƒ¼ãƒæ•°ã€è«–é¡Œã®æ±ºå®šæ–¹æ³•ã€ãƒªãƒ—ãƒ©ã‚¤ã®æœ‰ç„¡"
 
 #: options/templates/preferences_index.html
 msgid "How teams and speakers are ranked in the released tabs"
-msgstr "リリースされたタブでどのようにチームやスピーカーの順位付けがされるか"
+msgstr "ãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸã‚¿ãƒ–ã§ã©ã®ã‚ˆã†ã«ãƒãƒ¼ãƒ ã‚„ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®é †ä½ä»˜ã‘ãŒã•ã‚Œã‚‹ã‹"
 
 #: options/templates/preferences_index.html
 msgid "How adjudicators are ranked and who can submit feedback"
-msgstr "どのようにジャッジが評価され、だれがフィードバックを出せるか"
+msgstr "ã©ã®ã‚ˆã†ã«ã‚¸ãƒ£ãƒƒã‚¸ãŒè©•ä¾¡ã•ã‚Œã€ã ã‚ŒãŒãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’å‡ºã›ã‚‹ã‹"
 
 #: options/templates/preferences_index.html
 msgid "How and where are motions used"
-msgstr "どこでどのように論題が使われるか"
+msgstr "ã©ã“ã§ã©ã®ã‚ˆã†ã«è«–é¡ŒãŒä½¿ã‚ã‚Œã‚‹ã‹"
 
 #: options/templates/preferences_index.html
 msgid "How participants can register for the tournament"
@@ -1796,117 +1796,118 @@ msgstr ""
 
 #: options/templates/preferences_index.html
 msgid "When to release a public tab is made visible and what data it shows"
-msgstr "いつタブが公開されるか、どのデータを公開するか"
+msgstr "ã„ã¤ã‚¿ãƒ–ãŒå…¬é–‹ã•ã‚Œã‚‹ã‹ã€ã©ã®ãƒ‡ãƒ¼ã‚¿ã‚’å…¬é–‹ã™ã‚‹ã‹"
 
 #: options/templates/preferences_index.html
 msgid "How ballots, feedback, and check-ins are entered, including online submission options"
-msgstr "バロット、フィードバックやチェックインがオンライン含めどのように入力されるか"
+msgstr "ãƒãƒ­ãƒƒãƒˆã€ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚„ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ãŒã‚ªãƒ³ãƒ©ã‚¤ãƒ³å«ã‚ã©ã®ã‚ˆã†ã«å…¥åŠ›ã•ã‚Œã‚‹ã‹"
 
 #: options/templates/preferences_index.html
 msgid "What information the site displays on the publicly accessible pages"
-msgstr "公開された部分のページにどのような情報を表示するか"
+msgstr "å…¬é–‹ã•ã‚ŒãŸéƒ¨åˆ†ã®ãƒšãƒ¼ã‚¸ã«ã©ã®ã‚ˆã†ãªæƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ã‹"
 
 #: options/templates/preferences_index.html
 msgid "Small tweaks in what information is presented by the interface"
-msgstr "UIで表示される細かな点の変更"
+msgstr "UIã§è¡¨ç¤ºã•ã‚Œã‚‹ç´°ã‹ãªç‚¹ã®å¤‰æ›´"
 
 #: options/templates/preferences_index.html
 msgid "Configures sending notifications, such as emails confirming ballot submissions or team points"
-msgstr "メールやバロット確認、チームの点数等の通知を設定"
+msgstr "ãƒ¡ãƒ¼ãƒ«ã‚„ãƒãƒ­ãƒƒãƒˆç¢ºèªã€ãƒãƒ¼ãƒ ã®ç‚¹æ•°ç­‰ã®é€šçŸ¥ã‚’è¨­å®š"
 
 #: options/templates/preferences_index.html
 msgid "Settings which can affect all tournaments on the site"
-msgstr "このサイト上のすべての大会に適応される設定"
+msgstr "ã“ã®ã‚µã‚¤ãƒˆä¸Šã®ã™ã¹ã¦ã®å¤§ä¼šã«é©å¿œã•ã‚Œã‚‹è¨­å®š"
 
 #: options/templates/preferences_index.html
 msgid "Manually Set Current Round"
-msgstr "手動で「現在進行中のラウンド」を設定"
+msgstr "æ‰‹å‹•ã§ã€Œç¾åœ¨é€²è¡Œä¸­ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã€ã‚’è¨­å®š"
 
 #: options/templates/preferences_index.html
-msgid "Tabbycat will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
-msgstr "Tabbycatは各ラウンドの結果ページで、現在のラウンドを進めるように促します。しかし、これを上書きしたい特別な事情があればこのページを使用してください。"
+msgid "NekoTab will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
+msgstr "NekoTabã¯å„ãƒ©ã‚¦ãƒ³ãƒ‰ã®çµæžœãƒšãƒ¼ã‚¸ã§ã€ç¾åœ¨ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’é€²ã‚ã‚‹ã‚ˆã†ã«ä¿ƒã—ã¾ã™ã€‚ã—ã‹ã—ã€ã“ã‚Œã‚’ä¸Šæ›¸ãã—ãŸã„ç‰¹åˆ¥ãªäº‹æƒ…ãŒã‚ã‚Œã°ã“ã®ãƒšãƒ¼ã‚¸ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚"
 
 #: options/templates/preferences_index.html
 msgid "Set Round Weights for Tapered Scoring"
-msgstr "ラウンドの比重を設定"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®æ¯”é‡ã‚’è¨­å®š"
 
 #: options/templates/preferences_index.html
 msgid "Rounds can be weighted so that certain rounds are worth more team points."
-msgstr "特定のラウンドがチームの点数により大きく影響するように、ラウンドに重みをつけることができます。"
+msgstr "ç‰¹å®šã®ãƒ©ã‚¦ãƒ³ãƒ‰ãŒãƒãƒ¼ãƒ ã®ç‚¹æ•°ã«ã‚ˆã‚Šå¤§ããå½±éŸ¿ã™ã‚‹ã‚ˆã†ã«ã€ãƒ©ã‚¦ãƒ³ãƒ‰ã«é‡ã¿ã‚’ã¤ã‘ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚"
 
 #: options/templates/preferences_index.html
 msgid "Invite User to Create an Account"
-msgstr "ユーザーを招待しアカウント作成"
+msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’æ‹›å¾…ã—ã‚¢ã‚«ã‚¦ãƒ³ãƒˆä½œæˆ"
 
 #: options/templates/preferences_index.html
 msgid "Users can be created through an invitation link sent to their email, with associated permissions."
-msgstr "メールに招待を送ることで特定の権限の新しいユーザーを作成できます。"
+msgstr "ãƒ¡ãƒ¼ãƒ«ã«æ‹›å¾…ã‚’é€ã‚‹ã“ã¨ã§ç‰¹å®šã®æ¨©é™ã®æ–°ã—ã„ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’ä½œæˆã§ãã¾ã™ã€‚"
 
 #: options/templates/preferences_index.html
 msgid "Presets"
-msgstr "プリセット"
+msgstr "ãƒ—ãƒªã‚»ãƒƒãƒˆ"
 
 #: options/templates/preferences_index.html
 msgid "These show changes to your configuration for common situations and debate formats. You may apply these settings or modify them for your tournament directly on the preset's page."
-msgstr "よくある状況・形式にあわせ大会の設定を変更します。プリセットページから設定を適応したり、直接修正したりできます。"
+msgstr "ã‚ˆãã‚ã‚‹çŠ¶æ³ãƒ»å½¢å¼ã«ã‚ã‚ã›å¤§ä¼šã®è¨­å®šã‚’å¤‰æ›´ã—ã¾ã™ã€‚ãƒ—ãƒªã‚»ãƒƒãƒˆãƒšãƒ¼ã‚¸ã‹ã‚‰è¨­å®šã‚’é©å¿œã—ãŸã‚Šã€ç›´æŽ¥ä¿®æ­£ã—ãŸã‚Šã§ãã¾ã™ã€‚"
 
 #: options/templates/preferences_index.html
 #, python-format
 msgid "Apply %(preset)s"
-msgstr "%(preset)sを適用"
+msgstr "%(preset)sã‚’é©ç”¨"
 
 #: options/templates/preferences_section_set.html
 #, python-format
 msgid "Configuration: %(section)s"
-msgstr "設定：%(section)s"
+msgstr "è¨­å®šï¼š%(section)s"
 
 #: options/templates/preferences_section_set.html
 #, python-format
 msgid "Edit Configuration: %(section)s"
-msgstr "設定を編集：%(section)s"
+msgstr "è¨­å®šã‚’ç·¨é›†ï¼š%(section)s"
 
 #: options/templates/preferences_section_set.html
 #: options/templates/preset_edit.html
 msgid "Back to Configuration"
-msgstr "設定に戻る"
+msgstr "è¨­å®šã«æˆ»ã‚‹"
 
 #: options/templates/preset_edit.html
 #, python-format
 msgid "This preference will be changed"
 msgid_plural "These %(counter)s preferences will be changed"
-msgstr[0] "以下の%(counter)sつの設定は変更されます"
+msgstr[0] "ä»¥ä¸‹ã®%(counter)sã¤ã®è¨­å®šã¯å¤‰æ›´ã•ã‚Œã¾ã™"
 
 #: options/templates/preset_edit.html
 #, python-format
 msgid "This preference will not change"
 msgid_plural "These %(counter)s preferences will not change"
-msgstr[0] "以下の%(counter)sつの設定は変更されません"
+msgstr[0] "ä»¥ä¸‹ã®%(counter)sã¤ã®è¨­å®šã¯å¤‰æ›´ã•ã‚Œã¾ã›ã‚“"
 
 #: options/templates/preset_edit.html
 msgid "Apply Changes"
-msgstr "変更を適用"
+msgstr "å¤‰æ›´ã‚’é©ç”¨"
 
 #: options/templates/preset_edit.html
 msgid "Presets are provided as a convenience only and may not be up to date with a debating format's rules or the expectations of your circuit. Please double-check everything to ensure it matches your needs."
-msgstr "プリセットは便宜上提供されているものであり、ディベート形式の最新のルールやサーキット特有の設定に沿っていない場合があります。期待している設定になっているか再確認してください。"
+msgstr "ãƒ—ãƒªã‚»ãƒƒãƒˆã¯ä¾¿å®œä¸Šæä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚Šã€ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆå½¢å¼ã®æœ€æ–°ã®ãƒ«ãƒ¼ãƒ«ã‚„ã‚µãƒ¼ã‚­ãƒƒãƒˆç‰¹æœ‰ã®è¨­å®šã«æ²¿ã£ã¦ã„ãªã„å ´åˆãŒã‚ã‚Šã¾ã™ã€‚æœŸå¾…ã—ã¦ã„ã‚‹è¨­å®šã«ãªã£ã¦ã„ã‚‹ã‹å†ç¢ºèªã—ã¦ãã ã•ã„ã€‚"
 
 #: options/utils.py
 #, python-format
 msgid "The following metrics can't be listed twice: %(duplicates)s"
-msgstr "以下の指標は重複できません：%(duplicates)s"
+msgstr "ä»¥ä¸‹ã®æŒ‡æ¨™ã¯é‡è¤‡ã§ãã¾ã›ã‚“ï¼š%(duplicates)s"
 
 #: options/views.py
 #, python-format
 msgid "Tournament options (%(section)s) saved."
-msgstr "%(section)sを保存しました。"
+msgstr "%(section)sã‚’ä¿å­˜ã—ã¾ã—ãŸã€‚"
 
 #: options/views.py
 #, python-format
 msgid "Apply Preset: %s"
-msgstr "プリセットを適用：%s"
+msgstr "ãƒ—ãƒªã‚»ãƒƒãƒˆã‚’é©ç”¨ï¼š%s"
 
 #: options/views.py
 #, python-format
 msgid "Tournament options saved based on preset %(name)s."
-msgstr "%(name)sのプリセットに基づいて大会設定を保存しました。"
+msgstr "%(name)sã®ãƒ—ãƒªã‚»ãƒƒãƒˆã«åŸºã¥ã„ã¦å¤§ä¼šè¨­å®šã‚’ä¿å­˜ã—ã¾ã—ãŸã€‚"
+
 

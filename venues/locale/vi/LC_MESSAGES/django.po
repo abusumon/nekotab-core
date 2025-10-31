@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2024-09-09 17:22\n"
@@ -12,35 +12,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: vi\n"
-"X-Crowdin-File: /develop/tabbycat/venues/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/venues/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 956\n"
 
 #: venues/apps.py
 msgid "Rooms"
-msgstr "Phòng"
+msgstr "PhÃ²ng"
 
 #: venues/consumers.py
 msgid "Draw is already released, unrelease draw to assign rooms."
-msgstr "Bảng đấu đã được công bố, hủy công bố bảng đấu để phân lại phòng."
+msgstr "Báº£ng Ä‘áº¥u Ä‘Ã£ Ä‘Æ°á»£c cÃ´ng bá»‘, há»§y cÃ´ng bá»‘ báº£ng Ä‘áº¥u Ä‘á»ƒ phÃ¢n láº¡i phÃ²ng."
 
 #: venues/consumers.py
 msgid "Draw is not confirmed, confirm draw to assign rooms."
-msgstr "Bảng đấu chưa được xác nhận, xác nhận bảng đấu để phân phòng."
+msgstr "Báº£ng Ä‘áº¥u chÆ°a Ä‘Æ°á»£c xÃ¡c nháº­n, xÃ¡c nháº­n báº£ng Ä‘áº¥u Ä‘á»ƒ phÃ¢n phÃ²ng."
 
 #: venues/consumers.py
 msgid "Successfully auto-allocated rooms to debates."
-msgstr "Đã tự động phân bổ thành công phòng cho các trận tranh biện."
+msgstr "ÄÃ£ tá»± Ä‘á»™ng phÃ¢n bá»• thÃ nh cÃ´ng phÃ²ng cho cÃ¡c tráº­n tranh biá»‡n."
 
 #: venues/models.py
 msgid "name"
-msgstr "tên"
+msgstr "tÃªn"
 
 #: venues/models.py
 msgid "priority"
-msgstr "ưu tiên"
+msgstr "Æ°u tiÃªn"
 
 #: venues/models.py
 msgid "Rooms with a higher priority number will be preferred when allocating rooms to debates"
@@ -79,7 +79,7 @@ msgid "Display as suffix"
 msgstr ""
 
 #: venues/models.py
-msgid "Name of category, e.g., \"Purple\", \"Step-free access\", \"Close to tab room\". This name is shown when the category is prefixed or suffixed to a room name in the draw, e.g., \"Purple – G05\"."
+msgid "Name of category, e.g., \"Purple\", \"Step-free access\", \"Close to tab room\". This name is shown when the category is prefixed or suffixed to a room name in the draw, e.g., \"Purple â€“ G05\"."
 msgstr ""
 
 #: venues/models.py
@@ -95,7 +95,7 @@ msgid "display in room name"
 msgstr ""
 
 #: venues/models.py
-msgid "Prefix: \"Purple – G05\", Suffix: \"G05 – Purple\""
+msgid "Prefix: \"Purple â€“ G05\", Suffix: \"G05 â€“ Purple\""
 msgstr ""
 
 #: venues/models.py
@@ -217,4 +217,5 @@ msgstr ""
 msgid "Saved %(count)d room constraint."
 msgid_plural "Saved %(count)d room constraints."
 msgstr[0] ""
+
 

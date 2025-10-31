@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/privateurls/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/privateurls/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 946\n"
 
 #: privateurls/apps.py
 msgid "Private URL Management"
-msgstr "إدارة الرابط الخاص "
+msgstr "Ø¥Ø¯Ø§Ø±Ø© Ø§Ù„Ø±Ø§Ø¨Ø· Ø§Ù„Ø®Ø§Øµ "
 
 #: privateurls/templates/private_url_landing.html
 msgid "Private URL"
@@ -85,18 +85,18 @@ msgstr ""
 
 #: privateurls/templates/private_urls.html privateurls/views.py
 msgid "Private URLs"
-msgstr "رابط خاص "
+msgstr "Ø±Ø§Ø¨Ø· Ø®Ø§Øµ "
 
 #: privateurls/templates/private_urls.html
 msgid "The private URLs for ballot and/or feedback submission from participants are given below."
-msgstr "تم ارسال رابط التصويت و رابط التغذية الراجعة "
+msgstr "ØªÙ… Ø§Ø±Ø³Ø§Ù„ Ø±Ø§Ø¨Ø· Ø§Ù„ØªØµÙˆÙŠØª Ùˆ Ø±Ø§Ø¨Ø· Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© "
 
 #: privateurls/templates/private_urls.html
 msgid "Private URLs are used to allow participants to submit ballots and/or feedback online. You should use them if you have a means of distributing crazy-looking URLs to participants, and are too worried about fraud to use a publicly accessible page where <em>anyone</em> can enter <em>any</em> submission. The URLs will look something like this:"
 msgstr ""
 
 #: privateurls/templates/private_urls.html
-msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
+msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
 msgstr ""
 
 #: privateurls/templates/private_urls.html
@@ -106,15 +106,15 @@ msgstr ""
 
 #: privateurls/templates/private_urls.html
 msgid "There are no private URLs assigned."
-msgstr "لا يوجد رابط خاص "
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø±Ø§Ø¨Ø· Ø®Ø§Øµ "
 
 #: privateurls/templates/private_urls.html
 msgid "Generate Private URLs"
-msgstr "اعداد رابط خاص "
+msgstr "Ø§Ø¹Ø¯Ø§Ø¯ Ø±Ø§Ø¨Ø· Ø®Ø§Øµ "
 
 #: privateurls/templates/private_urls_nav.html
 msgid "View URLs"
-msgstr "عرض الرابط "
+msgstr "Ø¹Ø±Ø¶ Ø§Ù„Ø±Ø§Ø¨Ø· "
 
 #: privateurls/templates/private_urls_nav.html
 msgid "Print Teams' URLs"
@@ -134,7 +134,7 @@ msgstr ""
 
 #: privateurls/templates/private_urls_nav.html
 msgid "This button only generates private URLs for participants who do not already have one."
-msgstr "هذا الزر سيقوم بمشاركة الروابط للاشخاص الذين لا يمتلكون رابط خاص بهم "
+msgstr "Ù‡Ø°Ø§ Ø§Ù„Ø²Ø± Ø³ÙŠÙ‚ÙˆÙ… Ø¨Ù…Ø´Ø§Ø±ÙƒØ© Ø§Ù„Ø±ÙˆØ§Ø¨Ø· Ù„Ù„Ø§Ø´Ø®Ø§Øµ Ø§Ù„Ø°ÙŠÙ† Ù„Ø§ ÙŠÙ…ØªÙ„ÙƒÙˆÙ† Ø±Ø§Ø¨Ø· Ø®Ø§Øµ Ø¨Ù‡Ù… "
 
 #: privateurls/templates/private_urls_nav.html
 msgid "Generate URLs"
@@ -142,11 +142,11 @@ msgstr ""
 
 #: privateurls/templates/private_urls_nav.html
 msgid "All participants already have private URLs."
-msgstr "جميع رئساء الجلسات و روابطهم الخاصة "
+msgstr "Ø¬Ù…ÙŠØ¹ Ø±Ø¦Ø³Ø§Ø¡ Ø§Ù„Ø¬Ù„Ø³Ø§Øª Ùˆ Ø±ÙˆØ§Ø¨Ø·Ù‡Ù… Ø§Ù„Ø®Ø§ØµØ© "
 
 #: privateurls/views.py
 msgid "no URL"
-msgstr "لا يوجد رابط "
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø±Ø§Ø¨Ø· "
 
 #: privateurls/views.py
 msgid "URL"
@@ -154,11 +154,11 @@ msgstr ""
 
 #: privateurls/views.py
 msgid "Speakers"
-msgstr "متحدثين"
+msgstr "Ù…ØªØ­Ø¯Ø«ÙŠÙ†"
 
 #: privateurls/views.py
 msgid "Adjudicators"
-msgstr "المحكمين"
+msgstr "Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ†"
 
 #: privateurls/views.py
 msgid "All participants already have private URLs. If you want to delete them, use the Edit Database area."
@@ -193,4 +193,5 @@ msgstr ""
 #: privateurls/views.py
 msgid "Debates"
 msgstr ""
+
 

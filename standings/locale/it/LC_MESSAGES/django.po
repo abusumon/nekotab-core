@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: it\n"
-"X-Crowdin-File: /develop/tabbycat/standings/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/standings/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 950\n"
 
@@ -352,12 +352,12 @@ msgstr "Inoltre esclude i risultati dei turni silenziosi (se presenti) e dei tur
 #: standings/templates/current_standings.html
 #, python-format
 msgid "This list is sorted by team points, then alphabetically by team name. It does not indicate each team's ranking within each bracket. %(silent_round_sentence)s"
-msgstr "Questo elenco è ordinato per punti di squadra, poi alfabeticamente per nome di squadra. Non indica la classifica di ogni squadra all'interno di ogni gruppo. %(silent_round_sentence)s"
+msgstr "Questo elenco Ã¨ ordinato per punti di squadra, poi alfabeticamente per nome di squadra. Non indica la classifica di ogni squadra all'interno di ogni gruppo. %(silent_round_sentence)s"
 
 #: standings/templates/current_standings.html
 #, python-format
 msgid "This list is sorted by number of wins, then alphabetically by team name. It does not indicate each team's ranking within each bracket. %(silent_round_sentence)s"
-msgstr "Questo elenco è ordinato per numeri di vittoria, poi alfabeticamente per nome di squadra. Non indica la classifica di ogni squadra all'interno di ogni gruppo. %(silent_round_sentence)s"
+msgstr "Questo elenco Ã¨ ordinato per numeri di vittoria, poi alfabeticamente per nome di squadra. Non indica la classifica di ogni squadra all'interno di ogni gruppo. %(silent_round_sentence)s"
 
 #: standings/templates/current_standings_no_round.html
 msgid "There aren't any rounds for which results are available."
@@ -385,7 +385,7 @@ msgstr "Queste impostazioni possono essere modificate nella sezione <a href=\"%(
 #: standings/templates/speaker_standings.html
 #, python-format
 msgid "The speaker standings precedence is empty. This means that speakers aren't ranked according to any metrics, so everyone is first equal. If this isn't what you intended, set the speaker standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>. In most tournaments, the first metric should be total or average."
-msgstr "La classifica dei debater è vuota. Ciò significa che gli speaker non sono classificati in base a nessuna metrica, quindi tutti sono tutti primi a pari merito. Se questo non è quello che volevi, imposta la classifica dei debater nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Configurazione classifiche di questo torneo</a>. Nella maggior parte dei tornei, la prima metrica dovrebbe essere totale o media."
+msgstr "La classifica dei debater Ã¨ vuota. CiÃ² significa che gli speaker non sono classificati in base a nessuna metrica, quindi tutti sono tutti primi a pari merito. Se questo non Ã¨ quello che volevi, imposta la classifica dei debater nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Configurazione classifiche di questo torneo</a>. Nella maggior parte dei tornei, la prima metrica dovrebbe essere totale o media."
 
 #: standings/templates/speaker_standings.html
 msgid "Speakers are ranked by their <strong>average score</strong>."
@@ -393,7 +393,7 @@ msgstr "Gli speaker sono classificati in base al loro <strong>punteggio medio</s
 
 #: standings/templates/speaker_standings.html
 msgid "Speakers are ranked by their <strong>total score</strong>. Any speaker who misses a single debate will be severely punished in these rankings."
-msgstr "Gli speaker sono classificati in base al loro <strong>punteggio totale</strong>. Ogni oratore che manchi un solo dibattito sarà severamente penalizzato in queste classifiche."
+msgstr "Gli speaker sono classificati in base al loro <strong>punteggio totale</strong>. Ogni oratore che manchi un solo dibattito sarÃ  severamente penalizzato in queste classifiche."
 
 #: standings/templates/speaker_standings.html
 #, python-format
@@ -407,15 +407,15 @@ msgstr "In questa classifica appaiono tutti gli speaker, non importa quanti diba
 #: standings/templates/speaker_standings.html
 #, python-format
 msgid "Enforcing the limit on the number of missed debates requires the \"number of speeches given\" metric to be included in the speaker standings calculations, so it's been automatically added. To remove this warning message, add <strong>Number of speeches given</strong> to the <strong>Speaker standings extra metrics</strong> in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>."
-msgstr "L'applicazione del limite al numero di dibattiti non svolti richiede che il \"numero di speech fatti\" sia incluso nei calcoli della classifica degli oratori, quindi è stato aggiunto automaticamente. Per rimuovere questo messaggio di avviso, aggiungi <strong>Numero di discorsi fatti</strong> alle <strong>metriche extra di classifica speaker</strong> nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Configurazione classifiche di questo torneo</a>."
+msgstr "L'applicazione del limite al numero di dibattiti non svolti richiede che il \"numero di speech fatti\" sia incluso nei calcoli della classifica degli oratori, quindi Ã¨ stato aggiunto automaticamente. Per rimuovere questo messaggio di avviso, aggiungi <strong>Numero di discorsi fatti</strong> alle <strong>metriche extra di classifica speaker</strong> nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Configurazione classifiche di questo torneo</a>."
 
 #: standings/templates/standings_diversity.html
 msgid "Diversity Overview"
-msgstr "Panoramica Diversità"
+msgstr "Panoramica DiversitÃ "
 
 #: standings/templates/standings_diversity.html
 msgid "The results data displayed here is presented without tests for statistical significance. Correlations should not be automatically considered reliable; particularly at small tournaments. A 'region' is a customisable category assigned to a set of institutions, and counted using the number of participants assigned to those institutions."
-msgstr "I dati visualizzati qui sono presentati senza analisi di rilevanza statistica. Le correlazioni non devono essere automaticamente considerate affidabili, in particolare in piccoli tornei. Una 'regione' è una categoria personalizzabile assegnata ad un insieme di istituzioni e contata utilizzando il numero di partecipanti assegnati a tali istituzioni."
+msgstr "I dati visualizzati qui sono presentati senza analisi di rilevanza statistica. Le correlazioni non devono essere automaticamente considerate affidabili, in particolare in piccoli tornei. Una 'regione' Ã¨ una categoria personalizzabile assegnata ad un insieme di istituzioni e contata utilizzando il numero di partecipanti assegnati a tali istituzioni."
 
 #: standings/templates/standings_diversity.html
 msgid "Non-cis male identifying"
@@ -448,7 +448,7 @@ msgstr "Ancora nessun dato"
 
 #: standings/templates/standings_index.html
 msgid "Bottom Speaks"
-msgstr "Punteggi più bassi"
+msgstr "Punteggi piÃ¹ bassi"
 
 #: standings/templates/standings_index.html
 msgid "Largest Margins"
@@ -461,7 +461,7 @@ msgstr "%(team)s vs %(opp)s in %(round)s"
 
 #: standings/templates/standings_index.html
 msgid "Closest Margins"
-msgstr "Risultati più vicini"
+msgstr "Risultati piÃ¹ vicini"
 
 #: standings/templates/standings_index.html
 msgid "Top Team Scores"
@@ -478,7 +478,7 @@ msgstr "Punteggi squadre peggiori"
 
 #: standings/templates/standings_index.html
 msgid "Most/Least Popular Motions"
-msgstr "Mozioni Più/Meno Popolari"
+msgstr "Mozioni PiÃ¹/Meno Popolari"
 
 #: standings/templates/standings_index.html
 msgid "Average Speaks"
@@ -534,17 +534,17 @@ msgstr "Per Turno"
 
 #: standings/templates/standings_menu.html
 msgid "Diversity"
-msgstr "Diversità"
+msgstr "DiversitÃ "
 
 #: standings/templates/team_standings.html
 #, python-format
 msgid "The team standings precedence is empty. This means that teams aren't ranked according to any metrics, so everyone is first equal. If this isn't what you intended, set the team standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>. In most tournaments, the first metric should be points or wins."
-msgstr "La classifica delle squadre è vuota. Ciò significa che le squadre non sono classificate in base a nessuna metrica, quindi tutti sono tutti primi a pari merito. Se questo non è quello che volevi, imposta la classifica delle squadre nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Configurazione classifiche di questo torneo</a>. Nella maggior parte dei tornei, la prima metrica dovrebbe essere punti o vittorie."
+msgstr "La classifica delle squadre Ã¨ vuota. CiÃ² significa che le squadre non sono classificate in base a nessuna metrica, quindi tutti sono tutti primi a pari merito. Se questo non Ã¨ quello che volevi, imposta la classifica delle squadre nella sezione <a href=\"%(standings_config_url)s\" class=\"alert-link\">Configurazione classifiche di questo torneo</a>. Nella maggior parte dei tornei, la prima metrica dovrebbe essere punti o vittorie."
 
 #: standings/views.py
 #, python-format
 msgid "<p>There was an error generating the standings: <em>%(message)s</em></p>"
-msgstr "<p>Si è verificato un errore durante la generazione della classifica: <em>%(message)s</em></p>"
+msgstr "<p>Si Ã¨ verificato un errore durante la generazione della classifica: <em>%(message)s</em></p>"
 
 #: standings/views.py
 #, python-format
@@ -553,7 +553,7 @@ msgstr "<p>Potrebbe essere necessario ricontrollare la <a href=\"%(standings_opt
 
 #: standings/views.py
 msgid "<p>The tab director will need to resolve this issue.</p>"
-msgstr "<p>Il tab master dovrà risolvere questo problema.</p>"
+msgstr "<p>Il tab master dovrÃ  risolvere questo problema.</p>"
 
 #: standings/views.py
 #, python-format
@@ -568,7 +568,7 @@ msgstr "%(title)s (solo %(limit)d in alto)"
 
 #: standings/views.py
 msgid "The tab can't be displayed because all rounds so far in this tournament are silent."
-msgstr "La scheda non può essere visualizzata perché tutti gli attuali turni in questo torneo sono silenziosi."
+msgstr "La scheda non puÃ² essere visualizzata perchÃ© tutti gli attuali turni in questo torneo sono silenziosi."
 
 #: standings/views.py
 msgid "Speaker Standings"
@@ -631,6 +631,7 @@ msgid "Feedback Overview"
 msgstr "Panoramica Feedback"
 
 #: standings/views.py
-msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
-msgstr "Il punteggio di un giudice è determinato da un mix personalizzabile tra punteggio base e valutazioni di feedback. L'attuale mix è specificato di seguito come 'componenti del punteggio'. Le valutazioni di feedback sono determinate dalla media dei risultati di tutte le singole parti del feedback in tutti i round. <a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Approfondisci</a>."
+msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
+msgstr "Il punteggio di un giudice Ã¨ determinato da un mix personalizzabile tra punteggio base e valutazioni di feedback. L'attuale mix Ã¨ specificato di seguito come 'componenti del punteggio'. Le valutazioni di feedback sono determinate dalla media dei risultati di tutte le singole parti del feedback in tutti i round. <a href='https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Approfondisci</a>."
+
 

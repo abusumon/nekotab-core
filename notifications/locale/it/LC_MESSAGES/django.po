@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: it\n"
-"X-Crowdin-File: /develop/tabbycat/notifications/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/notifications/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 938\n"
 
@@ -215,20 +215,20 @@ msgstr "stato mail"
 #: notifications/templates/email_participants.html
 #, python-format
 msgid "You have not specified a reply-to address. This means that participants may not reply to the message if they have questions. Please set one in the <a href=\"%(notifications_options_url)s\">Notifications section of the preferences</a>."
-msgstr "Non hai specificato un indirizzo di risposta. Ciò significa che i partecipanti non potranno rispondere al messaggio se hanno domande. Si prega di impostarne uno nella sezione <a href=\"%(notifications_options_url)s\">Preferenze di notifiche</a>."
+msgstr "Non hai specificato un indirizzo di risposta. CiÃ² significa che i partecipanti non potranno rispondere al messaggio se hanno domande. Si prega di impostarne uno nella sezione <a href=\"%(notifications_options_url)s\">Preferenze di notifiche</a>."
 
 #: notifications/templates/email_participants.html
 #, python-format
 msgid "The webhook URL for use in SendGrid is <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. Please point the HTTP POST URL in <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a> to that."
-msgstr "L'URL di webhook da usare in SendGrid è <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. Si prega di indirizzare l'URL HTTP POST in <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a>."
+msgstr "L'URL di webhook da usare in SendGrid Ã¨ <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. Si prega di indirizzare l'URL HTTP POST in <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a>."
 
 #: notifications/templates/email_participants.html
 msgid "Send Message(s)"
 msgstr "Invia messaggi(o)"
 
 #: notifications/templates/email_statuses.html
-msgid "Emails can be sent by Tabbycat for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
-msgstr "Le email possono essere inviate da Tabbycat per molti motivi. Le email vengono inviate quando vengono abilitate le apposite preferenze (es. abilitando la ricezione del ballot) oppure attraverso azioni disponibili su pagine specifiche (es. la pagina di visualizzazione sorteggio per gli abbinamenti; oppure la pagina dei partecipanti per la registrazione del team). Questa pagina mostra lo stato delle email precedentemente inviate."
+msgid "Emails can be sent by NekoTab for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
+msgstr "Le email possono essere inviate da NekoTab per molti motivi. Le email vengono inviate quando vengono abilitate le apposite preferenze (es. abilitando la ricezione del ballot) oppure attraverso azioni disponibili su pagine specifiche (es. la pagina di visualizzazione sorteggio per gli abbinamenti; oppure la pagina dei partecipanti per la registrazione del team). Questa pagina mostra lo stato delle email precedentemente inviate."
 
 #: notifications/templates/notifications_nav.html notifications/views.py
 msgid "Email Statuses"
@@ -250,12 +250,12 @@ msgstr "Invia email di prova"
 
 #: notifications/templates/test_email.html
 msgid "You can use this form to send a test email, to check that your email backend settings are working, before you try to send email notifications to participants."
-msgstr "È possibile utilizzare questo modulo per inviare una e-mail di prova, per controllare che le impostazioni del backend e-mail funzionino, prima di provare a inviare notifiche via mail ai partecipanti."
+msgstr "Ãˆ possibile utilizzare questo modulo per inviare una e-mail di prova, per controllare che le impostazioni del backend e-mail funzionino, prima di provare a inviare notifiche via mail ai partecipanti."
 
 #: notifications/templates/test_email.html
 #, python-format
 msgid "The email will be sent from: <strong>%(default_from_email)s</strong>. If this doesn't look right, change the <code>DEFAULT_FROM_EMAIL</code> config var in Heroku (or environment variable)."
-msgstr "L'email verrà inviata da: <strong>%(default_from_email)s</strong>. Se questo non sembra corretto, cambiare la variabile <code>DEFAULT_FROM_EMAIL</code> in Heroku (o la variabile d'ambiente)."
+msgstr "L'email verrÃ  inviata da: <strong>%(default_from_email)s</strong>. Se questo non sembra corretto, cambiare la variabile <code>DEFAULT_FROM_EMAIL</code> in Heroku (o la variabile d'ambiente)."
 
 #: notifications/templates/test_email.html
 msgid "Go back to the site home page"
@@ -325,17 +325,17 @@ msgstr "Il server di posta elettronica (SMTP) ha restituito un errore inviando l
 
 #: notifications/views.py
 msgid "Hint: If the error is about sender identity verification in SendGrid, and you've already completed the steps in SendGrid, it may be that you need to update the DEFAULT_FROM_EMAIL config var in Heroku to match your verified sender identity."
-msgstr "Suggerimento: se l'errore riguarda la verifica dell'identità del mittente in SendGrid, e hai già completato la procedura in SendGrid, potrebbe essere necessario aggiornare la variabile di config DEFAULT_FROM_EMAIL in Heroku per corrispondere all'identità verificata del mittente."
+msgstr "Suggerimento: se l'errore riguarda la verifica dell'identitÃ  del mittente in SendGrid, e hai giÃ  completato la procedura in SendGrid, potrebbe essere necessario aggiornare la variabile di config DEFAULT_FROM_EMAIL in Heroku per corrispondere all'identitÃ  verificata del mittente."
 
 #: notifications/views.py
 #, python-format
 msgid "There was an error sending the test email: %(error)s"
-msgstr "Si è verificato un errore durante l'invio dell'email di prova: %(error)s"
+msgstr "Si Ã¨ verificato un errore durante l'invio dell'email di prova: %(error)s"
 
 #: notifications/views.py
 #, python-format
 msgid "A test email has been sent to %(recipient)s."
-msgstr "Un'email di prova è stata inviata a %(recipient)s."
+msgstr "Un'email di prova Ã¨ stata inviata a %(recipient)s."
 
 #: notifications/views.py
 msgid "N/A"
@@ -383,12 +383,12 @@ msgstr "Email Partecipanti"
 #, python-format
 msgid "%(email_count)s email has been queued for sending."
 msgid_plural "%(email_count)s emails have been queued for sending."
-msgstr[0] "%(email_count)s email è stata accodata per l'invio."
+msgstr[0] "%(email_count)s email Ã¨ stata accodata per l'invio."
 msgstr[1] "%(email_count)s email sono state accodate per l'invio."
 
 #: notifications/views.py
-msgid "No emails were sent — likely because no recipients were selected."
-msgstr "Nessuna email è stata inviata, probabilmente perché non è stato selezionato nessun destinatario."
+msgid "No emails were sent â€” likely because no recipients were selected."
+msgstr "Nessuna email Ã¨ stata inviata, probabilmente perchÃ© non Ã¨ stato selezionato nessun destinatario."
 
 #: notifications/views.py
 msgid "Send Email"
@@ -417,4 +417,5 @@ msgstr "Speaker"
 #: notifications/views.py
 msgid "Adjudicators"
 msgstr "GiudicI"
+
 

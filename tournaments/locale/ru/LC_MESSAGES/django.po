@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -12,48 +12,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/tournaments/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/tournaments/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 952\n"
 
 #: tournaments/apps.py
 msgid "Tournaments"
-msgstr "Турниры"
+msgstr "Ð¢ÑƒÑ€Ð½Ð¸Ñ€Ñ‹"
 
 #: tournaments/forms.py
 msgid "Number of preliminary rounds"
-msgstr "Количество отборочных раундов"
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð²"
 
 #: tournaments/forms.py
 msgid "Number of teams in the open break"
-msgstr "Количество команд в основном брейке"
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð² Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¼ Ð±Ñ€ÐµÐ¹ÐºÐµ"
 
 #: tournaments/forms.py
 msgid "Leave blank if there are no break rounds."
-msgstr "Оставьте пустым если нет брейковых раундов."
+msgstr "ÐžÑÑ‚Ð°Ð²ÑŒÑ‚Ðµ Ð¿ÑƒÑÑ‚Ñ‹Ð¼ ÐµÑÐ»Ð¸ Ð½ÐµÑ‚ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð²."
 
 #: tournaments/forms.py
 msgid "Did you agree with their decision?"
-msgstr "Вы согласны с их решением?"
+msgstr "Ð’Ñ‹ ÑÐ¾Ð³Ð»Ð°ÑÐ½Ñ‹ Ñ Ð¸Ñ… Ñ€ÐµÑˆÐµÐ½Ð¸ÐµÐ¼?"
 
 #: tournaments/forms.py
 msgid "Agree?"
-msgstr "Согласны?"
+msgstr "Ð¡Ð¾Ð³Ð»Ð°ÑÐ½Ñ‹?"
 
 #: tournaments/forms.py
 msgid "Comments"
-msgstr "Комментарии"
+msgstr "ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸"
 
 #. Translators: This is the name given to the 'Open Break'.
 #: tournaments/forms.py
 msgid "Open"
-msgstr "Открытый"
+msgstr "ÐžÑ‚ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¹"
 
 #: tournaments/forms.py
 msgid "Format Configuration"
-msgstr "Конфигурация формата"
+msgstr "ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ð°"
 
 #: tournaments/forms.py
 msgid "Apply a standard set of settings to match a common debate format. These can be changed afterwards and should be checked for your needs."
@@ -61,11 +61,11 @@ msgstr ""
 
 #: tournaments/forms.py
 msgid "Public Configuration"
-msgstr "Настройки публичности"
+msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ÑÑ‚Ð¸"
 
 #: tournaments/forms.py
 msgid "Show non-sensitive information on the public-facing side of this site, like draws (once released) and the motions of previous rounds"
-msgstr "Показывать не-персонализированную информацию на публичной странице этого сайта, такую как сетки (по мере опубликования) и темы предыдущих раундов"
+msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ðµ-Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½ÑƒÑŽ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð½Ð° Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ ÑÑ‚Ð¾Ð³Ð¾ ÑÐ°Ð¹Ñ‚Ð°, Ñ‚Ð°ÐºÑƒÑŽ ÐºÐ°Ðº ÑÐµÑ‚ÐºÐ¸ (Ð¿Ð¾ Ð¼ÐµÑ€Ðµ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð¸Ñ) Ð¸ Ñ‚ÐµÐ¼Ñ‹ Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰Ð¸Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð²"
 
 #: tournaments/forms.py
 msgid "Participant Data Entry"
@@ -81,29 +81,29 @@ msgstr ""
 
 #: tournaments/forms.py
 msgid "Current preliminary round"
-msgstr "Нынешний отборочный раунд"
+msgstr "ÐÑ‹Ð½ÐµÑˆÐ½Ð¸Ð¹ Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´"
 
 #: tournaments/forms.py
 msgid "All preliminary rounds have been completed"
-msgstr "Все отборочные раунды завершены"
+msgstr "Ð’ÑÐµ Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ñ‹"
 
 #: tournaments/forms.py
 #, python-format
 msgid "Current elimination round in <strong>%(category)s</strong> <em>(only if all preliminary rounds have been completed)</em>"
-msgstr "Текущий брейковый раунд в <strong>%(category)s</strong><em> (только отборочные раунды были завершены)</em>"
+msgstr "Ð¢ÐµÐºÑƒÑ‰Ð¸Ð¹ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´ Ð² <strong>%(category)s</strong><em> (Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð±Ñ‹Ð»Ð¸ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ñ‹)</em>"
 
 #: tournaments/forms.py
 #, python-format
 msgid "All elimination rounds in %(category)s have been completed"
-msgstr "Все брейковые раунды в %(category)s завершены"
+msgstr "Ð’ÑÐµ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð² %(category)s Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ñ‹"
 
 #: tournaments/forms.py
 msgid "If the current round is a preliminary round, this field must be blank."
-msgstr "Если текущий раунд является отборочным, то это поле должно быть пустым."
+msgstr "Ð•ÑÐ»Ð¸ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ð¼, Ñ‚Ð¾ ÑÑ‚Ð¾ Ð¿Ð¾Ð»Ðµ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ð¿ÑƒÑÑ‚Ñ‹Ð¼."
 
 #: tournaments/forms.py
 msgid "If all preliminary rounds have been completed, this field is required."
-msgstr "Если все отборочные раунды завершены, то это поле необходимо."
+msgstr "Ð•ÑÐ»Ð¸ Ð²ÑÐµ Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ñ‹, Ñ‚Ð¾ ÑÑ‚Ð¾ Ð¿Ð¾Ð»Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾."
 
 #: tournaments/forms.py
 #, python-format
@@ -113,97 +113,97 @@ msgstr ""
 #: tournaments/mixins.py
 #, python-format
 msgid "You've been redirected to this page because tournament %(tournament)s has no rounds. Please create some before returning to the admin site."
-msgstr "Вы были перенаправлены на эту страницу, потому что турнир %(tournament)s не имеет раундов. Пожалуйста, создайте раунды перед возвращением на сайт администратора."
+msgstr "Ð’Ñ‹ Ð±Ñ‹Ð»Ð¸ Ð¿ÐµÑ€ÐµÐ½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð½Ð° ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ, Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ %(tournament)s Ð½Ðµ Ð¸Ð¼ÐµÐµÑ‚ Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð². ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ¾Ð·Ð´Ð°Ð¹Ñ‚Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð¿ÐµÑ€ÐµÐ´ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð¸ÐµÐ¼ Ð½Ð° ÑÐ°Ð¹Ñ‚ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð°."
 
 #: tournaments/mixins.py
 #, python-format
 msgid "There's a problem with the data for the tournament %(tournament)s. Please contact a tab director and ask them to investigate."
-msgstr "Возникла проблема с данными для турнира %(tournament)s. Пожалуйста, свяжитесь с тэбмастером и попросите его провести расследование."
+msgstr "Ð’Ð¾Ð·Ð½Ð¸ÐºÐ»Ð° Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ð° Ñ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ð´Ð»Ñ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° %(tournament)s. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼ Ð¸ Ð¿Ð¾Ð¿Ñ€Ð¾ÑÐ¸Ñ‚Ðµ ÐµÐ³Ð¾ Ð¿Ñ€Ð¾Ð²ÐµÑÑ‚Ð¸ Ñ€Ð°ÑÑÐ»ÐµÐ´Ð¾Ð²Ð°Ð½Ð¸Ðµ."
 
 #: tournaments/mixins.py
 msgid "You've been redirected to this page because of a problem with how teams are assigned to sides in a debate."
-msgstr "Вы были перенаправлены на эту страницу из-за проблемы с распределением команд по сторонам дебатов."
+msgstr "Ð’Ñ‹ Ð±Ñ‹Ð»Ð¸ Ð¿ÐµÑ€ÐµÐ½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð½Ð° ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð¸Ð·-Ð·Ð° Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ñ‹ Ñ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸ÐµÐ¼ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¿Ð¾ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð°Ð¼ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²."
 
 #: tournaments/mixins.py
 msgid "There's a problem with how teams are assigned to sides in a debate. The tab director will need to resolve this issue."
-msgstr "Существует проблема с тем, как команды назначаются на стороны в дебатах. Тэбмастер должен будет решить эту проблему."
+msgstr "Ð¡ÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ð° Ñ Ñ‚ÐµÐ¼, ÐºÐ°Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð½Ð°Ð·Ð½Ð°Ñ‡Ð°ÑŽÑ‚ÑÑ Ð½Ð° ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Ð² Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ…. Ð¢ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±ÑƒÐ´ÐµÑ‚ Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ ÑÑ‚Ñƒ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ñƒ."
 
 #: tournaments/mixins.py tournaments/templates/round_complete_check.html
 #, python-format
 msgid "for %(round)s"
-msgstr "для %(round)s"
+msgstr "Ð´Ð»Ñ %(round)s"
 
 #: tournaments/mixins.py
 msgid "Return to Draw"
-msgstr "Вернуться к сетке"
+msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº ÑÐµÑ‚ÐºÐµ"
 
 #: tournaments/models.py
-msgid "You can't use this as a tournament slug, because it's reserved for a Tabbycat system URL. Please try another one."
-msgstr "Вы не можете использовать это как краткий адрес турнира, потому что он зарезервирован для URL системы Tabbycat. Пожалуйста, попробуйте другой."
+msgid "You can't use this as a tournament slug, because it's reserved for a NekoTab system URL. Please try another one."
+msgstr "Ð’Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ð¾ ÐºÐ°Ðº ÐºÑ€Ð°Ñ‚ÐºÐ¸Ð¹ Ð°Ð´Ñ€ÐµÑ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°, Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ Ð¾Ð½ Ð·Ð°Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð´Ð»Ñ URL ÑÐ¸ÑÑ‚ÐµÐ¼Ñ‹ NekoTab. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð¿Ð¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ð´Ñ€ÑƒÐ³Ð¾Ð¹."
 
 #: tournaments/models.py
 msgid "name"
-msgstr "название"
+msgstr "Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: tournaments/models.py
 msgid "The full name, e.g. \"Australasian Intervarsity Debating Championships 2016\""
-msgstr "Полное название, например \"Австралоазиатский межвузовский дебатный чемпионат 2016\""
+msgstr "ÐŸÐ¾Ð»Ð½Ð¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ \"ÐÐ²ÑÑ‚Ñ€Ð°Ð»Ð¾Ð°Ð·Ð¸Ð°Ñ‚ÑÐºÐ¸Ð¹ Ð¼ÐµÐ¶Ð²ÑƒÐ·Ð¾Ð²ÑÐºÐ¸Ð¹ Ð´ÐµÐ±Ð°Ñ‚Ð½Ñ‹Ð¹ Ñ‡ÐµÐ¼Ð¿Ð¸Ð¾Ð½Ð°Ñ‚ 2016\""
 
 #: tournaments/models.py
 msgid "short name"
-msgstr "краткое название"
+msgstr "ÐºÑ€Ð°Ñ‚ÐºÐ¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: tournaments/models.py
 msgid "The name used in the menu, e.g. \"Australs 2016\""
-msgstr "Название, используемое в меню, например \"Australs 2016\""
+msgstr "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ð¾Ðµ Ð² Ð¼ÐµÐ½ÑŽ, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ \"Australs 2016\""
 
 #: tournaments/models.py
 msgid "sequence number"
-msgstr "порядковый номер"
+msgstr "Ð¿Ð¾Ñ€ÑÐ´ÐºÐ¾Ð²Ñ‹Ð¹ Ð½Ð¾Ð¼ÐµÑ€"
 
 #: tournaments/models.py
 msgid "A number that determines the relative order in which tournaments are displayed on the homepage."
-msgstr "Номер, определяющий относительный порядок отображения турниров на главной странице."
+msgstr "ÐÐ¾Ð¼ÐµÑ€, Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÑÑŽÑ‰Ð¸Ð¹ Ð¾Ñ‚Ð½Ð¾ÑÐ¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð¿Ð¾Ñ€ÑÐ´Ð¾Ðº Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð¾Ð² Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ."
 
 #: tournaments/models.py
 msgid "slug"
-msgstr "краткое название"
+msgstr "ÐºÑ€Ð°Ñ‚ÐºÐ¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: tournaments/models.py
 msgid "The sub-URL of the tournament, cannot have spaces, e.g. \"australs2016\""
-msgstr "Суб-URL турнира, не может иметь пробелов, например \"australs2016\""
+msgstr "Ð¡ÑƒÐ±-URL Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°, Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¸Ð¼ÐµÑ‚ÑŒ Ð¿Ñ€Ð¾Ð±ÐµÐ»Ð¾Ð², Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ \"australs2016\""
 
 #: tournaments/models.py
 msgid "active"
-msgstr "активный"
+msgstr "Ð°ÐºÑ‚Ð¸Ð²Ð½Ñ‹Ð¹"
 
 #: tournaments/models.py
 msgid "tournament"
-msgstr "турнир"
+msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: tournaments/models.py
 msgid "tournaments"
-msgstr "турниры"
+msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñ‹"
 
 #: tournaments/models.py
 msgid "Random"
-msgstr "Случайный"
+msgstr "Ð¡Ð»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¹"
 
 #: tournaments/models.py
 msgid "Manual"
-msgstr "Ручной"
+msgstr "Ð ÑƒÑ‡Ð½Ð¾Ð¹"
 
 #: tournaments/models.py
 msgid "Round-robin"
-msgstr "Раунд-Робин"
+msgstr "Ð Ð°ÑƒÐ½Ð´-Ð Ð¾Ð±Ð¸Ð½"
 
 #: tournaments/models.py
 msgid "Power-paired"
-msgstr "Сочетание по силе команд"
+msgstr "Ð¡Ð¾Ñ‡ÐµÑ‚Ð°Ð½Ð¸Ðµ Ð¿Ð¾ ÑÐ¸Ð»Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: tournaments/models.py
 msgid "Elimination"
-msgstr "Брейковый"
+msgstr "Ð‘Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¹"
 
 #: tournaments/models.py
 msgid "Seeded"
@@ -211,109 +211,109 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "Preliminary"
-msgstr "Отборочные"
+msgstr "ÐžÑ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ðµ"
 
 #: tournaments/models.py
 msgid "None"
-msgstr "Нет"
+msgstr "ÐÐµÑ‚"
 
 #: tournaments/models.py
 msgid "Draft"
-msgstr "Черновик"
+msgstr "Ð§ÐµÑ€Ð½Ð¾Ð²Ð¸Ðº"
 
 #: tournaments/models.py
 msgid "Confirmed"
-msgstr "Подтвержденные"
+msgstr "ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ðµ"
 
 #: tournaments/models.py
 msgid "Released"
-msgstr "Выпущено"
+msgstr "Ð’Ñ‹Ð¿ÑƒÑ‰ÐµÐ½Ð¾"
 
 #: tournaments/models.py
 msgid "A number that determines the order of the round, should count consecutively from 1 for the first round"
-msgstr "Число, определяющее номер раунда, должно рассчитывать последовательно от 1 для первого раунда"
+msgstr "Ð§Ð¸ÑÐ»Ð¾, Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÑÑŽÑ‰ÐµÐµ Ð½Ð¾Ð¼ÐµÑ€ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ñ€Ð°ÑÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð¾Ñ‚ 1 Ð´Ð»Ñ Ð¿ÐµÑ€Ð²Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°"
 
 #: tournaments/models.py
 msgid "completed"
-msgstr "завершён"
+msgstr "Ð·Ð°Ð²ÐµÑ€ÑˆÑ‘Ð½"
 
 #: tournaments/models.py
 msgid "True if the round is over, which normally means all results have been entered and confirmed"
-msgstr "Верно есть раунд завершен, что обычно означает, что все результаты были введены и подтверждены"
+msgstr "Ð’ÐµÑ€Ð½Ð¾ ÐµÑÑ‚ÑŒ Ñ€Ð°ÑƒÐ½Ð´ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½, Ñ‡Ñ‚Ð¾ Ð¾Ð±Ñ‹Ñ‡Ð½Ð¾ Ð¾Ð·Ð½Ð°Ñ‡Ð°ÐµÑ‚, Ñ‡Ñ‚Ð¾ Ð²ÑÐµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð±Ñ‹Ð»Ð¸ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð¸ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹"
 
 #: tournaments/models.py
 msgid "e.g. \"Round 1\""
-msgstr "например, \"Раунд 1\""
+msgstr "Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, \"Ð Ð°ÑƒÐ½Ð´ 1\""
 
 #: tournaments/models.py
 msgid "abbreviation"
-msgstr "аббревиатура"
+msgstr "Ð°Ð±Ð±Ñ€ÐµÐ²Ð¸Ð°Ñ‚ÑƒÑ€Ð°"
 
 #: tournaments/models.py
 msgid "e.g. \"R1\""
-msgstr "например, \"R1\""
+msgstr "Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, \"R1\""
 
 #: tournaments/models.py
 msgid "stage"
-msgstr "стадия"
+msgstr "ÑÑ‚Ð°Ð´Ð¸Ñ"
 
 #: tournaments/models.py
 msgid "Preliminary = inrounds, elimination = outrounds"
-msgstr "Отборочные=раунды до брейка, брейковые=раунды плей/офф"
+msgstr "ÐžÑ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ðµ=Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð´Ð¾ Ð±Ñ€ÐµÐ¹ÐºÐ°, Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ðµ=Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð¿Ð»ÐµÐ¹/Ð¾Ñ„Ñ„"
 
 #: tournaments/models.py
 msgid "draw type"
-msgstr "тип сетки"
+msgstr "Ñ‚Ð¸Ð¿ ÑÐµÑ‚ÐºÐ¸"
 
 #: tournaments/models.py
 msgid "Which draw method to use"
-msgstr "Какой метод составления сетки использовать"
+msgstr "ÐšÐ°ÐºÐ¾Ð¹ Ð¼ÐµÑ‚Ð¾Ð´ ÑÐ¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ñ ÑÐµÑ‚ÐºÐ¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ"
 
 #: tournaments/models.py
 msgid "break category"
-msgstr "категория брейка"
+msgstr "ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ Ð±Ñ€ÐµÐ¹ÐºÐ°"
 
 #: tournaments/models.py
 msgid "If elimination round, which break category"
-msgstr "Если это брейковый раунд, то в какой категории"
+msgstr "Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´, Ñ‚Ð¾ Ð² ÐºÐ°ÐºÐ¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸"
 
 #: tournaments/models.py
 msgid "draw status"
-msgstr "статус сетки"
+msgstr "ÑÑ‚Ð°Ñ‚ÑƒÑ ÑÐµÑ‚ÐºÐ¸"
 
 #: tournaments/models.py
 msgid "The status of this round's draw"
-msgstr "Статус сетки на этот раунд"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ ÑÐµÑ‚ÐºÐ¸ Ð½Ð° ÑÑ‚Ð¾Ñ‚ Ñ€Ð°ÑƒÐ½Ð´"
 
 #: tournaments/models.py
 msgid "feedback weight"
-msgstr "вес обратной связи"
+msgstr "Ð²ÐµÑ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
 
 #: tournaments/models.py
 #, no-python-format
 msgid "The extent to which each adjudicator's overall score depends on feedback vs their base score. At 0, it is 100% drawn from their base score, at 1 it is 100% drawn from feedback."
-msgstr "Насколько рейтинг судьи зависит от обратной связи и исходного рейтинга. При значении \"0\" рейтинг судьи на 100% соответствует исходному рейтингу, при значении \"1\" он на 100% соответствует среднему значению обратной связи."
+msgstr "ÐÐ°ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ ÑÑƒÐ´ÑŒÐ¸ Ð·Ð°Ð²Ð¸ÑÐ¸Ñ‚ Ð¾Ñ‚ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð¸ Ð¸ÑÑ…Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³Ð°. ÐŸÑ€Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¸ \"0\" Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ ÑÑƒÐ´ÑŒÐ¸ Ð½Ð° 100% ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ð¸ÑÑ…Ð¾Ð´Ð½Ð¾Ð¼Ñƒ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³Ñƒ, Ð¿Ñ€Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¸ \"1\" Ð¾Ð½ Ð½Ð° 100% ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ ÑÑ€ÐµÐ´Ð½ÐµÐ¼Ñƒ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÑŽ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸."
 
 #. Translators: A silent round is a round for which results are not disclosed once the round is over.
 #: tournaments/models.py
 msgid "silent"
-msgstr "закрытый"
+msgstr "Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¹"
 
 #: tournaments/models.py
 msgid "If marked silent, information about this round (such as its results) will not be shown publicly."
-msgstr "Если раунд отмечен как закрытый, вся информация о нем (например, его результаты) не будет показана публично."
+msgstr "Ð•ÑÐ»Ð¸ Ñ€Ð°ÑƒÐ½Ð´ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½ ÐºÐ°Ðº Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¹, Ð²ÑÑ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð½ÐµÐ¼ (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, ÐµÐ³Ð¾ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹) Ð½Ðµ Ð±ÑƒÐ´ÐµÑ‚ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ð° Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾."
 
 #: tournaments/models.py
 msgid "motions released"
-msgstr "темы опубликованы"
+msgstr "Ñ‚ÐµÐ¼Ñ‹ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ñ‹"
 
 #: tournaments/models.py
 msgid "Whether motions will appear on the public website, assuming that feature is turned on"
-msgstr "Будет ли появляться темы на сайте публично, если включить эту функцию"
+msgstr "Ð‘ÑƒÐ´ÐµÑ‚ Ð»Ð¸ Ð¿Ð¾ÑÐ²Ð»ÑÑ‚ÑŒÑÑ Ñ‚ÐµÐ¼Ñ‹ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾, ÐµÑÐ»Ð¸ Ð²ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÑ‚Ñƒ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑŽ"
 
 #: tournaments/models.py
 msgid "starts at"
-msgstr "начинается в"
+msgstr "Ð½Ð°Ñ‡Ð¸Ð½Ð°ÐµÑ‚ÑÑ Ð²"
 
 #: tournaments/models.py
 msgid "weight"
@@ -325,11 +325,11 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "round"
-msgstr "раунд"
+msgstr "Ñ€Ð°ÑƒÐ½Ð´"
 
 #: tournaments/models.py
 msgid "rounds"
-msgstr "раунды"
+msgstr "Ñ€Ð°ÑƒÐ½Ð´Ñ‹"
 
 #: tournaments/models.py
 msgid "The \"Elimination\" draw type is only for elimination rounds, where it is mandatory."
@@ -381,7 +381,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "Other"
-msgstr "Другой"
+msgstr "Ð”Ñ€ÑƒÐ³Ð¾Ð¹"
 
 #: tournaments/models.py
 msgid "The tournament the event takes place in"
@@ -433,132 +433,132 @@ msgstr ""
 
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Dashboard"
-msgstr "Панель мониторинга"
+msgstr "ÐŸÐ°Ð½ÐµÐ»ÑŒ Ð¼Ð¾Ð½Ð¸Ñ‚Ð¾Ñ€Ð¸Ð½Ð³Ð°"
 
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Overview"
-msgstr "Обзор"
+msgstr "ÐžÐ±Ð·Ð¾Ñ€"
 
 #: tournaments/templates/assistant_tournament_index.html
 #, python-format
 msgid "current round: %(round)s, status: %(status)s"
-msgstr "текущий раунд:%(round)s, статус: %(status)s"
+msgstr "Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´:%(round)s, ÑÑ‚Ð°Ñ‚ÑƒÑ: %(status)s"
 
 #: tournaments/templates/blank_site_start.html
-msgid "Welcome to Tabbycat!"
-msgstr "Добро пожаловать в Tabbycat!"
+msgid "Welcome to NekoTab!"
+msgstr "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ Ð² NekoTab!"
 
 #: tournaments/templates/blank_site_start.html
 msgid "To get started, you'll need to create the first user account. This account is a \"superuser\" account: it will be able to edit anything on the site. Therefore, you should use a strong password."
-msgstr "Для начала вам нужно создать первую учетную запись. Эта учетная запись \"суперпользователь\": под ней вы сможете редактировать что-либо на сайте. Поэтому вы должны использовать сложный пароль."
+msgstr "Ð”Ð»Ñ Ð½Ð°Ñ‡Ð°Ð»Ð° Ð²Ð°Ð¼ Ð½ÑƒÐ¶Ð½Ð¾ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ð¿ÐµÑ€Ð²ÑƒÑŽ ÑƒÑ‡ÐµÑ‚Ð½ÑƒÑŽ Ð·Ð°Ð¿Ð¸ÑÑŒ. Ð­Ñ‚Ð° ÑƒÑ‡ÐµÑ‚Ð½Ð°Ñ Ð·Ð°Ð¿Ð¸ÑÑŒ \"ÑÑƒÐ¿ÐµÑ€Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ\": Ð¿Ð¾Ð´ Ð½ÐµÐ¹ Ð²Ñ‹ ÑÐ¼Ð¾Ð¶ÐµÑ‚Ðµ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ‡Ñ‚Ð¾-Ð»Ð¸Ð±Ð¾ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ. ÐŸÐ¾ÑÑ‚Ð¾Ð¼Ñƒ Ð²Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÑÐ»Ð¾Ð¶Ð½Ñ‹Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ."
 
 #: tournaments/templates/blank_site_start.html
 msgid "You can only create this account once, but if you like, you can change the username and password after it's created, or add new superusers afterwards."
-msgstr "Вы можете создать этот аккаунт только однажды, но при желании вы можете изменить логин и пароль после создания, или добавить новых супер-пользователей позднее."
+msgstr "Ð’Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð´Ð½Ð°Ð¶Ð´Ñ‹, Ð½Ð¾ Ð¿Ñ€Ð¸ Ð¶ÐµÐ»Ð°Ð½Ð¸Ð¸ Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð»Ð¾Ð³Ð¸Ð½ Ð¸ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð¿Ð¾ÑÐ»Ðµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ, Ð¸Ð»Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ñ… ÑÑƒÐ¿ÐµÑ€-Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÐµÐ¹ Ð¿Ð¾Ð·Ð´Ð½ÐµÐµ."
 
 #: tournaments/templates/blank_site_start.html
 msgid "The email address is used for password resets. You don't have to provide one, but if you don't, you won't be able to reset your password if you forget it."
-msgstr "Email-адрес используется для восстановления пароля. Вы можете не предоставлять его, но если не предоставите, вы не сможете восстановить пароль если вы его забыли."
+msgstr "Email-Ð°Ð´Ñ€ÐµÑ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð´Ð»Ñ Ð²Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ñ Ð¿Ð°Ñ€Ð¾Ð»Ñ. Ð’Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð½Ðµ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÑÑ‚ÑŒ ÐµÐ³Ð¾, Ð½Ð¾ ÐµÑÐ»Ð¸ Ð½Ðµ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð½Ðµ ÑÐ¼Ð¾Ð¶ÐµÑ‚Ðµ Ð²Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ ÐµÑÐ»Ð¸ Ð²Ñ‹ ÐµÐ³Ð¾ Ð·Ð°Ð±Ñ‹Ð»Ð¸."
 
 #: tournaments/templates/blank_site_start.html
 msgid "Create Account"
-msgstr "Создать учетную запись"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ ÑƒÑ‡ÐµÑ‚Ð½ÑƒÑŽ Ð·Ð°Ð¿Ð¸ÑÑŒ"
 
 #: tournaments/templates/configure_tournament.html
 #, python-format
 msgid "Configure Tournament %(tournament)s"
-msgstr "Настройка турнира %(tournament)s"
+msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ° Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° %(tournament)s"
 
 #: tournaments/templates/configure_tournament.html
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat"
-msgstr "Tabbycat"
+msgid "NekoTab"
+msgstr "NekoTab"
 
 #: tournaments/templates/configure_tournament.html
 msgid "To finish creating your tournament select a basic configuration options. Note that these can always be changed later (and with more precise control) if needed."
-msgstr "Для завершения создания турнира выберете опции базовых настроек. Заметьте, что они всего могут быть изменены позже (для более точного контроля) при необходимости."
+msgstr "Ð”Ð»Ñ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° Ð²Ñ‹Ð±ÐµÑ€ÐµÑ‚Ðµ Ð¾Ð¿Ñ†Ð¸Ð¸ Ð±Ð°Ð·Ð¾Ð²Ñ‹Ñ… Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº. Ð—Ð°Ð¼ÐµÑ‚ÑŒÑ‚Ðµ, Ñ‡Ñ‚Ð¾ Ð¾Ð½Ð¸ Ð²ÑÐµÐ³Ð¾ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ñ‹ Ð¿Ð¾Ð·Ð¶Ðµ (Ð´Ð»Ñ Ð±Ð¾Ð»ÐµÐµ Ñ‚Ð¾Ñ‡Ð½Ð¾Ð³Ð¾ ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»Ñ) Ð¿Ñ€Ð¸ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ÑÑ‚Ð¸."
 
 #: tournaments/templates/configure_tournament.html
 msgid "Configure Tournament"
-msgstr "Настройка турнира"
+msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ° Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°"
 
 #: tournaments/templates/create_tournament.html
 msgid "Create New Tournament"
-msgstr "Создать новый турнир"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ð¹ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat is free to use, although <a href=\"https://opencollective.com/tabbycat\">donations</a> are encouraged."
+msgid "NekoTab is free to use, although <a href=\"https://opencollective.com/NekoTab\">donations</a> are encouraged."
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "Just trying out Tabbycat?"
-msgstr "Просто пытаетесь опробовать Tabbycat?"
+msgid "Just trying out NekoTab?"
+msgstr "ÐŸÑ€Ð¾ÑÑ‚Ð¾ Ð¿Ñ‹Ñ‚Ð°ÐµÑ‚ÐµÑÑŒ Ð¾Ð¿Ñ€Ð¾Ð±Ð¾Ð²Ð°Ñ‚ÑŒ NekoTab?"
 
 #: tournaments/templates/create_tournament.html
-msgid "If you're learning or playing around with Tabbycat, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
-msgstr "Если вы изучаете или пробуете Tabbycat, наиболее простым вариантом будет создание демо турнира, для которого будет создан фейковый (но типичный) набор команд, судей, аудиторий и так далее. Вы можете удалить этот демо-турнир позже или создать новый для настоящего турнира."
+msgid "If you're learning or playing around with NekoTab, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
+msgstr "Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð¸Ð·ÑƒÑ‡Ð°ÐµÑ‚Ðµ Ð¸Ð»Ð¸ Ð¿Ñ€Ð¾Ð±ÑƒÐµÑ‚Ðµ NekoTab, Ð½Ð°Ð¸Ð±Ð¾Ð»ÐµÐµ Ð¿Ñ€Ð¾ÑÑ‚Ñ‹Ð¼ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð¾Ð¼ Ð±ÑƒÐ´ÐµÑ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð´ÐµÐ¼Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°, Ð´Ð»Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ Ð±ÑƒÐ´ÐµÑ‚ ÑÐ¾Ð·Ð´Ð°Ð½ Ñ„ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¹ (Ð½Ð¾ Ñ‚Ð¸Ð¿Ð¸Ñ‡Ð½Ñ‹Ð¹) Ð½Ð°Ð±Ð¾Ñ€ ÐºÐ¾Ð¼Ð°Ð½Ð´, ÑÑƒÐ´ÐµÐ¹, Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ Ð¸ Ñ‚Ð°Ðº Ð´Ð°Ð»ÐµÐµ. Ð’Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ Ð´ÐµÐ¼Ð¾-Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ Ð¿Ð¾Ð·Ð¶Ðµ Ð¸Ð»Ð¸ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ð¹ Ð´Ð»Ñ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰ÐµÐ³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°."
 
 #: tournaments/templates/create_tournament.html
 #, python-format
 msgid "Load %(demo)s"
-msgstr "Загрузить %(demo)s"
+msgstr "Ð—Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ %(demo)s"
 
 #: tournaments/templates/create_tournament.html
 msgid "You already have a tournament set up using this data set. Reloading the data will delete <strong>all data</strong> from that tournament."
-msgstr "У вас уже есть турнир, созданный с помощью этого набора данных. Перезагрузка данных удалит <strong>все данные</strong> из этого турнира."
+msgstr "Ð£ Ð²Ð°Ñ ÑƒÐ¶Ðµ ÐµÑÑ‚ÑŒ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€, ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ ÑÑ‚Ð¾Ð³Ð¾ Ð½Ð°Ð±Ð¾Ñ€Ð° Ð´Ð°Ð½Ð½Ñ‹Ñ…. ÐŸÐµÑ€ÐµÐ·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° Ð´Ð°Ð½Ð½Ñ‹Ñ… ÑƒÐ´Ð°Ð»Ð¸Ñ‚ <strong>Ð²ÑÐµ Ð´Ð°Ð½Ð½Ñ‹Ðµ</strong> Ð¸Ð· ÑÑ‚Ð¾Ð³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°."
 
 #: tournaments/templates/create_tournament.html
 msgid "Create Tournament"
-msgstr "Создать турнир"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: tournaments/templates/create_tournament.html
 msgid "Cancel and go back to the site home page"
-msgstr "Отменить и вернуться на главную страницу сайта"
+msgstr "ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸ Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð° Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ ÑÐ°Ð¹Ñ‚Ð°"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Debate Team Missing"
-msgstr "Команда отсутствует"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚"
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "Tabbycat always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
-msgstr "Tabbycat всегда требует, чтобы в каждых дебатах одна и только одна команда была назначена на каждую сторону. Когда это не так, возникает эта ошибка. Обычно это результат того, что дебаты были отредактированы вручную."
+msgid "NekoTab always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
+msgstr "NekoTab Ð²ÑÐµÐ³Ð´Ð° Ñ‚Ñ€ÐµÐ±ÑƒÐµÑ‚, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð² ÐºÐ°Ð¶Ð´Ñ‹Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð¾Ð´Ð½Ð° Ð¸ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð´Ð½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð±Ñ‹Ð»Ð° Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð° Ð½Ð° ÐºÐ°Ð¶Ð´ÑƒÑŽ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñƒ. ÐšÐ¾Ð³Ð´Ð° ÑÑ‚Ð¾ Ð½Ðµ Ñ‚Ð°Ðº, Ð²Ð¾Ð·Ð½Ð¸ÐºÐ°ÐµÑ‚ ÑÑ‚Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ°. ÐžÐ±Ñ‹Ñ‡Ð½Ð¾ ÑÑ‚Ð¾ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ñ‚Ð¾Ð³Ð¾, Ñ‡Ñ‚Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð±Ñ‹Ð»Ð¸ Ð¾Ñ‚Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð²Ñ€ÑƒÑ‡Ð½ÑƒÑŽ."
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "A list of offending debates is presented below. To fix them, you'll need to do the following:"
-msgstr "Список неправильно установленных дебатов представлен ниже. Чтобы их исправить, вам нужно сделать следующее:"
+msgstr "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð½ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¾ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½ Ð½Ð¸Ð¶Ðµ. Ð§Ñ‚Ð¾Ð±Ñ‹ Ð¸Ñ… Ð¸ÑÐ¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ, Ð²Ð°Ð¼ Ð½ÑƒÐ¶Ð½Ð¾ ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐµ:"
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "Click the <strong>Fix this debate</strong> button for that debate."
-msgstr "Нажмите на кнопку <strong>Исправить эти дебаты</strong> для этих дебатов."
+msgstr "ÐÐ°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ <strong>Ð˜ÑÐ¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ñ‹</strong> Ð´Ð»Ñ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²."
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "Ensure that every <strong>side</strong> that should be present in the debate is present and has a <strong>team</strong> assigned. If a team is missing, find an empty row and use the magnifying glass to select a team. Then set the new team's <strong>side</strong> accordingly."
-msgstr "Убедитесь, что каждая <strong>сторона</strong>, которая должна присутствовать в дебатах, присутствует и имеет назначенную<strong>команду</strong>. Если команда отсутствует, найдите пустую строчку и используйте лупу для выбора команды. Затем установите для новой команды <strong>соответствующую</strong> сторону."
+msgstr "Ð£Ð±ÐµÐ´Ð¸Ñ‚ÐµÑÑŒ, Ñ‡Ñ‚Ð¾ ÐºÐ°Ð¶Ð´Ð°Ñ <strong>ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð°</strong>, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð´Ð¾Ð»Ð¶Ð½Ð° Ð¿Ñ€Ð¸ÑÑƒÑ‚ÑÑ‚Ð²Ð¾Ð²Ð°Ñ‚ÑŒ Ð² Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ…, Ð¿Ñ€Ð¸ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ð¸ Ð¸Ð¼ÐµÐµÑ‚ Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½ÑƒÑŽ<strong>ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ</strong>. Ð•ÑÐ»Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚, Ð½Ð°Ð¹Ð´Ð¸Ñ‚Ðµ Ð¿ÑƒÑÑ‚ÑƒÑŽ ÑÑ‚Ñ€Ð¾Ñ‡ÐºÑƒ Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ Ð»ÑƒÐ¿Ñƒ Ð´Ð»Ñ Ð²Ñ‹Ð±Ð¾Ñ€Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹. Ð—Ð°Ñ‚ÐµÐ¼ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð´Ð»Ñ Ð½Ð¾Ð²Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ <strong>ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÑƒÑŽ</strong> ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñƒ."
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "Ensure that no <strong>side</strong> appears more than once in the debate."
-msgstr "Убедитесь, что каждая <strong>сторона</strong> не появляется в дебатах больше одного раза."
+msgstr "Ð£Ð±ÐµÐ´Ð¸Ñ‚ÐµÑÑŒ, Ñ‡Ñ‚Ð¾ ÐºÐ°Ð¶Ð´Ð°Ñ <strong>ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð°</strong> Ð½Ðµ Ð¿Ð¾ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð² Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð±Ð¾Ð»ÑŒÑˆÐµ Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ñ€Ð°Ð·Ð°."
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "<strong>Save</strong> the changes."
-msgstr "<strong>Сохранить</strong> изменения."
+msgstr "<strong>Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ</strong> Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ."
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Once you've fixed all the debates, you should then be able to return to whatever page you were originally on without the error reoccurring."
-msgstr "После того как вы исправили все дебаты, вы должны вернуться на любую страницу, на которой вы изначально находились без повторной ошибки."
+msgstr "ÐŸÐ¾ÑÐ»Ðµ Ñ‚Ð¾Ð³Ð¾ ÐºÐ°Ðº Ð²Ñ‹ Ð¸ÑÐ¿Ñ€Ð°Ð²Ð¸Ð»Ð¸ Ð²ÑÐµ Ð´ÐµÐ±Ð°Ñ‚Ñ‹, Ð²Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð° Ð»ÑŽÐ±ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ, Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¹ Ð²Ñ‹ Ð¸Ð·Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ð¾ Ð½Ð°Ñ…Ð¾Ð´Ð¸Ð»Ð¸ÑÑŒ Ð±ÐµÐ· Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð½Ð¾Ð¹ Ð¾ÑˆÐ¸Ð±ÐºÐ¸."
 
 #: tournaments/templates/fix_debate_teams.html
 #, python-format
 msgid "You can also see all the debates in the <a href=\"%(edit_debates_url)s\" target=\"_blank\">Debates section of the Edit Database Area</a>."
-msgstr "Вы можете видеть все дебаты в <a href=\"%(edit_debates_url)s\" target=\"_blank\"> разделе Дебаты в области Редактировать базу данных</a>."
+msgstr "Ð’Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð²Ð¸Ð´ÐµÑ‚ÑŒ Ð²ÑÐµ Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð² <a href=\"%(edit_debates_url)s\" target=\"_blank\"> Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Ð”ÐµÐ±Ð°Ñ‚Ñ‹ Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…</a>."
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Debate ID"
-msgstr "ID Дебатов"
+msgstr "ID Ð”ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: tournaments/templates/fix_debate_teams.html
 #, python-format
@@ -567,89 +567,89 @@ msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Link to fix this debate"
-msgstr "Ссылка для исправления этих дебатов"
+msgstr "Ð¡ÑÑ‹Ð»ÐºÐ° Ð´Ð»Ñ Ð¸ÑÐ¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ñ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "No teams"
-msgstr "Нет команд"
+msgstr "ÐÐµÑ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Multiple teams"
-msgstr "Несколько команд"
+msgstr "ÐÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: tournaments/templates/fix_debate_teams.html
 msgctxt "button label"
 msgid "Fix this debate"
-msgstr "Исправить эти дебаты"
+msgstr "Ð˜ÑÐ¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ñ‹"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "It looks like all debates are in good shape!"
-msgstr "Похоже, со всеми дебатами все хорошо!"
+msgstr "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ, ÑÐ¾ Ð²ÑÐµÐ¼Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ð°Ð¼Ð¸ Ð²ÑÐµ Ñ…Ð¾Ñ€Ð¾ÑˆÐ¾!"
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of Tabbycat."
-msgstr "Если вас продолжает перенаправлять на эту страницу и вы не знаете, почему, пожалуйста, свяжитесь с разработчиками Tabbycat."
+msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of NekoTab."
+msgstr "Ð•ÑÐ»Ð¸ Ð²Ð°Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶Ð°ÐµÑ‚ Ð¿ÐµÑ€ÐµÐ½Ð°Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ð½Ð° ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð¸ Ð²Ñ‹ Ð½Ðµ Ð·Ð½Ð°ÐµÑ‚Ðµ, Ð¿Ð¾Ñ‡ÐµÐ¼Ñƒ, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ€Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ°Ð¼Ð¸ NekoTab."
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "Welcome to %(tournament)s"
-msgstr "Добро пожаловать в %(tournament)s"
+msgstr "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ Ð² %(tournament)s"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "There is currently no public information available for this tournament."
-msgstr "В настоящее время для этого турнира отсутствует общедоступная информация."
+msgstr "Ð’ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ð¾Ð±Ñ‰ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ."
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Tab"
-msgstr "Командный тэб"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ñ‚ÑÐ±"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(category)s Team Tab"
-msgstr "Командный тэб %(category)s"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ñ‚ÑÐ± %(category)s"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Speaker Tab"
-msgstr "Спикерский тэб"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ñ‚ÑÐ±"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(category)s Speaker Tab"
-msgstr "%(category)s Спикерский тэб"
+msgstr "%(category)s Ð¡Ð¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ñ‚ÑÐ±"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Replies Tab"
-msgstr "Вкладка ответов"
+msgstr "Ð’ÐºÐ»Ð°Ð´ÐºÐ° Ð¾Ñ‚Ð²ÐµÑ‚Ð¾Ð²"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Adjudicator Tab"
-msgstr "Тэб судей"
+msgstr "Ð¢ÑÐ± ÑÑƒÐ´ÐµÐ¹"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Motions Tab"
-msgstr "Тэб тем"
+msgstr "Ð¢ÑÐ± Ñ‚ÐµÐ¼"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Sides"
-msgstr "Стороны"
+msgstr "Ð¡Ñ‚Ð¾Ñ€Ð¾Ð½Ñ‹"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "Сетка на %(round)s"
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½Ð° %(round)s"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Draws for Current Rounds"
-msgstr "Сетка на текущий раунд"
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½Ð° Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(round)s's draw has yet to be released"
-msgstr "сетка на %(round)s ещё не опубликована"
+msgstr "ÑÐµÑ‚ÐºÐ° Ð½Ð° %(round)s ÐµÑ‰Ñ‘ Ð½Ðµ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "The draw for the next round has yet to be released"
-msgstr "Сетка на следующий раунд ещё не опубликована"
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½Ð° ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ ÐµÑ‰Ñ‘ Ð½Ðµ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°"
 
 #: tournaments/templates/public_tournament_index.html
 #: tournaments/templates/tournament_schedule_edit.html
@@ -658,44 +658,44 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Check-Ins"
-msgstr "Регистрации"
+msgstr "Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Results"
-msgstr "Результаты"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Motions"
-msgstr "Темы"
+msgstr "Ð¢ÐµÐ¼Ñ‹"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Standings"
-msgstr "Положение команд"
+msgstr "ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(category)s Break"
-msgstr "%(category)s Брейк"
+msgstr "%(category)s Ð‘Ñ€ÐµÐ¹Ðº"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Breaking Adjudicators"
-msgstr "Брейкающиеся судьи"
+msgstr "Ð‘Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸ÐµÑÑ ÑÑƒÐ´ÑŒÐ¸"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Diversity"
-msgstr "Дайверсити"
+msgstr "Ð”Ð°Ð¹Ð²ÐµÑ€ÑÐ¸Ñ‚Ð¸"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Participants"
-msgstr "Участники"
+msgstr "Ð£Ñ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Institutions"
-msgstr "Клубы"
+msgstr "ÐšÐ»ÑƒÐ±Ñ‹"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Feedback Progress"
-msgstr "Прогресс отправки форм обратной связи"
+msgstr "ÐŸÑ€Ð¾Ð³Ñ€ÐµÑÑ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ñ„Ð¾Ñ€Ð¼ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
@@ -704,7 +704,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Enter Feedback"
-msgstr "Введите форму обратной связи"
+msgstr "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ„Ð¾Ñ€Ð¼Ñƒ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Register Institution"
@@ -720,7 +720,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Tournament Staff"
-msgstr "Персонал турнира"
+msgstr "ÐŸÐµÑ€ÑÐ¾Ð½Ð°Ð» Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°"
 
 #: tournaments/templates/public_tournament_schedule.html
 #, python-format
@@ -729,23 +729,23 @@ msgstr ""
 
 #: tournaments/templates/round_complete_check.html
 msgid "Confirm Round Completion"
-msgstr "Подтвердить завершение раунда"
+msgstr "ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¸Ñ‚ÑŒ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ðµ Ñ€Ð°ÑƒÐ½Ð´Ð°"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Enter Results"
-msgstr "Ввести результаты"
+msgstr "Ð’Ð²ÐµÑÑ‚Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Emails have already been sent."
-msgstr "Email уже были отправлены."
+msgstr "Email ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹."
 
 #: tournaments/templates/round_complete_check.html
 msgid "Email Team Wins/Losses"
-msgstr "Отправить победы и поражения команды по email"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ð¿Ð¾Ð±ÐµÐ´Ñ‹ Ð¸ Ð¿Ð¾Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¿Ð¾ email"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Email Team Points"
-msgstr "Отправить командные баллы по email"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ðµ Ð±Ð°Ð»Ð»Ñ‹ Ð¿Ð¾ email"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Unmark as Silent"
@@ -758,45 +758,45 @@ msgstr ""
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "Mark %(round)s as Completed"
-msgstr "Отметить %(round)s как завершенный"
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ %(round)s ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "Mark %(round)s as Completed Anyway"
-msgstr "Все равно отметить %(round)s как завершенный"
+msgstr "Ð’ÑÐµ Ñ€Ð°Ð²Ð½Ð¾ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ %(round)s ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "Go to %(round)s"
-msgstr "Перейти к %(round)s"
+msgstr "ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ðº %(round)s"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "%(round)s has already been marked as completed!"
-msgstr "%(round)s уже отмечен как завершенный!"
+msgstr "%(round)s ÑƒÐ¶Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹!"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "The following prior round has not yet been completed: %(prior_rounds_not_completed)s. You should complete it before marking this round as completed."
 msgid_plural "The following prior rounds have not yet been completed: %(prior_rounds_not_completed)s. You should complete those before marking this round as completed."
-msgstr[0] "Этот предшествующий раунд ещё не завершен: %(prior_rounds_not_completed)s. Вы должны завершить его прежде чем отметить текущий раунд как завершенный."
-msgstr[1] "Эти предшествующие раунды ещё не завершены: %(prior_rounds_not_completed)s. Вы должны завершить их прежде чем отметить текущий раунд как завершенный."
-msgstr[2] "Эти предшествующие раунды ещё не завершены: %(prior_rounds_not_completed)s. Вы должны завершить их прежде чем отметить текущий раунд как завершенный."
-msgstr[3] "Эти предшествующие раунды ещё не завершены: %(prior_rounds_not_completed)s. Вы должны завершить их прежде чем отметить текущий раунд как завершенный."
+msgstr[0] "Ð­Ñ‚Ð¾Ñ‚ Ð¿Ñ€ÐµÐ´ÑˆÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ ÐµÑ‰Ñ‘ Ð½Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½: %(prior_rounds_not_completed)s. Ð’Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚ÑŒ ÐµÐ³Ð¾ Ð¿Ñ€ÐµÐ¶Ð´Ðµ Ñ‡ÐµÐ¼ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹."
+msgstr[1] "Ð­Ñ‚Ð¸ Ð¿Ñ€ÐµÐ´ÑˆÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ ÐµÑ‰Ñ‘ Ð½Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ñ‹: %(prior_rounds_not_completed)s. Ð’Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚ÑŒ Ð¸Ñ… Ð¿Ñ€ÐµÐ¶Ð´Ðµ Ñ‡ÐµÐ¼ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹."
+msgstr[2] "Ð­Ñ‚Ð¸ Ð¿Ñ€ÐµÐ´ÑˆÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ ÐµÑ‰Ñ‘ Ð½Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ñ‹: %(prior_rounds_not_completed)s. Ð’Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚ÑŒ Ð¸Ñ… Ð¿Ñ€ÐµÐ¶Ð´Ðµ Ñ‡ÐµÐ¼ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹."
+msgstr[3] "Ð­Ñ‚Ð¸ Ð¿Ñ€ÐµÐ´ÑˆÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ ÐµÑ‰Ñ‘ Ð½Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ñ‹: %(prior_rounds_not_completed)s. Ð’Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚ÑŒ Ð¸Ñ… Ð¿Ñ€ÐµÐ¶Ð´Ðµ Ñ‡ÐµÐ¼ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹."
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "All ballots from %(round)s are confirmed. You should be good to go!"
-msgstr "Все бэллоты для %(round)s подтверждены. Вы можете продолжать!"
+msgstr "Ð’ÑÐµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð´Ð»Ñ %(round)s Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹. Ð’Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶Ð°Ñ‚ÑŒ!"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "There is still %(num_unconfirmed)s ballot that is not confirmed. You should <strong>not</strong> proceed to the next round until all ballots are confirmed."
 msgid_plural "There are still %(num_unconfirmed)s ballots that are not confirmed. You should <strong>not</strong> proceed to the next round until all ballots are confirmed."
-msgstr[0] "Все ещё есть %(num_unconfirmed)s неподтвержденный бэллот. Вы не <strong>должны</strong> переходить к следующему раунду, пока все бэллоты не подтверждены."
-msgstr[1] "Все ещё есть %(num_unconfirmed)s неподтвержденных бэллотов. Вы не <strong>должны</strong> переходить к следующему раунду, пока все бэллоты не подтверждены."
-msgstr[2] "Все ещё есть %(num_unconfirmed)s неподтвержденных бэллотов. Вы не <strong>должны</strong> переходить к следующему раунду, пока все бэллоты не подтверждены."
-msgstr[3] "Все ещё есть %(num_unconfirmed)s неподтвержденных бэллотов. Вы не <strong>должны</strong> переходить к следующему раунду, пока все бэллоты не подтверждены."
+msgstr[0] "Ð’ÑÐµ ÐµÑ‰Ñ‘ ÐµÑÑ‚ÑŒ %(num_unconfirmed)s Ð½ÐµÐ¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ð¹ Ð±ÑÐ»Ð»Ð¾Ñ‚. Ð’Ñ‹ Ð½Ðµ <strong>Ð´Ð¾Ð»Ð¶Ð½Ñ‹</strong> Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ Ñ€Ð°ÑƒÐ½Ð´Ñƒ, Ð¿Ð¾ÐºÐ° Ð²ÑÐµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹."
+msgstr[1] "Ð’ÑÐµ ÐµÑ‰Ñ‘ ÐµÑÑ‚ÑŒ %(num_unconfirmed)s Ð½ÐµÐ¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ñ… Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð². Ð’Ñ‹ Ð½Ðµ <strong>Ð´Ð¾Ð»Ð¶Ð½Ñ‹</strong> Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ Ñ€Ð°ÑƒÐ½Ð´Ñƒ, Ð¿Ð¾ÐºÐ° Ð²ÑÐµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹."
+msgstr[2] "Ð’ÑÐµ ÐµÑ‰Ñ‘ ÐµÑÑ‚ÑŒ %(num_unconfirmed)s Ð½ÐµÐ¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ñ… Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð². Ð’Ñ‹ Ð½Ðµ <strong>Ð´Ð¾Ð»Ð¶Ð½Ñ‹</strong> Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ Ñ€Ð°ÑƒÐ½Ð´Ñƒ, Ð¿Ð¾ÐºÐ° Ð²ÑÐµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹."
+msgstr[3] "Ð’ÑÐµ ÐµÑ‰Ñ‘ ÐµÑÑ‚ÑŒ %(num_unconfirmed)s Ð½ÐµÐ¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ñ… Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð². Ð’Ñ‹ Ð½Ðµ <strong>Ð´Ð¾Ð»Ð¶Ð½Ñ‹</strong> Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼Ñƒ Ñ€Ð°ÑƒÐ½Ð´Ñƒ, Ð¿Ð¾ÐºÐ° Ð²ÑÐµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹."
 
 #: tournaments/templates/round_complete_check.html
 msgid "<p>This round is a silent round.</p> <p> Even though public view of results is enabled, results for <em>this</em> round will still be hidden from public view after completing this round. <p> <p> You can change whether this round is silent using the button above. </p>"
@@ -809,22 +809,22 @@ msgstr ""
 
 #: tournaments/templates/set_current_round.html
 msgid "Back to Configuration"
-msgstr "Вернуться к настройкам"
+msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°Ð¼"
 
 #: tournaments/templates/set_current_round.html
 #, python-format
-msgid "No round is currently set. In order for Tabbycat to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
-msgstr "Ни один из раундов в данный момент не задан. Чтобы Tabbycat мог работать, пожалуйста, настройте <strong> текущий раунд </strong> турнира <strong>%(tournament)s</strong>."
+msgid "No round is currently set. In order for NekoTab to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
+msgstr "ÐÐ¸ Ð¾Ð´Ð¸Ð½ Ð¸Ð· Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð² Ð² Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð½Ðµ Ð·Ð°Ð´Ð°Ð½. Ð§Ñ‚Ð¾Ð±Ñ‹ NekoTab Ð¼Ð¾Ð³ Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ñ‚ÑŒ, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹Ñ‚Ðµ <strong> Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ </strong> Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° <strong>%(tournament)s</strong>."
 
 #: tournaments/templates/set_current_round.html
 #, python-format
 msgid "On this page, you can set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
-msgstr "На этой странице вы можете настроить <strong> текущий раунд</strong> турнира <strong>%(tournament)s</strong>."
+msgstr "ÐÐ° ÑÑ‚Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑŒ <strong> Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´</strong> Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° <strong>%(tournament)s</strong>."
 
 #: tournaments/templates/set_current_round.html
 #, python-format
 msgid "The tournament <strong>%(tournament)s</strong> has no rounds. You'll need to <a href=\"%(round_changelist_url)s\">add rounds and associate them with this tournament</a> before you can set the current round."
-msgstr "В турнире <strong>%(tournament)s</strong> нет раундов. Вам нужно <a href=\"%(round_changelist_url)s\"> добавить раунды и связать их с этим турниром</a> перед тем, как вы сможете настроить этот раунд."
+msgstr "Ð’ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ðµ <strong>%(tournament)s</strong> Ð½ÐµÑ‚ Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð². Ð’Ð°Ð¼ Ð½ÑƒÐ¶Ð½Ð¾ <a href=\"%(round_changelist_url)s\"> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð¸ ÑÐ²ÑÐ·Ð°Ñ‚ÑŒ Ð¸Ñ… Ñ ÑÑ‚Ð¸Ð¼ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð¾Ð¼</a> Ð¿ÐµÑ€ÐµÐ´ Ñ‚ÐµÐ¼, ÐºÐ°Ðº Ð²Ñ‹ ÑÐ¼Ð¾Ð¶ÐµÑ‚Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ Ñ€Ð°ÑƒÐ½Ð´."
 
 #: tournaments/templates/set_current_round.html
 msgctxt "button"
@@ -847,11 +847,11 @@ msgstr ""
 
 #: tournaments/templates/site_index.html
 msgid "Welcome!"
-msgstr "Добро пожаловать!"
+msgstr "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ!"
 
 #: tournaments/templates/site_index.html
 msgid "It looks like there aren't any tournaments on this site. Would you like to create one?"
-msgstr "Похоже, на этом сайте нет турниров. Хотите создать турнир?"
+msgstr "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ, Ð½Ð° ÑÑ‚Ð¾Ð¼ ÑÐ°Ð¹Ñ‚Ðµ Ð½ÐµÑ‚ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð¾Ð². Ð¥Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€?"
 
 #: tournaments/templates/site_index.html
 msgid "There are currently no active tournaments set up on this site."
@@ -859,7 +859,7 @@ msgstr ""
 
 #: tournaments/templates/site_index.html
 msgid "There are currently no tournaments set up on this site."
-msgstr "На данном сайте сейчас нет турниров."
+msgstr "ÐÐ° Ð´Ð°Ð½Ð½Ð¾Ð¼ ÑÐ°Ð¹Ñ‚Ðµ ÑÐµÐ¹Ñ‡Ð°Ñ Ð½ÐµÑ‚ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð¾Ð²."
 
 #: tournaments/templates/site_index.html
 msgid "(inactive)"
@@ -867,15 +867,15 @@ msgstr ""
 
 #: tournaments/templates/site_index.html
 msgid "New Tournament"
-msgstr "Новый турнир"
+msgstr "ÐÐ¾Ð²Ñ‹Ð¹ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: tournaments/templates/site_index.html
 msgid "Edit Database Area"
-msgstr "Область Редактировать базу данных"
+msgstr "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…"
 
 #: tournaments/templates/site_index.html
 msgid "Send a Test Email"
-msgstr "Отправить пробный email"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð±Ð½Ñ‹Ð¹ email"
 
 #: tournaments/templates/site_index.html
 msgid "Import DebateXML"
@@ -889,34 +889,34 @@ msgstr ""
 #: tournaments/templates/site_index.html
 #, python-format
 msgid "Log Out (%(user)s)"
-msgstr "Выйти (%(user)s)"
+msgstr "Ð’Ñ‹Ð¹Ñ‚Ð¸ (%(user)s)"
 
 #: tournaments/templates/site_index.html
 msgid "Log In as Admin"
-msgstr "Войти как администратор"
+msgstr "Ð’Ð¾Ð¹Ñ‚Ð¸ ÐºÐ°Ðº Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "We hope you've enjoyed using Tabbycat for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/tabbycat\">Learn more about donating.</a>"
+msgid "We hope you've enjoyed using NekoTab for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/NekoTab\">Learn more about donating.</a>"
 msgstr ""
 
 #: tournaments/templates/tournament_index.html
 msgid "Welcome to your new tournament!"
-msgstr "Добро пожаловать в ваш новый турнир!"
+msgstr "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ Ð² Ð²Ð°Ñˆ Ð½Ð¾Ð²Ñ‹Ð¹ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€!"
 
 #: tournaments/templates/tournament_index.html
 msgid "The next step is to import your initial tournament data: the institutions, teams, adjudicators and rooms that are in your tournament. There are a number of ways to do this. For small-to-medium tournaments, the simple importer is your best bet."
-msgstr "Следующий шаг — ввод исходных данных вашего турнира: клубов, команд, судей и аудиторий. Есть несколько способов сделать это. Для маленьких и средний турниров лучше всего подойдёт простой импортер."
+msgstr "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ ÑˆÐ°Ð³ â€”Â Ð²Ð²Ð¾Ð´ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð²Ð°ÑˆÐµÐ³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°: ÐºÐ»ÑƒÐ±Ð¾Ð², ÐºÐ¾Ð¼Ð°Ð½Ð´, ÑÑƒÐ´ÐµÐ¹ Ð¸ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹. Ð•ÑÑ‚ÑŒ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ ÑÐ¿Ð¾ÑÐ¾Ð±Ð¾Ð² ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ ÑÑ‚Ð¾. Ð”Ð»Ñ Ð¼Ð°Ð»ÐµÐ½ÑŒÐºÐ¸Ñ… Ð¸ ÑÑ€ÐµÐ´Ð½Ð¸Ð¹ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð¾Ð² Ð»ÑƒÑ‡ÑˆÐµ Ð²ÑÐµÐ³Ð¾ Ð¿Ð¾Ð´Ð¾Ð¹Ð´Ñ‘Ñ‚ Ð¿Ñ€Ð¾ÑÑ‚Ð¾Ð¹ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ÐµÑ€."
 
 #. Translators: The documentation where the link goes to is in English; translations should mention this with "(in English)" after the link.
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "For more information, please consult our <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
-msgstr "Для большей информации, пожалуйста, ознакомьтесь с <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> документацией по импорту исходных данных </a>."
+msgid "For more information, please consult our <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
+msgstr "Ð”Ð»Ñ Ð±Ð¾Ð»ÑŒÑˆÐµÐ¹ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼ÑŒÑ‚ÐµÑÑŒ Ñ <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸ÐµÐ¹ Ð¿Ð¾ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ñƒ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ… </a>."
 
 #: tournaments/templates/tournament_index.html
 msgid "Use the simple importer to add your initial data."
-msgstr "Используйте простой импортер для добавления исходных данных."
+msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ Ð¿Ñ€Ð¾ÑÑ‚Ð¾Ð¹ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ÐµÑ€ Ð´Ð»Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ…."
 
 #: tournaments/templates/tournament_index.html
 #, python-format
@@ -926,7 +926,7 @@ msgstr ""
 #: tournaments/templates/tournament_index.html
 #, python-format
 msgid "Go to the draw area to allocate adjudicators for %(round)s"
-msgstr "Перейдите в область создания сетки для распределения судей на %(round)s"
+msgstr "ÐŸÐµÑ€ÐµÐ¹Ð´Ð¸Ñ‚Ðµ Ð² Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ ÑÐµÑ‚ÐºÐ¸ Ð´Ð»Ñ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ñ ÑÑƒÐ´ÐµÐ¹ Ð½Ð° %(round)s"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
@@ -936,17 +936,17 @@ msgstr ""
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Administrator area for <strong>%(tn)s</strong>"
-msgstr "Область для администратора <strong>%(tn)s</strong>"
+msgstr "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð´Ð»Ñ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð° <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Assistant area for <strong>%(tn)s</strong>"
-msgstr "Область помощника для <strong>%(tn)s</strong>"
+msgstr "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð½Ð¸ÐºÐ° Ð´Ð»Ñ <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Public area for <strong>%(tn)s</strong>"
-msgstr "Публичная область для <strong>%(tn)s</strong>"
+msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð°Ñ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ Ð´Ð»Ñ <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_schedule_edit.html
 msgid "This page allows you to set the public schedule for the tournament."
@@ -958,111 +958,111 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "affirmative"
-msgstr "утверждение"
+msgstr "ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ"
 
 #: tournaments/utils.py
 msgid "negative"
-msgstr "отрицание"
+msgstr "Ð¾Ñ‚Ñ€Ð¸Ñ†Ð°Ð½Ð¸Ðµ"
 
 #: tournaments/utils.py
 msgid "affirmative team"
-msgstr "команда утверждения"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ñ"
 
 #: tournaments/utils.py
 msgid "negative team"
-msgstr "команда отрицатия"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¾Ñ‚Ñ€Ð¸Ñ†Ð°Ñ‚Ð¸Ñ"
 
 #: tournaments/utils.py
 msgid "Aff"
-msgstr "Утв"
+msgstr "Ð£Ñ‚Ð²"
 
 #: tournaments/utils.py
 msgid "Neg"
-msgstr "Отр"
+msgstr "ÐžÑ‚Ñ€"
 
 #: tournaments/utils.py
 msgid "government"
-msgstr "правительство"
+msgstr "Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð¾"
 
 #: tournaments/utils.py
 msgid "opposition"
-msgstr "оппозиция"
+msgstr "Ð¾Ð¿Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ"
 
 #: tournaments/utils.py
 msgid "government team"
-msgstr "команда правительства"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð°"
 
 #: tournaments/utils.py
 msgid "opposition team"
-msgstr "команда оппозиции"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¾Ð¿Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸"
 
 #: tournaments/utils.py
 msgid "Gov"
-msgstr "Проп"
+msgstr "ÐŸÑ€Ð¾Ð¿"
 
 #: tournaments/utils.py
 msgid "Opp"
-msgstr "Опп"
+msgstr "ÐžÐ¿Ð¿"
 
 #: tournaments/utils.py
 msgid "proposition"
-msgstr "утверждение"
+msgstr "ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ"
 
 #: tournaments/utils.py
 msgid "proposition team"
-msgstr "команда утверждения"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ñ"
 
 #: tournaments/utils.py
 msgid "Prop"
-msgstr "Проп"
+msgstr "ÐŸÑ€Ð¾Ð¿"
 
 #: tournaments/utils.py
 msgid "pro"
-msgstr "утв"
+msgstr "ÑƒÑ‚Ð²"
 
 #: tournaments/utils.py
 msgid "con"
-msgstr "против"
+msgstr "Ð¿Ñ€Ð¾Ñ‚Ð¸Ð²"
 
 #: tournaments/utils.py
 msgid "pro team"
-msgstr "команда за"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð·Ð°"
 
 #: tournaments/utils.py
 msgid "con team"
-msgstr "команда против"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¿Ñ€Ð¾Ñ‚Ð¸Ð²"
 
 #: tournaments/utils.py
 msgid "Pro"
-msgstr "За"
+msgstr "Ð—Ð°"
 
 #: tournaments/utils.py
 msgid "Con"
-msgstr "Против"
+msgstr "ÐŸÑ€Ð¾Ñ‚Ð¸Ð²"
 
 #: tournaments/utils.py
 msgid "appellant"
-msgstr "истец"
+msgstr "Ð¸ÑÑ‚ÐµÑ†"
 
 #: tournaments/utils.py
 msgid "respondent"
-msgstr "ответчик"
+msgstr "Ð¾Ñ‚Ð²ÐµÑ‚Ñ‡Ð¸Ðº"
 
 #: tournaments/utils.py
 msgid "appellant team"
-msgstr "команда-истец"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°-Ð¸ÑÑ‚ÐµÑ†"
 
 #: tournaments/utils.py
 msgid "respondent team"
-msgstr "команда-ответчик"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°-Ð¾Ñ‚Ð²ÐµÑ‚Ñ‡Ð¸Ðº"
 
 #: tournaments/utils.py
 msgid "App"
-msgstr "Ист"
+msgstr "Ð˜ÑÑ‚"
 
 #: tournaments/utils.py
 msgid "Res"
-msgstr "Отв"
+msgstr "ÐžÑ‚Ð²"
 
 #: tournaments/utils.py
 msgid "1st team"
@@ -1074,66 +1074,66 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "opening government"
-msgstr "первое правительство"
+msgstr "Ð¿ÐµÑ€Ð²Ð¾Ðµ Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð¾"
 
 #: tournaments/utils.py
 msgid "opening opposition"
-msgstr "первая оппозиция"
+msgstr "Ð¿ÐµÑ€Ð²Ð°Ñ Ð¾Ð¿Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ"
 
 #: tournaments/utils.py
 msgid "closing government"
-msgstr "второе правительство"
+msgstr "Ð²Ñ‚Ð¾Ñ€Ð¾Ðµ Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð¾"
 
 #: tournaments/utils.py
 msgid "closing opposition"
-msgstr "вторая оппозиция"
+msgstr "Ð²Ñ‚Ð¾Ñ€Ð°Ñ Ð¾Ð¿Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ"
 
 #: tournaments/utils.py
 msgid "opening government team"
-msgstr "команда первого правительства"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¿ÐµÑ€Ð²Ð¾Ð³Ð¾ Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð°"
 
 #: tournaments/utils.py
 msgid "opening opposition team"
-msgstr "команда первой оппозиции"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¿ÐµÑ€Ð²Ð¾Ð¹ Ð¾Ð¿Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸"
 
 #: tournaments/utils.py
 msgid "closing government team"
-msgstr "команда второго правительства"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð²Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð°"
 
 #: tournaments/utils.py
 msgid "closing opposition team"
-msgstr "команда второй оппозиции"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð²Ñ‚Ð¾Ñ€Ð¾Ð¹ Ð¾Ð¿Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸"
 
 #: tournaments/utils.py
 msgctxt "BP position"
 msgid "OG"
-msgstr "1П"
+msgstr "1ÐŸ"
 
 #: tournaments/utils.py
 msgctxt "BP position"
 msgid "OO"
-msgstr "1О"
+msgstr "1Ðž"
 
 #: tournaments/utils.py
 msgctxt "BP position"
 msgid "CG"
-msgstr "2П"
+msgstr "2ÐŸ"
 
 #: tournaments/utils.py
 msgctxt "BP position"
 msgid "CO"
-msgstr "2О"
+msgstr "2Ðž"
 
 #: tournaments/utils.py
 #, python-format
 msgid "Round %(number)d"
-msgstr "Раунд %(number)d"
+msgstr "Ð Ð°ÑƒÐ½Ð´ %(number)d"
 
 #. Translators: This stands for "Round %(number)d".
 #: tournaments/utils.py
 #, python-format
 msgid "R%(number)d"
-msgstr "Р%(number)d"
+msgstr "Ð %(number)d"
 
 #: tournaments/utils.py
 msgid "bye"
@@ -1157,43 +1157,43 @@ msgstr ""
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as completed. All rounds are now completed, so you're done with the tournament! Congratulations!"
-msgstr "%(round)s отмечен как завершенный. Все раунды теперь завершены, так что вы завершили турнир! Поздравляем!"
+msgstr "%(round)s Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹. Ð’ÑÐµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ñ‚ÐµÐ¿ÐµÑ€ÑŒ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ñ‹, Ñ‚Ð°Ðº Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ð»Ð¸ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€! ÐŸÐ¾Ð·Ð´Ñ€Ð°Ð²Ð»ÑÐµÐ¼!"
 
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as completed. That's the last round in that sequence! Going back to the first round that hasn't been marked as completed."
-msgstr "%(round)s отмечен как завершенный. Это последний раунд в этой последовательности! Вернитесь к первому из раундов, не отмеченных как завершенные."
+msgstr "%(round)s Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹. Ð­Ñ‚Ð¾ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ Ð² ÑÑ‚Ð¾Ð¹ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸! Ð’ÐµÑ€Ð½Ð¸Ñ‚ÐµÑÑŒ Ðº Ð¿ÐµÑ€Ð²Ð¾Ð¼Ñƒ Ð¸Ð· Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð², Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ðµ."
 
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as completed. You've made it to the end of the preliminary rounds! Congratulations! The next step is to generate the break."
-msgstr "%(round)s отмечен как завершенный! Вы закончили все предварительные раунды! Поздравляем! Следующий шаг - это создание брейка."
+msgstr "%(round)s Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹! Ð’Ñ‹ Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ð»Ð¸ Ð²ÑÐµ Ð¿Ñ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹! ÐŸÐ¾Ð·Ð´Ñ€Ð°Ð²Ð»ÑÐµÐ¼! Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ ÑˆÐ°Ð³ - ÑÑ‚Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð±Ñ€ÐµÐ¹ÐºÐ°."
 
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as completed. That was the last preliminary round, but one or more preliminary rounds are still not completed. Going back to the first incomplete preliminary round."
-msgstr "%(round)s отмечен как завершенный. Это был последний отборочный раунд, однако один или несколько раундов все ещё не отмечены как завершенные. Вернитесь назад к первому из незавершенных отборочных раундов."
+msgstr "%(round)s Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹. Ð­Ñ‚Ð¾ Ð±Ñ‹Ð» Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¹ Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´, Ð¾Ð´Ð½Ð°ÐºÐ¾ Ð¾Ð´Ð¸Ð½ Ð¸Ð»Ð¸ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð² Ð²ÑÐµ ÐµÑ‰Ñ‘ Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ñ‹ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ðµ. Ð’ÐµÑ€Ð½Ð¸Ñ‚ÐµÑÑŒ Ð½Ð°Ð·Ð°Ð´ Ðº Ð¿ÐµÑ€Ð²Ð¾Ð¼Ñƒ Ð¸Ð· Ð½ÐµÐ·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ñ… Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð²."
 
 #: tournaments/views.py
 #, python-format
 msgid "%(this_round)s has been marked as completed. Moving on to %(next_round)s! Woohoo! Keep it up!"
-msgstr "%(this_round)s был отмечен как завершенный. Переход на %(next_round)s. Ура! Продолжайте в том же духе!"
+msgstr "%(this_round)s Ð±Ñ‹Ð» Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹. ÐŸÐµÑ€ÐµÑ…Ð¾Ð´ Ð½Ð° %(next_round)s. Ð£Ñ€Ð°! ÐŸÑ€Ð¾Ð´Ð¾Ð»Ð¶Ð°Ð¹Ñ‚Ðµ Ð² Ñ‚Ð¾Ð¼ Ð¶Ðµ Ð´ÑƒÑ…Ðµ!"
 
 #: tournaments/views.py
 msgid "8-team generic dataset"
-msgstr "обычный 8-командный набор данных"
+msgstr "Ð¾Ð±Ñ‹Ñ‡Ð½Ñ‹Ð¹ 8-ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð½Ð°Ð±Ð¾Ñ€ Ð´Ð°Ð½Ð½Ñ‹Ñ…"
 
 #: tournaments/views.py
 msgid "24-team Australs dataset"
-msgstr "24-командный набор данных австралийского формата"
+msgstr "24-ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð½Ð°Ð±Ð¾Ñ€ Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð°Ð²ÑÑ‚Ñ€Ð°Ð»Ð¸Ð¹ÑÐºÐ¾Ð³Ð¾ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ð°"
 
 #: tournaments/views.py
 msgid "88-team BP dataset"
-msgstr "88-командный набор данных БПФ"
+msgstr "88-ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð½Ð°Ð±Ð¾Ñ€ Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð‘ÐŸÐ¤"
 
 #: tournaments/views.py
 msgid "Set Current Round"
-msgstr "Установить текущий раунд"
+msgstr "Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´"
 
 #: tournaments/views.py
 msgid "Successfully set round weights for tapered scoring."
@@ -1202,4 +1202,5 @@ msgstr ""
 #: tournaments/views.py
 msgid "Tournament Schedule"
 msgstr ""
+
 

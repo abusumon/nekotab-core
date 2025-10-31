@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -11,16 +11,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/importer/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/importer/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 932\n"
 
 #: importer/forms.py
 #, python-format
 msgid "line %(lineno)d: %(message)s"
-msgstr "行 %(lineno)d：%(message)s"
+msgstr "è¡Œ %(lineno)dï¼š%(message)s"
 
 #: importer/forms.py
 #, python-format
@@ -91,7 +91,7 @@ msgstr ""
 #: importer/forms.py
 #, python-format
 msgid "Speaker %d"
-msgstr "讲员%d"
+msgstr "è®²å‘˜%d"
 
 #: importer/forms.py
 #, python-format
@@ -147,7 +147,7 @@ msgstr ""
 #: importer/forms.py
 #, python-format
 msgid "%(name)s (%(code)s)"
-msgstr "%(name)s（%(code)s）"
+msgstr "%(name)sï¼ˆ%(code)sï¼‰"
 
 #: importer/forms.py
 #, python-format
@@ -174,7 +174,7 @@ msgid "Export Tournament Archive"
 msgstr ""
 
 #: importer/templates/archive_export_index.html
-msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside Tabbycat."
+msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside NekoTab."
 msgstr ""
 
 #: importer/templates/archive_export_index.html
@@ -202,7 +202,7 @@ msgstr ""
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgctxt "page title"
 msgid "Add Adjudicators"
-msgstr "添加裁判"
+msgstr "æ·»åŠ è£åˆ¤"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_adjudicators_numbers.html
@@ -214,14 +214,14 @@ msgstr "添加裁判"
 #: importer/templates/simple_import_venues_raw.html
 #, python-format
 msgid "(Step %(step)s of %(count)s)"
-msgstr "（第%(step)s个步，共有%(count)s的步）"
+msgstr "ï¼ˆç¬¬%(step)sä¸ªæ­¥ï¼Œå…±æœ‰%(count)sçš„æ­¥ï¼‰"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_institutions_details.html
 #: importer/templates/simple_import_teams_details.html
 #: importer/templates/simple_import_venues_details.html
 msgid "Previous Step"
-msgstr "上一个步"
+msgstr "ä¸Šä¸€ä¸ªæ­¥"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #, python-format
@@ -258,14 +258,14 @@ msgstr ""
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "button"
 msgid "Next Step"
-msgstr "下一个步"
+msgstr "ä¸‹ä¸€ä¸ªæ­¥"
 
 #: importer/templates/simple_import_index.html
 msgid "Simple Importer"
 msgstr ""
 
 #: importer/templates/simple_import_index.html
-msgid "There are <a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into Tabbycat</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
+msgid "There are <a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into NekoTab</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
 msgstr ""
 
 #: importer/templates/simple_import_index.html
@@ -274,15 +274,15 @@ msgstr ""
 
 #: importer/templates/simple_import_index.html
 msgid "Add Teams"
-msgstr "添加队伍"
+msgstr "æ·»åŠ é˜Ÿä¼"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Adjudicators"
-msgstr "添加裁判"
+msgstr "æ·»åŠ è£åˆ¤"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Rooms"
-msgstr "添加房间"
+msgstr "æ·»åŠ æˆ¿é—´"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Room Categories"
@@ -334,18 +334,18 @@ msgstr ""
 #: importer/templates/simple_import_institutions_raw.html
 #: importer/templates/simple_import_venues_raw.html
 msgid "Next Step"
-msgstr "下一个步"
+msgstr "ä¸‹ä¸€ä¸ªæ­¥"
 
 #: importer/templates/simple_import_teams_details.html
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "page title"
 msgid "Add Teams"
-msgstr "添加队伍"
+msgstr "æ·»åŠ é˜Ÿä¼"
 
 #: importer/templates/simple_import_teams_details.html
 #, python-format
 msgid "Teams for %(institution)s"
-msgstr "%(institution)s 的队伍"
+msgstr "%(institution)s çš„é˜Ÿä¼"
 
 #: importer/templates/simple_import_teams_details.html
 msgid "Unaffiliated Teams"
@@ -353,7 +353,7 @@ msgstr ""
 
 #: importer/templates/simple_import_teams_details.html
 msgid "Save All Teams"
-msgstr "保存所有队伍"
+msgstr "ä¿å­˜æ‰€æœ‰é˜Ÿä¼"
 
 #: importer/templates/simple_import_teams_numbers.html
 #, python-format
@@ -372,7 +372,7 @@ msgstr ""
 #: importer/templates/simple_import_venues_raw.html
 msgctxt "page title"
 msgid "Add Rooms"
-msgstr "添加房间"
+msgstr "æ·»åŠ æˆ¿é—´"
 
 #: importer/templates/simple_import_venues_details.html
 msgid "Priorities indicate how much you want to use the room. Larger numbers indicate higher priority. If you have more rooms than debates, the rooms with the lowest priorities will not be used."
@@ -396,13 +396,13 @@ msgstr[0] ""
 #, python-format
 msgid "Added %(count)d room."
 msgid_plural "Added %(count)d rooms."
-msgstr[0] "添加了%(count)d个房间"
+msgstr[0] "æ·»åŠ äº†%(count)dä¸ªæˆ¿é—´"
 
 #: importer/views.py
 #, python-format
 msgid "Added %(count)d team."
 msgid_plural "Added %(count)d teams."
-msgstr[0] "添加了 %(count)d 个队伍。"
+msgstr[0] "æ·»åŠ äº† %(count)d ä¸ªé˜Ÿä¼ã€‚"
 
 #: importer/views.py
 #, python-format
@@ -413,7 +413,7 @@ msgstr ""
 #, python-format
 msgid "Added %(count)d adjudicator."
 msgid_plural "Added %(count)d adjudicators."
-msgstr[0] "添加了%(count)d个裁判。"
+msgstr[0] "æ·»åŠ äº†%(count)dä¸ªè£åˆ¤ã€‚"
 
 #: importer/views.py
 msgid "<p>There were one or more errors creating the demo tournament. Before retrying, please delete the existing demo tournament <strong>and</strong> the institutions in the Edit Database Area.</p><p><i>Technical information: The errors are as follows:</i></p>"
@@ -426,4 +426,5 @@ msgstr ""
 #: importer/views.py
 msgid "Tournament archive has been imported."
 msgstr ""
+
 

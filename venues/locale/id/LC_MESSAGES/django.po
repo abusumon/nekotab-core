@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2023-02-05 01:02\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: id\n"
-"X-Crowdin-File: /develop/tabbycat/venues/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/venues/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 956\n"
 
@@ -79,8 +79,8 @@ msgid "Display as suffix"
 msgstr "Tampilkan sebagai sufiks"
 
 #: venues/models.py
-msgid "Name of category, e.g., \"Purple\", \"Step-free access\", \"Close to tab room\". This name is shown when the category is prefixed or suffixed to a room name in the draw, e.g., \"Purple – G05\"."
-msgstr "Nama dari kategori, spt., \"Purple\", \"Step-free access\", \"Close to tab room\". Nama ini akan ditunjukkan saat kategori telah diawali atau diakhiri ke sebuah ruangan, spt., \"Purple – G05\"."
+msgid "Name of category, e.g., \"Purple\", \"Step-free access\", \"Close to tab room\". This name is shown when the category is prefixed or suffixed to a room name in the draw, e.g., \"Purple â€“ G05\"."
+msgstr "Nama dari kategori, spt., \"Purple\", \"Step-free access\", \"Close to tab room\". Nama ini akan ditunjukkan saat kategori telah diawali atau diakhiri ke sebuah ruangan, spt., \"Purple â€“ G05\"."
 
 #: venues/models.py
 msgid "description"
@@ -95,8 +95,8 @@ msgid "display in room name"
 msgstr "ditampilkan di nama Ruangan"
 
 #: venues/models.py
-msgid "Prefix: \"Purple – G05\", Suffix: \"G05 – Purple\""
-msgstr "Awalan: \"Purple – G05\", Akhiran: \"G05 – Purple\""
+msgid "Prefix: \"Purple â€“ G05\", Suffix: \"G05 â€“ Purple\""
+msgstr "Awalan: \"Purple â€“ G05\", Akhiran: \"G05 â€“ Purple\""
 
 #: venues/models.py
 msgid "display in public tooltip"
@@ -217,4 +217,5 @@ msgstr "%s (Institusi)"
 msgid "Saved %(count)d room constraint."
 msgid_plural "Saved %(count)d room constraints."
 msgstr[0] "Tersimpan %(count)d batasan ruangan."
+
 

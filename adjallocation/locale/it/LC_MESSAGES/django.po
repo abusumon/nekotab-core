@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2023-02-05 00:56\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: it\n"
-"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
@@ -25,15 +25,15 @@ msgstr "Non ci sono giudici disponibili. Assicurati che ci siano giudici che son
 #, python-format
 msgid "%(count)s score is larger than the maximum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are larger than the maximum permitted adjudicator score (%(score).1f)."
-msgstr[0] "Il punteggio %(count)s è più grande del punteggio massimo di giudizio consentito (%(score).1f)."
-msgstr[1] "I punteggi %(count)s sono più grandi del punteggio massimo di giudizio consentito (%(score).1f)."
+msgstr[0] "Il punteggio %(count)s Ã¨ piÃ¹ grande del punteggio massimo di giudizio consentito (%(score).1f)."
+msgstr[1] "I punteggi %(count)s sono piÃ¹ grandi del punteggio massimo di giudizio consentito (%(score).1f)."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "%(count)s score is smaller than the minimum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are smaller than the minimum permitted adjudicator score (%(score).1f)."
-msgstr[0] "Il punteggio %(count)s è più piccolo del punteggio minimo di giudizio consentito (%(score).1f)."
-msgstr[1] "I punteggi %(count)s sono più piccoli del punteggio minimo di giudizio consentito (%(score).1f)."
+msgstr[0] "Il punteggio %(count)s Ã¨ piÃ¹ piccolo del punteggio minimo di giudizio consentito (%(score).1f)."
+msgstr[1] "I punteggi %(count)s sono piÃ¹ piccoli del punteggio minimo di giudizio consentito (%(score).1f)."
 
 #: adjallocation/allocators/hungarian.py
 msgid "There are no adjudicators eligible to be a chair or panellist. Try changing the \"Minimum feedback score required to be allocated as chair or panellist\" setting to something lower than at least some adjudicators' current scores, and try again."
@@ -64,15 +64,15 @@ msgstr "Assegnazione del giudice"
 
 #: adjallocation/consumers.py
 msgid "Draw is already released, unrelease draw to redo auto-allocations."
-msgstr "Il sorteggio è già stato rilasciato, annullare il sorteggio per rifare le allocazioni automatice."
+msgstr "Il sorteggio Ã¨ giÃ  stato rilasciato, annullare il sorteggio per rifare le allocazioni automatice."
 
 #: adjallocation/consumers.py
 msgid "Draw is not confirmed, confirm draw to run auto-allocations."
-msgstr "Il sorteggio non è confermato, conferma il sorteggio per eseguire allocazioni automatice."
+msgstr "Il sorteggio non Ã¨ confermato, conferma il sorteggio per eseguire allocazioni automatice."
 
 #: adjallocation/consumers.py
 msgid "There are no preformed panels available to allocate."
-msgstr "Non è disponibile nessuna giuria preformata da assegnare."
+msgstr "Non Ã¨ disponibile nessuna giuria preformata da assegnare."
 
 #: adjallocation/consumers.py
 msgid "Successfully auto-allocated preformed panels to debates."
@@ -82,7 +82,7 @@ msgstr "Giurie preformate auto-assegnate con successo ai dibattiti."
 #, python-format
 msgid "Successfully auto-allocated adjudicators to debates. However, there was a warning:"
 msgid_plural "Successfully auto-allocated adjudicators to debates. However, there were %(count)d warnings:"
-msgstr[0] "Giudici auto-assegnati ai dibattiti con successo. Comunque, c'è un avviso:"
+msgstr[0] "Giudici auto-assegnati ai dibattiti con successo. Comunque, c'Ã¨ un avviso:"
 msgstr[1] "Giudici auto-assegnati ai dibattiti con successo. Comunque, ci sono %(count)d avvisi:"
 
 #: adjallocation/consumers.py
@@ -97,7 +97,7 @@ msgstr "Non ci sono giurie da riempire. Crea prima delle giurie."
 #, python-format
 msgid "Successfully auto-allocated adjudicators to preformed panels. However, there was a warning:"
 msgid_plural "Successfully auto-allocated adjudicators to preformed panels. However, there were %(count)d warnings:"
-msgstr[0] "Giudici auto-assegnati ai dibattiti con successo. Comunque, c'è un avviso:"
+msgstr[0] "Giudici auto-assegnati ai dibattiti con successo. Comunque, c'Ã¨ un avviso:"
 msgstr[1] "Giudici auto-assegnati ai dibattiti con successo. Comunque, ci sono %(count)d avvisi:"
 
 #: adjallocation/consumers.py
@@ -106,7 +106,7 @@ msgstr "Giudici auto-assegnati con successo alle giurie preformate."
 
 #: adjallocation/consumers.py
 msgid "You have no break category set as 'is general' so debate importances can't be calculated."
-msgstr "Non hai nessuna categoria di interruzione impostata come 'è generale', quindi le importanze del dibattito non possono essere calcolate."
+msgstr "Non hai nessuna categoria di interruzione impostata come 'Ã¨ generale', quindi le importanze del dibattito non possono essere calcolate."
 
 #: adjallocation/consumers.py
 msgid "Succesfully auto-prioritised debates."
@@ -114,7 +114,7 @@ msgstr "Dibattiti prioritarizzati in automatico con successo."
 
 #: adjallocation/consumers.py
 msgid "You have no break category set as 'is general' so panel importances can't be calculated."
-msgstr "Non hai nessuna categoria di interruzione impostata come 'è generale', quindi le importanze del dibattito non possono essere calcolate."
+msgstr "Non hai nessuna categoria di interruzione impostata come 'Ã¨ generale', quindi le importanze del dibattito non possono essere calcolate."
 
 #: adjallocation/consumers.py
 msgid "Succesfully auto-prioritised preformed panels."
@@ -122,7 +122,7 @@ msgstr "Giurie preformate prioritarizzate in automatico con successo."
 
 #: adjallocation/consumers.py
 msgid "Since this is the first round, the preformed panels aren't annotated with brackets and liveness."
-msgstr "Poiché questo è il primo round, i pannelli preformati non sono annotati con gruppi e partecipazione."
+msgstr "PoichÃ© questo Ã¨ il primo round, i pannelli preformati non sono annotati con gruppi e partecipazione."
 
 #: adjallocation/consumers.py
 msgid "The previous round's draw doesn't exist, so preformed panels can't be annotated with brackets and liveness."
@@ -230,7 +230,7 @@ msgstr "raggruppamento minimo"
 
 #: adjallocation/models.py
 msgid "Estimate of the lowest bracket for which this panel might be"
-msgstr "Stima del raggruppamento più basso nella quale dovrebbe trovarsi questa giuria"
+msgstr "Stima del raggruppamento piÃ¹ basso nella quale dovrebbe trovarsi questa giuria"
 
 #: adjallocation/models.py
 msgid "maximum bracket"
@@ -238,7 +238,7 @@ msgstr "raggruppamento massimo"
 
 #: adjallocation/models.py
 msgid "Estimate of the highest bracket for which this panel might be"
-msgstr "Stima del raggruppamento più alto nella quale dovrebbe trovarsi questa giuria"
+msgstr "Stima del raggruppamento piÃ¹ alto nella quale dovrebbe trovarsi questa giuria"
 
 #: adjallocation/models.py
 msgid "room rank"
@@ -250,7 +250,7 @@ msgstr "Numero sequenziale della giuria, non viene usato in nessun algoritmo"
 
 #: adjallocation/models.py
 msgid "liveness"
-msgstr "attività"
+msgstr "attivitÃ "
 
 #: adjallocation/models.py
 msgid "Number of categories this room is expected to be live for"
@@ -286,11 +286,11 @@ msgstr "Giurie preformate"
 
 #: adjallocation/templates/preformed_index.html
 msgid "A preformed panel is a defined group of adjudicators that is specified for a round before its draw has been generated. You can then manually or automatically apply these panels during the normal adjudicator allocation process. This can make allocations faster or allow you to create more considered panels of adjudicators."
-msgstr "Una giuria preformata è un gruppo definito di giudici che è specificato per un round prima che venga generato il sorteggio. È quindi possibile applicare manualmente o automaticamente questi pannelli durante il normale processo di assegnazione giudici. Questo può rendere le assegnazioni più veloci oppure consente di creare insiemi di giudici più ragionevoli."
+msgstr "Una giuria preformata Ã¨ un gruppo definito di giudici che Ã¨ specificato per un round prima che venga generato il sorteggio. Ãˆ quindi possibile applicare manualmente o automaticamente questi pannelli durante il normale processo di assegnazione giudici. Questo puÃ² rendere le assegnazioni piÃ¹ veloci oppure consente di creare insiemi di giudici piÃ¹ ragionevoli."
 
 #: adjallocation/templates/preformed_index.html
 msgid "Note that only adjudicators who have been marked as 'available' for that round will be able to be allocated for that round, so you may need to set their availability in advance."
-msgstr "Si noti che solo i giudici che sono stati contrassegnati come 'disponibili' per quel round potranno essere assegnati nel round, quindi potrebbe essere necessario impostare prima la loro disponibilità."
+msgstr "Si noti che solo i giudici che sono stati contrassegnati come 'disponibili' per quel round potranno essere assegnati nel round, quindi potrebbe essere necessario impostare prima la loro disponibilitÃ ."
 
 #: adjallocation/templates/preformed_index.html
 #, python-format
@@ -448,4 +448,5 @@ msgstr[1] "Cancellati %(count)d conflitti team-istituzione."
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
 msgstr "Non sono state apportate modifiche ai conflitti giudici-istituzioni."
+
 

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/draw/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/draw/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 930\n"
 
 #: draw/admin.py
@@ -102,7 +102,7 @@ msgstr ""
 #: draw/generator/bpelimination.py
 #, python-format
 msgid "%d debates in the previous round don't have exactly two teams advancing."
-msgstr "%d个辩论在以前的赛没有二在推进的队伍。"
+msgstr "%dä¸ªè¾©è®ºåœ¨ä»¥å‰çš„èµ›æ²¡æœ‰äºŒåœ¨æŽ¨è¿›çš„é˜Ÿä¼ã€‚"
 
 #: draw/generator/bpelimination.py
 #, python-format
@@ -121,7 +121,7 @@ msgstr ""
 
 #: draw/generator/bphungarian.py
 #, python-format
-msgid "The Rényi order can't be negative, and it's currently set to %(alpha)f."
+msgid "The RÃ©nyi order can't be negative, and it's currently set to %(alpha)f."
 msgstr ""
 
 #: draw/generator/common.py
@@ -179,7 +179,7 @@ msgstr ""
 
 #: draw/models.py
 msgid "none"
-msgstr "无"
+msgstr "æ— "
 
 #: draw/models.py
 msgid "postponed"
@@ -187,7 +187,7 @@ msgstr ""
 
 #: draw/models.py
 msgid "draft"
-msgstr "草稿"
+msgstr "è‰ç¨¿"
 
 #: draw/models.py
 msgid "confirmed"
@@ -195,7 +195,7 @@ msgstr ""
 
 #: draw/models.py
 msgid "round"
-msgstr "赛"
+msgstr "èµ›"
 
 #: draw/models.py
 msgid "room"
@@ -227,11 +227,11 @@ msgstr ""
 
 #: draw/models.py
 msgid "debate"
-msgstr "辩论"
+msgstr "è¾©è®º"
 
 #: draw/models.py
 msgid "debates"
-msgstr "辩论"
+msgstr "è¾©è®º"
 
 #. Translators: This is appended to a list of teams, e.g. "Auckland
 #. 1, Vic Wellington 1 (sides not confirmed)". Mind the leading
@@ -244,11 +244,11 @@ msgstr ""
 #. vs Vic Wellington 1". Mind the leading and trailing spaces.
 #: draw/models.py
 msgid " vs "
-msgstr "对"
+msgstr "å¯¹"
 
 #: draw/models.py
 msgid "team"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: draw/models.py
 msgid "side sequence"
@@ -273,11 +273,11 @@ msgstr ""
 
 #: draw/models.py
 msgid "won"
-msgstr "获胜了"
+msgstr "èŽ·èƒœäº†"
 
 #: draw/models.py
 msgid "lost"
-msgstr "败北了"
+msgstr "è´¥åŒ—äº†"
 
 #: draw/models.py
 #, python-format
@@ -306,7 +306,7 @@ msgstr ""
 #: draw/tables.py
 #, python-format
 msgid "Team %(num)d"
-msgstr "队伍 %(num)d"
+msgstr "é˜Ÿä¼ %(num)d"
 
 #: draw/tables.py
 msgid "Room rank of this debate"
@@ -348,7 +348,7 @@ msgstr ""
 
 #: draw/tables.py
 msgid "Side"
-msgstr "方"
+msgstr "æ–¹"
 
 #: draw/tables.py
 msgid "Position this round"
@@ -356,7 +356,7 @@ msgstr ""
 
 #: draw/tables.py
 msgid "Before"
-msgstr "之前"
+msgstr "ä¹‹å‰"
 
 #: draw/tables.py
 msgid "Side history before this round"
@@ -364,7 +364,7 @@ msgstr ""
 
 #: draw/tables.py
 msgid "After"
-msgstr "之后"
+msgstr "ä¹‹åŽ"
 
 #: draw/tables.py
 msgid "Side history after this round"
@@ -390,7 +390,7 @@ msgstr ""
 #: draw/tables.py
 #, python-format
 msgid "%(team)s: %(metric)s"
-msgstr "%(team)s：%(metric)s"
+msgstr "%(team)sï¼š%(metric)s"
 
 #: draw/tables.py
 msgid "side history before this round"
@@ -398,18 +398,18 @@ msgstr ""
 
 #: draw/tables.py
 msgid "Sides"
-msgstr "方"
+msgstr "æ–¹"
 
 #: draw/tables.py
 msgid "position cost"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "STOP!!! Read this first! Deleting debate teams from the database may crash Tabbycat!"
+msgid "STOP!!! Read this first! Deleting debate teams from the database may crash NekoTab!"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "Tabbycat requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgid "NekoTab requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
@@ -422,7 +422,7 @@ msgid "WARNING!!! If you are editing debate teams, read this first!"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/edit_warning.html
-msgid "Tabbycat requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgid "NekoTab requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
 msgstr ""
 
 #: draw/templates/draw_alerts_adjudicators.html
@@ -526,7 +526,7 @@ msgstr ""
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
-msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> —  including their ballots and adjudicator allocations — and cannot be undone. You probably don't want to do this if any results have been entered!"
+msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> â€”  including their ballots and adjudicator allocations â€” and cannot be undone. You probably don't want to do this if any results have been entered!"
 msgstr ""
 
 #: draw/templates/draw_confirm_regeneration.html
@@ -761,7 +761,7 @@ msgstr ""
 
 #: draw/templates/draw_display_by.html
 msgid "Fast"
-msgstr "快"
+msgstr "å¿«"
 
 #: draw/templates/draw_display_by.html
 msgid "Medium"
@@ -769,7 +769,7 @@ msgstr ""
 
 #: draw/templates/draw_display_by.html
 msgid "Slow"
-msgstr "慢"
+msgstr "æ…¢"
 
 #: draw/templates/draw_display_by.html
 msgid "Extra Slow"
@@ -789,19 +789,19 @@ msgstr ""
 
 #: draw/templates/draw_display_by.html
 msgid "Tiny"
-msgstr "微细"
+msgstr "å¾®ç»†"
 
 #: draw/templates/draw_display_by.html
 msgid "Small"
-msgstr "小"
+msgstr "å°"
 
 #: draw/templates/draw_display_by.html
 msgid "Large"
-msgstr "大"
+msgstr "å¤§"
 
 #: draw/templates/draw_display_by.html
 msgid "Huge"
-msgstr "巨大"
+msgstr "å·¨å¤§"
 
 #: draw/templates/draw_display_by.html
 msgid "Stop Scroll"
@@ -893,7 +893,7 @@ msgstr ""
 
 #: draw/templates/draw_status_draft.html
 #, python-format
-msgid "The draw type for this round is set to <strong>manual</strong>, so Tabbycat has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
+msgid "The draw type for this round is set to <strong>manual</strong>, so NekoTab has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
@@ -902,7 +902,7 @@ msgid "The adjudicator score range is 0, and so adjudicator scores will be ignor
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
-msgid "Tabbycat assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept Tabbycat's random assignment."
+msgid "NekoTab assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept NekoTab's random assignment."
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
@@ -920,7 +920,7 @@ msgstr ""
 
 #: draw/templates/position_balance.html
 #, python-format
-msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
+msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
 msgstr ""
 
 #: draw/templates/position_balance_break.html
@@ -1014,13 +1014,13 @@ msgstr ""
 
 #: draw/views.py
 #, python-format
-msgid "Rényi entropy of order %(order)s"
+msgid "RÃ©nyi entropy of order %(order)s"
 msgstr ""
 
-#. Translators: This is appended to the string "Rényi entropy of order 1.0"
+#. Translators: This is appended to the string "RÃ©nyi entropy of order 1.0"
 #: draw/views.py
 msgid " (<i>i.e.</i>, Shannon entropy)"
-msgstr "（<i>也就是</i>Shannon的熵）"
+msgstr "ï¼ˆ<i>ä¹Ÿå°±æ˜¯</i>Shannonçš„ç†µï¼‰"
 
 #: draw/views.py
 msgid "Teams with position imbalances"
@@ -1105,4 +1105,5 @@ msgstr ""
 #: draw/views.py
 msgid "Edit Matchups"
 msgstr ""
+
 

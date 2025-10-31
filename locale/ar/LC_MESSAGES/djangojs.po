@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-14 04:50+1100\n"
 "PO-Revision-Date: 2020-07-10 07:06\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/djangojs.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/djangojs.po\n"
 "X-Crowdin-File-ID: 962\n"
 
 #: checkins/templates/CheckInScanContainer.vue:
@@ -36,7 +36,7 @@ msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "All"
-msgstr "الكل"
+msgstr "Ø§Ù„ÙƒÙ„"
 
 #. Translators: %1: Option name
 #: checkins/templates/CheckInStatusContainer.vue:
@@ -56,11 +56,11 @@ msgid "This page will live-update with new check-ins as they occur although the 
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>✓</strong> All"
+msgid "<strong>âœ“</strong> All"
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>☓</strong> All"
+msgid "<strong>â˜“</strong> All"
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
@@ -205,7 +205,7 @@ msgstr ""
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "Team"
-msgstr "فريق"
+msgstr "ÙØ±ÙŠÙ‚"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Mark speeches %1 to %2; <strong>%3</strong>."
@@ -257,14 +257,14 @@ msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue: checkins/templates/PeopleStatusMixin.vue:
 msgid "Unaffiliated"
-msgstr "غير منتسبين"
+msgstr "ØºÙŠØ± Ù…Ù†ØªØ³Ø¨ÙŠÙ†"
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "no ½ marks"
+msgid "no Â½ marks"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "½ marks are allowed"
+msgid "Â½ marks are allowed"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
@@ -289,7 +289,7 @@ msgstr ""
 
 #: printing/templates/PrintableFeedback.vue: printing/templates/PrintableFeedbackQuestion.vue:
 msgid "Yes"
-msgstr "نعم "
+msgstr "Ù†Ø¹Ù… "
 
 #: printing/templates/PrintableFeedback.vue:
 msgid "No, I am submitting feedback on:"
@@ -301,7 +301,7 @@ msgstr ""
 
 #: printing/templates/PrintableFeedbackQuestion.vue:
 msgid "No"
-msgstr "لا"
+msgstr "Ù„Ø§"
 
 #: printing/templates/PrintableScoresheet.vue:
 msgid "Which team won the debate:"
@@ -341,19 +341,19 @@ msgstr ""
 
 #: templates/tables/TablesContainer.vue:8
 msgid "Find in Table"
-msgstr "البحث في الجدول"
+msgstr "Ø§Ù„Ø¨Ø­Ø« ÙÙŠ Ø§Ù„Ø¬Ø¯ÙˆÙ„"
 
 #: templates/tables/CheckboxTables.vue:30
 msgid "Set All Breaking as Available"
-msgstr "وضع جميع المتأهلين \"متواجدون\""
+msgstr "ÙˆØ¶Ø¹ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…ØªØ£Ù‡Ù„ÙŠÙ† \"Ù…ØªÙˆØ§Ø¬Ø¯ÙˆÙ†\""
 
 #: templates/tables/CheckboxTables.vue:36
 msgid "Set all the availabilities to exactly match what they were in the previous round."
-msgstr "تعيين جميع الأشياء للتتوافق مع تلك المتاحة في الجولة السابقة."
+msgstr "ØªØ¹ÙŠÙŠÙ† Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø£Ø´ÙŠØ§Ø¡ Ù„Ù„ØªØªÙˆØ§ÙÙ‚ Ù…Ø¹ ØªÙ„Ùƒ Ø§Ù„Ù…ØªØ§Ø­Ø© ÙÙŠ Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ø³Ø§Ø¨Ù‚Ø©."
 
 #: templates/tables/CheckboxTables.vue:37
 msgid "Match"
-msgstr "توافق"
+msgstr "ØªÙˆØ§ÙÙ‚"
 
 #: templates/tables/CheckboxTables.vue:41
 msgid "Set all availabilities to exactly match check-ins."
@@ -361,15 +361,15 @@ msgstr ""
 
 #: templates/tables/CheckboxTables.vue:44
 msgid "Match Check-Ins"
-msgstr "تشابه الإدخال "
+msgstr "ØªØ´Ø§Ø¨Ù‡ Ø§Ù„Ø¥Ø¯Ø®Ø§Ù„ "
 
 #: templates/tables/CheckboxTables.vue:
-msgid "Set people as available only if they have a check-in and are currently unavailable — i.e. it will not overwrite any existing availabilities."
-msgstr "تعيين الأشخاص على أنها متوفرة فقط إذا كان لديهم تسجيل دخول و غير متاحون حاليًا — بمعنى أنه لن يؤدي إلى استبدال أي من المتوفرين حاليا."
+msgid "Set people as available only if they have a check-in and are currently unavailable â€” i.e. it will not overwrite any existing availabilities."
+msgstr "ØªØ¹ÙŠÙŠÙ† Ø§Ù„Ø£Ø´Ø®Ø§Øµ Ø¹Ù„Ù‰ Ø£Ù†Ù‡Ø§ Ù…ØªÙˆÙØ±Ø© ÙÙ‚Ø· Ø¥Ø°Ø§ ÙƒØ§Ù† Ù„Ø¯ÙŠÙ‡Ù… ØªØ³Ø¬ÙŠÙ„ Ø¯Ø®ÙˆÙ„ Ùˆ ØºÙŠØ± Ù…ØªØ§Ø­ÙˆÙ† Ø­Ø§Ù„ÙŠÙ‹Ø§ â€” Ø¨Ù…Ø¹Ù†Ù‰ Ø£Ù†Ù‡ Ù„Ù† ÙŠØ¤Ø¯ÙŠ Ø¥Ù„Ù‰ Ø§Ø³ØªØ¨Ø¯Ø§Ù„ Ø£ÙŠ Ù…Ù† Ø§Ù„Ù…ØªÙˆÙØ±ÙŠÙ† Ø­Ø§Ù„ÙŠØ§."
 
 #: templates/tables/CheckboxTables.vue:47
 msgid "Copy From Check-Ins"
-msgstr "نسخة من تسجيل الدخول "
+msgstr "Ù†Ø³Ø®Ø© Ù…Ù† ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø¯Ø®ÙˆÙ„ "
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "Ballots Status"
@@ -393,59 +393,59 @@ msgstr ""
 
 #: participants/templates/DiversityContainer.vue:6
 msgid "Speaker Demographics"
-msgstr "توزيع المتحدثين "
+msgstr "ØªÙˆØ²ÙŠØ¹ Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ† "
 
 #: participants/templates/DiversityContainer.vue:11
 msgid "No Gender Information"
-msgstr "لا يوجد معلومات الجنس"
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ø¬Ù†Ø³"
 
 #: participants/templates/DiversityContainer.vue:18
 msgid "No Speaker Categories Information"
-msgstr "لا يوجد معلومات عن فئة المتحدث "
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø¹Ù† ÙØ¦Ø© Ø§Ù„Ù…ØªØ­Ø¯Ø« "
 
 #: participants/templates/DiversityContainer.vue:33
 msgid "Speaker Results"
-msgstr "نتائج المتحدث "
+msgstr "Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ù…ØªØ­Ø¯Ø« "
 
 #: participants/templates/DiversityContainer.vue:36
 msgid "speakers with gender data"
-msgstr "المتحدثون مع بيانات جنسهم"
+msgstr "Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙˆÙ† Ù…Ø¹ Ø¨ÙŠØ§Ù†Ø§Øª Ø¬Ù†Ø³Ù‡Ù…"
 
 #: participants/templates/DiversityContainer.vue:38
 msgid "speaker scores total"
-msgstr "مجموع درجات المتحدث "
+msgstr "Ù…Ø¬Ù…ÙˆØ¹ Ø¯Ø±Ø¬Ø§Øª Ø§Ù„Ù…ØªØ­Ø¯Ø« "
 
 #: participants/templates/DiversityContainer.vue:49
 msgid "No Region Information"
-msgstr "لا يوجد معلومات عن المنطقة "
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø¹Ù† Ø§Ù„Ù…Ù†Ø·Ù‚Ø© "
 
 #: participants/templates/DiversityContainer.vue:56
 msgid "Adjudicator Demographics"
-msgstr "توزيع الحكام "
+msgstr "ØªÙˆØ²ÙŠØ¹ Ø§Ù„Ø­ÙƒØ§Ù… "
 
 #: participants/templates/DiversityContainer.vue:68
 msgid "No Position Information"
-msgstr "لا يوجد معلومات عن الوظيفة "
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø¹Ù† Ø§Ù„ÙˆØ¸ÙŠÙØ© "
 
 #: participants/templates/DiversityContainer.vue:83
 msgid "Adjudicator Results"
-msgstr "نتائج الحكم "
+msgstr "Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ø­ÙƒÙ… "
 
 #: participants/templates/DiversityContainer.vue:86
 msgid "adjudicators with gender data"
-msgstr "الحكام مع بيانات جنسهم"
+msgstr "Ø§Ù„Ø­ÙƒØ§Ù… Ù…Ø¹ Ø¨ÙŠØ§Ù†Ø§Øª Ø¬Ù†Ø³Ù‡Ù…"
 
 #: participants/templates/DiversityContainer.vue:88
 msgid "feedback scores total"
-msgstr "مجموع درجات التغذية الراجعة "
+msgstr "Ù…Ø¬Ù…ÙˆØ¹ Ø¯Ø±Ø¬Ø§Øª Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© "
 
 #: participants/templates/DiversityContainer.vue:94
 msgid "No Adjudicator Ratings Information"
-msgstr "لا توجد معلومات حول تصنيف الحكام"
+msgstr "Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø­ÙˆÙ„ ØªØµÙ†ÙŠÙ Ø§Ù„Ø­ÙƒØ§Ù…"
 
 #: participants/templates/DiversityContainer.vue:99
 msgid "No Adjudicator-Adjudicator Feedback Information"
-msgstr "لا يوجد معلومات عن التغذية الراجعة حول تحكيم المحكمين "
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø¹Ù† Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© Ø­ÙˆÙ„ ØªØ­ÙƒÙŠÙ… Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ† "
 
 #: results/templates/ResultsStats.vue:10
 msgid "Checked-In"
@@ -461,7 +461,7 @@ msgstr ""
 
 #: results/templates/ResultsStats.vue:26
 msgid "Unknown"
-msgstr "مجهول "
+msgstr "Ù…Ø¬Ù‡ÙˆÙ„ "
 
 #: results/templates/ResultsStats.vue:31
 msgid "Unconfirmed"
@@ -469,7 +469,7 @@ msgstr ""
 
 #: results/templates/ResultsStats.vue:36
 msgid "Confirmed"
-msgstr "معتمد"
+msgstr "Ù…Ø¹ØªÙ…Ø¯"
 
 #: results/templates/ResultsStats.vue:40
 msgid "Ballot Statuses"
@@ -509,7 +509,7 @@ msgstr ""
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Break"
-msgstr "تأهل "
+msgstr "ØªØ£Ù‡Ù„ "
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Gender"
@@ -517,7 +517,7 @@ msgstr ""
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Rank"
-msgstr "المستوى"
+msgstr "Ø§Ù„Ù…Ø³ØªÙˆÙ‰"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Region"
@@ -526,7 +526,7 @@ msgstr ""
 #. Translators: Short for "Venue Category"
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Category"
-msgstr "الفئة"
+msgstr "Ø§Ù„ÙØ¦Ø©"
 
 #: utils/templates/DragAndDropDebate.vue:5
 msgid "The debate's bracket"
@@ -551,4 +551,5 @@ msgstr ""
 #: draw/templates/InlineTeam.vue:41
 msgid "No code name set"
 msgstr ""
+
 

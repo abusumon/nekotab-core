@@ -1,11 +1,11 @@
-
+﻿
 // Boostrap overrides/customisation (load before bootstrap)
 @import 'components/custom';
 
 // Bootstrap (custom module selection)
 @import 'components/bootstrap-custom';
 
-// Tabbycat key variables/mixins (load after bootstrap)
+// NekoTab key variables/mixins (load after bootstrap)
 @import 'components/variables';
 
 // General styles
@@ -35,3 +35,4 @@
 .ui-helper-hidden-accessible {
   display: none; // Remove when jquery UI is removed
 }
+

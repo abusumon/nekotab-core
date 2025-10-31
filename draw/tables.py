@@ -1,4 +1,4 @@
-from itertools import islice, zip_longest
+﻿from itertools import islice, zip_longest
 from typing import List, Optional, TYPE_CHECKING
 
 from django.utils.encoding import force_str
@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy
 from participants.utils import get_side_history
 from standings.templatetags.standingsformat import metricformat, rankingformat
 from tournaments.utils import get_side_name
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 
 from .generator.bphungarian import BPHungarianDrawGenerator
 
@@ -19,11 +19,11 @@ if TYPE_CHECKING:
     from .models import Debate
 
 
-class BaseDrawTableBuilder(TabbycatTableBuilder):
+class BaseDrawTableBuilder(NekoTabTableBuilder):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.side_history_separator = " " if self.tournament.pref('teams_in_debate') == 4 else " / "
+        self.side_history_separator = "Â " if self.tournament.pref('teams_in_debate') == 4 else "Â /Â "
 
     def highlight_rows_by_column_value(self, column):
         highlighted_rows = [i for i in range(1, len(self.data))
@@ -234,9 +234,9 @@ class BasePositionBalanceReportTableBuilder(BaseDrawTableBuilder):
         self.exponent = self.tournament.pref('bp_position_cost_exponent')
 
         cost_pref = self.tournament.pref('bp_position_cost')
-        α = self.tournament.pref('bp_renyi_order')  # noqa: N806
+        Î± = self.tournament.pref('bp_renyi_order')  # noqa: N806
         if cost_pref == "entropy":
-            self.position_cost_func = BPHungarianDrawGenerator.get_entropy_position_cost_function(α)
+            self.position_cost_func = BPHungarianDrawGenerator.get_entropy_position_cost_function(Î±)
         else:
             self.position_cost_func = getattr(BPHungarianDrawGenerator, BPHungarianDrawGenerator.POSITION_COST_FUNCTIONS[cost_pref])
 
@@ -459,3 +459,4 @@ class PositionBalanceReportDrawTableBuilder(BasePositionBalanceReportTableBuilde
                 continue
             for cell in row[-4:]:
                 cell['class'] = cell.get('class', '') + ' table-' + category[0]
+

@@ -1,4 +1,4 @@
-import json
+﻿import json
 import logging
 from collections import OrderedDict
 
@@ -22,9 +22,9 @@ from results.prefetch import populate_confirmed_ballots
 from tournaments.models import Round
 from users.permissions import has_permission, Permission
 from utils.misc import redirect_round, redirect_tournament, reverse_round, reverse_tournament
-from utils.mixins import (AdministratorMixin, AssistantMixin, CacheMixin, TabbycatPageTitlesMixin,
+from utils.mixins import (AdministratorMixin, AssistantMixin, CacheMixin, NekoTabPageTitlesMixin,
                           WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConfigVarsMixin)
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 from utils.views import ModelFormSetView, PostOnlyRedirectView, VueTableTemplateView
 
 from .forms import (RoundWeightForm, ScheduleEventForm, SetCurrentRoundMultipleBreakCategoriesForm,
@@ -262,7 +262,7 @@ class SetCurrentRoundView(AdministratorMixin, TournamentMixin, FormView):
     slug_url_kwarg = 'tournament_slug'
     redirect_field_name = 'next'
     page_title = _('Set Current Round')
-    page_emoji = '🙏'
+    page_emoji = 'ðŸ™'
 
     view_permission = True
     edit_permission = Permission.CONFIRM_ROUND
@@ -368,7 +368,7 @@ class FixDebateTeamsView(AdministratorMixin, TournamentMixin, TemplateView):
         return TemplateView.dispatch(self, request, *args, **kwargs)
 
 
-class StyleGuideView(TemplateView, TabbycatPageTitlesMixin):
+class StyleGuideView(TemplateView, NekoTabPageTitlesMixin):
     template_name = 'admin/style_guide.html'
     page_subtitle = 'Contextual sub title'
 
@@ -442,12 +442,12 @@ class PublicScheduleView(PublicTournamentPageMixin, VueTableTemplateView):
     cache_timeout = settings.PUBLIC_SLOW_CACHE_TIMEOUT
     public_page_preference = 'public_schedule'
     page_title = _("Tournament Schedule")
-    page_emoji = '⏳'
+    page_emoji = 'â³'
     cache_timeout = settings.PUBLIC_SLOW_CACHE_TIMEOUT
 
     def get_table(self):
         events = self.tournament.scheduleevent_set.all()
-        table = TabbycatTableBuilder(view=self, sort_key='start_time')
+        table = NekoTabTableBuilder(view=self, sort_key='start_time')
         table.add_schedule_event_columns(events)
         return table
 
@@ -455,3 +455,4 @@ class PublicScheduleView(PublicTournamentPageMixin, VueTableTemplateView):
         context = super().get_context_data(**kwargs)
         context['schedule_timezone_label'] = get_current_timezone_name()
         return context
+

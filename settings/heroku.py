@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 from os import environ
 
 import dj_database_url
@@ -7,7 +7,7 @@ from sentry_sdk.integrations.logging import LoggingIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.redis import RedisIntegration
 
-from .core import TABBYCAT_VERSION
+from .core import NekoTab_VERSION
 
 # ==============================================================================
 # Heroku
@@ -64,7 +64,7 @@ else:
 # be closed (Heroku by default closes after 5 minutes)
 # ========================
 # The below config sets a more aggressive timeout but does not limit
-# total connections — so the limit of 30 could be theoretically be hit if
+# total connections â€” so the limit of 30 could be theoretically be hit if
 # running 4 or so dynos. If this becomes a problem then we need to implement
 # a pooling logic that ensures connections are shared amonst unicorn workers
 # ========================
@@ -122,7 +122,7 @@ if environ.get('EMAIL_HOST', ''):
 
 elif environ.get('SENDGRID_API_KEY', ''):
     SERVER_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'root@localhost')
-    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'notconfigured@tabbycatsite')
+    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'notconfigured@NekoTabsite')
     EMAIL_HOST = 'smtp.sendgrid.net'
     EMAIL_HOST_USER = 'apikey'
     EMAIL_HOST_PASSWORD = environ['SENDGRID_API_KEY']
@@ -130,7 +130,7 @@ elif environ.get('SENDGRID_API_KEY', ''):
     EMAIL_USE_TLS = True
 
 elif environ.get('SENDGRID_USERNAME', ''):
-    # These settings are deprecated as of Tabbycat 2.6.0 (Ocicat).
+    # These settings are deprecated as of NekoTab 2.6.0 (Ocicat).
     # When removing, also remove utils.mixins.WarnAboutLegacySendgridConfigVarsMixin and
     # templates/errors/legacy_sendgrid_warning.html (and references thereto).
     USING_LEGACY_SENDGRID_CONFIG_VARS = True
@@ -156,5 +156,6 @@ if not environ.get('DISABLE_SENTRY'):
             RedisIntegration(),
         ],
         send_default_pii=True,
-        release=TABBYCAT_VERSION,
+        release=NekoTab_VERSION,
     )
+

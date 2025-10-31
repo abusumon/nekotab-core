@@ -1,4 +1,4 @@
-{% extends "assistant_results.html" %}
+﻿{% extends "assistant_results.html" %}
 {% load humanize debate_tags i18n %}
 
 {% block page-subnav-sections %}
@@ -79,7 +79,7 @@
   {% comment %}
     Stopgap to warn user about potential database inconsistency, when trainee adjudicators
     seem to have given scores. This normally happens when an adjudicator was demoted after
-    a result was entered. See: https://github.com/TabbycatDebate/tabbycat/issues/922
+    a result was entered. See: https://github.com/NekoTabDebate/NekoTab/issues/922
     This stopgap should be deleted after a more general data consistency solution is
     implemented.
   {% endcomment %}
@@ -111,7 +111,7 @@
     {% blocktrans trimmed asvar message %}
       One or more debates in this round appear to have more than one confirmed
       ballot submission. This can cause unexpected results (or crashes), because
-      Tabbycat assumes that each debate has at most one confirmed ballot
+      NekoTab assumes that each debate has at most one confirmed ballot
       submission. This inconsistency can generally only arise if you manipulate
       the database with SQL queries directly. You'll need to find the offending
       debate(s) and ballot submissions yourself in the Edit Database area, or if
@@ -153,3 +153,4 @@
   {% endif %}
 
 {% endblock %}
+

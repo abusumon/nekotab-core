@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 from threading import Lock
 
 from django.contrib import messages
@@ -31,12 +31,12 @@ class BlankSiteStartView(FormView):
     form_class = SuperuserCreationForm
     template_name = "blank_site_start.html"
     lock = Lock()
-    success_url = reverse_lazy('tabbycat-index')
+    success_url = reverse_lazy('NekoTab-index')
 
     def get(self, request):
         if User.objects.exists():
             logger.warning("Tried to get the blank-site-start view when a user account already exists.")
-            return redirect('tabbycat-index')
+            return redirect('NekoTab-index')
 
         return super().get(request)
 
@@ -66,7 +66,7 @@ class InviteUserView(LogActionMixin, AdministratorMixin, TournamentMixin, Passwo
     template_name = "invite_user.html"
     action_log_type = ActionLogEntry.ActionType.USER_INVITE
     page_title = _("Invite User")
-    page_emoji = '👤'
+    page_emoji = 'ðŸ‘¤'
 
     subject_template_name = 'account_invitation_subject.txt'
     email_template_name = 'account_invitation_email.html'
@@ -92,7 +92,7 @@ class InviteUserView(LogActionMixin, AdministratorMixin, TournamentMixin, Passwo
 
 class AcceptInvitationView(TournamentMixin, PasswordResetConfirmView):
     form_class = AcceptInvitationForm
-    success_url = reverse_lazy('tabbycat-index')
+    success_url = reverse_lazy('NekoTab-index')
     template_name = 'signup.html'
     page_title = _('Accept Invitation')
 
@@ -100,3 +100,4 @@ class AcceptInvitationView(TournamentMixin, PasswordResetConfirmView):
         if not self.validlink:
             raise Http404
         return super().get_context_data(**kwargs)
+

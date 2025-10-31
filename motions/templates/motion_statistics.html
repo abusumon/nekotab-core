@@ -1,4 +1,4 @@
-{% extends "standings_base.html" %}
+﻿{% extends "standings_base.html" %}
 {% load debate_tags static i18n %}
 
 {% block content %}
@@ -12,7 +12,8 @@
     {% endif %}
 
   {% else %}
-    {% include "components/item-info.html" with text="There are no motions in Tabbycat" type="info" %}
+    {% include "components/item-info.html" with text="There are no motions in NekoTab" type="info" %}
   {% endif %}
 
 {% endblock content %}
+

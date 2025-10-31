@@ -1,4 +1,4 @@
-import json
+﻿import json
 import logging
 from collections import OrderedDict
 
@@ -24,7 +24,7 @@ from tournaments.mixins import RoundMixin
 from users.permissions import Permission
 from utils.misc import reverse_round
 from utils.mixins import AdministratorMixin
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 from utils.views import PostOnlyRedirectView, VueTableTemplateView
 from venues.models import Venue
 
@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 class AvailabilityIndexView(RoundMixin, AdministratorMixin, TemplateView):
     template_name = 'availability_index.html'
     page_title = gettext_lazy("Availability")
-    page_emoji = '📍'
+    page_emoji = 'ðŸ“'
     view_permission = Permission.VIEW_ROUNDAVAILABILITIES
 
     def get_context_data(self, **kwargs):
@@ -105,8 +105,8 @@ class AvailabilityIndexView(RoundMixin, AdministratorMixin, TemplateView):
                 teams_dict['in_now'] = 0
                 teams_dict['message'] = ngettext(
                     # Translators: nteams in this string can only be 0 or 1
-                    "%(nteams)d breaking team — no debates can happen",
-                    "%(nteams)d breaking teams — no debates can happen",  # in English, used when break_size == 0
+                    "%(nteams)d breaking team â€” no debates can happen",
+                    "%(nteams)d breaking teams â€” no debates can happen",  # in English, used when break_size == 0
                     break_size) % {'nteams': break_size}
             else:
                 debates, bypassing = partial_break_round_split(break_size)
@@ -176,7 +176,7 @@ class AvailabilityTypeBase(RoundMixin, AdministratorMixin, VueTableTemplateView)
         return self.model.objects.filter(tournament=self.tournament)
 
     def get_table(self):
-        table = TabbycatTableBuilder(view=self, sort_key=self.sort_key)
+        table = NekoTabTableBuilder(view=self, sort_key=self.sort_key)
         queryset = utils.annotate_availability(self.get_queryset(), self.round)
         self.annotate_checkins(queryset, self.tournament)
 
@@ -213,7 +213,7 @@ class AvailabilityTypeTeamView(AvailabilityTypeBase):
     edit_permission = Permission.EDIT_ROUNDAVAILABILITIES_TEAM
 
     page_title = gettext_lazy("Team Availability")
-    page_emoji = '👂'
+    page_emoji = 'ðŸ‘‚'
     model = Team
     sort_key = 'team'
     update_view = 'availability-update-teams'
@@ -236,7 +236,7 @@ class AvailabilityTypeAdjudicatorView(AvailabilityTypeBase):
     edit_permission = Permission.EDIT_ROUNDAVAILABILITIES_ADJ
 
     page_title = gettext_lazy("Adjudicator Availability")
-    page_emoji = '👂'
+    page_emoji = 'ðŸ‘‚'
     model = Adjudicator
     sort_key = 'name'
     update_view = 'availability-update-adjudicators'
@@ -259,7 +259,7 @@ class AvailabilityTypeVenueView(AvailabilityTypeBase):
     edit_permission = Permission.EDIT_ROUNDAVAILABILITIES_VENUE
 
     page_title = gettext_lazy("Room Availability")
-    page_emoji = '🎪'
+    page_emoji = 'ðŸŽª'
     model = Venue
     sort_key = 'venue'
     update_view = 'availability-update-venues'
@@ -361,7 +361,7 @@ class BaseAvailabilityUpdateView(RoundMixin, AdministratorMixin, LogActionMixin,
             self.log_action()
         except IntegrityError:
             message = """ of an integrity error when issuing the availability
-                update — this typically means that the availability for an
+                update â€” this typically means that the availability for an
                 adjudicator has already been set to be what was saved"""
             return JsonResponse({'status': 'false', 'message': message}, status=500)
         except Exception:
@@ -385,3 +385,4 @@ class UpdateTeamsAvailabilityView(BaseAvailabilityUpdateView):
 class UpdateVenuesAvailabilityView(BaseAvailabilityUpdateView):
     action_log_type = ActionLogEntry.ActionType.AVAIL_VENUES_SAVE
     model = Venue
+

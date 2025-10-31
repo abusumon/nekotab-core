@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,37 +12,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/notifications/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/notifications/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 938\n"
 
 #: notifications/apps.py
 msgid "Notifications"
-msgstr "Уведомления"
+msgstr "Ð£Ð²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ"
 
 #: notifications/forms.py
 msgid "Recipient email address"
-msgstr "Email получателя"
+msgstr "Email Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»Ñ"
 
 #: notifications/forms.py
 #, python-format
 msgid "Test email from %(host)s"
-msgstr "Тестовый email от %(host)s"
+msgstr "Ð¢ÐµÑÑ‚Ð¾Ð²Ñ‹Ð¹ email Ð¾Ñ‚ %(host)s"
 
 #: notifications/forms.py
 #, python-format
 msgid "Congratulations! If you're reading this message, your email backend on %(host)s looks all good to go!"
-msgstr "Поздравляем! Если вы читаете это сообщение, с вашим почтовым бекэндрм на %(host)s все хорошо!"
+msgstr "ÐŸÐ¾Ð·Ð´Ñ€Ð°Ð²Ð»ÑÐµÐ¼! Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ñ‡Ð¸Ñ‚Ð°ÐµÑ‚Ðµ ÑÑ‚Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ, Ñ Ð²Ð°ÑˆÐ¸Ð¼ Ð¿Ð¾Ñ‡Ñ‚Ð¾Ð²Ñ‹Ð¼ Ð±ÐµÐºÑÐ½Ð´Ñ€Ð¼ Ð½Ð° %(host)s Ð²ÑÐµ Ñ…Ð¾Ñ€Ð¾ÑˆÐ¾!"
 
 #: notifications/forms.py
 msgid "Subject"
-msgstr "Тема письма"
+msgstr "Ð¢ÐµÐ¼Ð° Ð¿Ð¸ÑÑŒÐ¼Ð°"
 
 #: notifications/forms.py
 msgid "Message"
-msgstr "Сообщение"
+msgstr "Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ"
 
 #: notifications/models.py
 msgid "email"
@@ -50,75 +50,75 @@ msgstr "email"
 
 #: notifications/models.py
 msgid "SMS"
-msgstr "СМС"
+msgstr "Ð¡ÐœÐ¡"
 
 #: notifications/models.py
 msgid "recipient"
-msgstr "получатель"
+msgstr "Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»ÑŒ"
 
 #: notifications/models.py
 msgid "method"
-msgstr "метод"
+msgstr "Ð¼ÐµÑ‚Ð¾Ð´"
 
 #: notifications/models.py
 msgid "context"
-msgstr "контекст"
+msgstr "ÐºÐ¾Ð½Ñ‚ÐµÐºÑÑ‚"
 
 #: notifications/models.py
 msgid "notification"
-msgstr "уведомление"
+msgstr "ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ðµ"
 
 #: notifications/models.py
 msgid "timestamp"
-msgstr "отметка времени"
+msgstr "Ð¾Ñ‚Ð¼ÐµÑ‚ÐºÐ° Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸"
 
 #: notifications/models.py
 msgid "sent message"
-msgstr "отправить сообщение"
+msgstr "Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ"
 
 #: notifications/models.py
 msgid "sent messages"
-msgstr "отправить сообщения"
+msgstr "Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ"
 
 #: notifications/models.py
 msgid "team points"
-msgstr "баллы команды"
+msgstr "Ð±Ð°Ð»Ð»Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: notifications/models.py
 msgid "ballot confirmed"
-msgstr "бэллот подтвержден"
+msgstr "Ð±ÑÐ»Ð»Ð¾Ñ‚ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½"
 
 #: notifications/models.py
 msgid "feedback URL"
-msgstr "uRL обратной связи"
+msgstr "uRL Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
 
 #: notifications/models.py
 msgid "ballot URL"
-msgstr "URL бэллота"
+msgstr "URL Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
 
 #: notifications/models.py
 msgid "landing page URL"
-msgstr "URL стартовой страницы"
+msgstr "URL ÑÑ‚Ð°Ñ€Ñ‚Ð¾Ð²Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹"
 
 #: notifications/models.py
 msgid "adjudicator draw released"
-msgstr "сетка судей опубликована"
+msgstr "ÑÐµÑ‚ÐºÐ° ÑÑƒÐ´ÐµÐ¹ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°"
 
 #: notifications/models.py
 msgid "team registration"
-msgstr "регистрация команд"
+msgstr "Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: notifications/models.py
 msgid "adjudicator registration"
-msgstr "регистрация судей"
+msgstr "Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ ÑÑƒÐ´ÐµÐ¹"
 
 #: notifications/models.py
 msgid "motion(s) released"
-msgstr "тема опубликована"
+msgstr "Ñ‚ÐµÐ¼Ð° Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°"
 
 #: notifications/models.py
 msgid "team draw released"
-msgstr "командная сетка опубликована"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ð°Ñ ÑÐµÑ‚ÐºÐ° Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°"
 
 #: notifications/models.py
 msgid "custom message"
@@ -126,15 +126,15 @@ msgstr ""
 
 #: notifications/models.py
 msgid "event"
-msgstr "мероприятие"
+msgstr "Ð¼ÐµÑ€Ð¾Ð¿Ñ€Ð¸ÑÑ‚Ð¸Ðµ"
 
 #: notifications/models.py
 msgid "tournament"
-msgstr "турнир"
+msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: notifications/models.py
 msgid "round"
-msgstr "раунд"
+msgstr "Ñ€Ð°ÑƒÐ½Ð´"
 
 #: notifications/models.py
 msgid "subject template"
@@ -146,55 +146,55 @@ msgstr ""
 
 #: notifications/models.py
 msgid "bulk notification"
-msgstr "массовое уведомление"
+msgstr "Ð¼Ð°ÑÑÐ¾Ð²Ð¾Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ðµ"
 
 #: notifications/models.py
 msgid "bulk notifications"
-msgstr "массовые уведомления"
+msgstr "Ð¼Ð°ÑÑÐ¾Ð²Ñ‹Ðµ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ"
 
 #: notifications/models.py
 msgid "Processed"
-msgstr "Обрабатывается"
+msgstr "ÐžÐ±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ÑÑ"
 
 #: notifications/models.py
 msgid "Dropped"
-msgstr "Сброшено"
+msgstr "Ð¡Ð±Ñ€Ð¾ÑˆÐµÐ½Ð¾"
 
 #: notifications/models.py
 msgid "Deferred"
-msgstr "Отложено"
+msgstr "ÐžÑ‚Ð»Ð¾Ð¶ÐµÐ½Ð¾"
 
 #: notifications/models.py
 msgid "Delivered"
-msgstr "Доставлено"
+msgstr "Ð”Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¾"
 
 #: notifications/models.py
 msgid "Bounced"
-msgstr "Возвращено"
+msgstr "Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð¾"
 
 #: notifications/models.py
 msgid "Opened"
-msgstr "Открыто"
+msgstr "ÐžÑ‚ÐºÑ€Ñ‹Ñ‚Ð¾"
 
 #: notifications/models.py
 msgid "Clicked"
-msgstr "Кликнуто"
+msgstr "ÐšÐ»Ð¸ÐºÐ½ÑƒÑ‚Ð¾"
 
 #: notifications/models.py
 msgid "Unsubscribed"
-msgstr "Отписавшийся"
+msgstr "ÐžÑ‚Ð¿Ð¸ÑÐ°Ð²ÑˆÐ¸Ð¹ÑÑ"
 
 #: notifications/models.py
 msgid "Marked as spam"
-msgstr "Помечено как спам"
+msgstr "ÐŸÐ¾Ð¼ÐµÑ‡ÐµÐ½Ð¾ ÐºÐ°Ðº ÑÐ¿Ð°Ð¼"
 
 #: notifications/models.py
 msgid "Unsubscribed from group"
-msgstr "Отписан от группы"
+msgstr "ÐžÑ‚Ð¿Ð¸ÑÐ°Ð½ Ð¾Ñ‚ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹"
 
 #: notifications/models.py
 msgid "Resubscribed to group"
-msgstr "Возобновлена подписка на группу"
+msgstr "Ð’Ð¾Ð·Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½Ð° Ð¿Ð¾Ð´Ð¿Ð¸ÑÐºÐ° Ð½Ð° Ð³Ñ€ÑƒÐ¿Ð¿Ñƒ"
 
 #: notifications/models.py
 msgid "Failed to send"
@@ -202,55 +202,55 @@ msgstr ""
 
 #: notifications/models.py
 msgid "email message"
-msgstr "отправить сообщение по email"
+msgstr "Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¿Ð¾ email"
 
 #: notifications/models.py
 msgid "email status"
-msgstr "статус email"
+msgstr "ÑÑ‚Ð°Ñ‚ÑƒÑ email"
 
 #: notifications/models.py
 msgid "email statuses"
-msgstr "статусы email"
+msgstr "ÑÑ‚Ð°Ñ‚ÑƒÑÑ‹ email"
 
 #: notifications/templates/email_participants.html
 #, python-format
 msgid "You have not specified a reply-to address. This means that participants may not reply to the message if they have questions. Please set one in the <a href=\"%(notifications_options_url)s\">Notifications section of the preferences</a>."
-msgstr "Вы не указали адрес ответа. Это означает, что участники могут не ответить на сообщение, если у них есть вопросы. Пожалуйста, установите его в разделе Уведомления <a href=\"%(notifications_options_url)s\">настроек</a>."
+msgstr "Ð’Ñ‹ Ð½Ðµ ÑƒÐºÐ°Ð·Ð°Ð»Ð¸ Ð°Ð´Ñ€ÐµÑ Ð¾Ñ‚Ð²ÐµÑ‚Ð°. Ð­Ñ‚Ð¾ Ð¾Ð·Ð½Ð°Ñ‡Ð°ÐµÑ‚, Ñ‡Ñ‚Ð¾ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸ Ð¼Ð¾Ð³ÑƒÑ‚ Ð½Ðµ Ð¾Ñ‚Ð²ÐµÑ‚Ð¸Ñ‚ÑŒ Ð½Ð° ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ, ÐµÑÐ»Ð¸ Ñƒ Ð½Ð¸Ñ… ÐµÑÑ‚ÑŒ Ð²Ð¾Ð¿Ñ€Ð¾ÑÑ‹. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ ÐµÐ³Ð¾ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Ð£Ð²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ <a href=\"%(notifications_options_url)s\">Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº</a>."
 
 #: notifications/templates/email_participants.html
 #, python-format
 msgid "The webhook URL for use in SendGrid is <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. Please point the HTTP POST URL in <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a> to that."
-msgstr "URL вебхука для использования в SendGrid <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. Пожалуйста, укажите URL HTTP POST в <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a> к этому."
+msgstr "URL Ð²ÐµÐ±Ñ…ÑƒÐºÐ° Ð´Ð»Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ Ð² SendGrid <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑƒÐºÐ°Ð¶Ð¸Ñ‚Ðµ URL HTTP POST Ð² <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a> Ðº ÑÑ‚Ð¾Ð¼Ñƒ."
 
 #: notifications/templates/email_participants.html
 msgid "Send Message(s)"
-msgstr "Отправить сообщение(я)"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ(Ñ)"
 
 #: notifications/templates/email_statuses.html
-msgid "Emails can be sent by Tabbycat for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
-msgstr "Email могут быть отправлены Tabbycat для различных целей. Email отправляются, когда включены определенные настройки (например, включено Получение Бэллотов) или через действия, доступные на конкретных страницах (например страницы отображения сетки для сочетания команд; или страницы Участников для регистрации команды). Эта страница показывает статус ранее отправленных email."
+msgid "Emails can be sent by NekoTab for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
+msgstr "Email Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹ NekoTab Ð´Ð»Ñ Ñ€Ð°Ð·Ð»Ð¸Ñ‡Ð½Ñ‹Ñ… Ñ†ÐµÐ»ÐµÐ¹. Email Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ, ÐºÐ¾Ð³Ð´Ð° Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ñ‹ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ñ‹Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾ ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ Ð‘ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²) Ð¸Ð»Ð¸ Ñ‡ÐµÑ€ÐµÐ· Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ Ð½Ð° ÐºÐ¾Ð½ÐºÑ€ÐµÑ‚Ð½Ñ‹Ñ… ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°Ñ… (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ ÑÐµÑ‚ÐºÐ¸ Ð´Ð»Ñ ÑÐ¾Ñ‡ÐµÑ‚Ð°Ð½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´; Ð¸Ð»Ð¸ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð£Ñ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð² Ð´Ð»Ñ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹). Ð­Ñ‚Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ ÑÑ‚Ð°Ñ‚ÑƒÑ Ñ€Ð°Ð½ÐµÐµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… email."
 
 #: notifications/templates/notifications_nav.html notifications/views.py
 msgid "Email Statuses"
-msgstr "Статусы email"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑÑ‹ email"
 
 #: notifications/templates/notifications_nav.html
 #: notifications/templates/test_email.html
 msgid "Send Test Email"
-msgstr "Отправить тестовый email"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ñ‚ÐµÑÑ‚Ð¾Ð²Ñ‹Ð¹ email"
 
 #: notifications/templates/notifications_nav.html
 msgid "Send Custom Email"
-msgstr "Отправить пользовательский email"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¸Ð¹ email"
 
 #: notifications/templates/test_email.html
 msgctxt "page title"
 msgid "Send Test Email"
-msgstr "Отправить тестовый email"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ñ‚ÐµÑÑ‚Ð¾Ð²Ñ‹Ð¹ email"
 
 #: notifications/templates/test_email.html
 msgid "You can use this form to send a test email, to check that your email backend settings are working, before you try to send email notifications to participants."
-msgstr "Вы можете использовать эту форму для отправки тестового письма, чтобы проверить, что настройки бекэнда электронной почты работают, прежде чем вы попытаетесь отправить уведомления по электронной почте участникам."
+msgstr "Ð’Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ñƒ Ñ„Ð¾Ñ€Ð¼Ñƒ Ð´Ð»Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ñ‚ÐµÑÑ‚Ð¾Ð²Ð¾Ð³Ð¾ Ð¿Ð¸ÑÑŒÐ¼Ð°, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ñ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ, Ñ‡Ñ‚Ð¾ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð±ÐµÐºÑÐ½Ð´Ð° ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ñ‹ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÑŽÑ‚, Ð¿Ñ€ÐµÐ¶Ð´Ðµ Ñ‡ÐµÐ¼ Ð²Ñ‹ Ð¿Ð¾Ð¿Ñ‹Ñ‚Ð°ÐµÑ‚ÐµÑÑŒ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ Ð¿Ð¾ ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ðµ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ°Ð¼."
 
 #: notifications/templates/test_email.html
 #, python-format
@@ -259,27 +259,27 @@ msgstr ""
 
 #: notifications/templates/test_email.html
 msgid "Go back to the site home page"
-msgstr "Вернуться на домашнюю страницу"
+msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð° Ð´Ð¾Ð¼Ð°ÑˆÐ½ÑŽÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ"
 
 #: notifications/utils.py
 msgid "the chair"
-msgstr "чэйр"
+msgstr "Ñ‡ÑÐ¹Ñ€"
 
 #: notifications/utils.py
 msgid "the only"
-msgstr "только"
+msgstr "Ñ‚Ð¾Ð»ÑŒÐºÐ¾"
 
 #: notifications/utils.py
 msgid "a panellist"
-msgstr "винг"
+msgstr "Ð²Ð¸Ð½Ð³"
 
 #: notifications/utils.py
 msgid "a trainee"
-msgstr "винг без права голоса"
+msgstr "Ð²Ð¸Ð½Ð³ Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
 
 #: notifications/utils.py
 msgid "TBA"
-msgstr "Будет анонсировано"
+msgstr "Ð‘ÑƒÐ´ÐµÑ‚ Ð°Ð½Ð¾Ð½ÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð¾"
 
 #: notifications/utils.py
 #, python-format
@@ -289,20 +289,20 @@ msgstr "%(tournament)s %(round)s @ %(room)s"
 #: notifications/utils.py
 #, python-format
 msgid "<li>%(side)s: %(team)s (%(points)d points with %(speaks)s total speaks)"
-msgstr "<li>%(side)s: %(team)s (%(points)d баллов с %(speaks)s общим спикерским)"
+msgstr "<li>%(side)s: %(team)s (%(points)d Ð±Ð°Ð»Ð»Ð¾Ð² Ñ %(speaks)s Ð¾Ð±Ñ‰Ð¸Ð¼ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¼)"
 
 #: notifications/utils.py
 #, python-format
 msgid "<li>%(side)s: %(team)s (%(points)s - %(speaks)s total speaks)"
-msgstr "<li>%(side)s:%(team)s (%(points)s - %(speaks)s общий спикерский)"
+msgstr "<li>%(side)s:%(team)s (%(points)s - %(speaks)s Ð¾Ð±Ñ‰Ð¸Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹)"
 
 #: notifications/utils.py
 msgid "Win"
-msgstr "Победа"
+msgstr "ÐŸÐ¾Ð±ÐµÐ´Ð°"
 
 #: notifications/utils.py
 msgid "Loss"
-msgstr "Поражение"
+msgstr "ÐŸÐ¾Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ"
 
 #: notifications/utils.py
 #, python-format
@@ -330,20 +330,20 @@ msgstr ""
 #: notifications/views.py
 #, python-format
 msgid "There was an error sending the test email: %(error)s"
-msgstr "Произошла ошибка при отправке тестового email: %(error)s"
+msgstr "ÐŸÑ€Ð¾Ð¸Ð·Ð¾ÑˆÐ»Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐµ Ñ‚ÐµÑÑ‚Ð¾Ð²Ð¾Ð³Ð¾ email: %(error)s"
 
 #: notifications/views.py
 #, python-format
 msgid "A test email has been sent to %(recipient)s."
-msgstr "Тестовый email отправлен на %(recipient)s."
+msgstr "Ð¢ÐµÑÑ‚Ð¾Ð²Ñ‹Ð¹ email Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½ Ð½Ð° %(recipient)s."
 
 #: notifications/views.py
 msgid "N/A"
-msgstr "Н/Д"
+msgstr "Ð/Ð”"
 
 #: notifications/views.py
 msgid "Not known"
-msgstr "Неизвестен"
+msgstr "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚ÐµÐ½"
 
 #: notifications/views.py
 #, python-format
@@ -357,11 +357,11 @@ msgstr "@%s"
 
 #: notifications/views.py
 msgid "Timeline"
-msgstr "Временная шкала"
+msgstr "Ð’Ñ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ ÑˆÐºÐ°Ð»Ð°"
 
 #: notifications/views.py
 msgid "Participant"
-msgstr "Участник"
+msgstr "Ð£Ñ‡Ð°ÑÑ‚Ð½Ð¸Ðº"
 
 #: notifications/views.py
 msgid "Email address"
@@ -369,54 +369,55 @@ msgstr ""
 
 #: notifications/views.py
 msgid "Status"
-msgstr "Статус"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ"
 
 #: notifications/views.py
 msgid "Time"
-msgstr "Время"
+msgstr "Ð’Ñ€ÐµÐ¼Ñ"
 
 #: notifications/views.py
 msgid "Email Participants"
-msgstr "Отправить email участникам"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ email ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ°Ð¼"
 
 #: notifications/views.py
 #, python-format
 msgid "%(email_count)s email has been queued for sending."
 msgid_plural "%(email_count)s emails have been queued for sending."
-msgstr[0] "%(email_count)s email адрес поставлен в очередь на отправку."
-msgstr[1] "%(email_count)s email адреса поставлены в очередь на отправку."
-msgstr[2] "%(email_count)s email адреса поставлены в очередь на отправку."
-msgstr[3] "%(email_count)s email адреса поставлены в очередь на отправку."
+msgstr[0] "%(email_count)s email Ð°Ð´Ñ€ÐµÑ Ð¿Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½ Ð² Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÑƒ."
+msgstr[1] "%(email_count)s email Ð°Ð´Ñ€ÐµÑÐ° Ð¿Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð² Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÑƒ."
+msgstr[2] "%(email_count)s email Ð°Ð´Ñ€ÐµÑÐ° Ð¿Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð² Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÑƒ."
+msgstr[3] "%(email_count)s email Ð°Ð´Ñ€ÐµÑÐ° Ð¿Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð² Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÑƒ."
 
 #: notifications/views.py
-msgid "No emails were sent — likely because no recipients were selected."
-msgstr "Email не были отправлены— вероятно, потому что не были выбраны получатели."
+msgid "No emails were sent â€” likely because no recipients were selected."
+msgstr "Email Ð½Ðµ Ð±Ñ‹Ð»Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹â€” Ð²ÐµÑ€Ð¾ÑÑ‚Ð½Ð¾, Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ Ð½Ðµ Ð±Ñ‹Ð»Ð¸ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ñ‹ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»Ð¸."
 
 #: notifications/views.py
 msgid "Send Email"
-msgstr "Отправить email"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ email"
 
 #: notifications/views.py
 msgid "Not Provided"
-msgstr "Не предоставлено"
+msgstr "ÐÐµ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¾"
 
 #: notifications/views.py
 msgid "Role"
-msgstr "Роль"
+msgstr "Ð Ð¾Ð»ÑŒ"
 
 #: notifications/views.py
 msgid "Adjudicator"
-msgstr "Судья"
+msgstr "Ð¡ÑƒÐ´ÑŒÑ"
 
 #: notifications/views.py
 msgid "Speaker"
-msgstr "Спикер"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€"
 
 #: notifications/views.py
 msgid "Speakers"
-msgstr "Спикеры"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: notifications/views.py
 msgid "Adjudicators"
-msgstr "Судьи"
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸"
+
 

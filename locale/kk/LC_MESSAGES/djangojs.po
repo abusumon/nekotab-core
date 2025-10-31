@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-14 04:50+1100\n"
 "PO-Revision-Date: 2023-11-27 12:08\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: kk\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/djangojs.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/djangojs.po\n"
 "X-Crowdin-File-ID: 962\n"
 
 #: checkins/templates/CheckInScanContainer.vue:
@@ -36,7 +36,7 @@ msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "All"
-msgstr "Барлығы"
+msgstr "Ð‘Ð°Ñ€Ð»Ñ‹Ò“Ñ‹"
 
 #. Translators: %1: Option name
 #: checkins/templates/CheckInStatusContainer.vue:
@@ -56,11 +56,11 @@ msgid "This page will live-update with new check-ins as they occur although the 
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>✓</strong> All"
+msgid "<strong>âœ“</strong> All"
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>☓</strong> All"
+msgid "<strong>â˜“</strong> All"
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
@@ -201,11 +201,11 @@ msgstr ""
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Trainee"
-msgstr "Үйренуші"
+msgstr "Ò®Ð¹Ñ€ÐµÐ½ÑƒÑˆÑ–"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "Team"
-msgstr "Топ"
+msgstr "Ð¢Ð¾Ð¿"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Mark speeches %1 to %2; <strong>%3</strong>."
@@ -260,11 +260,11 @@ msgid "Unaffiliated"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "no ½ marks"
+msgid "no Â½ marks"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "½ marks are allowed"
+msgid "Â½ marks are allowed"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
@@ -364,7 +364,7 @@ msgid "Match Check-Ins"
 msgstr ""
 
 #: templates/tables/CheckboxTables.vue:
-msgid "Set people as available only if they have a check-in and are currently unavailable — i.e. it will not overwrite any existing availabilities."
+msgid "Set people as available only if they have a check-in and are currently unavailable â€” i.e. it will not overwrite any existing availabilities."
 msgstr ""
 
 #: templates/tables/CheckboxTables.vue:47
@@ -461,7 +461,7 @@ msgstr ""
 
 #: results/templates/ResultsStats.vue:26
 msgid "Unknown"
-msgstr "Белгісіз"
+msgstr "Ð‘ÐµÐ»Ð³Ñ–ÑÑ–Ð·"
 
 #: results/templates/ResultsStats.vue:31
 msgid "Unconfirmed"
@@ -469,7 +469,7 @@ msgstr ""
 
 #: results/templates/ResultsStats.vue:36
 msgid "Confirmed"
-msgstr "Бекітілген"
+msgstr "Ð‘ÐµÐºÑ–Ñ‚Ñ–Ð»Ð³ÐµÐ½"
 
 #: results/templates/ResultsStats.vue:40
 msgid "Ballot Statuses"
@@ -509,15 +509,15 @@ msgstr ""
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Break"
-msgstr "Іріктеуден өткендер"
+msgstr "Ð†Ñ€Ñ–ÐºÑ‚ÐµÑƒÐ´ÐµÐ½ Ó©Ñ‚ÐºÐµÐ½Ð´ÐµÑ€"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Gender"
-msgstr "Жынысы"
+msgstr "Ð–Ñ‹Ð½Ñ‹ÑÑ‹"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Rank"
-msgstr "Орны"
+msgstr "ÐžÑ€Ð½Ñ‹"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Region"
@@ -551,4 +551,5 @@ msgstr ""
 #: draw/templates/InlineTeam.vue:41
 msgid "No code name set"
 msgstr ""
+
 

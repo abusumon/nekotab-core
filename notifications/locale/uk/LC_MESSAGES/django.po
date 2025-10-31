@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:48\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: uk\n"
-"X-Crowdin-File: /develop/tabbycat/notifications/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/notifications/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 938\n"
 
@@ -70,7 +70,7 @@ msgstr ""
 
 #: notifications/models.py
 msgid "timestamp"
-msgstr "відмітка часу"
+msgstr "Ð²Ñ–Ð´Ð¼Ñ–Ñ‚ÐºÐ° Ñ‡Ð°ÑÑƒ"
 
 #: notifications/models.py
 msgid "sent message"
@@ -130,11 +130,11 @@ msgstr ""
 
 #: notifications/models.py
 msgid "tournament"
-msgstr "турнір"
+msgstr "Ñ‚ÑƒÑ€Ð½Ñ–Ñ€"
 
 #: notifications/models.py
 msgid "round"
-msgstr "раунд"
+msgstr "Ñ€Ð°ÑƒÐ½Ð´"
 
 #: notifications/models.py
 msgid "subject template"
@@ -227,7 +227,7 @@ msgid "Send Message(s)"
 msgstr ""
 
 #: notifications/templates/email_statuses.html
-msgid "Emails can be sent by Tabbycat for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
+msgid "Emails can be sent by NekoTab for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
 msgstr ""
 
 #: notifications/templates/notifications_nav.html notifications/views.py
@@ -389,7 +389,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: notifications/views.py
-msgid "No emails were sent — likely because no recipients were selected."
+msgid "No emails were sent â€” likely because no recipients were selected."
 msgstr ""
 
 #: notifications/views.py
@@ -419,4 +419,5 @@ msgstr ""
 #: notifications/views.py
 msgid "Adjudicators"
 msgstr ""
+
 

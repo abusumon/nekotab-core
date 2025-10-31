@@ -1,4 +1,4 @@
-import json
+﻿import json
 import logging
 
 from django.contrib import messages
@@ -34,7 +34,7 @@ class PostOnlyRedirectView(View):
     to this base class for this purpose.
     """
 
-    redirect_url = reverse_lazy('tabbycat-index')
+    redirect_url = reverse_lazy('NekoTab-index')
     not_post_message = _("Whoops! You're not meant to type that URL into your browser.")
 
     def get_redirect_url(self, *args, **kwargs):
@@ -78,7 +78,7 @@ class VueTableTemplateView(TemplateView):
 
 class FormSetMixin(ContextMixin):
     """Provides some functionality for formsets, analogously to FormMixin.
-    Only what is actually used in Tabbycat is implemented."""
+    Only what is actually used in NekoTab is implemented."""
 
     success_url = None
 
@@ -104,7 +104,7 @@ class FormSetMixin(ContextMixin):
 
 class ModelFormSetMixin(FormSetMixin):
     """Provides some functionality for model formsets, analogously to
-    ModelFormMixin. Only what is actually used in Tabbycat is implemented."""
+    ModelFormMixin. Only what is actually used in NekoTab is implemented."""
 
     formset_factory_kwargs = {}
     formset_model = None  # not 'model' to avoid conflicts with SingleObjectMixin
@@ -154,3 +154,4 @@ class ProcessFormSetView(View):
 
 class ModelFormSetView(ModelFormSetMixin, TemplateResponseMixin, ProcessFormSetView):
     pass
+

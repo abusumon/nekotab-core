@@ -1,16 +1,16 @@
-import logging
+﻿import logging
 
 from django.utils.translation import gettext as _, ngettext
 
 from utils.misc import reverse_tournament
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 
 from .progress import FeedbackProgressForAdjudicator, FeedbackProgressForTeam
 
 logger = logging.getLogger(__name__)
 
 
-class FeedbackTableBuilder(TabbycatTableBuilder):
+class FeedbackTableBuilder(NekoTabTableBuilder):
 
     def add_breaking_checkbox(self, adjudicators, key="Breaking"):
         breaking_header = {
@@ -188,3 +188,4 @@ class FeedbackTableBuilder(TabbycatTableBuilder):
                 'link': _record_link(progress),
             } for progress in progress_list]
             self.add_column(owed_link_header, owed_link_data)
+

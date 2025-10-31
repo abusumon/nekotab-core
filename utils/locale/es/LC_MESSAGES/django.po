@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: es-ES\n"
-"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/utils/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 954\n"
 
@@ -40,7 +40,7 @@ msgstr "Lado"
 
 #: utils/admin.py utils/tables.py
 msgid "Motion"
-msgstr "Moción"
+msgstr "MociÃ³n"
 
 #: utils/admin.py
 msgid "Confirmed"
@@ -52,15 +52,15 @@ msgstr "Juez"
 
 #: utils/tables.py
 msgid "No Data Available"
-msgstr "No hay información disponible"
+msgstr "No hay informaciÃ³n disponible"
 
 #: utils/tables.py
-msgid "Ⓒ"
-msgstr "Ⓒ"
+msgid "â’¸"
+msgstr "â’¸"
 
 #: utils/tables.py
-msgid "Ⓣ"
-msgstr "Ⓣ"
+msgid "â“‰"
+msgstr "â“‰"
 
 #: utils/tables.py
 msgid "chair"
@@ -75,7 +75,7 @@ msgid "trainee"
 msgstr "sombras"
 
 #: utils/tables.py
-msgid "—"
+msgid "â€”"
 msgstr ""
 
 #: utils/tables.py
@@ -114,7 +114,7 @@ msgstr ""
 
 #: utils/tables.py
 #, python-format
-msgid "%(team)s—no result"
+msgid "%(team)sâ€”no result"
 msgstr ""
 
 #: utils/tables.py
@@ -148,12 +148,12 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "Won against %(team)s"
-msgstr "Ganó a %(team)s"
+msgstr "GanÃ³ a %(team)s"
 
 #: utils/tables.py
 #, python-format
 msgid "Lost to %(team)s"
-msgstr "Perdió contra %(team)s"
+msgstr "PerdiÃ³ contra %(team)s"
 
 #: utils/tables.py
 #, python-format
@@ -209,11 +209,11 @@ msgstr "Nombre"
 
 #: utils/tables.py
 msgid "Institution"
-msgstr "Institución"
+msgstr "InstituciÃ³n"
 
 #: utils/tables.py
 msgid "Member of the Adjudication Core"
-msgstr "Miembro de Adjudicación"
+msgstr "Miembro de AdjudicaciÃ³n"
 
 #: utils/tables.py
 msgid "Independent Adjudicator"
@@ -225,7 +225,7 @@ msgstr "Siempre Trainee"
 
 #: utils/tables.py
 msgid "in minority"
-msgstr "en minoría"
+msgstr "en minorÃ­a"
 
 #: utils/tables.py
 msgid "Debate Adjudicators"
@@ -233,11 +233,11 @@ msgstr "Jueces del debate"
 
 #: utils/tables.py
 msgid "Categories"
-msgstr "Categorías"
+msgstr "CategorÃ­as"
 
 #: utils/tables.py
 msgid "Category"
-msgstr "Categoría"
+msgstr "CategorÃ­a"
 
 #: utils/tables.py
 #, python-format
@@ -262,7 +262,7 @@ msgstr[1] "Los equipos han debatido anteriormente %(count)d veces"
 
 #: utils/tables.py
 msgid "Teams are from the same institution"
-msgstr "Los equipos pertenecen a la misma institución"
+msgstr "Los equipos pertenecen a la misma instituciÃ³n"
 
 #: utils/tables.py
 msgid "Conflicts/Flags"
@@ -349,4 +349,5 @@ msgstr ""
 #: utils/views.py
 msgid "Whoops! You're not meant to type that URL into your browser."
 msgstr ""
+
 

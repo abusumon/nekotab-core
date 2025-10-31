@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: vi\n"
-"X-Crowdin-File: /develop/tabbycat/participants/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/participants/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 942\n"
 
@@ -65,11 +65,11 @@ msgstr[0] ""
 
 #: participants/apps.py participants/views.py
 msgid "Participants"
-msgstr "Người tham dự"
+msgstr "NgÆ°á»i tham dá»±"
 
 #: participants/models.py
 msgid "name"
-msgstr "tên"
+msgstr "tÃªn"
 
 #: participants/models.py
 msgid "region"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "institution"
-msgstr "đơn vị"
+msgstr "Ä‘Æ¡n vá»‹"
 
 #: participants/models.py
 msgid "institutions"
@@ -145,15 +145,15 @@ msgstr ""
 
 #: participants/models.py
 msgid "sequence number"
-msgstr "số thứ tự"
+msgstr "sá»‘ thá»© tá»±"
 
 #: participants/models.py
 msgid "The order in which the categories are displayed"
-msgstr "Thứ tự hiển thị của các bảng"
+msgstr "Thá»© tá»± hiá»ƒn thá»‹ cá»§a cÃ¡c báº£ng"
 
 #: participants/models.py
 msgid "limit"
-msgstr "giới hạn"
+msgstr "giá»›i háº¡n"
 
 #: participants/models.py
 msgid "At most this many speakers will be shown on the public tab for this category, or use 0 for no limit"
@@ -236,12 +236,12 @@ msgid "pronoun"
 msgstr ""
 
 #: participants/models.py
-msgid "If printing ballots using Tabbycat, there is the option to pre-print pronouns"
+msgid "If printing ballots using NekoTab, there is the option to pre-print pronouns"
 msgstr ""
 
 #: participants/models.py
 msgid "person"
-msgstr "người"
+msgstr "ngÆ°á»i"
 
 #: participants/models.py
 msgid "persons"
@@ -249,7 +249,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "Redacted"
-msgstr "Đã bị xóa"
+msgstr "ÄÃ£ bá»‹ xÃ³a"
 
 #: participants/models.py
 msgid "coach"
@@ -305,7 +305,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "break categories"
-msgstr "các bảng xét break"
+msgstr "cÃ¡c báº£ng xÃ©t break"
 
 #: participants/models.py
 msgid "seed"
@@ -325,7 +325,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "swing"
-msgstr "đội thay thế"
+msgstr "Ä‘á»™i thay tháº¿"
 
 #: participants/models.py
 msgid "composite"
@@ -345,7 +345,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "team"
-msgstr "đội"
+msgstr "Ä‘á»™i"
 
 #: participants/models.py
 msgid "teams"
@@ -373,7 +373,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "base score"
-msgstr "điểm sàn"
+msgstr "Ä‘iá»ƒm sÃ n"
 
 #: participants/models.py
 msgid "team conflicts"
@@ -405,7 +405,7 @@ msgstr ""
 
 #: participants/models.py
 msgid "adjudicator"
-msgstr "giám khảo"
+msgstr "giÃ¡m kháº£o"
 
 #: participants/models.py
 msgid "adjudicators"
@@ -413,30 +413,30 @@ msgstr ""
 
 #: participants/tables.py
 msgid "Points after this debate"
-msgstr "Điểm sau mỗi trận"
+msgstr "Äiá»ƒm sau má»—i tráº­n"
 
 #: participants/tables.py
 msgid "Wins after this debate"
-msgstr "Số trận thắng sau trận"
+msgstr "Sá»‘ tráº­n tháº¯ng sau tráº­n"
 
 #: participants/tables.py
 msgid "Speaker scores<br>(in speaking order)"
-msgstr "Điểm nói<br>(theo thứ tự)"
+msgstr "Äiá»ƒm nÃ³i<br>(theo thá»© tá»±)"
 
 #: participants/tables.py
 msgid "Speaks"
-msgstr "Điểm nói"
+msgstr "Äiá»ƒm nÃ³i"
 
 #: participants/templates/adjudicator_record.html participants/views.py
 #, python-format
 msgid "Record for %(name)s"
-msgstr "Hồ sơ của %(name)s"
+msgstr "Há»“ sÆ¡ cá»§a %(name)s"
 
 #: participants/templates/adjudicator_record.html
 #: participants/templates/team_record.html
 #, python-format
 msgid "About %(name)s"
-msgstr "Về %(name)s"
+msgstr "Vá» %(name)s"
 
 #: participants/templates/adjudicator_registration_card.html
 msgid "Independent adjudicator"
@@ -444,12 +444,12 @@ msgstr ""
 
 #: participants/templates/adjudicator_registration_card.html
 msgid "Member of the adjudication core"
-msgstr "Thành viên của ban chuyên môn"
+msgstr "ThÃ nh viÃªn cá»§a ban chuyÃªn mÃ´n"
 
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
 msgid "Institution:"
-msgstr "Tổ chức:"
+msgstr "Tá»• chá»©c:"
 
 #: participants/templates/adjudicator_registration_card.html
 #: participants/templates/team_registration_card.html
@@ -510,17 +510,17 @@ msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete this %(object_name)s</strong>."
+msgid "<strong>Warning:</strong> If there are â€œdebate teamâ€ objects in the above list, <strong>you probably shouldn't delete this %(object_name)s</strong>."
 msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "<strong>Warning:</strong> If there are “debate team” objects in the above list, <strong>you probably shouldn't delete the selected %(objects_name)s</strong>."
+msgid "<strong>Warning:</strong> If there are â€œdebate teamâ€ objects in the above list, <strong>you probably shouldn't delete the selected %(objects_name)s</strong>."
 msgstr ""
 
 #. Translators: This follows the above sentence in the same paragraph.
 #: participants/templates/admin/participants/delete_debateteam_warning.html
-msgid "This is especially the case if any team that would be deleted has already participated in a debate. If a team already has a result entered for it, deleting the team also deletes those results, <strong>which normally breaks the tab</strong>, even if you think you don't need those results anymore. If a team has debated and is withdrawing from the tournament, you should <strong>not</strong> delete it. Just mark the team inactive under the “Availability” section of the Tabbycat admin area."
+msgid "This is especially the case if any team that would be deleted has already participated in a debate. If a team already has a result entered for it, deleting the team also deletes those results, <strong>which normally breaks the tab</strong>, even if you think you don't need those results anymore. If a team has debated and is withdrawing from the tournament, you should <strong>not</strong> delete it. Just mark the team inactive under the â€œAvailabilityâ€ section of the NekoTab admin area."
 msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
@@ -529,12 +529,12 @@ msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "If you're very sure about deleting this %(object_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
+msgid "If you're very sure about deleting this %(object_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the â€œdebate teamâ€ objects page before proceeding."
 msgstr ""
 
 #: participants/templates/admin/participants/delete_debateteam_warning.html
 #, python-format
-msgid "If you're very sure about deleting these %(objects_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the “debate team” objects page before proceeding."
+msgid "If you're very sure about deleting these %(objects_name)s, please delete the above objects first, and be sure to heed the warning that you will see on the â€œdebate teamâ€ objects page before proceeding."
 msgstr ""
 
 #: participants/templates/admin/participants/team/change_form.html
@@ -548,26 +548,26 @@ msgstr ""
 
 #: participants/templates/current_round/common.html
 msgid "Teams:"
-msgstr "Đội:"
+msgstr "Äá»™i:"
 
 #: participants/templates/current_round/common.html
 msgid "Adjudicator:"
 msgid_plural "Adjudicators:"
-msgstr[0] "Giám khảo:"
+msgstr[0] "GiÃ¡m kháº£o:"
 
 #: participants/templates/current_round/common.html
 msgctxt "chair icon"
-msgid "Ⓒ"
-msgstr "Ⓒ"
+msgid "â’¸"
+msgstr "â’¸"
 
 #: participants/templates/current_round/common.html
 msgctxt "trainee icon"
-msgid "Ⓣ"
-msgstr "Ⓣ"
+msgid "â“‰"
+msgstr "â“‰"
 
 #: participants/templates/current_round/common.html
 msgid "There are no panellists or trainees assigned to this debate."
-msgstr "Không có giám khảo phụ hay giám khảo thực tập được phân công trong trận tranh biện này."
+msgstr "KhÃ´ng cÃ³ giÃ¡m kháº£o phá»¥ hay giÃ¡m kháº£o thá»±c táº­p Ä‘Æ°á»£c phÃ¢n cÃ´ng trong tráº­n tranh biá»‡n nÃ y."
 
 #: participants/templates/current_round/common.html
 msgid "Motions are not released to public."
@@ -575,7 +575,7 @@ msgstr ""
 
 #: participants/templates/current_round/common.html
 msgid "Motion:"
-msgstr "Kiến nghị:"
+msgstr "Kiáº¿n nghá»‹:"
 
 #: participants/templates/current_round/common.html
 msgid "View Info Slide"
@@ -583,7 +583,7 @@ msgstr ""
 
 #: participants/templates/current_round/common.html
 msgid "The motion(s) for this round haven't yet been released."
-msgstr "(Các) kiến nghị cho vòng này chưa được công bố."
+msgstr "(CÃ¡c) kiáº¿n nghá»‹ cho vÃ²ng nÃ y chÆ°a Ä‘Æ°á»£c cÃ´ng bá»‘."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
@@ -653,7 +653,7 @@ msgstr ""
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is the <strong>chair</strong> adjudicating in <strong>%(room)s</strong>."
-msgstr "%(adjudicator)s là <strong>giám khảo chính</strong> chấm ở <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s lÃ  <strong>giÃ¡m kháº£o chÃ­nh</strong> cháº¥m á»Ÿ <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
@@ -673,7 +673,7 @@ msgstr ""
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is a <strong>%(type)s</strong> adjudicating in <strong>%(room)s</strong>."
-msgstr "%(adjudicator)s là <strong>%(type)s</strong> chấm ở <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s lÃ  <strong>%(type)s</strong> cháº¥m á»Ÿ <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
@@ -693,7 +693,7 @@ msgstr ""
 #: participants/templates/current_round/round_adj.html
 #, python-format
 msgid "%(adjudicator)s is adjudicating in <strong>%(room)s</strong>."
-msgstr "%(adjudicator)s đang chấm ở <strong>%(room)s</strong>."
+msgstr "%(adjudicator)s Ä‘ang cháº¥m á»Ÿ <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_adj.html
 #, python-format
@@ -728,7 +728,7 @@ msgstr ""
 #: participants/templates/current_round/round_team.html
 #, python-format
 msgid "%(team)s is debating as the <strong>%(side)s</strong> team."
-msgstr "%(team)s đang tranh biện trong vị trí <strong>%(side)s</strong>."
+msgstr "%(team)s Ä‘ang tranh biá»‡n trong vá»‹ trÃ­ <strong>%(side)s</strong>."
 
 #: participants/templates/current_round/round_team.html
 #, python-format
@@ -743,7 +743,7 @@ msgstr ""
 #: participants/templates/current_round/round_team.html
 #, python-format
 msgid "%(team)s's debate is in <strong>%(room)s</strong>."
-msgstr "Trận tranh biện của %(team)s ở <strong>%(room)s</strong>."
+msgstr "Tráº­n tranh biá»‡n cá»§a %(team)s á»Ÿ <strong>%(room)s</strong>."
 
 #: participants/templates/current_round/round_team.html
 #, python-format
@@ -762,12 +762,12 @@ msgstr ""
 
 #: participants/templates/feedback_progress_panel.html
 msgid "Feedback Returns"
-msgstr "Tình trạng feedback"
+msgstr "TÃ¬nh tráº¡ng feedback"
 
 #: participants/templates/feedback_progress_panel.html
 #, python-format
 msgid "Has submitted feedback for <strong>%(adjudicator)s</strong>"
-msgstr "Đã nộp feedback cho <strong>%(adjudicator)s</strong>"
+msgstr "ÄÃ£ ná»™p feedback cho <strong>%(adjudicator)s</strong>"
 
 #: participants/templates/feedback_progress_panel.html
 #, python-format
@@ -796,11 +796,11 @@ msgstr ""
 #: participants/templates/in_this_round.html
 #, python-format
 msgid "In This Round (%(round)s)"
-msgstr "Trong vòng này (%(round)s)"
+msgstr "Trong vÃ²ng nÃ y (%(round)s)"
 
 #: participants/templates/in_this_round.html
 msgid "In This Round"
-msgstr "Trong vòng này"
+msgstr "Trong vÃ²ng nÃ y"
 
 #: participants/templates/in_this_round.html
 msgid "(Not Released to Public)"
@@ -832,7 +832,7 @@ msgstr ""
 #: participants/templates/in_this_round.html
 #, python-format
 msgid "%(team)s does not have a debate this round."
-msgstr "%(team)s không tham gia vòng này."
+msgstr "%(team)s khÃ´ng tham gia vÃ²ng nÃ y."
 
 #: participants/templates/in_this_round.html
 msgid "You do not have a debate this round."
@@ -840,11 +840,11 @@ msgstr ""
 
 #: participants/templates/in_this_round.html
 msgid "The draw for this round hasn't yet been released."
-msgstr "Bảng đấu cho vòng này chưa được công bố."
+msgstr "Báº£ng Ä‘áº¥u cho vÃ²ng nÃ y chÆ°a Ä‘Æ°á»£c cÃ´ng bá»‘."
 
 #: participants/templates/participants_subnav.html
 msgid "Participants List"
-msgstr "Danh sách"
+msgstr "Danh sÃ¡ch"
 
 #: participants/templates/participants_subnav.html
 msgid "Institutions List"
@@ -886,7 +886,7 @@ msgstr ""
 
 #: participants/templates/team_registration_card.html
 msgid "Team name:"
-msgstr "Tên đội:"
+msgstr "TÃªn Ä‘á»™i:"
 
 #: participants/templates/team_registration_card.html
 msgid "Full team name:"
@@ -914,11 +914,11 @@ msgstr ""
 
 #: participants/templates/team_registration_card.html
 msgid "Speakers:"
-msgstr "Thành viên:"
+msgstr "ThÃ nh viÃªn:"
 
 #: participants/templates/team_registration_card.html
 msgid "Eligible for break categories:"
-msgstr "Có tư cách break trong bảng:"
+msgstr "CÃ³ tÆ° cÃ¡ch break trong báº£ng:"
 
 #: participants/templates/team_registration_card.html
 msgid "Speaker categories:"
@@ -931,15 +931,15 @@ msgstr ""
 
 #: participants/views.py
 msgid "Adjudicators"
-msgstr "Giám khảo"
+msgstr "GiÃ¡m kháº£o"
 
 #: participants/views.py
 msgid "Speakers"
-msgstr "Tranh biện viên"
+msgstr "Tranh biá»‡n viÃªn"
 
 #: participants/views.py
 msgid "Institutions"
-msgstr "Đơn vị"
+msgstr "ÄÆ¡n vá»‹"
 
 #: participants/views.py
 msgid "Code"
@@ -955,7 +955,7 @@ msgstr ""
 
 #: participants/views.py
 msgid "Teams"
-msgstr "Đội"
+msgstr "Äá»™i"
 
 #: participants/views.py
 msgid "Number of teams"
@@ -987,7 +987,7 @@ msgstr ""
 
 #: participants/views.py
 msgid "Results"
-msgstr "Kết quả"
+msgstr "Káº¿t quáº£"
 
 #: participants/views.py
 msgid "Previous Rounds"
@@ -1006,4 +1006,5 @@ msgstr ""
 #: participants/views.py
 msgid "Speaker Category Eligibility"
 msgstr ""
+
 

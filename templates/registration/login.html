@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load add_field_css i18n %}
 
-{% block page-title %}🔓{% trans "Login" context "page title" %}{% endblock %}
+{% block page-title %}ðŸ”“{% trans "Login" context "page title" %}{% endblock %}
 {% block head-title %}{% endblock %}
 
 {% block nav %}{% endblock %}
@@ -9,7 +9,7 @@
 <!--[if lte IE 9]>
 <div class="alert alert-warning">
   Hey it looks like you are running an old version of Internet Explorer. As a
-  result some parts of Tabbycat <strong>may not work properly</strong>. Switch to a newer
+  result some parts of NekoTab <strong>may not work properly</strong>. Switch to a newer
   browser if possible!
 </div>
 <![endif]-->
@@ -26,7 +26,7 @@
         <div class="list-group list-group-flush">
         <form id="login" action="." method="POST">
 
-          {% trans "Log in to Tabbycat" context "page title" as title %}
+          {% trans "Log in to NekoTab" context "page title" as title %}
           {% include "components/form-title.html" with icon="lock" %}
 
           <div class="list-group-item pt-4 pb-4">
@@ -72,3 +72,4 @@
   </div>
 
 {% endblock %}
+

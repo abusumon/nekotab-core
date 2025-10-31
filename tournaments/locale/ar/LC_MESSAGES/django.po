@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -12,27 +12,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/tournaments/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/tournaments/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 952\n"
 
 #: tournaments/apps.py
 msgid "Tournaments"
-msgstr "البطولات"
+msgstr "Ø§Ù„Ø¨Ø·ÙˆÙ„Ø§Øª"
 
 #: tournaments/forms.py
 msgid "Number of preliminary rounds"
-msgstr "عدد الجولات التمهيدية "
+msgstr "Ø¹Ø¯Ø¯ Ø§Ù„Ø¬ÙˆÙ„Ø§Øª Ø§Ù„ØªÙ…Ù‡ÙŠØ¯ÙŠØ© "
 
 #: tournaments/forms.py
 msgid "Number of teams in the open break"
-msgstr "عدد الفرق المتأهلة"
+msgstr "Ø¹Ø¯Ø¯ Ø§Ù„ÙØ±Ù‚ Ø§Ù„Ù…ØªØ£Ù‡Ù„Ø©"
 
 #: tournaments/forms.py
 msgid "Leave blank if there are no break rounds."
-msgstr "اترك المساحة فارغة إذا لم يكن هناك جولة إضافية "
+msgstr "Ø§ØªØ±Ùƒ Ø§Ù„Ù…Ø³Ø§Ø­Ø© ÙØ§Ø±ØºØ© Ø¥Ø°Ø§ Ù„Ù… ÙŠÙƒÙ† Ù‡Ù†Ø§Ùƒ Ø¬ÙˆÙ„Ø© Ø¥Ø¶Ø§ÙÙŠØ© "
 
 #: tournaments/forms.py
 msgid "Did you agree with their decision?"
@@ -49,11 +49,11 @@ msgstr ""
 #. Translators: This is the name given to the 'Open Break'.
 #: tournaments/forms.py
 msgid "Open"
-msgstr "فتح "
+msgstr "ÙØªØ­ "
 
 #: tournaments/forms.py
 msgid "Format Configuration"
-msgstr "ترتيب "
+msgstr "ØªØ±ØªÙŠØ¨ "
 
 #: tournaments/forms.py
 msgid "Apply a standard set of settings to match a common debate format. These can be changed afterwards and should be checked for your needs."
@@ -61,11 +61,11 @@ msgstr ""
 
 #: tournaments/forms.py
 msgid "Public Configuration"
-msgstr "التهئية العامة "
+msgstr "Ø§Ù„ØªÙ‡Ø¦ÙŠØ© Ø§Ù„Ø¹Ø§Ù…Ø© "
 
 #: tournaments/forms.py
 msgid "Show non-sensitive information on the public-facing side of this site, like draws (once released) and the motions of previous rounds"
-msgstr "تظهر المعلومات غير الحساسة على الجانب المواجه للجمهور من هذا الموقع، مثل توجه (صدر مرة واحدة) والحركات من الجولات السابقة"
+msgstr "ØªØ¸Ù‡Ø± Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§Øª ØºÙŠØ± Ø§Ù„Ø­Ø³Ø§Ø³Ø© Ø¹Ù„Ù‰ Ø§Ù„Ø¬Ø§Ù†Ø¨ Ø§Ù„Ù…ÙˆØ§Ø¬Ù‡ Ù„Ù„Ø¬Ù…Ù‡ÙˆØ± Ù…Ù† Ù‡Ø°Ø§ Ø§Ù„Ù…ÙˆÙ‚Ø¹ØŒ Ù…Ø«Ù„ ØªÙˆØ¬Ù‡ (ØµØ¯Ø± Ù…Ø±Ø© ÙˆØ§Ø­Ø¯Ø©) ÙˆØ§Ù„Ø­Ø±ÙƒØ§Øª Ù…Ù† Ø§Ù„Ø¬ÙˆÙ„Ø§Øª Ø§Ù„Ø³Ø§Ø¨Ù‚Ø©"
 
 #: tournaments/forms.py
 msgid "Participant Data Entry"
@@ -122,80 +122,80 @@ msgstr ""
 
 #: tournaments/mixins.py
 msgid "You've been redirected to this page because of a problem with how teams are assigned to sides in a debate."
-msgstr "تمت إعادة توجيهك إلى هذه الصفحة بسبب وجود مشكلة في كيفية تعيين الفرق في المناظرة ."
+msgstr "ØªÙ…Øª Ø¥Ø¹Ø§Ø¯Ø© ØªÙˆØ¬ÙŠÙ‡Ùƒ Ø¥Ù„Ù‰ Ù‡Ø°Ù‡ Ø§Ù„ØµÙØ­Ø© Ø¨Ø³Ø¨Ø¨ ÙˆØ¬ÙˆØ¯ Ù…Ø´ÙƒÙ„Ø© ÙÙŠ ÙƒÙŠÙÙŠØ© ØªØ¹ÙŠÙŠÙ† Ø§Ù„ÙØ±Ù‚ ÙÙŠ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© ."
 
 #: tournaments/mixins.py
 msgid "There's a problem with how teams are assigned to sides in a debate. The tab director will need to resolve this issue."
-msgstr "هناك مشكلة في كيفية تعيين الفرق للجانبين في المناظرة. سيحتاج مسؤول الإدخال لحل هذه المشكلة."
+msgstr "Ù‡Ù†Ø§Ùƒ Ù…Ø´ÙƒÙ„Ø© ÙÙŠ ÙƒÙŠÙÙŠØ© ØªØ¹ÙŠÙŠÙ† Ø§Ù„ÙØ±Ù‚ Ù„Ù„Ø¬Ø§Ù†Ø¨ÙŠÙ† ÙÙŠ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©. Ø³ÙŠØ­ØªØ§Ø¬ Ù…Ø³Ø¤ÙˆÙ„ Ø§Ù„Ø¥Ø¯Ø®Ø§Ù„ Ù„Ø­Ù„ Ù‡Ø°Ù‡ Ø§Ù„Ù…Ø´ÙƒÙ„Ø©."
 
 #: tournaments/mixins.py tournaments/templates/round_complete_check.html
 #, python-format
 msgid "for %(round)s"
-msgstr "من %(round)s"
+msgstr "Ù…Ù† %(round)s"
 
 #: tournaments/mixins.py
 msgid "Return to Draw"
 msgstr ""
 
 #: tournaments/models.py
-msgid "You can't use this as a tournament slug, because it's reserved for a Tabbycat system URL. Please try another one."
-msgstr "لا يمكنك استخدامه في البطولة ، لأن الرابط محجوز من نظام Tabbycat. يرجى تجربة رابط آخر."
+msgid "You can't use this as a tournament slug, because it's reserved for a NekoTab system URL. Please try another one."
+msgstr "Ù„Ø§ ÙŠÙ…ÙƒÙ†Ùƒ Ø§Ø³ØªØ®Ø¯Ø§Ù…Ù‡ ÙÙŠ Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© ØŒ Ù„Ø£Ù† Ø§Ù„Ø±Ø§Ø¨Ø· Ù…Ø­Ø¬ÙˆØ² Ù…Ù† Ù†Ø¸Ø§Ù… NekoTab. ÙŠØ±Ø¬Ù‰ ØªØ¬Ø±Ø¨Ø© Ø±Ø§Ø¨Ø· Ø¢Ø®Ø±."
 
 #: tournaments/models.py
 msgid "name"
-msgstr "اسم "
+msgstr "Ø§Ø³Ù… "
 
 #: tournaments/models.py
 msgid "The full name, e.g. \"Australasian Intervarsity Debating Championships 2016\""
-msgstr "الاسم الكامل ، مثال على ذلك \" البطولة الاسترالية للمناظرات 2016  \" "
+msgstr "Ø§Ù„Ø§Ø³Ù… Ø§Ù„ÙƒØ§Ù…Ù„ ØŒ Ù…Ø«Ø§Ù„ Ø¹Ù„Ù‰ Ø°Ù„Ùƒ \" Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© Ø§Ù„Ø§Ø³ØªØ±Ø§Ù„ÙŠØ© Ù„Ù„Ù…Ù†Ø§Ø¸Ø±Ø§Øª 2016  \" "
 
 #: tournaments/models.py
 msgid "short name"
-msgstr "اسم قصير"
+msgstr "Ø§Ø³Ù… Ù‚ØµÙŠØ±"
 
 #: tournaments/models.py
 msgid "The name used in the menu, e.g. \"Australs 2016\""
-msgstr "الاسم المستخدم في القائمة \" استراليا 2016 \" "
+msgstr "Ø§Ù„Ø§Ø³Ù… Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… ÙÙŠ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© \" Ø§Ø³ØªØ±Ø§Ù„ÙŠØ§ 2016 \" "
 
 #: tournaments/models.py
 msgid "sequence number"
-msgstr "رقم التسلسل "
+msgstr "Ø±Ù‚Ù… Ø§Ù„ØªØ³Ù„Ø³Ù„ "
 
 #: tournaments/models.py
 msgid "A number that determines the relative order in which tournaments are displayed on the homepage."
-msgstr "رقم يحدد الترتيب النسبي الذي يتم فيه عرض البطولات على الصفحة الرئيسية."
+msgstr "Ø±Ù‚Ù… ÙŠØ­Ø¯Ø¯ Ø§Ù„ØªØ±ØªÙŠØ¨ Ø§Ù„Ù†Ø³Ø¨ÙŠ Ø§Ù„Ø°ÙŠ ÙŠØªÙ… ÙÙŠÙ‡ Ø¹Ø±Ø¶ Ø§Ù„Ø¨Ø·ÙˆÙ„Ø§Øª Ø¹Ù„Ù‰ Ø§Ù„ØµÙØ­Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©."
 
 #: tournaments/models.py
 msgid "slug"
-msgstr "اختصار"
+msgstr "Ø§Ø®ØªØµØ§Ø±"
 
 #: tournaments/models.py
 msgid "The sub-URL of the tournament, cannot have spaces, e.g. \"australs2016\""
-msgstr "رابط البطولة لا يحتوي على مسافة مثال ذلك \"استراليا2016\""
+msgstr "Ø±Ø§Ø¨Ø· Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© Ù„Ø§ ÙŠØ­ØªÙˆÙŠ Ø¹Ù„Ù‰ Ù…Ø³Ø§ÙØ© Ù…Ø«Ø§Ù„ Ø°Ù„Ùƒ \"Ø§Ø³ØªØ±Ø§Ù„ÙŠØ§2016\""
 
 #: tournaments/models.py
 msgid "active"
-msgstr "مفعل "
+msgstr "Ù…ÙØ¹Ù„ "
 
 #: tournaments/models.py
 msgid "tournament"
-msgstr "البطولة"
+msgstr "Ø§Ù„Ø¨Ø·ÙˆÙ„Ø©"
 
 #: tournaments/models.py
 msgid "tournaments"
-msgstr "البطولات"
+msgstr "Ø§Ù„Ø¨Ø·ÙˆÙ„Ø§Øª"
 
 #: tournaments/models.py
 msgid "Random"
-msgstr "عشوائي "
+msgstr "Ø¹Ø´ÙˆØ§Ø¦ÙŠ "
 
 #: tournaments/models.py
 msgid "Manual"
-msgstr "يدوي"
+msgstr "ÙŠØ¯ÙˆÙŠ"
 
 #: tournaments/models.py
 msgid "Round-robin"
-msgstr "ذهاب وإياب"
+msgstr "Ø°Ù‡Ø§Ø¨ ÙˆØ¥ÙŠØ§Ø¨"
 
 #: tournaments/models.py
 msgid "Power-paired"
@@ -203,7 +203,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "Elimination"
-msgstr "تراجع "
+msgstr "ØªØ±Ø§Ø¬Ø¹ "
 
 #: tournaments/models.py
 msgid "Seeded"
@@ -211,27 +211,27 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "Preliminary"
-msgstr "أولية "
+msgstr "Ø£ÙˆÙ„ÙŠØ© "
 
 #: tournaments/models.py
 msgid "None"
-msgstr "لا يوجد"
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯"
 
 #: tournaments/models.py
 msgid "Draft"
-msgstr "مسودة"
+msgstr "Ù…Ø³ÙˆØ¯Ø©"
 
 #: tournaments/models.py
 msgid "Confirmed"
-msgstr "معتمد"
+msgstr "Ù…Ø¹ØªÙ…Ø¯"
 
 #: tournaments/models.py
 msgid "Released"
-msgstr "معلنة"
+msgstr "Ù…Ø¹Ù„Ù†Ø©"
 
 #: tournaments/models.py
 msgid "A number that determines the order of the round, should count consecutively from 1 for the first round"
-msgstr "الرقم الذي يحدد ترتيب الجولة ، يجب أن يتم احتسابه بالتسلسل من 1 للجولة الأولى"
+msgstr "Ø§Ù„Ø±Ù‚Ù… Ø§Ù„Ø°ÙŠ ÙŠØ­Ø¯Ø¯ ØªØ±ØªÙŠØ¨ Ø§Ù„Ø¬ÙˆÙ„Ø© ØŒ ÙŠØ¬Ø¨ Ø£Ù† ÙŠØªÙ… Ø§Ø­ØªØ³Ø§Ø¨Ù‡ Ø¨Ø§Ù„ØªØ³Ù„Ø³Ù„ Ù…Ù† 1 Ù„Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰"
 
 #: tournaments/models.py
 msgid "completed"
@@ -243,19 +243,19 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "e.g. \"Round 1\""
-msgstr "مثال : الجولة 1 "
+msgstr "Ù…Ø«Ø§Ù„ : Ø§Ù„Ø¬ÙˆÙ„Ø© 1 "
 
 #: tournaments/models.py
 msgid "abbreviation"
-msgstr "الاختصار"
+msgstr "Ø§Ù„Ø§Ø®ØªØµØ§Ø±"
 
 #: tournaments/models.py
 msgid "e.g. \"R1\""
-msgstr "مثال ذلك : R1 "
+msgstr "Ù…Ø«Ø§Ù„ Ø°Ù„Ùƒ : R1 "
 
 #: tournaments/models.py
 msgid "stage"
-msgstr "مسرح"
+msgstr "Ù…Ø³Ø±Ø­"
 
 #: tournaments/models.py
 msgid "Preliminary = inrounds, elimination = outrounds"
@@ -263,31 +263,31 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "draw type"
-msgstr "نوع الرسم "
+msgstr "Ù†ÙˆØ¹ Ø§Ù„Ø±Ø³Ù… "
 
 #: tournaments/models.py
 msgid "Which draw method to use"
-msgstr "طريقة القرعة التي سيتم استخدامها"
+msgstr "Ø·Ø±ÙŠÙ‚Ø© Ø§Ù„Ù‚Ø±Ø¹Ø© Ø§Ù„ØªÙŠ Ø³ÙŠØªÙ… Ø§Ø³ØªØ®Ø¯Ø§Ù…Ù‡Ø§"
 
 #: tournaments/models.py
 msgid "break category"
-msgstr "الفئة المتأهلة"
+msgstr "Ø§Ù„ÙØ¦Ø© Ø§Ù„Ù…ØªØ£Ù‡Ù„Ø©"
 
 #: tournaments/models.py
 msgid "If elimination round, which break category"
-msgstr "إذا تم التراجع في الجولة، من الفئة المتأهلة "
+msgstr "Ø¥Ø°Ø§ ØªÙ… Ø§Ù„ØªØ±Ø§Ø¬Ø¹ ÙÙŠ Ø§Ù„Ø¬ÙˆÙ„Ø©ØŒ Ù…Ù† Ø§Ù„ÙØ¦Ø© Ø§Ù„Ù…ØªØ£Ù‡Ù„Ø© "
 
 #: tournaments/models.py
 msgid "draw status"
-msgstr "حالة القرعة "
+msgstr "Ø­Ø§Ù„Ø© Ø§Ù„Ù‚Ø±Ø¹Ø© "
 
 #: tournaments/models.py
 msgid "The status of this round's draw"
-msgstr "حالة القرعة لهذه الجولة "
+msgstr "Ø­Ø§Ù„Ø© Ø§Ù„Ù‚Ø±Ø¹Ø© Ù„Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø© "
 
 #: tournaments/models.py
 msgid "feedback weight"
-msgstr "التغذية الراجعة "
+msgstr "Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© "
 
 #: tournaments/models.py
 #, no-python-format
@@ -297,23 +297,23 @@ msgstr ""
 #. Translators: A silent round is a round for which results are not disclosed once the round is over.
 #: tournaments/models.py
 msgid "silent"
-msgstr "صامت"
+msgstr "ØµØ§Ù…Øª"
 
 #: tournaments/models.py
 msgid "If marked silent, information about this round (such as its results) will not be shown publicly."
-msgstr "هذه النتيجة صامتة، (النتيجة مثلا) لا ينبغي إعلانها للجمهور "
+msgstr "Ù‡Ø°Ù‡ Ø§Ù„Ù†ØªÙŠØ¬Ø© ØµØ§Ù…ØªØ©ØŒ (Ø§Ù„Ù†ØªÙŠØ¬Ø© Ù…Ø«Ù„Ø§) Ù„Ø§ ÙŠÙ†Ø¨ØºÙŠ Ø¥Ø¹Ù„Ø§Ù†Ù‡Ø§ Ù„Ù„Ø¬Ù…Ù‡ÙˆØ± "
 
 #: tournaments/models.py
 msgid "motions released"
-msgstr "القضايا المعلنة "
+msgstr "Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§ Ø§Ù„Ù…Ø¹Ù„Ù†Ø© "
 
 #: tournaments/models.py
 msgid "Whether motions will appear on the public website, assuming that feature is turned on"
-msgstr "ما إذا كانت الاقتراحات ستظهر على موقع الويب العام ، على افتراض أن هذه الميزة قيد التشغيل"
+msgstr "Ù…Ø§ Ø¥Ø°Ø§ ÙƒØ§Ù†Øª Ø§Ù„Ø§Ù‚ØªØ±Ø§Ø­Ø§Øª Ø³ØªØ¸Ù‡Ø± Ø¹Ù„Ù‰ Ù…ÙˆÙ‚Ø¹ Ø§Ù„ÙˆÙŠØ¨ Ø§Ù„Ø¹Ø§Ù… ØŒ Ø¹Ù„Ù‰ Ø§ÙØªØ±Ø§Ø¶ Ø£Ù† Ù‡Ø°Ù‡ Ø§Ù„Ù…ÙŠØ²Ø© Ù‚ÙŠØ¯ Ø§Ù„ØªØ´ØºÙŠÙ„"
 
 #: tournaments/models.py
 msgid "starts at"
-msgstr "ابدأ بـ"
+msgstr "Ø§Ø¨Ø¯Ø£ Ø¨Ù€"
 
 #: tournaments/models.py
 msgid "weight"
@@ -325,11 +325,11 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "round"
-msgstr "جولة"
+msgstr "Ø¬ÙˆÙ„Ø©"
 
 #: tournaments/models.py
 msgid "rounds"
-msgstr "جولات"
+msgstr "Ø¬ÙˆÙ„Ø§Øª"
 
 #: tournaments/models.py
 msgid "The \"Elimination\" draw type is only for elimination rounds, where it is mandatory."
@@ -433,69 +433,69 @@ msgstr ""
 
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Dashboard"
-msgstr "لوحة القيادة"
+msgstr "Ù„ÙˆØ­Ø© Ø§Ù„Ù‚ÙŠØ§Ø¯Ø©"
 
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Overview"
-msgstr "عرض "
+msgstr "Ø¹Ø±Ø¶ "
 
 #: tournaments/templates/assistant_tournament_index.html
 #, python-format
 msgid "current round: %(round)s, status: %(status)s"
-msgstr "الجولة الأولى : %(round)s، الحالة : %(status)s"
+msgstr "Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰ : %(round)sØŒ Ø§Ù„Ø­Ø§Ù„Ø© : %(status)s"
 
 #: tournaments/templates/blank_site_start.html
-msgid "Welcome to Tabbycat!"
-msgstr "مرحبا بك في Tabbycat! "
+msgid "Welcome to NekoTab!"
+msgstr "Ù…Ø±Ø­Ø¨Ø§ Ø¨Ùƒ ÙÙŠ NekoTab! "
 
 #: tournaments/templates/blank_site_start.html
 msgid "To get started, you'll need to create the first user account. This account is a \"superuser\" account: it will be able to edit anything on the site. Therefore, you should use a strong password."
-msgstr "للبدء ، ستحتاج إلى إنشاء حساب المستخدم الأول. هذا الحساب هو حساب \"مستخدم متميز\": سيتمكن من تعديل أي شيء على الموقع. لذلك ، يجب عليك استخدام كلمة مرور قوية."
+msgstr "Ù„Ù„Ø¨Ø¯Ø¡ ØŒ Ø³ØªØ­ØªØ§Ø¬ Ø¥Ù„Ù‰ Ø¥Ù†Ø´Ø§Ø¡ Ø­Ø³Ø§Ø¨ Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… Ø§Ù„Ø£ÙˆÙ„. Ù‡Ø°Ø§ Ø§Ù„Ø­Ø³Ø§Ø¨ Ù‡Ùˆ Ø­Ø³Ø§Ø¨ \"Ù…Ø³ØªØ®Ø¯Ù… Ù…ØªÙ…ÙŠØ²\": Ø³ÙŠØªÙ…ÙƒÙ† Ù…Ù† ØªØ¹Ø¯ÙŠÙ„ Ø£ÙŠ Ø´ÙŠØ¡ Ø¹Ù„Ù‰ Ø§Ù„Ù…ÙˆÙ‚Ø¹. Ù„Ø°Ù„Ùƒ ØŒ ÙŠØ¬Ø¨ Ø¹Ù„ÙŠÙƒ Ø§Ø³ØªØ®Ø¯Ø§Ù… ÙƒÙ„Ù…Ø© Ù…Ø±ÙˆØ± Ù‚ÙˆÙŠØ©."
 
 #: tournaments/templates/blank_site_start.html
 msgid "You can only create this account once, but if you like, you can change the username and password after it's created, or add new superusers afterwards."
-msgstr "يمكنك فقط إنشاء هذا الحساب مرة واحدة، ولكن إذا أردت، يمكنك تغيير اسم المستخدم وكلمة المرور بعد إنشائها، أو إضافة اسم مستخدم جديد بعد ذلك."
+msgstr "ÙŠÙ…ÙƒÙ†Ùƒ ÙÙ‚Ø· Ø¥Ù†Ø´Ø§Ø¡ Ù‡Ø°Ø§ Ø§Ù„Ø­Ø³Ø§Ø¨ Ù…Ø±Ø© ÙˆØ§Ø­Ø¯Ø©ØŒ ÙˆÙ„ÙƒÙ† Ø¥Ø°Ø§ Ø£Ø±Ø¯ØªØŒ ÙŠÙ…ÙƒÙ†Ùƒ ØªØºÙŠÙŠØ± Ø§Ø³Ù… Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… ÙˆÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± Ø¨Ø¹Ø¯ Ø¥Ù†Ø´Ø§Ø¦Ù‡Ø§ØŒ Ø£Ùˆ Ø¥Ø¶Ø§ÙØ© Ø§Ø³Ù… Ù…Ø³ØªØ®Ø¯Ù… Ø¬Ø¯ÙŠØ¯ Ø¨Ø¹Ø¯ Ø°Ù„Ùƒ."
 
 #: tournaments/templates/blank_site_start.html
 msgid "The email address is used for password resets. You don't have to provide one, but if you don't, you won't be able to reset your password if you forget it."
-msgstr "يتم استخدام عنوان البريد الإلكتروني لإعادة تعيين كلمة المرور. لا يتعين عليك تقديم واحد ، ولكن إذا لم تفعل ، فلن تتمكن من إعادة تعيين كلمة المرور الخاصة بك إذا نسيتها."
+msgstr "ÙŠØªÙ… Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ Ù„Ø¥Ø¹Ø§Ø¯Ø© ØªØ¹ÙŠÙŠÙ† ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ±. Ù„Ø§ ÙŠØªØ¹ÙŠÙ† Ø¹Ù„ÙŠÙƒ ØªÙ‚Ø¯ÙŠÙ… ÙˆØ§Ø­Ø¯ ØŒ ÙˆÙ„ÙƒÙ† Ø¥Ø°Ø§ Ù„Ù… ØªÙØ¹Ù„ ØŒ ÙÙ„Ù† ØªØªÙ…ÙƒÙ† Ù…Ù† Ø¥Ø¹Ø§Ø¯Ø© ØªØ¹ÙŠÙŠÙ† ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± Ø§Ù„Ø®Ø§ØµØ© Ø¨Ùƒ Ø¥Ø°Ø§ Ù†Ø³ÙŠØªÙ‡Ø§."
 
 #: tournaments/templates/blank_site_start.html
 msgid "Create Account"
-msgstr "إنشاء حساب "
+msgstr "Ø¥Ù†Ø´Ø§Ø¡ Ø­Ø³Ø§Ø¨ "
 
 #: tournaments/templates/configure_tournament.html
 #, python-format
 msgid "Configure Tournament %(tournament)s"
-msgstr "ترتيب البطولة %(tournament)s"
+msgstr "ØªØ±ØªÙŠØ¨ Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© %(tournament)s"
 
 #: tournaments/templates/configure_tournament.html
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: tournaments/templates/configure_tournament.html
 msgid "To finish creating your tournament select a basic configuration options. Note that these can always be changed later (and with more precise control) if needed."
-msgstr "لإنهاء إنشاء بطولتك ، حدد خيارات تكوين أساسية. لاحظ أنه يمكن تغييرها دائمًا لاحقًا (مع تحكم أكثر دقة) إذا لزم الأمر."
+msgstr "Ù„Ø¥Ù†Ù‡Ø§Ø¡ Ø¥Ù†Ø´Ø§Ø¡ Ø¨Ø·ÙˆÙ„ØªÙƒ ØŒ Ø­Ø¯Ø¯ Ø®ÙŠØ§Ø±Ø§Øª ØªÙƒÙˆÙŠÙ† Ø£Ø³Ø§Ø³ÙŠØ©. Ù„Ø§Ø­Ø¸ Ø£Ù†Ù‡ ÙŠÙ…ÙƒÙ† ØªØºÙŠÙŠØ±Ù‡Ø§ Ø¯Ø§Ø¦Ù…Ù‹Ø§ Ù„Ø§Ø­Ù‚Ù‹Ø§ (Ù…Ø¹ ØªØ­ÙƒÙ… Ø£ÙƒØ«Ø± Ø¯Ù‚Ø©) Ø¥Ø°Ø§ Ù„Ø²Ù… Ø§Ù„Ø£Ù…Ø±."
 
 #: tournaments/templates/configure_tournament.html
 msgid "Configure Tournament"
-msgstr "ترتيب البطولة %(tournament_name)s"
+msgstr "ØªØ±ØªÙŠØ¨ Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© %(tournament_name)s"
 
 #: tournaments/templates/create_tournament.html
 msgid "Create New Tournament"
-msgstr "إنشاء بطولة جديدة "
+msgstr "Ø¥Ù†Ø´Ø§Ø¡ Ø¨Ø·ÙˆÙ„Ø© Ø¬Ø¯ÙŠØ¯Ø© "
 
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat is free to use, although <a href=\"https://opencollective.com/tabbycat\">donations</a> are encouraged."
+msgid "NekoTab is free to use, although <a href=\"https://opencollective.com/NekoTab\">donations</a> are encouraged."
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
-msgid "Just trying out Tabbycat?"
-msgstr "هل تريد الخروج من Tabbycat؟"
+msgid "Just trying out NekoTab?"
+msgstr "Ù‡Ù„ ØªØ±ÙŠØ¯ Ø§Ù„Ø®Ø±ÙˆØ¬ Ù…Ù† NekoTabØŸ"
 
 #: tournaments/templates/create_tournament.html
-msgid "If you're learning or playing around with Tabbycat, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
+msgid "If you're learning or playing around with NekoTab, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
 msgstr ""
 
 #: tournaments/templates/create_tournament.html
@@ -509,56 +509,56 @@ msgstr ""
 
 #: tournaments/templates/create_tournament.html
 msgid "Create Tournament"
-msgstr "إنشاء بطولة "
+msgstr "Ø¥Ù†Ø´Ø§Ø¡ Ø¨Ø·ÙˆÙ„Ø© "
 
 #: tournaments/templates/create_tournament.html
 msgid "Cancel and go back to the site home page"
-msgstr "إلغاء وعودة إلى الصفحة الرئيسية "
+msgstr "Ø¥Ù„ØºØ§Ø¡ ÙˆØ¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø§Ù„ØµÙØ­Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© "
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Debate Team Missing"
 msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "Tabbycat always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
-msgstr "يتطلب Tabbycat دائما ، في كل المناظرة ، تعيين واحد وفريق واحد فقط لكل جانب. عندما لا يكون هذا هو الحال ، يحدث هذا الخطأ. عادة ، هذا هو نتيجة المناظرات التي تم تحريرها يدويا."
+msgid "NekoTab always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
+msgstr "ÙŠØªØ·Ù„Ø¨ NekoTab Ø¯Ø§Ø¦Ù…Ø§ ØŒ ÙÙŠ ÙƒÙ„ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© ØŒ ØªØ¹ÙŠÙŠÙ† ÙˆØ§Ø­Ø¯ ÙˆÙØ±ÙŠÙ‚ ÙˆØ§Ø­Ø¯ ÙÙ‚Ø· Ù„ÙƒÙ„ Ø¬Ø§Ù†Ø¨. Ø¹Ù†Ø¯Ù…Ø§ Ù„Ø§ ÙŠÙƒÙˆÙ† Ù‡Ø°Ø§ Ù‡Ùˆ Ø§Ù„Ø­Ø§Ù„ ØŒ ÙŠØ­Ø¯Ø« Ù‡Ø°Ø§ Ø§Ù„Ø®Ø·Ø£. Ø¹Ø§Ø¯Ø© ØŒ Ù‡Ø°Ø§ Ù‡Ùˆ Ù†ØªÙŠØ¬Ø© Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø§Øª Ø§Ù„ØªÙŠ ØªÙ… ØªØ­Ø±ÙŠØ±Ù‡Ø§ ÙŠØ¯ÙˆÙŠØ§."
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "A list of offending debates is presented below. To fix them, you'll need to do the following:"
-msgstr "فيما يلي قائمة بالمناظرات المسيئة. لإصلاحها ، ستحتاج إلى إجراء ما يلي:"
+msgstr "ÙÙŠÙ…Ø§ ÙŠÙ„ÙŠ Ù‚Ø§Ø¦Ù…Ø© Ø¨Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø§Øª Ø§Ù„Ù…Ø³ÙŠØ¦Ø©. Ù„Ø¥ØµÙ„Ø§Ø­Ù‡Ø§ ØŒ Ø³ØªØ­ØªØ§Ø¬ Ø¥Ù„Ù‰ Ø¥Ø¬Ø±Ø§Ø¡ Ù…Ø§ ÙŠÙ„ÙŠ:"
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "Click the <strong>Fix this debate</strong> button for that debate."
-msgstr "اضغط على زر<strong>تعديل المناظرة </strong> في هذه المناظرة"
+msgstr "Ø§Ø¶ØºØ· Ø¹Ù„Ù‰ Ø²Ø±<strong>ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© </strong> ÙÙŠ Ù‡Ø°Ù‡ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "Ensure that every <strong>side</strong> that should be present in the debate is present and has a <strong>team</strong> assigned. If a team is missing, find an empty row and use the magnifying glass to select a team. Then set the new team's <strong>side</strong> accordingly."
-msgstr "تأكد من أن كل <strong>جانب </strong>  يجب أن يكون موجود في المناظرة وأن يكون له <strong> فريق </strong> معين.  إذا كان هناك فريق مفقود، يجب العثور على صف فارغ  وتعيين فريق جديد و <strong>جانب</strong> له مخصص وفقا لذلك."
+msgstr "ØªØ£ÙƒØ¯ Ù…Ù† Ø£Ù† ÙƒÙ„ <strong>Ø¬Ø§Ù†Ø¨ </strong>  ÙŠØ¬Ø¨ Ø£Ù† ÙŠÙƒÙˆÙ† Ù…ÙˆØ¬ÙˆØ¯ ÙÙŠ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© ÙˆØ£Ù† ÙŠÙƒÙˆÙ† Ù„Ù‡ <strong> ÙØ±ÙŠÙ‚ </strong> Ù…Ø¹ÙŠÙ†.  Ø¥Ø°Ø§ ÙƒØ§Ù† Ù‡Ù†Ø§Ùƒ ÙØ±ÙŠÙ‚ Ù…ÙÙ‚ÙˆØ¯ØŒ ÙŠØ¬Ø¨ Ø§Ù„Ø¹Ø«ÙˆØ± Ø¹Ù„Ù‰ ØµÙ ÙØ§Ø±Øº  ÙˆØªØ¹ÙŠÙŠÙ† ÙØ±ÙŠÙ‚ Ø¬Ø¯ÙŠØ¯ Ùˆ <strong>Ø¬Ø§Ù†Ø¨</strong> Ù„Ù‡ Ù…Ø®ØµØµ ÙˆÙÙ‚Ø§ Ù„Ø°Ù„Ùƒ."
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "Ensure that no <strong>side</strong> appears more than once in the debate."
-msgstr "تأكد بعدم ظهور <strong>جانب </strong> أكثر من مره واحدة في المناظرة "
+msgstr "ØªØ£ÙƒØ¯ Ø¨Ø¹Ø¯Ù… Ø¸Ù‡ÙˆØ± <strong>Ø¬Ø§Ù†Ø¨ </strong> Ø£ÙƒØ«Ø± Ù…Ù† Ù…Ø±Ù‡ ÙˆØ§Ø­Ø¯Ø© ÙÙŠ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "<strong>Save</strong> the changes."
-msgstr "<strong>حفظ</strong>التغيير "
+msgstr "<strong>Ø­ÙØ¸</strong>Ø§Ù„ØªØºÙŠÙŠØ± "
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Once you've fixed all the debates, you should then be able to return to whatever page you were originally on without the error reoccurring."
-msgstr "بمجرد إصلاح جميع المناظرات ، يجب أن تكون قادرًا على العودة إلى أي صفحة كنت فيها بالأصل دون تكرار الخطأ."
+msgstr "Ø¨Ù…Ø¬Ø±Ø¯ Ø¥ØµÙ„Ø§Ø­ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø§Øª ØŒ ÙŠØ¬Ø¨ Ø£Ù† ØªÙƒÙˆÙ† Ù‚Ø§Ø¯Ø±Ù‹Ø§ Ø¹Ù„Ù‰ Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø£ÙŠ ØµÙØ­Ø© ÙƒÙ†Øª ÙÙŠÙ‡Ø§ Ø¨Ø§Ù„Ø£ØµÙ„ Ø¯ÙˆÙ† ØªÙƒØ±Ø§Ø± Ø§Ù„Ø®Ø·Ø£."
 
 #: tournaments/templates/fix_debate_teams.html
 #, python-format
 msgid "You can also see all the debates in the <a href=\"%(edit_debates_url)s\" target=\"_blank\">Debates section of the Edit Database Area</a>."
-msgstr "يمكنك عرض جميع المناظرات <a href=\"%(edit_debates_url)s\" target=\"_blank\"> في قسم المناظرات وتعديلها </a>"
+msgstr "ÙŠÙ…ÙƒÙ†Ùƒ Ø¹Ø±Ø¶ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø§Øª <a href=\"%(edit_debates_url)s\" target=\"_blank\"> ÙÙŠ Ù‚Ø³Ù… Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø§Øª ÙˆØªØ¹Ø¯ÙŠÙ„Ù‡Ø§ </a>"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Debate ID"
-msgstr "الرقم التعريفي للمناظرة "
+msgstr "Ø§Ù„Ø±Ù‚Ù… Ø§Ù„ØªØ¹Ø±ÙŠÙÙŠ Ù„Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: tournaments/templates/fix_debate_teams.html
 #, python-format
@@ -567,41 +567,41 @@ msgstr ""
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Link to fix this debate"
-msgstr "رابط لتعديل هذه المناظرة "
+msgstr "Ø±Ø§Ø¨Ø· Ù„ØªØ¹Ø¯ÙŠÙ„ Ù‡Ø°Ù‡ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "No teams"
-msgstr "لا يوجد فرق"
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ ÙØ±Ù‚"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Multiple teams"
-msgstr "فرق متعددة"
+msgstr "ÙØ±Ù‚ Ù…ØªØ¹Ø¯Ø¯Ø©"
 
 #: tournaments/templates/fix_debate_teams.html
 msgctxt "button label"
 msgid "Fix this debate"
-msgstr "تعديل هذه المناظرة "
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ù‡Ø°Ù‡ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "It looks like all debates are in good shape!"
-msgstr "يبدو أن جميع المناظرات تسير بحالة جيدة!"
+msgstr "ÙŠØ¨Ø¯Ùˆ Ø£Ù† Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø§Øª ØªØ³ÙŠØ± Ø¨Ø­Ø§Ù„Ø© Ø¬ÙŠØ¯Ø©!"
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of Tabbycat."
-msgstr "في حالة استمرار إعادة توجيك  إلى هذه الصفحة وكنت غير متأكد من السبب، يرجى الاتصال بمطوري Tabbycat."
+msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of NekoTab."
+msgstr "ÙÙŠ Ø­Ø§Ù„Ø© Ø§Ø³ØªÙ…Ø±Ø§Ø± Ø¥Ø¹Ø§Ø¯Ø© ØªÙˆØ¬ÙŠÙƒ  Ø¥Ù„Ù‰ Ù‡Ø°Ù‡ Ø§Ù„ØµÙØ­Ø© ÙˆÙƒÙ†Øª ØºÙŠØ± Ù…ØªØ£ÙƒØ¯ Ù…Ù† Ø§Ù„Ø³Ø¨Ø¨ØŒ ÙŠØ±Ø¬Ù‰ Ø§Ù„Ø§ØªØµØ§Ù„ Ø¨Ù…Ø·ÙˆØ±ÙŠ NekoTab."
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "Welcome to %(tournament)s"
-msgstr "مرحباً في %(tournament)s"
+msgstr "Ù…Ø±Ø­Ø¨Ø§Ù‹ ÙÙŠ %(tournament)s"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "There is currently no public information available for this tournament."
-msgstr "لا يوجد حاليا أي معلومات عامة متاحة لهذه البطولة"
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø­Ø§Ù„ÙŠØ§ Ø£ÙŠ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø¹Ø§Ù…Ø© Ù…ØªØ§Ø­Ø© Ù„Ù‡Ø°Ù‡ Ø§Ù„Ø¨Ø·ÙˆÙ„Ø©"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Tab"
-msgstr "فريق التاب "
+msgstr "ÙØ±ÙŠÙ‚ Ø§Ù„ØªØ§Ø¨ "
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
@@ -610,33 +610,33 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Speaker Tab"
-msgstr "تاب المتحدثين "
+msgstr "ØªØ§Ø¨ Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ† "
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(category)s Speaker Tab"
-msgstr "نتائج المتحدث %(category)s"
+msgstr "Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ù…ØªØ­Ø¯Ø« %(category)s"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Replies Tab"
-msgstr "تاب خطاب الرد "
+msgstr "ØªØ§Ø¨ Ø®Ø·Ø§Ø¨ Ø§Ù„Ø±Ø¯ "
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Adjudicator Tab"
-msgstr "تاب المحكمين "
+msgstr "ØªØ§Ø¨ Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ† "
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Motions Tab"
-msgstr "تاب القضايا "
+msgstr "ØªØ§Ø¨ Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§ "
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Sides"
-msgstr "الأطراف"
+msgstr "Ø§Ù„Ø£Ø·Ø±Ø§Ù"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "قرعة ل%(round)s"
+msgstr "Ù‚Ø±Ø¹Ø© Ù„%(round)s"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Draws for Current Rounds"
@@ -658,36 +658,36 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Check-Ins"
-msgstr "تسجيلات الدخول"
+msgstr "ØªØ³Ø¬ÙŠÙ„Ø§Øª Ø§Ù„Ø¯Ø®ÙˆÙ„"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Results"
-msgstr "النتائج"
+msgstr "Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Motions"
-msgstr "قضايا"
+msgstr "Ù‚Ø¶Ø§ÙŠØ§"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Standings"
-msgstr "ترتيب الفرق "
+msgstr "ØªØ±ØªÙŠØ¨ Ø§Ù„ÙØ±Ù‚ "
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(category)s Break"
-msgstr "%(category)s تأهل"
+msgstr "%(category)s ØªØ£Ù‡Ù„"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Breaking Adjudicators"
-msgstr "الحكام المتأهلون"
+msgstr "Ø§Ù„Ø­ÙƒØ§Ù… Ø§Ù„Ù…ØªØ£Ù‡Ù„ÙˆÙ†"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Diversity"
-msgstr "تقسيمات"
+msgstr "ØªÙ‚Ø³ÙŠÙ…Ø§Øª"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Participants"
-msgstr "المشاركون"
+msgstr "Ø§Ù„Ù…Ø´Ø§Ø±ÙƒÙˆÙ†"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Institutions"
@@ -695,7 +695,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Feedback Progress"
-msgstr "التغذية الراجعة "
+msgstr "Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© "
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
@@ -704,7 +704,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Enter Feedback"
-msgstr "إدخال التغذية الراجعة "
+msgstr "Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© "
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Register Institution"
@@ -733,7 +733,7 @@ msgstr ""
 
 #: tournaments/templates/round_complete_check.html
 msgid "Enter Results"
-msgstr "ادخل النتائج "
+msgstr "Ø§Ø¯Ø®Ù„ Ø§Ù„Ù†ØªØ§Ø¦Ø¬ "
 
 #: tournaments/templates/round_complete_check.html
 msgid "Emails have already been sent."
@@ -813,22 +813,22 @@ msgstr ""
 
 #: tournaments/templates/set_current_round.html
 msgid "Back to Configuration"
-msgstr "العودة إلى الترتيب "
+msgstr "Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø§Ù„ØªØ±ØªÙŠØ¨ "
 
 #: tournaments/templates/set_current_round.html
 #, python-format
-msgid "No round is currently set. In order for Tabbycat to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
-msgstr "لا توجد جولة محددة حاليا. من أجل عمل Tabby Cat ، يرجى تعيين <strong>الجولة الحالية من البطولة </strong><strong>%(tournament)s</strong>"
+msgid "No round is currently set. In order for NekoTab to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
+msgstr "Ù„Ø§ ØªÙˆØ¬Ø¯ Ø¬ÙˆÙ„Ø© Ù…Ø­Ø¯Ø¯Ø© Ø­Ø§Ù„ÙŠØ§. Ù…Ù† Ø£Ø¬Ù„ Ø¹Ù…Ù„ NekoTab ØŒ ÙŠØ±Ø¬Ù‰ ØªØ¹ÙŠÙŠÙ† <strong>Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ø­Ø§Ù„ÙŠØ© Ù…Ù† Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© </strong><strong>%(tournament)s</strong>"
 
 #: tournaments/templates/set_current_round.html
 #, python-format
 msgid "On this page, you can set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
-msgstr "من هذه الصفحة يمكنك<strong> متابعة الجولة </strong><strong>%(tournament)s</strong>"
+msgstr "Ù…Ù† Ù‡Ø°Ù‡ Ø§Ù„ØµÙØ­Ø© ÙŠÙ…ÙƒÙ†Ùƒ<strong> Ù…ØªØ§Ø¨Ø¹Ø© Ø§Ù„Ø¬ÙˆÙ„Ø© </strong><strong>%(tournament)s</strong>"
 
 #: tournaments/templates/set_current_round.html
 #, python-format
 msgid "The tournament <strong>%(tournament)s</strong> has no rounds. You'll need to <a href=\"%(round_changelist_url)s\">add rounds and associate them with this tournament</a> before you can set the current round."
-msgstr "البطولة <strong>%(tournament)s</strong> لا تمتلك جولات ، تحتاح إلى <a href=\\\"%(round_changelist_url)s\\\"> إضافة جولات إلى البطولة </a>قبل متابعة سير الجولة "
+msgstr "Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© <strong>%(tournament)s</strong> Ù„Ø§ ØªÙ…ØªÙ„Ùƒ Ø¬ÙˆÙ„Ø§Øª ØŒ ØªØ­ØªØ§Ø­ Ø¥Ù„Ù‰ <a href=\\\"%(round_changelist_url)s\\\"> Ø¥Ø¶Ø§ÙØ© Ø¬ÙˆÙ„Ø§Øª Ø¥Ù„Ù‰ Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© </a>Ù‚Ø¨Ù„ Ù…ØªØ§Ø¨Ø¹Ø© Ø³ÙŠØ± Ø§Ù„Ø¬ÙˆÙ„Ø© "
 
 #: tournaments/templates/set_current_round.html
 msgctxt "button"
@@ -851,11 +851,11 @@ msgstr ""
 
 #: tournaments/templates/site_index.html
 msgid "Welcome!"
-msgstr "مرحبا "
+msgstr "Ù…Ø±Ø­Ø¨Ø§ "
 
 #: tournaments/templates/site_index.html
 msgid "It looks like there aren't any tournaments on this site. Would you like to create one?"
-msgstr "يبدو أنه لا تتوفر أي بطولة في هذا الموقع، هل تريد إنشاء واحده ؟ "
+msgstr "ÙŠØ¨Ø¯Ùˆ Ø£Ù†Ù‡ Ù„Ø§ ØªØªÙˆÙØ± Ø£ÙŠ Ø¨Ø·ÙˆÙ„Ø© ÙÙŠ Ù‡Ø°Ø§ Ø§Ù„Ù…ÙˆÙ‚Ø¹ØŒ Ù‡Ù„ ØªØ±ÙŠØ¯ Ø¥Ù†Ø´Ø§Ø¡ ÙˆØ§Ø­Ø¯Ù‡ ØŸ "
 
 #: tournaments/templates/site_index.html
 msgid "There are currently no active tournaments set up on this site."
@@ -863,7 +863,7 @@ msgstr ""
 
 #: tournaments/templates/site_index.html
 msgid "There are currently no tournaments set up on this site."
-msgstr "لا يوجد أي تتبع للبطولة في الموقع "
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø£ÙŠ ØªØªØ¨Ø¹ Ù„Ù„Ø¨Ø·ÙˆÙ„Ø© ÙÙŠ Ø§Ù„Ù…ÙˆÙ‚Ø¹ "
 
 #: tournaments/templates/site_index.html
 msgid "(inactive)"
@@ -871,11 +871,11 @@ msgstr ""
 
 #: tournaments/templates/site_index.html
 msgid "New Tournament"
-msgstr "بطولة جديدة "
+msgstr "Ø¨Ø·ÙˆÙ„Ø© Ø¬Ø¯ÙŠØ¯Ø© "
 
 #: tournaments/templates/site_index.html
 msgid "Edit Database Area"
-msgstr "تعديل قاعدة البيانات "
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ù‚Ø§Ø¹Ø¯Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª "
 
 #: tournaments/templates/site_index.html
 msgid "Send a Test Email"
@@ -893,34 +893,34 @@ msgstr ""
 #: tournaments/templates/site_index.html
 #, python-format
 msgid "Log Out (%(user)s)"
-msgstr "تسجيل الخروج %(user)s"
+msgstr "ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø®Ø±ÙˆØ¬ %(user)s"
 
 #: tournaments/templates/site_index.html
 msgid "Log In as Admin"
-msgstr "تسجيل دخول المدير "
+msgstr "ØªØ³Ø¬ÙŠÙ„ Ø¯Ø®ÙˆÙ„ Ø§Ù„Ù…Ø¯ÙŠØ± "
 
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "We hope you've enjoyed using Tabbycat for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/tabbycat\">Learn more about donating.</a>"
+msgid "We hope you've enjoyed using NekoTab for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/NekoTab\">Learn more about donating.</a>"
 msgstr ""
 
 #: tournaments/templates/tournament_index.html
 msgid "Welcome to your new tournament!"
-msgstr "مرحباً بك في بطولة جديدة "
+msgstr "Ù…Ø±Ø­Ø¨Ø§Ù‹ Ø¨Ùƒ ÙÙŠ Ø¨Ø·ÙˆÙ„Ø© Ø¬Ø¯ÙŠØ¯Ø© "
 
 #: tournaments/templates/tournament_index.html
 msgid "The next step is to import your initial tournament data: the institutions, teams, adjudicators and rooms that are in your tournament. There are a number of ways to do this. For small-to-medium tournaments, the simple importer is your best bet."
-msgstr "الخطوة التالية هي استيراد بيانات البطولة الأولية الخاصة بك: المؤسسات والفرق والحكام والأماكن الموجودة في بطولتك. هنالك عدة طرق لعمل هذا. بالنسبة للبطولات الصغيرة إلى المتوسطة ، يكون المستضيف البسيط هو أفضل لك ."
+msgstr "Ø§Ù„Ø®Ø·ÙˆØ© Ø§Ù„ØªØ§Ù„ÙŠØ© Ù‡ÙŠ Ø§Ø³ØªÙŠØ±Ø§Ø¯ Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© Ø§Ù„Ø£ÙˆÙ„ÙŠØ© Ø§Ù„Ø®Ø§ØµØ© Ø¨Ùƒ: Ø§Ù„Ù…Ø¤Ø³Ø³Ø§Øª ÙˆØ§Ù„ÙØ±Ù‚ ÙˆØ§Ù„Ø­ÙƒØ§Ù… ÙˆØ§Ù„Ø£Ù…Ø§ÙƒÙ† Ø§Ù„Ù…ÙˆØ¬ÙˆØ¯Ø© ÙÙŠ Ø¨Ø·ÙˆÙ„ØªÙƒ. Ù‡Ù†Ø§Ù„Ùƒ Ø¹Ø¯Ø© Ø·Ø±Ù‚ Ù„Ø¹Ù…Ù„ Ù‡Ø°Ø§. Ø¨Ø§Ù„Ù†Ø³Ø¨Ø© Ù„Ù„Ø¨Ø·ÙˆÙ„Ø§Øª Ø§Ù„ØµØºÙŠØ±Ø© Ø¥Ù„Ù‰ Ø§Ù„Ù…ØªÙˆØ³Ø·Ø© ØŒ ÙŠÙƒÙˆÙ† Ø§Ù„Ù…Ø³ØªØ¶ÙŠÙ Ø§Ù„Ø¨Ø³ÙŠØ· Ù‡Ùˆ Ø£ÙØ¶Ù„ Ù„Ùƒ ."
 
 #. Translators: The documentation where the link goes to is in English; translations should mention this with "(in English)" after the link.
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "For more information, please consult our <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
-msgstr "لمزيد من المعلومات ، يرجى الرجوع إلى وثائقنا 1 <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\">عن استيراد البيانات الأولية</a>"
+msgid "For more information, please consult our <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
+msgstr "Ù„Ù…Ø²ÙŠØ¯ Ù…Ù† Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§Øª ØŒ ÙŠØ±Ø¬Ù‰ Ø§Ù„Ø±Ø¬ÙˆØ¹ Ø¥Ù„Ù‰ ÙˆØ«Ø§Ø¦Ù‚Ù†Ø§ 1 <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\">Ø¹Ù† Ø§Ø³ØªÙŠØ±Ø§Ø¯ Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø£ÙˆÙ„ÙŠØ©</a>"
 
 #: tournaments/templates/tournament_index.html
 msgid "Use the simple importer to add your initial data."
-msgstr "استخدم المستورد البسيط لإضافة بياناتك الأولية."
+msgstr "Ø§Ø³ØªØ®Ø¯Ù… Ø§Ù„Ù…Ø³ØªÙˆØ±Ø¯ Ø§Ù„Ø¨Ø³ÙŠØ· Ù„Ø¥Ø¶Ø§ÙØ© Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ø§Ù„Ø£ÙˆÙ„ÙŠØ©."
 
 #: tournaments/templates/tournament_index.html
 #, python-format
@@ -930,7 +930,7 @@ msgstr ""
 #: tournaments/templates/tournament_index.html
 #, python-format
 msgid "Go to the draw area to allocate adjudicators for %(round)s"
-msgstr "انتقل إلى منطقة القرعة لبدء توزيع الحكام لـ%(round)s"
+msgstr "Ø§Ù†ØªÙ‚Ù„ Ø¥Ù„Ù‰ Ù…Ù†Ø·Ù‚Ø© Ø§Ù„Ù‚Ø±Ø¹Ø© Ù„Ø¨Ø¯Ø¡ ØªÙˆØ²ÙŠØ¹ Ø§Ù„Ø­ÙƒØ§Ù… Ù„Ù€%(round)s"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
@@ -945,12 +945,12 @@ msgstr ""
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Assistant area for <strong>%(tn)s</strong>"
-msgstr "مساعد المنطقة لـ <strong>%(tn)s</strong>"
+msgstr "Ù…Ø³Ø§Ø¹Ø¯ Ø§Ù„Ù…Ù†Ø·Ù‚Ø© Ù„Ù€ <strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Public area for <strong>%(tn)s</strong>"
-msgstr "منطقة عامة لـ<strong>%(tn)s</strong>"
+msgstr "Ù…Ù†Ø·Ù‚Ø© Ø¹Ø§Ù…Ø© Ù„Ù€<strong>%(tn)s</strong>"
 
 #: tournaments/templates/tournament_schedule_edit.html
 msgid "This page allows you to set the public schedule for the tournament."
@@ -962,27 +962,27 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "affirmative"
-msgstr "موالاة"
+msgstr "Ù…ÙˆØ§Ù„Ø§Ø©"
 
 #: tournaments/utils.py
 msgid "negative"
-msgstr "معارضة"
+msgstr "Ù…Ø¹Ø§Ø±Ø¶Ø©"
 
 #: tournaments/utils.py
 msgid "affirmative team"
-msgstr "فريق الموالاة"
+msgstr "ÙØ±ÙŠÙ‚ Ø§Ù„Ù…ÙˆØ§Ù„Ø§Ø©"
 
 #: tournaments/utils.py
 msgid "negative team"
-msgstr "فريق المعارضة"
+msgstr "ÙØ±ÙŠÙ‚ Ø§Ù„Ù…Ø¹Ø§Ø±Ø¶Ø©"
 
 #: tournaments/utils.py
 msgid "Aff"
-msgstr "مولاة "
+msgstr "Ù…ÙˆÙ„Ø§Ø© "
 
 #: tournaments/utils.py
 msgid "Neg"
-msgstr "معارضة "
+msgstr "Ù…Ø¹Ø§Ø±Ø¶Ø© "
 
 #: tournaments/utils.py
 msgid "government"
@@ -1078,35 +1078,35 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "opening government"
-msgstr "الموالاة الأول"
+msgstr "Ø§Ù„Ù…ÙˆØ§Ù„Ø§Ø© Ø§Ù„Ø£ÙˆÙ„"
 
 #: tournaments/utils.py
 msgid "opening opposition"
-msgstr "الموالاة الثاني"
+msgstr "Ø§Ù„Ù…ÙˆØ§Ù„Ø§Ø© Ø§Ù„Ø«Ø§Ù†ÙŠ"
 
 #: tournaments/utils.py
 msgid "closing government"
-msgstr "المعارضة الأول"
+msgstr "Ø§Ù„Ù…Ø¹Ø§Ø±Ø¶Ø© Ø§Ù„Ø£ÙˆÙ„"
 
 #: tournaments/utils.py
 msgid "closing opposition"
-msgstr "المعارضة الثاني"
+msgstr "Ø§Ù„Ù…Ø¹Ø§Ø±Ø¶Ø© Ø§Ù„Ø«Ø§Ù†ÙŠ"
 
 #: tournaments/utils.py
 msgid "opening government team"
-msgstr "فريق الموالاة الأول"
+msgstr "ÙØ±ÙŠÙ‚ Ø§Ù„Ù…ÙˆØ§Ù„Ø§Ø© Ø§Ù„Ø£ÙˆÙ„"
 
 #: tournaments/utils.py
 msgid "opening opposition team"
-msgstr "فريق الموالاة الثاني"
+msgstr "ÙØ±ÙŠÙ‚ Ø§Ù„Ù…ÙˆØ§Ù„Ø§Ø© Ø§Ù„Ø«Ø§Ù†ÙŠ"
 
 #: tournaments/utils.py
 msgid "closing government team"
-msgstr "فريق المعارضة الأول"
+msgstr "ÙØ±ÙŠÙ‚ Ø§Ù„Ù…Ø¹Ø§Ø±Ø¶Ø© Ø§Ù„Ø£ÙˆÙ„"
 
 #: tournaments/utils.py
 msgid "closing opposition team"
-msgstr "فريق المعارضة الثاني"
+msgstr "ÙØ±ÙŠÙ‚ Ø§Ù„Ù…Ø¹Ø§Ø±Ø¶Ø© Ø§Ù„Ø«Ø§Ù†ÙŠ"
 
 #: tournaments/utils.py
 msgctxt "BP position"
@@ -1131,17 +1131,17 @@ msgstr ""
 #: tournaments/utils.py
 #, python-format
 msgid "Round %(number)d"
-msgstr "جولة %(number)d"
+msgstr "Ø¬ÙˆÙ„Ø© %(number)d"
 
 #. Translators: This stands for "Round %(number)d".
 #: tournaments/utils.py
 #, python-format
 msgid "R%(number)d"
-msgstr "ج%(number)d"
+msgstr "Ø¬%(number)d"
 
 #: tournaments/utils.py
 msgid "bye"
-msgstr "وداعا "
+msgstr "ÙˆØ¯Ø§Ø¹Ø§ "
 
 #: tournaments/utils.py
 #, python-format
@@ -1176,7 +1176,7 @@ msgstr ""
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as completed. That was the last preliminary round, but one or more preliminary rounds are still not completed. Going back to the first incomplete preliminary round."
-msgstr "تم تقديم الجولة الحالية إلى %(round)s  لقد وصلت إلى نهاية الجولات التمهيدية! تهانينا! الخطوة التالية هي للمتأهلين."
+msgstr "ØªÙ… ØªÙ‚Ø¯ÙŠÙ… Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ø­Ø§Ù„ÙŠØ© Ø¥Ù„Ù‰ %(round)s  Ù„Ù‚Ø¯ ÙˆØµÙ„Øª Ø¥Ù„Ù‰ Ù†Ù‡Ø§ÙŠØ© Ø§Ù„Ø¬ÙˆÙ„Ø§Øª Ø§Ù„ØªÙ…Ù‡ÙŠØ¯ÙŠØ©! ØªÙ‡Ø§Ù†ÙŠÙ†Ø§! Ø§Ù„Ø®Ø·ÙˆØ© Ø§Ù„ØªØ§Ù„ÙŠØ© Ù‡ÙŠ Ù„Ù„Ù…ØªØ£Ù‡Ù„ÙŠÙ†."
 
 #: tournaments/views.py
 #, python-format
@@ -1197,7 +1197,7 @@ msgstr ""
 
 #: tournaments/views.py
 msgid "Set Current Round"
-msgstr "الجولة الحالية "
+msgstr "Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ø­Ø§Ù„ÙŠØ© "
 
 #: tournaments/views.py
 msgid "Successfully set round weights for tapered scoring."
@@ -1206,4 +1206,5 @@ msgstr ""
 #: tournaments/views.py
 msgid "Tournament Schedule"
 msgstr ""
+
 

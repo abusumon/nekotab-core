@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-14 04:50+1100\n"
 "PO-Revision-Date: 2025-02-15 07:22\n"
@@ -11,32 +11,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/djangojs.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/djangojs.po\n"
 "X-Crowdin-File-ID: 962\n"
 
 #: checkins/templates/CheckInScanContainer.vue:
 msgid "Scan Using Camera"
-msgstr "カメラでスキャン"
+msgstr "ã‚«ãƒ¡ãƒ©ã§ã‚¹ã‚­ãƒ£ãƒ³"
 
 #: checkins/templates/CheckInScanContainer.vue:
 msgid "Stop Camera Scan"
-msgstr "カメラスキャンを中止"
+msgstr "ã‚«ãƒ¡ãƒ©ã‚¹ã‚­ãƒ£ãƒ³ã‚’ä¸­æ­¢"
 
 #: checkins/templates/CheckInScanContainer.vue:
 msgid "Turn On Sounds"
-msgstr "音声をオンにする"
+msgstr "éŸ³å£°ã‚’ã‚ªãƒ³ã«ã™ã‚‹"
 
 #. Translators: %1: Time of checkin, %2: Barcode number, %3: Name of "owner"
 #: checkins/templates/CheckInScanContainer.vue:
 msgid "%1 checked in %2: %3"
-msgstr "%1に%3（コード%2）がチェックイン"
+msgstr "%1ã«%3ï¼ˆã‚³ãƒ¼ãƒ‰%2ï¼‰ãŒãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "All"
-msgstr "すべて"
+msgstr "ã™ã¹ã¦"
 
 #. Translators: %1: Option name
 #: checkins/templates/CheckInStatusContainer.vue:
@@ -45,75 +45,75 @@ msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "No matching rooms found."
-msgstr "該当の部屋がありません。"
+msgstr "è©²å½“ã®éƒ¨å±‹ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "No matching people found."
-msgstr "該当の参加者がいません。"
+msgstr "è©²å½“ã®å‚åŠ è€…ãŒã„ã¾ã›ã‚“ã€‚"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "This page will live-update with new check-ins as they occur although the initial list may be up to a minute old."
-msgstr "新たなチェックインは自動的に反映されます（ただし1分程度の遅延がある場合があります）。"
+msgstr "æ–°ãŸãªãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã¯è‡ªå‹•çš„ã«åæ˜ ã•ã‚Œã¾ã™ï¼ˆãŸã ã—1åˆ†ç¨‹åº¦ã®é…å»¶ãŒã‚ã‚‹å ´åˆãŒã‚ã‚Šã¾ã™ï¼‰ã€‚"
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>✓</strong> All"
-msgstr "<strong>✓</strong> すべて"
+msgid "<strong>âœ“</strong> All"
+msgstr "<strong>âœ“</strong> ã™ã¹ã¦"
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>☓</strong> All"
-msgstr "<strong>☓</strong> 全員"
+msgid "<strong>â˜“</strong> All"
+msgstr "<strong>â˜“</strong> å…¨å“¡"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "Click to check-in manually"
-msgstr "ここをクリックして手動でチェックイン"
+msgstr "ã“ã“ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦æ‰‹å‹•ã§ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "saving..."
-msgstr "保存中..."
+msgstr "ä¿å­˜ä¸­..."
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "This person does not have a check-in identifier so they can't be checked in"
-msgstr "チェックインの識別コードがないためチェックインできません"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ãŒãªã„ãŸã‚ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã§ãã¾ã›ã‚“"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "If you want to view this page without the sidebar (i.e. for displaying to an auditorium) you can use the assistant version."
-msgstr "サイドバーなしでこのページを表示したい場合（e.g. ORで表示するため）、アシスタントのものを使用できます。"
+msgstr "ã‚µã‚¤ãƒ‰ãƒãƒ¼ãªã—ã§ã“ã®ãƒšãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ãŸã„å ´åˆï¼ˆe.g. ORã§è¡¨ç¤ºã™ã‚‹ãŸã‚ï¼‰ã€ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆã®ã‚‚ã®ã‚’ä½¿ç”¨ã§ãã¾ã™ã€‚"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "Open the assistant version."
-msgstr "アシスタント版を開く"
+msgstr "ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆç‰ˆã‚’é–‹ã"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "Click to undo a check-in"
-msgstr "ここをクリックしてチェックインをキャンセル"
+msgstr "ã“ã“ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2 of no institutional affiliation with identifier of %3"
-msgstr "%1（%2、インステなし、識別コード%3）"
+msgstr "%1ï¼ˆ%2ã€ã‚¤ãƒ³ã‚¹ãƒ†ãªã—ã€è­˜åˆ¥ã‚³ãƒ¼ãƒ‰%3ï¼‰"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2 of no institutional affiliation with no assigned identifier"
-msgstr "%1（%2、インステなし、識別コードなし）"
+msgstr "%1ï¼ˆ%2ã€ã‚¤ãƒ³ã‚¹ãƒ†ãªã—ã€è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ãªã—ï¼‰"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2 from %3 with identifier of %4"
-msgstr "%1（%2、インステ%3、識別コード%4）"
+msgstr "%1ï¼ˆ%2ã€ã‚¤ãƒ³ã‚¹ãƒ†%3ã€è­˜åˆ¥ã‚³ãƒ¼ãƒ‰%4ï¼‰"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2 from %3 with no assigned identifier"
-msgstr "%1（%2、インステ%3、識別コードなし）"
+msgstr "%1ï¼ˆ%2ã€ã‚¤ãƒ³ã‚¹ãƒ†%3ã€è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ãªã—ï¼‰"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1 (Present; id=%2)"
-msgstr "%1（出席、id=%2）"
+msgstr "%1ï¼ˆå‡ºå¸­ã€id=%2ï¼‰"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1 (Absent; id=%2)"
-msgstr "%1（欠席、id=%2）"
+msgstr "%1ï¼ˆæ¬ å¸­ã€id=%2ï¼‰"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a team with speakers %2"
-msgstr "%1（チーム）、スピーカー%2"
+msgstr "%1ï¼ˆãƒãƒ¼ãƒ ï¼‰ã€ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼%2"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2"
@@ -121,43 +121,43 @@ msgstr ""
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "Anonymous (due to team codes)"
-msgstr "匿名（チームコード制のため）"
+msgstr "åŒ¿åï¼ˆãƒãƒ¼ãƒ ã‚³ãƒ¼ãƒ‰åˆ¶ã®ãŸã‚ï¼‰"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "Anon"
-msgstr "匿名"
+msgstr "åŒ¿å"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "Independent"
-msgstr "個人"
+msgstr "å€‹äºº"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "%1 (%2) with identifier of %3"
-msgstr "%1（%2、識別コード%3）"
+msgstr "%1ï¼ˆ%2ã€è­˜åˆ¥ã‚³ãƒ¼ãƒ‰%3ï¼‰"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "%1 (no category) with identifier of %2"
-msgstr "%1（カテゴリーなし、識別コード%2）"
+msgstr "%1ï¼ˆã‚«ãƒ†ã‚´ãƒªãƒ¼ãªã—ã€è­˜åˆ¥ã‚³ãƒ¼ãƒ‰%2ï¼‰"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "%1 (%2) with no assigned identifier"
-msgstr "%1（%2、識別コード無し）"
+msgstr "%1ï¼ˆ%2ã€è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ç„¡ã—ï¼‰"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "%1 (no category) with no assigned identifier"
-msgstr "%1（カテゴリーなし、識別コード無し）"
+msgstr "%1ï¼ˆã‚«ãƒ†ã‚´ãƒªãƒ¼ãªã—ã€è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ç„¡ã—ï¼‰"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "Uncategorised"
-msgstr "カテゴリーなし"
+msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼ãªã—"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "No Category"
-msgstr "カテゴリーなし"
+msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼ãªã—"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "Priority %1"
-msgstr "優先度%1"
+msgstr "å„ªå…ˆåº¦%1"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "%1 %2 from %3"
@@ -193,19 +193,19 @@ msgstr ""
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Solo Chair"
-msgstr "単チェア"
+msgstr "å˜ãƒã‚§ã‚¢"
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Panellist"
-msgstr "パネル"
+msgstr "ãƒ‘ãƒãƒ«"
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Trainee"
-msgstr "トレイニー"
+msgstr "ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "Team"
-msgstr "チーム"
+msgstr "ãƒãƒ¼ãƒ "
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Mark speeches %1 to %2; <strong>%3</strong>."
@@ -257,14 +257,14 @@ msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue: checkins/templates/PeopleStatusMixin.vue:
 msgid "Unaffiliated"
-msgstr "無所属"
+msgstr "ç„¡æ‰€å±ž"
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "no ½ marks"
+msgid "no Â½ marks"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "½ marks are allowed"
+msgid "Â½ marks are allowed"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
@@ -289,7 +289,7 @@ msgstr ""
 
 #: printing/templates/PrintableFeedback.vue: printing/templates/PrintableFeedbackQuestion.vue:
 msgid "Yes"
-msgstr "はい"
+msgstr "ã¯ã„"
 
 #: printing/templates/PrintableFeedback.vue:
 msgid "No, I am submitting feedback on:"
@@ -301,7 +301,7 @@ msgstr ""
 
 #: printing/templates/PrintableFeedbackQuestion.vue:
 msgid "No"
-msgstr "いいえ"
+msgstr "ã„ã„ãˆ"
 
 #: printing/templates/PrintableScoresheet.vue:
 msgid "Which team won the debate:"
@@ -345,11 +345,11 @@ msgstr ""
 
 #: templates/tables/CheckboxTables.vue:30
 msgid "Set All Breaking as Available"
-msgstr "ブレイクした全員を参加可能にする"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã—ãŸå…¨å“¡ã‚’å‚åŠ å¯èƒ½ã«ã™ã‚‹"
 
 #: templates/tables/CheckboxTables.vue:36
 msgid "Set all the availabilities to exactly match what they were in the previous round."
-msgstr "個のラウンドの参加状況を直前のラウンドと一致させる"
+msgstr "å€‹ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‚åŠ çŠ¶æ³ã‚’ç›´å‰ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã¨ä¸€è‡´ã•ã›ã‚‹"
 
 #: templates/tables/CheckboxTables.vue:37
 msgid "Match"
@@ -357,103 +357,103 @@ msgstr ""
 
 #: templates/tables/CheckboxTables.vue:41
 msgid "Set all availabilities to exactly match check-ins."
-msgstr "ラウンドの参加状況をチェックイン状況と一致させる"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‚åŠ çŠ¶æ³ã‚’ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³çŠ¶æ³ã¨ä¸€è‡´ã•ã›ã‚‹"
 
 #: templates/tables/CheckboxTables.vue:44
 msgid "Match Check-Ins"
-msgstr "チェックインに合わせる"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã«åˆã‚ã›ã‚‹"
 
 #: templates/tables/CheckboxTables.vue:
-msgid "Set people as available only if they have a check-in and are currently unavailable — i.e. it will not overwrite any existing availabilities."
-msgstr "チェックインをしていてラウンドの参加状況が不可の人のみを可にする。"
+msgid "Set people as available only if they have a check-in and are currently unavailable â€” i.e. it will not overwrite any existing availabilities."
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚’ã—ã¦ã„ã¦ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‚åŠ çŠ¶æ³ãŒä¸å¯ã®äººã®ã¿ã‚’å¯ã«ã™ã‚‹ã€‚"
 
 #: templates/tables/CheckboxTables.vue:47
 msgid "Copy From Check-Ins"
-msgstr "チェックインからコピー"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‹ã‚‰ã‚³ãƒ”ãƒ¼"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "Ballots Status"
-msgstr "バロットの状況"
+msgstr "ãƒãƒ­ãƒƒãƒˆã®çŠ¶æ³"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "Latest Actions"
-msgstr "直近のアクション"
+msgstr "ç›´è¿‘ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "No Actions Yet"
-msgstr "アクションなし"
+msgstr "ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãªã—"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "Latest Results"
-msgstr "直近の結果"
+msgstr "ç›´è¿‘ã®çµæžœ"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "No Confirmed Results Yet"
-msgstr "承認済み結果なし"
+msgstr "æ‰¿èªæ¸ˆã¿çµæžœãªã—"
 
 #: participants/templates/DiversityContainer.vue:6
 msgid "Speaker Demographics"
-msgstr "スピーカーの属性分布"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®å±žæ€§åˆ†å¸ƒ"
 
 #: participants/templates/DiversityContainer.vue:11
 msgid "No Gender Information"
-msgstr "ジェンダーの情報なし"
+msgstr "ã‚¸ã‚§ãƒ³ãƒ€ãƒ¼ã®æƒ…å ±ãªã—"
 
 #: participants/templates/DiversityContainer.vue:18
 msgid "No Speaker Categories Information"
-msgstr "スピーカーカテゴリーの情報なし"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®æƒ…å ±ãªã—"
 
 #: participants/templates/DiversityContainer.vue:33
 msgid "Speaker Results"
-msgstr "スピーカーの結果"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®çµæžœ"
 
 #: participants/templates/DiversityContainer.vue:36
 msgid "speakers with gender data"
-msgstr "人のジェンダー情報ありのスピーカー"
+msgstr "äººã®ã‚¸ã‚§ãƒ³ãƒ€ãƒ¼æƒ…å ±ã‚ã‚Šã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼"
 
 #: participants/templates/DiversityContainer.vue:38
 msgid "speaker scores total"
-msgstr "つのスピーカースコア"
+msgstr "ã¤ã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢"
 
 #: participants/templates/DiversityContainer.vue:49
 msgid "No Region Information"
-msgstr "地域情報なし"
+msgstr "åœ°åŸŸæƒ…å ±ãªã—"
 
 #: participants/templates/DiversityContainer.vue:56
 msgid "Adjudicator Demographics"
-msgstr "ジャッジの属性分布"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®å±žæ€§åˆ†å¸ƒ"
 
 #: participants/templates/DiversityContainer.vue:68
 msgid "No Position Information"
-msgstr "位置情報なし"
+msgstr "ä½ç½®æƒ…å ±ãªã—"
 
 #: participants/templates/DiversityContainer.vue:83
 msgid "Adjudicator Results"
-msgstr "ジャッジの結果"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®çµæžœ"
 
 #: participants/templates/DiversityContainer.vue:86
 msgid "adjudicators with gender data"
-msgstr "人のジェンダー情報ありのジャッジ"
+msgstr "äººã®ã‚¸ã‚§ãƒ³ãƒ€ãƒ¼æƒ…å ±ã‚ã‚Šã®ã‚¸ãƒ£ãƒƒã‚¸"
 
 #: participants/templates/DiversityContainer.vue:88
 msgid "feedback scores total"
-msgstr "つのフィードバックスコア"
+msgstr "ã¤ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚¹ã‚³ã‚¢"
 
 #: participants/templates/DiversityContainer.vue:94
 msgid "No Adjudicator Ratings Information"
-msgstr "ジャッジの評価の情報なし"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®è©•ä¾¡ã®æƒ…å ±ãªã—"
 
 #: participants/templates/DiversityContainer.vue:99
 msgid "No Adjudicator-Adjudicator Feedback Information"
-msgstr "ジャッジ間フィードバックの情報なし"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸é–“ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®æƒ…å ±ãªã—"
 
 #: results/templates/ResultsStats.vue:10
 msgid "Checked-In"
-msgstr "チェックイン済み"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³æ¸ˆã¿"
 
 #: results/templates/ResultsStats.vue:15
 msgid "Not Checked-In"
-msgstr "チェックイン済みでない"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³æ¸ˆã¿ã§ãªã„"
 
 #: results/templates/ResultsStats.vue:19
 msgid "Ballot Check-Ins"
@@ -461,94 +461,95 @@ msgstr ""
 
 #: results/templates/ResultsStats.vue:26
 msgid "Unknown"
-msgstr "不明"
+msgstr "ä¸æ˜Ž"
 
 #: results/templates/ResultsStats.vue:31
 msgid "Unconfirmed"
-msgstr "未承認"
+msgstr "æœªæ‰¿èª"
 
 #: results/templates/ResultsStats.vue:36
 msgid "Confirmed"
-msgstr "承認済み"
+msgstr "æ‰¿èªæ¸ˆã¿"
 
 #: results/templates/ResultsStats.vue:40
 msgid "Ballot Statuses"
-msgstr "バロットの状況"
+msgstr "ãƒãƒ­ãƒƒãƒˆã®çŠ¶æ³"
 
 #: results/templates/BallotsCell.vue:18
 msgid "You cannot confirm this ballot because you entered it"
-msgstr "自分で入力したバロットは承認できません"
+msgstr "è‡ªåˆ†ã§å…¥åŠ›ã—ãŸãƒãƒ­ãƒƒãƒˆã¯æ‰¿èªã§ãã¾ã›ã‚“"
 
 #: results/templates/BallotsCell.vue:34
 msgid "Add Ballot"
-msgstr "バロットを追加"
+msgstr "ãƒãƒ­ãƒƒãƒˆã‚’è¿½åŠ "
 
 #: results/templates/BallotsCell.vue:79
 msgid "Re-Edit"
-msgstr "再編集"
+msgstr "å†ç·¨é›†"
 
 #: results/templates/BallotsCell.vue:81
 msgid "Review"
-msgstr "再閲覧"
+msgstr "å†é–²è¦§"
 
 #: utils/templates/AutoSaveCounter.vue:4
 msgid "No changes"
-msgstr "変更なし"
+msgstr "å¤‰æ›´ãªã—"
 
 #: utils/templates/DragAndDropActions.vue:8
 msgid "Return to Draw"
-msgstr "対戦表に戻る"
+msgstr "å¯¾æˆ¦è¡¨ã«æˆ»ã‚‹"
 
 #: utils/templates/DragAndDropActions.vue:15
 msgid "Auto-Prioritise"
-msgstr "自動で優先度付け"
+msgstr "è‡ªå‹•ã§å„ªå…ˆåº¦ä»˜ã‘"
 
 #: utils/templates/DragAndDropActions.vue:17
 msgid "Auto-Allocate"
-msgstr "自動配置"
+msgstr "è‡ªå‹•é…ç½®"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Break"
-msgstr "ブレイク"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Gender"
-msgstr "ジェンダー"
+msgstr "ã‚¸ã‚§ãƒ³ãƒ€ãƒ¼"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Rank"
-msgstr "ランク"
+msgstr "ãƒ©ãƒ³ã‚¯"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Region"
-msgstr "地域"
+msgstr "åœ°åŸŸ"
 
 #. Translators: Short for "Venue Category"
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Category"
-msgstr "カテゴリー"
+msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: utils/templates/DragAndDropDebate.vue:5
 msgid "The debate's bracket"
-msgstr "試合のブラケット"
+msgstr "è©¦åˆã®ãƒ–ãƒ©ã‚±ãƒƒãƒˆ"
 
 #: utils/templates/DragAndDropDebate.vue:9
 msgid "The bracket range of the hypothetical debate"
-msgstr "仮装のディベートのブラケット範囲"
+msgstr "ä»®è£…ã®ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã®ãƒ–ãƒ©ã‚±ãƒƒãƒˆç¯„å›²"
 
 #: utils/templates/DragAndDropDebate.vue:20
 msgid "The total number of live break categories across all teams"
-msgstr "全チームのブレイクの可能性が残っているカテゴリーの総数"
+msgstr "å…¨ãƒãƒ¼ãƒ ã®ãƒ–ãƒ¬ã‚¤ã‚¯ã®å¯èƒ½æ€§ãŒæ®‹ã£ã¦ã„ã‚‹ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ç·æ•°"
 
 #: utils/templates/DragAndDropDebate.vue:26
 msgid "The estimated total number of live break categories across all teams of the hypothetical debate"
-msgstr "仮の試合の全チームのブレイクの可能性が残っているカテゴリーの総数"
+msgstr "ä»®ã®è©¦åˆã®å…¨ãƒãƒ¼ãƒ ã®ãƒ–ãƒ¬ã‚¤ã‚¯ã®å¯èƒ½æ€§ãŒæ®‹ã£ã¦ã„ã‚‹ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ç·æ•°"
 
 #: utils/templates/DragAndDropDebate.vue:33
 msgid "This debate's priority"
-msgstr "ディベートの優先度"
+msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã®å„ªå…ˆåº¦"
 
 #: draw/templates/InlineTeam.vue:41
 msgid "No code name set"
-msgstr "コード名なし"
+msgstr "ã‚³ãƒ¼ãƒ‰åãªã—"
+
 

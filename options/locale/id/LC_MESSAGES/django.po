@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: id\n"
-"X-Crowdin-File: /develop/tabbycat/options/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/options/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 940\n"
 
@@ -311,8 +311,8 @@ msgid "Manually enter from ballot"
 msgstr "Diinput secara manual pada balot"
 
 #: options/preferences.py
-msgid "Slide: 1 vs 6, 2 vs 7, …. Fold: 1 vs 10, 2 vs 9, …. Adjacent: 1 vs 2, 3 vs 4, …."
-msgstr "Slide (Break and Slide): 1 vs 6, 2 vs 7, …. Fold: 1 vs 10, 2 vs 9, …. Adjacent (Power pair): 1 vs 2, 3 vs 4, …."
+msgid "Slide: 1 vs 6, 2 vs 7, â€¦. Fold: 1 vs 10, 2 vs 9, â€¦. Adjacent: 1 vs 2, 3 vs 4, â€¦."
+msgstr "Slide (Break and Slide): 1 vs 6, 2 vs 7, â€¦. Fold: 1 vs 10, 2 vs 9, â€¦. Adjacent (Power pair): 1 vs 2, 3 vs 4, â€¦."
 
 #: options/preferences.py
 msgid "Pairing method"
@@ -419,20 +419,20 @@ msgid "Simple"
 msgstr "Sederhana"
 
 #: options/preferences.py
-msgid "Rényi entropy"
-msgstr "Entropi Rényi"
+msgid "RÃ©nyi entropy"
+msgstr "Entropi RÃ©nyi"
 
 #: options/preferences.py
 msgid "Population variance"
 msgstr "Varians Populasi"
 
 #: options/preferences.py
-msgid "Rényi order α, if BP position cost uses Rényi entropy. Shannon is α = 1, Hartley is α = 0, collision is α = 2. See documentation for details."
-msgstr "Orde Rényi α, apabila BP position cost menggunakan entropi Rényi. Shannon: α = 1, Hartley: α = 0, collision: α = 2. Lihat dokumentasi untuk detail."
+msgid "RÃ©nyi order Î±, if BP position cost uses RÃ©nyi entropy. Shannon is Î± = 1, Hartley is Î± = 0, collision is Î± = 2. See documentation for details."
+msgstr "Orde RÃ©nyi Î±, apabila BP position cost menggunakan entropi RÃ©nyi. Shannon: Î± = 1, Hartley: Î± = 0, collision: Î± = 2. Lihat dokumentasi untuk detail."
 
 #: options/preferences.py
-msgid "Rényi order (BP)"
-msgstr "Orde Rényi (BP)"
+msgid "RÃ©nyi order (BP)"
+msgstr "Orde RÃ©nyi (BP)"
 
 #: options/preferences.py
 msgid "The BP position cost is raised to this power; higher exponents bias towards resolving fewer large position imbalances over more small ones. See documentation for details."
@@ -863,7 +863,7 @@ msgid "Top replies cutoff"
 msgstr "Cutoff pembicara penyimpul teratas"
 
 #: options/preferences.py
-msgid "Enables public display of all motions and win/loss/selection information. This includes all motions — whether they have been marked as released or not. Intended for use after the tournament."
+msgid "Enables public display of all motions and win/loss/selection information. This includes all motions â€” whether they have been marked as released or not. Intended for use after the tournament."
 msgstr "Aktifkan tampilan publik dari semua mosi dan informasi menang / kalah / seleksi. Ini mencakup semua mosi - apakah mereka telah ditandai sebagai dilepaskan atau tidak. Ditujukan untuk digunakan setelah turnamen."
 
 #: options/preferences.py
@@ -1375,8 +1375,8 @@ msgid "Email status secret key"
 msgstr "Kunci rahasia status email"
 
 #: options/preferences.py
-msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in Tabbycat (for confirmation or checking)"
-msgstr "Memungkinkan salinan balot juri untuk secara otomatis dikirim kepada mereka (melalui email) setelah mereka dimasukkan di Tabbycat (untuk konfirmasi atau pemeriksaan)"
+msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in NekoTab (for confirmation or checking)"
+msgstr "Memungkinkan salinan balot juri untuk secara otomatis dikirim kepada mereka (melalui email) setelah mereka dimasukkan di NekoTab (untuk konfirmasi atau pemeriksaan)"
 
 #: options/preferences.py
 msgid "Ballot receipts"
@@ -1823,8 +1823,8 @@ msgid "Manually Set Current Round"
 msgstr "Set ronde sekarang secara manual"
 
 #: options/templates/preferences_index.html
-msgid "Tabbycat will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
-msgstr "Tabbycat akan meminta Anda untuk memajukan babak saat ini di halaman hasil setiap babak. Namun, jika ada keadaan khusus yang mengharuskan Anda untuk mengesampingkan ini dan set putaran saat ini ke putaran lain, gunakan halaman ini."
+msgid "NekoTab will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
+msgstr "NekoTab akan meminta Anda untuk memajukan babak saat ini di halaman hasil setiap babak. Namun, jika ada keadaan khusus yang mengharuskan Anda untuk mengesampingkan ini dan set putaran saat ini ke putaran lain, gunakan halaman ini."
 
 #: options/templates/preferences_index.html
 msgid "Set Round Weights for Tapered Scoring"
@@ -1909,4 +1909,5 @@ msgstr ""
 #, python-format
 msgid "Tournament options saved based on preset %(name)s."
 msgstr ""
+
 

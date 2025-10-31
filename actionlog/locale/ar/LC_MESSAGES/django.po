@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -11,19 +11,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/actionlog/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/actionlog/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 920\n"
 
 #: actionlog/apps.py
 msgid "Action Log"
-msgstr "سجل التحديثات"
+msgstr "Ø³Ø¬Ù„ Ø§Ù„ØªØ­Ø¯ÙŠØ«Ø§Øª"
 
 #: actionlog/models.py
 msgid "Changed adjudicator breaking status"
-msgstr "تغيير حالة الحكم "
+msgstr "ØªØºÙŠÙŠØ± Ø­Ø§Ù„Ø© Ø§Ù„Ø­ÙƒÙ… "
 
 #: actionlog/models.py
 msgid "Created adjudicator"
@@ -35,19 +35,19 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Set adjudicator note"
-msgstr "وضع ملاحظات محكم"
+msgstr "ÙˆØ¶Ø¹ Ù…Ù„Ø§Ø­Ø¸Ø§Øª Ù…Ø­ÙƒÙ…"
 
 #: actionlog/models.py
 msgid "Auto-allocated adjudicators"
-msgstr "التعيين التلقائي للمحكمين"
+msgstr "Ø§Ù„ØªØ¹ÙŠÙŠÙ† Ø§Ù„ØªÙ„Ù‚Ø§Ø¦ÙŠ Ù„Ù„Ù…Ø­ÙƒÙ…ÙŠÙ†"
 
 #: actionlog/models.py
 msgid "Saved adjudicator allocation"
-msgstr "قام بحفظ تعيين محكم"
+msgstr "Ù‚Ø§Ù… Ø¨Ø­ÙØ¸ ØªØ¹ÙŠÙŠÙ† Ù…Ø­ÙƒÙ…"
 
 #: actionlog/models.py
 msgid "Edited adjudicators availability"
-msgstr "قام بتعديل تواجد المحكمين"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ¹Ø¯ÙŠÙ„ ØªÙˆØ§Ø¬Ø¯ Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ†"
 
 #: actionlog/models.py
 msgid "Edited availability"
@@ -55,39 +55,39 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited teams availability"
-msgstr "قام بتعديل الفرق المتوفرة"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„ÙØ±Ù‚ Ø§Ù„Ù…ØªÙˆÙØ±Ø©"
 
 #: actionlog/models.py
 msgid "Edited room availability"
-msgstr "قام بتعديل قاعات المناظرة المتوفرة"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ¹Ø¯ÙŠÙ„ Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© Ø§Ù„Ù…ØªÙˆÙØ±Ø©"
 
 #: actionlog/models.py
 msgid "Checked in ballot set"
-msgstr "إدخال النتيجة"
+msgstr "Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„Ù†ØªÙŠØ¬Ø©"
 
 #: actionlog/models.py
 msgid "Confirmed ballot set"
-msgstr "تأكيد النتيجة"
+msgstr "ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ù†ØªÙŠØ¬Ø©"
 
 #: actionlog/models.py
 msgid "Created ballot set"
-msgstr "إنشاء استمارة التحكيم"
+msgstr "Ø¥Ù†Ø´Ø§Ø¡ Ø§Ø³ØªÙ…Ø§Ø±Ø© Ø§Ù„ØªØ­ÙƒÙŠÙ…"
 
 #: actionlog/models.py
 msgid "Discarded ballot set"
-msgstr "حذف النتيجة"
+msgstr "Ø­Ø°Ù Ø§Ù„Ù†ØªÙŠØ¬Ø©"
 
 #: actionlog/models.py
 msgid "Edited ballot set"
-msgstr "تعديل النتيجة"
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù†ØªÙŠØ¬Ø©"
 
 #: actionlog/models.py
 msgid "Submitted ballot set from the public form"
-msgstr "تقديم النتيجة من النموذج العام"
+msgstr "ØªÙ‚Ø¯ÙŠÙ… Ø§Ù„Ù†ØªÙŠØ¬Ø© Ù…Ù† Ø§Ù„Ù†Ù…ÙˆØ°Ø¬ Ø§Ù„Ø¹Ø§Ù…"
 
 #: actionlog/models.py
 msgid "Edited break categories"
-msgstr "تعديل الفئات المتأهلة "
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„ÙØ¦Ø§Øª Ø§Ù„Ù…ØªØ£Ù‡Ù„Ø© "
 
 #: actionlog/models.py
 msgid "Deleted team break for category"
@@ -95,15 +95,15 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks"
-msgstr "تعديل درجات الفريق المتأهل"
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ø¯Ø±Ø¬Ø§Øª Ø§Ù„ÙØ±ÙŠÙ‚ Ø§Ù„Ù…ØªØ£Ù‡Ù„"
 
 #: actionlog/models.py
 msgid "Edited break eligibility"
-msgstr "تعديل حالة الحكم "
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ø­Ø§Ù„Ø© Ø§Ù„Ø­ÙƒÙ… "
 
 #: actionlog/models.py
 msgid "Generated the team break for all categories"
-msgstr "جميع الفرق و فئات التأهل"
+msgstr "Ø¬Ù…ÙŠØ¹ Ø§Ù„ÙØ±Ù‚ Ùˆ ÙØ¦Ø§Øª Ø§Ù„ØªØ£Ù‡Ù„"
 
 #: actionlog/models.py
 msgid "Generated the team break for one category"
@@ -111,11 +111,11 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks and updated all team breaks"
-msgstr "تعديل درجات الفرق  و تحديثها "
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ø¯Ø±Ø¬Ø§Øª Ø§Ù„ÙØ±Ù‚  Ùˆ ØªØ­Ø¯ÙŠØ«Ù‡Ø§ "
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks and updated this team break"
-msgstr "تعديل درجات الفريق المتأهل و تحديثها "
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ø¯Ø±Ø¬Ø§Øª Ø§Ù„ÙØ±ÙŠÙ‚ Ø§Ù„Ù…ØªØ£Ù‡Ù„ Ùˆ ØªØ­Ø¯ÙŠØ«Ù‡Ø§ "
 
 #: actionlog/models.py
 msgid "Generated check in identifiers for adjudicators"
@@ -159,31 +159,31 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited debate importance"
-msgstr "قام بتعديل أهمية المناظرة"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ¹Ø¯ÙŠÙ„ Ø£Ù‡Ù…ÙŠØ© Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: actionlog/models.py
 msgid "Saved divisions"
-msgstr "حفظ التقسيمات "
+msgstr "Ø­ÙØ¸ Ø§Ù„ØªÙ‚Ø³ÙŠÙ…Ø§Øª "
 
 #: actionlog/models.py
 msgid "Confirmed draw"
-msgstr "قام بتأكيد القرعة"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ù‚Ø±Ø¹Ø©"
 
 #: actionlog/models.py
 msgid "Created draw"
-msgstr "قام بإنشاء قرعة"
+msgstr "Ù‚Ø§Ù… Ø¨Ø¥Ù†Ø´Ø§Ø¡ Ù‚Ø±Ø¹Ø©"
 
 #: actionlog/models.py
 msgid "Regenerated draw"
-msgstr "قام بإعادة تعيين القرعة"
+msgstr "Ù‚Ø§Ù… Ø¨Ø¥Ø¹Ø§Ø¯Ø© ØªØ¹ÙŠÙŠÙ† Ø§Ù„Ù‚Ø±Ø¹Ø©"
 
 #: actionlog/models.py
 msgid "Released draw"
-msgstr "قام بإعلان القرعة"
+msgstr "Ù‚Ø§Ù… Ø¨Ø¥Ø¹Ù„Ø§Ù† Ø§Ù„Ù‚Ø±Ø¹Ø©"
 
 #: actionlog/models.py
 msgid "Unreleased draw"
-msgstr "قام برفع القرعة"
+msgstr "Ù‚Ø§Ù… Ø¨Ø±ÙØ¹ Ø§Ù„Ù‚Ø±Ø¹Ø©"
 
 #: actionlog/models.py
 msgid "Created feedback question"
@@ -195,11 +195,11 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Saved feedback"
-msgstr "حفظ التغذية الراجعة"
+msgstr "Ø­ÙØ¸ Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø©"
 
 #: actionlog/models.py
 msgid "Submitted feedback from the public form"
-msgstr "تقديم التغذية الراجعة من النموذج العام"
+msgstr "ØªÙ‚Ø¯ÙŠÙ… Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© Ù…Ù† Ø§Ù„Ù†Ù…ÙˆØ°Ø¬ Ø§Ù„Ø¹Ø§Ù…"
 
 #: actionlog/models.py
 msgid "Created institution"
@@ -211,23 +211,23 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Saved a matchup manual edit"
-msgstr "قام بتعديل توزيع قاعة يدويا"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ¹Ø¯ÙŠÙ„ ØªÙˆØ²ÙŠØ¹ Ù‚Ø§Ø¹Ø© ÙŠØ¯ÙˆÙŠØ§"
 
 #: actionlog/models.py
 msgid "Added/edited motion"
-msgstr "قام بإضافة/تعديل نص قضية"
+msgstr "Ù‚Ø§Ù… Ø¨Ø¥Ø¶Ø§ÙØ©/ØªØ¹Ø¯ÙŠÙ„ Ù†Øµ Ù‚Ø¶ÙŠØ©"
 
 #: actionlog/models.py
 msgid "Released motions"
-msgstr "القضايا المعلنة"
+msgstr "Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§ Ø§Ù„Ù…Ø¹Ù„Ù†Ø©"
 
 #: actionlog/models.py
 msgid "Unreleased motions"
-msgstr "قضايا غير معلنة بعد"
+msgstr "Ù‚Ø¶Ø§ÙŠØ§ ØºÙŠØ± Ù…Ø¹Ù„Ù†Ø© Ø¨Ø¹Ø¯"
 
 #: actionlog/models.py
 msgid "Edited tournament options"
-msgstr "قام بتعديل إعدادات البطولة"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ¹Ø¯ÙŠÙ„ Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„Ø¨Ø·ÙˆÙ„Ø©"
 
 #: actionlog/models.py
 msgid "Auto-allocated adjudicators to preformed panels"
@@ -259,7 +259,7 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Advanced the current round to"
-msgstr "تقديم الجولة الحالية "
+msgstr "ØªÙ‚Ø¯ÙŠÙ… Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ø­Ø§Ù„ÙŠØ© "
 
 #: actionlog/models.py
 msgid "Marked round as completed"
@@ -275,11 +275,11 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Set start time"
-msgstr "تحديد وقت البداية"
+msgstr "ØªØ­Ø¯ÙŠØ¯ ÙˆÙ‚Øª Ø§Ù„Ø¨Ø¯Ø§ÙŠØ©"
 
 #: actionlog/models.py
 msgid "Saved the sides status of a matchup"
-msgstr "حفظ توزيع موالاة/معلرضة "
+msgstr "Ø­ÙØ¸ ØªÙˆØ²ÙŠØ¹ Ù…ÙˆØ§Ù„Ø§Ø©/Ù…Ø¹Ù„Ø±Ø¶Ø© "
 
 #: actionlog/models.py
 msgid "Imported adjudicators using the simple importer"
@@ -299,7 +299,7 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited speaker categories"
-msgstr "قام بتعديل فئات المتحدثين"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ¹Ø¯ÙŠÙ„ ÙØ¦Ø§Øª Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ†"
 
 #: actionlog/models.py
 msgid "Created speaker"
@@ -311,7 +311,7 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited speaker category eligibility"
-msgstr "قام بتعديل استحقاق المتحدثين حسب الفئات"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ¹Ø¯ÙŠÙ„ Ø§Ø³ØªØ­Ù‚Ø§Ù‚ Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ† Ø­Ø³Ø¨ Ø§Ù„ÙØ¦Ø§Øª"
 
 #: actionlog/models.py
 msgid "Created team"
@@ -343,7 +343,7 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited room categories"
-msgstr "قام بتعديل فئات قاعات المناظرة"
+msgstr "Ù‚Ø§Ù… Ø¨ØªØ¹Ø¯ÙŠÙ„ ÙØ¦Ø§Øª Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: actionlog/models.py
 msgid "Created room category"
@@ -351,7 +351,7 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited room constraints"
-msgstr "تعديل محددات إختيار القاعات"
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ù…Ø­Ø¯Ø¯Ø§Øª Ø¥Ø®ØªÙŠØ§Ø± Ø§Ù„Ù‚Ø§Ø¹Ø§Øª"
 
 #: actionlog/models.py
 msgid "Created room"
@@ -363,7 +363,7 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Auto-allocated rooms"
-msgstr "قام بالتعيين التلقائي لقاعات المناظرة"
+msgstr "Ù‚Ø§Ù… Ø¨Ø§Ù„ØªØ¹ÙŠÙŠÙ† Ø§Ù„ØªÙ„Ù‚Ø§Ø¦ÙŠ Ù„Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: actionlog/models.py
 msgid "Saved a room manual edit"
@@ -403,31 +403,31 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "type"
-msgstr "نوع"
+msgstr "Ù†ÙˆØ¹"
 
 #: actionlog/models.py
 msgid "timestamp"
-msgstr "الزمن "
+msgstr "Ø§Ù„Ø²Ù…Ù† "
 
 #: actionlog/models.py
 msgid "user"
-msgstr "مستخدم"
+msgstr "Ù…Ø³ØªØ®Ø¯Ù…"
 
 #: actionlog/models.py
 msgid "IP address"
-msgstr "عنوان ال IP"
+msgstr "Ø¹Ù†ÙˆØ§Ù† Ø§Ù„ IP"
 
 #: actionlog/models.py
 msgid "tournament"
-msgstr "بطولة"
+msgstr "Ø¨Ø·ÙˆÙ„Ø©"
 
 #: actionlog/models.py
 msgid "round"
-msgstr "جولة"
+msgstr "Ø¬ÙˆÙ„Ø©"
 
 #: actionlog/models.py
 msgid "content type"
-msgstr "نوع المحتوى"
+msgstr "Ù†ÙˆØ¹ Ø§Ù„Ù…Ø­ØªÙˆÙ‰"
 
 #: actionlog/models.py
 msgid "object ID"
@@ -439,17 +439,18 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "action log"
-msgstr "سجل التحديثات"
+msgstr "Ø³Ø¬Ù„ Ø§Ù„ØªØ­Ø¯ÙŠØ«Ø§Øª"
 
 #: actionlog/models.py
 msgid "action log entries"
-msgstr "مدخلات سجل التحديثات"
+msgstr "Ù…Ø¯Ø®Ù„Ø§Øª Ø³Ø¬Ù„ Ø§Ù„ØªØ­Ø¯ÙŠØ«Ø§Øª"
 
 #: actionlog/models.py
 msgid "All log entries require at least one of a user and an IP address."
-msgstr "كافة مدخلات السجل تحتاج مستخدم و IP واحد كحد أدنى"
+msgstr "ÙƒØ§ÙØ© Ù…Ø¯Ø®Ù„Ø§Øª Ø§Ù„Ø³Ø¬Ù„ ØªØ­ØªØ§Ø¬ Ù…Ø³ØªØ®Ø¯Ù… Ùˆ IP ÙˆØ§Ø­Ø¯ ÙƒØ­Ø¯ Ø£Ø¯Ù†Ù‰"
 
 #: actionlog/models.py
 msgid "anonymous"
-msgstr "مستخدم مجهول"
+msgstr "Ù…Ø³ØªØ®Ø¯Ù… Ù…Ø¬Ù‡ÙˆÙ„"
+
 

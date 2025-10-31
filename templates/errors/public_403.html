@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load debate_tags i18n %}
 
 {% block page-title %}{% trans "Permission Denied (403)" %}{% endblock %}
 {% block head-title %}
-  <h2><span class="emoji">😾</span> {% trans "Permission Denied (403)" %}</h2>
+  <h2><span class="emoji">ðŸ˜¾</span> {% trans "Permission Denied (403)" %}</h2>
 {% endblock %}
 
 {% block content %}
@@ -16,7 +16,7 @@
           <a href="{{ url }}">Back to the tournament home page.</a>
         {% endblocktrans %}
       {% else %}
-        {% url 'tabbycat-index' as url %}
+        {% url 'NekoTab-index' as url %}
         {% blocktrans trimmed %}
           Whoops! This page isn't enabled for this tournament.
           <a href="{{ url }}">Back to the home page.</a>
@@ -25,3 +25,4 @@
     </div>
   </div>
 {% endblock %}
+

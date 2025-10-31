@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-05 07:37+1000\n"
 "PO-Revision-Date: 2023-07-04 21:41\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ro\n"
-"X-Crowdin-File: /develop/tabbycat/availability/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/availability/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 926\n"
 
 #: availability/apps.py availability/views.py
@@ -60,7 +60,7 @@ msgstr ""
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot — this may lead to a draw that fails or is incorrect"
+msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot â€” this may lead to a draw that fails or is incorrect"
 msgstr ""
 
 #: availability/templates/availability_index.html
@@ -80,19 +80,19 @@ msgid "The draw cannot be generated until some rooms have been marked as availab
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough rooms marked as available for the number of debates — the draw may not generate properly."
+msgid "There aren't enough rooms marked as available for the number of debates â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough adjudicators marked as available for the number of debates — the draw may not generate properly."
+msgid "There aren't enough adjudicators marked as available for the number of debates â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There is an uneven number of teams marked as available — the draw may not generate properly."
+msgid "There is an uneven number of teams marked as available â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "The number of teams marked as available is not a multiple of 4 — the draw may not generate properly."
+msgid "The number of teams marked as available is not a multiple of 4 â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
@@ -130,7 +130,7 @@ msgstr ""
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team — you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
+msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team â€” you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
 msgstr ""
 
 #: availability/templates/availability_index.html
@@ -315,8 +315,8 @@ msgstr ""
 #. Translators: nteams in this string can only be 0 or 1
 #: availability/views.py
 #, python-format
-msgid "%(nteams)d breaking team — no debates can happen"
-msgid_plural "%(nteams)d breaking teams — no debates can happen"
+msgid "%(nteams)d breaking team â€” no debates can happen"
+msgid_plural "%(nteams)d breaking teams â€” no debates can happen"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
@@ -406,4 +406,5 @@ msgstr ""
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms from previous round."
 msgstr ""
+
 

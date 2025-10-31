@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -11,52 +11,52 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: tr\n"
-"X-Crowdin-File: /develop/tabbycat/importer/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/importer/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 932\n"
 
 #: importer/forms.py
 #, python-format
 msgid "line %(lineno)d: %(message)s"
-msgstr "satır %(lineno)d: %(message)s"
+msgstr "satÄ±r %(lineno)d: %(message)s"
 
 #: importer/forms.py
 #, python-format
 msgid "This line (for %(institution)s) didn't have a code"
-msgstr "Bu satırın (%(institution)s için) kodu yoktu"
+msgstr "Bu satÄ±rÄ±n (%(institution)s iÃ§in) kodu yoktu"
 
 #: importer/forms.py
 #, python-format
 msgid "This line (for %(institution)s) had too many columns"
-msgstr "Bu satırın (%(institution)s için) çok fazla sütun vardı."
+msgstr "Bu satÄ±rÄ±n (%(institution)s iÃ§in) Ã§ok fazla sÃ¼tun vardÄ±."
 
 #: importer/forms.py
 msgid "There were no institutions to import."
-msgstr "Dışa aktarılacak kurum yoktu."
+msgstr "DÄ±ÅŸa aktarÄ±lacak kurum yoktu."
 
 #: importer/forms.py
 #, python-format
 msgid "Sorry, you can only import up to %(max_allowed)d institution at a time. (You currently have %(given)d.) Try splitting your import into smaller chunks."
 msgid_plural "Sorry, you can only import up to %(max_allowed)d institutions at a time. (You currently have %(given)d.) Try splitting your import into smaller chunks."
-msgstr[0] "Üzgünüz, bir seferde yalnızca %(max_allowed)d kurum içe aktarabilirsiniz. (Şu anda %(given)d tane var.) İçe aktarma işleminizi daha küçük parçalara ayırmayı deneyin."
-msgstr[1] "Üzgünüz, bir seferde yalnızca %(max_allowed)d kurum içe aktarabilirsiniz. (Şu anda %(given)d tane var.) İçe aktarma işleminizi daha küçük parçalara ayırmayı deneyin."
+msgstr[0] "ÃœzgÃ¼nÃ¼z, bir seferde yalnÄ±zca %(max_allowed)d kurum iÃ§e aktarabilirsiniz. (Åžu anda %(given)d tane var.) Ä°Ã§e aktarma iÅŸleminizi daha kÃ¼Ã§Ã¼k parÃ§alara ayÄ±rmayÄ± deneyin."
+msgstr[1] "ÃœzgÃ¼nÃ¼z, bir seferde yalnÄ±zca %(max_allowed)d kurum iÃ§e aktarabilirsiniz. (Åžu anda %(given)d tane var.) Ä°Ã§e aktarma iÅŸleminizi daha kÃ¼Ã§Ã¼k parÃ§alara ayÄ±rmayÄ± deneyin."
 
 #: importer/forms.py
 msgid "There were no rooms to import."
-msgstr "Dışa aktarılacak oda yoktu."
+msgstr "DÄ±ÅŸa aktarÄ±lacak oda yoktu."
 
 #: importer/forms.py
 #, python-format
 msgid "Sorry, you can only import up to %(max_allowed)d room at a time. (You currently have %(given)d.) Try splitting your import into smaller chunks."
 msgid_plural "Sorry, you can only import up to %(max_allowed)d rooms at a time. (You currently have %(given)d.) Try splitting your import into smaller chunks."
-msgstr[0] "Üzgünüz, bir seferde yalnızca %(max_allowed)d tane oda içe aktarabilirsiniz. (Şu anda %(given)d tane var.) İçe aktarma işleminizi daha küçük parçalara bölmeyi deneyin."
-msgstr[1] "Üzgünüz, bir seferde yalnızca %(max_allowed)d tane oda içe aktarabilirsiniz. (Şu anda %(given)d tane var.) İçe aktarma işleminizi daha küçük parçalara bölmeyi deneyin."
+msgstr[0] "ÃœzgÃ¼nÃ¼z, bir seferde yalnÄ±zca %(max_allowed)d tane oda iÃ§e aktarabilirsiniz. (Åžu anda %(given)d tane var.) Ä°Ã§e aktarma iÅŸleminizi daha kÃ¼Ã§Ã¼k parÃ§alara bÃ¶lmeyi deneyin."
+msgstr[1] "ÃœzgÃ¼nÃ¼z, bir seferde yalnÄ±zca %(max_allowed)d tane oda iÃ§e aktarabilirsiniz. (Åžu anda %(given)d tane var.) Ä°Ã§e aktarma iÅŸleminizi daha kÃ¼Ã§Ã¼k parÃ§alara bÃ¶lmeyi deneyin."
 
 #: importer/forms.py
 msgid "Speakers' names"
-msgstr "Konuşmacıların isimleri"
+msgstr "KonuÅŸmacÄ±larÄ±n isimleri"
 
 #: importer/forms.py
 msgid "Can be separated by newlines, tabs, commas or ampersands"
@@ -64,36 +64,36 @@ msgstr ""
 
 #: importer/forms.py
 msgid "Speakers' email addresses"
-msgstr "Konuşmacıların e-posta adresleri"
+msgstr "KonuÅŸmacÄ±larÄ±n e-posta adresleri"
 
 #: importer/forms.py
 msgid "Optional, useful to include if distributing private URLs, list in same order as speakers' names"
-msgstr "İsteğe bağlı, özel URL'ler veya konuşmacıların adlarıyla aynı sırada listeler dağıtılıyorsa kullanışlı."
+msgstr "Ä°steÄŸe baÄŸlÄ±, Ã¶zel URL'ler veya konuÅŸmacÄ±larÄ±n adlarÄ±yla aynÄ± sÄ±rada listeler daÄŸÄ±tÄ±lÄ±yorsa kullanÄ±ÅŸlÄ±."
 
 #: importer/forms.py
 msgid "Name (excluding institution name)"
-msgstr "Ad (kurum adı hariç)"
+msgstr "Ad (kurum adÄ± hariÃ§)"
 
 #: importer/forms.py
 msgid "Prefix team name with institution name?"
-msgstr "Takım adının önüne kurum adı eklemek istiyor musunuz?"
+msgstr "TakÄ±m adÄ±nÄ±n Ã¶nÃ¼ne kurum adÄ± eklemek istiyor musunuz?"
 
 #: importer/forms.py
 msgid "Do not include institution name (check the \"Prefix team name with institution name?\" field instead)"
-msgstr "Kurum adını eklemeyin (bunun yerine \"Takım adının önüne kurum adı eklemek istiyor musunuz?\" alanını işaretleyin)"
+msgstr "Kurum adÄ±nÄ± eklemeyin (bunun yerine \"TakÄ±m adÄ±nÄ±n Ã¶nÃ¼ne kurum adÄ± eklemek istiyor musunuz?\" alanÄ±nÄ± iÅŸaretleyin)"
 
 #: importer/forms.py
 msgid "(Not applicable to unaffiliated teams)"
-msgstr "(Bağlı olmayan takımlar için geçerli değildir)"
+msgstr "(BaÄŸlÄ± olmayan takÄ±mlar iÃ§in geÃ§erli deÄŸildir)"
 
 #: importer/forms.py
 msgid "One speaker's name per line"
-msgstr "Her satırda sadece bir konuşmacı adı"
+msgstr "Her satÄ±rda sadece bir konuÅŸmacÄ± adÄ±"
 
 #: importer/forms.py
 #, python-format
 msgid "Speaker %d"
-msgstr "Konuşmacı %d"
+msgstr "KonuÅŸmacÄ± %d"
 
 #: importer/forms.py
 #, python-format
@@ -118,20 +118,20 @@ msgstr ""
 
 #: importer/forms.py
 msgid "There must be at least one speaker."
-msgstr "En az bir konuşmacı olmalıdır."
+msgstr "En az bir konuÅŸmacÄ± olmalÄ±dÄ±r."
 
 #: importer/forms.py
 #, python-format
 msgid "%(email)s is not a valid email address."
-msgstr "%(email)s geçerli bir e-posta adresi değil."
+msgstr "%(email)s geÃ§erli bir e-posta adresi deÄŸil."
 
 #: importer/forms.py
 msgid "There are more email addresses than speakers."
-msgstr "Konuşmacılardan daha fazla e-posta adresi var."
+msgstr "KonuÅŸmacÄ±lardan daha fazla e-posta adresi var."
 
 #: importer/forms.py
 msgid "Every team in a single tournament from the same institution must have a different name. Please correct the duplicate data."
-msgstr "Aynı kurumdan tek bir turnuvadaki her takımın farklı bir adı olmalıdır. Lütfen yinelenen verileri düzeltin."
+msgstr "AynÄ± kurumdan tek bir turnuvadaki her takÄ±mÄ±n farklÄ± bir adÄ± olmalÄ±dÄ±r. LÃ¼tfen yinelenen verileri dÃ¼zeltin."
 
 #: importer/forms.py
 msgid "Rating"
@@ -140,11 +140,11 @@ msgstr "Puan"
 #: importer/forms.py
 #, python-format
 msgid "This value must be between %(min)d and %(max)d."
-msgstr "Bu değer %(min)d ile %(max)d arasında olmalıdır."
+msgstr "Bu deÄŸer %(min)d ile %(max)d arasÄ±nda olmalÄ±dÄ±r."
 
 #: importer/forms.py
 msgid "Unaffiliated (no institution)"
-msgstr "Bağımsız (kurumsuz)"
+msgstr "BaÄŸÄ±msÄ±z (kurumsuz)"
 
 #: importer/forms.py
 #, python-format
@@ -155,15 +155,15 @@ msgstr ""
 #, python-format
 msgid "Sorry, you can only import up to %(max_allowed)d team at a time. (These numbers currently add to %(given)d.) Try splitting your import into smaller chunks."
 msgid_plural "Sorry, you can only import up to %(max_allowed)d teams at a time. (These numbers currently add to %(given)d.) Try splitting your import into smaller chunks."
-msgstr[0] "Üzgünüz, bir seferde yalnızca %(max_allowed)d tane takımı içe aktarabilirsiniz. (Şu anda %(given)d tane var.) İçe aktarma işleminizi daha küçük parçalara bölmeyi deneyin."
-msgstr[1] "Üzgünüz, bir seferde yalnızca %(max_allowed)d tane takımı içe aktarabilirsiniz. (Şu anda %(given)d tane var.) İçe aktarma işleminizi daha küçük parçalara bölmeyi deneyin."
+msgstr[0] "ÃœzgÃ¼nÃ¼z, bir seferde yalnÄ±zca %(max_allowed)d tane takÄ±mÄ± iÃ§e aktarabilirsiniz. (Åžu anda %(given)d tane var.) Ä°Ã§e aktarma iÅŸleminizi daha kÃ¼Ã§Ã¼k parÃ§alara bÃ¶lmeyi deneyin."
+msgstr[1] "ÃœzgÃ¼nÃ¼z, bir seferde yalnÄ±zca %(max_allowed)d tane takÄ±mÄ± iÃ§e aktarabilirsiniz. (Åžu anda %(given)d tane var.) Ä°Ã§e aktarma iÅŸleminizi daha kÃ¼Ã§Ã¼k parÃ§alara bÃ¶lmeyi deneyin."
 
 #: importer/forms.py
 #, python-format
 msgid "Sorry, you can only import up to %(max_allowed)d adjudicator at a time. (These numbers currently add to %(given)d.) Try splitting your import into smaller chunks."
 msgid_plural "Sorry, you can only import up to %(max_allowed)d adjudicators at a time. (These numbers currently add to %(given)d.) Try splitting your import into smaller chunks."
-msgstr[0] "Üzgünüz, bir seferde yalnızca %(max_allowed)d tane jüriyi içe aktarabilirsiniz. (Şu anda %(given)d tane var.) İçe aktarma işleminizi daha küçük parçalara bölmeyi deneyin."
-msgstr[1] "Üzgünüz, bir seferde yalnızca %(max_allowed)d tane jüriyi içe aktarabilirsiniz. (Şu anda %(given)d tane var.) İçe aktarma işleminizi daha küçük parçalara bölmeyi deneyin."
+msgstr[0] "ÃœzgÃ¼nÃ¼z, bir seferde yalnÄ±zca %(max_allowed)d tane jÃ¼riyi iÃ§e aktarabilirsiniz. (Åžu anda %(given)d tane var.) Ä°Ã§e aktarma iÅŸleminizi daha kÃ¼Ã§Ã¼k parÃ§alara bÃ¶lmeyi deneyin."
+msgstr[1] "ÃœzgÃ¼nÃ¼z, bir seferde yalnÄ±zca %(max_allowed)d tane jÃ¼riyi iÃ§e aktarabilirsiniz. (Åžu anda %(given)d tane var.) Ä°Ã§e aktarma iÅŸleminizi daha kÃ¼Ã§Ã¼k parÃ§alara bÃ¶lmeyi deneyin."
 
 #: importer/forms.py
 msgid "XML"
@@ -171,42 +171,42 @@ msgstr ""
 
 #: importer/forms.py
 msgid "The Debate XML archive to parse"
-msgstr "Ayrıştırılacak Debate XML arşivi"
+msgstr "AyrÄ±ÅŸtÄ±rÄ±lacak Debate XML arÅŸivi"
 
 #: importer/templates/archive_export_index.html
 msgid "Export Tournament Archive"
-msgstr "Turnuva Arşivini Dışa Aktar"
+msgstr "Turnuva ArÅŸivini DÄ±ÅŸa Aktar"
 
 #: importer/templates/archive_export_index.html
-msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside Tabbycat."
-msgstr "Turnuvalar, Tabbycat dışında kullanılmak üzere <a href=\"https://en.wikipedia.org/wiki/XML\">XML formatında</a> dışa aktarılabilir."
+msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside NekoTab."
+msgstr "Turnuvalar, NekoTab dÄ±ÅŸÄ±nda kullanÄ±lmak Ã¼zere <a href=\"https://en.wikipedia.org/wiki/XML\">XML formatÄ±nda</a> dÄ±ÅŸa aktarÄ±labilir."
 
 #: importer/templates/archive_export_index.html
 msgid "Export all data"
-msgstr "Tüm verileri dışa aktar"
+msgstr "TÃ¼m verileri dÄ±ÅŸa aktar"
 
 #: importer/templates/archive_importer.html
 msgctxt "page title"
 msgid "Import Tournament Archive"
-msgstr "Turnuva Arşivi İçe Aktar"
+msgstr "Turnuva ArÅŸivi Ä°Ã§e Aktar"
 
 #: importer/templates/archive_importer.html
 msgid "This form will create a tournament with the data provided as a Debate XML format."
-msgstr "Bu form, Münazara XML formatında sağlanan verilerle bir turnuva oluşturacaktır."
+msgstr "Bu form, MÃ¼nazara XML formatÄ±nda saÄŸlanan verilerle bir turnuva oluÅŸturacaktÄ±r."
 
 #: importer/templates/archive_importer.html
 msgid "Import"
-msgstr "İçe Aktar"
+msgstr "Ä°Ã§e Aktar"
 
 #: importer/templates/archive_importer.html
 msgid "Go back to the site home page"
-msgstr "Site giriş sayfasına geri dön"
+msgstr "Site giriÅŸ sayfasÄ±na geri dÃ¶n"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgctxt "page title"
 msgid "Add Adjudicators"
-msgstr "Jüri Ekle"
+msgstr "JÃ¼ri Ekle"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_adjudicators_numbers.html
@@ -218,59 +218,59 @@ msgstr "Jüri Ekle"
 #: importer/templates/simple_import_venues_raw.html
 #, python-format
 msgid "(Step %(step)s of %(count)s)"
-msgstr "( %(count)s adımın %(step)s. adımı)"
+msgstr "( %(count)s adÄ±mÄ±n %(step)s. adÄ±mÄ±)"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_institutions_details.html
 #: importer/templates/simple_import_teams_details.html
 #: importer/templates/simple_import_venues_details.html
 msgid "Previous Step"
-msgstr "Önceki Adım"
+msgstr "Ã–nceki AdÄ±m"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #, python-format
 msgid "As per <a href=\"%(options_feedback)s\" class=\"alert-link\">this tournament's configuration</a>, an adjudicator's rating must be between <strong>%(min)s</strong> and <strong>%(max)s</strong>. Providing email addresses is optional but can be useful if using <a href=\"%(privateurls_url)s\" class=\"alert-link\">private URLs</a> for feedback or ballots."
-msgstr "<a href=\"%(options_feedback)s\" class=\"alert-link\">bu turnuvanın ayarlarından dolayı</a> jürilerin puanı <<strong>%(min)s</strong> ile <strong>%(max)s</strong> arasında olmalıdır. E-posta adresi girmek isteğe bağlıdır, ancak geri bildirim veya ballotlar için <a href=\"%(privateurls_url)s\" class=\"alert-link\">özel URL'ler</a> kullanılıyorsa yararlı olabilir."
+msgstr "<a href=\"%(options_feedback)s\" class=\"alert-link\">bu turnuvanÄ±n ayarlarÄ±ndan dolayÄ±</a> jÃ¼rilerin puanÄ± <<strong>%(min)s</strong> ile <strong>%(max)s</strong> arasÄ±nda olmalÄ±dÄ±r. E-posta adresi girmek isteÄŸe baÄŸlÄ±dÄ±r, ancak geri bildirim veya ballotlar iÃ§in <a href=\"%(privateurls_url)s\" class=\"alert-link\">Ã¶zel URL'ler</a> kullanÄ±lÄ±yorsa yararlÄ± olabilir."
 
 #: importer/templates/simple_import_adjudicators_details.html
 #, python-format
 msgid "Adjudicators for %(institution)s"
-msgstr "%(institution)s Jürileri"
+msgstr "%(institution)s JÃ¼rileri"
 
 #: importer/templates/simple_import_adjudicators_details.html
 msgid "Unaffiliated Adjudicators"
-msgstr "Bağımsız Jüriler"
+msgstr "BaÄŸÄ±msÄ±z JÃ¼riler"
 
 #: importer/templates/simple_import_adjudicators_details.html
 msgid "Save All Adjudicators"
-msgstr "Tüm Jürileri Kaydet"
+msgstr "TÃ¼m JÃ¼rileri Kaydet"
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 #, python-format
 msgid "You need to <a href=\"%(import_institutions_url)s\" class=\"alert-link\">add institutions</a> before adding adjudicators."
-msgstr "Jürileri eklemeden önce <a href=\"%(import_institutions_url)s\" class=\"alert-link\">kurumları eklemeniz</a> gerekir."
+msgstr "JÃ¼rileri eklemeden Ã¶nce <a href=\"%(import_institutions_url)s\" class=\"alert-link\">kurumlarÄ± eklemeniz</a> gerekir."
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgid "Specify the number of new adjudicators to add per institution. In the next step you can specify their names and ratings."
-msgstr "Kurum başına eklenecek yeni jüri sayısını belirtin. Bir sonraki adımda isim ve puanlarını belirleyebilirsiniz."
+msgstr "Kurum baÅŸÄ±na eklenecek yeni jÃ¼ri sayÄ±sÄ±nÄ± belirtin. Bir sonraki adÄ±mda isim ve puanlarÄ±nÄ± belirleyebilirsiniz."
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgid "You can add up to 198 adjudicators at a time. If you have more than 198 adjudicators, split them into chunks. (Please don't try to add more than 198 in one go; the system will crash, and you will lose data.)"
-msgstr "Bir seferde en fazla 198 jüri ekleyebilirsiniz. 198'den fazla jüri eklemek istiyorsanız, parça parça ekleyin. (Lütfen tek seferde 198'den fazla eklemeye çalışmayın; sistem çöker ve veri kaybedersiniz.)"
+msgstr "Bir seferde en fazla 198 jÃ¼ri ekleyebilirsiniz. 198'den fazla jÃ¼ri eklemek istiyorsanÄ±z, parÃ§a parÃ§a ekleyin. (LÃ¼tfen tek seferde 198'den fazla eklemeye Ã§alÄ±ÅŸmayÄ±n; sistem Ã§Ã¶ker ve veri kaybedersiniz.)"
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "button"
 msgid "Next Step"
-msgstr "Sonraki Adım"
+msgstr "Sonraki AdÄ±m"
 
 #: importer/templates/simple_import_index.html
 msgid "Simple Importer"
-msgstr "Basit Dışa Aktarıcı"
+msgstr "Basit DÄ±ÅŸa AktarÄ±cÄ±"
 
 #: importer/templates/simple_import_index.html
-msgid "There are <a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into Tabbycat</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
-msgstr "<a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">Tabbycat'e veri aktarmanın birkaç yolu vardır.</a> Hangisinin en uygun olduğu turnuvanızın büyüklüğüne ve teknik bilginize bağlıdır. <strong>Basit aktarıcı</strong> kullanımı en kolay olanıdır ve küçük ve orta ölçekli turnuvalar için iyi çalışır."
+msgid "There are <a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into NekoTab</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
+msgstr "<a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">NekoTab'e veri aktarmanÄ±n birkaÃ§ yolu vardÄ±r.</a> Hangisinin en uygun olduÄŸu turnuvanÄ±zÄ±n bÃ¼yÃ¼klÃ¼ÄŸÃ¼ne ve teknik bilginize baÄŸlÄ±dÄ±r. <strong>Basit aktarÄ±cÄ±</strong> kullanÄ±mÄ± en kolay olanÄ±dÄ±r ve kÃ¼Ã§Ã¼k ve orta Ã¶lÃ§ekli turnuvalar iÃ§in iyi Ã§alÄ±ÅŸÄ±r."
 
 #: importer/templates/simple_import_index.html
 msgid "Add Institutions"
@@ -278,11 +278,11 @@ msgstr "Kurum Ekle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Teams"
-msgstr "Takım Ekle"
+msgstr "TakÄ±m Ekle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Adjudicators"
-msgstr "Jüri Ekle"
+msgstr "JÃ¼ri Ekle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Rooms"
@@ -290,35 +290,35 @@ msgstr "Oda Ekle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Room Categories"
-msgstr "Oda Kategorileri Ekle/Düzenle"
+msgstr "Oda Kategorileri Ekle/DÃ¼zenle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Room Constraints"
-msgstr "Oda Kısıtlamaları Ekle/Düzenle"
+msgstr "Oda KÄ±sÄ±tlamalarÄ± Ekle/DÃ¼zenle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Adjudicator-Team Conflicts"
-msgstr "Jüri-Takım Conflictleri Ekle/Düzenle"
+msgstr "JÃ¼ri-TakÄ±m Conflictleri Ekle/DÃ¼zenle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Adjudicator-Adjudicator Conflicts"
-msgstr "Jüri-Jüri Conflictleri Ekle/Düzenle"
+msgstr "JÃ¼ri-JÃ¼ri Conflictleri Ekle/DÃ¼zenle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Adjudicator-Institution Conflicts"
-msgstr "Jüri-Kurum Conflictleri Ekle/Düzenle"
+msgstr "JÃ¼ri-Kurum Conflictleri Ekle/DÃ¼zenle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Team-Institution Conflicts"
-msgstr "Takım-Kurum Conflictleri Ekle/Düzenle"
+msgstr "TakÄ±m-Kurum Conflictleri Ekle/DÃ¼zenle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Break Categories"
-msgstr "Break Kategorileri Ekle/Düzenle"
+msgstr "Break Kategorileri Ekle/DÃ¼zenle"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Speaker Categories"
-msgstr "Konuşmacı Kategorileri Ekle/Düzenle"
+msgstr "KonuÅŸmacÄ± Kategorileri Ekle/DÃ¼zenle"
 
 #: importer/templates/simple_import_institutions_details.html
 #: importer/templates/simple_import_institutions_raw.html
@@ -328,49 +328,49 @@ msgstr "Kurum Ekle"
 
 #: importer/templates/simple_import_institutions_details.html
 msgid "Save All Institutions"
-msgstr "Tüm Kurumları Kaydet"
+msgstr "TÃ¼m KurumlarÄ± Kaydet"
 
 #: importer/templates/simple_import_institutions_raw.html
 #: importer/templates/simple_import_venues_raw.html
 msgid "There are some problems with the data on this form:"
-msgstr "Bu formdaki verilerle ilgili bazı sorunlar var:"
+msgstr "Bu formdaki verilerle ilgili bazÄ± sorunlar var:"
 
 #: importer/templates/simple_import_institutions_raw.html
 #: importer/templates/simple_import_venues_raw.html
 msgid "Next Step"
-msgstr "Sonraki Adım"
+msgstr "Sonraki AdÄ±m"
 
 #: importer/templates/simple_import_teams_details.html
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "page title"
 msgid "Add Teams"
-msgstr "Takım Ekle"
+msgstr "TakÄ±m Ekle"
 
 #: importer/templates/simple_import_teams_details.html
 #, python-format
 msgid "Teams for %(institution)s"
-msgstr "%(institution)s için takımlar"
+msgstr "%(institution)s iÃ§in takÄ±mlar"
 
 #: importer/templates/simple_import_teams_details.html
 msgid "Unaffiliated Teams"
-msgstr "Bağımsız Takımlar"
+msgstr "BaÄŸÄ±msÄ±z TakÄ±mlar"
 
 #: importer/templates/simple_import_teams_details.html
 msgid "Save All Teams"
-msgstr "Tüm Takımları Kaydet"
+msgstr "TÃ¼m TakÄ±mlarÄ± Kaydet"
 
 #: importer/templates/simple_import_teams_numbers.html
 #, python-format
 msgid "You need to <a href=\"%(import_institutions_url)s\" class=\"alert-link\">add institutions</a> before adding teams."
-msgstr "Takım eklemeden önce <a href=\"%(import_institutions_url)s\" class=\"alert-link\">kurum eklemeniz</a> gerekir."
+msgstr "TakÄ±m eklemeden Ã¶nce <a href=\"%(import_institutions_url)s\" class=\"alert-link\">kurum eklemeniz</a> gerekir."
 
 #: importer/templates/simple_import_teams_numbers.html
 msgid "Specify the number of new teams to add per institution. In the next step you can specify team and speaker names."
-msgstr "Kurum başına eklenecek yeni takım sayısını belirtin. Bir sonraki adımda takım ve konuşmacı adlarını belirtebilirsiniz."
+msgstr "Kurum baÅŸÄ±na eklenecek yeni takÄ±m sayÄ±sÄ±nÄ± belirtin. Bir sonraki adÄ±mda takÄ±m ve konuÅŸmacÄ± adlarÄ±nÄ± belirtebilirsiniz."
 
 #: importer/templates/simple_import_teams_numbers.html
 msgid "You can add up to 141 teams at a time. If you have more than 141 teams, split them into chunks. (Please don't try to add more than 141 in one go; the system will crash, and you will lose data.)"
-msgstr "Bir seferde en fazla 141 jüri ekleyebilirsiniz. 141'den fazla jüri eklemek istiyorsanız, parça parça ekleyin. (Lütfen tek seferde 141'den fazla eklemeye çalışmayın; sistem çöker ve veri kaybedersiniz.)"
+msgstr "Bir seferde en fazla 141 jÃ¼ri ekleyebilirsiniz. 141'den fazla jÃ¼ri eklemek istiyorsanÄ±z, parÃ§a parÃ§a ekleyin. (LÃ¼tfen tek seferde 141'den fazla eklemeye Ã§alÄ±ÅŸmayÄ±n; sistem Ã§Ã¶ker ve veri kaybedersiniz.)"
 
 #: importer/templates/simple_import_venues_details.html
 #: importer/templates/simple_import_venues_raw.html
@@ -380,58 +380,59 @@ msgstr "Oda Ekle"
 
 #: importer/templates/simple_import_venues_details.html
 msgid "Priorities indicate how much you want to use the room. Larger numbers indicate higher priority. If you have more rooms than debates, the rooms with the lowest priorities will not be used."
-msgstr "Öncelikler, odayı ne kadar kullanmak istediğinizi gösterir. Daha büyük sayılar daha yüksek önceliğe işaret eder. Maçtan daha fazla odanız varsa, en düşük önceliğe sahip odalar kullanılmaz."
+msgstr "Ã–ncelikler, odayÄ± ne kadar kullanmak istediÄŸinizi gÃ¶sterir. Daha bÃ¼yÃ¼k sayÄ±lar daha yÃ¼ksek Ã¶nceliÄŸe iÅŸaret eder. MaÃ§tan daha fazla odanÄ±z varsa, en dÃ¼ÅŸÃ¼k Ã¶nceliÄŸe sahip odalar kullanÄ±lmaz."
 
 #: importer/templates/simple_import_venues_details.html
 msgid "Save All Rooms"
-msgstr "Tüm Odaları Kaydet"
+msgstr "TÃ¼m OdalarÄ± Kaydet"
 
 #: importer/templates/simple_import_venues_raw.html
 msgid "Paste a list of rooms with one room per line and following the format of: <code>name,priority</code>. For example:"
-msgstr "Her satırda bir oda bulunacak şekilde odaların listesini yapıştırın ve şu biçimi izleyin: <code>name,priority</code>. Örnek:"
+msgstr "Her satÄ±rda bir oda bulunacak ÅŸekilde odalarÄ±n listesini yapÄ±ÅŸtÄ±rÄ±n ve ÅŸu biÃ§imi izleyin: <code>name,priority</code>. Ã–rnek:"
 
 #: importer/views.py
 #, python-format
 msgid "Added %(count)d institution."
 msgid_plural "Added %(count)d institutions."
 msgstr[0] "%(count)d kurumu eklendi."
-msgstr[1] "%(count)d kurumları eklendi."
+msgstr[1] "%(count)d kurumlarÄ± eklendi."
 
 #: importer/views.py
 #, python-format
 msgid "Added %(count)d room."
 msgid_plural "Added %(count)d rooms."
 msgstr[0] "%(count)d oda eklendi."
-msgstr[1] "%(count)d odaları eklendi."
+msgstr[1] "%(count)d odalarÄ± eklendi."
 
 #: importer/views.py
 #, python-format
 msgid "Added %(count)d team."
 msgid_plural "Added %(count)d teams."
-msgstr[0] "%(count)d takımı eklendi."
-msgstr[1] "%(count)d takımları eklendi."
+msgstr[0] "%(count)d takÄ±mÄ± eklendi."
+msgstr[1] "%(count)d takÄ±mlarÄ± eklendi."
 
 #: importer/views.py
 #, python-format
 msgid "Adjudicator %(number)d"
-msgstr "Jüri %(number)d"
+msgstr "JÃ¼ri %(number)d"
 
 #: importer/views.py
 #, python-format
 msgid "Added %(count)d adjudicator."
 msgid_plural "Added %(count)d adjudicators."
-msgstr[0] "%(count)d jürisi eklendi."
-msgstr[1] "%(count)d jürileri eklendi."
+msgstr[0] "%(count)d jÃ¼risi eklendi."
+msgstr[1] "%(count)d jÃ¼rileri eklendi."
 
 #: importer/views.py
 msgid "<p>There were one or more errors creating the demo tournament. Before retrying, please delete the existing demo tournament <strong>and</strong> the institutions in the Edit Database Area.</p><p><i>Technical information: The errors are as follows:</i></p>"
-msgstr "<p>Demo turnuvasını oluştururken bir veya daha fazla hata oluştu. Yeniden denemeden önce, lütfen mevcut demo turnuvasını <strong>ve</strong> veritabanı düzenleme alanındaki kurumları silin.</p><p><i>Teknik bilgiler: Karşılaşılan hatalar:</i></p>"
+msgstr "<p>Demo turnuvasÄ±nÄ± oluÅŸtururken bir veya daha fazla hata oluÅŸtu. Yeniden denemeden Ã¶nce, lÃ¼tfen mevcut demo turnuvasÄ±nÄ± <strong>ve</strong> veritabanÄ± dÃ¼zenleme alanÄ±ndaki kurumlarÄ± silin.</p><p><i>Teknik bilgiler: KarÅŸÄ±laÅŸÄ±lan hatalar:</i></p>"
 
 #: importer/views.py
 msgid "Created new demo tournament. You can now configure it below."
-msgstr "Yeni demo turnuvası oluşturuldu. Aşağıda yapılandırabilirsiniz."
+msgstr "Yeni demo turnuvasÄ± oluÅŸturuldu. AÅŸaÄŸÄ±da yapÄ±landÄ±rabilirsiniz."
 
 #: importer/views.py
 msgid "Tournament archive has been imported."
-msgstr "Turnuva arşivi aktarıldı."
+msgstr "Turnuva arÅŸivi aktarÄ±ldÄ±."
+
 

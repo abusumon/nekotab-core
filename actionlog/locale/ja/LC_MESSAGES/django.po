@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -11,155 +11,155 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/tabbycat/actionlog/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/actionlog/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 920\n"
 
 #: actionlog/apps.py
 msgid "Action Log"
-msgstr "動作履歴"
+msgstr "å‹•ä½œå±¥æ­´"
 
 #: actionlog/models.py
 msgid "Changed adjudicator breaking status"
-msgstr "ジャッジのブレイク状況を変更"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ–ãƒ¬ã‚¤ã‚¯çŠ¶æ³ã‚’å¤‰æ›´"
 
 #: actionlog/models.py
 msgid "Created adjudicator"
-msgstr "ジャッジを作成"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚’ä½œæˆ"
 
 #: actionlog/models.py
 msgid "Edited adjudicator"
-msgstr "ジャッジを編集"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Set adjudicator note"
-msgstr "ジャッジについてNoteを設定"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã«ã¤ã„ã¦Noteã‚’è¨­å®š"
 
 #: actionlog/models.py
 msgid "Auto-allocated adjudicators"
-msgstr "自動配置済みジャッジ"
+msgstr "è‡ªå‹•é…ç½®æ¸ˆã¿ã‚¸ãƒ£ãƒƒã‚¸"
 
 #: actionlog/models.py
 msgid "Saved adjudicator allocation"
-msgstr "保存済みジャッジアロケーション"
+msgstr "ä¿å­˜æ¸ˆã¿ã‚¸ãƒ£ãƒƒã‚¸ã‚¢ãƒ­ã‚±ãƒ¼ã‚·ãƒ§ãƒ³"
 
 #: actionlog/models.py
 msgid "Edited adjudicators availability"
-msgstr "ジャッジの有効/非有効を編集"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®æœ‰åŠ¹/éžæœ‰åŠ¹ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Edited availability"
-msgstr "参加・利用状況を編集"
+msgstr "å‚åŠ ãƒ»åˆ©ç”¨çŠ¶æ³ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Edited teams availability"
-msgstr "チームの有効/非有効を編集"
+msgstr "ãƒãƒ¼ãƒ ã®æœ‰åŠ¹/éžæœ‰åŠ¹ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Edited room availability"
-msgstr "会場の有効/非有効を編集"
+msgstr "ä¼šå ´ã®æœ‰åŠ¹/éžæœ‰åŠ¹ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Checked in ballot set"
-msgstr "確定済みバロット一覧"
+msgstr "ç¢ºå®šæ¸ˆã¿ãƒãƒ­ãƒƒãƒˆä¸€è¦§"
 
 #: actionlog/models.py
 msgid "Confirmed ballot set"
-msgstr "確定済みバロット一覧"
+msgstr "ç¢ºå®šæ¸ˆã¿ãƒãƒ­ãƒƒãƒˆä¸€è¦§"
 
 #: actionlog/models.py
 msgid "Created ballot set"
-msgstr "生成済みバロット一覧"
+msgstr "ç”Ÿæˆæ¸ˆã¿ãƒãƒ­ãƒƒãƒˆä¸€è¦§"
 
 #: actionlog/models.py
 msgid "Discarded ballot set"
-msgstr "破棄されたバロット一覧"
+msgstr "ç ´æ£„ã•ã‚ŒãŸãƒãƒ­ãƒƒãƒˆä¸€è¦§"
 
 #: actionlog/models.py
 msgid "Edited ballot set"
-msgstr "編集済みバロット一覧"
+msgstr "ç·¨é›†æ¸ˆã¿ãƒãƒ­ãƒƒãƒˆä¸€è¦§"
 
 #: actionlog/models.py
 msgid "Submitted ballot set from the public form"
-msgstr "パブリックフォームから提出されたバロット一覧"
+msgstr "ãƒ‘ãƒ–ãƒªãƒƒã‚¯ãƒ•ã‚©ãƒ¼ãƒ ã‹ã‚‰æå‡ºã•ã‚ŒãŸãƒãƒ­ãƒƒãƒˆä¸€è¦§"
 
 #: actionlog/models.py
 msgid "Edited break categories"
-msgstr "編集済ブレイクカテゴリー"
+msgstr "ç·¨é›†æ¸ˆãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: actionlog/models.py
 msgid "Deleted team break for category"
-msgstr "カテゴリーのチームブレイクを削除"
+msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ãƒãƒ¼ãƒ ãƒ–ãƒ¬ã‚¤ã‚¯ã‚’å‰Šé™¤"
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks"
-msgstr "ブレイクチームの情報を編集しました"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ãƒãƒ¼ãƒ ã®æƒ…å ±ã‚’ç·¨é›†ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Edited break eligibility"
-msgstr "ブレイク資格を編集"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯è³‡æ ¼ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Generated the team break for all categories"
-msgstr "作成済みの全カテゴリーにおけるチームブレイク"
+msgstr "ä½œæˆæ¸ˆã¿ã®å…¨ã‚«ãƒ†ã‚´ãƒªãƒ¼ã«ãŠã‘ã‚‹ãƒãƒ¼ãƒ ãƒ–ãƒ¬ã‚¤ã‚¯"
 
 #: actionlog/models.py
 msgid "Generated the team break for one category"
-msgstr "カテゴリーのチームブレイクを生成"
+msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ãƒãƒ¼ãƒ ãƒ–ãƒ¬ã‚¤ã‚¯ã‚’ç”Ÿæˆ"
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks and updated all team breaks"
-msgstr "ブレイクチームの情報を編集し、全てのチームブレイクを更新しました"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ãƒãƒ¼ãƒ ã®æƒ…å ±ã‚’ç·¨é›†ã—ã€å…¨ã¦ã®ãƒãƒ¼ãƒ ãƒ–ãƒ¬ã‚¤ã‚¯ã‚’æ›´æ–°ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks and updated this team break"
-msgstr "ブレイクチームの情報を編集し、このチームブレイクを更新しました"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ãƒãƒ¼ãƒ ã®æƒ…å ±ã‚’ç·¨é›†ã—ã€ã“ã®ãƒãƒ¼ãƒ ãƒ–ãƒ¬ã‚¤ã‚¯ã‚’æ›´æ–°ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Generated check in identifiers for adjudicators"
-msgstr "ジャッジの識別コードの照合を生成"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã®ç…§åˆã‚’ç”Ÿæˆ"
 
 #: actionlog/models.py
 msgid "Generated check in identifiers for speakers"
-msgstr "スピーカーの識別コードの照合を生成"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã®ç…§åˆã‚’ç”Ÿæˆ"
 
 #: actionlog/models.py
 msgid "Generated check in identifiers for rooms"
-msgstr "会場の識別コードの照合を生成"
+msgstr "ä¼šå ´ã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã®ç…§åˆã‚’ç”Ÿæˆ"
 
 #: actionlog/models.py
 msgid "Edited adjudicator-adjudicator conflicts"
-msgstr "ジャッジ間コンフリクトを修正する"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã‚’ä¿®æ­£ã™ã‚‹"
 
 #: actionlog/models.py
 msgid "Edited adjudicator-institution conflicts"
-msgstr "ジャッジ・大学間のコンフリクト"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ»å¤§å­¦é–“ã®ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆ"
 
 #: actionlog/models.py
 msgid "Edited adjudicator-team conflicts"
-msgstr "ジャッジ・チーム間コンフリクトを修正する"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ»ãƒãƒ¼ãƒ é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã‚’ä¿®æ­£ã™ã‚‹"
 
 #: actionlog/models.py
 msgid "Edited team-institution conflicts"
-msgstr "チーム・インスティチューション間のコンフリクトを編集"
+msgstr "ãƒãƒ¼ãƒ ãƒ»ã‚¤ãƒ³ã‚¹ãƒ†ã‚£ãƒãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³é–“ã®ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Created debate"
-msgstr "試合を生成"
+msgstr "è©¦åˆã‚’ç”Ÿæˆ"
 
 #: actionlog/models.py
 msgid "Edited debate"
-msgstr "試合を編集"
+msgstr "è©¦åˆã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Auto-prioritized debate importance"
-msgstr "ディベートの重要度に自動で優先順を設定する"
+msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã®é‡è¦åº¦ã«è‡ªå‹•ã§å„ªå…ˆé †ã‚’è¨­å®šã™ã‚‹"
 
 #: actionlog/models.py
 msgid "Edited debate importance"
-msgstr "ディベートの重要度を編集する"
+msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã®é‡è¦åº¦ã‚’ç·¨é›†ã™ã‚‹"
 
 #: actionlog/models.py
 msgid "Saved divisions"
@@ -167,207 +167,207 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Confirmed draw"
-msgstr "確定済み対戦表"
+msgstr "ç¢ºå®šæ¸ˆã¿å¯¾æˆ¦è¡¨"
 
 #: actionlog/models.py
 msgid "Created draw"
-msgstr "作成済み対戦表<br>"
+msgstr "ä½œæˆæ¸ˆã¿å¯¾æˆ¦è¡¨<br>"
 
 #: actionlog/models.py
 msgid "Regenerated draw"
-msgstr "再生成されたドロー"
+msgstr "å†ç”Ÿæˆã•ã‚ŒãŸãƒ‰ãƒ­ãƒ¼"
 
 #: actionlog/models.py
 msgid "Released draw"
-msgstr "公開済み対戦表"
+msgstr "å…¬é–‹æ¸ˆã¿å¯¾æˆ¦è¡¨"
 
 #: actionlog/models.py
 msgid "Unreleased draw"
-msgstr "未公開の対戦表"
+msgstr "æœªå…¬é–‹ã®å¯¾æˆ¦è¡¨"
 
 #: actionlog/models.py
 msgid "Created feedback question"
-msgstr "フィードバックの質問事項を作成"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®è³ªå•äº‹é …ã‚’ä½œæˆ"
 
 #: actionlog/models.py
 msgid "Edited feedback question"
-msgstr "フィードバックの質問事項を編集"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®è³ªå•äº‹é …ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Saved feedback"
-msgstr "保存済みフィードバック"
+msgstr "ä¿å­˜æ¸ˆã¿ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
 
 #: actionlog/models.py
 msgid "Submitted feedback from the public form"
-msgstr "パブリックフォームから提出されたフィードバック一覧<br>"
+msgstr "ãƒ‘ãƒ–ãƒªãƒƒã‚¯ãƒ•ã‚©ãƒ¼ãƒ ã‹ã‚‰æå‡ºã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ä¸€è¦§<br>"
 
 #: actionlog/models.py
 msgid "Created institution"
-msgstr "インステを作成"
+msgstr "ã‚¤ãƒ³ã‚¹ãƒ†ã‚’ä½œæˆ"
 
 #: actionlog/models.py
 msgid "Edited institution"
-msgstr "インステを編集"
+msgstr "ã‚¤ãƒ³ã‚¹ãƒ†ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Saved a matchup manual edit"
-msgstr "マッチアップのマニュアル編集を保存しました"
+msgstr "ãƒžãƒƒãƒã‚¢ãƒƒãƒ—ã®ãƒžãƒ‹ãƒ¥ã‚¢ãƒ«ç·¨é›†ã‚’ä¿å­˜ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Added/edited motion"
-msgstr "追加済み/編集済みの論題"
+msgstr "è¿½åŠ æ¸ˆã¿/ç·¨é›†æ¸ˆã¿ã®è«–é¡Œ"
 
 #: actionlog/models.py
 msgid "Released motions"
-msgstr "公開済みの論題"
+msgstr "å…¬é–‹æ¸ˆã¿ã®è«–é¡Œ"
 
 #: actionlog/models.py
 msgid "Unreleased motions"
-msgstr "未公開の論題"
+msgstr "æœªå…¬é–‹ã®è«–é¡Œ"
 
 #: actionlog/models.py
 msgid "Edited tournament options"
-msgstr "保存済みの大会各種設定"
+msgstr "ä¿å­˜æ¸ˆã¿ã®å¤§ä¼šå„ç¨®è¨­å®š"
 
 #: actionlog/models.py
 msgid "Auto-allocated adjudicators to preformed panels"
-msgstr "事前作成されたパネルにジャッジを自動配置しました"
+msgstr "äº‹å‰ä½œæˆã•ã‚ŒãŸãƒ‘ãƒãƒ«ã«ã‚¸ãƒ£ãƒƒã‚¸ã‚’è‡ªå‹•é…ç½®ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Edited preformed panel adjudicator"
-msgstr "事前作成されたパネルジャッジを編集しました"
+msgstr "äº‹å‰ä½œæˆã•ã‚ŒãŸãƒ‘ãƒãƒ«ã‚¸ãƒ£ãƒƒã‚¸ã‚’ç·¨é›†ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Created preformed panels"
-msgstr "パネルを事前生成しました"
+msgstr "ãƒ‘ãƒãƒ«ã‚’äº‹å‰ç”Ÿæˆã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Auto-allocated preformed panels to debates"
-msgstr "事前作成されたパネルをディベートに自動配置しました"
+msgstr "äº‹å‰ä½œæˆã•ã‚ŒãŸãƒ‘ãƒãƒ«ã‚’ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã«è‡ªå‹•é…ç½®ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Deleted preformed panels"
-msgstr "事前設定されたパネルを削除"
+msgstr "äº‹å‰è¨­å®šã•ã‚ŒãŸãƒ‘ãƒãƒ«ã‚’å‰Šé™¤"
 
 #: actionlog/models.py
 msgid "Auto-prioritized preformed panels"
-msgstr "事前作成されたパネルに優先度を自動設定しました"
+msgstr "äº‹å‰ä½œæˆã•ã‚ŒãŸãƒ‘ãƒãƒ«ã«å„ªå…ˆåº¦ã‚’è‡ªå‹•è¨­å®šã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Edited preformed panel importance"
-msgstr "事前作成されたパネルの重要度を編集しました"
+msgstr "äº‹å‰ä½œæˆã•ã‚ŒãŸãƒ‘ãƒãƒ«ã®é‡è¦åº¦ã‚’ç·¨é›†ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Advanced the current round to"
-msgstr "現在のラウンドへ進む<br>"
+msgstr "ç¾åœ¨ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã¸é€²ã‚€<br>"
 
 #: actionlog/models.py
 msgid "Marked round as completed"
-msgstr "ラウンドを完了したとして記録しました"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’å®Œäº†ã—ãŸã¨ã—ã¦è¨˜éŒ²ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Created round"
-msgstr "ラウンドを作成"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’ä½œæˆ"
 
 #: actionlog/models.py
 msgid "Edited round"
-msgstr "ラウンドを編集"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Set start time"
-msgstr "試合開始時刻の設定"
+msgstr "è©¦åˆé–‹å§‹æ™‚åˆ»ã®è¨­å®š"
 
 #: actionlog/models.py
 msgid "Saved the sides status of a matchup"
-msgstr "マッチアップのサイドを保存しました"
+msgstr "ãƒžãƒƒãƒã‚¢ãƒƒãƒ—ã®ã‚µã‚¤ãƒ‰ã‚’ä¿å­˜ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Imported adjudicators using the simple importer"
-msgstr "簡易入力機能を用いてジャッジ情報の情報をインポートしました"
+msgstr "ç°¡æ˜“å…¥åŠ›æ©Ÿèƒ½ã‚’ç”¨ã„ã¦ã‚¸ãƒ£ãƒƒã‚¸æƒ…å ±ã®æƒ…å ±ã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Imported institutions using the simple importer"
-msgstr "簡易入力機能を用いて大学・機関の情報をインポートしました"
+msgstr "ç°¡æ˜“å…¥åŠ›æ©Ÿèƒ½ã‚’ç”¨ã„ã¦å¤§å­¦ãƒ»æ©Ÿé–¢ã®æƒ…å ±ã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Imported teams using the simple importer"
-msgstr "簡易入力機能を用いてチーム情報をインポートしました"
+msgstr "ç°¡æ˜“å…¥åŠ›æ©Ÿèƒ½ã‚’ç”¨ã„ã¦ãƒãƒ¼ãƒ æƒ…å ±ã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Imported rooms using the simple importer"
-msgstr "簡易入力機能を用いて会場情報をインポートしました"
+msgstr "ç°¡æ˜“å…¥åŠ›æ©Ÿèƒ½ã‚’ç”¨ã„ã¦ä¼šå ´æƒ…å ±ã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Edited speaker categories"
-msgstr "編集済みスピーカーカテゴリー"
+msgstr "ç·¨é›†æ¸ˆã¿ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: actionlog/models.py
 msgid "Created speaker"
-msgstr "スピーカーを作成"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚’ä½œæˆ"
 
 #: actionlog/models.py
 msgid "Edited speaker"
-msgstr "スピーカーを編集"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Edited speaker category eligibility"
-msgstr "スピーカーカテゴリーのブレイク資格を編集"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ãƒ–ãƒ¬ã‚¤ã‚¯è³‡æ ¼ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Created team"
-msgstr "チームを作成"
+msgstr "ãƒãƒ¼ãƒ ã‚’ä½œæˆ"
 
 #: actionlog/models.py
 msgid "Edited team"
-msgstr "チームを編集"
+msgstr "ãƒãƒ¼ãƒ ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Edited adjudicator base score"
-msgstr "編集済みのジャッジの基礎スコア"
+msgstr "ç·¨é›†æ¸ˆã¿ã®ã‚¸ãƒ£ãƒƒã‚¸ã®åŸºç¤Žã‚¹ã‚³ã‚¢"
 
 #: actionlog/models.py
 msgid "Created tournament"
-msgstr "大会を作成"
+msgstr "å¤§ä¼šã‚’ä½œæˆ"
 
 #: actionlog/models.py
 msgid "Edited tournament"
-msgstr "大会を編集"
+msgstr "å¤§ä¼šã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Updated adjudicator scores in bulk"
-msgstr "ジャッジスコアを一括で更新しました"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢ã‚’ä¸€æ‹¬ã§æ›´æ–°ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Invited user to the instance"
-msgstr "ユーザーをインスタンスに招待"
+msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«æ‹›å¾…"
 
 #: actionlog/models.py
 msgid "Edited room categories"
-msgstr "編集済みのラウンド部屋カテゴリー"
+msgstr "ç·¨é›†æ¸ˆã¿ã®ãƒ©ã‚¦ãƒ³ãƒ‰éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: actionlog/models.py
 msgid "Created room category"
-msgstr "部屋カテゴリーを作成"
+msgstr "éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’ä½œæˆ"
 
 #: actionlog/models.py
 msgid "Edited room constraints"
-msgstr "会場の各種制約を編集しました"
+msgstr "ä¼šå ´ã®å„ç¨®åˆ¶ç´„ã‚’ç·¨é›†ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Created room"
-msgstr "部屋を作成"
+msgstr "éƒ¨å±‹ã‚’ä½œæˆ"
 
 #: actionlog/models.py
 msgid "Edited room"
-msgstr "部屋を編集"
+msgstr "éƒ¨å±‹ã‚’ç·¨é›†"
 
 #: actionlog/models.py
 msgid "Auto-allocated rooms"
-msgstr "自動配置済みのラウンド部屋"
+msgstr "è‡ªå‹•é…ç½®æ¸ˆã¿ã®ãƒ©ã‚¦ãƒ³ãƒ‰éƒ¨å±‹"
 
 #: actionlog/models.py
 msgid "Saved a room manual edit"
-msgstr "会場のマニュアル編集を保存しました"
+msgstr "ä¼šå ´ã®ãƒžãƒ‹ãƒ¥ã‚¢ãƒ«ç·¨é›†ã‚’ä¿å­˜ã—ã¾ã—ãŸ"
 
 #: actionlog/models.py
 msgid "Created question"
@@ -403,53 +403,54 @@ msgstr "Web"
 
 #: actionlog/models.py
 msgid "type"
-msgstr "タイプ"
+msgstr "ã‚¿ã‚¤ãƒ—"
 
 #: actionlog/models.py
 msgid "timestamp"
-msgstr "タイムスタンプ"
+msgstr "ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—"
 
 #: actionlog/models.py
 msgid "user"
-msgstr "ユーザー"
+msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼"
 
 #: actionlog/models.py
 msgid "IP address"
-msgstr "IPアドレス"
+msgstr "IPã‚¢ãƒ‰ãƒ¬ã‚¹"
 
 #: actionlog/models.py
 msgid "tournament"
-msgstr "トーナメント"
+msgstr "ãƒˆãƒ¼ãƒŠãƒ¡ãƒ³ãƒˆ"
 
 #: actionlog/models.py
 msgid "round"
-msgstr "ラウンド"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰"
 
 #: actionlog/models.py
 msgid "content type"
-msgstr "コンテンツタイプ"
+msgstr "ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚¿ã‚¤ãƒ—"
 
 #: actionlog/models.py
 msgid "object ID"
-msgstr "オブジェクトID"
+msgstr "ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆID"
 
 #: actionlog/models.py
 msgid "agent"
-msgstr "エージェント"
+msgstr "ã‚¨ãƒ¼ã‚¸ã‚§ãƒ³ãƒˆ"
 
 #: actionlog/models.py
 msgid "action log"
-msgstr "動作履歴"
+msgstr "å‹•ä½œå±¥æ­´"
 
 #: actionlog/models.py
 msgid "action log entries"
-msgstr "アクションログ エントリー"
+msgstr "ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚° ã‚¨ãƒ³ãƒˆãƒªãƒ¼"
 
 #: actionlog/models.py
 msgid "All log entries require at least one of a user and an IP address."
-msgstr "全てのログエントリーには、最低でもユーザーとIPアドレスの少なくとも1つが必要です。"
+msgstr "å…¨ã¦ã®ãƒ­ã‚°ã‚¨ãƒ³ãƒˆãƒªãƒ¼ã«ã¯ã€æœ€ä½Žã§ã‚‚ãƒ¦ãƒ¼ã‚¶ãƒ¼ã¨IPã‚¢ãƒ‰ãƒ¬ã‚¹ã®å°‘ãªãã¨ã‚‚1ã¤ãŒå¿…è¦ã§ã™ã€‚"
 
 #: actionlog/models.py
 msgid "anonymous"
-msgstr "匿名"
+msgstr "åŒ¿å"
+
 

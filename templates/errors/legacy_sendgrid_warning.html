@@ -1,4 +1,4 @@
-{% load i18n humanize %}
+﻿{% load i18n humanize %}
 {% comment %}
 This template is paired with utils.mixins.WarnAboutLegacySendgridConfigVarsMixin
 and is intended for including in page-alerts blocks.
@@ -12,10 +12,11 @@ template.
     It looks like you're using the old SendGrid config vars on Heroku,
     <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>.
     These are now deprecated (as of version 2.6), and will stop working in a
-    future version of Tabbycat. Please change your config vars to use
+    future version of NekoTab. Please change your config vars to use
     <code>SENDGRID_API_KEY</code> instead. For more information, please see
-    <a href="https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider">
+    <a href="https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider">
         our documentation on this topic</a>.
   {% endblocktrans %}
   {% include "components/alert.html" with type="warning" icon="alert-circle" message=legacy_sendgrid_warning_message %}
 {% endif %}
+

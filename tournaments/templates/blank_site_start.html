@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load add_field_css i18n %}
 
 {% block nav %}{% endblock %}
 
 {% block head-title %}{% endblock %}
-{% block page-title %}{% trans "Welcome to Tabbycat!" %}{% endblock %}
+{% block page-title %}{% trans "Welcome to NekoTab!" %}{% endblock %}
 
 {% block content %}
 
@@ -17,8 +17,8 @@
       <form action="." method="POST">
       {% csrf_token %}
 
-        {% trans "Welcome to Tabbycat!" as title %}
-        {% include "components/form-title.html" with emoji="👋" %}
+        {% trans "Welcome to NekoTab!" as title %}
+        {% include "components/form-title.html" with emoji="ðŸ‘‹" %}
 
         {% blocktrans trimmed asvar p1 %}
           To get started, you'll need to create the first user account. This account
@@ -48,3 +48,4 @@
 </div>
 
 {% endblock %}
+

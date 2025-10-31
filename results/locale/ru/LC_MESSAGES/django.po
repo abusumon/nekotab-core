@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
@@ -33,11 +33,11 @@ msgstr[3] ""
 
 #: results/admin.py
 msgid "Speaker"
-msgstr "Спикер"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€"
 
 #: results/apps.py results/templates/public_results_index.html results/views.py
 msgid "Results"
-msgstr "Результаты"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: results/forms.py
 msgid "Tournament password"
@@ -45,15 +45,15 @@ msgstr ""
 
 #: results/forms.py
 msgid "That password isn't correct."
-msgstr "Неверный пароль."
+msgstr "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ."
 
 #: results/forms.py
 msgid "The ballot set can't be both discarded and confirmed."
-msgstr "Бэллот не может быть одновременно отклонен и подтвержден."
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ð´Ð½Ð¾Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾ Ð¾Ñ‚ÐºÐ»Ð¾Ð½ÐµÐ½ Ð¸ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½."
 
 #: results/forms.py
 msgid "The debate status can't be confirmed unless one of the ballot sets is confirmed."
-msgstr "Статус дебатов не может быть подтвержден, если ни один набор бэллотов не подтвержден."
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½, ÐµÑÐ»Ð¸ Ð½Ð¸ Ð¾Ð´Ð¸Ð½ Ð½Ð°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½."
 
 #: results/forms.py
 msgid "---------"
@@ -62,12 +62,12 @@ msgstr "-----------"
 #: results/forms.py
 #, python-format
 msgid "%(aff_team)s affirmed, %(neg_team)s negated"
-msgstr "%(aff_team)s в утверждении, %(neg_team)s в отрицании"
+msgstr "%(aff_team)s Ð² ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ð¸, %(neg_team)s Ð² Ð¾Ñ‚Ñ€Ð¸Ñ†Ð°Ð½Ð¸Ð¸"
 
 #: results/forms.py
 #, python-format
 msgid "%(side)s's motion veto"
-msgstr "%(side)s вето на тему"
+msgstr "%(side)s Ð²ÐµÑ‚Ð¾ Ð½Ð° Ñ‚ÐµÐ¼Ñƒ"
 
 #: results/forms.py
 #, python-format
@@ -80,7 +80,7 @@ msgstr ""
 
 #: results/forms.py
 msgid "Mark as a duplicate speech"
-msgstr "Отметить как дублирующую речь"
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÐºÐ°Ðº Ð´ÑƒÐ±Ð»Ð¸Ñ€ÑƒÑŽÑ‰ÑƒÑŽ Ñ€ÐµÑ‡ÑŒ"
 
 #: results/forms.py
 msgid "Only one team can forfeit"
@@ -88,33 +88,33 @@ msgstr ""
 
 #: results/forms.py
 msgid "This field is required."
-msgstr "Это поле является обязательным."
+msgstr "Ð­Ñ‚Ð¾ Ð¿Ð¾Ð»Ðµ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¼."
 
 #: results/forms.py
 #, python-format
 msgid "The speaker %(speaker)s doesn't appear to be on team %(team)s."
-msgstr "Спикер %(speaker)s, похоже, не из команды %(team)s."
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ %(speaker)s, Ð¿Ð¾Ñ…Ð¾Ð¶Ðµ, Ð½Ðµ Ð¸Ð· ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ %(team)s."
 
 #: results/forms.py
 #, python-format
 msgid "%(speaker)s appears to have given %(count)d substantive speech."
 msgid_plural "%(speaker)s appears to have given %(count)d substantive speeches."
-msgstr[0] "%(speaker)s, похоже, произнес %(count)d конструктивную речь."
-msgstr[1] "%(speaker)s, похоже, произнес %(count)d конструктивных речей."
-msgstr[2] "%(speaker)s, похоже, произнес %(count)d конструктивных речей."
-msgstr[3] "%(speaker)s, похоже, произнес %(count)d конструктивных речей."
+msgstr[0] "%(speaker)s, Ð¿Ð¾Ñ…Ð¾Ð¶Ðµ, Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑ %(count)d ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½ÑƒÑŽ Ñ€ÐµÑ‡ÑŒ."
+msgstr[1] "%(speaker)s, Ð¿Ð¾Ñ…Ð¾Ð¶Ðµ, Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑ %(count)d ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹."
+msgstr[2] "%(speaker)s, Ð¿Ð¾Ñ…Ð¾Ð¶Ðµ, Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑ %(count)d ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹."
+msgstr[3] "%(speaker)s, Ð¿Ð¾Ñ…Ð¾Ð¶Ðµ, Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑ %(count)d ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹."
 
 #: results/forms.py
 msgid "The last substantive speaker and reply speaker can't be the same."
-msgstr "Последний конструктивный спикер и заключительный спикер не могут совпадать."
+msgstr "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¹ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ Ð¸ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ ÑÐ¾Ð²Ð¿Ð°Ð´Ð°Ñ‚ÑŒ."
 
 #: results/forms.py
 msgid "The reply speaker for this team did not give a substantive speech."
-msgstr "Спикер, говоривший заключительную речь в этой команде нее давал конструктивную речь."
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€, Ð³Ð¾Ð²Ð¾Ñ€Ð¸Ð²ÑˆÐ¸Ð¹ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½ÑƒÑŽ Ñ€ÐµÑ‡ÑŒ Ð² ÑÑ‚Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ðµ Ð½ÐµÐµ Ð´Ð°Ð²Ð°Ð» ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½ÑƒÑŽ Ñ€ÐµÑ‡ÑŒ."
 
 #: results/forms.py
 msgid "The total scores for the teams are the same (i.e. a draw)."
-msgstr "Общие баллы команд одинаковы (т.е. ничья)."
+msgstr "ÐžÐ±Ñ‰Ð¸Ðµ Ð±Ð°Ð»Ð»Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¾Ð´Ð¸Ð½Ð°ÐºÐ¾Ð²Ñ‹ (Ñ‚.Ðµ. Ð½Ð¸Ñ‡ÑŒÑ)."
 
 #: results/forms.py
 msgid "The declared winner does not correspond to the team with the highest score."
@@ -123,12 +123,12 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "The total scores for the following teams are the same: %(teams)s"
-msgstr "Общая сумма баллов для следующих команд одинакова: %(teams)s"
+msgstr "ÐžÐ±Ñ‰Ð°Ñ ÑÑƒÐ¼Ð¼Ð° Ð±Ð°Ð»Ð»Ð¾Ð² Ð´Ð»Ñ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¾Ð´Ð¸Ð½Ð°ÐºÐ¾Ð²Ð°: %(teams)s"
 
 #: results/forms.py
 #, python-format
 msgid "The margin (%(margin).1f) exceeds the maximum allowable margin (%(max_margin).1f)."
-msgstr "Предел (%(margin).1f) превышает максимально допустимый предел (%(max_margin).1f)."
+msgstr "ÐŸÑ€ÐµÐ´ÐµÐ» (%(margin).1f) Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°ÐµÑ‚ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ð¿Ñ€ÐµÐ´ÐµÐ» (%(max_margin).1f)."
 
 #: results/forms.py
 msgid "Ranks cannot be tied."
@@ -141,7 +141,7 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "The total scores for the teams are the same (i.e. a draw) for adjudicator %(adjudicator)s."
-msgstr "Общие баллы команд одинаковы (т.е. ничья) у судьи %(adjudicator)s."
+msgstr "ÐžÐ±Ñ‰Ð¸Ðµ Ð±Ð°Ð»Ð»Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¾Ð´Ð¸Ð½Ð°ÐºÐ¾Ð²Ñ‹ (Ñ‚.Ðµ. Ð½Ð¸Ñ‡ÑŒÑ) Ñƒ ÑÑƒÐ´ÑŒÐ¸ %(adjudicator)s."
 
 #: results/forms.py
 #, python-format
@@ -151,11 +151,11 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "The margin (%(margin).1f) in the ballot of adjudicator %(adjudicator)s exceeds the maximum allowable margin (%(max_margin).1f)."
-msgstr "Предел (%(margin).1f) в бэллоте судьи %(adjudicator)s превышает максимально допустимый предел (%(max_margin).1f)."
+msgstr "ÐŸÑ€ÐµÐ´ÐµÐ» (%(margin).1f) Ð² Ð±ÑÐ»Ð»Ð¾Ñ‚Ðµ ÑÑƒÐ´ÑŒÐ¸ %(adjudicator)s Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°ÐµÑ‚ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ð¿Ñ€ÐµÐ´ÐµÐ» (%(max_margin).1f)."
 
 #: results/forms.py
 msgid "Sides for this debate are not confirmed. You can't save a result for this debate until the sides have been confirmed in the draw."
-msgstr "Стороны в этих дебатах не подтверждены. Вы не можете сохранить результат этих дебатов, пока стороны не будут подтверждены в сетке."
+msgstr "Ð¡Ñ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Ð² ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹. Ð’Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð², Ð¿Ð¾ÐºÐ° ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Ð½Ðµ Ð±ÑƒÐ´ÑƒÑ‚ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹ Ð² ÑÐµÑ‚ÐºÐµ."
 
 #: results/forms.py
 #, python-format
@@ -172,11 +172,11 @@ msgstr ""
 
 #: results/models.py
 msgid "Tab room"
-msgstr "Комната тэбмастеров"
+msgstr "ÐšÐ¾Ð¼Ð½Ð°Ñ‚Ð° Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð²"
 
 #: results/models.py
 msgid "Public"
-msgstr "Публично"
+msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾"
 
 #: results/models.py
 msgid "Automation"
@@ -184,19 +184,19 @@ msgstr ""
 
 #: results/models.py
 msgid "timestamp"
-msgstr "отметка времени"
+msgstr "Ð¾Ñ‚Ð¼ÐµÑ‚ÐºÐ° Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸"
 
 #: results/models.py
 msgid "version"
-msgstr "версия"
+msgstr "Ð²ÐµÑ€ÑÐ¸Ñ"
 
 #: results/models.py
 msgid "submitter type"
-msgstr "тип отправки"
+msgstr "Ñ‚Ð¸Ð¿ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸"
 
 #: results/models.py
 msgid "confirmed"
-msgstr "подтвержденные"
+msgstr "Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ðµ"
 
 #: results/models.py
 msgid "from private URL"
@@ -208,35 +208,35 @@ msgstr ""
 
 #: results/models.py
 msgid "submitter"
-msgstr "отправитель"
+msgstr "Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÐµÐ»ÑŒ"
 
 #: results/models.py
 msgid "confirmer"
-msgstr "подтверждающий"
+msgstr "Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´Ð°ÑŽÑ‰Ð¸Ð¹"
 
 #: results/models.py
 msgid "confirm timestamp"
-msgstr "подтвердить временную отметку"
+msgstr "Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¸Ñ‚ÑŒ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ Ð¾Ñ‚Ð¼ÐµÑ‚ÐºÑƒ"
 
 #: results/models.py
 msgid "IP address"
-msgstr "IP-адрес"
+msgstr "IP-Ð°Ð´Ñ€ÐµÑ"
 
 #: results/models.py
 msgid "A tab room ballot must have a user associated."
-msgstr "Бэллот тэбмастеров должен иметь привязанного пользователя."
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð² Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð¸Ð¼ÐµÑ‚ÑŒ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ."
 
 #: results/models.py
 msgid "debate"
-msgstr "дебаты"
+msgstr "Ð´ÐµÐ±Ð°Ñ‚Ñ‹"
 
 #: results/models.py
 msgid "motion"
-msgstr "тема"
+msgstr "Ñ‚ÐµÐ¼Ð°"
 
 #: results/models.py
 msgid "discarded"
-msgstr "отклонено"
+msgstr "Ð¾Ñ‚ÐºÐ»Ð¾Ð½ÐµÐ½Ð¾"
 
 #: results/models.py
 msgid "single adjudicator"
@@ -256,11 +256,11 @@ msgstr ""
 
 #: results/models.py
 msgid "ballot submission"
-msgstr "отправка бэллота"
+msgstr "Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ° Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
 
 #: results/models.py
 msgid "ballot submissions"
-msgstr "отправки бэллота"
+msgstr "Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
 
 #: results/models.py
 #, python-format
@@ -269,27 +269,27 @@ msgstr ""
 
 #: results/models.py
 msgid "A ballot can't be both confirmed and discarded!"
-msgstr "Бэллот не может быть одновременно подтвержден и отклонен!"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ð´Ð½Ð¾Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½ Ð¸ Ð¾Ñ‚ÐºÐ»Ð¾Ð½ÐµÐ½!"
 
 #: results/models.py
 msgid "debate adjudicator"
-msgstr "судья дебатов"
+msgstr "ÑÑƒÐ´ÑŒÑ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: results/models.py
 msgid "debate team"
-msgstr "команда"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°"
 
 #: results/models.py
 msgid "win"
-msgstr "победа"
+msgstr "Ð¿Ð¾Ð±ÐµÐ´Ð°"
 
 #: results/models.py
 msgid "margin"
-msgstr "предел"
+msgstr "Ð¿Ñ€ÐµÐ´ÐµÐ»"
 
 #: results/models.py
 msgid "score"
-msgstr "балл"
+msgstr "Ð±Ð°Ð»Ð»"
 
 #: results/models.py
 msgid "team score by adjudicator"
@@ -301,31 +301,31 @@ msgstr ""
 
 #: results/models.py
 msgid "The debate team, debate adjudicator and ballot submission must all relate to the same debate."
-msgstr "Команды, судья и отправка бэллота должны относиться к одним и тем же дебатам."
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹, ÑÑƒÐ´ÑŒÑ Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ° Ð±ÑÐ»Ð»Ð¾Ñ‚Ð° Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð¾Ñ‚Ð½Ð¾ÑÐ¸Ñ‚ÑŒÑÑ Ðº Ð¾Ð´Ð½Ð¸Ð¼ Ð¸ Ñ‚ÐµÐ¼ Ð¶Ðµ Ð´ÐµÐ±Ð°Ñ‚Ð°Ð¼."
 
 #: results/models.py
 msgid "position"
-msgstr "позиция"
+msgstr "Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ"
 
 #: results/models.py
 msgid "speaker score by adjudicator"
-msgstr "спикерский балл по судье"
+msgstr "ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ð±Ð°Ð»Ð» Ð¿Ð¾ ÑÑƒÐ´ÑŒÐµ"
 
 #: results/models.py
 msgid "speaker scores by adjudicator"
-msgstr "спикерские баллы по судье"
+msgstr "ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ðµ Ð±Ð°Ð»Ð»Ñ‹ Ð¿Ð¾ ÑÑƒÐ´ÑŒÐµ"
 
 #: results/models.py
 msgid "points"
-msgstr "баллы"
+msgstr "Ð±Ð°Ð»Ð»Ñ‹"
 
 #: results/models.py
 msgid "votes given"
-msgstr "количество голосов"
+msgstr "ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²"
 
 #: results/models.py
 msgid "votes possible"
-msgstr "возможное количество голосов"
+msgstr "Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²"
 
 #: results/models.py
 msgid "has ghost score"
@@ -333,47 +333,47 @@ msgstr ""
 
 #: results/models.py
 msgid "team score"
-msgstr "командный балл"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð±Ð°Ð»Ð»"
 
 #: results/models.py
 msgid "team scores"
-msgstr "командные баллы"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ðµ Ð±Ð°Ð»Ð»Ñ‹"
 
 #: results/models.py
 msgid "speaker"
-msgstr "спикер"
+msgstr "ÑÐ¿Ð¸ÐºÐµÑ€"
 
 #: results/models.py
 msgid "rank"
-msgstr "место"
+msgstr "Ð¼ÐµÑÑ‚Ð¾"
 
 #: results/models.py
 msgid "ghost"
-msgstr "призрак"
+msgstr "Ð¿Ñ€Ð¸Ð·Ñ€Ð°Ðº"
 
 #: results/models.py
 msgid "If checked, this score does not count towards the speaker tab. This is typically checked for speeches where someone spoke twice to make up for an absent teammate (sometimes known as \"iron-person\" or \"iron-man\" speeches)."
-msgstr "Если стоит отметка, этот балл не идет в спикерский тэб. Обычно это устанавливают для случаев, когда кто-то говорил две речи (одну за отсутствующего тиммейта (известно как речь \"айрон-мена\")."
+msgstr "Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾Ð¸Ñ‚ Ð¾Ñ‚Ð¼ÐµÑ‚ÐºÐ°, ÑÑ‚Ð¾Ñ‚ Ð±Ð°Ð»Ð» Ð½Ðµ Ð¸Ð´ÐµÑ‚ Ð² ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ñ‚ÑÐ±. ÐžÐ±Ñ‹Ñ‡Ð½Ð¾ ÑÑ‚Ð¾ ÑƒÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÑŽÑ‚ Ð´Ð»Ñ ÑÐ»ÑƒÑ‡Ð°ÐµÐ², ÐºÐ¾Ð³Ð´Ð° ÐºÑ‚Ð¾-Ñ‚Ð¾ Ð³Ð¾Ð²Ð¾Ñ€Ð¸Ð» Ð´Ð²Ðµ Ñ€ÐµÑ‡Ð¸ (Ð¾Ð´Ð½Ñƒ Ð·Ð° Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ Ñ‚Ð¸Ð¼Ð¼ÐµÐ¹Ñ‚Ð° (Ð¸Ð·Ð²ÐµÑÑ‚Ð½Ð¾ ÐºÐ°Ðº Ñ€ÐµÑ‡ÑŒ \"Ð°Ð¹Ñ€Ð¾Ð½-Ð¼ÐµÐ½Ð°\")."
 
 #: results/models.py
 msgid "speaker score"
-msgstr "спикерский балл"
+msgstr "ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ð±Ð°Ð»Ð»"
 
 #: results/models.py
 msgid "speaker scores"
-msgstr "спикерские баллы"
+msgstr "ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ðµ Ð±Ð°Ð»Ð»Ñ‹"
 
 #: results/models.py
 msgid "The debate team and speaker must be from the same team."
-msgstr "Команда и спикер должны быть из одной команды."
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð±Ñ‹Ñ‚ÑŒ Ð¸Ð· Ð¾Ð´Ð½Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹."
 
 #: results/models.py
 msgid "The ballot submission and debate team must relate to the same debate."
-msgstr "Предоставление бэллота и команда должны относиться к одним и тем же дебатам."
+msgstr "ÐŸÑ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð° Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð¾Ñ‚Ð½Ð¾ÑÐ¸Ñ‚ÑŒÑÑ Ðº Ð¾Ð´Ð½Ð¸Ð¼ Ð¸ Ñ‚ÐµÐ¼ Ð¶Ðµ Ð´ÐµÐ±Ð°Ñ‚Ð°Ð¼."
 
 #: results/models.py
 msgid "tournament"
-msgstr "турнир"
+msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: results/models.py
 msgid "sequence"
@@ -445,49 +445,49 @@ msgstr ""
 
 #: results/tables.py
 msgid "Whether this debate's ballot has been checked in"
-msgstr "Был ли бэллот этих дебатов проверен"
+msgstr "Ð‘Ñ‹Ð» Ð»Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐµÐ½"
 
 #: results/tables.py
 msgid "Status of this debate's ballot"
-msgstr "Статус бэллота этих дебатов"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð° ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: results/templates/admin_results.html
 msgid "Display Draw"
-msgstr "Показать сетку"
+msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐµÑ‚ÐºÑƒ"
 
 #: results/templates/admin_results.html
 msgid "Check-In Ballots"
-msgstr "Проверить бэллоты"
+msgstr "ÐŸÑ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹"
 
 #: results/templates/admin_results.html
 msgid "Recent 'Iron-Persons'"
-msgstr "Текущие айрон-мены"
+msgstr "Ð¢ÐµÐºÑƒÑ‰Ð¸Ðµ Ð°Ð¹Ñ€Ð¾Ð½-Ð¼ÐµÐ½Ñ‹"
 
 #: results/templates/admin_results.html
 msgid "Teams who have recently missed a speaker"
-msgstr "Команды, которым не сейчас хватает спикера"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼ Ð½Ðµ ÑÐµÐ¹Ñ‡Ð°Ñ Ñ…Ð²Ð°Ñ‚Ð°ÐµÑ‚ ÑÐ¿Ð¸ÐºÐµÑ€Ð°"
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "A speaker from %(team)s gave multiple speeches in the previous round"
-msgstr "Спикер из %(team)s произнес несколько речей в предыдущем раунде"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ Ð¸Ð· %(team)s Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€ÐµÑ‡ÐµÐ¹ Ð² Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÐµÐ¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "A speaker from %(team)s gave multiple speeches in the current round"
-msgstr "Спикер из %(team)s произнес несколько речей в текущем раунде"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ Ð¸Ð· %(team)s Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€ÐµÑ‡ÐµÐ¹ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
 
 #: results/templates/admin_results.html
 msgid "No known cases in the current or previous round"
-msgstr "Нет известных случаев в текущем или предыдущем раунде"
+msgstr "ÐÐµÑ‚ Ð¸Ð·Ð²ÐµÑÑ‚Ð½Ñ‹Ñ… ÑÐ»ÑƒÑ‡Ð°ÐµÐ² Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ Ð¸Ð»Ð¸ Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÐµÐ¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
 
 #: results/templates/admin_results.html
 msgid "Complete Round"
-msgstr "Завершить раунд"
+msgstr "Ð—Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚ÑŒ Ñ€Ð°ÑƒÐ½Ð´"
 
 #: results/templates/admin_results.html
 msgid "This page automatically updates with the new ballot entries and checkins as they occur. You will, however, need to reload it once all ballots are completed in order to advance the round."
-msgstr "Эта страница автоматически обновляется с новыми бэллотами и регистрациями по мере их появления. Однако, вам нужно будет перезагрузить её после поступления всех бэллотов для перехода на следующий раунд."
+msgstr "Ð­Ñ‚Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÐµÑ‚ÑÑ Ñ Ð½Ð¾Ð²Ñ‹Ð¼Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°Ð¼Ð¸ Ð¸ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÑÐ¼Ð¸ Ð¿Ð¾ Ð¼ÐµÑ€Ðµ Ð¸Ñ… Ð¿Ð¾ÑÐ²Ð»ÐµÐ½Ð¸Ñ. ÐžÐ´Ð½Ð°ÐºÐ¾, Ð²Ð°Ð¼ Ð½ÑƒÐ¶Ð½Ð¾ Ð±ÑƒÐ´ÐµÑ‚ Ð¿ÐµÑ€ÐµÐ·Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ ÐµÑ‘ Ð¿Ð¾ÑÐ»Ðµ Ð¿Ð¾ÑÑ‚ÑƒÐ¿Ð»ÐµÐ½Ð¸Ñ Ð²ÑÐµÑ… Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð´Ð»Ñ Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´Ð° Ð½Ð° ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´."
 
 #: results/templates/admin_results.html
 #, python-format
@@ -504,42 +504,42 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr ""
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "This tournament's configuration is set to <strong>British Parliamentary</strong> with <strong>one ballot per voting adjudicator</strong>. This combination isn't allowed: BP tournaments must use consensus ballots. Results can't be entered while this configuration is in place. Please <a href=\"%(debate_rules_url)s\">revise this tournament's configuration</a> before you try to enter results."
-msgstr "Настройки этого турнира установлены под <strong> Британский парламентский формат</strong> с <strong> одним бэллотом на одного судью с правом голоса</strong>. Такая комбинация не разрешена: турниры в БПФ должны использовать консенсусный бэллот. Результаты не могут быть введены при данных настройках. Пожалуйста, <a href=\"%(debate_rules_url)s\"> измените настройки турнира </a> перед вводом результатов."
+msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ ÑÑ‚Ð¾Ð³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ñ‹ Ð¿Ð¾Ð´ <strong> Ð‘Ñ€Ð¸Ñ‚Ð°Ð½ÑÐºÐ¸Ð¹ Ð¿Ð°Ñ€Ð»Ð°Ð¼ÐµÐ½Ñ‚ÑÐºÐ¸Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚</strong> Ñ <strong> Ð¾Ð´Ð½Ð¸Ð¼ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð¼ Ð½Ð° Ð¾Ð´Ð½Ð¾Ð³Ð¾ ÑÑƒÐ´ÑŒÑŽ Ñ Ð¿Ñ€Ð°Ð²Ð¾Ð¼ Ð³Ð¾Ð»Ð¾ÑÐ°</strong>. Ð¢Ð°ÐºÐ°Ñ ÐºÐ¾Ð¼Ð±Ð¸Ð½Ð°Ñ†Ð¸Ñ Ð½Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð°: Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñ‹ Ð² Ð‘ÐŸÐ¤ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð½ÑÐµÐ½ÑÑƒÑÐ½Ñ‹Ð¹ Ð±ÑÐ»Ð»Ð¾Ñ‚. Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð¿Ñ€Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°Ñ…. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, <a href=\"%(debate_rules_url)s\"> Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° </a> Ð¿ÐµÑ€ÐµÐ´ Ð²Ð²Ð¾Ð´Ð¾Ð¼ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð²."
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "Currently there are no motions entered for this round, so debate results cannot be entered. <a href=\"%(motions_url)s\" class=\"alert-link\">Add Motions.</a>"
-msgstr "В настоящее время для этого раунда не введена тема, поэтому результаты не могут быть введены. <a href=\"%(motions_url)s\" class=\"alert-link\"> Добавить темы</a>"
+msgstr "Ð’ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð° Ð½Ðµ Ð²Ð²ÐµÐ´ÐµÐ½Ð° Ñ‚ÐµÐ¼Ð°, Ð¿Ð¾ÑÑ‚Ð¾Ð¼Ñƒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹. <a href=\"%(motions_url)s\" class=\"alert-link\"> Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ñ‚ÐµÐ¼Ñ‹</a>"
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "Your tournament configuration allows ballots to be submitted online by adjudicators. The draw <a href=\"%(display_url)s\" class=\"alert-link\">must be released</a> before they can do so for this round."
-msgstr "Настройки вашего турнира позволяют судьям отправлять бэллоты онлайн. Сетка <a href=\"%(display_url)s\" class=\"alert-link\"> должна быть опубликована</a>до то, как судьи смогут сделать это в текущем раунде."
+msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð²Ð°ÑˆÐµÐ³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° Ð¿Ð¾Ð·Ð²Ð¾Ð»ÑÑŽÑ‚ ÑÑƒÐ´ÑŒÑÐ¼ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð¾Ð½Ð»Ð°Ð¹Ð½. Ð¡ÐµÑ‚ÐºÐ° <a href=\"%(display_url)s\" class=\"alert-link\"> Ð´Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°</a>Ð´Ð¾ Ñ‚Ð¾, ÐºÐ°Ðº ÑÑƒÐ´ÑŒÐ¸ ÑÐ¼Ð¾Ð³ÑƒÑ‚ ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ ÑÑ‚Ð¾ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "Your tournament configuration allows feedback to be submitted online by participants. The draw <a href=\"%(display_url)s\" class=\"alert-link\">must be released</a> before they can do so for this round."
-msgstr "Настройки вашего турнира позволяют игрокам отправлять обратную связь онлайн. Сетка <a href=\"%(display_url)s\" class=\"alert-link\"> должна быть опубликована</a>до то, как игроки смогут сделать это в текущем раунде."
+msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð²Ð°ÑˆÐµÐ³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° Ð¿Ð¾Ð·Ð²Ð¾Ð»ÑÑŽÑ‚ Ð¸Ð³Ñ€Ð¾ÐºÐ°Ð¼ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ð¾Ð±Ñ€Ð°Ñ‚Ð½ÑƒÑŽ ÑÐ²ÑÐ·ÑŒ Ð¾Ð½Ð»Ð°Ð¹Ð½. Ð¡ÐµÑ‚ÐºÐ° <a href=\"%(display_url)s\" class=\"alert-link\"> Ð´Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°</a>Ð´Ð¾ Ñ‚Ð¾, ÐºÐ°Ðº Ð¸Ð³Ñ€Ð¾ÐºÐ¸ ÑÐ¼Ð¾Ð³ÑƒÑ‚ ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ ÑÑ‚Ð¾ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
 
 #: results/templates/assistant_enter_results.html
 #: results/templates/ballot_entry_base.html
 msgid "Back to All Results"
-msgstr "Назад кр всем результатам"
+msgstr "ÐÐ°Ð·Ð°Ð´ ÐºÑ€ Ð²ÑÐµÐ¼ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð°Ð¼"
 
 #: results/templates/assistant_enter_results.html
 #: results/templates/ballot_entry_base.html
 msgid "Create a new ballot set for this debate"
-msgstr "Создать новый бэллот для этих дебатов"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ð¹ Ð±ÑÐ»Ð»Ð¾Ñ‚ Ð´Ð»Ñ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: results/templates/assistant_enter_results.html
 msgid "You can't confirm this ballot set because you entered it."
-msgstr "Вы не можете подтвердить этот набор бэллотов, потому что сами ввели его."
+msgstr "Ð’Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ Ð½Ð°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð², Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ ÑÐ°Ð¼Ð¸ Ð²Ð²ÐµÐ»Ð¸ ÐµÐ³Ð¾."
 
 #: results/templates/assistant_enter_results.html
 msgid "You can't confirm this ballot set because it is for a single adjudicator. Use the merge function."
@@ -547,114 +547,114 @@ msgstr ""
 
 #: results/templates/assistant_enter_results.html
 msgid "Confirm results"
-msgstr "Подтвердить результаты"
+msgstr "ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¸Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: results/templates/assistant_enter_results.html
 msgid "Results are incorrect"
-msgstr "Неверные результаты"
+msgstr "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: results/templates/assistant_enter_results.html
 #: results/templates/enter_results.html
 #: results/templates/public_enter_results.html
 msgid "Emails will be sent to adjudicators when the ballot is confirmed."
-msgstr "Email будут отправлены судьям, когда бэллот будет подтвержден."
+msgstr "Email Ð±ÑƒÐ´ÑƒÑ‚ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹ ÑÑƒÐ´ÑŒÑÐ¼, ÐºÐ¾Ð³Ð´Ð° Ð±ÑÐ»Ð»Ð¾Ñ‚ Ð±ÑƒÐ´ÐµÑ‚ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½."
 
 #: results/templates/assistant_results.html results/views.py
 msgid "Enter Results"
-msgstr "Ввести результаты"
+msgstr "Ð’Ð²ÐµÑÑ‚Ð¸ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: results/templates/assistant_results.html
 msgid "This page automatically updates with the new ballot entries and checkins as they occur."
-msgstr "Эта страница автоматически обновляется с новыми бэллотами и регистрациями, по мере того как они приходят."
+msgstr "Ð­Ñ‚Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÐµÑ‚ÑÑ Ñ Ð½Ð¾Ð²Ñ‹Ð¼Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°Ð¼Ð¸ Ð¸ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÑÐ¼Ð¸, Ð¿Ð¾ Ð¼ÐµÑ€Ðµ Ñ‚Ð¾Ð³Ð¾ ÐºÐ°Ðº Ð¾Ð½Ð¸ Ð¿Ñ€Ð¸Ñ…Ð¾Ð´ÑÑ‚."
 
 #: results/templates/assistant_results.html
 msgid "Currently there are no motions entered for this round, so debate results cannot be entered. Please ask an administrator to add motions."
-msgstr "В настоящее время тема для этого раунда не введена, поэтому результаты дебатов не могут быть введены. Пожалуйста, попросите администратора добавить тему."
+msgstr "Ð’ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ Ñ‚ÐµÐ¼Ð° Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð° Ð½Ðµ Ð²Ð²ÐµÐ´ÐµÐ½Ð°, Ð¿Ð¾ÑÑ‚Ð¾Ð¼Ñƒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð¿Ð¾Ð¿Ñ€Ð¾ÑÐ¸Ñ‚Ðµ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð° Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ñ‚ÐµÐ¼Ñƒ."
 
 #: results/templates/assistant_results.html
 #, python-format
 msgid "One debate does not have its sides confirmed. Results for this debate cannot be entered until its side allocations are marked as confirmed."
 msgid_plural "%(ndebates)s debate do not have their sides confirmed. Results for these debates cannot be entered until their side allocations are marked as confirmed."
-msgstr[0] "У одних дебатов не подтверждены стороны. Результаты этих дебатов не могут быть введены, пока распределение сторон не отмечено как подтвержденное."
-msgstr[1] "У %(ndebates)s дебатов не подтверждены стороны. Результаты этих дебатов не могут быть введены, пока распределение сторон не отмечено как подтвержденное."
-msgstr[2] "У %(ndebates)s дебатов не подтверждены стороны. Результаты этих дебатов не могут быть введены, пока распределение сторон не отмечено как подтвержденное."
-msgstr[3] "У %(ndebates)s дебатов не подтверждены стороны. Результаты этих дебатов не могут быть введены, пока распределение сторон не отмечено как подтвержденное."
+msgstr[0] "Ð£ Ð¾Ð´Ð½Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹. Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹, Ð¿Ð¾ÐºÐ° Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½ Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð¾ ÐºÐ°Ðº Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ð¾Ðµ."
+msgstr[1] "Ð£ %(ndebates)s Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹. Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹, Ð¿Ð¾ÐºÐ° Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½ Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð¾ ÐºÐ°Ðº Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ð¾Ðµ."
+msgstr[2] "Ð£ %(ndebates)s Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹. Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹, Ð¿Ð¾ÐºÐ° Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½ Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð¾ ÐºÐ°Ðº Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ð¾Ðµ."
+msgstr[3] "Ð£ %(ndebates)s Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹. Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹, Ð¿Ð¾ÐºÐ° Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½ Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð¾ ÐºÐ°Ðº Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ð¾Ðµ."
 
 #: results/templates/assistant_results.html
 #, python-format
 msgid "One debate has a panel with an even number of voting adjudicators. If the adjudicators split evenly, the debate will be awarded to the team for which the chair voted."
 msgid_plural "%(num_even_panel)s debates have panels with an even number of voting adjudicators. If the adjudicators split evenly, the debate will be awarded to the team for which the chair voted."
-msgstr[0] "У одних дебатов в коллегии четное число судей с правом голоса. Если голоса судей распределятся поровну, победу получит команда, за которую проголосовал чэйр."
-msgstr[1] "%(num_even_panel)s дебатов в коллегиях четное число судей с правом голоса. Если голоса судей распределятся поровну, победу получит команда, за которую проголосовал чэйр."
-msgstr[2] "%(num_even_panel)s дебатов в коллегиях четное число судей с правом голоса. Если голоса судей распределятся поровну, победу получит команда, за которую проголосовал чэйр."
-msgstr[3] "%(num_even_panel)s дебатов в коллегиях четное число судей с правом голоса. Если голоса судей распределятся поровну, победу получит команда, за которую проголосовал чэйр."
+msgstr[0] "Ð£ Ð¾Ð´Ð½Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸Ð¸ Ñ‡ÐµÑ‚Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ ÑÑƒÐ´ÐµÐ¹ Ñ Ð¿Ñ€Ð°Ð²Ð¾Ð¼ Ð³Ð¾Ð»Ð¾ÑÐ°. Ð•ÑÐ»Ð¸ Ð³Ð¾Ð»Ð¾ÑÐ° ÑÑƒÐ´ÐµÐ¹ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÑÑ‚ÑÑ Ð¿Ð¾Ñ€Ð¾Ð²Ð½Ñƒ, Ð¿Ð¾Ð±ÐµÐ´Ñƒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°, Ð·Ð° ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð¿Ñ€Ð¾Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²Ð°Ð» Ñ‡ÑÐ¹Ñ€."
+msgstr[1] "%(num_even_panel)s Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸ÑÑ… Ñ‡ÐµÑ‚Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ ÑÑƒÐ´ÐµÐ¹ Ñ Ð¿Ñ€Ð°Ð²Ð¾Ð¼ Ð³Ð¾Ð»Ð¾ÑÐ°. Ð•ÑÐ»Ð¸ Ð³Ð¾Ð»Ð¾ÑÐ° ÑÑƒÐ´ÐµÐ¹ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÑÑ‚ÑÑ Ð¿Ð¾Ñ€Ð¾Ð²Ð½Ñƒ, Ð¿Ð¾Ð±ÐµÐ´Ñƒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°, Ð·Ð° ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð¿Ñ€Ð¾Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²Ð°Ð» Ñ‡ÑÐ¹Ñ€."
+msgstr[2] "%(num_even_panel)s Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸ÑÑ… Ñ‡ÐµÑ‚Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ ÑÑƒÐ´ÐµÐ¹ Ñ Ð¿Ñ€Ð°Ð²Ð¾Ð¼ Ð³Ð¾Ð»Ð¾ÑÐ°. Ð•ÑÐ»Ð¸ Ð³Ð¾Ð»Ð¾ÑÐ° ÑÑƒÐ´ÐµÐ¹ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÑÑ‚ÑÑ Ð¿Ð¾Ñ€Ð¾Ð²Ð½Ñƒ, Ð¿Ð¾Ð±ÐµÐ´Ñƒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°, Ð·Ð° ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð¿Ñ€Ð¾Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²Ð°Ð» Ñ‡ÑÐ¹Ñ€."
+msgstr[3] "%(num_even_panel)s Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸ÑÑ… Ñ‡ÐµÑ‚Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ ÑÑƒÐ´ÐµÐ¹ Ñ Ð¿Ñ€Ð°Ð²Ð¾Ð¼ Ð³Ð¾Ð»Ð¾ÑÐ°. Ð•ÑÐ»Ð¸ Ð³Ð¾Ð»Ð¾ÑÐ° ÑÑƒÐ´ÐµÐ¹ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÑÑ‚ÑÑ Ð¿Ð¾Ñ€Ð¾Ð²Ð½Ñƒ, Ð¿Ð¾Ð±ÐµÐ´Ñƒ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°, Ð·Ð° ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð¿Ñ€Ð¾Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²Ð°Ð» Ñ‡ÑÐ¹Ñ€."
 
 #: results/templates/ballot/ballot_debate_info.html
 msgid "Debate Information"
-msgstr "Информация о дебатах"
+msgstr "Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ…"
 
 #: results/templates/ballot/ballot_debate_info.html
 msgid "No speakers spoke twice (no 'iron-person' speeches)"
-msgstr "Ни один спикер не говорил дважды (никто не \"айрон-менил\")"
+msgstr "ÐÐ¸ Ð¾Ð´Ð¸Ð½ ÑÐ¿Ð¸ÐºÐµÑ€ Ð½Ðµ Ð³Ð¾Ð²Ð¾Ñ€Ð¸Ð» Ð´Ð²Ð°Ð¶Ð´Ñ‹ (Ð½Ð¸ÐºÑ‚Ð¾ Ð½Ðµ \"Ð°Ð¹Ñ€Ð¾Ð½-Ð¼ÐµÐ½Ð¸Ð»\")"
 
 #: results/templates/ballot/ballot_debate_info.html
 msgid "A speaker spoke twice (an 'iron-person' speech)"
-msgstr "Спикер говорил дважды (играл айрон-меном)"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ Ð³Ð¾Ð²Ð¾Ñ€Ð¸Ð» Ð´Ð²Ð°Ð¶Ð´Ñ‹ (Ð¸Ð³Ñ€Ð°Ð» Ð°Ð¹Ñ€Ð¾Ð½-Ð¼ÐµÐ½Ð¾Ð¼)"
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Result"
-msgstr "Результат"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚"
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Rank"
-msgstr "Место"
+msgstr "ÐœÐµÑÑ‚Ð¾"
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Margin"
-msgstr "Предел"
+msgstr "ÐŸÑ€ÐµÐ´ÐµÐ»"
 
 #: results/templates/ballot/ballot_set.html
 msgid "There are some problems with this scoresheet. Please review and correct them."
-msgstr "Есть проблемы с этим бэллотом. Пожалуйста, проверьте и исправьте их."
+msgstr "Ð•ÑÑ‚ÑŒ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ñ‹ Ñ ÑÑ‚Ð¸Ð¼ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð¼. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ð¸ Ð¸ÑÐ¿Ñ€Ð°Ð²ÑŒÑ‚Ðµ Ð¸Ñ…."
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 #, python-format
 msgid "Ballot from %(name)s (%(institution)s)"
-msgstr "Бэллот от %(name)s (%(institution)s"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ð¾Ñ‚ %(name)s (%(institution)s"
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 #, python-format
 msgid "Ballot from %(name)s"
-msgstr "Бэллот от %(name)s"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ð¾Ñ‚ %(name)s"
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/public_ballot_set.html
 msgid "Scoresheet"
-msgstr "Бэллот"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚"
 
 #: results/templates/ballot/ballot_set.html
 msgid "Solo Chair"
-msgstr "Чэйр один"
+msgstr "Ð§ÑÐ¹Ñ€ Ð¾Ð´Ð¸Ð½"
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 msgid "Chair"
-msgstr "Чэйр"
+msgstr "Ð§ÑÐ¹Ñ€"
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 msgid "Panellist"
-msgstr "Винг"
+msgstr "Ð’Ð¸Ð½Ð³"
 
 #: results/templates/ballot/ballot_set.html
 msgid "Trainee"
-msgstr "Винг без права голоса"
+msgstr "Ð’Ð¸Ð½Ð³ Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
 
 #: results/templates/ballot/ballot_set.html
 msgid "Assign sides before entering scores"
-msgstr "Назначить стороны перед вводом баллов"
+msgstr "ÐÐ°Ð·Ð½Ð°Ñ‡Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Ð¿ÐµÑ€ÐµÐ´ Ð²Ð²Ð¾Ð´Ð¾Ð¼ Ð±Ð°Ð»Ð»Ð¾Ð²"
 
 #: results/templates/ballot/ballot_speaks.html
 msgid "Duplicate speeches are hidden from the speaker tab. If a speaker is 'iron-personing' you would typically mark only the lesser of their scores as a duplicate."
@@ -664,22 +664,22 @@ msgstr ""
 #, python-format
 msgid "There is %(number)s existing ballot set for this debate."
 msgid_plural "There are %(number)s existing ballot sets for this debate."
-msgstr[0] "Есть %(number)s набор бэллотов для этих дебатов."
-msgstr[1] "Есть %(number)s наборов бэллотов для этих дебатов."
-msgstr[2] "Есть %(number)s наборов бэллотов для этих дебатов."
-msgstr[3] "Есть %(number)s наборов бэллотов для этих дебатов."
+msgstr[0] "Ð•ÑÑ‚ÑŒ %(number)s Ð½Ð°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð´Ð»Ñ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²."
+msgstr[1] "Ð•ÑÑ‚ÑŒ %(number)s Ð½Ð°Ð±Ð¾Ñ€Ð¾Ð² Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð´Ð»Ñ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²."
+msgstr[2] "Ð•ÑÑ‚ÑŒ %(number)s Ð½Ð°Ð±Ð¾Ñ€Ð¾Ð² Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð´Ð»Ñ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²."
+msgstr[3] "Ð•ÑÑ‚ÑŒ %(number)s Ð½Ð°Ð±Ð¾Ñ€Ð¾Ð² Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð´Ð»Ñ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²."
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "This ballot set is <strong>confirmed</strong>."
-msgstr "Этот набор бэллотов <strong> подтверждён</strong>."
+msgstr "Ð­Ñ‚Ð¾Ñ‚ Ð½Ð°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² <strong> Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´Ñ‘Ð½</strong>."
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "This ballot set is <strong>discarded</strong>."
-msgstr "Этот набор бэллотов <strong> отклонён</strong>."
+msgstr "Ð­Ñ‚Ð¾Ñ‚ Ð½Ð°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² <strong> Ð¾Ñ‚ÐºÐ»Ð¾Ð½Ñ‘Ð½</strong>."
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "CURRENTLY VIEWING"
-msgstr "ПРОСМАТРИВАЕТСЯ ПРЯМО СЕЙЧАС"
+msgstr "ÐŸÐ ÐžÐ¡ÐœÐÐ¢Ð Ð˜Ð’ÐÐ•Ð¢Ð¡Ð¯ ÐŸÐ Ð¯ÐœÐž Ð¡Ð•Ð™Ð§ÐÐ¡"
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "MERGING"
@@ -688,12 +688,12 @@ msgstr ""
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "Version <strong>%(version)s</strong>,"
-msgstr "Версия <strong>%(version)s</strong>,"
+msgstr "Ð’ÐµÑ€ÑÐ¸Ñ <strong>%(version)s</strong>,"
 
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "entered by <strong>%(submitter)s</strong>,"
-msgstr "введено <strong>%(submitter)s</strong>,"
+msgstr "Ð²Ð²ÐµÐ´ÐµÐ½Ð¾ <strong>%(submitter)s</strong>,"
 
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
@@ -703,12 +703,12 @@ msgstr ""
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "submitted from the public form on %(ip_address)s,"
-msgstr "отправлено из публичной формы на %(ip_address)s,"
+msgstr "Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¾ Ð¸Ð· Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾Ð¹ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð½Ð° %(ip_address)s,"
 
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "%(timestamp)s (%(timeago)s ago),"
-msgstr "%(timestamp)s (%(timeago)s назад),"
+msgstr "%(timestamp)s (%(timeago)s Ð½Ð°Ð·Ð°Ð´),"
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "unknown"
@@ -717,62 +717,62 @@ msgstr ""
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "confirmed by <strong>%(confirmer)s</strong>"
-msgstr "подтверждено <strong>%(confirmer)s</strong>"
+msgstr "Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¾ <strong>%(confirmer)s</strong>"
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "unconfirmed"
-msgstr "не потверждено"
+msgstr "Ð½Ðµ Ð¿Ð¾Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¾"
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "(discarded)"
-msgstr "(отклонено)"
+msgstr "(Ð¾Ñ‚ÐºÐ»Ð¾Ð½ÐµÐ½Ð¾)"
 
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "<em>(identical to version %(others)s)</em>"
 msgid_plural "<em>(identical to versions %(others)s)</em>"
-msgstr[0] "<em> (идентичный версии %(others)s)</em>"
-msgstr[1] "<em>(идентичный версиям%(others)s)</em>"
-msgstr[2] "<em>(идентичный версиям%(others)s)</em>"
-msgstr[3] "<em>(идентичный версиям%(others)s)</em>"
+msgstr[0] "<em> (Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ‡Ð½Ñ‹Ð¹ Ð²ÐµÑ€ÑÐ¸Ð¸ %(others)s)</em>"
+msgstr[1] "<em>(Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ‡Ð½Ñ‹Ð¹ Ð²ÐµÑ€ÑÐ¸ÑÐ¼%(others)s)</em>"
+msgstr[2] "<em>(Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ‡Ð½Ñ‹Ð¹ Ð²ÐµÑ€ÑÐ¸ÑÐ¼%(others)s)</em>"
+msgstr[3] "<em>(Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ‡Ð½Ñ‹Ð¹ Ð²ÐµÑ€ÑÐ¸ÑÐ¼%(others)s)</em>"
 
 #: results/templates/ballot_entry.html
 #, python-format
 msgid "This ballot entry interface is in beta, if you encounter any problems the older version of the interface is <a href=\"%(old_url)s\" class=\"alert-link\">available here</a>."
-msgstr "Этот интерфейс введения бэллотов в бета-версии, если у вас есть какие-то проблемы с ним, старая версия интерфейса <a href=\"%(old_url)s\" class=\"alert-link\"> доступна здесь.</a>."
+msgstr "Ð­Ñ‚Ð¾Ñ‚ Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹Ñ Ð²Ð²ÐµÐ´ÐµÐ½Ð¸Ñ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð² Ð±ÐµÑ‚Ð°-Ð²ÐµÑ€ÑÐ¸Ð¸, ÐµÑÐ»Ð¸ Ñƒ Ð²Ð°Ñ ÐµÑÑ‚ÑŒ ÐºÐ°ÐºÐ¸Ðµ-Ñ‚Ð¾ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ñ‹ Ñ Ð½Ð¸Ð¼, ÑÑ‚Ð°Ñ€Ð°Ñ Ð²ÐµÑ€ÑÐ¸Ñ Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐ° <a href=\"%(old_url)s\" class=\"alert-link\"> Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ð·Ð´ÐµÑÑŒ.</a>."
 
 #: results/templates/ballot_entry_base.html
 msgid "This debate has a panel with an even number of voting adjudicators. If the adjudicators split evenly, the debate will be awarded to the team for which the chair voted."
-msgstr "В этих дебатах коллегия состояла из четного числа судей с правом голоса. Если голоса распределились поровну, победителем станет команда, за которую голосовал чэйр."
+msgstr "Ð’ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸Ñ ÑÐ¾ÑÑ‚Ð¾ÑÐ»Ð° Ð¸Ð· Ñ‡ÐµÑ‚Ð½Ð¾Ð³Ð¾ Ñ‡Ð¸ÑÐ»Ð° ÑÑƒÐ´ÐµÐ¹ Ñ Ð¿Ñ€Ð°Ð²Ð¾Ð¼ Ð³Ð¾Ð»Ð¾ÑÐ°. Ð•ÑÐ»Ð¸ Ð³Ð¾Ð»Ð¾ÑÐ° Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ð»Ð¸ÑÑŒ Ð¿Ð¾Ñ€Ð¾Ð²Ð½Ñƒ, Ð¿Ð¾Ð±ÐµÐ´Ð¸Ñ‚ÐµÐ»ÐµÐ¼ ÑÑ‚Ð°Ð½ÐµÑ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°, Ð·Ð° ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²Ð°Ð» Ñ‡ÑÐ¹Ñ€."
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
-msgstr "В %(team)s есть спикеры, которые произнесли несколько речей в последнем раунде - то есть были айрон-менами. Пожалуйста, внимательно проверьте бэллот, чтобы уточнить, будет ли это происходить и в текущем раунде тоже. Если да, убедитесь, что выбранные ниже спикеры отражают это."
+msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgstr "Ð’ %(team)s ÐµÑÑ‚ÑŒ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑÐ»Ð¸ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€ÐµÑ‡ÐµÐ¹ Ð² Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ - Ñ‚Ð¾ ÐµÑÑ‚ÑŒ Ð±Ñ‹Ð»Ð¸ Ð°Ð¹Ñ€Ð¾Ð½-Ð¼ÐµÐ½Ð°Ð¼Ð¸. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð²Ð½Ð¸Ð¼Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ð±ÑÐ»Ð»Ð¾Ñ‚, Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑƒÑ‚Ð¾Ñ‡Ð½Ð¸Ñ‚ÑŒ, Ð±ÑƒÐ´ÐµÑ‚ Ð»Ð¸ ÑÑ‚Ð¾ Ð¿Ñ€Ð¾Ð¸ÑÑ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ð¸ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ Ñ‚Ð¾Ð¶Ðµ. Ð•ÑÐ»Ð¸ Ð´Ð°, ÑƒÐ±ÐµÐ´Ð¸Ñ‚ÐµÑÑŒ, Ñ‡Ñ‚Ð¾ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ðµ Ð½Ð¸Ð¶Ðµ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹ Ð¾Ñ‚Ñ€Ð°Ð¶Ð°ÑŽÑ‚ ÑÑ‚Ð¾."
 
 #: results/templates/ballot_entry_form.html
 #, python-format
 msgid "Scoresheet from chair %(chair)s"
-msgstr "Бэллот от чэйра %(chair)s"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ð¾Ñ‚ Ñ‡ÑÐ¹Ñ€Ð° %(chair)s"
 
 #: results/templates/ballot_entry_form.html
 msgid "Scoresheet, no chair set"
-msgstr "Бэллот, чэйр не установлен"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚, Ñ‡ÑÐ¹Ñ€ Ð½Ðµ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½"
 
 #: results/templates/ballot_entry_form.html
 #, python-format
 msgid "Error with %(pos)s's speaker field: %(error)s"
-msgstr "Ошибка в %(pos)s поле спикера: %(error)s"
+msgstr "ÐžÑˆÐ¸Ð±ÐºÐ° Ð² %(pos)s Ð¿Ð¾Ð»Ðµ ÑÐ¿Ð¸ÐºÐµÑ€Ð°: %(error)s"
 
 #: results/templates/ballot_entry_form.html
 #, python-format
 msgid "Error with %(pos)s's duplicate speaker field: %(error)s"
-msgstr "Ошибка в %(pos)s поле дублирующего спикера: %(error)s"
+msgstr "ÐžÑˆÐ¸Ð±ÐºÐ° Ð² %(pos)s Ð¿Ð¾Ð»Ðµ Ð´ÑƒÐ±Ð»Ð¸Ñ€ÑƒÑŽÑ‰ÐµÐ³Ð¾ ÑÐ¿Ð¸ÐºÐµÑ€Ð°: %(error)s"
 
 #: results/templates/ballot_entry_form.html
 #, python-format
 msgid "Error with %(pos)s's score field: %(error)s"
-msgstr "Ошибка в %(pos)s поле баллов: %(error)s"
+msgstr "ÐžÑˆÐ¸Ð±ÐºÐ° Ð² %(pos)s Ð¿Ð¾Ð»Ðµ Ð±Ð°Ð»Ð»Ð¾Ð²: %(error)s"
 
 #: results/templates/debate_postponement_form.html
 msgid "Postponed"
@@ -784,71 +784,71 @@ msgstr ""
 
 #: results/templates/enter_results.html
 msgid "Ballot Status"
-msgstr "Статус бэллота"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
 
 #: results/templates/enter_results.html
 msgid "only the confirmed ballot set will affect this debate's result"
-msgstr "только подтвержденный набор бэллотовв повлияет на результат этих дебатов"
+msgstr "Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ð¹ Ð½Ð°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²Ð² Ð¿Ð¾Ð²Ð»Ð¸ÑÐµÑ‚ Ð½Ð° Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: results/templates/enter_results.html
 msgid "Debate Status"
-msgstr "Статус дебатов"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: results/templates/enter_results.html
 msgid "all debates must be confirmed to complete the round"
-msgstr "все дебаты должны быть подтверждены для завершения раунда"
+msgstr "Ð²ÑÐµ Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð±Ñ‹Ñ‚ÑŒ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹ Ð´Ð»Ñ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ Ñ€Ð°ÑƒÐ½Ð´Ð°"
 
 #: results/templates/enter_results.html
 msgid "Save Ballot"
-msgstr "Сохранить бэллот"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚"
 
 #: results/templates/enter_results.html
 msgid "Cancel Entry"
-msgstr "Отменить ввод"
+msgstr "ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð²Ð²Ð¾Ð´"
 
 #: results/templates/includes/public_enter_results_info.html
 #, python-format
 msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can submit results and/or feedback for your debates. You may bookmark this page and return here after each debate for the available actions."
-msgstr "URL этой страницы персонализирован для вас, %(name)s. <strong> Не делитесь им ни с кем:</strong> любой, кто знает это URL может отправлять за вас результаты дебатов и/или фидбэк. Если вы запомните эту страницу, вы можете возвращаться после каждого раунда для доступных действий."
+msgstr "URL ÑÑ‚Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð´Ð»Ñ Ð²Ð°Ñ, %(name)s. <strong> ÐÐµ Ð´ÐµÐ»Ð¸Ñ‚ÐµÑÑŒ Ð¸Ð¼ Ð½Ð¸ Ñ ÐºÐµÐ¼:</strong> Ð»ÑŽÐ±Ð¾Ð¹, ÐºÑ‚Ð¾ Ð·Ð½Ð°ÐµÑ‚ ÑÑ‚Ð¾ URL Ð¼Ð¾Ð¶ÐµÑ‚ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ð·Ð° Ð²Ð°Ñ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð¸/Ð¸Ð»Ð¸ Ñ„Ð¸Ð´Ð±ÑÐº. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð·Ð°Ð¿Ð¾Ð¼Ð½Ð¸Ñ‚Ðµ ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒÑÑ Ð¿Ð¾ÑÐ»Ðµ ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð° Ð´Ð»Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ð¹."
 
 #: results/templates/privateurl_ballot_set.html
 #: results/templates/privateurl_ballot_set_error.html
 #, python-format
 msgid "The page is provided to allow you, <strong>%(name)s</strong>, to verify your own scoresheet. <strong>You must not share this URL with anyone.</strong> Sharing the URL will allow others to access <strong>all</strong> actions from your personal landing page."
-msgstr "Эта страница позволяет вам, <strong>%(name)s</strong>, подтвердить ваш бэллот. <strong>Вы не должны ни с кем делиться этим URL.</strong> Если вы сообщите кому-то этот URL, другие лица получат доступ ко<strong>всем</strong>действиям с вашей личной лэндинговой страницы."
+msgstr "Ð­Ñ‚Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð¿Ð¾Ð·Ð²Ð¾Ð»ÑÐµÑ‚ Ð²Ð°Ð¼, <strong>%(name)s</strong>, Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð±ÑÐ»Ð»Ð¾Ñ‚. <strong>Ð’Ñ‹ Ð½Ðµ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð½Ð¸ Ñ ÐºÐµÐ¼ Ð´ÐµÐ»Ð¸Ñ‚ÑŒÑÑ ÑÑ‚Ð¸Ð¼ URL.</strong> Ð•ÑÐ»Ð¸ Ð²Ñ‹ ÑÐ¾Ð¾Ð±Ñ‰Ð¸Ñ‚Ðµ ÐºÐ¾Ð¼Ñƒ-Ñ‚Ð¾ ÑÑ‚Ð¾Ñ‚ URL, Ð´Ñ€ÑƒÐ³Ð¸Ðµ Ð»Ð¸Ñ†Ð° Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿ ÐºÐ¾<strong>Ð²ÑÐµÐ¼</strong>Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸ÑÐ¼ Ñ Ð²Ð°ÑˆÐµÐ¹ Ð»Ð¸Ñ‡Ð½Ð¾Ð¹ Ð»ÑÐ½Ð´Ð¸Ð½Ð³Ð¾Ð²Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹."
 
 #: results/templates/privateurl_ballot_set_error.html
 #: results/templates/public_ballot_set_error.html
 msgid "Ballot Not Available"
-msgstr "Бэллот не доступен"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ð½Ðµ Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½"
 
 #: results/templates/privateurl_ballot_set_error.html
 #, python-format
 msgid "<a href=\"%(url)s\">Back to your private landing page.</a>"
-msgstr "<a href=\"%(url)s\">Вернуться на свою личную страницу.</a>"
+msgstr "<a href=\"%(url)s\">Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð° ÑÐ²Ð¾ÑŽ Ð»Ð¸Ñ‡Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ.</a>"
 
 #: results/templates/public_add_ballot.html
 #: results/templates/public_add_ballot_unreleased.html
 msgid "Enter Ballot"
-msgstr "Ввести бэлллот"
+msgstr "Ð’Ð²ÐµÑÑ‚Ð¸ Ð±ÑÐ»Ð»Ð»Ð¾Ñ‚"
 
 #: results/templates/public_add_ballot.html
 msgid "Who are you?"
-msgstr "Кто вы?"
+msgstr "ÐšÑ‚Ð¾ Ð²Ñ‹?"
 
 #: results/templates/public_add_ballot.html
 msgid "(click your name on this list)"
-msgstr "(нажмите на ваше имя в этом списке)"
+msgstr "(Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð½Ð° Ð²Ð°ÑˆÐµ Ð¸Ð¼Ñ Ð² ÑÑ‚Ð¾Ð¼ ÑÐ¿Ð¸ÑÐºÐµ)"
 
 #: results/templates/public_add_ballot_unreleased.html
 #, python-format
 msgid "The draw and/or motions for %(round)s have yet to be released."
-msgstr "Сетка и/или темы для %(round)s ещё не опубликована."
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð¸/Ð¸Ð»Ð¸ Ñ‚ÐµÐ¼Ñ‹ Ð´Ð»Ñ %(round)s ÐµÑ‰Ñ‘ Ð½Ðµ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°."
 
 #: results/templates/public_ballot_set.html
 #, python-format
 msgid "Ballot for %(matchup)s"
-msgstr "Бэллот для %(matchup)s"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ð´Ð»Ñ %(matchup)s"
 
 #: results/templates/public_ballot_set.html
 #, python-format
@@ -857,26 +857,26 @@ msgstr "%(round)s @ %(room)s"
 
 #: results/templates/public_ballot_set.html
 msgid "Return to landing page"
-msgstr "Назад на лэндинговую страницу"
+msgstr "ÐÐ°Ð·Ð°Ð´ Ð½Ð° Ð»ÑÐ½Ð´Ð¸Ð½Ð³Ð¾Ð²ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ"
 
 #: results/templates/public_ballot_set.html
 #, python-format
 msgid "Return to Results for %(round)s"
-msgstr "Вернуться к результатам за %(round)s"
+msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð°Ð¼ Ð·Ð° %(round)s"
 
 #: results/templates/public_ballot_set.html
 msgid "Motion"
-msgstr "Тема"
+msgstr "Ð¢ÐµÐ¼Ð°"
 
 #: results/templates/public_ballot_set.html
 #, python-format
 msgid "From %(name)s (%(institution)s)"
-msgstr "От %(name)s (%(institution)s)"
+msgstr "ÐžÑ‚ %(name)s (%(institution)s)"
 
 #: results/templates/public_ballot_set.html
 #, python-format
 msgid "<em>Total for %(name)s (%(side)s)</em>"
-msgstr "<em>Всего для %(name)s (%(side)s)</em>"
+msgstr "<em>Ð’ÑÐµÐ³Ð¾ Ð´Ð»Ñ %(name)s (%(side)s)</em>"
 
 #: results/templates/public_ballot_set.html
 #, python-format
@@ -894,12 +894,12 @@ msgstr ""
 #: results/templates/public_ballot_set_error.html
 #, python-format
 msgid "<a href=\"%(url)s\">Back to the tournament home page.</a>"
-msgstr "<a href=\"%(url)s\">Вернуться к домашней странице турнира.</a>"
+msgstr "<a href=\"%(url)s\">Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº Ð´Ð¾Ð¼Ð°ÑˆÐ½ÐµÐ¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°.</a>"
 
 #: results/templates/public_enter_results.html
 #, python-format
 msgid "%(adjudicator)s, note that you must enter <strong>all of the ballots</strong> from your panel, not just your own!"
-msgstr "%(adjudicator)s, обратите внимание, что вы должны ввести <strong> все бэллоты</strong>вашей коллегии, не только ваш личный!"
+msgstr "%(adjudicator)s, Ð¾Ð±Ñ€Ð°Ñ‚Ð¸Ñ‚Ðµ Ð²Ð½Ð¸Ð¼Ð°Ð½Ð¸Ðµ, Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð²Ð²ÐµÑÑ‚Ð¸ <strong> Ð²ÑÐµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹</strong>Ð²Ð°ÑˆÐµÐ¹ ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸Ð¸, Ð½Ðµ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð²Ð°Ñˆ Ð»Ð¸Ñ‡Ð½Ñ‹Ð¹!"
 
 #: results/templates/public_enter_results.html
 msgid "Some information, such as speaker order, shown is based on a previous ballot. If anything is incorrect, please correct it and contact the tab team."
@@ -909,10 +909,10 @@ msgstr ""
 #, python-format
 msgid "This form has already been submitted <strong>once</strong>. Please contact a tab official after submitting your form."
 msgid_plural "This form has already been submitted <strong>%(nsubmissions)s</strong> times. Please contact a tab official after submitting your form."
-msgstr[0] "Эта форма уже была <strong> отправлена</strong>. Пожалуйста, свяжитесь с тэбмастером после отправки вашей формы."
-msgstr[1] "Эта форма уже была отправлена <strong> %(nsubmissions)s</strong> раз. Пожалуйста, свяжитесь с тэбмастером после отправки вашей формы."
-msgstr[2] "Эта форма уже была отправлена <strong> %(nsubmissions)s</strong> раз. Пожалуйста, свяжитесь с тэбмастером после отправки вашей формы."
-msgstr[3] "Эта форма уже была отправлена <strong> %(nsubmissions)s</strong> раз. Пожалуйста, свяжитесь с тэбмастером после отправки вашей формы."
+msgstr[0] "Ð­Ñ‚Ð° Ñ„Ð¾Ñ€Ð¼Ð° ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð° <strong> Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð°</strong>. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼ Ð¿Ð¾ÑÐ»Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ð²Ð°ÑˆÐµÐ¹ Ñ„Ð¾Ñ€Ð¼Ñ‹."
+msgstr[1] "Ð­Ñ‚Ð° Ñ„Ð¾Ñ€Ð¼Ð° ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð° <strong> %(nsubmissions)s</strong> Ñ€Ð°Ð·. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼ Ð¿Ð¾ÑÐ»Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ð²Ð°ÑˆÐµÐ¹ Ñ„Ð¾Ñ€Ð¼Ñ‹."
+msgstr[2] "Ð­Ñ‚Ð° Ñ„Ð¾Ñ€Ð¼Ð° ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð° <strong> %(nsubmissions)s</strong> Ñ€Ð°Ð·. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼ Ð¿Ð¾ÑÐ»Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ð²Ð°ÑˆÐµÐ¹ Ñ„Ð¾Ñ€Ð¼Ñ‹."
+msgstr[3] "Ð­Ñ‚Ð° Ñ„Ð¾Ñ€Ð¼Ð° ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð° <strong> %(nsubmissions)s</strong> Ñ€Ð°Ð·. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼ Ð¿Ð¾ÑÐ»Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ð²Ð°ÑˆÐµÐ¹ Ñ„Ð¾Ñ€Ð¼Ñ‹."
 
 #: results/templates/public_enter_results.html
 msgid "Submit Ballot"
@@ -924,48 +924,48 @@ msgstr[3] ""
 
 #: results/templates/public_enter_results.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
-msgstr "При отправке этой формы ваш IP-адрес будет сохраняться в целях авторизации."
+msgstr "ÐŸÑ€Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐµ ÑÑ‚Ð¾Ð¹ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð²Ð°Ñˆ IP-Ð°Ð´Ñ€ÐµÑ Ð±ÑƒÐ´ÐµÑ‚ ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÑ‚ÑŒÑÑ Ð² Ñ†ÐµÐ»ÑÑ… Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸."
 
 #: results/templates/public_enter_results_error.html
 #, python-format
 msgid "No Result to Enter (%(adjudicator)s)"
-msgstr "Нет результатов для ввода (%(adjudicator)s)"
+msgstr "ÐÐµÑ‚ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð² Ð´Ð»Ñ Ð²Ð²Ð¾Ð´Ð° (%(adjudicator)s)"
 
 #: results/templates/public_enter_results_error.html
 msgid "No Result to Enter"
-msgstr "Нет результатов для введения"
+msgstr "ÐÐµÑ‚ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð² Ð´Ð»Ñ Ð²Ð²ÐµÐ´ÐµÐ½Ð¸Ñ"
 
 #: results/templates/public_results_for_round.html
 msgid "View by Team"
-msgstr "Посмотреть по командам"
+msgstr "ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð¿Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼"
 
 #: results/templates/public_results_for_round.html
 msgid "View by Debate"
-msgstr "Посмотреть по дебатам"
+msgstr "ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð¿Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð°Ð¼"
 
 #: results/templates/public_results_index.html
 #, python-format
 msgid "Results for %(round)s"
-msgstr "Результаты %(round)s"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ %(round)s"
 
 #: results/templates/public_results_not_available.html
 #: results/templates/public_results_silent.html
 msgid "Results Not Available"
-msgstr "Результаты не доступны"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð½Ðµ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹"
 
 #: results/templates/public_results_not_available.html
 #, python-format
 msgid "The results for %(round)s aren't yet available."
-msgstr "Результаты для %(round)s еще не доступны."
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð´Ð»Ñ %(round)s ÐµÑ‰Ðµ Ð½Ðµ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹."
 
 #: results/templates/public_results_silent.html
 #, python-format
 msgid "%(round)s is a silent round."
-msgstr "%(round)s - это закрытый раунд."
+msgstr "%(round)s - ÑÑ‚Ð¾ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´."
 
 #: results/utils.py
 msgid "No Ballot"
-msgstr "Нет бэллота"
+msgstr "ÐÐµÑ‚ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
 
 #: results/utils.py
 msgid "Debate was Postponed"
@@ -973,17 +973,17 @@ msgstr ""
 
 #: results/utils.py
 msgid "Ballot is Unconfirmed"
-msgstr "Бэллот не подтвержден"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½"
 
 #: results/utils.py
 msgid "Ballot is Confirmed"
-msgstr "Бэллот подтвержден"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½"
 
 #. Translators: e.g. "{Melbourne 1} as {OG}", "{Cape Town 1} as {CO}"
 #: results/utils.py
 #, python-format
 msgid "%(team)s as %(side)s"
-msgstr "%(team)s как %(side)s"
+msgstr "%(team)s ÐºÐ°Ðº %(side)s"
 
 #: results/utils.py
 #, python-format
@@ -999,12 +999,12 @@ msgstr ""
 #: results/utils.py
 #, python-format
 msgid "Advancing: %(advancing_list)s<br>"
-msgstr "Проходят:%(advancing_list)s<br>"
+msgstr "ÐŸÑ€Ð¾Ñ…Ð¾Ð´ÑÑ‚:%(advancing_list)s<br>"
 
 #: results/utils.py
 #, python-format
 msgid "Eliminated: %(eliminated_list)s"
-msgstr "Не проходят: %(eliminated_list)s"
+msgstr "ÐÐµ Ð¿Ñ€Ð¾Ñ…Ð¾Ð´ÑÑ‚: %(eliminated_list)s"
 
 #: results/utils.py
 #, python-format
@@ -1016,62 +1016,62 @@ msgstr "1: %(first_team)s<br>"
 msgid "2nd: %(second_team)s<br>\n"
 "3rd: %(third_team)s<br>\n"
 "4th: %(fourth_team)s"
-msgstr "2-е: %(second_team)s<br>\n"
-"3-е: %(third_team)s<br>\n"
-"4-е: %(fourth_team)s"
+msgstr "2-Ðµ: %(second_team)s<br>\n"
+"3-Ðµ: %(third_team)s<br>\n"
+"4-Ðµ: %(fourth_team)s"
 
 #: results/utils.py
 #, python-format
 msgid "Error with result for %(debate)s"
-msgstr "Ошибка в результатах %(debate)s"
+msgstr "ÐžÑˆÐ¸Ð±ÐºÐ° Ð² Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð°Ñ… %(debate)s"
 
 #. Translators: Abbreviation for Prime Minister
 #: results/utils.py
 msgid "PM"
-msgstr "ПМ"
+msgstr "ÐŸÐœ"
 
 #. Translators: Abbreviation for Deputy Prime Minister
 #: results/utils.py
 msgid "DPM"
-msgstr "ЗПМ"
+msgstr "Ð—ÐŸÐœ"
 
 #. Translators: Abbreviation for Leader of the Opposition
 #: results/utils.py
 msgid "LO"
-msgstr "ЛО"
+msgstr "Ð›Ðž"
 
 #. Translators: Abbreviation for Deputy Leader of the Opposition
 #: results/utils.py
 msgid "DLO"
-msgstr "ЗЛО"
+msgstr "Ð—Ð›Ðž"
 
 #. Translators: Abbreviation for Member for the Government
 #: results/utils.py
 msgid "MG"
-msgstr "ЧП"
+msgstr "Ð§ÐŸ"
 
 #. Translators: Abbreviation for Government Whip
 #: results/utils.py
 msgid "GW"
-msgstr "СП"
+msgstr "Ð¡ÐŸ"
 
 #. Translators: Abbreviation for Member for the Opposition
 #: results/utils.py
 msgid "MO"
-msgstr "ЧО"
+msgstr "Ð§Ðž"
 
 #. Translators: Abbreviation for Opposition Whip
 #: results/utils.py
 msgid "OW"
-msgstr "СО"
+msgstr "Ð¡Ðž"
 
 #: results/utils.py
 msgid "Reply"
-msgstr "Ответ"
+msgstr "ÐžÑ‚Ð²ÐµÑ‚"
 
 #: results/views.py
 msgid " vs "
-msgstr " против "
+msgstr " Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² "
 
 #: results/views.py
 #, python-format
@@ -1080,7 +1080,7 @@ msgstr ""
 
 #: results/views.py
 msgid "N/A"
-msgstr "Н/Д"
+msgstr "Ð/Ð”"
 
 #: results/views.py
 msgid "New Ballot Set"
@@ -1089,21 +1089,21 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "Ballot set for %(debate)s added."
-msgstr "Набор бэллотов для %(debate)s добавлен."
+msgstr "ÐÐ°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð´Ð»Ñ %(debate)s Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½."
 
 #: results/views.py
 msgid " Email receipts queued to be sent."
-msgstr " Email поставлены в очередь на отправку."
+msgstr " Email Ð¿Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð² Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÑƒ."
 
 #: results/views.py
 #, python-format
 msgid "Whoops! The debate %(debate)s doesn't have a chair, so you can't enter results for it."
-msgstr "Упс! У дебатов %(debate)s нет чэйра, так что вы не можете ввести для них результаты."
+msgstr "Ð£Ð¿Ñ! Ð£ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² %(debate)s Ð½ÐµÑ‚ Ñ‡ÑÐ¹Ñ€Ð°, Ñ‚Ð°Ðº Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð²Ð²ÐµÑÑ‚Ð¸ Ð´Ð»Ñ Ð½Ð¸Ñ… Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹."
 
 #: results/views.py
 #, python-format
 msgid "Whoops! The debate %(debate)s doesn't have its sides confirmed, so you can't enter results for it."
-msgstr "Упс! У дебатов %(debate)s не подтверждены стороны, так что вы не можете ввести их результаты."
+msgstr "Ð£Ð¿Ñ! Ð£ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² %(debate)s Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹, Ñ‚Ð°Ðº Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð²Ð²ÐµÑÑ‚Ð¸ Ð¸Ñ… Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹."
 
 #: results/views.py
 msgid "Edit Ballot Set"
@@ -1112,46 +1112,46 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "Ballot set for %(matchup)s discarded."
-msgstr "Набор бэллотов для %(matchup)s отклонён."
+msgstr "ÐÐ°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð´Ð»Ñ %(matchup)s Ð¾Ñ‚ÐºÐ»Ð¾Ð½Ñ‘Ð½."
 
 #: results/views.py
 #, python-format
 msgid "Ballot set for %(matchup)s confirmed."
-msgstr "Набор бэллотов для %(matchup)s подтвержден."
+msgstr "ÐÐ°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð´Ð»Ñ %(matchup)s Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½."
 
 #: results/views.py
 #, python-format
 msgid "Edits to ballot set for %(matchup)s saved."
-msgstr "Изменения в набор бэллотов %(matchup)s сохранены."
+msgstr "Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð² Ð½Ð°Ð±Ð¾Ñ€ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² %(matchup)s ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹."
 
 #: results/views.py
 #, python-format
 msgid "Thanks, %(user)s! Your ballot for %(debate)s has been recorded."
-msgstr "Спасибо, %(user)s! Ваш бэллот %(debate)s записан."
+msgstr "Ð¡Ð¿Ð°ÑÐ¸Ð±Ð¾, %(user)s! Ð’Ð°Ñˆ Ð±ÑÐ»Ð»Ð¾Ñ‚ %(debate)s Ð·Ð°Ð¿Ð¸ÑÐ°Ð½."
 
 #: results/views.py
 msgid "The draw for this round hasn't been released yet."
-msgstr "Сетка на этот раунд не была опубликована."
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½Ð° ÑÑ‚Ð¾Ñ‚ Ñ€Ð°ÑƒÐ½Ð´ Ð½Ðµ Ð±Ñ‹Ð»Ð° Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð°."
 
 #: results/views.py
 msgid "The motions for this round haven't been released yet."
-msgstr "Темы на этот раунд не опубликованы."
+msgstr "Ð¢ÐµÐ¼Ñ‹ Ð½Ð° ÑÑ‚Ð¾Ñ‚ Ñ€Ð°ÑƒÐ½Ð´ Ð½Ðµ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ñ‹."
 
 #: results/views.py
 msgid "It looks like you don't have a debate this round."
-msgstr "Похоже, что вы не участвуете в дебатах в этом раунде."
+msgstr "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ, Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ð½Ðµ ÑƒÑ‡Ð°ÑÑ‚Ð²ÑƒÐµÑ‚Ðµ Ð² Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
 
 #: results/views.py
 msgid "It looks like you're assigned to two or more debates this round. Please contact a tab room official."
-msgstr "Похоже, вы привязаны к двум или более дебатам в этом раунде. Пожалуйста, свяжитесь с тэбмастером."
+msgstr "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ, Ð²Ñ‹ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ñ‹ Ðº Ð´Ð²ÑƒÐ¼ Ð¸Ð»Ð¸ Ð±Ð¾Ð»ÐµÐµ Ð´ÐµÐ±Ð°Ñ‚Ð°Ð¼ Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼."
 
 #: results/views.py
 msgid "Your debate doesn't have a chair, so you can't enter results for it. Please contact a tab room official."
-msgstr "В этих дебатах нет чэйра, поэтому вы не можете ввести их результаты. Пожалуйста, свяжитесь с тэбмастером."
+msgstr "Ð’ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð½ÐµÑ‚ Ñ‡ÑÐ¹Ñ€Ð°, Ð¿Ð¾ÑÑ‚Ð¾Ð¼Ñƒ Ð²Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð²Ð²ÐµÑÑ‚Ð¸ Ð¸Ñ… Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼."
 
 #: results/views.py
 msgid "It looks like the sides for this debate haven't yet been confirmed, so you can't enter results for it. Please contact a tab room official."
-msgstr "Похоже, что стороны в этих дебатах ещё не подтверждены, так что вы не можете ввести их результаты. Пожалуйста, свяжитесь с тэбмастером."
+msgstr "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ, Ñ‡Ñ‚Ð¾ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Ð² ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… ÐµÑ‰Ñ‘ Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ñ‹, Ñ‚Ð°Ðº Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð²Ð²ÐµÑÑ‚Ð¸ Ð¸Ñ… Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð¼."
 
 #: results/views.py
 msgid "It looks like you were assigned to two or more debates. Please contact a tab room official."
@@ -1160,38 +1160,39 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "This debate is in %s, which is a silent round."
-msgstr "Эти дебаты в %s, который является закрытым раундом."
+msgstr "Ð­Ñ‚Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð² %s, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð¼."
 
 #: results/views.py
 #, python-format
 msgid "This debate is in %s, the results for which aren't available yet."
-msgstr "Эти дебаты находятся в %s, результаты которых пока не доступны."
+msgstr "Ð­Ñ‚Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð½Ð°Ñ…Ð¾Ð´ÑÑ‚ÑÑ Ð² %s, Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ð¿Ð¾ÐºÐ° Ð½Ðµ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹."
 
 #: results/views.py
 #, python-format
 msgid "The result for debate %s is not confirmed."
-msgstr "Результат для дебатов %s не подтвержден."
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð´Ð»Ñ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² %s Ð½Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½."
 
 #: results/views.py
 #, python-format
 msgid "The debate %s does not have a confirmed ballot."
-msgstr "У дебатов %s нет подтвержденного бэллота."
+msgstr "Ð£ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² %s Ð½ÐµÑ‚ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°."
 
 #: results/views.py
 #, python-format
 msgid "There is no result yet for debate %s."
-msgstr "Нет результатов для дебатов %s."
+msgstr "ÐÐµÑ‚ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð² Ð´Ð»Ñ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² %s."
 
 #: results/views.py
 #, python-format
 msgid "Add result from %(adjudicator)s"
-msgstr "Добавить результат от %(adjudicator)s"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð¾Ñ‚ %(adjudicator)s"
 
 #: results/views.py
 msgid "Adjudicator"
-msgstr "Судья"
+msgstr "Ð¡ÑƒÐ´ÑŒÑ"
 
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
+
 

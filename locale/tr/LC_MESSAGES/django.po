@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:40+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,44 +11,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: tr\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 934\n"
 
 #: api/apps.py
 msgid "Application Programming Interface"
-msgstr "Uygulama Programlama Arayüzü"
+msgstr "Uygulama Programlama ArayÃ¼zÃ¼"
 
 #: checkins/admin.py
 msgid "Type"
-msgstr "Tür"
+msgstr "TÃ¼r"
 
 #: checkins/admin.py
 msgid "Checkin time"
-msgstr "Giriş zamanı"
+msgstr "GiriÅŸ zamanÄ±"
 
 #: checkins/apps.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Check-Ins"
-msgstr "Girişler"
+msgstr "GiriÅŸler"
 
 #: checkins/consumers.py
 msgid "Sent checkin identifier doesn't exist"
-msgstr "Gönderilen giriş tanımlayıcısı mevcut değil"
+msgstr "GÃ¶nderilen giriÅŸ tanÄ±mlayÄ±cÄ±sÄ± mevcut deÄŸil"
 
 #: checkins/consumers.py
 msgid "Checkins"
-msgstr "Giriş işlemleri"
+msgstr "GiriÅŸ iÅŸlemleri"
 
 #: checkins/consumers.py
 msgid "No checkin identifiers exist for sent barcodes"
-msgstr "Gönderilen barkodlar için giriş tanımlayıcısı yok"
+msgstr "GÃ¶nderilen barkodlar iÃ§in giriÅŸ tanÄ±mlayÄ±cÄ±sÄ± yok"
 
 #: checkins/models.py
 msgid "The barcode must contain exactly six digits."
-msgstr "Barkod tam altı basamaktan oluşmalıdır."
+msgstr "Barkod tam altÄ± basamaktan oluÅŸmalÄ±dÄ±r."
 
 #: checkins/models.py
 msgid "barcode"
@@ -56,7 +56,7 @@ msgstr "barkod"
 
 #: checkins/models.py
 msgid "<Not the child instance>"
-msgstr "<Alt örnek değil>"
+msgstr "<Alt Ã¶rnek deÄŸil>"
 
 #: checkins/models.py
 #, python-format
@@ -65,43 +65,43 @@ msgstr ""
 
 #: checkins/models.py
 msgid "person"
-msgstr "kişi"
+msgstr "kiÅŸi"
 
 #: checkins/models.py
 msgid "person identifier"
-msgstr "kişi tanımlayıcı"
+msgstr "kiÅŸi tanÄ±mlayÄ±cÄ±"
 
 #: checkins/models.py
 msgid "person identifiers"
-msgstr "kişi tanımlayıcıları"
+msgstr "kiÅŸi tanÄ±mlayÄ±cÄ±larÄ±"
 
 #: checkins/models.py
 msgid "debate"
-msgstr "maç"
+msgstr "maÃ§"
 
 #: checkins/models.py
 msgid "debate identifier"
-msgstr "maç tanımlayıcısı"
+msgstr "maÃ§ tanÄ±mlayÄ±cÄ±sÄ±"
 
 #: checkins/models.py
 msgid "debate identifiers"
-msgstr "maç tanımlayıcıları"
+msgstr "maÃ§ tanÄ±mlayÄ±cÄ±larÄ±"
 
 #: checkins/models.py
 msgid "room identifier"
-msgstr "oda tanımlayıcı"
+msgstr "oda tanÄ±mlayÄ±cÄ±"
 
 #: checkins/models.py
 msgid "room identifiers"
-msgstr "oda tanımlayıcıları"
+msgstr "oda tanÄ±mlayÄ±cÄ±larÄ±"
 
 #: checkins/models.py
 msgid "identifier"
-msgstr "Tanımlayıcı"
+msgstr "TanÄ±mlayÄ±cÄ±"
 
 #: checkins/models.py
 msgid "check-in time"
-msgstr "giriş saati"
+msgstr "giriÅŸ saati"
 
 #: checkins/models.py registration/models.py users/models.py
 msgid "tournament"
@@ -109,62 +109,62 @@ msgstr "turnuva"
 
 #: checkins/models.py
 msgid "check-in event"
-msgstr "giriş etkinliği"
+msgstr "giriÅŸ etkinliÄŸi"
 
 #: checkins/models.py
 msgid "check-in events"
-msgstr "giriş etkinlikleri"
+msgstr "giriÅŸ etkinlikleri"
 
 #: checkins/templates/checkin_ids.html
 msgid "With identifiers"
-msgstr "Tanımlayıcılarla"
+msgstr "TanÄ±mlayÄ±cÄ±larla"
 
 #: checkins/templates/checkin_ids.html
 msgid "View as barcodes"
-msgstr "Barkod olarak görüntüle"
+msgstr "Barkod olarak gÃ¶rÃ¼ntÃ¼le"
 
 #: checkins/templates/checkin_ids.html
 msgid "Generate missing identifiers"
-msgstr "Eksik tanımlayıcıları oluştur"
+msgstr "Eksik tanÄ±mlayÄ±cÄ±larÄ± oluÅŸtur"
 
 #: checkins/templates/checkin_ids.html
 msgid "Generate all identifiers"
-msgstr "Tüm tanımlayıcıları oluştur"
+msgstr "TÃ¼m tanÄ±mlayÄ±cÄ±larÄ± oluÅŸtur"
 
 #: checkins/templates/checkin_ids.html
 msgid "There are no identifiers available to view. An admin will need to generate them."
-msgstr "Görüntülenebilecek tanımlayıcı yok. Bir yöneticinin bunları oluşturması gerekli."
+msgstr "GÃ¶rÃ¼ntÃ¼lenebilecek tanÄ±mlayÄ±cÄ± yok. Bir yÃ¶neticinin bunlarÄ± oluÅŸturmasÄ± gerekli."
 
 #: checkins/templates/checkin_printables.html
 msgid "Each of the barcodes below is also an image file that can be downloaded individually. If you want to download them all at once try using a 'bulk downloader' extension/plugin for your browser, such as <a href=\"https://chrome.google.com/webstore/detail/svg-export/naeaaedieihlkmdajjefioajbbdbdjgp?hl=en-GB\">this one (for Chrome)</a>. To download them as a list you can go to Check-Ins section of the Edit Database area and copy/paste from the relevant table."
-msgstr "Aşağıdaki barkodların her biri aynı zamanda ayrı ayrı indirilebilen bir görüntü dosyasıdır. Hepsini bir kerede indirmek istiyorsanız, tarayıcınız için <a href=\"https://chrome.google.com/webstore/detail/svg-export/naeaaedieihlkmdajjefioajbbdbdjgp?hl=en-GB\">bunun gibi (Chrome için)</a> bir toplu indirici uzantısı/eklentisi kullanmayı deneyin. Bunları liste olarak indirmek için Veritabanını Düzenle alanının giriş bölümüne gidebilir ve ilgili tablodan kopyalayıp yapıştırabilirsiniz."
+msgstr "AÅŸaÄŸÄ±daki barkodlarÄ±n her biri aynÄ± zamanda ayrÄ± ayrÄ± indirilebilen bir gÃ¶rÃ¼ntÃ¼ dosyasÄ±dÄ±r. Hepsini bir kerede indirmek istiyorsanÄ±z, tarayÄ±cÄ±nÄ±z iÃ§in <a href=\"https://chrome.google.com/webstore/detail/svg-export/naeaaedieihlkmdajjefioajbbdbdjgp?hl=en-GB\">bunun gibi (Chrome iÃ§in)</a> bir toplu indirici uzantÄ±sÄ±/eklentisi kullanmayÄ± deneyin. BunlarÄ± liste olarak indirmek iÃ§in VeritabanÄ±nÄ± DÃ¼zenle alanÄ±nÄ±n giriÅŸ bÃ¶lÃ¼mÃ¼ne gidebilir ve ilgili tablodan kopyalayÄ±p yapÄ±ÅŸtÄ±rabilirsiniz."
 
 #: checkins/templates/checkin_printables.html
 msgid "You can use Ctrl+P for printing or saving the barcodes PDF. Be sure to set the appropriate <strong>page orientation</strong>, to turn off <strong>headers/footers</strong> and turn on <strong>background graphics</strong>. Works best in Chrome."
-msgstr "Barkodlar PDF olarak yazdırmak veya kaydetmek için Ctrl+P'yi kullanabilirsiniz. <strong>üstbilgiler/altbilgileri</strong> kapatmayı, doğru <strong>sayfa yönünü kullanmayı</strong> ve <strong>arkaplan görsellerini</strong> açmayı unutmayın. En iyi Chrome'da çalışır."
+msgstr "Barkodlar PDF olarak yazdÄ±rmak veya kaydetmek iÃ§in Ctrl+P'yi kullanabilirsiniz. <strong>Ã¼stbilgiler/altbilgileri</strong> kapatmayÄ±, doÄŸru <strong>sayfa yÃ¶nÃ¼nÃ¼ kullanmayÄ±</strong> ve <strong>arkaplan gÃ¶rsellerini</strong> aÃ§mayÄ± unutmayÄ±n. En iyi Chrome'da Ã§alÄ±ÅŸÄ±r."
 
 #: checkins/templates/checkin_scan.html
 msgid "To scan an identifier type the number below (it will auto-submit). You can also use a barcode scanner (configured to work as a keyboard) or scan from a webcam or phone camera using the button below."
-msgstr "Bir tanımlayıcıyı taramak için aşağıdaki numarayı yazın (Otomatik gönderilir). Ayrıca bir barkod tarayıcı (klavye olarak çalışacak şekilde ayarladıysa) kullanabilir veya aşağıdaki düğmeyi kullanarak bir webcam veya telefon kamerasından tarama yapabilirsiniz."
+msgstr "Bir tanÄ±mlayÄ±cÄ±yÄ± taramak iÃ§in aÅŸaÄŸÄ±daki numarayÄ± yazÄ±n (Otomatik gÃ¶nderilir). AyrÄ±ca bir barkod tarayÄ±cÄ± (klavye olarak Ã§alÄ±ÅŸacak ÅŸekilde ayarladÄ±ysa) kullanabilir veya aÅŸaÄŸÄ±daki dÃ¼ÄŸmeyi kullanarak bir webcam veya telefon kamerasÄ±ndan tarama yapabilirsiniz."
 
 #: checkins/utils.py
 #, python-format
 msgid "Not checked in (barcode %(barcode)s)"
-msgstr "Giriş yapılmadı (barkod %(barcode)s)"
+msgstr "GiriÅŸ yapÄ±lmadÄ± (barkod %(barcode)s)"
 
 #: checkins/utils.py
 msgid "Not checked in; no barcode assigned"
-msgstr "Giriş yapılmadı; barkod atanmamış"
+msgstr "GiriÅŸ yapÄ±lmadÄ±; barkod atanmamÄ±ÅŸ"
 
 #: checkins/utils.py
 #, python-format
 msgid "checked in at %(time)s"
-msgstr "Giriş zamamı: %(time)s "
+msgstr "GiriÅŸ zamamÄ±: %(time)s "
 
 #: checkins/utils.py
 #, python-format
 msgid "%(speaker)s checked in at %(time)s."
-msgstr "%(speaker)s giriş zamanı %(time)s."
+msgstr "%(speaker)s giriÅŸ zamanÄ± %(time)s."
 
 #: checkins/utils.py
 #, python-format
@@ -174,29 +174,29 @@ msgstr "%(speaker)s eksik."
 #: checkins/views.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html
 msgid "Scan Identifiers"
-msgstr "Tanımlayıcıları Tara"
+msgstr "TanÄ±mlayÄ±cÄ±larÄ± Tara"
 
 #: checkins/views.py
 msgid "People's Check-In Statuses"
-msgstr "Kişilerin Giriş Durumları"
+msgstr "KiÅŸilerin GiriÅŸ DurumlarÄ±"
 
 #: checkins/views.py
 msgid "Rooms' Check-In Statuses"
-msgstr "Odaların Giriş Durumları"
+msgstr "OdalarÄ±n GiriÅŸ DurumlarÄ±"
 
 #: checkins/views.py templates/nav/admin_nav.html
 msgid "Make Identifiers"
-msgstr "Tanımlayıcılar Oluştur"
+msgstr "TanÄ±mlayÄ±cÄ±lar OluÅŸtur"
 
 #: checkins/views.py registration/templates/answer_tables/teams.html
 #: templates/nav/admin_nav.html
 msgid "Speakers"
-msgstr "Konuşmacılar"
+msgstr "KonuÅŸmacÄ±lar"
 
 #: checkins/views.py registration/views.py templates/nav/admin_nav.html
 #: templates/nav/public_nav.html
 msgid "Adjudicators"
-msgstr "Jüriler"
+msgstr "JÃ¼riler"
 
 #: checkins/views.py
 msgid "Rooms"
@@ -205,31 +205,31 @@ msgstr "Odalar"
 #: checkins/views.py
 #, python-format
 msgid "Generated identifiers for %s"
-msgstr "%s için tanımlayıcılar oluşturuldu"
+msgstr "%s iÃ§in tanÄ±mlayÄ±cÄ±lar oluÅŸturuldu"
 
 #: checkins/views.py
 msgid "Identifiers"
-msgstr "Tanımlayıcı"
+msgstr "TanÄ±mlayÄ±cÄ±"
 
 #: checkins/views.py
-msgid "Could not check you in as you do not have an identifying code — your tab director may need to make you an identifier."
-msgstr "Tanımlayıcı kodunuz olmadığı için giriş yapılamadı — tab yöneticinizin sizi bir tanımlayıcı yapması gerekebilir."
+msgid "Could not check you in as you do not have an identifying code â€” your tab director may need to make you an identifier."
+msgstr "TanÄ±mlayÄ±cÄ± kodunuz olmadÄ±ÄŸÄ± iÃ§in giriÅŸ yapÄ±lamadÄ± â€” tab yÃ¶neticinizin sizi bir tanÄ±mlayÄ±cÄ± yapmasÄ± gerekebilir."
 
 #: checkins/views.py
 msgid "You have revoked your check-in."
-msgstr "Giriş işleminizi iptal ettiniz."
+msgstr "GiriÅŸ iÅŸleminizi iptal ettiniz."
 
 #: checkins/views.py
 msgid "Whoops! Looks like your check-in was already revoked."
-msgstr "Giriş işleminiz zaten iptal edilmiş."
+msgstr "GiriÅŸ iÅŸleminiz zaten iptal edilmiÅŸ."
 
 #: checkins/views.py
 msgid "Whoops! Looks like you're already checked in."
-msgstr "Zaten giriş yapmışsınız."
+msgstr "Zaten giriÅŸ yapmÄ±ÅŸsÄ±nÄ±z."
 
 #: checkins/views.py
 msgid "You are now checked in."
-msgstr "Artık giriş yaptınız."
+msgstr "ArtÄ±k giriÅŸ yaptÄ±nÄ±z."
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
@@ -239,7 +239,7 @@ msgstr "Evet"
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "No"
-msgstr "Hayır"
+msgstr "HayÄ±r"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
@@ -272,11 +272,11 @@ msgstr ""
 
 #: registration/models.py
 msgid "content type"
-msgstr "içerik türü"
+msgstr "iÃ§erik tÃ¼rÃ¼"
 
 #: registration/models.py
 msgid "object id"
-msgstr "nesne kimliği"
+msgstr "nesne kimliÄŸi"
 
 #: registration/models.py
 msgid "question"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "sequence number"
-msgstr "sıra numarası"
+msgstr "sÄ±ra numarasÄ±"
 
 #: registration/models.py
 msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
@@ -388,7 +388,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "choices"
-msgstr "seçenekler"
+msgstr "seÃ§enekler"
 
 #: registration/models.py
 msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
@@ -404,11 +404,11 @@ msgstr "kurum"
 
 #: registration/models.py
 msgid "team"
-msgstr "takım"
+msgstr "takÄ±m"
 
 #: registration/models.py
 msgid "URL key"
-msgstr "URL anahtarı"
+msgstr "URL anahtarÄ±"
 
 #: registration/models.py
 msgid "created on"
@@ -432,7 +432,7 @@ msgstr ""
 #: templates/registration/password_change_form.html
 #: templates/registration/password_reset_confirm.html
 msgid "Cancel and go back to the site home page"
-msgstr "İptal et ve site ana sayfasına geri dön"
+msgstr "Ä°ptal et ve site ana sayfasÄ±na geri dÃ¶n"
 
 #: registration/templates/answer_tables/adjudicators.html
 msgid "Questions"
@@ -490,11 +490,11 @@ msgstr ""
 #: registration/templates/answer_tables/teams.html registration/views.py
 #: templates/nav/admin_nav.html
 msgid "Teams"
-msgstr "Takımlar"
+msgstr "TakÄ±mlar"
 
 #: registration/templates/coach_private_url.html
 msgid "Private URL"
-msgstr "Özel URL"
+msgstr "Ã–zel URL"
 
 #: registration/templates/coach_private_url.html
 #, python-format
@@ -612,7 +612,7 @@ msgstr ""
 
 #: registration/views.py
 msgid "Name"
-msgstr "İsim"
+msgstr "Ä°sim"
 
 #: registration/views.py
 msgid "Coach"
@@ -648,12 +648,12 @@ msgstr ""
 
 #: registration/views.py
 msgid "Team Registration"
-msgstr "takım kaydı"
+msgstr "takÄ±m kaydÄ±"
 
 #: registration/views.py
 #, python-format
 msgid "Speaker %d"
-msgstr "Konuşmacı %d"
+msgstr "KonuÅŸmacÄ± %d"
 
 #: registration/views.py
 msgid "Email"
@@ -766,59 +766,59 @@ msgstr ""
 
 #: settings/core.py
 msgid "Simplified Chinese"
-msgstr "Basitleştirilmiş Çince"
+msgstr "BasitleÅŸtirilmiÅŸ Ã‡ince"
 
 #: settings/core.py
 msgid "Translation"
-msgstr "Çeviri"
+msgstr "Ã‡eviri"
 
 #: templates/admin/delete_protected_message.html
 msgid "You need to delete the above objects first."
-msgstr "Önce yukarıdaki nesneleri silmeniz gerekir."
+msgstr "Ã–nce yukarÄ±daki nesneleri silmeniz gerekir."
 
 #: templates/admin/style_guide.html
 msgid "This style of info card announces critical information. <a href=\"\">Link</a>."
-msgstr "Bu bilgi kartı stili kritik bilgileri bildirir. <a href=\"\">Link</a>."
+msgstr "Bu bilgi kartÄ± stili kritik bilgileri bildirir. <a href=\"\">Link</a>."
 
 #: templates/admin/style_guide.html
 msgid "This style of info card announces general <a href=\"\">information</a>."
-msgstr "Bu bilgi kartı stili genel <a href=\"\">information</a> bildirir."
+msgstr "Bu bilgi kartÄ± stili genel <a href=\"\">information</a> bildirir."
 
 #: templates/admin/style_guide.html
 msgctxt "page title"
 msgid "Form Title"
-msgstr "Form Başlığı"
+msgstr "Form BaÅŸlÄ±ÄŸÄ±"
 
 #: templates/admin/style_guide.html
 msgid "Sub Title Title"
-msgstr "Alt Başlık Başlığı"
+msgstr "Alt BaÅŸlÄ±k BaÅŸlÄ±ÄŸÄ±"
 
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
 msgid "Log In"
-msgstr "Oturum Aç"
+msgstr "Oturum AÃ§"
 
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
 msgid "I forgot my password"
-msgstr "Parolamı unuttum"
+msgstr "ParolamÄ± unuttum"
 
 #: templates/base.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: templates/base.html
 #, python-format
-msgid "The tab for %(tournament)s runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
-msgstr "%(tournament)s için tab, çeşitli parlamenter tartışma biçimleri için kullanılabilen açık kaynaklı bir tab sistemi Tabbycat kullanıyor."
+msgid "The tab for %(tournament)s runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
+msgstr "%(tournament)s iÃ§in tab, Ã§eÅŸitli parlamenter tartÄ±ÅŸma biÃ§imleri iÃ§in kullanÄ±labilen aÃ§Ä±k kaynaklÄ± bir tab sistemi NekoTab kullanÄ±yor."
 
 #: templates/base.html
-msgid "This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
-msgstr "Bu tab, çeşitli parlamenter tartışma biçimleri için kullanılabilen açık kaynaklı bir tab sistemi Tabbycat ikullanıyor."
+msgid "This tab runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
+msgstr "Bu tab, Ã§eÅŸitli parlamenter tartÄ±ÅŸma biÃ§imleri iÃ§in kullanÄ±labilen aÃ§Ä±k kaynaklÄ± bir tab sistemi NekoTab ikullanÄ±yor."
 
 #: templates/components/form-errors.html
 msgid "Whoops! There was an error with one or more fields."
-msgstr "Bir veya daha fazla alanda hata oluştu."
+msgstr "Bir veya daha fazla alanda hata oluÅŸtu."
 
 #: templates/components/formset.html
 msgid "Save and Add More"
@@ -826,59 +826,59 @@ msgstr "Kaydet ve Daha Fazla Ekle"
 
 #: templates/errors/assistant_403.html templates/errors/public_403.html
 msgid "Permission Denied (403)"
-msgstr "Erişim Red Edildi (403)"
+msgstr "EriÅŸim Red Edildi (403)"
 
 #: templates/errors/assistant_403.html
 #, python-format
 msgid "This assistant page isn't enabled for this tournament. <a href=\"%(url)s\">Back to the assistant home page.</a>"
-msgstr "Bu asistan sayfası bu turnuva için etkinleştirilmemiştir. <a href=\"%(url)s\">Asistan ana sayfasina geri dön.</a>"
+msgstr "Bu asistan sayfasÄ± bu turnuva iÃ§in etkinleÅŸtirilmemiÅŸtir. <a href=\"%(url)s\">Asistan ana sayfasina geri dÃ¶n.</a>"
 
 #: templates/errors/database_limit_warning.html
 #, python-format
 msgid "You're currently using %(nrows)s row in your database. If you haven't already upgraded your Heroku database to a paid tier, it's limited to a maximum of 10,000 rows. As you're close to this limit, you should <strong>not create new tournaments</strong> on this site unless and until you've <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">upgraded your database</a> to a paid tier."
 msgid_plural "You're currently using %(nrows)s rows in your database. If you haven't already upgraded your Heroku database to a paid tier, it's limited to a maximum of 10,000 rows. As you're close to this limit, you should <strong>not create new tournaments</strong> on this site unless and until you've <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">upgraded your database</a> to a paid tier."
-msgstr[0] "Şu anda veritabanınızda %(nrows) satır kullanıyorsunuz. Heroku veritabanınızı henüz ücretli bir seviyeye yükseltmediyseniz, en fazla 10.000 satı kullanabilirsiniz. Bu sınıra yakın olduğunuz için,  <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">veritabanınızı ücretli bir seviyeye yükseltmediğiniz sürece</a> yeni turnuvalar <strong>oluşturmamalısınız.<strong>"
-msgstr[1] "Şu anda veritabanınızda %(nrows) satır kullanıyorsunuz. Heroku veritabanınızı henüz ücretli bir seviyeye yükseltmediyseniz, en fazla 10.000 satı kullanabilirsiniz. Bu sınıra yakın olduğunuz için,  <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">veritabanınızı ücretli bir seviyeye yükseltmediğiniz sürece</a> yeni turnuvalar <strong>oluşturmamalısınız.<strong>"
+msgstr[0] "Åžu anda veritabanÄ±nÄ±zda %(nrows) satÄ±r kullanÄ±yorsunuz. Heroku veritabanÄ±nÄ±zÄ± henÃ¼z Ã¼cretli bir seviyeye yÃ¼kseltmediyseniz, en fazla 10.000 satÄ± kullanabilirsiniz. Bu sÄ±nÄ±ra yakÄ±n olduÄŸunuz iÃ§in,  <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">veritabanÄ±nÄ±zÄ± Ã¼cretli bir seviyeye yÃ¼kseltmediÄŸiniz sÃ¼rece</a> yeni turnuvalar <strong>oluÅŸturmamalÄ±sÄ±nÄ±z.<strong>"
+msgstr[1] "Åžu anda veritabanÄ±nÄ±zda %(nrows) satÄ±r kullanÄ±yorsunuz. Heroku veritabanÄ±nÄ±zÄ± henÃ¼z Ã¼cretli bir seviyeye yÃ¼kseltmediyseniz, en fazla 10.000 satÄ± kullanabilirsiniz. Bu sÄ±nÄ±ra yakÄ±n olduÄŸunuz iÃ§in,  <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">veritabanÄ±nÄ±zÄ± Ã¼cretli bir seviyeye yÃ¼kseltmediÄŸiniz sÃ¼rece</a> yeni turnuvalar <strong>oluÅŸturmamalÄ±sÄ±nÄ±z.<strong>"
 
 #: templates/errors/legacy_sendgrid_warning.html
-msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of Tabbycat. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
-msgstr "Eski Heroku SendGrid config değişkenlerini (<code>SENDGRID_USERNAME</code> ve <code>SENDGRID_PASSWORD</code>.) kullanıyorsunuz gibi duruyor. Bunlar artık kullanımdan kaldırılmıştır (sürüm 2.6'dan itibaren) ve Tabbycat'in gelecekteki bir sürümünde çalışmayı durduracaktır. Lütfen yapılandırma değişkenlerinizi bunun yerine <code>SENDGRID_API_KEY</code> kullanacak şekilde değiştirin. Daha fazla bilgi için lütfen <a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> bu linke bakın.</a>."
+msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of NekoTab. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
+msgstr "Eski Heroku SendGrid config deÄŸiÅŸkenlerini (<code>SENDGRID_USERNAME</code> ve <code>SENDGRID_PASSWORD</code>.) kullanÄ±yorsunuz gibi duruyor. Bunlar artÄ±k kullanÄ±mdan kaldÄ±rÄ±lmÄ±ÅŸtÄ±r (sÃ¼rÃ¼m 2.6'dan itibaren) ve NekoTab'in gelecekteki bir sÃ¼rÃ¼mÃ¼nde Ã§alÄ±ÅŸmayÄ± durduracaktÄ±r. LÃ¼tfen yapÄ±landÄ±rma deÄŸiÅŸkenlerinizi bunun yerine <code>SENDGRID_API_KEY</code> kullanacak ÅŸekilde deÄŸiÅŸtirin. Daha fazla bilgi iÃ§in lÃ¼tfen <a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> bu linke bakÄ±n.</a>."
 
 #: templates/errors/public_403.html
 #, python-format
 msgid "Whoops! This page isn't enabled for this tournament. <a href=\"%(url)s\">Back to the tournament home page.</a>"
-msgstr "Bu sayfa bu turnuva için etkinleştirilmemiştir. <a href=\"%(url)s\">Turnuva ana sayfasına geri dön.</a>"
+msgstr "Bu sayfa bu turnuva iÃ§in etkinleÅŸtirilmemiÅŸtir. <a href=\"%(url)s\">Turnuva ana sayfasÄ±na geri dÃ¶n.</a>"
 
 #: templates/errors/public_403.html
 #, python-format
 msgid "Whoops! This page isn't enabled for this tournament. <a href=\"%(url)s\">Back to the home page.</a>"
-msgstr "Bu sayfa bu turnuva için etkinleştirilmemiştir. <a href=\"%(url)s\">Ana sayfaya geri dön.</a>"
+msgstr "Bu sayfa bu turnuva iÃ§in etkinleÅŸtirilmemiÅŸtir. <a href=\"%(url)s\">Ana sayfaya geri dÃ¶n.</a>"
 
 #: templates/footer.html
 #, python-format
-msgid "%(tournament)s runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
-msgstr "%(tournament)s Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s) kullanıyor."
+msgid "%(tournament)s runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
+msgstr "%(tournament)s NekoTab %(NekoTab_version)s (%(NekoTab_codename)s) kullanÄ±yor."
 
 #: templates/footer.html
 #, python-format
-msgid "This site runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
-msgstr "Bu site Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s) kullanıyor."
+msgid "This site runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
+msgstr "Bu site NekoTab %(NekoTab_version)s (%(NekoTab_codename)s) kullanÄ±yor."
 
 #: templates/footer.html
-msgid "Tabbycat is an open-source project developed by volunteers and is free to use."
+msgid "NekoTab is an open-source project developed by volunteers and is free to use."
 msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
-msgstr "Bu büyüklükte bir turnuva için <a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\"> <strong>$%(amount)s</strong> kadar bir bağış yapmanızı öneriyoruz.</a>."
+msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
+msgstr "Bu bÃ¼yÃ¼klÃ¼kte bir turnuva iÃ§in <a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\"> <strong>$%(amount)s</strong> kadar bir baÄŸÄ±ÅŸ yapmanÄ±zÄ± Ã¶neriyoruz.</a>."
 
 #: templates/footer.html
 msgid "Learn more about donating."
-msgstr "Bağış yapma hakkında daha fazla bilgi edinin."
+msgstr "BaÄŸÄ±ÅŸ yapma hakkÄ±nda daha fazla bilgi edinin."
 
 #: templates/footer.html
-msgid "<a href=\"https://opencollective.com/tabbycat\">Donations to Tabbycat from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain Tabbycat."
+msgid "<a href=\"https://opencollective.com/NekoTab\">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab."
 msgstr ""
 
 #: templates/footer.html
@@ -887,16 +887,16 @@ msgstr "Hala kronometre ile mi zaman tutuyorsunuz?"
 
 #: templates/footer.html
 #, python-format
-msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
-msgstr "Tartışma zaman işleyişi için tasarlanmış bir uygulama kullanmak, konuşmayı ve karar vermeyi kolaylaştırır! href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) veya <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgstr "TartÄ±ÅŸma zaman iÅŸleyiÅŸi iÃ§in tasarlanmÄ±ÅŸ bir uygulama kullanmak, konuÅŸmayÄ± ve karar vermeyi kolaylaÅŸtÄ±rÄ±r! href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) veya <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
 
 #: templates/footer.html
 msgid "Our Organisation"
 msgstr "Kurumumuz"
 
 #: templates/footer.html
-msgid "Tabbycat is supported by the <a href=\"https://tabbycat-debate.org/\">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology."
-msgstr "Tabbycat, açık kaynaklı tartışma teknolojisini ilerletmek için kar amacı gütmeyen bir kuruluş olan <a href=\"https://tabbycat-debate.org/\">Tabbycat Tartışma Derneği</a> tarafından desteklenmektedir."
+msgid "NekoTab is supported by the <a href=\"https://NekoTab-debate.org/\">NekoTab Debate Association</a>, a non-profit for advancing open debate technology."
+msgstr "NekoTab, aÃ§Ä±k kaynaklÄ± tartÄ±ÅŸma teknolojisini ilerletmek iÃ§in kar amacÄ± gÃ¼tmeyen bir kuruluÅŸ olan <a href=\"https://NekoTab-debate.org/\">NekoTab TartÄ±ÅŸma DerneÄŸi</a> tarafÄ±ndan desteklenmektedir."
 
 #: templates/footer.html users/groups.py
 msgid "Language"
@@ -920,23 +920,23 @@ msgstr ""
 
 #: templates/footer.html
 msgid "Set Up A Copy"
-msgstr "Kopyasını Yap"
+msgstr "KopyasÄ±nÄ± Yap"
 
 #: templates/footer.html
 msgid "Change Language"
-msgstr "Dili Değiştir"
+msgstr "Dili DeÄŸiÅŸtir"
 
 #: templates/footer.html
 msgid "Use this language"
 msgstr "Bu dili kullan"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
-msgid "Tabbycat Logo"
-msgstr "Tabbycat Logosu"
+msgid "NekoTab Logo"
+msgstr "NekoTab Logosu"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Site Home"
-msgstr "Site Ana Sayfası"
+msgstr "Site Ana SayfasÄ±"
 
 #: templates/nav/admin_nav.html
 msgid "New Tournament"
@@ -944,15 +944,15 @@ msgstr "Yeni Turnuva"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Edit Database"
-msgstr "Veritabanını Düzenle"
+msgstr "VeritabanÄ±nÄ± DÃ¼zenle"
 
 #: templates/nav/admin_nav.html
 msgid "Admin Area"
-msgstr "Yönetici Alanı"
+msgstr "YÃ¶netici AlanÄ±"
 
 #: templates/nav/admin_nav.html
 msgid "Assistant Area"
-msgstr "Asistan Alanı"
+msgstr "Asistan AlanÄ±"
 
 #: templates/nav/admin_nav.html
 msgid "Public Area"
@@ -960,7 +960,7 @@ msgstr "Genel Alan"
 
 #: templates/nav/admin_nav.html
 msgid "Overview"
-msgstr "Genel bakış"
+msgstr "Genel bakÄ±ÅŸ"
 
 #: templates/nav/admin_nav.html
 msgid "Setup"
@@ -972,16 +972,16 @@ msgstr "Ayarlama"
 
 #: templates/nav/admin_nav.html
 msgid "Import Data"
-msgstr "İçe Veri Aktar"
+msgstr "Ä°Ã§e Veri Aktar"
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 #: templates/nav/public_nav.html
 msgid "Participants"
-msgstr "Katılımcılar"
+msgstr "KatÄ±lÄ±mcÄ±lar"
 
 #: templates/nav/admin_nav.html
 msgid "Private URLs"
-msgstr "Özel URL'ler"
+msgstr "Ã–zel URL'ler"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Schedule"
@@ -993,11 +993,11 @@ msgstr "E-postalar"
 
 #: templates/nav/admin_nav.html
 msgid "Preformed Panels"
-msgstr "Önceden kurulmuş paneller"
+msgstr "Ã–nceden kurulmuÅŸ paneller"
 
 #: templates/nav/admin_nav.html
 msgid "Export XML"
-msgstr "Dışa XML Aktar"
+msgstr "DÄ±ÅŸa XML Aktar"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Sides"
@@ -1009,11 +1009,11 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 msgid "People's Status"
-msgstr "Kişilerin Durumu"
+msgstr "KiÅŸilerin Durumu"
 
 #: templates/nav/admin_nav.html
 msgid "Rooms' Status"
-msgstr "Odaların Durumu"
+msgstr "OdalarÄ±n Durumu"
 
 #: templates/nav/admin_nav.html
 msgid "Feedback"
@@ -1025,7 +1025,7 @@ msgstr "Sonuncu"
 
 #: templates/nav/admin_nav.html
 msgid "Important"
-msgstr "Önemli"
+msgstr "Ã–nemli"
 
 #: templates/nav/admin_nav.html
 msgid "Comments"
@@ -1033,15 +1033,15 @@ msgstr "Yorumlar"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Source"
-msgstr "Kaynağa Göre Bul"
+msgstr "KaynaÄŸa GÃ¶re Bul"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Target"
-msgstr "Hedefe Göre Bul"
+msgstr "Hedefe GÃ¶re Bul"
 
 #: templates/nav/admin_nav.html
 msgid "Unsubmitted"
-msgstr "Gönderilmemiş"
+msgstr "GÃ¶nderilmemiÅŸ"
 
 #: templates/nav/admin_nav.html
 msgid "Feedback Questions"
@@ -1053,41 +1053,41 @@ msgstr "Geri bildirim ekle"
 
 #: templates/nav/admin_nav.html
 msgid "Bulk Update"
-msgstr "Toplu Güncelleme"
+msgstr "Toplu GÃ¼ncelleme"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Standings"
-msgstr "Sıralamalar"
+msgstr "SÄ±ralamalar"
 
 #: templates/nav/admin_nav.html
 msgid "All Teams"
-msgstr "Tüm Takımlar"
+msgstr "TÃ¼m TakÄ±mlar"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Teams"
-msgstr "%(category)s Takımlar"
+msgstr "%(category)s TakÄ±mlar"
 
 #: templates/nav/admin_nav.html
 msgid "All Speakers"
-msgstr "Tüm Konuşmacılar"
+msgstr "TÃ¼m KonuÅŸmacÄ±lar"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Speakers"
-msgstr "%(category)s Konuşmacılar"
+msgstr "%(category)s KonuÅŸmacÄ±lar"
 
 #: templates/nav/admin_nav.html
 msgid "Replies"
-msgstr "Yanıtlar"
+msgstr "YanÄ±tlar"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Motions"
-msgstr "Önergeler"
+msgstr "Ã–nergeler"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Diversity"
-msgstr "Çeşitlilik"
+msgstr "Ã‡eÅŸitlilik"
 
 #: templates/nav/admin_nav.html
 msgid "Breaks"
@@ -1100,15 +1100,15 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Adjudicators'"
-msgstr "Jürilerin"
+msgstr "JÃ¼rilerin"
 
 #: templates/nav/admin_nav.html
 msgid "Edit Categories"
-msgstr "Kategorileri Düzenle"
+msgstr "Kategorileri DÃ¼zenle"
 
 #: templates/nav/admin_nav.html
 msgid "Edit Eligibility"
-msgstr "Uygunluğu Düzenle"
+msgstr "UygunluÄŸu DÃ¼zenle"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Log Out"
@@ -1116,7 +1116,7 @@ msgstr "Oturumu Kapat"
 
 #: templates/nav/assistant_nav.html
 msgid "Enter Results"
-msgstr "Sonuç Gir"
+msgstr "SonuÃ§ Gir"
 
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Enter Feedback"
@@ -1124,15 +1124,15 @@ msgstr "Geri Bildirim Girin"
 
 #: templates/nav/assistant_nav.html
 msgid "Participants List"
-msgstr "Katılımcı Listesi"
+msgstr "KatÄ±lÄ±mcÄ± Listesi"
 
 #: templates/nav/assistant_nav.html
 msgid "Code Names"
-msgstr "Kod İsimler"
+msgstr "Kod Ä°simler"
 
 #: templates/nav/assistant_nav.html
 msgid "View Identifiers"
-msgstr "Tanımlayıcıları Görüntüle"
+msgstr "TanÄ±mlayÄ±cÄ±larÄ± GÃ¶rÃ¼ntÃ¼le"
 
 #: templates/nav/assistant_nav.html
 msgid "Room's Status"
@@ -1140,31 +1140,31 @@ msgstr ""
 
 #: templates/nav/assistant_nav.html
 msgid "Display/Print Draw"
-msgstr "Kurayı Göster/Yazdır"
+msgstr "KurayÄ± GÃ¶ster/YazdÄ±r"
 
 #: templates/nav/public_nav.html
 msgid "Team Tab"
-msgstr "Takım Tabı"
+msgstr "TakÄ±m TabÄ±"
 
 #: templates/nav/public_nav.html
 msgid "Speaker Tab"
-msgstr "Konuşmacı Tabı"
+msgstr "KonuÅŸmacÄ± TabÄ±"
 
 #: templates/nav/public_nav.html
 msgid "Replies Tab"
-msgstr "Özet Tabı"
+msgstr "Ã–zet TabÄ±"
 
 #: templates/nav/public_nav.html
 msgid "Adjudicator Tab"
-msgstr "Jüri Tabı"
+msgstr "JÃ¼ri TabÄ±"
 
 #: templates/nav/public_nav.html
 msgid "Motions Tab"
-msgstr "Önerge Tabı"
+msgstr "Ã–nerge TabÄ±"
 
 #: templates/nav/public_nav.html
 msgid "By round"
-msgstr "Tura göre"
+msgstr "Tura gÃ¶re"
 
 #: templates/nav/public_nav.html
 msgid "Globally"
@@ -1181,15 +1181,15 @@ msgstr "Kura Yok"
 #: templates/nav/public_nav.html
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "%(round)s için kura"
+msgstr "%(round)s iÃ§in kura"
 
 #: templates/nav/public_nav.html
 msgid "Current Draws"
-msgstr "Şuanki Kuralar"
+msgstr "Åžuanki Kuralar"
 
 #: templates/nav/public_nav.html templates/nav/round_panel.html
 msgid "Results"
-msgstr "Sonuçlar"
+msgstr "SonuÃ§lar"
 
 #: templates/nav/public_nav.html
 msgid "Break"
@@ -1213,66 +1213,66 @@ msgstr "Kura"
 
 #: templates/nav/round_panel.html
 msgid "Display"
-msgstr "Göster"
+msgstr "GÃ¶ster"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Administrator area for <strong>%(tournament)s</strong>"
-msgstr " <strong>%(tournament)s</strong> için yönetici alanı"
+msgstr " <strong>%(tournament)s</strong> iÃ§in yÃ¶netici alanÄ±"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Assistant area for <strong>%(tournament)s</strong>"
-msgstr " <strong>%(tournament)s</strong> için asistan alanı"
+msgstr " <strong>%(tournament)s</strong> iÃ§in asistan alanÄ±"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Public area for <strong>%(tournament)s</strong>"
-msgstr " <strong>%(tournament)s</strong> için ortak alan"
+msgstr " <strong>%(tournament)s</strong> iÃ§in ortak alan"
 
 #: templates/nav/top_nav_base.html
 msgid "Login"
-msgstr "Oturum Aç"
+msgstr "Oturum AÃ§"
 
 #: templates/registration/logged_out.html
 msgid "Goodbye"
-msgstr "Hoşçakalın"
+msgstr "HoÅŸÃ§akalÄ±n"
 
 #: templates/registration/logged_out.html
 #, python-format
 msgid "You have been logged out. <a href=\"%(login_url)s\">Log in again?</a>"
-msgstr "Oturumunuz kapatıldı. <a href=\"%(login_url)s\">Tekrar oturum aç?</a>"
+msgstr "Oturumunuz kapatÄ±ldÄ±. <a href=\"%(login_url)s\">Tekrar oturum aÃ§?</a>"
 
 #: templates/registration/login.html
 msgctxt "page title"
 msgid "Login"
-msgstr "Oturum Aç"
+msgstr "Oturum AÃ§"
 
 #: templates/registration/login.html
 msgctxt "page title"
-msgid "Log in to Tabbycat"
-msgstr "Tabbycat'te oturum aç."
+msgid "Log in to NekoTab"
+msgstr "NekoTab'te oturum aÃ§."
 
 #: templates/registration/login.html
 msgid "Your username and password didn't match."
-msgstr "Kullanıcı adınız veya parolanız yanlış."
+msgstr "KullanÄ±cÄ± adÄ±nÄ±z veya parolanÄ±z yanlÄ±ÅŸ."
 
 #: templates/registration/login.html
 msgid "Your account doesn't have access to this page. To proceed, please log in with an account that has access."
-msgstr "Hesabınızın bu sayfaya erişimi yok. Devam etmek için lütfen erişimi olan bir hesapla oturum açın."
+msgstr "HesabÄ±nÄ±zÄ±n bu sayfaya eriÅŸimi yok. Devam etmek iÃ§in lÃ¼tfen eriÅŸimi olan bir hesapla oturum aÃ§Ä±n."
 
 #: templates/registration/login.html
 msgid "Please log in to see this page."
-msgstr "Bu sayfayı görmek için lütfen oturum açın."
+msgstr "Bu sayfayÄ± gÃ¶rmek iÃ§in lÃ¼tfen oturum aÃ§Ä±n."
 
 #: templates/registration/password_change_done.html
 msgctxt "page title"
 msgid "Password changed"
-msgstr "Parola değiştirildi"
+msgstr "Parola deÄŸiÅŸtirildi"
 
 #: templates/registration/password_change_done.html
 msgid "Your password has been changed."
-msgstr "Parolanız değiştirildi."
+msgstr "ParolanÄ±z deÄŸiÅŸtirildi."
 
 #: templates/registration/password_change_done.html
 msgid "Go to the home page"
@@ -1281,7 +1281,7 @@ msgstr "Ana sayfaya git"
 #: templates/registration/password_change_form.html
 msgctxt "page title"
 msgid "Password Change"
-msgstr "Parola Değiştirme"
+msgstr "Parola DeÄŸiÅŸtirme"
 
 #: templates/registration/password_change_form.html
 #, python-format
@@ -1290,17 +1290,17 @@ msgstr "API Token: <samp>%(api_token)s</samp>"
 
 #: templates/registration/password_change_form.html
 msgid "The API token will allow you to authorize external applications to access the site as staff."
-msgstr "API Tokeni, harici uygulamaları siteye personel olarak erişmeleri için yetkilendirmenize olanak tanır."
+msgstr "API Tokeni, harici uygulamalarÄ± siteye personel olarak eriÅŸmeleri iÃ§in yetkilendirmenize olanak tanÄ±r."
 
 #: templates/registration/password_change_form.html
 msgid "Please enter your old password, then enter a new one."
-msgstr "Lütfen eski parolanızı girin, ardından yeni bir parola girin."
+msgstr "LÃ¼tfen eski parolanÄ±zÄ± girin, ardÄ±ndan yeni bir parola girin."
 
 #: templates/registration/password_change_form.html
 #: templates/registration/password_reset_confirm.html
 msgctxt "button"
 msgid "Change my password"
-msgstr "Parolamı değiştir"
+msgstr "ParolamÄ± deÄŸiÅŸtir"
 
 #: templates/registration/password_reset_complete.html
 msgctxt "page title"
@@ -1309,44 +1309,44 @@ msgstr ""
 
 #: templates/registration/password_reset_complete.html
 msgid "Your password has been reset."
-msgstr "Parolanız sıfırlandı."
+msgstr "ParolanÄ±z sÄ±fÄ±rlandÄ±."
 
 #: templates/registration/password_reset_complete.html
 #: templates/registration/password_reset_done.html
 msgid "Go to the login page"
-msgstr "Oturum açma sayfasına git"
+msgstr "Oturum aÃ§ma sayfasÄ±na git"
 
 #: templates/registration/password_reset_confirm.html
 msgctxt "page title"
 msgid "Password Reset Confirmation"
-msgstr "Parola Sıfırlama Onayı"
+msgstr "Parola SÄ±fÄ±rlama OnayÄ±"
 
 #: templates/registration/password_reset_confirm.html
 #: templates/registration/password_reset_form.html
 msgctxt "page title"
 msgid "Password Reset"
-msgstr "Parola Sıfırlama"
+msgstr "Parola SÄ±fÄ±rlama"
 
 #: templates/registration/password_reset_confirm.html
 msgid "Please enter a new password (twice):"
-msgstr "Lütfen yeni parola girin (iki kez):"
+msgstr "LÃ¼tfen yeni parola girin (iki kez):"
 
 #: templates/registration/password_reset_confirm.html
 msgid "The password reset link was invalid, possibly because it has already been used.  Please request a new password reset."
-msgstr "Parola sıfırlama bağlantısı, büyük olasılıkla zaten kullanılmış olması nedeniyle geçersizdi. Lütfen yeni bir parola sıfırlama isteğinde bulunun."
+msgstr "Parola sÄ±fÄ±rlama baÄŸlantÄ±sÄ±, bÃ¼yÃ¼k olasÄ±lÄ±kla zaten kullanÄ±lmÄ±ÅŸ olmasÄ± nedeniyle geÃ§ersizdi. LÃ¼tfen yeni bir parola sÄ±fÄ±rlama isteÄŸinde bulunun."
 
 #: templates/registration/password_reset_done.html
 msgctxt "page title"
 msgid "Password reset email sent"
-msgstr "Parola sıfırlama e-postası gönderildi"
+msgstr "Parola sÄ±fÄ±rlama e-postasÄ± gÃ¶nderildi"
 
 #: templates/registration/password_reset_done.html
 msgid "We've emailed you instructions for setting your password, if an account exists with the email address you entered. You should receive them shortly."
-msgstr "Girdiğiniz e-posta adresiyle bir hesap varsa, parolanızı ayarlamayla ilgili talimatları size e-postayla gönderdik. Kısa sürede size aktarılacaktır."
+msgstr "GirdiÄŸiniz e-posta adresiyle bir hesap varsa, parolanÄ±zÄ± ayarlamayla ilgili talimatlarÄ± size e-postayla gÃ¶nderdik. KÄ±sa sÃ¼rede size aktarÄ±lacaktÄ±r."
 
 #: templates/registration/password_reset_done.html
 msgid "If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder."
-msgstr "E-posta ulaşmazsa, lütfen kaydolduğunuz adresi girdiğinizden emin olun ve spam klasörünüzü kontrol edin."
+msgstr "E-posta ulaÅŸmazsa, lÃ¼tfen kaydolduÄŸunuz adresi girdiÄŸinizden emin olun ve spam klasÃ¶rÃ¼nÃ¼zÃ¼ kontrol edin."
 
 #: templates/registration/password_reset_email.html
 #, python-format
@@ -1360,52 +1360,52 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "Someone asked for a password reset for the email address %(email)s on the Tabbycat site at %(protocol)s://%(domain)s."
-msgstr "Birisi Tabbycat sitesindeki %(protocol)s://%(domain)s adresindeki %(email)s e-posta adresi için parola sıfırlama istedi."
+msgid "Someone asked for a password reset for the email address %(email)s on the NekoTab site at %(protocol)s://%(domain)s."
+msgstr "Birisi NekoTab sitesindeki %(protocol)s://%(domain)s adresindeki %(email)s e-posta adresi iÃ§in parola sÄ±fÄ±rlama istedi."
 
 #: templates/registration/password_reset_email.html
 msgid "If this was you, follow the link below to reset your password:"
-msgstr "Bu sizseniz, parolanızı sıfırlamak için aşağıdaki bağlantıyı izleyin:"
+msgstr "Bu sizseniz, parolanÄ±zÄ± sÄ±fÄ±rlamak iÃ§in aÅŸaÄŸÄ±daki baÄŸlantÄ±yÄ± izleyin:"
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the Tabbycat site at %(protocol)s://%(domain)s."
-msgstr "Bu siz değilseniz, bu muhtemelen başka birinin e-posta adresinizi %(protocol)s://%(domain)s adresindeki Tabbycat sitesindeki parola sıfırlama formuna yazdığı anlamına gelir."
+msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the NekoTab site at %(protocol)s://%(domain)s."
+msgstr "Bu siz deÄŸilseniz, bu muhtemelen baÅŸka birinin e-posta adresinizi %(protocol)s://%(domain)s adresindeki NekoTab sitesindeki parola sÄ±fÄ±rlama formuna yazdÄ±ÄŸÄ± anlamÄ±na gelir."
 
 #: templates/registration/password_reset_form.html
 msgid "Password Reset"
-msgstr "Parola Sıfırlama"
+msgstr "Parola SÄ±fÄ±rlama"
 
 #: templates/registration/password_reset_form.html
 msgid "Enter your email address below, and we'll email you a password reset link."
-msgstr "Aşağıya e-posta adresinizi girin, size bir parola sıfırlama bağlantısı e-postayla gönderelim."
+msgstr "AÅŸaÄŸÄ±ya e-posta adresinizi girin, size bir parola sÄ±fÄ±rlama baÄŸlantÄ±sÄ± e-postayla gÃ¶nderelim."
 
 #: templates/registration/password_reset_form.html
 msgctxt "button"
 msgid "Reset my password"
-msgstr "Parolamı sıfırla"
+msgstr "ParolamÄ± sÄ±fÄ±rla"
 
 #: templates/registration/password_reset_form.html
 msgid "Back to the login page"
-msgstr "Oturum açma sayfasına geri dön"
+msgstr "Oturum aÃ§ma sayfasÄ±na geri dÃ¶n"
 
 #: templates/registration/password_reset_subject.txt
 #, python-format
-msgid "Password reset on Tabbycat site at %(domain)s"
-msgstr "Parola sıfırlama konumu Tabbycat sitesinde: %(domain)s"
+msgid "Password reset on NekoTab site at %(domain)s"
+msgstr "Parola sÄ±fÄ±rlama konumu NekoTab sitesinde: %(domain)s"
 
 #: urls.py
 #, python-format
-msgid "Hi, %(user)s — you just logged in!"
-msgstr "Merhaba, %(user)s — az önce oturum açtınız!"
+msgid "Hi, %(user)s â€” you just logged in!"
+msgstr "Merhaba, %(user)s â€” az Ã¶nce oturum aÃ§tÄ±nÄ±z!"
 
 #: urls.py
 msgid "Welcome! You just logged in!"
-msgstr "Hoş geldin! Oturum açtınız!"
+msgstr "HoÅŸ geldin! Oturum aÃ§tÄ±nÄ±z!"
 
 #: users/admin.py
 msgid "Users with staff status can view and edit the Edit Database area. This is potentially dangerous and should be reserved for the actual tab director(s)."
-msgstr "Çalışan durumuna sahip kullanıcılar Veritabanını Düzenle alanını görüntüleyebilir ve düzenleyebilir. Bu tehlikeli olabilir ve puanlama yönetmenleri hariç kullanılmamalıdır."
+msgstr "Ã‡alÄ±ÅŸan durumuna sahip kullanÄ±cÄ±lar VeritabanÄ±nÄ± DÃ¼zenle alanÄ±nÄ± gÃ¶rÃ¼ntÃ¼leyebilir ve dÃ¼zenleyebilir. Bu tehlikeli olabilir ve puanlama yÃ¶netmenleri hariÃ§ kullanÄ±lmamalÄ±dÄ±r."
 
 #: users/admin.py
 msgid "Personal info"
@@ -1445,7 +1445,7 @@ msgstr ""
 
 #: users/models.py
 msgid "user"
-msgstr "kullanıcı"
+msgstr "kullanÄ±cÄ±"
 
 #: users/models.py
 msgid "permission"
@@ -1941,7 +1941,7 @@ msgstr ""
 
 #: users/templates/account_invitation_email.html
 #, python-format
-msgid "An administrator for the Tabbycat site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
+msgid "An administrator for the NekoTab site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: users/templates/account_invitation_email.html
@@ -1954,16 +1954,16 @@ msgstr ""
 
 #: users/templates/account_invitation_subject.txt
 #, python-format
-msgid "Invitation to join Tabbycat site for %(name)s"
+msgid "Invitation to join NekoTab site for %(name)s"
 msgstr ""
 
 #: users/templates/admin/auth/delete_user_warning.html
-msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the “Permissions” tab, unchecked the “Active” box, and save the user."
-msgstr "<strong>Uyarı:</strong> Bir şey yaptıktan sonra kullanıcıları veritabanından silmemelisiniz, çünkü veritabanı bu kullanıcılar tarafından gerçekleştirilen eylemleri günlüğe kaydeder ve kullanıcıları silmek ilgili günlükleri de siler. Bir kullanıcı hesabını devre dışı bırakmak istiyorsanız, kullanıcıyı düzenlemek için geri dönün, \"İzinler\" sekmesine tıklayın, \"Etkin\" kutusunun işaretini kaldırın ve kullanıcıyı kaydedin."
+msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the â€œPermissionsâ€ tab, unchecked the â€œActiveâ€ box, and save the user."
+msgstr "<strong>UyarÄ±:</strong> Bir ÅŸey yaptÄ±ktan sonra kullanÄ±cÄ±larÄ± veritabanÄ±ndan silmemelisiniz, Ã§Ã¼nkÃ¼ veritabanÄ± bu kullanÄ±cÄ±lar tarafÄ±ndan gerÃ§ekleÅŸtirilen eylemleri gÃ¼nlÃ¼ÄŸe kaydeder ve kullanÄ±cÄ±larÄ± silmek ilgili gÃ¼nlÃ¼kleri de siler. Bir kullanÄ±cÄ± hesabÄ±nÄ± devre dÄ±ÅŸÄ± bÄ±rakmak istiyorsanÄ±z, kullanÄ±cÄ±yÄ± dÃ¼zenlemek iÃ§in geri dÃ¶nÃ¼n, \"Ä°zinler\" sekmesine tÄ±klayÄ±n, \"Etkin\" kutusunun iÅŸaretini kaldÄ±rÄ±n ve kullanÄ±cÄ±yÄ± kaydedin."
 
 #: users/templates/invite_user.html
 msgid "Back to Configuration"
-msgstr "Yapılandırmaya Geri Dön"
+msgstr "YapÄ±landÄ±rmaya Geri DÃ¶n"
 
 #: users/templates/invite_user.html
 msgctxt "button"
@@ -1981,16 +1981,16 @@ msgstr ""
 
 #: users/templates/signup.html
 msgid "Create Account"
-msgstr "Hesap Oluştur"
+msgstr "Hesap OluÅŸtur"
 
 #: users/views.py
 msgid "Whoops! It looks like someone's already created the first user account. Please log in."
-msgstr "Birisi ilk kullanıcı hesabını zaten oluşturmuş gibi görünüyor. Lütfen oturum açın."
+msgstr "Birisi ilk kullanÄ±cÄ± hesabÄ±nÄ± zaten oluÅŸturmuÅŸ gibi gÃ¶rÃ¼nÃ¼yor. LÃ¼tfen oturum aÃ§Ä±n."
 
 #: users/views.py
 #, python-format
 msgid "Welcome! You've created an account for %s."
-msgstr "Hoş geldin! %s için bir hesap oluşturdunuz."
+msgstr "HoÅŸ geldin! %s iÃ§in bir hesap oluÅŸturdunuz."
 
 #: users/views.py
 msgid "Invite User"
@@ -2003,4 +2003,5 @@ msgstr ""
 #: users/views.py
 msgid "Accept Invitation"
 msgstr ""
+
 

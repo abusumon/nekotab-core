@@ -1,4 +1,4 @@
-from django.conf import settings
+﻿from django.conf import settings
 from django.test import Client
 from django.urls import reverse
 from dynamic_preferences.registries import global_preferences_registry
@@ -15,8 +15,8 @@ class RootTests(APITestCase):
         self.assertEqual(response.data, {
             "_links": {"v1": "http://testserver/api/v1"},
             "timezone": settings.TIME_ZONE,
-            "version": settings.TABBYCAT_VERSION,
-            "version_name": settings.TABBYCAT_CODENAME,
+            "version": settings.NekoTab_VERSION,
+            "version_name": settings.NekoTab_CODENAME,
         })
 
     def test_api_disabled_root(self):
@@ -153,3 +153,4 @@ class BallotViewSetTests(CompletedTournamentTestMixin, APITestCase):
     def test_access_with_private_url(self):
         response = self.client.get(reverse('api-ballot-list', kwargs={'tournament_slug': self.tournament.slug, 'round_seq': 1, 'debate_pk': 12}), headers={"Authorization": "Key urlkey"})
         self.assertEqual(response.status_code, 200)
+

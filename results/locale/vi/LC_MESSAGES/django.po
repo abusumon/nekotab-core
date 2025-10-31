@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:48\n"
@@ -12,45 +12,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: vi\n"
-"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
 #: results/admin.py
 msgid "Resave results"
-msgstr "Lưu kết quả"
+msgstr "LÆ°u káº¿t quáº£"
 
 #: results/admin.py
 #, python-format
 msgid "Resaved results for %(count)d ballot submission."
 msgid_plural "Resaved results for %(count)d ballot submissions."
-msgstr[0] "Lưu các kết quả cho %(count)d phiếu điểm."
+msgstr[0] "LÆ°u cÃ¡c káº¿t quáº£ cho %(count)d phiáº¿u Ä‘iá»ƒm."
 
 #: results/admin.py
 msgid "Speaker"
-msgstr "Người nói"
+msgstr "NgÆ°á»i nÃ³i"
 
 #: results/apps.py results/templates/public_results_index.html results/views.py
 msgid "Results"
-msgstr "Kết quả"
+msgstr "Káº¿t quáº£"
 
 #: results/forms.py
 msgid "Tournament password"
-msgstr "Mật khẩu của giải đấu"
+msgstr "Máº­t kháº©u cá»§a giáº£i Ä‘áº¥u"
 
 #: results/forms.py
 msgid "That password isn't correct."
-msgstr "Mật khẩu không chính xác."
+msgstr "Máº­t kháº©u khÃ´ng chÃ­nh xÃ¡c."
 
 #: results/forms.py
 msgid "The ballot set can't be both discarded and confirmed."
-msgstr "Phiếu điểm không thể bị loại bỏ và xác nhận cùng lúc."
+msgstr "Phiáº¿u Ä‘iá»ƒm khÃ´ng thá»ƒ bá»‹ loáº¡i bá» vÃ  xÃ¡c nháº­n cÃ¹ng lÃºc."
 
 #: results/forms.py
 msgid "The debate status can't be confirmed unless one of the ballot sets is confirmed."
-msgstr "Tình trạng trận tranh biện không thể được xác nhận trừ khi phiếu điểm được xác nhận."
+msgstr "TÃ¬nh tráº¡ng tráº­n tranh biá»‡n khÃ´ng thá»ƒ Ä‘Æ°á»£c xÃ¡c nháº­n trá»« khi phiáº¿u Ä‘iá»ƒm Ä‘Æ°á»£c xÃ¡c nháº­n."
 
 #: results/forms.py
 msgid "---------"
@@ -59,12 +59,12 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "%(aff_team)s affirmed, %(neg_team)s negated"
-msgstr "%(aff_team)s đã ủng hộ, %(neg_team)s đã phản đối"
+msgstr "%(aff_team)s Ä‘Ã£ á»§ng há»™, %(neg_team)s Ä‘Ã£ pháº£n Ä‘á»‘i"
 
 #: results/forms.py
 #, python-format
 msgid "%(side)s's motion veto"
-msgstr "Phủ quyết kiến nghị của %(side)s"
+msgstr "Phá»§ quyáº¿t kiáº¿n nghá»‹ cá»§a %(side)s"
 
 #: results/forms.py
 #, python-format
@@ -73,11 +73,11 @@ msgstr "%(team)s (%(side)s)"
 
 #: results/forms.py
 msgid "Winner"
-msgstr "Đội chiến thắng"
+msgstr "Äá»™i chiáº¿n tháº¯ng"
 
 #: results/forms.py
 msgid "Mark as a duplicate speech"
-msgstr "Đánh dấu là bài nói thay thế"
+msgstr "ÄÃ¡nh dáº¥u lÃ  bÃ i nÃ³i thay tháº¿"
 
 #: results/forms.py
 msgid "Only one team can forfeit"
@@ -187,7 +187,7 @@ msgstr ""
 
 #: results/models.py
 msgid "confirmed"
-msgstr "đã xác nhận"
+msgstr "Ä‘Ã£ xÃ¡c nháº­n"
 
 #: results/models.py
 msgid "from private URL"
@@ -219,11 +219,11 @@ msgstr ""
 
 #: results/models.py
 msgid "debate"
-msgstr "trận tranh biện"
+msgstr "tráº­n tranh biá»‡n"
 
 #: results/models.py
 msgid "motion"
-msgstr "kiến nghị"
+msgstr "kiáº¿n nghá»‹"
 
 #: results/models.py
 msgid "discarded"
@@ -247,7 +247,7 @@ msgstr ""
 
 #: results/models.py
 msgid "ballot submission"
-msgstr "bản nộp phiếu điểm"
+msgstr "báº£n ná»™p phiáº¿u Ä‘iá»ƒm"
 
 #: results/models.py
 msgid "ballot submissions"
@@ -264,23 +264,23 @@ msgstr ""
 
 #: results/models.py
 msgid "debate adjudicator"
-msgstr "giám khảo tranh biện"
+msgstr "giÃ¡m kháº£o tranh biá»‡n"
 
 #: results/models.py
 msgid "debate team"
-msgstr "đội"
+msgstr "Ä‘á»™i"
 
 #: results/models.py
 msgid "win"
-msgstr "thắng"
+msgstr "tháº¯ng"
 
 #: results/models.py
 msgid "margin"
-msgstr "khoảng cách điểm"
+msgstr "khoáº£ng cÃ¡ch Ä‘iá»ƒm"
 
 #: results/models.py
 msgid "score"
-msgstr "điểm"
+msgstr "Ä‘iá»ƒm"
 
 #: results/models.py
 msgid "team score by adjudicator"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: results/models.py
 msgid "rank"
-msgstr "xếp hạng"
+msgstr "xáº¿p háº¡ng"
 
 #: results/models.py
 msgid "ghost"
@@ -444,7 +444,7 @@ msgstr ""
 
 #: results/templates/admin_results.html
 msgid "Display Draw"
-msgstr "Hiện thị bảng đấu"
+msgstr "Hiá»‡n thá»‹ báº£ng Ä‘áº¥u"
 
 #: results/templates/admin_results.html
 msgid "Check-In Ballots"
@@ -492,7 +492,7 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr ""
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
@@ -549,11 +549,11 @@ msgstr ""
 
 #: results/templates/assistant_results.html results/views.py
 msgid "Enter Results"
-msgstr "Nhập kết quả"
+msgstr "Nháº­p káº¿t quáº£"
 
 #: results/templates/assistant_results.html
 msgid "This page automatically updates with the new ballot entries and checkins as they occur."
-msgstr "Trang này sẽ tự động cập nhật ballot và check-in mới tức thời."
+msgstr "Trang nÃ y sáº½ tá»± Ä‘á»™ng cáº­p nháº­t ballot vÃ  check-in má»›i tá»©c thá»i."
 
 #: results/templates/assistant_results.html
 msgid "Currently there are no motions entered for this round, so debate results cannot be entered. Please ask an administrator to add motions."
@@ -585,7 +585,7 @@ msgstr ""
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Result"
-msgstr "Kết quả"
+msgstr "Káº¿t quáº£"
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Rank"
@@ -723,7 +723,7 @@ msgstr ""
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
 msgstr ""
 
 #: results/templates/ballot_entry_form.html
@@ -842,7 +842,7 @@ msgstr ""
 
 #: results/templates/public_ballot_set.html
 msgid "Motion"
-msgstr "Kiến nghị"
+msgstr "Kiáº¿n nghá»‹"
 
 #: results/templates/public_ballot_set.html
 #, python-format
@@ -907,16 +907,16 @@ msgstr ""
 
 #: results/templates/public_results_for_round.html
 msgid "View by Team"
-msgstr "Xem theo đội"
+msgstr "Xem theo Ä‘á»™i"
 
 #: results/templates/public_results_for_round.html
 msgid "View by Debate"
-msgstr "Xem theo trận"
+msgstr "Xem theo tráº­n"
 
 #: results/templates/public_results_index.html
 #, python-format
 msgid "Results for %(round)s"
-msgstr "Kết quả cho %(round)s"
+msgstr "Káº¿t quáº£ cho %(round)s"
 
 #: results/templates/public_results_not_available.html
 #: results/templates/public_results_silent.html
@@ -1039,7 +1039,7 @@ msgstr ""
 
 #: results/views.py
 msgid " vs "
-msgstr " đối đầu với "
+msgstr " Ä‘á»‘i Ä‘áº§u vá»›i "
 
 #: results/views.py
 #, python-format
@@ -1157,9 +1157,10 @@ msgstr ""
 
 #: results/views.py
 msgid "Adjudicator"
-msgstr "Giám khảo"
+msgstr "GiÃ¡m kháº£o"
 
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
+
 

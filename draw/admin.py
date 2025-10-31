@@ -1,9 +1,9 @@
-from django.contrib import admin
+﻿from django.contrib import admin
 from django.db.models import Prefetch
 from django.utils.translation import gettext_lazy as _, ngettext
 
 from adjallocation.models import DebateAdjudicator
-from utils.admin import ModelAdmin, TabbycatModelAdminFieldsMixin
+from utils.admin import ModelAdmin, NekoTabModelAdminFieldsMixin
 
 from .models import Debate, DebateTeam
 
@@ -13,7 +13,7 @@ from .models import Debate, DebateTeam
 # ==============================================================================
 
 @admin.register(DebateTeam)
-class DebateTeamAdmin(TabbycatModelAdminFieldsMixin, ModelAdmin):
+class DebateTeamAdmin(NekoTabModelAdminFieldsMixin, ModelAdmin):
     list_display = ('team', 'side', 'debate', 'get_tournament', 'get_round')
     search_fields = ('team__long_name', 'team__short_name', 'team__institution__name', 'team__institution__code', 'flags')
     raw_id_fields = ('debate', 'team')
@@ -81,3 +81,4 @@ class DebateAdmin(ModelAdmin):
             updated,
         ) % {'count': updated}
         self.message_user(request, message)
+

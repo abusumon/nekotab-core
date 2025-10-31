@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load i18n %}
 
 {% block head-title %}{% endblock %}
@@ -17,13 +17,13 @@
 
       {% trans "Import Tournament Archive" context "page title" as title %}
       {% trans "This form will create a tournament with the data provided as a Debate XML format." as text %}
-      {% include "components/form-title.html" with emoji="🗂️" %}
+      {% include "components/form-title.html" with emoji="ðŸ—‚ï¸" %}
 
       {% include "components/form-main.html" %}
 
       {% trans "Import" as title %}
       {% trans "Go back to the site home page" as subtitle %}
-      {% url 'tabbycat-index' as suburl %}
+      {% url 'NekoTab-index' as suburl %}
       {% include "components/form-submit.html" %}
 
       </form>
@@ -34,3 +34,4 @@
 </div>
 
 {% endblock %}
+

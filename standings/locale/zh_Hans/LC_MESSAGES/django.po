@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/standings/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/standings/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 950\n"
 
@@ -33,16 +33,16 @@ msgstr ""
 
 #: standings/diversity.py
 msgid "All"
-msgstr "都"
+msgstr "éƒ½"
 
 #: standings/diversity.py
 msgid "Breaking"
-msgstr "有资格"
+msgstr "æœ‰èµ„æ ¼"
 
 #: standings/diversity.py
 #, python-format
 msgid "Not %(category)s"
-msgstr "不%(category)s"
+msgstr "ä¸%(category)s"
 
 #: standings/diversity.py
 msgid "All Speakers"
@@ -54,15 +54,15 @@ msgstr ""
 
 #: standings/diversity.py
 msgid "Chairs"
-msgstr "主席"
+msgstr "ä¸»å¸­"
 
 #: standings/diversity.py
 msgid "Panellists"
-msgstr "成员"
+msgstr "æˆå‘˜"
 
 #: standings/diversity.py
 msgid "Trainees"
-msgstr "实习生"
+msgstr "å®žä¹ ç”Ÿ"
 
 #: standings/diversity.py
 msgid "Average Rating"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: standings/diversity.py
 msgid "Average Score"
-msgstr "平均分"
+msgstr "å¹³å‡åˆ†"
 
 #: standings/diversity.py
 msgid "Median Score"
@@ -135,11 +135,11 @@ msgstr ""
 
 #: standings/speakers.py
 msgid "average"
-msgstr "平均"
+msgstr "å¹³å‡"
 
 #: standings/speakers.py
 msgid "Avg"
-msgstr "平均"
+msgstr "å¹³å‡"
 
 #: standings/speakers.py
 msgid "team points"
@@ -147,27 +147,27 @@ msgstr ""
 
 #: standings/speakers.py
 msgid "Team"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: standings/speakers.py standings/teams.py standings/views.py
 msgid "Wins"
-msgstr "胜利数"
+msgstr "èƒœåˆ©æ•°"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of firsts"
-msgstr "第一数"
+msgstr "ç¬¬ä¸€æ•°"
 
 #: standings/speakers.py standings/teams.py
 msgid "1sts"
-msgstr "第一数"
+msgstr "ç¬¬ä¸€æ•°"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of seconds"
-msgstr "第二数"
+msgstr "ç¬¬äºŒæ•°"
 
 #: standings/speakers.py standings/teams.py
 msgid "2nds"
-msgstr "第二数"
+msgstr "ç¬¬äºŒæ•°"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of thirds"
@@ -191,11 +191,11 @@ msgstr ""
 
 #: standings/speakers.py
 msgid "standard deviation"
-msgstr "标准差"
+msgstr "æ ‡å‡†å·®"
 
 #: standings/speakers.py
 msgid "Stdev"
-msgstr "标准差"
+msgstr "æ ‡å‡†å·®"
 
 #: standings/speakers.py
 msgid "number of speeches given"
@@ -227,15 +227,15 @@ msgstr ""
 
 #: standings/teams.py
 msgid "points"
-msgstr "分"
+msgstr "åˆ†"
 
 #: standings/teams.py
 msgid "Pts"
-msgstr "分"
+msgstr "åˆ†"
 
 #: standings/teams.py
 msgid "wins"
-msgstr "胜利数"
+msgstr "èƒœåˆ©æ•°"
 
 #: standings/teams.py
 msgid "total speaker score"
@@ -263,15 +263,15 @@ msgstr ""
 
 #: standings/teams.py
 msgid "sum of margins"
-msgstr "范围总和"
+msgstr "èŒƒå›´æ€»å’Œ"
 
 #: standings/teams.py
 msgid "Marg"
-msgstr "范围"
+msgstr "èŒƒå›´"
 
 #: standings/teams.py
 msgid "average margin"
-msgstr "平均范围"
+msgstr "å¹³å‡èŒƒå›´"
 
 #: standings/teams.py
 msgid "AWM"
@@ -452,7 +452,7 @@ msgstr ""
 
 #: standings/templates/standings_index.html
 msgid "Largest Margins"
-msgstr "最大值的范围"
+msgstr "æœ€å¤§å€¼çš„èŒƒå›´"
 
 #: standings/templates/standings_index.html
 #, python-format
@@ -461,7 +461,7 @@ msgstr ""
 
 #: standings/templates/standings_index.html
 msgid "Closest Margins"
-msgstr "最近的范围"
+msgstr "æœ€è¿‘çš„èŒƒå›´"
 
 #: standings/templates/standings_index.html
 msgid "Top Team Scores"
@@ -490,16 +490,16 @@ msgstr ""
 
 #: standings/templates/standings_menu.html
 msgid "Teams"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: standings/templates/standings_menu.html
 msgctxt "All [Teams]"
 msgid "All"
-msgstr "都"
+msgstr "éƒ½"
 
 #: standings/templates/standings_menu.html
 msgid "Speakers"
-msgstr "讲员"
+msgstr "è®²å‘˜"
 
 #: standings/templates/standings_menu.html
 msgctxt "Substantive speeches"
@@ -509,11 +509,11 @@ msgstr ""
 #: standings/templates/standings_menu.html
 msgctxt "All [Speakers]"
 msgid "All"
-msgstr "都"
+msgstr "éƒ½"
 
 #: standings/templates/standings_menu.html
 msgid "Speakers "
-msgstr "讲员"
+msgstr "è®²å‘˜"
 
 #: standings/templates/standings_menu.html
 #, python-format
@@ -526,7 +526,7 @@ msgstr ""
 
 #: standings/templates/standings_menu.html
 msgid "Motions"
-msgstr "话题"
+msgstr "è¯é¢˜"
 
 #: standings/templates/standings_menu.html
 msgid "By Round"
@@ -624,13 +624,14 @@ msgstr ""
 
 #: standings/views.py
 msgid "Points"
-msgstr "分"
+msgstr "åˆ†"
 
 #: standings/views.py
 msgid "Feedback Overview"
 msgstr ""
 
 #: standings/views.py
-msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
+msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
 msgstr ""
+
 

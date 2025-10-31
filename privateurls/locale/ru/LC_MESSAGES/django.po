@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,24 +12,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/privateurls/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/privateurls/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 946\n"
 
 #: privateurls/apps.py
 msgid "Private URL Management"
-msgstr "Управление личным URL"
+msgstr "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð»Ð¸Ñ‡Ð½Ñ‹Ð¼ URL"
 
 #: privateurls/templates/private_url_landing.html
 msgid "Private URL"
-msgstr "Личный URL"
+msgstr "Ð›Ð¸Ñ‡Ð½Ñ‹Ð¹ URL"
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "for %(name)s"
-msgstr "для %(name)s"
+msgstr "Ð´Ð»Ñ %(name)s"
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
@@ -44,26 +44,26 @@ msgstr ""
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can submit results and/or feedback for your debates. You may bookmark this page and return here after each debate for the available actions."
-msgstr "URL этой страницы персонализирован для вас, %(name)s. <strong> Не делитесь им ни с кем:</strong> любой, кто знает это URL может отправлять за вас результаты дебатов и/или фидбэк. Если вы запомните эту страницу, вы можете возвращаться после каждого раунда для доступных действий."
+msgstr "URL ÑÑ‚Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð´Ð»Ñ Ð²Ð°Ñ, %(name)s. <strong> ÐÐµ Ð´ÐµÐ»Ð¸Ñ‚ÐµÑÑŒ Ð¸Ð¼ Ð½Ð¸ Ñ ÐºÐµÐ¼:</strong> Ð»ÑŽÐ±Ð¾Ð¹, ÐºÑ‚Ð¾ Ð·Ð½Ð°ÐµÑ‚ ÑÑ‚Ð¾ URL Ð¼Ð¾Ð¶ÐµÑ‚ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ð·Ð° Ð²Ð°Ñ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð¸/Ð¸Ð»Ð¸ Ñ„Ð¸Ð´Ð±ÑÐº. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð·Ð°Ð¿Ð¾Ð¼Ð½Ð¸Ñ‚Ðµ ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒÑÑ Ð¿Ð¾ÑÐ»Ðµ ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð° Ð´Ð»Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ð¹."
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "Revoke check-in from %(check_time)s"
-msgstr "Отменить регистрации с %(check_time)s"
+msgstr "ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ñ %(check_time)s"
 
 #: privateurls/templates/private_url_landing.html
 msgid "Check in"
-msgstr "Зарегистрироваться"
+msgstr "Ð—Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒÑÑ"
 
 #. Translators: Include the full-stop; English doesn't because "a.m." already has a full stop.
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "You have been checked in at %(check_time)s"
-msgstr "Вы были зарегистрированы в %(check_time)s"
+msgstr "Ð’Ñ‹ Ð±Ñ‹Ð»Ð¸ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð² %(check_time)s"
 
 #: privateurls/templates/private_url_landing.html
 msgid "You are not currently checked in."
-msgstr "В настоящее время вы не зарегистрированы."
+msgstr "Ð’ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰ÐµÐµ Ð²Ñ€ÐµÐ¼Ñ Ð²Ñ‹ Ð½Ðµ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹."
 
 #: privateurls/templates/private_url_landing.html
 msgid "Show barcode for check-in"
@@ -76,45 +76,45 @@ msgstr ""
 
 #: privateurls/templates/private_url_landing.html
 msgid "Submit Feedback"
-msgstr "Отправить форму обратной связи"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ñ„Ð¾Ñ€Ð¼Ñƒ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "Registration (%(name)s)"
-msgstr "Регистрация (%(name)s)"
+msgstr "Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ (%(name)s)"
 
 #: privateurls/templates/private_urls.html privateurls/views.py
 msgid "Private URLs"
-msgstr "Личный URL"
+msgstr "Ð›Ð¸Ñ‡Ð½Ñ‹Ð¹ URL"
 
 #: privateurls/templates/private_urls.html
 msgid "The private URLs for ballot and/or feedback submission from participants are given below."
-msgstr "Личные URL для бэллотов и/или представления форм обратной связи от участников приведены ниже."
+msgstr "Ð›Ð¸Ñ‡Ð½Ñ‹Ðµ URL Ð´Ð»Ñ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð¸/Ð¸Ð»Ð¸ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ñ„Ð¾Ñ€Ð¼ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð¾Ñ‚ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð² Ð¿Ñ€Ð¸Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð½Ð¸Ð¶Ðµ."
 
 #: privateurls/templates/private_urls.html
 msgid "Private URLs are used to allow participants to submit ballots and/or feedback online. You should use them if you have a means of distributing crazy-looking URLs to participants, and are too worried about fraud to use a publicly accessible page where <em>anyone</em> can enter <em>any</em> submission. The URLs will look something like this:"
-msgstr "Частные URL-адреса используются для того, чтобы участники могли отправлять бэллоты и/или формы обратной связи онлайн. Вам стоит использовать их, если у вас есть средства распространения странно выглядящих URL участникам, и вы слишком обеспокоены мошенничеством, чтобы использовать общедоступные страницы, где <em>каждый</em> может ввести любые <em>данные</em>. URL-адреса будут выглядеть вот так:"
+msgstr "Ð§Ð°ÑÑ‚Ð½Ñ‹Ðµ URL-Ð°Ð´Ñ€ÐµÑÐ° Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑŽÑ‚ÑÑ Ð´Ð»Ñ Ñ‚Ð¾Ð³Ð¾, Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸ Ð¼Ð¾Ð³Ð»Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð¸/Ð¸Ð»Ð¸ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð¾Ð½Ð»Ð°Ð¹Ð½. Ð’Ð°Ð¼ ÑÑ‚Ð¾Ð¸Ñ‚ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð¸Ñ…, ÐµÑÐ»Ð¸ Ñƒ Ð²Ð°Ñ ÐµÑÑ‚ÑŒ ÑÑ€ÐµÐ´ÑÑ‚Ð²Ð° Ñ€Ð°ÑÐ¿Ñ€Ð¾ÑÑ‚Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ ÑÑ‚Ñ€Ð°Ð½Ð½Ð¾ Ð²Ñ‹Ð³Ð»ÑÐ´ÑÑ‰Ð¸Ñ… URL ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ°Ð¼, Ð¸ Ð²Ñ‹ ÑÐ»Ð¸ÑˆÐºÐ¾Ð¼ Ð¾Ð±ÐµÑÐ¿Ð¾ÐºÐ¾ÐµÐ½Ñ‹ Ð¼Ð¾ÑˆÐµÐ½Ð½Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾Ð¼, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð¾Ð±Ñ‰ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹, Ð³Ð´Ðµ <em>ÐºÐ°Ð¶Ð´Ñ‹Ð¹</em> Ð¼Ð¾Ð¶ÐµÑ‚ Ð²Ð²ÐµÑÑ‚Ð¸ Ð»ÑŽÐ±Ñ‹Ðµ <em>Ð´Ð°Ð½Ð½Ñ‹Ðµ</em>. URL-Ð°Ð´Ñ€ÐµÑÐ° Ð±ÑƒÐ´ÑƒÑ‚ Ð²Ñ‹Ð³Ð»ÑÐ´ÐµÑ‚ÑŒ Ð²Ð¾Ñ‚ Ñ‚Ð°Ðº:"
 
 #: privateurls/templates/private_urls.html
-msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
+msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
 msgstr ""
 
 #: privateurls/templates/private_urls.html
 #, python-format
 msgid "Neither <strong>participant ballot submissions</strong>, <strong>participant feedback submissions</strong>, nor <strong>participant self-checkins</strong> are configured to be from private URLs. Any generated URLs will not be useful unless you configure those settings accordingly on the <a href=\"%(data_entry_options_url)s\">tournament configuration page</a>."
-msgstr "Ни <strong> отправка бэллотов</strong>, <strong>и форм обратной связи от участников</strong>, ни <strong> самостоятельная регистрация участников</strong> не установлены доступными с личных URL. Любой созданный URL будет бесполезен если вы не измените эти настройки соответствующим образом на <a href=\"%(data_entry_options_url)s\"> странице настроек турнира</a>."
+msgstr "ÐÐ¸ <strong> Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ° Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²</strong>, <strong>Ð¸ Ñ„Ð¾Ñ€Ð¼ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð¾Ñ‚ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð²</strong>, Ð½Ð¸ <strong> ÑÐ°Ð¼Ð¾ÑÑ‚Ð¾ÑÑ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð²</strong> Ð½Ðµ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ñ‹ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ð¼Ð¸ Ñ Ð»Ð¸Ñ‡Ð½Ñ‹Ñ… URL. Ð›ÑŽÐ±Ð¾Ð¹ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ñ‹Ð¹ URL Ð±ÑƒÐ´ÐµÑ‚ Ð±ÐµÑÐ¿Ð¾Ð»ÐµÐ·ÐµÐ½ ÐµÑÐ»Ð¸ Ð²Ñ‹ Ð½Ðµ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚Ðµ ÑÑ‚Ð¸ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¼ Ð¾Ð±Ñ€Ð°Ð·Ð¾Ð¼ Ð½Ð° <a href=\"%(data_entry_options_url)s\"> ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°</a>."
 
 #: privateurls/templates/private_urls.html
 msgid "There are no private URLs assigned."
-msgstr "Нет личных URL-адресов."
+msgstr "ÐÐµÑ‚ Ð»Ð¸Ñ‡Ð½Ñ‹Ñ… URL-Ð°Ð´Ñ€ÐµÑÐ¾Ð²."
 
 #: privateurls/templates/private_urls.html
 msgid "Generate Private URLs"
-msgstr "Генерировать личные URL"
+msgstr "Ð“ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ URL"
 
 #: privateurls/templates/private_urls_nav.html
 msgid "View URLs"
-msgstr "Смотреть URL"
+msgstr "Ð¡Ð¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ URL"
 
 #: privateurls/templates/private_urls_nav.html
 msgid "Print Teams' URLs"
@@ -126,27 +126,27 @@ msgstr ""
 
 #: privateurls/templates/private_urls_nav.html
 msgid "All reachable participants have already been sent their private URLs."
-msgstr "Всем доступным участникам уже были отправлены их личные URL."
+msgstr "Ð’ÑÐµÐ¼ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ð¼ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ°Ð¼ ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð¸Ñ… Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ URL."
 
 #: privateurls/templates/private_urls_nav.html
 msgid "Email URLs"
-msgstr "Отправить URL по email"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ URL Ð¿Ð¾ email"
 
 #: privateurls/templates/private_urls_nav.html
 msgid "This button only generates private URLs for participants who do not already have one."
-msgstr "Эта кнопка генерирует только личные URL для участников, которые еще их не имеют."
+msgstr "Ð­Ñ‚Ð° ÐºÐ½Ð¾Ð¿ÐºÐ° Ð³ÐµÐ½ÐµÑ€Ð¸Ñ€ÑƒÐµÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ URL Ð´Ð»Ñ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ ÐµÑ‰Ðµ Ð¸Ñ… Ð½Ðµ Ð¸Ð¼ÐµÑŽÑ‚."
 
 #: privateurls/templates/private_urls_nav.html
 msgid "Generate URLs"
-msgstr "Генерировать URL"
+msgstr "Ð“ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ URL"
 
 #: privateurls/templates/private_urls_nav.html
 msgid "All participants already have private URLs."
-msgstr "Все участники уже имеют личные URL."
+msgstr "Ð’ÑÐµ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸ ÑƒÐ¶Ðµ Ð¸Ð¼ÐµÑŽÑ‚ Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ URL."
 
 #: privateurls/views.py
 msgid "no URL"
-msgstr "нет URL"
+msgstr "Ð½ÐµÑ‚ URL"
 
 #: privateurls/views.py
 msgid "URL"
@@ -154,39 +154,40 @@ msgstr "URL"
 
 #: privateurls/views.py
 msgid "Speakers"
-msgstr "Спикеры"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: privateurls/views.py
 msgid "Adjudicators"
-msgstr "Судьи"
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸"
 
 #: privateurls/views.py
 msgid "All participants already have private URLs. If you want to delete them, use the Edit Database area."
-msgstr "Все участники уже имеют личные URL. Если вы хотите удалить их, используйте область \"Редактировать базу данных\"."
+msgstr "Ð’ÑÐµ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸ ÑƒÐ¶Ðµ Ð¸Ð¼ÐµÑŽÑ‚ Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ URL. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¸Ñ…, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ \"Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…\"."
 
 #: privateurls/views.py
 #, python-format
 msgid "A private URL was generated for %(nblank_people)d person."
 msgid_plural "Private URLs were generated for all %(nblank_people)d people."
-msgstr[0] "Личный URL был создан для %(nblank_people)d."
-msgstr[1] "Личные URL были созданы для %(nblank_people)d."
-msgstr[2] "Личные URL были созданы для %(nblank_people)d."
-msgstr[3] "Личные URL были созданы для %(nblank_people)d."
+msgstr[0] "Ð›Ð¸Ñ‡Ð½Ñ‹Ð¹ URL Ð±Ñ‹Ð» ÑÐ¾Ð·Ð´Ð°Ð½ Ð´Ð»Ñ %(nblank_people)d."
+msgstr[1] "Ð›Ð¸Ñ‡Ð½Ñ‹Ðµ URL Ð±Ñ‹Ð»Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ñ‹ Ð´Ð»Ñ %(nblank_people)d."
+msgstr[2] "Ð›Ð¸Ñ‡Ð½Ñ‹Ðµ URL Ð±Ñ‹Ð»Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ñ‹ Ð´Ð»Ñ %(nblank_people)d."
+msgstr[3] "Ð›Ð¸Ñ‡Ð½Ñ‹Ðµ URL Ð±Ñ‹Ð»Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ñ‹ Ð´Ð»Ñ %(nblank_people)d."
 
 #: privateurls/views.py
 #, python-format
 msgid "The already-existing private URL for %(nexisting_people)d person was left intact."
 msgid_plural "The already-existing private URLs for %(nexisting_people)d people were left intact."
-msgstr[0] "Уже существующий личный URL для %(nexisting_people)d остался неиспользованным."
-msgstr[1] "Уже существующие личные URL для %(nexisting_people)d остались неиспользованными."
-msgstr[2] "Уже существующие личные URL для %(nexisting_people)d остались неиспользованными."
-msgstr[3] "Уже существующие личные URL для %(nexisting_people)d остались неиспользованными."
+msgstr[0] "Ð£Ð¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹ Ð»Ð¸Ñ‡Ð½Ñ‹Ð¹ URL Ð´Ð»Ñ %(nexisting_people)d Ð¾ÑÑ‚Ð°Ð»ÑÑ Ð½ÐµÐ¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¼."
+msgstr[1] "Ð£Ð¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ URL Ð´Ð»Ñ %(nexisting_people)d Ð¾ÑÑ‚Ð°Ð»Ð¸ÑÑŒ Ð½ÐµÐ¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¼Ð¸."
+msgstr[2] "Ð£Ð¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ URL Ð´Ð»Ñ %(nexisting_people)d Ð¾ÑÑ‚Ð°Ð»Ð¸ÑÑŒ Ð½ÐµÐ¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¼Ð¸."
+msgstr[3] "Ð£Ð¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ URL Ð´Ð»Ñ %(nexisting_people)d Ð¾ÑÑ‚Ð°Ð»Ð¸ÑÑŒ Ð½ÐµÐ¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¼Ð¸."
 
 #: privateurls/views.py
 msgid "URL Key"
-msgstr "Ключ URL"
+msgstr "ÐšÐ»ÑŽÑ‡ URL"
 
 #: privateurls/views.py
 msgid "Debates"
-msgstr "Дебаты"
+msgstr "Ð”ÐµÐ±Ð°Ñ‚Ñ‹"
+
 

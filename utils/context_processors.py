@@ -1,4 +1,4 @@
-from django.conf import settings
+﻿from django.conf import settings
 
 from tournaments.models import Tournament
 
@@ -6,8 +6,8 @@ from tournaments.models import Tournament
 def debate_context(request):
 
     context = {
-        'tabbycat_version': settings.TABBYCAT_VERSION or "",
-        'tabbycat_codename': settings.TABBYCAT_CODENAME or "no codename",
+        'NekoTab_version': settings.NekoTab_VERSION or "",
+        'NekoTab_codename': settings.NekoTab_CODENAME or "no codename",
         'all_tournaments': Tournament.objects.filter(active=True),
         'disable_sentry': getattr(settings, 'DISABLE_SENTRY', False),
         'on_local': getattr(settings, 'ON_LOCAL', False),
@@ -26,3 +26,4 @@ def debate_context(request):
             context['round'] = request.round
 
     return context
+

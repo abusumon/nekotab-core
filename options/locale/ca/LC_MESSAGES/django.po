@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /develop/tabbycat/options/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/options/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 940\n"
 
@@ -311,7 +311,7 @@ msgid "Manually enter from ballot"
 msgstr ""
 
 #: options/preferences.py
-msgid "Slide: 1 vs 6, 2 vs 7, …. Fold: 1 vs 10, 2 vs 9, …. Adjacent: 1 vs 2, 3 vs 4, …."
+msgid "Slide: 1 vs 6, 2 vs 7, â€¦. Fold: 1 vs 10, 2 vs 9, â€¦. Adjacent: 1 vs 2, 3 vs 4, â€¦."
 msgstr ""
 
 #: options/preferences.py
@@ -419,7 +419,7 @@ msgid "Simple"
 msgstr ""
 
 #: options/preferences.py
-msgid "Rényi entropy"
+msgid "RÃ©nyi entropy"
 msgstr ""
 
 #: options/preferences.py
@@ -427,11 +427,11 @@ msgid "Population variance"
 msgstr ""
 
 #: options/preferences.py
-msgid "Rényi order α, if BP position cost uses Rényi entropy. Shannon is α = 1, Hartley is α = 0, collision is α = 2. See documentation for details."
+msgid "RÃ©nyi order Î±, if BP position cost uses RÃ©nyi entropy. Shannon is Î± = 1, Hartley is Î± = 0, collision is Î± = 2. See documentation for details."
 msgstr ""
 
 #: options/preferences.py
-msgid "Rényi order (BP)"
+msgid "RÃ©nyi order (BP)"
 msgstr ""
 
 #: options/preferences.py
@@ -528,7 +528,7 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Feedback"
-msgstr "Retroalimentació"
+msgstr "RetroalimentaciÃ³"
 
 #: options/preferences.py
 msgid "Minimum possible adjudicator score that can be given"
@@ -760,7 +760,7 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Standings"
-msgstr "Classificació"
+msgstr "ClassificaciÃ³"
 
 #: options/preferences.py
 msgid "The number of substantive speeches a speaker can miss and still be on the speaker tab (-1 means no limit)"
@@ -863,7 +863,7 @@ msgid "Top replies cutoff"
 msgstr ""
 
 #: options/preferences.py
-msgid "Enables public display of all motions and win/loss/selection information. This includes all motions — whether they have been marked as released or not. Intended for use after the tournament."
+msgid "Enables public display of all motions and win/loss/selection information. This includes all motions â€” whether they have been marked as released or not. Intended for use after the tournament."
 msgstr ""
 
 #: options/preferences.py
@@ -1375,7 +1375,7 @@ msgid "Email status secret key"
 msgstr ""
 
 #: options/preferences.py
-msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in Tabbycat (for confirmation or checking)"
+msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in NekoTab (for confirmation or checking)"
 msgstr ""
 
 #: options/preferences.py
@@ -1764,7 +1764,7 @@ msgstr ""
 
 #: options/templates/preferences_index.html
 msgid "Configuration"
-msgstr "Configuració"
+msgstr "ConfiguraciÃ³"
 
 #: options/templates/preferences_index.html
 msgid "The range of scores that can awarded to speeches, replies, and teams"
@@ -1823,7 +1823,7 @@ msgid "Manually Set Current Round"
 msgstr ""
 
 #: options/templates/preferences_index.html
-msgid "Tabbycat will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
+msgid "NekoTab will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
 msgstr ""
 
 #: options/templates/preferences_index.html
@@ -1911,4 +1911,5 @@ msgstr ""
 #, python-format
 msgid "Tournament options saved based on preset %(name)s."
 msgstr ""
+
 

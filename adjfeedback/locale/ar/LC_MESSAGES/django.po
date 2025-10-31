@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 924\n"
 
 #: adjfeedback/admin.py
@@ -39,7 +39,7 @@ msgstr ""
 
 #: adjfeedback/admin.py
 msgid "Source"
-msgstr "الدرجات "
+msgstr "Ø§Ù„Ø¯Ø±Ø¬Ø§Øª "
 
 #: adjfeedback/admin.py
 #, python-format
@@ -98,33 +98,33 @@ msgstr[5] ""
 
 #: adjfeedback/apps.py
 msgid "Adjudicator Feedback"
-msgstr "التعذية الراجعة من المحكم "
+msgstr "Ø§Ù„ØªØ¹Ø°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© Ù…Ù† Ø§Ù„Ù…Ø­ÙƒÙ… "
 
 #: adjfeedback/forms.py
 msgid "chair"
-msgstr "رئيس الجلسة"
+msgstr "Ø±Ø¦ÙŠØ³ Ø§Ù„Ø¬Ù„Ø³Ø©"
 
 #: adjfeedback/forms.py
 msgid "solo"
-msgstr "فردي "
+msgstr "ÙØ±Ø¯ÙŠ "
 
 #: adjfeedback/forms.py
 msgid "panellist"
-msgstr "محكم"
+msgstr "Ù…Ø­ÙƒÙ…"
 
 #: adjfeedback/forms.py
 msgid "trainee"
-msgstr "محكم متدرب "
+msgstr "Ù…Ø­ÙƒÙ… Ù…ØªØ¯Ø±Ø¨ "
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: adjfeedback/forms.py
 msgid "This field is required."
-msgstr "هذه الخانة مطلوبة "
+msgstr "Ù‡Ø°Ù‡ Ø§Ù„Ø®Ø§Ù†Ø© Ù…Ø·Ù„ÙˆØ¨Ø© "
 
 #: adjfeedback/forms.py
 #, python-format
 msgid "Overall score (%(min)d=worst; %(max)d=best)*"
-msgstr "مجموع الدرجات ( %(min)d= سيء ; %(max)d = أفضل )*"
+msgstr "Ù…Ø¬Ù…ÙˆØ¹ Ø§Ù„Ø¯Ø±Ø¬Ø§Øª ( %(min)d= Ø³ÙŠØ¡ ; %(max)d = Ø£ÙØ¶Ù„ )*"
 
 #: adjfeedback/forms.py
 msgid "Ignored"
@@ -143,11 +143,11 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "-- Adjudicators --"
-msgstr "-- المحكمين --"
+msgstr "-- Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ† --"
 
 #: adjfeedback/forms.py
 msgid "Adjudicator this feedback is about"
-msgstr "راي الحكم حول التغذية الراجعة "
+msgstr "Ø±Ø§ÙŠ Ø§Ù„Ø­ÙƒÙ… Ø­ÙˆÙ„ Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© "
 
 #: adjfeedback/forms.py
 #, python-format
@@ -195,19 +195,19 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "adjudicator"
-msgstr "محكم "
+msgstr "Ù…Ø­ÙƒÙ… "
 
 #: adjfeedback/models.py
 msgid "round"
-msgstr "جولة"
+msgstr "Ø¬ÙˆÙ„Ø©"
 
 #: adjfeedback/models.py
 msgid "score"
-msgstr "درجة "
+msgstr "Ø¯Ø±Ø¬Ø© "
 
 #: adjfeedback/models.py
 msgid "timestamp"
-msgstr "الزمن "
+msgstr "Ø§Ù„Ø²Ù…Ù† "
 
 #: adjfeedback/models.py
 msgid "adjudicator base score history"
@@ -219,7 +219,7 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "reference"
-msgstr "مرجع "
+msgstr "Ù…Ø±Ø¬Ø¹ "
 
 #: adjfeedback/models.py
 msgid "Code-compatible reference, e.g., \"agree_with_decision\""
@@ -227,27 +227,27 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "from adjudicator"
-msgstr "من الحكم "
+msgstr "Ù…Ù† Ø§Ù„Ø­ÙƒÙ… "
 
 #: adjfeedback/models.py
 msgid "Adjudicators should be asked this question (about other adjudicators)"
-msgstr "سؤال حكم عن الاخر"
+msgstr "Ø³Ø¤Ø§Ù„ Ø­ÙƒÙ… Ø¹Ù† Ø§Ù„Ø§Ø®Ø±"
 
 #: adjfeedback/models.py
 msgid "from team"
-msgstr "من الفريق "
+msgstr "Ù…Ù† Ø§Ù„ÙØ±ÙŠÙ‚ "
 
 #: adjfeedback/models.py
 msgid "Teams should be asked this question"
-msgstr "سؤال الفريق "
+msgstr "Ø³Ø¤Ø§Ù„ Ø§Ù„ÙØ±ÙŠÙ‚ "
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback question"
-msgstr "سؤال المحكم في التغذية الراجعة"
+msgstr "Ø³Ø¤Ø§Ù„ Ø§Ù„Ù…Ø­ÙƒÙ… ÙÙŠ Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø©"
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback questions"
-msgstr "جواب للتغذية الراجعة من المحكم "
+msgstr "Ø¬ÙˆØ§Ø¨ Ù„Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© Ù…Ù† Ø§Ù„Ù…Ø­ÙƒÙ… "
 
 #: adjfeedback/models.py adjfeedback/views.py
 msgid "ignored"
@@ -259,11 +259,11 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback"
-msgstr "التعذية الراجعة من المحكم "
+msgstr "Ø§Ù„ØªØ¹Ø°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© Ù…Ù† Ø§Ù„Ù…Ø­ÙƒÙ… "
 
 #: adjfeedback/models.py
 msgid "adjudicator feedbacks"
-msgstr "التغذيات الراجعة من المحكم "
+msgstr "Ø§Ù„ØªØºØ°ÙŠØ§Øª Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© Ù…Ù† Ø§Ù„Ù…Ø­ÙƒÙ… "
 
 #: adjfeedback/models.py
 msgid "Either the source adjudicator or source team wasn't specified."
@@ -279,7 +279,7 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "Adjudicator did not see this debate."
-msgstr "الحكم لم يشاهد هذه المناظرة "
+msgstr "Ø§Ù„Ø­ÙƒÙ… Ù„Ù… ÙŠØ´Ø§Ù‡Ø¯ Ù‡Ø°Ù‡ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: adjfeedback/tables.py
 msgid "Whether the adj is marked as breaking (click to mark)"
@@ -367,18 +367,18 @@ msgstr ""
 #: adjfeedback/templates/add_feedback.html
 #: adjfeedback/templates/enter_feedback.html
 msgid "Enter Feedback"
-msgstr "أدخل التغذية الراجعة"
+msgstr "Ø£Ø¯Ø®Ù„ Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø©"
 
 #: adjfeedback/templates/enter_feedback.html
 #: adjfeedback/templates/public_add_feedback.html
 #, python-format
 msgid "Add Feedback from %(name)s"
-msgstr "أضف تغذية راجعة من %(name)s"
+msgstr "Ø£Ø¶Ù ØªØºØ°ÙŠØ© Ø±Ø§Ø¬Ø¹Ø© Ù…Ù† %(name)s"
 
 #: adjfeedback/templates/enter_feedback.html
 #: adjfeedback/templates/feedback_base.html
 msgid "Add Feedback"
-msgstr "أضف تغذية راجعة "
+msgstr "Ø£Ø¶Ù ØªØºØ°ÙŠØ© Ø±Ø§Ø¬Ø¹Ø© "
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "There are no feedback options because no rounds have been released to the public yet. Check back when they have!"
@@ -398,7 +398,7 @@ msgstr ""
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "There are some problems with this feedback submission. Please review and correct them."
-msgstr "هناك بعض المشاكل في التغذية الراجعة يرجى مراجعتهم "
+msgstr "Ù‡Ù†Ø§Ùƒ Ø¨Ø¹Ø¶ Ø§Ù„Ù…Ø´Ø§ÙƒÙ„ ÙÙŠ Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© ÙŠØ±Ø¬Ù‰ Ù…Ø±Ø§Ø¬Ø¹ØªÙ‡Ù… "
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "Save Feedback"
@@ -406,7 +406,7 @@ msgstr ""
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
-msgstr "عند إرسال هذا النموذج سيتم تخزين عنوان IP الخاص بك لأغراض التسجيل."
+msgstr "Ø¹Ù†Ø¯ Ø¥Ø±Ø³Ø§Ù„ Ù‡Ø°Ø§ Ø§Ù„Ù†Ù…ÙˆØ°Ø¬ Ø³ÙŠØªÙ… ØªØ®Ø²ÙŠÙ† Ø¹Ù†ÙˆØ§Ù† IP Ø§Ù„Ø®Ø§Øµ Ø¨Ùƒ Ù„Ø£ØºØ±Ø§Ø¶ Ø§Ù„ØªØ³Ø¬ÙŠÙ„."
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Overview"
@@ -600,16 +600,16 @@ msgstr[5] ""
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
-msgid "Score Distributions (range is %(min_score)s–%(max_score)s)"
+msgid "Score Distributions (range is %(min_score)sâ€“%(max_score)s)"
 msgstr ""
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "Base"
-msgstr "تجربة"
+msgstr "ØªØ¬Ø±Ø¨Ø©"
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "Feedback"
-msgstr "تغذية راجعة "
+msgstr "ØªØºØ°ÙŠØ© Ø±Ø§Ø¬Ø¹Ø© "
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
@@ -618,7 +618,7 @@ msgstr ""
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "Score Ratio"
-msgstr "مجال الدرجات "
+msgstr "Ù…Ø¬Ø§Ù„ Ø§Ù„Ø¯Ø±Ø¬Ø§Øª "
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
@@ -655,7 +655,7 @@ msgstr[5] ""
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "All adjudicators with a score high enough to vote, but who aren't allocated as chairs, are allocated as panellists by the auto-allocator."
-msgstr "ويتم تخصيص جميع المحكمين الذين يحصلون على درجة عالية بما فيه الكفاية للتصويت، "
+msgstr "ÙˆÙŠØªÙ… ØªØ®ØµÙŠØµ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ† Ø§Ù„Ø°ÙŠÙ† ÙŠØ­ØµÙ„ÙˆÙ† Ø¹Ù„Ù‰ Ø¯Ø±Ø¬Ø© Ø¹Ø§Ù„ÙŠØ© Ø¨Ù…Ø§ ÙÙŠÙ‡ Ø§Ù„ÙƒÙØ§ÙŠØ© Ù„Ù„ØªØµÙˆÙŠØªØŒ "
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
@@ -806,23 +806,23 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "A Team"
-msgstr "فريق"
+msgstr "ÙØ±ÙŠÙ‚"
 
 #: adjfeedback/views.py
 msgid "Team"
-msgstr "فريق"
+msgstr "ÙØ±ÙŠÙ‚"
 
 #: adjfeedback/views.py
 msgid "Institution"
-msgstr "مؤسسة"
+msgstr "Ù…Ø¤Ø³Ø³Ø©"
 
 #: adjfeedback/views.py
 msgid "An Adjudicator"
-msgstr "محكم"
+msgstr "Ù…Ø­ÙƒÙ…"
 
 #: adjfeedback/views.py
 msgid "Adjudicator"
-msgstr "محكم "
+msgstr "Ù…Ø­ÙƒÙ… "
 
 #: adjfeedback/views.py
 #, python-format
@@ -865,7 +865,7 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "confirmed"
-msgstr "مؤكد"
+msgstr "Ù…Ø¤ÙƒØ¯"
 
 #: adjfeedback/views.py
 msgid "un-confirmed"
@@ -889,4 +889,5 @@ msgstr[5] ""
 #: adjfeedback/views.py
 msgid "Custom Feedback Questions"
 msgstr ""
+
 

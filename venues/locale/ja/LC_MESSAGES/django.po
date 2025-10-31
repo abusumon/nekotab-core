@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2025-02-15 07:22\n"
@@ -12,43 +12,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/tabbycat/venues/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/venues/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 956\n"
 
 #: venues/apps.py
 msgid "Rooms"
-msgstr "ラウンド部屋"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰éƒ¨å±‹"
 
 #: venues/consumers.py
 msgid "Draw is already released, unrelease draw to assign rooms."
-msgstr "対戦表が既に公開されています。試合の部屋を変更する場合は一度非公開にしてください。"
+msgstr "å¯¾æˆ¦è¡¨ãŒæ—¢ã«å…¬é–‹ã•ã‚Œã¦ã„ã¾ã™ã€‚è©¦åˆã®éƒ¨å±‹ã‚’å¤‰æ›´ã™ã‚‹å ´åˆã¯ä¸€åº¦éžå…¬é–‹ã«ã—ã¦ãã ã•ã„ã€‚"
 
 #: venues/consumers.py
 msgid "Draw is not confirmed, confirm draw to assign rooms."
-msgstr "対戦表が承認されていません。部屋を割り振るには承認してください。"
+msgstr "å¯¾æˆ¦è¡¨ãŒæ‰¿èªã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚éƒ¨å±‹ã‚’å‰²ã‚ŠæŒ¯ã‚‹ã«ã¯æ‰¿èªã—ã¦ãã ã•ã„ã€‚"
 
 #: venues/consumers.py
 msgid "Successfully auto-allocated rooms to debates."
-msgstr "試合に自動で部屋を割り振りました。"
+msgstr "è©¦åˆã«è‡ªå‹•ã§éƒ¨å±‹ã‚’å‰²ã‚ŠæŒ¯ã‚Šã¾ã—ãŸã€‚"
 
 #: venues/models.py
 msgid "name"
-msgstr "名前"
+msgstr "åå‰"
 
 #: venues/models.py
 msgid "priority"
-msgstr "優先度"
+msgstr "å„ªå…ˆåº¦"
 
 #: venues/models.py
 msgid "Rooms with a higher priority number will be preferred when allocating rooms to debates"
-msgstr "部屋を配置するとき、優先度の高いものから順に配置します。"
+msgstr "éƒ¨å±‹ã‚’é…ç½®ã™ã‚‹ã¨ãã€å„ªå…ˆåº¦ã®é«˜ã„ã‚‚ã®ã‹ã‚‰é †ã«é…ç½®ã—ã¾ã™ã€‚"
 
 #: venues/models.py
 msgid "tournament"
-msgstr "大会"
+msgstr "å¤§ä¼š"
 
 #: venues/models.py
 msgid "URL"
@@ -56,165 +56,166 @@ msgstr "URL"
 
 #: venues/models.py
 msgid "A URL that contains extra information about this room, e.g. a map or a meeting link (for online tournaments)"
-msgstr "地図やオンライン大会のミーティングリンクなどの追加の情報を記載したURL"
+msgstr "åœ°å›³ã‚„ã‚ªãƒ³ãƒ©ã‚¤ãƒ³å¤§ä¼šã®ãƒŸãƒ¼ãƒ†ã‚£ãƒ³ã‚°ãƒªãƒ³ã‚¯ãªã©ã®è¿½åŠ ã®æƒ…å ±ã‚’è¨˜è¼‰ã—ãŸURL"
 
 #: venues/models.py
 msgid "room"
-msgstr "部屋"
+msgstr "éƒ¨å±‹"
 
 #: venues/models.py
 msgid "rooms"
-msgstr "部屋"
+msgstr "éƒ¨å±‹"
 
 #: venues/models.py
 msgid "Don't display in room name"
-msgstr "部屋名に表示しない"
+msgstr "éƒ¨å±‹åã«è¡¨ç¤ºã—ãªã„"
 
 #: venues/models.py
 msgid "Display as prefix"
-msgstr "部屋名の前に表示"
+msgstr "éƒ¨å±‹åã®å‰ã«è¡¨ç¤º"
 
 #: venues/models.py
 msgid "Display as suffix"
-msgstr "部屋名の後に表示"
+msgstr "éƒ¨å±‹åã®å¾Œã«è¡¨ç¤º"
 
 #: venues/models.py
-msgid "Name of category, e.g., \"Purple\", \"Step-free access\", \"Close to tab room\". This name is shown when the category is prefixed or suffixed to a room name in the draw, e.g., \"Purple – G05\"."
-msgstr "カテゴリー名。e.g.「紫」「階段なしでアクセス可能」「タブルームの近く」。部屋名の前または後に表示する設定の場合に表示されます（e.g.「紫 - G05」）。"
+msgid "Name of category, e.g., \"Purple\", \"Step-free access\", \"Close to tab room\". This name is shown when the category is prefixed or suffixed to a room name in the draw, e.g., \"Purple â€“ G05\"."
+msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼åã€‚e.g.ã€Œç´«ã€ã€ŒéšŽæ®µãªã—ã§ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ã€ã€Œã‚¿ãƒ–ãƒ«ãƒ¼ãƒ ã®è¿‘ãã€ã€‚éƒ¨å±‹åã®å‰ã¾ãŸã¯å¾Œã«è¡¨ç¤ºã™ã‚‹è¨­å®šã®å ´åˆã«è¡¨ç¤ºã•ã‚Œã¾ã™ï¼ˆe.g.ã€Œç´« - G05ã€ï¼‰ã€‚"
 
 #: venues/models.py
 msgid "description"
-msgstr "説明"
+msgstr "èª¬æ˜Ž"
 
 #: venues/models.py
 msgid "Description, as the predicate of a sentence, e.g. \"has step-free access\", \"is close to the briefing hall\". This description follows \"This room\" when shown in tooltips, e.g., \"This room is close to the briefing hall.\"."
-msgstr "分の述語としての説明。e.g.「は階段なしでアクセス可能です」「はORの近くです」。この説明はヒントに「この部屋は」という文句のあとに表示されます。e.g.「この部屋はORの近くです。」"
+msgstr "åˆ†ã®è¿°èªžã¨ã—ã¦ã®èª¬æ˜Žã€‚e.g.ã€Œã¯éšŽæ®µãªã—ã§ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ã§ã™ã€ã€Œã¯ORã®è¿‘ãã§ã™ã€ã€‚ã“ã®èª¬æ˜Žã¯ãƒ’ãƒ³ãƒˆã«ã€Œã“ã®éƒ¨å±‹ã¯ã€ã¨ã„ã†æ–‡å¥ã®ã‚ã¨ã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚e.g.ã€Œã“ã®éƒ¨å±‹ã¯ORã®è¿‘ãã§ã™ã€‚ã€"
 
 #: venues/models.py
 msgid "display in room name"
-msgstr "部屋名に表示"
+msgstr "éƒ¨å±‹åã«è¡¨ç¤º"
 
 #: venues/models.py
-msgid "Prefix: \"Purple – G05\", Suffix: \"G05 – Purple\""
-msgstr "前：「紫 - G05」、後：「G05 - 紫」"
+msgid "Prefix: \"Purple â€“ G05\", Suffix: \"G05 â€“ Purple\""
+msgstr "å‰ï¼šã€Œç´« - G05ã€ã€å¾Œï¼šã€ŒG05 - ç´«ã€"
 
 #: venues/models.py
 msgid "display in public tooltip"
-msgstr "公開のヒントバーに表示"
+msgstr "å…¬é–‹ã®ãƒ’ãƒ³ãƒˆãƒãƒ¼ã«è¡¨ç¤º"
 
 #: venues/models.py
 msgid "Displays the description in the tooltip for the room on public pages. The description, if not blank, will always show on admin pages."
-msgstr "公開ページの部屋のヒントバーに説明を表示します。管理者ページでは空白の説明でない限りは常に表示されます。"
+msgstr "å…¬é–‹ãƒšãƒ¼ã‚¸ã®éƒ¨å±‹ã®ãƒ’ãƒ³ãƒˆãƒãƒ¼ã«èª¬æ˜Žã‚’è¡¨ç¤ºã—ã¾ã™ã€‚ç®¡ç†è€…ãƒšãƒ¼ã‚¸ã§ã¯ç©ºç™½ã®èª¬æ˜Žã§ãªã„é™ã‚Šã¯å¸¸ã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚"
 
 #: venues/models.py
 msgid "room category"
-msgstr "部屋カテゴリー"
+msgstr "éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: venues/models.py
 msgid "room categories"
-msgstr "部屋カテゴリー"
+msgstr "éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: venues/models.py
 msgid "category"
-msgstr "カテゴリー"
+msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: venues/models.py
 msgid "subject content type"
-msgstr "対象の種類"
+msgstr "å¯¾è±¡ã®ç¨®é¡ž"
 
 #: venues/models.py
 msgid "subject ID"
-msgstr "対象ID"
+msgstr "å¯¾è±¡ID"
 
 #: venues/models.py
 msgid "room constraint"
-msgstr "部屋の制約条件"
+msgstr "éƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶"
 
 #: venues/models.py
 msgid "room constraints"
-msgstr "部屋の制約条件"
+msgstr "éƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶"
 
 #: venues/templates/venue_categories_edit.html
 msgid "Room Categories"
-msgstr "部屋カテゴリー"
+msgstr "éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: venues/templates/venue_categories_edit.html
 msgid "Room categories allow you to group rooms together into \"zones\" to display in the draw and make navigation easier for participants, and/or specify constraints on room allocation that require teams, adjudicators or institutions to be put in a room in a particular category."
-msgstr "部屋カテゴリーを使うと、部屋を一つのゾーンにまとめて対戦表に表示し、参加者の誘導を簡単にしたり、あるいは特定の参加者・インステを特定のカテゴリーに配置する制約を課すことが出来ます。"
+msgstr "éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’ä½¿ã†ã¨ã€éƒ¨å±‹ã‚’ä¸€ã¤ã®ã‚¾ãƒ¼ãƒ³ã«ã¾ã¨ã‚ã¦å¯¾æˆ¦è¡¨ã«è¡¨ç¤ºã—ã€å‚åŠ è€…ã®èª˜å°Žã‚’ç°¡å˜ã«ã—ãŸã‚Šã€ã‚ã‚‹ã„ã¯ç‰¹å®šã®å‚åŠ è€…ãƒ»ã‚¤ãƒ³ã‚¹ãƒ†ã‚’ç‰¹å®šã®ã‚«ãƒ†ã‚´ãƒªãƒ¼ã«é…ç½®ã™ã‚‹åˆ¶ç´„ã‚’èª²ã™ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚"
 
 #: venues/templates/venue_categories_edit.html
 #, python-format
 msgid "If you want to delete room categories, use the <a href=\"%(edit_db_url)s\" class=\"alert-link\">Edit Database</a> area."
-msgstr "部屋カテゴリーをの削除は<a href=\"%(edit_db_url)s\" class=\"alert-link\">データベース編集</a>エリアから可能です。"
+msgstr "éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’ã®å‰Šé™¤ã¯<a href=\"%(edit_db_url)s\" class=\"alert-link\">ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†</a>ã‚¨ãƒªã‚¢ã‹ã‚‰å¯èƒ½ã§ã™ã€‚"
 
 #: venues/templates/venue_categories_edit.html
 msgid "Save Room Categories"
-msgstr "部屋カテゴリーを保存"
+msgstr "éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’ä¿å­˜"
 
 #: venues/templates/venue_constraints_edit.html
 msgid "Room Constraints"
-msgstr "部屋の制約条件"
+msgstr "éƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶"
 
 #: venues/templates/venue_constraints_edit.html
 msgid "Room constraints tell the room allocator to try to keep the specified team or adjudicator, or all teams (but not adjudicators) from the specified institution, in a room in the given category. The \"priority\" field resolves conflicting constraints: the higher priority takes precedence. You can also use the priority field to specify \"lower-preference\" constraints, which are taken if a higher-priority constraint couldn't be met."
-msgstr "部屋の制約条件を指定すると、部屋配置のプログラムは指定されたチーム、ジャッジまたはインステのすべてのチーム（インステのジャッジは関係ありません）を指定されたカテゴリーに配置します。複数の対立する制約条件がある場合、「優先度」欄の値が大きいものが優先して解決されます。あるいは、優先度を低く設定することで優先度の高い制約が満たされなかった場合の「予備の制約」を指定できます。"
+msgstr "éƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶ã‚’æŒ‡å®šã™ã‚‹ã¨ã€éƒ¨å±‹é…ç½®ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¯æŒ‡å®šã•ã‚ŒãŸãƒãƒ¼ãƒ ã€ã‚¸ãƒ£ãƒƒã‚¸ã¾ãŸã¯ã‚¤ãƒ³ã‚¹ãƒ†ã®ã™ã¹ã¦ã®ãƒãƒ¼ãƒ ï¼ˆã‚¤ãƒ³ã‚¹ãƒ†ã®ã‚¸ãƒ£ãƒƒã‚¸ã¯é–¢ä¿‚ã‚ã‚Šã¾ã›ã‚“ï¼‰ã‚’æŒ‡å®šã•ã‚ŒãŸã‚«ãƒ†ã‚´ãƒªãƒ¼ã«é…ç½®ã—ã¾ã™ã€‚è¤‡æ•°ã®å¯¾ç«‹ã™ã‚‹åˆ¶ç´„æ¡ä»¶ãŒã‚ã‚‹å ´åˆã€ã€Œå„ªå…ˆåº¦ã€æ¬„ã®å€¤ãŒå¤§ãã„ã‚‚ã®ãŒå„ªå…ˆã—ã¦è§£æ±ºã•ã‚Œã¾ã™ã€‚ã‚ã‚‹ã„ã¯ã€å„ªå…ˆåº¦ã‚’ä½Žãè¨­å®šã™ã‚‹ã“ã¨ã§å„ªå…ˆåº¦ã®é«˜ã„åˆ¶ç´„ãŒæº€ãŸã•ã‚Œãªã‹ã£ãŸå ´åˆã®ã€Œäºˆå‚™ã®åˆ¶ç´„ã€ã‚’æŒ‡å®šã§ãã¾ã™ã€‚"
 
 #: venues/templates/venue_constraints_edit.html
 msgid "Save Room Constraints"
-msgstr "部屋の制約条件を保存"
+msgstr "éƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶ã‚’ä¿å­˜"
 
 #: venues/utils.py
 #, python-format
 msgid "Room constraint of %(name)s met (%(category)s)"
-msgstr "%(name)sの部屋の制約（%(category)s）は満たされました。"
+msgstr "%(name)sã®éƒ¨å±‹ã®åˆ¶ç´„ï¼ˆ%(category)sï¼‰ã¯æº€ãŸã•ã‚Œã¾ã—ãŸã€‚"
 
 #: venues/utils.py
 #, python-format
 msgid "Room does not meet any constraint of %(name)s"
-msgstr "%(name)sの部屋の制約は満たされませんでした。"
+msgstr "%(name)sã®éƒ¨å±‹ã®åˆ¶ç´„ã¯æº€ãŸã•ã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚"
 
 #: venues/utils.py
 #, python-format
 msgid "Room constraint of %(team)s met (%(category)s, via institution %(institution)s)"
-msgstr "%(team)sの部屋の制約（インステ%(institution)s関連、%(category)s）は満たされました。"
+msgstr "%(team)sã®éƒ¨å±‹ã®åˆ¶ç´„ï¼ˆã‚¤ãƒ³ã‚¹ãƒ†%(institution)sé–¢é€£ã€%(category)sï¼‰ã¯æº€ãŸã•ã‚Œã¾ã—ãŸã€‚"
 
 #: venues/utils.py
 #, python-format
 msgid "Room does not meet any constraint of institution %(institution)s (%(team)s)"
-msgstr "%(team)sの部屋の制約（インステ%(institution)s関連）は満たされませんでした。"
+msgstr "%(team)sã®éƒ¨å±‹ã®åˆ¶ç´„ï¼ˆã‚¤ãƒ³ã‚¹ãƒ†%(institution)sé–¢é€£ï¼‰ã¯æº€ãŸã•ã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚"
 
 #: venues/views.py
 msgid "Edit Rooms"
-msgstr "部屋を編集"
+msgstr "éƒ¨å±‹ã‚’ç·¨é›†"
 
 #: venues/views.py
 #, python-format
 msgid "Saved room category: %(list)s"
 msgid_plural "Saved venue categories: %(list)s"
-msgstr[0] "部屋カテゴリーを保存しました：%(list)s"
+msgstr[0] "éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’ä¿å­˜ã—ã¾ã—ãŸï¼š%(list)s"
 
 #: venues/views.py
 msgid "No changes were made to the room categories."
-msgstr "部屋カテゴリーに変更はありません。"
+msgstr "éƒ¨å±‹ã‚«ãƒ†ã‚´ãƒªãƒ¼ã«å¤‰æ›´ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: venues/views.py
 #, python-format
 msgid "%s (Adjudicator)"
-msgstr "%s（ジャッジ）"
+msgstr "%sï¼ˆã‚¸ãƒ£ãƒƒã‚¸ï¼‰"
 
 #: venues/views.py
 #, python-format
 msgid "%s (Team)"
-msgstr "%s（チーム）"
+msgstr "%sï¼ˆãƒãƒ¼ãƒ ï¼‰"
 
 #: venues/views.py
 #, python-format
 msgid "%s (Institution)"
-msgstr "%s（インステ）"
+msgstr "%sï¼ˆã‚¤ãƒ³ã‚¹ãƒ†ï¼‰"
 
 #: venues/views.py
 #, python-format
 msgid "Saved %(count)d room constraint."
 msgid_plural "Saved %(count)d room constraints."
-msgstr[0] "%(count)dつの部屋の制約条件を保存しました。"
+msgstr[0] "%(count)dã¤ã®éƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶ã‚’ä¿å­˜ã—ã¾ã—ãŸã€‚"
+
 

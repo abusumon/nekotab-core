@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -11,56 +11,56 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/importer/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/importer/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 932\n"
 
 #: importer/forms.py
 #, python-format
 msgid "line %(lineno)d: %(message)s"
-msgstr "строка %(lineno)d: %(message)s"
+msgstr "ÑÑ‚Ñ€Ð¾ÐºÐ° %(lineno)d: %(message)s"
 
 #: importer/forms.py
 #, python-format
 msgid "This line (for %(institution)s) didn't have a code"
-msgstr "В этой строке (%(institution)s) нет кода"
+msgstr "Ð’ ÑÑ‚Ð¾Ð¹ ÑÑ‚Ñ€Ð¾ÐºÐµ (%(institution)s) Ð½ÐµÑ‚ ÐºÐ¾Ð´Ð°"
 
 #: importer/forms.py
 #, python-format
 msgid "This line (for %(institution)s) had too many columns"
-msgstr "В этой строке (%(institution)s) слишком много столбцов"
+msgstr "Ð’ ÑÑ‚Ð¾Ð¹ ÑÑ‚Ñ€Ð¾ÐºÐµ (%(institution)s) ÑÐ»Ð¸ÑˆÐºÐ¾Ð¼ Ð¼Ð½Ð¾Ð³Ð¾ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð¾Ð²"
 
 #: importer/forms.py
 msgid "There were no institutions to import."
-msgstr "Не было клубов для импорта."
+msgstr "ÐÐµ Ð±Ñ‹Ð»Ð¾ ÐºÐ»ÑƒÐ±Ð¾Ð² Ð´Ð»Ñ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð°."
 
 #: importer/forms.py
 #, python-format
 msgid "Sorry, you can only import up to %(max_allowed)d institution at a time. (You currently have %(given)d.) Try splitting your import into smaller chunks."
 msgid_plural "Sorry, you can only import up to %(max_allowed)d institutions at a time. (You currently have %(given)d.) Try splitting your import into smaller chunks."
-msgstr[0] "Одновременно можно импортировать только %(max_allowed)d клубов. Сейчас указано %(given)d.. Попробуйте импортировать клубы в несколько приёмов."
-msgstr[1] "Одновременно можно импортировать только %(max_allowed)d клубов. Сейчас указано %(given)d.. Попробуйте импортировать клубы в несколько приёмов."
-msgstr[2] "Одновременно можно импортировать только %(max_allowed)d клубов. Сейчас указано %(given)d.. Попробуйте импортировать клубы в несколько приёмов."
-msgstr[3] "Одновременно можно импортировать только %(max_allowed)d клубов. Сейчас указано %(given)d.. Попробуйте импортировать клубы в несколько приёмов."
+msgstr[0] "ÐžÐ´Ð½Ð¾Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ %(max_allowed)d ÐºÐ»ÑƒÐ±Ð¾Ð². Ð¡ÐµÐ¹Ñ‡Ð°Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð¾ %(given)d.. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹ Ð² Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¿Ñ€Ð¸Ñ‘Ð¼Ð¾Ð²."
+msgstr[1] "ÐžÐ´Ð½Ð¾Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ %(max_allowed)d ÐºÐ»ÑƒÐ±Ð¾Ð². Ð¡ÐµÐ¹Ñ‡Ð°Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð¾ %(given)d.. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹ Ð² Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¿Ñ€Ð¸Ñ‘Ð¼Ð¾Ð²."
+msgstr[2] "ÐžÐ´Ð½Ð¾Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ %(max_allowed)d ÐºÐ»ÑƒÐ±Ð¾Ð². Ð¡ÐµÐ¹Ñ‡Ð°Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð¾ %(given)d.. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹ Ð² Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¿Ñ€Ð¸Ñ‘Ð¼Ð¾Ð²."
+msgstr[3] "ÐžÐ´Ð½Ð¾Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ %(max_allowed)d ÐºÐ»ÑƒÐ±Ð¾Ð². Ð¡ÐµÐ¹Ñ‡Ð°Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð¾ %(given)d.. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹ Ð² Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¿Ñ€Ð¸Ñ‘Ð¼Ð¾Ð²."
 
 #: importer/forms.py
 msgid "There were no rooms to import."
-msgstr "Не было аудиторий для импорта."
+msgstr "ÐÐµ Ð±Ñ‹Ð»Ð¾ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ Ð´Ð»Ñ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð°."
 
 #: importer/forms.py
 #, python-format
 msgid "Sorry, you can only import up to %(max_allowed)d room at a time. (You currently have %(given)d.) Try splitting your import into smaller chunks."
 msgid_plural "Sorry, you can only import up to %(max_allowed)d rooms at a time. (You currently have %(given)d.) Try splitting your import into smaller chunks."
-msgstr[0] "Извините, вы можете импортировать максимум %(max_allowed)d аудиторий за один раз. (Сейчас у вас есть %(given)d.) Попробуйте разбить ваш импорт на несколько очередей."
-msgstr[1] "Извините, вы можете импортировать максимум %(max_allowed)d аудиторий за один раз. (Сейчас у вас есть %(given)d.) Попробуйте разбить ваш импорт на несколько очередей."
-msgstr[2] "Извините, вы можете импортировать максимум %(max_allowed)d аудиторий за один раз. (Сейчас у вас есть %(given)d.) Попробуйте разбить ваш импорт на несколько очередей."
-msgstr[3] "Извините, вы можете импортировать максимум %(max_allowed)d аудиторий за один раз. (Сейчас у вас есть %(given)d.) Попробуйте разбить ваш импорт на несколько очередей."
+msgstr[0] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð·. (Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ñƒ Ð²Ð°Ñ ÐµÑÑ‚ÑŒ %(given)d.) ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð±Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
+msgstr[1] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð·. (Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ñƒ Ð²Ð°Ñ ÐµÑÑ‚ÑŒ %(given)d.) ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð±Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
+msgstr[2] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð·. (Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ñƒ Ð²Ð°Ñ ÐµÑÑ‚ÑŒ %(given)d.) ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð±Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
+msgstr[3] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð·. (Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ñƒ Ð²Ð°Ñ ÐµÑÑ‚ÑŒ %(given)d.) ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð±Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
 
 #: importer/forms.py
 msgid "Speakers' names"
-msgstr "Имена спикеров"
+msgstr "Ð˜Ð¼ÐµÐ½Ð° ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: importer/forms.py
 msgid "Can be separated by newlines, tabs, commas or ampersands"
@@ -68,41 +68,41 @@ msgstr ""
 
 #: importer/forms.py
 msgid "Speakers' email addresses"
-msgstr "Email адреса спикеров"
+msgstr "Email Ð°Ð´Ñ€ÐµÑÐ° ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: importer/forms.py
 msgid "Optional, useful to include if distributing private URLs, list in same order as speakers' names"
-msgstr "Необязательно, полезно включать при распределении линых URL, список в том же порядке, что и имена спикеров"
+msgstr "ÐÐµÐ¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾, Ð¿Ð¾Ð»ÐµÐ·Ð½Ð¾ Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¸ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ð¸ Ð»Ð¸Ð½Ñ‹Ñ… URL, ÑÐ¿Ð¸ÑÐ¾Ðº Ð² Ñ‚Ð¾Ð¼ Ð¶Ðµ Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ, Ñ‡Ñ‚Ð¾ Ð¸ Ð¸Ð¼ÐµÐ½Ð° ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: importer/forms.py
 msgid "Name (excluding institution name)"
-msgstr "Название (без названия клуба)"
+msgstr "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ (Ð±ÐµÐ· Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ ÐºÐ»ÑƒÐ±Ð°)"
 
 #: importer/forms.py
 msgid "Prefix team name with institution name?"
-msgstr "Указать название клуба перед названием команды?"
+msgstr "Ð£ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ»ÑƒÐ±Ð° Ð¿ÐµÑ€ÐµÐ´ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÐµÐ¼ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹?"
 
 #: importer/forms.py
 msgid "Do not include institution name (check the \"Prefix team name with institution name?\" field instead)"
-msgstr "Не указывать название клуба (вместо поля \"Указать название клуба перед названием команды\")"
+msgstr "ÐÐµ ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ»ÑƒÐ±Ð° (Ð²Ð¼ÐµÑÑ‚Ð¾ Ð¿Ð¾Ð»Ñ \"Ð£ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ»ÑƒÐ±Ð° Ð¿ÐµÑ€ÐµÐ´ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÐµÐ¼ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹\")"
 
 #: importer/forms.py
 msgid "(Not applicable to unaffiliated teams)"
-msgstr "(Не применимо к неафиллированным командам)"
+msgstr "(ÐÐµ Ð¿Ñ€Ð¸Ð¼ÐµÐ½Ð¸Ð¼Ð¾ Ðº Ð½ÐµÐ°Ñ„Ð¸Ð»Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¼ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼)"
 
 #: importer/forms.py
 msgid "One speaker's name per line"
-msgstr "Одно имя спикера на строчку"
+msgstr "ÐžÐ´Ð½Ð¾ Ð¸Ð¼Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð° Ð½Ð° ÑÑ‚Ñ€Ð¾Ñ‡ÐºÑƒ"
 
 #: importer/forms.py
 #, python-format
 msgid "Speaker %d"
-msgstr "Спикер %d"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ %d"
 
 #: importer/forms.py
 #, python-format
 msgid "speaker%d@example.edu"
-msgstr "спикер %d @example.edu"
+msgstr "ÑÐ¿Ð¸ÐºÐµÑ€ %d @example.edu"
 
 #: importer/forms.py
 msgid "Unseeded"
@@ -122,33 +122,33 @@ msgstr ""
 
 #: importer/forms.py
 msgid "There must be at least one speaker."
-msgstr "Должен быть хотя бы один спикер."
+msgstr "Ð”Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ Ð¾Ð´Ð¸Ð½ ÑÐ¿Ð¸ÐºÐµÑ€."
 
 #: importer/forms.py
 #, python-format
 msgid "%(email)s is not a valid email address."
-msgstr "%(email)s не является допустимым email."
+msgstr "%(email)s Ð½Ðµ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¼ email."
 
 #: importer/forms.py
 msgid "There are more email addresses than speakers."
-msgstr "Адресов электронной почты больше чем спикеров."
+msgstr "ÐÐ´Ñ€ÐµÑÐ¾Ð² ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ñ‹ Ð±Ð¾Ð»ÑŒÑˆÐµ Ñ‡ÐµÐ¼ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²."
 
 #: importer/forms.py
 msgid "Every team in a single tournament from the same institution must have a different name. Please correct the duplicate data."
-msgstr "В рамках одного турнира у всех команд из одного клуба должны быть разные названия. Пожалуйста, исправьте повторяющиеся названия."
+msgstr "Ð’ Ñ€Ð°Ð¼ÐºÐ°Ñ… Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° Ñƒ Ð²ÑÐµÑ… ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¸Ð· Ð¾Ð´Ð½Ð¾Ð³Ð¾ ÐºÐ»ÑƒÐ±Ð° Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð±Ñ‹Ñ‚ÑŒ Ñ€Ð°Ð·Ð½Ñ‹Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð¸ÑÐ¿Ñ€Ð°Ð²ÑŒÑ‚Ðµ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑÑŽÑ‰Ð¸ÐµÑÑ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ."
 
 #: importer/forms.py
 msgid "Rating"
-msgstr "Рейтинг"
+msgstr "Ð ÐµÐ¹Ñ‚Ð¸Ð½Ð³"
 
 #: importer/forms.py
 #, python-format
 msgid "This value must be between %(min)d and %(max)d."
-msgstr "Значение должно быть между %(min)d и %(max)d."
+msgstr "Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ð¼ÐµÐ¶Ð´Ñƒ %(min)d Ð¸ %(max)d."
 
 #: importer/forms.py
 msgid "Unaffiliated (no institution)"
-msgstr "Без клуба"
+msgstr "Ð‘ÐµÐ· ÐºÐ»ÑƒÐ±Ð°"
 
 #: importer/forms.py
 #, python-format
@@ -159,19 +159,19 @@ msgstr "%(name)s %(code)s)"
 #, python-format
 msgid "Sorry, you can only import up to %(max_allowed)d team at a time. (These numbers currently add to %(given)d.) Try splitting your import into smaller chunks."
 msgid_plural "Sorry, you can only import up to %(max_allowed)d teams at a time. (These numbers currently add to %(given)d.) Try splitting your import into smaller chunks."
-msgstr[0] "Извините, вы можете импортировать максимум %(max_allowed)d команд за один раз (Эти числа сейчас добавляются к %(given)d.). Попробуйте разделить ваш импорт на несколько очередей."
-msgstr[1] "Извините, вы можете импортировать максимум %(max_allowed)d команд за один раз (Эти числа сейчас добавляются к %(given)d.). Попробуйте разделить ваш импорт на несколько очередей."
-msgstr[2] "Извините, вы можете импортировать максимум %(max_allowed)d команд за один раз (Эти числа сейчас добавляются к %(given)d.). Попробуйте разделить ваш импорт на несколько очередей."
-msgstr[3] "Извините, вы можете импортировать максимум %(max_allowed)d команд за один раз (Эти числа сейчас добавляются к %(given)d.). Попробуйте разделить ваш импорт на несколько очередей."
+msgstr[0] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð· (Ð­Ñ‚Ð¸ Ñ‡Ð¸ÑÐ»Ð° ÑÐµÐ¹Ñ‡Ð°Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ðº %(given)d.). ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
+msgstr[1] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð· (Ð­Ñ‚Ð¸ Ñ‡Ð¸ÑÐ»Ð° ÑÐµÐ¹Ñ‡Ð°Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ðº %(given)d.). ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
+msgstr[2] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð· (Ð­Ñ‚Ð¸ Ñ‡Ð¸ÑÐ»Ð° ÑÐµÐ¹Ñ‡Ð°Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ðº %(given)d.). ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
+msgstr[3] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð· (Ð­Ñ‚Ð¸ Ñ‡Ð¸ÑÐ»Ð° ÑÐµÐ¹Ñ‡Ð°Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ðº %(given)d.). ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
 
 #: importer/forms.py
 #, python-format
 msgid "Sorry, you can only import up to %(max_allowed)d adjudicator at a time. (These numbers currently add to %(given)d.) Try splitting your import into smaller chunks."
 msgid_plural "Sorry, you can only import up to %(max_allowed)d adjudicators at a time. (These numbers currently add to %(given)d.) Try splitting your import into smaller chunks."
-msgstr[0] "Извините, вы можете импортировать максимум %(max_allowed)d судей за один раз. (Эти числа сейчас добавляются к %(given)d.) Попробуйте разделить ваш импорт на несколько очередей."
-msgstr[1] "Извините, вы можете импортировать максимум %(max_allowed)d судей за один раз. (Эти числа сейчас добавляются к %(given)d.) Попробуйте разделить ваш импорт на несколько очередей."
-msgstr[2] "Извините, вы можете импортировать максимум %(max_allowed)d судей за один раз. (Эти числа сейчас добавляются к %(given)d.) Попробуйте разделить ваш импорт на несколько очередей."
-msgstr[3] "Извините, вы можете импортировать максимум %(max_allowed)d судей за один раз. (Эти числа сейчас добавляются к %(given)d.) Попробуйте разделить ваш импорт на несколько очередей."
+msgstr[0] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d ÑÑƒÐ´ÐµÐ¹ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð·. (Ð­Ñ‚Ð¸ Ñ‡Ð¸ÑÐ»Ð° ÑÐµÐ¹Ñ‡Ð°Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ðº %(given)d.) ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
+msgstr[1] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d ÑÑƒÐ´ÐµÐ¹ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð·. (Ð­Ñ‚Ð¸ Ñ‡Ð¸ÑÐ»Ð° ÑÐµÐ¹Ñ‡Ð°Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ðº %(given)d.) ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
+msgstr[2] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d ÑÑƒÐ´ÐµÐ¹ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð·. (Ð­Ñ‚Ð¸ Ñ‡Ð¸ÑÐ»Ð° ÑÐµÐ¹Ñ‡Ð°Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ðº %(given)d.) ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
+msgstr[3] "Ð˜Ð·Ð²Ð¸Ð½Ð¸Ñ‚Ðµ, Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼ %(max_allowed)d ÑÑƒÐ´ÐµÐ¹ Ð·Ð° Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð·. (Ð­Ñ‚Ð¸ Ñ‡Ð¸ÑÐ»Ð° ÑÐµÐ¹Ñ‡Ð°Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ðº %(given)d.) ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ñ€Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ð°Ñˆ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÐµÐ¹."
 
 #: importer/forms.py
 msgid "XML"
@@ -186,7 +186,7 @@ msgid "Export Tournament Archive"
 msgstr ""
 
 #: importer/templates/archive_export_index.html
-msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside Tabbycat."
+msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside NekoTab."
 msgstr ""
 
 #: importer/templates/archive_export_index.html
@@ -208,13 +208,13 @@ msgstr ""
 
 #: importer/templates/archive_importer.html
 msgid "Go back to the site home page"
-msgstr "Вернуться на домашнюю страницу"
+msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð° Ð´Ð¾Ð¼Ð°ÑˆÐ½ÑŽÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgctxt "page title"
 msgid "Add Adjudicators"
-msgstr "Добавить судей"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑÑƒÐ´ÐµÐ¹"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_adjudicators_numbers.html
@@ -226,41 +226,41 @@ msgstr "Добавить судей"
 #: importer/templates/simple_import_venues_raw.html
 #, python-format
 msgid "(Step %(step)s of %(count)s)"
-msgstr "(Шаг %(step)s из %(count)s)"
+msgstr "(Ð¨Ð°Ð³ %(step)s Ð¸Ð· %(count)s)"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #: importer/templates/simple_import_institutions_details.html
 #: importer/templates/simple_import_teams_details.html
 #: importer/templates/simple_import_venues_details.html
 msgid "Previous Step"
-msgstr "Предыдущий шаг"
+msgstr "ÐŸÑ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰Ð¸Ð¹ ÑˆÐ°Ð³"
 
 #: importer/templates/simple_import_adjudicators_details.html
 #, python-format
 msgid "As per <a href=\"%(options_feedback)s\" class=\"alert-link\">this tournament's configuration</a>, an adjudicator's rating must be between <strong>%(min)s</strong> and <strong>%(max)s</strong>. Providing email addresses is optional but can be useful if using <a href=\"%(privateurls_url)s\" class=\"alert-link\">private URLs</a> for feedback or ballots."
-msgstr "В <a href=\"%(options_feedback)s\" class=\"alert-link\"> настройках турнира </a>, рейтинг судьи должен быть между <strong>%(min)s</strong> и <strong>%(max)s</strong>. Предоставление email адресов опционально, но может быть полезно при использовании <a href=\"%(privateurls_url)s\" class=\"alert-link\"> личных URL </a> для бэллотов и форм обратной связи."
+msgstr "Ð’ <a href=\"%(options_feedback)s\" class=\"alert-link\"> Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°Ñ… Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° </a>, Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ ÑÑƒÐ´ÑŒÐ¸ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð¼ÐµÐ¶Ð´Ñƒ <strong>%(min)s</strong> Ð¸ <strong>%(max)s</strong>. ÐŸÑ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ email Ð°Ð´Ñ€ÐµÑÐ¾Ð² Ð¾Ð¿Ñ†Ð¸Ð¾Ð½Ð°Ð»ÑŒÐ½Ð¾, Ð½Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¿Ð¾Ð»ÐµÐ·Ð½Ð¾ Ð¿Ñ€Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ð¸ <a href=\"%(privateurls_url)s\" class=\"alert-link\"> Ð»Ð¸Ñ‡Ð½Ñ‹Ñ… URL </a> Ð´Ð»Ñ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð¸ Ñ„Ð¾Ñ€Ð¼ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸."
 
 #: importer/templates/simple_import_adjudicators_details.html
 #, python-format
 msgid "Adjudicators for %(institution)s"
-msgstr "Судьи клуба %(institution)s"
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸ ÐºÐ»ÑƒÐ±Ð° %(institution)s"
 
 #: importer/templates/simple_import_adjudicators_details.html
 msgid "Unaffiliated Adjudicators"
-msgstr "Неафиллированные судьи"
+msgstr "ÐÐµÐ°Ñ„Ð¸Ð»Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ ÑÑƒÐ´ÑŒÐ¸"
 
 #: importer/templates/simple_import_adjudicators_details.html
 msgid "Save All Adjudicators"
-msgstr "Сохранить всех судей"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð²ÑÐµÑ… ÑÑƒÐ´ÐµÐ¹"
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 #, python-format
 msgid "You need to <a href=\"%(import_institutions_url)s\" class=\"alert-link\">add institutions</a> before adding adjudicators."
-msgstr "Перед добавлением судей необходимо <a href=\"%(import_institutions_url)s\" class=\"alert-link\"> добавить клубы</a>."
+msgstr "ÐŸÐµÑ€ÐµÐ´ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸ÐµÐ¼ ÑÑƒÐ´ÐµÐ¹ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ <a href=\"%(import_institutions_url)s\" class=\"alert-link\"> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹</a>."
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgid "Specify the number of new adjudicators to add per institution. In the next step you can specify their names and ratings."
-msgstr "Укажите количество новых судей, относящихся к каждому клубу. На следующем этапе вы можете указать их имена и рейтинг."
+msgstr "Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð½Ð¾Ð²Ñ‹Ñ… ÑÑƒÐ´ÐµÐ¹, Ð¾Ñ‚Ð½Ð¾ÑÑÑ‰Ð¸Ñ…ÑÑ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÐºÐ»ÑƒÐ±Ñƒ. ÐÐ° ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼ ÑÑ‚Ð°Ð¿Ðµ Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ ÑƒÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¸Ñ… Ð¸Ð¼ÐµÐ½Ð° Ð¸ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³."
 
 #: importer/templates/simple_import_adjudicators_numbers.html
 msgid "You can add up to 198 adjudicators at a time. If you have more than 198 adjudicators, split them into chunks. (Please don't try to add more than 198 in one go; the system will crash, and you will lose data.)"
@@ -270,55 +270,55 @@ msgstr ""
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "button"
 msgid "Next Step"
-msgstr "Следующий шаг"
+msgstr "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ ÑˆÐ°Ð³"
 
 #: importer/templates/simple_import_index.html
 msgid "Simple Importer"
-msgstr "Простой импорт"
+msgstr "ÐŸÑ€Ð¾ÑÑ‚Ð¾Ð¹ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚"
 
 #: importer/templates/simple_import_index.html
-msgid "There are <a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into Tabbycat</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
-msgstr "Есть несколько <a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\"> способов импорта данных в Tabbycat</a>. Какой из них подойдет больше зависит от размера вашего турнира и ваших технических возможностей. Этот <strong> простой импортер</strong> является самым доступным в использовании и хорошо работает на маленьких и среднего размера турнирах."
+msgid "There are <a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into NekoTab</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
+msgstr "Ð•ÑÑ‚ÑŒ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ <a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\"> ÑÐ¿Ð¾ÑÐ¾Ð±Ð¾Ð² Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð° Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð² NekoTab</a>. ÐšÐ°ÐºÐ¾Ð¹ Ð¸Ð· Ð½Ð¸Ñ… Ð¿Ð¾Ð´Ð¾Ð¹Ð´ÐµÑ‚ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð·Ð°Ð²Ð¸ÑÐ¸Ñ‚ Ð¾Ñ‚ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð° Ð²Ð°ÑˆÐµÐ³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° Ð¸ Ð²Ð°ÑˆÐ¸Ñ… Ñ‚ÐµÑ…Ð½Ð¸Ñ‡ÐµÑÐºÐ¸Ñ… Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÐµÐ¹. Ð­Ñ‚Ð¾Ñ‚ <strong> Ð¿Ñ€Ð¾ÑÑ‚Ð¾Ð¹ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ÐµÑ€</strong> ÑÐ²Ð»ÑÐµÑ‚ÑÑ ÑÐ°Ð¼Ñ‹Ð¼ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ð¼ Ð² Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ð¸ Ð¸ Ñ…Ð¾Ñ€Ð¾ÑˆÐ¾ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ð½Ð° Ð¼Ð°Ð»ÐµÐ½ÑŒÐºÐ¸Ñ… Ð¸ ÑÑ€ÐµÐ´Ð½ÐµÐ³Ð¾ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð° Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°Ñ…."
 
 #: importer/templates/simple_import_index.html
 msgid "Add Institutions"
-msgstr "Добавить клубы"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Teams"
-msgstr "Добавить команды"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Adjudicators"
-msgstr "Добавить судей"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑÑƒÐ´ÐµÐ¹"
 
 #: importer/templates/simple_import_index.html
 msgid "Add Rooms"
-msgstr "Добавить аудитории"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Room Categories"
-msgstr "Добавить/Изменить категории аудиторий"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ/Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Room Constraints"
-msgstr "Добавить/изменить ограничения аудиторий"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ/Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ñ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Adjudicator-Team Conflicts"
-msgstr "Добавить/изменить конфликты команд и судей"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ/Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¸ ÑÑƒÐ´ÐµÐ¹"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Adjudicator-Adjudicator Conflicts"
-msgstr "Добавить/изменить конфликты между судьями"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ/Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ Ð¼ÐµÐ¶Ð´Ñƒ ÑÑƒÐ´ÑŒÑÐ¼Ð¸"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Adjudicator-Institution Conflicts"
-msgstr "Добавить/изменить конфликты между судьями и клубами"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ/Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ Ð¼ÐµÐ¶Ð´Ñƒ ÑÑƒÐ´ÑŒÑÐ¼Ð¸ Ð¸ ÐºÐ»ÑƒÐ±Ð°Ð¼Ð¸"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Team-Institution Conflicts"
-msgstr "Добавить/редактировать конфликты между командами и клубами"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ/Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹ Ð¼ÐµÐ¶Ð´Ñƒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼Ð¸ Ð¸ ÐºÐ»ÑƒÐ±Ð°Ð¼Ð¸"
 
 #: importer/templates/simple_import_index.html
 msgid "Add/Edit Break Categories"
@@ -332,49 +332,49 @@ msgstr ""
 #: importer/templates/simple_import_institutions_raw.html
 msgctxt "page title"
 msgid "Add Institutions"
-msgstr "Добавить клубы"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹"
 
 #: importer/templates/simple_import_institutions_details.html
 msgid "Save All Institutions"
-msgstr "Сохранить все клубы"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð²ÑÐµ ÐºÐ»ÑƒÐ±Ñ‹"
 
 #: importer/templates/simple_import_institutions_raw.html
 #: importer/templates/simple_import_venues_raw.html
 msgid "There are some problems with the data on this form:"
-msgstr "В форме указаны ошибочные данные:"
+msgstr "Ð’ Ñ„Ð¾Ñ€Ð¼Ðµ ÑƒÐºÐ°Ð·Ð°Ð½Ñ‹ Ð¾ÑˆÐ¸Ð±Ð¾Ñ‡Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ:"
 
 #: importer/templates/simple_import_institutions_raw.html
 #: importer/templates/simple_import_venues_raw.html
 msgid "Next Step"
-msgstr "Следующий шаг"
+msgstr "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ ÑˆÐ°Ð³"
 
 #: importer/templates/simple_import_teams_details.html
 #: importer/templates/simple_import_teams_numbers.html
 msgctxt "page title"
 msgid "Add Teams"
-msgstr "Добавить команды"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: importer/templates/simple_import_teams_details.html
 #, python-format
 msgid "Teams for %(institution)s"
-msgstr "Команды клуба %(institution)s"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹ ÐºÐ»ÑƒÐ±Ð° %(institution)s"
 
 #: importer/templates/simple_import_teams_details.html
 msgid "Unaffiliated Teams"
-msgstr "Неафиллированные команды"
+msgstr "ÐÐµÐ°Ñ„Ð¸Ð»Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: importer/templates/simple_import_teams_details.html
 msgid "Save All Teams"
-msgstr "Сохранить все команды"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð²ÑÐµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: importer/templates/simple_import_teams_numbers.html
 #, python-format
 msgid "You need to <a href=\"%(import_institutions_url)s\" class=\"alert-link\">add institutions</a> before adding teams."
-msgstr "Перед добавлением команд необходимо <a href=\"%(import_institutions_url)s\" class=\"alert-link\"> добавить клубы</a>."
+msgstr "ÐŸÐµÑ€ÐµÐ´ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸ÐµÐ¼ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ <a href=\"%(import_institutions_url)s\" class=\"alert-link\"> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹</a>."
 
 #: importer/templates/simple_import_teams_numbers.html
 msgid "Specify the number of new teams to add per institution. In the next step you can specify team and speaker names."
-msgstr "Укажите количество новых команд, относящихся к каждому клубу. На следующем этапе вы сможете указать название команды и имена спикеров."
+msgstr "Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð½Ð¾Ð²Ñ‹Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´, Ð¾Ñ‚Ð½Ð¾ÑÑÑ‰Ð¸Ñ…ÑÑ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÐºÐ»ÑƒÐ±Ñƒ. ÐÐ° ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¼ ÑÑ‚Ð°Ð¿Ðµ Ð²Ñ‹ ÑÐ¼Ð¾Ð¶ÐµÑ‚Ðµ ÑƒÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸ Ð¸Ð¼ÐµÐ½Ð° ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²."
 
 #: importer/templates/simple_import_teams_numbers.html
 msgid "You can add up to 141 teams at a time. If you have more than 141 teams, split them into chunks. (Please don't try to add more than 141 in one go; the system will crash, and you will lose data.)"
@@ -384,60 +384,60 @@ msgstr ""
 #: importer/templates/simple_import_venues_raw.html
 msgctxt "page title"
 msgid "Add Rooms"
-msgstr "Добавить аудитории"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸"
 
 #: importer/templates/simple_import_venues_details.html
 msgid "Priorities indicate how much you want to use the room. Larger numbers indicate higher priority. If you have more rooms than debates, the rooms with the lowest priorities will not be used."
-msgstr "Приоритеты указывают на то, насколько вы хотите использовать эту аудиторию. Большие числа указывают более высокий приоритет. Если у вас больше аудиторий, чем дебатов, места с самыми низкими приоритетами не будут использоваться."
+msgstr "ÐŸÑ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚Ñ‹ ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°ÑŽÑ‚ Ð½Ð° Ñ‚Ð¾, Ð½Ð°ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ñƒ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸ÑŽ. Ð‘Ð¾Ð»ÑŒÑˆÐ¸Ðµ Ñ‡Ð¸ÑÐ»Ð° ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°ÑŽÑ‚ Ð±Ð¾Ð»ÐµÐµ Ð²Ñ‹ÑÐ¾ÐºÐ¸Ð¹ Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚. Ð•ÑÐ»Ð¸ Ñƒ Ð²Ð°Ñ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹, Ñ‡ÐµÐ¼ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð², Ð¼ÐµÑÑ‚Ð° Ñ ÑÐ°Ð¼Ñ‹Ð¼Ð¸ Ð½Ð¸Ð·ÐºÐ¸Ð¼Ð¸ Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚Ð°Ð¼Ð¸ Ð½Ðµ Ð±ÑƒÐ´ÑƒÑ‚ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒÑÑ."
 
 #: importer/templates/simple_import_venues_details.html
 msgid "Save All Rooms"
-msgstr "Сохранить все аудитории"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð²ÑÐµ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸"
 
 #: importer/templates/simple_import_venues_raw.html
 msgid "Paste a list of rooms with one room per line and following the format of: <code>name,priority</code>. For example:"
-msgstr "Вставьте список аудиторий с одной аудиторией на строку и следуйте формату: <code>имя,приоритет</code>. Например:"
+msgstr "Ð’ÑÑ‚Ð°Ð²ÑŒÑ‚Ðµ ÑÐ¿Ð¸ÑÐ¾Ðº Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ Ñ Ð¾Ð´Ð½Ð¾Ð¹ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸ÐµÐ¹ Ð½Ð° ÑÑ‚Ñ€Ð¾ÐºÑƒ Ð¸ ÑÐ»ÐµÐ´ÑƒÐ¹Ñ‚Ðµ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ñƒ: <code>Ð¸Ð¼Ñ,Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚</code>. ÐÐ°Ð¿Ñ€Ð¸Ð¼ÐµÑ€:"
 
 #: importer/views.py
 #, python-format
 msgid "Added %(count)d institution."
 msgid_plural "Added %(count)d institutions."
-msgstr[0] "Количество добавленных клубов: %(count)d."
-msgstr[1] "Количество добавленных клубов: %(count)d."
-msgstr[2] "Количество добавленных клубов: %(count)d."
-msgstr[3] "Количество добавленных клубов: %(count)d."
+msgstr[0] "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ»ÑƒÐ±Ð¾Ð²: %(count)d."
+msgstr[1] "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ»ÑƒÐ±Ð¾Ð²: %(count)d."
+msgstr[2] "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ»ÑƒÐ±Ð¾Ð²: %(count)d."
+msgstr[3] "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ»ÑƒÐ±Ð¾Ð²: %(count)d."
 
 #: importer/views.py
 #, python-format
 msgid "Added %(count)d room."
 msgid_plural "Added %(count)d rooms."
-msgstr[0] "Добавлена %(count)d аудитория."
-msgstr[1] "Добавлены %(count)d аудитории."
-msgstr[2] "Добавлены %(count)d аудитории."
-msgstr[3] "Добавлены %(count)d аудитории."
+msgstr[0] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð° %(count)d Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ."
+msgstr[1] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ %(count)d Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸."
+msgstr[2] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ %(count)d Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸."
+msgstr[3] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ %(count)d Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸."
 
 #: importer/views.py
 #, python-format
 msgid "Added %(count)d team."
 msgid_plural "Added %(count)d teams."
-msgstr[0] "Добавлена %(count)d команда."
-msgstr[1] "Добавлены %(count)d команды."
-msgstr[2] "Добавлены %(count)d команды."
-msgstr[3] "Добавлены %(count)d команды."
+msgstr[0] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð° %(count)d ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°."
+msgstr[1] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ %(count)d ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹."
+msgstr[2] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ %(count)d ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹."
+msgstr[3] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ %(count)d ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹."
 
 #: importer/views.py
 #, python-format
 msgid "Adjudicator %(number)d"
-msgstr "Судья %(number)d"
+msgstr "Ð¡ÑƒÐ´ÑŒÑ %(number)d"
 
 #: importer/views.py
 #, python-format
 msgid "Added %(count)d adjudicator."
 msgid_plural "Added %(count)d adjudicators."
-msgstr[0] "Добавлен %(count)d судья."
-msgstr[1] "Добавлены %(count)d судьи."
-msgstr[2] "Добавлены %(count)d судьи."
-msgstr[3] "Добавлены %(count)d судьи."
+msgstr[0] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½ %(count)d ÑÑƒÐ´ÑŒÑ."
+msgstr[1] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ %(count)d ÑÑƒÐ´ÑŒÐ¸."
+msgstr[2] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ %(count)d ÑÑƒÐ´ÑŒÐ¸."
+msgstr[3] "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹ %(count)d ÑÑƒÐ´ÑŒÐ¸."
 
 #: importer/views.py
 msgid "<p>There were one or more errors creating the demo tournament. Before retrying, please delete the existing demo tournament <strong>and</strong> the institutions in the Edit Database Area.</p><p><i>Technical information: The errors are as follows:</i></p>"
@@ -450,4 +450,5 @@ msgstr ""
 #: importer/views.py
 msgid "Tournament archive has been imported."
 msgstr ""
+
 

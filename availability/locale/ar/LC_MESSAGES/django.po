@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-05 07:37+1000\n"
 "PO-Revision-Date: 2023-07-04 21:43\n"
@@ -11,35 +11,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/availability/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/availability/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 926\n"
 
 #: availability/apps.py availability/views.py
 msgid "Availability"
-msgstr "الوفرة"
+msgstr "Ø§Ù„ÙˆÙØ±Ø©"
 
 #: availability/models.py
 msgid "content type"
-msgstr "نوع المحتوى"
+msgstr "Ù†ÙˆØ¹ Ø§Ù„Ù…Ø­ØªÙˆÙ‰"
 
 #: availability/models.py
 msgid "object id"
-msgstr "ID الموضوع "
+msgstr "ID Ø§Ù„Ù…ÙˆØ¶ÙˆØ¹ "
 
 #: availability/models.py
 msgid "round"
-msgstr "جولة"
+msgstr "Ø¬ÙˆÙ„Ø©"
 
 #: availability/models.py
 msgid "round availability"
-msgstr "الجولة المتوفرة"
+msgstr "Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ù…ØªÙˆÙØ±Ø©"
 
 #: availability/models.py
 msgid "round availabilities"
-msgstr "الجولة المتوفرة"
+msgstr "Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ù…ØªÙˆÙØ±Ø©"
 
 #: availability/templates/availability_index.html
 msgid "Mark All Breaking Adjs as Available"
@@ -56,16 +56,16 @@ msgstr ""
 
 #: availability/templates/availability_index.html
 msgid "View Draw"
-msgstr "عرض القرعة "
+msgstr "Ø¹Ø±Ø¶ Ø§Ù„Ù‚Ø±Ø¹Ø© "
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot — this may lead to a draw that fails or is incorrect"
+msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot â€” this may lead to a draw that fails or is incorrect"
 msgstr ""
 
 #: availability/templates/availability_index.html
 msgid "Generate Draw"
-msgstr "إنشاء قرعة"
+msgstr "Ø¥Ù†Ø´Ø§Ø¡ Ù‚Ø±Ø¹Ø©"
 
 #: availability/templates/availability_index.html
 msgid "The draw cannot be generated until some teams have been marked as available."
@@ -80,19 +80,19 @@ msgid "The draw cannot be generated until some rooms have been marked as availab
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough rooms marked as available for the number of debates — the draw may not generate properly."
+msgid "There aren't enough rooms marked as available for the number of debates â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough adjudicators marked as available for the number of debates — the draw may not generate properly."
+msgid "There aren't enough adjudicators marked as available for the number of debates â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There is an uneven number of teams marked as available — the draw may not generate properly."
+msgid "There is an uneven number of teams marked as available â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "The number of teams marked as available is not a multiple of 4 — the draw may not generate properly."
+msgid "The number of teams marked as available is not a multiple of 4 â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
@@ -133,7 +133,7 @@ msgstr ""
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team — you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
+msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team â€” you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
 msgstr ""
 
 #: availability/templates/availability_index.html
@@ -143,39 +143,39 @@ msgstr ""
 
 #: availability/templates/base_availability.html
 msgid "Select All"
-msgstr "تحديد الكل"
+msgstr "ØªØ­Ø¯ÙŠØ¯ Ø§Ù„ÙƒÙ„"
 
 #: availability/templates/base_availability.html
 msgid "Select None"
-msgstr "عدم تحديد الكل"
+msgstr "Ø¹Ø¯Ù… ØªØ­Ø¯ÙŠØ¯ Ø§Ù„ÙƒÙ„"
 
 #: availability/templates/base_availability.html
 msgid "Check-Ins"
-msgstr "تسجيلات الدخول"
+msgstr "ØªØ³Ø¬ÙŠÙ„Ø§Øª Ø§Ù„Ø¯Ø®ÙˆÙ„"
 
 #: availability/templates/base_availability.html
 msgid "Check In All Breaking"
-msgstr "تحقق من جميع المتأهلين"
+msgstr "ØªØ­Ù‚Ù‚ Ù…Ù† Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù…ØªØ£Ù‡Ù„ÙŠÙ†"
 
 #: availability/templates/base_availability.html
 msgid "Copy from Previous"
-msgstr "النسخ من السابق"
+msgstr "Ø§Ù„Ù†Ø³Ø® Ù…Ù† Ø§Ù„Ø³Ø§Ø¨Ù‚"
 
 #: availability/templates/base_availability.html
 msgid "Save Selected"
-msgstr "حفظ ما تم تحديده"
+msgstr "Ø­ÙØ¸ Ù…Ø§ ØªÙ… ØªØ­Ø¯ÙŠØ¯Ù‡"
 
 #: availability/templates/checkin_progress.html
 msgid "Teams"
-msgstr "الفرق"
+msgstr "Ø§Ù„ÙØ±Ù‚"
 
 #: availability/templates/checkin_progress.html
 msgid "Adjudicators"
-msgstr "المحكمين"
+msgstr "Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ†"
 
 #: availability/templates/checkin_progress.html
 msgid "Rooms"
-msgstr "قاعات المناظرة"
+msgstr "Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: availability/templates/checkin_progress.html
 msgid "Mark teams as available"
@@ -349,13 +349,13 @@ msgstr ""
 
 #: availability/views.py
 msgid "no teams are debating"
-msgstr "لا توجد فرق تتناظر"
+msgstr "Ù„Ø§ ØªÙˆØ¬Ø¯ ÙØ±Ù‚ ØªØªÙ†Ø§Ø¸Ø±"
 
 #. Translators: nteams in this string can only be 0 or 1
 #: availability/views.py
 #, python-format
-msgid "%(nteams)d breaking team — no debates can happen"
-msgid_plural "%(nteams)d breaking teams — no debates can happen"
+msgid "%(nteams)d breaking team â€” no debates can happen"
+msgid_plural "%(nteams)d breaking teams â€” no debates can happen"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
@@ -403,12 +403,12 @@ msgstr[5] ""
 
 #: availability/views.py
 msgid "Active Now"
-msgstr "مفعل "
+msgstr "Ù…ÙØ¹Ù„ "
 
 #: availability/views.py
 #, python-format
 msgid "Active in %(prev_round)s"
-msgstr "مفعل في %(prev_round)s"
+msgstr "Ù…ÙØ¹Ù„ ÙÙŠ %(prev_round)s"
 
 #: availability/views.py
 msgid "Checked-In"
@@ -416,31 +416,31 @@ msgstr ""
 
 #: availability/views.py
 msgid "Team Availability"
-msgstr "الفريق المتوفر "
+msgstr "Ø§Ù„ÙØ±ÙŠÙ‚ Ø§Ù„Ù…ØªÙˆÙØ± "
 
 #: availability/views.py
 msgid "Adjudicator Availability"
-msgstr "الحكم المتوفر "
+msgstr "Ø§Ù„Ø­ÙƒÙ… Ø§Ù„Ù…ØªÙˆÙØ± "
 
 #: availability/views.py
 msgid "Room Availability"
-msgstr "قاعة المناظرة المتوفرة"
+msgstr "Ù‚Ø§Ø¹Ø© Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© Ø§Ù„Ù…ØªÙˆÙØ±Ø©"
 
 #: availability/views.py
 msgid "Room"
-msgstr "قاعة"
+msgstr "Ù‚Ø§Ø¹Ø©"
 
 #: availability/views.py
 msgid "Display Name (for the draw)"
-msgstr "اعرض الإسم (للقرعة)"
+msgstr "Ø§Ø¹Ø±Ø¶ Ø§Ù„Ø¥Ø³Ù… (Ù„Ù„Ù‚Ø±Ø¹Ø©)"
 
 #: availability/views.py
 msgid "Categories"
-msgstr "الفئات"
+msgstr "Ø§Ù„ÙØ¦Ø§Øª"
 
 #: availability/views.py
 msgid "Priority"
-msgstr "الأولوية"
+msgstr "Ø§Ù„Ø£ÙˆÙ„ÙˆÙŠØ©"
 
 #: availability/views.py
 msgid "Failed to update some or all availabilities due to an integrityerror. You should retry this action or make individual updates."
@@ -448,13 +448,14 @@ msgstr ""
 
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms."
-msgstr "دخول جميع الفرق ، الحكام ، القاعات"
+msgstr "Ø¯Ø®ÙˆÙ„ Ø¬Ù…ÙŠØ¹ Ø§Ù„ÙØ±Ù‚ ØŒ Ø§Ù„Ø­ÙƒØ§Ù… ØŒ Ø§Ù„Ù‚Ø§Ø¹Ø§Øª"
 
 #: availability/views.py
 msgid "Checked in all breaking adjudicators."
-msgstr "تسجيل دخول المحكمين المتأهلين"
+msgstr "ØªØ³Ø¬ÙŠÙ„ Ø¯Ø®ÙˆÙ„ Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ† Ø§Ù„Ù…ØªØ£Ù‡Ù„ÙŠÙ†"
 
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms from previous round."
-msgstr "دخول جميع الفرق ، الحكام ، القاعات من الجولة السابقة"
+msgstr "Ø¯Ø®ÙˆÙ„ Ø¬Ù…ÙŠØ¹ Ø§Ù„ÙØ±Ù‚ ØŒ Ø§Ù„Ø­ÙƒØ§Ù… ØŒ Ø§Ù„Ù‚Ø§Ø¹Ø§Øª Ù…Ù† Ø§Ù„Ø¬ÙˆÙ„Ø© Ø§Ù„Ø³Ø§Ø¨Ù‚Ø©"
+
 

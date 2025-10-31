@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 import os
 from typing import Optional, TYPE_CHECKING
 
@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-class TabbycatPageTitlesMixin(ContextMixin):
+class NekoTabPageTitlesMixin(ContextMixin):
     """Allows all views to set header information in their subclassess obviating
     the need for page template boilerplate and/or page specific templates"""
 
@@ -170,3 +170,4 @@ class CacheMixin:
     @method_decorator(cache_page(cache_timeout))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
+

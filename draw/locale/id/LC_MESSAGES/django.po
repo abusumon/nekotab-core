@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: id\n"
-"X-Crowdin-File: /develop/tabbycat/draw/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/draw/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 930\n"
 
 #: draw/admin.py
@@ -121,8 +121,8 @@ msgstr "Jumlah debat (%d) pada ronde sebelumnya tidak berjumlah dua pangkat n."
 
 #: draw/generator/bphungarian.py
 #, python-format
-msgid "The Rényi order can't be negative, and it's currently set to %(alpha)f."
-msgstr "Urutan Rényi tidak bisa negatif, dan saat ini diset ke %(alpha)f."
+msgid "The RÃ©nyi order can't be negative, and it's currently set to %(alpha)f."
+msgstr "Urutan RÃ©nyi tidak bisa negatif, dan saat ini diset ke %(alpha)f."
 
 #: draw/generator/common.py
 #, python-format
@@ -407,12 +407,12 @@ msgid "position cost"
 msgstr "biaya posisi"
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "STOP!!! Read this first! Deleting debate teams from the database may crash Tabbycat!"
-msgstr "BERHENTI!!! Baca ini dahulu! Menghapus tim debat dari basisdata dapat membuat Tabbycat crash!"
+msgid "STOP!!! Read this first! Deleting debate teams from the database may crash NekoTab!"
+msgstr "BERHENTI!!! Baca ini dahulu! Menghapus tim debat dari basisdata dapat membuat NekoTab crash!"
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "Tabbycat requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
-msgstr "Tabbycat mewajibkan seluruh debat memilik <strong>tepat</strong> satu tim debat untuk setiap sisi, dan tidak ada tim debat lain, pada setiap saat. Jika Anda menghapus debat tim apapun, maka Anda harus menggantinya masing-masing dengan tim debat baru pada debat yang sama, atau menghapus objek debat tersebut. Jika Anda tidak melakukannya dengan benar, banyak halaman <strong>akan</strong> crash."
+msgid "NekoTab requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgstr "NekoTab mewajibkan seluruh debat memilik <strong>tepat</strong> satu tim debat untuk setiap sisi, dan tidak ada tim debat lain, pada setiap saat. Jika Anda menghapus debat tim apapun, maka Anda harus menggantinya masing-masing dengan tim debat baru pada debat yang sama, atau menghapus objek debat tersebut. Jika Anda tidak melakukannya dengan benar, banyak halaman <strong>akan</strong> crash."
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
 #: draw/templates/admin/draw/debateteam/edit_warning.html
@@ -424,8 +424,8 @@ msgid "WARNING!!! If you are editing debate teams, read this first!"
 msgstr "PERHATIAN!!! Jika Anda menyunting tim debat, baca ini dahulu!"
 
 #: draw/templates/admin/draw/debateteam/edit_warning.html
-msgid "Tabbycat requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
-msgstr "Tabbycat mewajibkan seluruh debat memilik <strong>tepat</strong> satu tim debat untuk setiap sisi, dan tidak ada tim debat lain, pada setiap debat. Jika Anda menyunting tim debat pada basisdata, Anda harus memastikan bahwa ini tetap berlaku. Jika Anda tidak melakukannya dengan benar, banyak halaman <strong>akan</strong> crash."
+msgid "NekoTab requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgstr "NekoTab mewajibkan seluruh debat memilik <strong>tepat</strong> satu tim debat untuk setiap sisi, dan tidak ada tim debat lain, pada setiap debat. Jika Anda menyunting tim debat pada basisdata, Anda harus memastikan bahwa ini tetap berlaku. Jika Anda tidak melakukannya dengan benar, banyak halaman <strong>akan</strong> crash."
 
 #: draw/templates/draw_alerts_adjudicators.html
 #, python-format
@@ -528,8 +528,8 @@ msgstr "Konfirmasi Penghapusan Pengundian untuk %(round)s"
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
-msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> —  including their ballots and adjudicator allocations — and cannot be undone. You probably don't want to do this if any results have been entered!"
-msgstr "Apakah anda benar ingin membuat ulang draw untuk %(round)s? Ini akan menghapus <strong>seluruh debat pada ronde tersebut</strong> —  termasuk balot dan alokasi juri — dan tidak dapat dikembalikan. Anda mungkin tidak ingin melakukan ini apabila sudah ada hasil yang masuk!"
+msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> â€”  including their ballots and adjudicator allocations â€” and cannot be undone. You probably don't want to do this if any results have been entered!"
+msgstr "Apakah anda benar ingin membuat ulang draw untuk %(round)s? Ini akan menghapus <strong>seluruh debat pada ronde tersebut</strong> â€”  termasuk balot dan alokasi juri â€” dan tidak dapat dikembalikan. Anda mungkin tidak ingin melakukan ini apabila sudah ada hasil yang masuk!"
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
@@ -895,8 +895,8 @@ msgstr "Bracket dibangun menggunakan metrik pertama pada presedensi, yang saat i
 
 #: draw/templates/draw_status_draft.html
 #, python-format
-msgid "The draw type for this round is set to <strong>manual</strong>, so Tabbycat has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
-msgstr "Tipe pengundian untuk ronde ini diset ke <strong>manual</strong>, sehingga Tabbycat baru saja membuat pengundian kosong. Pindahlah ke <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Sunting Sisi/Matchup</a> untuk mengisinya."
+msgid "The draw type for this round is set to <strong>manual</strong>, so NekoTab has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
+msgstr "Tipe pengundian untuk ronde ini diset ke <strong>manual</strong>, sehingga NekoTab baru saja membuat pengundian kosong. Pindahlah ke <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Sunting Sisi/Matchup</a> untuk mengisinya."
 
 #: draw/templates/draw_status_draft.html
 #, python-format
@@ -904,8 +904,8 @@ msgid "The adjudicator score range is 0, and so adjudicator scores will be ignor
 msgstr "Rentang nilai adjudicator adalah 0, maka nilai adjudicator akan diabaikan saat mengalokasikan. Anda dapat <a href=\"%(feedback_config_url)s\" class=\"alert-link\">mengubah rentang nilai adjudicator pada halaman konfigurasi umpanbalik</a>."
 
 #: draw/templates/draw_status_draft.html
-msgid "Tabbycat assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept Tabbycat's random assignment."
-msgstr "Tabbycat menentukan sisi pada ronde eliminasi secara acak. Namun begitu, karena di ronde eliminasi banyak turnamen mengundi banyak sisi di depan audiens, sisi-sisi ditandai sebagai \"tidak terkonfirmasi\", sehingga tidak terlihat seperti sisinya sudah ditentukan sebelumnya. Setelah Anda mengonfirmasi pengundiannya, Anda perlu mengonfirmasi sisi-sisi pada halaman \"Sunting Sisi/Matchup\", walaupun Anda menginginkan untuk menerima penentuan acak dari Tabbycat."
+msgid "NekoTab assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept NekoTab's random assignment."
+msgstr "NekoTab menentukan sisi pada ronde eliminasi secara acak. Namun begitu, karena di ronde eliminasi banyak turnamen mengundi banyak sisi di depan audiens, sisi-sisi ditandai sebagai \"tidak terkonfirmasi\", sehingga tidak terlihat seperti sisinya sudah ditentukan sebelumnya. Setelah Anda mengonfirmasi pengundiannya, Anda perlu mengonfirmasi sisi-sisi pada halaman \"Sunting Sisi/Matchup\", walaupun Anda menginginkan untuk menerima penentuan acak dari NekoTab."
 
 #: draw/templates/draw_status_draft.html
 msgid "Highlighted cells relate to changes in position balance, as follows: <ul> <li>Red cells indicates that the team could not be allocated a position that maintains position balance.</li> <li>Yellow cells indicate that the team was previously imbalanced, and is given the best position possible in this draw, but is nonetheless still imbalanced.</li> <li>Green cells indicate that the team's previous imbalance is resolved with this draw.</li> </ul>"
@@ -922,7 +922,7 @@ msgstr "Sepertinya sisi belum dikonfirmasi pada beberapa debat dalam ronde ini. 
 
 #: draw/templates/position_balance.html
 #, python-format
-msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
+msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
 msgstr ""
 
 #: draw/templates/position_balance_break.html
@@ -1016,10 +1016,10 @@ msgstr "Laporan Keseimbangan Posisi"
 
 #: draw/views.py
 #, python-format
-msgid "Rényi entropy of order %(order)s"
-msgstr "Entropi Rényi dari urutan %(order)s"
+msgid "RÃ©nyi entropy of order %(order)s"
+msgstr "Entropi RÃ©nyi dari urutan %(order)s"
 
-#. Translators: This is appended to the string "Rényi entropy of order 1.0"
+#. Translators: This is appended to the string "RÃ©nyi entropy of order 1.0"
 #: draw/views.py
 msgid " (<i>i.e.</i>, Shannon entropy)"
 msgstr " (<i>yaitu</i>, entropi Shannon)"
@@ -1110,4 +1110,5 @@ msgstr "Pre-Alokasi Sisi"
 #: draw/views.py
 msgid "Edit Matchups"
 msgstr "Sunting Matchup"
+
 

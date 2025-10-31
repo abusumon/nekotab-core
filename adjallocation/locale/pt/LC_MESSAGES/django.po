@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2023-02-05 00:56\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: pt-PT\n"
-"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
 msgid "There are no available adjudicators. Ensure there are adjudicators who have been marked as available for this round before auto-allocating."
-msgstr "Não há juízes disponíveis. Certifique-se de que há juízes que foram marcados como estão disponíveis para esta rodada antes de serem atribuídos automaticamente."
+msgstr "NÃ£o hÃ¡ juÃ­zes disponÃ­veis. Certifique-se de que hÃ¡ juÃ­zes que foram marcados como estÃ£o disponÃ­veis para esta rodada antes de serem atribuÃ­dos automaticamente."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
@@ -60,7 +60,7 @@ msgstr ""
 
 #: adjallocation/apps.py
 msgid "Adjudicator Allocation"
-msgstr "Alocação dos juízes"
+msgstr "AlocaÃ§Ã£o dos juÃ­zes"
 
 #: adjallocation/consumers.py
 msgid "Draw is already released, unrelease draw to redo auto-allocations."
@@ -158,7 +158,7 @@ msgstr "tipo"
 
 #: adjallocation/models.py
 msgid "available?"
-msgstr "disponível?"
+msgstr "disponÃ­vel?"
 
 #: adjallocation/models.py
 msgid "debate adjudicator"
@@ -166,7 +166,7 @@ msgstr "juiz do debate"
 
 #: adjallocation/models.py
 msgid "debate adjudicators"
-msgstr "juízes do debate"
+msgstr "juÃ­zes do debate"
 
 #: adjallocation/models.py
 msgid "team"
@@ -190,15 +190,15 @@ msgstr "juiz 2"
 
 #: adjallocation/models.py
 msgid "adjudicator-adjudicator conflict"
-msgstr "conflito entre juízes"
+msgstr "conflito entre juÃ­zes"
 
 #: adjallocation/models.py
 msgid "adjudicator-adjudicator conflicts"
-msgstr "conflitos entre juízes"
+msgstr "conflitos entre juÃ­zes"
 
 #: adjallocation/models.py
 msgid "institution"
-msgstr "instituição"
+msgstr "instituiÃ§Ã£o"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflict"
@@ -448,4 +448,5 @@ msgstr[1] ""
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
 msgstr ""
+
 

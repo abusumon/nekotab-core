@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-24 07:48+1000\n"
 "PO-Revision-Date: 2024-06-23 21:51\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: it\n"
-"X-Crowdin-File: /develop/tabbycat/motions/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/motions/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 936\n"
 
 #: motions/apps.py motions/templates/public_motions.html
@@ -140,8 +140,8 @@ msgstr "squilibrato a %(level)s livello"
 
 #: motions/statistics.py
 #, python-format
-msgid "χ² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced — at a %(level)s level of significance."
-msgstr "La statistica χ² è %(chisq).3f, fornendo %(evidence)s per suggerire che questa mozione non era bilanciata — ad un livello %(level)s di significato."
+msgid "Ï‡Â² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced â€” at a %(level)s level of significance."
+msgstr "La statistica Ï‡Â² Ã¨ %(chisq).3f, fornendo %(evidence)s per suggerire che questa mozione non era bilanciata â€” ad un livello %(level)s di significato."
 
 #: motions/statistics.py
 msgid "probably balanced"
@@ -149,8 +149,8 @@ msgstr "probabilmente equilibrato"
 
 #: motions/statistics.py
 #, python-format
-msgid "χ² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
-msgstr "La statistica χ² è %(chisq).3f, fornendo prove non sufficienti per suggerire che questa mozione non era bilanciata ad un qualsiasi livello di significato."
+msgid "Ï‡Â² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
+msgstr "La statistica Ï‡Â² Ã¨ %(chisq).3f, fornendo prove non sufficienti per suggerire che questa mozione non era bilanciata ad un qualsiasi livello di significato."
 
 #: motions/templates/motion_global_statistics.html
 #: motions/templates/motion_round_statistics.html
@@ -284,7 +284,7 @@ msgstr "Mostra sorteggio"
 
 #: motions/templates/motions_edit.html
 msgid "This will replace all existing motions for this round. The motions themselves will still be in the database."
-msgstr "Questo sostituirà tutte le mozioni presenti per questo round. Le mozioni stesse saranno ancora nel database."
+msgstr "Questo sostituirÃ  tutte le mozioni presenti per questo round. Le mozioni stesse saranno ancora nel database."
 
 #: motions/templates/motions_edit.html
 msgid "Reuse Motions from Last Round"
@@ -297,8 +297,8 @@ msgstr "Usa le mozioni esistenti"
 #: motions/templates/motions_edit.html
 msgid "The motion for this round is currently publicly displayed because it was released. Any changes made here will be publicly visible as well as soon as they are saved."
 msgid_plural "The motions for this round are currently publicly displayed because they were released. Any changes made here will be publicly visible as well as soon as they are saved."
-msgstr[0] "La mozione per questo round è attualmente visualizzata pubblicamente perché è stata rilasciata. Qualsiasi modifica apportata qui sarà visibile pubblicamente non appena sarà salvata."
-msgstr[1] "Le mozioni per questo round sono attualmente visualizzate al pubblico perché sono state rilasciate. Qualsiasi modifica apportata qui sarà visibile pubblicamente non appena saranno salvate."
+msgstr[0] "La mozione per questo round Ã¨ attualmente visualizzata pubblicamente perchÃ© Ã¨ stata rilasciata. Qualsiasi modifica apportata qui sarÃ  visibile pubblicamente non appena sarÃ  salvata."
+msgstr[1] "Le mozioni per questo round sono attualmente visualizzate al pubblico perchÃ© sono state rilasciate. Qualsiasi modifica apportata qui sarÃ  visibile pubblicamente non appena saranno salvate."
 
 #: motions/templates/motions_edit.html
 msgid "Save Motion"
@@ -320,7 +320,7 @@ msgstr "Le mozioni per questo round non sono state rilasciate."
 
 #: motions/templates/public_motions.html
 msgid "The motion for this round has not been released."
-msgstr "La mozione per questo round non è stata rilasciata."
+msgstr "La mozione per questo round non Ã¨ stata rilasciata."
 
 #: motions/templates/show.html
 #, python-format
@@ -344,8 +344,8 @@ msgstr[0] "Rivela la mozione per %(round)s"
 msgstr[1] "Rivela le mozioni per %(round)s"
 
 #: motions/templates/show.html
-msgid "There are no motions for this round entered into Tabbycat."
-msgstr "Non ci sono mozioni per questo round inserite in Tabbycat."
+msgid "There are no motions for this round entered into NekoTab."
+msgstr "Non ci sono mozioni per questo round inserite in NekoTab."
 
 #: motions/utils.py
 msgid "Not all latest ballots have the same motion. The correct motion must be set manually."
@@ -357,7 +357,7 @@ msgstr ""
 
 #: motions/views.py
 msgid "The motion has been saved."
-msgstr "La mozione è stata salvata."
+msgstr "La mozione Ã¨ stata salvata."
 
 #: motions/views.py
 #, python-format
@@ -403,4 +403,5 @@ msgstr "Mozioni del round"
 #: motions/views.py
 msgid "Motion Statistics"
 msgstr "Statistiche mozione"
+
 

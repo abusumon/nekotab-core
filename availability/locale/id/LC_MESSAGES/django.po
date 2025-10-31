@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-05 07:37+1000\n"
 "PO-Revision-Date: 2023-07-04 21:51\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: id\n"
-"X-Crowdin-File: /develop/tabbycat/availability/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/availability/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 926\n"
 
 #: availability/apps.py availability/views.py
@@ -60,8 +60,8 @@ msgstr "Lihat Pengundian"
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot — this may lead to a draw that fails or is incorrect"
-msgstr "%(previous_unconfirmed)s debat dari ronde %(round)s tidak memiliki balot yang lengkap — ini dapat berujung pada draw yang salah"
+msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot â€” this may lead to a draw that fails or is incorrect"
+msgstr "%(previous_unconfirmed)s debat dari ronde %(round)s tidak memiliki balot yang lengkap â€” ini dapat berujung pada draw yang salah"
 
 #: availability/templates/availability_index.html
 msgid "Generate Draw"
@@ -80,20 +80,20 @@ msgid "The draw cannot be generated until some rooms have been marked as availab
 msgstr "Pengundian tidak dapat dibangkitkan sampai beberapa ruangan ditandai sebagai tersedia."
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough rooms marked as available for the number of debates — the draw may not generate properly."
-msgstr "Tida ada cukup ruangan yang ditandari tersedia untuk jumlah debat — pengundia mungkin tidak terbangkitkan dengan benar."
+msgid "There aren't enough rooms marked as available for the number of debates â€” the draw may not generate properly."
+msgstr "Tida ada cukup ruangan yang ditandari tersedia untuk jumlah debat â€” pengundia mungkin tidak terbangkitkan dengan benar."
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough adjudicators marked as available for the number of debates — the draw may not generate properly."
-msgstr "Tidak ada cukup ruangan yang ditandai tersedia untuk jumlah debat — pengundian mungkin tidak terbangkitkan dengan benar."
+msgid "There aren't enough adjudicators marked as available for the number of debates â€” the draw may not generate properly."
+msgstr "Tidak ada cukup ruangan yang ditandai tersedia untuk jumlah debat â€” pengundian mungkin tidak terbangkitkan dengan benar."
 
 #: availability/templates/availability_index.html
-msgid "There is an uneven number of teams marked as available — the draw may not generate properly."
-msgstr "Jumlah tim yang ditandai tersedia tidak genap — pengundian mungkin tidak terbangkitkan dengan benar."
+msgid "There is an uneven number of teams marked as available â€” the draw may not generate properly."
+msgstr "Jumlah tim yang ditandai tersedia tidak genap â€” pengundian mungkin tidak terbangkitkan dengan benar."
 
 #: availability/templates/availability_index.html
-msgid "The number of teams marked as available is not a multiple of 4 — the draw may not generate properly."
-msgstr "Jumlah tim yang ditandai tersedia bukan kelipatan 4 — pengundian mungkin tidak terbangkitkan dengan benar."
+msgid "The number of teams marked as available is not a multiple of 4 â€” the draw may not generate properly."
+msgstr "Jumlah tim yang ditandai tersedia bukan kelipatan 4 â€” pengundian mungkin tidak terbangkitkan dengan benar."
 
 #: availability/templates/availability_index.html
 #, python-format
@@ -128,8 +128,8 @@ msgstr "Sepertinya tidak ada tim breaking di Break %(break_category)s. Sudahkah 
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team — you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
-msgstr "Sepertinya tidak ada tim yang breaking di Break %(break_category)s. Anda tidak dapat membangkitkan pengundian ronde eliminasi hanya dengan satu tim — Anda mungkin ingin <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> mereview break untuk untuk Break %(break_category)s</a>."
+msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team â€” you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
+msgstr "Sepertinya tidak ada tim yang breaking di Break %(break_category)s. Anda tidak dapat membangkitkan pengundian ronde eliminasi hanya dengan satu tim â€” Anda mungkin ingin <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> mereview break untuk untuk Break %(break_category)s</a>."
 
 #: availability/templates/availability_index.html
 #, python-format
@@ -289,9 +289,9 @@ msgstr "tidak ada tim yang sedang berdebat"
 #. Translators: nteams in this string can only be 0 or 1
 #: availability/views.py
 #, python-format
-msgid "%(nteams)d breaking team — no debates can happen"
-msgid_plural "%(nteams)d breaking teams — no debates can happen"
-msgstr[0] "%(nteams)d tim breaking — tidak ada debat yang dapat berlangsung"
+msgid "%(nteams)d breaking team â€” no debates can happen"
+msgid_plural "%(nteams)d breaking teams â€” no debates can happen"
+msgstr[0] "%(nteams)d tim breaking â€” tidak ada debat yang dapat berlangsung"
 
 #. Translators: ndebating in this string is always at least 2
 #: availability/views.py
@@ -372,4 +372,5 @@ msgstr "Cek-in seluruh juri breaking."
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms from previous round."
 msgstr "Cek-in seluruh tim, juri, dan ruangan dari ronde sebelumnya."
+
 

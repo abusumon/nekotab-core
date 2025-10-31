@@ -1,4 +1,4 @@
-import json
+﻿import json
 import logging
 
 from django.conf import settings
@@ -21,7 +21,7 @@ from tournaments.models import Round
 from users.permissions import Permission
 from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 from utils.views import VueTableTemplateView
 
 from .base import StandingsError
@@ -230,7 +230,7 @@ class BaseSpeakerStandingsView(BaseStandingsView):
         return standings, rounds
 
     def get_table(self):
-        table = TabbycatTableBuilder(view=self, sort_key="rk")
+        table = NekoTabTableBuilder(view=self, sort_key="rk")
 
         try:
             standings, rounds = self.get_standings()
@@ -251,7 +251,7 @@ class BaseSpeakerStandingsView(BaseStandingsView):
         table.add_team_columns([info.speaker.team for info in standings])
 
         scores_headers = [{'key': escape(round.abbreviation), 'title': escape(round.abbreviation)} for round in rounds]
-        scores_data = [[metricformat(x) if x is not None else '—' for x in standing.scores] for standing in standings]
+        scores_data = [[metricformat(x) if x is not None else 'â€”' for x in standing.scores] for standing in standings]
         table.add_columns(scores_headers, scores_data)
         table.add_metric_columns(standings, integer_score_columns=self.integer_score_columns(rounds))
 
@@ -291,7 +291,7 @@ class BaseSpeakerStandingsView(BaseStandingsView):
 
 class BaseSubstantiveSpeakerStandingsView(BaseSpeakerStandingsView):
     page_title = gettext_lazy("Speaker Standings")
-    page_emoji = '💯'
+    page_emoji = 'ðŸ’¯'
 
     missable_preference = 'standings_missed_debates'
     missable_field = 'count'
@@ -374,7 +374,7 @@ class PublicSpeakerCategoryTabView(PublicTabMixin, BaseSpeakerCategoryStandingsV
 class BaseReplyStandingsView(BaseSpeakerStandingsView):
     """Speaker standings view for replies."""
     page_title = gettext_lazy("Reply Speaker Standings")
-    page_emoji = '💁'
+    page_emoji = 'ðŸ’'
 
     missable_preference = 'standings_missed_replies'
     missable_field = 'replies_count'
@@ -423,7 +423,7 @@ class BaseTeamStandingsView(BaseStandingsView):
     """Base class for views that display team standings."""
 
     page_title = gettext_lazy("Team Standings")
-    page_emoji = '👯'
+    page_emoji = 'ðŸ‘¯'
 
     def get_teams(self):
         return self.tournament.team_set.exclude(type=Team.TYPE_BYE)
@@ -455,7 +455,7 @@ class BaseTeamStandingsView(BaseStandingsView):
         pass
 
     def get_table(self):
-        table = TabbycatTableBuilder(view=self, sort_key="rk")
+        table = NekoTabTableBuilder(view=self, sort_key="rk")
 
         try:
             standings, rounds = self.get_standings()
@@ -561,7 +561,7 @@ class PublicCurrentTeamStandingsView(PublicTournamentPageMixin, VueTableTemplate
 
     public_page_preference = 'public_team_standings'
     page_title = gettext_lazy("Current Team Standings")
-    page_emoji = '🌟'
+    page_emoji = 'ðŸŒŸ'
     cache_timeout = settings.PUBLIC_SLOW_CACHE_TIMEOUT
 
     def get_rounds(self):
@@ -582,7 +582,7 @@ class PublicCurrentTeamStandingsView(PublicTournamentPageMixin, VueTableTemplate
     def get_table(self):
         rounds = self.get_rounds()
         if not rounds:
-            return TabbycatTableBuilder(view=self) # empty (as precaution)
+            return NekoTabTableBuilder(view=self) # empty (as precaution)
 
         name_attr = 'code_name' if use_team_code_names(self.tournament, False) else 'short_name'
 
@@ -599,7 +599,7 @@ class PublicCurrentTeamStandingsView(PublicTournamentPageMixin, VueTableTemplate
         key, title = ('points', _("Points")) if self.tournament.pref('teams_in_debate') == 4 else ('wins', _("Wins"))
         header = {'key': key, 'tooltip': title, 'icon': 'bar-chart'}
 
-        table = TabbycatTableBuilder(view=self, sort_order='desc')
+        table = NekoTabTableBuilder(view=self, sort_order='desc')
         table.add_team_columns(teams)
         table.add_column(header, [team.points for team in teams])
         table.add_team_results_columns(teams, rounds)
@@ -644,7 +644,7 @@ class PublicDiversityStandingsView(PublicTournamentPageMixin, BaseDiversityStand
 class PublicAdjudicatorsTabView(PublicTabMixin, BaseFeedbackOverview):
     public_page_preference = 'adjudicators_tab_released'
     page_title = gettext_lazy('Feedback Overview')
-    page_emoji = '🙅'
+    page_emoji = 'ðŸ™…'
     for_public = False
     sort_key = 'name'
     sort_order = 'asc'
@@ -665,7 +665,7 @@ class PublicAdjudicatorsTabView(PublicTabMixin, BaseFeedbackOverview):
             " The current mix is specified below as the 'Score Components.' "
             "Feedback ratings are determined by averaging the results of all "
             "individual pieces of feedback across all rounds. "
-            "<a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."))
+            "<a href='https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."))
         return table
 
 
@@ -695,3 +695,4 @@ class EmailTeamStandingsView(RoundTemplateEmailCreateView):
         else:
             extra['url'] = ""
         return extra
+

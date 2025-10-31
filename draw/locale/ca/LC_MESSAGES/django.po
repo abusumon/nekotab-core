@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /develop/tabbycat/draw/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/draw/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 930\n"
 
 #: draw/admin.py
@@ -123,7 +123,7 @@ msgstr ""
 
 #: draw/generator/bphungarian.py
 #, python-format
-msgid "The Rényi order can't be negative, and it's currently set to %(alpha)f."
+msgid "The RÃ©nyi order can't be negative, and it's currently set to %(alpha)f."
 msgstr ""
 
 #: draw/generator/common.py
@@ -213,7 +213,7 @@ msgstr "rang de sala"
 
 #: draw/models.py
 msgid "importance"
-msgstr "importància"
+msgstr "importÃ ncia"
 
 #: draw/models.py
 msgid "result status"
@@ -221,7 +221,7 @@ msgstr "estat del resultat"
 
 #: draw/models.py
 msgid "sides confirmed"
-msgstr "bàndols confirmats"
+msgstr "bÃ ndols confirmats"
 
 #: draw/models.py
 msgid "If unchecked, the sides assigned to teams in this debate are just placeholders."
@@ -267,7 +267,7 @@ msgstr "equips de debat"
 #: draw/models.py
 #, python-format
 msgid "placed %(place)s"
-msgstr "col·locat %(place)s"
+msgstr "colÂ·locat %(place)s"
 
 #: draw/models.py
 msgid "result unknown"
@@ -288,7 +288,7 @@ msgstr ""
 
 #: draw/models.py
 msgid "team side allocation"
-msgstr "assignació per equip"
+msgstr "assignaciÃ³ per equip"
 
 #: draw/models.py
 msgid "team side allocations"
@@ -366,7 +366,7 @@ msgstr ""
 
 #: draw/tables.py
 msgid "After"
-msgstr "Després"
+msgstr "DesprÃ©s"
 
 #: draw/tables.py
 msgid "Side history after this round"
@@ -378,7 +378,7 @@ msgstr "Cost"
 
 #: draw/tables.py
 msgid "Position cost"
-msgstr "Cost de la posició"
+msgstr "Cost de la posiciÃ³"
 
 #: draw/tables.py
 msgid "Status"
@@ -407,11 +407,11 @@ msgid "position cost"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "STOP!!! Read this first! Deleting debate teams from the database may crash Tabbycat!"
+msgid "STOP!!! Read this first! Deleting debate teams from the database may crash NekoTab!"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "Tabbycat requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgid "NekoTab requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
@@ -424,7 +424,7 @@ msgid "WARNING!!! If you are editing debate teams, read this first!"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/edit_warning.html
-msgid "Tabbycat requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgid "NekoTab requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
 msgstr ""
 
 #: draw/templates/draw_alerts_adjudicators.html
@@ -538,7 +538,7 @@ msgstr ""
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
-msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> —  including their ballots and adjudicator allocations — and cannot be undone. You probably don't want to do this if any results have been entered!"
+msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> â€”  including their ballots and adjudicator allocations â€” and cannot be undone. You probably don't want to do this if any results have been entered!"
 msgstr ""
 
 #: draw/templates/draw_confirm_regeneration.html
@@ -577,7 +577,7 @@ msgstr[1] ""
 #: draw/templates/draw_display_admin.html
 msgid "Edit the motion"
 msgid_plural "Edit motions"
-msgstr[0] "Editar la moció"
+msgstr[0] "Editar la mociÃ³"
 msgstr[1] ""
 
 #: draw/templates/draw_display_admin.html
@@ -591,7 +591,7 @@ msgstr ""
 #: draw/templates/draw_display_admin.html
 msgid "Enter a motion"
 msgid_plural "Enter motions"
-msgstr[0] "Introduïu la moció"
+msgstr[0] "IntroduÃ¯u la mociÃ³"
 msgstr[1] ""
 
 #: draw/templates/draw_display_admin.html
@@ -763,7 +763,7 @@ msgstr ""
 
 #: draw/templates/draw_display_admin.html
 msgid "Start at"
-msgstr "Va començar a"
+msgstr "Va comenÃ§ar a"
 
 #: draw/templates/draw_display_assistant.html
 msgid "(for printing)"
@@ -779,11 +779,11 @@ msgstr ""
 
 #: draw/templates/draw_display_by.html
 msgid "Scroll Speed"
-msgstr "Velocitat de desplaçament:"
+msgstr "Velocitat de desplaÃ§ament:"
 
 #: draw/templates/draw_display_by.html
 msgid "Fast"
-msgstr "Ràpid"
+msgstr "RÃ pid"
 
 #: draw/templates/draw_display_by.html
 msgid "Medium"
@@ -827,7 +827,7 @@ msgstr "Enorme"
 
 #: draw/templates/draw_display_by.html
 msgid "Stop Scroll"
-msgstr "Atura el desplaçament"
+msgstr "Atura el desplaÃ§ament"
 
 #: draw/templates/draw_not_released.html
 #, python-format
@@ -868,7 +868,7 @@ msgstr ""
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Preformed Panels"
-msgstr "Grups de Jutges formats amb antelació"
+msgstr "Grups de Jutges formats amb antelaciÃ³"
 
 #: draw/templates/draw_status_confirmed.html
 #, python-format
@@ -917,7 +917,7 @@ msgstr ""
 
 #: draw/templates/draw_status_draft.html
 #, python-format
-msgid "The draw type for this round is set to <strong>manual</strong>, so Tabbycat has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
+msgid "The draw type for this round is set to <strong>manual</strong>, so NekoTab has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
@@ -926,7 +926,7 @@ msgid "The adjudicator score range is 0, and so adjudicator scores will be ignor
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
-msgid "Tabbycat assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept Tabbycat's random assignment."
+msgid "NekoTab assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept NekoTab's random assignment."
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
@@ -944,7 +944,7 @@ msgstr ""
 
 #: draw/templates/position_balance.html
 #, python-format
-msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
+msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
 msgstr ""
 
 #: draw/templates/position_balance_break.html
@@ -1004,7 +1004,7 @@ msgstr ""
 
 #: draw/views.py
 msgid "Position"
-msgstr "Posició"
+msgstr "PosiciÃ³"
 
 #: draw/views.py
 msgid "Team Pairings"
@@ -1039,10 +1039,10 @@ msgstr ""
 
 #: draw/views.py
 #, python-format
-msgid "Rényi entropy of order %(order)s"
+msgid "RÃ©nyi entropy of order %(order)s"
 msgstr ""
 
-#. Translators: This is appended to the string "Rényi entropy of order 1.0"
+#. Translators: This is appended to the string "RÃ©nyi entropy of order 1.0"
 #: draw/views.py
 msgid " (<i>i.e.</i>, Shannon entropy)"
 msgstr ""
@@ -1130,4 +1130,5 @@ msgstr ""
 #: draw/views.py
 msgid "Edit Matchups"
 msgstr ""
+
 

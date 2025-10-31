@@ -1,4 +1,4 @@
-{% extends "tables/base_vue_table.html" %}
+﻿{% extends "tables/base_vue_table.html" %}
 {% load i18n %}
 
 {% block page-subnav-sections %}
@@ -8,7 +8,7 @@
 {% block page-alerts %}
 
   {% blocktrans trimmed asvar text %}
-    Emails can be sent by Tabbycat for a variety of purposes. Emails are sent when specific
+    Emails can be sent by NekoTab for a variety of purposes. Emails are sent when specific
     preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific
     pages (i.e. the Draw Display page for matchups; or the Participants page for team registration).
     This page shows the status of previously-sent emails.
@@ -16,3 +16,4 @@
   {% include "components/item-info.html" with type="info" %}
 
 {% endblock %}
+

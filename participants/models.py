@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 from warnings import warn
 
 from django.contrib.contenttypes.fields import GenericRelation
@@ -162,7 +162,7 @@ class Person(models.Model):
         help_text=_("Gender is displayed in the adjudicator allocation interface, and nowhere else"))
     pronoun = models.CharField(max_length=10, blank=True,
         verbose_name=_("pronoun"),
-        help_text=_("If printing ballots using Tabbycat, there is the option to pre-print pronouns"))
+        help_text=_("If printing ballots using NekoTab, there is the option to pre-print pronouns"))
 
     answers = GenericRelation(Answer)
 
@@ -514,3 +514,4 @@ class Adjudicator(Person):
 
     def get_feedback(self):
         return self.adjudicatorfeedback_set.all()
+

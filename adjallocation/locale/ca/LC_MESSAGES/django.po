@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2025-07-02 11:36\n"
@@ -11,33 +11,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
 msgid "There are no available adjudicators. Ensure there are adjudicators who have been marked as available for this round before auto-allocating."
-msgstr "No hi ha jutges disponibles. Assegura't que hi ha jutges marcats com a disponibles abans de fer l'autoubicació."
+msgstr "No hi ha jutges disponibles. Assegura't que hi ha jutges marcats com a disponibles abans de fer l'autoubicaciÃ³."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "%(count)s score is larger than the maximum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are larger than the maximum permitted adjudicator score (%(score).1f)."
-msgstr[0] "%(count)s punts superen el màxim permès per puntuar a un jutge (%(score).1f)."
-msgstr[1] "%(count)s punts superen el màxim permès per puntuar a un jutge (%(score).1f)."
+msgstr[0] "%(count)s punts superen el mÃ xim permÃ¨s per puntuar a un jutge (%(score).1f)."
+msgstr[1] "%(count)s punts superen el mÃ xim permÃ¨s per puntuar a un jutge (%(score).1f)."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "%(count)s score is smaller than the minimum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are smaller than the minimum permitted adjudicator score (%(score).1f)."
-msgstr[0] "%(count)s punts no arriben al mínim permès per puntuar a un jutge (%(score).1f)."
-msgstr[1] "%(count)s punts no arriben al mínim permès per puntuar a un jutge (%(score).1f)."
+msgstr[0] "%(count)s punts no arriben al mÃ­nim permÃ¨s per puntuar a un jutge (%(score).1f)."
+msgstr[1] "%(count)s punts no arriben al mÃ­nim permÃ¨s per puntuar a un jutge (%(score).1f)."
 
 #: adjallocation/allocators/hungarian.py
 msgid "There are no adjudicators eligible to be a chair or panellist. Try changing the \"Minimum feedback score required to be allocated as chair or panellist\" setting to something lower than at least some adjudicators' current scores, and try again."
-msgstr "No hi ha jutges disponibles per ser principals o panelistes. Prova de canviar la nota mínima de retroalimentació necessària per ser ubicat com a principal o panelista a un valor prou baix, almenys a les notes d'alguns jutges, i torna-ho a provar."
+msgstr "No hi ha jutges disponibles per ser principals o panelistes. Prova de canviar la nota mÃ­nima de retroalimentaciÃ³ necessÃ ria per ser ubicat com a principal o panelista a un valor prou baix, almenys a les notes d'alguns jutges, i torna-ho a provar."
 
 #: adjallocation/allocators/hungarian.py
 msgid "There are no debates for this round. Maybe you haven't created a draw yet?"
@@ -46,21 +46,21 @@ msgstr "No hi ha debats per aquesta ronda. Potser no has creat l'emparellament e
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "There are %(debate_count)s debates but only %(adj_count)s voting adjudicators."
-msgstr "Hi ha %(debate_count)s debats previstos, però només %(adj_count)s jutges amb vot disponibles."
+msgstr "Hi ha %(debate_count)s debats previstos, perÃ² nomÃ©s %(adj_count)s jutges amb vot disponibles."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "There are %(panel_debates)s panel debates but only %(panellists)s available panellists (less than %(needed)s)."
-msgstr "Hi ha %(panel_debates)s panells de jutges, però només %(panellists)s panelistes disponibles (menys dels %(needed)s necessaris)."
+msgstr "Hi ha %(panel_debates)s panells de jutges, perÃ² nomÃ©s %(panellists)s panelistes disponibles (menys dels %(needed)s necessaris)."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "There are %(debates_count)s debates but only %(voting_count)s voting adjudicators."
-msgstr "Hi ha %(debates_count)s debats previstos, però només %(voting_count)s jutges amb vot."
+msgstr "Hi ha %(debates_count)s debats previstos, perÃ² nomÃ©s %(voting_count)s jutges amb vot."
 
 #: adjallocation/apps.py
 msgid "Adjudicator Allocation"
-msgstr "Assignació de Jutges"
+msgstr "AssignaciÃ³ de Jutges"
 
 #: adjallocation/consumers.py
 msgid "Draw is already released, unrelease draw to redo auto-allocations."
@@ -72,7 +72,7 @@ msgstr "Els aparellaments no han estat confirmats, confirma els aparellaments pe
 
 #: adjallocation/consumers.py
 msgid "There are no preformed panels available to allocate."
-msgstr "No hi ha panells preformats disponibles per col·locar."
+msgstr "No hi ha panells preformats disponibles per colÂ·locar."
 
 #: adjallocation/consumers.py
 msgid "Successfully auto-allocated preformed panels to debates."
@@ -82,8 +82,8 @@ msgstr "Els panells pels debats s'han autoubicat correctament."
 #, python-format
 msgid "Successfully auto-allocated adjudicators to debates. However, there was a warning:"
 msgid_plural "Successfully auto-allocated adjudicators to debates. However, there were %(count)d warnings:"
-msgstr[0] "Els panells pels debats s'han autoubicat correctament. Així i tot, hi ha un avís:"
-msgstr[1] "Els grups de jutges pels debats s'han autoubicat correctament. Així i tot, hi ha %(count)d avisos:"
+msgstr[0] "Els panells pels debats s'han autoubicat correctament. AixÃ­ i tot, hi ha un avÃ­s:"
+msgstr[1] "Els grups de jutges pels debats s'han autoubicat correctament. AixÃ­ i tot, hi ha %(count)d avisos:"
 
 #: adjallocation/consumers.py
 msgid "Successfully auto-allocated adjudicators to debates."
@@ -97,8 +97,8 @@ msgstr "No hi ha panells de jutges per omplir. Crea primer els panells."
 #, python-format
 msgid "Successfully auto-allocated adjudicators to preformed panels. However, there was a warning:"
 msgid_plural "Successfully auto-allocated adjudicators to preformed panels. However, there were %(count)d warnings:"
-msgstr[0] "Els grups de jutges pels debats s'han autoubicat correctament als panells prefabricats. Així i tot, hi ha un avís:"
-msgstr[1] "Els grups de jutges pels debats s'han autoubicat correctament als panells prefabricats. Així i tot, hi ha %(count)d avisos:"
+msgstr[0] "Els grups de jutges pels debats s'han autoubicat correctament als panells prefabricats. AixÃ­ i tot, hi ha un avÃ­s:"
+msgstr[1] "Els grups de jutges pels debats s'han autoubicat correctament als panells prefabricats. AixÃ­ i tot, hi ha %(count)d avisos:"
 
 #: adjallocation/consumers.py
 msgid "Successfully auto-allocated adjudicators to preformed panels."
@@ -106,31 +106,31 @@ msgstr "Els grups de jutges pels debats s'han autoubicat correctament als panell
 
 #: adjallocation/consumers.py
 msgid "You have no break category set as 'is general' so debate importances can't be calculated."
-msgstr "No tens cap categoria de tall configurada com a “general”, i per tant la importància dels debats no pot ser calculada."
+msgstr "No tens cap categoria de tall configurada com a â€œgeneralâ€, i per tant la importÃ ncia dels debats no pot ser calculada."
 
 #: adjallocation/consumers.py
 msgid "Succesfully auto-prioritised debates."
-msgstr "Els debats han estat autoprioritzats satisfactòriament."
+msgstr "Els debats han estat autoprioritzats satisfactÃ²riament."
 
 #: adjallocation/consumers.py
 msgid "You have no break category set as 'is general' so panel importances can't be calculated."
-msgstr "No tens cap categoria de tall configurada com a “general”, i per tant la importància dels panells de jutges no pot ser calculada."
+msgstr "No tens cap categoria de tall configurada com a â€œgeneralâ€, i per tant la importÃ ncia dels panells de jutges no pot ser calculada."
 
 #: adjallocation/consumers.py
 msgid "Succesfully auto-prioritised preformed panels."
-msgstr "Els panells de jutges han estat autoprioritzats satisfactòriament."
+msgstr "Els panells de jutges han estat autoprioritzats satisfactÃ²riament."
 
 #: adjallocation/consumers.py
 msgid "Since this is the first round, the preformed panels aren't annotated with brackets and liveness."
-msgstr "Com que aquesta és la primera ronda, els panells prefabricats no poden ser generats en grups i vivacitat."
+msgstr "Com que aquesta Ã©s la primera ronda, els panells prefabricats no poden ser generats en grups i vivacitat."
 
 #: adjallocation/consumers.py
 msgid "The previous round's draw doesn't exist, so preformed panels can't be annotated with brackets and liveness."
-msgstr "Els emparellaments de la ronda anterior no existeixen, i per això els panells prefabricats no poden ser generats en grups i vivacitat."
+msgstr "Els emparellaments de la ronda anterior no existeixen, i per aixÃ² els panells prefabricats no poden ser generats en grups i vivacitat."
 
 #: adjallocation/consumers.py
 msgid "Succesfully created new preformed panels for this round."
-msgstr "Els panells prefabricats de jutges per aquesta ronda han estat creats satisfactòriament."
+msgstr "Els panells prefabricats de jutges per aquesta ronda han estat creats satisfactÃ²riament."
 
 #: adjallocation/models.py
 msgid "chair"
@@ -198,23 +198,23 @@ msgstr "Incompatibilitats Jutge-Jutge"
 
 #: adjallocation/models.py
 msgid "institution"
-msgstr "Institució"
+msgstr "InstituciÃ³"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflict"
-msgstr "Incompatibilitat Jutge-Institució"
+msgstr "Incompatibilitat Jutge-InstituciÃ³"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflicts"
-msgstr "Incompatibilitats Jutge-Institució"
+msgstr "Incompatibilitats Jutge-InstituciÃ³"
 
 #: adjallocation/models.py
 msgid "team-institution conflict"
-msgstr "Incompatibilitat Equip-Institució"
+msgstr "Incompatibilitat Equip-InstituciÃ³"
 
 #: adjallocation/models.py
 msgid "team-institution conflicts"
-msgstr "Incompatibilitats Equip-Institució"
+msgstr "Incompatibilitats Equip-InstituciÃ³"
 
 #: adjallocation/models.py
 msgid "round"
@@ -222,7 +222,7 @@ msgstr "ronda"
 
 #: adjallocation/models.py
 msgid "importance"
-msgstr "importància"
+msgstr "importÃ ncia"
 
 #: adjallocation/models.py
 msgid "minimum bracket"
@@ -230,7 +230,7 @@ msgstr "Grup inferior"
 
 #: adjallocation/models.py
 msgid "Estimate of the lowest bracket for which this panel might be"
-msgstr "Estimació del grup inferior en què aquests jutges podrien estar"
+msgstr "EstimaciÃ³ del grup inferior en quÃ¨ aquests jutges podrien estar"
 
 #: adjallocation/models.py
 msgid "maximum bracket"
@@ -238,7 +238,7 @@ msgstr "grup superior"
 
 #: adjallocation/models.py
 msgid "Estimate of the highest bracket for which this panel might be"
-msgstr "Estimació del grup superior en què aquests jutges podrien estar"
+msgstr "EstimaciÃ³ del grup superior en quÃ¨ aquests jutges podrien estar"
 
 #: adjallocation/models.py
 msgid "room rank"
@@ -246,7 +246,7 @@ msgstr "rang de sala"
 
 #: adjallocation/models.py
 msgid "Sequential number of panel, not used in any algorithms"
-msgstr "Número seqüencial de panell, no utilitzat en cap algoritme"
+msgstr "NÃºmero seqÃ¼encial de panell, no utilitzat en cap algoritme"
 
 #: adjallocation/models.py
 msgid "liveness"
@@ -254,15 +254,15 @@ msgstr "vivacitat"
 
 #: adjallocation/models.py
 msgid "Number of categories this room is expected to be live for"
-msgstr "Nombre de categories en què aquesta sala encara pot competir"
+msgstr "Nombre de categories en quÃ¨ aquesta sala encara pot competir"
 
 #: adjallocation/models.py
 msgid "preformed panel"
-msgstr "Grup de Jutges format amb antelació"
+msgstr "Grup de Jutges format amb antelaciÃ³"
 
 #: adjallocation/models.py
 msgid "preformed panels"
-msgstr "Grups de Jutges formats amb antelació"
+msgstr "Grups de Jutges formats amb antelaciÃ³"
 
 #: adjallocation/models.py
 msgid "panel"
@@ -270,32 +270,32 @@ msgstr "Grup de Jutges"
 
 #: adjallocation/models.py
 msgid "preformed panel adjudicator"
-msgstr "Jutge d'un Grup de Jutges format amb antelació"
+msgstr "Jutge d'un Grup de Jutges format amb antelaciÃ³"
 
 #: adjallocation/models.py
 msgid "preformed panel adjudicators"
-msgstr "Jutges d'un Grup de Jutges format amb antelació"
+msgstr "Jutges d'un Grup de Jutges format amb antelaciÃ³"
 
 #: adjallocation/preformed/base.py
 msgid "There are no preformed panels to use. Have you allocated preformed panels for this round? If not, try just auto-allocating adjudicators instead."
-msgstr "No hi ha cap Grup de Jutges format amb antelació per utilitzar. Has col·locat Grup de Jutges format amb antelació per aquesta ronda? Si no has fet, tan sols mira d'autocol·locar-ne."
+msgstr "No hi ha cap Grup de Jutges format amb antelaciÃ³ per utilitzar. Has colÂ·locat Grup de Jutges format amb antelaciÃ³ per aquesta ronda? Si no has fet, tan sols mira d'autocolÂ·locar-ne."
 
 #: adjallocation/templates/preformed_index.html adjallocation/views.py
 msgid "Preformed Panels"
-msgstr "Grups de Jutges formats amb antelació"
+msgstr "Grups de Jutges formats amb antelaciÃ³"
 
 #: adjallocation/templates/preformed_index.html
 msgid "A preformed panel is a defined group of adjudicators that is specified for a round before its draw has been generated. You can then manually or automatically apply these panels during the normal adjudicator allocation process. This can make allocations faster or allow you to create more considered panels of adjudicators."
-msgstr "Un Grup de Jutges format amb antelació és un grup definit de Jutges que és escollit per una ronda abans que el seu emparellament hagi estat generat. Llavors, pots col·locar aquests Grups de Jutges durant el procés usual de col·locació de Jutges de forma automàtica o manual. Això pot fer que les col·locacions siguin més ràpides o et pot permetre crear Grups de Jutges amb més contemplació."
+msgstr "Un Grup de Jutges format amb antelaciÃ³ Ã©s un grup definit de Jutges que Ã©s escollit per una ronda abans que el seu emparellament hagi estat generat. Llavors, pots colÂ·locar aquests Grups de Jutges durant el procÃ©s usual de colÂ·locaciÃ³ de Jutges de forma automÃ tica o manual. AixÃ² pot fer que les colÂ·locacions siguin mÃ©s rÃ pides o et pot permetre crear Grups de Jutges amb mÃ©s contemplaciÃ³."
 
 #: adjallocation/templates/preformed_index.html
 msgid "Note that only adjudicators who have been marked as 'available' for that round will be able to be allocated for that round, so you may need to set their availability in advance."
-msgstr "Adona-te'n que tan sols els Jutges que apareixen marcats com \"disponible\" per aquesta ronda estaran disponibles per ser col·locats, doncs tu podràs necessitar marcar la seva disponibilitat amb anterioritat. "
+msgstr "Adona-te'n que tan sols els Jutges que apareixen marcats com \"disponible\" per aquesta ronda estaran disponibles per ser colÂ·locats, doncs tu podrÃ s necessitar marcar la seva disponibilitat amb anterioritat. "
 
 #: adjallocation/templates/preformed_index.html
 #, python-format
 msgid "Edit Preformed Panels for %(round)s"
-msgstr "Editar Grups de Jutges formats amb antelació per %(round)s"
+msgstr "Editar Grups de Jutges formats amb antelaciÃ³ per %(round)s"
 
 #: adjallocation/utils.py
 #, python-format
@@ -305,7 +305,7 @@ msgstr "Incompatibilitat: <strong>%(adjudicator)s</strong> i <strong>%(team)s</s
 #: adjallocation/utils.py
 #, python-format
 msgid "Conflict: <strong>%(adjudicator)s</strong> & <strong>%(team)s</strong> via institution <strong>%(institution)s</strong>"
-msgstr "Incompatibilitat: <strong>%(adjudicator)s</strong> i <strong>%(team)s</strong> degut a Institució <strong>%(institution)s</strong>"
+msgstr "Incompatibilitat: <strong>%(adjudicator)s</strong> i <strong>%(team)s</strong> degut a InstituciÃ³ <strong>%(institution)s</strong>"
 
 #: adjallocation/utils.py
 #, python-format
@@ -315,7 +315,7 @@ msgstr "Incompatibilitat: <strong>%(adjudicator1)s</strong> i <strong>%(adjudica
 #: adjallocation/utils.py
 #, python-format
 msgid "Conflict: <strong>%(adjudicator1)s</strong> & <strong>%(adjudicator2)s</strong> via institution <strong>%(institution)s</strong>"
-msgstr "Incompatibilitat: <strong>%(adjudicator1)s</strong> i <strong>%(adjudicator2)s</strong> degut a Institució <strong>%(institution)s</strong>"
+msgstr "Incompatibilitat: <strong>%(adjudicator1)s</strong> i <strong>%(adjudicator2)s</strong> degut a InstituciÃ³ <strong>%(institution)s</strong>"
 
 #: adjallocation/views.py
 msgid "Male"
@@ -335,7 +335,7 @@ msgstr "Desconegut"
 
 #: adjallocation/views.py
 msgid "Edit Allocation"
-msgstr "Edita Localització"
+msgstr "Edita LocalitzaciÃ³"
 
 #: adjallocation/views.py
 msgid "Edit Panels"
@@ -343,7 +343,7 @@ msgstr "Edita Grup de Jutges"
 
 #: adjallocation/views.py
 msgid "Return to Panels Overview"
-msgstr "Retorna a la supervisió dels Grups de Jutges"
+msgstr "Retorna a la supervisiÃ³ dels Grups de Jutges"
 
 #: adjallocation/views.py
 msgid "Adjudicator-Team Conflicts"
@@ -399,53 +399,54 @@ msgstr "No s'han fet canvis a les Incompatibilitats Jutge-Jutge."
 
 #: adjallocation/views.py
 msgid "Adjudicator-Institution Conflicts"
-msgstr "Incompatibilitats Jutge-Institució"
+msgstr "Incompatibilitats Jutge-InstituciÃ³"
 
 #: adjallocation/views.py
 msgid "Save Adjudicator-Institution Conflicts"
-msgstr "Guardar Incompatibilitats Jutge-Institució"
+msgstr "Guardar Incompatibilitats Jutge-InstituciÃ³"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d adjudicator-institution conflict."
 msgid_plural "Saved %(count)d adjudicator-institution conflicts."
-msgstr[0] "%(count)d Incompatibilitat Jutge-Institució guardada."
-msgstr[1] "%(count)d Incompatibilitats Jutge-Institució guardades."
+msgstr[0] "%(count)d Incompatibilitat Jutge-InstituciÃ³ guardada."
+msgstr[1] "%(count)d Incompatibilitats Jutge-InstituciÃ³ guardades."
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d adjudicator-institution conflict."
 msgid_plural "Deleted %(count)d adjudicator-institution conflicts."
-msgstr[0] "%(count)d Incompatibilitat Jutge-Institució esborrada."
-msgstr[1] "%(count)d Incompatibilitats Jutge-Institució esborrades."
+msgstr[0] "%(count)d Incompatibilitat Jutge-InstituciÃ³ esborrada."
+msgstr[1] "%(count)d Incompatibilitats Jutge-InstituciÃ³ esborrades."
 
 #: adjallocation/views.py
 msgid "No changes were made to adjudicator-institution conflicts."
-msgstr "No s'han fet canvis a les Incompatibilitats Jutge-Institució."
+msgstr "No s'han fet canvis a les Incompatibilitats Jutge-InstituciÃ³."
 
 #: adjallocation/views.py
 msgid "Team-Institution Conflicts"
-msgstr "Incompatibilitats Equip-Institució"
+msgstr "Incompatibilitats Equip-InstituciÃ³"
 
 #: adjallocation/views.py
 msgid "Save Team-Institution Conflicts"
-msgstr "Guardar Incompatibilitats Equip-Institució"
+msgstr "Guardar Incompatibilitats Equip-InstituciÃ³"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d team-institution conflict."
 msgid_plural "Saved %(count)d team-institution conflicts."
-msgstr[0] "%(count)d Incompatibilitat Equip-Institució guardada."
-msgstr[1] "%(count)d Incompatibilitats Equip-Institució guardades."
+msgstr[0] "%(count)d Incompatibilitat Equip-InstituciÃ³ guardada."
+msgstr[1] "%(count)d Incompatibilitats Equip-InstituciÃ³ guardades."
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d team-institution conflict."
 msgid_plural "Deleted %(count)d team-institution conflicts."
-msgstr[0] "%(count)d Incompatibilitat Equip-Institució esborrada."
-msgstr[1] "%(count)d Incompatibilitats Equip-Institució esborrades."
+msgstr[0] "%(count)d Incompatibilitat Equip-InstituciÃ³ esborrada."
+msgstr[1] "%(count)d Incompatibilitats Equip-InstituciÃ³ esborrades."
 
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
-msgstr "No s'han fet canvis a les Incompatibilitats Equip-Institució."
+msgstr "No s'han fet canvis a les Incompatibilitats Equip-InstituciÃ³."
+
 

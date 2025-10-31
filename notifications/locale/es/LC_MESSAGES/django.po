@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: es-ES\n"
-"X-Crowdin-File: /develop/tabbycat/notifications/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/notifications/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 938\n"
 
@@ -24,7 +24,7 @@ msgstr "Notificaciones"
 
 #: notifications/forms.py
 msgid "Recipient email address"
-msgstr "Correo electrónico del orador/juez"
+msgstr "Correo electrÃ³nico del orador/juez"
 
 #: notifications/forms.py
 #, python-format
@@ -46,7 +46,7 @@ msgstr "Mensaje"
 
 #: notifications/models.py
 msgid "email"
-msgstr "Correo electrónico"
+msgstr "Correo electrÃ³nico"
 
 #: notifications/models.py
 msgid "SMS"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: notifications/models.py
 msgid "notification"
-msgstr "notificación"
+msgstr "notificaciÃ³n"
 
 #: notifications/models.py
 msgid "timestamp"
@@ -114,7 +114,7 @@ msgstr ""
 
 #: notifications/models.py
 msgid "motion(s) released"
-msgstr "moción(es) liberadas"
+msgstr "mociÃ³n(es) liberadas"
 
 #: notifications/models.py
 msgid "team draw released"
@@ -227,7 +227,7 @@ msgid "Send Message(s)"
 msgstr "Enviar mensaje(s)"
 
 #: notifications/templates/email_statuses.html
-msgid "Emails can be sent by Tabbycat for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
+msgid "Emails can be sent by NekoTab for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
 msgstr ""
 
 #: notifications/templates/notifications_nav.html notifications/views.py
@@ -259,7 +259,7 @@ msgstr ""
 
 #: notifications/templates/test_email.html
 msgid "Go back to the site home page"
-msgstr "Volver a la página principal"
+msgstr "Volver a la pÃ¡gina principal"
 
 #: notifications/utils.py
 msgid "the chair"
@@ -387,7 +387,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: notifications/views.py
-msgid "No emails were sent — likely because no recipients were selected."
+msgid "No emails were sent â€” likely because no recipients were selected."
 msgstr ""
 
 #: notifications/views.py
@@ -417,4 +417,5 @@ msgstr "Oradores"
 #: notifications/views.py
 msgid "Adjudicators"
 msgstr "Jueces"
+
 

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
@@ -39,7 +39,7 @@ msgstr ""
 
 #: results/apps.py results/templates/public_results_index.html results/views.py
 msgid "Results"
-msgstr "النتائج"
+msgstr "Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: results/forms.py
 msgid "Tournament password"
@@ -47,15 +47,15 @@ msgstr ""
 
 #: results/forms.py
 msgid "That password isn't correct."
-msgstr "كلمة المرور خاطئة"
+msgstr "ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± Ø®Ø§Ø·Ø¦Ø©"
 
 #: results/forms.py
 msgid "The ballot set can't be both discarded and confirmed."
-msgstr "لا يمكن أن تكون النتيجة محذوفة ومؤكدة"
+msgstr "Ù„Ø§ ÙŠÙ…ÙƒÙ† Ø£Ù† ØªÙƒÙˆÙ† Ø§Ù„Ù†ØªÙŠØ¬Ø© Ù…Ø­Ø°ÙˆÙØ© ÙˆÙ…Ø¤ÙƒØ¯Ø©"
 
 #: results/forms.py
 msgid "The debate status can't be confirmed unless one of the ballot sets is confirmed."
-msgstr "لا يمكن تأكيد النتيجة إلا عند وجود نتيجة واحدة مؤكدة على الأقل"
+msgstr "Ù„Ø§ ÙŠÙ…ÙƒÙ† ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ù†ØªÙŠØ¬Ø© Ø¥Ù„Ø§ Ø¹Ù†Ø¯ ÙˆØ¬ÙˆØ¯ Ù†ØªÙŠØ¬Ø© ÙˆØ§Ø­Ø¯Ø© Ù…Ø¤ÙƒØ¯Ø© Ø¹Ù„Ù‰ Ø§Ù„Ø£Ù‚Ù„"
 
 #: results/forms.py
 msgid "---------"
@@ -64,12 +64,12 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "%(aff_team)s affirmed, %(neg_team)s negated"
-msgstr "%(aff_team)s مولاة، %(neg_team)s معارضة"
+msgstr "%(aff_team)s Ù…ÙˆÙ„Ø§Ø©ØŒ %(neg_team)s Ù…Ø¹Ø§Ø±Ø¶Ø©"
 
 #: results/forms.py
 #, python-format
 msgid "%(side)s's motion veto"
-msgstr "%(side)sتصويت القضايا"
+msgstr "%(side)sØªØµÙˆÙŠØª Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§"
 
 #: results/forms.py
 #, python-format
@@ -82,7 +82,7 @@ msgstr ""
 
 #: results/forms.py
 msgid "Mark as a duplicate speech"
-msgstr "وضع كخطاب مكرر"
+msgstr "ÙˆØ¶Ø¹ ÙƒØ®Ø·Ø§Ø¨ Ù…ÙƒØ±Ø±"
 
 #: results/forms.py
 msgid "Only one team can forfeit"
@@ -90,35 +90,35 @@ msgstr ""
 
 #: results/forms.py
 msgid "This field is required."
-msgstr "هذه الخانة مطلوبة "
+msgstr "Ù‡Ø°Ù‡ Ø§Ù„Ø®Ø§Ù†Ø© Ù…Ø·Ù„ÙˆØ¨Ø© "
 
 #: results/forms.py
 #, python-format
 msgid "The speaker %(speaker)s doesn't appear to be on team %(team)s."
-msgstr "المتحدث %(speaker)s لا يظهر على الفريق %(team)s"
+msgstr "Ø§Ù„Ù…ØªØ­Ø¯Ø« %(speaker)s Ù„Ø§ ÙŠØ¸Ù‡Ø± Ø¹Ù„Ù‰ Ø§Ù„ÙØ±ÙŠÙ‚ %(team)s"
 
 #: results/forms.py
 #, python-format
 msgid "%(speaker)s appears to have given %(count)d substantive speech."
 msgid_plural "%(speaker)s appears to have given %(count)d substantive speeches."
-msgstr[0] "المحدث %(speaker)s لم يلق أية خطابات رئيسية %(count)d"
-msgstr[1] "المتحدث %(speaker)s ألقى خطاب رئيسي %(count)d مرات"
-msgstr[2] "المتحدث%(speaker)s ألقى خطاب رئيسي %(count)d مرات"
-msgstr[3] "المتحدث%(speaker)s ألقى خطاب رئيسي %(count)d مرات"
-msgstr[4] "المتحدث %(speaker)s ألقى خطاب رئيسي %(count)d مرات"
-msgstr[5] "المتحدث %(speaker)s ألقى %(count)d خطابات رئيسية"
+msgstr[0] "Ø§Ù„Ù…Ø­Ø¯Ø« %(speaker)s Ù„Ù… ÙŠÙ„Ù‚ Ø£ÙŠØ© Ø®Ø·Ø§Ø¨Ø§Øª Ø±Ø¦ÙŠØ³ÙŠØ© %(count)d"
+msgstr[1] "Ø§Ù„Ù…ØªØ­Ø¯Ø« %(speaker)s Ø£Ù„Ù‚Ù‰ Ø®Ø·Ø§Ø¨ Ø±Ø¦ÙŠØ³ÙŠ %(count)d Ù…Ø±Ø§Øª"
+msgstr[2] "Ø§Ù„Ù…ØªØ­Ø¯Ø«%(speaker)s Ø£Ù„Ù‚Ù‰ Ø®Ø·Ø§Ø¨ Ø±Ø¦ÙŠØ³ÙŠ %(count)d Ù…Ø±Ø§Øª"
+msgstr[3] "Ø§Ù„Ù…ØªØ­Ø¯Ø«%(speaker)s Ø£Ù„Ù‚Ù‰ Ø®Ø·Ø§Ø¨ Ø±Ø¦ÙŠØ³ÙŠ %(count)d Ù…Ø±Ø§Øª"
+msgstr[4] "Ø§Ù„Ù…ØªØ­Ø¯Ø« %(speaker)s Ø£Ù„Ù‚Ù‰ Ø®Ø·Ø§Ø¨ Ø±Ø¦ÙŠØ³ÙŠ %(count)d Ù…Ø±Ø§Øª"
+msgstr[5] "Ø§Ù„Ù…ØªØ­Ø¯Ø« %(speaker)s Ø£Ù„Ù‚Ù‰ %(count)d Ø®Ø·Ø§Ø¨Ø§Øª Ø±Ø¦ÙŠØ³ÙŠØ©"
 
 #: results/forms.py
 msgid "The last substantive speaker and reply speaker can't be the same."
-msgstr "لا بد أن يكون خطاب المتحدث الثالث وخطاب رد من شخصين مختلفين."
+msgstr "Ù„Ø§ Ø¨Ø¯ Ø£Ù† ÙŠÙƒÙˆÙ† Ø®Ø·Ø§Ø¨ Ø§Ù„Ù…ØªØ­Ø¯Ø« Ø§Ù„Ø«Ø§Ù„Ø« ÙˆØ®Ø·Ø§Ø¨ Ø±Ø¯ Ù…Ù† Ø´Ø®ØµÙŠÙ† Ù…Ø®ØªÙ„ÙÙŠÙ†."
 
 #: results/forms.py
 msgid "The reply speaker for this team did not give a substantive speech."
-msgstr "خطاب الرد للفريق لم يكن موضوعي "
+msgstr "Ø®Ø·Ø§Ø¨ Ø§Ù„Ø±Ø¯ Ù„Ù„ÙØ±ÙŠÙ‚ Ù„Ù… ÙŠÙƒÙ† Ù…ÙˆØ¶ÙˆØ¹ÙŠ "
 
 #: results/forms.py
 msgid "The total scores for the teams are the same (i.e. a draw)."
-msgstr "مجموع نتائج الفرقين متساويين. (تعادل)"
+msgstr "Ù…Ø¬Ù…ÙˆØ¹ Ù†ØªØ§Ø¦Ø¬ Ø§Ù„ÙØ±Ù‚ÙŠÙ† Ù…ØªØ³Ø§ÙˆÙŠÙŠÙ†. (ØªØ¹Ø§Ø¯Ù„)"
 
 #: results/forms.py
 msgid "The declared winner does not correspond to the team with the highest score."
@@ -127,12 +127,12 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "The total scores for the following teams are the same: %(teams)s"
-msgstr "مجموع نقاط الفرقين التاليين متساوية: %(teams)s"
+msgstr "Ù…Ø¬Ù…ÙˆØ¹ Ù†Ù‚Ø§Ø· Ø§Ù„ÙØ±Ù‚ÙŠÙ† Ø§Ù„ØªØ§Ù„ÙŠÙŠÙ† Ù…ØªØ³Ø§ÙˆÙŠØ©: %(teams)s"
 
 #: results/forms.py
 #, python-format
 msgid "The margin (%(margin).1f) exceeds the maximum allowable margin (%(max_margin).1f)."
-msgstr "الهوامش ( %(margin).1f تجاوز الوقت المحدد ) (%(max_margin).1f )"
+msgstr "Ø§Ù„Ù‡ÙˆØ§Ù…Ø´ ( %(margin).1f ØªØ¬Ø§ÙˆØ² Ø§Ù„ÙˆÙ‚Øª Ø§Ù„Ù…Ø­Ø¯Ø¯ ) (%(max_margin).1f )"
 
 #: results/forms.py
 msgid "Ranks cannot be tied."
@@ -145,7 +145,7 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "The total scores for the teams are the same (i.e. a draw) for adjudicator %(adjudicator)s."
-msgstr "مجموع نتائج الفرقين متساويين (تعادل) من قبل المحكم %(adjudicator)s."
+msgstr "Ù…Ø¬Ù…ÙˆØ¹ Ù†ØªØ§Ø¦Ø¬ Ø§Ù„ÙØ±Ù‚ÙŠÙ† Ù…ØªØ³Ø§ÙˆÙŠÙŠÙ† (ØªØ¹Ø§Ø¯Ù„) Ù…Ù† Ù‚Ø¨Ù„ Ø§Ù„Ù…Ø­ÙƒÙ… %(adjudicator)s."
 
 #: results/forms.py
 #, python-format
@@ -155,11 +155,11 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "The margin (%(margin).1f) in the ballot of adjudicator %(adjudicator)s exceeds the maximum allowable margin (%(max_margin).1f)."
-msgstr "هوامش(%(margin).1f ) في النتائج قام الحكم %(adjudicator)s بوضع بتجاوز الحد الاقصى ( %(max_margin).1f )"
+msgstr "Ù‡ÙˆØ§Ù…Ø´(%(margin).1f ) ÙÙŠ Ø§Ù„Ù†ØªØ§Ø¦Ø¬ Ù‚Ø§Ù… Ø§Ù„Ø­ÙƒÙ… %(adjudicator)s Ø¨ÙˆØ¶Ø¹ Ø¨ØªØ¬Ø§ÙˆØ² Ø§Ù„Ø­Ø¯ Ø§Ù„Ø§Ù‚ØµÙ‰ ( %(max_margin).1f )"
 
 #: results/forms.py
 msgid "Sides for this debate are not confirmed. You can't save a result for this debate until the sides have been confirmed in the draw."
-msgstr "لم يتم تأكيد الجانبين لهذه المناقشة. لا يمكنك حفظ نتيجة لهذه المناقشة حتى يتم تأكيد الجوانب في القرعة."
+msgstr "Ù„Ù… ÙŠØªÙ… ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ø¬Ø§Ù†Ø¨ÙŠÙ† Ù„Ù‡Ø°Ù‡ Ø§Ù„Ù…Ù†Ø§Ù‚Ø´Ø©. Ù„Ø§ ÙŠÙ…ÙƒÙ†Ùƒ Ø­ÙØ¸ Ù†ØªÙŠØ¬Ø© Ù„Ù‡Ø°Ù‡ Ø§Ù„Ù…Ù†Ø§Ù‚Ø´Ø© Ø­ØªÙ‰ ÙŠØªÙ… ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ø¬ÙˆØ§Ù†Ø¨ ÙÙŠ Ø§Ù„Ù‚Ø±Ø¹Ø©."
 
 #: results/forms.py
 #, python-format
@@ -178,11 +178,11 @@ msgstr ""
 
 #: results/models.py
 msgid "Tab room"
-msgstr "غرفة التحكم"
+msgstr "ØºØ±ÙØ© Ø§Ù„ØªØ­ÙƒÙ…"
 
 #: results/models.py
 msgid "Public"
-msgstr "عمومي"
+msgstr "Ø¹Ù…ÙˆÙ…ÙŠ"
 
 #: results/models.py
 msgid "Automation"
@@ -190,19 +190,19 @@ msgstr ""
 
 #: results/models.py
 msgid "timestamp"
-msgstr "الزمن "
+msgstr "Ø§Ù„Ø²Ù…Ù† "
 
 #: results/models.py
 msgid "version"
-msgstr "الإصدار"
+msgstr "Ø§Ù„Ø¥ØµØ¯Ø§Ø±"
 
 #: results/models.py
 msgid "submitter type"
-msgstr "نوع المقدم "
+msgstr "Ù†ÙˆØ¹ Ø§Ù„Ù…Ù‚Ø¯Ù… "
 
 #: results/models.py
 msgid "confirmed"
-msgstr "مؤكدة"
+msgstr "Ù…Ø¤ÙƒØ¯Ø©"
 
 #: results/models.py
 msgid "from private URL"
@@ -214,35 +214,35 @@ msgstr ""
 
 #: results/models.py
 msgid "submitter"
-msgstr "المقدم "
+msgstr "Ø§Ù„Ù…Ù‚Ø¯Ù… "
 
 #: results/models.py
 msgid "confirmer"
-msgstr "مؤكدة"
+msgstr "Ù…Ø¤ÙƒØ¯Ø©"
 
 #: results/models.py
 msgid "confirm timestamp"
-msgstr "تأكيد النتائج"
+msgstr "ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: results/models.py
 msgid "IP address"
-msgstr "عنوان ال IP"
+msgstr "Ø¹Ù†ÙˆØ§Ù† Ø§Ù„ IP"
 
 #: results/models.py
 msgid "A tab room ballot must have a user associated."
-msgstr "يجب أن تكون النتائج في غرفة التاب "
+msgstr "ÙŠØ¬Ø¨ Ø£Ù† ØªÙƒÙˆÙ† Ø§Ù„Ù†ØªØ§Ø¦Ø¬ ÙÙŠ ØºØ±ÙØ© Ø§Ù„ØªØ§Ø¨ "
 
 #: results/models.py
 msgid "debate"
-msgstr "مناظرة"
+msgstr "Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: results/models.py
 msgid "motion"
-msgstr "نص قضية"
+msgstr "Ù†Øµ Ù‚Ø¶ÙŠØ©"
 
 #: results/models.py
 msgid "discarded"
-msgstr "حذف "
+msgstr "Ø­Ø°Ù "
 
 #: results/models.py
 msgid "single adjudicator"
@@ -262,11 +262,11 @@ msgstr ""
 
 #: results/models.py
 msgid "ballot submission"
-msgstr "تسليم النتائج"
+msgstr "ØªØ³Ù„ÙŠÙ… Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: results/models.py
 msgid "ballot submissions"
-msgstr "تسليم النتائج"
+msgstr "ØªØ³Ù„ÙŠÙ… Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: results/models.py
 #, python-format
@@ -275,27 +275,27 @@ msgstr ""
 
 #: results/models.py
 msgid "A ballot can't be both confirmed and discarded!"
-msgstr "لا يمكن أن تكون النتيجة معتمدة ومؤكدة"
+msgstr "Ù„Ø§ ÙŠÙ…ÙƒÙ† Ø£Ù† ØªÙƒÙˆÙ† Ø§Ù„Ù†ØªÙŠØ¬Ø© Ù…Ø¹ØªÙ…Ø¯Ø© ÙˆÙ…Ø¤ÙƒØ¯Ø©"
 
 #: results/models.py
 msgid "debate adjudicator"
-msgstr "محكم المناظرة"
+msgstr "Ù…Ø­ÙƒÙ… Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: results/models.py
 msgid "debate team"
-msgstr "فريق المناظرة"
+msgstr "ÙØ±ÙŠÙ‚ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: results/models.py
 msgid "win"
-msgstr "فوز"
+msgstr "ÙÙˆØ²"
 
 #: results/models.py
 msgid "margin"
-msgstr "هوامش "
+msgstr "Ù‡ÙˆØ§Ù…Ø´ "
 
 #: results/models.py
 msgid "score"
-msgstr "نقطة"
+msgstr "Ù†Ù‚Ø·Ø©"
 
 #: results/models.py
 msgid "team score by adjudicator"
@@ -307,31 +307,31 @@ msgstr ""
 
 #: results/models.py
 msgid "The debate team, debate adjudicator and ballot submission must all relate to the same debate."
-msgstr "يجب أن يتوافق كل من فريق المناظرة و محكم المناظرة بالإضافة إلى ورقة النتائج لنفس المناظرة "
+msgstr "ÙŠØ¬Ø¨ Ø£Ù† ÙŠØªÙˆØ§ÙÙ‚ ÙƒÙ„ Ù…Ù† ÙØ±ÙŠÙ‚ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© Ùˆ Ù…Ø­ÙƒÙ… Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© Ø¨Ø§Ù„Ø¥Ø¶Ø§ÙØ© Ø¥Ù„Ù‰ ÙˆØ±Ù‚Ø© Ø§Ù„Ù†ØªØ§Ø¦Ø¬ Ù„Ù†ÙØ³ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: results/models.py
 msgid "position"
-msgstr "الموقع "
+msgstr "Ø§Ù„Ù…ÙˆÙ‚Ø¹ "
 
 #: results/models.py
 msgid "speaker score by adjudicator"
-msgstr "درجة المتحدث من الحكم "
+msgstr "Ø¯Ø±Ø¬Ø© Ø§Ù„Ù…ØªØ­Ø¯Ø« Ù…Ù† Ø§Ù„Ø­ÙƒÙ… "
 
 #: results/models.py
 msgid "speaker scores by adjudicator"
-msgstr "نقاط المتحدثين"
+msgstr "Ù†Ù‚Ø§Ø· Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ†"
 
 #: results/models.py
 msgid "points"
-msgstr "نقاط"
+msgstr "Ù†Ù‚Ø§Ø·"
 
 #: results/models.py
 msgid "votes given"
-msgstr "تم التصويت "
+msgstr "ØªÙ… Ø§Ù„ØªØµÙˆÙŠØª "
 
 #: results/models.py
 msgid "votes possible"
-msgstr "إمكانية التصويت "
+msgstr "Ø¥Ù…ÙƒØ§Ù†ÙŠØ© Ø§Ù„ØªØµÙˆÙŠØª "
 
 #: results/models.py
 msgid "has ghost score"
@@ -339,47 +339,47 @@ msgstr ""
 
 #: results/models.py
 msgid "team score"
-msgstr "نتيجة الفريق"
+msgstr "Ù†ØªÙŠØ¬Ø© Ø§Ù„ÙØ±ÙŠÙ‚"
 
 #: results/models.py
 msgid "team scores"
-msgstr "نتائج الفريق"
+msgstr "Ù†ØªØ§Ø¦Ø¬ Ø§Ù„ÙØ±ÙŠÙ‚"
 
 #: results/models.py
 msgid "speaker"
-msgstr "متحدث"
+msgstr "Ù…ØªØ­Ø¯Ø«"
 
 #: results/models.py
 msgid "rank"
-msgstr "الترتيب"
+msgstr "Ø§Ù„ØªØ±ØªÙŠØ¨"
 
 #: results/models.py
 msgid "ghost"
-msgstr "ظل "
+msgstr "Ø¸Ù„ "
 
 #: results/models.py
 msgid "If checked, this score does not count towards the speaker tab. This is typically checked for speeches where someone spoke twice to make up for an absent teammate (sometimes known as \"iron-person\" or \"iron-man\" speeches)."
-msgstr "في حالة تحديده ، لا يتم احتساب هذه الدرجة في علامة تاب المتحدث. يتم فحص هذا عادة الخطاب حيث يتحدث شخص ما مرتين لتعويض زميله الغائب (الذي يعرف أحيانا باسم خطاب \"الشخص الحديدي\" أو خطاب \"الرجل الحديدي\")."
+msgstr "ÙÙŠ Ø­Ø§Ù„Ø© ØªØ­Ø¯ÙŠØ¯Ù‡ ØŒ Ù„Ø§ ÙŠØªÙ… Ø§Ø­ØªØ³Ø§Ø¨ Ù‡Ø°Ù‡ Ø§Ù„Ø¯Ø±Ø¬Ø© ÙÙŠ Ø¹Ù„Ø§Ù…Ø© ØªØ§Ø¨ Ø§Ù„Ù…ØªØ­Ø¯Ø«. ÙŠØªÙ… ÙØ­Øµ Ù‡Ø°Ø§ Ø¹Ø§Ø¯Ø© Ø§Ù„Ø®Ø·Ø§Ø¨ Ø­ÙŠØ« ÙŠØªØ­Ø¯Ø« Ø´Ø®Øµ Ù…Ø§ Ù…Ø±ØªÙŠÙ† Ù„ØªØ¹ÙˆÙŠØ¶ Ø²Ù…ÙŠÙ„Ù‡ Ø§Ù„ØºØ§Ø¦Ø¨ (Ø§Ù„Ø°ÙŠ ÙŠØ¹Ø±Ù Ø£Ø­ÙŠØ§Ù†Ø§ Ø¨Ø§Ø³Ù… Ø®Ø·Ø§Ø¨ \"Ø§Ù„Ø´Ø®Øµ Ø§Ù„Ø­Ø¯ÙŠØ¯ÙŠ\" Ø£Ùˆ Ø®Ø·Ø§Ø¨ \"Ø§Ù„Ø±Ø¬Ù„ Ø§Ù„Ø­Ø¯ÙŠØ¯ÙŠ\")."
 
 #: results/models.py
 msgid "speaker score"
-msgstr "نقاط المتحدث"
+msgstr "Ù†Ù‚Ø§Ø· Ø§Ù„Ù…ØªØ­Ø¯Ø«"
 
 #: results/models.py
 msgid "speaker scores"
-msgstr "نقاط المتحدثين"
+msgstr "Ù†Ù‚Ø§Ø· Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ†"
 
 #: results/models.py
 msgid "The debate team and speaker must be from the same team."
-msgstr "يجب أن يكون فريق المناظرة والمحدثون من نفس الفريق "
+msgstr "ÙŠØ¬Ø¨ Ø£Ù† ÙŠÙƒÙˆÙ† ÙØ±ÙŠÙ‚ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© ÙˆØ§Ù„Ù…Ø­Ø¯Ø«ÙˆÙ† Ù…Ù† Ù†ÙØ³ Ø§Ù„ÙØ±ÙŠÙ‚ "
 
 #: results/models.py
 msgid "The ballot submission and debate team must relate to the same debate."
-msgstr "يجب أن يكون فريق المناظرة و النتيجة  من نفس المناظرة "
+msgstr "ÙŠØ¬Ø¨ Ø£Ù† ÙŠÙƒÙˆÙ† ÙØ±ÙŠÙ‚ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© Ùˆ Ø§Ù„Ù†ØªÙŠØ¬Ø©  Ù…Ù† Ù†ÙØ³ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: results/models.py
 msgid "tournament"
-msgstr "بطولة"
+msgstr "Ø¨Ø·ÙˆÙ„Ø©"
 
 #: results/models.py
 msgid "sequence"
@@ -455,11 +455,11 @@ msgstr ""
 
 #: results/tables.py
 msgid "Status of this debate's ballot"
-msgstr "حالة نتيجة المناظرة"
+msgstr "Ø­Ø§Ù„Ø© Ù†ØªÙŠØ¬Ø© Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: results/templates/admin_results.html
 msgid "Display Draw"
-msgstr "عرض القرعة"
+msgstr "Ø¹Ø±Ø¶ Ø§Ù„Ù‚Ø±Ø¹Ø©"
 
 #: results/templates/admin_results.html
 msgid "Check-In Ballots"
@@ -512,20 +512,20 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr ""
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "This tournament's configuration is set to <strong>British Parliamentary</strong> with <strong>one ballot per voting adjudicator</strong>. This combination isn't allowed: BP tournaments must use consensus ballots. Results can't be entered while this configuration is in place. Please <a href=\"%(debate_rules_url)s\">revise this tournament's configuration</a> before you try to enter results."
-msgstr "يتم تعيين تكوين هذه البطولة على <strong>البرلمان البريطاني </strong>من خلال \n"
-"<strong> تحكيم شخص لكل جهه </strong> . هذه المجموعة غير مسموح بها: يجب أن تستخدم النظام البريطاني في إقرارات الإجماع. لا يمكن إدخال النتائج أثناء وجود هذا الاعدادات. من فضلك ، راجع  <a href=\"%(debate_rules_url)s\"> اعدادات هذه البطولة </a>  قبل محاولة إدخال النتائج."
+msgstr "ÙŠØªÙ… ØªØ¹ÙŠÙŠÙ† ØªÙƒÙˆÙŠÙ† Ù‡Ø°Ù‡ Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© Ø¹Ù„Ù‰ <strong>Ø§Ù„Ø¨Ø±Ù„Ù…Ø§Ù† Ø§Ù„Ø¨Ø±ÙŠØ·Ø§Ù†ÙŠ </strong>Ù…Ù† Ø®Ù„Ø§Ù„ \n"
+"<strong> ØªØ­ÙƒÙŠÙ… Ø´Ø®Øµ Ù„ÙƒÙ„ Ø¬Ù‡Ù‡ </strong> . Ù‡Ø°Ù‡ Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© ØºÙŠØ± Ù…Ø³Ù…ÙˆØ­ Ø¨Ù‡Ø§: ÙŠØ¬Ø¨ Ø£Ù† ØªØ³ØªØ®Ø¯Ù… Ø§Ù„Ù†Ø¸Ø§Ù… Ø§Ù„Ø¨Ø±ÙŠØ·Ø§Ù†ÙŠ ÙÙŠ Ø¥Ù‚Ø±Ø§Ø±Ø§Øª Ø§Ù„Ø¥Ø¬Ù…Ø§Ø¹. Ù„Ø§ ÙŠÙ…ÙƒÙ† Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„Ù†ØªØ§Ø¦Ø¬ Ø£Ø«Ù†Ø§Ø¡ ÙˆØ¬ÙˆØ¯ Ù‡Ø°Ø§ Ø§Ù„Ø§Ø¹Ø¯Ø§Ø¯Ø§Øª. Ù…Ù† ÙØ¶Ù„Ùƒ ØŒ Ø±Ø§Ø¬Ø¹  <a href=\"%(debate_rules_url)s\"> Ø§Ø¹Ø¯Ø§Ø¯Ø§Øª Ù‡Ø°Ù‡ Ø§Ù„Ø¨Ø·ÙˆÙ„Ø© </a>  Ù‚Ø¨Ù„ Ù…Ø­Ø§ÙˆÙ„Ø© Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„Ù†ØªØ§Ø¦Ø¬."
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "Currently there are no motions entered for this round, so debate results cannot be entered. <a href=\"%(motions_url)s\" class=\"alert-link\">Add Motions.</a>"
-msgstr "لا توجد حاليًا أي حركات تم إدخالها لهذه الجولة ، لذلك لا يمكن إدخال نتائج النقاش. \n"
-"<a href=\"%(motions_url)s\" class=\"alert-link\"> اضافة القضايا </a>"
+msgstr "Ù„Ø§ ØªÙˆØ¬Ø¯ Ø­Ø§Ù„ÙŠÙ‹Ø§ Ø£ÙŠ Ø­Ø±ÙƒØ§Øª ØªÙ… Ø¥Ø¯Ø®Ø§Ù„Ù‡Ø§ Ù„Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø© ØŒ Ù„Ø°Ù„Ùƒ Ù„Ø§ ÙŠÙ…ÙƒÙ† Ø¥Ø¯Ø®Ø§Ù„ Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ù†Ù‚Ø§Ø´. \n"
+"<a href=\"%(motions_url)s\" class=\"alert-link\"> Ø§Ø¶Ø§ÙØ© Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§ </a>"
 
 #: results/templates/admin_results.html
 #, python-format
@@ -540,16 +540,16 @@ msgstr ""
 #: results/templates/assistant_enter_results.html
 #: results/templates/ballot_entry_base.html
 msgid "Back to All Results"
-msgstr "العودة إلى جميع النتائج"
+msgstr "Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø¬Ù…ÙŠØ¹ Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: results/templates/assistant_enter_results.html
 #: results/templates/ballot_entry_base.html
 msgid "Create a new ballot set for this debate"
-msgstr "إنشاء صفحة نتائج جديدة لهذه المناظرة "
+msgstr "Ø¥Ù†Ø´Ø§Ø¡ ØµÙØ­Ø© Ù†ØªØ§Ø¦Ø¬ Ø¬Ø¯ÙŠØ¯Ø© Ù„Ù‡Ø°Ù‡ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: results/templates/assistant_enter_results.html
 msgid "You can't confirm this ballot set because you entered it."
-msgstr "لا يمكن اعتماد النتيجة لأنك قمت بإدخالها "
+msgstr "Ù„Ø§ ÙŠÙ…ÙƒÙ† Ø§Ø¹ØªÙ…Ø§Ø¯ Ø§Ù„Ù†ØªÙŠØ¬Ø© Ù„Ø£Ù†Ùƒ Ù‚Ù…Øª Ø¨Ø¥Ø¯Ø®Ø§Ù„Ù‡Ø§ "
 
 #: results/templates/assistant_enter_results.html
 msgid "You can't confirm this ballot set because it is for a single adjudicator. Use the merge function."
@@ -557,11 +557,11 @@ msgstr ""
 
 #: results/templates/assistant_enter_results.html
 msgid "Confirm results"
-msgstr "تأكيد النتائج"
+msgstr "ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: results/templates/assistant_enter_results.html
 msgid "Results are incorrect"
-msgstr "النتائج غير صحيحة "
+msgstr "Ø§Ù„Ù†ØªØ§Ø¦Ø¬ ØºÙŠØ± ØµØ­ÙŠØ­Ø© "
 
 #: results/templates/assistant_enter_results.html
 #: results/templates/enter_results.html
@@ -571,7 +571,7 @@ msgstr ""
 
 #: results/templates/assistant_results.html results/views.py
 msgid "Enter Results"
-msgstr "إدخال النتائج"
+msgstr "Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: results/templates/assistant_results.html
 msgid "This page automatically updates with the new ballot entries and checkins as they occur."
@@ -579,7 +579,7 @@ msgstr ""
 
 #: results/templates/assistant_results.html
 msgid "Currently there are no motions entered for this round, so debate results cannot be entered. Please ask an administrator to add motions."
-msgstr "لا توجد حاليًا أي حركات تم إدخالها لهذه الجولة ، لذلك لا يمكن إدخال نتائج المناظرة . من فضلك اطلب من مسؤول لإضافة حركات."
+msgstr "Ù„Ø§ ØªÙˆØ¬Ø¯ Ø­Ø§Ù„ÙŠÙ‹Ø§ Ø£ÙŠ Ø­Ø±ÙƒØ§Øª ØªÙ… Ø¥Ø¯Ø®Ø§Ù„Ù‡Ø§ Ù„Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø© ØŒ Ù„Ø°Ù„Ùƒ Ù„Ø§ ÙŠÙ…ÙƒÙ† Ø¥Ø¯Ø®Ø§Ù„ Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© . Ù…Ù† ÙØ¶Ù„Ùƒ Ø§Ø·Ù„Ø¨ Ù…Ù† Ù…Ø³Ø¤ÙˆÙ„ Ù„Ø¥Ø¶Ø§ÙØ© Ø­Ø±ÙƒØ§Øª."
 
 #: results/templates/assistant_results.html
 #, python-format
@@ -605,7 +605,7 @@ msgstr[5] ""
 
 #: results/templates/ballot/ballot_debate_info.html
 msgid "Debate Information"
-msgstr "معلومات المناظرة "
+msgstr "Ù…Ø¹Ù„ÙˆÙ…Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: results/templates/ballot/ballot_debate_info.html
 msgid "No speakers spoke twice (no 'iron-person' speeches)"
@@ -617,11 +617,11 @@ msgstr ""
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Result"
-msgstr "النتيجة"
+msgstr "Ø§Ù„Ù†ØªÙŠØ¬Ø©"
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Rank"
-msgstr "المستوى"
+msgstr "Ø§Ù„Ù…Ø³ØªÙˆÙ‰"
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Margin"
@@ -629,24 +629,24 @@ msgstr ""
 
 #: results/templates/ballot/ballot_set.html
 msgid "There are some problems with this scoresheet. Please review and correct them."
-msgstr "هناك بعض المشاكل في الاستمارة يرجى مراجعتها  "
+msgstr "Ù‡Ù†Ø§Ùƒ Ø¨Ø¹Ø¶ Ø§Ù„Ù…Ø´Ø§ÙƒÙ„ ÙÙŠ Ø§Ù„Ø§Ø³ØªÙ…Ø§Ø±Ø© ÙŠØ±Ø¬Ù‰ Ù…Ø±Ø§Ø¬Ø¹ØªÙ‡Ø§  "
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 #, python-format
 msgid "Ballot from %(name)s (%(institution)s)"
-msgstr "النتيجة من %(name)s(%(institution)s)"
+msgstr "Ø§Ù„Ù†ØªÙŠØ¬Ø© Ù…Ù† %(name)s(%(institution)s)"
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 #, python-format
 msgid "Ballot from %(name)s"
-msgstr "نتيجة من %(name)s"
+msgstr "Ù†ØªÙŠØ¬Ø© Ù…Ù† %(name)s"
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/public_ballot_set.html
 msgid "Scoresheet"
-msgstr "ورقة النتائج "
+msgstr "ÙˆØ±Ù‚Ø© Ø§Ù„Ù†ØªØ§Ø¦Ø¬ "
 
 #: results/templates/ballot/ballot_set.html
 msgid "Solo Chair"
@@ -668,7 +668,7 @@ msgstr ""
 
 #: results/templates/ballot/ballot_set.html
 msgid "Assign sides before entering scores"
-msgstr "تعيين الجانبين قبل الدخول إلى النتائج"
+msgstr "ØªØ¹ÙŠÙŠÙ† Ø§Ù„Ø¬Ø§Ù†Ø¨ÙŠÙ† Ù‚Ø¨Ù„ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ø¥Ù„Ù‰ Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: results/templates/ballot/ballot_speaks.html
 msgid "Duplicate speeches are hidden from the speaker tab. If a speaker is 'iron-personing' you would typically mark only the lesser of their scores as a duplicate."
@@ -687,15 +687,15 @@ msgstr[5] ""
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "This ballot set is <strong>confirmed</strong>."
-msgstr "هذه النتيجة <strong>مؤكدة</strong>"
+msgstr "Ù‡Ø°Ù‡ Ø§Ù„Ù†ØªÙŠØ¬Ø© <strong>Ù…Ø¤ÙƒØ¯Ø©</strong>"
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "This ballot set is <strong>discarded</strong>."
-msgstr "هذه النتيجة <strong>مؤكدة</strong>"
+msgstr "Ù‡Ø°Ù‡ Ø§Ù„Ù†ØªÙŠØ¬Ø© <strong>Ù…Ø¤ÙƒØ¯Ø©</strong>"
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "CURRENTLY VIEWING"
-msgstr "عرض حاليا "
+msgstr "Ø¹Ø±Ø¶ Ø­Ø§Ù„ÙŠØ§ "
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "MERGING"
@@ -704,12 +704,12 @@ msgstr ""
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "Version <strong>%(version)s</strong>,"
-msgstr "الإصدار <strong>%(version)s</strong>"
+msgstr "Ø§Ù„Ø¥ØµØ¯Ø§Ø± <strong>%(version)s</strong>"
 
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "entered by <strong>%(submitter)s</strong>,"
-msgstr "إدخال من <strong>%(submitter)s</strong>"
+msgstr "Ø¥Ø¯Ø®Ø§Ù„ Ù…Ù† <strong>%(submitter)s</strong>"
 
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
@@ -719,12 +719,12 @@ msgstr ""
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "submitted from the public form on %(ip_address)s,"
-msgstr "تم تقديمها من العام إلى %(ip_address)s"
+msgstr "ØªÙ… ØªÙ‚Ø¯ÙŠÙ…Ù‡Ø§ Ù…Ù† Ø§Ù„Ø¹Ø§Ù… Ø¥Ù„Ù‰ %(ip_address)s"
 
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "%(timestamp)s (%(timeago)s ago),"
-msgstr "%(timestamp)s(%(timeago)s قبل )"
+msgstr "%(timestamp)s(%(timeago)s Ù‚Ø¨Ù„ )"
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "unknown"
@@ -733,15 +733,15 @@ msgstr ""
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
 msgid "confirmed by <strong>%(confirmer)s</strong>"
-msgstr "تم اعتمادها من قبل <strong>%(confirmer)s</strong>"
+msgstr "ØªÙ… Ø§Ø¹ØªÙ…Ø§Ø¯Ù‡Ø§ Ù…Ù† Ù‚Ø¨Ù„ <strong>%(confirmer)s</strong>"
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "unconfirmed"
-msgstr "غير معتمد"
+msgstr "ØºÙŠØ± Ù…Ø¹ØªÙ…Ø¯"
 
 #: results/templates/ballot/other_ballots_list.html
 msgid "(discarded)"
-msgstr "حذف "
+msgstr "Ø­Ø°Ù "
 
 #: results/templates/ballot/other_ballots_list.html
 #, python-format
@@ -761,11 +761,11 @@ msgstr ""
 
 #: results/templates/ballot_entry_base.html
 msgid "This debate has a panel with an even number of voting adjudicators. If the adjudicators split evenly, the debate will be awarded to the team for which the chair voted."
-msgstr "تحتوي هذه المناقشة على لجنة بها عدد زوجي من حكام التصويت. إذا انقسم المحكمون بالتساوي ، فسيتم منح فريق المناظرة الذي صوت له رئيس الجلسة ."
+msgstr "ØªØ­ØªÙˆÙŠ Ù‡Ø°Ù‡ Ø§Ù„Ù…Ù†Ø§Ù‚Ø´Ø© Ø¹Ù„Ù‰ Ù„Ø¬Ù†Ø© Ø¨Ù‡Ø§ Ø¹Ø¯Ø¯ Ø²ÙˆØ¬ÙŠ Ù…Ù† Ø­ÙƒØ§Ù… Ø§Ù„ØªØµÙˆÙŠØª. Ø¥Ø°Ø§ Ø§Ù†Ù‚Ø³Ù… Ø§Ù„Ù…Ø­ÙƒÙ…ÙˆÙ† Ø¨Ø§Ù„ØªØ³Ø§ÙˆÙŠ ØŒ ÙØ³ÙŠØªÙ… Ù…Ù†Ø­ ÙØ±ÙŠÙ‚ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© Ø§Ù„Ø°ÙŠ ØµÙˆØª Ù„Ù‡ Ø±Ø¦ÙŠØ³ Ø§Ù„Ø¬Ù„Ø³Ø© ."
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
 msgstr ""
 
 #: results/templates/ballot_entry_form.html
@@ -802,15 +802,15 @@ msgstr ""
 
 #: results/templates/enter_results.html
 msgid "Ballot Status"
-msgstr "حالة النتيجة "
+msgstr "Ø­Ø§Ù„Ø© Ø§Ù„Ù†ØªÙŠØ¬Ø© "
 
 #: results/templates/enter_results.html
 msgid "only the confirmed ballot set will affect this debate's result"
-msgstr "سيتم اعتماد النتيجة بعد الانتهاء من نتائج المتناظرين "
+msgstr "Ø³ÙŠØªÙ… Ø§Ø¹ØªÙ…Ø§Ø¯ Ø§Ù„Ù†ØªÙŠØ¬Ø© Ø¨Ø¹Ø¯ Ø§Ù„Ø§Ù†ØªÙ‡Ø§Ø¡ Ù…Ù† Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ù…ØªÙ†Ø§Ø¸Ø±ÙŠÙ† "
 
 #: results/templates/enter_results.html
 msgid "Debate Status"
-msgstr "حالة المناظرة "
+msgstr "Ø­Ø§Ù„Ø© Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: results/templates/enter_results.html
 msgid "all debates must be confirmed to complete the round"
@@ -818,11 +818,11 @@ msgstr ""
 
 #: results/templates/enter_results.html
 msgid "Save Ballot"
-msgstr "حفظ النتيجة"
+msgstr "Ø­ÙØ¸ Ø§Ù„Ù†ØªÙŠØ¬Ø©"
 
 #: results/templates/enter_results.html
 msgid "Cancel Entry"
-msgstr "إلغاء الإدخال"
+msgstr "Ø¥Ù„ØºØ§Ø¡ Ø§Ù„Ø¥Ø¯Ø®Ø§Ù„"
 
 #: results/templates/includes/public_enter_results_info.html
 #, python-format
@@ -848,15 +848,15 @@ msgstr ""
 #: results/templates/public_add_ballot.html
 #: results/templates/public_add_ballot_unreleased.html
 msgid "Enter Ballot"
-msgstr "إدخال التصويت"
+msgstr "Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„ØªØµÙˆÙŠØª"
 
 #: results/templates/public_add_ballot.html
 msgid "Who are you?"
-msgstr "من أنت ؟"
+msgstr "Ù…Ù† Ø£Ù†Øª ØŸ"
 
 #: results/templates/public_add_ballot.html
 msgid "(click your name on this list)"
-msgstr "( تحقق من وجود اسمك في القائمة ) "
+msgstr "( ØªØ­Ù‚Ù‚ Ù…Ù† ÙˆØ¬ÙˆØ¯ Ø§Ø³Ù…Ùƒ ÙÙŠ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© ) "
 
 #: results/templates/public_add_ballot_unreleased.html
 #, python-format
@@ -866,7 +866,7 @@ msgstr ""
 #: results/templates/public_ballot_set.html
 #, python-format
 msgid "Ballot for %(matchup)s"
-msgstr "نتيجة لـ %(matchup)s"
+msgstr "Ù†ØªÙŠØ¬Ø© Ù„Ù€ %(matchup)s"
 
 #: results/templates/public_ballot_set.html
 #, python-format
@@ -880,7 +880,7 @@ msgstr ""
 #: results/templates/public_ballot_set.html
 #, python-format
 msgid "Return to Results for %(round)s"
-msgstr "العودة إلى النتائج ، من %(round)s"
+msgstr "Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø§Ù„Ù†ØªØ§Ø¦Ø¬ ØŒ Ù…Ù† %(round)s"
 
 #: results/templates/public_ballot_set.html
 msgid "Motion"
@@ -889,7 +889,7 @@ msgstr ""
 #: results/templates/public_ballot_set.html
 #, python-format
 msgid "From %(name)s (%(institution)s)"
-msgstr "من %(name)s(%(institution)s)"
+msgstr "Ù…Ù† %(name)s(%(institution)s)"
 
 #: results/templates/public_ballot_set.html
 #, python-format
@@ -946,7 +946,7 @@ msgstr[5] ""
 
 #: results/templates/public_enter_results.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
-msgstr "عند إرسال هذا النموذج سيتم تخزين عنوان IP الخاص بك لأغراض التسجيل."
+msgstr "Ø¹Ù†Ø¯ Ø¥Ø±Ø³Ø§Ù„ Ù‡Ø°Ø§ Ø§Ù„Ù†Ù…ÙˆØ°Ø¬ Ø³ÙŠØªÙ… ØªØ®Ø²ÙŠÙ† Ø¹Ù†ÙˆØ§Ù† IP Ø§Ù„Ø®Ø§Øµ Ø¨Ùƒ Ù„Ø£ØºØ±Ø§Ø¶ Ø§Ù„ØªØ³Ø¬ÙŠÙ„."
 
 #: results/templates/public_enter_results_error.html
 #, python-format
@@ -955,20 +955,20 @@ msgstr ""
 
 #: results/templates/public_enter_results_error.html
 msgid "No Result to Enter"
-msgstr "لا يوجد نتيجة للادخال "
+msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù†ØªÙŠØ¬Ø© Ù„Ù„Ø§Ø¯Ø®Ø§Ù„ "
 
 #: results/templates/public_results_for_round.html
 msgid "View by Team"
-msgstr "عرض من خلال الفرق "
+msgstr "Ø¹Ø±Ø¶ Ù…Ù† Ø®Ù„Ø§Ù„ Ø§Ù„ÙØ±Ù‚ "
 
 #: results/templates/public_results_for_round.html
 msgid "View by Debate"
-msgstr "عرض من خلال المناظرة "
+msgstr "Ø¹Ø±Ø¶ Ù…Ù† Ø®Ù„Ø§Ù„ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© "
 
 #: results/templates/public_results_index.html
 #, python-format
 msgid "Results for %(round)s"
-msgstr "نتيجة من %(round)s"
+msgstr "Ù†ØªÙŠØ¬Ø© Ù…Ù† %(round)s"
 
 #: results/templates/public_results_not_available.html
 #: results/templates/public_results_silent.html
@@ -987,7 +987,7 @@ msgstr ""
 
 #: results/utils.py
 msgid "No Ballot"
-msgstr "بدون تصويت "
+msgstr "Ø¨Ø¯ÙˆÙ† ØªØµÙˆÙŠØª "
 
 #: results/utils.py
 msgid "Debate was Postponed"
@@ -995,17 +995,17 @@ msgstr ""
 
 #: results/utils.py
 msgid "Ballot is Unconfirmed"
-msgstr "التصويت غير مكتمل "
+msgstr "Ø§Ù„ØªØµÙˆÙŠØª ØºÙŠØ± Ù…ÙƒØªÙ…Ù„ "
 
 #: results/utils.py
 msgid "Ballot is Confirmed"
-msgstr "اكتملت النتيجة "
+msgstr "Ø§ÙƒØªÙ…Ù„Øª Ø§Ù„Ù†ØªÙŠØ¬Ø© "
 
 #. Translators: e.g. "{Melbourne 1} as {OG}", "{Cape Town 1} as {CO}"
 #: results/utils.py
 #, python-format
 msgid "%(team)s as %(side)s"
-msgstr "%(team)s كـ%(side)s"
+msgstr "%(team)s ÙƒÙ€%(side)s"
 
 #: results/utils.py
 #, python-format
@@ -1026,7 +1026,7 @@ msgstr ""
 #: results/utils.py
 #, python-format
 msgid "Eliminated: %(eliminated_list)s"
-msgstr "%(eliminated_list)sإقصاء "
+msgstr "%(eliminated_list)sØ¥Ù‚ØµØ§Ø¡ "
 
 #: results/utils.py
 #, python-format
@@ -1038,14 +1038,14 @@ msgstr ""
 msgid "2nd: %(second_team)s<br>\n"
 "3rd: %(third_team)s<br>\n"
 "4th: %(fourth_team)s"
-msgstr "الثاني %(second_team)s\n"
-"الثالث %(third_team)s\n"
-"الرابع %(fourth_team)s"
+msgstr "Ø§Ù„Ø«Ø§Ù†ÙŠ %(second_team)s\n"
+"Ø§Ù„Ø«Ø§Ù„Ø« %(third_team)s\n"
+"Ø§Ù„Ø±Ø§Ø¨Ø¹ %(fourth_team)s"
 
 #: results/utils.py
 #, python-format
 msgid "Error with result for %(debate)s"
-msgstr "خطأ في نتيجة %(debate)s"
+msgstr "Ø®Ø·Ø£ ÙÙŠ Ù†ØªÙŠØ¬Ø© %(debate)s"
 
 #. Translators: Abbreviation for Prime Minister
 #: results/utils.py
@@ -1089,11 +1089,11 @@ msgstr ""
 
 #: results/utils.py
 msgid "Reply"
-msgstr "الرد "
+msgstr "Ø§Ù„Ø±Ø¯ "
 
 #: results/views.py
 msgid " vs "
-msgstr "ضد "
+msgstr "Ø¶Ø¯ "
 
 #: results/views.py
 #, python-format
@@ -1111,7 +1111,7 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "Ballot set for %(debate)s added."
-msgstr "تم إضافة نتيجة لـ %(debate)s"
+msgstr "ØªÙ… Ø¥Ø¶Ø§ÙØ© Ù†ØªÙŠØ¬Ø© Ù„Ù€ %(debate)s"
 
 #: results/views.py
 msgid " Email receipts queued to be sent."
@@ -1120,12 +1120,12 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "Whoops! The debate %(debate)s doesn't have a chair, so you can't enter results for it."
-msgstr "المناظرة %(debate)s ليس لها رئيس جلسة لا يمكنك اضافة نتيجة لها "
+msgstr "Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© %(debate)s Ù„ÙŠØ³ Ù„Ù‡Ø§ Ø±Ø¦ÙŠØ³ Ø¬Ù„Ø³Ø© Ù„Ø§ ÙŠÙ…ÙƒÙ†Ùƒ Ø§Ø¶Ø§ÙØ© Ù†ØªÙŠØ¬Ø© Ù„Ù‡Ø§ "
 
 #: results/views.py
 #, python-format
 msgid "Whoops! The debate %(debate)s doesn't have its sides confirmed, so you can't enter results for it."
-msgstr "المناظرة %(debate)s ليس لها جوانت معتمدة ، لا يمكنك اضافة نتيجة لها "
+msgstr "Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© %(debate)s Ù„ÙŠØ³ Ù„Ù‡Ø§ Ø¬ÙˆØ§Ù†Øª Ù…Ø¹ØªÙ…Ø¯Ø© ØŒ Ù„Ø§ ÙŠÙ…ÙƒÙ†Ùƒ Ø§Ø¶Ø§ÙØ© Ù†ØªÙŠØ¬Ø© Ù„Ù‡Ø§ "
 
 #: results/views.py
 msgid "Edit Ballot Set"
@@ -1134,46 +1134,46 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "Ballot set for %(matchup)s discarded."
-msgstr "نتيجة لـ %(matchup)s تم حذفها "
+msgstr "Ù†ØªÙŠØ¬Ø© Ù„Ù€ %(matchup)s ØªÙ… Ø­Ø°ÙÙ‡Ø§ "
 
 #: results/views.py
 #, python-format
 msgid "Ballot set for %(matchup)s confirmed."
-msgstr "نتيجة لـ %(matchup)s تم اعتمدها "
+msgstr "Ù†ØªÙŠØ¬Ø© Ù„Ù€ %(matchup)s ØªÙ… Ø§Ø¹ØªÙ…Ø¯Ù‡Ø§ "
 
 #: results/views.py
 #, python-format
 msgid "Edits to ballot set for %(matchup)s saved."
-msgstr "التعديل لنتيجة لـ %(matchup)s تم حفظها "
+msgstr "Ø§Ù„ØªØ¹Ø¯ÙŠÙ„ Ù„Ù†ØªÙŠØ¬Ø© Ù„Ù€ %(matchup)s ØªÙ… Ø­ÙØ¸Ù‡Ø§ "
 
 #: results/views.py
 #, python-format
 msgid "Thanks, %(user)s! Your ballot for %(debate)s has been recorded."
-msgstr "شكراً %(user)s ! نتيجتك لـ %(debate)s تم تسجيلها "
+msgstr "Ø´ÙƒØ±Ø§Ù‹ %(user)s ! Ù†ØªÙŠØ¬ØªÙƒ Ù„Ù€ %(debate)s ØªÙ… ØªØ³Ø¬ÙŠÙ„Ù‡Ø§ "
 
 #: results/views.py
 msgid "The draw for this round hasn't been released yet."
-msgstr "لم يتم إعلان القرعة لهذه الجولة  حتى الان "
+msgstr "Ù„Ù… ÙŠØªÙ… Ø¥Ø¹Ù„Ø§Ù† Ø§Ù„Ù‚Ø±Ø¹Ø© Ù„Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø©  Ø­ØªÙ‰ Ø§Ù„Ø§Ù† "
 
 #: results/views.py
 msgid "The motions for this round haven't been released yet."
-msgstr "لم يتم إعلان القضايا لهذه الجولة حتى الان "
+msgstr "Ù„Ù… ÙŠØªÙ… Ø¥Ø¹Ù„Ø§Ù† Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§ Ù„Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø© Ø­ØªÙ‰ Ø§Ù„Ø§Ù† "
 
 #: results/views.py
 msgid "It looks like you don't have a debate this round."
-msgstr "يبدو أنك لا تمتلك مناظرة في هذه الجولة "
+msgstr "ÙŠØ¨Ø¯Ùˆ Ø£Ù†Ùƒ Ù„Ø§ ØªÙ…ØªÙ„Ùƒ Ù…Ù†Ø§Ø¸Ø±Ø© ÙÙŠ Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø© "
 
 #: results/views.py
 msgid "It looks like you're assigned to two or more debates this round. Please contact a tab room official."
-msgstr "يبدو بأنك مكلف في تحكيم مناظرتين او اكثر ، يرجى التواصل مع غرفة التاب "
+msgstr "ÙŠØ¨Ø¯Ùˆ Ø¨Ø£Ù†Ùƒ Ù…ÙƒÙ„Ù ÙÙŠ ØªØ­ÙƒÙŠÙ… Ù…Ù†Ø§Ø¸Ø±ØªÙŠÙ† Ø§Ùˆ Ø§ÙƒØ«Ø± ØŒ ÙŠØ±Ø¬Ù‰ Ø§Ù„ØªÙˆØ§ØµÙ„ Ù…Ø¹ ØºØ±ÙØ© Ø§Ù„ØªØ§Ø¨ "
 
 #: results/views.py
 msgid "Your debate doesn't have a chair, so you can't enter results for it. Please contact a tab room official."
-msgstr "مناظرتك لا تمتلك رئيس جلسة ، لا يمكنك ادخال النتائج ، الرجاء التواصل مع غرفة التاب "
+msgstr "Ù…Ù†Ø§Ø¸Ø±ØªÙƒ Ù„Ø§ ØªÙ…ØªÙ„Ùƒ Ø±Ø¦ÙŠØ³ Ø¬Ù„Ø³Ø© ØŒ Ù„Ø§ ÙŠÙ…ÙƒÙ†Ùƒ Ø§Ø¯Ø®Ø§Ù„ Ø§Ù„Ù†ØªØ§Ø¦Ø¬ ØŒ Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø§Ù„ØªÙˆØ§ØµÙ„ Ù…Ø¹ ØºØ±ÙØ© Ø§Ù„ØªØ§Ø¨ "
 
 #: results/views.py
 msgid "It looks like the sides for this debate haven't yet been confirmed, so you can't enter results for it. Please contact a tab room official."
-msgstr "يبدو بأن الجوانب لهذه المناظرة لم يتم اعتمدها ، لا يمكنك إدخال النتائج ، الرجاء التواصل مع غرفة التاب "
+msgstr "ÙŠØ¨Ø¯Ùˆ Ø¨Ø£Ù† Ø§Ù„Ø¬ÙˆØ§Ù†Ø¨ Ù„Ù‡Ø°Ù‡ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© Ù„Ù… ÙŠØªÙ… Ø§Ø¹ØªÙ…Ø¯Ù‡Ø§ ØŒ Ù„Ø§ ÙŠÙ…ÙƒÙ†Ùƒ Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„Ù†ØªØ§Ø¦Ø¬ ØŒ Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø§Ù„ØªÙˆØ§ØµÙ„ Ù…Ø¹ ØºØ±ÙØ© Ø§Ù„ØªØ§Ø¨ "
 
 #: results/views.py
 msgid "It looks like you were assigned to two or more debates. Please contact a tab room official."
@@ -1207,13 +1207,14 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "Add result from %(adjudicator)s"
-msgstr "إضافة نتيجة من %(adjudicator)s"
+msgstr "Ø¥Ø¶Ø§ÙØ© Ù†ØªÙŠØ¬Ø© Ù…Ù† %(adjudicator)s"
 
 #: results/views.py
 msgid "Adjudicator"
-msgstr "محكم"
+msgstr "Ù…Ø­ÙƒÙ…"
 
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
+
 

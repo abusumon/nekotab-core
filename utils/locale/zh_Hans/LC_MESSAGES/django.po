@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -12,35 +12,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/utils/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 954\n"
 
 #: utils/admin.py utils/tables.py
 msgid "Round"
-msgstr "赛"
+msgstr "èµ›"
 
 #: utils/admin.py utils/tables.py
 msgid "Team"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: utils/admin.py
 msgid "Speaker"
-msgstr "讲员"
+msgstr "è®²å‘˜"
 
 #: utils/admin.py utils/tables.py
 msgid "Tournament"
-msgstr "比赛"
+msgstr "æ¯”èµ›"
 
 #: utils/admin.py utils/tables.py
 msgid "Side"
-msgstr "方"
+msgstr "æ–¹"
 
 #: utils/admin.py utils/tables.py
 msgid "Motion"
-msgstr "话题"
+msgstr "è¯é¢˜"
 
 #: utils/admin.py
 msgid "Confirmed"
@@ -48,35 +48,35 @@ msgstr ""
 
 #: utils/admin.py
 msgid "Adjudicator"
-msgstr "裁判"
+msgstr "è£åˆ¤"
 
 #: utils/tables.py
 msgid "No Data Available"
 msgstr ""
 
 #: utils/tables.py
-msgid "Ⓒ"
-msgstr "Ⓒ"
+msgid "â’¸"
+msgstr "â’¸"
 
 #: utils/tables.py
-msgid "Ⓣ"
-msgstr "Ⓣ"
+msgid "â“‰"
+msgstr "â“‰"
 
 #: utils/tables.py
 msgid "chair"
-msgstr "主席"
+msgstr "ä¸»å¸­"
 
 #: utils/tables.py
 msgid "panellist"
-msgstr "成员"
+msgstr "æˆå‘˜"
 
 #: utils/tables.py
 msgid "trainee"
-msgstr "实习生"
+msgstr "å®žä¹ ç”Ÿ"
 
 #: utils/tables.py
-msgid "—"
-msgstr "—"
+msgid "â€”"
+msgstr "â€”"
 
 #: utils/tables.py
 msgid "Redacted"
@@ -95,7 +95,7 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "Code name: <strong>%(name)s</strong>"
-msgstr "代号：<strong>%(name)s</strong>"
+msgstr "ä»£å·ï¼š<strong>%(name)s</strong>"
 
 #: utils/tables.py
 #, python-format
@@ -105,16 +105,16 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "%(team)s won"
-msgstr "%(team)s获胜了"
+msgstr "%(team)sèŽ·èƒœäº†"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s lost"
-msgstr "%(team)s败北了"
+msgstr "%(team)sè´¥åŒ—äº†"
 
 #: utils/tables.py
 #, python-format
-msgid "%(team)s—no result"
+msgid "%(team)sâ€”no result"
 msgstr ""
 
 #: utils/tables.py
@@ -125,12 +125,12 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "%(team)s is advancing"
-msgstr "%(team)s在推进"
+msgstr "%(team)såœ¨æŽ¨è¿›"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s was eliminated"
-msgstr "%(team)s淘汰了"
+msgstr "%(team)sæ·˜æ±°äº†"
 
 #: utils/tables.py
 msgid "View/edit debate ballot"
@@ -143,7 +143,7 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid " vs %(opposition)s"
-msgstr "对%(opposition)s"
+msgstr "å¯¹%(opposition)s"
 
 #: utils/tables.py
 #, python-format
@@ -153,7 +153,7 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "Lost to %(team)s"
-msgstr "败北了给%(team)s"
+msgstr "è´¥åŒ—äº†ç»™%(team)s"
 
 #: utils/tables.py
 #, python-format
@@ -172,7 +172,7 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "%(team)s (%(side)s)"
-msgstr "%(team)s（%(side)s）"
+msgstr "%(team)sï¼ˆ%(side)sï¼‰"
 
 #: utils/tables.py
 msgid "??"
@@ -180,19 +180,19 @@ msgstr "??"
 
 #: utils/tables.py
 msgid "advancing"
-msgstr "在推进"
+msgstr "åœ¨æŽ¨è¿›"
 
 #: utils/tables.py
 msgid "Advancing"
-msgstr "在推进"
+msgstr "åœ¨æŽ¨è¿›"
 
 #: utils/tables.py
 msgid "eliminated"
-msgstr "淘汰了"
+msgstr "æ·˜æ±°äº†"
 
 #: utils/tables.py
 msgid "Eliminated"
-msgstr "淘汰了"
+msgstr "æ·˜æ±°äº†"
 
 #: utils/tables.py
 msgid "No result for debate"
@@ -205,7 +205,7 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Name"
-msgstr "名字"
+msgstr "åå­—"
 
 #: utils/tables.py
 msgid "Institution"
@@ -233,11 +233,11 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Categories"
-msgstr "类别"
+msgstr "ç±»åˆ«"
 
 #: utils/tables.py
 msgid "Category"
-msgstr "类别"
+msgstr "ç±»åˆ«"
 
 #: utils/tables.py
 #, python-format
@@ -251,7 +251,7 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Room"
-msgstr "房间"
+msgstr "æˆ¿é—´"
 
 #: utils/tables.py
 #, python-format
@@ -302,7 +302,7 @@ msgstr ""
 #. Translators: "TBC" stands for "to be confirmed".
 #: utils/tables.py
 msgid "TBC"
-msgstr "待定"
+msgstr "å¾…å®š"
 
 #: utils/tables.py
 msgid "Bye"
@@ -327,7 +327,7 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "Team %(num)d"
-msgstr "队伍 %(num)d"
+msgstr "é˜Ÿä¼ %(num)d"
 
 #: utils/tables.py
 msgid "Postpone"
@@ -348,4 +348,5 @@ msgstr ""
 #: utils/views.py
 msgid "Whoops! You're not meant to type that URL into your browser."
 msgstr ""
+
 

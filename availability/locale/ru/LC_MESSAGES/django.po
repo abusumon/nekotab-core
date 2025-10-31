@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-05 07:37+1000\n"
 "PO-Revision-Date: 2023-07-04 21:49\n"
@@ -11,103 +11,103 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/availability/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/availability/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 926\n"
 
 #: availability/apps.py availability/views.py
 msgid "Availability"
-msgstr "Доступность"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ"
 
 #: availability/models.py
 msgid "content type"
-msgstr "тип контента"
+msgstr "Ñ‚Ð¸Ð¿ ÐºÐ¾Ð½Ñ‚ÐµÐ½Ñ‚Ð°"
 
 #: availability/models.py
 msgid "object id"
-msgstr "id объекта"
+msgstr "id Ð¾Ð±ÑŠÐµÐºÑ‚Ð°"
 
 #: availability/models.py
 msgid "round"
-msgstr "раунд"
+msgstr "Ñ€Ð°ÑƒÐ½Ð´"
 
 #: availability/models.py
 msgid "round availability"
-msgstr "доступность раунда"
+msgstr "Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ Ñ€Ð°ÑƒÐ½Ð´Ð°"
 
 #: availability/models.py
 msgid "round availabilities"
-msgstr "доступности раунда"
+msgstr "Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ð¸ Ñ€Ð°ÑƒÐ½Ð´Ð°"
 
 #: availability/templates/availability_index.html
 msgid "Mark All Breaking Adjs as Available"
-msgstr "Отметить всех брейкающихся судей как доступных"
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ð²ÑÐµÑ… Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÑÑƒÐ´ÐµÐ¹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ…"
 
 #: availability/templates/availability_index.html
 msgid "Mark Everything as Available"
-msgstr "Отметить всех как доступных"
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ð²ÑÐµÑ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ…"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "Copy Availability from %(prev_round)s"
-msgstr "Скопировать доступность из %(prev_round)s"
+msgstr "Ð¡ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ Ð¸Ð· %(prev_round)s"
 
 #: availability/templates/availability_index.html
 msgid "View Draw"
-msgstr "Посмотреть сетку"
+msgstr "ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ ÑÐµÑ‚ÐºÑƒ"
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot — this may lead to a draw that fails or is incorrect"
-msgstr "%(previous_unconfirmed)s дебаты из %(round)s не имею заполненного бэллота - это может привести к сбоям или неправильной сетке"
+msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot â€” this may lead to a draw that fails or is incorrect"
+msgstr "%(previous_unconfirmed)s Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð¸Ð· %(round)s Ð½Ðµ Ð¸Ð¼ÐµÑŽ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð° - ÑÑ‚Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€Ð¸Ð²ÐµÑÑ‚Ð¸ Ðº ÑÐ±Ð¾ÑÐ¼ Ð¸Ð»Ð¸ Ð½ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¾Ð¹ ÑÐµÑ‚ÐºÐµ"
 
 #: availability/templates/availability_index.html
 msgid "Generate Draw"
-msgstr "Создать сетку"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ ÑÐµÑ‚ÐºÑƒ"
 
 #: availability/templates/availability_index.html
 msgid "The draw cannot be generated until some teams have been marked as available."
-msgstr "Сетка не может быть сгенерирована, пока какие-то команды не отмечены как доступные."
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°, Ð¿Ð¾ÐºÐ° ÐºÐ°ÐºÐ¸Ðµ-Ñ‚Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ñ‹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ."
 
 #: availability/templates/availability_index.html
 msgid "The draw cannot be generated until some adjudicators have been marked as available."
-msgstr "Сетка не может быть сгенерирована, пока какие-то судьи не отмечены как доступные."
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°, Ð¿Ð¾ÐºÐ° ÐºÐ°ÐºÐ¸Ðµ-Ñ‚Ð¾ ÑÑƒÐ´ÑŒÐ¸ Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ñ‹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ."
 
 #: availability/templates/availability_index.html
 msgid "The draw cannot be generated until some rooms have been marked as available."
-msgstr "Сетка не может быть сгенерирована, пока какие-то аудитории не отмечены как доступные."
+msgstr "Ð¡ÐµÑ‚ÐºÐ° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°, Ð¿Ð¾ÐºÐ° ÐºÐ°ÐºÐ¸Ðµ-Ñ‚Ð¾ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ñ‹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ."
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough rooms marked as available for the number of debates — the draw may not generate properly."
-msgstr "Недостаточно аудиторий, отмеченных как доступные - сетка не может быть сгенерирована."
+msgid "There aren't enough rooms marked as available for the number of debates â€” the draw may not generate properly."
+msgstr "ÐÐµÐ´Ð¾ÑÑ‚Ð°Ñ‚Ð¾Ñ‡Ð½Ð¾ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ - ÑÐµÑ‚ÐºÐ° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°."
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough adjudicators marked as available for the number of debates — the draw may not generate properly."
-msgstr "Недостаточно судей, отмеченных как доступные - сетка не может быть сгенерирована."
+msgid "There aren't enough adjudicators marked as available for the number of debates â€” the draw may not generate properly."
+msgstr "ÐÐµÐ´Ð¾ÑÑ‚Ð°Ñ‚Ð¾Ñ‡Ð½Ð¾ ÑÑƒÐ´ÐµÐ¹, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ - ÑÐµÑ‚ÐºÐ° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°."
 
 #: availability/templates/availability_index.html
-msgid "There is an uneven number of teams marked as available — the draw may not generate properly."
-msgstr "Количество команд, отмеченных как доступные, некратное — сетка не может быть сгенерирована."
+msgid "There is an uneven number of teams marked as available â€” the draw may not generate properly."
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ, Ð½ÐµÐºÑ€Ð°Ñ‚Ð½Ð¾Ðµ â€” ÑÐµÑ‚ÐºÐ° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°."
 
 #: availability/templates/availability_index.html
-msgid "The number of teams marked as available is not a multiple of 4 — the draw may not generate properly."
-msgstr "Количество команд, отмеченных как доступные, некратно четырем — сетка не может быть сгенерирована."
+msgid "The number of teams marked as available is not a multiple of 4 â€” the draw may not generate properly."
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ, Ð½ÐµÐºÑ€Ð°Ñ‚Ð½Ð¾ Ñ‡ÐµÑ‚Ñ‹Ñ€ÐµÐ¼ â€” ÑÐµÑ‚ÐºÐ° Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°."
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "One debate from %(prev_round)s <strong>does not have a completed ballot</strong>. This may lead to a draw that fails or is incorrect, depending on your draw rules. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Enter results from %(prev_round)s. </a>"
 msgid_plural "%(previous_unconfirmed)s debates from %(prev_round)s <strong>do not have a completed ballot</strong>. This may lead to a draw that fails or is incorrect, depending on your draw rules. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Enter results from %(prev_round)s. </a>"
-msgstr[0] "Одни из дебатов %(prev_round)s <strong> не имеют заполненного бэллота</strong>. Это может привести к сбоям при создании сетки или её неточности, в зависимости от правил создания сетки. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Введите результаты %(prev_round)s</a>"
-msgstr[1] "%(previous_unconfirmed)s Дебаты %(prev_round)s <strong> не имеют заполненного бэллота</strong>. Это может привести к сбоям при создании сетки или её неточности, в зависимости от правил создания сетки. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Введите результаты %(prev_round)s</a>"
-msgstr[2] "%(previous_unconfirmed)s Дебаты %(prev_round)s <strong> не имеют заполненного бэллота</strong>. Это может привести к сбоям при создании сетки или её неточности, в зависимости от правил создания сетки. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Введите результаты %(prev_round)s</a>"
-msgstr[3] "%(previous_unconfirmed)s Дебаты %(prev_round)s <strong> не имеют заполненного бэллота</strong>. Это может привести к сбоям при создании сетки или её неточности, в зависимости от правил создания сетки. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Введите результаты %(prev_round)s</a>"
+msgstr[0] "ÐžÐ´Ð½Ð¸ Ð¸Ð· Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² %(prev_round)s <strong> Ð½Ðµ Ð¸Ð¼ÐµÑŽÑ‚ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°</strong>. Ð­Ñ‚Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€Ð¸Ð²ÐµÑÑ‚Ð¸ Ðº ÑÐ±Ð¾ÑÐ¼ Ð¿Ñ€Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ ÑÐµÑ‚ÐºÐ¸ Ð¸Ð»Ð¸ ÐµÑ‘ Ð½ÐµÑ‚Ð¾Ñ‡Ð½Ð¾ÑÑ‚Ð¸, Ð² Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ Ð¿Ñ€Ð°Ð²Ð¸Ð» ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ ÑÐµÑ‚ÐºÐ¸. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ %(prev_round)s</a>"
+msgstr[1] "%(previous_unconfirmed)s Ð”ÐµÐ±Ð°Ñ‚Ñ‹ %(prev_round)s <strong> Ð½Ðµ Ð¸Ð¼ÐµÑŽÑ‚ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°</strong>. Ð­Ñ‚Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€Ð¸Ð²ÐµÑÑ‚Ð¸ Ðº ÑÐ±Ð¾ÑÐ¼ Ð¿Ñ€Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ ÑÐµÑ‚ÐºÐ¸ Ð¸Ð»Ð¸ ÐµÑ‘ Ð½ÐµÑ‚Ð¾Ñ‡Ð½Ð¾ÑÑ‚Ð¸, Ð² Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ Ð¿Ñ€Ð°Ð²Ð¸Ð» ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ ÑÐµÑ‚ÐºÐ¸. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ %(prev_round)s</a>"
+msgstr[2] "%(previous_unconfirmed)s Ð”ÐµÐ±Ð°Ñ‚Ñ‹ %(prev_round)s <strong> Ð½Ðµ Ð¸Ð¼ÐµÑŽÑ‚ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°</strong>. Ð­Ñ‚Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€Ð¸Ð²ÐµÑÑ‚Ð¸ Ðº ÑÐ±Ð¾ÑÐ¼ Ð¿Ñ€Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ ÑÐµÑ‚ÐºÐ¸ Ð¸Ð»Ð¸ ÐµÑ‘ Ð½ÐµÑ‚Ð¾Ñ‡Ð½Ð¾ÑÑ‚Ð¸, Ð² Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ Ð¿Ñ€Ð°Ð²Ð¸Ð» ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ ÑÐµÑ‚ÐºÐ¸. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ %(prev_round)s</a>"
+msgstr[3] "%(previous_unconfirmed)s Ð”ÐµÐ±Ð°Ñ‚Ñ‹ %(prev_round)s <strong> Ð½Ðµ Ð¸Ð¼ÐµÑŽÑ‚ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°</strong>. Ð­Ñ‚Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€Ð¸Ð²ÐµÑÑ‚Ð¸ Ðº ÑÐ±Ð¾ÑÐ¼ Ð¿Ñ€Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ ÑÐµÑ‚ÐºÐ¸ Ð¸Ð»Ð¸ ÐµÑ‘ Ð½ÐµÑ‚Ð¾Ñ‡Ð½Ð¾ÑÑ‚Ð¸, Ð² Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ Ð¿Ñ€Ð°Ð²Ð¸Ð» ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ ÑÐµÑ‚ÐºÐ¸. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ %(prev_round)s</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "This is a page for <strong>%(round)s</strong>, but the previous round is still not marked as completed. Did you forget to <a href=\"%(complete_prev_round_url)s\" class=\"alert-link\"> mark %(prev_round)s as completed? </a>"
-msgstr "Эта страница для <strong>%(round)s</strong>, но предыдущий раунд ещё не отмечен как завершенный. Возможно, вы забыли <a href=\"%(complete_prev_round_url)s\" class=\"alert-link\"> отметить %(prev_round)s как законченный?</a>"
+msgstr "Ð­Ñ‚Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð´Ð»Ñ <strong>%(round)s</strong>, Ð½Ð¾ Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ ÐµÑ‰Ñ‘ Ð½Ðµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½ ÐºÐ°Ðº Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ð¹. Ð’Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾, Ð²Ñ‹ Ð·Ð°Ð±Ñ‹Ð»Ð¸ <a href=\"%(complete_prev_round_url)s\" class=\"alert-link\"> Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ %(prev_round)s ÐºÐ°Ðº Ð·Ð°ÐºÐ¾Ð½Ñ‡ÐµÐ½Ð½Ñ‹Ð¹?</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
@@ -117,233 +117,233 @@ msgstr ""
 #: availability/templates/availability_index.html
 #, python-format
 msgid "This is an elimination round, but it doesn't have a break category. Elimination rounds must be associated with a break category. Please <a href=\"%(change_round_url)s\" class=\"alert-link\"> set this round's break category in the Edit Database area.</a>"
-msgstr "Это брейковый раунд, но для него не установлена брейковая категория. Брейковые раунды должны быть ассоциированы с брейковой категорией. Пожалуйста, <a href=\"%(change_round_url)s\" class=\"alert-link\"> установите брейковую категорию этого раунда в области Редактировать базу данных.</a>"
+msgstr "Ð­Ñ‚Ð¾ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´, Ð½Ð¾ Ð´Ð»Ñ Ð½ÐµÐ³Ð¾ Ð½Ðµ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð° Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ð°Ñ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ. Ð‘Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð±Ñ‹Ñ‚ÑŒ Ð°ÑÑÐ¾Ñ†Ð¸Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ñ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÐµÐ¹. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, <a href=\"%(change_round_url)s\" class=\"alert-link\"> ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²ÑƒÑŽ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÑŽ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð° Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ….</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "This is an elimination round, but its draw type is <strong>%(draw_type)s</strong>. The draw type of all elimination rounds must be \"Elimination\". Please <a href=\"%(change_round_url)s\" class=\"alert-link\"> change this round's draw type in the Edit Database area.</a>"
-msgstr "Это брейковый раунд, но его сетка <strong>%(draw_type)s</strong>. Тип сетки на брейковые раунды должен быть \"Брейковые\". Пожалуйста, <a href=\"%(change_round_url)s\" class=\"alert-link\"> измените тип сетки для этого раунда в области в области Редактировать базу данных.</a>"
+msgstr "Ð­Ñ‚Ð¾ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´, Ð½Ð¾ ÐµÐ³Ð¾ ÑÐµÑ‚ÐºÐ° <strong>%(draw_type)s</strong>. Ð¢Ð¸Ð¿ ÑÐµÑ‚ÐºÐ¸ Ð½Ð° Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ \"Ð‘Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ðµ\". ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, <a href=\"%(change_round_url)s\" class=\"alert-link\"> Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚Ðµ Ñ‚Ð¸Ð¿ ÑÐµÑ‚ÐºÐ¸ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð° Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ….</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "There don't appear to be any teams breaking in the %(break_category)s Break. Have you <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> generated the break for the %(break_category)s Break</a> yet?"
-msgstr "Похоже, что в un %(break_category)s unnamed@@1 нет команд, которые брейкаются. Вы <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> уже создали брейк для %(break_category)s </a>?"
+msgstr "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ, Ñ‡Ñ‚Ð¾ Ð² un %(break_category)s unnamed@@1 Ð½ÐµÑ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‚ÑÑ. Ð’Ñ‹ <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> ÑƒÐ¶Ðµ ÑÐ¾Ð·Ð´Ð°Ð»Ð¸ Ð±Ñ€ÐµÐ¹Ðº Ð´Ð»Ñ %(break_category)s </a>?"
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team — you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
-msgstr "Есть только одна команда, брейкающаяся в %(break_category)s брейке. Вы не можете создать сетку на брейковый раунд только с одной командой - возможно, вы захотите <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> ещё раз посмотреть брейк %(break_category)s</a>."
+msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team â€” you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
+msgstr "Ð•ÑÑ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð´Ð½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°, Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð°ÑÑÑ Ð² %(break_category)s Ð±Ñ€ÐµÐ¹ÐºÐµ. Ð’Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ ÑÐµÑ‚ÐºÑƒ Ð½Ð° Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ Ð¾Ð´Ð½Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¾Ð¹ - Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾, Ð²Ñ‹ Ð·Ð°Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> ÐµÑ‰Ñ‘ Ñ€Ð°Ð· Ð¿Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð±Ñ€ÐµÐ¹Ðº %(break_category)s</a>."
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "The team standings precedence is empty. This means that teams aren't ranked according to any metrics, so all teams will be in a single bracket containing everyone. If this isn't what you intended, set the team standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a> before creating the draw. In most tournaments, the first metric should be points or wins."
-msgstr "Первенство положения команд пустует. Это означает, что команды не ранжированы ни по одной метрике, то есть все команды будут в одной группе. Если это не то, что вы хотели, установите первенство положения команд в <a href=\"%(standings_config_url)s\" class=\"alert-link\"> области Положение настроек турнира </a> до создания сетки. Для большинства турниров первой метрикой будет количество баллов или побед."
+msgstr "ÐŸÐµÑ€Ð²ÐµÐ½ÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¿ÑƒÑÑ‚ÑƒÐµÑ‚. Ð­Ñ‚Ð¾ Ð¾Ð·Ð½Ð°Ñ‡Ð°ÐµÑ‚, Ñ‡Ñ‚Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð½Ðµ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð½Ð¸ Ð¿Ð¾ Ð¾Ð´Ð½Ð¾Ð¹ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐµ, Ñ‚Ð¾ ÐµÑÑ‚ÑŒ Ð²ÑÐµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð±ÑƒÐ´ÑƒÑ‚ Ð² Ð¾Ð´Ð½Ð¾Ð¹ Ð³Ñ€ÑƒÐ¿Ð¿Ðµ. Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾ Ð½Ðµ Ñ‚Ð¾, Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ñ…Ð¾Ñ‚ÐµÐ»Ð¸, ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð¿ÐµÑ€Ð²ÐµÐ½ÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð² <a href=\"%(standings_config_url)s\" class=\"alert-link\"> Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° </a> Ð´Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ ÑÐµÑ‚ÐºÐ¸. Ð”Ð»Ñ Ð±Ð¾Ð»ÑŒÑˆÐ¸Ð½ÑÑ‚Ð²Ð° Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð¾Ð² Ð¿ÐµÑ€Ð²Ð¾Ð¹ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ¾Ð¹ Ð±ÑƒÐ´ÐµÑ‚ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð±Ð°Ð»Ð»Ð¾Ð² Ð¸Ð»Ð¸ Ð¿Ð¾Ð±ÐµÐ´."
 
 #: availability/templates/base_availability.html
 msgid "Select All"
-msgstr "Выбрать Все"
+msgstr "Ð’Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ Ð’ÑÐµ"
 
 #: availability/templates/base_availability.html
 msgid "Select None"
-msgstr "Сбросить выбор"
+msgstr "Ð¡Ð±Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ Ð²Ñ‹Ð±Ð¾Ñ€"
 
 #: availability/templates/base_availability.html
 msgid "Check-Ins"
-msgstr "Регистрации"
+msgstr "Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸"
 
 #: availability/templates/base_availability.html
 msgid "Check In All Breaking"
-msgstr "Проверить во всех брейках"
+msgstr "ÐŸÑ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ Ð²Ð¾ Ð²ÑÐµÑ… Ð±Ñ€ÐµÐ¹ÐºÐ°Ñ…"
 
 #: availability/templates/base_availability.html
 msgid "Copy from Previous"
-msgstr "Копировать из предыдущего"
+msgstr "ÐšÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¸Ð· Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÐµÐ³Ð¾"
 
 #: availability/templates/base_availability.html
 msgid "Save Selected"
-msgstr "Сохранить выбранное"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð¾Ðµ"
 
 #: availability/templates/checkin_progress.html
 msgid "Teams"
-msgstr "Команды"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: availability/templates/checkin_progress.html
 msgid "Adjudicators"
-msgstr "Судьи"
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸"
 
 #: availability/templates/checkin_progress.html
 msgid "Rooms"
-msgstr "Аудитории"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸"
 
 #: availability/templates/checkin_progress.html
 msgid "Mark teams as available"
-msgstr "Отметить команду как доступную"
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½ÑƒÑŽ"
 
 #: availability/templates/checkin_progress.html
 msgid "No need to set team availability"
-msgstr "Не нужно устанавливать доступность команды"
+msgstr "ÐÐµ Ð½ÑƒÐ¶Ð½Ð¾ ÑƒÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: availability/templates/checkin_progress.html
 msgid "There is an uneven number of teams marked as available for this round."
-msgstr "Количество команд, отмеченных как доступные для этого раунда, некратное."
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐºÑ€Ð°Ñ‚Ð½Ð¾Ðµ."
 
 #: availability/templates/checkin_progress.html
 msgid "The number of teams marked as available for this round is not a multiple of 4."
-msgstr "Количество команд, отмеченных как доступные для этого раунда, некратное четырем."
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐºÑ€Ð°Ñ‚Ð½Ð¾Ðµ Ñ‡ÐµÑ‚Ñ‹Ñ€ÐµÐ¼."
 
 #: availability/templates/checkin_progress.html
 msgid "Edit team availability"
-msgstr "Редактировать доступность команд"
+msgstr "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "One adjudicator does not have an associated tournament. Set their 'Tournament' field in the Edit Database area if you want them to be marked as available."
 msgid_plural "%(count)s adjudicators do not have an associated tournament. Set their 'Tournament' field in the Edit Database area if you want them to be marked as available."
-msgstr[0] "Один из судей не привязан к какому-либо турниру. Укажите турнир в поле \"Турнир\" в области Редактировать базу данных, если вы хотите отметить этого судью как доступного."
-msgstr[1] "%(count)s судей не привязаны к какому-либо турниру. Укажите турнир в поле \"Турнир\" в области Редактировать базу данных, если вы хотите отметить этих судей как доступных."
-msgstr[2] "%(count)s судей не привязаны к какому-либо турниру. Укажите турнир в поле \"Турнир\" в области Редактировать базу данных, если вы хотите отметить этих судей как доступных."
-msgstr[3] "%(count)s судей не привязаны к какому-либо турниру. Укажите турнир в поле \"Турнир\" в области Редактировать базу данных, если вы хотите отметить этих судей как доступных."
+msgstr[0] "ÐžÐ´Ð¸Ð½ Ð¸Ð· ÑÑƒÐ´ÐµÐ¹ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½ Ðº ÐºÐ°ÐºÐ¾Ð¼Ñƒ-Ð»Ð¸Ð±Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñƒ. Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ Ð² Ð¿Ð¾Ð»Ðµ \"Ð¢ÑƒÑ€Ð½Ð¸Ñ€\" Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…, ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾Ð³Ð¾ ÑÑƒÐ´ÑŒÑŽ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð³Ð¾."
+msgstr[1] "%(count)s ÑÑƒÐ´ÐµÐ¹ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ñ‹ Ðº ÐºÐ°ÐºÐ¾Ð¼Ñƒ-Ð»Ð¸Ð±Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñƒ. Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ Ð² Ð¿Ð¾Ð»Ðµ \"Ð¢ÑƒÑ€Ð½Ð¸Ñ€\" Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…, ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸Ñ… ÑÑƒÐ´ÐµÐ¹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ…."
+msgstr[2] "%(count)s ÑÑƒÐ´ÐµÐ¹ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ñ‹ Ðº ÐºÐ°ÐºÐ¾Ð¼Ñƒ-Ð»Ð¸Ð±Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñƒ. Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ Ð² Ð¿Ð¾Ð»Ðµ \"Ð¢ÑƒÑ€Ð½Ð¸Ñ€\" Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…, ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸Ñ… ÑÑƒÐ´ÐµÐ¹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ…."
+msgstr[3] "%(count)s ÑÑƒÐ´ÐµÐ¹ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ñ‹ Ðº ÐºÐ°ÐºÐ¾Ð¼Ñƒ-Ð»Ð¸Ð±Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñƒ. Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ Ð² Ð¿Ð¾Ð»Ðµ \"Ð¢ÑƒÑ€Ð½Ð¸Ñ€\" Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…, ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸Ñ… ÑÑƒÐ´ÐµÐ¹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ…."
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "%(count)s adjudicator who was not available last round, is available this round."
 msgid_plural "%(count)s adjudicators who were not available last round, are available this round."
-msgstr[0] "%(count)s судья, который был недоступен для прошлого раунда, доступен для этого раунда."
-msgstr[1] "%(count)s судьи, которые были недоступны для прошлого раунда, доступны для этого раунда."
-msgstr[2] "%(count)s судьи, которые были недоступны для прошлого раунда, доступны для этого раунда."
-msgstr[3] "%(count)s судьи, которые были недоступны для прошлого раунда, доступны для этого раунда."
+msgstr[0] "%(count)s ÑÑƒÐ´ÑŒÑ, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð±Ñ‹Ð» Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[1] "%(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[2] "%(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[3] "%(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "The following %(count)s adjudicator, who was not available last round, is available this round: %(adjs_list)s"
 msgid_plural "The following %(count)s adjudicators, who were not available last round, are available this round: %(adjs_list)s"
-msgstr[0] "Следующий %(count)s судья, который был недоступен для прошлого раунда, доступен для этого раунда: %(adjs_list)s"
-msgstr[1] "Следующие %(count)s судьи, который был недоступны для прошлого раунда, доступны для этого раунда: %(adjs_list)s"
-msgstr[2] "Следующие %(count)s судьи, который был недоступны для прошлого раунда, доступны для этого раунда: %(adjs_list)s"
-msgstr[3] "Следующие %(count)s судьи, который был недоступны для прошлого раунда, доступны для этого раунда: %(adjs_list)s"
+msgstr[0] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ %(count)s ÑÑƒÐ´ÑŒÑ, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð±Ñ‹Ð» Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(adjs_list)s"
+msgstr[1] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð±Ñ‹Ð» Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(adjs_list)s"
+msgstr[2] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð±Ñ‹Ð» Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(adjs_list)s"
+msgstr[3] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð±Ñ‹Ð» Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(adjs_list)s"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "%(count)s adjudicator who was available last round, is not available this round."
 msgid_plural "%(count)s adjudicators who were available last round, are not available this round."
-msgstr[0] "%(count)s судья, который был доступен для прошлого раунда, недоступен для этого раунда."
-msgstr[1] "%(count)s судьи, которые были доступны для прошлого раунда, недоступны для этого раунда."
-msgstr[2] "%(count)s судьи, которые были доступны для прошлого раунда, недоступны для этого раунда."
-msgstr[3] "%(count)s судьи, которые были доступны для прошлого раунда, недоступны для этого раунда."
+msgstr[0] "%(count)s ÑÑƒÐ´ÑŒÑ, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð±Ñ‹Ð» Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[1] "%(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[2] "%(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[3] "%(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "The following %(count)s adjudicator, who was available last round, is not available this round: %(adjs_list)s"
 msgid_plural "The following %(count)s adjudicators, who were available last round, are not available this round: %(adjs_list)s"
-msgstr[0] "Следующий %(count)s судья, который была доступен для прошлого раунда, недоступен для этого раунда: %(adjs_list)s"
-msgstr[1] "Следующие %(count)s судьи, которые были доступны для прошлого раунда, недоступны для этого раунда: %(adjs_list)s"
-msgstr[2] "Следующие %(count)s судьи, которые были доступны для прошлого раунда, недоступны для этого раунда: %(adjs_list)s"
-msgstr[3] "Следующие %(count)s судьи, которые были доступны для прошлого раунда, недоступны для этого раунда: %(adjs_list)s"
+msgstr[0] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ %(count)s ÑÑƒÐ´ÑŒÑ, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð±Ñ‹Ð»Ð° Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(adjs_list)s"
+msgstr[1] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(adjs_list)s"
+msgstr[2] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(adjs_list)s"
+msgstr[3] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s ÑÑƒÐ´ÑŒÐ¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(adjs_list)s"
 
 #: availability/templates/checkin_progress.html
 msgid "Mark adjudicators as available"
-msgstr "Отметить судей как доступных"
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÑƒÐ´ÐµÐ¹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ…"
 
 #. Translators: required_count is a word for a number (e.g. "two", "three", etc.)
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "There needs to be at least one adjudicator marked as available, given the number of debates."
 msgid_plural "There need to be at least %(required_count)s adjudicators marked as available, given the number of debates."
-msgstr[0] "Должна быть хотя бы один судья, отмеченный как доступный, учитывая количество дебатов в этом раунде."
-msgstr[1] "Должно быть хотя бы %(required_count)s судей, отмеченных как доступные, учитывая количество дебатов в этом раунде."
-msgstr[2] "Должно быть хотя бы %(required_count)s судей, отмеченных как доступные, учитывая количество дебатов в этом раунде."
-msgstr[3] "Должно быть хотя бы %(required_count)s судей, отмеченных как доступные, учитывая количество дебатов в этом раунде."
+msgstr[0] "Ð”Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ Ð¾Ð´Ð¸Ð½ ÑÑƒÐ´ÑŒÑ, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ð¹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ð¹, ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
+msgstr[1] "Ð”Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ %(required_count)s ÑÑƒÐ´ÐµÐ¹, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ, ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
+msgstr[2] "Ð”Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ %(required_count)s ÑÑƒÐ´ÐµÐ¹, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ, ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
+msgstr[3] "Ð”Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ %(required_count)s ÑÑƒÐ´ÐµÐ¹, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ, ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
 
 #: availability/templates/checkin_progress.html
 msgid "Edit adjudicator availability"
-msgstr "Редактировать доступность судей"
+msgstr "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÑÑƒÐ´ÐµÐ¹"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "%(count)s room that was not available last round, is available this round."
 msgid_plural "%(count)s rooms that were not available last round, are available this round."
-msgstr[0] "%(count)s аудитория, которая была недоступна в прошлом раунде, доступна для этого раунда."
-msgstr[1] "%(count)s аудитории, которые были недоступны в прошлом раунде, доступны для этого раунда."
-msgstr[2] "%(count)s аудитории, которые были недоступны в прошлом раунде, доступны для этого раунда."
-msgstr[3] "%(count)s аудитории, которые были недоступны в прошлом раунде, доступны для этого раунда."
+msgstr[0] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð±Ñ‹Ð»Ð° Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[1] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[2] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[3] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "The following %(count)s room, which was not available last round, is available this round: %(rooms_list)s"
 msgid_plural "The following %(count)s rooms, which were not available last round, are available this round: %(rooms_list)s"
-msgstr[0] "Следующая %(count)s аудитория, которая была недоступна в прошлом раунде, доступна для этого раунда: %(rooms_list)s"
-msgstr[1] "Следующие %(count)s аудитории, которая была недоступны в прошлом раунде, доступны для этого раунда: %(rooms_list)s"
-msgstr[2] "Следующие %(count)s аудитории, которая была недоступны в прошлом раунде, доступны для этого раунда: %(rooms_list)s"
-msgstr[3] "Следующие %(count)s аудитории, которая была недоступны в прошлом раунде, доступны для этого раунда: %(rooms_list)s"
+msgstr[0] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð°Ñ %(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð±Ñ‹Ð»Ð° Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(rooms_list)s"
+msgstr[1] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð±Ñ‹Ð»Ð° Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(rooms_list)s"
+msgstr[2] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð±Ñ‹Ð»Ð° Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(rooms_list)s"
+msgstr[3] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð±Ñ‹Ð»Ð° Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(rooms_list)s"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "%(count)s room that was available last round, is not available this round."
 msgid_plural "%(count)s rooms that were available last round, are not available this round."
-msgstr[0] "%(count)s аудитория, которая была доступна в прошлом раунде, недоступна для этого раунда."
-msgstr[1] "%(count)s аудитории, которые были доступны в прошлом раунде, недоступны для этого раунда."
-msgstr[2] "%(count)s аудитории, которые были доступны в прошлом раунде, недоступны для этого раунда."
-msgstr[3] "%(count)s аудитории, которые были доступны в прошлом раунде, недоступны для этого раунда."
+msgstr[0] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð±Ñ‹Ð»Ð° Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[1] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[2] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+msgstr[3] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "The following %(count)s room, which was available last round, is not available this round: %(rooms_list)s"
 msgid_plural "The following %(count)s rooms, which were available last round, are not available this round: %(rooms_list)s"
-msgstr[0] "Следующая %(count)s аудитория, которая была доступна в прошлом раунде, недоступна для этого раунда: %(rooms_list)s"
-msgstr[1] "Следующие %(count)s аудитории, которые были доступны в прошлом раунде, недоступны для этого раунда: %(rooms_list)s"
-msgstr[2] "Следующие %(count)s аудитории, которые были доступны в прошлом раунде, недоступны для этого раунда: %(rooms_list)s"
-msgstr[3] "Следующие %(count)s аудитории, которые были доступны в прошлом раунде, недоступны для этого раунда: %(rooms_list)s"
+msgstr[0] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð°Ñ %(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð±Ñ‹Ð»Ð° Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(rooms_list)s"
+msgstr[1] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(rooms_list)s"
+msgstr[2] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(rooms_list)s"
+msgstr[3] "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ %(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð² Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ, Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð´Ð»Ñ ÑÑ‚Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°: %(rooms_list)s"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "One room does not have an associated tournament. Set its 'Tournament' field in the Edit Database area if you want it to be marked as available."
 msgid_plural "%(count)s rooms do not have an associated tournament. Set their 'Tournament' field in the Edit Database area if you want them to be marked as available."
-msgstr[0] "Одна аудитория не привязана к какому-либо турниру. Укажите турнир в поле \"Турнир\" в области Редактировать базу данных, если вы хотите отметить эту аудиторию как доступную."
-msgstr[1] "%(count)s аудитории не привязаны какому-либо турниру. Укажите турнир в поле \"Турнир\" в области Редактировать базу данных, если вы хотите отметить эти аудитории как доступные."
-msgstr[2] "%(count)s аудитории не привязаны какому-либо турниру. Укажите турнир в поле \"Турнир\" в области Редактировать базу данных, если вы хотите отметить эти аудитории как доступные."
-msgstr[3] "%(count)s аудитории не привязаны какому-либо турниру. Укажите турнир в поле \"Турнир\" в области Редактировать базу данных, если вы хотите отметить эти аудитории как доступные."
+msgstr[0] "ÐžÐ´Ð½Ð° Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ð° Ðº ÐºÐ°ÐºÐ¾Ð¼Ñƒ-Ð»Ð¸Ð±Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñƒ. Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ Ð² Ð¿Ð¾Ð»Ðµ \"Ð¢ÑƒÑ€Ð½Ð¸Ñ€\" Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…, ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÑ‚Ñƒ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸ÑŽ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½ÑƒÑŽ."
+msgstr[1] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ñ‹ ÐºÐ°ÐºÐ¾Ð¼Ñƒ-Ð»Ð¸Ð±Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñƒ. Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ Ð² Ð¿Ð¾Ð»Ðµ \"Ð¢ÑƒÑ€Ð½Ð¸Ñ€\" Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…, ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ."
+msgstr[2] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ñ‹ ÐºÐ°ÐºÐ¾Ð¼Ñƒ-Ð»Ð¸Ð±Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñƒ. Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ Ð² Ð¿Ð¾Ð»Ðµ \"Ð¢ÑƒÑ€Ð½Ð¸Ñ€\" Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…, ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ."
+msgstr[3] "%(count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ñ‹ ÐºÐ°ÐºÐ¾Ð¼Ñƒ-Ð»Ð¸Ð±Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ñƒ. Ð£ÐºÐ°Ð¶Ð¸Ñ‚Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€ Ð² Ð¿Ð¾Ð»Ðµ \"Ð¢ÑƒÑ€Ð½Ð¸Ñ€\" Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…, ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÑ‚Ð¸ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ."
 
 #: availability/templates/checkin_progress.html
 msgid "Mark rooms as available"
-msgstr "Отметить аудитории как доступные"
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ"
 
 #. Translators: required_count is a word for a number (e.g. "two", "three", etc.)
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "There needs to be at least one room marked as available, given the number of debates."
 msgid_plural "There need to be at least %(required_count)s rooms marked as available, given the number of debates."
-msgstr[0] "Должна быть хотя бы одна аудитория, отмеченная как доступная, учитывая количество дебатов в этом раунде."
-msgstr[1] "Должно быть хотя бы %(required_count)s аудиторий, отмеченных как доступные учитывая количество дебатов в этом раунде."
-msgstr[2] "Должно быть хотя бы %(required_count)s аудиторий, отмеченных как доступные учитывая количество дебатов в этом раунде."
-msgstr[3] "Должно быть хотя бы %(required_count)s аудиторий, отмеченных как доступные учитывая количество дебатов в этом раунде."
+msgstr[0] "Ð”Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ Ð¾Ð´Ð½Ð° Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ð°Ñ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð°Ñ, ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
+msgstr[1] "Ð”Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ %(required_count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
+msgstr[2] "Ð”Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ %(required_count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
+msgstr[3] "Ð”Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ %(required_count)s Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð² Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
 
 #: availability/templates/checkin_progress.html
 msgid "Edit room availability"
-msgstr "Редактировать доступность аудиторий"
+msgstr "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹"
 
 #: availability/views.py
 msgid "no teams are debating"
-msgstr "нет команд"
+msgstr "Ð½ÐµÑ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #. Translators: nteams in this string can only be 0 or 1
 #: availability/views.py
 #, python-format
-msgid "%(nteams)d breaking team — no debates can happen"
-msgid_plural "%(nteams)d breaking teams — no debates can happen"
-msgstr[0] "%(nteams)d брейкающейся команды - дебаты не могут произойти"
-msgstr[1] "%(nteams)d брейкающихся команд - дебаты не могут произойти"
-msgstr[2] "%(nteams)d брейкающихся команд - дебаты не могут произойти"
-msgstr[3] "%(nteams)d брейкающихся команд - дебаты не могут произойти"
+msgid "%(nteams)d breaking team â€” no debates can happen"
+msgid_plural "%(nteams)d breaking teams â€” no debates can happen"
+msgstr[0] "%(nteams)d Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰ÐµÐ¹ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ - Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾Ð¸Ð·Ð¾Ð¹Ñ‚Ð¸"
+msgstr[1] "%(nteams)d Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´ - Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾Ð¸Ð·Ð¾Ð¹Ñ‚Ð¸"
+msgstr[2] "%(nteams)d Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´ - Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾Ð¸Ð·Ð¾Ð¹Ñ‚Ð¸"
+msgstr[3] "%(nteams)d Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´ - Ð´ÐµÐ±Ð°Ñ‚Ñ‹ Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾Ð¸Ð·Ð¾Ð¹Ñ‚Ð¸"
 
 #. Translators: ndebating in this string is always at least 2
 #: availability/views.py
 #, python-format
 msgid "%(ndebating)d breaking team is debating this round"
 msgid_plural "%(ndebating)d breaking teams are debating this round"
-msgstr[0] "%(ndebating)d брейкающаяся команда играет в этом раунде"
-msgstr[1] "%(ndebating)d брейкающихся команд играют в этом раунде"
-msgstr[2] "%(ndebating)d брейкающихся команд играют в этом раунде"
-msgstr[3] "%(ndebating)d брейкающихся команд играют в этом раунде"
+msgstr[0] "%(ndebating)d Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð°ÑÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¸Ð³Ñ€Ð°ÐµÑ‚ Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
+msgstr[1] "%(ndebating)d Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¸Ð³Ñ€Ð°ÑŽÑ‚ Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
+msgstr[2] "%(ndebating)d Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¸Ð³Ñ€Ð°ÑŽÑ‚ Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
+msgstr[3] "%(ndebating)d Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¸Ð³Ñ€Ð°ÑŽÑ‚ Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
 
 #. Translators: This gets appended to the previous string (the one with
 #. ndebating in it) if (and only if) nbypassing is greater than 0.
@@ -352,75 +352,76 @@ msgstr[3] "%(ndebating)d брейкающихся команд играют в �
 #, python-format
 msgid "; %(nbypassing)d team is bypassing it"
 msgid_plural "; %(nbypassing)d teams are bypassing it"
-msgstr[0] "%(nbypassing)d команда проходит его"
-msgstr[1] "%(nbypassing)d команды проходят его"
-msgstr[2] "%(nbypassing)d команды проходят его"
-msgstr[3] "%(nbypassing)d команды проходят его"
+msgstr[0] "%(nbypassing)d ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¿Ñ€Ð¾Ñ…Ð¾Ð´Ð¸Ñ‚ ÐµÐ³Ð¾"
+msgstr[1] "%(nbypassing)d ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¿Ñ€Ð¾Ñ…Ð¾Ð´ÑÑ‚ ÐµÐ³Ð¾"
+msgstr[2] "%(nbypassing)d ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¿Ñ€Ð¾Ñ…Ð¾Ð´ÑÑ‚ ÐµÐ³Ð¾"
+msgstr[3] "%(nbypassing)d ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¿Ñ€Ð¾Ñ…Ð¾Ð´ÑÑ‚ ÐµÐ³Ð¾"
 
 #. Translators: nadvancing in this string is always at least 2
 #: availability/views.py
 #, python-format
 msgid "%(nadvancing)s advancing team is debating this round"
 msgid_plural "%(nadvancing)s advancing teams are debating this round"
-msgstr[0] "%(nadvancing)s команда, которая может пройти дальше, играет в этом раунде"
-msgstr[1] "%(nadvancing)s команд, которые могут пройти дальше, играют в этом раунде"
-msgstr[2] "%(nadvancing)s команд, которые могут пройти дальше, играют в этом раунде"
-msgstr[3] "%(nadvancing)s команд, которые могут пройти дальше, играют в этом раунде"
+msgstr[0] "%(nadvancing)s ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°, ÐºÐ¾Ñ‚Ð¾Ñ€Ð°Ñ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€Ð¾Ð¹Ñ‚Ð¸ Ð´Ð°Ð»ÑŒÑˆÐµ, Ð¸Ð³Ñ€Ð°ÐµÑ‚ Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
+msgstr[1] "%(nadvancing)s ÐºÐ¾Ð¼Ð°Ð½Ð´, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾Ð¹Ñ‚Ð¸ Ð´Ð°Ð»ÑŒÑˆÐµ, Ð¸Ð³Ñ€Ð°ÑŽÑ‚ Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
+msgstr[2] "%(nadvancing)s ÐºÐ¾Ð¼Ð°Ð½Ð´, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾Ð¹Ñ‚Ð¸ Ð´Ð°Ð»ÑŒÑˆÐµ, Ð¸Ð³Ñ€Ð°ÑŽÑ‚ Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
+msgstr[3] "%(nadvancing)s ÐºÐ¾Ð¼Ð°Ð½Ð´, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾Ð¹Ñ‚Ð¸ Ð´Ð°Ð»ÑŒÑˆÐµ, Ð¸Ð³Ñ€Ð°ÑŽÑ‚ Ð² ÑÑ‚Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ"
 
 #: availability/views.py
 msgid "Active Now"
-msgstr "Сейчас активны"
+msgstr "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð°ÐºÑ‚Ð¸Ð²Ð½Ñ‹"
 
 #: availability/views.py
 #, python-format
 msgid "Active in %(prev_round)s"
-msgstr "Активно в %(prev_round)s"
+msgstr "ÐÐºÑ‚Ð¸Ð²Ð½Ð¾ Ð² %(prev_round)s"
 
 #: availability/views.py
 msgid "Checked-In"
-msgstr "Зарегистрированы"
+msgstr "Ð—Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹"
 
 #: availability/views.py
 msgid "Team Availability"
-msgstr "Доступность команд"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: availability/views.py
 msgid "Adjudicator Availability"
-msgstr "Доступность судей"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÑÑƒÐ´ÐµÐ¹"
 
 #: availability/views.py
 msgid "Room Availability"
-msgstr "Доступность аудиторий"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹"
 
 #: availability/views.py
 msgid "Room"
-msgstr "Аудитория"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ"
 
 #: availability/views.py
 msgid "Display Name (for the draw)"
-msgstr "Показать название (для сетки)"
+msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ (Ð´Ð»Ñ ÑÐµÑ‚ÐºÐ¸)"
 
 #: availability/views.py
 msgid "Categories"
-msgstr "Категории"
+msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸"
 
 #: availability/views.py
 msgid "Priority"
-msgstr "Приоритет"
+msgstr "ÐŸÑ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚"
 
 #: availability/views.py
 msgid "Failed to update some or all availabilities due to an integrityerror. You should retry this action or make individual updates."
-msgstr "Не удалось обновить некоторые или все доступные возможности из-за ошибки интегрированности. Вы должны повторить это действие или сделать индивидуальные обновления."
+msgstr "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð½ÐµÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¸Ð»Ð¸ Ð²ÑÐµ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚Ð¸ Ð¸Ð·-Ð·Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ¸ Ð¸Ð½Ñ‚ÐµÐ³Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾ÑÑ‚Ð¸. Ð’Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ Ð¸Ð»Ð¸ ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ Ð¸Ð½Ð´Ð¸Ð²Ð¸Ð´ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ðµ Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ñ."
 
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms."
-msgstr "Зарегистрированы все команды, судьи и аудитории."
+msgstr "Ð—Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð²ÑÐµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹, ÑÑƒÐ´ÑŒÐ¸ Ð¸ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸."
 
 #: availability/views.py
 msgid "Checked in all breaking adjudicators."
-msgstr "Зарегистрированы все брейкающиеся судьи."
+msgstr "Ð—Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð²ÑÐµ Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸ÐµÑÑ ÑÑƒÐ´ÑŒÐ¸."
 
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms from previous round."
-msgstr "Зарегистрированы все команды, судьи и аудитории из предыдущего раунда."
+msgstr "Ð—Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð²ÑÐµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹, ÑÑƒÐ´ÑŒÐ¸ Ð¸ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ Ð¸Ð· Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÐµÐ³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
+
 

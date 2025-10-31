@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
@@ -35,7 +35,7 @@ from tournaments.models import Round
 from users.permissions import Permission
 from utils.misc import get_ip_address, reverse_round, reverse_tournament
 from utils.mixins import AdministratorMixin, AssistantMixin
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 from utils.views import PostOnlyRedirectView, VueTableTemplateView
 
 from .consumers import BallotStatusConsumer
@@ -120,7 +120,7 @@ class AdminResultsEntryForRoundView(AdministratorMixin, BaseResultsEntryForRound
         # Stopgap to warn user about potential database inconsistency, when
         # trainee adjudicators seem to have given scores. This normally happens
         # when an adjudicator was demoted after a result was entered.
-        # See: https://github.com/TabbycatDebate/tabbycat/issues/922
+        # See: https://github.com/NekoTabDebate/NekoTab/issues/922
         # This stopgap should be deleted after a more general data consistency
         # solution is implemented.
         kwargs["debates_with_trainee_scoresheets"] = [
@@ -160,7 +160,7 @@ class PublicResultsForRoundView(RoundMixin, PublicTournamentPageMixin, VueTableT
     template_name = "public_results_for_round.html"
     public_page_preference = 'public_results'
     page_title = gettext_lazy("Results")
-    page_emoji = '💥'
+    page_emoji = 'ðŸ’¥'
     default_view = 'team'
     cache_timeout = settings.PUBLIC_SLOW_CACHE_TIMEOUT
 
@@ -177,7 +177,7 @@ class PublicResultsForRoundView(RoundMixin, PublicTournamentPageMixin, VueTableT
         populate_confirmed_ballots(debates, motions=True,
                 results=self.round.ballots_per_debate == 'per-adj')
 
-        table = TabbycatTableBuilder(view=self, sort_key="venue")
+        table = NekoTabTableBuilder(view=self, sort_key="venue")
         table.add_debate_venue_columns(debates)
         table.add_debate_results_columns(debates, n_cols=debates.aggregate(n=Max('debateteam__side'))['n']+1)
         if not (self.tournament.pref('teams_in_debate') == 4 and self.round.is_break_round):
@@ -207,7 +207,7 @@ class PublicResultsForRoundView(RoundMixin, PublicTournamentPageMixin, VueTableT
         populate_confirmed_ballots(debates, motions=True,
             results=self.round.ballots_per_debate == 'per-adj')
 
-        table = TabbycatTableBuilder(view=self, sort_key="team")
+        table = NekoTabTableBuilder(view=self, sort_key="team")
         table.add_team_columns([ts.debate_team.team for ts in teamscores])
         table.add_debate_result_by_team_column(teamscores)
         table.add_debate_side_by_team_column(teamscores, self.tournament)
@@ -880,7 +880,7 @@ class PublicBallotSubmissionIndexView(PublicTournamentPageMixin, RoundMixin, Vue
             'debate__venue__venuecategory_set',
         ).order_by('adjudicator__name')
 
-        table = TabbycatTableBuilder(view=self, sort_key='adj')
+        table = NekoTabTableBuilder(view=self, sort_key='adj')
 
         data = [{
             'text': _("Add result from %(adjudicator)s") % {'adjudicator': escape(da.adjudicator.get_public_name(self.tournament))},
@@ -1011,3 +1011,4 @@ class AssistantMergeLatestBallotsView(OldAssistantBallotSetMixin, BaseMergeLates
 
     def get_list_url(self):
         return reverse_tournament('results-assistant-round-list', self.tournament)
+

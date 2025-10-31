@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2023-11-27 13:39\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: kk\n"
-"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
 msgid "There are no available adjudicators. Ensure there are adjudicators who have been marked as available for this round before auto-allocating."
-msgstr "Бос төрешілер жоқ. Төрешілерді ойынға автоматты түрде қоймастан бұрын, олардың осы ойынға қатысу мүмкіншілігі белгіленгеніне көз жеткізіңіз."
+msgstr "Ð‘Ð¾Ñ Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€ Ð¶Ð¾Ò›. Ð¢Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€Ð´Ñ– Ð¾Ð¹Ñ‹Ð½Ò“Ð° Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ñ‚Ñ‹ Ñ‚Ò¯Ñ€Ð´Ðµ Ò›Ð¾Ð¹Ð¼Ð°ÑÑ‚Ð°Ð½ Ð±Ò±Ñ€Ñ‹Ð½, Ð¾Ð»Ð°Ñ€Ð´Ñ‹Ò£ Ð¾ÑÑ‹ Ð¾Ð¹Ñ‹Ð½Ò“Ð° Ò›Ð°Ñ‚Ñ‹ÑÑƒ Ð¼Ò¯Ð¼ÐºÑ–Ð½ÑˆÑ–Ð»Ñ–Ð³Ñ– Ð±ÐµÐ»Ð³Ñ–Ð»ÐµÐ½Ð³ÐµÐ½Ñ–Ð½Ðµ ÐºÓ©Ð· Ð¶ÐµÑ‚ÐºÑ–Ð·Ñ–Ò£Ñ–Ð·."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
@@ -60,7 +60,7 @@ msgstr ""
 
 #: adjallocation/apps.py
 msgid "Adjudicator Allocation"
-msgstr "Төрешілерді бекіту"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€Ð´Ñ– Ð±ÐµÐºÑ–Ñ‚Ñƒ"
 
 #: adjallocation/consumers.py
 msgid "Draw is already released, unrelease draw to redo auto-allocations."
@@ -134,95 +134,95 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "chair"
-msgstr "ойынның бас төрешісі"
+msgstr "Ð¾Ð¹Ñ‹Ð½Ð½Ñ‹Ò£ Ð±Ð°Ñ Ñ‚Ó©Ñ€ÐµÑˆÑ–ÑÑ–"
 
 #: adjallocation/models.py
 msgid "panellist"
-msgstr "қосымша төреші"
+msgstr "Ò›Ð¾ÑÑ‹Ð¼ÑˆÐ° Ñ‚Ó©Ñ€ÐµÑˆÑ–"
 
 #: adjallocation/models.py
 msgid "trainee"
-msgstr "үйренуші"
+msgstr "Ò¯Ð¹Ñ€ÐµÐ½ÑƒÑˆÑ–"
 
 #: adjallocation/models.py
 msgid "debate"
-msgstr "пікірсайыс"
+msgstr "Ð¿Ñ–ÐºÑ–Ñ€ÑÐ°Ð¹Ñ‹Ñ"
 
 #: adjallocation/models.py
 msgid "adjudicator"
-msgstr "төреші"
+msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ–"
 
 #: adjallocation/models.py
 msgid "type"
-msgstr "түрі"
+msgstr "Ñ‚Ò¯Ñ€Ñ–"
 
 #: adjallocation/models.py
 msgid "available?"
-msgstr "қолжетімді ме?"
+msgstr "Ò›Ð¾Ð»Ð¶ÐµÑ‚Ñ–Ð¼Ð´Ñ– Ð¼Ðµ?"
 
 #: adjallocation/models.py
 msgid "debate adjudicator"
-msgstr "ойын төрешісі"
+msgstr "Ð¾Ð¹Ñ‹Ð½ Ñ‚Ó©Ñ€ÐµÑˆÑ–ÑÑ–"
 
 #: adjallocation/models.py
 msgid "debate adjudicators"
-msgstr "ойын төрешілері"
+msgstr "Ð¾Ð¹Ñ‹Ð½ Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€Ñ–"
 
 #: adjallocation/models.py
 msgid "team"
-msgstr "топ"
+msgstr "Ñ‚Ð¾Ð¿"
 
 #: adjallocation/models.py
 msgid "adjudicator-team conflict"
-msgstr "төреші мен ойыншылар арасындағы шектеу"
+msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ð¾Ð¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€ Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒ"
 
 #: adjallocation/models.py
 msgid "adjudicator-team conflicts"
-msgstr "төреші мен ойыншылар арасындағы шектеу"
+msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ð¾Ð¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€ Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒ"
 
 #: adjallocation/models.py
 msgid "adjudicator 1"
-msgstr "1-төреші"
+msgstr "1-Ñ‚Ó©Ñ€ÐµÑˆÑ–"
 
 #: adjallocation/models.py
 msgid "adjudicator 2"
-msgstr "2-төреші"
+msgstr "2-Ñ‚Ó©Ñ€ÐµÑˆÑ–"
 
 #: adjallocation/models.py
 msgid "adjudicator-adjudicator conflict"
-msgstr "төреші мен төреші арасындағы шектеу"
+msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒ"
 
 #: adjallocation/models.py
 msgid "adjudicator-adjudicator conflicts"
-msgstr "төреші мен ойыншылар арасындағы шектеулер"
+msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ð¾Ð¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€ Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€"
 
 #: adjallocation/models.py
 msgid "institution"
-msgstr "қауымдастық"
+msgstr "Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò›"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflict"
-msgstr "төреші мен қауымдастық арасындағы шектеу"
+msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒ"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflicts"
-msgstr "төреші мен қауымдастық арасындағы шектеулер"
+msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€"
 
 #: adjallocation/models.py
 msgid "team-institution conflict"
-msgstr "ойыншылар мен қауымдастық арасындағы шектеу"
+msgstr "Ð¾Ð¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€ Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒ"
 
 #: adjallocation/models.py
 msgid "team-institution conflicts"
-msgstr "ойыншылар мен қауымдастық арасындағы шектеулер"
+msgstr "Ð¾Ð¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€ Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€"
 
 #: adjallocation/models.py
 msgid "round"
-msgstr "ойын"
+msgstr "Ð¾Ð¹Ñ‹Ð½"
 
 #: adjallocation/models.py
 msgid "importance"
-msgstr "маңызы"
+msgstr "Ð¼Ð°Ò£Ñ‹Ð·Ñ‹"
 
 #: adjallocation/models.py
 msgid "minimum bracket"
@@ -242,7 +242,7 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "room rank"
-msgstr "ойын деңгейі"
+msgstr "Ð¾Ð¹Ñ‹Ð½ Ð´ÐµÒ£Ð³ÐµÐ¹Ñ–"
 
 #: adjallocation/models.py
 msgid "Sequential number of panel, not used in any algorithms"
@@ -266,15 +266,15 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "panel"
-msgstr "құрам"
+msgstr "Ò›Ò±Ñ€Ð°Ð¼"
 
 #: adjallocation/models.py
 msgid "preformed panel adjudicator"
-msgstr "алдын-ала бекітілген төреші"
+msgstr "Ð°Ð»Ð´Ñ‹Ð½-Ð°Ð»Ð° Ð±ÐµÐºÑ–Ñ‚Ñ–Ð»Ð³ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ–"
 
 #: adjallocation/models.py
 msgid "preformed panel adjudicators"
-msgstr "алдын-ала бекітілген төрешілік құрам"
+msgstr "Ð°Ð»Ð´Ñ‹Ð½-Ð°Ð»Ð° Ð±ÐµÐºÑ–Ñ‚Ñ–Ð»Ð³ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð»Ñ–Ðº Ò›Ò±Ñ€Ð°Ð¼"
 
 #: adjallocation/preformed/base.py
 msgid "There are no preformed panels to use. Have you allocated preformed panels for this round? If not, try just auto-allocating adjudicators instead."
@@ -282,7 +282,7 @@ msgstr ""
 
 #: adjallocation/templates/preformed_index.html adjallocation/views.py
 msgid "Preformed Panels"
-msgstr "Алдын-ала бекітілген құрам"
+msgstr "ÐÐ»Ð´Ñ‹Ð½-Ð°Ð»Ð° Ð±ÐµÐºÑ–Ñ‚Ñ–Ð»Ð³ÐµÐ½ Ò›Ò±Ñ€Ð°Ð¼"
 
 #: adjallocation/templates/preformed_index.html
 msgid "A preformed panel is a defined group of adjudicators that is specified for a round before its draw has been generated. You can then manually or automatically apply these panels during the normal adjudicator allocation process. This can make allocations faster or allow you to create more considered panels of adjudicators."
@@ -319,19 +319,19 @@ msgstr ""
 
 #: adjallocation/views.py
 msgid "Male"
-msgstr "Ер адам"
+msgstr "Ð•Ñ€ Ð°Ð´Ð°Ð¼"
 
 #: adjallocation/views.py
 msgid "Female"
-msgstr "Әйел адам"
+msgstr "Ó˜Ð¹ÐµÐ» Ð°Ð´Ð°Ð¼"
 
 #: adjallocation/views.py
 msgid "Other"
-msgstr "Басқа"
+msgstr "Ð‘Ð°ÑÒ›Ð°"
 
 #: adjallocation/views.py
 msgid "Unknown"
-msgstr "Белгісіз"
+msgstr "Ð‘ÐµÐ»Ð³Ñ–ÑÑ–Ð·"
 
 #: adjallocation/views.py
 msgid "Edit Allocation"
@@ -339,7 +339,7 @@ msgstr ""
 
 #: adjallocation/views.py
 msgid "Edit Panels"
-msgstr "Төрешілік құрамды өзгерту"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–Ð»Ñ–Ðº Ò›Ò±Ñ€Ð°Ð¼Ð´Ñ‹ Ó©Ð·Ð³ÐµÑ€Ñ‚Ñƒ"
 
 #: adjallocation/views.py
 msgid "Return to Panels Overview"
@@ -347,105 +347,106 @@ msgstr ""
 
 #: adjallocation/views.py
 msgid "Adjudicator-Team Conflicts"
-msgstr "Төреші мен ойыншылар арасындағы шектеулер"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ð¾Ð¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€ Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€"
 
 #: adjallocation/views.py
 msgid "Save Adjudicator-Team Conflicts"
-msgstr "Төреші мен ойыншылар арасындағы шектеулер сақтау"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ð¾Ð¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€ Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ ÑÐ°Ò›Ñ‚Ð°Ñƒ"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d adjudicator-team conflict."
 msgid_plural "Saved %(count)d adjudicator-team conflicts."
-msgstr[0] "Төреші мен топ арасындағы сақталған шектеулер %(count)d."
+msgstr[0] "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ñ‚Ð¾Ð¿ Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑÐ°Ò›Ñ‚Ð°Ð»Ò“Ð°Ð½ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ %(count)d."
 msgstr[1] ""
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d adjudicator-team conflict."
 msgid_plural "Deleted %(count)d adjudicator-team conflicts."
-msgstr[0] "Төреші мен топ арасындағы өшірілген шектеулер %(count)d."
+msgstr[0] "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ñ‚Ð¾Ð¿ Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ Ó©ÑˆÑ–Ñ€Ñ–Ð»Ð³ÐµÐ½ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ %(count)d."
 msgstr[1] ""
 
 #: adjallocation/views.py
 msgid "No changes were made to adjudicator-team conflicts."
-msgstr "Төреші мен топ арасындағы шектеулерде өзгеріс болмады."
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ñ‚Ð¾Ð¿ Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€Ð´Ðµ Ó©Ð·Ð³ÐµÑ€Ñ–Ñ Ð±Ð¾Ð»Ð¼Ð°Ð´Ñ‹."
 
 #: adjallocation/views.py
 msgid "Adjudicator-Adjudicator Conflicts"
-msgstr "Төреші мен төреші арасындағы шектеу"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒ"
 
 #: adjallocation/views.py
 msgid "Save Adjudicator-Adjudicator Conflicts"
-msgstr "Төреші мен төреші арасындағы шектеуді сақтау"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ´Ñ– ÑÐ°Ò›Ñ‚Ð°Ñƒ"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d adjudicator-adjudicator conflict."
 msgid_plural "Saved %(count)d adjudicator-adjudicator conflicts."
-msgstr[0] "Төреші мен төреші арасындағы сақталған шектеулер %(count)d."
+msgstr[0] "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑÐ°Ò›Ñ‚Ð°Ð»Ò“Ð°Ð½ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ %(count)d."
 msgstr[1] ""
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d adjudicator-adjudicator conflict."
 msgid_plural "Deleted %(count)d adjudicator-adjudicator conflicts."
-msgstr[0] "Төреші мен төреші арасындағы өшірілген шектеулер %(count)d."
+msgstr[0] "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ Ó©ÑˆÑ–Ñ€Ñ–Ð»Ð³ÐµÐ½ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ %(count)d."
 msgstr[1] ""
 
 #: adjallocation/views.py
 msgid "No changes were made to adjudicator-adjudicator conflicts."
-msgstr "Төреші мен төреші арасындағы шектеулерде өзгеріс болмады."
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ– Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€Ð´Ðµ Ó©Ð·Ð³ÐµÑ€Ñ–Ñ Ð±Ð¾Ð»Ð¼Ð°Ð´Ñ‹."
 
 #: adjallocation/views.py
 msgid "Adjudicator-Institution Conflicts"
-msgstr "Төреші мен қауымдастық арасындағы шектеулер"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€"
 
 #: adjallocation/views.py
 msgid "Save Adjudicator-Institution Conflicts"
-msgstr "Төреші мен қауымдастық арасындағы шектеулер"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d adjudicator-institution conflict."
 msgid_plural "Saved %(count)d adjudicator-institution conflicts."
-msgstr[0] "Төреші мен қауымдастық арасындағы сақталған шектеулер %(count)d."
-msgstr[1] "Төреші мен қауымдастық арасындағы сақталған шектеулер %(count)d."
+msgstr[0] "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑÐ°Ò›Ñ‚Ð°Ð»Ò“Ð°Ð½ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ %(count)d."
+msgstr[1] "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑÐ°Ò›Ñ‚Ð°Ð»Ò“Ð°Ð½ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ %(count)d."
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d adjudicator-institution conflict."
 msgid_plural "Deleted %(count)d adjudicator-institution conflicts."
-msgstr[0] "Төреші мен қауымдастық арасындағы өшірілген шектеу %(count)d."
-msgstr[1] "Төреші мен қауымдастық арасындағы өшірілген шектеулер %(count)d."
+msgstr[0] "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ Ó©ÑˆÑ–Ñ€Ñ–Ð»Ð³ÐµÐ½ ÑˆÐµÐºÑ‚ÐµÑƒ %(count)d."
+msgstr[1] "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ Ó©ÑˆÑ–Ñ€Ñ–Ð»Ð³ÐµÐ½ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ %(count)d."
 
 #: adjallocation/views.py
 msgid "No changes were made to adjudicator-institution conflicts."
-msgstr "Төреші мен қауымдастық арасындағы шектеулерде өзгеріс болмады."
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ– Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€Ð´Ðµ Ó©Ð·Ð³ÐµÑ€Ñ–Ñ Ð±Ð¾Ð»Ð¼Ð°Ð´Ñ‹."
 
 #: adjallocation/views.py
 msgid "Team-Institution Conflicts"
-msgstr "Ойыншылар мен қауымдастық арасындағы шектеулер"
+msgstr "ÐžÐ¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€ Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€"
 
 #: adjallocation/views.py
 msgid "Save Team-Institution Conflicts"
-msgstr "Ойыншылар мен қауымдастық арасындағы шектеулер"
+msgstr "ÐžÐ¹Ñ‹Ð½ÑˆÑ‹Ð»Ð°Ñ€ Ð¼ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d team-institution conflict."
 msgid_plural "Saved %(count)d team-institution conflicts."
-msgstr[0] "Топ пен қауымдастық арасындағы сақталған шектеу %(count)d."
-msgstr[1] "Топ пен қауымдастық арасындағы сақталған шектеулер %(count)d."
+msgstr[0] "Ð¢Ð¾Ð¿ Ð¿ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑÐ°Ò›Ñ‚Ð°Ð»Ò“Ð°Ð½ ÑˆÐµÐºÑ‚ÐµÑƒ %(count)d."
+msgstr[1] "Ð¢Ð¾Ð¿ Ð¿ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑÐ°Ò›Ñ‚Ð°Ð»Ò“Ð°Ð½ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ %(count)d."
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d team-institution conflict."
 msgid_plural "Deleted %(count)d team-institution conflicts."
-msgstr[0] "Топ пен қауымдастық арасындағы өшірілген шектеу %(count)d."
-msgstr[1] "Топ пен қауымдастық арасындағы өшірілген шектеулер %(count)d."
+msgstr[0] "Ð¢Ð¾Ð¿ Ð¿ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ Ó©ÑˆÑ–Ñ€Ñ–Ð»Ð³ÐµÐ½ ÑˆÐµÐºÑ‚ÐµÑƒ %(count)d."
+msgstr[1] "Ð¢Ð¾Ð¿ Ð¿ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ Ó©ÑˆÑ–Ñ€Ñ–Ð»Ð³ÐµÐ½ ÑˆÐµÐºÑ‚ÐµÑƒÐ»ÐµÑ€ %(count)d."
 
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
-msgstr "Топ пен қауымдастық арасындағы шектеуде өзгеріс бомлады."
+msgstr "Ð¢Ð¾Ð¿ Ð¿ÐµÐ½ Ò›Ð°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò› Ð°Ñ€Ð°ÑÑ‹Ð½Ð´Ð°Ò“Ñ‹ ÑˆÐµÐºÑ‚ÐµÑƒÐ´Ðµ Ó©Ð·Ð³ÐµÑ€Ñ–Ñ Ð±Ð¾Ð¼Ð»Ð°Ð´Ñ‹."
+
 

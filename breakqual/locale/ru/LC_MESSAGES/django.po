@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/breakqual/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/breakqual/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 928\n"
 
 #: breakqual/apps.py
 msgid "Break Qualification"
-msgstr "Квалификация в брейк"
+msgstr "ÐšÐ²Ð°Ð»Ð¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ñ Ð² Ð±Ñ€ÐµÐ¹Ðº"
 
 #: breakqual/base.py
 #, python-format
@@ -32,39 +32,39 @@ msgstr[3] ""
 
 #: breakqual/models.py
 msgid "tournament"
-msgstr "турнир"
+msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: breakqual/models.py
 msgid "name"
-msgstr "название"
+msgstr "Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: breakqual/models.py
 msgid "Name to be displayed, e.g., \"ESL\""
-msgstr "Отображаемое название, например, \"ESL\""
+msgstr "ÐžÑ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÐ¼Ð¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, \"ESL\""
 
 #: breakqual/models.py
 msgid "slug"
-msgstr "краткое название"
+msgstr "ÐºÑ€Ð°Ñ‚ÐºÐ¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: breakqual/models.py
 msgid "Slug for URLs, e.g., \"esl\""
-msgstr "Краткое название для URL, например, \"esl\""
+msgstr "ÐšÑ€Ð°Ñ‚ÐºÐ¾Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð´Ð»Ñ URL, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, \"esl\""
 
 #: breakqual/models.py
 msgid "sequence number"
-msgstr "порядковый номер"
+msgstr "Ð¿Ð¾Ñ€ÑÐ´ÐºÐ¾Ð²Ñ‹Ð¹ Ð½Ð¾Ð¼ÐµÑ€"
 
 #: breakqual/models.py
 msgid "The order in which the categories are displayed"
-msgstr "Порядок, в котором демонстрируются категории"
+msgstr "ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼ Ð´ÐµÐ¼Ð¾Ð½ÑÑ‚Ñ€Ð¸Ñ€ÑƒÑŽÑ‚ÑÑ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸"
 
 #: breakqual/models.py
 msgid "break size"
-msgstr "размер брейка"
+msgstr "Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð±Ñ€ÐµÐ¹ÐºÐ°"
 
 #: breakqual/models.py
 msgid "Number of breaking teams in this category"
-msgstr "Количество брейкающихся команд в этой категории"
+msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð² ÑÑ‚Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸"
 
 #: breakqual/models.py
 msgid "Reserve size"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "is general"
-msgstr "общий"
+msgstr "Ð¾Ð±Ñ‰Ð¸Ð¹"
 
 #: breakqual/models.py
 msgid "Are teams eligible for this break by default"
@@ -84,23 +84,23 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "priority"
-msgstr "приоритет"
+msgstr "Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚"
 
 #: breakqual/models.py
 msgid "If a team breaks in multiple categories, higher priority numbers take precedence; teams can break into multiple categories if and only if they all have the same priority"
-msgstr "Если команда брейкается в нескольких категориях, более высокие цифры приоритета категории дают этой категории приоритет; команда может брейкнуться в нескольких категориях, если и только если у всех категорий одинаковый приоритет"
+msgstr "Ð•ÑÐ»Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð±Ñ€ÐµÐ¹ÐºÐ°ÐµÑ‚ÑÑ Ð² Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¸Ñ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÑÑ…, Ð±Ð¾Ð»ÐµÐµ Ð²Ñ‹ÑÐ¾ÐºÐ¸Ðµ Ñ†Ð¸Ñ„Ñ€Ñ‹ Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚Ð° ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð´Ð°ÑŽÑ‚ ÑÑ‚Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚; ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ€ÐµÐ¹ÐºÐ½ÑƒÑ‚ÑŒÑÑ Ð² Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¸Ñ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÑÑ…, ÐµÑÐ»Ð¸ Ð¸ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ ÐµÑÐ»Ð¸ Ñƒ Ð²ÑÐµÑ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹ Ð¾Ð´Ð¸Ð½Ð°ÐºÐ¾Ð²Ñ‹Ð¹ Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚"
 
 #: breakqual/models.py
 msgid "limit"
-msgstr "лимит"
+msgstr "Ð»Ð¸Ð¼Ð¸Ñ‚"
 
 #: breakqual/models.py
 msgid "At most this many teams will be shown on the public tab for this category, or use 0 for no limit"
-msgstr "Такое максимальное количество команд будут показаны в публичном тэбе для этой категории или используйте 0 для отсутствия лимита"
+msgstr "Ð¢Ð°ÐºÐ¾Ðµ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð±ÑƒÐ´ÑƒÑ‚ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ñ‹ Ð² Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾Ð¼ Ñ‚ÑÐ±Ðµ Ð´Ð»Ñ ÑÑ‚Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð¸Ð»Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ 0 Ð´Ð»Ñ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²Ð¸Ñ Ð»Ð¸Ð¼Ð¸Ñ‚Ð°"
 
 #: breakqual/models.py
 msgid "Standard"
-msgstr "Стандарт"
+msgstr "Ð¡Ñ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚"
 
 #: breakqual/models.py
 msgid "AIDA 1996"
@@ -108,71 +108,71 @@ msgstr "AIDA 1996"
 
 #: breakqual/models.py
 msgid "AIDA 2016 (Easters)"
-msgstr "AIDA 2016 (Восточный)"
+msgstr "AIDA 2016 (Ð’Ð¾ÑÑ‚Ð¾Ñ‡Ð½Ñ‹Ð¹)"
 
 #: breakqual/models.py
 msgid "AIDA 2016 (Australs)"
-msgstr "AIDA 2016 (Австралийский)"
+msgstr "AIDA 2016 (ÐÐ²ÑÑ‚Ñ€Ð°Ð»Ð¸Ð¹ÑÐºÐ¸Ð¹)"
 
 #: breakqual/models.py
 msgid "AIDA 2019 (Australs, Dynamic Cap)"
-msgstr "AIDA 2019 (Австралийский, Динамичное ограничение)"
+msgstr "AIDA 2019 (ÐÐ²ÑÑ‚Ñ€Ð°Ð»Ð¸Ð¹ÑÐºÐ¸Ð¹, Ð”Ð¸Ð½Ð°Ð¼Ð¸Ñ‡Ð½Ð¾Ðµ Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ðµ)"
 
 #: breakqual/models.py
 msgid "rule"
-msgstr "правило"
+msgstr "Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾"
 
 #: breakqual/models.py
 msgid "Rule for how the break is calculated (most tournaments should use \"Standard\")"
-msgstr "Правило для расчета брейка (большинство турниров должны использовать \"Стандарт\")"
+msgstr "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð¾ Ð´Ð»Ñ Ñ€Ð°ÑÑ‡ÐµÑ‚Ð° Ð±Ñ€ÐµÐ¹ÐºÐ° (Ð±Ð¾Ð»ÑŒÑˆÐ¸Ð½ÑÑ‚Ð²Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð¾Ð² Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ \"Ð¡Ñ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚\")"
 
 #: breakqual/models.py
 msgid "breaking teams"
-msgstr "брейкающиеся команды"
+msgstr "Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸ÐµÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: breakqual/models.py
 msgid "break category"
-msgstr "категория брейка"
+msgstr "ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ Ð±Ñ€ÐµÐ¹ÐºÐ°"
 
 #: breakqual/models.py
 msgid "break categories"
-msgstr "категории брейка"
+msgstr "ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð±Ñ€ÐµÐ¹ÐºÐ°"
 
 #: breakqual/models.py
 msgid "team"
-msgstr "команда"
+msgstr "ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°"
 
 #: breakqual/models.py
 msgid "rank"
-msgstr "место"
+msgstr "Ð¼ÐµÑÑ‚Ð¾"
 
 #: breakqual/models.py
 msgid "break rank"
-msgstr "брейковый ранг"
+msgstr "Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¹ Ñ€Ð°Ð½Ð³"
 
 #: breakqual/models.py
 msgid "Capped"
-msgstr "Записано"
+msgstr "Ð—Ð°Ð¿Ð¸ÑÐ°Ð½Ð¾"
 
 #: breakqual/models.py
 msgid "Ineligible"
-msgstr "Недоступна"
+msgstr "ÐÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð°"
 
 #: breakqual/models.py
 msgid "Different break"
-msgstr "Другой брейк"
+msgstr "Ð”Ñ€ÑƒÐ³Ð¾Ð¹ Ð±Ñ€ÐµÐ¹Ðº"
 
 #: breakqual/models.py
 msgid "Disqualified"
-msgstr "Дисквалифицирована"
+msgstr "Ð”Ð¸ÑÐºÐ²Ð°Ð»Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°"
 
 #: breakqual/models.py
 msgid "Lost coin toss"
-msgstr "Проиграла по броску монетки"
+msgstr "ÐŸÑ€Ð¾Ð¸Ð³Ñ€Ð°Ð»Ð° Ð¿Ð¾ Ð±Ñ€Ð¾ÑÐºÑƒ Ð¼Ð¾Ð½ÐµÑ‚ÐºÐ¸"
 
 #: breakqual/models.py
 msgid "Withdrawn"
-msgstr "Отозвано"
+msgstr "ÐžÑ‚Ð¾Ð·Ð²Ð°Ð½Ð¾"
 
 #: breakqual/models.py
 msgid "Reserve"
@@ -184,15 +184,15 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "remark"
-msgstr "комментарий"
+msgstr "ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹"
 
 #: breakqual/models.py
 msgid "Used to explain why an otherwise-qualified team didn't break"
-msgstr "Используется для объяснения того, почему не брейкнулась команда, набравшая необходимое количество очков"
+msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð´Ð»Ñ Ð¾Ð±ÑŠÑÑÐ½ÐµÐ½Ð¸Ñ Ñ‚Ð¾Ð³Ð¾, Ð¿Ð¾Ñ‡ÐµÐ¼Ñƒ Ð½Ðµ Ð±Ñ€ÐµÐ¹ÐºÐ½ÑƒÐ»Ð°ÑÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°, Ð½Ð°Ð±Ñ€Ð°Ð²ÑˆÐ°Ñ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¾Ñ‡ÐºÐ¾Ð²"
 
 #: breakqual/models.py
 msgid "breaking team"
-msgstr "брейкающаяся команда"
+msgstr "Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð°ÑÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°"
 
 #: breakqual/templates/break_categories_edit.html
 #: breakqual/templates/breaking_index.html
@@ -216,19 +216,19 @@ msgstr ""
 #: breakqual/templates/breaking_adjs.html
 #, python-format
 msgid "Adjudicators can be marked as breaking in the <a href=\"%(feedback_url)s\">Feedback Overview</a> section."
-msgstr "Судьи могут быть помечены как брейкающиеся в разделе <a href=\"%(feedback_url)s\">Обзор обратной связи</a>."
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¿Ð¾Ð¼ÐµÑ‡ÐµÐ½Ñ‹ ÐºÐ°Ðº Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸ÐµÑÑ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ <a href=\"%(feedback_url)s\">ÐžÐ±Ð·Ð¾Ñ€ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸</a>."
 
 #: breakqual/templates/breaking_index.html
 msgid "Breaks"
-msgstr "Брейки"
+msgstr "Ð‘Ñ€ÐµÐ¹ÐºÐ¸"
 
 #: breakqual/templates/breaking_index.html
-msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://tabbycat.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
+msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://NekoTab.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
 msgstr ""
 
 #: breakqual/templates/breaking_index.html
 msgid "Team Eligibility"
-msgstr "Доступность команд"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: breakqual/templates/breaking_index.html
 #: breakqual/templates/breaking_teams.html
@@ -236,151 +236,151 @@ msgstr "Доступность команд"
 #: breakqual/templates/public_break_index.html breakqual/views.py
 #, python-format
 msgid "%(category)s Break"
-msgstr "%(category)s Брейк"
+msgstr "%(category)s Ð‘Ñ€ÐµÐ¹Ðº"
 
 #: breakqual/templates/breaking_index.html
 #, python-format
 msgid "<span class=\"badge float-right badge-light\"> %(size)s Spots </span>"
-msgstr "<span class=\"badge float-right badge-light\"> %(size)s места </span>"
+msgstr "<span class=\"badge float-right badge-light\"> %(size)s Ð¼ÐµÑÑ‚Ð° </span>"
 
 #: breakqual/templates/breaking_index.html
 msgid "Teams Eligible"
-msgstr "Доступные команды"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: breakqual/templates/breaking_index.html
 msgid "Breaking"
-msgstr "Брейкаются"
+msgstr "Ð‘Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‚ÑÑ"
 
 #: breakqual/templates/breaking_index.html
 msgid "Excluded"
-msgstr "Исключены"
+msgstr "Ð˜ÑÐºÐ»ÑŽÑ‡ÐµÐ½Ñ‹"
 
 #: breakqual/templates/breaking_index.html
 msgid "Eligible"
-msgstr "Доступны"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹"
 
 #: breakqual/templates/breaking_index.html
 msgid "Mark teams as eligible"
-msgstr "Отметить команду как доступную"
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½ÑƒÑŽ"
 
 #: breakqual/templates/breaking_index.html
 msgid "Generate this break"
-msgstr "Генерировать этот брейк"
+msgstr "Ð“ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ Ð±Ñ€ÐµÐ¹Ðº"
 
 #: breakqual/templates/breaking_index.html
 msgid "View this break"
-msgstr "Посмотреть этот брейк"
+msgstr "ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ ÑÑ‚Ð¾Ñ‚ Ð±Ñ€ÐµÐ¹Ðº"
 
 #: breakqual/templates/breaking_teams.html
 msgid "publicly visible"
-msgstr "видим публично"
+msgstr "Ð²Ð¸Ð´Ð¸Ð¼ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾"
 
 #: breakqual/templates/breaking_teams.html
 msgid "not publicly visible"
-msgstr "не видим публично"
+msgstr "Ð½Ðµ Ð²Ð¸Ð´Ð¸Ð¼ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾"
 
 #: breakqual/templates/breaking_teams.html
 msgid "Delete and Regenerate All Breaks"
-msgstr "Удалить и создать заново все брейки"
+msgstr "Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¸ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ð·Ð°Ð½Ð¾Ð²Ð¾ Ð²ÑÐµ Ð±Ñ€ÐµÐ¹ÐºÐ¸"
 
 #: breakqual/templates/breaking_teams.html
 msgid "Generate the Break for All Categories"
-msgstr "Создать брейк для всех категорий"
+msgstr "Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð±Ñ€ÐµÐ¹Ðº Ð´Ð»Ñ Ð²ÑÐµÑ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹"
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "There are <strong>0 teams marked as eligible</strong> for this category — you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
-msgstr "Еть <strong> 0 команд, отмеченных как доступные </strong> для этой категории - вам нужно <a href=\"%(url)s\" class=\"alert-link\"> добавить несколько доступных команд</a> для того, чтобы правильно сгенерировать этот брейк."
+msgid "There are <strong>0 teams marked as eligible</strong> for this category â€” you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
+msgstr "Ð•Ñ‚ÑŒ <strong> 0 ÐºÐ¾Ð¼Ð°Ð½Ð´, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ñ… ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ </strong> Ð´Ð»Ñ ÑÑ‚Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ - Ð²Ð°Ð¼ Ð½ÑƒÐ¶Ð½Ð¾ <a href=\"%(url)s\" class=\"alert-link\"> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´</a> Ð´Ð»Ñ Ñ‚Ð¾Ð³Ð¾, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¾ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ Ð±Ñ€ÐµÐ¹Ðº."
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "This break uses the <strong>%(category)s</strong> rule — if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
-msgstr "Этот брейк использует правило <strong>%(category)s</strong> — если вы хотите использовать другое правило, вы должны <a href=\"%(url)s\"> изменить правило для этой категории брейка в области Редактировать базу данных</a>, а затем удалить и восстановить все брейки. Пожалуйста, проверьте это перед объявлением брейка или его опубликованием. Код, который генерирует брейк, не тестируется для крайних случаев."
+msgid "This break uses the <strong>%(category)s</strong> rule â€” if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
+msgstr "Ð­Ñ‚Ð¾Ñ‚ Ð±Ñ€ÐµÐ¹Ðº Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ <strong>%(category)s</strong> â€” ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ñ€ÑƒÐ³Ð¾Ðµ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾, Ð²Ñ‹ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ <a href=\"%(url)s\"> Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð¾ Ð´Ð»Ñ ÑÑ‚Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð±Ñ€ÐµÐ¹ÐºÐ° Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…</a>, Ð° Ð·Ð°Ñ‚ÐµÐ¼ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¸ Ð²Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð²ÑÐµ Ð±Ñ€ÐµÐ¹ÐºÐ¸. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ ÑÑ‚Ð¾ Ð¿ÐµÑ€ÐµÐ´ Ð¾Ð±ÑŠÑÐ²Ð»ÐµÐ½Ð¸ÐµÐ¼ Ð±Ñ€ÐµÐ¹ÐºÐ° Ð¸Ð»Ð¸ ÐµÐ³Ð¾ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð¸ÐµÐ¼. ÐšÐ¾Ð´, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð³ÐµÐ½ÐµÑ€Ð¸Ñ€ÑƒÐµÑ‚ Ð±Ñ€ÐµÐ¹Ðº, Ð½Ðµ Ñ‚ÐµÑÑ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð´Ð»Ñ ÐºÑ€Ð°Ð¹Ð½Ð¸Ñ… ÑÐ»ÑƒÑ‡Ð°ÐµÐ²."
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
 msgid "To edit the break use the remarks in the right-hand column. Any team with a remark will be excluded from this break (the break generator will sometimes insert its own remarks). Then, click the appropriate Save Remarks and Update button below. If you have complicated break rules (for example, if some teams are allowed to choose their preferred category) then you may have to update remarks a few times to get the correct break. As a last resort, you can <a href=\"%(url)s\"> edit the breaking teams list directly in the Edit Database area</a>."
-msgstr "Чтобы отредактировать брейк, используйте комментарии в правой колонке. Любая команда с комментарием будет исключена из этого брейка (генератор брейка иногда вставляет собственные комментарии). Затем нажмите на соответствующую кнопку Сохранить Комментарии и Обновить ниже. Если у вас есть сложные правила брейка (например, если некоторым командам разрешено выбрать предпочтительную категорию брейка), то вам может потребоваться обновить замечания несколько раз, чтобы получить правильный брейк. В последнем случае вы можете <a href=\"%(url)s\"> изменить список брейкающихся непосредственно в области Редактировать базу данных</a>."
+msgstr "Ð§Ñ‚Ð¾Ð±Ñ‹ Ð¾Ñ‚Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ñ€ÐµÐ¹Ðº, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸ Ð² Ð¿Ñ€Ð°Ð²Ð¾Ð¹ ÐºÐ¾Ð»Ð¾Ð½ÐºÐµ. Ð›ÑŽÐ±Ð°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ñ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ¼ Ð±ÑƒÐ´ÐµÑ‚ Ð¸ÑÐºÐ»ÑŽÑ‡ÐµÐ½Ð° Ð¸Ð· ÑÑ‚Ð¾Ð³Ð¾ Ð±Ñ€ÐµÐ¹ÐºÐ° (Ð³ÐµÐ½ÐµÑ€Ð°Ñ‚Ð¾Ñ€ Ð±Ñ€ÐµÐ¹ÐºÐ° Ð¸Ð½Ð¾Ð³Ð´Ð° Ð²ÑÑ‚Ð°Ð²Ð»ÑÐµÑ‚ ÑÐ¾Ð±ÑÑ‚Ð²ÐµÐ½Ð½Ñ‹Ðµ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸). Ð—Ð°Ñ‚ÐµÐ¼ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð½Ð° ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸ Ð¸ ÐžÐ±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð½Ð¸Ð¶Ðµ. Ð•ÑÐ»Ð¸ Ñƒ Ð²Ð°Ñ ÐµÑÑ‚ÑŒ ÑÐ»Ð¾Ð¶Ð½Ñ‹Ðµ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð° Ð±Ñ€ÐµÐ¹ÐºÐ° (Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, ÐµÑÐ»Ð¸ Ð½ÐµÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼ Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¾ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ñ‚Ð¸Ñ‚ÐµÐ»ÑŒÐ½ÑƒÑŽ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÑŽ Ð±Ñ€ÐµÐ¹ÐºÐ°), Ñ‚Ð¾ Ð²Ð°Ð¼ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ð¾Ñ‚Ñ€ÐµÐ±Ð¾Ð²Ð°Ñ‚ÑŒÑÑ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð·Ð°Ð¼ÐµÑ‡Ð°Ð½Ð¸Ñ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€Ð°Ð·, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Ð¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ñ‹Ð¹ Ð±Ñ€ÐµÐ¹Ðº. Ð’ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ¼ ÑÐ»ÑƒÑ‡Ð°Ðµ Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ <a href=\"%(url)s\"> Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÐ¿Ð¸ÑÐ¾Ðº Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ Ð½ÐµÐ¿Ð¾ÑÑ€ÐµÐ´ÑÑ‚Ð²ÐµÐ½Ð½Ð¾ Ð² Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…</a>."
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
 msgid "The <strong>public breaking teams</strong> configuration setting is enabled. As soon as you click the button, the breaking teams list will be visible on the public site, before you have a chance to double-check it! It is strongly recommended that you disable this setting on the <a href=\"%(options_url)s\"> tournament configuration page</a> before generating the team breaks."
-msgstr "Включена настройка <strong> публичного объявления </strong> брейкающихся команд. Как только вы нажмете на кнопку, список брейкающихся команд будет публично виден на сайте без возможности его перепроверить! Очень рекомендуем отключить эту функцию на <a href=\"%(options_url)s\"> странице настроек турнира </a> перед созданием командного брейка."
+msgstr "Ð’ÐºÐ»ÑŽÑ‡ÐµÐ½Ð° Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ° <strong> Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾Ð³Ð¾ Ð¾Ð±ÑŠÑÐ²Ð»ÐµÐ½Ð¸Ñ </strong> Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´. ÐšÐ°Ðº Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð²Ñ‹ Ð½Ð°Ð¶Ð¼ÐµÑ‚Ðµ Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ, ÑÐ¿Ð¸ÑÐ¾Ðº Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð±ÑƒÐ´ÐµÑ‚ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð²Ð¸Ð´ÐµÐ½ Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ Ð±ÐµÐ· Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚Ð¸ ÐµÐ³Ð¾ Ð¿ÐµÑ€ÐµÐ¿Ñ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ! ÐžÑ‡ÐµÐ½ÑŒ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÐµÐ¼ Ð¾Ñ‚ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ ÑÑ‚Ñƒ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑŽ Ð½Ð° <a href=\"%(options_url)s\"> ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° </a> Ð¿ÐµÑ€ÐµÐ´ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸ÐµÐ¼ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ð¾Ð³Ð¾ Ð±Ñ€ÐµÐ¹ÐºÐ°."
 
 #: breakqual/templates/breaking_teams.html
-msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious — you can regenerate it later."
-msgstr "Брейк ещё не был сгенерирован. Хотите сгенерировать брейк для всех категорий? Надежнее сгенерировать брейк до завершения всех отборочных раундов, если вам любопытно - вы можете сгенерировать его заново позже."
+msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious â€” you can regenerate it later."
+msgstr "Ð‘Ñ€ÐµÐ¹Ðº ÐµÑ‰Ñ‘ Ð½Ðµ Ð±Ñ‹Ð» ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½. Ð¥Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ñ€ÐµÐ¹Ðº Ð´Ð»Ñ Ð²ÑÐµÑ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹? ÐÐ°Ð´ÐµÐ¶Ð½ÐµÐµ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ñ€ÐµÐ¹Ðº Ð´Ð¾ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¸Ñ Ð²ÑÐµÑ… Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð², ÐµÑÐ»Ð¸ Ð²Ð°Ð¼ Ð»ÑŽÐ±Ð¾Ð¿Ñ‹Ñ‚Ð½Ð¾ - Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐµÐ³Ð¾ Ð·Ð°Ð½Ð¾Ð²Ð¾ Ð¿Ð¾Ð·Ð¶Ðµ."
 
 #: breakqual/templates/breaking_teams.html
 msgid "<strong>Caution!</strong> The \"public breaking teams\" option is turned on, so the break is publicly visible. If you update the break(s), the changes will become visible <strong>immediately</strong>, <strong>without a chance for you to review them</strong>."
-msgstr "<strong>Предупреждение!</strong> Опция \"публикация брейков\" включена, поэтому брейк виден публично. Если вы обновите брейки, изменения будут видны <strong>немедленно</strong>, <strong>без шанса изменить их</strong>."
+msgstr "<strong>ÐŸÑ€ÐµÐ´ÑƒÐ¿Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸Ðµ!</strong> ÐžÐ¿Ñ†Ð¸Ñ \"Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ†Ð¸Ñ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²\" Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð°, Ð¿Ð¾ÑÑ‚Ð¾Ð¼Ñƒ Ð±Ñ€ÐµÐ¹Ðº Ð²Ð¸Ð´ÐµÐ½ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð±Ñ€ÐµÐ¹ÐºÐ¸, Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð±ÑƒÐ´ÑƒÑ‚ Ð²Ð¸Ð´Ð½Ñ‹ <strong>Ð½ÐµÐ¼ÐµÐ´Ð»ÐµÐ½Ð½Ð¾</strong>, <strong>Ð±ÐµÐ· ÑˆÐ°Ð½ÑÐ° Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸Ñ…</strong>."
 
 #: breakqual/templates/breaking_teams.html
 msgid "Save Remarks and Update All Breaks"
-msgstr "Сохранить комментарии и обновить все брейки"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸ Ð¸ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð²ÑÐµ Ð±Ñ€ÐµÐ¹ÐºÐ¸"
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
 msgid "Save Remarks and Update the %(category)s Break"
-msgstr "Сохранить комментарии и обновить брейк %(category)s"
+msgstr "Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸ Ð¸ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð±Ñ€ÐµÐ¹Ðº %(category)s"
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
 msgid "There are <strong>%(count)s teams marked as eligible</strong> for this category. Would you like to add more eligible teams?"
-msgstr "Есть <strong>%(count)s команды, отмеченные как доступные </strong> для этой категории. Хотите добавить больше доступных команд?"
+msgstr "Ð•ÑÑ‚ÑŒ <strong>%(count)s ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹, Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ðµ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ </strong> Ð´Ð»Ñ ÑÑ‚Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸. Ð¥Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´?"
 
 #: breakqual/templates/breakqual_subnav.html
 msgid "Overview"
-msgstr "Обзор"
+msgstr "ÐžÐ±Ð·Ð¾Ñ€"
 
 #: breakqual/templates/breakqual_subnav.html
 msgid "Adjudicators' Break"
-msgstr "Брейк судей"
+msgstr "Ð‘Ñ€ÐµÐ¹Ðº ÑÑƒÐ´ÐµÐ¹"
 
 #: breakqual/templates/edit_break_eligibility.html
 #, python-format
 msgid "It looks like there aren't any break categories are defined. If you'd like to create new break categories you'll need to first <a href=\"%(categories_url)s\" class=\"alert-link\"> add them in the Edit Database area</a>, then return to this page to set team's eligibility."
-msgstr "Похоже что не определены категории брейка. Если вы хотите создать новые категории для брейка, вам нужно сначала <a href=\"%(categories_url)s\" class=\"alert-link\"> добавить их в область Редактировать базу данных, затем вернуться к этой странице, чтобы установить доступность команд."
+msgstr "ÐŸÐ¾Ñ…Ð¾Ð¶Ðµ Ñ‡Ñ‚Ð¾ Ð½Ðµ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ñ‹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð±Ñ€ÐµÐ¹ÐºÐ°. Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ðµ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð´Ð»Ñ Ð±Ñ€ÐµÐ¹ÐºÐ°, Ð²Ð°Ð¼ Ð½ÑƒÐ¶Ð½Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° <a href=\"%(categories_url)s\" class=\"alert-link\"> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¸Ñ… Ð² Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð±Ð°Ð·Ñƒ Ð´Ð°Ð½Ð½Ñ‹Ñ…, Ð·Ð°Ñ‚ÐµÐ¼ Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº ÑÑ‚Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´."
 
 #: breakqual/templates/public_break_index.html breakqual/views.py
 msgid "Break"
-msgstr "Брейк"
+msgstr "Ð‘Ñ€ÐµÐ¹Ðº"
 
 #: breakqual/templates/public_break_index.html
 msgid "Adjudicators"
-msgstr "Судьи"
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸"
 
 #. Translators: abbreviation for "grand final"
 #: breakqual/utils.py
 msgid "Grand Final"
-msgstr "Основной финал"
+msgstr "ÐžÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ñ„Ð¸Ð½Ð°Ð»"
 
 #: breakqual/utils.py
 msgid "GF"
-msgstr "Ф"
+msgstr "Ð¤"
 
 #. Translators: abbreviation for "semifinals"
 #: breakqual/utils.py
 msgid "Semifinals"
-msgstr "Полуфиналы"
+msgstr "ÐŸÐ¾Ð»ÑƒÑ„Ð¸Ð½Ð°Ð»Ñ‹"
 
 #: breakqual/utils.py
 msgid "SF"
-msgstr "ПФ"
+msgstr "ÐŸÐ¤"
 
 #. Translators: abbreviation for "quarterfinals"
 #: breakqual/utils.py
 msgid "Quarterfinals"
-msgstr "Четвертьфиналы"
+msgstr "Ð§ÐµÑ‚Ð²ÐµÑ€Ñ‚ÑŒÑ„Ð¸Ð½Ð°Ð»Ñ‹"
 
 #: breakqual/utils.py
 msgid "QF"
-msgstr "ЧФ"
+msgstr "Ð§Ð¤"
 
 #. Translators: abbreviation for "octofinals"
 #: breakqual/utils.py
 msgid "Octofinals"
-msgstr "1/8 финала"
+msgstr "1/8 Ñ„Ð¸Ð½Ð°Ð»Ð°"
 
 #: breakqual/utils.py
 msgid "OF"
@@ -389,7 +389,7 @@ msgstr "1/8"
 #. Translators: abbreviation for "double-octofinals"
 #: breakqual/utils.py
 msgid "Double-Octofinals"
-msgstr "1/16 финала"
+msgstr "1/16 Ñ„Ð¸Ð½Ð°Ð»Ð°"
 
 #: breakqual/utils.py
 msgid "DOF"
@@ -398,7 +398,7 @@ msgstr "1/16"
 #. Translators: abbreviation for "triple-octofinals"
 #: breakqual/utils.py
 msgid "Triple-Octofinals"
-msgstr "1/32 финала"
+msgstr "1/32 Ñ„Ð¸Ð½Ð°Ð»Ð°"
 
 #: breakqual/utils.py
 msgid "TOF"
@@ -483,7 +483,7 @@ msgstr ""
 
 #: breakqual/utils.py
 msgid "Unknown break round"
-msgstr "Неизвестный брейковый раунд"
+msgstr "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ñ‹Ð¹ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´"
 
 #: breakqual/utils.py
 msgid "UBR"
@@ -492,38 +492,38 @@ msgstr "UBR"
 #: breakqual/views.py
 #, python-format
 msgid "There was an error generating the break for category %(category)s: %(message)s"
-msgstr "Произошла ошибка при генерации брейка для категории %(category)s%(message)s"
+msgstr "ÐŸÑ€Ð¾Ð¸Ð·Ð¾ÑˆÐ»Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð³ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ð±Ñ€ÐµÐ¹ÐºÐ° Ð´Ð»Ñ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ %(category)s%(message)s"
 
 #: breakqual/views.py
 msgid "Eligible for"
-msgstr "Доступен для"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ð´Ð»Ñ"
 
 #: breakqual/views.py
 msgid "Edit Remark"
-msgstr "Редактировать комментарий"
+msgstr "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹"
 
 #: breakqual/views.py
 #, python-format
 msgid "Changes to breaking team remarks saved and teams break updated for the following break categories: %(categories)s."
-msgstr "Изменения в комментариях к брейковым командам сохранены и командный брейк обновлен для следующих брейковых категорий: %(categories)s."
+msgstr "Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð² ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÑÑ… Ðº Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¼ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹ Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð±Ñ€ÐµÐ¹Ðº Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½ Ð´Ð»Ñ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ñ… Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ñ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹: %(categories)s."
 
 #: breakqual/views.py
 #, python-format
 msgid "Changes to breaking team remarks saved and teams break updated for break category %(category)s."
-msgstr "Изменения в комментариях к брейковым командам сохранены и командный брейк обновлен для брейковой категории %(category)s."
+msgstr "Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð² ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÑÑ… Ðº Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¼ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹ Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð±Ñ€ÐµÐ¹Ðº Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½ Ð´Ð»Ñ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ %(category)s."
 
 #: breakqual/views.py
 msgid "Changes to breaking team remarks saved."
-msgstr "Изменения в комментариях к брейковым командам сохранены."
+msgstr "Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð² ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÑÑ… Ðº Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ð¼ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹."
 
 #: breakqual/views.py
 #, python-format
 msgid "Teams break generated for the following break categories: %(categories)s."
-msgstr "Брейк сгенерирован для следующих категорий команд: %(categories)s."
+msgstr "Ð‘Ñ€ÐµÐ¹Ðº ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð´Ð»Ñ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ñ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´: %(categories)s."
 
 #: breakqual/views.py
 msgid "Breaking Adjudicators"
-msgstr "Брейкающиеся судьи"
+msgstr "Ð‘Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸ÐµÑÑ ÑÑƒÐ´ÑŒÐ¸"
 
 #: breakqual/views.py
 msgid "Four-team formats require the break size to be either six times or four times a power of two."
@@ -531,19 +531,20 @@ msgstr ""
 
 #: breakqual/views.py
 msgid "Break Eligibility"
-msgstr "Доступность для брейка"
+msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ Ð´Ð»Ñ Ð±Ñ€ÐµÐ¹ÐºÐ°"
 
 #: breakqual/views.py
 #, python-format
 msgid "%s Speakers"
-msgstr "%s Спикеры"
+msgstr "%s Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: breakqual/views.py
 #, python-format
 msgid "Team has %(nspeakers)s speaker with the %(category)s speaker category assigned"
 msgid_plural "Team has %(nspeakers)s speakers with the %(category)s speaker category assigned"
-msgstr[0] "В команде %(nspeakers)s спикер, которому предоставлена %(category)s категория"
-msgstr[1] "В команде %(nspeakers)s спикеров, которым предоставлена %(category)s категория"
-msgstr[2] "В команде %(nspeakers)s спикеров, которым предоставлена %(category)s категория"
-msgstr[3] "В команде %(nspeakers)s спикеров, которым предоставлена %(category)s категория"
+msgstr[0] "Ð’ ÐºÐ¾Ð¼Ð°Ð½Ð´Ðµ %(nspeakers)s ÑÐ¿Ð¸ÐºÐµÑ€, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð° %(category)s ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ"
+msgstr[1] "Ð’ ÐºÐ¾Ð¼Ð°Ð½Ð´Ðµ %(nspeakers)s ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð° %(category)s ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ"
+msgstr[2] "Ð’ ÐºÐ¾Ð¼Ð°Ð½Ð´Ðµ %(nspeakers)s ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð° %(category)s ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ"
+msgstr[3] "Ð’ ÐºÐ¾Ð¼Ð°Ð½Ð´Ðµ %(nspeakers)s ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð° %(category)s ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ"
+
 

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/breakqual/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/breakqual/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 928\n"
 
 #: breakqual/apps.py
 msgid "Break Qualification"
-msgstr "资格"
+msgstr "èµ„æ ¼"
 
 #: breakqual/base.py
 #, python-format
@@ -29,11 +29,11 @@ msgstr[0] ""
 
 #: breakqual/models.py
 msgid "tournament"
-msgstr "比赛"
+msgstr "æ¯”èµ›"
 
 #: breakqual/models.py
 msgid "name"
-msgstr "名称"
+msgstr "åç§°"
 
 #: breakqual/models.py
 msgid "Name to be displayed, e.g., \"ESL\""
@@ -97,7 +97,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "Standard"
-msgstr "基准"
+msgstr "åŸºå‡†"
 
 #: breakqual/models.py
 msgid "AIDA 1996"
@@ -117,7 +117,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "rule"
-msgstr "规定"
+msgstr "è§„å®š"
 
 #: breakqual/models.py
 msgid "Rule for how the break is calculated (most tournaments should use \"Standard\")"
@@ -125,11 +125,11 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "breaking teams"
-msgstr "有资格的队伍"
+msgstr "æœ‰èµ„æ ¼çš„é˜Ÿä¼"
 
 #: breakqual/models.py
 msgid "break category"
-msgstr "类别的资格"
+msgstr "ç±»åˆ«çš„èµ„æ ¼"
 
 #: breakqual/models.py
 msgid "break categories"
@@ -137,11 +137,11 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "team"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: breakqual/models.py
 msgid "rank"
-msgstr "排名"
+msgstr "æŽ’å"
 
 #: breakqual/models.py
 msgid "break rank"
@@ -161,11 +161,11 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "Disqualified"
-msgstr "取消资格了"
+msgstr "å–æ¶ˆèµ„æ ¼äº†"
 
 #: breakqual/models.py
 msgid "Lost coin toss"
-msgstr "掷硬币败北了"
+msgstr "æŽ·ç¡¬å¸è´¥åŒ—äº†"
 
 #: breakqual/models.py
 msgid "Withdrawn"
@@ -189,7 +189,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "breaking team"
-msgstr "有资格的队伍"
+msgstr "æœ‰èµ„æ ¼çš„é˜Ÿä¼"
 
 #: breakqual/templates/break_categories_edit.html
 #: breakqual/templates/breaking_index.html
@@ -217,10 +217,10 @@ msgstr ""
 
 #: breakqual/templates/breaking_index.html
 msgid "Breaks"
-msgstr "资格"
+msgstr "èµ„æ ¼"
 
 #: breakqual/templates/breaking_index.html
-msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://tabbycat.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
+msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://NekoTab.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
 msgstr ""
 
 #: breakqual/templates/breaking_index.html
@@ -233,7 +233,7 @@ msgstr ""
 #: breakqual/templates/public_break_index.html breakqual/views.py
 #, python-format
 msgid "%(category)s Break"
-msgstr "%(category)s的资格"
+msgstr "%(category)sçš„èµ„æ ¼"
 
 #: breakqual/templates/breaking_index.html
 #, python-format
@@ -246,7 +246,7 @@ msgstr ""
 
 #: breakqual/templates/breaking_index.html
 msgid "Breaking"
-msgstr "有资格"
+msgstr "æœ‰èµ„æ ¼"
 
 #: breakqual/templates/breaking_index.html
 msgid "Excluded"
@@ -286,12 +286,12 @@ msgstr ""
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "There are <strong>0 teams marked as eligible</strong> for this category — you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
+msgid "There are <strong>0 teams marked as eligible</strong> for this category â€” you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "This break uses the <strong>%(category)s</strong> rule — if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
+msgid "This break uses the <strong>%(category)s</strong> rule â€” if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
@@ -305,7 +305,7 @@ msgid "The <strong>public breaking teams</strong> configuration setting is enabl
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
-msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious — you can regenerate it later."
+msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious â€” you can regenerate it later."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
@@ -341,71 +341,71 @@ msgstr ""
 
 #: breakqual/templates/public_break_index.html breakqual/views.py
 msgid "Break"
-msgstr "资格"
+msgstr "èµ„æ ¼"
 
 #: breakqual/templates/public_break_index.html
 msgid "Adjudicators"
-msgstr "裁判"
+msgstr "è£åˆ¤"
 
 #. Translators: abbreviation for "grand final"
 #: breakqual/utils.py
 msgid "Grand Final"
-msgstr "总决赛"
+msgstr "æ€»å†³èµ›"
 
 #: breakqual/utils.py
 msgid "GF"
-msgstr "总决赛"
+msgstr "æ€»å†³èµ›"
 
 #. Translators: abbreviation for "semifinals"
 #: breakqual/utils.py
 msgid "Semifinals"
-msgstr "四强赛"
+msgstr "å››å¼ºèµ›"
 
 #: breakqual/utils.py
 msgid "SF"
-msgstr "半决赛"
+msgstr "åŠå†³èµ›"
 
 #. Translators: abbreviation for "quarterfinals"
 #: breakqual/utils.py
 msgid "Quarterfinals"
-msgstr "八强赛"
+msgstr "å…«å¼ºèµ›"
 
 #: breakqual/utils.py
 msgid "QF"
-msgstr "八强赛"
+msgstr "å…«å¼ºèµ›"
 
 #. Translators: abbreviation for "octofinals"
 #: breakqual/utils.py
 msgid "Octofinals"
-msgstr "十六强赛"
+msgstr "åå…­å¼ºèµ›"
 
 #: breakqual/utils.py
 msgid "OF"
-msgstr "一十六强赛"
+msgstr "ä¸€åå…­å¼ºèµ›"
 
 #. Translators: abbreviation for "double-octofinals"
 #: breakqual/utils.py
 msgid "Double-Octofinals"
-msgstr "三十二强赛"
+msgstr "ä¸‰åäºŒå¼ºèµ›"
 
 #: breakqual/utils.py
 msgid "DOF"
-msgstr "三十二强赛"
+msgstr "ä¸‰åäºŒå¼ºèµ›"
 
 #. Translators: abbreviation for "triple-octofinals"
 #: breakqual/utils.py
 msgid "Triple-Octofinals"
-msgstr "六十四强赛"
+msgstr "å…­åå››å¼ºèµ›"
 
 #: breakqual/utils.py
 msgid "TOF"
-msgstr "六十四强赛"
+msgstr "å…­åå››å¼ºèµ›"
 
 #. Translators: abbreviation for "finals" - first character of category name
 #: breakqual/utils.py
 #, python-format
 msgid "%s Finals"
-msgstr "%s的决赛"
+msgstr "%sçš„å†³èµ›"
 
 #: breakqual/utils.py
 #, python-format
@@ -416,7 +416,7 @@ msgstr ""
 #: breakqual/utils.py
 #, python-format
 msgid "%s Semifinals"
-msgstr "%s的四强赛"
+msgstr "%sçš„å››å¼ºèµ›"
 
 #: breakqual/utils.py
 #, python-format
@@ -427,7 +427,7 @@ msgstr ""
 #: breakqual/utils.py
 #, python-format
 msgid "%s Quarterfinals"
-msgstr "%s的八强赛"
+msgstr "%sçš„å…«å¼ºèµ›"
 
 #: breakqual/utils.py
 #, python-format
@@ -438,7 +438,7 @@ msgstr ""
 #: breakqual/utils.py
 #, python-format
 msgid "%s Octofinals"
-msgstr "%s的十六强赛"
+msgstr "%sçš„åå…­å¼ºèµ›"
 
 #: breakqual/utils.py
 #, python-format
@@ -449,7 +449,7 @@ msgstr ""
 #: breakqual/utils.py
 #, python-format
 msgid "%s Double-Octofinals"
-msgstr "%s的三十二强赛"
+msgstr "%sçš„ä¸‰åäºŒå¼ºèµ›"
 
 #: breakqual/utils.py
 #, python-format
@@ -460,7 +460,7 @@ msgstr ""
 #: breakqual/utils.py
 #, python-format
 msgid "%s Triple-Octofinals"
-msgstr "%s的六十四强赛"
+msgstr "%sçš„å…­åå››å¼ºèµ›"
 
 #: breakqual/utils.py
 #, python-format
@@ -520,7 +520,7 @@ msgstr ""
 
 #: breakqual/views.py
 msgid "Breaking Adjudicators"
-msgstr "有资格的裁判"
+msgstr "æœ‰èµ„æ ¼çš„è£åˆ¤"
 
 #: breakqual/views.py
 msgid "Four-team formats require the break size to be either six times or four times a power of two."
@@ -533,11 +533,12 @@ msgstr ""
 #: breakqual/views.py
 #, python-format
 msgid "%s Speakers"
-msgstr "%s讲员"
+msgstr "%sè®²å‘˜"
 
 #: breakqual/views.py
 #, python-format
 msgid "Team has %(nspeakers)s speaker with the %(category)s speaker category assigned"
 msgid_plural "Team has %(nspeakers)s speakers with the %(category)s speaker category assigned"
 msgstr[0] ""
+
 

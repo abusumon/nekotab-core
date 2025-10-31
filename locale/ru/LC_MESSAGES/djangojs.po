@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-14 04:50+1100\n"
 "PO-Revision-Date: 2020-07-10 17:00\n"
@@ -11,109 +11,109 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/djangojs.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/djangojs.po\n"
 "X-Crowdin-File-ID: 962\n"
 
 #: checkins/templates/CheckInScanContainer.vue:
 msgid "Scan Using Camera"
-msgstr "Сканировать камерой"
+msgstr "Ð¡ÐºÐ°Ð½Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ°Ð¼ÐµÑ€Ð¾Ð¹"
 
 #: checkins/templates/CheckInScanContainer.vue:
 msgid "Stop Camera Scan"
-msgstr "Остановить сканирование камерой"
+msgstr "ÐžÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ ÑÐºÐ°Ð½Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ ÐºÐ°Ð¼ÐµÑ€Ð¾Ð¹"
 
 #: checkins/templates/CheckInScanContainer.vue:
 msgid "Turn On Sounds"
-msgstr "Включить звук"
+msgstr "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð·Ð²ÑƒÐº"
 
 #. Translators: %1: Time of checkin, %2: Barcode number, %3: Name of "owner"
 #: checkins/templates/CheckInScanContainer.vue:
 msgid "%1 checked in %2: %3"
-msgstr "%1зарегистрирован в %2: %3"
+msgstr "%1Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð² %2: %3"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "All"
-msgstr "Все"
+msgstr "Ð’ÑÐµ"
 
 #. Translators: %1: Option name
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "By %1"
-msgstr "На %1"
+msgstr "ÐÐ° %1"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "No matching rooms found."
-msgstr "Не найдено соответствующих аудиторий."
+msgstr "ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ñ… Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹."
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "No matching people found."
-msgstr "Не найдено соответствующих людей."
+msgstr "ÐÐµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ñ… Ð»ÑŽÐ´ÐµÐ¹."
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "This page will live-update with new check-ins as they occur although the initial list may be up to a minute old."
-msgstr "Эта страница будет автоматически обновляться с новыми регистрациями по мере того, как они будут поступать, хотя изначальный список может быть минутной давности."
+msgstr "Ð­Ñ‚Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð±ÑƒÐ´ÐµÑ‚ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÑ‚ÑŒÑÑ Ñ Ð½Ð¾Ð²Ñ‹Ð¼Ð¸ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÑÐ¼Ð¸ Ð¿Ð¾ Ð¼ÐµÑ€Ðµ Ñ‚Ð¾Ð³Ð¾, ÐºÐ°Ðº Ð¾Ð½Ð¸ Ð±ÑƒÐ´ÑƒÑ‚ Ð¿Ð¾ÑÑ‚ÑƒÐ¿Ð°Ñ‚ÑŒ, Ñ…Ð¾Ñ‚Ñ Ð¸Ð·Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¼Ð¸Ð½ÑƒÑ‚Ð½Ð¾Ð¹ Ð´Ð°Ð²Ð½Ð¾ÑÑ‚Ð¸."
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>✓</strong> All"
-msgstr "<strong>✓</strong> Все"
+msgid "<strong>âœ“</strong> All"
+msgstr "<strong>âœ“</strong> Ð’ÑÐµ"
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>☓</strong> All"
-msgstr "<strong>X</strong> Все"
+msgid "<strong>â˜“</strong> All"
+msgstr "<strong>X</strong> Ð’ÑÐµ"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "Click to check-in manually"
-msgstr "Нажмите для того, чтобы зарегистрировать вручную"
+msgstr "ÐÐ°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð´Ð»Ñ Ñ‚Ð¾Ð³Ð¾, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð²Ñ€ÑƒÑ‡Ð½ÑƒÑŽ"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "saving..."
-msgstr "сохранение..."
+msgstr "ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ..."
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "This person does not have a check-in identifier so they can't be checked in"
-msgstr "У этого человека нет идентификатора регистрации, так что он не был зарегистрирован"
+msgstr "Ð£ ÑÑ‚Ð¾Ð³Ð¾ Ñ‡ÐµÐ»Ð¾Ð²ÐµÐºÐ° Ð½ÐµÑ‚ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð° Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸, Ñ‚Ð°Ðº Ñ‡Ñ‚Ð¾ Ð¾Ð½ Ð½Ðµ Ð±Ñ‹Ð» Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "If you want to view this page without the sidebar (i.e. for displaying to an auditorium) you can use the assistant version."
-msgstr "Если вы хотите просмотреть эту страницу без боковой панели (т.е. для отображения для аудитории), вы можете использовать ассистент-версию."
+msgstr "Ð•ÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð±ÐµÐ· Ð±Ð¾ÐºÐ¾Ð²Ð¾Ð¹ Ð¿Ð°Ð½ÐµÐ»Ð¸ (Ñ‚.Ðµ. Ð´Ð»Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð´Ð»Ñ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸), Ð²Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð°ÑÑÐ¸ÑÑ‚ÐµÐ½Ñ‚-Ð²ÐµÑ€ÑÐ¸ÑŽ."
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "Open the assistant version."
-msgstr "Открыть ассистент-версию."
+msgstr "ÐžÑ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ð°ÑÑÐ¸ÑÑ‚ÐµÐ½Ñ‚-Ð²ÐµÑ€ÑÐ¸ÑŽ."
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "Click to undo a check-in"
-msgstr "Нажмите, чтобы отменить регистрацию"
+msgstr "ÐÐ°Ð¶Ð¼Ð¸Ñ‚Ðµ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¾Ñ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÑŽ"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2 of no institutional affiliation with identifier of %3"
-msgstr "%1, %2 не существует институциональной аффилированности с идентификатором %3"
+msgstr "%1, %2 Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð¸Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ†Ð¸Ð¾Ð½Ð°Ð»ÑŒÐ½Ð¾Ð¹ Ð°Ñ„Ñ„Ð¸Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾ÑÑ‚Ð¸ Ñ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð¼ %3"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2 of no institutional affiliation with no assigned identifier"
-msgstr "%1, %2 не существует институциональной аффилированности ни с одним из идентификаторов"
+msgstr "%1, %2 Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð¸Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ†Ð¸Ð¾Ð½Ð°Ð»ÑŒÐ½Ð¾Ð¹ Ð°Ñ„Ñ„Ð¸Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾ÑÑ‚Ð¸ Ð½Ð¸ Ñ Ð¾Ð´Ð½Ð¸Ð¼ Ð¸Ð· Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð²"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2 from %3 with identifier of %4"
-msgstr "%1, %2 из %3 с идентификатором %4"
+msgstr "%1, %2 Ð¸Ð· %3 Ñ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð¼ %4"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2 from %3 with no assigned identifier"
-msgstr "%1, %2 из %3 без назначенного идентификатора"
+msgstr "%1, %2 Ð¸Ð· %3 Ð±ÐµÐ· Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð°"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1 (Present; id=%2)"
-msgstr "%1 (присутствующий; id=%2)"
+msgstr "%1 (Ð¿Ñ€Ð¸ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹; id=%2)"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1 (Absent; id=%2)"
-msgstr "%1 (отсутствующий; id=%2)"
+msgstr "%1 (Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¹; id=%2)"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a team with speakers %2"
-msgstr "%1, команда со спикерами %2"
+msgstr "%1, ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° ÑÐ¾ ÑÐ¿Ð¸ÐºÐµÑ€Ð°Ð¼Ð¸ %2"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2"
@@ -121,63 +121,63 @@ msgstr "%1, %2"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "Anonymous (due to team codes)"
-msgstr "Анонимные (из-за кодов команды)"
+msgstr "ÐÐ½Ð¾Ð½Ð¸Ð¼Ð½Ñ‹Ðµ (Ð¸Ð·-Ð·Ð° ÐºÐ¾Ð´Ð¾Ð² ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹)"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "Anon"
-msgstr "Аноним"
+msgstr "ÐÐ½Ð¾Ð½Ð¸Ð¼"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "Independent"
-msgstr "Независимый"
+msgstr "ÐÐµÐ·Ð°Ð²Ð¸ÑÐ¸Ð¼Ñ‹Ð¹"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "%1 (%2) with identifier of %3"
-msgstr "%1 (%2) с идентификатором %3"
+msgstr "%1 (%2) Ñ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð¼ %3"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "%1 (no category) with identifier of %2"
-msgstr "%1 (без категории) с идентификатором %2"
+msgstr "%1 (Ð±ÐµÐ· ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸) Ñ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð¾Ð¼ %2"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "%1 (%2) with no assigned identifier"
-msgstr "%1 (%2) без назначенного идентификатора"
+msgstr "%1 (%2) Ð±ÐµÐ· Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð°"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "%1 (no category) with no assigned identifier"
-msgstr "%1 (нет категории) без назначенного идентификатора"
+msgstr "%1 (Ð½ÐµÑ‚ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸) Ð±ÐµÐ· Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ð°"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "Uncategorised"
-msgstr "Не определена категория"
+msgstr "ÐÐµ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð° ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "No Category"
-msgstr "Нет Категории"
+msgstr "ÐÐµÑ‚ ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "Priority %1"
-msgstr "Приоритет %1"
+msgstr "ÐŸÑ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚ %1"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "%1 %2 from %3"
-msgstr "%1-%2 из %3"
+msgstr "%1-%2 Ð¸Ð· %3"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "%1 %2 from %3 %4"
-msgstr "%1 %2 из %3 %4"
+msgstr "%1 %2 Ð¸Ð· %3 %4"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "%1 %2 from %3 on %4 (Chair)"
-msgstr "%1 %2 из %3 на %4 (чэйр)"
+msgstr "%1 %2 Ð¸Ð· %3 Ð½Ð° %4 (Ñ‡ÑÐ¹Ñ€)"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "%1 %2 from %3 on %4 (Panellist)"
-msgstr "%1 %2 из %3 на %4 (винг)"
+msgstr "%1 %2 Ð¸Ð· %3 Ð½Ð° %4 (Ð²Ð¸Ð½Ð³)"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "%1 %2 from %3 on %4 (Trainee)"
-msgstr "%1 %2 из %3 на %4 (винг без права голоса)"
+msgstr "%1 %2 Ð¸Ð· %3 Ð½Ð° %4 (Ð²Ð¸Ð½Ð³ Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°)"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "ID %1,"
@@ -185,51 +185,51 @@ msgstr "ID %1,"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "Room:"
-msgstr "Аудитория:"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ:"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "Chair for Panel of %1"
-msgstr "Чэйр коллегии %1"
+msgstr "Ð§ÑÐ¹Ñ€ ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸Ð¸ %1"
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Solo Chair"
-msgstr "Чэйр один"
+msgstr "Ð§ÑÐ¹Ñ€ Ð¾Ð´Ð¸Ð½"
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Panellist"
-msgstr "Винг"
+msgstr "Ð’Ð¸Ð½Ð³"
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Trainee"
-msgstr "Винг без права голоса"
+msgstr "Ð’Ð¸Ð½Ð³ Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "Team"
-msgstr "Команда"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð°"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Mark speeches %1 to %2; <strong>%3</strong>."
-msgstr "Отметить речи от %1 до %2; <strong>%3</strong>."
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ñ€ÐµÑ‡Ð¸ Ð¾Ñ‚ %1 Ð´Ð¾ %2; <strong>%3</strong>."
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Mark replies %1 to %2; <strong>%3</strong>."
-msgstr "Отметить ответы %1 на %2; <strong>%3</strong>."
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ð²ÐµÑ‚Ñ‹ %1 Ð½Ð° %2; <strong>%3</strong>."
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Return ballots to %1."
-msgstr "Вернуть бэллоты в %1."
+msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð² %1."
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "The motion is <em>%1</em>"
-msgstr "Тема <em>%1</em>"
+msgstr "Ð¢ÐµÐ¼Ð° <em>%1</em>"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Debated"
-msgstr "Дебатировала"
+msgstr "Ð”ÐµÐ±Ð°Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð»Ð°"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Circle %1"
-msgstr "Круг %1"
+msgstr "ÐšÑ€ÑƒÐ³ %1"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "<strong>%1</strong>: %2"
@@ -237,11 +237,11 @@ msgstr "<strong>%1</strong>: %2"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Aff Veto"
-msgstr "Вето утв"
+msgstr "Ð’ÐµÑ‚Ð¾ ÑƒÑ‚Ð²"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Neg Veto"
-msgstr "Вето отр"
+msgstr "Ð’ÐµÑ‚Ð¾ Ð¾Ñ‚Ñ€"
 
 #: printing/templates/PrintableDebateInfo.vue: printing/templates/PrintableTeamScores.vue:
 msgid "%1:"
@@ -249,27 +249,27 @@ msgstr "%1:"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "tab entry"
-msgstr "введение тэба"
+msgstr "Ð²Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ñ‚ÑÐ±Ð°"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "tab check"
-msgstr "проверка тэба"
+msgstr "Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ‚ÑÐ±Ð°"
 
 #: printing/templates/PrintableDebateInfo.vue: checkins/templates/PeopleStatusMixin.vue:
 msgid "Unaffiliated"
-msgstr "Неаффилированный"
+msgstr "ÐÐµÐ°Ñ„Ñ„Ð¸Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹"
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "no ½ marks"
-msgstr "не разрешены оценки 1/2"
+msgid "no Â½ marks"
+msgstr "Ð½Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ñ‹ Ð¾Ñ†ÐµÐ½ÐºÐ¸ 1/2"
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "½ marks are allowed"
-msgstr "оценки 1/2 разрешены"
+msgid "Â½ marks are allowed"
+msgstr "Ð¾Ñ†ÐµÐ½ÐºÐ¸ 1/2 Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ñ‹"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "decimal marks are allowed"
-msgstr "десятичные оценки разрешены"
+msgstr "Ð´ÐµÑÑÑ‚Ð¸Ñ‡Ð½Ñ‹Ðµ Ð¾Ñ†ÐµÐ½ÐºÐ¸ Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ñ‹"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "%1 (%2, %3)"
@@ -277,7 +277,7 @@ msgstr "%1 (%2, %3)"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Adjudicating with %1."
-msgstr "Судит с %1."
+msgstr "Ð¡ÑƒÐ´Ð¸Ñ‚ Ñ %1."
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "; "
@@ -285,31 +285,31 @@ msgstr "; "
 
 #: printing/templates/PrintableFeedback.vue:
 msgid "Did %1 deliver the adjudication?"
-msgstr "%1 посудил?"
+msgstr "%1 Ð¿Ð¾ÑÑƒÐ´Ð¸Ð»?"
 
 #: printing/templates/PrintableFeedback.vue: printing/templates/PrintableFeedbackQuestion.vue:
 msgid "Yes"
-msgstr "Да"
+msgstr "Ð”Ð°"
 
 #: printing/templates/PrintableFeedback.vue:
 msgid "No, I am submitting feedback on:"
-msgstr "Нет, я отправляю обратную связь на:"
+msgstr "ÐÐµÑ‚, Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑŽ Ð¾Ð±Ñ€Ð°Ñ‚Ð½ÑƒÑŽ ÑÐ²ÑÐ·ÑŒ Ð½Ð°:"
 
 #: printing/templates/PrintableFeedbackQuestion.vue:
 msgid "Unsure"
-msgstr "Не точно"
+msgstr "ÐÐµ Ñ‚Ð¾Ñ‡Ð½Ð¾"
 
 #: printing/templates/PrintableFeedbackQuestion.vue:
 msgid "No"
-msgstr "Нет"
+msgstr "ÐÐµÑ‚"
 
 #: printing/templates/PrintableScoresheet.vue:
 msgid "Which team won the debate:"
-msgstr "Какая команда выиграла дебаты:"
+msgstr "ÐšÐ°ÐºÐ°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð²Ñ‹Ð¸Ð³Ñ€Ð°Ð»Ð° Ð´ÐµÐ±Ð°Ñ‚Ñ‹:"
 
 #: printing/templates/PrintableScoresheet.vue:
 msgid "By how many points did they win:"
-msgstr "На сколько очков они выиграли:"
+msgstr "ÐÐ° ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐºÐ¾Ð² Ð¾Ð½Ð¸ Ð²Ñ‹Ð¸Ð³Ñ€Ð°Ð»Ð¸:"
 
 #: printing/templates/PrintableTeamScores.vue:
 msgid "%1, %2"
@@ -317,238 +317,239 @@ msgstr "%1, %2"
 
 #: printing/templates/PrintableTeamScores.vue:
 msgid "IMPORTANT: Check and explicitly note if a speaker gives multiple speeches"
-msgstr "ВАЖНО: убедитесь и сделайте отметку есть спикер произносит несколько речей"
+msgstr "Ð’ÐÐ–ÐÐž: ÑƒÐ±ÐµÐ´Ð¸Ñ‚ÐµÑÑŒ Ð¸ ÑÐ´ÐµÐ»Ð°Ð¹Ñ‚Ðµ Ð¾Ñ‚Ð¼ÐµÑ‚ÐºÑƒ ÐµÑÑ‚ÑŒ ÑÐ¿Ð¸ÐºÐµÑ€ Ð¿Ñ€Ð¾Ð¸Ð·Ð½Ð¾ÑÐ¸Ñ‚ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€ÐµÑ‡ÐµÐ¹"
 
 #: printing/templates/PrintableTeamScores.vue:
 msgid "Score:"
-msgstr "Оценка:"
+msgstr "ÐžÑ†ÐµÐ½ÐºÐ°:"
 
 #: printing/templates/PrintableTeamScores.vue:
 msgid "Circle the last digit of the %1's score:"
-msgstr "Округлить последнюю цифру %1 балла:"
+msgstr "ÐžÐºÑ€ÑƒÐ³Ð»Ð¸Ñ‚ÑŒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÑŽÑŽ Ñ†Ð¸Ñ„Ñ€Ñƒ %1 Ð±Ð°Ð»Ð»Ð°:"
 
 #: printing/templates/PrintableTeamScores.vue:
 msgid "Circle Rank:"
-msgstr "Округленное место:"
+msgstr "ÐžÐºÑ€ÑƒÐ³Ð»ÐµÐ½Ð½Ð¾Ðµ Ð¼ÐµÑÑ‚Ð¾:"
 
 #: printing/templates/PrintableTeamScores.vue:
 msgid "Total:"
-msgstr "Всего:"
+msgstr "Ð’ÑÐµÐ³Ð¾:"
 
 #: printing/templates/PrintableTeamScores.vue:
 msgid "Circle the last digit of the team's total:"
-msgstr "Округлить последнюю цифру общего балла команды:"
+msgstr "ÐžÐºÑ€ÑƒÐ³Ð»Ð¸Ñ‚ÑŒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÑŽÑŽ Ñ†Ð¸Ñ„Ñ€Ñƒ Ð¾Ð±Ñ‰ÐµÐ³Ð¾ Ð±Ð°Ð»Ð»Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹:"
 
 #: templates/tables/TablesContainer.vue:8
 msgid "Find in Table"
-msgstr "Найти в таблице"
+msgstr "ÐÐ°Ð¹Ñ‚Ð¸ Ð² Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ"
 
 #: templates/tables/CheckboxTables.vue:30
 msgid "Set All Breaking as Available"
-msgstr "Отметить всех брейкающихся как доступных"
+msgstr "ÐžÑ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ Ð²ÑÐµÑ… Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸Ñ…ÑÑ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ…"
 
 #: templates/tables/CheckboxTables.vue:36
 msgid "Set all the availabilities to exactly match what they were in the previous round."
-msgstr "Установите доступность точно так же, как в предыдущем раунде."
+msgstr "Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ Ñ‚Ð¾Ñ‡Ð½Ð¾ Ñ‚Ð°Ðº Ð¶Ðµ, ÐºÐ°Ðº Ð² Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÐµÐ¼ Ñ€Ð°ÑƒÐ½Ð´Ðµ."
 
 #: templates/tables/CheckboxTables.vue:37
 msgid "Match"
-msgstr "Совпадение"
+msgstr "Ð¡Ð¾Ð²Ð¿Ð°Ð´ÐµÐ½Ð¸Ðµ"
 
 #: templates/tables/CheckboxTables.vue:41
 msgid "Set all availabilities to exactly match check-ins."
-msgstr "Установите доступность, чтобы она совпадала с регистрациями."
+msgstr "Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¾Ð½Ð° ÑÐ¾Ð²Ð¿Ð°Ð´Ð°Ð»Ð° Ñ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÑÐ¼Ð¸."
 
 #: templates/tables/CheckboxTables.vue:44
 msgid "Match Check-Ins"
-msgstr "Проверка совпадений"
+msgstr "ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° ÑÐ¾Ð²Ð¿Ð°Ð´ÐµÐ½Ð¸Ð¹"
 
 #: templates/tables/CheckboxTables.vue:
-msgid "Set people as available only if they have a check-in and are currently unavailable — i.e. it will not overwrite any existing availabilities."
-msgstr "Устанавливайте людей как доступных только если они зарегистрировались и в данный момент недоступны - т.к. это не наложится на уже существующие показатели доступности."
+msgid "Set people as available only if they have a check-in and are currently unavailable â€” i.e. it will not overwrite any existing availabilities."
+msgstr "Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°Ð¹Ñ‚Ðµ Ð»ÑŽÐ´ÐµÐ¹ ÐºÐ°Ðº Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ñ‚Ð¾Ð»ÑŒÐºÐ¾ ÐµÑÐ»Ð¸ Ð¾Ð½Ð¸ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð»Ð¸ÑÑŒ Ð¸ Ð² Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ - Ñ‚.Ðº. ÑÑ‚Ð¾ Ð½Ðµ Ð½Ð°Ð»Ð¾Ð¶Ð¸Ñ‚ÑÑ Ð½Ð° ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ð¸."
 
 #: templates/tables/CheckboxTables.vue:47
 msgid "Copy From Check-Ins"
-msgstr "Копировать из регистраций"
+msgstr "ÐšÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¸Ð· Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¹"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "Ballots Status"
-msgstr "Статус бэллотов"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "Latest Actions"
-msgstr "Последние действия"
+msgstr "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "No Actions Yet"
-msgstr "Пока нет действий"
+msgstr "ÐŸÐ¾ÐºÐ° Ð½ÐµÑ‚ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ð¹"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "Latest Results"
-msgstr "Последние результаты"
+msgstr "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: tournaments/templates/TournamentOverviewContainer.vue:
 msgid "No Confirmed Results Yet"
-msgstr "Пока нет подтвержденных результатов"
+msgstr "ÐŸÐ¾ÐºÐ° Ð½ÐµÑ‚ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ñ… Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð²"
 
 #: participants/templates/DiversityContainer.vue:6
 msgid "Speaker Demographics"
-msgstr "Демография спикеров"
+msgstr "Ð”ÐµÐ¼Ð¾Ð³Ñ€Ð°Ñ„Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: participants/templates/DiversityContainer.vue:11
 msgid "No Gender Information"
-msgstr "Нет информации о гендерах"
+msgstr "ÐÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾ Ð³ÐµÐ½Ð´ÐµÑ€Ð°Ñ…"
 
 #: participants/templates/DiversityContainer.vue:18
 msgid "No Speaker Categories Information"
-msgstr "Нет информации о категориях спикеров"
+msgstr "ÐÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÑÑ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: participants/templates/DiversityContainer.vue:33
 msgid "Speaker Results"
-msgstr "Результаты спикеров"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: participants/templates/DiversityContainer.vue:36
 msgid "speakers with gender data"
-msgstr "спикеры с данными по гендеру"
+msgstr "ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹ Ñ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ð¿Ð¾ Ð³ÐµÐ½Ð´ÐµÑ€Ñƒ"
 
 #: participants/templates/DiversityContainer.vue:38
 msgid "speaker scores total"
-msgstr "общий спикерский балл"
+msgstr "Ð¾Ð±Ñ‰Ð¸Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ð±Ð°Ð»Ð»"
 
 #: participants/templates/DiversityContainer.vue:49
 msgid "No Region Information"
-msgstr "Нет информации о регионах"
+msgstr "ÐÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾ Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð°Ñ…"
 
 #: participants/templates/DiversityContainer.vue:56
 msgid "Adjudicator Demographics"
-msgstr "Демография судей"
+msgstr "Ð”ÐµÐ¼Ð¾Ð³Ñ€Ð°Ñ„Ð¸Ñ ÑÑƒÐ´ÐµÐ¹"
 
 #: participants/templates/DiversityContainer.vue:68
 msgid "No Position Information"
-msgstr "Нет информации о позициях"
+msgstr "ÐÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑÑ…"
 
 #: participants/templates/DiversityContainer.vue:83
 msgid "Adjudicator Results"
-msgstr "Результаты судей"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ ÑÑƒÐ´ÐµÐ¹"
 
 #: participants/templates/DiversityContainer.vue:86
 msgid "adjudicators with gender data"
-msgstr "судьи с данными о гендере"
+msgstr "ÑÑƒÐ´ÑŒÐ¸ Ñ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ð¾ Ð³ÐµÐ½Ð´ÐµÑ€Ðµ"
 
 #: participants/templates/DiversityContainer.vue:88
 msgid "feedback scores total"
-msgstr "общий балл по обратной связи"
+msgstr "Ð¾Ð±Ñ‰Ð¸Ð¹ Ð±Ð°Ð»Ð» Ð¿Ð¾ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
 
 #: participants/templates/DiversityContainer.vue:94
 msgid "No Adjudicator Ratings Information"
-msgstr "Нет информации о рейтингах судей"
+msgstr "ÐÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³Ð°Ñ… ÑÑƒÐ´ÐµÐ¹"
 
 #: participants/templates/DiversityContainer.vue:99
 msgid "No Adjudicator-Adjudicator Feedback Information"
-msgstr "Нет информации об обратной связи судей друг для друга"
+msgstr "ÐÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾Ð± Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ ÑÑƒÐ´ÐµÐ¹ Ð´Ñ€ÑƒÐ³ Ð´Ð»Ñ Ð´Ñ€ÑƒÐ³Ð°"
 
 #: results/templates/ResultsStats.vue:10
 msgid "Checked-In"
-msgstr "Зарегистрированы"
+msgstr "Ð—Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹"
 
 #: results/templates/ResultsStats.vue:15
 msgid "Not Checked-In"
-msgstr "Не зарегистрированы"
+msgstr "ÐÐµ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹"
 
 #: results/templates/ResultsStats.vue:19
 msgid "Ballot Check-Ins"
-msgstr "Проверка бэллотов"
+msgstr "ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²"
 
 #: results/templates/ResultsStats.vue:26
 msgid "Unknown"
-msgstr "Неизвестно"
+msgstr "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð¾"
 
 #: results/templates/ResultsStats.vue:31
 msgid "Unconfirmed"
-msgstr "Не потверждено"
+msgstr "ÐÐµ Ð¿Ð¾Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¾"
 
 #: results/templates/ResultsStats.vue:36
 msgid "Confirmed"
-msgstr "Подтвержденные"
+msgstr "ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ðµ"
 
 #: results/templates/ResultsStats.vue:40
 msgid "Ballot Statuses"
-msgstr "Статус бэллотов"
+msgstr "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²"
 
 #: results/templates/BallotsCell.vue:18
 msgid "You cannot confirm this ballot because you entered it"
-msgstr "Вы не можете подтвердить этот бэллот, потому что сами ввели его"
+msgstr "Ð’Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ Ð±ÑÐ»Ð»Ð¾Ñ‚, Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ ÑÐ°Ð¼Ð¸ Ð²Ð²ÐµÐ»Ð¸ ÐµÐ³Ð¾"
 
 #: results/templates/BallotsCell.vue:34
 msgid "Add Ballot"
-msgstr "Добавить бэллот"
+msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚"
 
 #: results/templates/BallotsCell.vue:79
 msgid "Re-Edit"
-msgstr "Изменить"
+msgstr "Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ"
 
 #: results/templates/BallotsCell.vue:81
 msgid "Review"
-msgstr "Обзор"
+msgstr "ÐžÐ±Ð·Ð¾Ñ€"
 
 #: utils/templates/AutoSaveCounter.vue:4
 msgid "No changes"
-msgstr "Без изменений"
+msgstr "Ð‘ÐµÐ· Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¹"
 
 #: utils/templates/DragAndDropActions.vue:8
 msgid "Return to Draw"
-msgstr "Вернуться к сетке"
+msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº ÑÐµÑ‚ÐºÐµ"
 
 #: utils/templates/DragAndDropActions.vue:15
 msgid "Auto-Prioritise"
-msgstr "Автоприоритет"
+msgstr "ÐÐ²Ñ‚Ð¾Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚"
 
 #: utils/templates/DragAndDropActions.vue:17
 msgid "Auto-Allocate"
-msgstr "Распределить автоматически"
+msgstr "Ð Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Break"
-msgstr "Брейк"
+msgstr "Ð‘Ñ€ÐµÐ¹Ðº"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Gender"
-msgstr "Гендер"
+msgstr "Ð“ÐµÐ½Ð´ÐµÑ€"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Rank"
-msgstr "Место"
+msgstr "ÐœÐµÑÑ‚Ð¾"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Region"
-msgstr "Регион"
+msgstr "Ð ÐµÐ³Ð¸Ð¾Ð½"
 
 #. Translators: Short for "Venue Category"
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Category"
-msgstr "Категория"
+msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ"
 
 #: utils/templates/DragAndDropDebate.vue:5
 msgid "The debate's bracket"
-msgstr "Баллы команд в этих дебатах"
+msgstr "Ð‘Ð°Ð»Ð»Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð² ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ…"
 
 #: utils/templates/DragAndDropDebate.vue:9
 msgid "The bracket range of the hypothetical debate"
-msgstr "Диапазон баллов гипотетических дебатов"
+msgstr "Ð”Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½ Ð±Ð°Ð»Ð»Ð¾Ð² Ð³Ð¸Ð¿Ð¾Ñ‚ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: utils/templates/DragAndDropDebate.vue:20
 msgid "The total number of live break categories across all teams"
-msgstr "Общее количество доступных брейковых категорий для всех команд"
+msgstr "ÐžÐ±Ñ‰ÐµÐµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ñ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹ Ð´Ð»Ñ Ð²ÑÐµÑ… ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: utils/templates/DragAndDropDebate.vue:26
 msgid "The estimated total number of live break categories across all teams of the hypothetical debate"
-msgstr "Предполагаемое общее число всех доступных брейковых категорий для всех команд гипотетических дебатов"
+msgstr "ÐŸÑ€ÐµÐ´Ð¿Ð¾Ð»Ð°Ð³Ð°ÐµÐ¼Ð¾Ðµ Ð¾Ð±Ñ‰ÐµÐµ Ñ‡Ð¸ÑÐ»Ð¾ Ð²ÑÐµÑ… Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ñ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹ Ð´Ð»Ñ Ð²ÑÐµÑ… ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð³Ð¸Ð¿Ð¾Ñ‚ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: utils/templates/DragAndDropDebate.vue:33
 msgid "This debate's priority"
-msgstr "Приоритет этих дебатов"
+msgstr "ÐŸÑ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚ ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: draw/templates/InlineTeam.vue:41
 msgid "No code name set"
-msgstr "Не задано кодовое имя"
+msgstr "ÐÐµ Ð·Ð°Ð´Ð°Ð½Ð¾ ÐºÐ¾Ð´Ð¾Ð²Ð¾Ðµ Ð¸Ð¼Ñ"
+
 

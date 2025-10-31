@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-05 07:37+1000\n"
 "PO-Revision-Date: 2023-11-27 13:39\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: kk\n"
-"X-Crowdin-File: /develop/tabbycat/availability/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/availability/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 926\n"
 
 #: availability/apps.py availability/views.py
 msgid "Availability"
-msgstr "Түгендеу"
+msgstr "Ð¢Ò¯Ð³ÐµÐ½Ð´ÐµÑƒ"
 
 #: availability/models.py
 msgid "content type"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: availability/models.py
 msgid "round"
-msgstr "ойын"
+msgstr "Ð¾Ð¹Ñ‹Ð½"
 
 #: availability/models.py
 msgid "round availability"
@@ -56,16 +56,16 @@ msgstr ""
 
 #: availability/templates/availability_index.html
 msgid "View Draw"
-msgstr "Ойын кестесін көру"
+msgstr "ÐžÐ¹Ñ‹Ð½ ÐºÐµÑÑ‚ÐµÑÑ–Ð½ ÐºÓ©Ñ€Ñƒ"
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot — this may lead to a draw that fails or is incorrect"
+msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot â€” this may lead to a draw that fails or is incorrect"
 msgstr ""
 
 #: availability/templates/availability_index.html
 msgid "Generate Draw"
-msgstr "Ойын кестесін құру"
+msgstr "ÐžÐ¹Ñ‹Ð½ ÐºÐµÑÑ‚ÐµÑÑ–Ð½ Ò›Ò±Ñ€Ñƒ"
 
 #: availability/templates/availability_index.html
 msgid "The draw cannot be generated until some teams have been marked as available."
@@ -80,19 +80,19 @@ msgid "The draw cannot be generated until some rooms have been marked as availab
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough rooms marked as available for the number of debates — the draw may not generate properly."
+msgid "There aren't enough rooms marked as available for the number of debates â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough adjudicators marked as available for the number of debates — the draw may not generate properly."
+msgid "There aren't enough adjudicators marked as available for the number of debates â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There is an uneven number of teams marked as available — the draw may not generate properly."
+msgid "There is an uneven number of teams marked as available â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "The number of teams marked as available is not a multiple of 4 — the draw may not generate properly."
+msgid "The number of teams marked as available is not a multiple of 4 â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
@@ -129,7 +129,7 @@ msgstr ""
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team — you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
+msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team â€” you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
 msgstr ""
 
 #: availability/templates/availability_index.html
@@ -139,11 +139,11 @@ msgstr ""
 
 #: availability/templates/base_availability.html
 msgid "Select All"
-msgstr "Барлығын таңдау"
+msgstr "Ð‘Ð°Ñ€Ð»Ñ‹Ò“Ñ‹Ð½ Ñ‚Ð°Ò£Ð´Ð°Ñƒ"
 
 #: availability/templates/base_availability.html
 msgid "Select None"
-msgstr "Ешқайсысын таңдамау"
+msgstr "Ð•ÑˆÒ›Ð°Ð¹ÑÑ‹ÑÑ‹Ð½ Ñ‚Ð°Ò£Ð´Ð°Ð¼Ð°Ñƒ"
 
 #: availability/templates/base_availability.html
 msgid "Check-Ins"
@@ -163,19 +163,19 @@ msgstr ""
 
 #: availability/templates/checkin_progress.html
 msgid "Teams"
-msgstr "Топтар"
+msgstr "Ð¢Ð¾Ð¿Ñ‚Ð°Ñ€"
 
 #: availability/templates/checkin_progress.html
 msgid "Adjudicators"
-msgstr "Төрешілер"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€"
 
 #: availability/templates/checkin_progress.html
 msgid "Rooms"
-msgstr "Аудиториялар"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸ÑÐ»Ð°Ñ€"
 
 #: availability/templates/checkin_progress.html
 msgid "Mark teams as available"
-msgstr "Топтарды бар деп белгілеу"
+msgstr "Ð¢Ð¾Ð¿Ñ‚Ð°Ñ€Ð´Ñ‹ Ð±Ð°Ñ€ Ð´ÐµÐ¿ Ð±ÐµÐ»Ð³Ñ–Ð»ÐµÑƒ"
 
 #: availability/templates/checkin_progress.html
 msgid "No need to set team availability"
@@ -230,7 +230,7 @@ msgstr[1] ""
 
 #: availability/templates/checkin_progress.html
 msgid "Mark adjudicators as available"
-msgstr "Төрешілерді бар деп белгілеу"
+msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€Ð´Ñ– Ð±Ð°Ñ€ Ð´ÐµÐ¿ Ð±ÐµÐ»Ð³Ñ–Ð»ÐµÑƒ"
 
 #. Translators: required_count is a word for a number (e.g. "two", "three", etc.)
 #: availability/templates/checkin_progress.html
@@ -302,8 +302,8 @@ msgstr ""
 #. Translators: nteams in this string can only be 0 or 1
 #: availability/views.py
 #, python-format
-msgid "%(nteams)d breaking team — no debates can happen"
-msgid_plural "%(nteams)d breaking teams — no debates can happen"
+msgid "%(nteams)d breaking team â€” no debates can happen"
+msgid_plural "%(nteams)d breaking teams â€” no debates can happen"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -389,4 +389,5 @@ msgstr ""
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms from previous round."
 msgstr ""
+
 

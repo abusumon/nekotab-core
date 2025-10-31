@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-05 07:37+1000\n"
 "PO-Revision-Date: 2025-02-15 07:22\n"
@@ -11,294 +11,294 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/tabbycat/availability/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/availability/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 926\n"
 
 #: availability/apps.py availability/views.py
 msgid "Availability"
-msgstr "参加・利用状況"
+msgstr "å‚åŠ ãƒ»åˆ©ç”¨çŠ¶æ³"
 
 #: availability/models.py
 msgid "content type"
-msgstr "コンテンツタイプ"
+msgstr "ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚¿ã‚¤ãƒ—"
 
 #: availability/models.py
 msgid "object id"
-msgstr "オブジェクトID"
+msgstr "ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆID"
 
 #: availability/models.py
 msgid "round"
-msgstr "ラウンド"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰"
 
 #: availability/models.py
 msgid "round availability"
-msgstr "ラウンドの参加・利用状況"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‚åŠ ãƒ»åˆ©ç”¨çŠ¶æ³"
 
 #: availability/models.py
 msgid "round availabilities"
-msgstr "ラウンドの参加・利用状況"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‚åŠ ãƒ»åˆ©ç”¨çŠ¶æ³"
 
 #: availability/templates/availability_index.html
 msgid "Mark All Breaking Adjs as Available"
-msgstr "すべてのブレイクジャッジを参加可能に"
+msgstr "ã™ã¹ã¦ã®ãƒ–ãƒ¬ã‚¤ã‚¯ã‚¸ãƒ£ãƒƒã‚¸ã‚’å‚åŠ å¯èƒ½ã«"
 
 #: availability/templates/availability_index.html
 msgid "Mark Everything as Available"
-msgstr "すべてを参加・利用可能に"
+msgstr "ã™ã¹ã¦ã‚’å‚åŠ ãƒ»åˆ©ç”¨å¯èƒ½ã«"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "Copy Availability from %(prev_round)s"
-msgstr "%(prev_round)sをコピー"
+msgstr "%(prev_round)sã‚’ã‚³ãƒ”ãƒ¼"
 
 #: availability/templates/availability_index.html
 msgid "View Draw"
-msgstr "対戦表を確認"
+msgstr "å¯¾æˆ¦è¡¨ã‚’ç¢ºèª"
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot — this may lead to a draw that fails or is incorrect"
-msgstr "%(round)sの%(previous_unconfirmed)sつの試合は投票が完了していません。これにより、次の対戦表が失敗または不正確になる可能性があります。"
+msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot â€” this may lead to a draw that fails or is incorrect"
+msgstr "%(round)sã®%(previous_unconfirmed)sã¤ã®è©¦åˆã¯æŠ•ç¥¨ãŒå®Œäº†ã—ã¦ã„ã¾ã›ã‚“ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€æ¬¡ã®å¯¾æˆ¦è¡¨ãŒå¤±æ•—ã¾ãŸã¯ä¸æ­£ç¢ºã«ãªã‚‹å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: availability/templates/availability_index.html
 msgid "Generate Draw"
-msgstr "対戦表を生成"
+msgstr "å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆ"
 
 #: availability/templates/availability_index.html
 msgid "The draw cannot be generated until some teams have been marked as available."
-msgstr "参加可能なチームがいないので対戦表を生成できません。"
+msgstr "å‚åŠ å¯èƒ½ãªãƒãƒ¼ãƒ ãŒã„ãªã„ã®ã§å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆã§ãã¾ã›ã‚“ã€‚"
 
 #: availability/templates/availability_index.html
 msgid "The draw cannot be generated until some adjudicators have been marked as available."
-msgstr "参加可能なジャッジがいないので対戦表を生成できません。"
+msgstr "å‚åŠ å¯èƒ½ãªã‚¸ãƒ£ãƒƒã‚¸ãŒã„ãªã„ã®ã§å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆã§ãã¾ã›ã‚“ã€‚"
 
 #: availability/templates/availability_index.html
 msgid "The draw cannot be generated until some rooms have been marked as available."
-msgstr "利用可能な部屋がないので対戦表を生成できません。"
+msgstr "åˆ©ç”¨å¯èƒ½ãªéƒ¨å±‹ãŒãªã„ã®ã§å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆã§ãã¾ã›ã‚“ã€‚"
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough rooms marked as available for the number of debates — the draw may not generate properly."
-msgstr "利用可能な部屋が足りません。正しく対戦表が作成されない可能性があります。"
+msgid "There aren't enough rooms marked as available for the number of debates â€” the draw may not generate properly."
+msgstr "åˆ©ç”¨å¯èƒ½ãªéƒ¨å±‹ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚æ­£ã—ãå¯¾æˆ¦è¡¨ãŒä½œæˆã•ã‚Œãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough adjudicators marked as available for the number of debates — the draw may not generate properly."
-msgstr "参加可能なジャッジが足りません。正しく対戦表が作成されない可能性があります。"
+msgid "There aren't enough adjudicators marked as available for the number of debates â€” the draw may not generate properly."
+msgstr "å‚åŠ å¯èƒ½ãªã‚¸ãƒ£ãƒƒã‚¸ãŒè¶³ã‚Šã¾ã›ã‚“ã€‚æ­£ã—ãå¯¾æˆ¦è¡¨ãŒä½œæˆã•ã‚Œãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: availability/templates/availability_index.html
-msgid "There is an uneven number of teams marked as available — the draw may not generate properly."
-msgstr "参加可能なチームの数が奇数です。正しく対戦表が作成されない可能性があります。"
+msgid "There is an uneven number of teams marked as available â€” the draw may not generate properly."
+msgstr "å‚åŠ å¯èƒ½ãªãƒãƒ¼ãƒ ã®æ•°ãŒå¥‡æ•°ã§ã™ã€‚æ­£ã—ãå¯¾æˆ¦è¡¨ãŒä½œæˆã•ã‚Œãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: availability/templates/availability_index.html
-msgid "The number of teams marked as available is not a multiple of 4 — the draw may not generate properly."
-msgstr "参加可能なチームの数が4の倍数でありません。正しく対戦表が作成されない可能性があります。"
+msgid "The number of teams marked as available is not a multiple of 4 â€” the draw may not generate properly."
+msgstr "å‚åŠ å¯èƒ½ãªãƒãƒ¼ãƒ ã®æ•°ãŒ4ã®å€æ•°ã§ã‚ã‚Šã¾ã›ã‚“ã€‚æ­£ã—ãå¯¾æˆ¦è¡¨ãŒä½œæˆã•ã‚Œãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "One debate from %(prev_round)s <strong>does not have a completed ballot</strong>. This may lead to a draw that fails or is incorrect, depending on your draw rules. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Enter results from %(prev_round)s. </a>"
 msgid_plural "%(previous_unconfirmed)s debates from %(prev_round)s <strong>do not have a completed ballot</strong>. This may lead to a draw that fails or is incorrect, depending on your draw rules. <a href=\"%(prev_round_results_url)s\" class=\"alert-link\"> Enter results from %(prev_round)s. </a>"
-msgstr[0] "<strong>%(prev_round)sの%(previous_unconfirmed)s試合のバロットが揃っていません。</strong>対戦表が正しく作成されない可能性があります。<a href=\"%(prev_round_results_url)s\" class=\"alert-link\">まず%(prev_round)sの結果を入力してください。</a>"
+msgstr[0] "<strong>%(prev_round)sã®%(previous_unconfirmed)sè©¦åˆã®ãƒãƒ­ãƒƒãƒˆãŒæƒã£ã¦ã„ã¾ã›ã‚“ã€‚</strong>å¯¾æˆ¦è¡¨ãŒæ­£ã—ãä½œæˆã•ã‚Œãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚<a href=\"%(prev_round_results_url)s\" class=\"alert-link\">ã¾ãš%(prev_round)sã®çµæžœã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "This is a page for <strong>%(round)s</strong>, but the previous round is still not marked as completed. Did you forget to <a href=\"%(complete_prev_round_url)s\" class=\"alert-link\"> mark %(prev_round)s as completed? </a>"
-msgstr "これは<strong>%(round)s</strong>のページですが、前回の試合が未完了です。<a href=\"%(complete_prev_round_url)s\" class=\"alert-link\"> %(prev_round)sが完了されているか確認してください。</a>"
+msgstr "ã“ã‚Œã¯<strong>%(round)s</strong>ã®ãƒšãƒ¼ã‚¸ã§ã™ãŒã€å‰å›žã®è©¦åˆãŒæœªå®Œäº†ã§ã™ã€‚<a href=\"%(complete_prev_round_url)s\" class=\"alert-link\"> %(prev_round)sãŒå®Œäº†ã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèªã—ã¦ãã ã•ã„ã€‚</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "This is the first round, but its draw type is <strong>%(draw_type)s</strong>. Did you intend for it to be <strong>Random</strong> or <strong>Seeded</strong> instead? You can <a href=\"%(change_round_url)s\" class=\"alert-link\">edit this round's draw type in the Edit Database area.</a>"
-msgstr "これは第1試合ですが、対戦方式が<strong>%(draw_type)s</strong>に設定されています。<strong>ランダム方式</strong>か<strong>シード方式</strong>に設定したい場合は、<a href=\"%(change_round_url)s\" class=\"alert-link\">このラウンドの対戦方式をデータベース編集エリアで変更してください。</a>"
+msgstr "ã“ã‚Œã¯ç¬¬1è©¦åˆã§ã™ãŒã€å¯¾æˆ¦æ–¹å¼ãŒ<strong>%(draw_type)s</strong>ã«è¨­å®šã•ã‚Œã¦ã„ã¾ã™ã€‚<strong>ãƒ©ãƒ³ãƒ€ãƒ æ–¹å¼</strong>ã‹<strong>ã‚·ãƒ¼ãƒ‰æ–¹å¼</strong>ã«è¨­å®šã—ãŸã„å ´åˆã¯ã€<a href=\"%(change_round_url)s\" class=\"alert-link\">ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦æ–¹å¼ã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã§å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "This is an elimination round, but it doesn't have a break category. Elimination rounds must be associated with a break category. Please <a href=\"%(change_round_url)s\" class=\"alert-link\"> set this round's break category in the Edit Database area.</a>"
-msgstr "これは勝ち残りラウンドですが、ブレイクカテゴリーが指定されていません。<a href=\"%(change_round_url)s\" class=\"alert-link\">データベース編集エリアで、ブレイクカテゴリーを設定してください。</a>"
+msgstr "ã“ã‚Œã¯å‹ã¡æ®‹ã‚Šãƒ©ã‚¦ãƒ³ãƒ‰ã§ã™ãŒã€ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚<a href=\"%(change_round_url)s\" class=\"alert-link\">ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã§ã€ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "This is an elimination round, but its draw type is <strong>%(draw_type)s</strong>. The draw type of all elimination rounds must be \"Elimination\". Please <a href=\"%(change_round_url)s\" class=\"alert-link\"> change this round's draw type in the Edit Database area.</a>"
-msgstr "これは勝ち残りラウンドですが、対戦方式が<strong>%(draw_type)s</strong>となっています。アウトラウンドでは「勝ち残り方式」を設定する必要があります。<a href=\"%(change_round_url)s\" class=\"alert-link\">ラウンドの組対戦方式をデータベース編集エリアで変更してください。</a>"
+msgstr "ã“ã‚Œã¯å‹ã¡æ®‹ã‚Šãƒ©ã‚¦ãƒ³ãƒ‰ã§ã™ãŒã€å¯¾æˆ¦æ–¹å¼ãŒ<strong>%(draw_type)s</strong>ã¨ãªã£ã¦ã„ã¾ã™ã€‚ã‚¢ã‚¦ãƒˆãƒ©ã‚¦ãƒ³ãƒ‰ã§ã¯ã€Œå‹ã¡æ®‹ã‚Šæ–¹å¼ã€ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚<a href=\"%(change_round_url)s\" class=\"alert-link\">ãƒ©ã‚¦ãƒ³ãƒ‰ã®çµ„å¯¾æˆ¦æ–¹å¼ã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã§å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "There don't appear to be any teams breaking in the %(break_category)s Break. Have you <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> generated the break for the %(break_category)s Break</a> yet?"
-msgstr "%(break_category)sカテゴリーでブレイクするチームがいないようです。<a href=\"%(breakqual_teams_url)s\" class=\"alert-link\">%(break_category)sカテゴリーのブレイクを生成しましたか？</a>"
+msgstr "%(break_category)sã‚«ãƒ†ã‚´ãƒªãƒ¼ã§ãƒ–ãƒ¬ã‚¤ã‚¯ã™ã‚‹ãƒãƒ¼ãƒ ãŒã„ãªã„ã‚ˆã†ã§ã™ã€‚<a href=\"%(breakqual_teams_url)s\" class=\"alert-link\">%(break_category)sã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ãƒ–ãƒ¬ã‚¤ã‚¯ã‚’ç”Ÿæˆã—ã¾ã—ãŸã‹ï¼Ÿ</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team — you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
-msgstr "1チームしか%(break_category)sカテゴリーでブレイクしていません。これでは勝ち残りラウンドを生成できないので、<a href=\"%(breakqual_teams_url)s\" class=\"alert-link\">%(break_category)sカテゴリーのブレイク設定を見直してください。</a>"
+msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team â€” you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
+msgstr "1ãƒãƒ¼ãƒ ã—ã‹%(break_category)sã‚«ãƒ†ã‚´ãƒªãƒ¼ã§ãƒ–ãƒ¬ã‚¤ã‚¯ã—ã¦ã„ã¾ã›ã‚“ã€‚ã“ã‚Œã§ã¯å‹ã¡æ®‹ã‚Šãƒ©ã‚¦ãƒ³ãƒ‰ã‚’ç”Ÿæˆã§ããªã„ã®ã§ã€<a href=\"%(breakqual_teams_url)s\" class=\"alert-link\">%(break_category)sã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ãƒ–ãƒ¬ã‚¤ã‚¯è¨­å®šã‚’è¦‹ç›´ã—ã¦ãã ã•ã„ã€‚</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "The team standings precedence is empty. This means that teams aren't ranked according to any metrics, so all teams will be in a single bracket containing everyone. If this isn't what you intended, set the team standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a> before creating the draw. In most tournaments, the first metric should be points or wins."
-msgstr "チームの順位付けの指標がありません。すなわち、チームは何の指標でも順位付けできず、すべてのチームは横ばいで一つのブラケットに入ります。これを意図していない場合、チームの順位付けの指標を<a href=\"%(standings_config_url)s\" class=\"alert-link\">大会設定の順位セクション</a>から変更してください。多くの大会では、最初の指標は勝ち数または点数になるはずです。"
+msgstr "ãƒãƒ¼ãƒ ã®é †ä½ä»˜ã‘ã®æŒ‡æ¨™ãŒã‚ã‚Šã¾ã›ã‚“ã€‚ã™ãªã‚ã¡ã€ãƒãƒ¼ãƒ ã¯ä½•ã®æŒ‡æ¨™ã§ã‚‚é †ä½ä»˜ã‘ã§ããšã€ã™ã¹ã¦ã®ãƒãƒ¼ãƒ ã¯æ¨ªã°ã„ã§ä¸€ã¤ã®ãƒ–ãƒ©ã‚±ãƒƒãƒˆã«å…¥ã‚Šã¾ã™ã€‚ã“ã‚Œã‚’æ„å›³ã—ã¦ã„ãªã„å ´åˆã€ãƒãƒ¼ãƒ ã®é †ä½ä»˜ã‘ã®æŒ‡æ¨™ã‚’<a href=\"%(standings_config_url)s\" class=\"alert-link\">å¤§ä¼šè¨­å®šã®é †ä½ã‚»ã‚¯ã‚·ãƒ§ãƒ³</a>ã‹ã‚‰å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚å¤šãã®å¤§ä¼šã§ã¯ã€æœ€åˆã®æŒ‡æ¨™ã¯å‹ã¡æ•°ã¾ãŸã¯ç‚¹æ•°ã«ãªã‚‹ã¯ãšã§ã™ã€‚"
 
 #: availability/templates/base_availability.html
 msgid "Select All"
-msgstr "すべて選択"
+msgstr "ã™ã¹ã¦é¸æŠž"
 
 #: availability/templates/base_availability.html
 msgid "Select None"
-msgstr "すべて選択しない"
+msgstr "ã™ã¹ã¦é¸æŠžã—ãªã„"
 
 #: availability/templates/base_availability.html
 msgid "Check-Ins"
-msgstr "チェックイン"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³"
 
 #: availability/templates/base_availability.html
 msgid "Check In All Breaking"
-msgstr "ブレイクしている全員をチェックイン"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã—ã¦ã„ã‚‹å…¨å“¡ã‚’ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³"
 
 #: availability/templates/base_availability.html
 msgid "Copy from Previous"
-msgstr "前回からコピー"
+msgstr "å‰å›žã‹ã‚‰ã‚³ãƒ”ãƒ¼"
 
 #: availability/templates/base_availability.html
 msgid "Save Selected"
-msgstr "選択したものを保存"
+msgstr "é¸æŠžã—ãŸã‚‚ã®ã‚’ä¿å­˜"
 
 #: availability/templates/checkin_progress.html
 msgid "Teams"
-msgstr "チーム"
+msgstr "ãƒãƒ¼ãƒ "
 
 #: availability/templates/checkin_progress.html
 msgid "Adjudicators"
-msgstr "ジャッジ"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸"
 
 #: availability/templates/checkin_progress.html
 msgid "Rooms"
-msgstr "ラウンド部屋"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰éƒ¨å±‹"
 
 #: availability/templates/checkin_progress.html
 msgid "Mark teams as available"
-msgstr "チームの参加状況を変更"
+msgstr "ãƒãƒ¼ãƒ ã®å‚åŠ çŠ¶æ³ã‚’å¤‰æ›´"
 
 #: availability/templates/checkin_progress.html
 msgid "No need to set team availability"
-msgstr "チームの参加状況を変更する必要ありません"
+msgstr "ãƒãƒ¼ãƒ ã®å‚åŠ çŠ¶æ³ã‚’å¤‰æ›´ã™ã‚‹å¿…è¦ã‚ã‚Šã¾ã›ã‚“"
 
 #: availability/templates/checkin_progress.html
 msgid "There is an uneven number of teams marked as available for this round."
-msgstr "参加可能なチーム数が奇数です"
+msgstr "å‚åŠ å¯èƒ½ãªãƒãƒ¼ãƒ æ•°ãŒå¥‡æ•°ã§ã™"
 
 #: availability/templates/checkin_progress.html
 msgid "The number of teams marked as available for this round is not a multiple of 4."
-msgstr "参加可能なチーム数が4の倍数ではありません"
+msgstr "å‚åŠ å¯èƒ½ãªãƒãƒ¼ãƒ æ•°ãŒ4ã®å€æ•°ã§ã¯ã‚ã‚Šã¾ã›ã‚“"
 
 #: availability/templates/checkin_progress.html
 msgid "Edit team availability"
-msgstr "チームの参加状況を編集"
+msgstr "ãƒãƒ¼ãƒ ã®å‚åŠ çŠ¶æ³ã‚’ç·¨é›†"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "One adjudicator does not have an associated tournament. Set their 'Tournament' field in the Edit Database area if you want them to be marked as available."
 msgid_plural "%(count)s adjudicators do not have an associated tournament. Set their 'Tournament' field in the Edit Database area if you want them to be marked as available."
-msgstr[0] "%(count)s人のジャッジに関連する大会が設定されていません。参加可能にしたい場合、データベース編集エリアで「大会」欄を設定してください。"
+msgstr[0] "%(count)säººã®ã‚¸ãƒ£ãƒƒã‚¸ã«é–¢é€£ã™ã‚‹å¤§ä¼šãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚å‚åŠ å¯èƒ½ã«ã—ãŸã„å ´åˆã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã§ã€Œå¤§ä¼šã€æ¬„ã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "%(count)s adjudicator who was not available last round, is available this round."
 msgid_plural "%(count)s adjudicators who were not available last round, are available this round."
-msgstr[0] "前回参加できなかった%(count)s人のジャッジが今回は参加可能です。"
+msgstr[0] "å‰å›žå‚åŠ ã§ããªã‹ã£ãŸ%(count)säººã®ã‚¸ãƒ£ãƒƒã‚¸ãŒä»Šå›žã¯å‚åŠ å¯èƒ½ã§ã™ã€‚"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "The following %(count)s adjudicator, who was not available last round, is available this round: %(adjs_list)s"
 msgid_plural "The following %(count)s adjudicators, who were not available last round, are available this round: %(adjs_list)s"
-msgstr[0] "以下の%(count)s人の前回参加できなかったジャッジが今回は参加可能です：%(adjs_list)s"
+msgstr[0] "ä»¥ä¸‹ã®%(count)säººã®å‰å›žå‚åŠ ã§ããªã‹ã£ãŸã‚¸ãƒ£ãƒƒã‚¸ãŒä»Šå›žã¯å‚åŠ å¯èƒ½ã§ã™ï¼š%(adjs_list)s"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "%(count)s adjudicator who was available last round, is not available this round."
 msgid_plural "%(count)s adjudicators who were available last round, are not available this round."
-msgstr[0] "前回参加できた%(count)s人のジャッジが今回は参加できません。"
+msgstr[0] "å‰å›žå‚åŠ ã§ããŸ%(count)säººã®ã‚¸ãƒ£ãƒƒã‚¸ãŒä»Šå›žã¯å‚åŠ ã§ãã¾ã›ã‚“ã€‚"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "The following %(count)s adjudicator, who was available last round, is not available this round: %(adjs_list)s"
 msgid_plural "The following %(count)s adjudicators, who were available last round, are not available this round: %(adjs_list)s"
-msgstr[0] "以下の%(count)s人の前回参加できたジャッジが今回は参加できません：%(adjs_list)s"
+msgstr[0] "ä»¥ä¸‹ã®%(count)säººã®å‰å›žå‚åŠ ã§ããŸã‚¸ãƒ£ãƒƒã‚¸ãŒä»Šå›žã¯å‚åŠ ã§ãã¾ã›ã‚“ï¼š%(adjs_list)s"
 
 #: availability/templates/checkin_progress.html
 msgid "Mark adjudicators as available"
-msgstr "ジャッジの参加状況を編集"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®å‚åŠ çŠ¶æ³ã‚’ç·¨é›†"
 
 #. Translators: required_count is a word for a number (e.g. "two", "three", etc.)
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "There needs to be at least one adjudicator marked as available, given the number of debates."
 msgid_plural "There need to be at least %(required_count)s adjudicators marked as available, given the number of debates."
-msgstr[0] "試合数から、%(required_count)s人以上のジャッジが参加可能である必要があります。"
+msgstr[0] "è©¦åˆæ•°ã‹ã‚‰ã€%(required_count)säººä»¥ä¸Šã®ã‚¸ãƒ£ãƒƒã‚¸ãŒå‚åŠ å¯èƒ½ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: availability/templates/checkin_progress.html
 msgid "Edit adjudicator availability"
-msgstr "ジャッジの参加状況を編集"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®å‚åŠ çŠ¶æ³ã‚’ç·¨é›†"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "%(count)s room that was not available last round, is available this round."
 msgid_plural "%(count)s rooms that were not available last round, are available this round."
-msgstr[0] "前回利用できなかった%(count)s部屋が今回は利用可能です。"
+msgstr[0] "å‰å›žåˆ©ç”¨ã§ããªã‹ã£ãŸ%(count)séƒ¨å±‹ãŒä»Šå›žã¯åˆ©ç”¨å¯èƒ½ã§ã™ã€‚"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "The following %(count)s room, which was not available last round, is available this round: %(rooms_list)s"
 msgid_plural "The following %(count)s rooms, which were not available last round, are available this round: %(rooms_list)s"
-msgstr[0] "以下の前回利用できなかった%(count)s部屋が今回は利用できます：%(rooms_list)s"
+msgstr[0] "ä»¥ä¸‹ã®å‰å›žåˆ©ç”¨ã§ããªã‹ã£ãŸ%(count)séƒ¨å±‹ãŒä»Šå›žã¯åˆ©ç”¨ã§ãã¾ã™ï¼š%(rooms_list)s"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "%(count)s room that was available last round, is not available this round."
 msgid_plural "%(count)s rooms that were available last round, are not available this round."
-msgstr[0] "前回利用できた%(count)s部屋が今回は利用できません。"
+msgstr[0] "å‰å›žåˆ©ç”¨ã§ããŸ%(count)séƒ¨å±‹ãŒä»Šå›žã¯åˆ©ç”¨ã§ãã¾ã›ã‚“ã€‚"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "The following %(count)s room, which was available last round, is not available this round: %(rooms_list)s"
 msgid_plural "The following %(count)s rooms, which were available last round, are not available this round: %(rooms_list)s"
-msgstr[0] "以下の前回利用できた%(count)s部屋が今回は利用できません：%(rooms_list)s"
+msgstr[0] "ä»¥ä¸‹ã®å‰å›žåˆ©ç”¨ã§ããŸ%(count)séƒ¨å±‹ãŒä»Šå›žã¯åˆ©ç”¨ã§ãã¾ã›ã‚“ï¼š%(rooms_list)s"
 
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "One room does not have an associated tournament. Set its 'Tournament' field in the Edit Database area if you want it to be marked as available."
 msgid_plural "%(count)s rooms do not have an associated tournament. Set their 'Tournament' field in the Edit Database area if you want them to be marked as available."
-msgstr[0] "%(count)s部屋に関連する大会が設定されていません。利用可能にしたい場合、データベース編集エリアで「大会」欄を設定してください。"
+msgstr[0] "%(count)séƒ¨å±‹ã«é–¢é€£ã™ã‚‹å¤§ä¼šãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚åˆ©ç”¨å¯èƒ½ã«ã—ãŸã„å ´åˆã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã§ã€Œå¤§ä¼šã€æ¬„ã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚"
 
 #: availability/templates/checkin_progress.html
 msgid "Mark rooms as available"
-msgstr "部屋の利用状況を編集"
+msgstr "éƒ¨å±‹ã®åˆ©ç”¨çŠ¶æ³ã‚’ç·¨é›†"
 
 #. Translators: required_count is a word for a number (e.g. "two", "three", etc.)
 #: availability/templates/checkin_progress.html
 #, python-format
 msgid "There needs to be at least one room marked as available, given the number of debates."
 msgid_plural "There need to be at least %(required_count)s rooms marked as available, given the number of debates."
-msgstr[0] "試合数から、%(required_count)s部屋以上が利用可能である必要があります。"
+msgstr[0] "è©¦åˆæ•°ã‹ã‚‰ã€%(required_count)séƒ¨å±‹ä»¥ä¸ŠãŒåˆ©ç”¨å¯èƒ½ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: availability/templates/checkin_progress.html
 msgid "Edit room availability"
-msgstr "部屋の利用状況を編集"
+msgstr "éƒ¨å±‹ã®åˆ©ç”¨çŠ¶æ³ã‚’ç·¨é›†"
 
 #: availability/views.py
 msgid "no teams are debating"
-msgstr "試合中のチームはありません"
+msgstr "è©¦åˆä¸­ã®ãƒãƒ¼ãƒ ã¯ã‚ã‚Šã¾ã›ã‚“"
 
 #. Translators: nteams in this string can only be 0 or 1
 #: availability/views.py
 #, python-format
-msgid "%(nteams)d breaking team — no debates can happen"
-msgid_plural "%(nteams)d breaking teams — no debates can happen"
-msgstr[0] "ブレイクした%(nteams)dチームでは試合は行えません"
+msgid "%(nteams)d breaking team â€” no debates can happen"
+msgid_plural "%(nteams)d breaking teams â€” no debates can happen"
+msgstr[0] "ãƒ–ãƒ¬ã‚¤ã‚¯ã—ãŸ%(nteams)dãƒãƒ¼ãƒ ã§ã¯è©¦åˆã¯è¡Œãˆã¾ã›ã‚“"
 
 #. Translators: ndebating in this string is always at least 2
 #: availability/views.py
 #, python-format
 msgid "%(ndebating)d breaking team is debating this round"
 msgid_plural "%(ndebating)d breaking teams are debating this round"
-msgstr[0] "ブレイクした%(ndebating)dチームがこのラウンドで試合をします"
+msgstr[0] "ãƒ–ãƒ¬ã‚¤ã‚¯ã—ãŸ%(ndebating)dãƒãƒ¼ãƒ ãŒã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã§è©¦åˆã‚’ã—ã¾ã™"
 
 #. Translators: This gets appended to the previous string (the one with
 #. ndebating in it) if (and only if) nbypassing is greater than 0.
@@ -307,69 +307,70 @@ msgstr[0] "ブレイクした%(ndebating)dチームがこのラウンドで試�
 #, python-format
 msgid "; %(nbypassing)d team is bypassing it"
 msgid_plural "; %(nbypassing)d teams are bypassing it"
-msgstr[0] "%(nbypassing)dチームが試合をしません"
+msgstr[0] "%(nbypassing)dãƒãƒ¼ãƒ ãŒè©¦åˆã‚’ã—ã¾ã›ã‚“"
 
 #. Translators: nadvancing in this string is always at least 2
 #: availability/views.py
 #, python-format
 msgid "%(nadvancing)s advancing team is debating this round"
 msgid_plural "%(nadvancing)s advancing teams are debating this round"
-msgstr[0] "進出する%(nadvancing)sチームがこのラウンドで試合をします"
+msgstr[0] "é€²å‡ºã™ã‚‹%(nadvancing)sãƒãƒ¼ãƒ ãŒã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã§è©¦åˆã‚’ã—ã¾ã™"
 
 #: availability/views.py
 msgid "Active Now"
-msgstr "このラウンドに参加可能"
+msgstr "ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã«å‚åŠ å¯èƒ½"
 
 #: availability/views.py
 #, python-format
 msgid "Active in %(prev_round)s"
-msgstr "%(prev_round)sに参加可能"
+msgstr "%(prev_round)sã«å‚åŠ å¯èƒ½"
 
 #: availability/views.py
 msgid "Checked-In"
-msgstr "チェックイン済み"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³æ¸ˆã¿"
 
 #: availability/views.py
 msgid "Team Availability"
-msgstr "チームの参加状況"
+msgstr "ãƒãƒ¼ãƒ ã®å‚åŠ çŠ¶æ³"
 
 #: availability/views.py
 msgid "Adjudicator Availability"
-msgstr "ジャッジの参加状況"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®å‚åŠ çŠ¶æ³"
 
 #: availability/views.py
 msgid "Room Availability"
-msgstr "部屋の利用状況"
+msgstr "éƒ¨å±‹ã®åˆ©ç”¨çŠ¶æ³"
 
 #: availability/views.py
 msgid "Room"
-msgstr "ラウンド部屋"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰éƒ¨å±‹"
 
 #: availability/views.py
 msgid "Display Name (for the draw)"
-msgstr "対戦表での表示名"
+msgstr "å¯¾æˆ¦è¡¨ã§ã®è¡¨ç¤ºå"
 
 #: availability/views.py
 msgid "Categories"
-msgstr "カテゴリー"
+msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: availability/views.py
 msgid "Priority"
-msgstr "優先度"
+msgstr "å„ªå…ˆåº¦"
 
 #: availability/views.py
 msgid "Failed to update some or all availabilities due to an integrityerror. You should retry this action or make individual updates."
-msgstr "完全性(Integrity)エラーにより一部または全部の参加・利用状況の更新に失敗しました。再試行するか個別に更新してください。"
+msgstr "å®Œå…¨æ€§(Integrity)ã‚¨ãƒ©ãƒ¼ã«ã‚ˆã‚Šä¸€éƒ¨ã¾ãŸã¯å…¨éƒ¨ã®å‚åŠ ãƒ»åˆ©ç”¨çŠ¶æ³ã®æ›´æ–°ã«å¤±æ•—ã—ã¾ã—ãŸã€‚å†è©¦è¡Œã™ã‚‹ã‹å€‹åˆ¥ã«æ›´æ–°ã—ã¦ãã ã•ã„ã€‚"
 
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms."
-msgstr "全チーム、ジャッジと部屋をチェックインしました。"
+msgstr "å…¨ãƒãƒ¼ãƒ ã€ã‚¸ãƒ£ãƒƒã‚¸ã¨éƒ¨å±‹ã‚’ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã—ã¾ã—ãŸã€‚"
 
 #: availability/views.py
 msgid "Checked in all breaking adjudicators."
-msgstr "すべてのブレイクしたジャッジをチェックインしました。"
+msgstr "ã™ã¹ã¦ã®ãƒ–ãƒ¬ã‚¤ã‚¯ã—ãŸã‚¸ãƒ£ãƒƒã‚¸ã‚’ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã—ã¾ã—ãŸã€‚"
 
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms from previous round."
-msgstr "直前のラウンドからすべてのチーム、ジャッジと部屋をチェックインしました。"
+msgstr "ç›´å‰ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã‹ã‚‰ã™ã¹ã¦ã®ãƒãƒ¼ãƒ ã€ã‚¸ãƒ£ãƒƒã‚¸ã¨éƒ¨å±‹ã‚’ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã—ã¾ã—ãŸã€‚"
+
 

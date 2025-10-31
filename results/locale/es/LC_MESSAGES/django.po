@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: es-ES\n"
-"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
@@ -43,11 +43,11 @@ msgstr ""
 
 #: results/forms.py
 msgid "That password isn't correct."
-msgstr "La contraseña no es correcta."
+msgstr "La contraseÃ±a no es correcta."
 
 #: results/forms.py
 msgid "The ballot set can't be both discarded and confirmed."
-msgstr "La configuración de la ballot no puede ser descartada y confirmada al mismo tiempo."
+msgstr "La configuraciÃ³n de la ballot no puede ser descartada y confirmada al mismo tiempo."
 
 #: results/forms.py
 msgid "The debate status can't be confirmed unless one of the ballot sets is confirmed."
@@ -102,7 +102,7 @@ msgstr[1] ""
 
 #: results/forms.py
 msgid "The last substantive speaker and reply speaker can't be the same."
-msgstr "El último orador propositivo y el orador de replica no pueden ser el mismo"
+msgstr "El Ãºltimo orador propositivo y el orador de replica no pueden ser el mismo"
 
 #: results/forms.py
 msgid "The reply speaker for this team did not give a substantive speech."
@@ -125,7 +125,7 @@ msgstr "Los puntajes totales para los siguientes equipos son el mismo:\n"
 #: results/forms.py
 #, python-format
 msgid "The margin (%(margin).1f) exceeds the maximum allowable margin (%(max_margin).1f)."
-msgstr "El margen (%(margin).1f) excede el margen máximo permitido (%(max_margin).1f)"
+msgstr "El margen (%(margin).1f) excede el margen mÃ¡ximo permitido (%(max_margin).1f)"
 
 #: results/forms.py
 msgid "Ranks cannot be tied."
@@ -148,11 +148,11 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "The margin (%(margin).1f) in the ballot of adjudicator %(adjudicator)s exceeds the maximum allowable margin (%(max_margin).1f)."
-msgstr "El margen (%(margin).1f) en la ballot del adjudicador %(adjudicator)s excede el margen máximo permitido (%(max_margin).1f)."
+msgstr "El margen (%(margin).1f) en la ballot del adjudicador %(adjudicator)s excede el margen mÃ¡ximo permitido (%(max_margin).1f)."
 
 #: results/forms.py
 msgid "Sides for this debate are not confirmed. You can't save a result for this debate until the sides have been confirmed in the draw."
-msgstr "Los bancadas para este debate no están confirmadas. No pueden guardar los resultadas de este debate hasta que las bancadas hallan sido confirmadas en el enfrentamiento."
+msgstr "Los bancadas para este debate no estÃ¡n confirmadas. No pueden guardar los resultadas de este debate hasta que las bancadas hallan sido confirmadas en el enfrentamiento."
 
 #: results/forms.py
 #, python-format
@@ -167,7 +167,7 @@ msgstr ""
 
 #: results/models.py
 msgid "Tab room"
-msgstr "Sala de tabulación"
+msgstr "Sala de tabulaciÃ³n"
 
 #: results/models.py
 msgid "Public"
@@ -183,7 +183,7 @@ msgstr "marca de tiempo"
 
 #: results/models.py
 msgid "version"
-msgstr "verión "
+msgstr "veriÃ³n "
 
 #: results/models.py
 msgid "submitter type"
@@ -215,11 +215,11 @@ msgstr ""
 
 #: results/models.py
 msgid "IP address"
-msgstr "Dirección IP"
+msgstr "DirecciÃ³n IP"
 
 #: results/models.py
 msgid "A tab room ballot must have a user associated."
-msgstr "Una ballot de la sala de tabulación debe tener un usuario asociado."
+msgstr "Una ballot de la sala de tabulaciÃ³n debe tener un usuario asociado."
 
 #: results/models.py
 msgid "debate"
@@ -227,7 +227,7 @@ msgstr "debate"
 
 #: results/models.py
 msgid "motion"
-msgstr "moción"
+msgstr "mociÃ³n"
 
 #: results/models.py
 msgid "discarded"
@@ -251,11 +251,11 @@ msgstr ""
 
 #: results/models.py
 msgid "ballot submission"
-msgstr "Envío de la ballot"
+msgstr "EnvÃ­o de la ballot"
 
 #: results/models.py
 msgid "ballot submissions"
-msgstr "Envíos de la ballor"
+msgstr "EnvÃ­os de la ballor"
 
 #: results/models.py
 #, python-format
@@ -264,7 +264,7 @@ msgstr ""
 
 #: results/models.py
 msgid "A ballot can't be both confirmed and discarded!"
-msgstr "¡Una ballot no puede ser confirmada y descartada al mismo tiempo!"
+msgstr "Â¡Una ballot no puede ser confirmada y descartada al mismo tiempo!"
 
 #: results/models.py
 msgid "debate adjudicator"
@@ -296,11 +296,11 @@ msgstr ""
 
 #: results/models.py
 msgid "The debate team, debate adjudicator and ballot submission must all relate to the same debate."
-msgstr "El equipo de debate, adjudicador del debate y el envío de la ballot deben estar todos relacionados al mismo debate."
+msgstr "El equipo de debate, adjudicador del debate y el envÃ­o de la ballot deben estar todos relacionados al mismo debate."
 
 #: results/models.py
 msgid "position"
-msgstr "posición"
+msgstr "posiciÃ³n"
 
 #: results/models.py
 msgid "speaker score by adjudicator"
@@ -348,7 +348,7 @@ msgstr "fantasma"
 
 #: results/models.py
 msgid "If checked, this score does not count towards the speaker tab. This is typically checked for speeches where someone spoke twice to make up for an absent teammate (sometimes known as \"iron-person\" or \"iron-man\" speeches)."
-msgstr "Si se marca, este puntaje no contara para la tabla de oradores. Esto es usualmente marcado para discursos donde alguno habló dos veces cubrir un compañero de debate ausente (algunas veces conocido como discursos de \"iron-person o \"iron man\")."
+msgstr "Si se marca, este puntaje no contara para la tabla de oradores. Esto es usualmente marcado para discursos donde alguno hablÃ³ dos veces cubrir un compaÃ±ero de debate ausente (algunas veces conocido como discursos de \"iron-person o \"iron man\")."
 
 #: results/models.py
 msgid "speaker score"
@@ -497,18 +497,18 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr ""
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "This tournament's configuration is set to <strong>British Parliamentary</strong> with <strong>one ballot per voting adjudicator</strong>. This combination isn't allowed: BP tournaments must use consensus ballots. Results can't be entered while this configuration is in place. Please <a href=\"%(debate_rules_url)s\">revise this tournament's configuration</a> before you try to enter results."
-msgstr "La configuración de este torneo es <strong>Parlamento Británico</strong> con <strong>una ballot por juez con voto</strong>. Esta combinación no es permitida: los torneos con formato PB deben usar ballots por consenso. Los resultados no pueden ser introducidos mientras se mantenga esta configuración. Por favor <a href=\"%(debate_rules_url)s\">revise la configuración de este torneo</a> antes de intentar introducir resultados.  "
+msgstr "La configuraciÃ³n de este torneo es <strong>Parlamento BritÃ¡nico</strong> con <strong>una ballot por juez con voto</strong>. Esta combinaciÃ³n no es permitida: los torneos con formato PB deben usar ballots por consenso. Los resultados no pueden ser introducidos mientras se mantenga esta configuraciÃ³n. Por favor <a href=\"%(debate_rules_url)s\">revise la configuraciÃ³n de este torneo</a> antes de intentar introducir resultados.  "
 
 #: results/templates/admin_results.html
 #, python-format
 msgid "Currently there are no motions entered for this round, so debate results cannot be entered. <a href=\"%(motions_url)s\" class=\"alert-link\">Add Motions.</a>"
-msgstr "Actualmente no hay mociones para esta ronde, por lo que los resultados de debate no se pueden introducir. <a href=\"%(motions_url)s\" class=\"alert-link\">Añada mociones.</a>"
+msgstr "Actualmente no hay mociones para esta ronde, por lo que los resultados de debate no se pueden introducir. <a href=\"%(motions_url)s\" class=\"alert-link\">AÃ±ada mociones.</a>"
 
 #: results/templates/admin_results.html
 #, python-format
@@ -562,7 +562,7 @@ msgstr ""
 
 #: results/templates/assistant_results.html
 msgid "Currently there are no motions entered for this round, so debate results cannot be entered. Please ask an administrator to add motions."
-msgstr "Ahora no hay mociones ingresadas para esta ronda, entonces los resultados del debate no pueden ser ingresados. Por favor pregunte a un administrador que añada mociones."
+msgstr "Ahora no hay mociones ingresadas para esta ronda, entonces los resultados del debate no pueden ser ingresados. Por favor pregunte a un administrador que aÃ±ada mociones."
 
 #: results/templates/assistant_results.html
 #, python-format
@@ -732,7 +732,7 @@ msgstr ""
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
 msgstr ""
 
 #: results/templates/ballot_entry_form.html
@@ -954,11 +954,11 @@ msgstr ""
 
 #: results/utils.py
 msgid "Ballot is Unconfirmed"
-msgstr "La ballot está sin confirmar"
+msgstr "La ballot estÃ¡ sin confirmar"
 
 #: results/utils.py
 msgid "Ballot is Confirmed"
-msgstr "La ballot está confirmada"
+msgstr "La ballot estÃ¡ confirmada"
 
 #. Translators: e.g. "{Melbourne 1} as {OG}", "{Cape Town 1} as {CO}"
 #: results/utils.py
@@ -1070,7 +1070,7 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "Ballot set for %(debate)s added."
-msgstr "Configuración de la ballot para la sala %(debate)s agregada."
+msgstr "ConfiguraciÃ³n de la ballot para la sala %(debate)s agregada."
 
 #: results/views.py
 msgid " Email receipts queued to be sent."
@@ -1079,12 +1079,12 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "Whoops! The debate %(debate)s doesn't have a chair, so you can't enter results for it."
-msgstr "¡Upssss! El debate %(debate)s no tiene juez principal, por eso no pedes ingresar los resultados. Por favor contacta al equipo de tabulación. "
+msgstr "Â¡Upssss! El debate %(debate)s no tiene juez principal, por eso no pedes ingresar los resultados. Por favor contacta al equipo de tabulaciÃ³n. "
 
 #: results/views.py
 #, python-format
 msgid "Whoops! The debate %(debate)s doesn't have its sides confirmed, so you can't enter results for it."
-msgstr "¡Upsss! El debate %(debate)s no tiene asignaciones confirmadas, por eso no puedes ingresar los resultados."
+msgstr "Â¡Upsss! El debate %(debate)s no tiene asignaciones confirmadas, por eso no puedes ingresar los resultados."
 
 #: results/views.py
 msgid "Edit Ballot Set"
@@ -1093,12 +1093,12 @@ msgstr ""
 #: results/views.py
 #, python-format
 msgid "Ballot set for %(matchup)s discarded."
-msgstr "Configuración de la ballot %(matchup)s descartada."
+msgstr "ConfiguraciÃ³n de la ballot %(matchup)s descartada."
 
 #: results/views.py
 #, python-format
 msgid "Ballot set for %(matchup)s confirmed."
-msgstr "Configuración de la ballot %(matchup)s confirmada."
+msgstr "ConfiguraciÃ³n de la ballot %(matchup)s confirmada."
 
 #: results/views.py
 #, python-format
@@ -1112,27 +1112,27 @@ msgstr "Gracias, %(user)s Tu ballot de %(debate)s ha sido guardada."
 
 #: results/views.py
 msgid "The draw for this round hasn't been released yet."
-msgstr "La asignación de salas para esta ronda no ha sido anunciada aún."
+msgstr "La asignaciÃ³n de salas para esta ronda no ha sido anunciada aÃºn."
 
 #: results/views.py
 msgid "The motions for this round haven't been released yet."
-msgstr "La moción para esta ronda no ha sido anunciada aún."
+msgstr "La mociÃ³n para esta ronda no ha sido anunciada aÃºn."
 
 #: results/views.py
 msgid "It looks like you don't have a debate this round."
-msgstr "Parece que no fuiste asignado a ningún debate en esta ronda."
+msgstr "Parece que no fuiste asignado a ningÃºn debate en esta ronda."
 
 #: results/views.py
 msgid "It looks like you're assigned to two or more debates this round. Please contact a tab room official."
-msgstr "Parece que fuiste asignado a dos o más debates en esta ronda. Por favor contacta al equipo de tabulación."
+msgstr "Parece que fuiste asignado a dos o mÃ¡s debates en esta ronda. Por favor contacta al equipo de tabulaciÃ³n."
 
 #: results/views.py
 msgid "Your debate doesn't have a chair, so you can't enter results for it. Please contact a tab room official."
-msgstr "Tu debate no tiene juez principal, por eso no pedes ingresar los resultados. Por favor contacta al equipo de tabulación."
+msgstr "Tu debate no tiene juez principal, por eso no pedes ingresar los resultados. Por favor contacta al equipo de tabulaciÃ³n."
 
 #: results/views.py
 msgid "It looks like the sides for this debate haven't yet been confirmed, so you can't enter results for it. Please contact a tab room official."
-msgstr "Al parecer las asignaciones para este debate no han sido confirmadas, por eso no puedes ingresar los resultados. Por favor contacta al equipo de tabulación."
+msgstr "Al parecer las asignaciones para este debate no han sido confirmadas, por eso no puedes ingresar los resultados. Por favor contacta al equipo de tabulaciÃ³n."
 
 #: results/views.py
 msgid "It looks like you were assigned to two or more debates. Please contact a tab room official."
@@ -1175,4 +1175,5 @@ msgstr ""
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
+
 

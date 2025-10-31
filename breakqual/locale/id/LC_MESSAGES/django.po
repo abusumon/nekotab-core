@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: id\n"
-"X-Crowdin-File: /develop/tabbycat/breakqual/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/breakqual/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 928\n"
 
 #: breakqual/apps.py
@@ -220,7 +220,7 @@ msgid "Breaks"
 msgstr "Break"
 
 #: breakqual/templates/breaking_index.html
-msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://tabbycat.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
+msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://NekoTab.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
 msgstr ""
 
 #: breakqual/templates/breaking_index.html
@@ -286,13 +286,13 @@ msgstr "Bangkitkan Break untuk Semua Kategori"
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "There are <strong>0 teams marked as eligible</strong> for this category — you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
-msgstr "Ada <strong>0 tim ditandai sebagai berhak</strong> untuk kategori ini — Anda perlu <a href=\"%(url)s\" class=\"alert-link\"> menambahkan beberapa tim yang berhak</a> untuk break ini supaya dapat dibangkitkan dengan benar."
+msgid "There are <strong>0 teams marked as eligible</strong> for this category â€” you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
+msgstr "Ada <strong>0 tim ditandai sebagai berhak</strong> untuk kategori ini â€” Anda perlu <a href=\"%(url)s\" class=\"alert-link\"> menambahkan beberapa tim yang berhak</a> untuk break ini supaya dapat dibangkitkan dengan benar."
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "This break uses the <strong>%(category)s</strong> rule — if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
-msgstr "Break ini menggunakan aturan <strong>%(category)s</strong> — jika Anda bermaksud menggunakan aturan lain, Anda harus <a href=\"%(url)s\"> menyunting aturan untuk kategori break ini di area Sunting Basisdata</a>, kemudian hapus dan bangkitkan kembali semua break. Mohon cek dua kali hal ini sebelum mengumumkan break atau merilisnya ke publik. Kode yang membangkitkan break tidak diuji secara menyeluruh untuk kasus-kasus yang tidak umum."
+msgid "This break uses the <strong>%(category)s</strong> rule â€” if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
+msgstr "Break ini menggunakan aturan <strong>%(category)s</strong> â€” jika Anda bermaksud menggunakan aturan lain, Anda harus <a href=\"%(url)s\"> menyunting aturan untuk kategori break ini di area Sunting Basisdata</a>, kemudian hapus dan bangkitkan kembali semua break. Mohon cek dua kali hal ini sebelum mengumumkan break atau merilisnya ke publik. Kode yang membangkitkan break tidak diuji secara menyeluruh untuk kasus-kasus yang tidak umum."
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
@@ -305,8 +305,8 @@ msgid "The <strong>public breaking teams</strong> configuration setting is enabl
 msgstr "Konfigurasi <strong>tim breaking publik </strong> dalam keadaan menyala. Sesaat setelah Anda klik tombolnya, daftar tim breaking akan terlihat di situs publik, sebelum Anda memiliki kesempatan untuk memeriksanya kembali! Sangat disarankan Anda mematikan opsi ini pada <a href=\"%(options_url)s\"> halaman konfigurasi turnamen</a> sebelum membangkitkan break tim."
 
 #: breakqual/templates/breaking_teams.html
-msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious — you can regenerate it later."
-msgstr "Break belum dibangkitkan. Apakah Anda ingin membangkitkan break untuk semua kategori? Aman untuk membangkitkan break sebelum ronde pendahuluan selesai, seandainya Anda penasaran — Anda dapat membangkitkanya kembali nanti."
+msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious â€” you can regenerate it later."
+msgstr "Break belum dibangkitkan. Apakah Anda ingin membangkitkan break untuk semua kategori? Aman untuk membangkitkan break sebelum ronde pendahuluan selesai, seandainya Anda penasaran â€” Anda dapat membangkitkanya kembali nanti."
 
 #: breakqual/templates/breaking_teams.html
 msgid "<strong>Caution!</strong> The \"public breaking teams\" option is turned on, so the break is publicly visible. If you update the break(s), the changes will become visible <strong>immediately</strong>, <strong>without a chance for you to review them</strong>."
@@ -540,4 +540,5 @@ msgstr "%s Pembicara"
 msgid "Team has %(nspeakers)s speaker with the %(category)s speaker category assigned"
 msgid_plural "Team has %(nspeakers)s speakers with the %(category)s speaker category assigned"
 msgstr[0] "Tim memiliki %(nspeakers)s pembicara dengan karegori pembicara %(category)s ditetapkan"
+
 

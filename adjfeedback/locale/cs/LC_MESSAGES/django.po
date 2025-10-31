@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: cs\n"
-"X-Crowdin-File: /develop/tabbycat/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 924\n"
 
 #: adjfeedback/admin.py
@@ -27,7 +27,7 @@ msgstr ""
 
 #: adjfeedback/admin.py
 msgid "target"
-msgstr "cíl"
+msgstr "cÃ­l"
 
 #: adjfeedback/admin.py adjfeedback/models.py
 msgid "source adjudicator"
@@ -92,7 +92,7 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "chair"
-msgstr "předseda"
+msgstr "pÅ™edseda"
 
 #: adjfeedback/forms.py
 msgid "solo"
@@ -100,7 +100,7 @@ msgstr "samosoudce"
 
 #: adjfeedback/forms.py
 msgid "panellist"
-msgstr "člen panelu"
+msgstr "Älen panelu"
 
 #: adjfeedback/forms.py
 msgid "trainee"
@@ -114,7 +114,7 @@ msgstr ""
 #: adjfeedback/forms.py
 #, python-format
 msgid "Overall score (%(min)d=worst; %(max)d=best)*"
-msgstr "Obecné skóre (%(min)d=nejhorší; %(max)d=nejlepší)*"
+msgstr "ObecnÃ© skÃ³re (%(min)d=nejhorÅ¡Ã­; %(max)d=nejlepÅ¡Ã­)*"
 
 #: adjfeedback/forms.py
 msgid "Ignored"
@@ -123,7 +123,7 @@ msgstr ""
 #. Translators: e.g. "Megan Pearson (chair)", with adjpos="chair"
 #: adjfeedback/forms.py
 msgid "Submitted - "
-msgstr "Odesláno - "
+msgstr "OdeslÃ¡no - "
 
 #. Translators: e.g. "Megan Pearson (panellist)", with round="Round 3", adjpos="panellist"
 #: adjfeedback/forms.py
@@ -133,11 +133,11 @@ msgstr "%(name)s (%(adjpos)s)"
 
 #: adjfeedback/forms.py
 msgid "-- Adjudicators --"
-msgstr "-- Rozhodčí --"
+msgstr "-- RozhodÄÃ­ --"
 
 #: adjfeedback/forms.py
 msgid "Adjudicator this feedback is about"
-msgstr "Rozhodčí o kterém je tato zpětná vazba"
+msgstr "RozhodÄÃ­ o kterÃ©m je tato zpÄ›tnÃ¡ vazba"
 
 #: adjfeedback/forms.py
 #, python-format
@@ -162,7 +162,7 @@ msgstr ""
 #: adjfeedback/forms.py
 #, python-format
 msgid "This line (for %(adjudicator)s) had too many columns"
-msgstr "Tento řádek (pro %(adjudicator)s) měl příliš mnoho sloupců"
+msgstr "Tento Å™Ã¡dek (pro %(adjudicator)s) mÄ›l pÅ™Ã­liÅ¡ mnoho sloupcÅ¯"
 
 #: adjfeedback/forms.py
 #, python-format
@@ -185,7 +185,7 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "adjudicator"
-msgstr "rozhodčí"
+msgstr "rozhodÄÃ­"
 
 #: adjfeedback/models.py
 msgid "round"
@@ -193,7 +193,7 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "score"
-msgstr "skóre"
+msgstr "skÃ³re"
 
 #: adjfeedback/models.py
 msgid "timestamp"
@@ -414,7 +414,7 @@ msgstr ""
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Comments"
-msgstr "Komentáře"
+msgstr "KomentÃ¡Å™e"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "By Source"
@@ -584,7 +584,7 @@ msgstr[3] ""
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
-msgid "Score Distributions (range is %(min_score)s–%(max_score)s)"
+msgid "Score Distributions (range is %(min_score)sâ€“%(max_score)s)"
 msgstr ""
 
 #: adjfeedback/templates/overview_breakdowns.html
@@ -782,7 +782,7 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "Team"
-msgstr "Tým"
+msgstr "TÃ½m"
 
 #: adjfeedback/views.py
 msgid "Institution"
@@ -794,7 +794,7 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "Adjudicator"
-msgstr "Rozhodčí"
+msgstr "RozhodÄÃ­"
 
 #: adjfeedback/views.py
 #, python-format
@@ -857,4 +857,5 @@ msgstr[3] ""
 #: adjfeedback/views.py
 msgid "Custom Feedback Questions"
 msgstr ""
+
 

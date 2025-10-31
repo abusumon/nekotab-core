@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:40+1000\n"
 "PO-Revision-Date: 2025-07-05 23:53\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: tzl\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 934\n"
 
 #: api/apps.py
@@ -212,7 +212,7 @@ msgid "Identifiers"
 msgstr "crwdns30652:0crwdne30652:0"
 
 #: checkins/views.py
-msgid "Could not check you in as you do not have an identifying code — your tab director may need to make you an identifier."
+msgid "Could not check you in as you do not have an identifying code â€” your tab director may need to make you an identifier."
 msgstr "crwdns30654:0crwdne30654:0"
 
 #: checkins/views.py
@@ -804,16 +804,16 @@ msgid "I forgot my password"
 msgstr "crwdns30708:0crwdne30708:0"
 
 #: templates/base.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr "crwdns30710:0crwdne30710:0"
 
 #: templates/base.html
 #, python-format
-msgid "The tab for %(tournament)s runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "The tab for %(tournament)s runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr "crwdns51266:0%(tournament)scrwdne51266:0"
 
 #: templates/base.html
-msgid "This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "This tab runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr "crwdns51268:0crwdne51268:0"
 
 #: templates/components/form-errors.html
@@ -841,7 +841,7 @@ msgstr[0] "crwdns51270:1%(nrows)scrwdne51270:1"
 msgstr[1] "crwdns51270:5%(nrows)scrwdne51270:5"
 
 #: templates/errors/legacy_sendgrid_warning.html
-msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of Tabbycat. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
+msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of NekoTab. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
 msgstr "crwdns52057:0crwdne52057:0"
 
 #: templates/errors/public_403.html
@@ -856,21 +856,21 @@ msgstr "crwdns34124:0%(url)scrwdne34124:0"
 
 #: templates/footer.html
 #, python-format
-msgid "%(tournament)s runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
-msgstr "crwdns30726:0%(tournament)scrwdnd30726:0%(tabbycat_version)scrwdnd30726:0%(tabbycat_codename)scrwdne30726:0"
+msgid "%(tournament)s runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
+msgstr "crwdns30726:0%(tournament)scrwdnd30726:0%(NekoTab_version)scrwdnd30726:0%(NekoTab_codename)scrwdne30726:0"
 
 #: templates/footer.html
 #, python-format
-msgid "This site runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
-msgstr "crwdns30728:0%(tabbycat_version)scrwdnd30728:0%(tabbycat_codename)scrwdne30728:0"
+msgid "This site runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
+msgstr "crwdns30728:0%(NekoTab_version)scrwdnd30728:0%(NekoTab_codename)scrwdne30728:0"
 
 #: templates/footer.html
-msgid "Tabbycat is an open-source project developed by volunteers and is free to use."
+msgid "NekoTab is an open-source project developed by volunteers and is free to use."
 msgstr "crwdns52319:0crwdne52319:0"
 
 #: templates/footer.html
 #, python-format
-msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
+msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
 msgstr "crwdns52054:0%(amount)scrwdnd52054:0%(amount)scrwdne52054:0"
 
 #: templates/footer.html
@@ -878,7 +878,7 @@ msgid "Learn more about donating."
 msgstr "crwdns30734:0crwdne30734:0"
 
 #: templates/footer.html
-msgid "<a href=\"https://opencollective.com/tabbycat\">Donations to Tabbycat from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain Tabbycat."
+msgid "<a href=\"https://opencollective.com/NekoTab\">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab."
 msgstr "crwdns52321:0crwdne52321:0"
 
 #: templates/footer.html
@@ -887,15 +887,15 @@ msgstr "crwdns30738:0crwdne30738:0"
 
 #: templates/footer.html
 #, python-format
-msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
-msgstr "crwdns30740:0%20crwdnd30740:0%%3Dtabbycat%%crwdnd30740:0%3crwdne30740:0"
+msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgstr "crwdns30740:0%20crwdnd30740:0%%3DNekoTab%%crwdnd30740:0%3crwdne30740:0"
 
 #: templates/footer.html
 msgid "Our Organisation"
 msgstr "crwdns51944:0crwdne51944:0"
 
 #: templates/footer.html
-msgid "Tabbycat is supported by the <a href=\"https://tabbycat-debate.org/\">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology."
+msgid "NekoTab is supported by the <a href=\"https://NekoTab-debate.org/\">NekoTab Debate Association</a>, a non-profit for advancing open debate technology."
 msgstr "crwdns52193:0crwdne52193:0"
 
 #: templates/footer.html users/groups.py
@@ -931,7 +931,7 @@ msgid "Use this language"
 msgstr "crwdns30758:0crwdne30758:0"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
-msgid "Tabbycat Logo"
+msgid "NekoTab Logo"
 msgstr "crwdns30760:0crwdne30760:0"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
@@ -1250,7 +1250,7 @@ msgstr "crwdns30886:0crwdne30886:0"
 
 #: templates/registration/login.html
 msgctxt "page title"
-msgid "Log in to Tabbycat"
+msgid "Log in to NekoTab"
 msgstr "crwdns30888:0crwdne30888:0"
 
 #: templates/registration/login.html
@@ -1360,7 +1360,7 @@ msgstr "crwdns53374:0%(user)scrwdne53374:0"
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "Someone asked for a password reset for the email address %(email)s on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "Someone asked for a password reset for the email address %(email)s on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr "crwdns51586:0%(email)scrwdnd51586:0%(protocol)scrwdnd51586:0%(domain)scrwdne51586:0"
 
 #: templates/registration/password_reset_email.html
@@ -1369,7 +1369,7 @@ msgstr "crwdns30934:0crwdne30934:0"
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr "crwdns51588:0%(protocol)scrwdnd51588:0%(domain)scrwdne51588:0"
 
 #: templates/registration/password_reset_form.html
@@ -1391,12 +1391,12 @@ msgstr "crwdns30948:0crwdne30948:0"
 
 #: templates/registration/password_reset_subject.txt
 #, python-format
-msgid "Password reset on Tabbycat site at %(domain)s"
+msgid "Password reset on NekoTab site at %(domain)s"
 msgstr "crwdns30950:0%(domain)scrwdne30950:0"
 
 #: urls.py
 #, python-format
-msgid "Hi, %(user)s — you just logged in!"
+msgid "Hi, %(user)s â€” you just logged in!"
 msgstr "crwdns51298:0%(user)scrwdne51298:0"
 
 #: urls.py
@@ -1941,7 +1941,7 @@ msgstr "crwdns52748:0crwdne52748:0"
 
 #: users/templates/account_invitation_email.html
 #, python-format
-msgid "An administrator for the Tabbycat site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
+msgid "An administrator for the NekoTab site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
 msgstr "crwdns52750:0%(name)scrwdnd52750:0%(protocol)scrwdnd52750:0%(domain)scrwdne52750:0"
 
 #: users/templates/account_invitation_email.html
@@ -1954,11 +1954,11 @@ msgstr "crwdns52754:0crwdne52754:0"
 
 #: users/templates/account_invitation_subject.txt
 #, python-format
-msgid "Invitation to join Tabbycat site for %(name)s"
+msgid "Invitation to join NekoTab site for %(name)s"
 msgstr "crwdns52756:0%(name)scrwdne52756:0"
 
 #: users/templates/admin/auth/delete_user_warning.html
-msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the “Permissions” tab, unchecked the “Active” box, and save the user."
+msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the â€œPermissionsâ€ tab, unchecked the â€œActiveâ€ box, and save the user."
 msgstr "crwdns51668:0crwdne51668:0"
 
 #: users/templates/invite_user.html
@@ -2003,4 +2003,5 @@ msgstr "crwdns53396:0crwdne53396:0"
 #: users/views.py
 msgid "Accept Invitation"
 msgstr "crwdns52766:0crwdne52766:0"
+
 

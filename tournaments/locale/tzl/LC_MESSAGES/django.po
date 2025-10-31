@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:53\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: tzl\n"
-"X-Crowdin-File: /develop/tabbycat/tournaments/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/tournaments/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 952\n"
 
@@ -138,7 +138,7 @@ msgid "Return to Draw"
 msgstr "crwdns35320:0crwdne35320:0"
 
 #: tournaments/models.py
-msgid "You can't use this as a tournament slug, because it's reserved for a Tabbycat system URL. Please try another one."
+msgid "You can't use this as a tournament slug, because it's reserved for a NekoTab system URL. Please try another one."
 msgstr "crwdns33120:0crwdne33120:0"
 
 #: tournaments/models.py
@@ -445,7 +445,7 @@ msgid "current round: %(round)s, status: %(status)s"
 msgstr "crwdns51442:0%(round)scrwdnd51442:0%(status)scrwdne51442:0"
 
 #: tournaments/templates/blank_site_start.html
-msgid "Welcome to Tabbycat!"
+msgid "Welcome to NekoTab!"
 msgstr "crwdns33228:0crwdne33228:0"
 
 #: tournaments/templates/blank_site_start.html
@@ -471,7 +471,7 @@ msgstr "crwdns51444:0%(tournament)scrwdne51444:0"
 
 #: tournaments/templates/configure_tournament.html
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr "crwdns33240:0crwdne33240:0"
 
 #: tournaments/templates/configure_tournament.html
@@ -487,15 +487,15 @@ msgid "Create New Tournament"
 msgstr "crwdns33246:0crwdne33246:0"
 
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat is free to use, although <a href=\"https://opencollective.com/tabbycat\">donations</a> are encouraged."
+msgid "NekoTab is free to use, although <a href=\"https://opencollective.com/NekoTab\">donations</a> are encouraged."
 msgstr "crwdns52403:0crwdne52403:0"
 
 #: tournaments/templates/create_tournament.html
-msgid "Just trying out Tabbycat?"
+msgid "Just trying out NekoTab?"
 msgstr "crwdns33250:0crwdne33250:0"
 
 #: tournaments/templates/create_tournament.html
-msgid "If you're learning or playing around with Tabbycat, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
+msgid "If you're learning or playing around with NekoTab, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
 msgstr "crwdns51446:0crwdne51446:0"
 
 #: tournaments/templates/create_tournament.html
@@ -520,7 +520,7 @@ msgid "Debate Team Missing"
 msgstr "crwdns33274:0crwdne33274:0"
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "Tabbycat always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
+msgid "NekoTab always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
 msgstr "crwdns33276:0crwdne33276:0"
 
 #: tournaments/templates/fix_debate_teams.html
@@ -587,7 +587,7 @@ msgid "It looks like all debates are in good shape!"
 msgstr "crwdns33304:0crwdne33304:0"
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of Tabbycat."
+msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of NekoTab."
 msgstr "crwdns33306:0crwdne33306:0"
 
 #: tournaments/templates/public_tournament_index.html
@@ -809,7 +809,7 @@ msgstr "crwdns33388:0crwdne33388:0"
 
 #: tournaments/templates/set_current_round.html
 #, python-format
-msgid "No round is currently set. In order for Tabbycat to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
+msgid "No round is currently set. In order for NekoTab to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
 msgstr "crwdns51476:0%(tournament)scrwdne51476:0"
 
 #: tournaments/templates/set_current_round.html
@@ -893,7 +893,7 @@ msgstr "crwdns33422:0crwdne33422:0"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "We hope you've enjoyed using Tabbycat for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/tabbycat\">Learn more about donating.</a>"
+msgid "We hope you've enjoyed using NekoTab for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/NekoTab\">Learn more about donating.</a>"
 msgstr "crwdns52415:0%(amount)scrwdne52415:0"
 
 #: tournaments/templates/tournament_index.html
@@ -907,7 +907,7 @@ msgstr "crwdns51486:0crwdne51486:0"
 #. Translators: The documentation where the link goes to is in English; translations should mention this with "(in English)" after the link.
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "For more information, please consult our <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
+msgid "For more information, please consult our <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
 msgstr "crwdns33430:0%(readthedocs_version)scrwdne33430:0"
 
 #: tournaments/templates/tournament_index.html
@@ -1198,4 +1198,5 @@ msgstr "crwdns52247:0crwdne52247:0"
 #: tournaments/views.py
 msgid "Tournament Schedule"
 msgstr "crwdns53646:0crwdne53646:0"
+
 

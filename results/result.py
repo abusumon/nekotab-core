@@ -1,4 +1,4 @@
-"""Debate result classes.
+﻿"""Debate result classes.
 
 Debate result classes aggregate scoresheets to produce results for an entire
 debate, and interact with the database with respect to models recording scores
@@ -11,7 +11,7 @@ they rely on scoresheets, which in turn rely on SpeakerScoreByAdj (for voting
 decisions), SpeakerScore (for consensus decisions), and TeamScoreByAdj (for
 declared winner decisions) to calculate results. However, these classes do
 *save* TeamScore objects, overwriting existing objects if necessary, so that
-other parts of Tabbycat (e.g., standings) don't have to recalculate them.
+other parts of NekoTab (e.g., standings) don't have to recalculate them.
 
 A debate result class is associated with a ballot submission, not a debate. This
 allows multiple versions of the result to be retained for a single debate, which
@@ -1211,3 +1211,4 @@ class DebateResultByAdjudicatorWithScores(DebateResultWithScoresMixin, DebateRes
         aff_total = self.teamscorebyadj_field_score(adj, DebateSide.AFF)
         neg_total = self.teamscorebyadj_field_score(adj, DebateSide.NEG)
         self.calculate_margin(side, aff_total, neg_total)
+

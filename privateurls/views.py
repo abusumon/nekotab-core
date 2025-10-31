@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 from typing import Any, Dict, List, TYPE_CHECKING
 
 from django.contrib import messages
@@ -20,7 +20,7 @@ from tournaments.models import Round
 from users.permissions import Permission
 from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 from utils.views import PostOnlyRedirectView, VueTableTemplateView
 
 from .utils import populate_url_keys
@@ -66,7 +66,7 @@ class RandomisedUrlsView(RandomisedUrlsMixin, VueTableTemplateView):
     template_name = 'private_urls.html'
     tables_orientation = 'columns'
 
-    def add_url_columns(self, table: TabbycatTableBuilder, people: 'QuerySet[Person]', request: 'HttpRequest') -> TabbycatTableBuilder:
+    def add_url_columns(self, table: NekoTabTableBuilder, people: 'QuerySet[Person]', request: 'HttpRequest') -> NekoTabTableBuilder:
         def build_url(person):
             if person.url_key is None:
                 return {'text': _("no URL"), 'class': 'text-warning'}
@@ -79,7 +79,7 @@ class RandomisedUrlsView(RandomisedUrlsMixin, VueTableTemplateView):
                 return ''
             path = reverse_tournament('privateurls-person-index', self.tournament,
                 kwargs={'url_key': person.url_key})
-            return {'text': "🔗", 'link': path}
+            return {'text': "ðŸ”—", 'link': path}
 
         table.add_column(
             {'title': _("URL"), 'key': "url"},
@@ -91,25 +91,25 @@ class RandomisedUrlsView(RandomisedUrlsMixin, VueTableTemplateView):
         )
         return table
 
-    def get_speakers_table(self) -> TabbycatTableBuilder:
+    def get_speakers_table(self) -> NekoTabTableBuilder:
         speakers = Speaker.objects.filter(team__tournament=self.tournament)
-        table = TabbycatTableBuilder(view=self, title=_("Speakers"), sort_key="name")
+        table = NekoTabTableBuilder(view=self, title=_("Speakers"), sort_key="name")
         table.add_speaker_columns(speakers, categories=False)
         self.add_url_columns(table, speakers, self.request)
 
         return table
 
-    def get_adjudicators_table(self) -> TabbycatTableBuilder:
+    def get_adjudicators_table(self) -> NekoTabTableBuilder:
         tournament = self.tournament
 
         adjudicators = Adjudicator.objects.filter(tournament=tournament)
-        table = TabbycatTableBuilder(view=self, title=_("Adjudicators"), sort_key="name")
+        table = NekoTabTableBuilder(view=self, title=_("Adjudicators"), sort_key="name")
         table.add_adjudicator_columns(adjudicators, show_institutions=False, show_metadata=False)
         self.add_url_columns(table, adjudicators, self.request)
 
         return table
 
-    def get_tables(self) -> List[TabbycatTableBuilder]:
+    def get_tables(self) -> List[NekoTabTableBuilder]:
         return [self.get_adjudicators_table(), self.get_speakers_table()]
 
 
@@ -164,7 +164,7 @@ class EmailRandomisedUrlsView(RoleColumnMixin, TournamentTemplateEmailCreateView
         extra['url'] = self.request.build_absolute_uri(reverse_tournament('privateurls-person-index', self.tournament, kwargs={'url_key': '0'}))[:-2]
         return extra
 
-    def get_table(self) -> TabbycatTableBuilder:
+    def get_table(self) -> NekoTabTableBuilder:
         table = super().get_table()
 
         data = []
@@ -200,7 +200,7 @@ class PersonIndexView(SingleObjectByRandomisedUrlMixin, PersonalizablePublicTour
             Q(adjudicator__tournament=self.tournament) | Q(speaker__team__tournament=self.tournament)).prefetch_related(
             Prefetch('speaker__categories', queryset=SpeakerCategory.objects.filter(public=True)))
 
-    def get_table(self) -> TabbycatTableBuilder:
+    def get_table(self) -> NekoTabTableBuilder:
         if hasattr(self.object, 'adjudicator'):
             return AdjudicatorDebateTable.get_table(self, self.object.adjudicator)
         else:
@@ -240,3 +240,4 @@ class PersonIndexView(SingleObjectByRandomisedUrlMixin, PersonalizablePublicTour
         kwargs['ballots_pref'] = t.pref('participant_ballots') == 'private-urls'
 
         return super().get_context_data(**kwargs)
+

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -12,162 +12,162 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/utils/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 954\n"
 
 #: utils/admin.py utils/tables.py
 msgid "Round"
-msgstr "Раунд"
+msgstr "Ð Ð°ÑƒÐ½Ð´"
 
 #: utils/admin.py utils/tables.py
 msgid "Team"
-msgstr "Команда"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð°"
 
 #: utils/admin.py
 msgid "Speaker"
-msgstr "Спикер"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€"
 
 #: utils/admin.py utils/tables.py
 msgid "Tournament"
-msgstr "Турнир"
+msgstr "Ð¢ÑƒÑ€Ð½Ð¸Ñ€"
 
 #: utils/admin.py utils/tables.py
 msgid "Side"
-msgstr "Сторона"
+msgstr "Ð¡Ñ‚Ð¾Ñ€Ð¾Ð½Ð°"
 
 #: utils/admin.py utils/tables.py
 msgid "Motion"
-msgstr "Тема"
+msgstr "Ð¢ÐµÐ¼Ð°"
 
 #: utils/admin.py
 msgid "Confirmed"
-msgstr "Подтвержденные"
+msgstr "ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ðµ"
 
 #: utils/admin.py
 msgid "Adjudicator"
-msgstr "Судьяя"
+msgstr "Ð¡ÑƒÐ´ÑŒÑÑ"
 
 #: utils/tables.py
 msgid "No Data Available"
-msgstr "Нет доступной информации"
+msgstr "ÐÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð¹ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸"
 
 #: utils/tables.py
-msgid "Ⓒ"
-msgstr "Ⓒ"
+msgid "â’¸"
+msgstr "â’¸"
 
 #: utils/tables.py
-msgid "Ⓣ"
-msgstr "Ⓣ"
+msgid "â“‰"
+msgstr "â“‰"
 
 #: utils/tables.py
 msgid "chair"
-msgstr "чэйр"
+msgstr "Ñ‡ÑÐ¹Ñ€"
 
 #: utils/tables.py
 msgid "panellist"
-msgstr "винг"
+msgstr "Ð²Ð¸Ð½Ð³"
 
 #: utils/tables.py
 msgid "trainee"
-msgstr "винг без права голоса"
+msgstr "Ð²Ð¸Ð½Ð³ Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
 
 #: utils/tables.py
-msgid "—"
-msgstr "—"
+msgid "â€”"
+msgstr "â€”"
 
 #: utils/tables.py
 msgid "Redacted"
-msgstr "Редактировано"
+msgstr "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¾"
 
 #: utils/tables.py
 #, python-format
 msgid "View %(a)s's %(d)s Record"
-msgstr "Посмотреть %(a)s %(d)s результаты"
+msgstr "ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ %(a)s %(d)s Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: utils/tables.py
 #, python-format
 msgid "View %(team)s's Record"
-msgstr "Посмотреть %(team)s результаты"
+msgstr "ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ %(team)s Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
 
 #: utils/tables.py
 #, python-format
 msgid "Code name: <strong>%(name)s</strong>"
-msgstr "Кодовое имя: <strong>%(name)s</strong>"
+msgstr "ÐšÐ¾Ð´Ð¾Ð²Ð¾Ðµ Ð¸Ð¼Ñ: <strong>%(name)s</strong>"
 
 #: utils/tables.py
 #, python-format
 msgid "Real name: <strong>%(name)s</strong>"
-msgstr "Настоящее имя: <strong>%(name)s</strong>"
+msgstr "ÐÐ°ÑÑ‚Ð¾ÑÑ‰ÐµÐµ Ð¸Ð¼Ñ: <strong>%(name)s</strong>"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s won"
-msgstr "%(team)s выиграла"
+msgstr "%(team)s Ð²Ñ‹Ð¸Ð³Ñ€Ð°Ð»Ð°"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s lost"
-msgstr "%(team)s проиграла"
+msgstr "%(team)s Ð¿Ñ€Ð¾Ð¸Ð³Ñ€Ð°Ð»Ð°"
 
 #: utils/tables.py
 #, python-format
-msgid "%(team)s—no result"
-msgstr "%(team)s - нет результатов"
+msgid "%(team)sâ€”no result"
+msgstr "%(team)s - Ð½ÐµÑ‚ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð²"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s placed %(place)s"
-msgstr "%(team)s заняла %(place)s"
+msgstr "%(team)s Ð·Ð°Ð½ÑÐ»Ð° %(place)s"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s is advancing"
-msgstr "%(team)s прошла"
+msgstr "%(team)s Ð¿Ñ€Ð¾ÑˆÐ»Ð°"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s was eliminated"
-msgstr "%(team)s не прошла"
+msgstr "%(team)s Ð½Ðµ Ð¿Ñ€Ð¾ÑˆÐ»Ð°"
 
 #: utils/tables.py
 msgid "View/edit debate ballot"
-msgstr "Просмотреть/изменить бэллот"
+msgstr "ÐŸÑ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ/Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚"
 
 #: utils/tables.py
 msgid "View debate ballot"
-msgstr "Посмотреть бэллот"
+msgstr "ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚"
 
 #: utils/tables.py
 #, python-format
 msgid " vs %(opposition)s"
-msgstr " против %(opposition)s"
+msgstr " Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(opposition)s"
 
 #: utils/tables.py
 #, python-format
 msgid "Won against %(team)s"
-msgstr "Победа над %(team)s"
+msgstr "ÐŸÐ¾Ð±ÐµÐ´Ð° Ð½Ð°Ð´ %(team)s"
 
 #: utils/tables.py
 #, python-format
 msgid "Lost to %(team)s"
-msgstr "Поражения от %(team)s"
+msgstr "ÐŸÐ¾Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð¾Ñ‚ %(team)s"
 
 #: utils/tables.py
 #, python-format
 msgid "No result for debate against %(team)s"
-msgstr "Нет результатов в дебатах против %(team)s"
+msgstr "ÐÐµÑ‚ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð² Ð² Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ… Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(team)s"
 
 #: utils/tables.py
 #, python-format
 msgid "Total speaker score: <strong>%s</strong>"
-msgstr "Общий спикерский балл <strong>%s</strong>"
+msgstr "ÐžÐ±Ñ‰Ð¸Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ð±Ð°Ð»Ð» <strong>%s</strong>"
 
 #: utils/tables.py
 msgid "Teams in debate:"
-msgstr "Команды в дебатах:"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð² Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ…:"
 
 #: utils/tables.py
 #, python-format
@@ -180,95 +180,95 @@ msgstr "??"
 
 #: utils/tables.py
 msgid "advancing"
-msgstr "проходящая дальше"
+msgstr "Ð¿Ñ€Ð¾Ñ…Ð¾Ð´ÑÑ‰Ð°Ñ Ð´Ð°Ð»ÑŒÑˆÐµ"
 
 #: utils/tables.py
 msgid "Advancing"
-msgstr "Проходящая дальше"
+msgstr "ÐŸÑ€Ð¾Ñ…Ð¾Ð´ÑÑ‰Ð°Ñ Ð´Ð°Ð»ÑŒÑˆÐµ"
 
 #: utils/tables.py
 msgid "eliminated"
-msgstr "не прошла"
+msgstr "Ð½Ðµ Ð¿Ñ€Ð¾ÑˆÐ»Ð°"
 
 #: utils/tables.py
 msgid "Eliminated"
-msgstr "Не прошедшая"
+msgstr "ÐÐµ Ð¿Ñ€Ð¾ÑˆÐµÐ´ÑˆÐ°Ñ"
 
 #: utils/tables.py
 msgid "No result for debate"
-msgstr "Нет результатов этих дебатов"
+msgstr "ÐÐµÑ‚ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð² ÑÑ‚Ð¸Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: utils/tables.py
 #, python-format
 msgid "Placed %(place)s"
-msgstr "Заняли %(place)s"
+msgstr "Ð—Ð°Ð½ÑÐ»Ð¸ %(place)s"
 
 #: utils/tables.py
 msgid "Name"
-msgstr "Название"
+msgstr "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ"
 
 #: utils/tables.py
 msgid "Institution"
-msgstr "Клуб"
+msgstr "ÐšÐ»ÑƒÐ±"
 
 #: utils/tables.py
 msgid "Member of the Adjudication Core"
-msgstr "Член судейского пула"
+msgstr "Ð§Ð»ÐµÐ½ ÑÑƒÐ´ÐµÐ¹ÑÐºÐ¾Ð³Ð¾ Ð¿ÑƒÐ»Ð°"
 
 #: utils/tables.py
 msgid "Independent Adjudicator"
-msgstr "Независимый судья"
+msgstr "ÐÐµÐ·Ð°Ð²Ð¸ÑÐ¸Ð¼Ñ‹Ð¹ ÑÑƒÐ´ÑŒÑ"
 
 #: utils/tables.py
 msgid "Always Trainee"
-msgstr "Всегда винг без права голоса"
+msgstr "Ð’ÑÐµÐ³Ð´Ð° Ð²Ð¸Ð½Ð³ Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
 
 #: utils/tables.py
 msgid "in minority"
-msgstr "в меньшинстве"
+msgstr "Ð² Ð¼ÐµÐ½ÑŒÑˆÐ¸Ð½ÑÑ‚Ð²Ðµ"
 
 #: utils/tables.py
 msgid "Debate Adjudicators"
-msgstr "Судьи дебатов"
+msgstr "Ð¡ÑƒÐ´ÑŒÐ¸ Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
 
 #: utils/tables.py
 msgid "Categories"
-msgstr "Категории"
+msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸"
 
 #: utils/tables.py
 msgid "Category"
-msgstr "Категория"
+msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ñ"
 
 #: utils/tables.py
 #, python-format
 msgid "This room %(predicate)s."
-msgstr "Эта аудитория %(predicate)s."
+msgstr "Ð­Ñ‚Ð° Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ %(predicate)s."
 
 #: utils/tables.py
 #, python-format
 msgid "This room %(predicates)s, and %(last_predicate)s."
-msgstr "Эта аудитория %(predicates)s, и %(last_predicate)s."
+msgstr "Ð­Ñ‚Ð° Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ %(predicates)s, Ð¸ %(last_predicate)s."
 
 #: utils/tables.py
 msgid "Room"
-msgstr "Аудитория"
+msgstr "ÐÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ"
 
 #: utils/tables.py
 #, python-format
 msgid "Teams have met once"
 msgid_plural "Teams have met %(count)d times"
-msgstr[0] "Команды играли вместе один раз"
-msgstr[1] "Команды играли вместе %(count)d раз"
-msgstr[2] "Команды играли вместе %(count)d раз"
-msgstr[3] "Команды играли вместе %(count)d раз"
+msgstr[0] "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸Ð³Ñ€Ð°Ð»Ð¸ Ð²Ð¼ÐµÑÑ‚Ðµ Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð·"
+msgstr[1] "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸Ð³Ñ€Ð°Ð»Ð¸ Ð²Ð¼ÐµÑÑ‚Ðµ %(count)d Ñ€Ð°Ð·"
+msgstr[2] "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸Ð³Ñ€Ð°Ð»Ð¸ Ð²Ð¼ÐµÑÑ‚Ðµ %(count)d Ñ€Ð°Ð·"
+msgstr[3] "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸Ð³Ñ€Ð°Ð»Ð¸ Ð²Ð¼ÐµÑÑ‚Ðµ %(count)d Ñ€Ð°Ð·"
 
 #: utils/tables.py
 msgid "Teams are from the same institution"
-msgstr "Команды из одного клуба"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸Ð· Ð¾Ð´Ð½Ð¾Ð³Ð¾ ÐºÐ»ÑƒÐ±Ð°"
 
 #: utils/tables.py
 msgid "Conflicts/Flags"
-msgstr "Конфликты/отметки"
+msgstr "ÐšÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ñ‹/Ð¾Ñ‚Ð¼ÐµÑ‚ÐºÐ¸"
 
 #: utils/tables.py
 msgid "The confirmed ballot"
@@ -276,7 +276,7 @@ msgstr ""
 
 #: utils/tables.py
 msgid "No ballot"
-msgstr "Нет бэллота"
+msgstr "ÐÐµÑ‚ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
 
 #: utils/tables.py
 msgid "No scores"
@@ -284,23 +284,23 @@ msgstr ""
 
 #: utils/tables.py
 msgid "View Ballot"
-msgstr "Просмотреть бэллот"
+msgstr "ÐŸÑ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚"
 
 #: utils/tables.py
 msgid "The ballot you submitted"
-msgstr "Отправленный вами бэллот"
+msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ð¹ Ð²Ð°Ð¼Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚"
 
 #: utils/tables.py
 msgid "No Ballot"
-msgstr "Нет бэллота"
+msgstr "ÐÐµÑ‚ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
 
 #: utils/tables.py
 msgid "View/Edit Ballot"
-msgstr "Смотреть/изменить бэллот"
+msgstr "Ð¡Ð¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ/Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚"
 
 #: utils/tables.py
 msgid "Result"
-msgstr "Результат"
+msgstr "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚"
 
 #. Translators: "TBC" stands for "to be confirmed".
 #: utils/tables.py
@@ -330,7 +330,7 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "Team %(num)d"
-msgstr "Команда %(num)d"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° %(num)d"
 
 #: utils/tables.py
 msgid "Postpone"
@@ -350,5 +350,6 @@ msgstr ""
 
 #: utils/views.py
 msgid "Whoops! You're not meant to type that URL into your browser."
-msgstr "Упс! Вы не должны вводить этот URL в ваш браузер."
+msgstr "Ð£Ð¿Ñ! Ð’Ñ‹ Ð½Ðµ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð²Ð²Ð¾Ð´Ð¸Ñ‚ÑŒ ÑÑ‚Ð¾Ñ‚ URL Ð² Ð²Ð°Ñˆ Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€."
+
 

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load debate_tags %}
 {% load add_field_css i18n %}
 
@@ -26,7 +26,7 @@
   <div class="alert alert-warning">
     <i data-feather="alert-circle"></i>
     {% blocktrans trimmed with tournament=tournament.name %}
-      No round is currently set. In order for Tabbycat to work, please set the
+      No round is currently set. In order for NekoTab to work, please set the
       <strong>current round</strong> of the tournament
       <strong>{{ tournament }}</strong>.
     {% endblocktrans %}
@@ -87,3 +87,4 @@
   </script>
 
 {% endblock %}
+

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: de\n"
-"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/utils/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 954\n"
 
@@ -44,7 +44,7 @@ msgstr "Thema"
 
 #: utils/admin.py
 msgid "Confirmed"
-msgstr "Bestätigt"
+msgstr "BestÃ¤tigt"
 
 #: utils/admin.py
 msgid "Adjudicator"
@@ -52,15 +52,15 @@ msgstr "Juror"
 
 #: utils/tables.py
 msgid "No Data Available"
-msgstr "Keine Daten verfügbar"
+msgstr "Keine Daten verfÃ¼gbar"
 
 #: utils/tables.py
-msgid "Ⓒ"
-msgstr "Ⓒ"
+msgid "â’¸"
+msgstr "â’¸"
 
 #: utils/tables.py
-msgid "Ⓣ"
-msgstr "Ⓣ"
+msgid "â“‰"
+msgstr "â“‰"
 
 #: utils/tables.py
 msgid "chair"
@@ -75,7 +75,7 @@ msgid "trainee"
 msgstr "Trainee"
 
 #: utils/tables.py
-msgid "—"
+msgid "â€”"
 msgstr ""
 
 #: utils/tables.py
@@ -114,7 +114,7 @@ msgstr "%(team)s hat verloren"
 
 #: utils/tables.py
 #, python-format
-msgid "%(team)s—no result"
+msgid "%(team)sâ€”no result"
 msgstr "%(team)s - kein Ergebnis"
 
 #: utils/tables.py
@@ -158,7 +158,7 @@ msgstr "Verlor gegen %(team)s"
 #: utils/tables.py
 #, python-format
 msgid "No result for debate against %(team)s"
-msgstr "Kein Ergebnis für die Debatte gegen %(team)s"
+msgstr "Kein Ergebnis fÃ¼r die Debatte gegen %(team)s"
 
 #: utils/tables.py
 #, python-format
@@ -188,11 +188,11 @@ msgstr "weiterkommend"
 
 #: utils/tables.py
 msgid "eliminated"
-msgstr "aus­ge­schie­den"
+msgstr "ausÂ­geÂ­schieÂ­den"
 
 #: utils/tables.py
 msgid "Eliminated"
-msgstr "Aus­ge­schie­den"
+msgstr "AusÂ­geÂ­schieÂ­den"
 
 #: utils/tables.py
 msgid "No result for debate"
@@ -217,7 +217,7 @@ msgstr "Mitglied der Chefjury"
 
 #: utils/tables.py
 msgid "Independent Adjudicator"
-msgstr "Unabhängiger Juror"
+msgstr "UnabhÃ¤ngiger Juror"
 
 #: utils/tables.py
 msgid "Always Trainee"
@@ -257,8 +257,8 @@ msgstr "Raum"
 #, python-format
 msgid "Teams have met once"
 msgid_plural "Teams have met %(count)d times"
-msgstr[0] "Teams sind bereits einmal auf­ei­n­an­dergetroffen"
-msgstr[1] "Teams sind bereits %(count)d mal auf­ei­n­an­dergetroffen"
+msgstr[0] "Teams sind bereits einmal aufÂ­eiÂ­nÂ­anÂ­dergetroffen"
+msgstr[1] "Teams sind bereits %(count)d mal aufÂ­eiÂ­nÂ­anÂ­dergetroffen"
 
 #: utils/tables.py
 msgid "Teams are from the same institution"
@@ -270,7 +270,7 @@ msgstr "Konflikte/Flags"
 
 #: utils/tables.py
 msgid "The confirmed ballot"
-msgstr "Das bestätigte Ballot"
+msgstr "Das bestÃ¤tigte Ballot"
 
 #: utils/tables.py
 msgid "No ballot"
@@ -303,7 +303,7 @@ msgstr "Ergebnis"
 #. Translators: "TBC" stands for "to be confirmed".
 #: utils/tables.py
 msgid "TBC"
-msgstr "Bestätigung ausstehend"
+msgstr "BestÃ¤tigung ausstehend"
 
 #: utils/tables.py
 msgid "Bye"
@@ -349,4 +349,5 @@ msgstr ""
 #: utils/views.py
 msgid "Whoops! You're not meant to type that URL into your browser."
 msgstr "Ups! Du solltest diese URL nicht verwenden."
+
 

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -11,17 +11,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: it\n"
-"X-Crowdin-File: /develop/tabbycat/draw/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/draw/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 930\n"
 
 #: draw/admin.py
 #, python-format
 msgid "%(count)d debate was marked as having its sides confirmed."
 msgid_plural "%(count)d debates were marked as having their sides confirmed."
-msgstr[0] "Il dibattito %(count)d è stato marcato con il side da dibattere confermato."
+msgstr[0] "Il dibattito %(count)d Ã¨ stato marcato con il side da dibattere confermato."
 msgstr[1] "%(count)d dibattiti sono stati marcato con il side da dibattere confermato."
 
 #: draw/admin.py
@@ -32,7 +32,7 @@ msgstr "Imposta il side come non confermato"
 #, python-format
 msgid "%(count)d debate was marked as having its sides not confirmed."
 msgid_plural "%(count)d debates were marked as having their sides not confirmed."
-msgstr[0] "%(count)d dibattito è stato contrassegnato con il side da dibattere non confermato."
+msgstr[0] "%(count)d dibattito Ã¨ stato contrassegnato con il side da dibattere non confermato."
 msgstr[1] "%(count)d dibattiti sono stati contrassegnati con il side da dibattere non confermato."
 
 #: draw/apps.py draw/views.py
@@ -78,7 +78,7 @@ msgstr "Bolla su (istituto)"
 
 #: draw/generator/__init__.py
 msgid "Bubble down (institution)"
-msgstr "Bolla giù (istituto)"
+msgstr "Bolla giÃ¹ (istituto)"
 
 #: draw/generator/__init__.py
 msgid "Bubble up (to accommodate)"
@@ -90,7 +90,7 @@ msgstr "Bolla giu (per sistemare)"
 
 #: draw/generator/__init__.py
 msgid "Can't bubble up/down"
-msgstr "Impossibile fare bolla su/giù"
+msgstr "Impossibile fare bolla su/giÃ¹"
 
 #: draw/generator/__init__.py
 msgid "Pull-up team"
@@ -119,12 +119,12 @@ msgstr "I ranghi di stanza del round di eliminazione parziale indicano che le sq
 #: draw/generator/bpelimination.py
 #, python-format
 msgid "The number of debates (%d) in the last round is not a power of two."
-msgstr "Il numero di dibattiti (%d) nell'ultimo round non è una potenza di due."
+msgstr "Il numero di dibattiti (%d) nell'ultimo round non Ã¨ una potenza di due."
 
 #: draw/generator/bphungarian.py
 #, python-format
-msgid "The Rényi order can't be negative, and it's currently set to %(alpha)f."
-msgstr "L'ordine di Rényi non può essere negativo, ed è attualmente impostato su %(alpha)f."
+msgid "The RÃ©nyi order can't be negative, and it's currently set to %(alpha)f."
+msgstr "L'ordine di RÃ©nyi non puÃ² essere negativo, ed Ã¨ attualmente impostato su %(alpha)f."
 
 #: draw/generator/common.py
 #, python-format
@@ -143,7 +143,7 @@ msgstr "Ci sono solo%d squadre di break in questa categoria; ci devono essere al
 #: draw/generator/elimination.py
 #, python-format
 msgid "The number of teams (%d) in this round is not a power of two."
-msgstr "Il numero di squadre (%d) in questo round non è una potenza di due."
+msgstr "Il numero di squadre (%d) in questo round non Ã¨ una potenza di due."
 
 #: draw/generator/powerpair.py
 #, python-format
@@ -157,17 +157,17 @@ msgstr "Ci sono stati %(aff_count)d squadre affermative ma %(neg_count)d squadre
 
 #: draw/generator/random.py
 msgid "One or more teams had an allocated side that wasn't affirmative or negative."
-msgstr "Una o più squadre avevano un lato assegnato che non era affermativo o negativo."
+msgstr "Una o piÃ¹ squadre avevano un lato assegnato che non era affermativo o negativo."
 
 #: draw/manager.py
 #, python-format
 msgid "The draw type %(type)s can't be used with two-team formats."
-msgstr "Il tipo di sorteggio %(type)s non può essere usato con formati a due squadre."
+msgstr "Il tipo di sorteggio %(type)s non puÃ² essere usato con formati a due squadre."
 
 #: draw/manager.py
 #, python-format
 msgid "The draw type %(type)s can't be used with British Parliamentary."
-msgstr "Il tipo di sorteggio %(type)s non può essere usato con il British Parliamentary."
+msgstr "Il tipo di sorteggio %(type)s non puÃ² essere usato con il British Parliamentary."
 
 #: draw/manager.py
 #, python-format
@@ -177,7 +177,7 @@ msgstr "Opzione \"team in dibattito\" non riconosciuta: %(option)s"
 #: draw/manager.py
 #, python-format
 msgid "The break size (%(size)d) for this break category was invalid. It must be either six times or four times a power of two."
-msgstr "La dimensione del break (%(size)d) per questa categoria di break non è valida. Deve essere sei volte o quattro volte una potenza di due."
+msgstr "La dimensione del break (%(size)d) per questa categoria di break non Ã¨ valida. Deve essere sei volte o quattro volte una potenza di due."
 
 #: draw/models.py
 msgid "none"
@@ -322,7 +322,7 @@ msgstr "Ramo di questo dibattito"
 msgid "side history<br>\n"
 "(number of times the team has been on each side before this round)"
 msgstr "cronologia side<br>\n"
-"(numero di volte che la squadra è stata in ogni side prima di questo round)"
+"(numero di volte che la squadra Ã¨ stata in ogni side prima di questo round)"
 
 #. Translators: Abbreviation for "side history"
 #: draw/tables.py
@@ -343,7 +343,7 @@ msgstr "Miglioramento al massimo possibile, ancora squilibrato"
 
 #: draw/tables.py
 msgid "Was imbalanced and still imbalanced"
-msgstr "Era squilibrato e lo è ancora"
+msgstr "Era squilibrato e lo Ã¨ ancora"
 
 #: draw/tables.py
 msgid "No metrics in the team standings precedence"
@@ -408,11 +408,11 @@ msgid "position cost"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "STOP!!! Read this first! Deleting debate teams from the database may crash Tabbycat!"
+msgid "STOP!!! Read this first! Deleting debate teams from the database may crash NekoTab!"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "Tabbycat requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgid "NekoTab requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
@@ -425,7 +425,7 @@ msgid "WARNING!!! If you are editing debate teams, read this first!"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/edit_warning.html
-msgid "Tabbycat requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgid "NekoTab requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
 msgstr ""
 
 #: draw/templates/draw_alerts_adjudicators.html
@@ -500,7 +500,7 @@ msgstr[1] ""
 
 #: draw/templates/draw_base.html
 msgid "Availability"
-msgstr "Disponibilità"
+msgstr "DisponibilitÃ "
 
 #: draw/templates/draw_base.html draw/templates/draw_status_draft.html
 msgid "Edit Sides/Matchups"
@@ -539,7 +539,7 @@ msgstr ""
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
-msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> —  including their ballots and adjudicator allocations — and cannot be undone. You probably don't want to do this if any results have been entered!"
+msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> â€”  including their ballots and adjudicator allocations â€” and cannot be undone. You probably don't want to do this if any results have been entered!"
 msgstr ""
 
 #: draw/templates/draw_confirm_regeneration.html
@@ -601,11 +601,11 @@ msgstr ""
 
 #: draw/templates/draw_display_admin.html
 msgid "You have not generated a draw for this round yet. There is nothing to release."
-msgstr "Non hai ancora generato un sorteggio per questo round. Non c'è nulla da rilasciare."
+msgstr "Non hai ancora generato un sorteggio per questo round. Non c'Ã¨ nulla da rilasciare."
 
 #: draw/templates/draw_display_admin.html
 msgid "The draw for this round is still in a draft state. Confirm the draw before releasing it."
-msgstr "Il sorteggio per questo round è ancora in stato di bozza. Confermare il sorteggio prima di rilasciarlo."
+msgstr "Il sorteggio per questo round Ã¨ ancora in stato di bozza. Confermare il sorteggio prima di rilasciarlo."
 
 #: draw/templates/draw_display_admin.html
 msgid "Unrelease draw to public"
@@ -613,7 +613,7 @@ msgstr "Disattiva il rilascio del sorteggio al pubblico"
 
 #: draw/templates/draw_display_admin.html
 msgid "The draw has been released publicly."
-msgstr "Il sorteggio è stato rilasciato pubblicamente."
+msgstr "Il sorteggio Ã¨ stato rilasciato pubblicamente."
 
 #: draw/templates/draw_display_admin.html
 msgid "View public draw page"
@@ -918,7 +918,7 @@ msgstr ""
 
 #: draw/templates/draw_status_draft.html
 #, python-format
-msgid "The draw type for this round is set to <strong>manual</strong>, so Tabbycat has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
+msgid "The draw type for this round is set to <strong>manual</strong>, so NekoTab has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
@@ -927,7 +927,7 @@ msgid "The adjudicator score range is 0, and so adjudicator scores will be ignor
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
-msgid "Tabbycat assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept Tabbycat's random assignment."
+msgid "NekoTab assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept NekoTab's random assignment."
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
@@ -945,7 +945,7 @@ msgstr ""
 
 #: draw/templates/position_balance.html
 #, python-format
-msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
+msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
 msgstr ""
 
 #: draw/templates/position_balance_break.html
@@ -1040,10 +1040,10 @@ msgstr ""
 
 #: draw/views.py
 #, python-format
-msgid "Rényi entropy of order %(order)s"
+msgid "RÃ©nyi entropy of order %(order)s"
 msgstr ""
 
-#. Translators: This is appended to the string "Rényi entropy of order 1.0"
+#. Translators: This is appended to the string "RÃ©nyi entropy of order 1.0"
 #: draw/views.py
 msgid " (<i>i.e.</i>, Shannon entropy)"
 msgstr ""
@@ -1131,4 +1131,5 @@ msgstr ""
 #: draw/views.py
 msgid "Edit Matchups"
 msgstr ""
+
 

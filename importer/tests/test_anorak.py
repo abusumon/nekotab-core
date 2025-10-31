@@ -1,4 +1,4 @@
-"""Unit tests for the Anorak importer."""
+﻿"""Unit tests for the Anorak importer."""
 
 import logging
 import os.path
@@ -20,7 +20,7 @@ from ..importers.anorak import AnorakTournamentDataImporter
 
 class TestImporterAnorak(TestCase):
 
-    # BASE_DIR is /tabbycat this allows tests to run from there or project root
+    # BASE_DIR is /NekoTab this allows tests to run from there or project root
     TESTDIR = os.path.join(BASE_DIR, '../data/test/standard')
     TESTDIR_CHOICES = os.path.join(BASE_DIR, '../data/test/choices')
     TESTDIR_ERRORS = os.path.join(BASE_DIR, '../data/test/errors')
@@ -186,3 +186,4 @@ class TestImporterAnorak(TestCase):
         self.assertEqual(len(self.importer.errors), 6)
         self.assertEqual(len(logscm.records), 6)
         self.importer.strict = True
+

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-14 04:50+1100\n"
 "PO-Revision-Date: 2020-07-10 07:05\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/djangojs.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/djangojs.po\n"
 "X-Crowdin-File-ID: 962\n"
 
 #: checkins/templates/CheckInScanContainer.vue:
@@ -36,12 +36,12 @@ msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "All"
-msgstr "都"
+msgstr "éƒ½"
 
 #. Translators: %1: Option name
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "By %1"
-msgstr "通过%1"
+msgstr "é€šè¿‡%1"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "No matching rooms found."
@@ -56,12 +56,12 @@ msgid "This page will live-update with new check-ins as they occur although the 
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>✓</strong> All"
-msgstr "<strong>✓</strong>都"
+msgid "<strong>âœ“</strong> All"
+msgstr "<strong>âœ“</strong>éƒ½"
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>☓</strong> All"
-msgstr "<strong>☓</strong>都"
+msgid "<strong>â˜“</strong> All"
+msgstr "<strong>â˜“</strong>éƒ½"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "Click to check-in manually"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "saving..."
-msgstr "在保存..."
+msgstr "åœ¨ä¿å­˜..."
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "This person does not have a check-in identifier so they can't be checked in"
@@ -105,11 +105,11 @@ msgstr ""
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1 (Present; id=%2)"
-msgstr "%1（出席；id=%2）"
+msgstr "%1ï¼ˆå‡ºå¸­ï¼›id=%2ï¼‰"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1 (Absent; id=%2)"
-msgstr "%1（缺席；id=%2）"
+msgstr "%1ï¼ˆç¼ºå¸­ï¼›id=%2ï¼‰"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a team with speakers %2"
@@ -117,7 +117,7 @@ msgstr ""
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "%1, a %2"
-msgstr "%1，一个%2"
+msgstr "%1ï¼Œä¸€ä¸ª%2"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "Anonymous (due to team codes)"
@@ -125,7 +125,7 @@ msgstr ""
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "Anon"
-msgstr "匿名"
+msgstr "åŒ¿å"
 
 #: checkins/templates/PeopleStatusMixin.vue:
 msgid "Independent"
@@ -153,7 +153,7 @@ msgstr ""
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "No Category"
-msgstr "没有类别"
+msgstr "æ²¡æœ‰ç±»åˆ«"
 
 #: checkins/templates/VenuesStatusMixin.vue:
 msgid "Priority %1"
@@ -181,7 +181,7 @@ msgstr ""
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "ID %1,"
-msgstr "ID %1，"
+msgstr "ID %1ï¼Œ"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "Room:"
@@ -193,19 +193,19 @@ msgstr ""
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Solo Chair"
-msgstr "單主席"
+msgstr "å–®ä¸»å¸­"
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Panellist"
-msgstr "成员"
+msgstr "æˆå‘˜"
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Trainee"
-msgstr "实习生"
+msgstr "å®žä¹ ç”Ÿ"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "Team"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Mark speeches %1 to %2; <strong>%3</strong>."
@@ -221,7 +221,7 @@ msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "The motion is <em>%1</em>"
-msgstr "话题是<em>%1</em>"
+msgstr "è¯é¢˜æ˜¯<em>%1</em>"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Debated"
@@ -229,11 +229,11 @@ msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Circle %1"
-msgstr "画圆圈%1"
+msgstr "ç”»åœ†åœˆ%1"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "<strong>%1</strong>: %2"
-msgstr "<strong>%1</strong>：%2"
+msgstr "<strong>%1</strong>ï¼š%2"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Aff Veto"
@@ -245,7 +245,7 @@ msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue: printing/templates/PrintableTeamScores.vue:
 msgid "%1:"
-msgstr "%1："
+msgstr "%1ï¼š"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "tab entry"
@@ -260,11 +260,11 @@ msgid "Unaffiliated"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "no ½ marks"
+msgid "no Â½ marks"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "½ marks are allowed"
+msgid "Â½ marks are allowed"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
@@ -273,7 +273,7 @@ msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "%1 (%2, %3)"
-msgstr "%1（%2，%3）"
+msgstr "%1ï¼ˆ%2ï¼Œ%3ï¼‰"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Adjudicating with %1."
@@ -281,7 +281,7 @@ msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "; "
-msgstr "；"
+msgstr "ï¼›"
 
 #: printing/templates/PrintableFeedback.vue:
 msgid "Did %1 deliver the adjudication?"
@@ -289,7 +289,7 @@ msgstr ""
 
 #: printing/templates/PrintableFeedback.vue: printing/templates/PrintableFeedbackQuestion.vue:
 msgid "Yes"
-msgstr "是"
+msgstr "æ˜¯"
 
 #: printing/templates/PrintableFeedback.vue:
 msgid "No, I am submitting feedback on:"
@@ -301,7 +301,7 @@ msgstr ""
 
 #: printing/templates/PrintableFeedbackQuestion.vue:
 msgid "No"
-msgstr "否"
+msgstr "å¦"
 
 #: printing/templates/PrintableScoresheet.vue:
 msgid "Which team won the debate:"
@@ -313,7 +313,7 @@ msgstr ""
 
 #: printing/templates/PrintableTeamScores.vue:
 msgid "%1, %2"
-msgstr "%1，%2"
+msgstr "%1ï¼Œ%2"
 
 #: printing/templates/PrintableTeamScores.vue:
 msgid "IMPORTANT: Check and explicitly note if a speaker gives multiple speeches"
@@ -364,7 +364,7 @@ msgid "Match Check-Ins"
 msgstr ""
 
 #: templates/tables/CheckboxTables.vue:
-msgid "Set people as available only if they have a check-in and are currently unavailable — i.e. it will not overwrite any existing availabilities."
+msgid "Set people as available only if they have a check-in and are currently unavailable â€” i.e. it will not overwrite any existing availabilities."
 msgstr ""
 
 #: templates/tables/CheckboxTables.vue:47
@@ -461,7 +461,7 @@ msgstr ""
 
 #: results/templates/ResultsStats.vue:26
 msgid "Unknown"
-msgstr "未知"
+msgstr "æœªçŸ¥"
 
 #: results/templates/ResultsStats.vue:31
 msgid "Unconfirmed"
@@ -509,24 +509,24 @@ msgstr ""
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Break"
-msgstr "资格"
+msgstr "èµ„æ ¼"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Gender"
-msgstr "性别"
+msgstr "æ€§åˆ«"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Rank"
-msgstr "排名"
+msgstr "æŽ’å"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Region"
-msgstr "地区"
+msgstr "åœ°åŒº"
 
 #. Translators: Short for "Venue Category"
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Category"
-msgstr "类别"
+msgstr "ç±»åˆ«"
 
 #: utils/templates/DragAndDropDebate.vue:5
 msgid "The debate's bracket"
@@ -550,5 +550,6 @@ msgstr ""
 
 #: draw/templates/InlineTeam.vue:41
 msgid "No code name set"
-msgstr "没有代号"
+msgstr "æ²¡æœ‰ä»£å·"
+
 

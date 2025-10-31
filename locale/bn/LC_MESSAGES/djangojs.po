@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-14 04:50+1100\n"
 "PO-Revision-Date: 2020-12-31 14:48\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: bn\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/djangojs.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/djangojs.po\n"
 "X-Crowdin-File-ID: 962\n"
 
 #: checkins/templates/CheckInScanContainer.vue:
@@ -36,7 +36,7 @@ msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "All"
-msgstr "সকল"
+msgstr "à¦¸à¦•à¦²"
 
 #. Translators: %1: Option name
 #: checkins/templates/CheckInStatusContainer.vue:
@@ -49,18 +49,18 @@ msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "No matching people found."
-msgstr "কোন মিল পাওয়া যায়নি।"
+msgstr "à¦•à§‹à¦¨ à¦®à¦¿à¦² à¦ªà¦¾à¦“à§Ÿà¦¾ à¦¯à¦¾à§Ÿà¦¨à¦¿à¥¤"
 
 #: checkins/templates/CheckInStatusContainer.vue:
 msgid "This page will live-update with new check-ins as they occur although the initial list may be up to a minute old."
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>✓</strong> All"
+msgid "<strong>âœ“</strong> All"
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
-msgid "<strong>☓</strong> All"
+msgid "<strong>â˜“</strong> All"
 msgstr ""
 
 #: checkins/templates/CheckInStatusContainer.vue:
@@ -197,15 +197,15 @@ msgstr ""
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Panellist"
-msgstr "প্যানেলিস্ট"
+msgstr "à¦ªà§à¦¯à¦¾à¦¨à§‡à¦²à¦¿à¦¸à§à¦Ÿ"
 
 #: printing/templates/PrintableBallotHeader.vue: printing/templates/PrintableDebateInfo.vue:
 msgid "Trainee"
-msgstr "নবিশ বিচারক"
+msgstr "à¦¨à¦¬à¦¿à¦¶ à¦¬à¦¿à¦šà¦¾à¦°à¦•"
 
 #: printing/templates/PrintableBallotHeader.vue:
 msgid "Team"
-msgstr "দল"
+msgstr "à¦¦à¦²"
 
 #: printing/templates/PrintableDebateInfo.vue:
 msgid "Mark speeches %1 to %2; <strong>%3</strong>."
@@ -260,11 +260,11 @@ msgid "Unaffiliated"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "no ½ marks"
+msgid "no Â½ marks"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
-msgid "½ marks are allowed"
+msgid "Â½ marks are allowed"
 msgstr ""
 
 #: printing/templates/PrintableDebateInfo.vue:
@@ -341,7 +341,7 @@ msgstr ""
 
 #: templates/tables/TablesContainer.vue:8
 msgid "Find in Table"
-msgstr "ছক থেকে খুঁজুন"
+msgstr "à¦›à¦• à¦¥à§‡à¦•à§‡ à¦–à§à¦à¦œà§à¦¨"
 
 #: templates/tables/CheckboxTables.vue:30
 msgid "Set All Breaking as Available"
@@ -364,7 +364,7 @@ msgid "Match Check-Ins"
 msgstr ""
 
 #: templates/tables/CheckboxTables.vue:
-msgid "Set people as available only if they have a check-in and are currently unavailable — i.e. it will not overwrite any existing availabilities."
+msgid "Set people as available only if they have a check-in and are currently unavailable â€” i.e. it will not overwrite any existing availabilities."
 msgstr ""
 
 #: templates/tables/CheckboxTables.vue:47
@@ -461,7 +461,7 @@ msgstr ""
 
 #: results/templates/ResultsStats.vue:26
 msgid "Unknown"
-msgstr "অজ্ঞাত"
+msgstr "à¦…à¦œà§à¦žà¦¾à¦¤"
 
 #: results/templates/ResultsStats.vue:31
 msgid "Unconfirmed"
@@ -509,7 +509,7 @@ msgstr ""
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Break"
-msgstr "ব্রেক"
+msgstr "à¦¬à§à¦°à§‡à¦•"
 
 #: utils/templates/DragAndDropActions.vue:65
 msgid "Gender"
@@ -551,4 +551,5 @@ msgstr ""
 #: draw/templates/InlineTeam.vue:41
 msgid "No code name set"
 msgstr ""
+
 

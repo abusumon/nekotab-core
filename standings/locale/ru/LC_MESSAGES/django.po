@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -12,162 +12,162 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/tabbycat/standings/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/standings/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 950\n"
 
 #: standings/base.py
 msgid "The same metric would be added twice:"
-msgstr "Эта же метрика будет добавлена дважды:"
+msgstr "Ð­Ñ‚Ð° Ð¶Ðµ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ° Ð±ÑƒÐ´ÐµÑ‚ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð° Ð´Ð²Ð°Ð¶Ð´Ñ‹:"
 
 #: standings/base.py
 msgid "The same ranking would be added twice:"
-msgstr "Тот же рейтинг будет добавлен дважды:"
+msgstr "Ð¢Ð¾Ñ‚ Ð¶Ðµ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ Ð±ÑƒÐ´ÐµÑ‚ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½ Ð´Ð²Ð°Ð¶Ð´Ñ‹:"
 
 #: standings/base.py
 #, python-format
 msgid "Unrecognized metric code: \"%(code)s\""
-msgstr "Нераспознанный код метрики: \"%(code)s\""
+msgstr "ÐÐµÑ€Ð°ÑÐ¿Ð¾Ð·Ð½Ð°Ð½Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ¸: \"%(code)s\""
 
 #: standings/diversity.py
 msgid "All"
-msgstr "Все"
+msgstr "Ð’ÑÐµ"
 
 #: standings/diversity.py
 msgid "Breaking"
-msgstr "Брейкаются"
+msgstr "Ð‘Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‚ÑÑ"
 
 #: standings/diversity.py
 #, python-format
 msgid "Not %(category)s"
-msgstr "Не %(category)s"
+msgstr "ÐÐµ %(category)s"
 
 #: standings/diversity.py
 msgid "All Speakers"
-msgstr "Все спикеры"
+msgstr "Ð’ÑÐµ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: standings/diversity.py
 msgid "IAs"
-msgstr "НС"
+msgstr "ÐÐ¡"
 
 #: standings/diversity.py
 msgid "Chairs"
-msgstr "Чэйры"
+msgstr "Ð§ÑÐ¹Ñ€Ñ‹"
 
 #: standings/diversity.py
 msgid "Panellists"
-msgstr "Винги"
+msgstr "Ð’Ð¸Ð½Ð³Ð¸"
 
 #: standings/diversity.py
 msgid "Trainees"
-msgstr "Винги без права голоса"
+msgstr "Ð’Ð¸Ð½Ð³Ð¸ Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
 
 #: standings/diversity.py
 msgid "Average Rating"
-msgstr "Средний рейтинг"
+msgstr "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³"
 
 #: standings/diversity.py
 msgid "Median Rating"
-msgstr "Медианный рейтинг"
+msgstr "ÐœÐµÐ´Ð¸Ð°Ð½Ð½Ñ‹Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³"
 
 #: standings/diversity.py
 msgid "Upper Quartile Rating"
-msgstr "Рейтинг верхней четверти"
+msgstr "Ð ÐµÐ¹Ñ‚Ð¸Ð½Ð³ Ð²ÐµÑ€Ñ…Ð½ÐµÐ¹ Ñ‡ÐµÑ‚Ð²ÐµÑ€Ñ‚Ð¸"
 
 #: standings/diversity.py
 msgid "Lower Quartile Rating"
-msgstr "Рейтинг нижней четверти"
+msgstr "Ð ÐµÐ¹Ñ‚Ð¸Ð½Ð³ Ð½Ð¸Ð¶Ð½ÐµÐ¹ Ñ‡ÐµÑ‚Ð²ÐµÑ€Ñ‚Ð¸"
 
 #: standings/diversity.py
 msgid "Average Rating From Teams"
-msgstr "Средний рейтинг от команд"
+msgstr "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ Ð¾Ñ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: standings/diversity.py
 msgid "Average Rating From Chairs"
-msgstr "Средний рейтинг от чэйров"
+msgstr "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ Ð¾Ñ‚ Ñ‡ÑÐ¹Ñ€Ð¾Ð²"
 
 #: standings/diversity.py
 msgid "Average Rating From Panellists"
-msgstr "Средний рейтинг от вингов"
+msgstr "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ Ð¾Ñ‚ Ð²Ð¸Ð½Ð³Ð¾Ð²"
 
 #: standings/diversity.py
 msgid "Average Rating From Trainees"
-msgstr "Средний рейтинг от вингов без права голоса"
+msgstr "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ Ð¾Ñ‚ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
 
 #: standings/diversity.py
 msgid "Average Score"
-msgstr "Средний балл"
+msgstr "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ð±Ð°Ð»Ð»"
 
 #: standings/diversity.py
 msgid "Median Score"
-msgstr "Медианный балл"
+msgstr "ÐœÐµÐ´Ð¸Ð°Ð½Ð½Ñ‹Ð¹ Ð±Ð°Ð»Ð»"
 
 #: standings/diversity.py
 msgid "Upper Quartile Score"
-msgstr "Баллы верхней четверти"
+msgstr "Ð‘Ð°Ð»Ð»Ñ‹ Ð²ÐµÑ€Ñ…Ð½ÐµÐ¹ Ñ‡ÐµÑ‚Ð²ÐµÑ€Ñ‚Ð¸"
 
 #: standings/diversity.py
 msgid "Lower Quartile Score"
-msgstr "Баллы нижней четверти"
+msgstr "Ð‘Ð°Ð»Ð»Ñ‹ Ð½Ð¸Ð¶Ð½ÐµÐ¹ Ñ‡ÐµÑ‚Ð²ÐµÑ€Ñ‚Ð¸"
 
 #: standings/diversity.py
 msgid "Reply Speaker Average"
-msgstr "Среднее заключительных спикеров"
+msgstr "Ð¡Ñ€ÐµÐ´Ð½ÐµÐµ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: standings/diversity.py
 #, python-format
 msgid "Speaker %(num)d Average"
-msgstr "Спикерский %(num)d средний"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ %(num)d ÑÑ€ÐµÐ´Ð½Ð¸Ð¹"
 
 #: standings/diversity.py
 msgid "Average Finals Score"
-msgstr "Средний финальный балл"
+msgstr "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ñ„Ð¸Ð½Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð±Ð°Ð»Ð»"
 
 #: standings/speakers.py
 msgid "total"
-msgstr "всего"
+msgstr "Ð²ÑÐµÐ³Ð¾"
 
 #: standings/speakers.py
 msgid "Total"
-msgstr "Всего"
+msgstr "Ð’ÑÐµÐ³Ð¾"
 
 #: standings/speakers.py
 msgid "average"
-msgstr "среднее"
+msgstr "ÑÑ€ÐµÐ´Ð½ÐµÐµ"
 
 #: standings/speakers.py
 msgid "Avg"
-msgstr "Ср"
+msgstr "Ð¡Ñ€"
 
 #: standings/speakers.py
 msgid "team points"
-msgstr "баллы команды"
+msgstr "Ð±Ð°Ð»Ð»Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: standings/speakers.py
 msgid "Team"
-msgstr "Команда"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð°"
 
 #: standings/speakers.py standings/teams.py standings/views.py
 msgid "Wins"
-msgstr "Побед"
+msgstr "ÐŸÐ¾Ð±ÐµÐ´"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of firsts"
-msgstr "количество первых"
+msgstr "ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿ÐµÑ€Ð²Ñ‹Ñ…"
 
 #: standings/speakers.py standings/teams.py
 msgid "1sts"
-msgstr "1х"
+msgstr "1Ñ…"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of seconds"
-msgstr "количество вторых"
+msgstr "ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð²Ñ‚Ð¾Ñ€Ñ‹Ñ…"
 
 #: standings/speakers.py standings/teams.py
 msgid "2nds"
-msgstr "2х"
+msgstr "2Ñ…"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of thirds"
@@ -179,19 +179,19 @@ msgstr ""
 
 #: standings/speakers.py standings/teams.py
 msgid "number of adjudicators who voted for this team"
-msgstr "количество судей, проголосовавших за эту команду"
+msgstr "ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑƒÐ´ÐµÐ¹, Ð¿Ñ€Ð¾Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²Ð°Ð²ÑˆÐ¸Ñ… Ð·Ð° ÑÑ‚Ñƒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ"
 
 #: standings/speakers.py standings/teams.py
 msgid "Ballots"
-msgstr "Бэллоты"
+msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚Ñ‹"
 
 #: standings/speakers.py standings/teams.py
 msgid "votes/ballots carried"
-msgstr "голосов/бэллотов внесено"
+msgstr "Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²/Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð² Ð²Ð½ÐµÑÐµÐ½Ð¾"
 
 #: standings/speakers.py
 msgid "standard deviation"
-msgstr "стандартное отклонение"
+msgstr "ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð½Ð¾Ðµ Ð¾Ñ‚ÐºÐ»Ð¾Ð½ÐµÐ½Ð¸Ðµ"
 
 #: standings/speakers.py
 msgid "Stdev"
@@ -199,23 +199,23 @@ msgstr "Stdev"
 
 #: standings/speakers.py
 msgid "number of speeches given"
-msgstr "количество произнесенных речей"
+msgstr "ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑÐµÐ½Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
 
 #: standings/speakers.py
 msgid "Num"
-msgstr "Число"
+msgstr "Ð§Ð¸ÑÐ»Ð¾"
 
 #: standings/speakers.py
 msgid "replies given"
-msgstr "ответов дано"
+msgstr "Ð¾Ñ‚Ð²ÐµÑ‚Ð¾Ð² Ð´Ð°Ð½Ð¾"
 
 #: standings/speakers.py
 msgid "trimmed mean (high-low drop)"
-msgstr "обрезанное значение (исключены верхний и нижний балл)"
+msgstr "Ð¾Ð±Ñ€ÐµÐ·Ð°Ð½Ð½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ (Ð¸ÑÐºÐ»ÑŽÑ‡ÐµÐ½Ñ‹ Ð²ÐµÑ€Ñ…Ð½Ð¸Ð¹ Ð¸ Ð½Ð¸Ð¶Ð½Ð¸Ð¹ Ð±Ð°Ð»Ð»)"
 
 #: standings/speakers.py
 msgid "Trim"
-msgstr "Обрезка"
+msgstr "ÐžÐ±Ñ€ÐµÐ·ÐºÐ°"
 
 #: standings/speakers.py
 msgid "speech ranks"
@@ -227,27 +227,27 @@ msgstr ""
 
 #: standings/teams.py
 msgid "points"
-msgstr "баллов"
+msgstr "Ð±Ð°Ð»Ð»Ð¾Ð²"
 
 #: standings/teams.py
 msgid "Pts"
-msgstr "Баллов"
+msgstr "Ð‘Ð°Ð»Ð»Ð¾Ð²"
 
 #: standings/teams.py
 msgid "wins"
-msgstr "побед"
+msgstr "Ð¿Ð¾Ð±ÐµÐ´"
 
 #: standings/teams.py
 msgid "total speaker score"
-msgstr "общий спикерский балл"
+msgstr "Ð¾Ð±Ñ‰Ð¸Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ð±Ð°Ð»Ð»"
 
 #: standings/teams.py
 msgid "Spk"
-msgstr "Спик"
+msgstr "Ð¡Ð¿Ð¸Ðº"
 
 #: standings/teams.py
 msgid "average total speaker score"
-msgstr "средний общий спикерский балл"
+msgstr "ÑÑ€ÐµÐ´Ð½Ð¸Ð¹ Ð¾Ð±Ñ‰Ð¸Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ð±Ð°Ð»Ð»"
 
 #: standings/teams.py
 msgid "ATSS"
@@ -255,7 +255,7 @@ msgstr "ATSS"
 
 #: standings/teams.py
 msgid "speaker score standard deviation"
-msgstr "стандартное отклонение спикерских баллов"
+msgstr "ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð½Ð¾Ðµ Ð¾Ñ‚ÐºÐ»Ð¾Ð½ÐµÐ½Ð¸Ðµ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ñ… Ð±Ð°Ð»Ð»Ð¾Ð²"
 
 #: standings/teams.py
 msgid "SSD"
@@ -263,15 +263,15 @@ msgstr "SSD"
 
 #: standings/teams.py
 msgid "sum of margins"
-msgstr "сумма пределов"
+msgstr "ÑÑƒÐ¼Ð¼Ð° Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¾Ð²"
 
 #: standings/teams.py
 msgid "Marg"
-msgstr "Пред"
+msgstr "ÐŸÑ€ÐµÐ´"
 
 #: standings/teams.py
 msgid "average margin"
-msgstr "средний предел"
+msgstr "ÑÑ€ÐµÐ´Ð½Ð¸Ð¹ Ð¿Ñ€ÐµÐ´ÐµÐ»"
 
 #: standings/teams.py
 msgid "AWM"
@@ -279,11 +279,11 @@ msgstr "AWM"
 
 #: standings/teams.py
 msgid "average individual speaker score"
-msgstr "средний индивидуальный спикерский балл"
+msgstr "ÑÑ€ÐµÐ´Ð½Ð¸Ð¹ Ð¸Ð½Ð´Ð¸Ð²Ð¸Ð´ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ð±Ð°Ð»Ð»"
 
 #: standings/teams.py
 msgid "AISS"
-msgstr "СИСБ"
+msgstr "Ð¡Ð˜Ð¡Ð‘"
 
 #: standings/teams.py
 msgid "draw strength by rank"
@@ -295,7 +295,7 @@ msgstr ""
 
 #: standings/teams.py
 msgid "draw strength by wins"
-msgstr "сила сетки по победам"
+msgstr "ÑÐ¸Ð»Ð° ÑÐµÑ‚ÐºÐ¸ Ð¿Ð¾ Ð¿Ð¾Ð±ÐµÐ´Ð°Ð¼"
 
 #: standings/teams.py
 msgid "DS"
@@ -303,7 +303,7 @@ msgstr "DS"
 
 #: standings/teams.py
 msgid "draw strength by total speaker score"
-msgstr "сила сетки по общему спикерскому баллу"
+msgstr "ÑÐ¸Ð»Ð° ÑÐµÑ‚ÐºÐ¸ Ð¿Ð¾ Ð¾Ð±Ñ‰ÐµÐ¼Ñƒ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¾Ð¼Ñƒ Ð±Ð°Ð»Ð»Ñƒ"
 
 #: standings/teams.py
 msgid "DSS"
@@ -315,7 +315,7 @@ msgstr ""
 
 #: standings/teams.py
 msgid "PU"
-msgstr "ПУ"
+msgstr "ÐŸÐ£"
 
 #: standings/teams.py
 msgid "number of times in pullup debates"
@@ -335,185 +335,185 @@ msgstr ""
 
 #: standings/teams.py
 msgid "Who-beat-whom"
-msgstr "Кто кого победил"
+msgstr "ÐšÑ‚Ð¾ ÐºÐ¾Ð³Ð¾ Ð¿Ð¾Ð±ÐµÐ´Ð¸Ð»"
 
 #: standings/teams.py
 msgid "WBW"
-msgstr "Кто кого победил"
+msgstr "ÐšÑ‚Ð¾ ÐºÐ¾Ð³Ð¾ Ð¿Ð¾Ð±ÐµÐ´Ð¸Ð»"
 
 #: standings/teams.py
 msgid "who-beat-whom"
-msgstr "кто кого победил"
+msgstr "ÐºÑ‚Ð¾ ÐºÐ¾Ð³Ð¾ Ð¿Ð¾Ð±ÐµÐ´Ð¸Ð»"
 
 #: standings/templates/current_standings.html
 msgid "It also excludes results from silent rounds (if any) and from the current round."
-msgstr "Оно также исключает результаты закрытых раундов (если таковые имеются) и текущего раунда."
+msgstr "ÐžÐ½Ð¾ Ñ‚Ð°ÐºÐ¶Ðµ Ð¸ÑÐºÐ»ÑŽÑ‡Ð°ÐµÑ‚ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ñ‹Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð² (ÐµÑÐ»Ð¸ Ñ‚Ð°ÐºÐ¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÑŽÑ‚ÑÑ) Ð¸ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°."
 
 #: standings/templates/current_standings.html
 #, python-format
 msgid "This list is sorted by team points, then alphabetically by team name. It does not indicate each team's ranking within each bracket. %(silent_round_sentence)s"
-msgstr "Этот список сортируется по командным баллам, а затем по алфавиту по названию команды. Он не указывает рейтинг каждой команды в каждой строчке. %(silent_round_sentence)s"
+msgstr "Ð­Ñ‚Ð¾Ñ‚ ÑÐ¿Ð¸ÑÐ¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð¿Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¼ Ð±Ð°Ð»Ð»Ð°Ð¼, Ð° Ð·Ð°Ñ‚ÐµÐ¼ Ð¿Ð¾ Ð°Ð»Ñ„Ð°Ð²Ð¸Ñ‚Ñƒ Ð¿Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÑŽ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹. ÐžÐ½ Ð½Ðµ ÑƒÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð² ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÑÑ‚Ñ€Ð¾Ñ‡ÐºÐµ. %(silent_round_sentence)s"
 
 #: standings/templates/current_standings.html
 #, python-format
 msgid "This list is sorted by number of wins, then alphabetically by team name. It does not indicate each team's ranking within each bracket. %(silent_round_sentence)s"
-msgstr "Этот список сортируется по количеству побед, потом по названию команд в алфавитном порядке. Он не отражает рейтинг каждой команды в каждой строчке. %(silent_round_sentence)s"
+msgstr "Ð­Ñ‚Ð¾Ñ‚ ÑÐ¿Ð¸ÑÐ¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð¿Ð¾ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ñƒ Ð¿Ð¾Ð±ÐµÐ´, Ð¿Ð¾Ñ‚Ð¾Ð¼ Ð¿Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÑŽ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð² Ð°Ð»Ñ„Ð°Ð²Ð¸Ñ‚Ð½Ð¾Ð¼ Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ. ÐžÐ½ Ð½Ðµ Ð¾Ñ‚Ñ€Ð°Ð¶Ð°ÐµÑ‚ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð² ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÑÑ‚Ñ€Ð¾Ñ‡ÐºÐµ. %(silent_round_sentence)s"
 
 #: standings/templates/current_standings_no_round.html
 msgid "There aren't any rounds for which results are available."
-msgstr "Нет раундов, для которых доступны результаты."
+msgstr "ÐÐµÑ‚ Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð², Ð´Ð»Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹."
 
 #: standings/templates/reply_standings.html
 msgid "Reply speakers are ranked by their <strong>average reply score</strong>."
-msgstr "Спикеры заключительных речей ранжированы по их <strong> среднему баллу за речь </strong>."
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð¿Ð¾ Ð¸Ñ… <strong> ÑÑ€ÐµÐ´Ð½ÐµÐ¼Ñƒ Ð±Ð°Ð»Ð»Ñƒ Ð·Ð° Ñ€ÐµÑ‡ÑŒ </strong>."
 
 #: standings/templates/reply_standings.html
 #, python-format
 msgid "Speakers can miss up to %(count)s reply speeches before they are omitted from the replies tab."
-msgstr "Спикеры могут пропустить до %(count)s заключительных речей, прежде чем они будут исключены из тэба заключительных спикеров."
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ Ð´Ð¾ %(count)s Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹, Ð¿Ñ€ÐµÐ¶Ð´Ðµ Ñ‡ÐµÐ¼ Ð¾Ð½Ð¸ Ð±ÑƒÐ´ÑƒÑ‚ Ð¸ÑÐºÐ»ÑŽÑ‡ÐµÐ½Ñ‹ Ð¸Ð· Ñ‚ÑÐ±Ð° Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²."
 
 #: standings/templates/reply_standings.html
 msgid "All reply speakers appear in these standings, no matter how many replies they've missed."
-msgstr "Все спикеры заключительных речей появляются в этой таблице, вне зависимости от того, сколько речей они пропустили."
+msgstr "Ð’ÑÐµ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹ Ð¿Ð¾ÑÐ²Ð»ÑÑŽÑ‚ÑÑ Ð² ÑÑ‚Ð¾Ð¹ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ, Ð²Ð½Ðµ Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ Ñ‚Ð¾Ð³Ð¾, ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€ÐµÑ‡ÐµÐ¹ Ð¾Ð½Ð¸ Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð»Ð¸."
 
 #: standings/templates/reply_standings.html
 #: standings/templates/speaker_standings.html
 #, python-format
 msgid "These settings can be changed in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>."
-msgstr "Эти настройки можно изменить в разделе « <a href=\"%(standings_config_url)s\" class=\"alert-link\">» конфигурации этого турнира</a>."
+msgstr "Ð­Ñ‚Ð¸ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Â« <a href=\"%(standings_config_url)s\" class=\"alert-link\">Â» ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ð¸ ÑÑ‚Ð¾Ð³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°</a>."
 
 #: standings/templates/speaker_standings.html
 #, python-format
 msgid "The speaker standings precedence is empty. This means that speakers aren't ranked according to any metrics, so everyone is first equal. If this isn't what you intended, set the speaker standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>. In most tournaments, the first metric should be total or average."
-msgstr "Первенство положения спикеров пустует. Это означает, что спикеры не ранжированы ни по одной метрике, то есть все спикеры будут равны. Если это не то, что вы хотели, установите первенство положения спикеров в <a href=\"%(standings_config_url)s\" class=\"alert-link\"> области Положение настроек турнира </a>. Для большинства турниров первой метрикой будет общий или средний балл."
+msgstr "ÐŸÐµÑ€Ð²ÐµÐ½ÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð¿ÑƒÑÑ‚ÑƒÐµÑ‚. Ð­Ñ‚Ð¾ Ð¾Ð·Ð½Ð°Ñ‡Ð°ÐµÑ‚, Ñ‡Ñ‚Ð¾ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹ Ð½Ðµ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð½Ð¸ Ð¿Ð¾ Ð¾Ð´Ð½Ð¾Ð¹ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐµ, Ñ‚Ð¾ ÐµÑÑ‚ÑŒ Ð²ÑÐµ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹ Ð±ÑƒÐ´ÑƒÑ‚ Ñ€Ð°Ð²Ð½Ñ‹. Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾ Ð½Ðµ Ñ‚Ð¾, Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ñ…Ð¾Ñ‚ÐµÐ»Ð¸, ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð¿ÐµÑ€Ð²ÐµÐ½ÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð² <a href=\"%(standings_config_url)s\" class=\"alert-link\"> Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° </a>. Ð”Ð»Ñ Ð±Ð¾Ð»ÑŒÑˆÐ¸Ð½ÑÑ‚Ð²Ð° Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð¾Ð² Ð¿ÐµÑ€Ð²Ð¾Ð¹ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ¾Ð¹ Ð±ÑƒÐ´ÐµÑ‚ Ð¾Ð±Ñ‰Ð¸Ð¹ Ð¸Ð»Ð¸ ÑÑ€ÐµÐ´Ð½Ð¸Ð¹ Ð±Ð°Ð»Ð»."
 
 #: standings/templates/speaker_standings.html
 msgid "Speakers are ranked by their <strong>average score</strong>."
-msgstr "Спикеры ранжированы по их <strong> среднему баллу </strong>."
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð¿Ð¾ Ð¸Ñ… <strong> ÑÑ€ÐµÐ´Ð½ÐµÐ¼Ñƒ Ð±Ð°Ð»Ð»Ñƒ </strong>."
 
 #: standings/templates/speaker_standings.html
 msgid "Speakers are ranked by their <strong>total score</strong>. Any speaker who misses a single debate will be severely punished in these rankings."
-msgstr "Спикеры ранжированы по их <strong> сумме баллов </strong>. Любой спикер, пропустивший хотя бы один раунд, будет сурово наказан таким ранжированием."
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð¿Ð¾ Ð¸Ñ… <strong> ÑÑƒÐ¼Ð¼Ðµ Ð±Ð°Ð»Ð»Ð¾Ð² </strong>. Ð›ÑŽÐ±Ð¾Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€, Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð²ÑˆÐ¸Ð¹ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ Ð¾Ð´Ð¸Ð½ Ñ€Ð°ÑƒÐ½Ð´, Ð±ÑƒÐ´ÐµÑ‚ ÑÑƒÑ€Ð¾Ð²Ð¾ Ð½Ð°ÐºÐ°Ð·Ð°Ð½ Ñ‚Ð°ÐºÐ¸Ð¼ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸ÐµÐ¼."
 
 #: standings/templates/speaker_standings.html
 #, python-format
 msgid "Speakers can miss up to %(count)s debates before they are omitted from the speaker tab."
-msgstr "Спикеры могут пропустить до %(count)s речей, прежде чем они будут исключены из спикерского тэба."
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ Ð´Ð¾ %(count)s Ñ€ÐµÑ‡ÐµÐ¹, Ð¿Ñ€ÐµÐ¶Ð´Ðµ Ñ‡ÐµÐ¼ Ð¾Ð½Ð¸ Ð±ÑƒÐ´ÑƒÑ‚ Ð¸ÑÐºÐ»ÑŽÑ‡ÐµÐ½Ñ‹ Ð¸Ð· ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¾Ð³Ð¾ Ñ‚ÑÐ±Ð°."
 
 #: standings/templates/speaker_standings.html
 msgid "All speakers appear in these standings, no matter how many debates they've missed."
-msgstr "Все спикеры появляются в этой таблице, вне зависимости от того, сколько раундов они пропустили."
+msgstr "Ð’ÑÐµ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹ Ð¿Ð¾ÑÐ²Ð»ÑÑŽÑ‚ÑÑ Ð² ÑÑ‚Ð¾Ð¹ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ, Ð²Ð½Ðµ Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ Ñ‚Ð¾Ð³Ð¾, ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð² Ð¾Ð½Ð¸ Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð»Ð¸."
 
 #: standings/templates/speaker_standings.html
 #, python-format
 msgid "Enforcing the limit on the number of missed debates requires the \"number of speeches given\" metric to be included in the speaker standings calculations, so it's been automatically added. To remove this warning message, add <strong>Number of speeches given</strong> to the <strong>Speaker standings extra metrics</strong> in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>."
-msgstr "Включение лимита на количество пропущенных раундов требует, чтобы метрика \"количество произнесенных речей\" была включена в расчет положения спикеров, поэтому она была добавлена автоматически. Чтобы убрать это предупреждение, добавьте <strong> Количество произнесенных речей</strong> в <strong>дополнительные метрики Положения спикеров </strong> в <a href=\"%(standings_config_url)s\" class=\"alert-link\"> разделе Положения настроек этого турнира</a>."
+msgstr "Ð’ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ð»Ð¸Ð¼Ð¸Ñ‚Ð° Ð½Ð° ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ñ€Ð¾Ð¿ÑƒÑ‰ÐµÐ½Ð½Ñ‹Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð² Ñ‚Ñ€ÐµÐ±ÑƒÐµÑ‚, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ° \"ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑÐµÐ½Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹\" Ð±Ñ‹Ð»Ð° Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð° Ð² Ñ€Ð°ÑÑ‡ÐµÑ‚ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð², Ð¿Ð¾ÑÑ‚Ð¾Ð¼Ñƒ Ð¾Ð½Ð° Ð±Ñ‹Ð»Ð° Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð° Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸. Ð§Ñ‚Ð¾Ð±Ñ‹ ÑƒÐ±Ñ€Ð°Ñ‚ÑŒ ÑÑ‚Ð¾ Ð¿Ñ€ÐµÐ´ÑƒÐ¿Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸Ðµ, Ð´Ð¾Ð±Ð°Ð²ÑŒÑ‚Ðµ <strong> ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ñ€Ð¾Ð¸Ð·Ð½ÐµÑÐµÐ½Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹</strong> Ð² <strong>Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ¸ ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² </strong> Ð² <a href=\"%(standings_config_url)s\" class=\"alert-link\"> Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº ÑÑ‚Ð¾Ð³Ð¾ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°</a>."
 
 #: standings/templates/standings_diversity.html
 msgid "Diversity Overview"
-msgstr "Обзор дайверсити"
+msgstr "ÐžÐ±Ð·Ð¾Ñ€ Ð´Ð°Ð¹Ð²ÐµÑ€ÑÐ¸Ñ‚Ð¸"
 
 #: standings/templates/standings_diversity.html
 msgid "The results data displayed here is presented without tests for statistical significance. Correlations should not be automatically considered reliable; particularly at small tournaments. A 'region' is a customisable category assigned to a set of institutions, and counted using the number of participants assigned to those institutions."
-msgstr "Данные о результатах, представленные здесь, представлены без испытаний статистической значимости. Корреляции не должны автоматически рассматриваться как надежные; особенно на небольших турнирах. Регион является настраиваемой категорией, присвоенной набору институтов, и подсчитывается с использованием числа участников, связанных с этими институтами."
+msgstr "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð¾ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð°Ñ…, Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ðµ Ð·Ð´ÐµÑÑŒ, Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð±ÐµÐ· Ð¸ÑÐ¿Ñ‹Ñ‚Ð°Ð½Ð¸Ð¹ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð¹ Ð·Ð½Ð°Ñ‡Ð¸Ð¼Ð¾ÑÑ‚Ð¸. ÐšÐ¾Ñ€Ñ€ÐµÐ»ÑÑ†Ð¸Ð¸ Ð½Ðµ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ñ€Ð°ÑÑÐ¼Ð°Ñ‚Ñ€Ð¸Ð²Ð°Ñ‚ÑŒÑÑ ÐºÐ°Ðº Ð½Ð°Ð´ÐµÐ¶Ð½Ñ‹Ðµ; Ð¾ÑÐ¾Ð±ÐµÐ½Ð½Ð¾ Ð½Ð° Ð½ÐµÐ±Ð¾Ð»ÑŒÑˆÐ¸Ñ… Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°Ñ…. Ð ÐµÐ³Ð¸Ð¾Ð½ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð½Ð°ÑÑ‚Ñ€Ð°Ð¸Ð²Ð°ÐµÐ¼Ð¾Ð¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÐµÐ¹, Ð¿Ñ€Ð¸ÑÐ²Ð¾ÐµÐ½Ð½Ð¾Ð¹ Ð½Ð°Ð±Ð¾Ñ€Ñƒ Ð¸Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ‚Ð¾Ð², Ð¸ Ð¿Ð¾Ð´ÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ÑÑ Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸ÐµÐ¼ Ñ‡Ð¸ÑÐ»Ð° ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð², ÑÐ²ÑÐ·Ð°Ð½Ð½Ñ‹Ñ… Ñ ÑÑ‚Ð¸Ð¼Ð¸ Ð¸Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ‚Ð°Ð¼Ð¸."
 
 #: standings/templates/standings_diversity.html
 msgid "Non-cis male identifying"
-msgstr "Не идентифицирующие себя как цис-мужчины"
+msgstr "ÐÐµ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€ÑƒÑŽÑ‰Ð¸Ðµ ÑÐµÐ±Ñ ÐºÐ°Ðº Ñ†Ð¸Ñ-Ð¼ÑƒÐ¶Ñ‡Ð¸Ð½Ñ‹"
 
 #: standings/templates/standings_diversity.html
 msgid "Cis-male identifying"
-msgstr "Идентифицирующие себя как цис-мужчины"
+msgstr "Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€ÑƒÑŽÑ‰Ð¸Ðµ ÑÐµÐ±Ñ ÐºÐ°Ðº Ñ†Ð¸Ñ-Ð¼ÑƒÐ¶Ñ‡Ð¸Ð½Ñ‹"
 
 #: standings/templates/standings_diversity.html
 msgid "Unspecified/unrecorded"
-msgstr "Не определено/не зарегистрировано"
+msgstr "ÐÐµ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¾/Ð½Ðµ Ð·Ð°Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¾"
 
 #: standings/templates/standings_index.html
 msgid "Standings"
-msgstr "Положение"
+msgstr "ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ"
 
 #: standings/templates/standings_index.html
 msgid "Top Speaks"
-msgstr "Самые высокие спикерские"
+msgstr "Ð¡Ð°Ð¼Ñ‹Ðµ Ð²Ñ‹ÑÐ¾ÐºÐ¸Ðµ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ðµ"
 
 #: standings/templates/standings_index.html
 #, python-format
 msgid "%(speaker)s in %(round)s"
-msgstr "%(speaker)s в %(round)s"
+msgstr "%(speaker)s Ð² %(round)s"
 
 #: standings/templates/standings_index.html
 msgid "No data yet"
-msgstr "Пока нет данных"
+msgstr "ÐŸÐ¾ÐºÐ° Ð½ÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ñ…"
 
 #: standings/templates/standings_index.html
 msgid "Bottom Speaks"
-msgstr "Самый низкие спикерские"
+msgstr "Ð¡Ð°Ð¼Ñ‹Ð¹ Ð½Ð¸Ð·ÐºÐ¸Ðµ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ðµ"
 
 #: standings/templates/standings_index.html
 msgid "Largest Margins"
-msgstr "Крупнейший предел"
+msgstr "ÐšÑ€ÑƒÐ¿Ð½ÐµÐ¹ÑˆÐ¸Ð¹ Ð¿Ñ€ÐµÐ´ÐµÐ»"
 
 #: standings/templates/standings_index.html
 #, python-format
 msgid "%(team)s vs %(opp)s in %(round)s"
-msgstr "%(team)s против %(opp)s в %(round)s"
+msgstr "%(team)s Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² %(opp)s Ð² %(round)s"
 
 #: standings/templates/standings_index.html
 msgid "Closest Margins"
-msgstr "Ближайший предел"
+msgstr "Ð‘Ð»Ð¸Ð¶Ð°Ð¹ÑˆÐ¸Ð¹ Ð¿Ñ€ÐµÐ´ÐµÐ»"
 
 #: standings/templates/standings_index.html
 msgid "Top Team Scores"
-msgstr "Лучшие командные баллы"
+msgstr "Ð›ÑƒÑ‡ÑˆÐ¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ðµ Ð±Ð°Ð»Ð»Ñ‹"
 
 #: standings/templates/standings_index.html
 #, python-format
 msgid "%(team)s in %(round)s"
-msgstr "%(team)s в %(round)s"
+msgstr "%(team)s Ð² %(round)s"
 
 #: standings/templates/standings_index.html
 msgid "Bottom Team Scores"
-msgstr "Худшие командные баллы"
+msgstr "Ð¥ÑƒÐ´ÑˆÐ¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ðµ Ð±Ð°Ð»Ð»Ñ‹"
 
 #: standings/templates/standings_index.html
 msgid "Most/Least Popular Motions"
-msgstr "Наиболее/наименее популярные темы"
+msgstr "ÐÐ°Ð¸Ð±Ð¾Ð»ÐµÐµ/Ð½Ð°Ð¸Ð¼ÐµÐ½ÐµÐµ Ð¿Ð¾Ð¿ÑƒÐ»ÑÑ€Ð½Ñ‹Ðµ Ñ‚ÐµÐ¼Ñ‹"
 
 #: standings/templates/standings_index.html
 msgid "Average Speaks"
-msgstr "Средние спикерские"
+msgstr "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ðµ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ðµ"
 
 #: standings/templates/standings_menu.html
 msgid "Overview"
-msgstr "Обзор"
+msgstr "ÐžÐ±Ð·Ð¾Ñ€"
 
 #: standings/templates/standings_menu.html
 msgid "Teams"
-msgstr "Команды"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
 
 #: standings/templates/standings_menu.html
 msgctxt "All [Teams]"
 msgid "All"
-msgstr "Все"
+msgstr "Ð’ÑÐµ"
 
 #: standings/templates/standings_menu.html
 msgid "Speakers"
-msgstr "Спикеры"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹"
 
 #: standings/templates/standings_menu.html
 msgctxt "Substantive speeches"
 msgid "Substantives"
-msgstr "Конструктивные"
+msgstr "ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ðµ"
 
 #: standings/templates/standings_menu.html
 msgctxt "All [Speakers]"
 msgid "All"
-msgstr "Все"
+msgstr "Ð’ÑÐµ"
 
 #: standings/templates/standings_menu.html
 msgid "Speakers "
-msgstr "Спикеры "
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€Ñ‹ "
 
 #: standings/templates/standings_menu.html
 #, python-format
@@ -522,11 +522,11 @@ msgstr ""
 
 #: standings/templates/standings_menu.html
 msgid "Replies"
-msgstr "Ответы"
+msgstr "ÐžÑ‚Ð²ÐµÑ‚Ñ‹"
 
 #: standings/templates/standings_menu.html
 msgid "Motions"
-msgstr "Темы"
+msgstr "Ð¢ÐµÐ¼Ñ‹"
 
 #: standings/templates/standings_menu.html
 msgid "By Round"
@@ -534,103 +534,104 @@ msgstr ""
 
 #: standings/templates/standings_menu.html
 msgid "Diversity"
-msgstr "Дайверсити"
+msgstr "Ð”Ð°Ð¹Ð²ÐµÑ€ÑÐ¸Ñ‚Ð¸"
 
 #: standings/templates/team_standings.html
 #, python-format
 msgid "The team standings precedence is empty. This means that teams aren't ranked according to any metrics, so everyone is first equal. If this isn't what you intended, set the team standings precedence in the <a href=\"%(standings_config_url)s\" class=\"alert-link\">Standings section of this tournament's configuration</a>. In most tournaments, the first metric should be points or wins."
-msgstr "Первенство положения команд пустует. Это означает, что команды не ранжированы ни по одной метрике, то есть все команды будут в одной группе. Если это не то, что вы хотели, установите первенство положения команд в <a href=\"%(standings_config_url)s\" class=\"alert-link\"> области Положение настроек турнира </a>. Для большинства турниров первой метрикой будет количество баллов или побед."
+msgstr "ÐŸÐµÑ€Ð²ÐµÐ½ÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¿ÑƒÑÑ‚ÑƒÐµÑ‚. Ð­Ñ‚Ð¾ Ð¾Ð·Ð½Ð°Ñ‡Ð°ÐµÑ‚, Ñ‡Ñ‚Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð½Ðµ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð½Ð¸ Ð¿Ð¾ Ð¾Ð´Ð½Ð¾Ð¹ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐµ, Ñ‚Ð¾ ÐµÑÑ‚ÑŒ Ð²ÑÐµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð±ÑƒÐ´ÑƒÑ‚ Ð² Ð¾Ð´Ð½Ð¾Ð¹ Ð³Ñ€ÑƒÐ¿Ð¿Ðµ. Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾ Ð½Ðµ Ñ‚Ð¾, Ñ‡Ñ‚Ð¾ Ð²Ñ‹ Ñ…Ð¾Ñ‚ÐµÐ»Ð¸, ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ Ð¿ÐµÑ€Ð²ÐµÐ½ÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð² <a href=\"%(standings_config_url)s\" class=\"alert-link\"> Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° </a>. Ð”Ð»Ñ Ð±Ð¾Ð»ÑŒÑˆÐ¸Ð½ÑÑ‚Ð²Ð° Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð¾Ð² Ð¿ÐµÑ€Ð²Ð¾Ð¹ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ¾Ð¹ Ð±ÑƒÐ´ÐµÑ‚ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð±Ð°Ð»Ð»Ð¾Ð² Ð¸Ð»Ð¸ Ð¿Ð¾Ð±ÐµÐ´."
 
 #: standings/views.py
 #, python-format
 msgid "<p>There was an error generating the standings: <em>%(message)s</em></p>"
-msgstr "<p> Произошла ошибка при создании положения команд:<em>%(message)s</em></p>"
+msgstr "<p> ÐŸÑ€Ð¾Ð¸Ð·Ð¾ÑˆÐ»Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´:<em>%(message)s</em></p>"
 
 #: standings/views.py
 #, python-format
 msgid "<p>You may need to double-check the <a href=\"%(standings_options_url)s\" class=\"alert-link\">standings configuration under the Setup section</a>. If this issue persists and you're not sure how to fix it, please contact the developers.</p>"
-msgstr "<p>Вам может понадобиться дополнительная проверка<a href=\"%(standings_options_url)s\" class=\"alert-link\"> настроек положения команд в разделе Установки</a>. Если эта проблема повторяется и вы не знаете, как её решить, пожалуйста, свяжитесь с разработчиками.</p>"
+msgstr "<p>Ð’Ð°Ð¼ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ð¾Ð½Ð°Ð´Ð¾Ð±Ð¸Ñ‚ÑŒÑÑ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ°<a href=\"%(standings_options_url)s\" class=\"alert-link\"> Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ¸</a>. Ð•ÑÐ»Ð¸ ÑÑ‚Ð° Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑÐµÑ‚ÑÑ Ð¸ Ð²Ñ‹ Ð½Ðµ Ð·Ð½Ð°ÐµÑ‚Ðµ, ÐºÐ°Ðº ÐµÑ‘ Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÑÐ²ÑÐ¶Ð¸Ñ‚ÐµÑÑŒ Ñ Ñ€Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ°Ð¼Ð¸.</p>"
 
 #: standings/views.py
 msgid "<p>The tab director will need to resolve this issue.</p>"
-msgstr "<p> Тэбмастер должен решить эту проблему.</p>"
+msgstr "<p> Ð¢ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ ÑÑ‚Ñƒ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ñƒ.</p>"
 
 #: standings/views.py
 #, python-format
 msgid "as of %(round)s"
-msgstr "с %(round)s"
+msgstr "Ñ %(round)s"
 
 #. Translators: 'title' is the main title; "(Top 15 Only)" is just a suffix
 #: standings/views.py
 #, python-format
 msgid "%(title)s (Top %(limit)d Only)"
-msgstr "%(title)s (только%(limit)d верхний)"
+msgstr "%(title)s (Ñ‚Ð¾Ð»ÑŒÐºÐ¾%(limit)d Ð²ÐµÑ€Ñ…Ð½Ð¸Ð¹)"
 
 #: standings/views.py
 msgid "The tab can't be displayed because all rounds so far in this tournament are silent."
-msgstr "Тэб не может быть отображен, так как все раунды на данный момент - закрытые."
+msgstr "Ð¢ÑÐ± Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½, Ñ‚Ð°Ðº ÐºÐ°Ðº Ð²ÑÐµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð½Ð° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ - Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ñ‹Ðµ."
 
 #: standings/views.py
 msgid "Speaker Standings"
-msgstr "Положение спикеров"
+msgstr "ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: standings/views.py
 msgid "Speaker Tab"
-msgstr "Спикерский тэб"
+msgstr "Ð¡Ð¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ñ‚ÑÐ±"
 
 #: standings/views.py
 #, python-format
 msgid "%(category)s Speaker Standings"
-msgstr "Положение спикеров %(category)s"
+msgstr "ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² %(category)s"
 
 #: standings/views.py
 #, python-format
 msgid "%(category)s Speaker Tab"
-msgstr "%(category)s Спикерский тэб"
+msgstr "%(category)s Ð¡Ð¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ñ‚ÑÐ±"
 
 #: standings/views.py
 msgid "Reply Speaker Standings"
-msgstr "Положение заключительный спикеров"
+msgstr "ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: standings/views.py
 msgid "Reply speeches aren't enabled in this tournament."
-msgstr "Заключительные речи не доступны на этот турнире."
+msgstr "Ð—Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ€ÐµÑ‡Ð¸ Ð½Ðµ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹ Ð½Ð° ÑÑ‚Ð¾Ñ‚ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ðµ."
 
 #: standings/views.py
 msgid "Reply Speaker Tab"
-msgstr "Тэб заключительных спикеров"
+msgstr "Ð¢ÑÐ± Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
 
 #: standings/views.py
 msgid "Team Standings"
-msgstr "Положение команд"
+msgstr "ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: standings/views.py
 msgid "Team Tab"
-msgstr "Командный тэб"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ñ‚ÑÐ±"
 
 #: standings/views.py
 #, python-format
 msgid "%(category)s Team Standings"
-msgstr "Положение команд %(category)s"
+msgstr "ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´ %(category)s"
 
 #: standings/views.py
 #, python-format
 msgid "%(category)s Team Tab"
-msgstr "Командный тэб %(category)s"
+msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ñ‚ÑÐ± %(category)s"
 
 #: standings/views.py
 msgid "Current Team Standings"
-msgstr "Текущее положение команд"
+msgstr "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´"
 
 #: standings/views.py
 msgid "Points"
-msgstr "Баллы"
+msgstr "Ð‘Ð°Ð»Ð»Ñ‹"
 
 #: standings/views.py
 msgid "Feedback Overview"
-msgstr "Обзор обратной связи"
+msgstr "ÐžÐ±Ð·Ð¾Ñ€ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
 
 #: standings/views.py
-msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
+msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
 msgstr ""
+
 

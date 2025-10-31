@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2023-02-05 01:02\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/venues/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/venues/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 956\n"
 
 #: venues/apps.py
 msgid "Rooms"
-msgstr "قاعات المناظرة"
+msgstr "Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: venues/consumers.py
 msgid "Draw is already released, unrelease draw to assign rooms."
@@ -36,19 +36,19 @@ msgstr ""
 
 #: venues/models.py
 msgid "name"
-msgstr "الاسم"
+msgstr "Ø§Ù„Ø§Ø³Ù…"
 
 #: venues/models.py
 msgid "priority"
-msgstr "الأولوية"
+msgstr "Ø§Ù„Ø£ÙˆÙ„ÙˆÙŠØ©"
 
 #: venues/models.py
 msgid "Rooms with a higher priority number will be preferred when allocating rooms to debates"
-msgstr "ستفضل أرقام القاعات التي لها أولوية أعلى عند تخصيص مكان التناظر"
+msgstr "Ø³ØªÙØ¶Ù„ Ø£Ø±Ù‚Ø§Ù… Ø§Ù„Ù‚Ø§Ø¹Ø§Øª Ø§Ù„ØªÙŠ Ù„Ù‡Ø§ Ø£ÙˆÙ„ÙˆÙŠØ© Ø£Ø¹Ù„Ù‰ Ø¹Ù†Ø¯ ØªØ®ØµÙŠØµ Ù…ÙƒØ§Ù† Ø§Ù„ØªÙ†Ø§Ø¸Ø±"
 
 #: venues/models.py
 msgid "tournament"
-msgstr "البطولة"
+msgstr "Ø§Ù„Ø¨Ø·ÙˆÙ„Ø©"
 
 #: venues/models.py
 msgid "URL"
@@ -60,11 +60,11 @@ msgstr ""
 
 #: venues/models.py
 msgid "room"
-msgstr "قاعة"
+msgstr "Ù‚Ø§Ø¹Ø©"
 
 #: venues/models.py
 msgid "rooms"
-msgstr "قاعات المناظرة"
+msgstr "Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: venues/models.py
 msgid "Don't display in room name"
@@ -72,97 +72,97 @@ msgstr ""
 
 #: venues/models.py
 msgid "Display as prefix"
-msgstr "العرض كبادئة"
+msgstr "Ø§Ù„Ø¹Ø±Ø¶ ÙƒØ¨Ø§Ø¯Ø¦Ø©"
 
 #: venues/models.py
 msgid "Display as suffix"
-msgstr "العرض كبادئة"
+msgstr "Ø§Ù„Ø¹Ø±Ø¶ ÙƒØ¨Ø§Ø¯Ø¦Ø©"
 
 #: venues/models.py
-msgid "Name of category, e.g., \"Purple\", \"Step-free access\", \"Close to tab room\". This name is shown when the category is prefixed or suffixed to a room name in the draw, e.g., \"Purple – G05\"."
-msgstr "اسم الفئة، على سبيل المثال، \"أرجواني\"، \"وصول مجاني\"، \"قريب من غرفة الإدخال\". يظهر هذا الاسم عندما تكون الفئة مسبوقة أو ملحقة باسم المكان في القرعة، على سبيل المثال، \"أرجواني - G05\".\n"
+msgid "Name of category, e.g., \"Purple\", \"Step-free access\", \"Close to tab room\". This name is shown when the category is prefixed or suffixed to a room name in the draw, e.g., \"Purple â€“ G05\"."
+msgstr "Ø§Ø³Ù… Ø§Ù„ÙØ¦Ø©ØŒ Ø¹Ù„Ù‰ Ø³Ø¨ÙŠÙ„ Ø§Ù„Ù…Ø«Ø§Ù„ØŒ \"Ø£Ø±Ø¬ÙˆØ§Ù†ÙŠ\"ØŒ \"ÙˆØµÙˆÙ„ Ù…Ø¬Ø§Ù†ÙŠ\"ØŒ \"Ù‚Ø±ÙŠØ¨ Ù…Ù† ØºØ±ÙØ© Ø§Ù„Ø¥Ø¯Ø®Ø§Ù„\". ÙŠØ¸Ù‡Ø± Ù‡Ø°Ø§ Ø§Ù„Ø§Ø³Ù… Ø¹Ù†Ø¯Ù…Ø§ ØªÙƒÙˆÙ† Ø§Ù„ÙØ¦Ø© Ù…Ø³Ø¨ÙˆÙ‚Ø© Ø£Ùˆ Ù…Ù„Ø­Ù‚Ø© Ø¨Ø§Ø³Ù… Ø§Ù„Ù…ÙƒØ§Ù† ÙÙŠ Ø§Ù„Ù‚Ø±Ø¹Ø©ØŒ Ø¹Ù„Ù‰ Ø³Ø¨ÙŠÙ„ Ø§Ù„Ù…Ø«Ø§Ù„ØŒ \"Ø£Ø±Ø¬ÙˆØ§Ù†ÙŠ - G05\".\n"
 " "
 
 #: venues/models.py
 msgid "description"
-msgstr "الوصف"
+msgstr "Ø§Ù„ÙˆØµÙ"
 
 #: venues/models.py
 msgid "Description, as the predicate of a sentence, e.g. \"has step-free access\", \"is close to the briefing hall\". This description follows \"This room\" when shown in tooltips, e.g., \"This room is close to the briefing hall.\"."
-msgstr "الوصف، كمسند جملة، على سبيل المثال. \"لديه حرية الوصول\"، \"على مقربة من قاعة المؤتمرات\". هذا الوصف يتبع \"هذا المكان\" عندما يظهر في تلميحات الأدوات ، على سبيل المثال، \"هذا المكان قريب من قاعة المؤتمرات\"."
+msgstr "Ø§Ù„ÙˆØµÙØŒ ÙƒÙ…Ø³Ù†Ø¯ Ø¬Ù…Ù„Ø©ØŒ Ø¹Ù„Ù‰ Ø³Ø¨ÙŠÙ„ Ø§Ù„Ù…Ø«Ø§Ù„. \"Ù„Ø¯ÙŠÙ‡ Ø­Ø±ÙŠØ© Ø§Ù„ÙˆØµÙˆÙ„\"ØŒ \"Ø¹Ù„Ù‰ Ù…Ù‚Ø±Ø¨Ø© Ù…Ù† Ù‚Ø§Ø¹Ø© Ø§Ù„Ù…Ø¤ØªÙ…Ø±Ø§Øª\". Ù‡Ø°Ø§ Ø§Ù„ÙˆØµÙ ÙŠØªØ¨Ø¹ \"Ù‡Ø°Ø§ Ø§Ù„Ù…ÙƒØ§Ù†\" Ø¹Ù†Ø¯Ù…Ø§ ÙŠØ¸Ù‡Ø± ÙÙŠ ØªÙ„Ù…ÙŠØ­Ø§Øª Ø§Ù„Ø£Ø¯ÙˆØ§Øª ØŒ Ø¹Ù„Ù‰ Ø³Ø¨ÙŠÙ„ Ø§Ù„Ù…Ø«Ø§Ù„ØŒ \"Ù‡Ø°Ø§ Ø§Ù„Ù…ÙƒØ§Ù† Ù‚Ø±ÙŠØ¨ Ù…Ù† Ù‚Ø§Ø¹Ø© Ø§Ù„Ù…Ø¤ØªÙ…Ø±Ø§Øª\"."
 
 #: venues/models.py
 msgid "display in room name"
 msgstr ""
 
 #: venues/models.py
-msgid "Prefix: \"Purple – G05\", Suffix: \"G05 – Purple\""
+msgid "Prefix: \"Purple â€“ G05\", Suffix: \"G05 â€“ Purple\""
 msgstr ""
 
 #: venues/models.py
 msgid "display in public tooltip"
-msgstr "تلميح عام"
+msgstr "ØªÙ„Ù…ÙŠØ­ Ø¹Ø§Ù…"
 
 #: venues/models.py
 msgid "Displays the description in the tooltip for the room on public pages. The description, if not blank, will always show on admin pages."
-msgstr "يعرض الوصف في تلميح الأدوات للمكان على الصفحات العامة. سيظهر الوصف، إن لم يكن فارغا، دائما على صفحات المشرف."
+msgstr "ÙŠØ¹Ø±Ø¶ Ø§Ù„ÙˆØµÙ ÙÙŠ ØªÙ„Ù…ÙŠØ­ Ø§Ù„Ø£Ø¯ÙˆØ§Øª Ù„Ù„Ù…ÙƒØ§Ù† Ø¹Ù„Ù‰ Ø§Ù„ØµÙØ­Ø§Øª Ø§Ù„Ø¹Ø§Ù…Ø©. Ø³ÙŠØ¸Ù‡Ø± Ø§Ù„ÙˆØµÙØŒ Ø¥Ù† Ù„Ù… ÙŠÙƒÙ† ÙØ§Ø±ØºØ§ØŒ Ø¯Ø§Ø¦Ù…Ø§ Ø¹Ù„Ù‰ ØµÙØ­Ø§Øª Ø§Ù„Ù…Ø´Ø±Ù."
 
 #: venues/models.py
 msgid "room category"
-msgstr "فئة المكان"
+msgstr "ÙØ¦Ø© Ø§Ù„Ù…ÙƒØ§Ù†"
 
 #: venues/models.py
 msgid "room categories"
-msgstr "فئات المكان"
+msgstr "ÙØ¦Ø§Øª Ø§Ù„Ù…ÙƒØ§Ù†"
 
 #: venues/models.py
 msgid "category"
-msgstr "الفئة"
+msgstr "Ø§Ù„ÙØ¦Ø©"
 
 #: venues/models.py
 msgid "subject content type"
-msgstr "نوع محتوى الموضوع"
+msgstr "Ù†ÙˆØ¹ Ù…Ø­ØªÙˆÙ‰ Ø§Ù„Ù…ÙˆØ¶ÙˆØ¹"
 
 #: venues/models.py
 msgid "subject ID"
-msgstr "معرف الموضوع "
+msgstr "Ù…Ø¹Ø±Ù Ø§Ù„Ù…ÙˆØ¶ÙˆØ¹ "
 
 #: venues/models.py
 msgid "room constraint"
-msgstr "القاعة المقيدة"
+msgstr "Ø§Ù„Ù‚Ø§Ø¹Ø© Ø§Ù„Ù…Ù‚ÙŠØ¯Ø©"
 
 #: venues/models.py
 msgid "room constraints"
-msgstr "القاعات المقيدة"
+msgstr "Ø§Ù„Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù‚ÙŠØ¯Ø©"
 
 #: venues/templates/venue_categories_edit.html
 msgid "Room Categories"
-msgstr "فئات المكان"
+msgstr "ÙØ¦Ø§Øª Ø§Ù„Ù…ÙƒØ§Ù†"
 
 #: venues/templates/venue_categories_edit.html
 msgid "Room categories allow you to group rooms together into \"zones\" to display in the draw and make navigation easier for participants, and/or specify constraints on room allocation that require teams, adjudicators or institutions to be put in a room in a particular category."
-msgstr "تسمح لك فئات القاعات بتجميع الأماكن معا في \"مناطق\" لعرضها في السحب وجعل التنقل أسهل للمشاركين و / أو تحديد القيود المفروضة على تخصيص المكان التي تتطلب فرقا أو محكمين أو مؤسسات يتم وضعها في مكان في فئة معينة."
+msgstr "ØªØ³Ù…Ø­ Ù„Ùƒ ÙØ¦Ø§Øª Ø§Ù„Ù‚Ø§Ø¹Ø§Øª Ø¨ØªØ¬Ù…ÙŠØ¹ Ø§Ù„Ø£Ù…Ø§ÙƒÙ† Ù…Ø¹Ø§ ÙÙŠ \"Ù…Ù†Ø§Ø·Ù‚\" Ù„Ø¹Ø±Ø¶Ù‡Ø§ ÙÙŠ Ø§Ù„Ø³Ø­Ø¨ ÙˆØ¬Ø¹Ù„ Ø§Ù„ØªÙ†Ù‚Ù„ Ø£Ø³Ù‡Ù„ Ù„Ù„Ù…Ø´Ø§Ø±ÙƒÙŠÙ† Ùˆ / Ø£Ùˆ ØªØ­Ø¯ÙŠØ¯ Ø§Ù„Ù‚ÙŠÙˆØ¯ Ø§Ù„Ù…ÙØ±ÙˆØ¶Ø© Ø¹Ù„Ù‰ ØªØ®ØµÙŠØµ Ø§Ù„Ù…ÙƒØ§Ù† Ø§Ù„ØªÙŠ ØªØªØ·Ù„Ø¨ ÙØ±Ù‚Ø§ Ø£Ùˆ Ù…Ø­ÙƒÙ…ÙŠÙ† Ø£Ùˆ Ù…Ø¤Ø³Ø³Ø§Øª ÙŠØªÙ… ÙˆØ¶Ø¹Ù‡Ø§ ÙÙŠ Ù…ÙƒØ§Ù† ÙÙŠ ÙØ¦Ø© Ù…Ø¹ÙŠÙ†Ø©."
 
 #: venues/templates/venue_categories_edit.html
 #, python-format
 msgid "If you want to delete room categories, use the <a href=\"%(edit_db_url)s\" class=\"alert-link\">Edit Database</a> area."
-msgstr "اذا كنت تريد حذف القاعة ، <a href=\"%(edit_db_url)s\" class=\"alert-link\">تعديل قاعدة البيانات </a>المنطقة "
+msgstr "Ø§Ø°Ø§ ÙƒÙ†Øª ØªØ±ÙŠØ¯ Ø­Ø°Ù Ø§Ù„Ù‚Ø§Ø¹Ø© ØŒ <a href=\"%(edit_db_url)s\" class=\"alert-link\">ØªØ¹Ø¯ÙŠÙ„ Ù‚Ø§Ø¹Ø¯Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª </a>Ø§Ù„Ù…Ù†Ø·Ù‚Ø© "
 
 #: venues/templates/venue_categories_edit.html
 msgid "Save Room Categories"
-msgstr "حفظ فئات القاعات"
+msgstr "Ø­ÙØ¸ ÙØ¦Ø§Øª Ø§Ù„Ù‚Ø§Ø¹Ø§Øª"
 
 #: venues/templates/venue_constraints_edit.html
 msgid "Room Constraints"
-msgstr "القاعات المقيدة"
+msgstr "Ø§Ù„Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù‚ÙŠØ¯Ø©"
 
 #: venues/templates/venue_constraints_edit.html
 msgid "Room constraints tell the room allocator to try to keep the specified team or adjudicator, or all teams (but not adjudicators) from the specified institution, in a room in the given category. The \"priority\" field resolves conflicting constraints: the higher priority takes precedence. You can also use the priority field to specify \"lower-preference\" constraints, which are taken if a higher-priority constraint couldn't be met."
-msgstr "تفرض قيود المكان على مقدم المكان محاولة إبقاء الفريق أو المحكم المحدد، أو جميع الفرق (ليس المحكمين) من المؤسسة المحددة، في مكان في الفئة المعينة. يحل مجال \"الأولوية\" القيود المتعارضة: الأولوية العليا لها الأسبقية. يمكنك أيضا استخدام حقل الأولوية لتحديد قيود \"التفضيل الأقل\"، والتي يتم اتخاذها إذا كان لا يمكن تلبية قيود ذات أولوية أعلى."
+msgstr "ØªÙØ±Ø¶ Ù‚ÙŠÙˆØ¯ Ø§Ù„Ù…ÙƒØ§Ù† Ø¹Ù„Ù‰ Ù…Ù‚Ø¯Ù… Ø§Ù„Ù…ÙƒØ§Ù† Ù…Ø­Ø§ÙˆÙ„Ø© Ø¥Ø¨Ù‚Ø§Ø¡ Ø§Ù„ÙØ±ÙŠÙ‚ Ø£Ùˆ Ø§Ù„Ù…Ø­ÙƒÙ… Ø§Ù„Ù…Ø­Ø¯Ø¯ØŒ Ø£Ùˆ Ø¬Ù…ÙŠØ¹ Ø§Ù„ÙØ±Ù‚ (Ù„ÙŠØ³ Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ†) Ù…Ù† Ø§Ù„Ù…Ø¤Ø³Ø³Ø© Ø§Ù„Ù…Ø­Ø¯Ø¯Ø©ØŒ ÙÙŠ Ù…ÙƒØ§Ù† ÙÙŠ Ø§Ù„ÙØ¦Ø© Ø§Ù„Ù…Ø¹ÙŠÙ†Ø©. ÙŠØ­Ù„ Ù…Ø¬Ø§Ù„ \"Ø§Ù„Ø£ÙˆÙ„ÙˆÙŠØ©\" Ø§Ù„Ù‚ÙŠÙˆØ¯ Ø§Ù„Ù…ØªØ¹Ø§Ø±Ø¶Ø©: Ø§Ù„Ø£ÙˆÙ„ÙˆÙŠØ© Ø§Ù„Ø¹Ù„ÙŠØ§ Ù„Ù‡Ø§ Ø§Ù„Ø£Ø³Ø¨Ù‚ÙŠØ©. ÙŠÙ…ÙƒÙ†Ùƒ Ø£ÙŠØ¶Ø§ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø­Ù‚Ù„ Ø§Ù„Ø£ÙˆÙ„ÙˆÙŠØ© Ù„ØªØ­Ø¯ÙŠØ¯ Ù‚ÙŠÙˆØ¯ \"Ø§Ù„ØªÙØ¶ÙŠÙ„ Ø§Ù„Ø£Ù‚Ù„\"ØŒ ÙˆØ§Ù„ØªÙŠ ÙŠØªÙ… Ø§ØªØ®Ø§Ø°Ù‡Ø§ Ø¥Ø°Ø§ ÙƒØ§Ù† Ù„Ø§ ÙŠÙ…ÙƒÙ† ØªÙ„Ø¨ÙŠØ© Ù‚ÙŠÙˆØ¯ Ø°Ø§Øª Ø£ÙˆÙ„ÙˆÙŠØ© Ø£Ø¹Ù„Ù‰."
 
 #: venues/templates/venue_constraints_edit.html
 msgid "Save Room Constraints"
-msgstr "حفظ القاعة المقيدة"
+msgstr "Ø­ÙØ¸ Ø§Ù„Ù‚Ø§Ø¹Ø© Ø§Ù„Ù…Ù‚ÙŠØ¯Ø©"
 
 #: venues/utils.py
 #, python-format
@@ -201,7 +201,7 @@ msgstr[5] ""
 
 #: venues/views.py
 msgid "No changes were made to the room categories."
-msgstr "لا يتم إجراء تغييرات على فئات القاعات"
+msgstr "Ù„Ø§ ÙŠØªÙ… Ø¥Ø¬Ø±Ø§Ø¡ ØªØºÙŠÙŠØ±Ø§Øª Ø¹Ù„Ù‰ ÙØ¦Ø§Øª Ø§Ù„Ù‚Ø§Ø¹Ø§Øª"
 
 #: venues/views.py
 #, python-format
@@ -228,4 +228,5 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
+
 

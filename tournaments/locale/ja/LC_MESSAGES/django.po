@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -12,52 +12,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/tabbycat/tournaments/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/tournaments/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 952\n"
 
 #: tournaments/apps.py
 msgid "Tournaments"
-msgstr "大会"
+msgstr "å¤§ä¼š"
 
 #: tournaments/forms.py
 msgid "Number of preliminary rounds"
-msgstr "予選ラウンド数"
+msgstr "äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰æ•°"
 
 #: tournaments/forms.py
 msgid "Number of teams in the open break"
-msgstr "オープンブレイクするチーム数"
+msgstr "ã‚ªãƒ¼ãƒ—ãƒ³ãƒ–ãƒ¬ã‚¤ã‚¯ã™ã‚‹ãƒãƒ¼ãƒ æ•°"
 
 #: tournaments/forms.py
 msgid "Leave blank if there are no break rounds."
-msgstr "ブレイクラウンドがない場合は空欄にしておいてください"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ãƒ©ã‚¦ãƒ³ãƒ‰ãŒãªã„å ´åˆã¯ç©ºæ¬„ã«ã—ã¦ãŠã„ã¦ãã ã•ã„"
 
 #: tournaments/forms.py
 msgid "Did you agree with their decision?"
-msgstr "結果に納得しましたか？"
+msgstr "çµæžœã«ç´å¾—ã—ã¾ã—ãŸã‹ï¼Ÿ"
 
 #: tournaments/forms.py
 msgid "Agree?"
-msgstr "納得しましたか？"
+msgstr "ç´å¾—ã—ã¾ã—ãŸã‹ï¼Ÿ"
 
 #: tournaments/forms.py
 msgid "Comments"
-msgstr "コメント"
+msgstr "ã‚³ãƒ¡ãƒ³ãƒˆ"
 
 #. Translators: This is the name given to the 'Open Break'.
 #: tournaments/forms.py
 msgid "Open"
-msgstr "オープン"
+msgstr "ã‚ªãƒ¼ãƒ—ãƒ³"
 
 #: tournaments/forms.py
 msgid "Format Configuration"
-msgstr "形式設定"
+msgstr "å½¢å¼è¨­å®š"
 
 #: tournaments/forms.py
 msgid "Apply a standard set of settings to match a common debate format. These can be changed afterwards and should be checked for your needs."
-msgstr "よくあるディベート形式に合わせた設定を適用します。後で変更することも可能で、ニーズに合っているか確認するべきです。"
+msgstr "ã‚ˆãã‚ã‚‹ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆå½¢å¼ã«åˆã‚ã›ãŸè¨­å®šã‚’é©ç”¨ã—ã¾ã™ã€‚å¾Œã§å¤‰æ›´ã™ã‚‹ã“ã¨ã‚‚å¯èƒ½ã§ã€ãƒ‹ãƒ¼ã‚ºã«åˆã£ã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹ã¹ãã§ã™ã€‚"
 
 #: tournaments/forms.py
 msgid "Public Configuration"
@@ -65,45 +65,45 @@ msgstr ""
 
 #: tournaments/forms.py
 msgid "Show non-sensitive information on the public-facing side of this site, like draws (once released) and the motions of previous rounds"
-msgstr "過去ラウンドの論題やリリースした対戦表などのセンシティブでない情報を公開ページに表示する"
+msgstr "éŽåŽ»ãƒ©ã‚¦ãƒ³ãƒ‰ã®è«–é¡Œã‚„ãƒªãƒªãƒ¼ã‚¹ã—ãŸå¯¾æˆ¦è¡¨ãªã©ã®ã‚»ãƒ³ã‚·ãƒ†ã‚£ãƒ–ã§ãªã„æƒ…å ±ã‚’å…¬é–‹ãƒšãƒ¼ã‚¸ã«è¡¨ç¤ºã™ã‚‹"
 
 #: tournaments/forms.py
 msgid "Participant Data Entry"
-msgstr "参加者のデータ入力"
+msgstr "å‚åŠ è€…ã®ãƒ‡ãƒ¼ã‚¿å…¥åŠ›"
 
 #: tournaments/forms.py
 msgid "Whether participants can submit ballots and feedback themselves, and how they do so"
-msgstr "参加者が自分でフィードバックを提出できるかどうか、およびその方法"
+msgstr "å‚åŠ è€…ãŒè‡ªåˆ†ã§ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã‚‹ã‹ã©ã†ã‹ã€ãŠã‚ˆã³ãã®æ–¹æ³•"
 
 #: tournaments/forms.py
 msgid "<strong>Tabulation:</strong> [list tabulation staff here]<br /><strong>Equity:</strong> [list equity members here]<br /><strong>Organisation:</strong> [list organising committee members here]<br /><strong>Adjudication:</strong> [list chief adjudicators here]"
-msgstr "<strong>タブ:</strong> [タブスタッフの名前]<br /><strong>エクイティ:</strong> [エクイティの名前]<br /><strong>運営:</strong> [運営メンバーの名前]<br /><strong>審査委員:</strong> [審査委員の名前]"
+msgstr "<strong>ã‚¿ãƒ–:</strong> [ã‚¿ãƒ–ã‚¹ã‚¿ãƒƒãƒ•ã®åå‰]<br /><strong>ã‚¨ã‚¯ã‚¤ãƒ†ã‚£:</strong> [ã‚¨ã‚¯ã‚¤ãƒ†ã‚£ã®åå‰]<br /><strong>é‹å–¶:</strong> [é‹å–¶ãƒ¡ãƒ³ãƒãƒ¼ã®åå‰]<br /><strong>å¯©æŸ»å§”å“¡:</strong> [å¯©æŸ»å§”å“¡ã®åå‰]"
 
 #: tournaments/forms.py
 msgid "Current preliminary round"
-msgstr "現在の予選ラウンド"
+msgstr "ç¾åœ¨ã®äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰"
 
 #: tournaments/forms.py
 msgid "All preliminary rounds have been completed"
-msgstr "すべての予選ラウンドは完了しています"
+msgstr "ã™ã¹ã¦ã®äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ã¯å®Œäº†ã—ã¦ã„ã¾ã™"
 
 #: tournaments/forms.py
 #, python-format
 msgid "Current elimination round in <strong>%(category)s</strong> <em>(only if all preliminary rounds have been completed)</em>"
-msgstr "<strong>%(category)s</strong>の現在の本戦ラウンド<em>（すべての予選ラウンドが完了している場合）</em>"
+msgstr "<strong>%(category)s</strong>ã®ç¾åœ¨ã®æœ¬æˆ¦ãƒ©ã‚¦ãƒ³ãƒ‰<em>ï¼ˆã™ã¹ã¦ã®äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ãŒå®Œäº†ã—ã¦ã„ã‚‹å ´åˆï¼‰</em>"
 
 #: tournaments/forms.py
 #, python-format
 msgid "All elimination rounds in %(category)s have been completed"
-msgstr "<strong>%(category)s</strong>のすべての本戦ラウンドは完了しています"
+msgstr "<strong>%(category)s</strong>ã®ã™ã¹ã¦ã®æœ¬æˆ¦ãƒ©ã‚¦ãƒ³ãƒ‰ã¯å®Œäº†ã—ã¦ã„ã¾ã™"
 
 #: tournaments/forms.py
 msgid "If the current round is a preliminary round, this field must be blank."
-msgstr "現在のラウンドが予選ラウンドなら空欄にしてください。"
+msgstr "ç¾åœ¨ã®ãƒ©ã‚¦ãƒ³ãƒ‰ãŒäºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ãªã‚‰ç©ºæ¬„ã«ã—ã¦ãã ã•ã„ã€‚"
 
 #: tournaments/forms.py
 msgid "If all preliminary rounds have been completed, this field is required."
-msgstr "すべての予選ラウンドが完了している場合、この欄は必須です。"
+msgstr "ã™ã¹ã¦ã®äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ãŒå®Œäº†ã—ã¦ã„ã‚‹å ´åˆã€ã“ã®æ¬„ã¯å¿…é ˆã§ã™ã€‚"
 
 #: tournaments/forms.py
 #, python-format
@@ -113,235 +113,235 @@ msgstr ""
 #: tournaments/mixins.py
 #, python-format
 msgid "You've been redirected to this page because tournament %(tournament)s has no rounds. Please create some before returning to the admin site."
-msgstr "%(tournament)sの大会にラウンドがないのでこのページにリダイレクトしました。管理者用ページに戻る前にラウンドを作成してください。"
+msgstr "%(tournament)sã®å¤§ä¼šã«ãƒ©ã‚¦ãƒ³ãƒ‰ãŒãªã„ã®ã§ã“ã®ãƒšãƒ¼ã‚¸ã«ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã—ã¾ã—ãŸã€‚ç®¡ç†è€…ç”¨ãƒšãƒ¼ã‚¸ã«æˆ»ã‚‹å‰ã«ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’ä½œæˆã—ã¦ãã ã•ã„ã€‚"
 
 #: tournaments/mixins.py
 #, python-format
 msgid "There's a problem with the data for the tournament %(tournament)s. Please contact a tab director and ask them to investigate."
-msgstr "%(tournament)sの大会のデータに問題があります。タブディレクターに調べてもらうように連絡して頼んでください。"
+msgstr "%(tournament)sã®å¤§ä¼šã®ãƒ‡ãƒ¼ã‚¿ã«å•é¡ŒãŒã‚ã‚Šã¾ã™ã€‚ã‚¿ãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ã‚¿ãƒ¼ã«èª¿ã¹ã¦ã‚‚ã‚‰ã†ã‚ˆã†ã«é€£çµ¡ã—ã¦é ¼ã‚“ã§ãã ã•ã„ã€‚"
 
 #: tournaments/mixins.py
 msgid "You've been redirected to this page because of a problem with how teams are assigned to sides in a debate."
-msgstr "チームのサイド振り分けに問題があるためこのページへリダイレクトされました。"
+msgstr "ãƒãƒ¼ãƒ ã®ã‚µã‚¤ãƒ‰æŒ¯ã‚Šåˆ†ã‘ã«å•é¡ŒãŒã‚ã‚‹ãŸã‚ã“ã®ãƒšãƒ¼ã‚¸ã¸ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã•ã‚Œã¾ã—ãŸã€‚"
 
 #: tournaments/mixins.py
 msgid "There's a problem with how teams are assigned to sides in a debate. The tab director will need to resolve this issue."
-msgstr "チームのサイドの決め方に問題があります。タブディレクターはこの問題を解決してください。"
+msgstr "ãƒãƒ¼ãƒ ã®ã‚µã‚¤ãƒ‰ã®æ±ºã‚æ–¹ã«å•é¡ŒãŒã‚ã‚Šã¾ã™ã€‚ã‚¿ãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ã‚¿ãƒ¼ã¯ã“ã®å•é¡Œã‚’è§£æ±ºã—ã¦ãã ã•ã„ã€‚"
 
 #: tournaments/mixins.py tournaments/templates/round_complete_check.html
 #, python-format
 msgid "for %(round)s"
-msgstr "%(round)s用"
+msgstr "%(round)sç”¨"
 
 #: tournaments/mixins.py
 msgid "Return to Draw"
-msgstr "対戦表に戻る"
+msgstr "å¯¾æˆ¦è¡¨ã«æˆ»ã‚‹"
 
 #: tournaments/models.py
-msgid "You can't use this as a tournament slug, because it's reserved for a Tabbycat system URL. Please try another one."
-msgstr "このスラグ名はシステム専用で使用できません。別のスラグを試してください。"
+msgid "You can't use this as a tournament slug, because it's reserved for a NekoTab system URL. Please try another one."
+msgstr "ã“ã®ã‚¹ãƒ©ã‚°åã¯ã‚·ã‚¹ãƒ†ãƒ å°‚ç”¨ã§ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚åˆ¥ã®ã‚¹ãƒ©ã‚°ã‚’è©¦ã—ã¦ãã ã•ã„ã€‚"
 
 #: tournaments/models.py
 msgid "name"
-msgstr "名前"
+msgstr "åå‰"
 
 #: tournaments/models.py
 msgid "The full name, e.g. \"Australasian Intervarsity Debating Championships 2016\""
-msgstr "フルネーム。e.g.「Australasian Intervarsity Debating Championships 2016」"
+msgstr "ãƒ•ãƒ«ãƒãƒ¼ãƒ ã€‚e.g.ã€ŒAustralasian Intervarsity Debating Championships 2016ã€"
 
 #: tournaments/models.py
 msgid "short name"
-msgstr "ショートネーム"
+msgstr "ã‚·ãƒ§ãƒ¼ãƒˆãƒãƒ¼ãƒ "
 
 #: tournaments/models.py
 msgid "The name used in the menu, e.g. \"Australs 2016\""
-msgstr "メニューバーに表示される名前。e.g.「Australs 2016」"
+msgstr "ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼ã«è¡¨ç¤ºã•ã‚Œã‚‹åå‰ã€‚e.g.ã€ŒAustrals 2016ã€"
 
 #: tournaments/models.py
 msgid "sequence number"
-msgstr "順番"
+msgstr "é †ç•ª"
 
 #: tournaments/models.py
 msgid "A number that determines the relative order in which tournaments are displayed on the homepage."
-msgstr "ホームページでの大会の表示順を決める数字。"
+msgstr "ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸ã§ã®å¤§ä¼šã®è¡¨ç¤ºé †ã‚’æ±ºã‚ã‚‹æ•°å­—ã€‚"
 
 #: tournaments/models.py
 msgid "slug"
-msgstr "スラグ"
+msgstr "ã‚¹ãƒ©ã‚°"
 
 #: tournaments/models.py
 msgid "The sub-URL of the tournament, cannot have spaces, e.g. \"australs2016\""
-msgstr "大会のサブURL。スペース禁止。e.g.「australs2016」"
+msgstr "å¤§ä¼šã®ã‚µãƒ–URLã€‚ã‚¹ãƒšãƒ¼ã‚¹ç¦æ­¢ã€‚e.g.ã€Œaustrals2016ã€"
 
 #: tournaments/models.py
 msgid "active"
-msgstr "有効"
+msgstr "æœ‰åŠ¹"
 
 #: tournaments/models.py
 msgid "tournament"
-msgstr "大会"
+msgstr "å¤§ä¼š"
 
 #: tournaments/models.py
 msgid "tournaments"
-msgstr "大会"
+msgstr "å¤§ä¼š"
 
 #: tournaments/models.py
 msgid "Random"
-msgstr "ランダム"
+msgstr "ãƒ©ãƒ³ãƒ€ãƒ "
 
 #: tournaments/models.py
 msgid "Manual"
-msgstr "手動"
+msgstr "æ‰‹å‹•"
 
 #: tournaments/models.py
 msgid "Round-robin"
-msgstr "ラウンドロビン方式"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ãƒ­ãƒ“ãƒ³æ–¹å¼"
 
 #: tournaments/models.py
 msgid "Power-paired"
-msgstr "パワーペアリング方式"
+msgstr "ãƒ‘ãƒ¯ãƒ¼ãƒšã‚¢ãƒªãƒ³ã‚°æ–¹å¼"
 
 #: tournaments/models.py
 msgid "Elimination"
-msgstr "勝ち抜き方式"
+msgstr "å‹ã¡æŠœãæ–¹å¼"
 
 #: tournaments/models.py
 msgid "Seeded"
-msgstr "シード値方式"
+msgstr "ã‚·ãƒ¼ãƒ‰å€¤æ–¹å¼"
 
 #: tournaments/models.py
 msgid "Preliminary"
-msgstr "予選"
+msgstr "äºˆé¸"
 
 #: tournaments/models.py
 msgid "None"
-msgstr "なし"
+msgstr "ãªã—"
 
 #: tournaments/models.py
 msgid "Draft"
-msgstr "下書き"
+msgstr "ä¸‹æ›¸ã"
 
 #: tournaments/models.py
 msgid "Confirmed"
-msgstr "承認済み"
+msgstr "æ‰¿èªæ¸ˆã¿"
 
 #: tournaments/models.py
 msgid "Released"
-msgstr "リリース済み"
+msgstr "ãƒªãƒªãƒ¼ã‚¹æ¸ˆã¿"
 
 #: tournaments/models.py
 msgid "A number that determines the order of the round, should count consecutively from 1 for the first round"
-msgstr "ラウンドの順番を表す数字。最初のラウンドの1から順番になる。"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®é †ç•ªã‚’è¡¨ã™æ•°å­—ã€‚æœ€åˆã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®1ã‹ã‚‰é †ç•ªã«ãªã‚‹ã€‚"
 
 #: tournaments/models.py
 msgid "completed"
-msgstr "完了"
+msgstr "å®Œäº†"
 
 #: tournaments/models.py
 msgid "True if the round is over, which normally means all results have been entered and confirmed"
-msgstr "すべての結果が入力・承認されラウンドが完了していればチェック。"
+msgstr "ã™ã¹ã¦ã®çµæžœãŒå…¥åŠ›ãƒ»æ‰¿èªã•ã‚Œãƒ©ã‚¦ãƒ³ãƒ‰ãŒå®Œäº†ã—ã¦ã„ã‚Œã°ãƒã‚§ãƒƒã‚¯ã€‚"
 
 #: tournaments/models.py
 msgid "e.g. \"Round 1\""
-msgstr "e.g.「ラウンド1」"
+msgstr "e.g.ã€Œãƒ©ã‚¦ãƒ³ãƒ‰1ã€"
 
 #: tournaments/models.py
 msgid "abbreviation"
-msgstr "省略形"
+msgstr "çœç•¥å½¢"
 
 #: tournaments/models.py
 msgid "e.g. \"R1\""
-msgstr "e.g. 「R1」"
+msgstr "e.g. ã€ŒR1ã€"
 
 #: tournaments/models.py
 msgid "stage"
-msgstr "ステージ"
+msgstr "ã‚¹ãƒ†ãƒ¼ã‚¸"
 
 #: tournaments/models.py
 msgid "Preliminary = inrounds, elimination = outrounds"
-msgstr "予選：インラウンド、勝ち抜き：本戦・アウトラウンド"
+msgstr "äºˆé¸ï¼šã‚¤ãƒ³ãƒ©ã‚¦ãƒ³ãƒ‰ã€å‹ã¡æŠœãï¼šæœ¬æˆ¦ãƒ»ã‚¢ã‚¦ãƒˆãƒ©ã‚¦ãƒ³ãƒ‰"
 
 #: tournaments/models.py
 msgid "draw type"
-msgstr "対戦方式"
+msgstr "å¯¾æˆ¦æ–¹å¼"
 
 #: tournaments/models.py
 msgid "Which draw method to use"
-msgstr "使用する対戦方式"
+msgstr "ä½¿ç”¨ã™ã‚‹å¯¾æˆ¦æ–¹å¼"
 
 #: tournaments/models.py
 msgid "break category"
-msgstr "ブレイクカテゴリー"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼"
 
 #: tournaments/models.py
 msgid "If elimination round, which break category"
-msgstr "本戦ラウンドの場合、どのブレイクカテゴリーか"
+msgstr "æœ¬æˆ¦ãƒ©ã‚¦ãƒ³ãƒ‰ã®å ´åˆã€ã©ã®ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‹"
 
 #: tournaments/models.py
 msgid "draw status"
-msgstr "対戦表の状態"
+msgstr "å¯¾æˆ¦è¡¨ã®çŠ¶æ…‹"
 
 #: tournaments/models.py
 msgid "The status of this round's draw"
-msgstr "このラウンドの対戦表の状態"
+msgstr "ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ã®çŠ¶æ…‹"
 
 #: tournaments/models.py
 msgid "feedback weight"
-msgstr "フィードバックの比重"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®æ¯”é‡"
 
 #: tournaments/models.py
 #, no-python-format
 msgid "The extent to which each adjudicator's overall score depends on feedback vs their base score. At 0, it is 100% drawn from their base score, at 1 it is 100% drawn from feedback."
-msgstr "ジャッジの最終的なスコアのフィードバックとベーススコアの比率。0：ベーススコアのみ、1：フィードバックのみ"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®æœ€çµ‚çš„ãªã‚¹ã‚³ã‚¢ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã¨ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã®æ¯”çŽ‡ã€‚0ï¼šãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã®ã¿ã€1ï¼šãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®ã¿"
 
 #. Translators: A silent round is a round for which results are not disclosed once the round is over.
 #: tournaments/models.py
 msgid "silent"
-msgstr "サイレントラウンド"
+msgstr "ã‚µã‚¤ãƒ¬ãƒ³ãƒˆãƒ©ã‚¦ãƒ³ãƒ‰"
 
 #: tournaments/models.py
 msgid "If marked silent, information about this round (such as its results) will not be shown publicly."
-msgstr "チェックした場合、このラウンドの情報（主に結果）は公開されません。"
+msgstr "ãƒã‚§ãƒƒã‚¯ã—ãŸå ´åˆã€ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®æƒ…å ±ï¼ˆä¸»ã«çµæžœï¼‰ã¯å…¬é–‹ã•ã‚Œã¾ã›ã‚“ã€‚"
 
 #: tournaments/models.py
 msgid "motions released"
-msgstr "論題リリース済み"
+msgstr "è«–é¡Œãƒªãƒªãƒ¼ã‚¹æ¸ˆã¿"
 
 #: tournaments/models.py
 msgid "Whether motions will appear on the public website, assuming that feature is turned on"
-msgstr "論題を公開する設定の時、論題がパブリックページに表示されるか"
+msgstr "è«–é¡Œã‚’å…¬é–‹ã™ã‚‹è¨­å®šã®æ™‚ã€è«–é¡ŒãŒãƒ‘ãƒ–ãƒªãƒƒã‚¯ãƒšãƒ¼ã‚¸ã«è¡¨ç¤ºã•ã‚Œã‚‹ã‹"
 
 #: tournaments/models.py
 msgid "starts at"
-msgstr "開始時刻"
+msgstr "é–‹å§‹æ™‚åˆ»"
 
 #: tournaments/models.py
 msgid "weight"
-msgstr "重み"
+msgstr "é‡ã¿"
 
 #: tournaments/models.py
 msgid "A factor for the points received in the round. For example, if 2, all points are doubled."
-msgstr "ラウンドの点数の倍率。例えば2の場合、すべての点数が2倍になります。"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®ç‚¹æ•°ã®å€çŽ‡ã€‚ä¾‹ãˆã°2ã®å ´åˆã€ã™ã¹ã¦ã®ç‚¹æ•°ãŒ2å€ã«ãªã‚Šã¾ã™ã€‚"
 
 #: tournaments/models.py
 msgid "round"
-msgstr "ラウンド"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰"
 
 #: tournaments/models.py
 msgid "rounds"
-msgstr "ラウンド"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰"
 
 #: tournaments/models.py
 msgid "The \"Elimination\" draw type is only for elimination rounds, where it is mandatory."
-msgstr "「勝ち抜き」の対戦方式は本戦でのみ使用されます。"
+msgstr "ã€Œå‹ã¡æŠœãã€ã®å¯¾æˆ¦æ–¹å¼ã¯æœ¬æˆ¦ã§ã®ã¿ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚"
 
 #: tournaments/models.py
 msgid "An elimination round must have a break category and preliminary round must not."
-msgstr "本戦にはブレイクラウンドが必要で、予選にはブレイクラウンドは設定してはいけません。"
+msgstr "æœ¬æˆ¦ã«ã¯ãƒ–ãƒ¬ã‚¤ã‚¯ãƒ©ã‚¦ãƒ³ãƒ‰ãŒå¿…è¦ã§ã€äºˆé¸ã«ã¯ãƒ–ãƒ¬ã‚¤ã‚¯ãƒ©ã‚¦ãƒ³ãƒ‰ã¯è¨­å®šã—ã¦ã¯ã„ã‘ã¾ã›ã‚“ã€‚"
 
 #: tournaments/models.py
 msgid "Break category must be for the same tournament."
-msgstr "同じ大会のブレイクカテゴリーである必要があります。"
+msgstr "åŒã˜å¤§ä¼šã®ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: tournaments/models.py
 msgid "Check-in"
@@ -381,7 +381,7 @@ msgstr ""
 
 #: tournaments/models.py
 msgid "Other"
-msgstr "その他"
+msgstr "ãã®ä»–"
 
 #: tournaments/models.py
 msgid "The tournament the event takes place in"
@@ -433,223 +433,223 @@ msgstr ""
 
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Dashboard"
-msgstr "ダッシュボード"
+msgstr "ãƒ€ãƒƒã‚·ãƒ¥ãƒœãƒ¼ãƒ‰"
 
 #: tournaments/templates/assistant_tournament_index.html
 msgid "Overview"
-msgstr "概要"
+msgstr "æ¦‚è¦"
 
 #: tournaments/templates/assistant_tournament_index.html
 #, python-format
 msgid "current round: %(round)s, status: %(status)s"
-msgstr "現在のラウンド：%(round)s、状態：%(status)s"
+msgstr "ç¾åœ¨ã®ãƒ©ã‚¦ãƒ³ãƒ‰ï¼š%(round)sã€çŠ¶æ…‹ï¼š%(status)s"
 
 #: tournaments/templates/blank_site_start.html
-msgid "Welcome to Tabbycat!"
-msgstr "Tabbycatへようこそ！"
+msgid "Welcome to NekoTab!"
+msgstr "NekoTabã¸ã‚ˆã†ã“ãï¼"
 
 #: tournaments/templates/blank_site_start.html
 msgid "To get started, you'll need to create the first user account. This account is a \"superuser\" account: it will be able to edit anything on the site. Therefore, you should use a strong password."
-msgstr "まず初めに、最初のユーザーアカウントを作りましょう。このアカウントは「スーパーユーザー」アカウントですーこのサイト上のすべての編集権限を持っています。そのため、頑丈なパスワードを設定してください。"
+msgstr "ã¾ãšåˆã‚ã«ã€æœ€åˆã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ä½œã‚Šã¾ã—ã‚‡ã†ã€‚ã“ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã¯ã€Œã‚¹ãƒ¼ãƒ‘ãƒ¼ãƒ¦ãƒ¼ã‚¶ãƒ¼ã€ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã§ã™ãƒ¼ã“ã®ã‚µã‚¤ãƒˆä¸Šã®ã™ã¹ã¦ã®ç·¨é›†æ¨©é™ã‚’æŒã£ã¦ã„ã¾ã™ã€‚ãã®ãŸã‚ã€é ‘ä¸ˆãªãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚"
 
 #: tournaments/templates/blank_site_start.html
 msgid "You can only create this account once, but if you like, you can change the username and password after it's created, or add new superusers afterwards."
-msgstr "このアカウント作成操作は1回しかできませんが、作成後にユーザー名・パスワードを変更したり、別のスーパーユーザーを追加したりできます。"
+msgstr "ã“ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆä½œæˆæ“ä½œã¯1å›žã—ã‹ã§ãã¾ã›ã‚“ãŒã€ä½œæˆå¾Œã«ãƒ¦ãƒ¼ã‚¶ãƒ¼åãƒ»ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã—ãŸã‚Šã€åˆ¥ã®ã‚¹ãƒ¼ãƒ‘ãƒ¼ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’è¿½åŠ ã—ãŸã‚Šã§ãã¾ã™ã€‚"
 
 #: tournaments/templates/blank_site_start.html
 msgid "The email address is used for password resets. You don't have to provide one, but if you don't, you won't be able to reset your password if you forget it."
-msgstr "パスワードをリセットするためにメールアドレスを使用します。必須ではありませんが、登録しない場合パスワードを忘れてもリセットできなくなります。"
+msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ãŸã‚ã«ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ä½¿ç”¨ã—ã¾ã™ã€‚å¿…é ˆã§ã¯ã‚ã‚Šã¾ã›ã‚“ãŒã€ç™»éŒ²ã—ãªã„å ´åˆãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¿˜ã‚Œã¦ã‚‚ãƒªã‚»ãƒƒãƒˆã§ããªããªã‚Šã¾ã™ã€‚"
 
 #: tournaments/templates/blank_site_start.html
 msgid "Create Account"
-msgstr "アカウントを作成"
+msgstr "ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ä½œæˆ"
 
 #: tournaments/templates/configure_tournament.html
 #, python-format
 msgid "Configure Tournament %(tournament)s"
-msgstr "%(tournament)sを設定"
+msgstr "%(tournament)sã‚’è¨­å®š"
 
 #: tournaments/templates/configure_tournament.html
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: tournaments/templates/configure_tournament.html
 msgid "To finish creating your tournament select a basic configuration options. Note that these can always be changed later (and with more precise control) if needed."
-msgstr "最後に、基本的な設定オプションを選んでください。いつでも（より細かく）変更できます。"
+msgstr "æœ€å¾Œã«ã€åŸºæœ¬çš„ãªè¨­å®šã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’é¸ã‚“ã§ãã ã•ã„ã€‚ã„ã¤ã§ã‚‚ï¼ˆã‚ˆã‚Šç´°ã‹ãï¼‰å¤‰æ›´ã§ãã¾ã™ã€‚"
 
 #: tournaments/templates/configure_tournament.html
 msgid "Configure Tournament"
-msgstr "大会設定を変更"
+msgstr "å¤§ä¼šè¨­å®šã‚’å¤‰æ›´"
 
 #: tournaments/templates/create_tournament.html
 msgid "Create New Tournament"
-msgstr "新しい大会を作成"
+msgstr "æ–°ã—ã„å¤§ä¼šã‚’ä½œæˆ"
 
 #: tournaments/templates/create_tournament.html
-msgid "Tabbycat is free to use, although <a href=\"https://opencollective.com/tabbycat\">donations</a> are encouraged."
-msgstr "Tabbycatは無料で使用できますが、<a href=\"https://opencollective.com/tabbycat\">寄付</a>をお勧めしています。"
+msgid "NekoTab is free to use, although <a href=\"https://opencollective.com/NekoTab\">donations</a> are encouraged."
+msgstr "NekoTabã¯ç„¡æ–™ã§ä½¿ç”¨ã§ãã¾ã™ãŒã€<a href=\"https://opencollective.com/NekoTab\">å¯„ä»˜</a>ã‚’ãŠå‹§ã‚ã—ã¦ã„ã¾ã™ã€‚"
 
 #: tournaments/templates/create_tournament.html
-msgid "Just trying out Tabbycat?"
-msgstr "Tabbycatをお試しですか？"
+msgid "Just trying out NekoTab?"
+msgstr "NekoTabã‚’ãŠè©¦ã—ã§ã™ã‹ï¼Ÿ"
 
 #: tournaments/templates/create_tournament.html
-msgid "If you're learning or playing around with Tabbycat, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
-msgstr "Tabbycatを学んだり試したりする場合、デモ大会が便利です。デモ大会にはチーム、ジャッジ、部屋などの偽の（一般的な）データが事前に入っています。後々でも大会を削除したり、本番用の新しいインスタンスを作成できます。"
+msgid "If you're learning or playing around with NekoTab, it's easiest to create a demo tournament that is prepopulated with a fake (but typical) set of teams, adjudicators, rooms, and the like. You can then delete this demo tournament later on, or deploy a new instance for your real tournament."
+msgstr "NekoTabã‚’å­¦ã‚“ã ã‚Šè©¦ã—ãŸã‚Šã™ã‚‹å ´åˆã€ãƒ‡ãƒ¢å¤§ä¼šãŒä¾¿åˆ©ã§ã™ã€‚ãƒ‡ãƒ¢å¤§ä¼šã«ã¯ãƒãƒ¼ãƒ ã€ã‚¸ãƒ£ãƒƒã‚¸ã€éƒ¨å±‹ãªã©ã®å½ã®ï¼ˆä¸€èˆ¬çš„ãªï¼‰ãƒ‡ãƒ¼ã‚¿ãŒäº‹å‰ã«å…¥ã£ã¦ã„ã¾ã™ã€‚å¾Œã€…ã§ã‚‚å¤§ä¼šã‚’å‰Šé™¤ã—ãŸã‚Šã€æœ¬ç•ªç”¨ã®æ–°ã—ã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã§ãã¾ã™ã€‚"
 
 #: tournaments/templates/create_tournament.html
 #, python-format
 msgid "Load %(demo)s"
-msgstr "%(demo)sを読み込む"
+msgstr "%(demo)sã‚’èª­ã¿è¾¼ã‚€"
 
 #: tournaments/templates/create_tournament.html
 msgid "You already have a tournament set up using this data set. Reloading the data will delete <strong>all data</strong> from that tournament."
-msgstr "既にこのデータセットを使用した大会があります。データを再読み込みするとその大会の<strong>すべてのデータ</strong>が消えます。"
+msgstr "æ—¢ã«ã“ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’ä½¿ç”¨ã—ãŸå¤§ä¼šãŒã‚ã‚Šã¾ã™ã€‚ãƒ‡ãƒ¼ã‚¿ã‚’å†èª­ã¿è¾¼ã¿ã™ã‚‹ã¨ãã®å¤§ä¼šã®<strong>ã™ã¹ã¦ã®ãƒ‡ãƒ¼ã‚¿</strong>ãŒæ¶ˆãˆã¾ã™ã€‚"
 
 #: tournaments/templates/create_tournament.html
 msgid "Create Tournament"
-msgstr "大会を作成"
+msgstr "å¤§ä¼šã‚’ä½œæˆ"
 
 #: tournaments/templates/create_tournament.html
 msgid "Cancel and go back to the site home page"
-msgstr "キャンセルし、ホームページへ戻る"
+msgstr "ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã€ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸ã¸æˆ»ã‚‹"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Debate Team Missing"
-msgstr "ディベートチームが欠けています"
+msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆãƒãƒ¼ãƒ ãŒæ¬ ã‘ã¦ã„ã¾ã™"
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "Tabbycat always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
-msgstr "すべての試合で1サイドに1チーム過不足なく存在する必要があります。このエラーはこれを満たしていない場合に表示されます。通常、これは手動で試合の結果を編集した結果です。"
+msgid "NekoTab always requires that, in every debate, one and only one team is assigned to each side. When that is not the case, this error occurs. Usually, this is the result of debates having been manually edited."
+msgstr "ã™ã¹ã¦ã®è©¦åˆã§1ã‚µã‚¤ãƒ‰ã«1ãƒãƒ¼ãƒ éŽä¸è¶³ãªãå­˜åœ¨ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã“ã®ã‚¨ãƒ©ãƒ¼ã¯ã“ã‚Œã‚’æº€ãŸã—ã¦ã„ãªã„å ´åˆã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚é€šå¸¸ã€ã“ã‚Œã¯æ‰‹å‹•ã§è©¦åˆã®çµæžœã‚’ç·¨é›†ã—ãŸçµæžœã§ã™ã€‚"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "A list of offending debates is presented below. To fix them, you'll need to do the following:"
-msgstr "以下の試合はこれを満たしていません。修復するには、次のことをしてください："
+msgstr "ä»¥ä¸‹ã®è©¦åˆã¯ã“ã‚Œã‚’æº€ãŸã—ã¦ã„ã¾ã›ã‚“ã€‚ä¿®å¾©ã™ã‚‹ã«ã¯ã€æ¬¡ã®ã“ã¨ã‚’ã—ã¦ãã ã•ã„ï¼š"
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "Click the <strong>Fix this debate</strong> button for that debate."
-msgstr "<strong>試合を修復</strong>ボタンをクリックします"
+msgstr "<strong>è©¦åˆã‚’ä¿®å¾©</strong>ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™"
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "Ensure that every <strong>side</strong> that should be present in the debate is present and has a <strong>team</strong> assigned. If a team is missing, find an empty row and use the magnifying glass to select a team. Then set the new team's <strong>side</strong> accordingly."
-msgstr "試合に存在するべき<strong>サイド</strong>が存在し、チームが配置されていることを確認します。チームが欠けている場合、空の行を見つけ虫眼鏡でチームを選択します。次に、新しいチームの<strong>サイド</strong>を設定してください。"
+msgstr "è©¦åˆã«å­˜åœ¨ã™ã‚‹ã¹ã<strong>ã‚µã‚¤ãƒ‰</strong>ãŒå­˜åœ¨ã—ã€ãƒãƒ¼ãƒ ãŒé…ç½®ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèªã—ã¾ã™ã€‚ãƒãƒ¼ãƒ ãŒæ¬ ã‘ã¦ã„ã‚‹å ´åˆã€ç©ºã®è¡Œã‚’è¦‹ã¤ã‘è™«çœ¼é¡ã§ãƒãƒ¼ãƒ ã‚’é¸æŠžã—ã¾ã™ã€‚æ¬¡ã«ã€æ–°ã—ã„ãƒãƒ¼ãƒ ã®<strong>ã‚µã‚¤ãƒ‰</strong>ã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚"
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "Ensure that no <strong>side</strong> appears more than once in the debate."
-msgstr "1つの試合に同じ<strong>サイド</strong>が複数ないことを確認します。"
+msgstr "1ã¤ã®è©¦åˆã«åŒã˜<strong>ã‚µã‚¤ãƒ‰</strong>ãŒè¤‡æ•°ãªã„ã“ã¨ã‚’ç¢ºèªã—ã¾ã™ã€‚"
 
 #. Translators: This is in a list of instructions.
 #: tournaments/templates/fix_debate_teams.html
 msgid "<strong>Save</strong> the changes."
-msgstr "変更を<strong>保存</strong>します。"
+msgstr "å¤‰æ›´ã‚’<strong>ä¿å­˜</strong>ã—ã¾ã™ã€‚"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Once you've fixed all the debates, you should then be able to return to whatever page you were originally on without the error reoccurring."
-msgstr "すべての試合を修正すれば、元のページに戻ってもエラーは発生しないはずです。"
+msgstr "ã™ã¹ã¦ã®è©¦åˆã‚’ä¿®æ­£ã™ã‚Œã°ã€å…ƒã®ãƒšãƒ¼ã‚¸ã«æˆ»ã£ã¦ã‚‚ã‚¨ãƒ©ãƒ¼ã¯ç™ºç”Ÿã—ãªã„ã¯ãšã§ã™ã€‚"
 
 #: tournaments/templates/fix_debate_teams.html
 #, python-format
 msgid "You can also see all the debates in the <a href=\"%(edit_debates_url)s\" target=\"_blank\">Debates section of the Edit Database Area</a>."
-msgstr "あるいは、<a href=\"%(edit_debates_url)s\" target=\"_blank\">データベース編集エリアの対戦表のセクション</a>からすべての試合を確認できます。"
+msgstr "ã‚ã‚‹ã„ã¯ã€<a href=\"%(edit_debates_url)s\" target=\"_blank\">ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã®å¯¾æˆ¦è¡¨ã®ã‚»ã‚¯ã‚·ãƒ§ãƒ³</a>ã‹ã‚‰ã™ã¹ã¦ã®è©¦åˆã‚’ç¢ºèªã§ãã¾ã™ã€‚"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Debate ID"
-msgstr "試合ID"
+msgstr "è©¦åˆID"
 
 #: tournaments/templates/fix_debate_teams.html
 #, python-format
 msgid "Teams on %(side)s"
-msgstr "%(side)sのチーム"
+msgstr "%(side)sã®ãƒãƒ¼ãƒ "
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Link to fix this debate"
-msgstr "試合の修正リンク"
+msgstr "è©¦åˆã®ä¿®æ­£ãƒªãƒ³ã‚¯"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "No teams"
-msgstr "チームなし"
+msgstr "ãƒãƒ¼ãƒ ãªã—"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "Multiple teams"
-msgstr "複数チーム"
+msgstr "è¤‡æ•°ãƒãƒ¼ãƒ "
 
 #: tournaments/templates/fix_debate_teams.html
 msgctxt "button label"
 msgid "Fix this debate"
-msgstr "試合を修正"
+msgstr "è©¦åˆã‚’ä¿®æ­£"
 
 #: tournaments/templates/fix_debate_teams.html
 msgid "It looks like all debates are in good shape!"
-msgstr "すべての試合を修正したようです！"
+msgstr "ã™ã¹ã¦ã®è©¦åˆã‚’ä¿®æ­£ã—ãŸã‚ˆã†ã§ã™ï¼"
 
 #: tournaments/templates/fix_debate_teams.html
-msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of Tabbycat."
-msgstr "このページにリダイレクトされ続け原因がわからない場合、Tabbycatの開発者に連絡してください。"
+msgid "If you keep getting redirected to this page and you're not sure why, please contact the developers of NekoTab."
+msgstr "ã“ã®ãƒšãƒ¼ã‚¸ã«ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã•ã‚Œç¶šã‘åŽŸå› ãŒã‚ã‹ã‚‰ãªã„å ´åˆã€NekoTabã®é–‹ç™ºè€…ã«é€£çµ¡ã—ã¦ãã ã•ã„ã€‚"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "Welcome to %(tournament)s"
-msgstr "%(tournament)sへようこそ"
+msgstr "%(tournament)sã¸ã‚ˆã†ã“ã"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "There is currently no public information available for this tournament."
-msgstr "現在表示できる情報がありません。"
+msgstr "ç¾åœ¨è¡¨ç¤ºã§ãã‚‹æƒ…å ±ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Tab"
-msgstr "チームタブ"
+msgstr "ãƒãƒ¼ãƒ ã‚¿ãƒ–"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(category)s Team Tab"
-msgstr "%(category)sのチームタブ"
+msgstr "%(category)sã®ãƒãƒ¼ãƒ ã‚¿ãƒ–"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Speaker Tab"
-msgstr "スピーカータブ"
+msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¿ãƒ–"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(category)s Speaker Tab"
-msgstr "%(category)sのスピーカータブ"
+msgstr "%(category)sã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¿ãƒ–"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Replies Tab"
-msgstr "リプライタブ"
+msgstr "ãƒªãƒ—ãƒ©ã‚¤ã‚¿ãƒ–"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Adjudicator Tab"
-msgstr "ジャッジタブ"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¿ãƒ–"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Motions Tab"
-msgstr "モーションタブ"
+msgstr "ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã‚¿ãƒ–"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Sides"
-msgstr "サイド"
+msgstr "ã‚µã‚¤ãƒ‰"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "%(round)sの対戦表"
+msgstr "%(round)sã®å¯¾æˆ¦è¡¨"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Draws for Current Rounds"
-msgstr "現在のラウンドの対戦表"
+msgstr "ç¾åœ¨ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(round)s's draw has yet to be released"
-msgstr "%(round)sの対戦表はリリースされていません。"
+msgstr "%(round)sã®å¯¾æˆ¦è¡¨ã¯ãƒªãƒªãƒ¼ã‚¹ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "The draw for the next round has yet to be released"
-msgstr "次のラウンドの対戦表はリリースされていません。"
+msgstr "æ¬¡ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ã¯ãƒªãƒªãƒ¼ã‚¹ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
 
 #: tournaments/templates/public_tournament_index.html
 #: tournaments/templates/tournament_schedule_edit.html
@@ -658,53 +658,53 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Check-Ins"
-msgstr "チェックイン"
+msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Results"
-msgstr "結果"
+msgstr "çµæžœ"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Motions"
-msgstr "論題"
+msgstr "è«–é¡Œ"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Team Standings"
-msgstr "チーム順位"
+msgstr "ãƒãƒ¼ãƒ é †ä½"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "%(category)s Break"
-msgstr "%(category)sブレイク"
+msgstr "%(category)sãƒ–ãƒ¬ã‚¤ã‚¯"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Breaking Adjudicators"
-msgstr "ブレイクしたジャッジ"
+msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã—ãŸã‚¸ãƒ£ãƒƒã‚¸"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Diversity"
-msgstr "ダイバーシティー"
+msgstr "ãƒ€ã‚¤ãƒãƒ¼ã‚·ãƒ†ã‚£ãƒ¼"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Participants"
-msgstr "参加者"
+msgstr "å‚åŠ è€…"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Institutions"
-msgstr "インステ"
+msgstr "ã‚¤ãƒ³ã‚¹ãƒ†"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Feedback Progress"
-msgstr "フィードバック提出状況"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯æå‡ºçŠ¶æ³"
 
 #: tournaments/templates/public_tournament_index.html
 #, python-format
 msgid "Enter Ballot for %(round)s"
-msgstr "%(round)sのバロットを入力"
+msgstr "%(round)sã®ãƒãƒ­ãƒƒãƒˆã‚’å…¥åŠ›"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Enter Feedback"
-msgstr "フィードバックを入力"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’å…¥åŠ›"
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Register Institution"
@@ -720,7 +720,7 @@ msgstr ""
 
 #: tournaments/templates/public_tournament_index.html
 msgid "Tournament Staff"
-msgstr "大会スタッフ"
+msgstr "å¤§ä¼šã‚¹ã‚¿ãƒƒãƒ•"
 
 #: tournaments/templates/public_tournament_schedule.html
 #, python-format
@@ -729,218 +729,218 @@ msgstr ""
 
 #: tournaments/templates/round_complete_check.html
 msgid "Confirm Round Completion"
-msgstr "ラウンドを完了"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’å®Œäº†"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Enter Results"
-msgstr "結果を入力"
+msgstr "çµæžœã‚’å…¥åŠ›"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Emails have already been sent."
-msgstr "メールは送信済みです。"
+msgstr "ãƒ¡ãƒ¼ãƒ«ã¯é€ä¿¡æ¸ˆã¿ã§ã™ã€‚"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Email Team Wins/Losses"
-msgstr "チームの勝敗をメールする"
+msgstr "ãƒãƒ¼ãƒ ã®å‹æ•—ã‚’ãƒ¡ãƒ¼ãƒ«ã™ã‚‹"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Email Team Points"
-msgstr "チームの点数をメールする"
+msgstr "ãƒãƒ¼ãƒ ã®ç‚¹æ•°ã‚’ãƒ¡ãƒ¼ãƒ«ã™ã‚‹"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Unmark as Silent"
-msgstr "サイレントを解除"
+msgstr "ã‚µã‚¤ãƒ¬ãƒ³ãƒˆã‚’è§£é™¤"
 
 #: tournaments/templates/round_complete_check.html
 msgid "Mark as Silent"
-msgstr "サイレントにする"
+msgstr "ã‚µã‚¤ãƒ¬ãƒ³ãƒˆã«ã™ã‚‹"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "Mark %(round)s as Completed"
-msgstr "%(round)sを完了にする"
+msgstr "%(round)sã‚’å®Œäº†ã«ã™ã‚‹"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "Mark %(round)s as Completed Anyway"
-msgstr "%(round)sを完了にする"
+msgstr "%(round)sã‚’å®Œäº†ã«ã™ã‚‹"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "Go to %(round)s"
-msgstr "%(round)sへ"
+msgstr "%(round)sã¸"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "%(round)s has already been marked as completed!"
-msgstr "%(round)sは既に完了しています！"
+msgstr "%(round)sã¯æ—¢ã«å®Œäº†ã—ã¦ã„ã¾ã™ï¼"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "The following prior round has not yet been completed: %(prior_rounds_not_completed)s. You should complete it before marking this round as completed."
 msgid_plural "The following prior rounds have not yet been completed: %(prior_rounds_not_completed)s. You should complete those before marking this round as completed."
-msgstr[0] "以下の前にあったラウンドが完了していません：%(prior_rounds_not_completed)s。このラウンドを完了とする前にこれらを完了としてください。"
+msgstr[0] "ä»¥ä¸‹ã®å‰ã«ã‚ã£ãŸãƒ©ã‚¦ãƒ³ãƒ‰ãŒå®Œäº†ã—ã¦ã„ã¾ã›ã‚“ï¼š%(prior_rounds_not_completed)sã€‚ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’å®Œäº†ã¨ã™ã‚‹å‰ã«ã“ã‚Œã‚‰ã‚’å®Œäº†ã¨ã—ã¦ãã ã•ã„ã€‚"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "All ballots from %(round)s are confirmed. You should be good to go!"
-msgstr "%(round)sのすべてのバロットを承認しました。次に進んで大丈夫です！"
+msgstr "%(round)sã®ã™ã¹ã¦ã®ãƒãƒ­ãƒƒãƒˆã‚’æ‰¿èªã—ã¾ã—ãŸã€‚æ¬¡ã«é€²ã‚“ã§å¤§ä¸ˆå¤«ã§ã™ï¼"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "There is still %(num_unconfirmed)s ballot that is not confirmed. You should <strong>not</strong> proceed to the next round until all ballots are confirmed."
 msgid_plural "There are still %(num_unconfirmed)s ballots that are not confirmed. You should <strong>not</strong> proceed to the next round until all ballots are confirmed."
-msgstr[0] "まだ%(num_unconfirmed)sつのバロットが承認されていません。すべてのバロットが承認されるまでは次のラウンドに<strong>進まないでください</strong>。"
+msgstr[0] "ã¾ã %(num_unconfirmed)sã¤ã®ãƒãƒ­ãƒƒãƒˆãŒæ‰¿èªã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚ã™ã¹ã¦ã®ãƒãƒ­ãƒƒãƒˆãŒæ‰¿èªã•ã‚Œã‚‹ã¾ã§ã¯æ¬¡ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã«<strong>é€²ã¾ãªã„ã§ãã ã•ã„</strong>ã€‚"
 
 #: tournaments/templates/round_complete_check.html
 msgid "<p>This round is a silent round.</p> <p> Even though public view of results is enabled, results for <em>this</em> round will still be hidden from public view after completing this round. <p> <p> You can change whether this round is silent using the button above. </p>"
-msgstr "<p>このラウンドはサイレントラウンドです。</p><p>結果を公表する設定になっていますが、<em>この</em>ラウンドの結果は完了しても公開されません。</p><p>このラウンドがサイレントかは上のボタンから変更できます。</p>"
+msgstr "<p>ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã¯ã‚µã‚¤ãƒ¬ãƒ³ãƒˆãƒ©ã‚¦ãƒ³ãƒ‰ã§ã™ã€‚</p><p>çµæžœã‚’å…¬è¡¨ã™ã‚‹è¨­å®šã«ãªã£ã¦ã„ã¾ã™ãŒã€<em>ã“ã®</em>ãƒ©ã‚¦ãƒ³ãƒ‰ã®çµæžœã¯å®Œäº†ã—ã¦ã‚‚å…¬é–‹ã•ã‚Œã¾ã›ã‚“ã€‚</p><p>ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ãŒã‚µã‚¤ãƒ¬ãƒ³ãƒˆã‹ã¯ä¸Šã®ãƒœã‚¿ãƒ³ã‹ã‚‰å¤‰æ›´ã§ãã¾ã™ã€‚</p>"
 
 #: tournaments/templates/round_complete_check.html
 #, python-format
 msgid "<p><strong> Results for %(round)s will be published online once you mark this round as complete! </strong></p> <p> This round is <em>not</em> a silent round, and public view of results is enabled. </p> <p> If you want to keep the results for just this round hidden, you can mark this round as silent using the button above. </p> <p> If you want to disable the public view of results, you can do so in the <a href=\"%(public_features_url)s\">tournament configuration</a>. </p>"
-msgstr "<p><strong>%(round)sの結果はこのラウンドを完了とし次第公開されます！</strong></p><p>このラウンドはサイレントでは<em>なく</em>、結果は公表される設定になっています。</p><p>このラウンドの結果のみ非公開にしたい場合、上のボタンからこのラウンドをサイレントとすることができます。</p> <p>結果の公開自体を無効化したい場合、<a href=\"%(public_features_url)s\">大会の設定</a>から変更できます。</p>"
+msgstr "<p><strong>%(round)sã®çµæžœã¯ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’å®Œäº†ã¨ã—æ¬¡ç¬¬å…¬é–‹ã•ã‚Œã¾ã™ï¼</strong></p><p>ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã¯ã‚µã‚¤ãƒ¬ãƒ³ãƒˆã§ã¯<em>ãªã</em>ã€çµæžœã¯å…¬è¡¨ã•ã‚Œã‚‹è¨­å®šã«ãªã£ã¦ã„ã¾ã™ã€‚</p><p>ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®çµæžœã®ã¿éžå…¬é–‹ã«ã—ãŸã„å ´åˆã€ä¸Šã®ãƒœã‚¿ãƒ³ã‹ã‚‰ã“ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’ã‚µã‚¤ãƒ¬ãƒ³ãƒˆã¨ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚</p> <p>çµæžœã®å…¬é–‹è‡ªä½“ã‚’ç„¡åŠ¹åŒ–ã—ãŸã„å ´åˆã€<a href=\"%(public_features_url)s\">å¤§ä¼šã®è¨­å®š</a>ã‹ã‚‰å¤‰æ›´ã§ãã¾ã™ã€‚</p>"
 
 #: tournaments/templates/set_current_round.html
 msgid "Back to Configuration"
-msgstr "設定に戻る"
+msgstr "è¨­å®šã«æˆ»ã‚‹"
 
 #: tournaments/templates/set_current_round.html
 #, python-format
-msgid "No round is currently set. In order for Tabbycat to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
-msgstr "現在進行中のラウンドはありません。Tabbycatを正常に動かすために、<strong>%(tournament)s</strong>の<strong>現在進行中のラウンド</strong>を設定してください。"
+msgid "No round is currently set. In order for NekoTab to work, please set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
+msgstr "ç¾åœ¨é€²è¡Œä¸­ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚NekoTabã‚’æ­£å¸¸ã«å‹•ã‹ã™ãŸã‚ã«ã€<strong>%(tournament)s</strong>ã®<strong>ç¾åœ¨é€²è¡Œä¸­ã®ãƒ©ã‚¦ãƒ³ãƒ‰</strong>ã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚"
 
 #: tournaments/templates/set_current_round.html
 #, python-format
 msgid "On this page, you can set the <strong>current round</strong> of the tournament <strong>%(tournament)s</strong>."
-msgstr "このページでは、<strong>%(tournament)s</strong>の現在進行中のラウンドを設定できます。"
+msgstr "ã“ã®ãƒšãƒ¼ã‚¸ã§ã¯ã€<strong>%(tournament)s</strong>ã®ç¾åœ¨é€²è¡Œä¸­ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’è¨­å®šã§ãã¾ã™ã€‚"
 
 #: tournaments/templates/set_current_round.html
 #, python-format
 msgid "The tournament <strong>%(tournament)s</strong> has no rounds. You'll need to <a href=\"%(round_changelist_url)s\">add rounds and associate them with this tournament</a> before you can set the current round."
-msgstr "<strong>%(tournament)s</strong>にはラウンドはありません。現在のラウンドを設定する前に、<a href=\"%(round_changelist_url)s\">ラウンドを追加し大会に関連付けてください</a>。"
+msgstr "<strong>%(tournament)s</strong>ã«ã¯ãƒ©ã‚¦ãƒ³ãƒ‰ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ç¾åœ¨ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’è¨­å®šã™ã‚‹å‰ã«ã€<a href=\"%(round_changelist_url)s\">ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’è¿½åŠ ã—å¤§ä¼šã«é–¢é€£ä»˜ã‘ã¦ãã ã•ã„</a>ã€‚"
 
 #: tournaments/templates/set_current_round.html
 msgctxt "button"
 msgid "Set Current Rounds"
-msgstr "現在のラウンドを設定"
+msgstr "ç¾åœ¨ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’è¨­å®š"
 
 #: tournaments/templates/set_round_weights.html
 msgctxt "page title"
 msgid "Set Round Weights for Tapered Scoring"
-msgstr "ラウンドの比重を設定"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®æ¯”é‡ã‚’è¨­å®š"
 
 #: tournaments/templates/set_round_weights.html
 msgid "Round weights are coefficients for the points received in each round. A team would get triple their team points obtained in a round with a weight of 3."
-msgstr "ラウンドの比重は、各ラウンドに獲得した点数にかかる係数です。重さ3のラウンドで獲得したチームの点数は3倍され加算されます。"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®æ¯”é‡ã¯ã€å„ãƒ©ã‚¦ãƒ³ãƒ‰ã«ç²å¾—ã—ãŸç‚¹æ•°ã«ã‹ã‹ã‚‹ä¿‚æ•°ã§ã™ã€‚é‡ã•3ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã§ç²å¾—ã—ãŸãƒãƒ¼ãƒ ã®ç‚¹æ•°ã¯3å€ã•ã‚ŒåŠ ç®—ã•ã‚Œã¾ã™ã€‚"
 
 #: tournaments/templates/set_round_weights.html
 msgctxt "button"
 msgid "Set weights"
-msgstr "比重を設定"
+msgstr "æ¯”é‡ã‚’è¨­å®š"
 
 #: tournaments/templates/site_index.html
 msgid "Welcome!"
-msgstr "ようこそ！"
+msgstr "ã‚ˆã†ã“ãï¼"
 
 #: tournaments/templates/site_index.html
 msgid "It looks like there aren't any tournaments on this site. Would you like to create one?"
-msgstr "このサイトには大会が無いようです。大会を作りますか？"
+msgstr "ã“ã®ã‚µã‚¤ãƒˆã«ã¯å¤§ä¼šãŒç„¡ã„ã‚ˆã†ã§ã™ã€‚å¤§ä¼šã‚’ä½œã‚Šã¾ã™ã‹ï¼Ÿ"
 
 #: tournaments/templates/site_index.html
 msgid "There are currently no active tournaments set up on this site."
-msgstr "このサイトには現在有効な大会がありません。"
+msgstr "ã“ã®ã‚µã‚¤ãƒˆã«ã¯ç¾åœ¨æœ‰åŠ¹ãªå¤§ä¼šãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: tournaments/templates/site_index.html
 msgid "There are currently no tournaments set up on this site."
-msgstr "このサイトには現在大会がありません。"
+msgstr "ã“ã®ã‚µã‚¤ãƒˆã«ã¯ç¾åœ¨å¤§ä¼šãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: tournaments/templates/site_index.html
 msgid "(inactive)"
-msgstr "（無効）"
+msgstr "ï¼ˆç„¡åŠ¹ï¼‰"
 
 #: tournaments/templates/site_index.html
 msgid "New Tournament"
-msgstr "新しい大会"
+msgstr "æ–°ã—ã„å¤§ä¼š"
 
 #: tournaments/templates/site_index.html
 msgid "Edit Database Area"
-msgstr "データベース編集エリア"
+msgstr "ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢"
 
 #: tournaments/templates/site_index.html
 msgid "Send a Test Email"
-msgstr "テストメールを送信"
+msgstr "ãƒ†ã‚¹ãƒˆãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡"
 
 #: tournaments/templates/site_index.html
 msgid "Import DebateXML"
-msgstr "DebateXMLをインポート"
+msgstr "DebateXMLã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆ"
 
 #: tournaments/templates/site_index.html
 #, python-format
 msgid "Get API Token / Change Password (%(user)s)"
-msgstr "APIトークンを取得/パスワードを変更（%(user)s）"
+msgstr "APIãƒˆãƒ¼ã‚¯ãƒ³ã‚’å–å¾—/ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¤‰æ›´ï¼ˆ%(user)sï¼‰"
 
 #: tournaments/templates/site_index.html
 #, python-format
 msgid "Log Out (%(user)s)"
-msgstr "ログアウト（%(user)s）"
+msgstr "ãƒ­ã‚°ã‚¢ã‚¦ãƒˆï¼ˆ%(user)sï¼‰"
 
 #: tournaments/templates/site_index.html
 msgid "Log In as Admin"
-msgstr "管理者としてログイン"
+msgstr "ç®¡ç†è€…ã¨ã—ã¦ãƒ­ã‚°ã‚¤ãƒ³"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "We hope you've enjoyed using Tabbycat for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/tabbycat\">Learn more about donating.</a>"
-msgstr "Tabbycatご利用いただきありがとうございました。このプロジェクトの継続的な発展と維持を支援するため、ご寄付をいただければ幸いです。この規模の大会では、<strong>$%(amount)s</strong>の寄付をお勧めします。<a href=\"https://opencollective.com/tabbycat\">寄付についてより詳しく知りたい。</a>"
+msgid "We hope you've enjoyed using NekoTab for your tournament. We would appreciate if you would make a donation to the project in order to support its ongoing development and maintenance. For a tournament of this size, we suggest a donation of <strong>$%(amount)s</strong>. <a href=\"https://opencollective.com/NekoTab\">Learn more about donating.</a>"
+msgstr "NekoTabã”åˆ©ç”¨ã„ãŸã ãã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã—ãŸã€‚ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ç¶™ç¶šçš„ãªç™ºå±•ã¨ç¶­æŒã‚’æ”¯æ´ã™ã‚‹ãŸã‚ã€ã”å¯„ä»˜ã‚’ã„ãŸã ã‘ã‚Œã°å¹¸ã„ã§ã™ã€‚ã“ã®è¦æ¨¡ã®å¤§ä¼šã§ã¯ã€<strong>$%(amount)s</strong>ã®å¯„ä»˜ã‚’ãŠå‹§ã‚ã—ã¾ã™ã€‚<a href=\"https://opencollective.com/NekoTab\">å¯„ä»˜ã«ã¤ã„ã¦ã‚ˆã‚Šè©³ã—ãçŸ¥ã‚ŠãŸã„ã€‚</a>"
 
 #: tournaments/templates/tournament_index.html
 msgid "Welcome to your new tournament!"
-msgstr "新しい大会へようこそ！"
+msgstr "æ–°ã—ã„å¤§ä¼šã¸ã‚ˆã†ã“ãï¼"
 
 #: tournaments/templates/tournament_index.html
 msgid "The next step is to import your initial tournament data: the institutions, teams, adjudicators and rooms that are in your tournament. There are a number of ways to do this. For small-to-medium tournaments, the simple importer is your best bet."
-msgstr "次に、大会のデータ（インステ・チーム・ジャッジ・部屋）を入力します。複数の方法があります。小・中規模の大会には簡易入力が最適です。"
+msgstr "æ¬¡ã«ã€å¤§ä¼šã®ãƒ‡ãƒ¼ã‚¿ï¼ˆã‚¤ãƒ³ã‚¹ãƒ†ãƒ»ãƒãƒ¼ãƒ ãƒ»ã‚¸ãƒ£ãƒƒã‚¸ãƒ»éƒ¨å±‹ï¼‰ã‚’å…¥åŠ›ã—ã¾ã™ã€‚è¤‡æ•°ã®æ–¹æ³•ãŒã‚ã‚Šã¾ã™ã€‚å°ãƒ»ä¸­è¦æ¨¡ã®å¤§ä¼šã«ã¯ç°¡æ˜“å…¥åŠ›ãŒæœ€é©ã§ã™ã€‚"
 
 #. Translators: The documentation where the link goes to is in English; translations should mention this with "(in English)" after the link.
 #: tournaments/templates/tournament_index.html
 #, python-format
-msgid "For more information, please consult our <a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
-msgstr "詳しくは、<a href=\"https://tabbycat.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\">データ入力についてのドキュメンテーション（英語版）</a>を参照してください。"
+msgid "For more information, please consult our <a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\"> documentation on importing initial data</a>."
+msgstr "è©³ã—ãã¯ã€<a href=\"https://NekoTab.readthedocs.io/en/%(readthedocs_version)s/use/importing-data.html\" class=\"alert-link\" target=\"_blank\">ãƒ‡ãƒ¼ã‚¿å…¥åŠ›ã«ã¤ã„ã¦ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï¼ˆè‹±èªžç‰ˆï¼‰</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚"
 
 #: tournaments/templates/tournament_index.html
 msgid "Use the simple importer to add your initial data."
-msgstr "簡易入力で初期データを追加してください"
+msgstr "ç°¡æ˜“å…¥åŠ›ã§åˆæœŸãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ ã—ã¦ãã ã•ã„"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
 msgid "Mark participants as available to prepare a draw for %(round)s"
-msgstr "%(round)sの対戦表を生成するために参加状況を設定してください"
+msgstr "%(round)sã®å¯¾æˆ¦è¡¨ã‚’ç”Ÿæˆã™ã‚‹ãŸã‚ã«å‚åŠ çŠ¶æ³ã‚’è¨­å®šã—ã¦ãã ã•ã„"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
 msgid "Go to the draw area to allocate adjudicators for %(round)s"
-msgstr "対戦表エリアで%(round)sのジャッジを配置してください"
+msgstr "å¯¾æˆ¦è¡¨ã‚¨ãƒªã‚¢ã§%(round)sã®ã‚¸ãƒ£ãƒƒã‚¸ã‚’é…ç½®ã—ã¦ãã ã•ã„"
 
 #: tournaments/templates/tournament_index.html
 #, python-format
 msgid "Go to the results area to enter ballots for %(round)s"
-msgstr "結果エリアで%(round)sのバロットを入力してください"
+msgstr "çµæžœã‚¨ãƒªã‚¢ã§%(round)sã®ãƒãƒ­ãƒƒãƒˆã‚’å…¥åŠ›ã—ã¦ãã ã•ã„"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Administrator area for <strong>%(tn)s</strong>"
-msgstr "<strong>%(tn)s</strong>の管理者エリア"
+msgstr "<strong>%(tn)s</strong>ã®ç®¡ç†è€…ã‚¨ãƒªã‚¢"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Assistant area for <strong>%(tn)s</strong>"
-msgstr "<strong>%(tn)s</strong>のアシスタントエリア"
+msgstr "<strong>%(tn)s</strong>ã®ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆã‚¨ãƒªã‚¢"
 
 #: tournaments/templates/tournament_index_links.html
 #, python-format
 msgid "Public area for <strong>%(tn)s</strong>"
-msgstr "<strong>%(tn)s</strong>のパブリックエリア"
+msgstr "<strong>%(tn)s</strong>ã®ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¨ãƒªã‚¢"
 
 #: tournaments/templates/tournament_schedule_edit.html
 msgid "This page allows you to set the public schedule for the tournament."
@@ -952,63 +952,63 @@ msgstr ""
 
 #: tournaments/utils.py
 msgid "affirmative"
-msgstr "肯定側"
+msgstr "è‚¯å®šå´"
 
 #: tournaments/utils.py
 msgid "negative"
-msgstr "否定側"
+msgstr "å¦å®šå´"
 
 #: tournaments/utils.py
 msgid "affirmative team"
-msgstr "肯定側チーム"
+msgstr "è‚¯å®šå´ãƒãƒ¼ãƒ "
 
 #: tournaments/utils.py
 msgid "negative team"
-msgstr "否定側チーム"
+msgstr "å¦å®šå´ãƒãƒ¼ãƒ "
 
 #: tournaments/utils.py
 msgid "Aff"
-msgstr "肯定"
+msgstr "è‚¯å®š"
 
 #: tournaments/utils.py
 msgid "Neg"
-msgstr "否定"
+msgstr "å¦å®š"
 
 #: tournaments/utils.py
 msgid "government"
-msgstr "政府側"
+msgstr "æ”¿åºœå´"
 
 #: tournaments/utils.py
 msgid "opposition"
-msgstr "反対側"
+msgstr "åå¯¾å´"
 
 #: tournaments/utils.py
 msgid "government team"
-msgstr "政府側チーム"
+msgstr "æ”¿åºœå´ãƒãƒ¼ãƒ "
 
 #: tournaments/utils.py
 msgid "opposition team"
-msgstr "反対側チーム"
+msgstr "åå¯¾å´ãƒãƒ¼ãƒ "
 
 #: tournaments/utils.py
 msgid "Gov"
-msgstr "政府"
+msgstr "æ”¿åºœ"
 
 #: tournaments/utils.py
 msgid "Opp"
-msgstr "反対"
+msgstr "åå¯¾"
 
 #: tournaments/utils.py
 msgid "proposition"
-msgstr "推進"
+msgstr "æŽ¨é€²"
 
 #: tournaments/utils.py
 msgid "proposition team"
-msgstr "推進チーム"
+msgstr "æŽ¨é€²ãƒãƒ¼ãƒ "
 
 #: tournaments/utils.py
 msgid "Prop"
-msgstr "推進"
+msgstr "æŽ¨é€²"
 
 #: tournaments/utils.py
 msgid "pro"
@@ -1121,7 +1121,7 @@ msgstr ""
 #: tournaments/utils.py
 #, python-format
 msgid "Round %(number)d"
-msgstr "ラウンド%(number)d"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰%(number)d"
 
 #. Translators: This stands for "Round %(number)d".
 #: tournaments/utils.py
@@ -1136,64 +1136,65 @@ msgstr ""
 #: tournaments/utils.py
 #, python-format
 msgid "Team %d"
-msgstr "チーム%d"
+msgstr "ãƒãƒ¼ãƒ %d"
 
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as silent."
-msgstr "%(round)sはサイレントラウンドに設定されました。"
+msgstr "%(round)sã¯ã‚µã‚¤ãƒ¬ãƒ³ãƒˆãƒ©ã‚¦ãƒ³ãƒ‰ã«è¨­å®šã•ã‚Œã¾ã—ãŸã€‚"
 
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been unmarked as silent."
-msgstr "%(round)sはサイレントラウンドではなくなりました。"
+msgstr "%(round)sã¯ã‚µã‚¤ãƒ¬ãƒ³ãƒˆãƒ©ã‚¦ãƒ³ãƒ‰ã§ã¯ãªããªã‚Šã¾ã—ãŸã€‚"
 
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as completed. All rounds are now completed, so you're done with the tournament! Congratulations!"
-msgstr "%(round)sを完了しました。すべてのラウンドが完了したので、大会が終了しました。おめでとうございます！"
+msgstr "%(round)sã‚’å®Œäº†ã—ã¾ã—ãŸã€‚ã™ã¹ã¦ã®ãƒ©ã‚¦ãƒ³ãƒ‰ãŒå®Œäº†ã—ãŸã®ã§ã€å¤§ä¼šãŒçµ‚äº†ã—ã¾ã—ãŸã€‚ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™ï¼"
 
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as completed. That's the last round in that sequence! Going back to the first round that hasn't been marked as completed."
-msgstr "%(round)sを完了しました。登録されている最後のラウンドです！完了していない最初のラウンドに戻ります。"
+msgstr "%(round)sã‚’å®Œäº†ã—ã¾ã—ãŸã€‚ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹æœ€å¾Œã®ãƒ©ã‚¦ãƒ³ãƒ‰ã§ã™ï¼å®Œäº†ã—ã¦ã„ãªã„æœ€åˆã®ãƒ©ã‚¦ãƒ³ãƒ‰ã«æˆ»ã‚Šã¾ã™ã€‚"
 
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as completed. You've made it to the end of the preliminary rounds! Congratulations! The next step is to generate the break."
-msgstr "%(round)sを完了しました。予選ラウンドを終了しました！おめでとうございます！次は、ブレイクを生成しましょう。"
+msgstr "%(round)sã‚’å®Œäº†ã—ã¾ã—ãŸã€‚äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’çµ‚äº†ã—ã¾ã—ãŸï¼ãŠã‚ã§ã¨ã†ã”ã–ã„ã¾ã™ï¼æ¬¡ã¯ã€ãƒ–ãƒ¬ã‚¤ã‚¯ã‚’ç”Ÿæˆã—ã¾ã—ã‚‡ã†ã€‚"
 
 #: tournaments/views.py
 #, python-format
 msgid "%(round)s has been marked as completed. That was the last preliminary round, but one or more preliminary rounds are still not completed. Going back to the first incomplete preliminary round."
-msgstr "%(round)sを完了しました。予選ラウンドを終了しましたが、未完了の予選ラウンドがあります。完了していない最初の予選ラウンドに戻ります。"
+msgstr "%(round)sã‚’å®Œäº†ã—ã¾ã—ãŸã€‚äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’çµ‚äº†ã—ã¾ã—ãŸãŒã€æœªå®Œäº†ã®äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ãŒã‚ã‚Šã¾ã™ã€‚å®Œäº†ã—ã¦ã„ãªã„æœ€åˆã®äºˆé¸ãƒ©ã‚¦ãƒ³ãƒ‰ã«æˆ»ã‚Šã¾ã™ã€‚"
 
 #: tournaments/views.py
 #, python-format
 msgid "%(this_round)s has been marked as completed. Moving on to %(next_round)s! Woohoo! Keep it up!"
-msgstr "%(this_round)sを完了しました。%(next_round)sに移ります！やった！この調子！"
+msgstr "%(this_round)sã‚’å®Œäº†ã—ã¾ã—ãŸã€‚%(next_round)sã«ç§»ã‚Šã¾ã™ï¼ã‚„ã£ãŸï¼ã“ã®èª¿å­ï¼"
 
 #: tournaments/views.py
 msgid "8-team generic dataset"
-msgstr "8チーム・一般的データセット"
+msgstr "8ãƒãƒ¼ãƒ ãƒ»ä¸€èˆ¬çš„ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ"
 
 #: tournaments/views.py
 msgid "24-team Australs dataset"
-msgstr "24チーム・オーストラルズデータセット"
+msgstr "24ãƒãƒ¼ãƒ ãƒ»ã‚ªãƒ¼ã‚¹ãƒˆãƒ©ãƒ«ã‚ºãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ"
 
 #: tournaments/views.py
 msgid "88-team BP dataset"
-msgstr "88チーム・BP形式データセット"
+msgstr "88ãƒãƒ¼ãƒ ãƒ»BPå½¢å¼ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ"
 
 #: tournaments/views.py
 msgid "Set Current Round"
-msgstr "現在進行中のラウンドを設定"
+msgstr "ç¾åœ¨é€²è¡Œä¸­ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã‚’è¨­å®š"
 
 #: tournaments/views.py
 msgid "Successfully set round weights for tapered scoring."
-msgstr "ラウンドの比重を設定しました。"
+msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®æ¯”é‡ã‚’è¨­å®šã—ã¾ã—ãŸã€‚"
 
 #: tournaments/views.py
 msgid "Tournament Schedule"
 msgstr ""
+
 

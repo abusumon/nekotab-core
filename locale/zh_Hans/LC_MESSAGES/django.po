@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:40+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 934\n"
 
 #: api/apps.py
 msgid "Application Programming Interface"
-msgstr "应用程序接口"
+msgstr "åº”ç”¨ç¨‹åºæŽ¥å£"
 
 #: checkins/admin.py
 msgid "Type"
@@ -32,7 +32,7 @@ msgstr ""
 #: checkins/apps.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Check-Ins"
-msgstr "签到"
+msgstr "ç­¾åˆ°"
 
 #: checkins/consumers.py
 msgid "Sent checkin identifier doesn't exist"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: checkins/models.py
 msgid "barcode"
-msgstr "条形码"
+msgstr "æ¡å½¢ç "
 
 #: checkins/models.py
 msgid "<Not the child instance>"
@@ -65,27 +65,27 @@ msgstr ""
 
 #: checkins/models.py
 msgid "person"
-msgstr "人"
+msgstr "äºº"
 
 #: checkins/models.py
 msgid "person identifier"
-msgstr "人员标识符"
+msgstr "äººå‘˜æ ‡è¯†ç¬¦"
 
 #: checkins/models.py
 msgid "person identifiers"
-msgstr "人员标识符"
+msgstr "äººå‘˜æ ‡è¯†ç¬¦"
 
 #: checkins/models.py
 msgid "debate"
-msgstr "辩论"
+msgstr "è¾©è®º"
 
 #: checkins/models.py
 msgid "debate identifier"
-msgstr "辩论标识符"
+msgstr "è¾©è®ºæ ‡è¯†ç¬¦"
 
 #: checkins/models.py
 msgid "debate identifiers"
-msgstr "辩论标识符"
+msgstr "è¾©è®ºæ ‡è¯†ç¬¦"
 
 #: checkins/models.py
 msgid "room identifier"
@@ -101,19 +101,19 @@ msgstr ""
 
 #: checkins/models.py
 msgid "check-in time"
-msgstr "签到时间"
+msgstr "ç­¾åˆ°æ—¶é—´"
 
 #: checkins/models.py registration/models.py users/models.py
 msgid "tournament"
-msgstr "比赛"
+msgstr "æ¯”èµ›"
 
 #: checkins/models.py
 msgid "check-in event"
-msgstr "签到事件"
+msgstr "ç­¾åˆ°äº‹ä»¶"
 
 #: checkins/models.py
 msgid "check-in events"
-msgstr "签到事件"
+msgstr "ç­¾åˆ°äº‹ä»¶"
 
 #: checkins/templates/checkin_ids.html
 msgid "With identifiers"
@@ -121,7 +121,7 @@ msgstr ""
 
 #: checkins/templates/checkin_ids.html
 msgid "View as barcodes"
-msgstr "以条形码方式显示"
+msgstr "ä»¥æ¡å½¢ç æ–¹å¼æ˜¾ç¤º"
 
 #: checkins/templates/checkin_ids.html
 msgid "Generate missing identifiers"
@@ -191,16 +191,16 @@ msgstr ""
 #: checkins/views.py registration/templates/answer_tables/teams.html
 #: templates/nav/admin_nav.html
 msgid "Speakers"
-msgstr "讲员"
+msgstr "è®²å‘˜"
 
 #: checkins/views.py registration/views.py templates/nav/admin_nav.html
 #: templates/nav/public_nav.html
 msgid "Adjudicators"
-msgstr "裁判"
+msgstr "è£åˆ¤"
 
 #: checkins/views.py
 msgid "Rooms"
-msgstr "房间"
+msgstr "æˆ¿é—´"
 
 #: checkins/views.py
 #, python-format
@@ -212,7 +212,7 @@ msgid "Identifiers"
 msgstr ""
 
 #: checkins/views.py
-msgid "Could not check you in as you do not have an identifying code — your tab director may need to make you an identifier."
+msgid "Could not check you in as you do not have an identifying code â€” your tab director may need to make you an identifier."
 msgstr ""
 
 #: checkins/views.py
@@ -234,12 +234,12 @@ msgstr ""
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "Yes"
-msgstr "是"
+msgstr "æ˜¯"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "No"
-msgstr "否"
+msgstr "å¦"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
@@ -312,7 +312,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "text"
-msgstr "文本"
+msgstr "æ–‡æœ¬"
 
 #: registration/models.py
 msgid "long text"
@@ -352,7 +352,7 @@ msgstr ""
 
 #: registration/models.py users/models.py
 msgid "name"
-msgstr "名称"
+msgstr "åç§°"
 
 #: registration/models.py
 msgid "A short name for the question, e.g., \"Agree with decision\""
@@ -404,7 +404,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "team"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: registration/models.py
 msgid "URL key"
@@ -490,7 +490,7 @@ msgstr ""
 #: registration/templates/answer_tables/teams.html registration/views.py
 #: templates/nav/admin_nav.html
 msgid "Teams"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: registration/templates/coach_private_url.html
 msgid "Private URL"
@@ -610,7 +610,7 @@ msgstr ""
 
 #: registration/views.py
 msgid "Name"
-msgstr "名字"
+msgstr "åå­—"
 
 #: registration/views.py
 msgid "Coach"
@@ -651,7 +651,7 @@ msgstr ""
 #: registration/views.py
 #, python-format
 msgid "Speaker %d"
-msgstr "讲员%d"
+msgstr "è®²å‘˜%d"
 
 #: registration/views.py
 msgid "Email"
@@ -676,7 +676,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Arabic"
-msgstr "阿拉伯文"
+msgstr "é˜¿æ‹‰ä¼¯æ–‡"
 
 #: settings/core.py
 msgid "Asturian"
@@ -704,15 +704,15 @@ msgstr ""
 
 #: settings/core.py
 msgid "English"
-msgstr "英文"
+msgstr "è‹±æ–‡"
 
 #: settings/core.py
 msgid "Spanish"
-msgstr "西班牙文"
+msgstr "è¥¿ç­ç‰™æ–‡"
 
 #: settings/core.py
 msgid "French"
-msgstr "法文"
+msgstr "æ³•æ–‡"
 
 #: settings/core.py
 msgid "Hebrew"
@@ -794,7 +794,7 @@ msgstr ""
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
 msgid "Log In"
-msgstr "登录"
+msgstr "ç™»å½•"
 
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
@@ -802,16 +802,16 @@ msgid "I forgot my password"
 msgstr ""
 
 #: templates/base.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: templates/base.html
 #, python-format
-msgid "The tab for %(tournament)s runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "The tab for %(tournament)s runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr ""
 
 #: templates/base.html
-msgid "This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "This tab runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr ""
 
 #: templates/components/form-errors.html
@@ -838,7 +838,7 @@ msgid_plural "You're currently using %(nrows)s rows in your database. If you hav
 msgstr[0] ""
 
 #: templates/errors/legacy_sendgrid_warning.html
-msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of Tabbycat. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
+msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of NekoTab. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
 msgstr ""
 
 #: templates/errors/public_403.html
@@ -853,21 +853,21 @@ msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "%(tournament)s runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgid "%(tournament)s runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
 msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "This site runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgid "This site runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
 msgstr ""
 
 #: templates/footer.html
-msgid "Tabbycat is an open-source project developed by volunteers and is free to use."
+msgid "NekoTab is an open-source project developed by volunteers and is free to use."
 msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
+msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
 msgstr ""
 
 #: templates/footer.html
@@ -875,7 +875,7 @@ msgid "Learn more about donating."
 msgstr ""
 
 #: templates/footer.html
-msgid "<a href=\"https://opencollective.com/tabbycat\">Donations to Tabbycat from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain Tabbycat."
+msgid "<a href=\"https://opencollective.com/NekoTab\">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab."
 msgstr ""
 
 #: templates/footer.html
@@ -884,7 +884,7 @@ msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
 msgstr ""
 
 #: templates/footer.html
@@ -892,12 +892,12 @@ msgid "Our Organisation"
 msgstr ""
 
 #: templates/footer.html
-msgid "Tabbycat is supported by the <a href=\"https://tabbycat-debate.org/\">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology."
+msgid "NekoTab is supported by the <a href=\"https://NekoTab-debate.org/\">NekoTab Debate Association</a>, a non-profit for advancing open debate technology."
 msgstr ""
 
 #: templates/footer.html users/groups.py
 msgid "Language"
-msgstr "语言"
+msgstr "è¯­è¨€"
 
 #: templates/footer.html
 msgid "GitHub"
@@ -905,7 +905,7 @@ msgstr "GitHub"
 
 #: templates/footer.html
 msgid "Documentation"
-msgstr "手册"
+msgstr "æ‰‹å†Œ"
 
 #: templates/footer.html
 msgid "Support"
@@ -928,8 +928,8 @@ msgid "Use this language"
 msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
-msgid "Tabbycat Logo"
-msgstr "Tabbycat标志"
+msgid "NekoTab Logo"
+msgstr "NekoTabæ ‡å¿—"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Site Home"
@@ -945,7 +945,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Admin Area"
-msgstr "管理中心"
+msgstr "ç®¡ç†ä¸­å¿ƒ"
 
 #: templates/nav/admin_nav.html
 msgid "Assistant Area"
@@ -986,7 +986,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Emails"
-msgstr "电子邮件"
+msgstr "ç”µå­é‚®ä»¶"
 
 #: templates/nav/admin_nav.html
 msgid "Preformed Panels"
@@ -998,7 +998,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Sides"
-msgstr "方"
+msgstr "æ–¹"
 
 #: templates/nav/admin_nav.html users/groups.py
 msgid "Registration"
@@ -1058,12 +1058,12 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "All Teams"
-msgstr "所有队伍"
+msgstr "æ‰€æœ‰é˜Ÿä¼"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Teams"
-msgstr "%(category)s 的队伍"
+msgstr "%(category)s çš„é˜Ÿä¼"
 
 #: templates/nav/admin_nav.html
 msgid "All Speakers"
@@ -1072,7 +1072,7 @@ msgstr ""
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Speakers"
-msgstr "%(category)s的讲员"
+msgstr "%(category)sçš„è®²å‘˜"
 
 #: templates/nav/admin_nav.html
 msgid "Replies"
@@ -1080,7 +1080,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Motions"
-msgstr "话题"
+msgstr "è¯é¢˜"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Diversity"
@@ -1088,7 +1088,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Breaks"
-msgstr "资格"
+msgstr "èµ„æ ¼"
 
 #: templates/nav/admin_nav.html
 #, python-format
@@ -1109,7 +1109,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Log Out"
-msgstr "登出"
+msgstr "ç™»å‡º"
 
 #: templates/nav/assistant_nav.html
 msgid "Enter Results"
@@ -1125,7 +1125,7 @@ msgstr ""
 
 #: templates/nav/assistant_nav.html
 msgid "Code Names"
-msgstr "代号"
+msgstr "ä»£å·"
 
 #: templates/nav/assistant_nav.html
 msgid "View Identifiers"
@@ -1190,7 +1190,7 @@ msgstr ""
 
 #: templates/nav/public_nav.html
 msgid "Break"
-msgstr "资格"
+msgstr "èµ„æ ¼"
 
 #: templates/nav/public_nav.html
 msgid "Feedback Progress"
@@ -1229,11 +1229,11 @@ msgstr ""
 
 #: templates/nav/top_nav_base.html
 msgid "Login"
-msgstr "登录"
+msgstr "ç™»å½•"
 
 #: templates/registration/logged_out.html
 msgid "Goodbye"
-msgstr "再会"
+msgstr "å†ä¼š"
 
 #: templates/registration/logged_out.html
 #, python-format
@@ -1243,12 +1243,12 @@ msgstr ""
 #: templates/registration/login.html
 msgctxt "page title"
 msgid "Login"
-msgstr "登录"
+msgstr "ç™»å½•"
 
 #: templates/registration/login.html
 msgctxt "page title"
-msgid "Log in to Tabbycat"
-msgstr "登录Tabbycat"
+msgid "Log in to NekoTab"
+msgstr "ç™»å½•NekoTab"
 
 #: templates/registration/login.html
 msgid "Your username and password didn't match."
@@ -1265,11 +1265,11 @@ msgstr ""
 #: templates/registration/password_change_done.html
 msgctxt "page title"
 msgid "Password changed"
-msgstr "密码更改了"
+msgstr "å¯†ç æ›´æ”¹äº†"
 
 #: templates/registration/password_change_done.html
 msgid "Your password has been changed."
-msgstr "您的密码更改了。"
+msgstr "æ‚¨çš„å¯†ç æ›´æ”¹äº†ã€‚"
 
 #: templates/registration/password_change_done.html
 msgid "Go to the home page"
@@ -1278,7 +1278,7 @@ msgstr ""
 #: templates/registration/password_change_form.html
 msgctxt "page title"
 msgid "Password Change"
-msgstr "密码更改"
+msgstr "å¯†ç æ›´æ”¹"
 
 #: templates/registration/password_change_form.html
 #, python-format
@@ -1297,7 +1297,7 @@ msgstr ""
 #: templates/registration/password_reset_confirm.html
 msgctxt "button"
 msgid "Change my password"
-msgstr "更改我的密码"
+msgstr "æ›´æ”¹æˆ‘çš„å¯†ç "
 
 #: templates/registration/password_reset_complete.html
 msgctxt "page title"
@@ -1322,7 +1322,7 @@ msgstr ""
 #: templates/registration/password_reset_form.html
 msgctxt "page title"
 msgid "Password Reset"
-msgstr "重置密码"
+msgstr "é‡ç½®å¯†ç "
 
 #: templates/registration/password_reset_confirm.html
 msgid "Please enter a new password (twice):"
@@ -1335,7 +1335,7 @@ msgstr ""
 #: templates/registration/password_reset_done.html
 msgctxt "page title"
 msgid "Password reset email sent"
-msgstr "密码重置链接已经发送"
+msgstr "å¯†ç é‡ç½®é“¾æŽ¥å·²ç»å‘é€"
 
 #: templates/registration/password_reset_done.html
 msgid "We've emailed you instructions for setting your password, if an account exists with the email address you entered. You should receive them shortly."
@@ -1348,7 +1348,7 @@ msgstr ""
 #: templates/registration/password_reset_email.html
 #, python-format
 msgid "Hi, %(user)s!"
-msgstr "您好，%(user)s！"
+msgstr "æ‚¨å¥½ï¼Œ%(user)sï¼"
 
 #: templates/registration/password_reset_email.html
 #, python-format
@@ -1357,7 +1357,7 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "Someone asked for a password reset for the email address %(email)s on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "Someone asked for a password reset for the email address %(email)s on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: templates/registration/password_reset_email.html
@@ -1366,12 +1366,12 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: templates/registration/password_reset_form.html
 msgid "Password Reset"
-msgstr "重置密码"
+msgstr "é‡ç½®å¯†ç "
 
 #: templates/registration/password_reset_form.html
 msgid "Enter your email address below, and we'll email you a password reset link."
@@ -1380,7 +1380,7 @@ msgstr ""
 #: templates/registration/password_reset_form.html
 msgctxt "button"
 msgid "Reset my password"
-msgstr "重置我的密码"
+msgstr "é‡ç½®æˆ‘çš„å¯†ç "
 
 #: templates/registration/password_reset_form.html
 msgid "Back to the login page"
@@ -1388,12 +1388,12 @@ msgstr ""
 
 #: templates/registration/password_reset_subject.txt
 #, python-format
-msgid "Password reset on Tabbycat site at %(domain)s"
+msgid "Password reset on NekoTab site at %(domain)s"
 msgstr ""
 
 #: urls.py
 #, python-format
-msgid "Hi, %(user)s — you just logged in!"
+msgid "Hi, %(user)s â€” you just logged in!"
 msgstr ""
 
 #: urls.py
@@ -1442,7 +1442,7 @@ msgstr ""
 
 #: users/models.py
 msgid "user"
-msgstr "用户"
+msgstr "ç”¨æˆ·"
 
 #: users/models.py
 msgid "permission"
@@ -1938,7 +1938,7 @@ msgstr ""
 
 #: users/templates/account_invitation_email.html
 #, python-format
-msgid "An administrator for the Tabbycat site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
+msgid "An administrator for the NekoTab site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: users/templates/account_invitation_email.html
@@ -1951,11 +1951,11 @@ msgstr ""
 
 #: users/templates/account_invitation_subject.txt
 #, python-format
-msgid "Invitation to join Tabbycat site for %(name)s"
+msgid "Invitation to join NekoTab site for %(name)s"
 msgstr ""
 
 #: users/templates/admin/auth/delete_user_warning.html
-msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the “Permissions” tab, unchecked the “Active” box, and save the user."
+msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the â€œPermissionsâ€ tab, unchecked the â€œActiveâ€ box, and save the user."
 msgstr ""
 
 #: users/templates/invite_user.html
@@ -2000,4 +2000,5 @@ msgstr ""
 #: users/views.py
 msgid "Accept Invitation"
 msgstr ""
+
 

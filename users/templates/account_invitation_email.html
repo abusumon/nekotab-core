@@ -1,10 +1,10 @@
-{% load debate_tags i18n %}
+﻿{% load debate_tags i18n %}
 {% blocktrans trimmed %}
 Hello!
 {% endblocktrans %}
 
 {% blocktrans trimmed with name=tournament.name %}
-An administrator for the Tabbycat site hosting {{ name }} has invited you to create an user account on their site, at {{ protocol }}://{{ domain }}.
+An administrator for the NekoTab site hosting {{ name }} has invited you to create an user account on their site, at {{ protocol }}://{{ domain }}.
 {% endblocktrans %}
 
 {% trans 'If you accept, please use the link below to activate your account' %}
@@ -13,3 +13,4 @@ An administrator for the Tabbycat site hosting {{ name }} has invited you to cre
 {% blocktrans trimmed %}
 If you do not accept, there is no action to be taken.
 {% endblocktrans %}
+

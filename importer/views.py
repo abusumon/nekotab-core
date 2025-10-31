@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 from xml.etree import ElementTree
 
 from defusedxml.ElementTree import fromstring
@@ -247,7 +247,7 @@ class LoadDemoView(AdministratorMixin, PostOnlyRedirectView):
                 "<p><i>Technical information: The errors are as follows:</i></p>",
             ) + "<ul><li><i>" + "</i></li><li><i>".join(e.itermessages()) + "</i></li></ul>"))
             logger.error("Error importing demo tournament: " + str(e))
-            return redirect('tabbycat-index')
+            return redirect('NekoTab-index')
         else:
             messages.success(self.request, _("Created new demo tournament. You "
                 "can now configure it below."))
@@ -259,7 +259,7 @@ class LoadDemoView(AdministratorMixin, PostOnlyRedirectView):
 class TournamentImportArchiveView(AdministratorMixin, FormView):
 
     form_class = ArchiveImportForm
-    success_url = reverse_lazy('tabbycat-index')
+    success_url = reverse_lazy('NekoTab-index')
     template_name = 'archive_importer.html'
     view_role = ""
 
@@ -291,3 +291,4 @@ class ExportArchiveAllView(AdministratorMixin, TournamentMixin, View):
 
     def get_xml(self):
         return ElementTree.tostring(Exporter(self.tournament).create_all())
+

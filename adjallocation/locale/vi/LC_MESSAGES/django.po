@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2024-09-09 17:22\n"
@@ -11,94 +11,94 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: vi\n"
-"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
 msgid "There are no available adjudicators. Ensure there are adjudicators who have been marked as available for this round before auto-allocating."
-msgstr "Hiện tại không có giám khảo nào có mặt. Hãy chắc chắn rằng có giám khảo được đánh dấu là có mặt trong vòng này trước khi sắp xếp tự động."
+msgstr "Hiá»‡n táº¡i khÃ´ng cÃ³ giÃ¡m kháº£o nÃ o cÃ³ máº·t. HÃ£y cháº¯c cháº¯n ráº±ng cÃ³ giÃ¡m kháº£o Ä‘Æ°á»£c Ä‘Ã¡nh dáº¥u lÃ  cÃ³ máº·t trong vÃ²ng nÃ y trÆ°á»›c khi sáº¯p xáº¿p tá»± Ä‘á»™ng."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "%(count)s score is larger than the maximum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are larger than the maximum permitted adjudicator score (%(score).1f)."
-msgstr[0] "%(count)s điểm lớn hớn điểm tối đa của giám khảo (%(score).1f)."
+msgstr[0] "%(count)s Ä‘iá»ƒm lá»›n há»›n Ä‘iá»ƒm tá»‘i Ä‘a cá»§a giÃ¡m kháº£o (%(score).1f)."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "%(count)s score is smaller than the minimum permitted adjudicator score (%(score).1f)."
 msgid_plural "%(count)s scores are smaller than the minimum permitted adjudicator score (%(score).1f)."
-msgstr[0] "%(count)s điểm nhỏ hơn điểm tối thiểu của giám khảo (%(score).1f)."
+msgstr[0] "%(count)s Ä‘iá»ƒm nhá» hÆ¡n Ä‘iá»ƒm tá»‘i thiá»ƒu cá»§a giÃ¡m kháº£o (%(score).1f)."
 
 #: adjallocation/allocators/hungarian.py
 msgid "There are no adjudicators eligible to be a chair or panellist. Try changing the \"Minimum feedback score required to be allocated as chair or panellist\" setting to something lower than at least some adjudicators' current scores, and try again."
-msgstr "Không có giám khảo nào hợp lệ để làm chủ tọa hay giám khảo cánh. Hãy thử chỉnh \"Điểm đánh giá tối thiểu để được sắp xếp vào vị trí chủ tọa hoặc giám khảo cánh\" xuống thấp hơn điểm của một số giám khảo hiện tại, rồi thử lại."
+msgstr "KhÃ´ng cÃ³ giÃ¡m kháº£o nÃ o há»£p lá»‡ Ä‘á»ƒ lÃ m chá»§ tá»a hay giÃ¡m kháº£o cÃ¡nh. HÃ£y thá»­ chá»‰nh \"Äiá»ƒm Ä‘Ã¡nh giÃ¡ tá»‘i thiá»ƒu Ä‘á»ƒ Ä‘Æ°á»£c sáº¯p xáº¿p vÃ o vá»‹ trÃ­ chá»§ tá»a hoáº·c giÃ¡m kháº£o cÃ¡nh\" xuá»‘ng tháº¥p hÆ¡n Ä‘iá»ƒm cá»§a má»™t sá»‘ giÃ¡m kháº£o hiá»‡n táº¡i, rá»“i thá»­ láº¡i."
 
 #: adjallocation/allocators/hungarian.py
 msgid "There are no debates for this round. Maybe you haven't created a draw yet?"
-msgstr "Không có trận đấu nào trong vòng này. Có thể là do bạn chưa tạo bảng đấu?"
+msgstr "KhÃ´ng cÃ³ tráº­n Ä‘áº¥u nÃ o trong vÃ²ng nÃ y. CÃ³ thá»ƒ lÃ  do báº¡n chÆ°a táº¡o báº£ng Ä‘áº¥u?"
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "There are %(debate_count)s debates but only %(adj_count)s voting adjudicators."
-msgstr "Có %(debate_count)s trận tranh biện nhưng chỉ có %(adj_count)s giám khảo có thể bỏ phiếu."
+msgstr "CÃ³ %(debate_count)s tráº­n tranh biá»‡n nhÆ°ng chá»‰ cÃ³ %(adj_count)s giÃ¡m kháº£o cÃ³ thá»ƒ bá» phiáº¿u."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "There are %(panel_debates)s panel debates but only %(panellists)s available panellists (less than %(needed)s)."
-msgstr "Hiện tại có %(panel_debates)s bàn giám khảo nhưng chỉ có %(panellists)s giám khảo cánh sẵn sàng (ít hơn %(needed)s)."
+msgstr "Hiá»‡n táº¡i cÃ³ %(panel_debates)s bÃ n giÃ¡m kháº£o nhÆ°ng chá»‰ cÃ³ %(panellists)s giÃ¡m kháº£o cÃ¡nh sáºµn sÃ ng (Ã­t hÆ¡n %(needed)s)."
 
 #: adjallocation/allocators/hungarian.py
 #, python-format
 msgid "There are %(debates_count)s debates but only %(voting_count)s voting adjudicators."
-msgstr "Có %(debates_count)s trận tranh biện nhưng chỉ có %(voting_count)s giám khảo có thể bỏ phiếu."
+msgstr "CÃ³ %(debates_count)s tráº­n tranh biá»‡n nhÆ°ng chá»‰ cÃ³ %(voting_count)s giÃ¡m kháº£o cÃ³ thá»ƒ bá» phiáº¿u."
 
 #: adjallocation/apps.py
 msgid "Adjudicator Allocation"
-msgstr "Sắp xếp giám khảo"
+msgstr "Sáº¯p xáº¿p giÃ¡m kháº£o"
 
 #: adjallocation/consumers.py
 msgid "Draw is already released, unrelease draw to redo auto-allocations."
-msgstr "Bảng đấu đã được công bố, hủy công bố bảng đấu để tự động sắp xếp lại."
+msgstr "Báº£ng Ä‘áº¥u Ä‘Ã£ Ä‘Æ°á»£c cÃ´ng bá»‘, há»§y cÃ´ng bá»‘ báº£ng Ä‘áº¥u Ä‘á»ƒ tá»± Ä‘á»™ng sáº¯p xáº¿p láº¡i."
 
 #: adjallocation/consumers.py
 msgid "Draw is not confirmed, confirm draw to run auto-allocations."
-msgstr "Bảng đấu chưa được xác nhận, xác nhận bảng đấu để tự động sắp xếp."
+msgstr "Báº£ng Ä‘áº¥u chÆ°a Ä‘Æ°á»£c xÃ¡c nháº­n, xÃ¡c nháº­n báº£ng Ä‘áº¥u Ä‘á»ƒ tá»± Ä‘á»™ng sáº¯p xáº¿p."
 
 #: adjallocation/consumers.py
 msgid "There are no preformed panels available to allocate."
-msgstr "Hiện tại không có giám khảo được chỉ định trước nào sẵn sàng để sắp xếp."
+msgstr "Hiá»‡n táº¡i khÃ´ng cÃ³ giÃ¡m kháº£o Ä‘Æ°á»£c chá»‰ Ä‘á»‹nh trÆ°á»›c nÃ o sáºµn sÃ ng Ä‘á»ƒ sáº¯p xáº¿p."
 
 #: adjallocation/consumers.py
 msgid "Successfully auto-allocated preformed panels to debates."
-msgstr "Đã tự động sắp xếp thành công giám khảo chỉ định trước cho các trận tranh biện."
+msgstr "ÄÃ£ tá»± Ä‘á»™ng sáº¯p xáº¿p thÃ nh cÃ´ng giÃ¡m kháº£o chá»‰ Ä‘á»‹nh trÆ°á»›c cho cÃ¡c tráº­n tranh biá»‡n."
 
 #: adjallocation/consumers.py
 #, python-format
 msgid "Successfully auto-allocated adjudicators to debates. However, there was a warning:"
 msgid_plural "Successfully auto-allocated adjudicators to debates. However, there were %(count)d warnings:"
-msgstr[0] "Tự động sắp xếp giám khảo cho các trận tranh biện thành công. Tuy nhiên, có %(count)d lưu ý:"
+msgstr[0] "Tá»± Ä‘á»™ng sáº¯p xáº¿p giÃ¡m kháº£o cho cÃ¡c tráº­n tranh biá»‡n thÃ nh cÃ´ng. Tuy nhiÃªn, cÃ³ %(count)d lÆ°u Ã½:"
 
 #: adjallocation/consumers.py
 msgid "Successfully auto-allocated adjudicators to debates."
-msgstr "Tự động sắp xếp giám khảo cho các trận tranh biện thành công."
+msgstr "Tá»± Ä‘á»™ng sáº¯p xáº¿p giÃ¡m kháº£o cho cÃ¡c tráº­n tranh biá»‡n thÃ nh cÃ´ng."
 
 #: adjallocation/consumers.py
 msgid "There aren't any panels to fill. Create panels first."
-msgstr "Hiện tại không có giám khảo nào để sắp xếp. Hãy tạo giám khảo trước."
+msgstr "Hiá»‡n táº¡i khÃ´ng cÃ³ giÃ¡m kháº£o nÃ o Ä‘á»ƒ sáº¯p xáº¿p. HÃ£y táº¡o giÃ¡m kháº£o trÆ°á»›c."
 
 #: adjallocation/consumers.py
 #, python-format
 msgid "Successfully auto-allocated adjudicators to preformed panels. However, there was a warning:"
 msgid_plural "Successfully auto-allocated adjudicators to preformed panels. However, there were %(count)d warnings:"
-msgstr[0] "Đã tự động sắp xếp các giám khảo cho các trận tranh biện thành công. Tuy nhiên, có %(count)d lưu ý:"
+msgstr[0] "ÄÃ£ tá»± Ä‘á»™ng sáº¯p xáº¿p cÃ¡c giÃ¡m kháº£o cho cÃ¡c tráº­n tranh biá»‡n thÃ nh cÃ´ng. Tuy nhiÃªn, cÃ³ %(count)d lÆ°u Ã½:"
 
 #: adjallocation/consumers.py
 msgid "Successfully auto-allocated adjudicators to preformed panels."
-msgstr "Đã tự động sắp xếp giám khảo cho các trận tranh biện thành công."
+msgstr "ÄÃ£ tá»± Ä‘á»™ng sáº¯p xáº¿p giÃ¡m kháº£o cho cÃ¡c tráº­n tranh biá»‡n thÃ nh cÃ´ng."
 
 #: adjallocation/consumers.py
 msgid "You have no break category set as 'is general' so debate importances can't be calculated."
@@ -106,7 +106,7 @@ msgstr ""
 
 #: adjallocation/consumers.py
 msgid "Succesfully auto-prioritised debates."
-msgstr "Đã tự động ưu tiên các trận tranh biện thành công."
+msgstr "ÄÃ£ tá»± Ä‘á»™ng Æ°u tiÃªn cÃ¡c tráº­n tranh biá»‡n thÃ nh cÃ´ng."
 
 #: adjallocation/consumers.py
 msgid "You have no break category set as 'is general' so panel importances can't be calculated."
@@ -114,7 +114,7 @@ msgstr ""
 
 #: adjallocation/consumers.py
 msgid "Succesfully auto-prioritised preformed panels."
-msgstr "Đã tự động sắp xếp thứ tự ưu tiên cho giám khảo chỉ định trước thành công."
+msgstr "ÄÃ£ tá»± Ä‘á»™ng sáº¯p xáº¿p thá»© tá»± Æ°u tiÃªn cho giÃ¡m kháº£o chá»‰ Ä‘á»‹nh trÆ°á»›c thÃ nh cÃ´ng."
 
 #: adjallocation/consumers.py
 msgid "Since this is the first round, the preformed panels aren't annotated with brackets and liveness."
@@ -126,103 +126,103 @@ msgstr ""
 
 #: adjallocation/consumers.py
 msgid "Succesfully created new preformed panels for this round."
-msgstr "Đã tạo thành công giám khảo chỉ định trước cho vòng này."
+msgstr "ÄÃ£ táº¡o thÃ nh cÃ´ng giÃ¡m kháº£o chá»‰ Ä‘á»‹nh trÆ°á»›c cho vÃ²ng nÃ y."
 
 #: adjallocation/models.py
 msgid "chair"
-msgstr "chủ tọa"
+msgstr "chá»§ tá»a"
 
 #: adjallocation/models.py
 msgid "panellist"
-msgstr "giám khảo cánh"
+msgstr "giÃ¡m kháº£o cÃ¡nh"
 
 #: adjallocation/models.py
 msgid "trainee"
-msgstr "giám khảo thực tập"
+msgstr "giÃ¡m kháº£o thá»±c táº­p"
 
 #: adjallocation/models.py
 msgid "debate"
-msgstr "trận tranh biện"
+msgstr "tráº­n tranh biá»‡n"
 
 #: adjallocation/models.py
 msgid "adjudicator"
-msgstr "giám khảo"
+msgstr "giÃ¡m kháº£o"
 
 #: adjallocation/models.py
 msgid "type"
-msgstr "loại"
+msgstr "loáº¡i"
 
 #: adjallocation/models.py
 msgid "available?"
-msgstr "sẵn sàng?"
+msgstr "sáºµn sÃ ng?"
 
 #: adjallocation/models.py
 msgid "debate adjudicator"
-msgstr "giám khảo tranh biện"
+msgstr "giÃ¡m kháº£o tranh biá»‡n"
 
 #: adjallocation/models.py
 msgid "debate adjudicators"
-msgstr "các giám khảo tranh biện"
+msgstr "cÃ¡c giÃ¡m kháº£o tranh biá»‡n"
 
 #: adjallocation/models.py
 msgid "team"
-msgstr "đội"
+msgstr "Ä‘á»™i"
 
 #: adjallocation/models.py
 msgid "adjudicator-team conflict"
-msgstr "mâu thuẫn giữa giám khảo và đội"
+msgstr "mÃ¢u thuáº«n giá»¯a giÃ¡m kháº£o vÃ  Ä‘á»™i"
 
 #: adjallocation/models.py
 msgid "adjudicator-team conflicts"
-msgstr "các mâu thuẫn giữa giám khảo và đội"
+msgstr "cÃ¡c mÃ¢u thuáº«n giá»¯a giÃ¡m kháº£o vÃ  Ä‘á»™i"
 
 #: adjallocation/models.py
 msgid "adjudicator 1"
-msgstr "giám khảo 1"
+msgstr "giÃ¡m kháº£o 1"
 
 #: adjallocation/models.py
 msgid "adjudicator 2"
-msgstr "giám khảo 2"
+msgstr "giÃ¡m kháº£o 2"
 
 #: adjallocation/models.py
 msgid "adjudicator-adjudicator conflict"
-msgstr "mâu thuẫn giữa các giám khảo"
+msgstr "mÃ¢u thuáº«n giá»¯a cÃ¡c giÃ¡m kháº£o"
 
 #: adjallocation/models.py
 msgid "adjudicator-adjudicator conflicts"
-msgstr "các mâu thuẫn giữa các giám khảo"
+msgstr "cÃ¡c mÃ¢u thuáº«n giá»¯a cÃ¡c giÃ¡m kháº£o"
 
 #: adjallocation/models.py
 msgid "institution"
-msgstr "đơn vị"
+msgstr "Ä‘Æ¡n vá»‹"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflict"
-msgstr "mâu thuẫn giữa giám khảo và đơn vị"
+msgstr "mÃ¢u thuáº«n giá»¯a giÃ¡m kháº£o vÃ  Ä‘Æ¡n vá»‹"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflicts"
-msgstr "các mâu thuẫn giữa giám khảo và đơn vị"
+msgstr "cÃ¡c mÃ¢u thuáº«n giá»¯a giÃ¡m kháº£o vÃ  Ä‘Æ¡n vá»‹"
 
 #: adjallocation/models.py
 msgid "team-institution conflict"
-msgstr "mâu thuẫn giữa đội và đơn vị"
+msgstr "mÃ¢u thuáº«n giá»¯a Ä‘á»™i vÃ  Ä‘Æ¡n vá»‹"
 
 #: adjallocation/models.py
 msgid "team-institution conflicts"
-msgstr "các mâu thuẫn giữa đội và đơn vị"
+msgstr "cÃ¡c mÃ¢u thuáº«n giá»¯a Ä‘á»™i vÃ  Ä‘Æ¡n vá»‹"
 
 #: adjallocation/models.py
 msgid "round"
-msgstr "vòng"
+msgstr "vÃ²ng"
 
 #: adjallocation/models.py
 msgid "importance"
-msgstr "mức độ quan trọng"
+msgstr "má»©c Ä‘á»™ quan trá»ng"
 
 #: adjallocation/models.py
 msgid "minimum bracket"
-msgstr "nhánh dưới"
+msgstr "nhÃ¡nh dÆ°á»›i"
 
 #: adjallocation/models.py
 msgid "Estimate of the lowest bracket for which this panel might be"
@@ -230,7 +230,7 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "maximum bracket"
-msgstr "nhánh trên"
+msgstr "nhÃ¡nh trÃªn"
 
 #: adjallocation/models.py
 msgid "Estimate of the highest bracket for which this panel might be"
@@ -238,15 +238,15 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "room rank"
-msgstr "xếp hạng phòng"
+msgstr "xáº¿p háº¡ng phÃ²ng"
 
 #: adjallocation/models.py
 msgid "Sequential number of panel, not used in any algorithms"
-msgstr "Thứ tự của giám khảo, không được dùng trong bất cứ thuật toán nào"
+msgstr "Thá»© tá»± cá»§a giÃ¡m kháº£o, khÃ´ng Ä‘Æ°á»£c dÃ¹ng trong báº¥t cá»© thuáº­t toÃ¡n nÃ o"
 
 #: adjallocation/models.py
 msgid "liveness"
-msgstr "khả năng đi tiếp"
+msgstr "kháº£ nÄƒng Ä‘i tiáº¿p"
 
 #: adjallocation/models.py
 msgid "Number of categories this room is expected to be live for"
@@ -254,64 +254,64 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "preformed panel"
-msgstr "giám khảo được chỉ định trước"
+msgstr "giÃ¡m kháº£o Ä‘Æ°á»£c chá»‰ Ä‘á»‹nh trÆ°á»›c"
 
 #: adjallocation/models.py
 msgid "preformed panels"
-msgstr "các giám khảo được chỉ định trước"
+msgstr "cÃ¡c giÃ¡m kháº£o Ä‘Æ°á»£c chá»‰ Ä‘á»‹nh trÆ°á»›c"
 
 #: adjallocation/models.py
 msgid "panel"
-msgstr "giám khảo"
+msgstr "giÃ¡m kháº£o"
 
 #: adjallocation/models.py
 msgid "preformed panel adjudicator"
-msgstr "ban giám khảo được chỉ định trước"
+msgstr "ban giÃ¡m kháº£o Ä‘Æ°á»£c chá»‰ Ä‘á»‹nh trÆ°á»›c"
 
 #: adjallocation/models.py
 msgid "preformed panel adjudicators"
-msgstr "ban giám khảo được chỉ định trước"
+msgstr "ban giÃ¡m kháº£o Ä‘Æ°á»£c chá»‰ Ä‘á»‹nh trÆ°á»›c"
 
 #: adjallocation/preformed/base.py
 msgid "There are no preformed panels to use. Have you allocated preformed panels for this round? If not, try just auto-allocating adjudicators instead."
-msgstr "Hiện tại không có bàn giám khảo nào được chỉ định trước để dùng. Bạn đã phân bổ bàn giám khảo đươc chỉ định trước cho vòng này chưa? Nếu chưa, hãy thử phân bổ giám khảo tự động."
+msgstr "Hiá»‡n táº¡i khÃ´ng cÃ³ bÃ n giÃ¡m kháº£o nÃ o Ä‘Æ°á»£c chá»‰ Ä‘á»‹nh trÆ°á»›c Ä‘á»ƒ dÃ¹ng. Báº¡n Ä‘Ã£ phÃ¢n bá»• bÃ n giÃ¡m kháº£o Ä‘Æ°Æ¡c chá»‰ Ä‘á»‹nh trÆ°á»›c cho vÃ²ng nÃ y chÆ°a? Náº¿u chÆ°a, hÃ£y thá»­ phÃ¢n bá»• giÃ¡m kháº£o tá»± Ä‘á»™ng."
 
 #: adjallocation/templates/preformed_index.html adjallocation/views.py
 msgid "Preformed Panels"
-msgstr "Bàn giám khảo chỉ định"
+msgstr "BÃ n giÃ¡m kháº£o chá»‰ Ä‘á»‹nh"
 
 #: adjallocation/templates/preformed_index.html
 msgid "A preformed panel is a defined group of adjudicators that is specified for a round before its draw has been generated. You can then manually or automatically apply these panels during the normal adjudicator allocation process. This can make allocations faster or allow you to create more considered panels of adjudicators."
-msgstr "Một bàn giám khảo được chỉ định trước là một nhóm các giám khảo được chỉ định chấm một vòng trước khi bảng đấu được tạo. Bạn có thể chọn bàn giám khảo bằng tay hoặc tự động trong quá trình phân bố giám khảo. Việc này có thể khiến việc phân bổ nhanh hơn hoặc khiến bạn cân nhắc hơn trong việc phân bổ giám khảo."
+msgstr "Má»™t bÃ n giÃ¡m kháº£o Ä‘Æ°á»£c chá»‰ Ä‘á»‹nh trÆ°á»›c lÃ  má»™t nhÃ³m cÃ¡c giÃ¡m kháº£o Ä‘Æ°á»£c chá»‰ Ä‘á»‹nh cháº¥m má»™t vÃ²ng trÆ°á»›c khi báº£ng Ä‘áº¥u Ä‘Æ°á»£c táº¡o. Báº¡n cÃ³ thá»ƒ chá»n bÃ n giÃ¡m kháº£o báº±ng tay hoáº·c tá»± Ä‘á»™ng trong quÃ¡ trÃ¬nh phÃ¢n bá»‘ giÃ¡m kháº£o. Viá»‡c nÃ y cÃ³ thá»ƒ khiáº¿n viá»‡c phÃ¢n bá»• nhanh hÆ¡n hoáº·c khiáº¿n báº¡n cÃ¢n nháº¯c hÆ¡n trong viá»‡c phÃ¢n bá»• giÃ¡m kháº£o."
 
 #: adjallocation/templates/preformed_index.html
 msgid "Note that only adjudicators who have been marked as 'available' for that round will be able to be allocated for that round, so you may need to set their availability in advance."
-msgstr "Chú ý rằng chỉ có những giám khảo đã được đánh dấu 'sẵn sàng' cho vòng đó mới có thể được phân bổ cho vòng đó, nên bạn cần phải đánh dấu trước."
+msgstr "ChÃº Ã½ ráº±ng chá»‰ cÃ³ nhá»¯ng giÃ¡m kháº£o Ä‘Ã£ Ä‘Æ°á»£c Ä‘Ã¡nh dáº¥u 'sáºµn sÃ ng' cho vÃ²ng Ä‘Ã³ má»›i cÃ³ thá»ƒ Ä‘Æ°á»£c phÃ¢n bá»• cho vÃ²ng Ä‘Ã³, nÃªn báº¡n cáº§n pháº£i Ä‘Ã¡nh dáº¥u trÆ°á»›c."
 
 #: adjallocation/templates/preformed_index.html
 #, python-format
 msgid "Edit Preformed Panels for %(round)s"
-msgstr "Chỉnh sửa bàn giám khảo cho vòng %(round)s"
+msgstr "Chá»‰nh sá»­a bÃ n giÃ¡m kháº£o cho vÃ²ng %(round)s"
 
 #: adjallocation/utils.py
 #, python-format
 msgid "Conflict: <strong>%(adjudicator)s</strong> & <strong>%(team)s</strong> (personal)"
-msgstr "Xung đột: <strong>%(adjudicator)s</strong> & <strong>%(team)s</strong> (cá nhân)"
+msgstr "Xung Ä‘á»™t: <strong>%(adjudicator)s</strong> & <strong>%(team)s</strong> (cÃ¡ nhÃ¢n)"
 
 #: adjallocation/utils.py
 #, python-format
 msgid "Conflict: <strong>%(adjudicator)s</strong> & <strong>%(team)s</strong> via institution <strong>%(institution)s</strong>"
-msgstr "Xung đột: <strong>%(adjudicator)s</strong> & <strong>%(team)s</strong> với tổ chức <strong>%(institution)s</strong>"
+msgstr "Xung Ä‘á»™t: <strong>%(adjudicator)s</strong> & <strong>%(team)s</strong> vá»›i tá»• chá»©c <strong>%(institution)s</strong>"
 
 #: adjallocation/utils.py
 #, python-format
 msgid "Conflict: <strong>%(adjudicator1)s</strong> & <strong>%(adjudicator2)s</strong> (personal)"
-msgstr "Xung đột: <strong>%(adjudicator1)s</strong> & <strong>%(adjudicator2)s</strong> (cá nhân)"
+msgstr "Xung Ä‘á»™t: <strong>%(adjudicator1)s</strong> & <strong>%(adjudicator2)s</strong> (cÃ¡ nhÃ¢n)"
 
 #: adjallocation/utils.py
 #, python-format
 msgid "Conflict: <strong>%(adjudicator1)s</strong> & <strong>%(adjudicator2)s</strong> via institution <strong>%(institution)s</strong>"
-msgstr "Xung đột: <strong>%(adjudicator1)s</strong> & <strong>%(adjudicator2)s</strong> với tổ chức <strong>%(institution)s</strong>"
+msgstr "Xung Ä‘á»™t: <strong>%(adjudicator1)s</strong> & <strong>%(adjudicator2)s</strong> vá»›i tá»• chá»©c <strong>%(institution)s</strong>"
 
 #: adjallocation/views.py
 msgid "Male"
@@ -319,121 +319,122 @@ msgstr "Nam"
 
 #: adjallocation/views.py
 msgid "Female"
-msgstr "Nữ"
+msgstr "Ná»¯"
 
 #: adjallocation/views.py
 msgid "Other"
-msgstr "Khác"
+msgstr "KhÃ¡c"
 
 #: adjallocation/views.py
 msgid "Unknown"
-msgstr "Không xác định"
+msgstr "KhÃ´ng xÃ¡c Ä‘á»‹nh"
 
 #: adjallocation/views.py
 msgid "Edit Allocation"
-msgstr "Chỉnh sửa phân bổ"
+msgstr "Chá»‰nh sá»­a phÃ¢n bá»•"
 
 #: adjallocation/views.py
 msgid "Edit Panels"
-msgstr "Chỉnh sửa bàn giám khảo"
+msgstr "Chá»‰nh sá»­a bÃ n giÃ¡m kháº£o"
 
 #: adjallocation/views.py
 msgid "Return to Panels Overview"
-msgstr "Quay trở lại tổng quan bảng giám khảo"
+msgstr "Quay trá»Ÿ láº¡i tá»•ng quan báº£ng giÃ¡m kháº£o"
 
 #: adjallocation/views.py
 msgid "Adjudicator-Team Conflicts"
-msgstr "Xung đột giữa giám khảo và đội"
+msgstr "Xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  Ä‘á»™i"
 
 #: adjallocation/views.py
 msgid "Save Adjudicator-Team Conflicts"
-msgstr "Lưu xung đột giữa giám khảo và đội"
+msgstr "LÆ°u xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  Ä‘á»™i"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d adjudicator-team conflict."
 msgid_plural "Saved %(count)d adjudicator-team conflicts."
-msgstr[0] "Đã lưu %(count)d xung đột giữa giám khảo và đội."
+msgstr[0] "ÄÃ£ lÆ°u %(count)d xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  Ä‘á»™i."
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d adjudicator-team conflict."
 msgid_plural "Deleted %(count)d adjudicator-team conflicts."
-msgstr[0] "Đã xóa %(count)d xung đột giữa giám khảo và đội."
+msgstr[0] "ÄÃ£ xÃ³a %(count)d xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  Ä‘á»™i."
 
 #: adjallocation/views.py
 msgid "No changes were made to adjudicator-team conflicts."
-msgstr "Không có thay đổi nào được thực hiện với xung đột giữa giám khảo và đội."
+msgstr "KhÃ´ng cÃ³ thay Ä‘á»•i nÃ o Ä‘Æ°á»£c thá»±c hiá»‡n vá»›i xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  Ä‘á»™i."
 
 #: adjallocation/views.py
 msgid "Adjudicator-Adjudicator Conflicts"
-msgstr "Xung đột giữa các giám khảo"
+msgstr "Xung Ä‘á»™t giá»¯a cÃ¡c giÃ¡m kháº£o"
 
 #: adjallocation/views.py
 msgid "Save Adjudicator-Adjudicator Conflicts"
-msgstr "Lưu xung đột giữa các giám khảo"
+msgstr "LÆ°u xung Ä‘á»™t giá»¯a cÃ¡c giÃ¡m kháº£o"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d adjudicator-adjudicator conflict."
 msgid_plural "Saved %(count)d adjudicator-adjudicator conflicts."
-msgstr[0] "Đã lưu %(count)d xung đột giữa các giám khảo."
+msgstr[0] "ÄÃ£ lÆ°u %(count)d xung Ä‘á»™t giá»¯a cÃ¡c giÃ¡m kháº£o."
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d adjudicator-adjudicator conflict."
 msgid_plural "Deleted %(count)d adjudicator-adjudicator conflicts."
-msgstr[0] "Đã xóa %(count)d xung đột giữa các giám khảo."
+msgstr[0] "ÄÃ£ xÃ³a %(count)d xung Ä‘á»™t giá»¯a cÃ¡c giÃ¡m kháº£o."
 
 #: adjallocation/views.py
 msgid "No changes were made to adjudicator-adjudicator conflicts."
-msgstr "Không có thay đổi nào được thực hiện với xung đột giữa các giám khảo."
+msgstr "KhÃ´ng cÃ³ thay Ä‘á»•i nÃ o Ä‘Æ°á»£c thá»±c hiá»‡n vá»›i xung Ä‘á»™t giá»¯a cÃ¡c giÃ¡m kháº£o."
 
 #: adjallocation/views.py
 msgid "Adjudicator-Institution Conflicts"
-msgstr "Xung đột giữa giám khảo và tổ chức"
+msgstr "Xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  tá»• chá»©c"
 
 #: adjallocation/views.py
 msgid "Save Adjudicator-Institution Conflicts"
-msgstr "Lưu xung đột giữa giám khảo và tổ chức"
+msgstr "LÆ°u xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  tá»• chá»©c"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d adjudicator-institution conflict."
 msgid_plural "Saved %(count)d adjudicator-institution conflicts."
-msgstr[0] "Đã lưu %(count)d xung đột giữa giám khảo và tổ chức."
+msgstr[0] "ÄÃ£ lÆ°u %(count)d xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  tá»• chá»©c."
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d adjudicator-institution conflict."
 msgid_plural "Deleted %(count)d adjudicator-institution conflicts."
-msgstr[0] "Đã xóa %(count)d xung đột giữa giám khảo và tổ chức."
+msgstr[0] "ÄÃ£ xÃ³a %(count)d xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  tá»• chá»©c."
 
 #: adjallocation/views.py
 msgid "No changes were made to adjudicator-institution conflicts."
-msgstr "Không có thay đổi nào được thực hiện với xung đột giữa giám khảo và tổ chức."
+msgstr "KhÃ´ng cÃ³ thay Ä‘á»•i nÃ o Ä‘Æ°á»£c thá»±c hiá»‡n vá»›i xung Ä‘á»™t giá»¯a giÃ¡m kháº£o vÃ  tá»• chá»©c."
 
 #: adjallocation/views.py
 msgid "Team-Institution Conflicts"
-msgstr "Xung đột giữa đội và tổ chức"
+msgstr "Xung Ä‘á»™t giá»¯a Ä‘á»™i vÃ  tá»• chá»©c"
 
 #: adjallocation/views.py
 msgid "Save Team-Institution Conflicts"
-msgstr "Lưu xung đột giữa đội và tổ chức"
+msgstr "LÆ°u xung Ä‘á»™t giá»¯a Ä‘á»™i vÃ  tá»• chá»©c"
 
 #: adjallocation/views.py
 #, python-format
 msgid "Saved %(count)d team-institution conflict."
 msgid_plural "Saved %(count)d team-institution conflicts."
-msgstr[0] "Đã lưu %(count)d xung đột giữa đội và tổ chức."
+msgstr[0] "ÄÃ£ lÆ°u %(count)d xung Ä‘á»™t giá»¯a Ä‘á»™i vÃ  tá»• chá»©c."
 
 #: adjallocation/views.py
 #, python-format
 msgid "Deleted %(count)d team-institution conflict."
 msgid_plural "Deleted %(count)d team-institution conflicts."
-msgstr[0] "Đã xóa %(count)d xung đột giữa đội và tổ chức."
+msgstr[0] "ÄÃ£ xÃ³a %(count)d xung Ä‘á»™t giá»¯a Ä‘á»™i vÃ  tá»• chá»©c."
 
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
-msgstr "Không có thay đổi nào được thực hiện với xung đột giữa đội và tổ chức."
+msgstr "KhÃ´ng cÃ³ thay Ä‘á»•i nÃ o Ä‘Æ°á»£c thá»±c hiá»‡n vá»›i xung Ä‘á»™t giá»¯a Ä‘á»™i vÃ  tá»• chá»©c."
+
 

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:40+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 934\n"
 
 #: api/apps.py
@@ -32,7 +32,7 @@ msgstr ""
 #: checkins/apps.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Check-Ins"
-msgstr "تسجيلات الدخول"
+msgstr "ØªØ³Ø¬ÙŠÙ„Ø§Øª Ø§Ù„Ø¯Ø®ÙˆÙ„"
 
 #: checkins/consumers.py
 msgid "Sent checkin identifier doesn't exist"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: checkins/models.py
 msgid "debate"
-msgstr "مناظرة"
+msgstr "Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: checkins/models.py
 msgid "debate identifier"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: checkins/models.py registration/models.py users/models.py
 msgid "tournament"
-msgstr "بطولة"
+msgstr "Ø¨Ø·ÙˆÙ„Ø©"
 
 #: checkins/models.py
 msgid "check-in event"
@@ -191,16 +191,16 @@ msgstr ""
 #: checkins/views.py registration/templates/answer_tables/teams.html
 #: templates/nav/admin_nav.html
 msgid "Speakers"
-msgstr "متحدثين"
+msgstr "Ù…ØªØ­Ø¯Ø«ÙŠÙ†"
 
 #: checkins/views.py registration/views.py templates/nav/admin_nav.html
 #: templates/nav/public_nav.html
 msgid "Adjudicators"
-msgstr "المحكمين"
+msgstr "Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ†"
 
 #: checkins/views.py
 msgid "Rooms"
-msgstr "قاعات المناظرة"
+msgstr "Ù‚Ø§Ø¹Ø§Øª Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
 
 #: checkins/views.py
 #, python-format
@@ -212,7 +212,7 @@ msgid "Identifiers"
 msgstr ""
 
 #: checkins/views.py
-msgid "Could not check you in as you do not have an identifying code — your tab director may need to make you an identifier."
+msgid "Could not check you in as you do not have an identifying code â€” your tab director may need to make you an identifier."
 msgstr ""
 
 #: checkins/views.py
@@ -234,17 +234,17 @@ msgstr ""
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "Yes"
-msgstr "نعم "
+msgstr "Ù†Ø¹Ù… "
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "No"
-msgstr "لا"
+msgstr "Ù„Ø§"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "This field is required."
-msgstr "هذه الخانة مطلوبة "
+msgstr "Ù‡Ø°Ù‡ Ø§Ù„Ø®Ø§Ù†Ø© Ù…Ø·Ù„ÙˆØ¨Ø© "
 
 #: registration/forms.py
 msgid "Coach name"
@@ -272,11 +272,11 @@ msgstr ""
 
 #: registration/models.py
 msgid "content type"
-msgstr "نوع المحتوى"
+msgstr "Ù†ÙˆØ¹ Ø§Ù„Ù…Ø­ØªÙˆÙ‰"
 
 #: registration/models.py
 msgid "object id"
-msgstr "ID الموضوع "
+msgstr "ID Ø§Ù„Ù…ÙˆØ¶ÙˆØ¹ "
 
 #: registration/models.py
 msgid "question"
@@ -312,7 +312,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "text"
-msgstr "نص"
+msgstr "Ù†Øµ"
 
 #: registration/models.py
 msgid "long text"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "sequence number"
-msgstr "الرقم المتسلسل "
+msgstr "Ø§Ù„Ø±Ù‚Ù… Ø§Ù„Ù…ØªØ³Ù„Ø³Ù„ "
 
 #: registration/models.py
 msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
@@ -352,7 +352,7 @@ msgstr ""
 
 #: registration/models.py users/models.py
 msgid "name"
-msgstr "اسم "
+msgstr "Ø§Ø³Ù… "
 
 #: registration/models.py
 msgid "A short name for the question, e.g., \"Agree with decision\""
@@ -388,7 +388,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "choices"
-msgstr "أختيارات "
+msgstr "Ø£Ø®ØªÙŠØ§Ø±Ø§Øª "
 
 #: registration/models.py
 msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
@@ -400,15 +400,15 @@ msgstr ""
 
 #: registration/models.py
 msgid "institution"
-msgstr "مؤسسة"
+msgstr "Ù…Ø¤Ø³Ø³Ø©"
 
 #: registration/models.py
 msgid "team"
-msgstr "فريق"
+msgstr "ÙØ±ÙŠÙ‚"
 
 #: registration/models.py
 msgid "URL key"
-msgstr "مفتاح الرابط "
+msgstr "Ù…ÙØªØ§Ø­ Ø§Ù„Ø±Ø§Ø¨Ø· "
 
 #: registration/models.py
 msgid "created on"
@@ -432,7 +432,7 @@ msgstr ""
 #: templates/registration/password_change_form.html
 #: templates/registration/password_reset_confirm.html
 msgid "Cancel and go back to the site home page"
-msgstr "ألغاء و العودة إلى الصفحة الرئيسية "
+msgstr "Ø£Ù„ØºØ§Ø¡ Ùˆ Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø§Ù„ØµÙØ­Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© "
 
 #: registration/templates/answer_tables/adjudicators.html
 msgid "Questions"
@@ -490,7 +490,7 @@ msgstr ""
 #: registration/templates/answer_tables/teams.html registration/views.py
 #: templates/nav/admin_nav.html
 msgid "Teams"
-msgstr "الفرق"
+msgstr "Ø§Ù„ÙØ±Ù‚"
 
 #: registration/templates/coach_private_url.html
 msgid "Private URL"
@@ -620,7 +620,7 @@ msgstr ""
 
 #: registration/views.py
 msgid "Name"
-msgstr "الاسم"
+msgstr "Ø§Ù„Ø§Ø³Ù…"
 
 #: registration/views.py
 msgid "Coach"
@@ -661,7 +661,7 @@ msgstr ""
 #: registration/views.py
 #, python-format
 msgid "Speaker %d"
-msgstr "متحدث%d"
+msgstr "Ù…ØªØ­Ø¯Ø«%d"
 
 #: registration/views.py
 msgid "Email"
@@ -686,7 +686,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Arabic"
-msgstr "عربي"
+msgstr "Ø¹Ø±Ø¨ÙŠ"
 
 #: settings/core.py
 msgid "Asturian"
@@ -714,15 +714,15 @@ msgstr ""
 
 #: settings/core.py
 msgid "English"
-msgstr "إنجليزي "
+msgstr "Ø¥Ù†Ø¬Ù„ÙŠØ²ÙŠ "
 
 #: settings/core.py
 msgid "Spanish"
-msgstr "أسباني "
+msgstr "Ø£Ø³Ø¨Ø§Ù†ÙŠ "
 
 #: settings/core.py
 msgid "French"
-msgstr "فرنسي "
+msgstr "ÙØ±Ù†Ø³ÙŠ "
 
 #: settings/core.py
 msgid "Hebrew"
@@ -742,7 +742,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Japanese"
-msgstr "اليابانيّة"
+msgstr "Ø§Ù„ÙŠØ§Ø¨Ø§Ù†ÙŠÙ‘Ø©"
 
 #: settings/core.py
 msgid "Kazakh"
@@ -754,7 +754,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Portuguese"
-msgstr "البرتغاليّة"
+msgstr "Ø§Ù„Ø¨Ø±ØªØºØ§Ù„ÙŠÙ‘Ø©"
 
 #: settings/core.py
 msgid "Romanian"
@@ -762,7 +762,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Russian"
-msgstr "الروسيّة"
+msgstr "Ø§Ù„Ø±ÙˆØ³ÙŠÙ‘Ø©"
 
 #: settings/core.py
 msgid "Turkish"
@@ -782,7 +782,7 @@ msgstr ""
 
 #: templates/admin/delete_protected_message.html
 msgid "You need to delete the above objects first."
-msgstr "تحتاج إلى مسح الموضوع أولا "
+msgstr "ØªØ­ØªØ§Ø¬ Ø¥Ù„Ù‰ Ù…Ø³Ø­ Ø§Ù„Ù…ÙˆØ¶ÙˆØ¹ Ø£ÙˆÙ„Ø§ "
 
 #: templates/admin/style_guide.html
 msgid "This style of info card announces critical information. <a href=\"\">Link</a>."
@@ -795,46 +795,46 @@ msgstr ""
 #: templates/admin/style_guide.html
 msgctxt "page title"
 msgid "Form Title"
-msgstr "عنوان النموذج"
+msgstr "Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ù†Ù…ÙˆØ°Ø¬"
 
 #: templates/admin/style_guide.html
 msgid "Sub Title Title"
-msgstr "العنوان الفرعي"
+msgstr "Ø§Ù„Ø¹Ù†ÙˆØ§Ù† Ø§Ù„ÙØ±Ø¹ÙŠ"
 
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
 msgid "Log In"
-msgstr "تسجيل دخول"
+msgstr "ØªØ³Ø¬ÙŠÙ„ Ø¯Ø®ÙˆÙ„"
 
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
 msgid "I forgot my password"
-msgstr "نسيت كلمة المرور "
+msgstr "Ù†Ø³ÙŠØª ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± "
 
 #: templates/base.html
-msgid "Tabbycat"
+msgid "NekoTab"
 msgstr ""
 
 #: templates/base.html
 #, python-format
-msgid "The tab for %(tournament)s runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "The tab for %(tournament)s runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr ""
 
 #: templates/base.html
-msgid "This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgid "This tab runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
 msgstr ""
 
 #: templates/components/form-errors.html
 msgid "Whoops! There was an error with one or more fields."
-msgstr "حدث خطأ في حقل واحد أو أكثر"
+msgstr "Ø­Ø¯Ø« Ø®Ø·Ø£ ÙÙŠ Ø­Ù‚Ù„ ÙˆØ§Ø­Ø¯ Ø£Ùˆ Ø£ÙƒØ«Ø±"
 
 #: templates/components/formset.html
 msgid "Save and Add More"
-msgstr "حفظ وإضافة المزيد"
+msgstr "Ø­ÙØ¸ ÙˆØ¥Ø¶Ø§ÙØ© Ø§Ù„Ù…Ø²ÙŠØ¯"
 
 #: templates/errors/assistant_403.html templates/errors/public_403.html
 msgid "Permission Denied (403)"
-msgstr "تم الرفض (403)"
+msgstr "ØªÙ… Ø§Ù„Ø±ÙØ¶ (403)"
 
 #: templates/errors/assistant_403.html
 #, python-format
@@ -853,7 +853,7 @@ msgstr[4] ""
 msgstr[5] ""
 
 #: templates/errors/legacy_sendgrid_warning.html
-msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of Tabbycat. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
+msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of NekoTab. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
 msgstr ""
 
 #: templates/errors/public_403.html
@@ -868,29 +868,29 @@ msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "%(tournament)s runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgid "%(tournament)s runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
 msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "This site runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgid "This site runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
 msgstr ""
 
 #: templates/footer.html
-msgid "Tabbycat is an open-source project developed by volunteers and is free to use."
+msgid "NekoTab is an open-source project developed by volunteers and is free to use."
 msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
+msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
 msgstr ""
 
 #: templates/footer.html
 msgid "Learn more about donating."
-msgstr "إعلم المزيد حول التبرع"
+msgstr "Ø¥Ø¹Ù„Ù… Ø§Ù„Ù…Ø²ÙŠØ¯ Ø­ÙˆÙ„ Ø§Ù„ØªØ¨Ø±Ø¹"
 
 #: templates/footer.html
-msgid "<a href=\"https://opencollective.com/tabbycat\">Donations to Tabbycat from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain Tabbycat."
+msgid "<a href=\"https://opencollective.com/NekoTab\">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab."
 msgstr ""
 
 #: templates/footer.html
@@ -899,7 +899,7 @@ msgstr ""
 
 #: templates/footer.html
 #, python-format
-msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
 msgstr ""
 
 #: templates/footer.html
@@ -907,12 +907,12 @@ msgid "Our Organisation"
 msgstr ""
 
 #: templates/footer.html
-msgid "Tabbycat is supported by the <a href=\"https://tabbycat-debate.org/\">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology."
+msgid "NekoTab is supported by the <a href=\"https://NekoTab-debate.org/\">NekoTab Debate Association</a>, a non-profit for advancing open debate technology."
 msgstr ""
 
 #: templates/footer.html users/groups.py
 msgid "Language"
-msgstr "لُغَة"
+msgstr "Ù„ÙØºÙŽØ©"
 
 #: templates/footer.html
 msgid "GitHub"
@@ -920,7 +920,7 @@ msgstr ""
 
 #: templates/footer.html
 msgid "Documentation"
-msgstr "البيانات "
+msgstr "Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª "
 
 #: templates/footer.html
 msgid "Support"
@@ -928,35 +928,35 @@ msgstr ""
 
 #: templates/footer.html
 msgid "Facebook"
-msgstr "فيس بوك"
+msgstr "ÙÙŠØ³ Ø¨ÙˆÙƒ"
 
 #: templates/footer.html
 msgid "Set Up A Copy"
-msgstr "إعداد نسخة "
+msgstr "Ø¥Ø¹Ø¯Ø§Ø¯ Ù†Ø³Ø®Ø© "
 
 #: templates/footer.html
 msgid "Change Language"
-msgstr "تغيير اللغة "
+msgstr "ØªØºÙŠÙŠØ± Ø§Ù„Ù„ØºØ© "
 
 #: templates/footer.html
 msgid "Use this language"
-msgstr "استخدم هذه اللغة "
+msgstr "Ø§Ø³ØªØ®Ø¯Ù… Ù‡Ø°Ù‡ Ø§Ù„Ù„ØºØ© "
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
-msgid "Tabbycat Logo"
+msgid "NekoTab Logo"
 msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Site Home"
-msgstr "الصفحة الرئيسية "
+msgstr "Ø§Ù„ØµÙØ­Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© "
 
 #: templates/nav/admin_nav.html
 msgid "New Tournament"
-msgstr "بطولة جديدة "
+msgstr "Ø¨Ø·ÙˆÙ„Ø© Ø¬Ø¯ÙŠØ¯Ø© "
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Edit Database"
-msgstr "تعديل قاعدة البيانات "
+msgstr "ØªØ¹Ø¯ÙŠÙ„ Ù‚Ø§Ø¹Ø¯Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª "
 
 #: templates/nav/admin_nav.html
 msgid "Admin Area"
@@ -972,7 +972,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Overview"
-msgstr "عرض "
+msgstr "Ø¹Ø±Ø¶ "
 
 #: templates/nav/admin_nav.html
 msgid "Setup"
@@ -993,7 +993,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Private URLs"
-msgstr "رابط خاص "
+msgstr "Ø±Ø§Ø¨Ø· Ø®Ø§Øµ "
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Schedule"
@@ -1013,7 +1013,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Sides"
-msgstr "الجانبين"
+msgstr "Ø§Ù„Ø¬Ø§Ù†Ø¨ÙŠÙ†"
 
 #: templates/nav/admin_nav.html users/groups.py
 msgid "Registration"
@@ -1029,7 +1029,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Feedback"
-msgstr "التغذية الراجعة "
+msgstr "Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© "
 
 #: templates/nav/admin_nav.html
 msgid "Latest"
@@ -1061,7 +1061,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Add Feedback"
-msgstr "أضف تغذية راجعة "
+msgstr "Ø£Ø¶Ù ØªØºØ°ÙŠØ© Ø±Ø§Ø¬Ø¹Ø© "
 
 #: templates/nav/admin_nav.html
 msgid "Bulk Update"
@@ -1069,7 +1069,7 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Standings"
-msgstr "التقسيمات "
+msgstr "Ø§Ù„ØªÙ‚Ø³ÙŠÙ…Ø§Øª "
 
 #: templates/nav/admin_nav.html
 msgid "All Teams"
@@ -1087,7 +1087,7 @@ msgstr ""
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Speakers"
-msgstr "%(category)sالمتحدثين "
+msgstr "%(category)sØ§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ† "
 
 #: templates/nav/admin_nav.html
 msgid "Replies"
@@ -1095,15 +1095,15 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Motions"
-msgstr "قضايا"
+msgstr "Ù‚Ø¶Ø§ÙŠØ§"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Diversity"
-msgstr "تقسيمات"
+msgstr "ØªÙ‚Ø³ÙŠÙ…Ø§Øª"
 
 #: templates/nav/admin_nav.html
 msgid "Breaks"
-msgstr "التأهل"
+msgstr "Ø§Ù„ØªØ£Ù‡Ù„"
 
 #: templates/nav/admin_nav.html
 #, python-format
@@ -1124,15 +1124,15 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Log Out"
-msgstr "تسجيل الخروج"
+msgstr "ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø®Ø±ÙˆØ¬"
 
 #: templates/nav/assistant_nav.html
 msgid "Enter Results"
-msgstr "إدخال النتيجة "
+msgstr "Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„Ù†ØªÙŠØ¬Ø© "
 
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Enter Feedback"
-msgstr "إدخال التغذية الراجعة "
+msgstr "Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© "
 
 #: templates/nav/assistant_nav.html
 msgid "Participants List"
@@ -1152,27 +1152,27 @@ msgstr ""
 
 #: templates/nav/assistant_nav.html
 msgid "Display/Print Draw"
-msgstr "عرض / طباعة "
+msgstr "Ø¹Ø±Ø¶ / Ø·Ø¨Ø§Ø¹Ø© "
 
 #: templates/nav/public_nav.html
 msgid "Team Tab"
-msgstr "تصنيف النتائج حسب الفرق"
+msgstr "ØªØµÙ†ÙŠÙ Ø§Ù„Ù†ØªØ§Ø¦Ø¬ Ø­Ø³Ø¨ Ø§Ù„ÙØ±Ù‚"
 
 #: templates/nav/public_nav.html
 msgid "Speaker Tab"
-msgstr "تصنيف النتائج حسب المتحدثين"
+msgstr "ØªØµÙ†ÙŠÙ Ø§Ù„Ù†ØªØ§Ø¦Ø¬ Ø­Ø³Ø¨ Ø§Ù„Ù…ØªØ­Ø¯Ø«ÙŠÙ†"
 
 #: templates/nav/public_nav.html
 msgid "Replies Tab"
-msgstr "نتائج خطابات الرد"
+msgstr "Ù†ØªØ§Ø¦Ø¬ Ø®Ø·Ø§Ø¨Ø§Øª Ø§Ù„Ø±Ø¯"
 
 #: templates/nav/public_nav.html
 msgid "Adjudicator Tab"
-msgstr "نتائج المحكمين "
+msgstr "Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ† "
 
 #: templates/nav/public_nav.html
 msgid "Motions Tab"
-msgstr "نتائج القضايا "
+msgstr "Ù†ØªØ§Ø¦Ø¬ Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§ "
 
 #: templates/nav/public_nav.html
 msgid "By round"
@@ -1184,7 +1184,7 @@ msgstr ""
 
 #: templates/nav/public_nav.html
 msgid "Draws"
-msgstr "القرعة"
+msgstr "Ø§Ù„Ù‚Ø±Ø¹Ø©"
 
 #: templates/nav/public_nav.html
 msgid "No Draws Available"
@@ -1193,7 +1193,7 @@ msgstr ""
 #: templates/nav/public_nav.html
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "قرعة ل%(round)s"
+msgstr "Ù‚Ø±Ø¹Ø© Ù„%(round)s"
 
 #: templates/nav/public_nav.html
 msgid "Current Draws"
@@ -1201,27 +1201,27 @@ msgstr ""
 
 #: templates/nav/public_nav.html templates/nav/round_panel.html
 msgid "Results"
-msgstr "النتائج"
+msgstr "Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
 
 #: templates/nav/public_nav.html
 msgid "Break"
-msgstr "تأهل "
+msgstr "ØªØ£Ù‡Ù„ "
 
 #: templates/nav/public_nav.html
 msgid "Feedback Progress"
-msgstr "التغذية الراجعة "
+msgstr "Ø§Ù„ØªØºØ°ÙŠØ© Ø§Ù„Ø±Ø§Ø¬Ø¹Ø© "
 
 #: templates/nav/public_nav.html
 msgid "Enter Ballot"
-msgstr "إدخال التصويت"
+msgstr "Ø¥Ø¯Ø®Ø§Ù„ Ø§Ù„ØªØµÙˆÙŠØª"
 
 #: templates/nav/round_panel.html
 msgid "Availability"
-msgstr "الوفرة"
+msgstr "Ø§Ù„ÙˆÙØ±Ø©"
 
 #: templates/nav/round_panel.html
 msgid "Draw"
-msgstr "قرعة "
+msgstr "Ù‚Ø±Ø¹Ø© "
 
 #: templates/nav/round_panel.html
 msgid "Display"
@@ -1244,7 +1244,7 @@ msgstr ""
 
 #: templates/nav/top_nav_base.html
 msgid "Login"
-msgstr "دخول "
+msgstr "Ø¯Ø®ÙˆÙ„ "
 
 #: templates/registration/logged_out.html
 msgid "Goodbye"
@@ -1258,16 +1258,16 @@ msgstr ""
 #: templates/registration/login.html
 msgctxt "page title"
 msgid "Login"
-msgstr "دخول "
+msgstr "Ø¯Ø®ÙˆÙ„ "
 
 #: templates/registration/login.html
 msgctxt "page title"
-msgid "Log in to Tabbycat"
-msgstr "دخول إلى Tabbycat"
+msgid "Log in to NekoTab"
+msgstr "Ø¯Ø®ÙˆÙ„ Ø¥Ù„Ù‰ NekoTab"
 
 #: templates/registration/login.html
 msgid "Your username and password didn't match."
-msgstr "اسم المستخدم و كلمة المرور لا يتطابقان "
+msgstr "Ø§Ø³Ù… Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… Ùˆ ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± Ù„Ø§ ÙŠØªØ·Ø§Ø¨Ù‚Ø§Ù† "
 
 #: templates/registration/login.html
 msgid "Your account doesn't have access to this page. To proceed, please log in with an account that has access."
@@ -1275,25 +1275,25 @@ msgstr ""
 
 #: templates/registration/login.html
 msgid "Please log in to see this page."
-msgstr "الرجاء الدخول من خلال هذه الصفحة "
+msgstr "Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ù…Ù† Ø®Ù„Ø§Ù„ Ù‡Ø°Ù‡ Ø§Ù„ØµÙØ­Ø© "
 
 #: templates/registration/password_change_done.html
 msgctxt "page title"
 msgid "Password changed"
-msgstr "تغيير كلمة السر"
+msgstr "ØªØºÙŠÙŠØ± ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø±"
 
 #: templates/registration/password_change_done.html
 msgid "Your password has been changed."
-msgstr "تم تغيير كلمة السر "
+msgstr "ØªÙ… ØªØºÙŠÙŠØ± ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± "
 
 #: templates/registration/password_change_done.html
 msgid "Go to the home page"
-msgstr "العودة إلى الصفحة الرئيسية "
+msgstr "Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø§Ù„ØµÙØ­Ø© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© "
 
 #: templates/registration/password_change_form.html
 msgctxt "page title"
 msgid "Password Change"
-msgstr "تغيير كلمة السر "
+msgstr "ØªØºÙŠÙŠØ± ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± "
 
 #: templates/registration/password_change_form.html
 #, python-format
@@ -1306,51 +1306,51 @@ msgstr ""
 
 #: templates/registration/password_change_form.html
 msgid "Please enter your old password, then enter a new one."
-msgstr "الرجاء إدخال كلمة السر القديمة ومن ثم الجديدة"
+msgstr "Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø¥Ø¯Ø®Ø§Ù„ ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± Ø§Ù„Ù‚Ø¯ÙŠÙ…Ø© ÙˆÙ…Ù† Ø«Ù… Ø§Ù„Ø¬Ø¯ÙŠØ¯Ø©"
 
 #: templates/registration/password_change_form.html
 #: templates/registration/password_reset_confirm.html
 msgctxt "button"
 msgid "Change my password"
-msgstr "تغيير كلمة السر "
+msgstr "ØªØºÙŠÙŠØ± ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± "
 
 #: templates/registration/password_reset_complete.html
 msgctxt "page title"
 msgid "Password reset complete"
-msgstr "تم تغيير كلمة السر "
+msgstr "ØªÙ… ØªØºÙŠÙŠØ± ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± "
 
 #: templates/registration/password_reset_complete.html
 msgid "Your password has been reset."
-msgstr "لقد تم إعادة تنصيب كلمة السر "
+msgstr "Ù„Ù‚Ø¯ ØªÙ… Ø¥Ø¹Ø§Ø¯Ø© ØªÙ†ØµÙŠØ¨ ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± "
 
 #: templates/registration/password_reset_complete.html
 #: templates/registration/password_reset_done.html
 msgid "Go to the login page"
-msgstr "الذهاب إلى صفحة الدخول "
+msgstr "Ø§Ù„Ø°Ù‡Ø§Ø¨ Ø¥Ù„Ù‰ ØµÙØ­Ø© Ø§Ù„Ø¯Ø®ÙˆÙ„ "
 
 #: templates/registration/password_reset_confirm.html
 msgctxt "page title"
 msgid "Password Reset Confirmation"
-msgstr "إعادة إنشاء كلمة المرور "
+msgstr "Ø¥Ø¹Ø§Ø¯Ø© Ø¥Ù†Ø´Ø§Ø¡ ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± "
 
 #: templates/registration/password_reset_confirm.html
 #: templates/registration/password_reset_form.html
 msgctxt "page title"
 msgid "Password Reset"
-msgstr "إعادة تعيين كلمة السر "
+msgstr "Ø¥Ø¹Ø§Ø¯Ø© ØªØ¹ÙŠÙŠÙ† ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± "
 
 #: templates/registration/password_reset_confirm.html
 msgid "Please enter a new password (twice):"
-msgstr "الرجاء إدخال كلمة السر ( مرتين ) "
+msgstr "Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø¥Ø¯Ø®Ø§Ù„ ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± ( Ù…Ø±ØªÙŠÙ† ) "
 
 #: templates/registration/password_reset_confirm.html
 msgid "The password reset link was invalid, possibly because it has already been used.  Please request a new password reset."
-msgstr "تم إرسال رابط تغيير كلمة السر . الرجاء تحديث كلمة السر"
+msgstr "ØªÙ… Ø¥Ø±Ø³Ø§Ù„ Ø±Ø§Ø¨Ø· ØªØºÙŠÙŠØ± ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± . Ø§Ù„Ø±Ø¬Ø§Ø¡ ØªØ­Ø¯ÙŠØ« ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø±"
 
 #: templates/registration/password_reset_done.html
 msgctxt "page title"
 msgid "Password reset email sent"
-msgstr "تم إرسال كلمة السر إلى البريد الإلكتروني"
+msgstr "ØªÙ… Ø¥Ø±Ø³Ø§Ù„ ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± Ø¥Ù„Ù‰ Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ"
 
 #: templates/registration/password_reset_done.html
 msgid "We've emailed you instructions for setting your password, if an account exists with the email address you entered. You should receive them shortly."
@@ -1363,7 +1363,7 @@ msgstr ""
 #: templates/registration/password_reset_email.html
 #, python-format
 msgid "Hi, %(user)s!"
-msgstr "%(user)sمرحبا"
+msgstr "%(user)sÙ…Ø±Ø­Ø¨Ø§"
 
 #: templates/registration/password_reset_email.html
 #, python-format
@@ -1372,48 +1372,48 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "Someone asked for a password reset for the email address %(email)s on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "Someone asked for a password reset for the email address %(email)s on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: templates/registration/password_reset_email.html
 msgid "If this was you, follow the link below to reset your password:"
-msgstr "ادخل هذا الرابط لتعيين كلمة السر "
+msgstr "Ø§Ø¯Ø®Ù„ Ù‡Ø°Ø§ Ø§Ù„Ø±Ø§Ø¨Ø· Ù„ØªØ¹ÙŠÙŠÙ† ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± "
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the Tabbycat site at %(protocol)s://%(domain)s."
+msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the NekoTab site at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: templates/registration/password_reset_form.html
 msgid "Password Reset"
-msgstr "إعادة تعيين كلمة السر "
+msgstr "Ø¥Ø¹Ø§Ø¯Ø© ØªØ¹ÙŠÙŠÙ† ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± "
 
 #: templates/registration/password_reset_form.html
 msgid "Enter your email address below, and we'll email you a password reset link."
-msgstr "اكتب بريدك الإلكتروني ليتم إرسال رابط تغيير كلمة السر "
+msgstr "Ø§ÙƒØªØ¨ Ø¨Ø±ÙŠØ¯Ùƒ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ Ù„ÙŠØªÙ… Ø¥Ø±Ø³Ø§Ù„ Ø±Ø§Ø¨Ø· ØªØºÙŠÙŠØ± ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± "
 
 #: templates/registration/password_reset_form.html
 msgctxt "button"
 msgid "Reset my password"
-msgstr "اعادة كلمة المرور "
+msgstr "Ø§Ø¹Ø§Ø¯Ø© ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± "
 
 #: templates/registration/password_reset_form.html
 msgid "Back to the login page"
-msgstr "العودة إلى صفحة الدخول "
+msgstr "Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ ØµÙØ­Ø© Ø§Ù„Ø¯Ø®ÙˆÙ„ "
 
 #: templates/registration/password_reset_subject.txt
 #, python-format
-msgid "Password reset on Tabbycat site at %(domain)s"
-msgstr "تم تغييير كلمة السر ل،%(domain)s"
+msgid "Password reset on NekoTab site at %(domain)s"
+msgstr "ØªÙ… ØªØºÙŠÙŠÙŠØ± ÙƒÙ„Ù…Ø© Ø§Ù„Ø³Ø± Ù„ØŒ%(domain)s"
 
 #: urls.py
 #, python-format
-msgid "Hi, %(user)s — you just logged in!"
-msgstr "مرحبا ، %(user)s — لقد تم تسجل دخولك "
+msgid "Hi, %(user)s â€” you just logged in!"
+msgstr "Ù…Ø±Ø­Ø¨Ø§ ØŒ %(user)s â€” Ù„Ù‚Ø¯ ØªÙ… ØªØ³Ø¬Ù„ Ø¯Ø®ÙˆÙ„Ùƒ "
 
 #: urls.py
 msgid "Welcome! You just logged in!"
-msgstr "مرحباً بك "
+msgstr "Ù…Ø±Ø­Ø¨Ø§Ù‹ Ø¨Ùƒ "
 
 #: users/admin.py
 msgid "Users with staff status can view and edit the Edit Database area. This is potentially dangerous and should be reserved for the actual tab director(s)."
@@ -1457,7 +1457,7 @@ msgstr ""
 
 #: users/models.py
 msgid "user"
-msgstr "مستخدم"
+msgstr "Ù…Ø³ØªØ®Ø¯Ù…"
 
 #: users/models.py
 msgid "permission"
@@ -1953,7 +1953,7 @@ msgstr ""
 
 #: users/templates/account_invitation_email.html
 #, python-format
-msgid "An administrator for the Tabbycat site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
+msgid "An administrator for the NekoTab site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
 msgstr ""
 
 #: users/templates/account_invitation_email.html
@@ -1966,16 +1966,16 @@ msgstr ""
 
 #: users/templates/account_invitation_subject.txt
 #, python-format
-msgid "Invitation to join Tabbycat site for %(name)s"
+msgid "Invitation to join NekoTab site for %(name)s"
 msgstr ""
 
 #: users/templates/admin/auth/delete_user_warning.html
-msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the “Permissions” tab, unchecked the “Active” box, and save the user."
+msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the â€œPermissionsâ€ tab, unchecked the â€œActiveâ€ box, and save the user."
 msgstr ""
 
 #: users/templates/invite_user.html
 msgid "Back to Configuration"
-msgstr "العودة إلى الترتيب "
+msgstr "Ø§Ù„Ø¹ÙˆØ¯Ø© Ø¥Ù„Ù‰ Ø§Ù„ØªØ±ØªÙŠØ¨ "
 
 #: users/templates/invite_user.html
 msgctxt "button"
@@ -1993,7 +1993,7 @@ msgstr ""
 
 #: users/templates/signup.html
 msgid "Create Account"
-msgstr "إنشاء حساب "
+msgstr "Ø¥Ù†Ø´Ø§Ø¡ Ø­Ø³Ø§Ø¨ "
 
 #: users/views.py
 msgid "Whoops! It looks like someone's already created the first user account. Please log in."
@@ -2015,4 +2015,5 @@ msgstr ""
 #: users/views.py
 msgid "Accept Invitation"
 msgstr ""
+
 

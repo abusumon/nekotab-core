@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /develop/tabbycat/privateurls/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/privateurls/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 946\n"
 
 #: privateurls/apps.py
 msgid "Private URL Management"
-msgstr "Gestió d'URL privades"
+msgstr "GestiÃ³ d'URL privades"
 
 #: privateurls/templates/private_url_landing.html
 msgid "Private URL"
@@ -44,7 +44,7 @@ msgstr ""
 #: privateurls/templates/private_url_landing.html
 #, python-format
 msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can submit results and/or feedback for your debates. You may bookmark this page and return here after each debate for the available actions."
-msgstr "La URL d'aquesta pàgina està personalitzada per a tu, %(name)s. <strong>No la comparteixis amb ningú;</strong> qualsevol persona que tingui accés a aquest URL pot enviar resultats i/o retroalimentació per als teus debats. Podeu afegir a favorits aquesta pàgina i tornar aquí després de cada debat per realitzar les accions oportunes."
+msgstr "La URL d'aquesta pÃ gina estÃ  personalitzada per a tu, %(name)s. <strong>No la comparteixis amb ningÃº;</strong> qualsevol persona que tingui accÃ©s a aquest URL pot enviar resultats i/o retroalimentaciÃ³ per als teus debats. Podeu afegir a favorits aquesta pÃ gina i tornar aquÃ­ desprÃ©s de cada debat per realitzar les accions oportunes."
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
@@ -63,7 +63,7 @@ msgstr "Has estat registrat el %(check_time)s"
 
 #: privateurls/templates/private_url_landing.html
 msgid "You are not currently checked in."
-msgstr "Encara no estàs registrat."
+msgstr "Encara no estÃ s registrat."
 
 #: privateurls/templates/private_url_landing.html
 msgid "Show barcode for check-in"
@@ -76,7 +76,7 @@ msgstr "Enviar Taula de resultats per %(round)s"
 
 #: privateurls/templates/private_url_landing.html
 msgid "Submit Feedback"
-msgstr "Enviar retroalimentació"
+msgstr "Enviar retroalimentaciÃ³"
 
 #: privateurls/templates/private_url_landing.html
 #, python-format
@@ -96,7 +96,7 @@ msgid "Private URLs are used to allow participants to submit ballots and/or feed
 msgstr ""
 
 #: privateurls/templates/private_urls.html
-msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
+msgid "Anyone with the URL can access the relevant data entry page. The idea is that it's hard to guess another key (the random-looking string), so you should make each URL accessible only to the participant in question. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/data-entry.html#private-urls\"> Read more about private URLs.</a>"
 msgstr ""
 
 #: privateurls/templates/private_urls.html
@@ -134,7 +134,7 @@ msgstr "Enviar URLs"
 
 #: privateurls/templates/private_urls_nav.html
 msgid "This button only generates private URLs for participants who do not already have one."
-msgstr "Aquest botó només genera URLs privades per a aquells participants que no tenen una encara."
+msgstr "Aquest botÃ³ nomÃ©s genera URLs privades per a aquells participants que no tenen una encara."
 
 #: privateurls/templates/private_urls_nav.html
 msgid "Generate URLs"
@@ -185,4 +185,5 @@ msgstr "Clau de l'URL"
 #: privateurls/views.py
 msgid "Debates"
 msgstr "Debats"
+
 

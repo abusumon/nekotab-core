@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: id\n"
-"X-Crowdin-File: /develop/tabbycat/importer/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/importer/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 932\n"
 
 #: importer/forms.py
@@ -174,8 +174,8 @@ msgid "Export Tournament Archive"
 msgstr "Ekspor Arsip Turnamen"
 
 #: importer/templates/archive_export_index.html
-msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside Tabbycat."
-msgstr "Turnamen dapat diekspor dalam <a href=\"https://en.wikipedia.org/wiki/XML\"> format XML </a> untuk digunakan di luar Tabbycat."
+msgid "Tournaments can be exported in an <a href=\"https://en.wikipedia.org/wiki/XML\">XML format</a> for use outside NekoTab."
+msgstr "Turnamen dapat diekspor dalam <a href=\"https://en.wikipedia.org/wiki/XML\"> format XML </a> untuk digunakan di luar NekoTab."
 
 #: importer/templates/archive_export_index.html
 msgid "Export all data"
@@ -265,8 +265,8 @@ msgid "Simple Importer"
 msgstr "Pengimpor Sederhana"
 
 #: importer/templates/simple_import_index.html
-msgid "There are <a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into Tabbycat</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
-msgstr "Ada <a href=\"https://tabbycat.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">beberapa cara untuk mengimpor data ke dalam Tabbycat</a>. Mana yang paling baik bergantung pada ukuran turnamen Anda dan latar belakang teknis Anda. <strong>Pengimpor sederhana</strong> ini adalah yang termudah untuk digunakan dan berjalan dengan baik untuk turnamen berukuran kecil atau sedang."
+msgid "There are <a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">several ways to import data into NekoTab</a>. Which one is best depends on the size of your tournament and your technical background. This <strong>simple importer</strong> is the easiest to use and works well for small- and medium-sized tournaments."
+msgstr "Ada <a href=\"https://NekoTab.readthedocs.io/en/stable/use/importing-data.html\" target=\"_blank\">beberapa cara untuk mengimpor data ke dalam NekoTab</a>. Mana yang paling baik bergantung pada ukuran turnamen Anda dan latar belakang teknis Anda. <strong>Pengimpor sederhana</strong> ini adalah yang termudah untuk digunakan dan berjalan dengan baik untuk turnamen berukuran kecil atau sedang."
 
 #: importer/templates/simple_import_index.html
 msgid "Add Institutions"
@@ -426,4 +426,5 @@ msgstr "Turnamen demo sudah terbuat. Anda dapat mengonfigurasikannya di bawah in
 #: importer/views.py
 msgid "Tournament archive has been imported."
 msgstr "Arsip turnamen telah diimpor."
+
 

@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:46\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
@@ -43,7 +43,7 @@ msgstr ""
 
 #: results/forms.py
 msgid "That password isn't correct."
-msgstr "La contrasenya és incorrecta."
+msgstr "La contrasenya Ã©s incorrecta."
 
 #: results/forms.py
 msgid "The ballot set can't be both discarded and confirmed."
@@ -102,11 +102,11 @@ msgstr[1] ""
 
 #: results/forms.py
 msgid "The last substantive speaker and reply speaker can't be the same."
-msgstr "El darrer orador propositiu i l'orador de rèplica no poden ser el mateix."
+msgstr "El darrer orador propositiu i l'orador de rÃ¨plica no poden ser el mateix."
 
 #: results/forms.py
 msgid "The reply speaker for this team did not give a substantive speech."
-msgstr "L'orador de rèplica d'aquest equip no va fer un discurs propositiu."
+msgstr "L'orador de rÃ¨plica d'aquest equip no va fer un discurs propositiu."
 
 #: results/forms.py
 msgid "The total scores for the teams are the same (i.e. a draw)."
@@ -166,11 +166,11 @@ msgstr ""
 
 #: results/models.py
 msgid "Tab room"
-msgstr "Sala de tabulació"
+msgstr "Sala de tabulaciÃ³"
 
 #: results/models.py
 msgid "Public"
-msgstr "Públic"
+msgstr "PÃºblic"
 
 #: results/models.py
 msgid "Automation"
@@ -182,7 +182,7 @@ msgstr "marca de temps"
 
 #: results/models.py
 msgid "version"
-msgstr "versió"
+msgstr "versiÃ³"
 
 #: results/models.py
 msgid "submitter type"
@@ -218,7 +218,7 @@ msgstr ""
 
 #: results/models.py
 msgid "A tab room ballot must have a user associated."
-msgstr "Un Taula de resultats de la sala de tabulació ha de tenir un usuari associat."
+msgstr "Un Taula de resultats de la sala de tabulaciÃ³ ha de tenir un usuari associat."
 
 #: results/models.py
 msgid "debate"
@@ -226,7 +226,7 @@ msgstr "debat"
 
 #: results/models.py
 msgid "motion"
-msgstr "moció"
+msgstr "mociÃ³"
 
 #: results/models.py
 msgid "discarded"
@@ -283,7 +283,7 @@ msgstr ""
 
 #: results/models.py
 msgid "score"
-msgstr "puntuació"
+msgstr "puntuaciÃ³"
 
 #: results/models.py
 msgid "team score by adjudicator"
@@ -299,7 +299,7 @@ msgstr ""
 
 #: results/models.py
 msgid "position"
-msgstr "posició"
+msgstr "posiciÃ³"
 
 #: results/models.py
 msgid "speaker score by adjudicator"
@@ -496,7 +496,7 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr ""
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
@@ -731,7 +731,7 @@ msgstr ""
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
 msgstr ""
 
 #: results/templates/ballot_entry_form.html
@@ -793,7 +793,7 @@ msgstr ""
 #: results/templates/includes/public_enter_results_info.html
 #, python-format
 msgid "The URL of this page is personalised to you, %(name)s. <strong>Do not share it with anyone;</strong> anyone who knows this URL can submit results and/or feedback for your debates. You may bookmark this page and return here after each debate for the available actions."
-msgstr "La URL d'aquesta pàgina està personalitzada per a tu, %(name)s. <strong>No la comparteixis amb ningú;</strong> qualsevol persona que tingui accés a aquest URL pot enviar resultats i/o retroalimentació per als teus debats. Podeu afegir a favorits aquesta pàgina i tornar aquí després de cada debat per realitzar les accions oportunes."
+msgstr "La URL d'aquesta pÃ gina estÃ  personalitzada per a tu, %(name)s. <strong>No la comparteixis amb ningÃº;</strong> qualsevol persona que tingui accÃ©s a aquest URL pot enviar resultats i/o retroalimentaciÃ³ per als teus debats. Podeu afegir a favorits aquesta pÃ gina i tornar aquÃ­ desprÃ©s de cada debat per realitzar les accions oportunes."
 
 #: results/templates/privateurl_ballot_set.html
 #: results/templates/privateurl_ballot_set_error.html
@@ -904,7 +904,7 @@ msgstr[1] ""
 
 #: results/templates/public_enter_results.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
-msgstr "Entregant aquest formulari, la teva adreça IP serà enregistrada per qüestions d'identificació."
+msgstr "Entregant aquest formulari, la teva adreÃ§a IP serÃ  enregistrada per qÃ¼estions d'identificaciÃ³."
 
 #: results/templates/public_enter_results_error.html
 #, python-format
@@ -1172,4 +1172,5 @@ msgstr "Jutge"
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
+
 

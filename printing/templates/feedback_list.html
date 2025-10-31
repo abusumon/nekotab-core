@@ -1,4 +1,4 @@
-{% extends "printables_list.html" %}
+﻿{% extends "printables_list.html" %}
 {% load i18n %}
 
 {% block head-title %}
@@ -19,7 +19,7 @@ Printable Feedback Forms for {{ round }}
     {% endif %}
     {% blocktrans trimmed asvar message %}
       {{ first_sentence }}
-      Check the <a href="https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html" target="_blank">documentation</a> for information on how to add these (otherwise these forms will be quite bare).
+      Check the <a href="https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html" target="_blank">documentation</a> for information on how to add these (otherwise these forms will be quite bare).
     {% endblocktrans %}
     {% include "components/alert.html" with type="warning" %}
   {% endif %}
@@ -38,7 +38,7 @@ Printable Feedback Forms for {{ round }}
       </div>
     </template>
     <div v-if="ballots.length === 0" class="alert alert-warning">
-      {% trans "There are no feedback sheets available — perhaps adjudicators have not been allocated?" %}
+      {% trans "There are no feedback sheets available â€” perhaps adjudicators have not been allocated?" %}
     </div>
   </div>
 
@@ -71,3 +71,4 @@ Printable Feedback Forms for {{ round }}
   {{ block.super }}
 
 {% endblock js %}
+

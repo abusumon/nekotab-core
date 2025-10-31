@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:48\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /develop/tabbycat/standings/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/standings/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 950\n"
 
@@ -151,7 +151,7 @@ msgstr "Equip"
 
 #: standings/speakers.py standings/teams.py standings/views.py
 msgid "Wins"
-msgstr "Victòries"
+msgstr "VictÃ²ries"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of firsts"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: standings/speakers.py
 msgid "standard deviation"
-msgstr "desviació estàndard"
+msgstr "desviaciÃ³ estÃ ndard"
 
 #: standings/speakers.py
 msgid "Stdev"
@@ -203,7 +203,7 @@ msgstr "nombre de discursos fets"
 
 #: standings/speakers.py
 msgid "Num"
-msgstr "Núm."
+msgstr "NÃºm."
 
 #: standings/speakers.py
 msgid "replies given"
@@ -235,7 +235,7 @@ msgstr "Pts."
 
 #: standings/teams.py
 msgid "wins"
-msgstr "victòries"
+msgstr "victÃ²ries"
 
 #: standings/teams.py
 msgid "total speaker score"
@@ -255,7 +255,7 @@ msgstr "MTPO"
 
 #: standings/teams.py
 msgid "speaker score standard deviation"
-msgstr "desviació estàndard de punts d'orador"
+msgstr "desviaciÃ³ estÃ ndard de punts d'orador"
 
 #: standings/teams.py
 msgid "SSD"
@@ -352,7 +352,7 @@ msgstr ""
 #: standings/templates/current_standings.html
 #, python-format
 msgid "This list is sorted by team points, then alphabetically by team name. It does not indicate each team's ranking within each bracket. %(silent_round_sentence)s"
-msgstr "Aquesta llista s'ordena per punts de l'equip i després alfabèticament pel nom de l'equip. No indica la classificació de cada equip dins de cada parèntesi. %(silent_round_sentence)s"
+msgstr "Aquesta llista s'ordena per punts de l'equip i desprÃ©s alfabÃ¨ticament pel nom de l'equip. No indica la classificaciÃ³ de cada equip dins de cada parÃ¨ntesi. %(silent_round_sentence)s"
 
 #: standings/templates/current_standings.html
 #, python-format
@@ -431,7 +431,7 @@ msgstr ""
 
 #: standings/templates/standings_index.html
 msgid "Standings"
-msgstr "Classificació"
+msgstr "ClassificaciÃ³"
 
 #: standings/templates/standings_index.html
 msgid "Top Speaks"
@@ -486,7 +486,7 @@ msgstr ""
 
 #: standings/templates/standings_menu.html
 msgid "Overview"
-msgstr "Visió general"
+msgstr "VisiÃ³ general"
 
 #: standings/templates/standings_menu.html
 msgid "Teams"
@@ -572,7 +572,7 @@ msgstr ""
 
 #: standings/views.py
 msgid "Speaker Standings"
-msgstr "Classificació d'oradors"
+msgstr "ClassificaciÃ³ d'oradors"
 
 #: standings/views.py
 msgid "Speaker Tab"
@@ -602,7 +602,7 @@ msgstr ""
 
 #: standings/views.py
 msgid "Team Standings"
-msgstr "Classificació d'equips"
+msgstr "ClassificaciÃ³ d'equips"
 
 #: standings/views.py
 msgid "Team Tab"
@@ -620,7 +620,7 @@ msgstr ""
 
 #: standings/views.py
 msgid "Current Team Standings"
-msgstr "Classificació actual"
+msgstr "ClassificaciÃ³ actual"
 
 #: standings/views.py
 msgid "Points"
@@ -628,9 +628,10 @@ msgstr "Punts"
 
 #: standings/views.py
 msgid "Feedback Overview"
-msgstr "Visió general de la Retroalimentació"
+msgstr "VisiÃ³ general de la RetroalimentaciÃ³"
 
 #: standings/views.py
-msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
+msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
 msgstr ""
+
 

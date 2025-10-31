@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-05 07:37+1000\n"
 "PO-Revision-Date: 2023-08-24 10:32\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: es-ES\n"
-"X-Crowdin-File: /develop/tabbycat/availability/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/availability/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 926\n"
 
 #: availability/apps.py availability/views.py
@@ -60,7 +60,7 @@ msgstr "Ver Cuadro"
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot — this may lead to a draw that fails or is incorrect"
+msgid "%(previous_unconfirmed)s debates from %(round)s do not have a completed ballot â€” this may lead to a draw that fails or is incorrect"
 msgstr ""
 
 #: availability/templates/availability_index.html
@@ -80,19 +80,19 @@ msgid "The draw cannot be generated until some rooms have been marked as availab
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough rooms marked as available for the number of debates — the draw may not generate properly."
+msgid "There aren't enough rooms marked as available for the number of debates â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There aren't enough adjudicators marked as available for the number of debates — the draw may not generate properly."
+msgid "There aren't enough adjudicators marked as available for the number of debates â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
-msgid "There is an uneven number of teams marked as available — the draw may not generate properly."
-msgstr "Hay un número impar de equipos marcados como disponibles - es posible que el draw no se genere adecuadamente."
+msgid "There is an uneven number of teams marked as available â€” the draw may not generate properly."
+msgstr "Hay un nÃºmero impar de equipos marcados como disponibles - es posible que el draw no se genere adecuadamente."
 
 #: availability/templates/availability_index.html
-msgid "The number of teams marked as available is not a multiple of 4 — the draw may not generate properly."
+msgid "The number of teams marked as available is not a multiple of 4 â€” the draw may not generate properly."
 msgstr ""
 
 #: availability/templates/availability_index.html
@@ -115,22 +115,22 @@ msgstr ""
 #: availability/templates/availability_index.html
 #, python-format
 msgid "This is an elimination round, but it doesn't have a break category. Elimination rounds must be associated with a break category. Please <a href=\"%(change_round_url)s\" class=\"alert-link\"> set this round's break category in the Edit Database area.</a>"
-msgstr "Esta es una ronda eliminatoria, pero no tiene una categoría de break. Las rondas eliminatorias se deben relacionar con una categoría de break.  Por favor <a href=\"%(change_round_url)s\" class=\"alert-link\"> configura la categoría de break de esta ronda en la parte de Editar la base de datos.</a>"
+msgstr "Esta es una ronda eliminatoria, pero no tiene una categorÃ­a de break. Las rondas eliminatorias se deben relacionar con una categorÃ­a de break.  Por favor <a href=\"%(change_round_url)s\" class=\"alert-link\"> configura la categorÃ­a de break de esta ronda en la parte de Editar la base de datos.</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "This is an elimination round, but its draw type is <strong>%(draw_type)s</strong>. The draw type of all elimination rounds must be \"Elimination\". Please <a href=\"%(change_round_url)s\" class=\"alert-link\"> change this round's draw type in the Edit Database area.</a>"
-msgstr "Esta es una ronda eliminatoria, pero el tipo de cuadro es <strong>%(draw_type)s</strong>. El tipo de cuadro de todas las rondas eliminatorias debería ser \"Eliminatoria.\" Por favor <a href=\"%(change_round_url)s\" class=\"alert-link\"> cambia el tipo de cuadro de esta ronda en la parte de Editar la Base de Datos.</a>"
+msgstr "Esta es una ronda eliminatoria, pero el tipo de cuadro es <strong>%(draw_type)s</strong>. El tipo de cuadro de todas las rondas eliminatorias deberÃ­a ser \"Eliminatoria.\" Por favor <a href=\"%(change_round_url)s\" class=\"alert-link\"> cambia el tipo de cuadro de esta ronda en la parte de Editar la Base de Datos.</a>"
 
 #: availability/templates/availability_index.html
 #, python-format
 msgid "There don't appear to be any teams breaking in the %(break_category)s Break. Have you <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> generated the break for the %(break_category)s Break</a> yet?"
-msgstr "Parece que no hay ningún equipo bromeando en la categoría de break %(break_category)s. Ya <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> generaste el break para la categoría de break %(break_category)s</a>?"
+msgstr "Parece que no hay ningÃºn equipo bromeando en la categorÃ­a de break %(break_category)s. Ya <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> generaste el break para la categorÃ­a de break %(break_category)s</a>?"
 
 #: availability/templates/availability_index.html
 #, python-format
-msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team — you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
-msgstr "Solamente hay un equipo bromeando en la categoría de break %(break_category)s. No puedes generar una ronda eliminatoria con un solo equipo — tal vez te gustaría <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> revisar el break de la categoría de break %(break_category)s </a>."
+msgid "There's only one team breaking in the %(break_category)s Break. You can't generate an elimination round draw with only one team â€” you might like to <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> review the break for the %(break_category)s Break</a>."
+msgstr "Solamente hay un equipo bromeando en la categorÃ­a de break %(break_category)s. No puedes generar una ronda eliminatoria con un solo equipo â€” tal vez te gustarÃ­a <a href=\"%(breakqual_teams_url)s\" class=\"alert-link\"> revisar el break de la categorÃ­a de break %(break_category)s </a>."
 
 #: availability/templates/availability_index.html
 #, python-format
@@ -288,8 +288,8 @@ msgstr "Marcar salas como disponibles"
 #, python-format
 msgid "There needs to be at least one room marked as available, given the number of debates."
 msgid_plural "There need to be at least %(required_count)s rooms marked as available, given the number of debates."
-msgstr[0] "Debe haber al menos una sala marcada como disponible, dado el número de debates."
-msgstr[1] "Debe haber al menos %(required_count)s salas marcadas como disponibles, dado el número de debates."
+msgstr[0] "Debe haber al menos una sala marcada como disponible, dado el nÃºmero de debates."
+msgstr[1] "Debe haber al menos %(required_count)s salas marcadas como disponibles, dado el nÃºmero de debates."
 
 #: availability/templates/checkin_progress.html
 msgid "Edit room availability"
@@ -302,18 +302,18 @@ msgstr "no hay equipos debatiendo"
 #. Translators: nteams in this string can only be 0 or 1
 #: availability/views.py
 #, python-format
-msgid "%(nteams)d breaking team — no debates can happen"
-msgid_plural "%(nteams)d breaking teams — no debates can happen"
-msgstr[0] "%(nteams)d equipo que breakea — no pueden hacerse los debates"
-msgstr[1] "%(nteams)d equipos que brekean — no pueden hacerse los debates"
+msgid "%(nteams)d breaking team â€” no debates can happen"
+msgid_plural "%(nteams)d breaking teams â€” no debates can happen"
+msgstr[0] "%(nteams)d equipo que breakea â€” no pueden hacerse los debates"
+msgstr[1] "%(nteams)d equipos que brekean â€” no pueden hacerse los debates"
 
 #. Translators: ndebating in this string is always at least 2
 #: availability/views.py
 #, python-format
 msgid "%(ndebating)d breaking team is debating this round"
 msgid_plural "%(ndebating)d breaking teams are debating this round"
-msgstr[0] "%(ndebating)d el equipo que breakea está debatiendo esta ronda"
-msgstr[1] "%(ndebating)d los equipos que breakean están debatiendo esta ronda"
+msgstr[0] "%(ndebating)d el equipo que breakea estÃ¡ debatiendo esta ronda"
+msgstr[1] "%(ndebating)d los equipos que breakean estÃ¡n debatiendo esta ronda"
 
 #. Translators: This gets appended to the previous string (the one with
 #. ndebating in it) if (and only if) nbypassing is greater than 0.
@@ -322,16 +322,16 @@ msgstr[1] "%(ndebating)d los equipos que breakean están debatiendo esta ronda"
 #, python-format
 msgid "; %(nbypassing)d team is bypassing it"
 msgid_plural "; %(nbypassing)d teams are bypassing it"
-msgstr[0] "; %(nbypassing)d equipos lo está eludiendo"
-msgstr[1] "%(nbypassing)d equipos lo están eludiendo"
+msgstr[0] "; %(nbypassing)d equipos lo estÃ¡ eludiendo"
+msgstr[1] "%(nbypassing)d equipos lo estÃ¡n eludiendo"
 
 #. Translators: nadvancing in this string is always at least 2
 #: availability/views.py
 #, python-format
 msgid "%(nadvancing)s advancing team is debating this round"
 msgid_plural "%(nadvancing)s advancing teams are debating this round"
-msgstr[0] "%(nadvancing)s equipo que avanza está debatiendo esta ronda"
-msgstr[1] "%(nadvancing)s equipos que avanzan están debatiendo esta ronda"
+msgstr[0] "%(nadvancing)s equipo que avanza estÃ¡ debatiendo esta ronda"
+msgstr[1] "%(nadvancing)s equipos que avanzan estÃ¡n debatiendo esta ronda"
 
 #: availability/views.py
 msgid "Active Now"
@@ -368,7 +368,7 @@ msgstr "Mostrar nombre (para el cuadro)"
 
 #: availability/views.py
 msgid "Categories"
-msgstr "Categorías"
+msgstr "CategorÃ­as"
 
 #: availability/views.py
 msgid "Priority"
@@ -389,4 +389,5 @@ msgstr "Se han chequeado todos los jueces que breakean."
 #: availability/views.py
 msgid "Checked in all teams, adjudicators and rooms from previous round."
 msgstr "Se han chequeado todos los equipos, jueces y salas de la ronda anterior."
+
 

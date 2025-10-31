@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2025-02-15 07:22\n"
@@ -12,114 +12,115 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/tabbycat/printing/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/printing/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 944\n"
 
 #: printing/templates/feedback_list.html
 msgid "Feedback Forms"
-msgstr "フィードバックフォーム"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãƒ•ã‚©ãƒ¼ãƒ "
 
 #: printing/templates/feedback_list.html
 #, python-format
 msgid "Printable Feedback Forms for %(round)s"
-msgstr "%(round)sの印刷用フィードバックフォーム"
+msgstr "%(round)sã®å°åˆ·ç”¨ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãƒ•ã‚©ãƒ¼ãƒ "
 
 #: printing/templates/feedback_list.html
 msgid "No feedback questions have been added for either teams or adjudicators to answer."
-msgstr "チーム・ジャッジへの質問がありません。"
+msgstr "ãƒãƒ¼ãƒ ãƒ»ã‚¸ãƒ£ãƒƒã‚¸ã¸ã®è³ªå•ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: printing/templates/feedback_list.html
 msgid "No feedback questions have been added for teams to answer."
-msgstr "チームへの質問がありません。"
+msgstr "ãƒãƒ¼ãƒ ã¸ã®è³ªå•ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: printing/templates/feedback_list.html
 msgid "No feedback questions have been added for adjudicators to answer."
-msgstr "ジャッジへの質問がありません。"
+msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã¸ã®è³ªå•ãŒã‚ã‚Šã¾ã›ã‚“ã€‚"
 
 #: printing/templates/feedback_list.html
 #, python-format
-msgid "%(first_sentence)s Check the <a href=\"https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">documentation</a> for information on how to add these (otherwise these forms will be quite bare)."
-msgstr "%(first_sentence)s追加方法については、<a href=\"https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">ドキュメンテーション</a>を参照してください。"
+msgid "%(first_sentence)s Check the <a href=\"https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">documentation</a> for information on how to add these (otherwise these forms will be quite bare)."
+msgstr "%(first_sentence)sè¿½åŠ æ–¹æ³•ã«ã¤ã„ã¦ã¯ã€<a href=\"https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚"
 
 #: printing/templates/feedback_list.html
-msgid "There are no feedback sheets available — perhaps adjudicators have not been allocated?"
-msgstr "フィードバックシートがありません。ジャッジが配置されていない可能性があります。"
+msgid "There are no feedback sheets available â€” perhaps adjudicators have not been allocated?"
+msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚·ãƒ¼ãƒˆãŒã‚ã‚Šã¾ã›ã‚“ã€‚ã‚¸ãƒ£ãƒƒã‚¸ãŒé…ç½®ã•ã‚Œã¦ã„ãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: printing/templates/printables_list.html
 msgid "Use Ctrl+P for printing or saving to PDF. Be sure to set the appropriate <strong>page orientation</strong>, to turn off <strong>headers/footers</strong> and turn on <strong>background graphics</strong>. Works best in Chrome."
-msgstr "Ctrl+Pで印刷またはPDFとして保存できます。適切な<strong>ページの向き</strong>を設定し、<strong>ヘッダー/フッター</strong>をオフにし、<strong>背景グラフィック</strong>をオンにしてください。Chromeが最適です。"
+msgstr "Ctrl+Pã§å°åˆ·ã¾ãŸã¯PDFã¨ã—ã¦ä¿å­˜ã§ãã¾ã™ã€‚é©åˆ‡ãª<strong>ãƒšãƒ¼ã‚¸ã®å‘ã</strong>ã‚’è¨­å®šã—ã€<strong>ãƒ˜ãƒƒãƒ€ãƒ¼/ãƒ•ãƒƒã‚¿ãƒ¼</strong>ã‚’ã‚ªãƒ•ã«ã—ã€<strong>èƒŒæ™¯ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯</strong>ã‚’ã‚ªãƒ³ã«ã—ã¦ãã ã•ã„ã€‚ChromeãŒæœ€é©ã§ã™ã€‚"
 
 #: printing/templates/randomised_url_sheets.html
 #, python-format
 msgid "Printable %(sheet)s URLs"
-msgstr "印刷可能な%(sheet)s URL"
+msgstr "å°åˆ·å¯èƒ½ãª%(sheet)s URL"
 
 #: printing/templates/randomised_url_sheets.html
 msgid "This page is designed to be printed as double-sided A4 sheets, with the outside facing side showing the participant name and the inside facing side showing the URL. Use CTRL-P to print; for best results use Chrome."
-msgstr "A4で両面印刷するようにデザインされています。外側には参加者名、内側にはURLが表示されます。印刷するにはCtrl+Pを使用してください。Chrome推奨。"
+msgstr "A4ã§ä¸¡é¢å°åˆ·ã™ã‚‹ã‚ˆã†ã«ãƒ‡ã‚¶ã‚¤ãƒ³ã•ã‚Œã¦ã„ã¾ã™ã€‚å¤–å´ã«ã¯å‚åŠ è€…åã€å†…å´ã«ã¯URLãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚å°åˆ·ã™ã‚‹ã«ã¯Ctrl+Pã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚ChromeæŽ¨å¥¨ã€‚"
 
 #: printing/templates/randomised_url_sheets.html
 #, python-format
 msgid "Private URL for %(name)s (%(group)s)"
-msgstr "%(name)s（%(group)s）のPrivate URL"
+msgstr "%(name)sï¼ˆ%(group)sï¼‰ã®Private URL"
 
 #: printing/templates/randomised_url_sheets.html
 msgid "Please bookmark the following URL, you will use it to submit forms throughout the tournament:"
-msgstr "以下のURLをブックマークに追加してください（大会中フォームの送信に使います）："
+msgstr "ä»¥ä¸‹ã®URLã‚’ãƒ–ãƒƒã‚¯ãƒžãƒ¼ã‚¯ã«è¿½åŠ ã—ã¦ãã ã•ã„ï¼ˆå¤§ä¼šä¸­ãƒ•ã‚©ãƒ¼ãƒ ã®é€ä¿¡ã«ä½¿ã„ã¾ã™ï¼‰ï¼š"
 
 #: printing/templates/scoresheet_list.html
 msgid "Printable Scoresheets"
-msgstr "印刷用スコアシート"
+msgstr "å°åˆ·ç”¨ã‚¹ã‚³ã‚¢ã‚·ãƒ¼ãƒˆ"
 
 #: printing/templates/scoresheet_list.html
 #, python-format
 msgid "for %(round)s"
-msgstr "%(round)s用"
+msgstr "%(round)sç”¨"
 
 #: printing/templates/scoresheet_list.html
 msgid "Edit Motion(s)"
-msgstr "論題を編集"
+msgstr "è«–é¡Œã‚’ç·¨é›†"
 
 #: printing/templates/scoresheet_list.html
-msgid "There are no scoresheets available — perhaps the round has not been drawn?"
-msgstr "スコアシートがありません。ラウンドの対戦表が生成されていない可能性があります。"
+msgid "There are no scoresheets available â€” perhaps the round has not been drawn?"
+msgstr "ã‚¹ã‚³ã‚¢ã‚·ãƒ¼ãƒˆãŒã‚ã‚Šã¾ã›ã‚“ã€‚ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¯¾æˆ¦è¡¨ãŒç”Ÿæˆã•ã‚Œã¦ã„ãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"
 
 #: printing/templates/scoresheet_list.html
 msgid "Edit Ballot Motions"
-msgstr "バロットの論題を編集"
+msgstr "ãƒãƒ­ãƒƒãƒˆã®è«–é¡Œã‚’ç·¨é›†"
 
 #: printing/templates/scoresheet_list.html
 msgid "&times;"
 msgstr ""
 
 #: printing/templates/scoresheet_list.html
-msgid "Editing motions here will not save them permanently — it will only update the text used in the printed ballots below. This can be useful if using placeholder motions (to ensure confidentiality) in Tabbycat, but you still want to print ballots with correct motions."
-msgstr "ここでの編集は一時的なもので、下の印刷用のバロットの論題の文章にのみ適用されます。（機密保持のために）仮の論題を入力していて、正しい論題をバロットに印刷したい場合に便利です。"
+msgid "Editing motions here will not save them permanently â€” it will only update the text used in the printed ballots below. This can be useful if using placeholder motions (to ensure confidentiality) in NekoTab, but you still want to print ballots with correct motions."
+msgstr "ã“ã“ã§ã®ç·¨é›†ã¯ä¸€æ™‚çš„ãªã‚‚ã®ã§ã€ä¸‹ã®å°åˆ·ç”¨ã®ãƒãƒ­ãƒƒãƒˆã®è«–é¡Œã®æ–‡ç« ã«ã®ã¿é©ç”¨ã•ã‚Œã¾ã™ã€‚ï¼ˆæ©Ÿå¯†ä¿æŒã®ãŸã‚ã«ï¼‰ä»®ã®è«–é¡Œã‚’å…¥åŠ›ã—ã¦ã„ã¦ã€æ­£ã—ã„è«–é¡Œã‚’ãƒãƒ­ãƒƒãƒˆã«å°åˆ·ã—ãŸã„å ´åˆã«ä¾¿åˆ©ã§ã™ã€‚"
 
 #: printing/templates/scoresheet_list.html
 msgid "Motion"
-msgstr "論題"
+msgstr "è«–é¡Œ"
 
 #: printing/templates/scoresheet_list.html
 msgid "Changes to motions will update in the displayed ballots automatically"
-msgstr "論題を編集すると自動的にバロットの表示に反映されます"
+msgstr "è«–é¡Œã‚’ç·¨é›†ã™ã‚‹ã¨è‡ªå‹•çš„ã«ãƒãƒ­ãƒƒãƒˆã®è¡¨ç¤ºã«åæ˜ ã•ã‚Œã¾ã™"
 
 #: printing/templates/scoresheet_list.html
 msgid "Speeches are x minutes, the speaker score range is from x to x. You have x minutes to form an adjudication."
-msgstr "スピーチはx分、スピーカースコアの範囲はx～xです。x分間で投票先を決めてください。"
+msgstr "ã‚¹ãƒ”ãƒ¼ãƒã¯xåˆ†ã€ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ã®ç¯„å›²ã¯xï½žxã§ã™ã€‚xåˆ†é–“ã§æŠ•ç¥¨å…ˆã‚’æ±ºã‚ã¦ãã ã•ã„ã€‚"
 
 #: printing/views.py
 msgid "Overall Score"
-msgstr "合計点数"
+msgstr "åˆè¨ˆç‚¹æ•°"
 
 #: printing/views.py
 msgid "Unaffiliated"
-msgstr "無所属"
+msgstr "ç„¡æ‰€å±ž"
 
 #: printing/views.py
 msgid "Team"
-msgstr "チーム"
+msgstr "ãƒãƒ¼ãƒ "
+
 

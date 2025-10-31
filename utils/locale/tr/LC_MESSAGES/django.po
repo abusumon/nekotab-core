@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: tr\n"
-"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/utils/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 954\n"
 
@@ -24,11 +24,11 @@ msgstr "Tur"
 
 #: utils/admin.py utils/tables.py
 msgid "Team"
-msgstr "Takım"
+msgstr "TakÄ±m"
 
 #: utils/admin.py
 msgid "Speaker"
-msgstr "Konuşmacı"
+msgstr "KonuÅŸmacÄ±"
 
 #: utils/admin.py utils/tables.py
 msgid "Tournament"
@@ -40,31 +40,31 @@ msgstr "Taraf"
 
 #: utils/admin.py utils/tables.py
 msgid "Motion"
-msgstr "Önerge"
+msgstr "Ã–nerge"
 
 #: utils/admin.py
 msgid "Confirmed"
-msgstr "Onaylanmış"
+msgstr "OnaylanmÄ±ÅŸ"
 
 #: utils/admin.py
 msgid "Adjudicator"
-msgstr "Jüri"
+msgstr "JÃ¼ri"
 
 #: utils/tables.py
 msgid "No Data Available"
 msgstr "Veri Yok"
 
 #: utils/tables.py
-msgid "Ⓒ"
-msgstr "Ⓒ"
+msgid "â’¸"
+msgstr "â’¸"
 
 #: utils/tables.py
-msgid "Ⓣ"
-msgstr "Ⓣ"
+msgid "â“‰"
+msgstr "â“‰"
 
 #: utils/tables.py
 msgid "chair"
-msgstr "başkan"
+msgstr "baÅŸkan"
 
 #: utils/tables.py
 msgid "panellist"
@@ -75,32 +75,32 @@ msgid "trainee"
 msgstr "acemi"
 
 #: utils/tables.py
-msgid "—"
+msgid "â€”"
 msgstr ""
 
 #: utils/tables.py
 msgid "Redacted"
-msgstr "Düzeltilmiş"
+msgstr "DÃ¼zeltilmiÅŸ"
 
 #: utils/tables.py
 #, python-format
 msgid "View %(a)s's %(d)s Record"
-msgstr "%(a)s'nin %(d)s Kaydını Görüntüle"
+msgstr "%(a)s'nin %(d)s KaydÄ±nÄ± GÃ¶rÃ¼ntÃ¼le"
 
 #: utils/tables.py
 #, python-format
 msgid "View %(team)s's Record"
-msgstr "%(team)s'in Kaydını Görüntüle"
+msgstr "%(team)s'in KaydÄ±nÄ± GÃ¶rÃ¼ntÃ¼le"
 
 #: utils/tables.py
 #, python-format
 msgid "Code name: <strong>%(name)s</strong>"
-msgstr "Kod adı: <strong>%(name)s</strong>"
+msgstr "Kod adÄ±: <strong>%(name)s</strong>"
 
 #: utils/tables.py
 #, python-format
 msgid "Real name: <strong>%(name)s</strong>"
-msgstr "Gerçek adı: <strong>%(name)s</strong>"
+msgstr "GerÃ§ek adÄ±: <strong>%(name)s</strong>"
 
 #: utils/tables.py
 #, python-format
@@ -110,12 +110,12 @@ msgstr "%(team)s galip"
 #: utils/tables.py
 #, python-format
 msgid "%(team)s lost"
-msgstr "%(team)s mağlup"
+msgstr "%(team)s maÄŸlup"
 
 #: utils/tables.py
 #, python-format
-msgid "%(team)s—no result"
-msgstr "%(team)s—sonuç yok"
+msgid "%(team)sâ€”no result"
+msgstr "%(team)sâ€”sonuÃ§ yok"
 
 #: utils/tables.py
 #, python-format
@@ -134,11 +134,11 @@ msgstr "%(team)s elendi"
 
 #: utils/tables.py
 msgid "View/edit debate ballot"
-msgstr "Tartışma ballotunu görüntüle/düzenle"
+msgstr "TartÄ±ÅŸma ballotunu gÃ¶rÃ¼ntÃ¼le/dÃ¼zenle"
 
 #: utils/tables.py
 msgid "View debate ballot"
-msgstr "Tartışma ballotunu görüntüle"
+msgstr "TartÄ±ÅŸma ballotunu gÃ¶rÃ¼ntÃ¼le"
 
 #: utils/tables.py
 #, python-format
@@ -148,26 +148,26 @@ msgstr " vs %(opposition)s"
 #: utils/tables.py
 #, python-format
 msgid "Won against %(team)s"
-msgstr "%(team)s karşı kazandı"
+msgstr "%(team)s karÅŸÄ± kazandÄ±"
 
 #: utils/tables.py
 #, python-format
 msgid "Lost to %(team)s"
-msgstr "%(team)s karşı kaybetti"
+msgstr "%(team)s karÅŸÄ± kaybetti"
 
 #: utils/tables.py
 #, python-format
 msgid "No result for debate against %(team)s"
-msgstr "%(team)s karşı maç için sonuç yok"
+msgstr "%(team)s karÅŸÄ± maÃ§ iÃ§in sonuÃ§ yok"
 
 #: utils/tables.py
 #, python-format
 msgid "Total speaker score: <strong>%s</strong>"
-msgstr "Toplam konuşmacı puanı: <strong>%s</strong>"
+msgstr "Toplam konuÅŸmacÄ± puanÄ±: <strong>%s</strong>"
 
 #: utils/tables.py
 msgid "Teams in debate:"
-msgstr "Maçtaki takımlar:"
+msgstr "MaÃ§taki takÄ±mlar:"
 
 #: utils/tables.py
 #, python-format
@@ -184,7 +184,7 @@ msgstr "ilerleyen"
 
 #: utils/tables.py
 msgid "Advancing"
-msgstr "İlerleyen"
+msgstr "Ä°lerleyen"
 
 #: utils/tables.py
 msgid "eliminated"
@@ -196,7 +196,7 @@ msgstr "Elenen"
 
 #: utils/tables.py
 msgid "No result for debate"
-msgstr "Maç için sonuç yok"
+msgstr "MaÃ§ iÃ§in sonuÃ§ yok"
 
 #: utils/tables.py
 #, python-format
@@ -205,7 +205,7 @@ msgstr "%(place)s oldu"
 
 #: utils/tables.py
 msgid "Name"
-msgstr "İsim"
+msgstr "Ä°sim"
 
 #: utils/tables.py
 msgid "Institution"
@@ -213,11 +213,11 @@ msgstr "Kurum"
 
 #: utils/tables.py
 msgid "Member of the Adjudication Core"
-msgstr "jüri komitesi üyesi"
+msgstr "jÃ¼ri komitesi Ã¼yesi"
 
 #: utils/tables.py
 msgid "Independent Adjudicator"
-msgstr "Bağımsız jüri"
+msgstr "BaÄŸÄ±msÄ±z jÃ¼ri"
 
 #: utils/tables.py
 msgid "Always Trainee"
@@ -225,11 +225,11 @@ msgstr "her zaman acemi"
 
 #: utils/tables.py
 msgid "in minority"
-msgstr "azınlıkta"
+msgstr "azÄ±nlÄ±kta"
 
 #: utils/tables.py
 msgid "Debate Adjudicators"
-msgstr "Maç jürileri"
+msgstr "MaÃ§ jÃ¼rileri"
 
 #: utils/tables.py
 msgid "Categories"
@@ -257,12 +257,12 @@ msgstr "Oda"
 #, python-format
 msgid "Teams have met once"
 msgid_plural "Teams have met %(count)d times"
-msgstr[0] "Takımlar bir kez karşılaştı"
-msgstr[1] "Takımlar %(count)d kez karşılaştı"
+msgstr[0] "TakÄ±mlar bir kez karÅŸÄ±laÅŸtÄ±"
+msgstr[1] "TakÄ±mlar %(count)d kez karÅŸÄ±laÅŸtÄ±"
 
 #: utils/tables.py
 msgid "Teams are from the same institution"
-msgstr "Takımlar aynı kurumdan"
+msgstr "TakÄ±mlar aynÄ± kurumdan"
 
 #: utils/tables.py
 msgid "Conflicts/Flags"
@@ -282,11 +282,11 @@ msgstr "Puan yok"
 
 #: utils/tables.py
 msgid "View Ballot"
-msgstr "Ballotu görüntüle"
+msgstr "Ballotu gÃ¶rÃ¼ntÃ¼le"
 
 #: utils/tables.py
 msgid "The ballot you submitted"
-msgstr "Gönderdiğiniz ballot"
+msgstr "GÃ¶nderdiÄŸiniz ballot"
 
 #: utils/tables.py
 msgid "No Ballot"
@@ -294,16 +294,16 @@ msgstr "Ballot yok"
 
 #: utils/tables.py
 msgid "View/Edit Ballot"
-msgstr "Ballot görüntüleme/düzenleme"
+msgstr "Ballot gÃ¶rÃ¼ntÃ¼leme/dÃ¼zenleme"
 
 #: utils/tables.py
 msgid "Result"
-msgstr "Sonuç"
+msgstr "SonuÃ§"
 
 #. Translators: "TBC" stands for "to be confirmed".
 #: utils/tables.py
 msgid "TBC"
-msgstr "Belli Değil"
+msgstr "Belli DeÄŸil"
 
 #: utils/tables.py
 msgid "Bye"
@@ -315,20 +315,20 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Team iron-personed this round and the last."
-msgstr "Takım bu ve geçen tur demir kişi konuşması yaptı."
+msgstr "TakÄ±m bu ve geÃ§en tur demir kiÅŸi konuÅŸmasÄ± yaptÄ±."
 
 #: utils/tables.py
 msgid "Team iron-personed this round."
-msgstr "Takım bu tur demir kişi konuşması yaptı."
+msgstr "TakÄ±m bu tur demir kiÅŸi konuÅŸmasÄ± yaptÄ±."
 
 #: utils/tables.py
 msgid "Team iron-personed last round."
-msgstr "Takım son tur demir kişi konuşması yaptı."
+msgstr "TakÄ±m son tur demir kiÅŸi konuÅŸmasÄ± yaptÄ±."
 
 #: utils/tables.py
 #, python-format
 msgid "Team %(num)d"
-msgstr "Takım %(num)d"
+msgstr "TakÄ±m %(num)d"
 
 #: utils/tables.py
 msgid "Postpone"
@@ -348,5 +348,6 @@ msgstr ""
 
 #: utils/views.py
 msgid "Whoops! You're not meant to type that URL into your browser."
-msgstr "Bu URL'yi tarayıcınıza yazmamanız lazım."
+msgstr "Bu URL'yi tarayÄ±cÄ±nÄ±za yazmamanÄ±z lazÄ±m."
+
 

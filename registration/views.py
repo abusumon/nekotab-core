@@ -1,4 +1,4 @@
-from django.contrib import messages
+﻿from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.postgres.forms import SimpleArrayField
 from django.db.models import Count, Prefetch, Sum
@@ -17,7 +17,7 @@ from tournaments.mixins import PublicTournamentPageMixin, TournamentMixin
 from users.permissions import Permission
 from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 from utils.views import ModelFormSetView, VueTableTemplateView
 
 from .forms import AdjudicatorForm, InstitutionCoachForm, ParticipantAllocationForm, SpeakerForm, TeamForm, TournamentInstitutionForm
@@ -66,7 +66,7 @@ class CreateInstitutionFormView(LogActionMixin, PublicTournamentPageMixin, Custo
         ('coach', InstitutionCoachForm),
     ]
     template_name = 'institution_registration_form.html'
-    page_emoji = '🏫'
+    page_emoji = 'ðŸ«'
     page_title = gettext_lazy("Register Institution")
 
     public_page_preference = 'institution_registration'
@@ -101,7 +101,7 @@ class BaseCreateTeamFormView(LogActionMixin, PublicTournamentPageMixin, CustomQu
         ('speaker', modelformset_factory(Speaker, form=SpeakerForm, extra=0)),
     ]
     template_name = 'team_registration_form.html'
-    page_emoji = '👯'
+    page_emoji = 'ðŸ‘¯'
 
     public_page_preference = 'open_team_registration'
     action_log_type = ActionLogEntry.ActionType.TEAM_REGISTER
@@ -284,7 +284,7 @@ class PublicCreateTeamFormView(BaseCreateTeamFormView):
 class BaseCreateAdjudicatorFormView(LogActionMixin, PublicTournamentPageMixin, CustomQuestionFormMixin, CreateView):
     form_class = AdjudicatorForm
     template_name = 'adjudicator_registration_form.html'
-    page_emoji = '👂'
+    page_emoji = 'ðŸ‘‚'
     page_title = gettext_lazy("Register Adjudicator")
 
     public_page_preference = 'open_adj_registration'
@@ -337,7 +337,7 @@ class PublicCreateAdjudicatorFormView(BaseCreateAdjudicatorFormView):
 class CreateSpeakerFormView(LogActionMixin, PublicTournamentPageMixin, CustomQuestionFormMixin, CreateView):
     form_class = SpeakerForm
     template_name = 'adjudicator_registration_form.html'
-    page_emoji = '👄'
+    page_emoji = 'ðŸ‘„'
     page_title = gettext_lazy("Register Speaker")
     action_log_type = ActionLogEntry.ActionType.SPEAKER_REGISTER
 
@@ -392,14 +392,14 @@ class InstitutionalLandingPageView(TournamentMixin, InstitutionalRegistrationMix
     def get_adj_table(self):
         adjudicators = self.tournament.adjudicator_set.filter(institution=self.institution)
 
-        table = TabbycatTableBuilder(view=self, title=_('Adjudicators'), sort_key='name')
+        table = NekoTabTableBuilder(view=self, title=_('Adjudicators'), sort_key='name')
         table.add_adjudicator_columns(adjudicators, show_institutions=False, show_metadata=False)
 
         return table
 
     def get_team_table(self):
         teams = self.tournament.team_set.filter(institution=self.institution)
-        table = TabbycatTableBuilder(view=self, title=_('Teams'), sort_key='name')
+        table = NekoTabTableBuilder(view=self, title=_('Teams'), sort_key='name')
         table.add_team_columns(teams)
 
         return table
@@ -435,7 +435,7 @@ class InstitutionalCreateAdjudicatorFormView(InstitutionalRegistrationMixin, Bas
     public_page_preference = 'institution_participant_registration'
 
 
-def handle_question_columns(table: TabbycatTableBuilder, objects, questions=None, suffix=0) -> None:
+def handle_question_columns(table: NekoTabTableBuilder, objects, questions=None, suffix=0) -> None:
     if questions is None:
         questions = table.tournament.question_set.filter(for_content_type=ContentType.objects.get_for_model(objects.model)).order_by('seq')
     question_columns = {q: [] for q in questions}
@@ -451,7 +451,7 @@ def handle_question_columns(table: TabbycatTableBuilder, objects, questions=None
 
 class InstitutionRegistrationTableView(TournamentMixin, AdministratorMixin, VueTableTemplateView, FormView):
     form_class = ParticipantAllocationForm
-    page_emoji = '🏫'
+    page_emoji = 'ðŸ«'
     page_title = gettext_lazy("Institutional Registration")
     template_name = 'answer_tables/institutions.html'
 
@@ -467,7 +467,7 @@ class InstitutionRegistrationTableView(TournamentMixin, AdministratorMixin, VueT
 
         form = self.get_form()
 
-        table = TabbycatTableBuilder(view=self, title=_('Responses'), sort_key='name')
+        table = NekoTabTableBuilder(view=self, title=_('Responses'), sort_key='name')
         table.add_column({'key': 'name', 'title': _("Name")}, [t_inst.institution.name for t_inst in t_institutions])
         table.add_column({'key': 'name', 'title': _("Coach")}, [{
             'text': (coach := t_inst.coach_set.first()).name,
@@ -526,7 +526,7 @@ class InstitutionRegistrationTableView(TournamentMixin, AdministratorMixin, VueT
 
 
 class TeamRegistrationTableView(TournamentMixin, AdministratorMixin, VueTableTemplateView):
-    page_emoji = '👯'
+    page_emoji = 'ðŸ‘¯'
     page_title = gettext_lazy("Team Registration")
     template_name = 'answer_tables/teams.html'
 
@@ -545,7 +545,7 @@ class TeamRegistrationTableView(TournamentMixin, AdministratorMixin, VueTableTem
         ).all()
         spk_questions = self.tournament.question_set.filter(for_content_type=ContentType.objects.get_for_model(Speaker)).order_by('seq')
 
-        table = TabbycatTableBuilder(view=self, title=_('Responses'), sort_key='team')
+        table = NekoTabTableBuilder(view=self, title=_('Responses'), sort_key='team')
         table.add_team_columns(teams)
 
         handle_question_columns(table, teams)
@@ -560,7 +560,7 @@ class TeamRegistrationTableView(TournamentMixin, AdministratorMixin, VueTableTem
 
 
 class AdjudicatorRegistrationTableView(TournamentMixin, AdministratorMixin, VueTableTemplateView):
-    page_emoji = '👂'
+    page_emoji = 'ðŸ‘‚'
     page_title = gettext_lazy("Adjudicator Registration")
     template_name = 'answer_tables/adjudicators.html'
 
@@ -569,7 +569,7 @@ class AdjudicatorRegistrationTableView(TournamentMixin, AdministratorMixin, VueT
     def get_table(self):
         adjudicators = self.tournament.adjudicator_set.select_related('institution').prefetch_related('answers__question').all()
 
-        table = TabbycatTableBuilder(view=self, title=_('Responses'), sort_key='name')
+        table = NekoTabTableBuilder(view=self, title=_('Responses'), sort_key='name')
         table.add_adjudicator_columns(adjudicators, show_metadata=False)
         table.add_column({'key': 'email', 'title': _("Email")}, [adj.email for adj in adjudicators])
 
@@ -591,7 +591,7 @@ class CustomQuestionFormsetView(TournamentMixin, AdministratorMixin, ModelFormSe
     view_permission = True
     edit_permission = Permission.EDIT_QUESTIONS
 
-    page_emoji = '❓'
+    page_emoji = 'â“'
     page_title = gettext_lazy("Custom Questions")
 
     def get_page_subtitle(self):
@@ -619,3 +619,4 @@ class CustomQuestionFormsetView(TournamentMixin, AdministratorMixin, ModelFormSe
 
     def get_success_url(self, *args, **kwargs):
         return reverse_tournament(self.success_url, self.tournament)
+

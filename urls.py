@@ -1,4 +1,4 @@
-from urllib.parse import urlparse
+﻿from urllib.parse import urlparse
 
 from django.conf import settings
 from django.contrib import admin, messages
@@ -23,7 +23,7 @@ urlpatterns = [
     # Indices
     path('',
         tournaments.views.PublicSiteIndexView.as_view(),
-        name='tabbycat-index'),
+        name='NekoTab-index'),
     path('start/',
         BlankSiteStartView.as_view(),
         name='blank-site-start'),
@@ -96,7 +96,8 @@ def on_user_logged_in(sender, request, **kwargs):
         return
     if kwargs.get('user'):
         messages.info(request,
-            _("Hi, %(user)s — you just logged in!")  % {'user': kwargs['user'].username},
+            _("Hi, %(user)s â€” you just logged in!")  % {'user': kwargs['user'].username},
             fail_silently=True)
     else: # should never happen, but just in case
         messages.info(request, _("Welcome! You just logged in!"), fail_silently=True)
+

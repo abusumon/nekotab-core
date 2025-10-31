@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 from copy import copy
 from decimal import Decimal
 
@@ -330,9 +330,9 @@ class WSDCPreferences(AustralsPreferences):
     draw_rules__draw_pairing_method            = 'fold' # Rule 3.8
     draw_rules__draw_odd_bracket               = 'pullup_top' # Rule 3.7
     draw_rules__max_times_per_side             = 5
-    # Tabbycat currently does not support WSDC-style pull up and so not fully support WSDC-style draw creation.
+    # NekoTab currently does not support WSDC-style pull up and so not fully support WSDC-style draw creation.
     # Hence, this below setting is the closest that we can manage to achive.
-    # TODO: Update when Tabbycat can support WSDC pull-up.
+    # TODO: Update when NekoTab can support WSDC pull-up.
     draw_rules__draw_side_allocations          = 'balance'
     draw_rules__draw_avoid_conflicts           = 'one_up_one_down'
     draw_rules__draw_pullup_restriction        = 'lowest_ds_wins'
@@ -454,3 +454,4 @@ class PublicForms(PreferencesPreset):
 
     data_entry__participant_ballots            = 'public'
     data_entry__participant_feedback           = 'public'
+

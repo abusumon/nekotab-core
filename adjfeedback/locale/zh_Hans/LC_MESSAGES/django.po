@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/tabbycat/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 924\n"
 
 #: adjfeedback/admin.py
@@ -77,19 +77,19 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "chair"
-msgstr "主席"
+msgstr "ä¸»å¸­"
 
 #: adjfeedback/forms.py
 msgid "solo"
-msgstr "單主"
+msgstr "å–®ä¸»"
 
 #: adjfeedback/forms.py
 msgid "panellist"
-msgstr "成员"
+msgstr "æˆå‘˜"
 
 #: adjfeedback/forms.py
 msgid "trainee"
-msgstr "实习生"
+msgstr "å®žä¹ ç”Ÿ"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: adjfeedback/forms.py
@@ -103,7 +103,7 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "Ignored"
-msgstr "不理了"
+msgstr "ä¸ç†äº†"
 
 #. Translators: e.g. "Megan Pearson (chair)", with adjpos="chair"
 #: adjfeedback/forms.py
@@ -118,7 +118,7 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "-- Adjudicators --"
-msgstr "-- 裁判 --"
+msgstr "-- è£åˆ¤ --"
 
 #: adjfeedback/forms.py
 msgid "Adjudicator this feedback is about"
@@ -170,11 +170,11 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "adjudicator"
-msgstr "裁判"
+msgstr "è£åˆ¤"
 
 #: adjfeedback/models.py
 msgid "round"
-msgstr "赛"
+msgstr "èµ›"
 
 #: adjfeedback/models.py
 msgid "score"
@@ -182,7 +182,7 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "timestamp"
-msgstr "时间戳"
+msgstr "æ—¶é—´æˆ³"
 
 #: adjfeedback/models.py
 msgid "adjudicator base score history"
@@ -226,7 +226,7 @@ msgstr ""
 
 #: adjfeedback/models.py adjfeedback/views.py
 msgid "ignored"
-msgstr "不理了"
+msgstr "ä¸ç†äº†"
 
 #: adjfeedback/models.py
 msgid "Whether the feedback should affect the adjudicator's score"
@@ -262,7 +262,7 @@ msgstr ""
 
 #: adjfeedback/tables.py
 msgid "N/A"
-msgstr "不适用"
+msgstr "ä¸é€‚ç”¨"
 
 #: adjfeedback/tables.py
 msgid "Current weighted score"
@@ -510,7 +510,7 @@ msgstr ""
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Ignore"
-msgstr "不理"
+msgstr "ä¸ç†"
 
 #: adjfeedback/templates/feedback_cards_list.html
 msgid "No feedback has been submitted yet"
@@ -560,7 +560,7 @@ msgstr[0] ""
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
-msgid "Score Distributions (range is %(min_score)s–%(max_score)s)"
+msgid "Score Distributions (range is %(min_score)sâ€“%(max_score)s)"
 msgstr ""
 
 #: adjfeedback/templates/overview_breakdowns.html
@@ -596,7 +596,7 @@ msgstr[0] ""
 #, python-format
 msgid "%(c_chairs)s chair"
 msgid_plural "%(c_chairs)s chairs"
-msgstr[0] "%(c_chairs)s位主席"
+msgstr[0] "%(c_chairs)sä½ä¸»å¸­"
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "All adjudicators with a score high enough to vote, but who aren't allocated as chairs, are allocated as panellists by the auto-allocator."
@@ -606,7 +606,7 @@ msgstr ""
 #, python-format
 msgid "%(c_panellists)s panellist"
 msgid_plural "%(c_panellists)s panellists"
-msgstr[0] "%(c_panellists)s的成员"
+msgstr[0] "%(c_panellists)sçš„æˆå‘˜"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
@@ -617,7 +617,7 @@ msgstr ""
 #, python-format
 msgid "%(c_trainees)s trainee"
 msgid_plural "%(c_trainees)s trainees"
-msgstr[0] "%(c_trainees)s个实习生"
+msgstr[0] "%(c_trainees)sä¸ªå®žä¹ ç”Ÿ"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
@@ -648,7 +648,7 @@ msgstr ""
 
 #: adjfeedback/templates/public_add_feedback.html
 msgid "Who are you?"
-msgstr "您是谁？"
+msgstr "æ‚¨æ˜¯è°ï¼Ÿ"
 
 #: adjfeedback/templates/public_add_feedback.html
 msgid "click your name or your team on this list"
@@ -736,11 +736,11 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "A Team"
-msgstr "一个队伍"
+msgstr "ä¸€ä¸ªé˜Ÿä¼"
 
 #: adjfeedback/views.py
 msgid "Team"
-msgstr "队伍"
+msgstr "é˜Ÿä¼"
 
 #: adjfeedback/views.py
 msgid "Institution"
@@ -748,11 +748,11 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "An Adjudicator"
-msgstr "一个裁判"
+msgstr "ä¸€ä¸ªè£åˆ¤"
 
 #: adjfeedback/views.py
 msgid "Adjudicator"
-msgstr "裁判"
+msgstr "è£åˆ¤"
 
 #: adjfeedback/views.py
 #, python-format
@@ -809,4 +809,5 @@ msgstr[0] ""
 #: adjfeedback/views.py
 msgid "Custom Feedback Questions"
 msgstr ""
+
 

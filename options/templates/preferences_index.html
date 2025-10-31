@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load debate_tags add_field_css i18n %}
 
 {% block page-title %}{% trans "Configuration" %}{% endblock %}
-{% block head-title %}<span class="emoji">🔧</span> {% trans "Configuration" %}{% endblock %}
+{% block head-title %}<span class="emoji">ðŸ”§</span> {% trans "Configuration" %}{% endblock %}
 
 {% block content %}
 
@@ -14,37 +14,37 @@
       {% tournamenturl 'options-tournament-section' section='scoring' as url %}
       {% trans "Score Rules" as title %}
       {% trans "The range of scores that can awarded to speeches, replies, and teams" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="💯" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ’¯" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='draw_rules' as url %}
       {% trans "Draw Rules" as title %}
       {% trans "How teams are paired in the draw and how adjudicators are auto-allocated" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="📏" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ“" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='debate_rules' as url %}
       {% trans "Debate Rules" as title %}
       {% trans "How many speeches in a debate, how motions are decided, and whether reply speeches are used" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="🛎" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ›Ž" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='standings' as url %}
       {% trans "Standings" as title %}
       {% trans "How teams and speakers are ranked in the released tabs" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="📊" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ“Š" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='feedback' as url %}
       {% trans "Feedback" as title %}
       {% trans "How adjudicators are ranked and who can submit feedback" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="🙅" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ™…" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='motions' as url %}
       {% trans "Motions" as title %}
       {% trans "How and where are motions used" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="📰" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ“°" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='registration' as url %}
       {% trans "Registration" as title %}
       {% trans "How participants can register for the tournament" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="🖋️" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ–‹ï¸" text=title extra=description %}
 
     </ul>
   </div>
@@ -55,32 +55,32 @@
       {% tournamenturl 'options-tournament-section' section='tab_release' as url %}
       {% trans "Tab Release" as title %}
       {% trans "When to release a public tab is made visible and what data it shows" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="🚨" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸš¨" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='data_entry' as url %}
       {% trans "Data Entry" as title %}
       {% trans "How ballots, feedback, and check-ins are entered, including online submission options" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="📝" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ“" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='public_features' as url %}
       {% trans "Public Features" as title %}
       {% trans "What information the site displays on the publicly accessible pages" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="📢" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ“¢" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='ui_options' as url %}
       {% trans "UI Options" as title %}
       {% trans "Small tweaks in what information is presented by the interface" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="💻" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ’»" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='email' as url %}
       {% trans "Notifications" as title %}
       {% trans "Configures sending notifications, such as emails confirming ballot submissions or team points" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="📧" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸ“§" text=title extra=description %}
 
       {% tournamenturl 'options-tournament-section' section='global' as url %}
       {% trans "Global Settings" as title %}
       {% trans "Settings which can affect all tournaments on the site" as description %}
-      {% include "components/item-action.html" with type="primary" emoji="🌏" text=title extra=description %}
+      {% include "components/item-action.html" with type="primary" emoji="ðŸŒ" text=title extra=description %}
 
     </ul>
   </div>
@@ -92,7 +92,7 @@
     <ul class="list-group">
       {% tournamenturl 'tournament-set-current-round' as url %}
       {% trans "Manually Set Current Round" as title %}
-      {% trans "Tabbycat will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page." as description %}
+      {% trans "NekoTab will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page." as description %}
       {% include "components/item-action.html" with type="primary" icon="clock" text=title extra=description %}
 
       {% tournamenturl 'set-round-weights' as url %}
@@ -132,3 +132,4 @@
 
 </div>
 {% endblock content %}
+

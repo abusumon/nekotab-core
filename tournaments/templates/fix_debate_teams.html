@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load debate_tags add_field_css i18n %}
 
 {% block page-title %}Debate Team Error{% endblock %}
 {% block head-title %}
-  <span class="emoji">‼️</span>{% trans "Debate Team Missing" %}
+  <span class="emoji">â€¼ï¸</span>{% trans "Debate Team Missing" %}
 {% endblock %}
 
 
@@ -14,7 +14,7 @@
 
     <p class="card-text">
       {% blocktrans trimmed %}
-        Tabbycat always requires that, in every debate, one and only one team is
+        NekoTab always requires that, in every debate, one and only one team is
         assigned to each side. When that is not the case, this error occurs.
         Usually, this is the result of debates having been manually edited.
       {% endblocktrans %}
@@ -125,7 +125,7 @@
             <tr>
               <td colspan="{{ side_names|length|add:2 }}" class="text-center table-success">
                 <p>{% trans "It looks like all debates are in good shape!" %}</p>
-                <p>{% trans "If you keep getting redirected to this page and you're not sure why, please contact the developers of Tabbycat." %}</p>
+                <p>{% trans "If you keep getting redirected to this page and you're not sure why, please contact the developers of NekoTab." %}</p>
               </td>
             </tr>
           {% endfor %}
@@ -136,3 +136,4 @@
 </div>
 
 {% endblock %}
+

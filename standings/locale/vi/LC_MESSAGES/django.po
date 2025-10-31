@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: vi\n"
-"X-Crowdin-File: /develop/tabbycat/standings/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/standings/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 950\n"
 
@@ -127,15 +127,15 @@ msgstr ""
 
 #: standings/speakers.py
 msgid "total"
-msgstr "Tổng điểm nói"
+msgstr "Tá»•ng Ä‘iá»ƒm nÃ³i"
 
 #: standings/speakers.py
 msgid "Total"
-msgstr "Tổng"
+msgstr "Tá»•ng"
 
 #: standings/speakers.py
 msgid "average"
-msgstr "Trung bình"
+msgstr "Trung bÃ¬nh"
 
 #: standings/speakers.py
 msgid "Avg"
@@ -147,7 +147,7 @@ msgstr ""
 
 #: standings/speakers.py
 msgid "Team"
-msgstr "Đội"
+msgstr "Äá»™i"
 
 #: standings/speakers.py standings/teams.py standings/views.py
 msgid "Wins"
@@ -191,11 +191,11 @@ msgstr ""
 
 #: standings/speakers.py
 msgid "standard deviation"
-msgstr "Độ lệch chuẩn"
+msgstr "Äá»™ lá»‡ch chuáº©n"
 
 #: standings/speakers.py
 msgid "Stdev"
-msgstr "ĐLC"
+msgstr "ÄLC"
 
 #: standings/speakers.py
 msgid "number of speeches given"
@@ -347,12 +347,12 @@ msgstr ""
 
 #: standings/templates/current_standings.html
 msgid "It also excludes results from silent rounds (if any) and from the current round."
-msgstr "Bảng xếp hạng cũng sẽ không hiển thị kết quả của vòng im lặng và vòng hiện tại."
+msgstr "Báº£ng xáº¿p háº¡ng cÅ©ng sáº½ khÃ´ng hiá»ƒn thá»‹ káº¿t quáº£ cá»§a vÃ²ng im láº·ng vÃ  vÃ²ng hiá»‡n táº¡i."
 
 #: standings/templates/current_standings.html
 #, python-format
 msgid "This list is sorted by team points, then alphabetically by team name. It does not indicate each team's ranking within each bracket. %(silent_round_sentence)s"
-msgstr "Bàng được sắp xếp dựa trên điểm của mỗi đội, rồi theo bảng chữ cái của mỗi đội. Bảng xếp hạng không hiển thị chính xác thứ hạng của mỗi đội trong mỗi khung điểm. %(silent_round_sentence)s"
+msgstr "BÃ ng Ä‘Æ°á»£c sáº¯p xáº¿p dá»±a trÃªn Ä‘iá»ƒm cá»§a má»—i Ä‘á»™i, rá»“i theo báº£ng chá»¯ cÃ¡i cá»§a má»—i Ä‘á»™i. Báº£ng xáº¿p háº¡ng khÃ´ng hiá»ƒn thá»‹ chÃ­nh xÃ¡c thá»© háº¡ng cá»§a má»—i Ä‘á»™i trong má»—i khung Ä‘iá»ƒm. %(silent_round_sentence)s"
 
 #: standings/templates/current_standings.html
 #, python-format
@@ -431,7 +431,7 @@ msgstr ""
 
 #: standings/templates/standings_index.html
 msgid "Standings"
-msgstr "Xếp hạng"
+msgstr "Xáº¿p háº¡ng"
 
 #: standings/templates/standings_index.html
 msgid "Top Speaks"
@@ -486,11 +486,11 @@ msgstr ""
 
 #: standings/templates/standings_menu.html
 msgid "Overview"
-msgstr "Tổng quan"
+msgstr "Tá»•ng quan"
 
 #: standings/templates/standings_menu.html
 msgid "Teams"
-msgstr "Đội"
+msgstr "Äá»™i"
 
 #: standings/templates/standings_menu.html
 msgctxt "All [Teams]"
@@ -499,7 +499,7 @@ msgstr ""
 
 #: standings/templates/standings_menu.html
 msgid "Speakers"
-msgstr "Tranh biện viên"
+msgstr "Tranh biá»‡n viÃªn"
 
 #: standings/templates/standings_menu.html
 msgctxt "Substantive speeches"
@@ -522,11 +522,11 @@ msgstr ""
 
 #: standings/templates/standings_menu.html
 msgid "Replies"
-msgstr "Lượt phản hồi"
+msgstr "LÆ°á»£t pháº£n há»“i"
 
 #: standings/templates/standings_menu.html
 msgid "Motions"
-msgstr "Kiến nghị"
+msgstr "Kiáº¿n nghá»‹"
 
 #: standings/templates/standings_menu.html
 msgid "By Round"
@@ -576,7 +576,7 @@ msgstr ""
 
 #: standings/views.py
 msgid "Speaker Tab"
-msgstr "Bảng người nói"
+msgstr "Báº£ng ngÆ°á»i nÃ³i"
 
 #: standings/views.py
 #, python-format
@@ -606,7 +606,7 @@ msgstr ""
 
 #: standings/views.py
 msgid "Team Tab"
-msgstr "Đội thi"
+msgstr "Äá»™i thi"
 
 #: standings/views.py
 #, python-format
@@ -620,17 +620,18 @@ msgstr ""
 
 #: standings/views.py
 msgid "Current Team Standings"
-msgstr "Bảng xếp hạng đội hiện tại"
+msgstr "Báº£ng xáº¿p háº¡ng Ä‘á»™i hiá»‡n táº¡i"
 
 #: standings/views.py
 msgid "Points"
-msgstr "Điểm"
+msgstr "Äiá»ƒm"
 
 #: standings/views.py
 msgid "Feedback Overview"
 msgstr ""
 
 #: standings/views.py
-msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
+msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
 msgstr ""
+
 

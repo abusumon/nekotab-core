@@ -1,6 +1,6 @@
-msgid ""
+﻿msgid ""
 msgstr ""
-"Project-Id-Version: tabbycat\n"
+"Project-Id-Version: NekoTab\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:47\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: tabbycat\n"
+"X-Crowdin-Project: NekoTab\n"
 "X-Crowdin-Language: id\n"
-"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
@@ -492,7 +492,7 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr "Ini dapat terjadi jika Anda menurunkan seorang panelis menjadi peserta pelatihan setelah hasil telah dikirimkan untuk debat tersebut. Ini mungkin menunjukkan bahwa ada ketidakkonsistenan dalam data hasil, yang dapat menyebabkan hasil yang tidak diharapkan (atau crash). Harap pertimbangkan untuk pergi ke area Edit Database dan menghapus <a href=\"%(editdb_speakerscorebyadj_url)s?debate_adjudicator__type__exact=T\" class=\"alert-link\"> \"pembicara nilai dengan adj\" objek </a>, dan kemudian membuka dan menyimpan kembali hasilnya di sini."
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
@@ -723,7 +723,7 @@ msgstr "Debat ini memiliki panel dengan pemungutan suara juri dalam jumlah genap
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
 msgstr "%(team)s memiliki pembicara yang berbicara beberapa kali di babak terakhir - yaitu pidato orang 'iron'. Harap periksa kertas suara dengan hati-hati untuk melihat apakah hal itu masih berlaku untuk putaran ini. Jika ya, pastikan pembicara yang dipilih di bawah mencerminkan ini."
 
 #: results/templates/ballot_entry_form.html
@@ -1164,4 +1164,5 @@ msgstr "Juri"
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
+
 

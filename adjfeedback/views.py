@@ -1,4 +1,4 @@
-import csv
+﻿import csv
 import json
 import logging
 import math
@@ -27,7 +27,7 @@ from tournaments.models import Round
 from users.permissions import Permission
 from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin, AssistantMixin
-from utils.tables import TabbycatTableBuilder
+from utils.tables import NekoTabTableBuilder
 from utils.views import PostOnlyRedirectView, VueTableTemplateView
 
 from .forms import make_feedback_form_class, UpdateAdjudicatorScoresForm
@@ -119,7 +119,7 @@ class BaseFeedbackOverview(TournamentMixin, VueTableTemplateView):
 class FeedbackOverview(AdministratorMixin, BaseFeedbackOverview):
 
     page_title = gettext_lazy("Feedback Overview")
-    page_emoji = '🙅'
+    page_emoji = 'ðŸ™…'
     for_public = False
     sort_key = 'score'
     sort_order = 'desc'
@@ -145,12 +145,12 @@ class FeedbackOverview(AdministratorMixin, BaseFeedbackOverview):
 class FeedbackByTargetView(AdministratorMixin, TournamentMixin, VueTableTemplateView):
     template_name = "feedback_base.html"
     page_title = gettext_lazy("Find Feedback on Adjudicator")
-    page_emoji = '🔍'
+    page_emoji = 'ðŸ”'
     view_permission = Permission.VIEW_FEEDBACK
 
     def get_table(self):
         adjudicators = self.tournament.adjudicator_set.annotate(feedback_count=Count('adjudicatorfeedback'))
-        table = TabbycatTableBuilder(view=self, sort_key="name")
+        table = NekoTabTableBuilder(view=self, sort_key="name")
         table.add_adjudicator_columns(adjudicators)
         feedback_data = []
         for adj in adjudicators:
@@ -168,14 +168,14 @@ class FeedbackBySourceView(AdministratorMixin, TournamentMixin, VueTableTemplate
 
     template_name = "feedback_base.html"
     page_title = gettext_lazy("Find Feedback")
-    page_emoji = '🔍'
+    page_emoji = 'ðŸ”'
     view_permission = Permission.VIEW_FEEDBACK
 
     def get_tables(self):
         tournament = self.tournament
 
         teams = tournament.team_set.all().annotate(feedback_count=Count('debateteam__adjudicatorfeedback')).prefetch_related('speaker_set')
-        team_table = TabbycatTableBuilder(
+        team_table = NekoTabTableBuilder(
             view=self, title=_('From Teams'), sort_key='team')
         team_table.add_team_columns(teams)
         team_feedback_data = []
@@ -191,7 +191,7 @@ class FeedbackBySourceView(AdministratorMixin, TournamentMixin, VueTableTemplate
         team_table.add_column({'key': 'feedbacks', 'title': _("Feedbacks")}, team_feedback_data)
 
         adjudicators = tournament.adjudicator_set.all().annotate(feedback_count=Count('debateadjudicator__adjudicatorfeedback'))
-        adj_table = TabbycatTableBuilder(
+        adj_table = NekoTabTableBuilder(
             view=self, title=_('From Adjudicators'), sort_key='name')
         adj_table.add_adjudicator_columns(adjudicators)
         adj_feedback_data = []
@@ -281,7 +281,7 @@ class LatestFeedbackView(FeedbackCardsView):
     """View displaying the latest feedback."""
     page_title = gettext_lazy("Latest Feedback")
     page_subtitle = gettext_lazy("(30 most recent)")
-    page_emoji = '🕗'
+    page_emoji = 'ðŸ•—'
 
     def get_feedback_queryset(self):
         queryset = super().get_feedback_queryset()
@@ -292,7 +292,7 @@ class CommentsFeedbackView(FeedbackCardsView):
     """View displaying the latest feedback."""
     page_title = gettext_lazy("Only Comments")
     page_subtitle = gettext_lazy("(250 most recent)")
-    page_emoji = '💬'
+    page_emoji = 'ðŸ’¬'
     only_comments = True
 
     def get_feedback_queryset(self):
@@ -304,7 +304,7 @@ class ImportantFeedbackView(FeedbackCardsView):
     """View displaying the feedback in order of most 'important'."""
     page_title = gettext_lazy("Important Feedback")
     page_subtitle = gettext_lazy("(rating was much higher/lower than expected)")
-    page_emoji = '⁉️'
+    page_emoji = 'â‰ï¸'
 
     def get_feedback_queryset(self):
         queryset = super().get_feedback_queryset()
@@ -370,7 +370,7 @@ class BaseAddFeedbackIndexView(TournamentMixin, VueTableTemplateView):
         tournament = self.tournament
 
         use_code_names = use_team_code_names_data_entry(self.tournament, self.tabroom)
-        teams_table = TabbycatTableBuilder(view=self, sort_key="team", title=_("A Team"))
+        teams_table = NekoTabTableBuilder(view=self, sort_key="team", title=_("A Team"))
         add_link_data = [{
             'text': conditional_escape(team_name_for_data_entry(team, use_code_names)),
             'link': self.get_from_team_link(team),
@@ -383,9 +383,9 @@ class BaseAddFeedbackIndexView(TournamentMixin, VueTableTemplateView):
                 'key': 'institution',
                 'icon': 'home',
                 'tooltip': _("Institution"),
-            }, [escape(team.institution.code) if team.institution else TabbycatTableBuilder.BLANK_TEXT for team in tournament.team_set.all()])
+            }, [escape(team.institution.code) if team.institution else NekoTabTableBuilder.BLANK_TEXT for team in tournament.team_set.all()])
 
-        adjs_table = TabbycatTableBuilder(view=self, sort_key="adjudicator", title=_("An Adjudicator"))
+        adjs_table = NekoTabTableBuilder(view=self, sort_key="adjudicator", title=_("An Adjudicator"))
         adjudicators = tournament.adjudicator_set.all()
 
         add_link_data = [{
@@ -400,7 +400,7 @@ class BaseAddFeedbackIndexView(TournamentMixin, VueTableTemplateView):
                 'key': 'institution',
                 'icon': 'home',
                 'tooltip': _("Institution"),
-            }, [escape(adj.institution.code) if adj.institution else TabbycatTableBuilder.BLANK_TEXT for adj in adjudicators])
+            }, [escape(adj.institution.code) if adj.institution else NekoTabTableBuilder.BLANK_TEXT for adj in adjudicators])
 
         return [teams_table, adjs_table]
 
@@ -688,7 +688,7 @@ class BaseFeedbackProgressView(TournamentMixin, VueTableTemplateView):
 
     page_title = gettext_lazy("Feedback Progress")
     page_subtitle = ''
-    page_emoji = '🆘'
+    page_emoji = 'ðŸ†˜'
 
     def get_feedback_progress(self):
         if not hasattr(self, "_feedback_progress_result"):
@@ -836,7 +836,7 @@ class AdjFeedbackQuestionsFormset(CustomQuestionFormsetView):
     }
     question_model = AdjudicatorFeedback
 
-    page_emoji = '❓'
+    page_emoji = 'â“'
     page_title = gettext_lazy("Custom Feedback Questions")
 
     def get_page_subtitle(self):
@@ -917,3 +917,4 @@ class AdjudicatorFeedbackCsvView(FeedbackMixin, AdministratorMixin, TournamentMi
             row.extend([answers.get(ref, '') for ref in question_references])
 
             writer.writerow(row)
+
