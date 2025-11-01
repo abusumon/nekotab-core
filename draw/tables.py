@@ -23,7 +23,8 @@ class BaseDrawTableBuilder(NekoTabTableBuilder):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.side_history_separator = "Â " if self.tournament.pref('teams_in_debate') == 4 else "Â /Â "
+    # Use non-breaking spaces in separators so side history doesn't wrap
+    self.side_history_separator = "\xa0" if self.tournament.pref('teams_in_debate') == 4 else "\xa0/\xa0"
 
     def highlight_rows_by_column_value(self, column):
         highlighted_rows = [i for i in range(1, len(self.data))

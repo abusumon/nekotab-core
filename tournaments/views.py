@@ -259,7 +259,7 @@ class SetCurrentRoundView(AdministratorMixin, TournamentMixin, FormView):
     slug_url_kwarg = 'tournament_slug'
     redirect_field_name = 'next'
     page_title = _('Set Current Round')
-    page_emoji = 'ðŸ™'
+    page_emoji = '🙏'
 
     view_permission = True
     edit_permission = Permission.CONFIRM_ROUND
@@ -439,7 +439,7 @@ class PublicScheduleView(PublicTournamentPageMixin, VueTableTemplateView):
     cache_timeout = settings.PUBLIC_SLOW_CACHE_TIMEOUT
     public_page_preference = 'public_schedule'
     page_title = _("Tournament Schedule")
-    page_emoji = 'â³'
+    page_emoji = '⏳'
     cache_timeout = settings.PUBLIC_SLOW_CACHE_TIMEOUT
 
     def get_table(self):
@@ -452,4 +452,3 @@ class PublicScheduleView(PublicTournamentPageMixin, VueTableTemplateView):
         context = super().get_context_data(**kwargs)
         context['schedule_timezone_label'] = get_current_timezone_name()
         return context
-
