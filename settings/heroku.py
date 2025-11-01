@@ -70,7 +70,7 @@ ALT_REDIS_URL = PRIMARY_REDIS_URL
 # be closed (Heroku by default closes after 5 minutes)
 # ========================
 # The below config sets a more aggressive timeout but does not limit
-# total connections â€” so the limit of 30 could be theoretically be hit if
+# total connections — so the limit of 30 could be theoretically be hit if
 # running 4 or so dynos. If this becomes a problem then we need to implement
 # a pooling logic that ensures connections are shared amonst unicorn workers
 # ========================
@@ -169,4 +169,3 @@ if not environ.get('DISABLE_SENTRY'):
         send_default_pii=True,
         release=NekoTab_VERSION,
     )
-

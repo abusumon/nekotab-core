@@ -66,7 +66,7 @@ class InviteUserView(LogActionMixin, AdministratorMixin, TournamentMixin, Passwo
     template_name = "invite_user.html"
     action_log_type = ActionLogEntry.ActionType.USER_INVITE
     page_title = _("Invite User")
-    page_emoji = 'ðŸ‘¤'
+    page_emoji = '👤'
 
     subject_template_name = 'account_invitation_subject.txt'
     email_template_name = 'account_invitation_email.html'
@@ -100,4 +100,3 @@ class AcceptInvitationView(TournamentMixin, PasswordResetConfirmView):
         if not self.validlink:
             raise Http404
         return super().get_context_data(**kwargs)
-

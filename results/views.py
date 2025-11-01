@@ -160,7 +160,7 @@ class PublicResultsForRoundView(RoundMixin, PublicTournamentPageMixin, VueTableT
     template_name = "public_results_for_round.html"
     public_page_preference = 'public_results'
     page_title = gettext_lazy("Results")
-    page_emoji = 'ðŸ’¥'
+    page_emoji = '💥'
     default_view = 'team'
     cache_timeout = settings.PUBLIC_SLOW_CACHE_TIMEOUT
 
@@ -1011,4 +1011,3 @@ class AssistantMergeLatestBallotsView(OldAssistantBallotSetMixin, BaseMergeLates
 
     def get_list_url(self):
         return reverse_tournament('results-assistant-round-list', self.tournament)
-

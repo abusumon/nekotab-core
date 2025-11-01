@@ -17,8 +17,8 @@
       <form action="." method="POST">
       {% csrf_token %}
 
-        {% trans "Welcome to NekoTab!" as title %}
-        {% include "components/form-title.html" with emoji="ðŸ‘‹" %}
+  {% trans "Welcome to NekoTab!" as title %}
+  {% include "components/form-title.html" with emoji="👋" %}
 
         {% blocktrans trimmed asvar p1 %}
           To get started, you'll need to create the first user account. This account
@@ -48,4 +48,3 @@
 </div>
 
 {% endblock %}
-

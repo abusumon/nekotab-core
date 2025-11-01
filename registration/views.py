@@ -66,7 +66,7 @@ class CreateInstitutionFormView(LogActionMixin, PublicTournamentPageMixin, Custo
         ('coach', InstitutionCoachForm),
     ]
     template_name = 'institution_registration_form.html'
-    page_emoji = 'ðŸ«'
+    page_emoji = '🏫'
     page_title = gettext_lazy("Register Institution")
 
     public_page_preference = 'institution_registration'
@@ -101,7 +101,7 @@ class BaseCreateTeamFormView(LogActionMixin, PublicTournamentPageMixin, CustomQu
         ('speaker', modelformset_factory(Speaker, form=SpeakerForm, extra=0)),
     ]
     template_name = 'team_registration_form.html'
-    page_emoji = 'ðŸ‘¯'
+    page_emoji = '👥'
 
     public_page_preference = 'open_team_registration'
     action_log_type = ActionLogEntry.ActionType.TEAM_REGISTER
@@ -284,7 +284,7 @@ class PublicCreateTeamFormView(BaseCreateTeamFormView):
 class BaseCreateAdjudicatorFormView(LogActionMixin, PublicTournamentPageMixin, CustomQuestionFormMixin, CreateView):
     form_class = AdjudicatorForm
     template_name = 'adjudicator_registration_form.html'
-    page_emoji = 'ðŸ‘‚'
+    page_emoji = '⚖️'
     page_title = gettext_lazy("Register Adjudicator")
 
     public_page_preference = 'open_adj_registration'
@@ -337,7 +337,7 @@ class PublicCreateAdjudicatorFormView(BaseCreateAdjudicatorFormView):
 class CreateSpeakerFormView(LogActionMixin, PublicTournamentPageMixin, CustomQuestionFormMixin, CreateView):
     form_class = SpeakerForm
     template_name = 'adjudicator_registration_form.html'
-    page_emoji = 'ðŸ‘„'
+    page_emoji = '🗣️'
     page_title = gettext_lazy("Register Speaker")
     action_log_type = ActionLogEntry.ActionType.SPEAKER_REGISTER
 
@@ -451,7 +451,7 @@ def handle_question_columns(table: NekoTabTableBuilder, objects, questions=None,
 
 class InstitutionRegistrationTableView(TournamentMixin, AdministratorMixin, VueTableTemplateView, FormView):
     form_class = ParticipantAllocationForm
-    page_emoji = 'ðŸ«'
+    page_emoji = '🏫'
     page_title = gettext_lazy("Institutional Registration")
     template_name = 'answer_tables/institutions.html'
 
@@ -526,7 +526,7 @@ class InstitutionRegistrationTableView(TournamentMixin, AdministratorMixin, VueT
 
 
 class TeamRegistrationTableView(TournamentMixin, AdministratorMixin, VueTableTemplateView):
-    page_emoji = 'ðŸ‘¯'
+    page_emoji = '👥'
     page_title = gettext_lazy("Team Registration")
     template_name = 'answer_tables/teams.html'
 
@@ -560,7 +560,7 @@ class TeamRegistrationTableView(TournamentMixin, AdministratorMixin, VueTableTem
 
 
 class AdjudicatorRegistrationTableView(TournamentMixin, AdministratorMixin, VueTableTemplateView):
-    page_emoji = 'ðŸ‘‚'
+    page_emoji = '⚖️'
     page_title = gettext_lazy("Adjudicator Registration")
     template_name = 'answer_tables/adjudicators.html'
 
@@ -591,7 +591,7 @@ class CustomQuestionFormsetView(TournamentMixin, AdministratorMixin, ModelFormSe
     view_permission = True
     edit_permission = Permission.EDIT_QUESTIONS
 
-    page_emoji = 'â“'
+    page_emoji = '❓'
     page_title = gettext_lazy("Custom Questions")
 
     def get_page_subtitle(self):
@@ -619,4 +619,3 @@ class CustomQuestionFormsetView(TournamentMixin, AdministratorMixin, ModelFormSe
 
     def get_success_url(self, *args, **kwargs):
         return reverse_tournament(self.success_url, self.tournament)
-
