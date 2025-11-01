@@ -21,6 +21,8 @@
   <meta name="description" content="{{ meta_description }}" />
   <meta property="og:description" content="{{ meta_description }}" />
   <meta property="og:image" content="{% static 'branding/logo.png' %}" />
+  <link rel="manifest" href="{% static 'root/site.webmanifest' %}">
+  <meta name="theme-color" content="#663da0" />
 
   {% block noindex %}
     {% if tournament %}
