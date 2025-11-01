@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block head-title %}<span class="emoji">👋</span> {% trans "Welcome!" %}{% endblock %}
 {% block page-title %}Home{% endblock %}
@@ -10,6 +10,23 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="text-center my-4">
+  <img src="{% static 'branding/logo.png' %}" alt="NekoTab Logo" style="height: 72px; width: auto; object-fit: contain;" />
+  <h2 class="mt-3">{% trans "Run great tournaments with NekoTab" %}</h2>
+  <p class="text-muted">{% trans "Customize, publish, and tab your events—fast and reliably." %}</p>
+
+  <div class="mt-3">
+    <a class="btn btn-success btn-lg mr-2" href="{% url 'tournament-create' %}">
+      {% trans "Create your real tournament" %}
+    </a>
+    {% if user.is_authenticated %}
+      <a class="btn btn-outline-secondary btn-lg" href="#demo-help">
+        {% trans "Hide a demo tournament" %}
+      </a>
+    {% endif %}
+  </div>
+</div>
 
 <div class="text-center my-3">
   <img src="{% static 'branding/logo.png' %}" alt="NekoTab Logo" style="max-width: 200px; height: auto;" />
@@ -68,6 +85,19 @@
       {% include "tournament_index_links.html" with type="dark" subtext=inactive_subtext %}
     {% endfor %}
   </div>
+{% endif %}
+
+{% if user.is_authenticated %}
+<div id="demo-help" class="card mt-3">
+  <div class="card-body">
+    <strong>{% trans "Hiding a demo tournament" %}</strong>
+    <p class="mb-0 text-muted">
+      {% blocktrans %}
+      To hide a demo tournament from the public list, open its <em>Administrator area</em> and mark the tournament as inactive in settings. You can always reactivate it later.
+      {% endblocktrans %}
+    </p>
+  </div>
+</div>
 {% endif %}
 
 <div class="list-group mt-2">
