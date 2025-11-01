@@ -383,7 +383,7 @@ class NekoTabTableBuilder(BaseTableBuilder):
             return {'text': self.BLANK_TEXT}
 
         opp = ts.debate_team.opponent.team
-    opp_vshort = '<i class="emoji">' + escape(opp.emoji) + '</i>' if opp.emoji else "…"
+        opp_vshort = '<i class="emoji">' + escape(opp.emoji) + '</i>' if opp.emoji else "…"
 
         cell = {
             'text': _(" vs %(opposition)s") % {'opposition': opp_vshort if compress else self._team_short_name(opp)},
@@ -1040,4 +1040,3 @@ class NekoTabTableBuilder(BaseTableBuilder):
             for ev in schedule_events
         ]
         self.add_column({'title': _("End Time"), 'key': _("End Time")}, ends)
-

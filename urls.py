@@ -100,4 +100,3 @@ def on_user_logged_in(sender, request, **kwargs):
             fail_silently=True)
     else: # should never happen, but just in case
         messages.info(request, _("Welcome! You just logged in!"), fail_silently=True)
-
