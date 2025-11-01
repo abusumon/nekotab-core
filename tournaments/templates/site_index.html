@@ -11,69 +11,105 @@
 
 {% block content %}
 
-<!-- Hero Section -->
-<div class="card mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
-  <div class="card-body text-center py-5">
-    <img src="{% static 'branding/logo.png' %}" alt="NekoTab" style="max-width: 150px; height: auto; margin-bottom: 1.5rem;">
-    <h1 class="text-white mb-3">Welcome to NekoTab</h1>
-    <p class="text-white mb-4" style="font-size: 1.1rem; opacity: 0.95;">
-      {% trans "Professional debate tournament tabulation software" %}
-    </p>
-    
-    {% if user.is_authenticated %}
-      <div class="d-flex justify-content-center gap-2" style="gap: 1rem;">
-        <a href="{% url 'tournament-create' %}" class="btn btn-light btn-lg">
+{% if not user.is_authenticated %}
+  <!-- Public Landing Page -->
+  <div class="container-fluid px-0">
+    <div class="row no-gutters">
+      <div class="col-12">
+        <div class="jumbotron mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 0;">
+          <div class="container text-center py-5">
+            <h1 class="display-3 font-weight-bold mb-4">NekoTab</h1>
+            <p class="lead mb-4" style="font-size: 1.5rem; max-width: 700px; margin: 0 auto;">
+              {% trans "Professional debate tournament tabulation and management platform" %}
+            </p>
+            <p class="mb-5" style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+              {% trans "Streamline your debate tournaments with powerful tools for draw generation, adjudicator allocation, ballots, and real-time results." %}
+            </p>
+            <a href="{% url 'login' %}" class="btn btn-light btn-lg px-5 py-3" style="font-size: 1.1rem; border-radius: 50px;">
+              <i data-feather="log-in" style="width: 20px; height: 20px;"></i>
+              {% trans "Access Your Tournaments" %}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container my-5">
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="mb-3" style="color: #667eea;">
+                <i data-feather="zap" style="width: 48px; height: 48px;"></i>
+              </div>
+              <h5 class="card-title font-weight-bold">{% trans "Fast & Efficient" %}</h5>
+              <p class="card-text text-muted">{% trans "Automate draw generation, adjudicator allocation, and results processing in seconds." %}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="mb-3" style="color: #667eea;">
+                <i data-feather="users" style="width: 48px; height: 48px;"></i>
+              </div>
+              <h5 class="card-title font-weight-bold">{% trans "Team Collaboration" %}</h5>
+              <p class="card-text text-muted">{% trans "Multiple tab directors and adjudicators can work together seamlessly in real-time." %}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="mb-3" style="color: #667eea;">
+                <i data-feather="bar-chart-2" style="width: 48px; height: 48px;"></i>
+              </div>
+              <h5 class="card-title font-weight-bold">{% trans "Comprehensive Analytics" %}</h5>
+              <p class="card-text text-muted">{% trans "Track speaker scores, team standings, and generate detailed reports instantly." %}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+  <!-- Authenticated User Dashboard -->
+  {% if tournaments %}
+    <div class="mb-4">
+      <h2 class="mb-3">{% trans "Your Tournaments" %}</h2>
+      {% for tournament in tournaments %}
+        {% include "tournament_index_links.html" %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-body text-center py-5">
+        <div class="mb-3" style="color: #667eea;">
+          <i data-feather="calendar" style="width: 64px; height: 64px;"></i>
+        </div>
+        <h3 class="mb-3">{% trans "No Tournaments Yet" %}</h3>
+        <p class="text-muted mb-4">{% trans "Get started by creating your first tournament." %}</p>
+        <a href="{% url 'tournament-create' %}" class="btn btn-primary btn-lg">
           <i data-feather="plus-circle" style="width: 18px; height: 18px;"></i>
           {% trans "Create Tournament" %}
         </a>
       </div>
-    {% else %}
-      <a href="{% url 'login' %}" class="btn btn-light btn-lg">
-        <i data-feather="log-in" style="width: 18px; height: 18px;"></i>
-        {% trans "Log In to Get Started" %}
-      </a>
-    {% endif %}
-  </div>
-</div>
+    </div>
+  {% endif %}
 
-{% for tournament in tournaments %}
-  {% include "tournament_index_links.html" %}
-{% empty %}
-
-  <div class="list-group">
-    {% if user.is_authenticated %}
-
-      {% blocktrans trimmed asvar text %}
-        It looks like there aren't any tournaments on this site. Would you like to create one?
-      {% endblocktrans %}
-      {% url 'tournament-create' as url %}
-      {% include "components/item-action.html" with alone=True type="success" to_complete=True %}
-
-    {% else %}
-
-      {% if inactive %}
-        {% blocktrans trimmed asvar p1 %}
-          There are currently no active tournaments set up on this site.
-        {% endblocktrans %}
-      {% else %}
-        {% blocktrans trimmed asvar p1 %}
-          There are currently no tournaments set up on this site.
-        {% endblocktrans %}
-      {% endif %}
-      {% include "components/explainer-card.html" with type="info" %}
-
-    {% endif %}
-  </div>
-
-{% endfor %}
-
-{% if inactive %}
-  <div class="list-group">
-    {% trans '(inactive)' as inactive_subtext %}
-    {% for tournament in inactive %}
-      {% include "tournament_index_links.html" with type="dark" subtext=inactive_subtext %}
-    {% endfor %}
-  </div>
+  {% if inactive %}
+    <div class="mb-4">
+      <h3 class="mb-3 text-muted">{% trans "Inactive Tournaments" %}</h3>
+      <div class="list-group">
+        {% trans '(inactive)' as inactive_subtext %}
+        {% for tournament in inactive %}
+          {% include "tournament_index_links.html" with type="dark" subtext=inactive_subtext %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
 {% endif %}
 
 <div class="list-group mt-2">
