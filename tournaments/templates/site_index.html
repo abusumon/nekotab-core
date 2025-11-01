@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block head-title %}<span class="emoji">👋</span> {% trans "Welcome!" %}{% endblock %}
 {% block page-title %}Home{% endblock %}
@@ -11,12 +11,37 @@
 
 {% block content %}
 
+<!-- Hero Section -->
+<div class="card mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+  <div class="card-body text-center py-5">
+    <img src="{% static 'branding/logo.png' %}" alt="NekoTab" style="max-width: 150px; height: auto; margin-bottom: 1.5rem;">
+    <h1 class="text-white mb-3">Welcome to NekoTab</h1>
+    <p class="text-white mb-4" style="font-size: 1.1rem; opacity: 0.95;">
+      {% trans "Professional debate tournament tabulation software" %}
+    </p>
+    
+    {% if user.is_authenticated %}
+      <div class="d-flex justify-content-center gap-2" style="gap: 1rem;">
+        <a href="{% url 'tournament-create' %}" class="btn btn-light btn-lg">
+          <i data-feather="plus-circle" style="width: 18px; height: 18px;"></i>
+          {% trans "Create Tournament" %}
+        </a>
+      </div>
+    {% else %}
+      <a href="{% url 'login' %}" class="btn btn-light btn-lg">
+        <i data-feather="log-in" style="width: 18px; height: 18px;"></i>
+        {% trans "Log In to Get Started" %}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
 {% for tournament in tournaments %}
   {% include "tournament_index_links.html" %}
 {% empty %}
 
   <div class="list-group">
-    {% if user.is_authenticated and not has_inactive %}
+    {% if user.is_authenticated %}
 
       {% blocktrans trimmed asvar text %}
         It looks like there aren't any tournaments on this site. Would you like to create one?
