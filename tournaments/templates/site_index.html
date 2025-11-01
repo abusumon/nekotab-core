@@ -11,6 +11,25 @@
 
 {% block content %}
 
+<div class="text-center my-3">
+  <img src="{% static 'branding/logo.png' %}" alt="NekoTab Logo" style="max-width: 200px; height: auto;" />
+  <div class="lead mt-2">Customize this page and logo to your branding.</div>
+</div>
+
+{% if user.is_authenticated %}
+  <div class="list-group">
+    {% trans "Create your real tournament now" as text %}{% url 'tournament-create' as url %}
+    {% include "components/item-action.html" with icon="plus-circle" alone=True type="success" to_complete=True %}
+
+    {% if tournaments %}
+      {% blocktrans trimmed asvar p1 %}
+        If you're using a demo tournament, you can hide it by opening its Admin area and setting it inactive in tournament settings.
+      {% endblocktrans %}
+      {% include "components/explainer-card.html" with type="info" %}
+    {% endif %}
+  </div>
+{% endif %}
+
 {% for tournament in tournaments %}
   {% include "tournament_index_links.html" %}
 {% empty %}
