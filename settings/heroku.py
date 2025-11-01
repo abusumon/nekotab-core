@@ -47,10 +47,16 @@ DATABASES = {
 
 # Use a separate Redis addon for channels to reduce number of connections
 # With fallback for Tabbykitten installs (no addons) or pre-2.2 instances
-if environ.get('REDISCLOUD_URL'):
-    ALT_REDIS_URL = environ.get('REDISCLOUD_URL') # 30 clients on free
-else:
-    ALT_REDIS_URL = environ.get('REDIS_URL') # 20 clients on free
+# Prefer a TLS URL when provided by the add-on (e.g., REDIS_TLS_URL)
+REDIS_TLS_URL = environ.get('REDIS_TLS_URL')
+REDISCLOUD_URL = environ.get('REDISCLOUD_URL')
+REDIS_URL = environ.get('REDIS_URL')
+
+# Primary Redis URL preference order: TLS URL > provider URL > generic URL
+PRIMARY_REDIS_URL = REDIS_TLS_URL or REDISCLOUD_URL or REDIS_URL
+
+# Backwards-compatible alias used in cache settings below
+ALT_REDIS_URL = PRIMARY_REDIS_URL
 
 # Connection/Pooling Notes
 # ========================
@@ -99,8 +105,9 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
+                # Use the same primary Redis URL; if it's rediss:// TLS is used
                 "hosts": [{
-                    "address": environ.get('REDIS_URL'),
+                    "address": PRIMARY_REDIS_URL,
                     **({"ssl_cert_reqs": None} if _INSECURE_REDIS else {}),
                 }],
             # Remove channels from groups after 3 hours
