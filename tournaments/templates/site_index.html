@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n static %}
+{% load i18n %}
 
 {% block head-title %}<span class="emoji">👋</span> {% trans "Welcome!" %}{% endblock %}
 {% block page-title %}Home{% endblock %}
@@ -11,45 +11,12 @@
 
 {% block content %}
 
-<div class="text-center my-4">
-  <img src="{% static 'branding/logo.png' %}" alt="NekoTab Logo" style="height: 72px; width: auto; object-fit: contain;" />
-  <h2 class="mt-3">{% trans "Run great tournaments with NekoTab" %}</h2>
-  <p class="text-muted">{% trans "Customize, publish, and tab your events—fast and reliably." %}</p>
-
-  <div class="mt-3">
-    <a class="btn btn-success btn-lg mr-2" href="{% url 'tournament-create' %}">
-      {% trans "Create your real tournament" %}
-    </a>
-    {% if user.is_authenticated %}
-      <a class="btn btn-outline-secondary btn-lg" href="#demo-help">
-        {% trans "Hide a demo tournament" %}
-      </a>
-    {% endif %}
-  </div>
-</div>
-
-{# Secondary note removed to avoid duplication; hero above already shows the logo and CTA #}
-
-{% if user.is_authenticated %}
-  <div class="list-group">
-    {% trans "Create your real tournament now" as text %}{% url 'tournament-create' as url %}
-    {% include "components/item-action.html" with icon="plus-circle" alone=True type="success" to_complete=True %}
-
-    {% if tournaments %}
-      {% blocktrans trimmed asvar p1 %}
-        If you're using a demo tournament, you can hide it by opening its Admin area and setting it inactive in tournament settings.
-      {% endblocktrans %}
-      {% include "components/explainer-card.html" with type="info" %}
-    {% endif %}
-  </div>
-{% endif %}
-
 {% for tournament in tournaments %}
   {% include "tournament_index_links.html" %}
 {% empty %}
 
   <div class="list-group">
-  {% if user.is_authenticated and not inactive %}
+    {% if user.is_authenticated and not has_inactive %}
 
       {% blocktrans trimmed asvar text %}
         It looks like there aren't any tournaments on this site. Would you like to create one?
@@ -82,19 +49,6 @@
       {% include "tournament_index_links.html" with type="dark" subtext=inactive_subtext %}
     {% endfor %}
   </div>
-{% endif %}
-
-{% if user.is_authenticated %}
-<div id="demo-help" class="card mt-3">
-  <div class="card-body">
-    <strong>{% trans "Hiding a demo tournament" %}</strong>
-    <p class="mb-0 text-muted">
-      {% blocktrans %}
-      To hide a demo tournament from the public list, open its <em>Administrator area</em> and mark the tournament as inactive in settings. You can always reactivate it later.
-      {% endblocktrans %}
-    </p>
-  </div>
-</div>
 {% endif %}
 
 <div class="list-group mt-2">
