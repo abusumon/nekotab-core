@@ -6,6 +6,34 @@ from django.utils.translation import gettext_lazy as _
 from .models import Membership
 
 
+class UserSignupForm(UserCreationForm):
+    """A form for public user registration."""
+    
+    email = forms.EmailField(
+        required=True,
+        label=_("Email address"),
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('you@example.com')})
+    )
+
+    class Meta(UserCreationForm.Meta):
+        fields = ("username", "email", "password1", "password2")
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Choose a username')}),
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password1'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Create a password')})
+        self.fields['password2'].widget.attrs.update({'class': 'form-control', 'placeholder': _('Confirm password')})
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data["email"]
+        if commit:
+            user.save()
+        return user
+
+
 class SuperuserCreationForm(UserCreationForm):
     """A form that creates a superuser from the given username and password."""
 

@@ -102,20 +102,27 @@
     </ul>
 
     <ul class="navbar-nav navbar-my-lg-0">
-      <li class="nav-item">
-        {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
+        <li class="nav-item">
           <form id="logout-form" action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-link nav-link">
               {% trans "Log Out" %} ({{ user }})
             </button>
           </form>
-        {% else %}
+        </li>
+      {% else %}
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">
-            {% trans "Login" %}
+            {% trans "Log In" %}
           </a>
-        {% endif %}
-      </li>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary ml-2" href="{% url 'signup' %}" style="border-radius: 8px; padding: 0.4rem 1.2rem; font-weight: 600;">
+            {% trans "Sign Up" %}
+          </a>
+        </li>
+      {% endif %}
     </ul>
 
   </div>

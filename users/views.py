@@ -16,10 +16,23 @@ from tournaments.mixins import TournamentMixin
 from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin
 
-from .forms import AcceptInvitationForm, InviteUserForm, SuperuserCreationForm
+from .forms import AcceptInvitationForm, InviteUserForm, SuperuserCreationForm, UserSignupForm
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
+
+
+class SignupView(FormView):
+    """Public user registration view."""
+    form_class = UserSignupForm
+    template_name = "registration/signup.html"
+    success_url = reverse_lazy('NekoTab-index')
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        messages.success(self.request, _("Welcome! Your account has been created successfully."))
+        return super().form_valid(form)
 
 
 class BlankSiteStartView(FormView):
