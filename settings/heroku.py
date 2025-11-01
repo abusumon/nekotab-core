@@ -69,24 +69,28 @@ else:
 # a pooling logic that ensures connections are shared amonst unicorn workers
 # ========================
 
+# Allow temporarily disabling strict TLS verification only when explicitly
+# permitted via an environment variable (see note below). By default we keep
+# verification enabled — do not leave the following enabled in production.
+_INSECURE_REDIS = environ.get('INSECURE_REDIS', '') == '1'
+
+CONNECTION_POOL_KWARGS = {}
+if _INSECURE_REDIS:
+    # WARNING: only use this flag temporarily for troubleshooting with
+    # providers that use an unusual CA chain. Prefer fixing the provider's
+    # certificate chain or adding the CA to the environment's trust store.
+    CONNECTION_POOL_KWARGS = {"ssl_cert_reqs": None}
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": ALT_REDIS_URL,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                # "IGNORE_EXCEPTIONS": True, # Supresses ConnectionError at max
-                # If Redis is provided with TLS and the provider uses a non-standard
-                # certificate chain the SSL verification can fail during build-time
-                # (`certificate verify failed: self-signed certificate in certificate chain`).
-                # Setting `ssl_cert_reqs` to None in the connection pool kwargs disables
-                # certificate verification which allows the build-time checks to succeed.
-                # Note: This reduces TLS verification strictness; for production you
-                # should ensure the Redis provider uses a trusted certificate chain.
-                "CONNECTION_POOL_KWARGS": {"ssl_cert_reqs": None},
-                # "CONNECTION_POOL_KWARGS": {"max_connections": 5} # See above
-                "SOCKET_CONNECT_TIMEOUT": 5,
-                "SOCKET_TIMEOUT": 60,
+            # Optional connection pool kwargs (only set when INSECURE_REDIS=1)
+            **({"CONNECTION_POOL_KWARGS": CONNECTION_POOL_KWARGS} if CONNECTION_POOL_KWARGS else {}),
+            "SOCKET_CONNECT_TIMEOUT": 5,
+            "SOCKET_TIMEOUT": 60,
         },
     },
 }
@@ -95,10 +99,10 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [{
-                "address": environ.get('REDIS_URL'),
-                "ssl_cert_reqs": None,
-            }],
+                "hosts": [{
+                    "address": environ.get('REDIS_URL'),
+                    **({"ssl_cert_reqs": None} if _INSECURE_REDIS else {}),
+                }],
             # Remove channels from groups after 3 hours
             # This matches websocket_timeout in Daphne
             "group_expiry": 10800,
