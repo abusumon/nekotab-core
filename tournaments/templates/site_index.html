@@ -12,70 +12,146 @@
 {% block content %}
 
 {% if not user.is_authenticated %}
-  <!-- Public Landing Page -->
-  <div class="container-fluid px-0">
-    <div class="row no-gutters">
-      <div class="col-12">
-        <div class="jumbotron mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 0;">
-          <div class="container text-center py-5">
-            <h1 class="display-3 font-weight-bold mb-4">NekoTab</h1>
-            <p class="lead mb-4" style="font-size: 1.5rem; max-width: 700px; margin: 0 auto;">
-              {% trans "Professional debate tournament tabulation and management platform" %}
-            </p>
-            <p class="mb-5" style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
-              {% trans "Streamline your debate tournaments with powerful tools for draw generation, adjudicator allocation, ballots, and real-time results." %}
-            </p>
-            <a href="{% url 'login' %}" class="btn btn-light btn-lg px-5 py-3" style="font-size: 1.1rem; border-radius: 50px;">
-              <i data-feather="log-in" style="width: 20px; height: 20px;"></i>
-              {% trans "Access Your Tournaments" %}
+  <!-- Immersive Public Hero -->
+  <section id="hero" class="d-flex align-items-center" style="min-height: 85vh; position: relative; overflow: hidden; background: linear-gradient(135deg,#0f172a 0,#0b1220 40%, #1f2a44 100%); color: #fff;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-7 text-left text-white">
+          <h1 class="display-4 font-weight-bold" style="line-height: 1.05;">{% trans "Run Your Debate Tournaments Effortlessly." %}</h1>
+          <p class="lead mt-3 mb-4" style="font-size:1.25rem; max-width: 720px; opacity: 0.9;">
+            {% trans "Beautiful, reliable, and local — host tournaments for just ৳2500, paid easily with bKash." %}
+          </p>
+
+          <div class="d-flex flex-wrap align-items-center">
+            <a href="{% url 'login' %}?next={% url 'tournament-create' %}" class="btn btn-primary btn-lg mr-3 mb-2" style="border-radius: 999px; padding: 0.9rem 1.6rem;">
+              {% trans "Host Your Tournament" %}
             </a>
+
+            <button class="btn btn-outline-light btn-lg mb-2" data-toggle="modal" data-target="#demoModal" style="border-radius: 999px; padding: 0.9rem 1.6rem;">
+              {% trans "Watch Demo" %}
+            </button>
+          </div>
+
+          <!-- Stat counters -->
+          <div class="d-flex flex-wrap mt-4" style="gap: 1.5rem;">
+            <div>
+              <div class="h3 mb-0" data-target="120">0</div>
+              <div class="text-muted">{% trans "Debaters" %}</div>
+            </div>
+            <div>
+              <div class="h3 mb-0" data-target="10">0</div>
+              <div class="text-muted">{% trans "Tournaments Hosted" %}</div>
+            </div>
+            <div>
+              <div class="h3 mb-0" data-target="99.9">0</div>
+              <div class="text-muted">{% trans "Uptime (%)" %}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5 d-none d-md-block" style="position: relative;">
+          <!-- Floating dashboard mockup -->
+          <div style="width: 100%; max-width: 420px; margin-left: auto; transform: translateY(0); animation: float 6s ease-in-out infinite;">
+            <div class="card shadow-lg" style="border-radius: 18px; overflow: hidden;">
+              <div style="background: linear-gradient(90deg, #ffffff 0%, #f6f7fb 100%); padding: 1rem;">
+                <div style="height: 220px; background: linear-gradient(180deg, #eef2ff 0%, #ffffff 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #334155; font-weight: 600;">Dashboard Mockup</div>
+                <div style="display:flex; gap:0.5rem; margin-top:0.8rem;">
+                  <div style="flex:1; height:10px; background:#e5e7eb; border-radius:6px"></div>
+                  <div style="flex:1.5; height:10px; background:#e0e7ff; border-radius:6px"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Features Section -->
-    <div class="container my-5">
-      <div class="row text-center">
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body p-4">
-              <div class="mb-3" style="color: #667eea;">
-                <i data-feather="zap" style="width: 48px; height: 48px;"></i>
-              </div>
-              <h5 class="card-title font-weight-bold">{% trans "Fast & Efficient" %}</h5>
-              <p class="card-text text-muted">{% trans "Automate draw generation, adjudicator allocation, and results processing in seconds." %}</p>
-            </div>
+    <!-- Demo Modal -->
+    <div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="demoModalLabel">{% trans "NekoTab Demo" %}</h5>
+            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body p-4">
-              <div class="mb-3" style="color: #667eea;">
-                <i data-feather="users" style="width: 48px; height: 48px;"></i>
-              </div>
-              <h5 class="card-title font-weight-bold">{% trans "Team Collaboration" %}</h5>
-              <p class="card-text text-muted">{% trans "Multiple tab directors and adjudicators can work together seamlessly in real-time." %}</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body p-4">
-              <div class="mb-3" style="color: #667eea;">
-                <i data-feather="bar-chart-2" style="width: 48px; height: 48px;"></i>
-              </div>
-              <h5 class="card-title font-weight-bold">{% trans "Comprehensive Analytics" %}</h5>
-              <p class="card-text text-muted">{% trans "Track speaker scores, team standings, and generate detailed reports instantly." %}</p>
+          <div class="modal-body" style="min-height: 360px;">
+            <!-- Embedded demo video - replace href with your video -->
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+    <style>
+      @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0); } }
+      #hero .display-4 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
+      .embed-responsive { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; }
+      .embed-responsive::before { display: block; content: ""; }
+    </style>
+
+    <script>
+      // small counter animation
+      (function(){
+        function animateCounters(){
+          document.querySelectorAll('#hero [data-target]').forEach(function(el){
+            var target = parseFloat(el.getAttribute('data-target')) || 0;
+            var isFloat = (el.getAttribute('data-target').indexOf('.') !== -1);
+            var duration = 1400; var start = 0; var startTime = null;
+            function step(timestamp){
+              if(!startTime) startTime = timestamp;
+              var progress = Math.min((timestamp - startTime) / duration, 1);
+              var value = start + (target - start) * progress;
+              el.textContent = isFloat ? value.toFixed(1) : Math.floor(value);
+              if(progress < 1) window.requestAnimationFrame(step);
+            }
+            window.requestAnimationFrame(step);
+          });
+        }
+        if(document.readyState === 'complete') animateCounters(); else window.addEventListener('load', animateCounters);
+      })();
+    </script>
+  </section>
+
+  <!-- USP Section -->
+  <section class="py-5" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="h3 font-weight-bold">{% trans "What Makes NekoTab Different" %}</h2>
+        <p class="text-muted">{% trans "Built for speed, fairness and simplicity." %}</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="p-4 rounded shadow-sm" style="backdrop-filter: blur(6px); background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03);">
+            <div style="color:#667eea; font-size: 28px;">⚙️</div>
+            <h5 class="mt-3">{% trans "Smart Tab Engine" %}</h5>
+            <p class="text-muted">{% trans "Built on the trusted Tabbycat core, with custom automation for faster pairing and tab releases." %}</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="p-4 rounded shadow-sm" style="backdrop-filter: blur(6px); background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03);">
+            <div style="color:#667eea; font-size: 28px;">💳</div>
+            <h5 class="mt-3">{% trans "Transparent Pricing" %}</h5>
+            <p class="text-muted">{% trans "Flat ৳2500 per tournament, no hidden cost. Pay securely through bKash." %}</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="p-4 rounded shadow-sm" style="backdrop-filter: blur(6px); background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03);">
+            <div style="color:#667eea; font-size: 28px;">📱</div>
+            <h5 class="mt-3">{% trans "Works on Any Device" %}</h5>
+            <p class="text-muted">{% trans "Optimized for desktop, tablet, and mobile — perfect for tab rooms and on-the-go judges." %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% else %}
-  <!-- Authenticated User Dashboard -->
+  <!-- Authenticated User Dashboard: only show tournaments the user arranged -->
   {% if tournaments %}
     <div class="mb-4">
       <h2 class="mb-3">{% trans "Your Tournaments" %}</h2>
