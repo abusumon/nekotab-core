@@ -29,4 +29,3 @@ def debate_context(request):
             context['round'] = request.round
 
     return context
-
