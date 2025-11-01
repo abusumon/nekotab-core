@@ -43,16 +43,13 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
 
     def get(self, request, *args, **kwargs):
         tournaments = Tournament.objects.all()
-        if request.GET.get('redirect', '') == 'false':
-            return super().get(request, *args, **kwargs)
-        if tournaments.count() == 1 and not request.user.is_authenticated:
-            logger.debug('One tournament only, user is: %s, redirecting to tournament-public-index', request.user)
-            return redirect_tournament('tournament-public-index', tournaments.first())
-        elif not tournaments.exists() and not User.objects.exists():
+        # Always render the landing page, even if there is only one tournament.
+        # Keep the initial-setup shortcut to the blank-site start when there are
+        # no tournaments and no users yet.
+        if not tournaments.exists() and not User.objects.exists():
             logger.debug('No users and no tournaments, redirecting to blank-site-start')
             return redirect('blank-site-start')
-        else:
-            return super().get(request, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         kwargs['tournaments'] = Tournament.objects.filter(active=True)
