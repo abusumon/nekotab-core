@@ -157,26 +157,26 @@ class BPHungarianDrawGenerator(BaseBPDrawGenerator):
     }
 
     @staticmethod
-    def get_entropy_position_cost_function(α):  # noqa: N803
-        if α == 1.0:
-            logger.info("Using Shannon entropy (α = 1)")
+    def get_entropy_position_cost_function(alpha):  # noqa: N803
+        if alpha == 1.0:
+            logger.info("Using Shannon entropy (alpha = 1)")
             return BPHungarianDrawGenerator._position_cost_shannon_entropy
-        elif α == 0.0:
-            logger.info("Using min-entropy (α = 0)")
+        elif alpha == 0.0:
+            logger.info("Using min-entropy (alpha = 0)")
             return BPHungarianDrawGenerator._position_cost_min_entropy
-        elif α > 0.0:
-            logger.info("Using Rényi entropy with α = %f", α)
-            return BPHungarianDrawGenerator._get_position_cost_renyi_entropy_function(α)
+        elif alpha > 0.0:
+            logger.info("Using Rényi entropy with alpha = %f", alpha)
+            return BPHungarianDrawGenerator._get_position_cost_renyi_entropy_function(alpha)
         else:
             raise DrawUserError(_("The Rényi order can't be negative, and it's currently set "
-                "to %(alpha)f.") % {'alpha': α})
+                "to %(alpha)f.") % {'alpha': alpha})
 
     def get_position_cost_function(self):
         """Extension of self.get_option_function() that includes special
         handling for the "entropy" option."""
         if self.options["position_cost"] == "entropy":
-            α = self.options["renyi_order"]  # noqa: N806
-            return self.get_entropy_position_cost_function(α)
+            alpha = self.options["renyi_order"]  # noqa: N806
+            return self.get_entropy_position_cost_function(alpha)
         else:  # fall back to general implementation
             return self.get_option_function("position_cost", self.POSITION_COST_FUNCTIONS)
 
@@ -209,12 +209,12 @@ class BPHungarianDrawGenerator(BaseBPDrawGenerator):
         return (2 - log2(sum(p > 0 for p in history))) * sum(history)
 
     @staticmethod
-    def _get_position_cost_renyi_entropy_function(α):  # noqa: N803
+    def _get_position_cost_renyi_entropy_function(alpha):  # noqa: N803
         def _position_cost_renyi_entropy(pos, history):
             history = BPHungarianDrawGenerator._update_history(pos, history)
             n = sum(history)
             probs = [p/n for p in history]
-            return (2 - log2(sum([p ** α for p in probs])) / (1 - α)) * n
+            return (2 - log2(sum([p ** alpha for p in probs])) / (1 - alpha)) * n
         return _position_cost_renyi_entropy
 
     def generate_cost_matrix(self, rooms):

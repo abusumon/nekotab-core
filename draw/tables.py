@@ -234,9 +234,9 @@ class BasePositionBalanceReportTableBuilder(BaseDrawTableBuilder):
         self.exponent = self.tournament.pref('bp_position_cost_exponent')
 
         cost_pref = self.tournament.pref('bp_position_cost')
-        Î± = self.tournament.pref('bp_renyi_order')  # noqa: N806
+        alpha = self.tournament.pref('bp_renyi_order')  # noqa: N806
         if cost_pref == "entropy":
-            self.position_cost_func = BPHungarianDrawGenerator.get_entropy_position_cost_function(Î±)
+            self.position_cost_func = BPHungarianDrawGenerator.get_entropy_position_cost_function(alpha)
         else:
             self.position_cost_func = getattr(BPHungarianDrawGenerator, BPHungarianDrawGenerator.POSITION_COST_FUNCTIONS[cost_pref])
 
