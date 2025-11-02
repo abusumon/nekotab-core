@@ -1,6 +1,6 @@
 ﻿{% load debate_tags static i18n %}
 
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" style="padding: 1rem 0;">
   <div class="container">
 
   {# Decisions about whether to show items in the menu are based on the role of the user (not the view). #}
@@ -11,11 +11,11 @@
     <div class="nav-item dropdown">
 
       <button class="btn btn-link mr-2 p-0 navbar-brand dropdown-toggle" id="tournamentdrop"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-weight: 700; font-size: 1.25rem; color: #1e293b; text-decoration: none;">
         {% if on_local %}
-          {% include "nav/logo_local.html" with width=33 height=33 alt=logo_alt %}
+          {% include "nav/logo_local.html" with width=36 height=36 alt=logo_alt %}
         {% else %}
-          {% include "nav/logo.html" with width=33 height=33 alt=logo_alt %}
+          {% include "nav/logo.html" with width=36 height=36 alt=logo_alt %}
         {% endif %}
         {% if tournament %}{{ tournament }}{% else %}NekoTab{% endif %}
       </button>
@@ -72,26 +72,22 @@
     <div class="nav-item">
 
       {% if tournament %}
-        <a class="navbar-brand d-flex align-items-center" href="{{ tournament.get_public_url  }}" style="font-weight: 700; letter-spacing: -0.02em;">
-          {% include "nav/logo.html" with width=40 height=40  alt=logo_alt %}
-          <span class="ml-2" style="font-size: 1.15rem;">{{ tournament }}</span>
+        <a class="navbar-brand d-flex align-items-center" href="{{ tournament.get_public_url  }}" style="font-weight: 700; font-size: 1.25rem; color: #1e293b; text-decoration: none;">
+          {% include "nav/logo.html" with width=36 height=36  alt=logo_alt %}
+          <span class="ml-2">{{ tournament }}</span>
         </a>
       {% else %}
-        <a class="navbar-brand d-flex align-items-center" href="/" style="font-weight: 700; letter-spacing: -0.02em;">
-          {% include "nav/logo.html" with width=40 height=40 alt=logo_alt %}
-          <span class="ml-2" style="font-size: 1.15rem;">NekoTab</span>
+        <a class="navbar-brand d-flex align-items-center" href="/" style="font-weight: 700; font-size: 1.25rem; color: #1e293b; text-decoration: none;">
+          {% include "nav/logo.html" with width=36 height=36 alt=logo_alt %}
+          <span class="ml-2">NekoTab</span>
         </a>
       {% endif %}
 
     </div>
   {% endif %}
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsed-main-nav" aria-controls="collapsed-main-nav" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
-    <span class="navbar-toggler-icon" style="background-size: 100% 100%;"></span>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="vertical-align: middle;">
-      <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <span class="sr-only">Toggle navigation</span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsed-main-nav" aria-controls="collapsed-main-nav" aria-expanded="false" aria-label="Toggle navigation" style="border: 1px solid #e2e8f0; padding: 0.5rem;">
+    <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse pt-3 pt-md-0 pb-2 pb-md-0" id="collapsed-main-nav">
@@ -106,24 +102,24 @@
 
     </ul>
 
-    <ul class="navbar-nav navbar-my-lg-0">
+    <ul class="navbar-nav ml-auto align-items-lg-center">
       {% if user.is_authenticated %}
         <li class="nav-item">
           <form id="logout-form" action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-link nav-link">
+            <button type="submit" class="btn btn-link nav-link" style="color: #64748b; font-weight: 500;">
               {% trans "Log Out" %} ({{ user }})
             </button>
           </form>
         </li>
       {% else %}
-        <li class="nav-item mr-2">
-          <a class="btn btn-outline-primary" href="{% url 'login' %}" style="border-radius: 999px; padding: 0.5rem 1.3rem; font-weight: 600; border-width: 2px;">
+        <li class="nav-item mr-2 mb-2 mb-lg-0">
+          <a class="btn btn-outline-primary" href="{% url 'login' %}" style="padding: 0.6rem 1.5rem; font-weight: 600; border-radius: 8px; border-width: 2px;">
             {% trans "Log In" %}
           </a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-primary" href="{% url 'signup' %}" style="border-radius: 999px; padding: 0.5rem 1.3rem; font-weight: 600; box-shadow: 0 4px 14px rgba(102, 126, 234, 0.3);">
+        <li class="nav-item mb-2 mb-lg-0">
+          <a class="btn btn-primary" href="{% url 'signup' %}" style="padding: 0.6rem 1.5rem; font-weight: 600; border-radius: 8px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);">
             {% trans "Sign Up" %}
           </a>
         </li>

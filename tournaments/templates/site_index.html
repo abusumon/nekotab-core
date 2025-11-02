@@ -1,432 +1,953 @@
-{% extends "base.html" %}
-{% load i18n static %}
+{% extends "base.html" %}{% extends "base.html" %}
 
-{% block head-title %}<span class="emoji">👋</span> {% trans "Welcome!" %}{% endblock %}
-{% block page-title %}Home{% endblock %}
+{% load i18n static %}{% load i18n static %}
 
-{% block page-alerts %}
-  {% include 'errors/database_limit_warning.html' %}
-  {% include 'errors/legacy_sendgrid_warning.html' %}
-{% endblock %}
 
-{% block content %}
 
-{% if not user.is_authenticated %}
+{% block head-title %}<span class="emoji">👋</span> {% trans "Welcome!" %}{% endblock %}{% block head-title %}<span class="emoji">👋</span> {% trans "Welcome!" %}{% endblock %}
+
+{% block page-title %}Home{% endblock %}{% block page-title %}Home{% endblock %}
+
+
+
+{% block page-alerts %}{% block page-alerts %}
+
+  {% include 'errors/database_limit_warning.html' %}  {% include 'errors/database_limit_warning.html' %}
+
+  {% include 'errors/legacy_sendgrid_warning.html' %}  {% include 'errors/legacy_sendgrid_warning.html' %}
+
+{% endblock %}{% endblock %}
+
+
+
+{% block content %}{% block content %}
+
+
+
+{% if not user.is_authenticated %}{% if not user.is_authenticated %}
+
   <!-- Hero Section: World-Class Professional Design -->
-  <section id="hero" class="position-relative d-flex align-items-center" style="min-height: 100vh; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #667eea 100%); overflow: hidden;">
-    <!-- Animated Particles Background -->
-    <div class="position-absolute w-100 h-100" style="top: 0; left: 0;">
-      <div class="particles-bg" style="position: absolute; width: 100%; height: 100%; background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
-        background-size: 100% 100%;
-        animation: float 20s ease-in-out infinite;">
+
+<style>  <section id="hero" class="position-relative d-flex align-items-center" style="min-height: 100vh; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #667eea 100%); overflow: hidden;">
+
+  /* Clean Modern Landing Page Design */    <!-- Animated Particles Background -->
+
+  .landing-hero {    <div class="position-absolute w-100 h-100" style="top: 0; left: 0;">
+
+    min-height: 90vh;      <div class="particles-bg" style="position: absolute; width: 100%; height: 100%; background-image: 
+
+    display: flex;        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
+
+    align-items: center;        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
+
+    padding: 100px 0 80px;        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);        background-size: 100% 100%;
+
+  }        animation: float 20s ease-in-out infinite;">
+
+        </div>
+
+  .hero-content {    </div>
+
+    max-width: 720px;    
+
+    margin: 0 auto;    <div class="container position-relative" style="z-index: 10; padding: 4rem 1.5rem;">
+
+    text-align: center;      <div class="row align-items-center">
+
+  }        <div class="col-lg-7 col-md-12 mb-5 mb-lg-0">
+
+            <!-- Logo & Brand -->
+
+  .hero-logo {          <div class="mb-5 d-flex align-items-center animate-fade-in">
+
+    width: 80px;            <img src="{% static 'branding/logo.png' %}" alt="NekoTab" style="width: 90px; height: 90px; margin-right: 1.2rem; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));">
+
+    height: 80px;            <div>
+
+    margin-bottom: 2rem;              <h2 class="text-white font-weight-bold mb-0" style="font-size: 3.25rem; letter-spacing: -0.02em; line-height: 1;">NekoTab</h2>
+
+  }              <p class="text-white mb-0" style="opacity: 0.9; font-size: 1.05rem; margin-top: 0.4rem;">{% trans "Professional Tournament Platform" %}</p>
+
+              </div>
+
+  .hero-title {          </div>
+
+    font-size: 3.5rem;          
+
+    font-weight: 800;          <!-- Main Heading -->
+
+    color: #0f172a;          <h1 class="font-weight-bold text-white mb-4 animate-slide-up" style="font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; letter-spacing: -0.03em;">
+
+    margin-bottom: 1.5rem;            {% trans "Host World-Class" %}<br>
+
+    line-height: 1.1;            <span style="background: linear-gradient(120deg, #fbbf24 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent;">{% trans "Debate Tournaments" %}</span>
+
+    letter-spacing: -1px;          </h1>
+
+  }          
+
+            <!-- Subheading -->
+
+  .hero-subtitle {          <p class="lead text-white mb-5 animate-slide-up" style="font-size: clamp(1.15rem, 2.5vw, 1.45rem); line-height: 1.7; opacity: 0.95; max-width: 600px; font-weight: 400;">
+
+    font-size: 1.35rem;            {% trans "The most reliable tournament management system in Bangladesh. Built for debaters, by debaters. Just ৳2500 per tournament." %}
+
+    color: #64748b;          </p>
+
+    margin-bottom: 3rem;
+
+    font-weight: 400;          <!-- CTA Buttons -->
+
+    line-height: 1.6;          <div class="d-flex flex-column flex-sm-row align-items-start animate-slide-up" style="gap: 1.2rem; margin-bottom: 3rem;">
+
+  }            <a href="{% url 'signup' %}" class="btn btn-warning btn-lg px-5 py-3 shadow-lg" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border: none; border-radius: 50px; font-weight: 700; font-size: 1.15rem; color: #1e3a8a; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 40px rgba(251, 191, 36, 0.4);">
+
+                {% trans "Get Started Free" %} →
+
+  .hero-buttons {            </a>
+
+    display: flex;
+
+    gap: 1rem;            <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg px-5 py-3" style="border-radius: 50px; font-weight: 600; font-size: 1.15rem; border-width: 2px; transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255,255,255,0.1);">
+
+    justify-content: center;              {% trans "Log In" %}
+
+    flex-wrap: wrap;            </a>
+
+    margin-bottom: 4rem;          </div>
+
+  }
+
+            <!-- Trust Stats -->
+
+  .hero-btn {          <div class="d-flex flex-wrap animate-fade-in" style="gap: 3rem; padding-top: 2rem; border-top: 2px solid rgba(255,255,255,0.2);">
+
+    padding: 0.9rem 2.2rem;            <div>
+
+    font-size: 1.05rem;              <div class="h1 font-weight-bold mb-1" style="color: #fbbf24; text-shadow: 0 2px 10px rgba(251,191,36,0.3);" data-target="120">0</div>
+
+    font-weight: 600;              <div class="text-white" style="opacity: 0.9; font-size: 1.05rem; font-weight: 500;">{% trans "Active Debaters" %}</div>
+
+    border-radius: 10px;            </div>
+
+    transition: all 0.2s ease;            <div>
+
+    text-decoration: none;              <div class="h1 font-weight-bold mb-1" style="color: #fbbf24; text-shadow: 0 2px 10px rgba(251,191,36,0.3);" data-target="10">0</div>
+
+    display: inline-block;              <div class="text-white" style="opacity: 0.9; font-size: 1.05rem; font-weight: 500;">{% trans "Tournaments" %}</div>
+
+  }            </div>
+
+              <div>
+
+  .hero-btn-primary {              <div class="h1 font-weight-bold mb-1" style="color: #fbbf24; text-shadow: 0 2px 10px rgba(251,191,36,0.3);">99.9<span style="font-size: 0.7em;">%</span></div>
+
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);              <div class="text-white" style="opacity: 0.9; font-size: 1.05rem; font-weight: 500;">{% trans "Uptime" %}</div>
+
+    color: white;            </div>
+
+    border: none;          </div>
+
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);        </div>
+
+  }
+
+          <div class="col-lg-5 col-md-12 position-relative d-none d-lg-block animate-scale-in">
+
+  .hero-btn-primary:hover {          <!-- Modern Dashboard Preview -->
+
+    transform: translateY(-2px);          <div class="position-relative" style="perspective: 1200px;">
+
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);            <div style="transform: rotateY(-5deg) rotateX(5deg); transition: transform 0.6s ease;">
+
+    color: white;              <div class="card border-0" style="border-radius: 28px; overflow: hidden; background: white; box-shadow: 0 30px 90px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);">
+
+    text-decoration: none;                <div style="background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%); padding: 2.5rem;">
+
+  }                  <div style="height: 360px; background: linear-gradient(135deg, #dbeafe 0%, #ffffff 100%); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #1e40af; font-weight: 700; font-size: 1.3rem; box-shadow: 0 25px 70px rgba(30,64,175,0.15); position: relative; overflow: hidden;">
+
+                      <div class="position-absolute w-100 h-100" style="background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%); animation: shimmer 4s infinite;"></div>
+
+  .hero-btn-secondary {                    <div class="text-center">
+
+    background: white;                      <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+
+    color: #475569;                      {% trans "Live Dashboard" %}
+
+    border: 2px solid #e2e8f0;                    </div>
+
+  }                  </div>
+
+                    <div class="d-flex mt-4" style="gap: 1.2rem;">
+
+  .hero-btn-secondary:hover {                    <div style="flex: 1.5; height: 16px; background: linear-gradient(90deg, #3b82f6, #93c5fd); border-radius: 12px; box-shadow: 0 2px 8px rgba(59,130,246,0.3);"></div>
+
+    border-color: #cbd5e1;                    <div style="flex: 1.5; height: 14px; background: linear-gradient(90deg, #60a5fa, #93c5fd); border-radius: 10px;"></div>
+
+    transform: translateY(-2px);                    <div style="flex: 0.8; height: 14px; background: linear-gradient(90deg, #a78bfa, #ddd6fe); border-radius: 10px;"></div>
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);                  </div>
+
+    color: #475569;                </div>
+
+    text-decoration: none;              </div>
+
+  }            </div>
+
+            </div>
+
+  .hero-stats {        </div>
+
+    display: flex;      </div>
+
+    justify-content: center;    </div>
+
+    gap: 4rem;
+
+    flex-wrap: wrap;  </section>
+
+    padding-top: 3rem;
+
+    border-top: 1px solid #e2e8f0;  <!-- Events Showcase Section -->
+
+  }  <section class="py-5" style="background: #ffffff; position: relative; overflow: hidden;">
+
+      <div class="container py-5">
+
+  .stat-item {      <div class="text-center mb-5">
+
+    text-align: center;        <h2 class="display-4 font-weight-bold mb-3" style="color: #1e293b;">{% trans "Events" %}</h2>
+
+  }        <p class="lead text-muted" style="max-width: 600px; margin: 0 auto;">
+
+            {% trans "Where NekoTab has powered debate tournaments across the country" %}
+
+  .stat-number {        </p>
+
+    font-size: 2.25rem;      </div>
+
+    font-weight: 800;
+
+    color: #0f172a;      <!-- Infinite Auto-Scroll Slider (Right-to-Left) -->
+
+    margin-bottom: 0.5rem;      <div class="events-slider-container" style="position: relative; padding: 2rem 0; overflow: hidden;">
+
+  }        <div class="events-slider" style="display: flex; gap: 2rem; animation: scroll-left 35s linear infinite; will-change: transform;">
+
+            <!-- Placeholder Event Cards - Replace with your actual event images -->
+
+  .stat-label {          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+
+    font-size: 0.95rem;            <img src="{% static 'branding/logo.png' %}" alt="Event 1" style="width: 100%; height: 100%; object-fit: cover;">
+
+    color: #64748b;            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+
+    font-weight: 500;              <h5 class="font-weight-bold mb-1">{% trans "National Debate Championship 2024" %}</h5>
+
+  }              <p class="mb-0 small" style="opacity: 0.9;">{% trans "120+ participants" %}</p>
+
+              </div>
+
+  /* Events Section */          </div>
+
+  .events-section {
+
+    padding: 80px 0;          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+
+    background: white;            <img src="{% static 'branding/logo.png' %}" alt="Event 2" style="width: 100%; height: 100%; object-fit: cover;">
+
+  }            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+
+                <h5 class="font-weight-bold mb-1">{% trans "Inter-University Debate 2024" %}</h5>
+
+  .section-header {              <p class="mb-0 small" style="opacity: 0.9;">{% trans "85+ participants" %}</p>
+
+    text-align: center;            </div>
+
+    margin-bottom: 4rem;          </div>
+
+  }
+
+            <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+
+  .section-title {            <img src="{% static 'branding/logo.png' %}" alt="Event 3" style="width: 100%; height: 100%; object-fit: cover;">
+
+    font-size: 2.5rem;            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+
+    font-weight: 800;              <h5 class="font-weight-bold mb-1">{% trans "Regional Debate Cup 2024" %}</h5>
+
+    color: #0f172a;              <p class="mb-0 small" style="opacity: 0.9;">{% trans "60+ participants" %}</p>
+
+    margin-bottom: 1rem;            </div>
+
+  }          </div>
+
+  
+
+  .section-description {          <!-- Duplicate for seamless loop -->
+
+    font-size: 1.15rem;          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+
+    color: #64748b;            <img src="{% static 'branding/logo.png' %}" alt="Event 1" style="width: 100%; height: 100%; object-fit: cover;">
+
+  }            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+
+                <h5 class="font-weight-bold mb-1">{% trans "National Debate Championship 2024" %}</h5>
+
+  .events-slider-container {              <p class="mb-0 small" style="opacity: 0.9;">{% trans "120+ participants" %}</p>
+
+    overflow: hidden;            </div>
+
+    position: relative;          </div>
+
+    padding: 20px 0;
+
+  }          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+
+              <img src="{% static 'branding/logo.png' %}" alt="Event 2" style="width: 100%; height: 100%; object-fit: cover;">
+
+  .events-track {            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+
+    display: flex;              <h5 class="font-weight-bold mb-1">{% trans "Inter-University Debate 2024" %}</h5>
+
+    gap: 1.5rem;              <p class="mb-0 small" style="opacity: 0.9;">{% trans "85+ participants" %}</p>
+
+    animation: slide 30s linear infinite;            </div>
+
+  }          </div>
+
+            <!-- Optional third duplicate for longer loops -->
+
+  @keyframes slide {          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+
+    0% { transform: translateX(0); }            <img src="{% static 'branding/logo.png' %}" alt="Event 3" style="width: 100%; height: 100%; object-fit: cover;">
+
+    100% { transform: translateX(-50%); }            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+
+  }              <h5 class="font-weight-bold mb-1">{% trans "Regional Debate Cup 2024" %}</h5>
+
+                <p class="mb-0 small" style="opacity: 0.9;">{% trans "60+ participants" %}</p>
+
+  .events-track:hover {            </div>
+
+    animation-play-state: paused;          </div>
+
+  }
+
+          </div>
+
+  .event-card {      </div>
+
+    flex: 0 0 auto;    </div>
+
+    width: 300px;  </section>
+
+    background: white;
+
+    border: 1px solid #e2e8f0;  <!-- Global Styles -->
+
+    border-radius: 12px;  <style>
+
+    overflow: hidden;    /* Animations */
+
+    transition: all 0.3s ease;    @keyframes scroll-left {
+
+  }      0% { transform: translateX(0); }
+
+        100% { transform: translateX(-50%); }
+
+  .event-card:hover {    }
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);    @keyframes shimmer {
+
+    border-color: #cbd5e1;      0% { transform: translateX(-100%); }
+
+  }      100% { transform: translateX(100%); }
+
+      }
+
+  .event-image {
+
+    width: 100%;    @keyframes fade-in {
+
+    height: 180px;      from { opacity: 0; }
+
+    object-fit: cover;      to { opacity: 1; }
+
+    background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);    }
+
+  }
+
+      @keyframes slide-up {
+
+  .event-content {      from { opacity: 0; transform: translateY(30px); }
+
+    padding: 1.5rem;      to { opacity: 1; transform: translateY(0); }
+
+  }    }
+
+  
+
+  .event-title {    @keyframes scale-in {
+
+    font-size: 1.15rem;      from { opacity: 0; transform: scale(0.9); }
+
+    font-weight: 700;      to { opacity: 1; transform: scale(1); }
+
+    color: #0f172a;    }
+
+    margin-bottom: 0.75rem;
+
+  }    .animate-fade-in { animation: fade-in 1s ease-out; }
+
+      .animate-slide-up { animation: slide-up 0.8s ease-out; animation-fill-mode: both; }
+
+  .event-description {    .animate-slide-up:nth-child(2) { animation-delay: 0.2s; }
+
+    font-size: 0.95rem;    .animate-slide-up:nth-child(3) { animation-delay: 0.3s; }
+
+    color: #64748b;    .animate-slide-up:nth-child(4) { animation-delay: 0.4s; }
+
+    line-height: 1.6;    .animate-scale-in { animation: scale-in 1s ease-out 0.3s both; }
+
+    margin: 0;
+
+  }    /* Events Slider */
+
+      .events-slider-container:hover .events-slider {
+
+  /* Features Section */      animation-play-state: paused;
+
+  .features-section {    }
+
+    padding: 80px 0;
+
+    background: #f8fafc;    .event-card {
+
+  }      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      }
+
+  .features-grid {
+
+    display: grid;    .event-card:hover {
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));      transform: translateY(-10px) scale(1.02);
+
+    gap: 2rem;      box-shadow: 0 20px 60px rgba(0,0,0,0.2) !important;
+
+    margin-top: 3rem;    }
+
+  }
+
+      /* Button Hover Effects */
+
+  .feature-card {    .btn-light:hover {
+
+    background: white;      transform: translateY(-3px) scale(1.02);
+
+    border: 1px solid #e2e8f0;      box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+
+    border-radius: 12px;    }
+
+    padding: 2.5rem;
+
+    text-align: center;    .btn-outline-light:hover {
+
+    transition: all 0.3s ease;      background: rgba(255,255,255,0.15);
+
+  }      border-color: white;
+
+        transform: translateY(-2px);
+
+  .feature-card:hover {    }
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);    /* 3D Dashboard Hover */
+
+    border-color: #cbd5e1;    .dashboard-preview:hover {
+
+  }      transform: rotateY(-5deg) rotateX(5deg);
+
+      }
+
+  .feature-icon {
+
+    width: 64px;    .shadow-2xl {
+
+    height: 64px;      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important;
+
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);    }
+
+    border-radius: 12px;
+
+    display: flex;    /* Mobile Optimizations */
+
+    align-items: center;    @media (max-width: 768px) {
+
+    justify-content: center;      .event-card {
+
+    margin: 0 auto 1.5rem;        min-width: 300px;
+
+    font-size: 1.75rem;        height: 240px;
+
+    color: white;      }
+
+  }      
+
+        .events-slider { animation-duration: 40s; }
+
+  .feature-title {    }
+
+    font-size: 1.25rem;  </style>
+
+    font-weight: 700;
+
+    color: #0f172a;  <script>
+
+    margin-bottom: 1rem;    // Counter Animation
+
+  }    (function(){
+
+        function animateCounters(){
+
+  .feature-description {        document.querySelectorAll('[data-target]').forEach(function(el){
+
+    font-size: 0.95rem;          var target = parseFloat(el.getAttribute('data-target')) || 0;
+
+    color: #64748b;          var duration = 2000;
+
+    line-height: 1.7;          var start = 0;
+
+    margin: 0;          var startTime = null;
+
+  }          
+
+            function step(timestamp){
+
+  /* Responsive Design */            if(!startTime) startTime = timestamp;
+
+  @media (max-width: 992px) {            var progress = Math.min((timestamp - startTime) / duration, 1);
+
+    .landing-hero {            var easeOutQuart = 1 - Math.pow(1 - progress, 4);
+
+      padding: 80px 0 60px;            var value = start + (target - start) * easeOutQuart;
+
+    }            el.textContent = Math.floor(value);
+
+                if(progress < 1) window.requestAnimationFrame(step);
+
+    .hero-title {          }
+
+      font-size: 3rem;          window.requestAnimationFrame(step);
+
+    }        });
+
+  }      }
+
+        
+
+  @media (max-width: 768px) {      if(document.readyState === 'complete') {
+
+    .landing-hero {        animateCounters();
+
+      padding: 60px 0 40px;      } else {
+
+      min-height: auto;        window.addEventListener('load', animateCounters);
+
+    }      }
+
+        })();
+
+    .hero-title {  </script>
+
+      font-size: 2.5rem;  </section>
+
+    }
+
+      <!-- Features Section -->
+
+    .hero-subtitle {  <section class="py-5" style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);">
+
+      font-size: 1.15rem;    <div class="container py-5">
+
+    }      <div class="text-center mb-5">
+
+            <h2 class="display-4 font-weight-bold mb-3" style="color: #1e293b;">
+
+    .hero-stats {          {% trans "Why Choose NekoTab?" %}
+
+      gap: 2rem;        </h2>
+
+    }        <p class="lead text-muted" style="max-width: 650px; margin: 0 auto;">
+
+              {% trans "Built for speed, fairness, and simplicity — everything you need for world-class tournaments." %}
+
+    .stat-number {        </p>
+
+      font-size: 1.85rem;      </div>
+
+    }
+
+          <div class="row">
+
+    .section-title {        <div class="col-lg-4 col-md-6 mb-4">
+
+      font-size: 2rem;          <div class="feature-card h-100 p-5 text-center" style="background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent;">
+
+    }            <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
+
+                  <span style="font-size: 40px;">⚙️</span>
+
+    .hero-buttons {            </div>
+
+      flex-direction: column;            <h4 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Smart Tab Engine" %}</h4>
+
+    }            <p class="text-muted mb-0" style="line-height: 1.8; font-size: 1.05rem;">
+
+                  {% trans "Built on the trusted Tabbycat core, with custom automation for faster pairing and instant tab releases." %}
+
+    .hero-btn {            </p>
+
+      width: 100%;          </div>
+
+      max-width: 300px;        </div>
+
+    }
+
+            <div class="col-lg-4 col-md-6 mb-4">
+
+    .features-grid {          <div class="feature-card h-100 p-5 text-center" style="background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent;">
+
+      grid-template-columns: 1fr;            <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);">
+
+    }              <span style="font-size: 40px;">💳</span>
+
+  }            </div>
+
+              <h4 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Transparent Pricing" %}</h4>
+
+  @media (max-width: 576px) {            <p class="text-muted mb-0" style="line-height: 1.8; font-size: 1.05rem;">
+
+    .hero-logo {              {% trans "Flat ৳2500 per tournament, no hidden costs. Pay securely through bKash with instant confirmation." %}
+
+      width: 64px;            </p>
+
+      height: 64px;          </div>
+
+    }        </div>
+
+    
+
+    .hero-title {        <div class="col-lg-4 col-md-6 mb-4">
+
+      font-size: 2rem;          <div class="feature-card h-100 p-5 text-center" style="background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent;">
+
+    }            <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);">
+
+                  <span style="font-size: 40px;">📱</span>
+
+    .hero-subtitle {            </div>
+
+      font-size: 1rem;            <h4 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Works Anywhere" %}</h4>
+
+    }            <p class="text-muted mb-0" style="line-height: 1.8; font-size: 1.05rem;">
+
+                  {% trans "Optimized for desktop, tablet, and mobile — perfect for tab rooms and on-the-go judges." %}
+
+    .event-card {            </p>
+
+      width: 280px;          </div>
+
+    }        </div>
+
+          </div>
+
+    .hero-stats {    </div>
+
+      gap: 1.5rem;  </section>
+
+    }  
+
+      <style>
+
+    .stat-number {    .feature-card:hover {
+
+      font-size: 1.65rem;      transform: translateY(-12px);
+
+    }      box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
+
+  }      border-color: #667eea !important;
+
+</style>    }
+
+  </style>
+
+<!-- Hero Section -->
+
+<div class="landing-hero">{% else %}
+
+  <div class="container">  <!-- Authenticated User Dashboard: only show tournaments the user arranged -->
+
+    <div class="hero-content">  {% if tournaments %}
+
+      <img src="{% static 'branding/logo.png' %}" alt="NekoTab" class="hero-logo">    <div class="mb-4">
+
+      <h1 class="hero-title">Professional Tournament Management</h1>      <h2 class="mb-3">{% trans "Your Tournaments" %}</h2>
+
+      <p class="hero-subtitle">      {% for tournament in tournaments %}
+
+        The world's most trusted platform for managing debate tournaments. Simple, powerful, and used by thousands worldwide.        {% include "tournament_index_links.html" %}
+
+      </p>      {% endfor %}
+
+          </div>
+
+      <div class="hero-buttons">  {% else %}
+
+        <a href="{% url 'signup' %}" class="hero-btn hero-btn-primary">    <div class="card border-0 shadow-sm mb-4">
+
+          {% trans "Get Started Free" %}      <div class="card-body text-center py-5">
+
+        </a>        <div class="mb-3" style="color: #667eea;">
+
+        <a href="{% url 'login' %}" class="hero-btn hero-btn-secondary">          <i data-feather="calendar" style="width: 64px; height: 64px;"></i>
+
+          {% trans "Sign In" %}        </div>
+
+        </a>        <h3 class="mb-3">{% trans "No Tournaments Yet" %}</h3>
+
+      </div>        <p class="text-muted mb-4">{% trans "Get started by creating your first tournament." %}</p>
+
+              <a href="{% url 'tournament-create' %}" class="btn btn-primary btn-lg">
+
+      <div class="hero-stats">          <i data-feather="plus-circle" style="width: 18px; height: 18px;"></i>
+
+        <div class="stat-item">          {% trans "Create Tournament" %}
+
+          <div class="stat-number">1,000+</div>        </a>
+
+          <div class="stat-label">{% trans "Active Tournaments" %}</div>      </div>
+
+        </div>    </div>
+
+        <div class="stat-item">  {% endif %}
+
+          <div class="stat-number">50,000+</div>
+
+          <div class="stat-label">{% trans "Participants" %}</div>  {% if inactive %}
+
+        </div>    <div class="mb-4">
+
+        <div class="stat-item">      <h3 class="mb-3 text-muted">{% trans "Inactive Tournaments" %}</h3>
+
+          <div class="stat-number">150+</div>      <div class="list-group">
+
+          <div class="stat-label">{% trans "Countries" %}</div>        {% trans '(inactive)' as inactive_subtext %}
+
+        </div>        {% for tournament in inactive %}
+
+      </div>          {% include "tournament_index_links.html" with type="dark" subtext=inactive_subtext %}
+
+    </div>        {% endfor %}
+
+  </div>      </div>
+
+</div>    </div>
+
+  {% endif %}
+
+<!-- Events Section -->{% endif %}
+
+<div class="events-section">
+
+  <div class="container"><div class="list-group mt-2">
+
+    <div class="section-header">  {% if user.is_superuser %}
+
+      <h2 class="section-title">{% trans "Featured Events" %}</h2>
+
+      <p class="section-description">{% trans "Tournaments powered by NekoTab worldwide" %}</p>    {% trans "New Tournament" as text %}{% url 'tournament-create' as url %}
+
+    </div>    {% include "components/item-action.html" with icon="plus-circle" %}
+
+  </div>
+
+      {% trans "Edit Database Area" as text %}{% url 'admin:index' as url %}
+
+  <div class="events-slider-container">    {% include "components/item-action.html" with icon="edit" %}
+
+    <div class="events-track">
+
+      <div class="event-card">    {% trans "Send a Test Email" as text %}{% url 'notifications-test-email' as url %}
+
+        <img src="{% static 'images/event1.jpg' %}" alt="Event 1" class="event-image" onerror="this.src='https://via.placeholder.com/300x180/667eea/ffffff?text=Event+1'">    {% include "components/item-action.html" with icon="send" %}
+
+        <div class="event-content">
+
+          <h3 class="event-title">{% trans "World Debate Championship" %}</h3>    {% trans "Import DebateXML" as text %}{% url 'importer-archive' as url %}
+
+          <p class="event-description">{% trans "Annual international tournament with 500+ teams" %}</p>    {% include "components/item-action.html" with icon="archive" %}
+
+        </div>
+
+      </div>  {% endif %}
+
       </div>
+
+      <div class="event-card">
+
+        <img src="{% static 'images/event2.jpg' %}" alt="Event 2" class="event-image" onerror="this.src='https://via.placeholder.com/300x180/764ba2/ffffff?text=Event+2'"><div class="list-group mt-2">
+
+        <div class="event-content">  {% if user.is_authenticated %}
+
+          <h3 class="event-title">{% trans "Regional Championship" %}</h3>
+
+          <p class="event-description">{% trans "Competitive regional tournament series" %}</p>    {% blocktrans asvar text %}Get API Token / Change Password ({{ user }}){% endblocktrans %}
+
+        </div>    {% url 'password_change' as url %}
+
+      </div>    {% include "components/item-action.html" with icon="rotate-cw" %}
+
+      
+
+      <div class="event-card">    <form id="logout-link-form" method="post" action="{% url 'logout' %}" class="list-group-item list-group-item-action text-primary">
+
+        <img src="{% static 'images/event3.jpg' %}" alt="Event 3" class="event-image" onerror="this.src='https://via.placeholder.com/300x180/3b82f6/ffffff?text=Event+3'">      {% csrf_token %}
+
+        <div class="event-content">      <button type="submit" class="btn btn-link p-0 list-group-item-action text-primary">
+
+          <h3 class="event-title">{% trans "University League" %}</h3>        <div class="row align-items-center">
+
+          <p class="event-description">{% trans "Inter-university competitive league" %}</p>          <div class="col-auto pr-1">
+
+        </div>            <i data-feather="log-out"></i>
+
+      </div>          </div>
+
+      
+
+      <div class="event-card">          <div class="col pl-0 pr-0">
+
+        <img src="{% static 'images/event4.jpg' %}" alt="Event 4" class="event-image" onerror="this.src='https://via.placeholder.com/300x180/10b981/ffffff?text=Event+4'">            {% blocktrans %}Log Out ({{ user }}){% endblocktrans %}
+
+        <div class="event-content">          </div>
+
+          <h3 class="event-title">{% trans "National Tournament" %}</h3>
+
+          <p class="event-description">{% trans "Premier national competition" %}</p>          <div class="col-auto pr-1">
+
+        </div>            <i data-feather="chevron-right"></i>
+
+      </div>          </div>
+
+              </div>
+
+      <!-- Duplicate for seamless loop -->      </button>
+
+      <div class="event-card">    </form>
+
+        <img src="{% static 'images/event1.jpg' %}" alt="Event 1" class="event-image" onerror="this.src='https://via.placeholder.com/300x180/667eea/ffffff?text=Event+1'">
+
+        <div class="event-content">  {% endif %}
+
+          <h3 class="event-title">{% trans "World Debate Championship" %}</h3></div>
+
+          <p class="event-description">{% trans "Annual international tournament with 500+ teams" %}</p>
+
+        </div>{% endblock content %}
+
+      </div>
+      
+      <div class="event-card">
+        <img src="{% static 'images/event2.jpg' %}" alt="Event 2" class="event-image" onerror="this.src='https://via.placeholder.com/300x180/764ba2/ffffff?text=Event+2'">
+        <div class="event-content">
+          <h3 class="event-title">{% trans "Regional Championship" %}</h3>
+          <p class="event-description">{% trans "Competitive regional tournament series" %}</p>
+        </div>
+      </div>
+      
+      <div class="event-card">
+        <img src="{% static 'images/event3.jpg' %}" alt="Event 3" class="event-image" onerror="this.src='https://via.placeholder.com/300x180/3b82f6/ffffff?text=Event+3'">
+        <div class="event-content">
+          <h3 class="event-title">{% trans "University League" %}</h3>
+          <p class="event-description">{% trans "Inter-university competitive league" %}</p>
+        </div>
+      </div>
+      
+      <div class="event-card">
+        <img src="{% static 'images/event4.jpg' %}" alt="Event 4" class="event-image" onerror="this.src='https://via.placeholder.com/300x180/10b981/ffffff?text=Event+4'">
+        <div class="event-content">
+          <h3 class="event-title">{% trans "National Tournament" %}</h3>
+          <p class="event-description">{% trans "Premier national competition" %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="features-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{% trans "Why Choose NekoTab?" %}</h2>
+      <p class="section-description">{% trans "Powerful features for seamless tournament management" %}</p>
     </div>
     
-    <div class="container position-relative" style="z-index: 10; padding: 4rem 1.5rem;">
-      <div class="row align-items-center">
-        <div class="col-lg-7 col-md-12 mb-5 mb-lg-0">
-          <!-- Logo & Brand -->
-          <div class="mb-5 d-flex align-items-center animate-fade-in">
-            <img src="{% static 'branding/logo.png' %}" alt="NekoTab" style="width: 90px; height: 90px; margin-right: 1.2rem; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));">
-            <div>
-              <h2 class="text-white font-weight-bold mb-0" style="font-size: 3.25rem; letter-spacing: -0.02em; line-height: 1;">NekoTab</h2>
-              <p class="text-white mb-0" style="opacity: 0.9; font-size: 1.05rem; margin-top: 0.4rem;">{% trans "Professional Tournament Platform" %}</p>
-            </div>
-          </div>
-          
-          <!-- Main Heading -->
-          <h1 class="font-weight-bold text-white mb-4 animate-slide-up" style="font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; letter-spacing: -0.03em;">
-            {% trans "Host World-Class" %}<br>
-            <span style="background: linear-gradient(120deg, #fbbf24 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent;">{% trans "Debate Tournaments" %}</span>
-          </h1>
-          
-          <!-- Subheading -->
-          <p class="lead text-white mb-5 animate-slide-up" style="font-size: clamp(1.15rem, 2.5vw, 1.45rem); line-height: 1.7; opacity: 0.95; max-width: 600px; font-weight: 400;">
-            {% trans "The most reliable tournament management system in Bangladesh. Built for debaters, by debaters. Just ৳2500 per tournament." %}
-          </p>
-
-          <!-- CTA Buttons -->
-          <div class="d-flex flex-column flex-sm-row align-items-start animate-slide-up" style="gap: 1.2rem; margin-bottom: 3rem;">
-            <a href="{% url 'signup' %}" class="btn btn-warning btn-lg px-5 py-3 shadow-lg" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border: none; border-radius: 50px; font-weight: 700; font-size: 1.15rem; color: #1e3a8a; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 40px rgba(251, 191, 36, 0.4);">
-              {% trans "Get Started Free" %} →
-            </a>
-
-            <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg px-5 py-3" style="border-radius: 50px; font-weight: 600; font-size: 1.15rem; border-width: 2px; transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255,255,255,0.1);">
-              {% trans "Log In" %}
-            </a>
-          </div>
-
-          <!-- Trust Stats -->
-          <div class="d-flex flex-wrap animate-fade-in" style="gap: 3rem; padding-top: 2rem; border-top: 2px solid rgba(255,255,255,0.2);">
-            <div>
-              <div class="h1 font-weight-bold mb-1" style="color: #fbbf24; text-shadow: 0 2px 10px rgba(251,191,36,0.3);" data-target="120">0</div>
-              <div class="text-white" style="opacity: 0.9; font-size: 1.05rem; font-weight: 500;">{% trans "Active Debaters" %}</div>
-            </div>
-            <div>
-              <div class="h1 font-weight-bold mb-1" style="color: #fbbf24; text-shadow: 0 2px 10px rgba(251,191,36,0.3);" data-target="10">0</div>
-              <div class="text-white" style="opacity: 0.9; font-size: 1.05rem; font-weight: 500;">{% trans "Tournaments" %}</div>
-            </div>
-            <div>
-              <div class="h1 font-weight-bold mb-1" style="color: #fbbf24; text-shadow: 0 2px 10px rgba(251,191,36,0.3);">99.9<span style="font-size: 0.7em;">%</span></div>
-              <div class="text-white" style="opacity: 0.9; font-size: 1.05rem; font-weight: 500;">{% trans "Uptime" %}</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-5 col-md-12 position-relative d-none d-lg-block animate-scale-in">
-          <!-- Modern Dashboard Preview -->
-          <div class="position-relative" style="perspective: 1200px;">
-            <div style="transform: rotateY(-5deg) rotateX(5deg); transition: transform 0.6s ease;">
-              <div class="card border-0" style="border-radius: 28px; overflow: hidden; background: white; box-shadow: 0 30px 90px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);">
-                <div style="background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%); padding: 2.5rem;">
-                  <div style="height: 360px; background: linear-gradient(135deg, #dbeafe 0%, #ffffff 100%); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #1e40af; font-weight: 700; font-size: 1.3rem; box-shadow: 0 25px 70px rgba(30,64,175,0.15); position: relative; overflow: hidden;">
-                    <div class="position-absolute w-100 h-100" style="background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%); animation: shimmer 4s infinite;"></div>
-                    <div class="text-center">
-                      <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
-                      {% trans "Live Dashboard" %}
-                    </div>
-                  </div>
-                  <div class="d-flex mt-4" style="gap: 1.2rem;">
-                    <div style="flex: 1.5; height: 16px; background: linear-gradient(90deg, #3b82f6, #93c5fd); border-radius: 12px; box-shadow: 0 2px 8px rgba(59,130,246,0.3);"></div>
-                    <div style="flex: 1.5; height: 14px; background: linear-gradient(90deg, #60a5fa, #93c5fd); border-radius: 10px;"></div>
-                    <div style="flex: 0.8; height: 14px; background: linear-gradient(90deg, #a78bfa, #ddd6fe); border-radius: 10px;"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3 class="feature-title">{% trans "Lightning Fast" %}</h3>
+        <p class="feature-description">{% trans "Generate draws and allocate adjudicators in seconds with our optimized algorithms" %}</p>
       </div>
-    </div>
-
-  </section>
-
-  <!-- Events Showcase Section -->
-  <section class="py-5" style="background: #ffffff; position: relative; overflow: hidden;">
-    <div class="container py-5">
-      <div class="text-center mb-5">
-        <h2 class="display-4 font-weight-bold mb-3" style="color: #1e293b;">{% trans "Events" %}</h2>
-        <p class="lead text-muted" style="max-width: 600px; margin: 0 auto;">
-          {% trans "Where NekoTab has powered debate tournaments across the country" %}
-        </p>
-      </div>
-
-      <!-- Infinite Auto-Scroll Slider (Right-to-Left) -->
-      <div class="events-slider-container" style="position: relative; padding: 2rem 0; overflow: hidden;">
-        <div class="events-slider" style="display: flex; gap: 2rem; animation: scroll-left 35s linear infinite; will-change: transform;">
-          <!-- Placeholder Event Cards - Replace with your actual event images -->
-          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
-            <img src="{% static 'branding/logo.png' %}" alt="Event 1" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
-              <h5 class="font-weight-bold mb-1">{% trans "National Debate Championship 2024" %}</h5>
-              <p class="mb-0 small" style="opacity: 0.9;">{% trans "120+ participants" %}</p>
-            </div>
-          </div>
-
-          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
-            <img src="{% static 'branding/logo.png' %}" alt="Event 2" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
-              <h5 class="font-weight-bold mb-1">{% trans "Inter-University Debate 2024" %}</h5>
-              <p class="mb-0 small" style="opacity: 0.9;">{% trans "85+ participants" %}</p>
-            </div>
-          </div>
-
-          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
-            <img src="{% static 'branding/logo.png' %}" alt="Event 3" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
-              <h5 class="font-weight-bold mb-1">{% trans "Regional Debate Cup 2024" %}</h5>
-              <p class="mb-0 small" style="opacity: 0.9;">{% trans "60+ participants" %}</p>
-            </div>
-          </div>
-
-          <!-- Duplicate for seamless loop -->
-          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
-            <img src="{% static 'branding/logo.png' %}" alt="Event 1" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
-              <h5 class="font-weight-bold mb-1">{% trans "National Debate Championship 2024" %}</h5>
-              <p class="mb-0 small" style="opacity: 0.9;">{% trans "120+ participants" %}</p>
-            </div>
-          </div>
-
-          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
-            <img src="{% static 'branding/logo.png' %}" alt="Event 2" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
-              <h5 class="font-weight-bold mb-1">{% trans "Inter-University Debate 2024" %}</h5>
-              <p class="mb-0 small" style="opacity: 0.9;">{% trans "85+ participants" %}</p>
-            </div>
-          </div>
-          <!-- Optional third duplicate for longer loops -->
-          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
-            <img src="{% static 'branding/logo.png' %}" alt="Event 3" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
-              <h5 class="font-weight-bold mb-1">{% trans "Regional Debate Cup 2024" %}</h5>
-              <p class="mb-0 small" style="opacity: 0.9;">{% trans "60+ participants" %}</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Global Styles -->
-  <style>
-    /* Animations */
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
-    @keyframes fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slide-up {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes scale-in {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .animate-fade-in { animation: fade-in 1s ease-out; }
-    .animate-slide-up { animation: slide-up 0.8s ease-out; animation-fill-mode: both; }
-    .animate-slide-up:nth-child(2) { animation-delay: 0.2s; }
-    .animate-slide-up:nth-child(3) { animation-delay: 0.3s; }
-    .animate-slide-up:nth-child(4) { animation-delay: 0.4s; }
-    .animate-scale-in { animation: scale-in 1s ease-out 0.3s both; }
-
-    /* Events Slider */
-    .events-slider-container:hover .events-slider {
-      animation-play-state: paused;
-    }
-
-    .event-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .event-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2) !important;
-    }
-
-    /* Button Hover Effects */
-    .btn-light:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
-    }
-
-    .btn-outline-light:hover {
-      background: rgba(255,255,255,0.15);
-      border-color: white;
-      transform: translateY(-2px);
-    }
-
-    /* 3D Dashboard Hover */
-    .dashboard-preview:hover {
-      transform: rotateY(-5deg) rotateX(5deg);
-    }
-
-    .shadow-2xl {
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important;
-    }
-
-    /* Mobile Optimizations */
-    @media (max-width: 768px) {
-      .event-card {
-        min-width: 300px;
-        height: 240px;
-      }
       
-      .events-slider { animation-duration: 40s; }
-    }
-  </style>
-
-  <script>
-    // Counter Animation
-    (function(){
-      function animateCounters(){
-        document.querySelectorAll('[data-target]').forEach(function(el){
-          var target = parseFloat(el.getAttribute('data-target')) || 0;
-          var duration = 2000;
-          var start = 0;
-          var startTime = null;
-          
-          function step(timestamp){
-            if(!startTime) startTime = timestamp;
-            var progress = Math.min((timestamp - startTime) / duration, 1);
-            var easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            var value = start + (target - start) * easeOutQuart;
-            el.textContent = Math.floor(value);
-            if(progress < 1) window.requestAnimationFrame(step);
-          }
-          window.requestAnimationFrame(step);
-        });
-      }
-      
-      if(document.readyState === 'complete') {
-        animateCounters();
-      } else {
-        window.addEventListener('load', animateCounters);
-      }
-    })();
-  </script>
-  </section>
-
-  <!-- Features Section -->
-  <section class="py-5" style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);">
-    <div class="container py-5">
-      <div class="text-center mb-5">
-        <h2 class="display-4 font-weight-bold mb-3" style="color: #1e293b;">
-          {% trans "Why Choose NekoTab?" %}
-        </h2>
-        <p class="lead text-muted" style="max-width: 650px; margin: 0 auto;">
-          {% trans "Built for speed, fairness, and simplicity — everything you need for world-class tournaments." %}
-        </p>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3 class="feature-title">{% trans "Easy to Use" %}</h3>
+        <p class="feature-description">{% trans "Intuitive interface designed for tournament organizers of all skill levels" %}</p>
       </div>
-
-      <div class="row">
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="feature-card h-100 p-5 text-center" style="background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent;">
-            <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
-              <span style="font-size: 40px;">⚙️</span>
-            </div>
-            <h4 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Smart Tab Engine" %}</h4>
-            <p class="text-muted mb-0" style="line-height: 1.8; font-size: 1.05rem;">
-              {% trans "Built on the trusted Tabbycat core, with custom automation for faster pairing and instant tab releases." %}
-            </p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="feature-card h-100 p-5 text-center" style="background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent;">
-            <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);">
-              <span style="font-size: 40px;">💳</span>
-            </div>
-            <h4 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Transparent Pricing" %}</h4>
-            <p class="text-muted mb-0" style="line-height: 1.8; font-size: 1.05rem;">
-              {% trans "Flat ৳2500 per tournament, no hidden costs. Pay securely through bKash with instant confirmation." %}
-            </p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="feature-card h-100 p-5 text-center" style="background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent;">
-            <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);">
-              <span style="font-size: 40px;">📱</span>
-            </div>
-            <h4 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Works Anywhere" %}</h4>
-            <p class="text-muted mb-0" style="line-height: 1.8; font-size: 1.05rem;">
-              {% trans "Optimized for desktop, tablet, and mobile — perfect for tab rooms and on-the-go judges." %}
-            </p>
-          </div>
-        </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title">{% trans "Real-time Updates" %}</h3>
+        <p class="feature-description">{% trans "Live standings and results updated instantly for participants and spectators" %}</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3 class="feature-title">{% trans "Secure & Reliable" %}</h3>
+        <p class="feature-description">{% trans "Enterprise-grade security with automatic backups and 99.9% uptime" %}</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3 class="feature-title">{% trans "Global Support" %}</h3>
+        <p class="feature-description">{% trans "Multi-language support and used by tournaments in over 150 countries" %}</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3 class="feature-title">{% trans "Smart Automation" %}</h3>
+        <p class="feature-description">{% trans "AI-powered features to automate tedious tasks and reduce manual work" %}</p>
       </div>
     </div>
-  </section>
-  
-  <style>
-    .feature-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
-      border-color: #667eea !important;
-    }
-  </style>
+  </div>
+</div>
 
 {% else %}
-  <!-- Authenticated User Dashboard: only show tournaments the user arranged -->
-  {% if tournaments %}
-    <div class="mb-4">
-      <h2 class="mb-3">{% trans "Your Tournaments" %}</h2>
-      {% for tournament in tournaments %}
-        {% include "tournament_index_links.html" %}
-      {% endfor %}
-    </div>
-  {% else %}
-    <div class="card border-0 shadow-sm mb-4">
-      <div class="card-body text-center py-5">
-        <div class="mb-3" style="color: #667eea;">
-          <i data-feather="calendar" style="width: 64px; height: 64px;"></i>
-        </div>
-        <h3 class="mb-3">{% trans "No Tournaments Yet" %}</h3>
-        <p class="text-muted mb-4">{% trans "Get started by creating your first tournament." %}</p>
-        <a href="{% url 'tournament-create' %}" class="btn btn-primary btn-lg">
-          <i data-feather="plus-circle" style="width: 18px; height: 18px;"></i>
-          {% trans "Create Tournament" %}
-        </a>
-      </div>
-    </div>
-  {% endif %}
-
-  {% if inactive %}
-    <div class="mb-4">
-      <h3 class="mb-3 text-muted">{% trans "Inactive Tournaments" %}</h3>
-      <div class="list-group">
-        {% trans '(inactive)' as inactive_subtext %}
-        {% for tournament in inactive %}
-          {% include "tournament_index_links.html" with type="dark" subtext=inactive_subtext %}
-        {% endfor %}
-      </div>
-    </div>
-  {% endif %}
+  <!-- For authenticated users, show dashboard link -->
+  <div class="container text-center" style="padding: 100px 20px;">
+    <img src="{% static 'branding/logo.png' %}" alt="NekoTab" style="width: 80px; height: 80px; margin-bottom: 2rem;">
+    <h1 class="mb-4">{% trans "Welcome back!" %}</h1>
+    <a href="{% url 'tabbycat-index' %}" class="hero-btn hero-btn-primary">
+      {% trans "Go to Dashboard" %}
+    </a>
+  </div>
 {% endif %}
 
-<div class="list-group mt-2">
-  {% if user.is_superuser %}
-
-    {% trans "New Tournament" as text %}{% url 'tournament-create' as url %}
-    {% include "components/item-action.html" with icon="plus-circle" %}
-
-    {% trans "Edit Database Area" as text %}{% url 'admin:index' as url %}
-    {% include "components/item-action.html" with icon="edit" %}
-
-    {% trans "Send a Test Email" as text %}{% url 'notifications-test-email' as url %}
-    {% include "components/item-action.html" with icon="send" %}
-
-    {% trans "Import DebateXML" as text %}{% url 'importer-archive' as url %}
-    {% include "components/item-action.html" with icon="archive" %}
-
-  {% endif %}
-</div>
-
-<div class="list-group mt-2">
-  {% if user.is_authenticated %}
-
-    {% blocktrans asvar text %}Get API Token / Change Password ({{ user }}){% endblocktrans %}
-    {% url 'password_change' as url %}
-    {% include "components/item-action.html" with icon="rotate-cw" %}
-
-    <form id="logout-link-form" method="post" action="{% url 'logout' %}" class="list-group-item list-group-item-action text-primary">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-link p-0 list-group-item-action text-primary">
-        <div class="row align-items-center">
-          <div class="col-auto pr-1">
-            <i data-feather="log-out"></i>
-          </div>
-
-          <div class="col pl-0 pr-0">
-            {% blocktrans %}Log Out ({{ user }}){% endblocktrans %}
-          </div>
-
-          <div class="col-auto pr-1">
-            <i data-feather="chevron-right"></i>
-          </div>
-        </div>
-      </button>
-    </form>
-
-  {% endif %}
-</div>
-
-{% endblock content %}
+{% endblock %}
