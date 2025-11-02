@@ -12,57 +12,88 @@
 {% block content %}
 
 {% if not user.is_authenticated %}
-  <!-- Immersive Public Hero -->
-  <section id="hero" class="d-flex align-items-center" style="min-height: 90vh; position: relative; overflow: hidden; background: linear-gradient(135deg,#0f172a 0,#1a1f35 50%, #2d3548 100%); color: #fff;">
-    <div class="container px-3 px-md-4">
+  <!-- Hero Section: World-Class Professional Design -->
+  <section id="hero" class="position-relative d-flex align-items-center" style="min-height: 100vh; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #667eea 100%); overflow: hidden;">
+    <!-- Animated Particles Background -->
+    <div class="position-absolute w-100 h-100" style="top: 0; left: 0;">
+      <div class="particles-bg" style="position: absolute; width: 100%; height: 100%; background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        background-size: 100% 100%;
+        animation: float 20s ease-in-out infinite;">
+      </div>
+    </div>
+    
+    <div class="container position-relative" style="z-index: 10; padding: 4rem 1.5rem;">
       <div class="row align-items-center">
-        <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 text-center text-lg-left">
-          <h1 class="font-weight-bold mb-3" style="font-size: clamp(1.75rem, 5vw, 3rem); line-height: 1.2;">
-            {% trans "Run Your Debate Tournaments Effortlessly." %}
+        <div class="col-lg-7 col-md-12 mb-5 mb-lg-0">
+          <!-- Logo & Brand -->
+          <div class="mb-5 d-flex align-items-center animate-fade-in">
+            <img src="{% static 'branding/logo.png' %}" alt="NekoTab" style="width: 90px; height: 90px; margin-right: 1.2rem; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));">
+            <div>
+              <h2 class="text-white font-weight-bold mb-0" style="font-size: 3.25rem; letter-spacing: -0.02em; line-height: 1;">NekoTab</h2>
+              <p class="text-white mb-0" style="opacity: 0.9; font-size: 1.05rem; margin-top: 0.4rem;">{% trans "Professional Tournament Platform" %}</p>
+            </div>
+          </div>
+          
+          <!-- Main Heading -->
+          <h1 class="font-weight-bold text-white mb-4 animate-slide-up" style="font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; letter-spacing: -0.03em;">
+            {% trans "Host World-Class" %}<br>
+            <span style="background: linear-gradient(120deg, #fbbf24 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent;">{% trans "Debate Tournaments" %}</span>
           </h1>
-          <p class="lead mb-4" style="font-size: clamp(1rem, 2.5vw, 1.3rem); line-height: 1.6; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
-            {% trans "Beautiful, reliable, and local — host tournaments for just ৳2500, paid easily with bKash." %}
+          
+          <!-- Subheading -->
+          <p class="lead text-white mb-5 animate-slide-up" style="font-size: clamp(1.15rem, 2.5vw, 1.45rem); line-height: 1.7; opacity: 0.95; max-width: 600px; font-weight: 400;">
+            {% trans "The most reliable tournament management system in Bangladesh. Built for debaters, by debaters. Just ৳2500 per tournament." %}
           </p>
 
-          <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start align-items-center" style="gap: 1rem;">
-            <a href="{% url 'signup' %}" class="btn btn-primary btn-lg shadow-lg" style="border-radius: 12px; padding: 0.85rem 2rem; font-weight: 600; transition: all 0.3s ease;">
-              {% trans "Get Started - Sign Up Free" %}
+          <!-- CTA Buttons -->
+          <div class="d-flex flex-column flex-sm-row align-items-start animate-slide-up" style="gap: 1.2rem; margin-bottom: 3rem;">
+            <a href="{% url 'signup' %}" class="btn btn-warning btn-lg px-5 py-3 shadow-lg" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border: none; border-radius: 50px; font-weight: 700; font-size: 1.15rem; color: #1e3a8a; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 40px rgba(251, 191, 36, 0.4);">
+              {% trans "Get Started Free" %} →
             </a>
 
-            <button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#demoModal" style="border-radius: 12px; padding: 0.85rem 2rem; font-weight: 600; transition: all 0.3s ease; border-width: 2px;">
-              {% trans "View Demo" %}
-            </button>
+            <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg px-5 py-3" style="border-radius: 50px; font-weight: 600; font-size: 1.15rem; border-width: 2px; transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255,255,255,0.1);">
+              {% trans "Log In" %}
+            </a>
           </div>
 
-          <!-- Stat counters -->
-          <div class="d-flex flex-wrap justify-content-center justify-content-lg-start mt-4 mt-md-5" style="gap: 2rem;">
-            <div class="text-center text-lg-left">
-              <div class="h2 mb-1 font-weight-bold" data-target="120" style="color: #667eea;">0</div>
-              <div style="font-size: 0.9rem; opacity: 0.8;">{% trans "Debaters" %}</div>
+          <!-- Trust Stats -->
+          <div class="d-flex flex-wrap animate-fade-in" style="gap: 3rem; padding-top: 2rem; border-top: 2px solid rgba(255,255,255,0.2);">
+            <div>
+              <div class="h1 font-weight-bold mb-1" style="color: #fbbf24; text-shadow: 0 2px 10px rgba(251,191,36,0.3);" data-target="120">0</div>
+              <div class="text-white" style="opacity: 0.9; font-size: 1.05rem; font-weight: 500;">{% trans "Active Debaters" %}</div>
             </div>
-            <div class="text-center text-lg-left">
-              <div class="h2 mb-1 font-weight-bold" data-target="10" style="color: #667eea;">0</div>
-              <div style="font-size: 0.9rem; opacity: 0.8;">{% trans "Tournaments Hosted" %}</div>
+            <div>
+              <div class="h1 font-weight-bold mb-1" style="color: #fbbf24; text-shadow: 0 2px 10px rgba(251,191,36,0.3);" data-target="10">0</div>
+              <div class="text-white" style="opacity: 0.9; font-size: 1.05rem; font-weight: 500;">{% trans "Tournaments" %}</div>
             </div>
-            <div class="text-center text-lg-left">
-              <div class="h2 mb-1 font-weight-bold" data-target="99.9" style="color: #667eea;">0</div>
-              <div style="font-size: 0.9rem; opacity: 0.8;">{% trans "Uptime (%)" %}</div>
+            <div>
+              <div class="h1 font-weight-bold mb-1" style="color: #fbbf24; text-shadow: 0 2px 10px rgba(251,191,36,0.3);">99.9<span style="font-size: 0.7em;">%</span></div>
+              <div class="text-white" style="opacity: 0.9; font-size: 1.05rem; font-weight: 500;">{% trans "Uptime" %}</div>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center" style="position: relative;">
-          <!-- Floating dashboard mockup -->
-          <div class="dashboard-mockup" style="width: 100%; max-width: 480px; transform: translateY(0); animation: float 6s ease-in-out infinite;">
-            <div class="card shadow-lg" style="border-radius: 20px; overflow: hidden; border: none;">
-              <div style="background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%); padding: 1.5rem;">
-                <div style="height: 280px; background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #475569; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-                  {% trans "Tournament Dashboard Preview" %}
-                </div>
-                <div style="display:flex; gap:0.75rem; margin-top:1.2rem;">
-                  <div style="flex:1; height:12px; background:#c7d2fe; border-radius:8px;"></div>
-                  <div style="flex:1.5; height:12px; background:#818cf8; border-radius:8px;"></div>
-                  <div style="flex:0.8; height:12px; background:#a5b4fc; border-radius:8px;"></div>
+        <div class="col-lg-5 col-md-12 position-relative d-none d-lg-block animate-scale-in">
+          <!-- Modern Dashboard Preview -->
+          <div class="position-relative" style="perspective: 1200px;">
+            <div style="transform: rotateY(-5deg) rotateX(5deg); transition: transform 0.6s ease;">
+              <div class="card border-0" style="border-radius: 28px; overflow: hidden; background: white; box-shadow: 0 30px 90px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);">
+                <div style="background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%); padding: 2.5rem;">
+                  <div style="height: 360px; background: linear-gradient(135deg, #dbeafe 0%, #ffffff 100%); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #1e40af; font-weight: 700; font-size: 1.3rem; box-shadow: 0 25px 70px rgba(30,64,175,0.15); position: relative; overflow: hidden;">
+                    <div class="position-absolute w-100 h-100" style="background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%); animation: shimmer 4s infinite;"></div>
+                    <div class="text-center">
+                      <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                      {% trans "Live Dashboard" %}
+                    </div>
+                  </div>
+                  <div class="d-flex mt-4" style="gap: 1.2rem;">
+                    <div style="flex: 1.5; height: 16px; background: linear-gradient(90deg, #3b82f6, #93c5fd); border-radius: 12px; box-shadow: 0 2px 8px rgba(59,130,246,0.3);"></div>
+                    <div style="flex: 1.5; height: 14px; background: linear-gradient(90deg, #60a5fa, #93c5fd); border-radius: 10px;"></div>
+                    <div style="flex: 0.8; height: 14px; background: linear-gradient(90deg, #a78bfa, #ddd6fe); border-radius: 10px;"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -71,116 +102,232 @@
       </div>
     </div>
 
-    <!-- Demo Modal with Image -->
-    <div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content" style="border-radius: 16px; border: none; overflow: hidden;">
-          <div class="modal-header border-0" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-            <h5 class="modal-title font-weight-bold" id="demoModalLabel">{% trans "NekoTab Platform Demo" %}</h5>
-            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body p-0">
-            <!-- Demo screenshot/image - replace with your actual demo image -->
-            <img src="{% static 'branding/logo.png' %}" alt="{% trans 'NekoTab Demo Screenshot' %}" class="img-fluid w-100" style="display: block; max-height: 70vh; object-fit: contain; background: #f8fafc;">
-            <div class="p-4 text-center" style="background: #f8fafc;">
-              <p class="mb-3 text-muted">{% trans "See how NekoTab simplifies tournament management with an intuitive interface" %}</p>
-              <a href="{% url 'login' %}?next={% url 'tournament-create' %}" class="btn btn-primary" style="border-radius: 8px; padding: 0.6rem 1.5rem;">
-                {% trans "Get Started" %}
-              </a>
+  </section>
+
+  <!-- Events Showcase Section -->
+  <section class="py-5" style="background: #ffffff; position: relative; overflow: hidden;">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="display-4 font-weight-bold mb-3" style="color: #1e293b;">{% trans "Events" %}</h2>
+        <p class="lead text-muted" style="max-width: 600px; margin: 0 auto;">
+          {% trans "Where NekoTab has powered debate tournaments across the country" %}
+        </p>
+      </div>
+
+      <!-- Infinite Auto-Scroll Slider (Right-to-Left) -->
+      <div class="events-slider-container" style="position: relative; padding: 2rem 0; overflow: hidden;">
+        <div class="events-slider" style="display: flex; gap: 2rem; animation: scroll-left 35s linear infinite; will-change: transform;">
+          <!-- Placeholder Event Cards - Replace with your actual event images -->
+          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+            <img src="{% static 'branding/logo.png' %}" alt="Event 1" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+              <h5 class="font-weight-bold mb-1">{% trans "National Debate Championship 2024" %}</h5>
+              <p class="mb-0 small" style="opacity: 0.9;">{% trans "120+ participants" %}</p>
             </div>
           </div>
+
+          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+            <img src="{% static 'branding/logo.png' %}" alt="Event 2" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+              <h5 class="font-weight-bold mb-1">{% trans "Inter-University Debate 2024" %}</h5>
+              <p class="mb-0 small" style="opacity: 0.9;">{% trans "85+ participants" %}</p>
+            </div>
+          </div>
+
+          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+            <img src="{% static 'branding/logo.png' %}" alt="Event 3" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+              <h5 class="font-weight-bold mb-1">{% trans "Regional Debate Cup 2024" %}</h5>
+              <p class="mb-0 small" style="opacity: 0.9;">{% trans "60+ participants" %}</p>
+            </div>
+          </div>
+
+          <!-- Duplicate for seamless loop -->
+          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+            <img src="{% static 'branding/logo.png' %}" alt="Event 1" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+              <h5 class="font-weight-bold mb-1">{% trans "National Debate Championship 2024" %}</h5>
+              <p class="mb-0 small" style="opacity: 0.9;">{% trans "120+ participants" %}</p>
+            </div>
+          </div>
+
+          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+            <img src="{% static 'branding/logo.png' %}" alt="Event 2" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+              <h5 class="font-weight-bold mb-1">{% trans "Inter-University Debate 2024" %}</h5>
+              <p class="mb-0 small" style="opacity: 0.9;">{% trans "85+ participants" %}</p>
+            </div>
+          </div>
+          <!-- Optional third duplicate for longer loops -->
+          <div class="event-card" style="min-width: 380px; height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative; flex-shrink: 0;">
+            <img src="{% static 'branding/logo.png' %}" alt="Event 3" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="event-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem 1.5rem; color: white;">
+              <h5 class="font-weight-bold mb-1">{% trans "Regional Debate Cup 2024" %}</h5>
+              <p class="mb-0 small" style="opacity: 0.9;">{% trans "60+ participants" %}</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-
-    <style>
-      @keyframes float { 
-        0%, 100% { transform: translateY(0) rotate(0deg); } 
-        50% { transform: translateY(-15px) rotate(1deg); } 
-      }
-      
-      #hero { padding: 2rem 0; }
-      
-      @media (max-width: 991.98px) {
-        .dashboard-mockup { 
-          margin-top: 2rem; 
-          animation: none !important; 
-          max-width: 100% !important;
-        }
-      }
-      
-      .btn-primary:hover { 
-        transform: translateY(-2px); 
-        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important; 
-      }
-      
-      .btn-outline-light:hover { 
-        background: rgba(255,255,255,0.1); 
-        transform: translateY(-2px); 
-      }
-    </style>
-
-    <script>
-      // small counter animation
-      (function(){
-        function animateCounters(){
-          document.querySelectorAll('#hero [data-target]').forEach(function(el){
-            var target = parseFloat(el.getAttribute('data-target')) || 0;
-            var isFloat = (el.getAttribute('data-target').indexOf('.') !== -1);
-            var duration = 1400; var start = 0; var startTime = null;
-            function step(timestamp){
-              if(!startTime) startTime = timestamp;
-              var progress = Math.min((timestamp - startTime) / duration, 1);
-              var value = start + (target - start) * progress;
-              el.textContent = isFloat ? value.toFixed(1) : Math.floor(value);
-              if(progress < 1) window.requestAnimationFrame(step);
-            }
-            window.requestAnimationFrame(step);
-          });
-        }
-        if(document.readyState === 'complete') animateCounters(); else window.addEventListener('load', animateCounters);
-      })();
-    </script>
   </section>
 
-  <!-- USP Section -->
+  <!-- Global Styles -->
+  <style>
+    /* Animations */
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scale-in {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-fade-in { animation: fade-in 1s ease-out; }
+    .animate-slide-up { animation: slide-up 0.8s ease-out; animation-fill-mode: both; }
+    .animate-slide-up:nth-child(2) { animation-delay: 0.2s; }
+    .animate-slide-up:nth-child(3) { animation-delay: 0.3s; }
+    .animate-slide-up:nth-child(4) { animation-delay: 0.4s; }
+    .animate-scale-in { animation: scale-in 1s ease-out 0.3s both; }
+
+    /* Events Slider */
+    .events-slider-container:hover .events-slider {
+      animation-play-state: paused;
+    }
+
+    .event-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2) !important;
+    }
+
+    /* Button Hover Effects */
+    .btn-light:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: white;
+      transform: translateY(-2px);
+    }
+
+    /* 3D Dashboard Hover */
+    .dashboard-preview:hover {
+      transform: rotateY(-5deg) rotateX(5deg);
+    }
+
+    .shadow-2xl {
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important;
+    }
+
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      .event-card {
+        min-width: 300px;
+        height: 240px;
+      }
+      
+      .events-slider { animation-duration: 40s; }
+    }
+  </style>
+
+  <script>
+    // Counter Animation
+    (function(){
+      function animateCounters(){
+        document.querySelectorAll('[data-target]').forEach(function(el){
+          var target = parseFloat(el.getAttribute('data-target')) || 0;
+          var duration = 2000;
+          var start = 0;
+          var startTime = null;
+          
+          function step(timestamp){
+            if(!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            var value = start + (target - start) * easeOutQuart;
+            el.textContent = Math.floor(value);
+            if(progress < 1) window.requestAnimationFrame(step);
+          }
+          window.requestAnimationFrame(step);
+        });
+      }
+      
+      if(document.readyState === 'complete') {
+        animateCounters();
+      } else {
+        window.addEventListener('load', animateCounters);
+      }
+    })();
+  </script>
+  </section>
+
+  <!-- Features Section -->
   <section class="py-5" style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);">
-    <div class="container px-3 px-md-4 py-4">
+    <div class="container py-5">
       <div class="text-center mb-5">
-        <h2 class="font-weight-bold mb-2" style="font-size: clamp(1.5rem, 3.5vw, 2rem); color: #1e293b;">
-          {% trans "What Makes NekoTab Different" %}
+        <h2 class="display-4 font-weight-bold mb-3" style="color: #1e293b;">
+          {% trans "Why Choose NekoTab?" %}
         </h2>
-        <p class="text-muted" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">
-          {% trans "Built for speed, fairness and simplicity." %}
+        <p class="lead text-muted" style="max-width: 650px; margin: 0 auto;">
+          {% trans "Built for speed, fairness, and simplicity — everything you need for world-class tournaments." %}
         </p>
       </div>
 
       <div class="row">
         <div class="col-lg-4 col-md-6 mb-4">
-          <div class="h-100 p-4 rounded-lg shadow-sm" style="background: white; border-radius: 16px; transition: all 0.3s ease; border: 1px solid #e2e8f0;">
-            <div class="mb-3" style="font-size: 42px;">⚙️</div>
-            <h5 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Smart Tab Engine" %}</h5>
-            <p class="text-muted mb-0" style="line-height: 1.7;">
-              {% trans "Built on the trusted Tabbycat core, with custom automation for faster pairing and tab releases." %}
+          <div class="feature-card h-100 p-5 text-center" style="background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent;">
+            <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
+              <span style="font-size: 40px;">⚙️</span>
+            </div>
+            <h4 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Smart Tab Engine" %}</h4>
+            <p class="text-muted mb-0" style="line-height: 1.8; font-size: 1.05rem;">
+              {% trans "Built on the trusted Tabbycat core, with custom automation for faster pairing and instant tab releases." %}
             </p>
           </div>
         </div>
+
         <div class="col-lg-4 col-md-6 mb-4">
-          <div class="h-100 p-4 rounded-lg shadow-sm" style="background: white; border-radius: 16px; transition: all 0.3s ease; border: 1px solid #e2e8f0;">
-            <div class="mb-3" style="font-size: 42px;">💳</div>
-            <h5 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Transparent Pricing" %}</h5>
-            <p class="text-muted mb-0" style="line-height: 1.7;">
-              {% trans "Flat ৳2500 per tournament, no hidden cost. Pay securely through bKash." %}
+          <div class="feature-card h-100 p-5 text-center" style="background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent;">
+            <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);">
+              <span style="font-size: 40px;">💳</span>
+            </div>
+            <h4 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Transparent Pricing" %}</h4>
+            <p class="text-muted mb-0" style="line-height: 1.8; font-size: 1.05rem;">
+              {% trans "Flat ৳2500 per tournament, no hidden costs. Pay securely through bKash with instant confirmation." %}
             </p>
           </div>
         </div>
+
         <div class="col-lg-4 col-md-6 mb-4">
-          <div class="h-100 p-4 rounded-lg shadow-sm" style="background: white; border-radius: 16px; transition: all 0.3s ease; border: 1px solid #e2e8f0;">
-            <div class="mb-3" style="font-size: 42px;">📱</div>
-            <h5 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Works on Any Device" %}</h5>
-            <p class="text-muted mb-0" style="line-height: 1.7;">
+          <div class="feature-card h-100 p-5 text-center" style="background: white; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid transparent;">
+            <div class="mb-4 d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);">
+              <span style="font-size: 40px;">📱</span>
+            </div>
+            <h4 class="font-weight-bold mb-3" style="color: #1e293b;">{% trans "Works Anywhere" %}</h4>
+            <p class="text-muted mb-0" style="line-height: 1.8; font-size: 1.05rem;">
               {% trans "Optimized for desktop, tablet, and mobile — perfect for tab rooms and on-the-go judges." %}
             </p>
           </div>
@@ -190,10 +337,10 @@
   </section>
   
   <style>
-    .rounded-lg:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.12) !important;
-      border-color: #c7d2fe !important;
+    .feature-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
+      border-color: #667eea !important;
     }
   </style>
 

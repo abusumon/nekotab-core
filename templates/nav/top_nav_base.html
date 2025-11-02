@@ -112,13 +112,13 @@
           </form>
         </li>
       {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">
+        <li class="nav-item mr-2">
+          <a class="btn btn-outline-primary" href="{% url 'login' %}" style="border-radius: 999px; padding: 0.5rem 1.3rem; font-weight: 600; border-width: 2px;">
             {% trans "Log In" %}
           </a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-primary ml-2" href="{% url 'signup' %}" style="border-radius: 8px; padding: 0.4rem 1.2rem; font-weight: 600;">
+          <a class="btn btn-primary" href="{% url 'signup' %}" style="border-radius: 999px; padding: 0.5rem 1.3rem; font-weight: 600; box-shadow: 0 4px 14px rgba(102, 126, 234, 0.3);">
             {% trans "Sign Up" %}
           </a>
         </li>
@@ -128,4 +128,3 @@
   </div>
 
 </nav>
-
