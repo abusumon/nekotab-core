@@ -1,4 +1,5 @@
-﻿{% load static statici18n i18n debate_tags %}<!DOCTYPE html>
+﻿<!DOCTYPE html>
+{% load static statici18n i18n debate_tags %}
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
@@ -193,9 +194,9 @@
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
     <script>
       window.buildData = { // Pass to Sentry
-        version: '{% if NekoTab_version %}{{ NekoTab_version }}{% else %}?{% endif %}',
-        sentry: {% if disable_sentry %}false{% else %}true{% endif %}
-      }
+        version: '{{ NekoTab_version|default:"?" }}',
+        sentry: {{ disable_sentry|yesno:"false,true" }}
+      };
     </script>
 
     {% if hmr %}

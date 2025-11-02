@@ -18,15 +18,24 @@
 
   <div class="alert alert-warning mt-3" id="error-reporting" style="display: none;">
       <strong>Tab Directors:</strong>
-      If you're running this on Heroku, an error report has been sent to the developers of NekoTab (unless you've disabled this or are running Tabbykitten). If you encounter this error repeatedly, please let us know by posting in our <a href="https://www.facebook.com/groups/NekoTab.debate/">Facebook group</a> and people should try to help. Please be sure to explain what you were trying to do and include the URL of this page (<span id="page-url"></span>) in your post.
+      If you're running this on Heroku, an error report has been sent to the developers of NekoTab (unless you've disabled this or are running Tabbykitten). If you encounter this error repeatedly, please let us know by posting in our <a href="https://www.facebook.com/groups/NekoTab.debate/">Facebook group</a> and people should try to help. Please be sure to explain what you were trying to do and include the URL of this page (<span id="page-url"></span>) in your post. You can also <a id="report-link" href="#" target="_blank" rel="noopener">report this on GitHub</a>.
   </div>
 
   <script>
-    document.getElementById("report-link").href = "https://github.com/NekoTabDebate/NekoTab/issues/new/?title=Internal%20server%20error%20report&body=I%20hit%20an%20internal%20server%20error%20while%20trying%20to%20load%20this%20URL:%0A" + window.location.href + "%0A%0APlease%20describe%20what%20you%20were%20doing%20when%20the%20error%20happened,%20along%20with%20any%20other%20useful%20information:%0A&labels=error-report";
-    document.getElementById("page-url").innerText = window.location.href;
-    if(window.location.href.indexOf("admin") > -1 || window.location.href.indexOf("database") > -1) {
-      document.getElementById("error-reporting").style.display = "block";
-    }
+    (function () {
+      var reportLink = document.getElementById("report-link");
+      if (reportLink) {
+        reportLink.href = "https://github.com/NekoTabDebate/NekoTab/issues/new/?title=Internal%20server%20error%20report&body=I%20hit%20an%20internal%20server%20error%20while%20trying%20to%20load%20this%20URL:%0A" + window.location.href + "%0A%0APlease%20describe%20what%20you%20were%20doing%20when%20the%20error%20happened,%20along%20with%20any%20other%20useful%20information:%0A&labels=error-report";
+      }
+      var pageUrlSpan = document.getElementById("page-url");
+      if (pageUrlSpan) {
+        pageUrlSpan.innerText = window.location.href;
+      }
+      if (window.location.href.indexOf("admin") > -1 || window.location.href.indexOf("database") > -1) {
+        var block = document.getElementById("error-reporting");
+        if (block) block.style.display = "block";
+      }
+    })();
   </script>
 
 {% endblock %}
