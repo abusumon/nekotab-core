@@ -296,7 +296,12 @@
                 <li><a href="#tournaments">Tournaments</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'admin:index' %}">Dashboard</a></li>
-                    <li><a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a></li>
+                    <li>
+                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-secondary" style="border: none; cursor: pointer;">Logout</button>
+                        </form>
+                    </li>
                 {% else %}
                     <li><a href="{% url 'login' %}" class="btn btn-primary">Login</a></li>
                 {% endif %}
