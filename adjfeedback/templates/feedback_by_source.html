@@ -6,7 +6,7 @@
 
 {% block content %}
 
-  {% if feedbacks.count == 0 %}
+  {% if feedbacks|length == 0 %}
 
     {% if source_type == 'from' %}
       {% blocktrans trimmed asvar message %}

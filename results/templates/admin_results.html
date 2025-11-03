@@ -128,7 +128,7 @@
     {% include "components/alert.html" with type="danger" %}
   {% endif %}
 
-  {% if pref.enable_motions and round.motion_set.count == 0 %}
+  {% if pref.enable_motions and round.motion_set.all|length == 0 %}
     {% roundurl 'motions-edit' as motions_url %}
     {% blocktrans trimmed asvar message %}
       Currently there are no motions entered for this round, so debate results

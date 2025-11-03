@@ -42,7 +42,7 @@
 
 {% block page-alerts %}
 
-  {% if category.team_set.count == 0 %}
+  {% if category.team_set.all|length == 0 %}
 
     {% tournamenturl 'breakqual-edit-eligibility' as url %}
     {% blocktrans trimmed asvar message %}

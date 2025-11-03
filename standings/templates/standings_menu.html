@@ -8,12 +8,12 @@
 </div>
 
 <div class="btn-group flex-wrap">
-  {% if tournament.break_categories_nongeneral.count > 0 %}
+  {% if tournament.break_categories_nongeneral|length > 0 %}
     <div class="btn btn-outline-primary disabled">{% trans "Teams" %}</div>
   {% endif %}
   <a class="btn btn-outline-primary {% if standings_team_nav %}active{% endif %}"
      href="{% roundurl 'standings-team' current_round %}">
-    {% if tournament.break_categories_nongeneral.count > 0 %}
+    {% if tournament.break_categories_nongeneral|length > 0 %}
       {% trans "All" context "All [Teams]" %}
     {% else %}
       {% trans "Teams" %}
@@ -28,14 +28,14 @@
 </div>
 
 <div class="btn-group flex-wrap">
-  {% if tournament.speakercategory_set.all.count > 0 or pref.reply_scores_enabled %}
+  {% if tournament.speakercategory_set.all|length > 0 or pref.reply_scores_enabled %}
     <div class="btn btn-outline-primary disabled">{% trans "Speakers" %}</div>
   {% endif %}
   <a class="btn btn-outline-primary {% if standings_speaker_nav %}active{% endif %}"
      href="{% roundurl 'standings-speaker' current_round %}">
     {% if pref.reply_scores_enabled %}
       {% trans "Substantives" context "Substantive speeches" %}
-    {% elif tournament.speakercategory_set.all.count > 0 %}
+    {% elif tournament.speakercategory_set.all|length > 0 %}
       {% trans "All" context "All [Speakers]" %}
     {% else %}
       {% trans "Speakers " %}

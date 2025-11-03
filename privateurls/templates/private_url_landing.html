@@ -14,7 +14,7 @@
 
 {% block page-alerts %}
 
-  {% if pref.institution_participant_registration and object.speaker.team.speaker_set.count < pref.speakers_in_team and speaker_invite_link %}
+  {% if pref.institution_participant_registration and object.speaker.team.speaker_set.all|length < pref.speakers_in_team and speaker_invite_link %}
     {% blocktrans trimmed with name=object.name link=speaker_invite_link asvar p1 %}
       Your team has an incomplete number of speakers. Please share the registration link with your partner(s):
       <a href="{{ link }}">{{ link }}</a>

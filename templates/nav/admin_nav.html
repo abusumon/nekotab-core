@@ -218,7 +218,7 @@
         <i data-feather="maximize"></i>{% trans "Overview" %}
       </a>
       <a class="list-group-item" href="{% roundurl 'standings-team' current_round %}">
-        {% if tournament.break_categories_nongeneral.count > 0 %}
+        {% if tournament.break_categories_nongeneral|length > 0 %}
           <i data-feather="users"></i>{% trans "All Teams" %}
         {% else %}
           <i data-feather="users"></i>{% trans "Teams" %}
@@ -232,7 +232,7 @@
         </a>
       {% endfor %}
       <a class="list-group-item" href="{% roundurl 'standings-speaker' current_round %}">
-        {% if tournament.speakercategory_set.all.count > 0 %}
+        {% if tournament.speakercategory_set.all|length > 0 %}
           <i data-feather="user"></i>{% trans "All Speakers" %}
         {% else %}
           <i data-feather="user"></i>{% trans "Speakers" %}

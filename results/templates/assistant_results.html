@@ -12,7 +12,7 @@
     {% trans "This page automatically updates with the new ballot entries and checkins as they occur." as message %}
     {% include "components/alert.html" with type="info" %}
 
-    {% if pref.enable_motions and round.motion_set.count == 0 %}
+    {% if pref.enable_motions and round.motion_set.all|length == 0 %}
       {% blocktrans trimmed asvar message %}
         Currently there are no motions entered for this round, so debate results
         cannot be entered. Please ask an administrator to add motions.

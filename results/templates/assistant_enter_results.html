@@ -75,7 +75,7 @@
       $('#resultsForm input[type="checkbox"]').attr('disabled', 'true');
       $('#resultsForm select').attr('disabled', 'true');
       $('#incorrect').click(function() {
-        {% if all_ballotsubs.count > 1 %}
+        {% if all_ballotsubs|length > 1 %}
           $('#id_debate_result_status').val('{{ debate.STATUS_DRAFT }}');
         {% else %}
           $('#id_debate_result_status').val('{{ debate.STATUS_NONE }}');

@@ -19,7 +19,7 @@
             Has submitted feedback for <strong>{{ adjudicator }}</strong>
           {% endblocktrans %}
         </div>
-      {% elif tracker.expected and tracker.count == 0 %}
+      {% elif tracker.expected and tracker.submitted|length == 0 %}
         <div class="list-group-item {% if not pref.feedback_progress %}list-group-item-secondary{% endif %} text-danger">
           <span class="badge badge-secondary">{{ tracker.round.name }}</span>
           {% if tracker.acceptable_targets|length > 1 %}
