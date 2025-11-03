@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:49\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/NekoTab/breakqual/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/breakqual/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 928\n"
 
 #: breakqual/apps.py
 msgid "Break Qualification"
-msgstr "Ø´Ø±ÙˆØ· Ø§Ù„ØªØ£Ù‡Ù„"
+msgstr "شروط التأهل"
 
 #: breakqual/base.py
 #, python-format
@@ -34,39 +34,39 @@ msgstr[5] ""
 
 #: breakqual/models.py
 msgid "tournament"
-msgstr "Ø¨Ø·ÙˆÙ„Ø©"
+msgstr "بطولة"
 
 #: breakqual/models.py
 msgid "name"
-msgstr "Ø§Ø³Ù… "
+msgstr "اسم "
 
 #: breakqual/models.py
 msgid "Name to be displayed, e.g., \"ESL\""
-msgstr "Ø§Ù„Ø§Ø³Ù… Ø§Ù„Ù…Ø·Ù„ÙˆØ¨ Ø¹Ø±Ø¶Ù‡ØŒ Ø¹Ù„Ù‰ Ø³Ø¨ÙŠÙ„ Ø§Ù„Ù…Ø«Ø§Ù„ØŒ \"Ø¥Ø³Ù„\""
+msgstr "الاسم المطلوب عرضه، على سبيل المثال، \"إسل\""
 
 #: breakqual/models.py
 msgid "slug"
-msgstr "Ø§Ø®ØªØµØ§Ø±"
+msgstr "اختصار"
 
 #: breakqual/models.py
 msgid "Slug for URLs, e.g., \"esl\""
-msgstr "Ø£Ø®ØªØµØ§Ø± "
+msgstr "أختصار "
 
 #: breakqual/models.py
 msgid "sequence number"
-msgstr "Ø§Ù„Ø±Ù‚Ù… Ø§Ù„Ù…ØªØ³Ù„Ø³Ù„ "
+msgstr "الرقم المتسلسل "
 
 #: breakqual/models.py
 msgid "The order in which the categories are displayed"
-msgstr "Ø§Ù„ØªØ±ØªÙŠØ¨ Ø§Ù„Ø°ÙŠ ÙŠØªÙ… Ø¨Ù‡ Ø¹Ø±Ø¶ Ø§Ù„ÙØ¦Ø§Øª "
+msgstr "الترتيب الذي يتم به عرض الفئات "
 
 #: breakqual/models.py
 msgid "break size"
-msgstr "Ø­Ø¬Ù… ÙØ¦Ø© Ø§Ù„Ù…ØªØ£Ù‡Ù„ÙŠÙ† "
+msgstr "حجم فئة المتأهلين "
 
 #: breakqual/models.py
 msgid "Number of breaking teams in this category"
-msgstr "Ø¹Ø¯Ø¯ Ø§Ù„ÙØ±Ù‚ Ø§Ù„Ù…ØªØ£Ù‡Ù„Ø© ÙÙŠ Ù‡Ø°Ù‡ Ø§Ù„ÙØ¦Ø© "
+msgstr "عدد الفرق المتأهلة في هذه الفئة "
 
 #: breakqual/models.py
 msgid "Reserve size"
@@ -78,7 +78,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "is general"
-msgstr "Ø¨ØµÙˆØ±Ø© Ø¹Ø§Ù…Ø©"
+msgstr "بصورة عامة"
 
 #: breakqual/models.py
 msgid "Are teams eligible for this break by default"
@@ -86,11 +86,11 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "priority"
-msgstr "Ø§Ù„Ø£ÙˆÙ„ÙˆÙŠØ©"
+msgstr "الأولوية"
 
 #: breakqual/models.py
 msgid "If a team breaks in multiple categories, higher priority numbers take precedence; teams can break into multiple categories if and only if they all have the same priority"
-msgstr "Ø¥Ø°Ø§ ØªØ£Ù‡Ù„ Ø§Ù„ÙØ±ÙŠÙ‚  Ø¥Ù„Ù‰ ÙØ¦Ø§Øª Ù…ØªØ¹Ø¯Ø¯Ø©ØŒ ØªÙƒÙˆÙ† Ø§Ù„Ø£ÙˆÙ„ÙˆÙŠØ© Ù„Ù„Ø£Ø±Ù‚Ø§Ù… Ø°Ø§Øª Ø§Ù„Ø£ÙˆÙ„ÙˆÙŠØ© Ø§Ù„Ø£Ø¹Ù„Ù‰Ø› ÙŠÙ…ÙƒÙ† Ù„Ù„ÙØ±Ù‚ Ø£Ù† ØªØªØ£Ù‡Ù„ Ø¥Ù„Ù‰ ÙØ¦Ø§Øª Ù…ØªØ¹Ø¯Ø¯Ø© ÙÙ‚Ø· Ø¥Ø°Ø§ ÙƒØ§Ù† Ù„Ø¬Ù…ÙŠØ¹Ù‡Ø§ Ù†ÙØ³ Ø§Ù„Ø£ÙˆÙ„ÙˆÙŠØ©"
+msgstr "إذا تأهل الفريق  إلى فئات متعددة، تكون الأولوية للأرقام ذات الأولوية الأعلى؛ يمكن للفرق أن تتأهل إلى فئات متعددة فقط إذا كان لجميعها نفس الأولوية"
 
 #: breakqual/models.py
 msgid "limit"
@@ -102,7 +102,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "Standard"
-msgstr "Ø§Ø³Ø§Ø³ÙŠ"
+msgstr "اساسي"
 
 #: breakqual/models.py
 msgid "AIDA 1996"
@@ -122,59 +122,59 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "rule"
-msgstr "Ù‚Ø§Ø¹Ø¯Ø©"
+msgstr "قاعدة"
 
 #: breakqual/models.py
 msgid "Rule for how the break is calculated (most tournaments should use \"Standard\")"
-msgstr "Ù‚Ø§Ø¹Ø¯Ø© ÙƒÙŠÙÙŠØ© Ø­Ø³Ø§Ø¨ Ø¯Ø±Ø¬Ø§Øª Ø§Ù„ØªØ£Ù‡Ù„"
+msgstr "قاعدة كيفية حساب درجات التأهل"
 
 #: breakqual/models.py
 msgid "breaking teams"
-msgstr "Ø§Ù„ÙØ±Ù‚ Ø§Ù„Ù…ØªØ£Ù‡Ù„Ù‡"
+msgstr "الفرق المتأهله"
 
 #: breakqual/models.py
 msgid "break category"
-msgstr "ÙØ¦Ø© Ø§Ù„ØªØ£Ù‡Ù„"
+msgstr "فئة التأهل"
 
 #: breakqual/models.py
 msgid "break categories"
-msgstr "ÙØ¦Ø§Øª Ø§Ù„ØªØ£Ù‡Ù„"
+msgstr "فئات التأهل"
 
 #: breakqual/models.py
 msgid "team"
-msgstr "ÙØ±ÙŠÙ‚"
+msgstr "فريق"
 
 #: breakqual/models.py
 msgid "rank"
-msgstr "Ø§Ù„ØªØ±ØªÙŠØ¨"
+msgstr "الترتيب"
 
 #: breakqual/models.py
 msgid "break rank"
-msgstr "ØªØ±ØªÙŠØ¨ Ø§Ù„ØªØ£Ù‡Ù„"
+msgstr "ترتيب التأهل"
 
 #: breakqual/models.py
 msgid "Capped"
-msgstr "Ù…Ø­Ø¯ÙˆØ¯"
+msgstr "محدود"
 
 #: breakqual/models.py
 msgid "Ineligible"
-msgstr "ØºÙŠØ± Ù…Ø¤Ù‡Ù„"
+msgstr "غير مؤهل"
 
 #: breakqual/models.py
 msgid "Different break"
-msgstr "ØªØ£Ù‡Ù„ Ù…Ø®ØªÙ„Ù"
+msgstr "تأهل مختلف"
 
 #: breakqual/models.py
 msgid "Disqualified"
-msgstr "ØºÙŠØ± Ù…ØªØ£Ù‡Ù„"
+msgstr "غير متأهل"
 
 #: breakqual/models.py
 msgid "Lost coin toss"
-msgstr "Ø®Ø³Ø± Ø§Ù„Ù‚Ø±Ø¹Ø©"
+msgstr "خسر القرعة"
 
 #: breakqual/models.py
 msgid "Withdrawn"
-msgstr "Ø¥Ù†Ø³Ø­Ø¨"
+msgstr "إنسحب"
 
 #: breakqual/models.py
 msgid "Reserve"
@@ -186,7 +186,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "remark"
-msgstr "Ø§Ø¹Ø§Ø¯Ø© ÙˆØ¶Ø¹ Ø§Ù„Ø¹Ù„Ø§Ù…Ø§Øª"
+msgstr "اعادة وضع العلامات"
 
 #: breakqual/models.py
 msgid "Used to explain why an otherwise-qualified team didn't break"
@@ -194,7 +194,7 @@ msgstr ""
 
 #: breakqual/models.py
 msgid "breaking team"
-msgstr "Ø§Ù„ÙØ±Ù‚ Ø§Ù„Ù…ØªØ£Ù‡Ù„Ø© "
+msgstr "الفرق المتأهلة "
 
 #: breakqual/templates/break_categories_edit.html
 #: breakqual/templates/breaking_index.html
@@ -222,10 +222,10 @@ msgstr ""
 
 #: breakqual/templates/breaking_index.html
 msgid "Breaks"
-msgstr "Ø§Ù„ØªØ£Ù‡Ù„"
+msgstr "التأهل"
 
 #: breakqual/templates/breaking_index.html
-msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://NekoTab.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
+msgid "This tournament does not have any break categories set up. You can read about how to create breaks <a href=\"https://tabbycat.readthedocs.io/en/stable/features/breaks.html\" class=\"alert-link\" target=\"_blank\"> at our documentation. </a>"
 msgstr ""
 
 #: breakqual/templates/breaking_index.html
@@ -238,7 +238,7 @@ msgstr ""
 #: breakqual/templates/public_break_index.html breakqual/views.py
 #, python-format
 msgid "%(category)s Break"
-msgstr "%(category)s ØªØ£Ù‡Ù„"
+msgstr "%(category)s تأهل"
 
 #: breakqual/templates/breaking_index.html
 #, python-format
@@ -247,56 +247,56 @@ msgstr ""
 
 #: breakqual/templates/breaking_index.html
 msgid "Teams Eligible"
-msgstr "Ø§Ù„ÙØ±Ù‚ Ø§Ù„Ù…Ø³ØªØ­Ù‚Ø©"
+msgstr "الفرق المستحقة"
 
 #: breakqual/templates/breaking_index.html
 msgid "Breaking"
-msgstr "Ù…ØªØ£Ù‡Ù„"
+msgstr "متأهل"
 
 #: breakqual/templates/breaking_index.html
 msgid "Excluded"
-msgstr "Ù…Ø³ØªØ¨Ø¹Ø¯"
+msgstr "مستبعد"
 
 #: breakqual/templates/breaking_index.html
 msgid "Eligible"
-msgstr "Ù…Ø¤Ù‡Ù„"
+msgstr "مؤهل"
 
 #: breakqual/templates/breaking_index.html
 msgid "Mark teams as eligible"
-msgstr "Ø­Ø¯Ø¯ Ø§Ù„ÙØ±Ù‚ Ùƒ \" Ù…Ø³ØªØ­Ù‚Ø©\""
+msgstr "حدد الفرق ك \" مستحقة\""
 
 #: breakqual/templates/breaking_index.html
 msgid "Generate this break"
-msgstr "Ø¥Ù†Ø´Ø¦ Ø§Ù„ØªØ£Ù‡Ù„"
+msgstr "إنشئ التأهل"
 
 #: breakqual/templates/breaking_index.html
 msgid "View this break"
-msgstr "Ø¹Ø±Ø¶ Ø§Ù„ÙØ±Ù‚ Ø§Ù„Ù…ØªØ£Ù‡Ù„Ø© "
+msgstr "عرض الفرق المتأهلة "
 
 #: breakqual/templates/breaking_teams.html
 msgid "publicly visible"
-msgstr "Ù…Ø¹Ø±ÙˆØ¶ Ø¹Ù„Ù‰ Ø§Ù„Ø¬Ù…ÙŠØ¹ "
+msgstr "معروض على الجميع "
 
 #: breakqual/templates/breaking_teams.html
 msgid "not publicly visible"
-msgstr "ØºÙŠØ± Ù…Ø¹Ø±ÙˆØ¶ Ù„Ù„Ø¬Ù…ÙŠØ¹"
+msgstr "غير معروض للجميع"
 
 #: breakqual/templates/breaking_teams.html
 msgid "Delete and Regenerate All Breaks"
-msgstr "Ù…Ø³Ø­ Ùˆ Ø§Ø¹Ø§Ø¯Ø© Ø¬ÙŠÙ…Ø¹ Ø§Ù„ØªØ£Ù‡Ù„Ø§Øª "
+msgstr "مسح و اعادة جيمع التأهلات "
 
 #: breakqual/templates/breaking_teams.html
 msgid "Generate the Break for All Categories"
-msgstr "Ø¥Ù†Ø´Ø¦ ØªØ£Ù‡Ù„ Ù„Ø¬Ù…ÙŠØ¹ Ø§Ù„ÙØ±Ù‚ Ùˆ Ø§Ù„ÙØ¦Ø§Øª"
+msgstr "إنشئ تأهل لجميع الفرق و الفئات"
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "There are <strong>0 teams marked as eligible</strong> for this category â€” you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
+msgid "There are <strong>0 teams marked as eligible</strong> for this category — you will need to <a href=\"%(url)s\" class=\"alert-link\"> add some eligible teams</a> for this break to generate correctly."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
-msgid "This break uses the <strong>%(category)s</strong> rule â€” if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
+msgid "This break uses the <strong>%(category)s</strong> rule — if you intended to use a different rule, you should <a href=\"%(url)s\"> edit the rule for this break category in the Edit Database area</a>, then delete and regenerate all breaks. Please double-check this before announcing the break or releasing it to the public. The code that generates the break is not robustly tested for corner cases."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
@@ -310,7 +310,7 @@ msgid "The <strong>public breaking teams</strong> configuration setting is enabl
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
-msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious â€” you can regenerate it later."
+msgid "The break hasn't yet been generated. Would you like to generate the break for all categories? It's safe to generate the break before all preliminary rounds are complete, if you're curious — you can regenerate it later."
 msgstr ""
 
 #: breakqual/templates/breaking_teams.html
@@ -319,12 +319,12 @@ msgstr ""
 
 #: breakqual/templates/breaking_teams.html
 msgid "Save Remarks and Update All Breaks"
-msgstr "Ø­ÙØ¸ Ø§Ù„Ø¯Ø±Ø¬Ø§Øª Ùˆ ØªØ­Ø¯ÙŠØ« Ø§Ù„ØªØ£Ù‡Ù„ "
+msgstr "حفظ الدرجات و تحديث التأهل "
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
 msgid "Save Remarks and Update the %(category)s Break"
-msgstr "Ø­ÙØ¸ Ø§Ù„Ø¯Ø±Ø¬Ø§Øª Ùˆ ØªØ­Ø¯ÙŠØ« %(category)sØ§Ù„ØªØ£Ù‡Ù„"
+msgstr "حفظ الدرجات و تحديث %(category)sالتأهل"
 
 #: breakqual/templates/breaking_teams.html
 #, python-format
@@ -337,7 +337,7 @@ msgstr ""
 
 #: breakqual/templates/breakqual_subnav.html
 msgid "Adjudicators' Break"
-msgstr "Ø§Ù„Ø­ÙƒØ§Ù… Ø§Ù„Ù…ØªØ£Ù‡Ù„ÙŠÙ†"
+msgstr "الحكام المتأهلين"
 
 #: breakqual/templates/edit_break_eligibility.html
 #, python-format
@@ -346,38 +346,38 @@ msgstr ""
 
 #: breakqual/templates/public_break_index.html breakqual/views.py
 msgid "Break"
-msgstr "ØªØ£Ù‡Ù„ "
+msgstr "تأهل "
 
 #: breakqual/templates/public_break_index.html
 msgid "Adjudicators"
-msgstr "Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ†"
+msgstr "المحكمين"
 
 #. Translators: abbreviation for "grand final"
 #: breakqual/utils.py
 msgid "Grand Final"
-msgstr "Ø§Ù„Ù†Ù‡Ø§Ø¦ÙŠ "
+msgstr "النهائي "
 
 #: breakqual/utils.py
 msgid "GF"
-msgstr "Ø¬ØŒØ£Ù"
+msgstr "ج،أف"
 
 #. Translators: abbreviation for "semifinals"
 #: breakqual/utils.py
 msgid "Semifinals"
-msgstr "Ù†ØµÙ Ø§Ù„Ù†Ù‡Ø§Ø¦ÙŠ "
+msgstr "نصف النهائي "
 
 #: breakqual/utils.py
 msgid "SF"
-msgstr "Ù†.Ù†"
+msgstr "ن.ن"
 
 #. Translators: abbreviation for "quarterfinals"
 #: breakqual/utils.py
 msgid "Quarterfinals"
-msgstr "Ø§Ù„Ø¯ÙˆØ± Ø§Ù„Ø±Ø¨Ø¹ Ø§Ù„Ù†Ù‡Ø§Ø¦ÙŠ "
+msgstr "الدور الربع النهائي "
 
 #: breakqual/utils.py
 msgid "QF"
-msgstr "Ø±.Ù†"
+msgstr "ر.ن"
 
 #. Translators: abbreviation for "octofinals"
 #: breakqual/utils.py
@@ -485,11 +485,11 @@ msgstr ""
 
 #: breakqual/utils.py
 msgid "Unknown break round"
-msgstr "Ø§Ù„Ø¬ÙˆÙ„Ø§Øª Ø§Ù„Ù…ØªØ£Ù‡Ù„Ø© ØºÙŠØ± Ù…Ø¹Ø±ÙˆÙØ© "
+msgstr "الجولات المتأهلة غير معروفة "
 
 #: breakqual/utils.py
 msgid "UBR"
-msgstr "Ø±Ø§Ø¨Ø· "
+msgstr "رابط "
 
 #: breakqual/views.py
 #, python-format
@@ -498,11 +498,11 @@ msgstr ""
 
 #: breakqual/views.py
 msgid "Eligible for"
-msgstr "Ù…Ø³ØªØ­Ù‚ Ù„"
+msgstr "مستحق ل"
 
 #: breakqual/views.py
 msgid "Edit Remark"
-msgstr "ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù…Ù„Ø§Ø­Ø¸Ø§Øª"
+msgstr "تعديل الملاحظات"
 
 #: breakqual/views.py
 #, python-format
@@ -516,7 +516,7 @@ msgstr ""
 
 #: breakqual/views.py
 msgid "Changes to breaking team remarks saved."
-msgstr "ØªÙ… Ø­ÙØ¸ ØªØ¹Ø¯ÙŠÙ„ Ø¯Ø±Ø¬Ø§Øª Ø§Ù„ÙØ±ÙŠÙ‚ Ø§Ù„Ù…ØªØ£Ù‡Ù„Ù‡ "
+msgstr "تم حفظ تعديل درجات الفريق المتأهله "
 
 #: breakqual/views.py
 #, python-format
@@ -525,7 +525,7 @@ msgstr ""
 
 #: breakqual/views.py
 msgid "Breaking Adjudicators"
-msgstr "Ø§Ù„Ø­ÙƒØ§Ù… Ø§Ù„Ù…ØªØ£Ù‡Ù„ÙˆÙ†"
+msgstr "الحكام المتأهلون"
 
 #: breakqual/views.py
 msgid "Four-team formats require the break size to be either six times or four times a power of two."
@@ -533,7 +533,7 @@ msgstr ""
 
 #: breakqual/views.py
 msgid "Break Eligibility"
-msgstr "Ø¥Ø³ØªØ­Ù‚Ø§Ù‚ Ø§Ù„ØªØ£Ù‡Ù„"
+msgstr "إستحقاق التأهل"
 
 #: breakqual/views.py
 #, python-format
@@ -550,5 +550,4 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
-
 

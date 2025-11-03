@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:47\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: tr\n"
-"X-Crowdin-File: /develop/NekoTab/notifications/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/notifications/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 938\n"
 
@@ -24,17 +24,17 @@ msgstr "Bildirimler"
 
 #: notifications/forms.py
 msgid "Recipient email address"
-msgstr "AlÄ±cÄ±nÄ±n e-posta adresi"
+msgstr "Alıcının e-posta adresi"
 
 #: notifications/forms.py
 #, python-format
 msgid "Test email from %(host)s"
-msgstr "%(host)s adresinden gelen e-postayÄ± test edin"
+msgstr "%(host)s adresinden gelen e-postayı test edin"
 
 #: notifications/forms.py
 #, python-format
 msgid "Congratulations! If you're reading this message, your email backend on %(host)s looks all good to go!"
-msgstr "Tebrikler! Bu mesajÄ± okuyorsanÄ±z, %(host)s Ã¼zerindeki e-posta sisteminiz Ã§alÄ±ÅŸÄ±yor!"
+msgstr "Tebrikler! Bu mesajı okuyorsanız, %(host)s üzerindeki e-posta sisteminiz çalışıyor!"
 
 #: notifications/forms.py
 msgid "Subject"
@@ -54,15 +54,15 @@ msgstr "SMS"
 
 #: notifications/models.py
 msgid "recipient"
-msgstr "alÄ±cÄ±"
+msgstr "alıcı"
 
 #: notifications/models.py
 msgid "method"
-msgstr "yÃ¶ntem"
+msgstr "yöntem"
 
 #: notifications/models.py
 msgid "context"
-msgstr "BaÄŸlam"
+msgstr "Bağlam"
 
 #: notifications/models.py
 msgid "notification"
@@ -70,23 +70,23 @@ msgstr "bildirim"
 
 #: notifications/models.py
 msgid "timestamp"
-msgstr "Zaman damgasÄ±"
+msgstr "Zaman damgası"
 
 #: notifications/models.py
 msgid "sent message"
-msgstr "mesaj gÃ¶nderildi"
+msgstr "mesaj gönderildi"
 
 #: notifications/models.py
 msgid "sent messages"
-msgstr "gÃ¶nderilen mesajlar"
+msgstr "gönderilen mesajlar"
 
 #: notifications/models.py
 msgid "team points"
-msgstr "takÄ±m puanlarÄ±"
+msgstr "takım puanları"
 
 #: notifications/models.py
 msgid "ballot confirmed"
-msgstr "ballot onaylandÄ±"
+msgstr "ballot onaylandı"
 
 #: notifications/models.py
 msgid "feedback URL"
@@ -98,31 +98,31 @@ msgstr "ballot URL'si"
 
 #: notifications/models.py
 msgid "landing page URL"
-msgstr "aÃ§Ä±lÄ±ÅŸ sayfasÄ± URL'si"
+msgstr "açılış sayfası URL'si"
 
 #: notifications/models.py
 msgid "adjudicator draw released"
-msgstr "jÃ¼ri kurasÄ± yayÄ±nlandÄ±"
+msgstr "jüri kurası yayınlandı"
 
 #: notifications/models.py
 msgid "team registration"
-msgstr "takÄ±m kaydÄ±"
+msgstr "takım kaydı"
 
 #: notifications/models.py
 msgid "adjudicator registration"
-msgstr "jÃ¼ri kaydÄ±"
+msgstr "jüri kaydı"
 
 #: notifications/models.py
 msgid "motion(s) released"
-msgstr "yayÄ±nlanan jÃ¼ri(ler)"
+msgstr "yayınlanan jüri(ler)"
 
 #: notifications/models.py
 msgid "team draw released"
-msgstr "takÄ±m kurasÄ± yayÄ±nlandÄ±"
+msgstr "takım kurası yayınlandı"
 
 #: notifications/models.py
 msgid "custom message"
-msgstr "Ã¶zel mesaj"
+msgstr "özel mesaj"
 
 #: notifications/models.py
 msgid "event"
@@ -138,11 +138,11 @@ msgstr "tur"
 
 #: notifications/models.py
 msgid "subject template"
-msgstr "konu ÅŸablonu"
+msgstr "konu şablonu"
 
 #: notifications/models.py
 msgid "body template"
-msgstr "vÃ¼cut ÅŸablonu"
+msgstr "vücut şablonu"
 
 #: notifications/models.py
 msgid "bulk notification"
@@ -154,43 +154,43 @@ msgstr "toplu bildirimler"
 
 #: notifications/models.py
 msgid "Processed"
-msgstr "IÅŸlenmiÅŸ"
+msgstr "Işlenmiş"
 
 #: notifications/models.py
 msgid "Dropped"
-msgstr "DÃ¼ÅŸÃ¼rÃ¼lmÃ¼ÅŸ"
+msgstr "Düşürülmüş"
 
 #: notifications/models.py
 msgid "Deferred"
-msgstr "ErtelenmiÅŸ"
+msgstr "Ertelenmiş"
 
 #: notifications/models.py
 msgid "Delivered"
-msgstr "Teslim EdilmiÅŸ"
+msgstr "Teslim Edilmiş"
 
 #: notifications/models.py
 msgid "Bounced"
-msgstr "ZÄ±platÄ±lmiÅŸ"
+msgstr "Zıplatılmiş"
 
 #: notifications/models.py
 msgid "Opened"
-msgstr "AÃ§Ä±lmÄ±ÅŸ"
+msgstr "Açılmış"
 
 #: notifications/models.py
 msgid "Clicked"
-msgstr "TÄ±klanmÄ±ÅŸ"
+msgstr "Tıklanmış"
 
 #: notifications/models.py
 msgid "Unsubscribed"
-msgstr "Abonelikten Ã‡Ä±kÄ±ldÄ±"
+msgstr "Abonelikten Çıkıldı"
 
 #: notifications/models.py
 msgid "Marked as spam"
-msgstr "Spam olarak iÅŸaretlendi"
+msgstr "Spam olarak işaretlendi"
 
 #: notifications/models.py
 msgid "Unsubscribed from group"
-msgstr "Grup aboneliÄŸinden Ã§Ä±kÄ±ldÄ±"
+msgstr "Grup aboneliğinden çıkıldı"
 
 #: notifications/models.py
 msgid "Resubscribed to group"
@@ -210,60 +210,60 @@ msgstr "e-posta durumu"
 
 #: notifications/models.py
 msgid "email statuses"
-msgstr "e-posta durumlarÄ±"
+msgstr "e-posta durumları"
 
 #: notifications/templates/email_participants.html
 #, python-format
 msgid "You have not specified a reply-to address. This means that participants may not reply to the message if they have questions. Please set one in the <a href=\"%(notifications_options_url)s\">Notifications section of the preferences</a>."
-msgstr "Bir yanÄ±t adresi belirtmediniz. Bu, katÄ±lÄ±mcÄ±larÄ±n sorularÄ± varsa mesaja yanÄ±t vermeyebilecekleri anlamÄ±na gelir. LÃ¼tfen tercihlerin<a href=\"%(notifications_options_url)s\">Bildirimler bÃ¶lÃ¼mÃ¼nde bir tane ayarlayÄ±n</a>."
+msgstr "Bir yanıt adresi belirtmediniz. Bu, katılımcıların soruları varsa mesaja yanıt vermeyebilecekleri anlamına gelir. Lütfen tercihlerin<a href=\"%(notifications_options_url)s\">Bildirimler bölümünde bir tane ayarlayın</a>."
 
 #: notifications/templates/email_participants.html
 #, python-format
 msgid "The webhook URL for use in SendGrid is <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a>. Please point the HTTP POST URL in <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid</a> to that."
-msgstr "SendGrid'de kullanÄ±lacak webhook URL'si <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a> ÅŸeklindedir. LÃ¼tfen <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid'te</a> HTTP POST URL'sini bu linke yÃ¶nlendirin."
+msgstr "SendGrid'de kullanılacak webhook URL'si <a href=\"%(notifications_webhook_url)s\">%(notifications_webhook_url)s</a> şeklindedir. Lütfen <a href=\"https://app.sendgrid.com/settings/mail_settings\">SendGrid'te</a> HTTP POST URL'sini bu linke yönlendirin."
 
 #: notifications/templates/email_participants.html
 msgid "Send Message(s)"
-msgstr "Mesaj GÃ¶nder"
+msgstr "Mesaj Gönder"
 
 #: notifications/templates/email_statuses.html
-msgid "Emails can be sent by NekoTab for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
-msgstr "E-postalar NekoTab tarafÄ±ndan Ã§eÅŸitli amaÃ§lar iÃ§in gÃ¶nderilebilir. E-postalar, belirli tercihler etkinleÅŸtirildiÄŸinde (Ballot MakbuzlarÄ±nÄ± etkinleÅŸtirme gibi) veya belirli sayfalarda bulunan eylemler aracÄ±lÄ±ÄŸÄ±yla (Ã¶rneÄŸin, eÅŸleÅŸmeler iÃ§in Ã‡ekiliÅŸ GÃ¶rÃ¼ntÃ¼leme sayfasÄ±; veya takÄ±m kaydÄ± iÃ§in KatÄ±lÄ±mcÄ±lar sayfasÄ±) gÃ¶nderilir. Bu sayfada daha Ã¶nce gÃ¶nderilen e-postalarÄ±n durumu gÃ¶sterilmektedir."
+msgid "Emails can be sent by Tabbycat for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
+msgstr "E-postalar Tabbycat tarafından çeşitli amaçlar için gönderilebilir. E-postalar, belirli tercihler etkinleştirildiğinde (Ballot Makbuzlarını etkinleştirme gibi) veya belirli sayfalarda bulunan eylemler aracılığıyla (örneğin, eşleşmeler için Çekiliş Görüntüleme sayfası; veya takım kaydı için Katılımcılar sayfası) gönderilir. Bu sayfada daha önce gönderilen e-postaların durumu gösterilmektedir."
 
 #: notifications/templates/notifications_nav.html notifications/views.py
 msgid "Email Statuses"
-msgstr "e-posta durumlarÄ±"
+msgstr "e-posta durumları"
 
 #: notifications/templates/notifications_nav.html
 #: notifications/templates/test_email.html
 msgid "Send Test Email"
-msgstr "Test E-postasÄ± GÃ¶nder"
+msgstr "Test E-postası Gönder"
 
 #: notifications/templates/notifications_nav.html
 msgid "Send Custom Email"
-msgstr "Ã–zel E-posta GÃ¶nder"
+msgstr "Özel E-posta Gönder"
 
 #: notifications/templates/test_email.html
 msgctxt "page title"
 msgid "Send Test Email"
-msgstr "Test E-postasÄ± GÃ¶nder"
+msgstr "Test E-postası Gönder"
 
 #: notifications/templates/test_email.html
 msgid "You can use this form to send a test email, to check that your email backend settings are working, before you try to send email notifications to participants."
-msgstr "KatÄ±lÄ±mcÄ±lara e-posta bildirimleri gÃ¶ndermeyi denemeden Ã¶nce test e-postasÄ± gÃ¶ndererek, e-posta sisteminizin ayarlarÄ±n Ã§alÄ±ÅŸÄ±p Ã§alÄ±ÅŸmadÄ±ÄŸÄ±nÄ± kontrol etmek iÃ§in bu formu kullanabilirsiniz."
+msgstr "Katılımcılara e-posta bildirimleri göndermeyi denemeden önce test e-postası göndererek, e-posta sisteminizin ayarların çalışıp çalışmadığını kontrol etmek için bu formu kullanabilirsiniz."
 
 #: notifications/templates/test_email.html
 #, python-format
 msgid "The email will be sent from: <strong>%(default_from_email)s</strong>. If this doesn't look right, change the <code>DEFAULT_FROM_EMAIL</code> config var in Heroku (or environment variable)."
-msgstr "E-posta ÅŸu adresten gÃ¶nderilecektir: <strong>%(default_from_email)s</strong>. Bu doÄŸru deÄŸilse, Heroku'daki <code>DEFAULT_FROM_EMAIL</code>config veya ortam deÄŸiÅŸkenini deÄŸiÅŸtirin."
+msgstr "E-posta şu adresten gönderilecektir: <strong>%(default_from_email)s</strong>. Bu doğru değilse, Heroku'daki <code>DEFAULT_FROM_EMAIL</code>config veya ortam değişkenini değiştirin."
 
 #: notifications/templates/test_email.html
 msgid "Go back to the site home page"
-msgstr "Site giriÅŸ sayfasÄ±na geri dÃ¶n"
+msgstr "Site giriş sayfasına geri dön"
 
 #: notifications/utils.py
 msgid "the chair"
-msgstr "baÅŸkan"
+msgstr "başkan"
 
 #: notifications/utils.py
 msgid "the only"
@@ -289,12 +289,12 @@ msgstr ""
 #: notifications/utils.py
 #, python-format
 msgid "<li>%(side)s: %(team)s (%(points)d points with %(speaks)s total speaks)"
-msgstr "<li>%(side)s: %(team)s (%(points)d puanlÄ± %(speaks)s toplam konuÅŸmacÄ±)"
+msgstr "<li>%(side)s: %(team)s (%(points)d puanlı %(speaks)s toplam konuşmacı)"
 
 #: notifications/utils.py
 #, python-format
 msgid "<li>%(side)s: %(team)s (%(points)s - %(speaks)s total speaks)"
-msgstr "<li>%(side)s: %(team)s (%(points)s - %(speaks)s toplam konuÅŸmacÄ±)"
+msgstr "<li>%(side)s: %(team)s (%(points)s - %(speaks)s toplam konuşmacı)"
 
 #: notifications/utils.py
 msgid "Win"
@@ -302,7 +302,7 @@ msgstr "Galibiyet"
 
 #: notifications/utils.py
 msgid "Loss"
-msgstr "MaÄŸlubiyet"
+msgstr "Mağlubiyet"
 
 #: notifications/utils.py
 #, python-format
@@ -321,21 +321,21 @@ msgstr ", "
 #: notifications/views.py
 #, python-format
 msgid "The email (SMTP) server returned an error sending the test email: [SMTP code %(code)d] %(error)s"
-msgstr "E-posta (SMTP) sunucusu sÄ±nama e-postasÄ±nÄ± gÃ¶nderirken bir hatayla karÅŸÄ±laÅŸtÄ±: [SMTP kodu %(code)d] %(error)s"
+msgstr "E-posta (SMTP) sunucusu sınama e-postasını gönderirken bir hatayla karşılaştı: [SMTP kodu %(code)d] %(error)s"
 
 #: notifications/views.py
 msgid "Hint: If the error is about sender identity verification in SendGrid, and you've already completed the steps in SendGrid, it may be that you need to update the DEFAULT_FROM_EMAIL config var in Heroku to match your verified sender identity."
-msgstr "Ä°pucu: Hata SendGrid'deki gÃ¶nderen kimliÄŸi doÄŸrulamasÄ±yla ilgiliyse ve SendGrid'deki adÄ±mlarÄ± zaten tamamladÄ±ysanÄ±z, doÄŸrulanmÄ±ÅŸ gÃ¶nderen kimliÄŸinizle eÅŸleÅŸmesi iÃ§in Heroku'daki DEFAULT_FROM_EMAIL yapÄ±landÄ±rma deÄŸiÅŸkenini gÃ¼ncellemeniz gerekebilir."
+msgstr "İpucu: Hata SendGrid'deki gönderen kimliği doğrulamasıyla ilgiliyse ve SendGrid'deki adımları zaten tamamladıysanız, doğrulanmış gönderen kimliğinizle eşleşmesi için Heroku'daki DEFAULT_FROM_EMAIL yapılandırma değişkenini güncellemeniz gerekebilir."
 
 #: notifications/views.py
 #, python-format
 msgid "There was an error sending the test email: %(error)s"
-msgstr "Test e-postasÄ± gÃ¶nderilirken bir hata oluÅŸtu: %(error)s"
+msgstr "Test e-postası gönderilirken bir hata oluştu: %(error)s"
 
 #: notifications/views.py
 #, python-format
 msgid "A test email has been sent to %(recipient)s."
-msgstr "%(recipient)s bir test e-postasÄ± gÃ¶nderildi."
+msgstr "%(recipient)s bir test e-postası gönderildi."
 
 #: notifications/views.py
 msgid "N/A"
@@ -357,11 +357,11 @@ msgstr ""
 
 #: notifications/views.py
 msgid "Timeline"
-msgstr "Zaman Ã§izelgesi"
+msgstr "Zaman çizelgesi"
 
 #: notifications/views.py
 msgid "Participant"
-msgstr "KatÄ±lÄ±mcÄ±"
+msgstr "Katılımcı"
 
 #: notifications/views.py
 msgid "Email address"
@@ -377,26 +377,26 @@ msgstr "Zaman"
 
 #: notifications/views.py
 msgid "Email Participants"
-msgstr "KatÄ±lÄ±mcÄ±lara E-posta GÃ¶nder"
+msgstr "Katılımcılara E-posta Gönder"
 
 #: notifications/views.py
 #, python-format
 msgid "%(email_count)s email has been queued for sending."
 msgid_plural "%(email_count)s emails have been queued for sending."
-msgstr[0] "%(email_count)s e-posta gÃ¶nderilmek Ã¼zere sÄ±raya alÄ±ndÄ±."
-msgstr[1] "%(email_count)s e-posta gÃ¶nderilmek Ã¼zere sÄ±raya alÄ±ndÄ±."
+msgstr[0] "%(email_count)s e-posta gönderilmek üzere sıraya alındı."
+msgstr[1] "%(email_count)s e-posta gönderilmek üzere sıraya alındı."
 
 #: notifications/views.py
-msgid "No emails were sent â€” likely because no recipients were selected."
-msgstr "HiÃ§bir e-posta gÃ¶nderilmedi â€” bÃ¼yÃ¼k olasÄ±lÄ±kla hiÃ§bir alÄ±cÄ± seÃ§ilmediÄŸi iÃ§in."
+msgid "No emails were sent — likely because no recipients were selected."
+msgstr "Hiçbir e-posta gönderilmedi — büyük olasılıkla hiçbir alıcı seçilmediği için."
 
 #: notifications/views.py
 msgid "Send Email"
-msgstr "E-posta GÃ¶nder"
+msgstr "E-posta Gönder"
 
 #: notifications/views.py
 msgid "Not Provided"
-msgstr "SaÄŸlanmadÄ±"
+msgstr "Sağlanmadı"
 
 #: notifications/views.py
 msgid "Role"
@@ -404,18 +404,17 @@ msgstr "Rol"
 
 #: notifications/views.py
 msgid "Adjudicator"
-msgstr "JÃ¼ri"
+msgstr "Jüri"
 
 #: notifications/views.py
 msgid "Speaker"
-msgstr "KonuÅŸmacÄ±"
+msgstr "Konuşmacı"
 
 #: notifications/views.py
 msgid "Speakers"
-msgstr "KonuÅŸmacÄ±lar"
+msgstr "Konuşmacılar"
 
 #: notifications/views.py
 msgid "Adjudicators"
-msgstr "JÃ¼riler"
-
+msgstr "Jüriler"
 

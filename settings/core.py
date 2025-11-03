@@ -1,4 +1,4 @@
-﻿import os
+import os
 
 from django.contrib.messages import constants as messages
 from django.utils.translation import gettext_lazy as _
@@ -11,7 +11,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Overwritten in local.py or heroku.py
 # ==============================================================================
 
-ADMINS = ('NekoTab Debate', 'contact@NekoTab-debate.org'),
+ADMINS = ('Tabbycat Debate', 'contact@tabbycat-debate.org'),
 MANAGERS = ADMINS
 DEBUG = bool(int(os.environ['DEBUG'])) if 'DEBUG' in os.environ else False
 ENABLE_DEBUG_TOOLBAR = False # Must default to false; overriden in Dev config
@@ -23,7 +23,9 @@ SECRET_KEY = r'#2q43u&tp4((4&m3i8v%w-6z6pp7m(v0-6@w@i!j5n)n15epwc'
 # ==============================================================================
 
 NekoTab_VERSION = '2.10.0'
+TABBYCAT_VERSION = '2.10.0'
 NekoTab_CODENAME = 'Sphynx'
+TABBYCAT_CODENAME = 'Sphynx'
 READTHEDOCS_VERSION = 'v2.10.0'
 
 # ==============================================================================
@@ -112,7 +114,7 @@ MIDDLEWARE = [
     'utils.middleware.DebateMiddleware',
 ]
 
-NekoTab_APPS = (
+TABBYCAT_APPS = (
     'actionlog',
     'adjallocation',
     'adjfeedback',
@@ -150,7 +152,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django_summernote',  # Keep above our apps; as we unregister an admin model
     'django.contrib.messages') \
-    + NekoTab_APPS + (
+    + TABBYCAT_APPS + (
     'dynamic_preferences',
     'django_extensions',  # For Secret Generation Command
     'gfklookupwidget',
@@ -275,7 +277,7 @@ LOGGING = {
     },
 }
 
-for app in NekoTab_APPS:
+for app in TABBYCAT_APPS:
     LOGGING['loggers'][app] = {
         'handlers': ['console'],
         'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
@@ -364,17 +366,17 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'NekoTab API',
+    'TITLE': 'Tabbycat API',
     'DESCRIPTION': 'Parliamentary debate tabulation software',
     'VERSION': '1.3.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'SCHEMA_PATH_PREFIX': r'api/v\d+',
-    'CONTACT': {'name': 'Ã‰tienne BeaulÃ©', 'email': 'ebeaule@NekoTab-debate.org'},
+    'CONTACT': {'name': 'Étienne Beaulé', 'email': 'ebeaule@tabbycat-debate.org'},
     'LICENSE': {'name': 'AGPL 3', 'url': 'https://www.gnu.org/licenses/agpl-3.0.en.html'},
     'EXTENSIONS_INFO': {
         "x-logo": {
             "url": "/static/logo.svg",
-            "altText": "NekoTab logo",
+            "altText": "Tabbycat logo",
         },
     }
 }
@@ -404,4 +406,3 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-

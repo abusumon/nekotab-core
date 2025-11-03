@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:48\n"
@@ -11,111 +11,111 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: uk\n"
-"X-Crowdin-File: /develop/NekoTab/actionlog/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/actionlog/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 920\n"
 
 #: actionlog/apps.py
 msgid "Action Log"
-msgstr "Ð–ÑƒÑ€Ð½Ð°Ð» Ð´Ñ–Ð¹"
+msgstr "Журнал дій"
 
 #: actionlog/models.py
 msgid "Changed adjudicator breaking status"
-msgstr "Ð—Ð¼Ñ–Ð½ÐµÐ½Ð¾ ÑÑ‚Ð°Ñ‚ÑƒÑ ÑÑƒÐ´Ð´Ñ– Ð´Ð»Ñ Ð±Ñ€ÐµÐ¹ÐºÑƒ"
+msgstr "Змінено статус судді для брейку"
 
 #: actionlog/models.py
 msgid "Created adjudicator"
-msgstr "Ð¡ÑƒÐ´Ð´ÑŽ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Суддю створено"
 
 #: actionlog/models.py
 msgid "Edited adjudicator"
-msgstr "Ð¡ÑƒÐ´Ð´ÑŽ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Суддю змінено"
 
 #: actionlog/models.py
 msgid "Set adjudicator note"
-msgstr "Ð¡Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ð¸ Ð·Ð°Ð¼Ñ–Ñ‚ÐºÑƒ ÑÑƒÐ´Ð´Ñ–"
+msgstr "Створити замітку судді"
 
 #: actionlog/models.py
 msgid "Auto-allocated adjudicators"
-msgstr "Ð¡ÑƒÐ´Ð´Ñ– Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÐ¾Ð²Ð°Ð½Ñ– Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾"
+msgstr "Судді розташовані автоматично"
 
 #: actionlog/models.py
 msgid "Saved adjudicator allocation"
-msgstr "Ð Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ ÑÑƒÐ´Ð´Ñ–Ð² Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Розташування суддів змінено"
 
 #: actionlog/models.py
 msgid "Edited adjudicators availability"
-msgstr "ÐÐ°ÑÐ²Ð½Ñ–ÑÑ‚ÑŒ ÑÑƒÐ´Ð´Ñ–Ð² Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Наявність суддів змінено"
 
 #: actionlog/models.py
 msgid "Edited availability"
-msgstr "ÐÐ°ÑÐ²Ð½Ñ–ÑÑ‚ÑŒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Наявність змінено"
 
 #: actionlog/models.py
 msgid "Edited teams availability"
-msgstr "ÐÐ°ÑÐ²Ð½Ñ–ÑÑ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Наявність команд змінено"
 
 #: actionlog/models.py
 msgid "Edited room availability"
-msgstr "Ð ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸ Ð½Ð°ÑÐ²Ð½Ñ–ÑÑ‚ÑŒ ÐºÑ–Ð¼Ð½Ð°Ñ‚"
+msgstr "Редагувати наявність кімнат"
 
 #: actionlog/models.py
 msgid "Checked in ballot set"
-msgstr "Ð‘ÑŽÐ»ÐµÑ‚ÐµÐ½ÑŒ Ð¿ÐµÑ€ÐµÐ²Ñ–Ñ€ÐµÐ½Ð¾"
+msgstr "Бюлетень перевірено"
 
 #: actionlog/models.py
 msgid "Confirmed ballot set"
-msgstr "Ð‘ÑŽÐ»ÐµÑ‚ÐµÐ½ÑŒ Ð¿Ñ–Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¶ÐµÐ½Ð¾"
+msgstr "Бюлетень підтверджено"
 
 #: actionlog/models.py
 msgid "Created ballot set"
-msgstr "Ð‘ÑŽÐ»ÐµÑ‚ÐµÐ½ÑŒ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Бюлетень створено"
 
 #: actionlog/models.py
 msgid "Discarded ballot set"
-msgstr "Ð‘ÑŽÐ»ÐµÑ‚ÐµÐ½ÑŒ Ð²Ñ–Ð´Ñ…Ð¸Ð»ÐµÐ½Ð¸Ð¹"
+msgstr "Бюлетень відхилений"
 
 #: actionlog/models.py
 msgid "Edited ballot set"
-msgstr "Ð‘ÑŽÐ»ÐµÑ‚ÐµÐ½ÑŒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Бюлетень змінено"
 
 #: actionlog/models.py
 msgid "Submitted ballot set from the public form"
-msgstr "Ð’Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¾ Ð±ÑŽÐ»ÐµÑ‚ÐµÐ½ÑŒ Ð· Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¾Ñ— Ñ„Ð¾Ñ€Ð¼Ð¸"
+msgstr "Відправлено бюлетень з публічної форми"
 
 #: actionlog/models.py
 msgid "Edited break categories"
-msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ñ–Ñ— Ð±Ñ€ÐµÐ¹ÐºÑƒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Категорії брейку змінено"
 
 #: actionlog/models.py
 msgid "Deleted team break for category"
-msgstr "Ð’Ð¸Ð´Ð°Ð»ÐµÐ½Ð¾ Ð±Ñ€ÐµÐ¹Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð´Ð»Ñ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ñ–Ñ—"
+msgstr "Видалено брейк команд для категорії"
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks"
-msgstr "Ð’Ñ–Ð´Ð¼Ñ–Ñ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð±Ñ€ÐµÐ¹ÐºÑƒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Відмітки команд брейку змінено"
 
 #: actionlog/models.py
 msgid "Edited break eligibility"
-msgstr "Ð’Ð¸Ð¼Ð¾Ð³Ð¸ Ð´Ð¾ Ð±Ñ€ÐµÐ¹ÐºÑƒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Вимоги до брейку змінено"
 
 #: actionlog/models.py
 msgid "Generated the team break for all categories"
-msgstr "Ð‘Ñ€ÐµÐ¹Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð·Ð³ÐµÐ½ÐµÑ€Ð¾Ð²Ð°Ð½Ð¸Ð¹ Ð´Ð»Ñ Ð²ÑÑ–Ñ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ñ–Ð¹"
+msgstr "Брейк команд згенерований для всіх категорій"
 
 #: actionlog/models.py
 msgid "Generated the team break for one category"
-msgstr "Ð‘Ñ€ÐµÐ¹Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð·Ð³ÐµÐ½ÐµÑ€Ð¾Ð²Ð°Ð½Ð¸Ð¹ Ð´Ð»Ñ Ð¾Ð´Ð½Ñ–Ñ”Ñ— ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ñ–Ñ—"
+msgstr "Брейк команд згенерований для однієї категорії"
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks and updated all team breaks"
-msgstr "Ð’Ñ–Ð´Ð¼Ñ–Ñ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð±Ñ€ÐµÐ¹ÐºÑƒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾ Ñ‚Ð° Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾ Ð²ÑÑ– Ð±Ñ€ÐµÐ¹ÐºÐ¸ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Відмітки команд брейку змінено та оновлено всі брейки команд"
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks and updated this team break"
-msgstr "Ð’Ñ–Ð´Ð¼Ñ–Ñ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð±Ñ€ÐµÐ¹ÐºÑƒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾ Ñ‚Ð° Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾ Ñ†ÐµÐ¹ Ð±Ñ€ÐµÐ¹Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Відмітки команд брейку змінено та оновлено цей брейк команд"
 
 #: actionlog/models.py
 msgid "Generated check in identifiers for adjudicators"
@@ -131,35 +131,35 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited adjudicator-adjudicator conflicts"
-msgstr "ÐšÐ¾Ð½Ñ„Ð»Ñ–ÐºÑ‚Ð¸ ÑÑƒÐ´Ð´Ñ-ÑÑƒÐ´Ð´Ñ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Конфлікти суддя-суддя змінено"
 
 #: actionlog/models.py
 msgid "Edited adjudicator-institution conflicts"
-msgstr "ÐšÐ¾Ð½Ñ„Ð»Ñ–ÐºÑ‚Ð¸ ÑÑƒÐ´Ð´Ñ-Ñ–Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ†Ñ–Ñ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Конфлікти суддя-інституція змінено"
 
 #: actionlog/models.py
 msgid "Edited adjudicator-team conflicts"
-msgstr "ÐšÐ¾Ð½Ñ„Ð»Ñ–ÐºÑ‚Ð¸ ÑÑƒÐ´Ð´Ñ-ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Конфлікти суддя-команда змінено"
 
 #: actionlog/models.py
 msgid "Edited team-institution conflicts"
-msgstr "ÐšÐ¾Ð½Ñ„Ð»Ñ–ÐºÑ‚Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°-Ñ–Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ†Ñ–Ñ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Конфлікти команда-інституція змінено"
 
 #: actionlog/models.py
 msgid "Created debate"
-msgstr "Ð¡Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ð¸"
+msgstr "Створити дебати"
 
 #: actionlog/models.py
 msgid "Edited debate"
-msgstr "Ð”ÐµÐ±Ð°Ñ‚Ð¸ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Дебати змінено"
 
 #: actionlog/models.py
 msgid "Auto-prioritized debate importance"
-msgstr "ÐŸÑ€Ñ–Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚ Ð´ÐµÐ±Ð°Ñ‚Ñ–Ð² Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ Ñ€Ð¾Ð·Ð¿Ð¾Ð´Ñ–Ð»ÐµÐ½Ð¸Ð¹"
+msgstr "Пріоритет дебатів автоматично розподілений"
 
 #: actionlog/models.py
 msgid "Edited debate importance"
-msgstr "ÐŸÑ€Ñ–Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚ Ð´ÐµÐ±Ð°Ñ‚Ñ–Ð² Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Пріоритет дебатів змінено"
 
 #: actionlog/models.py
 msgid "Saved divisions"
@@ -167,67 +167,67 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Confirmed draw"
-msgstr "Ð¡Ñ–Ñ‚ÐºÑƒ Ð¿Ñ–Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¶ÐµÐ½Ð°"
+msgstr "Сітку підтверджена"
 
 #: actionlog/models.py
 msgid "Created draw"
-msgstr "Ð¡Ñ–Ñ‚ÐºÑƒ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Сітку створено"
 
 #: actionlog/models.py
 msgid "Regenerated draw"
-msgstr "Ð¡Ñ–Ñ‚ÐºÐ° Ð¿ÐµÑ€ÐµÑ€Ð¾Ð±Ð»ÐµÐ½Ð°"
+msgstr "Сітка перероблена"
 
 #: actionlog/models.py
 msgid "Released draw"
-msgstr "Ð¡Ñ–Ñ‚ÐºÑƒ Ð¾Ð¿ÑƒÐ±Ð»Ñ–ÐºÐ¾Ð²Ð°Ð½Ð¾"
+msgstr "Сітку опубліковано"
 
 #: actionlog/models.py
 msgid "Unreleased draw"
-msgstr "Ð¡Ñ–Ñ‚ÐºÑƒ Ð¿Ñ€Ð¸Ñ…Ð¾Ð²Ð°Ð½Ð¾"
+msgstr "Сітку приховано"
 
 #: actionlog/models.py
 msgid "Created feedback question"
-msgstr "ÐŸÐ¸Ñ‚Ð°Ð½Ð½Ñ Ð´Ð»Ñ Ð²Ñ–Ð´Ð³ÑƒÐºÑƒ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Питання для відгуку створено"
 
 #: actionlog/models.py
 msgid "Edited feedback question"
-msgstr "ÐŸÐ¸Ñ‚Ð°Ð½Ð½Ñ Ð²Ñ–Ð´Ð³ÑƒÐºÑƒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Питання відгуку змінено"
 
 #: actionlog/models.py
 msgid "Saved feedback"
-msgstr "Ð’Ñ–Ð´Ð³ÑƒÐº Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¾"
+msgstr "Відгук збережено"
 
 #: actionlog/models.py
 msgid "Submitted feedback from the public form"
-msgstr "Ð’Ñ–Ð´Ð³ÑƒÐº Ð· Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¾Ñ— Ñ„Ð¾Ñ€Ð¼Ð¸ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ð¹"
+msgstr "Відгук з публічної форми відправлений"
 
 #: actionlog/models.py
 msgid "Created institution"
-msgstr "Ð†Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ†Ñ–ÑŽ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Інституцію створено"
 
 #: actionlog/models.py
 msgid "Edited institution"
-msgstr "Ð†Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ†Ñ–ÑŽ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Інституцію змінено"
 
 #: actionlog/models.py
 msgid "Saved a matchup manual edit"
-msgstr "Ð ÑƒÑ‡Ð½Ðµ Ñ€ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ð½Ð½Ñ ÑÑ–Ñ‚ÐºÐ¸ Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¾"
+msgstr "Ручне редагування сітки збережено"
 
 #: actionlog/models.py
 msgid "Added/edited motion"
-msgstr "Ð”Ð¾Ð´Ð°Ð½Ð¾/Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾ Ñ€ÐµÐ·Ð¾Ð»ÑŽÑ†Ñ–ÑŽ"
+msgstr "Додано/змінено резолюцію"
 
 #: actionlog/models.py
 msgid "Released motions"
-msgstr "ÐžÐ¿ÑƒÐ±Ð»Ñ–ÐºÐ¾Ð²Ð°Ð½Ñ– Ñ€ÐµÐ·Ð¾Ð»ÑŽÑ†Ñ–Ñ—"
+msgstr "Опубліковані резолюції"
 
 #: actionlog/models.py
 msgid "Unreleased motions"
-msgstr "ÐŸÑ€Ð¸Ñ…Ð¾Ð²Ð°Ð½Ñ– Ñ€ÐµÐ·Ð¾Ð»ÑŽÑ†Ñ–Ñ—"
+msgstr "Приховані резолюції"
 
 #: actionlog/models.py
 msgid "Edited tournament options"
-msgstr "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ñ‚ÑƒÑ€Ð½Ñ–Ñ€Ñƒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Налаштування турніру змінено"
 
 #: actionlog/models.py
 msgid "Auto-allocated adjudicators to preformed panels"
@@ -263,19 +263,19 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Marked round as completed"
-msgstr "Ð Ð°ÑƒÐ½Ð´ Ð¿Ð¾Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¾ ÑÐº Ð·Ð°ÐºÑ–Ð½Ñ‡ÐµÐ½Ð¸Ð¹"
+msgstr "Раунд позначено як закінчений"
 
 #: actionlog/models.py
 msgid "Created round"
-msgstr "Ð Ð°ÑƒÐ½Ð´ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Раунд створено"
 
 #: actionlog/models.py
 msgid "Edited round"
-msgstr "Ð Ð°ÑƒÐ½Ð´ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Раунд змінено"
 
 #: actionlog/models.py
 msgid "Set start time"
-msgstr "ÐŸÐ¾Ñ‡Ð°Ñ‚Ð¸ Ð²Ñ–Ð´Ð»Ñ–Ðº Ñ‡Ð°ÑÑƒ"
+msgstr "Почати відлік часу"
 
 #: actionlog/models.py
 msgid "Saved the sides status of a matchup"
@@ -299,75 +299,75 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited speaker categories"
-msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ñ–Ñ— ÑÐ¿Ñ–ÐºÐµÑ€Ñ–Ð² Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Категорії спікерів змінено"
 
 #: actionlog/models.py
 msgid "Created speaker"
-msgstr "Ð¡Ð¿Ñ–ÐºÐµÑ€Ð° ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Спікера створено"
 
 #: actionlog/models.py
 msgid "Edited speaker"
-msgstr "Ð¡Ð¿Ñ–ÐºÐµÑ€Ð° Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Спікера змінено"
 
 #: actionlog/models.py
 msgid "Edited speaker category eligibility"
-msgstr "Ð’Ð¸Ð¼Ð¾Ð³Ð¸ Ð´Ð¾ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ñ–Ñ— ÑÐ¿Ñ–ÐºÐµÑ€Ñ–Ð² Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Вимоги до категорії спікерів змінено"
 
 #: actionlog/models.py
 msgid "Created team"
-msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ñƒ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Команду створено"
 
 #: actionlog/models.py
 msgid "Edited team"
-msgstr "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð·Ð¼Ñ–Ð½ÐµÐ½Ð°"
+msgstr "Команда змінена"
 
 #: actionlog/models.py
 msgid "Edited adjudicator base score"
-msgstr "Ð‘Ð°Ð·Ð¾Ð²Ð¸Ð¹ Ð±Ð°Ð» ÑÑƒÐ´Ð´Ñ– Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Базовий бал судді змінено"
 
 #: actionlog/models.py
 msgid "Created tournament"
-msgstr "Ð¢ÑƒÑ€Ð½Ñ–Ñ€ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Турнір створено"
 
 #: actionlog/models.py
 msgid "Edited tournament"
-msgstr "Ð¢ÑƒÑ€Ð½Ñ–Ñ€ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Турнір змінено"
 
 #: actionlog/models.py
 msgid "Updated adjudicator scores in bulk"
-msgstr "Ð‘Ð°Ð»Ð¸ ÑÑƒÐ´Ð´Ñ–Ð² Ð¼Ð°ÑÐ¾Ð²Ð¾ Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾"
+msgstr "Бали суддів масово оновлено"
 
 #: actionlog/models.py
 msgid "Invited user to the instance"
-msgstr "ÐšÐ¾Ñ€Ð¸ÑÑ‚ÑƒÐ²Ð°Ñ‡Ð° Ð·Ð°Ð¿Ñ€Ð¾ÑˆÐµÐ½Ð¾ Ð´Ð¾ Ð·Ð°Ñ…Ð¾Ð´Ñƒ"
+msgstr "Користувача запрошено до заходу"
 
 #: actionlog/models.py
 msgid "Edited room categories"
-msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ñ–Ñ— Ð¿Ñ€Ð¸Ð¼Ñ–Ñ‰ÐµÐ½ÑŒ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Категорії приміщень змінено"
 
 #: actionlog/models.py
 msgid "Created room category"
-msgstr "ÐšÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ñ–ÑŽ Ð¿Ñ€Ð¸Ð¼Ñ–Ñ‰ÐµÐ½Ð½Ñ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Категорію приміщення створено"
 
 #: actionlog/models.py
 msgid "Edited room constraints"
-msgstr "ÐžÐ±Ð¼ÐµÐ¶ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¸Ð¼Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Обмеження приміщення змінено"
 
 #: actionlog/models.py
 msgid "Created room"
-msgstr "ÐŸÑ€Ð¸Ð¼Ñ–Ñ‰ÐµÐ½Ð½Ñ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾"
+msgstr "Приміщення створено"
 
 #: actionlog/models.py
 msgid "Edited room"
-msgstr "ÐŸÑ€Ð¸Ð¼Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð·Ð¼Ñ–Ð½ÐµÐ½Ð¾"
+msgstr "Приміщення змінено"
 
 #: actionlog/models.py
 msgid "Auto-allocated rooms"
-msgstr "ÐŸÑ€Ð¸Ð¼Ñ–Ñ‰ÐµÐ½Ð½Ñ Ñ€Ð¾Ð·Ð¿Ð¾Ð´Ñ–Ð»ÐµÐ½Ñ– Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾"
+msgstr "Приміщення розподілені автоматично"
 
 #: actionlog/models.py
 msgid "Saved a room manual edit"
-msgstr "Ð ÑƒÑ‡Ð½Ðµ Ñ€ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ð½Ð½Ñ Ð¿Ñ€Ð¸Ð¼Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¾"
+msgstr "Ручне редагування приміщення збережено"
 
 #: actionlog/models.py
 msgid "Created question"
@@ -403,15 +403,15 @@ msgstr "Web"
 
 #: actionlog/models.py
 msgid "type"
-msgstr "Ñ‚Ð¸Ð¿"
+msgstr "тип"
 
 #: actionlog/models.py
 msgid "timestamp"
-msgstr "Ð²Ñ–Ð´Ð¼Ñ–Ñ‚ÐºÐ° Ñ‡Ð°ÑÑƒ"
+msgstr "відмітка часу"
 
 #: actionlog/models.py
 msgid "user"
-msgstr "ÐºÐ¾Ñ€Ð¸ÑÑ‚ÑƒÐ²Ð°Ñ‡"
+msgstr "користувач"
 
 #: actionlog/models.py
 msgid "IP address"
@@ -419,19 +419,19 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "tournament"
-msgstr "Ñ‚ÑƒÑ€Ð½Ñ–Ñ€"
+msgstr "турнір"
 
 #: actionlog/models.py
 msgid "round"
-msgstr "Ñ€Ð°ÑƒÐ½Ð´"
+msgstr "раунд"
 
 #: actionlog/models.py
 msgid "content type"
-msgstr "Ñ‚Ð¸Ð¿ Ð²Ð¼Ñ–ÑÑ‚Ñƒ"
+msgstr "тип вмісту"
 
 #: actionlog/models.py
 msgid "object ID"
-msgstr "ID Ð¾Ð±Ê¼Ñ”ÐºÑ‚Ñƒ"
+msgstr "ID обʼєкту"
 
 #: actionlog/models.py
 msgid "agent"
@@ -443,14 +443,13 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "action log entries"
-msgstr "Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð² Ð¶ÑƒÑ€Ð½Ð°Ð»Ñ– Ð´Ñ–Ð¹"
+msgstr "записи в журналі дій"
 
 #: actionlog/models.py
 msgid "All log entries require at least one of a user and an IP address."
-msgstr "Ð’ÑÑ– Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð¶ÑƒÑ€Ð½Ð°Ð»Ñƒ Ð¿Ð¾Ñ‚Ñ€ÐµÐ±ÑƒÑŽÑ‚ÑŒ ÑÐº Ð¼Ñ–Ð½Ñ–Ð¼ÑƒÐ¼ Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ð· ÐºÐ¾Ñ€Ð¸ÑÑ‚ÑƒÐ²Ð°Ñ‡Ñ–Ð² Ñ‚Ð° IP-Ð°Ð´Ñ€ÐµÑÑƒ."
+msgstr "Всі записи журналу потребують як мінімум одного з користувачів та IP-адресу."
 
 #: actionlog/models.py
 msgid "anonymous"
 msgstr ""
-
 

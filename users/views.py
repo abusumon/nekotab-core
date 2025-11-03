@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from threading import Lock
 
 from django.contrib import messages
@@ -16,23 +16,10 @@ from tournaments.mixins import TournamentMixin
 from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin
 
-from .forms import AcceptInvitationForm, InviteUserForm, SuperuserCreationForm, UserSignupForm
+from .forms import AcceptInvitationForm, InviteUserForm, SuperuserCreationForm
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
-
-
-class SignupView(FormView):
-    """Public user registration view."""
-    form_class = UserSignupForm
-    template_name = "registration/signup.html"
-    success_url = reverse_lazy('NekoTab-index')
-
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        messages.success(self.request, _("Welcome! Your account has been created successfully."))
-        return super().form_valid(form)
 
 
 class BlankSiteStartView(FormView):
@@ -44,12 +31,12 @@ class BlankSiteStartView(FormView):
     form_class = SuperuserCreationForm
     template_name = "blank_site_start.html"
     lock = Lock()
-    success_url = reverse_lazy('NekoTab-index')
+    success_url = reverse_lazy('tabbycat-index')
 
     def get(self, request):
         if User.objects.exists():
             logger.warning("Tried to get the blank-site-start view when a user account already exists.")
-            return redirect('NekoTab-index')
+            return redirect('tabbycat-index')
 
         return super().get(request)
 
@@ -105,7 +92,7 @@ class InviteUserView(LogActionMixin, AdministratorMixin, TournamentMixin, Passwo
 
 class AcceptInvitationView(TournamentMixin, PasswordResetConfirmView):
     form_class = AcceptInvitationForm
-    success_url = reverse_lazy('NekoTab-index')
+    success_url = reverse_lazy('tabbycat-index')
     template_name = 'signup.html'
     page_title = _('Accept Invitation')
 

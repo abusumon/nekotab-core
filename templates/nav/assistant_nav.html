@@ -1,6 +1,5 @@
 {% load debate_tags i18n %}
 
-{% if tournament %}
 <li class="nav-item {% if results_nav %}active{% endif %}">
   <a class="nav-link" href="{% tournamenturl 'results-assistant-round-list' %}">
     {% trans "Enter Results" %}
@@ -60,5 +59,4 @@
       {% trans "Display/Print Draw" %}
     </a>
   </li>
-{% endif %}
 {% endif %}

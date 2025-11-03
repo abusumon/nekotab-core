@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -12,35 +12,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: bn\n"
-"X-Crowdin-File: /develop/NekoTab/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 954\n"
 
 #: utils/admin.py utils/tables.py
 msgid "Round"
-msgstr "à¦ªà¦°à§à¦¬"
+msgstr "পর্ব"
 
 #: utils/admin.py utils/tables.py
 msgid "Team"
-msgstr "à¦¦à¦²"
+msgstr "দল"
 
 #: utils/admin.py
 msgid "Speaker"
-msgstr "à¦¬à¦•à§à¦¤à¦¾"
+msgstr "বক্তা"
 
 #: utils/admin.py utils/tables.py
 msgid "Tournament"
-msgstr "à¦ªà§à¦°à¦¤à¦¿à¦¯à§‹à¦—à¦¿à¦¤à¦¾"
+msgstr "প্রতিযোগিতা"
 
 #: utils/admin.py utils/tables.py
 msgid "Side"
-msgstr "à¦ªà¦•à§à¦·"
+msgstr "পক্ষ"
 
 #: utils/admin.py utils/tables.py
 msgid "Motion"
-msgstr "à¦ªà§à¦°à¦¸à§à¦¤à¦¾à¦¬"
+msgstr "প্রস্তাব"
 
 #: utils/admin.py
 msgid "Confirmed"
@@ -48,34 +48,34 @@ msgstr ""
 
 #: utils/admin.py
 msgid "Adjudicator"
-msgstr "à¦¬à¦¿à¦šà¦¾à¦°à¦•"
+msgstr "বিচারক"
 
 #: utils/tables.py
 msgid "No Data Available"
 msgstr ""
 
 #: utils/tables.py
-msgid "â’¸"
+msgid "Ⓒ"
 msgstr ""
 
 #: utils/tables.py
-msgid "â“‰"
+msgid "Ⓣ"
 msgstr ""
 
 #: utils/tables.py
 msgid "chair"
-msgstr "à¦¸à§à¦ªà¦¿à¦•à¦¾à¦°"
+msgstr "স্পিকার"
 
 #: utils/tables.py
 msgid "panellist"
-msgstr "à¦ªà§à¦¯à¦¾à¦¨à§‡à¦²à¦¿à¦¸à§à¦Ÿ"
+msgstr "প্যানেলিস্ট"
 
 #: utils/tables.py
 msgid "trainee"
-msgstr "à¦¨à¦¬à¦¿à¦¶ à¦¬à¦¿à¦šà¦¾à¦°à¦•"
+msgstr "নবিশ বিচারক"
 
 #: utils/tables.py
-msgid "â€”"
+msgid "—"
 msgstr ""
 
 #: utils/tables.py
@@ -90,7 +90,7 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "View %(team)s's Record"
-msgstr "%(team)s à¦à¦° à¦¨à¦¥à¦¿ à¦¦à§‡à¦–à§à¦¨"
+msgstr "%(team)s এর নথি দেখুন"
 
 #: utils/tables.py
 #, python-format
@@ -114,7 +114,7 @@ msgstr ""
 
 #: utils/tables.py
 #, python-format
-msgid "%(team)sâ€”no result"
+msgid "%(team)s—no result"
 msgstr ""
 
 #: utils/tables.py
@@ -143,17 +143,17 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid " vs %(opposition)s"
-msgstr " à¦¬à¦¨à¦¾à¦® %(opposition)s"
+msgstr " বনাম %(opposition)s"
 
 #: utils/tables.py
 #, python-format
 msgid "Won against %(team)s"
-msgstr "%(team)s à¦à¦° à¦¬à¦¿à¦ªà¦•à§à¦·à§‡ à¦œà¦¿à¦¤à§‡à¦›à§‡"
+msgstr "%(team)s এর বিপক্ষে জিতেছে"
 
 #: utils/tables.py
 #, python-format
 msgid "Lost to %(team)s"
-msgstr "%(team)s à¦à¦° à¦•à¦¾à¦›à§‡ à¦¬à¦¿à¦œà¦¿à¦¤"
+msgstr "%(team)s এর কাছে বিজিত"
 
 #: utils/tables.py
 #, python-format
@@ -163,7 +163,7 @@ msgstr ""
 #: utils/tables.py
 #, python-format
 msgid "Total speaker score: <strong>%s</strong>"
-msgstr "à¦®à§‹à¦Ÿ à¦¬à¦•à§à¦¤à¦¾ à¦¸à¦¾à¦«à¦²à§à¦¯à¦¾à¦™à§à¦•à¦ƒ <strong>%s</strong>"
+msgstr "মোট বক্তা সাফল্যাঙ্কঃ <strong>%s</strong>"
 
 #: utils/tables.py
 msgid "Teams in debate:"
@@ -209,7 +209,7 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Institution"
-msgstr "à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦¨"
+msgstr "প্রতিষ্ঠান"
 
 #: utils/tables.py
 msgid "Member of the Adjudication Core"
@@ -233,7 +233,7 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Categories"
-msgstr "à¦¬à¦¿à¦­à¦¾à¦—à¦¸à¦®à§‚à¦¹"
+msgstr "বিভাগসমূহ"
 
 #: utils/tables.py
 msgid "Category"
@@ -349,5 +349,4 @@ msgstr ""
 #: utils/views.py
 msgid "Whoops! You're not meant to type that URL into your browser."
 msgstr ""
-
 

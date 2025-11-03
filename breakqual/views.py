@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 
 from django.conf import settings
@@ -19,7 +19,7 @@ from tournaments.mixins import PublicTournamentPageMixin, SingleObjectFromTourna
 from users.permissions import Permission
 from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin
-from utils.tables import NekoTabTableBuilder
+from utils.tables import TabbycatTableBuilder
 from utils.views import PostOnlyRedirectView, VueTableTemplateView
 
 from . import forms
@@ -58,14 +58,14 @@ class BaseBreakingTeamsView(SingleObjectFromTournamentMixin, VueTableTemplateVie
 
     model = BreakCategory
     slug_url_kwarg = 'category'
-    page_emoji = 'ðŸ‘‘'
+    page_emoji = '👑'
 
     def get_standings(self):
         return get_breaking_teams(self.object, prefetch=('speaker_set',))
 
     def get_table(self):
         self.standings = self.get_standings()
-        table = NekoTabTableBuilder(view=self, title=escape(self.object.name), sort_key='Rk')
+        table = TabbycatTableBuilder(view=self, title=escape(self.object.name), sort_key='Rk')
         table.add_ranking_columns(self.standings)
         table.add_column({'title': _("Break"), 'key': 'break'},
                          [tsi.break_rank for tsi in self.standings])
@@ -214,10 +214,10 @@ class GenerateAllBreaksView(GenerateBreakMixin, LogActionMixin, TournamentMixin,
 class BaseBreakingAdjudicatorsView(TournamentMixin, VueTableTemplateView):
 
     page_title = _("Breaking Adjudicators")
-    page_emoji = 'ðŸŽ‰'
+    page_emoji = '🎉'
 
     def get_table(self):
-        table = NekoTabTableBuilder(view=self, sort_key='name')
+        table = TabbycatTableBuilder(view=self, sort_key='name')
         table.add_adjudicator_columns(self.tournament.adjudicator_set.filter(breaking=True))
         return table
 
@@ -290,13 +290,13 @@ class EditTeamEligibilityView(AdministratorMixin, TournamentMixin, VueTableTempl
 
     template_name = 'edit_break_eligibility.html'
     page_title = _("Break Eligibility")
-    page_emoji = 'ðŸ¯'
+    page_emoji = '🍯'
     view_permission = Permission.VIEW_BREAK_ELIGIBILITY
     edit_permission = Permission.EDIT_BREAK_ELIGIBILITY
 
     def get_table(self):
         t = self.tournament
-        table = NekoTabTableBuilder(view=self, sort_key='team')
+        table = TabbycatTableBuilder(view=self, sort_key='team')
         teams = t.team_set.all().select_related(
             'institution').prefetch_related('break_categories', 'speaker_set')
         speaker_categories = t.speakercategory_set.order_by('seq')
@@ -345,4 +345,3 @@ class UpdateEligibilityEditView(BaseUpdateEligibilityEditView):
     participant_model = Team
     many_to_many_field = 'break_categories'
     edit_permission = Permission.EDIT_BREAK_ELIGIBILITY
-

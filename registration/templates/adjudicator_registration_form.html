@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% load add_field_css i18n %}
 
 {% block content %}
@@ -7,7 +7,7 @@
 
     <form class="col-lg-8 ml-lg-auto mr-md-auto d-flex flex-column gap-3" action="." method="POST">
 
-      {% if pref and pref.adjudicator_register_message %}
+      {% if pref.adjudicator_register_message %}
         <div class="card">
           <div class="card-body pb-0">
             {{ pref.adjudicator_register_message|safe }}
@@ -23,7 +23,7 @@
       <div class="card">
         {% trans "Register as Adjudicator" context "button" as title %}
         {% trans "Cancel and go back to the site home page" as subtitle %}
-        {% url 'NekoTab-index' as suburl %}
+        {% url 'tabbycat-index' as suburl %}
         {% include "components/form-submit.html" %}
       </div>
 
@@ -32,4 +32,3 @@
 </div>
 
 {% endblock %}
-

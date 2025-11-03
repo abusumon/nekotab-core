@@ -1,4 +1,4 @@
-﻿from django.contrib import admin
+from django.contrib import admin
 from django.contrib.admin.options import get_content_type_for_model
 from django.utils.translation import gettext_lazy as _
 
@@ -39,7 +39,7 @@ class ModelAdmin(admin.ModelAdmin):
         )
 
 
-class NekoTabModelAdminFieldsMixin:
+class TabbycatModelAdminFieldsMixin:
 
     @admin.display(description=_("Round"))
     def get_round(self, obj):
@@ -87,4 +87,3 @@ def custom_titled_filter(title):
             instance.title = title
             return instance
     return Wrapper
-

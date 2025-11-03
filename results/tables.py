@@ -1,13 +1,13 @@
-﻿from django.utils.html import escape
+from django.utils.html import escape
 from django.utils.translation import gettext as _
 
 from utils.misc import reverse_tournament
-from utils.tables import NekoTabTableBuilder
+from utils.tables import TabbycatTableBuilder
 
 from .utils import get_status_meta
 
 
-class ResultsTableBuilder(NekoTabTableBuilder):
+class ResultsTableBuilder(TabbycatTableBuilder):
 
     def add_ballot_check_in_columns(self, debates, key):
 
@@ -77,4 +77,3 @@ class ResultsTableBuilder(NekoTabTableBuilder):
         entry_header = {'key': 'EB', 'icon': "plus-circle"}
         entry_cells = [self.get_ballot_cells(d, self.tournament, view_role, user) for d in debates]
         self.add_column(entry_header, entry_cells)
-

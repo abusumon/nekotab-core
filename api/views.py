@@ -1,4 +1,4 @@
-﻿from copy import deepcopy
+from copy import deepcopy
 from itertools import groupby
 
 from asgiref.sync import async_to_sync
@@ -71,8 +71,8 @@ class APIRootView(PublicAPIMixin, GenericAPIView):
                 "v1": reverse('api-v1-root', request=request, format=format),
             },
             "timezone": settings.TIME_ZONE,
-            "version": settings.NekoTab_VERSION,
-            "version_name": settings.NekoTab_CODENAME,
+            "version": settings.TABBYCAT_VERSION,
+            "version_name": settings.TABBYCAT_CODENAME,
         })
 
 
@@ -1492,4 +1492,3 @@ class ParticipantIdentificationView(TournamentAPIMixin, ModelViewSet):
 
     def get_object(self):
         return self.request.auth
-

@@ -1,4 +1,4 @@
-﻿import datetime
+import datetime
 import logging
 import unicodedata
 from itertools import product
@@ -40,7 +40,7 @@ from tournaments.utils import get_side_name
 from users.permissions import Permission
 from utils.misc import reverse_round, reverse_tournament
 from utils.mixins import AdministratorMixin
-from utils.tables import NekoTabTableBuilder
+from utils.tables import TabbycatTableBuilder
 from utils.views import PostOnlyRedirectView, VueTableTemplateView
 from venues.allocator import allocate_venues
 from venues.models import VenueConstraint
@@ -69,7 +69,7 @@ class BaseDisplayDrawTableView(TournamentMixin, VueTableTemplateView):
 
     template_name = 'draw_display_by.html'
     sort_key = 'venue'
-    page_emoji = 'ðŸ‘'
+    page_emoji = '👏'
     empty_table_title = gettext_lazy("No debates in this round")
 
     @property
@@ -197,7 +197,7 @@ class PublicDrawMixin(PublicTournamentPageMixin):
 
     def get_page_emoji(self):
         if not self.draws_available:
-            return 'ðŸ˜´'
+            return '😴'
         return super().get_page_emoji()
 
     def get_page_subtitle(self):
@@ -270,7 +270,7 @@ class BriefingRoomDrawByTeamTableMixin(BriefingRoomDrawTableMixin):
     sort_key = '' # Leave with default sort order
 
     def populate_table(self, debates, table):
-        # unicodedata.normalize gets accented characters (e.g. "Ã‰othÃ©od") to sort correctly
+        # unicodedata.normalize gets accented characters (e.g. "Éothéod") to sort correctly
         byes = [d for d in debates if d.is_bye]
         debates = [d for d in debates if not d.is_bye]
 
@@ -455,13 +455,13 @@ class AdminDrawView(RoundMixin, AdministratorMixin, AdminDrawUtilitiesMixin, Vue
 
     def get_page_title(self):
         round = self.round
-        self.page_emoji = 'ðŸ‘€'
+        self.page_emoji = '👀'
         if round.draw_status == Round.Status.NONE:
             title = _("No Draw")
         elif round.draw_status == Round.Status.DRAFT:
             title = _("Draft Draw")
         elif round.draw_status in [Round.Status.CONFIRMED, Round.Status.RELEASED]:
-            self.page_emoji = 'ðŸ‘'
+            self.page_emoji = '👏'
             title = _("Draw")
         else:
             logger.error("Unrecognised draw status: %s", round.draw_status)
@@ -543,7 +543,7 @@ class AdminDrawView(RoundMixin, AdministratorMixin, AdminDrawUtilitiesMixin, Vue
     def get_table(self):
         r = self.round
         if r.draw_status == Round.Status.NONE:
-            return NekoTabTableBuilder(view=self)  # blank
+            return TabbycatTableBuilder(view=self)  # blank
         elif self.tournament.pref('teams_in_debate') == 4 and \
                 r.draw_status == Round.Status.DRAFT and r.prev is not None and \
                 not r.is_break_round:
@@ -580,7 +580,7 @@ class AdminDrawView(RoundMixin, AdministratorMixin, AdminDrawUtilitiesMixin, Vue
 
 class AdminDrawWithDetailsView(AdminDrawView):
     detailed = True
-    page_emoji = 'ðŸ‘€'
+    page_emoji = '👀'
     use_template_subtitle = False  # Use the "for Round n" subtitle
 
     def get_page_title(self):
@@ -591,7 +591,7 @@ class AdminDrawWithDetailsView(AdminDrawView):
 
 
 class PositionBalanceReportView(RoundMixin, AdministratorMixin, VueTableTemplateView):
-    page_emoji = "âš–"
+    page_emoji = "⚖"
     page_title = _("Position Balance Report")
     tables_orientation = 'rows'
 
@@ -603,9 +603,9 @@ class PositionBalanceReportView(RoundMixin, AdministratorMixin, VueTableTemplate
         cost_func = self.tournament.pref('bp_position_cost')
         if cost_func == 'entropy':
             renyi_order = self.tournament.pref('bp_renyi_order')
-            cost_func_str = _("RÃ©nyi entropy of order %(order)s" % {'order': renyi_order})
+            cost_func_str = _("Rényi entropy of order %(order)s" % {'order': renyi_order})
             if renyi_order == 1:
-                # Translators: This is appended to the string "RÃ©nyi entropy of order 1.0"
+                # Translators: This is appended to the string "Rényi entropy of order 1.0"
                 cost_func_str += _(" (<i>i.e.</i>, Shannon entropy)")
             return mark_safe(cost_func_str)
         else:
@@ -637,7 +637,7 @@ class PositionBalanceReportView(RoundMixin, AdministratorMixin, VueTableTemplate
 
         summary_table = PositionBalanceReportSummaryTableBuilder(view=self,
                 title=_("Teams with position imbalances"),
-                empty_title=_("No teams with position imbalances! Hooray!") + " ðŸ˜Š")
+                empty_title=_("No teams with position imbalances! Hooray!") + " 😊")
         summary_table.build(draw, teams, side_histories_before, side_histories_now, standings)
 
         draw_table = PositionBalanceReportDrawTableBuilder(view=self, title=_("Annotated draw"))
@@ -841,11 +841,11 @@ class BaseSideAllocationsView(TournamentMixin, VueTableTemplateView):
             except ValueError:
                 pass
 
-        table = NekoTabTableBuilder(view=self)
+        table = TabbycatTableBuilder(view=self)
         table.add_team_columns(teams)
 
         headers = [escape(round.abbreviation) for round in rounds]
-        data = [[tsas.get((team.id, round.seq), "â€”") for round in rounds] for team in teams]
+        data = [[tsas.get((team.id, round.seq), "—") for round in rounds] for team in teams]
         table.add_columns(headers, data)
 
         return table
@@ -876,4 +876,3 @@ class EditDebateTeamsView(DebateDragAndDropMixin, AdministratorMixin, TemplateVi
     def debates_or_panels_factory(self, debates):
         return EditDebateTeamsDebateSerializer(
             debates, many=True, context={'sides': self.tournament.sides})
-

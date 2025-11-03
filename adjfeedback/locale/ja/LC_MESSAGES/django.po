@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/NekoTab/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 924\n"
 
 #: adjfeedback/admin.py
 msgid "Integer scales must have a minimum and maximum"
-msgstr "æ•´æ•°ã‚¹ã‚±ãƒ¼ãƒ«ã«ã¯æœ€å¤§å€¤ã¨æœ€å°å€¤ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
+msgstr "整数スケールには最大値と最小値を設定する必要があります。"
 
 #: adjfeedback/admin.py
 msgid "Maximum value must be greater than the minimum"
@@ -27,102 +27,102 @@ msgstr ""
 
 #: adjfeedback/admin.py
 msgid "target"
-msgstr "å¯¾è±¡"
+msgstr "対象"
 
 #: adjfeedback/admin.py adjfeedback/models.py
 msgid "source adjudicator"
-msgstr "é€ä¿¡å…ƒã®ã‚¸ãƒ£ãƒƒã‚¸"
+msgstr "送信元のジャッジ"
 
 #: adjfeedback/admin.py adjfeedback/models.py
 msgid "source team"
-msgstr "é€ä¿¡å…ƒã®ãƒãƒ¼ãƒ "
+msgstr "送信元のチーム"
 
 #: adjfeedback/admin.py
 msgid "Source"
-msgstr "é€ä¿¡å…ƒ"
+msgstr "送信元"
 
 #: adjfeedback/admin.py
 #, python-format
 msgid "1 feedback submission was marked as confirmed. Note that this may have caused other feedback submissions to be marked as unconfirmed."
 msgid_plural "%(count)d feedback submissions were marked as confirmed. Note that this may have caused other feedback submissions to be marked as unconfirmed."
-msgstr[0] "%(count)då€‹ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãŒæ‰¿èªæ¸ˆã¿ã§ã™ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€ä»–ã«æå‡ºã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãŒæœªæ‰¿èªã¨ãªã£ãŸå¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"
+msgstr[0] "%(count)d個のフィードバックが承認済みです。これにより、他に提出されたフィードバックが未承認となった可能性があります。"
 
 #: adjfeedback/admin.py
 #, python-format
 msgid "1 feedback submission was not marked as confirmed, probably because other feedback submissions that conflict with it were also marked as confirmed."
 msgid_plural "%(count)d feedback submissions were not marked as confirmed, probably because other feedback submissions that conflict with them were also marked as confirmed."
-msgstr[0] "ä»–ã«æå‡ºã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãŒæ‰¿èªã•ã‚ŒãŸãŸã‚ã€ %(count)då€‹ã®æå‡ºã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãŒæœªæ‰¿èªã®çŠ¶æ…‹ã§ã™ã€‚"
+msgstr[0] "他に提出されたフィードバックが承認されたため、 %(count)d個の提出されたフィードバックが未承認の状態です。"
 
 #: adjfeedback/admin.py
 #, python-format
 msgid "1 feedback submission was marked as unconfirmed."
 msgid_plural "%(count)d feedback submissions were marked as unconfirmed."
-msgstr[0] "%(count)då€‹ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æœªæ‰¿èªã«ã—ã¾ã—ãŸã€‚"
+msgstr[0] "%(count)d個のフィードバックを未承認にしました。"
 
 #: adjfeedback/admin.py
 #, python-format
 msgid "1 feedback submission is now ignored."
 msgid_plural "%(count)d feedback submissions are now ignored."
-msgstr[0] "%(count)då€‹ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’ç„¡è¦–ã—ã¾ã—ãŸã€‚"
+msgstr[0] "%(count)d個のフィードバックを無視しました。"
 
 #: adjfeedback/admin.py
 #, python-format
 msgid "1 feedback submission is now recognized."
 msgid_plural "%(count)d feedback submissions are now recognized."
-msgstr[0] "%(count)då€‹ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’ç¢ºèªã—ã¾ã—ãŸã€‚"
+msgstr[0] "%(count)d個のフィードバックを確認しました。"
 
 #: adjfeedback/apps.py
 msgid "Adjudicator Feedback"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "ジャッジのフィードバック"
 
 #: adjfeedback/forms.py
 msgid "chair"
-msgstr "ãƒã‚§ã‚¢"
+msgstr "チェア"
 
 #: adjfeedback/forms.py
 msgid "solo"
-msgstr "ã‚½ãƒ­"
+msgstr "ソロ"
 
 #: adjfeedback/forms.py
 msgid "panellist"
-msgstr "ãƒ‘ãƒãƒ«"
+msgstr "パネル"
 
 #: adjfeedback/forms.py
 msgid "trainee"
-msgstr "ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼"
+msgstr "トレイニー"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: adjfeedback/forms.py
 msgid "This field is required."
-msgstr "å¿…é ˆ"
+msgstr "必須"
 
 #: adjfeedback/forms.py
 #, python-format
 msgid "Overall score (%(min)d=worst; %(max)d=best)*"
-msgstr "ç·åˆã‚¹ã‚³ã‚¢ (%(min)d=æœ€ä½Žã€%(max)d=æœ€é«˜) *"
+msgstr "総合スコア (%(min)d=最低、%(max)d=最高) *"
 
 #: adjfeedback/forms.py
 msgid "Ignored"
-msgstr "ç„¡è¦–"
+msgstr "無視"
 
 #. Translators: e.g. "Megan Pearson (chair)", with adjpos="chair"
 #: adjfeedback/forms.py
 msgid "Submitted - "
-msgstr "æå‡ºæ¸ˆã¿ "
+msgstr "提出済み "
 
 #. Translators: e.g. "Megan Pearson (panellist)", with round="Round 3", adjpos="panellist"
 #: adjfeedback/forms.py
 #, python-format
 msgid "%(name)s (%(adjpos)s)"
-msgstr "%(name)sï¼ˆ%(adjpos)sï¼‰"
+msgstr "%(name)s（%(adjpos)s）"
 
 #: adjfeedback/forms.py
 msgid "-- Adjudicators --"
-msgstr "-- ã‚¸ãƒ£ãƒƒã‚¸  --"
+msgstr "-- ジャッジ  --"
 
 #: adjfeedback/forms.py
 msgid "Adjudicator this feedback is about"
-msgstr "è©•ä¾¡è€…ã«ã¤ã„ã¦"
+msgstr "評価者について"
 
 #: adjfeedback/forms.py
 #, python-format
@@ -132,157 +132,157 @@ msgstr ""
 #: adjfeedback/forms.py
 #, python-format
 msgid "%(name)s (chair gave oral)"
-msgstr "%(name)sï¼ˆãƒã‚§ã‚¢ã«ã‚ˆã‚‹è¬›è©•ï¼‰"
+msgstr "%(name)s（チェアによる講評）"
 
 #: adjfeedback/forms.py
 #, python-format
 msgid "%(name)s (panellist gave oral as chair rolled)"
-msgstr "%(name)sï¼ˆãƒã‚§ã‚¢ãŒãƒ­ãƒ¼ãƒ«ã—ãŸãŸã‚ãƒ‘ãƒãƒ«ã«ã‚ˆã‚‹è¬›è©•ï¼‰"
+msgstr "%(name)s（チェアがロールしたためパネルによる講評）"
 
 #: adjfeedback/forms.py
 #, python-format
 msgid "This line (for %(adjudicator)s) didn't have a score"
-msgstr "%(adjudicator)sã¸ã®ã“ã®åˆ—ã«ã¯ã‚¹ã‚³ã‚¢ã¯ã‚ã‚Šã¾ã›ã‚“"
+msgstr "%(adjudicator)sへのこの列にはスコアはありません"
 
 #: adjfeedback/forms.py
 #, python-format
 msgid "This line (for %(adjudicator)s) had too many columns"
-msgstr "%(adjudicator)sã¸ã®ã“ã®è¡Œã«ã¯åˆ—ãŒå¤šã™ãŽã¾ã™"
+msgstr "%(adjudicator)sへのこの行には列が多すぎます"
 
 #: adjfeedback/forms.py
 #, python-format
 msgid "There are several adjudicators called \"%(adjudicator)s\", so you can't use the bulk importer to update their score. Please do so in the Feedback Overview page instead."
-msgstr "ã€Œ%(adjudicator)sã€ã¨ã„ã†åå‰ã®ã‚¸ãƒ£ãƒƒã‚¸ãŒè¤‡æ•°ã„ã‚‹ãŸã‚ã€ã‚¹ã‚³ã‚¢ã‚’ä¸€æ‹¬ã§æ›´æ–°ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚ä»£ã‚ã‚Šã«ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯æ¦‚è¦ãƒšãƒ¼ã‚¸ã§è¡Œã£ã¦ãã ã•ã„ã€‚"
+msgstr "「%(adjudicator)s」という名前のジャッジが複数いるため、スコアを一括で更新することはできません。代わりにフィードバック概要ページで行ってください。"
 
 #: adjfeedback/forms.py
 #, python-format
 msgid "There is no adjudicator in this tournament with the name \"%(adjudicator)s\""
-msgstr "ã€Œ%(adjudicator)sã€ã¨ã„ã†åå‰ã®ã‚¸ãƒ£ãƒƒã‚¸ã¯ã“ã®å¤§ä¼šã«ã¯ã„ã¾ã›ã‚“"
+msgstr "「%(adjudicator)s」という名前のジャッジはこの大会にはいません"
 
 #: adjfeedback/forms.py
 #, python-format
 msgid "The score for %(adjudicator)s, \"%(score)s\", isn't a number"
-msgstr "%(adjudicator)sã®ã‚¹ã‚³ã‚¢ã€Œ%(score)sã€ã¯æ•°å­—ã§ã¯ã‚ã‚Šã¾ã›ã‚“"
+msgstr "%(adjudicator)sのスコア「%(score)s」は数字ではありません"
 
 #: adjfeedback/forms.py
 msgid "There were no scores to import."
-msgstr "å…¥åŠ›ã™ã‚‹ã‚¹ã‚³ã‚¢ãŒã‚ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
+msgstr "入力するスコアがありませんでした。"
 
 #: adjfeedback/models.py
 msgid "adjudicator"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸"
+msgstr "ジャッジ"
 
 #: adjfeedback/models.py
 msgid "round"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰"
+msgstr "ラウンド"
 
 #: adjfeedback/models.py
 msgid "score"
-msgstr "ã‚¹ã‚³ã‚¢"
+msgstr "スコア"
 
 #: adjfeedback/models.py
 msgid "timestamp"
-msgstr "ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—"
+msgstr "タイムスタンプ"
 
 #: adjfeedback/models.py
 msgid "adjudicator base score history"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ™ãƒ¼ã‚¹ã‚³ã‚¢ã®æŽ¨ç§»"
+msgstr "ジャッジのベースコアの推移"
 
 #: adjfeedback/models.py
 msgid "adjudicator base score histories"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ™ãƒ¼ã‚¹ã‚³ã‚¢ã®æŽ¨ç§»"
+msgstr "ジャッジのベースコアの推移"
 
 #: adjfeedback/models.py
 msgid "reference"
-msgstr "å‚ç…§ã‚¿ã‚°"
+msgstr "参照タグ"
 
 #: adjfeedback/models.py
 msgid "Code-compatible reference, e.g., \"agree_with_decision\""
-msgstr "ãƒ—ãƒ­ã‚°ãƒ©ãƒ ç”¨ã®å‚ç…§ã‚¿ã‚°ï¼ˆe.g. agree_with_decisionï¼‰"
+msgstr "プログラム用の参照タグ（e.g. agree_with_decision）"
 
 #: adjfeedback/models.py
 msgid "from adjudicator"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã¸"
+msgstr "ジャッジへ"
 
 #: adjfeedback/models.py
 msgid "Adjudicators should be asked this question (about other adjudicators)"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã«å›žç­”ã‚’æ±‚ã‚ã‚‹ã‹å¦ã‹"
+msgstr "ジャッジに回答を求めるか否か"
 
 #: adjfeedback/models.py
 msgid "from team"
-msgstr "ãƒãƒ¼ãƒ ã¸"
+msgstr "チームへ"
 
 #: adjfeedback/models.py
 msgid "Teams should be asked this question"
-msgstr "ãƒãƒ¼ãƒ ã«å›žç­”ã‚’æ±‚ã‚ã‚‹ã‹å¦ã‹"
+msgstr "チームに回答を求めるか否か"
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback question"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®è³ªå•é …ç›®"
+msgstr "ジャッジフィードバックの質問項目"
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback questions"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®è³ªå•é …ç›®"
+msgstr "ジャッジフィードバックの質問項目"
 
 #: adjfeedback/models.py adjfeedback/views.py
 msgid "ignored"
-msgstr "ç„¡è¦–"
+msgstr "無視"
 
 #: adjfeedback/models.py
 msgid "Whether the feedback should affect the adjudicator's score"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãŒã‚¸ãƒ£ãƒƒã‚¸ã®ã‚¹ã‚³ã‚¢ã«åæ˜ ã•ã‚Œã‚‹ã¹ãã‹å¦ã‹"
+msgstr "フィードバックがジャッジのスコアに反映されるべきか否か"
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "ジャッジフィードバック"
 
 #: adjfeedback/models.py
 msgid "adjudicator feedbacks"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "ジャッジフィードバック"
 
 #: adjfeedback/models.py
 msgid "Either the source adjudicator or source team wasn't specified."
-msgstr "é€ä¿¡å…ƒã®ã‚¸ãƒ£ãƒƒã‚¸åˆã¯ãƒãƒ¼ãƒ ã‹æŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
+msgstr "送信元のジャッジ又はチームか指定されていません。"
 
 #: adjfeedback/models.py
 msgid "There was both a source adjudicator and a source team."
-msgstr "æŒ‡å®šå…ƒã®ã‚¸ãƒ£ãƒƒã‚¸ã¨ãƒãƒ¼ãƒ ã®ä¸¡æ–¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã—ãŸã€‚"
+msgstr "指定元のジャッジとチームの両方が指定されていました。"
 
 #: adjfeedback/models.py
 msgid "There is no adjudicator specified as the target for this feedback. Perhaps they were deleted?"
-msgstr "å¯¾è±¡ã¨ãªã‚‹ã‚¸ãƒ£ãƒƒã‚¸ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚ã‚¸ãƒ£ãƒƒã‚¸ã‚’å‰Šé™¤ã—ã¾ã—ãŸã‹ï¼Ÿ"
+msgstr "対象となるジャッジが指定されていません。ジャッジを削除しましたか？"
 
 #: adjfeedback/models.py
 msgid "Adjudicator did not see this debate."
-msgstr "ã“ã®ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã«ã‚¸ãƒ£ãƒƒã‚¸ã¯å‚åŠ ã—ã¾ã›ã‚“ã§ã—ãŸã€‚"
+msgstr "このディベートにジャッジは参加しませんでした。"
 
 #: adjfeedback/tables.py
 msgid "Whether the adj is marked as breaking (click to mark)"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ–ãƒ¬ã‚¤ã‚¯ã®æˆå¦"
+msgstr "ジャッジのブレイクの成否"
 
 #: adjfeedback/tables.py
 msgid "N/A"
-msgstr "è©²å½“ãªã—"
+msgstr "該当なし"
 
 #: adjfeedback/tables.py
 msgid "Current weighted score"
-msgstr "ç¾åœ¨ã®é‡ã¿ä»˜ãã‚¹ã‚³ã‚¢"
+msgstr "現在の重み付きスコア"
 
 #: adjfeedback/tables.py
 msgid "This adjudicator's current rating."
-msgstr "ã“ã®ã‚¸ãƒ£ãƒƒã‚¸ã®ç¾æ™‚ç‚¹ã§ã®è©•ä¾¡"
+msgstr "このジャッジの現時点での評価"
 
 #: adjfeedback/tables.py
 msgid "Base score result"
-msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢"
+msgstr "ベーススコア"
 
 #: adjfeedback/tables.py
 msgid "Click to edit base score"
-msgstr "ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã‚’ç·¨é›†"
+msgstr "クリックしてベーススコアを編集"
 
 #: adjfeedback/tables.py
 msgid "Assigned base score"
-msgstr "å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢"
+msgstr "割り当てられたベーススコア"
 
 #: adjfeedback/tables.py
 msgid "Feedback average"
@@ -294,81 +294,81 @@ msgstr ""
 
 #: adjfeedback/tables.py
 msgid "The current difference between an adjudicator's base score and current score"
-msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã¨ç¾åœ¨ã®ã‚¹ã‚³ã‚¢ã®å·®"
+msgstr "ベーススコアと現在のスコアの差"
 
 #: adjfeedback/tables.py
 msgid "The difference between this adjudicator's base score and current score"
-msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã¨ç¾åœ¨ã®ã‚¹ã‚³ã‚¢ã®å·®"
+msgstr "ベーススコアと現在のスコアの差"
 
 #: adjfeedback/tables.py
 msgid "The standard deviation of this adjudicator's current scores; with larger numbers meaning less consistent feedback scores."
-msgstr "ç¾åœ¨ã®ã‚¹ã‚³ã‚¢ã®æ¨™æº–åå·®ï¼ˆå¤§ããªå€¤ã¯ã‚ˆã‚Šä¸å®‰å®šãªã‚¹ã‚³ã‚¢ã‚’æ„å‘³ã—ã¾ã™ï¼‰"
+msgstr "現在のスコアの標準偏差（大きな値はより不安定なスコアを意味します）"
 
 #: adjfeedback/tables.py
 msgid "The standard deviation of this adjudicator's current scores"
-msgstr "ç¾åœ¨ã®ã‚¹ã‚³ã‚¢ã®æ¨™æº–åå·®"
+msgstr "現在のスコアの標準偏差"
 
 #: adjfeedback/tables.py
 msgid "Feedback Per Round"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã”ã¨ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "ラウンドごとのフィードバック"
 
 #: adjfeedback/tables.py
 msgid "Hover over the data points to show the average score received in that round"
-msgstr "ãƒžã‚¦ã‚¹ã‚’ãƒ›ãƒãƒ¼ã™ã‚‹ã“ã¨ã§å„ãƒ©ã‚¦ãƒ³ãƒ‰ã®å¹³å‡ã‚¹ã‚³ã‚¢ã‚’è¦‹ã‚Œã¾ã™"
+msgstr "マウスをホバーすることで各ラウンドの平均スコアを見れます"
 
 #: adjfeedback/tables.py
 #, python-format
 msgid "View %(count)s<br>feedback"
 msgid_plural "View %(count)s<br>feedbacks"
-msgstr[0] "%(count)sä»¶ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯<br>ã‚’å‚ç…§"
+msgstr[0] "%(count)s件のフィードバック<br>を参照"
 
 #: adjfeedback/tables.py
 msgid "Unsubmitted feedback ballots"
-msgstr "æœªæå‡ºã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "未提出のフィードバック"
 
 #: adjfeedback/tables.py
 msgid "View Missing Feedback"
-msgstr "æœªæå‡ºã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’è¡¨ç¤º"
+msgstr "未提出のフィードバックを表示"
 
 #: adjfeedback/templates/add_feedback.html
 msgid "Who is the feedback from?"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®æå‡ºè€…"
+msgstr "フィードバックの提出者"
 
 #: adjfeedback/templates/add_feedback.html
 #: adjfeedback/templates/enter_feedback.html
 msgid "Enter Feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’å…¥åŠ›"
+msgstr "フィードバックを入力"
 
 #: adjfeedback/templates/enter_feedback.html
 #: adjfeedback/templates/public_add_feedback.html
 #, python-format
 msgid "Add Feedback from %(name)s"
-msgstr "%(name)sã‹ã‚‰ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯å…¥åŠ›"
+msgstr "%(name)sからのフィードバック入力"
 
 #: adjfeedback/templates/enter_feedback.html
 #: adjfeedback/templates/feedback_base.html
 msgid "Add Feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’è¿½åŠ "
+msgstr "フィードバックを追加"
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "There are no feedback options because no rounds have been released to the public yet. Check back when they have!"
-msgstr "å¯¾æˆ¦è¡¨ãŒå…¬é–‹ã•ã‚ŒãŸãƒ©ã‚¦ãƒ³ãƒ‰ãŒãªã„ãŸã‚ã€ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’é€ä¿¡ã§ãã¾ã›ã‚“ã€‚"
+msgstr "対戦表が公開されたラウンドがないため、フィードバックを送信できません。"
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "This tournament expects you to submit feedback <strong>only on the adjudicator who delivered the adjudication</strong>. Do not submit feedback on other adjudicators."
-msgstr "ã“ã®å¤§ä¼šã§ã¯<strong>è¬›è©•ã‚’è¡Œã£ãŸã‚¸ãƒ£ãƒƒã‚¸ã®ã¿</strong>ã«ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã—ã¾ã™ã€‚ãã®ä»–ã®ã‚¸ãƒ£ãƒƒã‚¸ã«ã¯æå‡ºã—ãªã„ã§ãã ã•ã„ã€‚"
+msgstr "この大会では<strong>講評を行ったジャッジのみ</strong>にフィードバックを提出します。その他のジャッジには提出しないでください。"
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "This tournament expects you to submit feedback on all of the adjudicators on the panel (including trainees)."
-msgstr "ã“ã®å¤§ä¼šã§ã¯ãƒ‘ãƒãƒ«ãƒ»ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ã‚’å«ã‚ã™ã¹ã¦ã®ã‚¸ãƒ£ãƒƒã‚¸ã«ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã—ã¾ã™ã€‚"
+msgstr "この大会ではパネル・トレイニーを含めすべてのジャッジにフィードバックを提出します。"
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "This tournament doesn't expect you to submit feedback on any of the adjudicators on the panel (including trainees)."
-msgstr "ã“ã®å¤§ä¼šã§ã¯èª°ã«ã‚‚ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã—ã¾ã›ã‚“ã€‚"
+msgstr "この大会では誰にもフィードバックを提出しません。"
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "There are some problems with this feedback submission. Please review and correct them."
-msgstr "æå‡ºã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã«å•é¡ŒãŒã‚ã‚Šã¾ã™ã€‚å†ã³ç¢ºèªã—ä¿®æ­£ã—ã¦ãã ã•ã„ã€‚"
+msgstr "提出されたフィードバックに問題があります。再び確認し修正してください。"
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "Save Feedback"
@@ -376,78 +376,78 @@ msgstr ""
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "When submitting this form your IP address will be stored for logging purposes."
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã™ã‚‹ã¨ãã€ãƒ­ã‚°ç›®çš„ã§ã‚ãªãŸã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ãŒåŽé›†ã•ã‚Œã¾ã™ã€‚"
+msgstr "フィードバックを提出するとき、ログ目的であなたのIPアドレスが収集されます。"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Overview"
-msgstr "æ¦‚è¦"
+msgstr "概要"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Latest"
-msgstr "æœ€æ–°"
+msgstr "最新"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Unsubmitted"
-msgstr "æœªæå‡º"
+msgstr "未提出"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Important"
-msgstr "é‡è¦"
+msgstr "重要"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Comments"
-msgstr "ã‚³ãƒ¡ãƒ³ãƒˆ"
+msgstr "コメント"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "By Source"
-msgstr "é€ä¿¡è€…ã‹ã‚‰"
+msgstr "送信者から"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "By Target"
-msgstr "é€ä¿¡å¯¾è±¡ã‹ã‚‰"
+msgstr "送信対象から"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Bulk Update Scores"
-msgstr "ã‚¹ã‚³ã‚¢ã‚’ä¸€æ‹¬ã§æ›´æ–°"
+msgstr "スコアを一括で更新"
 
 #: adjfeedback/templates/feedback_by_source.html
 #, python-format
 msgid "Feedback %(source_type)s %(source_name)s"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯%(source_type)s %(source_name)s"
+msgstr "フィードバック%(source_type)s %(source_name)s"
 
 #: adjfeedback/templates/feedback_by_source.html
 #, python-format
 msgid "%(source_name)s hasn't submitted any feedback yet."
-msgstr "%(source_name)sã‹ã‚‰ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
+msgstr "%(source_name)sからのフィードバックはありません。"
 
 #: adjfeedback/templates/feedback_by_source.html
 #, python-format
 msgid "%(source_name)s hasn't received any feedback yet."
-msgstr "%(source_name)sã¸ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
+msgstr "%(source_name)sへのフィードバックはありません。"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "This is most likely because the team or adjudicator who submitted this feedback has submitted several times on the same person; or because a team has submitted feedback on multiple panellists (rather than just the orallist)."
-msgstr "é€ä¿¡å…ƒã®ãƒãƒ¼ãƒ ãƒ»ã‚¸ãƒ£ãƒƒã‚¸ãŒè¤‡æ•°å›žåŒã˜äººã¸ã€ã‚ã‚‹ã„ã¯ï¼ˆè¬›è©•ã—ãŸäººä»¥å¤–ã‚’å«ã‚€ï¼‰è¤‡æ•°äººã«ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã—ã¦ã„ã‚‹ã“ã¨ã«ã‚ˆã‚‹å¯èƒ½æ€§ãŒé«˜ã„ã§ã™ã€‚"
+msgstr "送信元のチーム・ジャッジが複数回同じ人へ、あるいは（講評した人以外を含む）複数人にフィードバックを提出していることによる可能性が高いです。"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Unconfirmed; will not affect this adjudicator's score."
-msgstr "æœªæ‰¿èªãƒ»ã‚¸ãƒ£ãƒƒã‚¸ã®ã‚¹ã‚³ã‚¢ã«åæ˜ ã•ã‚Œã¾ã›ã‚“"
+msgstr "未承認・ジャッジのスコアに反映されません"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "The feedback is counted for the adjudicator, but is not taken into account when calculating scores."
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã«æå‡ºã—ãŸã¨æ‰±ã‚ã‚Œã¾ã™ãŒã€ã‚¹ã‚³ã‚¢è¨ˆç®—ã«ã¯ä½¿ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚"
+msgstr "ジャッジに提出したと扱われますが、スコア計算には使用されません。"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Ignored; will not affect this adjudicator's score."
-msgstr "ç„¡è¦–ãƒ»ã‚¸ãƒ£ãƒƒã‚¸ã®ã‚¹ã‚³ã‚¢ã«åæ˜ ã•ã‚Œã¾ã›ã‚“ã€‚"
+msgstr "無視・ジャッジのスコアに反映されません。"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "This feedback is submitted on an adjudicator but it looks like they have been since been removed from the debate. You should probably go to the Edit Database area and delete this feedback."
-msgstr "ã“ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã¯ã‚ã‚‹ã‚¸ãƒ£ãƒƒã‚¸ã«å‡ºã•ã‚Œã¾ã—ãŸãŒã€ãã®å¾Œè©¦åˆã‹ã‚‰é™¤ã‹ã‚ŒãŸã‚ˆã†ã§ã™ã€‚ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã‹ã‚‰ã“ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’å‰Šé™¤ã—ã¦ãã ã•ã„ã€‚"
+msgstr "このフィードバックはあるジャッジに出されましたが、その後試合から除かれたようです。データベース編集エリアからこのフィードバックを削除してください。"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "The score given in this piece of feedback."
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®ã‚¹ã‚³ã‚¢"
+msgstr "フィードバックのスコア"
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
@@ -457,7 +457,7 @@ msgstr ""
 #: adjfeedback/templates/feedback_card.html
 #, python-format
 msgid "On %(adjudicator)s"
-msgstr "%(adjudicator)sã«å¯¾ã—ã¦"
+msgstr "%(adjudicator)sに対して"
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
@@ -467,21 +467,21 @@ msgstr ""
 #: adjfeedback/templates/feedback_card.html
 #, python-format
 msgid "Base %(base)s"
-msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ %(base)s"
+msgstr "ベーススコア %(base)s"
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
 msgid "From %(source)s <span class=\"text-secondary small\">(their %(relationship)s)</span>"
-msgstr "%(source)sã‹ã‚‰<span class=\"text-secondary small\">ï¼ˆè©¦åˆã®%(relationship)sï¼‰</span>"
+msgstr "%(source)sから<span class=\"text-secondary small\">（試合の%(relationship)s）</span>"
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
 msgid "From %(source)s <span class=\"text-secondary small\">(%(relationship)s from %(side)s)</span>"
-msgstr "%(source)sã‹ã‚‰<span class=\"text-secondary small\">ï¼ˆ%(relationship)sã®%(side)sï¼‰</span>"
+msgstr "%(source)sから<span class=\"text-secondary small\">（%(relationship)sの%(side)s）</span>"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "From unknown"
-msgstr "é€ä¿¡è€…ä¸æ˜Ž"
+msgstr "送信者不明"
 
 #: adjfeedback/templates/feedback_card.html
 #, python-format
@@ -490,324 +490,323 @@ msgstr ""
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Unconfirmed feedback is not counted as having been submitted and does not affect this adjudicator's score."
-msgstr "æœªæ‰¿èªã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã¯æå‡ºã—ãŸã¨æ‰±ã‚ã‚Œãšã€ã‚¸ãƒ£ãƒƒã‚¸ã®ã‚¹ã‚³ã‚¢ã«åæ˜ ã•ã‚Œã¾ã›ã‚“ã€‚"
+msgstr "未承認のフィードバックは提出したと扱われず、ジャッジのスコアに反映されません。"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Un-confirm"
-msgstr "æ‰¿èªå–ã‚Šæ¶ˆã—"
+msgstr "承認取り消し"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Confirm"
-msgstr "æ‰¿èª"
+msgstr "承認"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Ignored feedback is counted as having been submitted, but does not affect this adjudicator's score."
-msgstr "ç„¡è¦–ã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã¯æå‡ºã—ãŸã¨æ‰±ã‚ã‚Œã¾ã™ãŒã€ã‚¸ãƒ£ãƒƒã‚¸ã®ã‚¹ã‚³ã‚¢ã«åæ˜ ã•ã‚Œã¾ã›ã‚“ã€‚"
+msgstr "無視されたフィードバックは提出したと扱われますが、ジャッジのスコアに反映されません。"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Un-ignore"
-msgstr "ç„¡è¦–è§£é™¤"
+msgstr "無視解除"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Ignore"
-msgstr "ç„¡è¦–"
+msgstr "無視"
 
 #: adjfeedback/templates/feedback_cards_list.html
 msgid "No feedback has been submitted yet"
-msgstr "ã¾ã ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãŒæå‡ºã•ã‚Œã¦ã„ã¾ã›ã‚“"
+msgstr "まだフィードバックが提出されていません"
 
 #: adjfeedback/templates/feedback_overview.html
 #, python-format
 msgid "<span id=\"c_breaking\">%(c_breaking)s</span> marked as breaking"
-msgstr "<span id=\"c_breaking\">%(c_breaking)s</span>ä»¶ãŒãƒ–ãƒ¬ã‚¤ã‚¯ã¨ã—ã¦ãƒžãƒ¼ã‚¯ã•ã‚Œã¾ã—ãŸ"
+msgstr "<span id=\"c_breaking\">%(c_breaking)s</span>件がブレイクとしてマークされました"
 
 #: adjfeedback/templates/feedback_overview.html
 #, python-format
 msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> allows and expects only chairs to submit feedback (on their panellists and trainees)."
-msgstr "ç¾åœ¨ã®<a href=\"%(option_url)s\" class=\"alert-link\">ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯è¨­å®š</a>ã§ã¯ã€ãƒã‚§ã‚¢ãŒï¼ˆãƒ‘ãƒãƒ«ãƒ»ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ã«å¯¾ã—ã¦ï¼‰ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã¾ã™ã€‚"
+msgstr "現在の<a href=\"%(option_url)s\" class=\"alert-link\">フィードバック設定</a>では、チェアが（パネル・トレイニーに対して）フィードバックを提出できます。"
 
 #: adjfeedback/templates/feedback_overview.html
 #, python-format
 msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> allows and expects both chairs and panellists to submit feedback on each other, and also chairs to submit feedback on trainees."
-msgstr "ç¾åœ¨ã®<a href=\"%(option_url)s\" class=\"alert-link\">ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯è¨­å®š</a>ã§ã¯ã€ãƒã‚§ã‚¢ã¨ãƒ‘ãƒãƒ«ã¯äº’ã„ã«ã€æ›´ã«ãƒã‚§ã‚¢ã¯ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ã«å¯¾ã—ã¦ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã¾ã™ã€‚"
+msgstr "現在の<a href=\"%(option_url)s\" class=\"alert-link\">フィードバック設定</a>では、チェアとパネルは互いに、更にチェアはトレイニーに対してフィードバックを提出できます。"
 
 #: adjfeedback/templates/feedback_overview.html
 #, python-format
 msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> allows and expects both panellists and trainees to submit feedback on chairs, and chairs to submit feedback on every other member of the panel (including trainees)."
-msgstr "ç¾åœ¨ã®<a href=\"%(option_url)s\" class=\"alert-link\">ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯è¨­å®š</a>ã§ã¯ã€ãƒ‘ãƒãƒ«ã¨ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ã¯ãƒã‚§ã‚¢ã«å¯¾ã—ã¦ã€ãã—ã¦ãƒã‚§ã‚¢ã¯ï¼ˆãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼å«ã‚€ï¼‰å…¨å“¡ã«å¯¾ã—ã¦ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã¾ã™ã€‚"
+msgstr "現在の<a href=\"%(option_url)s\" class=\"alert-link\">フィードバック設定</a>では、パネルとトレイニーはチェアに対して、そしてチェアは（トレイニー含む）全員に対してフィードバックを提出できます。"
 
 #: adjfeedback/templates/feedback_overview.html
 #, python-format
 msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> allows and expects all adjudicators (including trainees) to submit feedback on every other member of the panel (including trainees)."
-msgstr "ç¾åœ¨ã®<a href=\"%(option_url)s\" class=\"alert-link\">ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯è¨­å®š</a>ã§ã¯ã€ã™ã¹ã¦ã®ã‚¸ãƒ£ãƒƒã‚¸ãŒäº’ã„ã«ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã¾ã™ã€‚"
+msgstr "現在の<a href=\"%(option_url)s\" class=\"alert-link\">フィードバック設定</a>では、すべてのジャッジが互いにフィードバックを提出できます。"
 
 #: adjfeedback/templates/feedback_overview.html
 #, python-format
 msgid "The current <a href=\"%(option_url)s\" class=\"alert-link\">feedback configuration</a> disallows adjudicators to submit feedback on other members of the panel (including trainees)."
-msgstr "ç¾åœ¨ã®<a href=\"%(option_url)s\" class=\"alert-link\">ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯è¨­å®š</a>ã§ã¯ã€ã™ã¹ã¦ã®ã‚¸ãƒ£ãƒƒã‚¸ãŒãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã§ãã¾ã›ã‚“ã€‚"
+msgstr "現在の<a href=\"%(option_url)s\" class=\"alert-link\">フィードバック設定</a>では、すべてのジャッジがフィードバックを提出できません。"
 
 #: adjfeedback/templates/feedback_overview.html
 #, python-format
 msgid "There is <strong>%(nadjs_outside_range)s adjudicator</strong> with a score <strong>outside the permitted range</strong> of adjudicator scores, which is currently set as %(min_score)s to %(max_score)s. This can cause adjudicator auto-allocation to behave in unexpected ways. If you'd like to use a wider score range, you can configure this in <a href=\"%(feedback_settings_url)s\" class=\"alert-link\"> feedback settings</a>."
 msgid_plural "There are <strong>%(nadjs_outside_range)s adjudicators</strong> with scores <strong>outside the permitted range</strong> of adjudicator scores, which is currently set as %(min_score)s to %(max_score)s. This can cause adjudicator auto-allocation to behave in unexpected ways. If you'd like to use a wider score range, you can configure this in <a href=\"%(feedback_settings_url)s\" class=\"alert-link\"> feedback settings</a>."
-msgstr[0] "<strong>%(nadjs_outside_range)säººã®ã‚¸ãƒ£ãƒƒã‚¸</strong>ãŒ<strong>æŒ‡å®šã•ã‚ŒãŸç¯„å›²ï¼ˆ%(min_score)sï½ž%(max_score)sï¼‰å¤–ã®ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢</strong>ã§ã™ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€ã‚¸ãƒ£ãƒƒã‚¸ã®è‡ªå‹•é…ç½®ã‚·ã‚¹ãƒ†ãƒ ãŒæ„å›³ã—ãªã„æŒ™å‹•ã‚’ã™ã‚‹å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚ã‚‚ã—ã‚¹ã‚³ã‚¢ã®ç¯„å›²ã‚’åºƒã’ãŸã„å ´åˆã€<a href=\"%(feedback_settings_url)s\" class=\"alert-link\">ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯è¨­å®š</a>ã‹ã‚‰å¤‰æ›´å¯èƒ½ã§ã™ã€‚"
+msgstr[0] "<strong>%(nadjs_outside_range)s人のジャッジ</strong>が<strong>指定された範囲（%(min_score)s～%(max_score)s）外のジャッジスコア</strong>です。これにより、ジャッジの自動配置システムが意図しない挙動をする可能性があります。もしスコアの範囲を広げたい場合、<a href=\"%(feedback_settings_url)s\" class=\"alert-link\">フィードバック設定</a>から変更可能です。"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
 msgid "%(count)s adjudicator currently has a score equal to or above %(min)s and below %(max)s. That is %(percent)s%% of the adjudicator pool."
 msgid_plural "%(count)s adjudicators currently have a score equal to or above %(min)s and below %(max)s. That is %(percent)s%% of the adjudicator pool."
-msgstr[0] "%(min)sä»¥ä¸Š%(max)sæœªæº€ã®ã‚¹ã‚³ã‚¢ã®ã‚¸ãƒ£ãƒƒã‚¸ã¯%(count)säººã„ã¾ã™ã€‚å…¨ã‚¸ãƒ£ãƒƒã‚¸ã®%(percent)s%%ã«ç›¸å½“ã—ã¾ã™ã€‚"
+msgstr[0] "%(min)s以上%(max)s未満のスコアのジャッジは%(count)s人います。全ジャッジの%(percent)s%%に相当します。"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
-msgid "Score Distributions (range is %(min_score)sâ€“%(max_score)s)"
-msgstr "ã‚¹ã‚³ã‚¢åˆ†å¸ƒï¼ˆç¯„å›²ã¯%(min_score)sï½ž%(max_score)sï¼‰"
+msgid "Score Distributions (range is %(min_score)s–%(max_score)s)"
+msgstr "スコア分布（範囲は%(min_score)s～%(max_score)s）"
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "Base"
-msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢"
+msgstr "ベーススコア"
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "Feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "フィードバック"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
 msgid "The proportion of an adjudicator's score determined by feedback vs the test is set on a per-round basis. Click this link and edit the 'Feedback weight' field to modify this ratio for %(round)s."
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ†ã‚¹ãƒˆã«ã‚ˆã‚‹ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã¨ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã«ã‚ˆã‚‹ã‚¹ã‚³ã‚¢ã®æ¯”çŽ‡ã¯ãƒ©ã‚¦ãƒ³ãƒ‰æ¯Žã«æ±ºã‚ã‚‰ã‚Œã¦ã„ã¾ã™ã€‚%(round)sã®æ¯”çŽ‡ã‚’å¤‰æ›´ã™ã‚‹ã«ã¯ã“ã“ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã€ã€Œãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®æ¯”çŽ‡æ¯”é‡ã€æ¬„ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚"
+msgstr "ジャッジテストによるベーススコアとフィードバックによるスコアの比率はラウンド毎に決められています。%(round)sの比率を変更するにはここをクリックし、「フィードバックの比率比重」欄を変更してください。"
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "Score Ratio"
-msgstr "ã‚¹ã‚³ã‚¢æ¯”çŽ‡"
+msgstr "スコア比率"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
 msgid "There is %(c_chairs)s debate per round, so there needs to be %(c_chairs)s chair."
 msgid_plural "There are %(c_chairs)s debates per round, so there need to be %(c_chairs)s chairs."
-msgstr[0] "å„ãƒ©ã‚¦ãƒ³ãƒ‰%(c_chairs)sã¤ã®è©¦åˆãŒã‚ã‚‹ãŸã‚ã€%(c_chairs)säººã®ãƒã‚§ã‚¢ãŒå¿…è¦ã§ã™ã€‚"
+msgstr[0] "各ラウンド%(c_chairs)sつの試合があるため、%(c_chairs)s人のチェアが必要です。"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
 msgid "There is %(c_debates)s debate per round, but only %(c_chairs)s above the minimum voting score."
 msgid_plural "There are %(c_debates)s debates per round, but only %(c_chairs)s above the minimum voting score."
-msgstr[0] "å„ãƒ©ã‚¦ãƒ³ãƒ‰%(c_debates)sã¤ã®è©¦åˆãŒã‚ã‚Šã¾ã™ãŒã€æŠ•ç¥¨å¯èƒ½ãªã‚¹ã‚³ã‚¢ã‚’æŒã¤ã‚¸ãƒ£ãƒƒã‚¸ã¯%(c_chairs)säººã—ã‹ã„ã¾ã›ã‚“ã€‚"
+msgstr[0] "各ラウンド%(c_debates)sつの試合がありますが、投票可能なスコアを持つジャッジは%(c_chairs)s人しかいません。"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
 msgid "%(c_chairs)s chair"
 msgid_plural "%(c_chairs)s chairs"
-msgstr[0] "ãƒã‚§ã‚¢ %(c_chairs)säºº"
+msgstr[0] "チェア %(c_chairs)s人"
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "All adjudicators with a score high enough to vote, but who aren't allocated as chairs, are allocated as panellists by the auto-allocator."
-msgstr "è‡ªå‹•é…ç½®ã®éš›ã€æŠ•ç¥¨å¯èƒ½ãªã‚¹ã‚³ã‚¢ã‚’æŒã¤ãŒãƒã‚§ã‚¢ã¨ã—ã¦é…ç½®ã•ã‚Œãªã„ã‚¸ãƒ£ãƒƒã‚¸ã¯ãƒ‘ãƒãƒ«ã¨ãªã‚Šã¾ã™ã€‚"
+msgstr "自動配置の際、投票可能なスコアを持つがチェアとして配置されないジャッジはパネルとなります。"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
 msgid "%(c_panellists)s panellist"
 msgid_plural "%(c_panellists)s panellists"
-msgstr[0] "ãƒ‘ãƒãƒ« %(c_panellists)säºº"
+msgstr[0] "パネル %(c_panellists)s人"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
 msgid "Adjudicators are allocated as trainees by the auto-allocator if their score is less than the 'minimum voting score' (currently %(min_voting)s) set in this tournament's Draw Rules configuration."
-msgstr "è‡ªå‹•é…ç½®ã®éš›ã€ã‚¹ã‚³ã‚¢ãŒã€Œå¯¾æˆ¦è¡¨è¨­å®šã€æ¬„ã§è¨­å®šã•ã‚Œã¦ã„ã‚‹æŠ•ç¥¨å¯èƒ½ã‚¹ã‚³ã‚¢ä¸‹é™ï¼ˆ%(min_voting)sã«è¨­å®šï¼‰ã«é”ã—ã¦ã„ãªã„ã‚¸ãƒ£ãƒƒã‚¸ã¯ã€ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ã¨ã—ã¦é…ç½®ã•ã‚Œã¾ã™ã€‚"
+msgstr "自動配置の際、スコアが「対戦表設定」欄で設定されている投票可能スコア下限（%(min_voting)sに設定）に達していないジャッジは、トレイニーとして配置されます。"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
 msgid "%(c_trainees)s trainee"
 msgid_plural "%(c_trainees)s trainees"
-msgstr[0] "ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼ %(c_trainees)säºº"
+msgstr[0] "トレイニー %(c_trainees)s人"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
 msgid "Auto-Allocate Distributions (%(min_voting_score)s+ to vote)"
-msgstr "è‡ªå‹•é…ç½®ã®åˆ†å¸ƒï¼ˆæŠ•ç¥¨å¯èƒ½ã‚¹ã‚³ã‚¢%(min_voting_score)sä»¥ä¸Šï¼‰"
+msgstr "自動配置の分布（投票可能スコア%(min_voting_score)s以上）"
 
 #: adjfeedback/templates/overview_modals.html
 msgid "Change Base Score"
-msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã‚’ç·¨é›†"
+msgstr "ベーススコアを編集"
 
 #: adjfeedback/templates/overview_modals.html
 #, python-format
 msgid "The score range for adjudicators is between <strong>%(pref.adj_min_score)s</strong> and <strong>%(pref.adj_max_score)s</strong>. Decimals are permitted. This can be configured in <a href=\"%(feedback_options)s\">Feedback settings</a>."
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢ã®ç¯„å›²ã¯<strong>%(pref.adj_min_score)s</strong>ï½ž<strong>%(pref.adj_max_score)s</strong>ã§ã™ï¼ˆå°æ•°å¯ï¼‰ã€‚<a href=\"%(feedback_options)s\">ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯è¨­å®š</a>ã‹ã‚‰å¤‰æ›´å¯èƒ½ã§ã™ã€‚"
+msgstr "ジャッジスコアの範囲は<strong>%(pref.adj_min_score)s</strong>～<strong>%(pref.adj_max_score)s</strong>です（小数可）。<a href=\"%(feedback_options)s\">フィードバック設定</a>から変更可能です。"
 
 #: adjfeedback/templates/overview_modals.html
 #, python-format
 msgid "The minimum score require to be allocated as a panellist or chair (when using the auto-allocator) is <strong>%(min_voting_score)s</strong>. This can be configured in <a href=\"%(draw_rules)s\">Draw settings</a>."
-msgstr "è‡ªå‹•é…ç½®æ©Ÿèƒ½ã§ãƒ‘ãƒãƒ«åˆã¯ãƒã‚§ã‚¢ã«é…ç½®ã•ã‚Œã‚‹ãŸã‚ã«ã¯æœ€ä½Ž<strong>%(min_voting_score)s</strong>ç‚¹å¿…è¦ã§ã™ã€‚<a href=\"%(draw_rules)s\">å¯¾æˆ¦è¡¨è¨­å®š</a>ã‹ã‚‰å¤‰æ›´å¯èƒ½ã§ã™ã€‚"
+msgstr "自動配置機能でパネル又はチェアに配置されるためには最低<strong>%(min_voting_score)s</strong>点必要です。<a href=\"%(draw_rules)s\">対戦表設定</a>から変更可能です。"
 
 #: adjfeedback/templates/overview_modals.html
 msgid "Base score"
-msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢"
+msgstr "ベーススコア"
 
 #: adjfeedback/templates/overview_modals.html
 msgid "Save Base Score"
-msgstr "ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã‚’ä¿å­˜"
+msgstr "ベーススコアを保存"
 
 #: adjfeedback/templates/public_add_feedback.html
 msgid "Who are you?"
-msgstr "ã‚ãªãŸã¯èª°ã§ã™ã‹ï¼Ÿ"
+msgstr "あなたは誰ですか？"
 
 #: adjfeedback/templates/public_add_feedback.html
 msgid "click your name or your team on this list"
-msgstr "ã‚ãªãŸã®åå‰åˆã¯ã‚ãªãŸã®ãƒãƒ¼ãƒ åã‚’ã‚¯ãƒªãƒƒã‚¯"
+msgstr "あなたの名前又はあなたのチーム名をクリック"
 
 #: adjfeedback/templates/update_adjudicator_scores.html
 msgctxt "page title"
 msgid "Update Adjudicator Scores"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‚¹ã‚³ã‚¢ã‚’æ›´æ–°"
+msgstr "ジャッジスコアを更新"
 
 #: adjfeedback/templates/update_adjudicator_scores.html
 #, python-format
 msgid "There aren't any adjudicators in this tournament, so you can't update any scores. You might want to <a href=\"%(import_url)s\" class=\"alert-link\">import some adjudicators</a> first."
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãŒã„ãªã„ã®ã§æ›´æ–°ã§ãã¾ã›ã‚“ã€‚ã¾ãšã¯<a href=\"%(import_url)s\" class=\"alert-link\">ã‚¸ãƒ£ãƒƒã‚¸ã‚’å…¥åŠ›</a>ã—ã¦ãã ã•ã„ã€‚"
+msgstr "ジャッジがいないので更新できません。まずは<a href=\"%(import_url)s\" class=\"alert-link\">ジャッジを入力</a>してください。"
 
 #: adjfeedback/templates/update_adjudicator_scores.html
 msgid "Paste a list of adjudicators' names and their new scores, in the format: <code>adjudicator,score</code>. For example:"
-msgstr "<code>adjudicator,score</code>ã®å½¢å¼ã§ã‚¸ãƒ£ãƒƒã‚¸ã®åå‰ã¨æ–°ã—ã„ã‚¹ã‚³ã‚¢ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚ä¾‹ï¼š"
+msgstr "<code>adjudicator,score</code>の形式でジャッジの名前と新しいスコアを入力してください。例："
 
 #: adjfeedback/templates/update_adjudicator_scores.html
 msgid "The adjudicators' names must match their names in the tab system exactly."
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®åå‰ã¯ã‚¿ãƒ–ä¸Šã®åå‰ã¨å®Œå…¨ä¸€è‡´ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
+msgstr "ジャッジの名前はタブ上の名前と完全一致する必要があります。"
 
 #: adjfeedback/templates/update_adjudicator_scores.html
 msgid "There are some problems with the data on this form:"
-msgstr "ãƒ•ã‚©ãƒ¼ãƒ ã®å…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã«å•é¡ŒãŒã‚ã‚Šã¾ã™ï¼š"
+msgstr "フォームの入力データに問題があります："
 
 #: adjfeedback/templates/update_adjudicator_scores.html
 msgid "Submit"
-msgstr "é€ä¿¡"
+msgstr "送信"
 
 #: adjfeedback/views.py
 msgid "Feedback Overview"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯æ¦‚è¦"
+msgstr "フィードバック概要"
 
 #: adjfeedback/views.py
 msgid "Find Feedback on Adjudicator"
-msgstr "é€ä¿¡å¯¾è±¡ã‹ã‚‰ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æ¤œç´¢"
+msgstr "送信対象からフィードバックを検索"
 
 #: adjfeedback/views.py
 #, python-format
 msgid "%(count)d feedback"
 msgid_plural "%(count)d feedbacks"
-msgstr[0] "%(count)dä»¶ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr[0] "%(count)d件のフィードバック"
 
 #: adjfeedback/views.py
 msgid "Feedbacks"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "フィードバック"
 
 #: adjfeedback/views.py
 msgid "Find Feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æŽ¢ã™"
+msgstr "フィードバックを探す"
 
 #: adjfeedback/views.py
 msgid "From Teams"
-msgstr "ãƒãƒ¼ãƒ ã‹ã‚‰"
+msgstr "チームから"
 
 #: adjfeedback/views.py
 msgid "From Adjudicators"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã‹ã‚‰"
+msgstr "ジャッジから"
 
 #: adjfeedback/views.py
 msgid "Latest Feedback"
-msgstr "æœ€è¿‘ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "最近のフィードバック"
 
 #: adjfeedback/views.py
 msgid "(30 most recent)"
-msgstr "ï¼ˆç›´è¿‘30ä»¶ï¼‰"
+msgstr "（直近30件）"
 
 #: adjfeedback/views.py
 msgid "Only Comments"
-msgstr "ã‚³ãƒ¡ãƒ³ãƒˆã®ã¿"
+msgstr "コメントのみ"
 
 #: adjfeedback/views.py
 msgid "(250 most recent)"
-msgstr "ï¼ˆç›´è¿‘250ä»¶ï¼‰"
+msgstr "（直近250件）"
 
 #: adjfeedback/views.py
 msgid "Important Feedback"
-msgstr "é‡è¦ãªãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "重要なフィードバック"
 
 #: adjfeedback/views.py
 msgid "(rating was much higher/lower than expected)"
-msgstr "ï¼ˆè©•ä¾¡ãŒæƒ³å®šã¨å¤§ããç•°ãªã£ãŸï¼‰"
+msgstr "（評価が想定と大きく異なった）"
 
 #: adjfeedback/views.py
 msgid "A Team"
-msgstr "ãƒãƒ¼ãƒ "
+msgstr "チーム"
 
 #: adjfeedback/views.py
 msgid "Team"
-msgstr "ãƒãƒ¼ãƒ "
+msgstr "チーム"
 
 #: adjfeedback/views.py
 msgid "Institution"
-msgstr "ã‚¤ãƒ³ã‚¹ãƒ†"
+msgstr "インステ"
 
 #: adjfeedback/views.py
 msgid "An Adjudicator"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸"
+msgstr "ジャッジ"
 
 #: adjfeedback/views.py
 msgid "Adjudicator"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸"
+msgstr "ジャッジ"
 
 #: adjfeedback/views.py
 #, python-format
 msgid "Feedback from %(source)s on %(target)s added."
-msgstr "%(source)sã‹ã‚‰%(target)sã¸ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’è¿½åŠ ã—ã¾ã—ãŸã€‚"
+msgstr "%(source)sから%(target)sへのフィードバックを追加しました。"
 
 #: adjfeedback/views.py
 #, python-format
 msgid "Thanks, %(source)s! Your feedback on %(target)s has been recorded."
-msgstr "%(source)sã€ã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã™ï¼%(target)sã¸ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’æå‡ºã—ã¾ã—ãŸã€‚"
+msgstr "%(source)s、ありがとうございます！%(target)sへのフィードバックを提出しました。"
 
 #: adjfeedback/views.py
 #, python-format
 msgid "Whoops! I didn't recognise that adjudicator: %(adjudicator)s"
-msgstr "ãŠã£ã¨ã€ã‚¸ãƒ£ãƒƒã‚¸%(adjudicator)sãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
+msgstr "おっと、ジャッジ%(adjudicator)sが見つかりませんでした。"
 
 #: adjfeedback/views.py
 msgid "Whoops! The value isn't a valid base score."
-msgstr "ãŠã£ã¨ã€ç„¡åŠ¹ãªãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã§ã™ã€‚"
+msgstr "おっと、無効なベーススコアです。"
 
 #: adjfeedback/views.py
 msgid "Feedback Progress"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯æå‡ºçŠ¶æ³"
+msgstr "フィードバック提出状況"
 
 #: adjfeedback/views.py
 #, python-format
 msgid "%(nmissing)d missing feedback submission (%(fulfilled).1f%% returned)"
 msgid_plural "%(nmissing)d missing feedback submissions (%(fulfilled).1f%% returned)"
-msgstr[0] "%(nmissing)dä»¶ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãŒä¸è¶³ã—ã¦ã„ã¾ã™ï¼ˆ%(fulfilled).1f%%æå‡ºæ¸ˆã¿ï¼‰"
+msgstr[0] "%(nmissing)d件のフィードバックが不足しています（%(fulfilled).1f%%提出済み）"
 
 #: adjfeedback/views.py
 #, python-format
 msgid "Feedback for %(adjudicator)s from %(source)s is now %(result)s."
-msgstr "%(source)sã‹ã‚‰%(adjudicator)sã¸ã®ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã¯%(result)sã§ã™ã€‚"
+msgstr "%(source)sから%(adjudicator)sへのフィードバックは%(result)sです。"
 
 #: adjfeedback/views.py
 msgid "confirmed"
-msgstr "æ‰¿èªæ¸ˆã¿"
+msgstr "承認済み"
 
 #: adjfeedback/views.py
 msgid "un-confirmed"
-msgstr "æ‰¿èªå–ã‚Šæ¶ˆã—æ¸ˆã¿"
+msgstr "承認取り消し済み"
 
 #: adjfeedback/views.py
 msgid "un-ignored"
-msgstr "ç„¡è¦–è§£é™¤æ¸ˆã¿"
+msgstr "無視解除済み"
 
 #: adjfeedback/views.py
 #, python-format
 msgid "Updated base score for %(count)d adjudicator."
 msgid_plural "Updated base scores for %(count)d adjudicators."
-msgstr[0] "%(count)däººã®ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã‚’æ›´æ–°ã—ã¾ã—ãŸã€‚"
+msgstr[0] "%(count)d人のジャッジのベーススコアを更新しました。"
 
 #: adjfeedback/views.py
 msgid "Custom Feedback Questions"
 msgstr ""
-
 

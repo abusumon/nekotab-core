@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:47\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: kk\n"
-"X-Crowdin-File: /develop/NekoTab/actionlog/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/actionlog/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 920\n"
 
 #: actionlog/apps.py
 msgid "Action Log"
-msgstr "Ó˜Ñ€ÐµÐºÐµÑ‚Ñ‚ÐµÑ€ Ñ‚Ñ–Ð·Ñ–Ð¼Ñ–"
+msgstr "Әрекеттер тізімі"
 
 #: actionlog/models.py
 msgid "Changed adjudicator breaking status"
@@ -67,11 +67,11 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Confirmed ballot set"
-msgstr "Ð‘ÐµÐºÑ–Ñ‚Ñ–Ð»Ð³ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€ Ð¿Ð°Ñ€Ð°Ò“Ñ‹"
+msgstr "Бекітілген төрешілер парағы"
 
 #: actionlog/models.py
 msgid "Created ballot set"
-msgstr "Ð”Ð°Ð¹Ñ‹Ð½Ð´Ð°Ð»Ò“Ð°Ð½ Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€ Ð¿Ð°Ñ€Ð°Ò“Ñ‹"
+msgstr "Дайындалған төрешілер парағы"
 
 #: actionlog/models.py
 msgid "Discarded ballot set"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Edited ballot set"
-msgstr "Ó¨Ð·Ð³ÐµÑ€Ñ‚Ñ–Ð»Ð³ÐµÐ½ Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€ Ð¿Ð°Ñ€Ð°Ò“Ñ‹"
+msgstr "Өзгертілген төрешілер парағы"
 
 #: actionlog/models.py
 msgid "Submitted ballot set from the public form"
@@ -167,19 +167,19 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Confirmed draw"
-msgstr "Ð‘ÐµÐºÑ–Ñ‚Ñ–Ð»Ð³ÐµÐ½ ÐºÐµÑÑ‚Ðµ"
+msgstr "Бекітілген кесте"
 
 #: actionlog/models.py
 msgid "Created draw"
-msgstr "Ð”Ð°Ð¹Ñ‹Ð½ ÐºÐµÑÑ‚Ðµ"
+msgstr "Дайын кесте"
 
 #: actionlog/models.py
 msgid "Regenerated draw"
-msgstr "ÒšÐ°Ð¹Ñ‚Ð° Ð¶Ð°ÑÐ°Ð»Ò“Ð°Ð½ ÐºÐµÑÑ‚Ðµ"
+msgstr "Қайта жасалған кесте"
 
 #: actionlog/models.py
 msgid "Released draw"
-msgstr "Ð–Ð°Ñ€Ð¸ÑÐ»Ð°Ð½Ò“Ð°Ð½ ÐºÐµÑÑ‚Ðµ"
+msgstr "Жарияланған кесте"
 
 #: actionlog/models.py
 msgid "Unreleased draw"
@@ -195,7 +195,7 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Saved feedback"
-msgstr "Ð¡Ð°Ò›Ñ‚Ð°Ð»Ò“Ð°Ð½ ÐºÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹Ñ"
+msgstr "Сақталған кері байланыс"
 
 #: actionlog/models.py
 msgid "Submitted feedback from the public form"
@@ -215,15 +215,15 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Added/edited motion"
-msgstr "Ð”Ð°Ð¹Ñ‹Ð½/Ó©Ð·Ð³ÐµÑ€Ñ‚Ñ–Ð»Ð³ÐµÐ½ Ò›Ð°Ñ€Ð°Ñ€Ð»Ð°Ñ€"
+msgstr "Дайын/өзгертілген қарарлар"
 
 #: actionlog/models.py
 msgid "Released motions"
-msgstr "Ð–Ð°Ñ€Ð¸ÑÐ»Ð°Ð½Ò“Ð°Ð½ Ò›Ð°Ñ€Ð°Ñ€Ð»Ð°Ñ€"
+msgstr "Жарияланған қарарлар"
 
 #: actionlog/models.py
 msgid "Unreleased motions"
-msgstr "Ð–Ð°Ñ€Ð¸ÑÐ»Ð°Ð½Ð±Ð°Ò“Ð°Ð½ Ò›Ð°Ñ€Ð°Ñ€Ð»Ð°Ñ€"
+msgstr "Жарияланбаған қарарлар"
 
 #: actionlog/models.py
 msgid "Edited tournament options"
@@ -411,7 +411,7 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "user"
-msgstr "Ò›Ð¾Ð»Ð´Ð°Ð½ÑƒÑˆÑ‹"
+msgstr "қолданушы"
 
 #: actionlog/models.py
 msgid "IP address"
@@ -419,11 +419,11 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "tournament"
-msgstr "Ñ‚ÑƒÑ€Ð½Ð¸Ñ€"
+msgstr "турнир"
 
 #: actionlog/models.py
 msgid "round"
-msgstr "Ð¾Ð¹Ñ‹Ð½"
+msgstr "ойын"
 
 #: actionlog/models.py
 msgid "content type"
@@ -451,6 +451,5 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "anonymous"
-msgstr "Ð¶Ð°ÑÑ‹Ñ€Ñ‹Ð½ Ñ‚Ò¯Ñ€Ð´Ðµ"
-
+msgstr "жасырын түрде"
 

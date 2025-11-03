@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-24 07:48+1000\n"
 "PO-Revision-Date: 2024-06-23 21:58\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: he\n"
-"X-Crowdin-File: /develop/NekoTab/motions/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/motions/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 936\n"
 
 #: motions/apps.py motions/templates/public_motions.html
@@ -47,11 +47,11 @@ msgstr ""
 
 #: motions/models.py
 msgid "tournament"
-msgstr "×˜×•×¨× ×™×¨"
+msgstr "טורניר"
 
 #: motions/models.py
 msgid "rounds"
-msgstr "×¡×™×‘×•×‘×™×"
+msgstr "סיבובים"
 
 #: motions/models.py
 msgid "motion"
@@ -83,7 +83,7 @@ msgstr ""
 
 #: motions/models.py
 msgid "round"
-msgstr "×¡×™×‘×•×‘"
+msgstr "סיבוב"
 
 #: motions/models.py
 msgid "sequence number"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: motions/statistics.py
 #, python-format
-msgid "Ï‡Â² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced â€” at a %(level)s level of significance."
+msgid "χ² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced — at a %(level)s level of significance."
 msgstr ""
 
 #: motions/statistics.py
@@ -149,7 +149,7 @@ msgstr ""
 
 #: motions/statistics.py
 #, python-format
-msgid "Ï‡Â² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
+msgid "χ² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
 msgstr ""
 
 #: motions/templates/motion_global_statistics.html
@@ -215,11 +215,11 @@ msgstr ""
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Government"
-msgstr "×ž×ž×©×œ×”"
+msgstr "ממשלה"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Opposition"
-msgstr "××•×¤×•×–×™×¦×™×”"
+msgstr "אופוזיציה"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Average Points per bench"
@@ -370,7 +370,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: motions/templates/show.html
-msgid "There are no motions for this round entered into NekoTab."
+msgid "There are no motions for this round entered into Tabbycat."
 msgstr ""
 
 #: motions/utils.py
@@ -439,5 +439,4 @@ msgstr ""
 #: motions/views.py
 msgid "Motion Statistics"
 msgstr ""
-
 

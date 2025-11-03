@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 from os import environ
 
 import dj_database_url
@@ -7,7 +7,7 @@ from sentry_sdk.integrations.logging import LoggingIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.redis import RedisIntegration
 
-from .core import NekoTab_VERSION
+from .core import TABBYCAT_VERSION
 
 # ==============================================================================
 # Heroku
@@ -47,16 +47,10 @@ DATABASES = {
 
 # Use a separate Redis addon for channels to reduce number of connections
 # With fallback for Tabbykitten installs (no addons) or pre-2.2 instances
-# Prefer a TLS URL when provided by the add-on (e.g., REDIS_TLS_URL)
-REDIS_TLS_URL = environ.get('REDIS_TLS_URL')
-REDISCLOUD_URL = environ.get('REDISCLOUD_URL')
-REDIS_URL = environ.get('REDIS_URL')
-
-# Primary Redis URL preference order: TLS URL > provider URL > generic URL
-PRIMARY_REDIS_URL = REDIS_TLS_URL or REDISCLOUD_URL or REDIS_URL
-
-# Backwards-compatible alias used in cache settings below
-ALT_REDIS_URL = PRIMARY_REDIS_URL
+if environ.get('REDISCLOUD_URL'):
+    ALT_REDIS_URL = environ.get('REDISCLOUD_URL') # 30 clients on free
+else:
+    ALT_REDIS_URL = environ.get('REDIS_URL') # 20 clients on free
 
 # Connection/Pooling Notes
 # ========================
@@ -75,26 +69,14 @@ ALT_REDIS_URL = PRIMARY_REDIS_URL
 # a pooling logic that ensures connections are shared amonst unicorn workers
 # ========================
 
-# Allow temporarily disabling strict TLS verification only when explicitly
-# permitted via an environment variable (see note below). By default we keep
-# verification enabled — do not leave the following enabled in production.
-_INSECURE_REDIS = environ.get('INSECURE_REDIS', '') == '1'
-
-CONNECTION_POOL_KWARGS = {}
-if _INSECURE_REDIS:
-    # WARNING: only use this flag temporarily for troubleshooting with
-    # providers that use an unusual CA chain. Prefer fixing the provider's
-    # certificate chain or adding the CA to the environment's trust store.
-    CONNECTION_POOL_KWARGS = {"ssl_cert_reqs": None}
-
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": ALT_REDIS_URL,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            # Optional connection pool kwargs (only set when INSECURE_REDIS=1)
-            **({"CONNECTION_POOL_KWARGS": CONNECTION_POOL_KWARGS} if CONNECTION_POOL_KWARGS else {}),
+            # "IGNORE_EXCEPTIONS": True, # Supresses ConnectionError at max
+            # "CONNECTION_POOL_KWARGS": {"max_connections": 5} # See above
             "SOCKET_CONNECT_TIMEOUT": 5,
             "SOCKET_TIMEOUT": 60,
         },
@@ -105,11 +87,10 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-                # Use the same primary Redis URL; if it's rediss:// TLS is used
-                "hosts": [{
-                    "address": PRIMARY_REDIS_URL,
-                    **({"ssl_cert_reqs": None} if _INSECURE_REDIS else {}),
-                }],
+            "hosts": [{
+                "address": environ.get('REDIS_URL'),
+                "ssl_cert_reqs": None,
+            }],
             # Remove channels from groups after 3 hours
             # This matches websocket_timeout in Daphne
             "group_expiry": 10800,
@@ -133,7 +114,7 @@ if environ.get('EMAIL_HOST', ''):
 
 elif environ.get('SENDGRID_API_KEY', ''):
     SERVER_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'root@localhost')
-    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'notconfigured@NekoTabsite')
+    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'notconfigured@tabbycatsite')
     EMAIL_HOST = 'smtp.sendgrid.net'
     EMAIL_HOST_USER = 'apikey'
     EMAIL_HOST_PASSWORD = environ['SENDGRID_API_KEY']
@@ -141,7 +122,7 @@ elif environ.get('SENDGRID_API_KEY', ''):
     EMAIL_USE_TLS = True
 
 elif environ.get('SENDGRID_USERNAME', ''):
-    # These settings are deprecated as of NekoTab 2.6.0 (Ocicat).
+    # These settings are deprecated as of Tabbycat 2.6.0 (Ocicat).
     # When removing, also remove utils.mixins.WarnAboutLegacySendgridConfigVarsMixin and
     # templates/errors/legacy_sendgrid_warning.html (and references thereto).
     USING_LEGACY_SENDGRID_CONFIG_VARS = True
@@ -167,5 +148,5 @@ if not environ.get('DISABLE_SENTRY'):
             RedisIntegration(),
         ],
         send_default_pii=True,
-        release=NekoTab_VERSION,
+        release=TABBYCAT_VERSION,
     )

@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:40+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -11,48 +11,48 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/NekoTab/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 934\n"
 
 #: api/apps.py
 msgid "Application Programming Interface"
-msgstr "ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ»ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ãƒ»ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹(API)"
+msgstr "アプリケーション・プログラミング・インターフェイス(API)"
 
 #: checkins/admin.py
 msgid "Type"
-msgstr "ç¨®é¡ž"
+msgstr "種類"
 
 #: checkins/admin.py
 msgid "Checkin time"
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³æ™‚åˆ»"
+msgstr "チェックイン時刻"
 
 #: checkins/apps.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Check-Ins"
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³"
+msgstr "チェックイン"
 
 #: checkins/consumers.py
 msgid "Sent checkin identifier doesn't exist"
-msgstr "ã“ã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã¯ã‚ã‚Šã¾ã›ã‚“"
+msgstr "この識別コードはありません"
 
 #: checkins/consumers.py
 msgid "Checkins"
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³"
+msgstr "チェックイン"
 
 #: checkins/consumers.py
 msgid "No checkin identifiers exist for sent barcodes"
-msgstr "ã“ã®ãƒãƒ¼ã‚³ãƒ¼ãƒ‰ã«å¯¾å¿œã™ã‚‹è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã¯ã‚ã‚Šã¾ã›ã‚“"
+msgstr "このバーコードに対応する識別コードはありません"
 
 #: checkins/models.py
 msgid "The barcode must contain exactly six digits."
-msgstr "ãƒãƒ¼ã‚³ãƒ¼ãƒ‰ã¯6æ¡ã®æ•°å­—ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
+msgstr "バーコードは6桁の数字である必要があります。"
 
 #: checkins/models.py
 msgid "barcode"
-msgstr "ãƒãƒ¼ã‚³ãƒ¼ãƒ‰"
+msgstr "バーコード"
 
 #: checkins/models.py
 msgid "<Not the child instance>"
@@ -65,186 +65,186 @@ msgstr ""
 
 #: checkins/models.py
 msgid "person"
-msgstr "äºº"
+msgstr "人"
 
 #: checkins/models.py
 msgid "person identifier"
-msgstr "å€‹äººã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰"
+msgstr "個人の識別コード"
 
 #: checkins/models.py
 msgid "person identifiers"
-msgstr "å€‹äººã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰"
+msgstr "個人の識別コード"
 
 #: checkins/models.py
 msgid "debate"
-msgstr "è©¦åˆ"
+msgstr "試合"
 
 #: checkins/models.py
 msgid "debate identifier"
-msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰"
+msgstr "ディベートの識別コード"
 
 #: checkins/models.py
 msgid "debate identifiers"
-msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰"
+msgstr "ディベートの識別コード"
 
 #: checkins/models.py
 msgid "room identifier"
-msgstr "éƒ¨å±‹ã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰"
+msgstr "部屋の識別コード"
 
 #: checkins/models.py
 msgid "room identifiers"
-msgstr "éƒ¨å±‹ã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰"
+msgstr "部屋の識別コード"
 
 #: checkins/models.py
 msgid "identifier"
-msgstr "è­˜åˆ¥ã‚³ãƒ¼ãƒ‰"
+msgstr "識別コード"
 
 #: checkins/models.py
 msgid "check-in time"
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³æ™‚é–“"
+msgstr "チェックイン時間"
 
 #: checkins/models.py registration/models.py users/models.py
 msgid "tournament"
-msgstr "å¤§ä¼š"
+msgstr "大会"
 
 #: checkins/models.py
 msgid "check-in event"
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã®ã‚¤ãƒ™ãƒ³ãƒˆ"
+msgstr "チェックインのイベント"
 
 #: checkins/models.py
 msgid "check-in events"
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã®ã‚¤ãƒ™ãƒ³ãƒˆ"
+msgstr "チェックインのイベント"
 
 #: checkins/templates/checkin_ids.html
 msgid "With identifiers"
-msgstr "è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã‚ã‚Š"
+msgstr "識別コードあり"
 
 #: checkins/templates/checkin_ids.html
 msgid "View as barcodes"
-msgstr "ãƒãƒ¼ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦è¡¨ç¤º"
+msgstr "バーコードとして表示"
 
 #: checkins/templates/checkin_ids.html
 msgid "Generate missing identifiers"
-msgstr "ä¸è¶³ã—ã¦ã„ã‚‹è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã‚’ä½œæˆ"
+msgstr "不足している識別コードを作成"
 
 #: checkins/templates/checkin_ids.html
 msgid "Generate all identifiers"
-msgstr "ã™ã¹ã¦ã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã‚’ä½œæˆ"
+msgstr "すべての識別コードを作成"
 
 #: checkins/templates/checkin_ids.html
 msgid "There are no identifiers available to view. An admin will need to generate them."
-msgstr "è¡¨ç¤ºã™ã¹ãè­˜åˆ¥ã‚³ãƒ¼ãƒ‰ãŒã‚ã‚Šã¾ã›ã‚“ã€‚ç®¡ç†è€…ãŒä½œæˆã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
+msgstr "表示すべき識別コードがありません。管理者が作成する必要があります。"
 
 #: checkins/templates/checkin_printables.html
 msgid "Each of the barcodes below is also an image file that can be downloaded individually. If you want to download them all at once try using a 'bulk downloader' extension/plugin for your browser, such as <a href=\"https://chrome.google.com/webstore/detail/svg-export/naeaaedieihlkmdajjefioajbbdbdjgp?hl=en-GB\">this one (for Chrome)</a>. To download them as a list you can go to Check-Ins section of the Edit Database area and copy/paste from the relevant table."
-msgstr "ä¸‹ã®ãã‚Œãžã‚Œã®ãƒãƒ¼ã‚³ãƒ¼ãƒ‰ã¯ã€å€‹åˆ¥ã«ç”»åƒã¨ã—ã¦ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã§ãã¾ã™ã€‚ã‚‚ã—ä¸€æ‹¬ã§ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸã„å ´åˆã€<a href=\"https://chrome.google.com/webstore/detail/svg-export/naeaaedieihlkmdajjefioajbbdbdjgp?hl=en-GB\">ã“ã®æ‹¡å¼µæ©Ÿèƒ½ï¼ˆChromeç”¨ï¼‰</a>ã®ã‚ˆã†ãªä¸€æ‹¬ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã®æ‹¡å¼µæ©Ÿèƒ½ã‚„ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’è©¦ã—ã¦ã¿ã¦ãã ã•ã„ã€‚ãƒªã‚¹ãƒˆã¨ã—ã¦ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å ´åˆã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã®ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³é–¢é€£ã®ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‹ã‚‰ã€å¯¾è±¡ã®è¡¨ã‚’ã‚³ãƒ”ãƒ¼ãƒ»ãƒšãƒ¼ã‚¹ãƒˆã™ã‚‹ã“ã¨ã§é”æˆã§ãã¾ã™ã€‚"
+msgstr "下のそれぞれのバーコードは、個別に画像としてダウンロードできます。もし一括でダウンロードしたい場合、<a href=\"https://chrome.google.com/webstore/detail/svg-export/naeaaedieihlkmdajjefioajbbdbdjgp?hl=en-GB\">この拡張機能（Chrome用）</a>のような一括ダウンロードの拡張機能やプラグインを試してみてください。リストとしてダウンロードする場合、データベース編集エリアのチェックイン関連のセクションから、対象の表をコピー・ペーストすることで達成できます。"
 
 #: checkins/templates/checkin_printables.html
 msgid "You can use Ctrl+P for printing or saving the barcodes PDF. Be sure to set the appropriate <strong>page orientation</strong>, to turn off <strong>headers/footers</strong> and turn on <strong>background graphics</strong>. Works best in Chrome."
-msgstr "Ctrl+Pã§ãƒãƒ¼ã‚³ãƒ¼ãƒ‰ã®PDFã‚’å°åˆ·ã¾ãŸã¯PDFã¨ã—ã¦ä¿å­˜ã§ãã¾ã™ã€‚é©åˆ‡ãª<strong>ãƒšãƒ¼ã‚¸ã®å‘ã</strong>ã‚’è¨­å®šã—ã€<strong>ãƒ˜ãƒƒãƒ€ãƒ¼/ãƒ•ãƒƒã‚¿ãƒ¼</strong>ã‚’ã‚ªãƒ•ã«ã—ã€<strong>èƒŒæ™¯ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯</strong>ã‚’ã‚ªãƒ³ã«ã—ã¦ãã ã•ã„ã€‚ChromeãŒæœ€é©ã§ã™ã€‚"
+msgstr "Ctrl+PでバーコードのPDFを印刷またはPDFとして保存できます。適切な<strong>ページの向き</strong>を設定し、<strong>ヘッダー/フッター</strong>をオフにし、<strong>背景グラフィック</strong>をオンにしてください。Chromeが最適です。"
 
 #: checkins/templates/checkin_scan.html
 msgid "To scan an identifier type the number below (it will auto-submit). You can also use a barcode scanner (configured to work as a keyboard) or scan from a webcam or phone camera using the button below."
-msgstr "è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã‚’èª­ã¿è¾¼ã‚€ã«ã¯ã€ä»¥ä¸‹ã«æ•°å­—ã‚’æ‰“ã¡è¾¼ã‚“ã§ãã ã•ã„ï¼ˆè‡ªå‹•çš„ã«é€ä¿¡ã•ã‚Œã¾ã™ï¼‰ã€‚ï¼ˆã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã¨ã—ã¦æ©Ÿèƒ½ã™ã‚‹ã‚ˆã†ã«è¨­å®šã•ã‚ŒãŸï¼‰ãƒãƒ¼ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ£ãƒŠãƒ¼ã‚’ä½¿ç”¨ã—ãŸã‚Šã€ä¸‹ã®ãƒœã‚¿ãƒ³ã‹ã‚‰ã‚¦ã‚§ãƒ–ã‚«ãƒ¡ãƒ©ã‚„æºå¸¯ã®ã‚«ãƒ¡ãƒ©ã‚’ä½¿ç”¨ã—ãŸã‚Šã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚"
+msgstr "識別コードを読み込むには、以下に数字を打ち込んでください（自動的に送信されます）。（キーボードとして機能するように設定された）バーコードスキャナーを使用したり、下のボタンからウェブカメラや携帯のカメラを使用したりすることもできます。"
 
 #: checkins/utils.py
 #, python-format
 msgid "Not checked in (barcode %(barcode)s)"
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³æœªå®Œäº†ï¼ˆãƒãƒ¼ã‚³ãƒ¼ãƒ‰%(barcode)sï¼‰"
+msgstr "チェックイン未完了（バーコード%(barcode)s）"
 
 #: checkins/utils.py
 msgid "Not checked in; no barcode assigned"
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³æœªå®Œäº†ãƒ»ãƒãƒ¼ã‚³ãƒ¼ãƒ‰ãŒã‚ã‚Šã¾ã›ã‚“"
+msgstr "チェックイン未完了・バーコードがありません"
 
 #: checkins/utils.py
 #, python-format
 msgid "checked in at %(time)s"
-msgstr "%(time)sã«ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³æ¸ˆã¿"
+msgstr "%(time)sにチェックイン済み"
 
 #: checkins/utils.py
 #, python-format
 msgid "%(speaker)s checked in at %(time)s."
-msgstr "%(speaker)sã¯%(time)sã«ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã—ã¾ã—ãŸã€‚"
+msgstr "%(speaker)sは%(time)sにチェックインしました。"
 
 #: checkins/utils.py
 #, python-format
 msgid "%(speaker)s is missing."
-msgstr "%(speaker)sãŒã„ã¾ã›ã‚“ã€‚"
+msgstr "%(speaker)sがいません。"
 
 #: checkins/views.py templates/nav/admin_nav.html
 #: templates/nav/assistant_nav.html
 msgid "Scan Identifiers"
-msgstr "è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã‚’ã‚¹ã‚­ãƒ£ãƒ³"
+msgstr "識別コードをスキャン"
 
 #: checkins/views.py
 msgid "People's Check-In Statuses"
-msgstr "å‚åŠ è€…ã®ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³çŠ¶æ³"
+msgstr "参加者のチェックイン状況"
 
 #: checkins/views.py
 msgid "Rooms' Check-In Statuses"
-msgstr "éƒ¨å±‹ã®ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³çŠ¶æ³"
+msgstr "部屋のチェックイン状況"
 
 #: checkins/views.py templates/nav/admin_nav.html
 msgid "Make Identifiers"
-msgstr "è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã‚’ä½œæˆ"
+msgstr "識別コードを作成"
 
 #: checkins/views.py registration/templates/answer_tables/teams.html
 #: templates/nav/admin_nav.html
 msgid "Speakers"
-msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼"
+msgstr "スピーカー"
 
 #: checkins/views.py registration/views.py templates/nav/admin_nav.html
 #: templates/nav/public_nav.html
 msgid "Adjudicators"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸"
+msgstr "ジャッジ"
 
 #: checkins/views.py
 msgid "Rooms"
-msgstr "éƒ¨å±‹"
+msgstr "部屋"
 
 #: checkins/views.py
 #, python-format
 msgid "Generated identifiers for %s"
-msgstr "%sã®è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã‚’ä½œæˆã—ã¾ã—ãŸ"
+msgstr "%sの識別コードを作成しました"
 
 #: checkins/views.py
 msgid "Identifiers"
-msgstr "è­˜åˆ¥ã‚³ãƒ¼ãƒ‰"
+msgstr "識別コード"
 
 #: checkins/views.py
-msgid "Could not check you in as you do not have an identifying code â€” your tab director may need to make you an identifier."
-msgstr "è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ãŒå­˜åœ¨ã—ãªã„ãŸã‚ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã«å¤±æ•—ã—ã¾ã—ãŸã€‚ã‚¿ãƒ–ç®¡ç†è€…ã«è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã‚’ä½œæˆã—ã¦ã‚‚ã‚‰ã†å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"
+msgid "Could not check you in as you do not have an identifying code — your tab director may need to make you an identifier."
+msgstr "識別コードが存在しないためチェックインに失敗しました。タブ管理者に識別コードを作成してもらう必要があります。"
 
 #: checkins/views.py
 msgid "You have revoked your check-in."
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸã€‚"
+msgstr "チェックインをキャンセルしました。"
 
 #: checkins/views.py
 msgid "Whoops! Looks like your check-in was already revoked."
-msgstr "ãŠã£ã¨ï¼æ—¢ã«ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¦ã„ã‚‹ã¿ãŸã„ã§ã™ã€‚"
+msgstr "おっと！既にチェックインがキャンセルされているみたいです。"
 
 #: checkins/views.py
 msgid "Whoops! Looks like you're already checked in."
-msgstr "ãŠã£ã¨ï¼æ—¢ã«ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã—ã¦ã„ã‚‹ã‚ˆã†ã§ã™ã€‚"
+msgstr "おっと！既にチェックインしているようです。"
 
 #: checkins/views.py
 msgid "You are now checked in."
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã—ã¾ã—ãŸã€‚"
+msgstr "チェックインしました。"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "Yes"
-msgstr "ã¯ã„"
+msgstr "はい"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "No"
-msgstr "ã„ã„ãˆ"
+msgstr "いいえ"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: registration/form_utils.py
 msgid "This field is required."
-msgstr "å¿…é ˆ"
+msgstr "必須"
 
 #: registration/forms.py
 msgid "Coach name"
@@ -272,11 +272,11 @@ msgstr ""
 
 #: registration/models.py
 msgid "content type"
-msgstr "ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚¿ã‚¤ãƒ—"
+msgstr "コンテンツタイプ"
 
 #: registration/models.py
 msgid "object id"
-msgstr "ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆID"
+msgstr "オブジェクトID"
 
 #: registration/models.py
 msgid "question"
@@ -312,7 +312,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "text"
-msgstr "æ–‡ç« "
+msgstr "文章"
 
 #: registration/models.py
 msgid "long text"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "sequence number"
-msgstr "é †ç•ª"
+msgstr "順番"
 
 #: registration/models.py
 msgid "The question displayed to participants, e.g., \"Did you agree with the decision?\""
@@ -352,7 +352,7 @@ msgstr ""
 
 #: registration/models.py users/models.py
 msgid "name"
-msgstr "åå‰"
+msgstr "名前"
 
 #: registration/models.py
 msgid "A short name for the question, e.g., \"Agree with decision\""
@@ -388,7 +388,7 @@ msgstr ""
 
 #: registration/models.py
 msgid "choices"
-msgstr "é¸æŠžè‚¢"
+msgstr "選択肢"
 
 #: registration/models.py
 msgid "Permissible choices for select one/multiple fields (ignored for other fields)"
@@ -400,15 +400,15 @@ msgstr ""
 
 #: registration/models.py
 msgid "institution"
-msgstr "ã‚¤ãƒ³ã‚¹ãƒ†"
+msgstr "インステ"
 
 #: registration/models.py
 msgid "team"
-msgstr "ãƒãƒ¼ãƒ "
+msgstr "チーム"
 
 #: registration/models.py
 msgid "URL key"
-msgstr "URLã‚­ãƒ¼"
+msgstr "URLキー"
 
 #: registration/models.py
 msgid "created on"
@@ -432,7 +432,7 @@ msgstr ""
 #: templates/registration/password_change_form.html
 #: templates/registration/password_reset_confirm.html
 msgid "Cancel and go back to the site home page"
-msgstr "ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã€ã‚µã‚¤ãƒˆã®ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸ã¸æˆ»ã‚‹"
+msgstr "キャンセルし、サイトのホームページへ戻る"
 
 #: registration/templates/answer_tables/adjudicators.html
 msgid "Questions"
@@ -447,7 +447,7 @@ msgstr ""
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 #: templates/nav/public_nav.html
 msgid "Institutions"
-msgstr "ã‚¤ãƒ³ã‚¹ãƒ†"
+msgstr "インステ"
 
 #: registration/templates/answer_tables/institutions.html
 msgid "Coaches"
@@ -490,7 +490,7 @@ msgstr ""
 #: registration/templates/answer_tables/teams.html registration/views.py
 #: templates/nav/admin_nav.html
 msgid "Teams"
-msgstr "ãƒãƒ¼ãƒ "
+msgstr "チーム"
 
 #: registration/templates/coach_private_url.html
 msgid "Private URL"
@@ -610,7 +610,7 @@ msgstr ""
 
 #: registration/views.py
 msgid "Name"
-msgstr "åå‰"
+msgstr "名前"
 
 #: registration/views.py
 msgid "Coach"
@@ -646,12 +646,12 @@ msgstr ""
 
 #: registration/views.py
 msgid "Team Registration"
-msgstr "ãƒãƒ¼ãƒ ç™»éŒ²"
+msgstr "チーム登録"
 
 #: registration/views.py
 #, python-format
 msgid "Speaker %d"
-msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼%d"
+msgstr "スピーカー%d"
 
 #: registration/views.py
 msgid "Email"
@@ -676,7 +676,7 @@ msgstr ""
 
 #: settings/core.py
 msgid "Arabic"
-msgstr "ã‚¢ãƒ©ãƒ“ã‚¢èªž"
+msgstr "アラビア語"
 
 #: settings/core.py
 msgid "Asturian"
@@ -684,59 +684,59 @@ msgstr ""
 
 #: settings/core.py
 msgid "Bengali"
-msgstr "ãƒ™ãƒ³ã‚¬ãƒ«èªž"
+msgstr "ベンガル語"
 
 #: settings/core.py
 msgid "Bulgarian"
-msgstr "ãƒ–ãƒ«ã‚¬ãƒªã‚¢èªž"
+msgstr "ブルガリア語"
 
 #: settings/core.py
 msgid "Catalan"
-msgstr "ã‚«ã‚¿ãƒ«ãƒ¼ãƒ‹ãƒ£èªž"
+msgstr "カタルーニャ語"
 
 #: settings/core.py
 msgid "Czech"
-msgstr "ãƒã‚§ã‚³èªž"
+msgstr "チェコ語"
 
 #: settings/core.py
 msgid "German"
-msgstr "ãƒ‰ã‚¤ãƒ„èªž"
+msgstr "ドイツ語"
 
 #: settings/core.py
 msgid "English"
-msgstr "è‹±èªž"
+msgstr "英語"
 
 #: settings/core.py
 msgid "Spanish"
-msgstr "ã‚¹ãƒšã‚¤ãƒ³èªž"
+msgstr "スペイン語"
 
 #: settings/core.py
 msgid "French"
-msgstr "ãƒ•ãƒ©ãƒ³ã‚¹èªž"
+msgstr "フランス語"
 
 #: settings/core.py
 msgid "Hebrew"
-msgstr "ãƒ˜ãƒ–ãƒ©ã‚¤èªž"
+msgstr "ヘブライ語"
 
 #: settings/core.py
 msgid "Hindi"
-msgstr "ãƒ’ãƒ³ãƒ‡ã‚£ãƒ¼èªž"
+msgstr "ヒンディー語"
 
 #: settings/core.py
 msgid "Indonesian"
-msgstr "ã‚¤ãƒ³ãƒ‰ãƒã‚·ã‚¢èªž"
+msgstr "インドネシア語"
 
 #: settings/core.py
 msgid "Italian"
-msgstr "ã‚¤ã‚¿ãƒªã‚¢èªž"
+msgstr "イタリア語"
 
 #: settings/core.py
 msgid "Japanese"
-msgstr "æ—¥æœ¬èªž"
+msgstr "日本語"
 
 #: settings/core.py
 msgid "Kazakh"
-msgstr "ã‚«ã‚¶ãƒ•èªž"
+msgstr "カザフ語"
 
 #: settings/core.py
 msgid "Malay"
@@ -744,160 +744,160 @@ msgstr ""
 
 #: settings/core.py
 msgid "Portuguese"
-msgstr "ãƒãƒ«ãƒˆã‚¬ãƒ«èªž"
+msgstr "ポルトガル語"
 
 #: settings/core.py
 msgid "Romanian"
-msgstr "ãƒ«ãƒ¼ãƒžãƒ‹ã‚¢èªž"
+msgstr "ルーマニア語"
 
 #: settings/core.py
 msgid "Russian"
-msgstr "ãƒ­ã‚·ã‚¢èªž"
+msgstr "ロシア語"
 
 #: settings/core.py
 msgid "Turkish"
-msgstr "ãƒˆãƒ«ã‚³èªž"
+msgstr "トルコ語"
 
 #: settings/core.py
 msgid "Vietnamese"
-msgstr "ãƒ™ãƒˆãƒŠãƒ èªž"
+msgstr "ベトナム語"
 
 #: settings/core.py
 msgid "Simplified Chinese"
-msgstr "ç°¡ä½“å­—ä¸­å›½èªž"
+msgstr "簡体字中国語"
 
 #: settings/core.py
 msgid "Translation"
-msgstr "ç¿»è¨³"
+msgstr "翻訳"
 
 #: templates/admin/delete_protected_message.html
 msgid "You need to delete the above objects first."
-msgstr "ã¾ãšä¸Šè¨˜ã®ã‚‚ã®ã‚’å‰Šé™¤ã—ãªã„ã¨ã„ã‘ã¾ã›ã‚“ã€‚"
+msgstr "まず上記のものを削除しないといけません。"
 
 #: templates/admin/style_guide.html
 msgid "This style of info card announces critical information. <a href=\"\">Link</a>."
-msgstr "ã“ã®ã‚¤ãƒ³ãƒ•ã‚©ã‚«ãƒ¼ãƒ‰ã¯é‡å¤§ãªæƒ…å ±ã®å ±å‘Šã«ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚<a href=\"\">ãƒªãƒ³ã‚¯</a>ã€‚"
+msgstr "このインフォカードは重大な情報の報告に使用されます。<a href=\"\">リンク</a>。"
 
 #: templates/admin/style_guide.html
 msgid "This style of info card announces general <a href=\"\">information</a>."
-msgstr "ã“ã®ã‚¤ãƒ³ãƒ•ã‚©ã‚«ãƒ¼ãƒ‰ã¯æ™®é€šã®æƒ…å ±ã®å ±å‘Šã«ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚<a href=\"\">ãƒªãƒ³ã‚¯</a>ã€‚"
+msgstr "このインフォカードは普通の情報の報告に使用されます。<a href=\"\">リンク</a>。"
 
 #: templates/admin/style_guide.html
 msgctxt "page title"
 msgid "Form Title"
-msgstr "ãƒ•ã‚©ãƒ¼ãƒ ã‚¿ã‚¤ãƒˆãƒ«"
+msgstr "フォームタイトル"
 
 #: templates/admin/style_guide.html
 msgid "Sub Title Title"
-msgstr "ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«"
+msgstr "サブタイトル"
 
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
 msgid "Log In"
-msgstr "ãƒ­ã‚°ã‚¤ãƒ³"
+msgstr "ログイン"
 
 #: templates/admin/style_guide.html templates/registration/login.html
 msgctxt "button"
 msgid "I forgot my password"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¿˜ã‚ŒãŸå ´åˆ"
+msgstr "パスワードを忘れた場合"
 
 #: templates/base.html
-msgid "NekoTab"
+msgid "Tabbycat"
 msgstr ""
 
 #: templates/base.html
 #, python-format
-msgid "The tab for %(tournament)s runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
-msgstr "%(tournament)sã®å¤§ä¼šã®å¯¾æˆ¦è¡¨ç®¡ç†ã¯NekoTabã§è¡Œã‚ã‚Œã¦ã„ã¾ã™ã€‚NekoTabã¯ã€æ§˜ã€…ãªè­°ä¼šå½¢å¼ã®å¯¾æˆ¦è¡¨ã‚’ç®¡ç†ã™ã‚‹ãŸã‚ã®ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹ã®å¯¾æˆ¦è¡¨ã‚·ã‚¹ãƒ†ãƒ ã§ã™ã€‚"
+msgid "The tab for %(tournament)s runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgstr "%(tournament)sの大会の対戦表管理はTabbycatで行われています。Tabbycatは、様々な議会形式の対戦表を管理するためのオープンソースの対戦表システムです。"
 
 #: templates/base.html
-msgid "This tab runs on NekoTab, a source-available tab system for a variety of parliamentary debating formats"
-msgstr "ã“ã®å¯¾æˆ¦è¡¨ç®¡ç†ã¯NekoTabã§è¡Œã‚ã‚Œã¦ã„ã¾ã™ã€‚NekoTabã¯ã€æ§˜ã€…ãªè­°ä¼šå½¢å¼ã®å¯¾æˆ¦è¡¨ã‚’ç®¡ç†ã™ã‚‹ãŸã‚ã®ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹ã®å¯¾æˆ¦è¡¨ã‚·ã‚¹ãƒ†ãƒ ã§ã™ã€‚"
+msgid "This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats"
+msgstr "この対戦表管理はTabbycatで行われています。Tabbycatは、様々な議会形式の対戦表を管理するためのオープンソースの対戦表システムです。"
 
 #: templates/components/form-errors.html
 msgid "Whoops! There was an error with one or more fields."
-msgstr "ãŠã£ã¨ï¼ä¸€ã¤ä»¥ä¸Šã®é …ç›®ã§å•é¡ŒãŒã‚ã‚Šã¾ã™ã€‚"
+msgstr "おっと！一つ以上の項目で問題があります。"
 
 #: templates/components/formset.html
 msgid "Save and Add More"
-msgstr "ä¿å­˜ã—ã€ã•ã‚‰ã«è¿½åŠ "
+msgstr "保存し、さらに追加"
 
 #: templates/errors/assistant_403.html templates/errors/public_403.html
 msgid "Permission Denied (403)"
-msgstr "ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãªã—ï¼ˆ403ï¼‰"
+msgstr "アクセス権限なし（403）"
 
 #: templates/errors/assistant_403.html
 #, python-format
 msgid "This assistant page isn't enabled for this tournament. <a href=\"%(url)s\">Back to the assistant home page.</a>"
-msgstr "ã“ã®ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆç”¨ã®ãƒšãƒ¼ã‚¸ã¯æœ‰åŠ¹ã«ãªã£ã¦ã„ã¾ã›ã‚“ã€‚<a href=\"%(url)s\">ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆã®ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸ã«æˆ»ã‚‹ã€‚</a>"
+msgstr "このアシスタント用のページは有効になっていません。<a href=\"%(url)s\">アシスタントのトップページに戻る。</a>"
 
 #: templates/errors/database_limit_warning.html
 #, python-format
 msgid "You're currently using %(nrows)s row in your database. If you haven't already upgraded your Heroku database to a paid tier, it's limited to a maximum of 10,000 rows. As you're close to this limit, you should <strong>not create new tournaments</strong> on this site unless and until you've <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">upgraded your database</a> to a paid tier."
 msgid_plural "You're currently using %(nrows)s rows in your database. If you haven't already upgraded your Heroku database to a paid tier, it's limited to a maximum of 10,000 rows. As you're close to this limit, you should <strong>not create new tournaments</strong> on this site unless and until you've <a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">upgraded your database</a> to a paid tier."
-msgstr[0] "ç¾åœ¨ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãŒ%(nrows)sè¡Œä½¿ç”¨ã—ã¦ã„ã¾ã™ã€‚Herokuã®ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’æœ‰æ–™ç‰ˆã«ã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰ã—ã¦ã„ãªã„å ´åˆã€æœ€å¤§10000è¡Œã—ã‹ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚æ—¢ã«ä¸Šé™ã«è¿‘ã„ã®ã§ã€<a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’ã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰</a>ã—ãªã„é™ã‚Šã¯ã“ã®ã‚µã‚¤ãƒˆã§<strong>ã“ã‚Œä»¥ä¸Šæ–°ã—ã„å¤§ä¼šã‚’ä½œã‚‹ã¹ãã§ã¯ã‚ã‚Šã¾ã›ã‚“</strong>"
+msgstr[0] "現在、データベースが%(nrows)s行使用しています。Herokuのデータベースを有料版にアップグレードしていない場合、最大10000行しか使用できません。既に上限に近いので、<a href=\"https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases\">データベースをアップグレード</a>しない限りはこのサイトで<strong>これ以上新しい大会を作るべきではありません</strong>"
 
 #: templates/errors/legacy_sendgrid_warning.html
-msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of NekoTab. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
-msgstr "Herokuã§æ—§å¼ã®SendGridã®è¨­å®šå¤‰æ•°ã®<code>SENDGRID_USERNAME</code>ã¨<code>SENDGRID_PASSWORD</code>ã‚’ã—ã¦ã„ã‚‹ã‚ˆã†ã§ã™ã€‚ã“ã‚Œã‚‰ã®å¤‰æ•°ã¯ãƒãƒ¼ã‚¸ãƒ§ãƒ³2.6ã§å»ƒæ­¢äºˆå®šã¨ãªã‚Šã€å°†æ¥çš„ã«ã¯ä½¿ç”¨ã§ããªããªã‚‹äºˆå®šã§ã™ã€‚ä»£ã‚ã‚Šã«è¨­å®šå¤‰æ•°ã¨ã—ã¦<code>SENDGRID_API_KEY</code>ã‚’ä½¿ç”¨ã™ã‚‹ã‚ˆã†ã«å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚è©³ã—ãã¯ã€<a href=\"https://NekoTab.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\">ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚"
+msgid "It looks like you're using the old SendGrid config vars on Heroku, <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>. These are now deprecated (as of version 2.6), and will stop working in a future version of Tabbycat. Please change your config vars to use <code>SENDGRID_API_KEY</code> instead. For more information, please see <a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\"> our documentation on this topic</a>."
+msgstr "Herokuで旧式のSendGridの設定変数の<code>SENDGRID_USERNAME</code>と<code>SENDGRID_PASSWORD</code>をしているようです。これらの変数はバージョン2.6で廃止予定となり、将来的には使用できなくなる予定です。代わりに設定変数として<code>SENDGRID_API_KEY</code>を使用するように変更してください。詳しくは、<a href=\"https://tabbycat.readthedocs.io/en/stable/features/notifications.html#configuring-an-email-provider\">ドキュメンテーション</a>を参照してください。"
 
 #: templates/errors/public_403.html
 #, python-format
 msgid "Whoops! This page isn't enabled for this tournament. <a href=\"%(url)s\">Back to the tournament home page.</a>"
-msgstr "ãŠã£ã¨ï¼ã“ã®å¤§ä¼šã§ã¯ã“ã®ãƒšãƒ¼ã‚¸ã¯æœ‰åŠ¹ã«ãªã£ã¦ã„ã¾ã›ã‚“ã€‚<a href=\"%(url)s\">å¤§ä¼šãƒšãƒ¼ã‚¸ã«æˆ»ã‚‹ã€‚</a>"
+msgstr "おっと！この大会ではこのページは有効になっていません。<a href=\"%(url)s\">大会ページに戻る。</a>"
 
 #: templates/errors/public_403.html
 #, python-format
 msgid "Whoops! This page isn't enabled for this tournament. <a href=\"%(url)s\">Back to the home page.</a>"
-msgstr "ãŠã£ã¨ï¼ã“ã®å¤§ä¼šã§ã¯ã“ã®ãƒšãƒ¼ã‚¸ã¯æœ‰åŠ¹ã«ãªã£ã¦ã„ã¾ã›ã‚“ã€‚<a href=\"%(url)s\">å¤§ä¼šãƒšãƒ¼ã‚¸ã«æˆ»ã‚‹ã€‚</a>"
+msgstr "おっと！この大会ではこのページは有効になっていません。<a href=\"%(url)s\">大会ページに戻る。</a>"
 
 #: templates/footer.html
 #, python-format
-msgid "%(tournament)s runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
-msgstr "%(tournament)sã¯NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)ä¸Šã§å®Ÿè¡Œã•ã‚Œã¦ã„ã¾ã™"
+msgid "%(tournament)s runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgstr "%(tournament)sはTabbycat %(tabbycat_version)s (%(tabbycat_codename)s)上で実行されています"
 
 #: templates/footer.html
 #, python-format
-msgid "This site runs on NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)"
-msgstr "ã“ã®ã‚µã‚¤ãƒˆã¯NekoTab %(NekoTab_version)s (%(NekoTab_codename)s)ä¸Šã§å®Ÿè¡Œã•ã‚Œã¦ã„ã¾ã™"
+msgid "This site runs on Tabbycat %(tabbycat_version)s (%(tabbycat_codename)s)"
+msgstr "このサイトはTabbycat %(tabbycat_version)s (%(tabbycat_codename)s)上で実行されています"
 
 #: templates/footer.html
-msgid "NekoTab is an open-source project developed by volunteers and is free to use."
-msgstr "NekoTabã¯æœ‰å¿—è€…ã«ã‚ˆã£ã¦é–‹ç™ºã•ã‚ŒãŸç„¡æ–™ã§ä½¿ç”¨ã§ãã‚‹ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚"
+msgid "Tabbycat is an open-source project developed by volunteers and is free to use."
+msgstr "Tabbycatは有志者によって開発された無料で使用できるオープンソースプロジェクトです。"
 
 #: templates/footer.html
 #, python-format
-msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
-msgstr "ã“ã®è¦æ¨¡ã®å¤§ä¼šã§ã¯ã€<a href=\"https://opencollective.com/NekoTab/contribute/licensing-29466/checkout?amount=%(amount)s\"><strong>$%(amount)s</strong>ã®å¯„ä»˜</a>ã‚’æŽ¨å¥¨ã—ã¦ã„ã¾ã™ã€‚"
+msgid "For a tournament of this size, we suggest <a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\">a donation of <strong>$%(amount)s</strong></a>."
+msgstr "この規模の大会では、<a href=\"https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount=%(amount)s\"><strong>$%(amount)s</strong>の寄付</a>を推奨しています。"
 
 #: templates/footer.html
 msgid "Learn more about donating."
-msgstr "å¯„ä»˜ã«ã¤ã„ã¦ã‚ˆã‚Šè©³ã—ãçŸ¥ã‚ŠãŸã„ã€‚"
+msgstr "寄付についてより詳しく知りたい。"
 
 #: templates/footer.html
-msgid "<a href=\"https://opencollective.com/NekoTab\">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab."
-msgstr "<a href=\"https://opencollective.com/NekoTab\">å€‹äººã‚„å›£ä½“å˜ä½ã§ã®å¯„ä»˜</a>ã¯ã¨ã¦ã‚‚ã‚ã‚ŠãŒãŸãã€NekoTabã®é–‹ç™ºã€æ”¯æ´ã¨ä¿å®ˆã«å½¹ç«‹ã¡ã¾ã™ã€‚"
+msgid "<a href=\"https://opencollective.com/tabbycat\">Donations to Tabbycat from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain Tabbycat."
+msgstr "<a href=\"https://opencollective.com/tabbycat\">個人や団体単位での寄付</a>はとてもありがたく、Tabbycatの開発、支援と保守に役立ちます。"
 
 #: templates/footer.html
 msgid "Still timing debates with the stopwatch app?"
-msgstr "ã„ã¾ã ã«ã‚¹ãƒˆãƒƒãƒ—ã‚¦ã‚©ãƒƒãƒã‚¢ãƒ—ãƒªã§æ™‚é–“è¨ˆæ¸¬ã‚’ã—ã¦ã„ã¾ã›ã‚“ã‹ï¼Ÿ"
+msgstr "いまだにストップウォッチアプリで時間計測をしていませんか？"
 
 #: templates/footer.html
 #, python-format
-msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
-msgstr "ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆã®ã‚¿ã‚¤ãƒ ã‚­ãƒ¼ãƒ—ç”¨ã«ãƒ‡ã‚¶ã‚¤ãƒ³ã•ã‚ŒãŸã‚¢ãƒ—ãƒªã‚’ä½¿ç”¨ã—ãŸæ–¹ãŒã‚¹ãƒ”ãƒ¼ãƒã‚‚ã‚¸ãƒ£ãƒƒã‚¸ã‚‚æ¥½ã«ãªã‚Šã¾ã™ï¼<a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=NekoTab%%20Installs&mt=8\">Timekept</a>ï¼ˆiPhone/iPadç”¨ï¼‰ã‹<a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3DNekoTab%%26utm_medium%%3Dfooter\">Debatekeeper</a>ï¼ˆAndroidç”¨ï¼‰ã‚’è©¦ã—ã¦ã¿ã¦ãã ã•ã„ã€‚"
+msgid "Using an app designed for debate timekeeping makes speaking and adjudicating easier! Check out <a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a> (iPhone/iPad) or <a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a> (Android)."
+msgstr "ディベートのタイムキープ用にデザインされたアプリを使用した方がスピーチもジャッジも楽になります！<a href=\"https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%%20Installs&mt=8\">Timekept</a>（iPhone/iPad用）か<a href=\"https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%%3Dtabbycat%%26utm_medium%%3Dfooter\">Debatekeeper</a>（Android用）を試してみてください。"
 
 #: templates/footer.html
 msgid "Our Organisation"
-msgstr "æˆ‘ã€…ã«ã¤ã„ã¦"
+msgstr "我々について"
 
 #: templates/footer.html
-msgid "NekoTab is supported by the <a href=\"https://NekoTab-debate.org/\">NekoTab Debate Association</a>, a non-profit for advancing open debate technology."
-msgstr "NekoTabã¯ãƒ‡ã‚£ãƒ™ãƒ¼ãƒˆãƒ†ã‚¯ãƒŽãƒ­ã‚¸ãƒ¼ã‚’ç™ºå±•ã•ã›ã‚‹éžå–¶åˆ©ãª<a href=\"https://NekoTab-debate.org/\">NekoTab Debate Association</a>ã«ã‚ˆã‚Šæ”¯æ´ã•ã‚Œã¦ã„ã¾ã™ã€‚"
+msgid "Tabbycat is supported by the <a href=\"https://tabbycat-debate.org/\">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology."
+msgstr "Tabbycatはディベートテクノロジーを発展させる非営利な<a href=\"https://tabbycat-debate.org/\">Tabbycat Debate Association</a>により支援されています。"
 
 #: templates/footer.html users/groups.py
 msgid "Language"
-msgstr "è¨€èªž"
+msgstr "言語"
 
 #: templates/footer.html
 msgid "GitHub"
@@ -905,11 +905,11 @@ msgstr ""
 
 #: templates/footer.html
 msgid "Documentation"
-msgstr "ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³"
+msgstr "ドキュメンテーション"
 
 #: templates/footer.html
 msgid "Support"
-msgstr "ã‚µãƒãƒ¼ãƒˆ"
+msgstr "サポート"
 
 #: templates/footer.html
 msgid "Facebook"
@@ -917,64 +917,64 @@ msgstr ""
 
 #: templates/footer.html
 msgid "Set Up A Copy"
-msgstr "ã‚³ãƒ”ãƒ¼ã‚’ä½œã‚‹"
+msgstr "コピーを作る"
 
 #: templates/footer.html
 msgid "Change Language"
-msgstr "è¨€èªžã‚’å¤‰æ›´"
+msgstr "言語を変更"
 
 #: templates/footer.html
 msgid "Use this language"
-msgstr "ã“ã®è¨€èªžã«å¤‰æ›´"
+msgstr "この言語に変更"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
-msgid "NekoTab Logo"
-msgstr "NekoTabã®ãƒ­ã‚´"
+msgid "Tabbycat Logo"
+msgstr "Tabbycatのロゴ"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Site Home"
-msgstr "ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸"
+msgstr "トップページ"
 
 #: templates/nav/admin_nav.html
 msgid "New Tournament"
-msgstr "æ–°ã—ã„å¤§ä¼š"
+msgstr "新しい大会"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Edit Database"
-msgstr "ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’ç·¨é›†"
+msgstr "データベースを編集"
 
 #: templates/nav/admin_nav.html
 msgid "Admin Area"
-msgstr "ç®¡ç†è€…ã‚¨ãƒªã‚¢"
+msgstr "管理者エリア"
 
 #: templates/nav/admin_nav.html
 msgid "Assistant Area"
-msgstr "ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆã‚¨ãƒªã‚¢"
+msgstr "アシスタントエリア"
 
 #: templates/nav/admin_nav.html
 msgid "Public Area"
-msgstr "å…¬é–‹ã‚¨ãƒªã‚¢"
+msgstr "公開エリア"
 
 #: templates/nav/admin_nav.html
 msgid "Overview"
-msgstr "æ¦‚è¦"
+msgstr "概要"
 
 #: templates/nav/admin_nav.html
 msgid "Setup"
-msgstr "ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—"
+msgstr "セットアップ"
 
 #: templates/nav/admin_nav.html
 msgid "Configuration"
-msgstr "è¨­å®š"
+msgstr "設定"
 
 #: templates/nav/admin_nav.html
 msgid "Import Data"
-msgstr "ãƒ‡ãƒ¼ã‚¿å…¥åŠ›"
+msgstr "データ入力"
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 #: templates/nav/public_nav.html
 msgid "Participants"
-msgstr "å‚åŠ è€…"
+msgstr "参加者"
 
 #: templates/nav/admin_nav.html
 msgid "Private URLs"
@@ -986,19 +986,19 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Emails"
-msgstr "ãƒ¡ãƒ¼ãƒ«"
+msgstr "メール"
 
 #: templates/nav/admin_nav.html
 msgid "Preformed Panels"
-msgstr "äº‹å‰è¨­å®šã•ã‚ŒãŸãƒ‘ãƒãƒ«"
+msgstr "事前設定されたパネル"
 
 #: templates/nav/admin_nav.html
 msgid "Export XML"
-msgstr "XMLã¨ã—ã¦å‡ºåŠ›"
+msgstr "XMLとして出力"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Sides"
-msgstr "ã‚µã‚¤ãƒ‰"
+msgstr "サイド"
 
 #: templates/nav/admin_nav.html users/groups.py
 msgid "Registration"
@@ -1006,39 +1006,39 @@ msgstr ""
 
 #: templates/nav/admin_nav.html templates/nav/assistant_nav.html
 msgid "People's Status"
-msgstr "å‚åŠ è€…ã®çŠ¶æ³"
+msgstr "参加者の状況"
 
 #: templates/nav/admin_nav.html
 msgid "Rooms' Status"
-msgstr "éƒ¨å±‹ã®çŠ¶æ³"
+msgstr "部屋の状況"
 
 #: templates/nav/admin_nav.html
 msgid "Feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯"
+msgstr "フィードバック"
 
 #: templates/nav/admin_nav.html
 msgid "Latest"
-msgstr "æœ€æ–°"
+msgstr "最新"
 
 #: templates/nav/admin_nav.html
 msgid "Important"
-msgstr "é‡è¦"
+msgstr "重要"
 
 #: templates/nav/admin_nav.html
 msgid "Comments"
-msgstr "ã‚³ãƒ¡ãƒ³ãƒˆ"
+msgstr "コメント"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Source"
-msgstr "é€ä¿¡è€…ã‹ã‚‰æŽ¢ã™"
+msgstr "送信者から探す"
 
 #: templates/nav/admin_nav.html
 msgid "Find by Target"
-msgstr "é€ä¿¡å¯¾è±¡ã‹ã‚‰æŽ¢ã™"
+msgstr "送信対象から探す"
 
 #: templates/nav/admin_nav.html
 msgid "Unsubmitted"
-msgstr "æœªæå‡º"
+msgstr "未提出"
 
 #: templates/nav/admin_nav.html
 msgid "Feedback Questions"
@@ -1046,49 +1046,49 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Add Feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’è¿½åŠ "
+msgstr "フィードバックを追加"
 
 #: templates/nav/admin_nav.html
 msgid "Bulk Update"
-msgstr "ä¸€æ‹¬æ›´æ–°"
+msgstr "一括更新"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Standings"
-msgstr "é †ä½"
+msgstr "順位"
 
 #: templates/nav/admin_nav.html
 msgid "All Teams"
-msgstr "å…¨ãƒãƒ¼ãƒ "
+msgstr "全チーム"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Teams"
-msgstr "%(category)sãƒãƒ¼ãƒ "
+msgstr "%(category)sチーム"
 
 #: templates/nav/admin_nav.html
 msgid "All Speakers"
-msgstr "å…¨ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼"
+msgstr "全スピーカー"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 #, python-format
 msgid "%(category)s Speakers"
-msgstr "%(category)sã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼"
+msgstr "%(category)sスピーカー"
 
 #: templates/nav/admin_nav.html
 msgid "Replies"
-msgstr "ãƒªãƒ—ãƒ©ã‚¤"
+msgstr "リプライ"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Motions"
-msgstr "è«–é¡Œ"
+msgstr "論題"
 
 #: templates/nav/admin_nav.html templates/nav/public_nav.html
 msgid "Diversity"
-msgstr "ãƒ€ã‚¤ãƒãƒ¼ã‚·ãƒ†ã‚£"
+msgstr "ダイバーシティ"
 
 #: templates/nav/admin_nav.html
 msgid "Breaks"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯"
+msgstr "ブレイク"
 
 #: templates/nav/admin_nav.html
 #, python-format
@@ -1097,258 +1097,258 @@ msgstr ""
 
 #: templates/nav/admin_nav.html
 msgid "Adjudicators'"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸"
+msgstr "ジャッジ"
 
 #: templates/nav/admin_nav.html
 msgid "Edit Categories"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’ç·¨é›†"
+msgstr "ブレイクカテゴリーを編集"
 
 #: templates/nav/admin_nav.html
 msgid "Edit Eligibility"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼è³‡æ ¼ã‚’ç·¨é›†"
+msgstr "ブレイクカテゴリー資格を編集"
 
 #: templates/nav/admin_nav.html templates/nav/top_nav_base.html
 msgid "Log Out"
-msgstr "ãƒ­ã‚°ã‚¢ã‚¦ãƒˆ"
+msgstr "ログアウト"
 
 #: templates/nav/assistant_nav.html
 msgid "Enter Results"
-msgstr "çµæžœã‚’å…¥åŠ›"
+msgstr "結果を入力"
 
 #: templates/nav/assistant_nav.html templates/nav/public_nav.html
 msgid "Enter Feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã‚’å…¥åŠ›"
+msgstr "フィードバックを入力"
 
 #: templates/nav/assistant_nav.html
 msgid "Participants List"
-msgstr "å‚åŠ è€…ãƒªã‚¹ãƒˆ"
+msgstr "参加者リスト"
 
 #: templates/nav/assistant_nav.html
 msgid "Code Names"
-msgstr "ã‚³ãƒ¼ãƒ‰å"
+msgstr "コード名"
 
 #: templates/nav/assistant_nav.html
 msgid "View Identifiers"
-msgstr "è­˜åˆ¥ã‚³ãƒ¼ãƒ‰ã‚’è¡¨ç¤º"
+msgstr "識別コードを表示"
 
 #: templates/nav/assistant_nav.html
 msgid "Room's Status"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰éƒ¨å±‹ã®çŠ¶æ³"
+msgstr "ラウンド部屋の状況"
 
 #: templates/nav/assistant_nav.html
 msgid "Display/Print Draw"
-msgstr "å¯¾æˆ¦è¡¨ã‚’å…¬é–‹/ãƒ—ãƒªãƒ³ãƒˆ"
+msgstr "対戦表を公開/プリント"
 
 #: templates/nav/public_nav.html
 msgid "Team Tab"
-msgstr "ãƒãƒ¼ãƒ ã®ã‚¿ãƒ–"
+msgstr "チームのタブ"
 
 #: templates/nav/public_nav.html
 msgid "Speaker Tab"
-msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã®ã‚¿ãƒ–"
+msgstr "スピーカーのタブ"
 
 #: templates/nav/public_nav.html
 msgid "Replies Tab"
-msgstr "ãƒªãƒ—ãƒ©ã‚¤ã®ã‚¿ãƒ–"
+msgstr "リプライのタブ"
 
 #: templates/nav/public_nav.html
 msgid "Adjudicator Tab"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ã‚¿ãƒ–"
+msgstr "ジャッジのタブ"
 
 #: templates/nav/public_nav.html
 msgid "Motions Tab"
-msgstr "ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚¿ãƒ–"
+msgstr "モーションのタブ"
 
 #: templates/nav/public_nav.html
 msgid "By round"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã”ã¨"
+msgstr "ラウンドごと"
 
 #: templates/nav/public_nav.html
 msgid "Globally"
-msgstr "ã‚°ãƒ­ãƒ¼ãƒãƒ«"
+msgstr "グローバル"
 
 #: templates/nav/public_nav.html
 msgid "Draws"
-msgstr "å¯¾æˆ¦è¡¨"
+msgstr "対戦表"
 
 #: templates/nav/public_nav.html
 msgid "No Draws Available"
-msgstr "ç¾åœ¨é–²è¦§ã§ãã‚‹å¯¾æˆ¦è¡¨ã¯ã‚ã‚Šã¾ã›ã‚“"
+msgstr "現在閲覧できる対戦表はありません"
 
 #: templates/nav/public_nav.html
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "%(round)sã®å¯¾æˆ¦è¡¨"
+msgstr "%(round)sの対戦表"
 
 #: templates/nav/public_nav.html
 msgid "Current Draws"
-msgstr "ç¾åœ¨ã®å¯¾æˆ¦è¡¨"
+msgstr "現在の対戦表"
 
 #: templates/nav/public_nav.html templates/nav/round_panel.html
 msgid "Results"
-msgstr "çµæžœ"
+msgstr "結果"
 
 #: templates/nav/public_nav.html
 msgid "Break"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯"
+msgstr "ブレイク"
 
 #: templates/nav/public_nav.html
 msgid "Feedback Progress"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯çŠ¶æ³"
+msgstr "フィードバック状況"
 
 #: templates/nav/public_nav.html
 msgid "Enter Ballot"
-msgstr "ãƒãƒ­ãƒƒãƒˆã‚’å…¥åŠ›"
+msgstr "バロットを入力"
 
 #: templates/nav/round_panel.html
 msgid "Availability"
-msgstr "å‚åŠ ãƒ»åˆ©ç”¨çŠ¶æ³"
+msgstr "参加・利用状況"
 
 #: templates/nav/round_panel.html
 msgid "Draw"
-msgstr "å¯¾æˆ¦è¡¨"
+msgstr "対戦表"
 
 #: templates/nav/round_panel.html
 msgid "Display"
-msgstr "å…¬é–‹ãƒ»è¡¨ç¤º"
+msgstr "公開・表示"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Administrator area for <strong>%(tournament)s</strong>"
-msgstr "<strong>%(tournament)s</strong>ã®ç®¡ç†è€…ã‚¨ãƒªã‚¢"
+msgstr "<strong>%(tournament)s</strong>の管理者エリア"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Assistant area for <strong>%(tournament)s</strong>"
-msgstr "<strong>%(tournament)s</strong>ã®ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆã‚¨ãƒªã‚¢"
+msgstr "<strong>%(tournament)s</strong>のアシスタントエリア"
 
 #: templates/nav/top_nav_base.html
 #, python-format
 msgid "Public area for <strong>%(tournament)s</strong>"
-msgstr "<strong>%(tournament)s</strong>ã®å…¬é–‹ã‚¨ãƒªã‚¢"
+msgstr "<strong>%(tournament)s</strong>の公開エリア"
 
 #: templates/nav/top_nav_base.html
 msgid "Login"
-msgstr "ãƒ­ã‚°ã‚¤ãƒ³"
+msgstr "ログイン"
 
 #: templates/registration/logged_out.html
 msgid "Goodbye"
-msgstr "ã•ã‚ˆã†ãªã‚‰"
+msgstr "さようなら"
 
 #: templates/registration/logged_out.html
 #, python-format
 msgid "You have been logged out. <a href=\"%(login_url)s\">Log in again?</a>"
-msgstr "ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã—ã¾ã—ãŸã€‚<a href=\"%(login_url)s\">å†ã³ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ã€‚</a>"
+msgstr "ログアウトしました。<a href=\"%(login_url)s\">再びログインする。</a>"
 
 #: templates/registration/login.html
 msgctxt "page title"
 msgid "Login"
-msgstr "ãƒ­ã‚°ã‚¤ãƒ³"
+msgstr "ログイン"
 
 #: templates/registration/login.html
 msgctxt "page title"
-msgid "Log in to NekoTab"
-msgstr "NekoTabã«ãƒ­ã‚°ã‚¤ãƒ³"
+msgid "Log in to Tabbycat"
+msgstr "Tabbycatにログイン"
 
 #: templates/registration/login.html
 msgid "Your username and password didn't match."
-msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒãƒ¼ãƒ ã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒä¸€è‡´ã—ã¾ã›ã‚“ã§ã—ãŸã€‚"
+msgstr "ユーザーネームとパスワードが一致しませんでした。"
 
 #: templates/registration/login.html
 msgid "Your account doesn't have access to this page. To proceed, please log in with an account that has access."
-msgstr "ã‚ãªãŸã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã«ã¯ã“ã®ãƒšãƒ¼ã‚¸ã®ã‚¢ã‚¯ã‚»ã‚¹æ¨©ãŒã‚ã‚Šã¾ã›ã‚“ã€‚ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‹ã‚‰ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ãã ã•ã„ã€‚"
+msgstr "あなたのアカウントにはこのページのアクセス権がありません。アクセスできるアカウントからログインしてください。"
 
 #: templates/registration/login.html
 msgid "Please log in to see this page."
-msgstr "ã“ã®ãƒšãƒ¼ã‚¸ã‚’è¦‹ã‚‹ãŸã‚ã«ã¯ã€ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ãã ã•ã„ã€‚"
+msgstr "このページを見るためには、ログインしてください。"
 
 #: templates/registration/password_change_done.html
 msgctxt "page title"
 msgid "Password changed"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒå¤‰æ›´ã•ã‚Œã¾ã—ãŸ"
+msgstr "パスワードが変更されました"
 
 #: templates/registration/password_change_done.html
 msgid "Your password has been changed."
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒå¤‰æ›´ã•ã‚Œã¾ã—ãŸã€‚"
+msgstr "パスワードが変更されました。"
 
 #: templates/registration/password_change_done.html
 msgid "Go to the home page"
-msgstr "ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸ã¸"
+msgstr "ホームページへ"
 
 #: templates/registration/password_change_form.html
 msgctxt "page title"
 msgid "Password Change"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å¤‰æ›´"
+msgstr "パスワード変更"
 
 #: templates/registration/password_change_form.html
 #, python-format
 msgid "API Token: <samp>%(api_token)s</samp>"
-msgstr "APIãƒˆãƒ¼ã‚¯ãƒ³ï¼š<samp>%(api_token)s</samp>"
+msgstr "APIトークン：<samp>%(api_token)s</samp>"
 
 #: templates/registration/password_change_form.html
 msgid "The API token will allow you to authorize external applications to access the site as staff."
-msgstr "APIãƒˆãƒ¼ã‚¯ãƒ³ã‚’ä½¿ã†ã¨ã€å¤–éƒ¨ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‹ã‚‰ã‚¹ã‚¿ãƒƒãƒ•ã¨ã—ã¦ã‚µã‚¤ãƒˆã«ã‚¢ã‚¯ã‚»ã‚¹ã§ãã¾ã™ã€‚"
+msgstr "APIトークンを使うと、外部アプリケーションからスタッフとしてサイトにアクセスできます。"
 
 #: templates/registration/password_change_form.html
 msgid "Please enter your old password, then enter a new one."
-msgstr "å‰ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚ãã®ã‚ã¨ã«ã€æ–°ã—ã„ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚"
+msgstr "前のパスワードを入力してください。そのあとに、新しいパスワードを入力してください。"
 
 #: templates/registration/password_change_form.html
 #: templates/registration/password_reset_confirm.html
 msgctxt "button"
 msgid "Change my password"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¤‰æ›´"
+msgstr "パスワードを変更"
 
 #: templates/registration/password_reset_complete.html
 msgctxt "page title"
 msgid "Password reset complete"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å¤‰æ›´å®Œäº†ã—ã¾ã—ãŸ"
+msgstr "パスワード変更完了しました"
 
 #: templates/registration/password_reset_complete.html
 msgid "Your password has been reset."
-msgstr "ã‚ãªãŸã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒãƒªã‚»ãƒƒãƒˆã•ã‚Œã¾ã—ãŸã€‚"
+msgstr "あなたのパスワードがリセットされました。"
 
 #: templates/registration/password_reset_complete.html
 #: templates/registration/password_reset_done.html
 msgid "Go to the login page"
-msgstr "ãƒ­ã‚°ã‚¤ãƒ³ãƒšãƒ¼ã‚¸ã¸"
+msgstr "ログインページへ"
 
 #: templates/registration/password_reset_confirm.html
 msgctxt "page title"
 msgid "Password Reset Confirmation"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãƒªã‚»ãƒƒãƒˆã®ç¢ºèª"
+msgstr "パスワードリセットの確認"
 
 #: templates/registration/password_reset_confirm.html
 #: templates/registration/password_reset_form.html
 msgctxt "page title"
 msgid "Password Reset"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ãƒªã‚»ãƒƒãƒˆã—ã¾ã—ãŸ"
+msgstr "パスワードをリセットしました"
 
 #: templates/registration/password_reset_confirm.html
 msgid "Please enter a new password (twice):"
-msgstr "æ–°ã—ã„ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼ˆ2å›žï¼‰"
+msgstr "新しいパスワードを入力してください（2回）"
 
 #: templates/registration/password_reset_confirm.html
 msgid "The password reset link was invalid, possibly because it has already been used.  Please request a new password reset."
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å¤‰æ›´ç”¨ãƒªãƒ³ã‚¯ãŒç„¡åŠ¹ã§ã™ã€‚æ—¢ã«ä½¿ã£ã¦ã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ã®ã§ã€æ–°ã—ã„ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ã—ã¦ãã ã•ã„ã€‚"
+msgstr "パスワード変更用リンクが無効です。既に使ってる可能性があるので、新しいリクエストをしてください。"
 
 #: templates/registration/password_reset_done.html
 msgctxt "page title"
 msgid "Password reset email sent"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å¤‰æ›´ç”¨ã®ãƒ¡ãƒ¼ãƒ«ãŒé€ä¿¡ã•ã‚Œã¾ã—ãŸ"
+msgstr "パスワード変更用のメールが送信されました"
 
 #: templates/registration/password_reset_done.html
 msgid "We've emailed you instructions for setting your password, if an account exists with the email address you entered. You should receive them shortly."
-msgstr "æ–°ã—ã„ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã«ã™ã‚‹ãŸã‚ã®æ‰‹ç¶šãã®ãƒ¡ãƒ¼ãƒ«ã‚’é€ã‚Šã¾ã—ãŸã€‚ã™ãã«å±Šãã®ã§ã€ã”ç¢ºèªãã ã•ã„ã€‚"
+msgstr "新しいパスワードにするための手続きのメールを送りました。すぐに届くので、ご確認ください。"
 
 #: templates/registration/password_reset_done.html
 msgid "If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder."
-msgstr "ã‚‚ã—å—ã‘å–ã‚‰ãªã‹ã£ãŸå ´åˆã€æ­£ã—ã„ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å…¥åŠ›ã—ãŸã‹ç¢ºèªã—ãŸã‚Šã€è¿·æƒ‘ãƒ¡ãƒ¼ãƒ«ãªã©ã‚‚ç¢ºèªã—ã¦ãã ã•ã„ã€‚"
+msgstr "もし受け取らなかった場合、正しいメールアドレスを入力したか確認したり、迷惑メールなども確認してください。"
 
 #: templates/registration/password_reset_email.html
 #, python-format
 msgid "Hi, %(user)s!"
-msgstr "%(user)sã€ã“ã‚“ã«ã¡ã¯ï¼"
+msgstr "%(user)s、こんにちは！"
 
 #: templates/registration/password_reset_email.html
 #, python-format
@@ -1357,64 +1357,64 @@ msgstr ""
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "Someone asked for a password reset for the email address %(email)s on the NekoTab site at %(protocol)s://%(domain)s."
-msgstr "èª°ã‹ãŒ%(protocol)s://%(domain)sã®NekoTabã®%(email)sã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å¤‰æ›´ç”³è«‹ã‚’ã—ã¾ã—ãŸã€‚"
+msgid "Someone asked for a password reset for the email address %(email)s on the Tabbycat site at %(protocol)s://%(domain)s."
+msgstr "誰かが%(protocol)s://%(domain)sのTabbycatの%(email)sのパスワード変更申請をしました。"
 
 #: templates/registration/password_reset_email.html
 msgid "If this was you, follow the link below to reset your password:"
-msgstr "ã‚‚ã—ã“ã‚ŒãŒã‚ãªãŸã§ã‚ã‚Œã°ã€ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ãŸã‚ã«ä¸‹è¨˜ã®ãƒªãƒ³ã‚¯ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚"
+msgstr "もしこれがあなたであれば、パスワードをリセットするために下記のリンクを押してください。"
 
 #: templates/registration/password_reset_email.html
 #, python-format
-msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the NekoTab site at %(protocol)s://%(domain)s."
-msgstr "ã‚‚ã—èº«ã«è¦šãˆãŒç„¡ã‘ã‚Œã°ã€èª°ã‹ãŒ%(protocol)s://%(domain)sã®ã‚µã‚¤ãƒˆã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãƒªã‚»ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã«ã‚ãªãŸã®ãƒ¡ãƒ¼ãƒ«ã‚’æ‰“ã¡è¾¼ã‚“ã ã¨ã„ã†ã“ã¨ã«ãªã‚Šã¾ã™ã€‚"
+msgid "If this wasn't you, that probably means someone else typed your email address into the password reset form on the Tabbycat site at %(protocol)s://%(domain)s."
+msgstr "もし身に覚えが無ければ、誰かが%(protocol)s://%(domain)sのサイトのパスワードリセットフォームにあなたのメールを打ち込んだということになります。"
 
 #: templates/registration/password_reset_form.html
 msgid "Password Reset"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ãƒªã‚»ãƒƒãƒˆ"
+msgstr "パスワードをリセット"
 
 #: templates/registration/password_reset_form.html
 msgid "Enter your email address below, and we'll email you a password reset link."
-msgstr "ä»¥ä¸‹ã®ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹å®›ã«ãƒªã‚»ãƒƒãƒˆç”¨ã®ãƒªãƒ³ã‚¯ã‚’ãŠé€ã‚Šã—ã¾ã™ã€‚"
+msgstr "以下のメールアドレス宛にリセット用のリンクをお送りします。"
 
 #: templates/registration/password_reset_form.html
 msgctxt "button"
 msgid "Reset my password"
-msgstr "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¤‰æ›´"
+msgstr "パスワードを変更"
 
 #: templates/registration/password_reset_form.html
 msgid "Back to the login page"
-msgstr "ãƒ­ã‚°ã‚¤ãƒ³ãƒšãƒ¼ã‚¸ã«æˆ»ã‚‹"
+msgstr "ログインページに戻る"
 
 #: templates/registration/password_reset_subject.txt
 #, python-format
-msgid "Password reset on NekoTab site at %(domain)s"
-msgstr "%(domain)sã®ã‚µã‚¤ãƒˆã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ãƒªã‚»ãƒƒãƒˆ"
+msgid "Password reset on Tabbycat site at %(domain)s"
+msgstr "%(domain)sのサイトのパスワードをリセット"
 
 #: urls.py
 #, python-format
-msgid "Hi, %(user)s â€” you just logged in!"
-msgstr "%(user)sã€ã“ã‚“ã«ã¡ã¯ï¼ãƒ­ã‚°ã‚¤ãƒ³ã—ã¾ã—ãŸï¼"
+msgid "Hi, %(user)s — you just logged in!"
+msgstr "%(user)s、こんにちは！ログインしました！"
 
 #: urls.py
 msgid "Welcome! You just logged in!"
-msgstr "ã‚ˆã†ã“ãï¼ãƒ­ã‚°ã‚¤ãƒ³ã—ã¾ã—ãŸï¼"
+msgstr "ようこそ！ログインしました！"
 
 #: users/admin.py
 msgid "Users with staff status can view and edit the Edit Database area. This is potentially dangerous and should be reserved for the actual tab director(s)."
-msgstr "ã‚¹ã‚¿ãƒƒãƒ•æ¨©é™ã‚’æŒã¤ãƒ¦ãƒ¼ã‚¶ã¯ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ç·¨é›†ã‚¨ãƒªã‚¢ã®é–²è¦§ãƒ»å¤‰æ›´ãŒã§ãã¾ã™ã€‚ã“ã‚Œã¯å±é™ºæ€§ãŒã‚ã‚Šã€ã‚¿ãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ã‚¿ãƒ¼ã«ä¸Žãˆã‚‰ã‚Œã‚‹ã¹ãã§ã™ã€‚"
+msgstr "スタッフ権限を持つユーザはデータベース編集エリアの閲覧・変更ができます。これは危険性があり、タブディレクターに与えられるべきです。"
 
 #: users/admin.py
 msgid "Personal info"
-msgstr "å€‹äººæƒ…å ±"
+msgstr "個人情報"
 
 #: users/admin.py
 msgid "Permissions"
-msgstr "æ¨©é™"
+msgstr "権限"
 
 #: users/admin.py
 msgid "Important dates"
-msgstr "é‡è¦ãªæ—¥ä»˜"
+msgstr "重要な日付"
 
 #: users/forms.py
 msgid "Email address"
@@ -1422,215 +1422,215 @@ msgstr ""
 
 #: users/forms.py
 msgid "Username"
-msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼å"
+msgstr "ユーザー名"
 
 #: users/groups.py
 msgid "Equity"
-msgstr "ã‚¨ã‚¯ã‚¤ãƒ†ã‚£"
+msgstr "エクイティ"
 
 #: users/groups.py
 msgid "Adjudication Core"
-msgstr "å¯©æŸ»å§”å“¡"
+msgstr "審査委員"
 
 #: users/groups.py
 msgid "Tabulation Director"
-msgstr "ã‚¿ãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ã‚¿ãƒ¼"
+msgstr "タブディレクター"
 
 #: users/groups.py
 msgid "Tabulation Assistant"
-msgstr "ã‚¿ãƒ–ã‚¢ã‚·ã‚¹ã‚¿ãƒ³ãƒˆ"
+msgstr "タブアシスタント"
 
 #: users/models.py
 msgid "user"
-msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼"
+msgstr "ユーザー"
 
 #: users/models.py
 msgid "permission"
-msgstr "æ¨©é™"
+msgstr "権限"
 
 #: users/models.py
 msgid "user permission"
-msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼æ¨©é™"
+msgstr "ユーザー権限"
 
 #: users/models.py
 msgid "user permissions"
-msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼æ¨©é™"
+msgstr "ユーザー権限"
 
 #: users/models.py
 msgid "permissions"
-msgstr "æ¨©é™"
+msgstr "権限"
 
 #: users/models.py
 msgid "group"
-msgstr "ã‚°ãƒ«ãƒ¼ãƒ—"
+msgstr "グループ"
 
 #: users/models.py
 msgid "groups"
-msgstr "ã‚°ãƒ«ãƒ¼ãƒ—"
+msgstr "グループ"
 
 #: users/models.py
 msgid "group membership"
-msgstr "ã‚°ãƒ«ãƒ¼ãƒ—ãƒ¡ãƒ³ãƒãƒ¼ã‚·ãƒƒãƒ—"
+msgstr "グループメンバーシップ"
 
 #: users/models.py
 msgid "group memberships"
-msgstr "ã‚°ãƒ«ãƒ¼ãƒ—ãƒ¡ãƒ³ãƒãƒ¼ã‚·ãƒƒãƒ—"
+msgstr "グループメンバーシップ"
 
 #: users/permissions.py
 msgid "view adjudicator-team conflicts"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ»ãƒãƒ¼ãƒ é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã®é–²è¦§"
+msgstr "ジャッジ・チーム間コンフリクトの閲覧"
 
 #: users/permissions.py
 msgid "edit adjudicator-team conflicts"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ»ãƒãƒ¼ãƒ é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã®ç·¨é›†"
+msgstr "ジャッジ・チーム間コンフリクトの編集"
 
 #: users/permissions.py
 msgid "view adjudicator-adjudicator conflicts"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã®é–²è¦§"
+msgstr "ジャッジ間コンフリクトの閲覧"
 
 #: users/permissions.py
 msgid "edit adjudicator-adjudicator conflicts"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã®ç·¨é›†"
+msgstr "ジャッジ間コンフリクトの編集"
 
 #: users/permissions.py
 msgid "view adjudicator-institution conflicts"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ»ã‚¤ãƒ³ã‚¹ãƒ†é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã®é–²è¦§"
+msgstr "ジャッジ・インステ間コンフリクトの閲覧"
 
 #: users/permissions.py
 msgid "edit adjudicator-institution conflicts"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ»ã‚¤ãƒ³ã‚¹ãƒ†é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã®ç·¨é›†"
+msgstr "ジャッジ・インステ間コンフリクトの編集"
 
 #: users/permissions.py
 msgid "view team-institution conflicts"
-msgstr "ãƒãƒ¼ãƒ ãƒ»ã‚¤ãƒ³ã‚¹ãƒ†é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã®é–²è¦§"
+msgstr "チーム・インステ間コンフリクトの閲覧"
 
 #: users/permissions.py
 msgid "edit team-institution conflicts"
-msgstr "ãƒãƒ¼ãƒ ãƒ»ã‚¤ãƒ³ã‚¹ãƒ†é–“ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆã®ç·¨é›†"
+msgstr "チーム・インステ間コンフリクトの編集"
 
 #: users/permissions.py
 msgid "view action log entries"
-msgstr "ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã®é–²è¦§"
+msgstr "アクションログの閲覧"
 
 #: users/permissions.py
 msgid "view teams"
-msgstr "ãƒãƒ¼ãƒ ã®é–²è¦§"
+msgstr "チームの閲覧"
 
 #: users/permissions.py
 msgid "add teams"
-msgstr "ãƒãƒ¼ãƒ ã®è¿½åŠ "
+msgstr "チームの追加"
 
 #: users/permissions.py
 msgid "view decoded team names"
-msgstr "ã‚³ãƒ¼ãƒ‰åã‚’å¤–ã—ãŸãƒãƒ¼ãƒ åã®é–²è¦§"
+msgstr "コード名を外したチーム名の閲覧"
 
 #: users/permissions.py
 msgid "View names of anonymized participants"
-msgstr "åŒ¿åå‚åŠ è€…ã®åå‰ã®é–²è¦§"
+msgstr "匿名参加者の名前の閲覧"
 
 #: users/permissions.py
 msgid "view adjudicators"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®é–²è¦§"
+msgstr "ジャッジの閲覧"
 
 #: users/permissions.py
 msgid "add adjudicators"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®è¿½åŠ "
+msgstr "ジャッジの追加"
 
 #: users/permissions.py
 msgid "view rooms"
-msgstr "éƒ¨å±‹ã®é–²è¦§"
+msgstr "部屋の閲覧"
 
 #: users/permissions.py
 msgid "add rooms"
-msgstr "éƒ¨å±‹ã®è¿½åŠ "
+msgstr "部屋の追加"
 
 #: users/permissions.py
 msgid "view institutions"
-msgstr "ã‚¤ãƒ³ã‚¹ãƒ†ã®é–²è¦§"
+msgstr "インステの閲覧"
 
 #: users/permissions.py
 msgid "add institutions"
-msgstr "ã‚¤ãƒ³ã‚¹ãƒ†ã®è¿½åŠ "
+msgstr "インステの追加"
 
 #: users/permissions.py
 msgid "view participants"
-msgstr "å‚åŠ è€…ã®è¡¨ç¤º"
+msgstr "参加者の表示"
 
 #: users/permissions.py
 msgid "view participants' gender information"
-msgstr "å‚åŠ è€…ã®æ€§åˆ¥ã®é–²è¦§"
+msgstr "参加者の性別の閲覧"
 
 #: users/permissions.py
 msgid "view participants' contact information"
-msgstr "å‚åŠ è€…ã®é€£çµ¡æƒ…å ±ã®é–²è¦§"
+msgstr "参加者の連絡情報の閲覧"
 
 #: users/permissions.py
 msgid "view participants' real names"
-msgstr "å‚åŠ è€…ã®æœ¬åã®é–²è¦§"
+msgstr "参加者の本名の閲覧"
 
 #: users/permissions.py
 msgid "view participants' institution"
-msgstr "å‚åŠ è€…ã®ã‚¤ãƒ³ã‚¹ãƒ†ã®é–²è¦§"
+msgstr "参加者のインステの閲覧"
 
 #: users/permissions.py
 msgid "view round availabilities for teams"
-msgstr "ãƒãƒ¼ãƒ ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‚åŠ çŠ¶æ³ã®é–²è¦§"
+msgstr "チームのラウンドの参加状況の閲覧"
 
 #: users/permissions.py
 msgid "view round availabilities for adjudicators"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‚åŠ çŠ¶æ³ã®é–²è¦§"
+msgstr "ジャッジのラウンドの参加状況の閲覧"
 
 #: users/permissions.py
 msgid "view round availabilities for rooms"
-msgstr "éƒ¨å±‹ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®åˆ©ç”¨çŠ¶æ³ã®é–²è¦§"
+msgstr "部屋のラウンドの利用状況の閲覧"
 
 #: users/permissions.py
 msgid "edit round availabilities for teams"
-msgstr "ãƒãƒ¼ãƒ ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‚åŠ çŠ¶æ³ã®ç·¨é›†"
+msgstr "チームのラウンドの参加状況の編集"
 
 #: users/permissions.py
 msgid "edit round availabilities for adjudicators"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‚åŠ çŠ¶æ³ã®ç·¨é›†"
+msgstr "ジャッジのラウンドの参加状況の編集"
 
 #: users/permissions.py
 msgid "edit round availabilities for rooms"
-msgstr "éƒ¨å±‹ã®ãƒ©ã‚¦ãƒ³ãƒ‰ã®åˆ©ç”¨çŠ¶æ³ã®ç·¨é›†"
+msgstr "部屋のラウンドの利用状況の編集"
 
 #: users/permissions.py
 msgid "view round availabilities"
-msgstr "éƒ¨å±‹ã®åˆ©ç”¨çŠ¶æ³ã®é–²è¦§"
+msgstr "部屋の利用状況の閲覧"
 
 #: users/permissions.py
 msgid "edit round availabilities"
-msgstr "éƒ¨å±‹ã®åˆ©ç”¨çŠ¶æ³ã®ç·¨é›†"
+msgstr "部屋の利用状況の編集"
 
 #: users/permissions.py
 msgid "view room constraints"
-msgstr "éƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶ã®é–²è¦§"
+msgstr "部屋の制約条件の閲覧"
 
 #: users/permissions.py
 msgid "view room categories"
-msgstr "éƒ¨å±‹ã®ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®é–²è¦§"
+msgstr "部屋のカテゴリーの閲覧"
 
 #: users/permissions.py
 msgid "edit room constraints"
-msgstr "éƒ¨å±‹ã®åˆ¶ç´„æ¡ä»¶ã®ç·¨é›†"
+msgstr "部屋の制約条件の編集"
 
 #: users/permissions.py
 msgid "edit room categories"
-msgstr "éƒ¨å±‹ã®ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ç·¨é›†"
+msgstr "部屋のカテゴリーの編集"
 
 #: users/permissions.py
 msgid "view debates (draw)"
-msgstr "å¯¾æˆ¦è¡¨ãƒ»è©¦åˆã®é–²è¦§"
+msgstr "対戦表・試合の閲覧"
 
 #: users/permissions.py
 msgid "view debates (detailed draw)"
-msgstr "è©³ã—ã„å¯¾æˆ¦è¡¨ã®é–²è¦§"
+msgstr "詳しい対戦表の閲覧"
 
 #: users/permissions.py
 msgid "generate debates (draw)"
-msgstr "å¯¾æˆ¦è¡¨ã®ç”Ÿæˆ"
+msgstr "対戦表の生成"
 
 #: users/permissions.py
 msgid "delete debates (draw)"
@@ -1638,247 +1638,247 @@ msgstr ""
 
 #: users/permissions.py
 msgid "edit debate teams (pairings)"
-msgstr "å¯¾æˆ¦è¡¨ã®ãƒãƒ¼ãƒ ã®ç·¨é›†"
+msgstr "対戦表のチームの編集"
 
 #: users/permissions.py
 msgid "view debate adjudicators (allocations)"
-msgstr "å¯¾æˆ¦è¡¨ã®ã‚¸ãƒ£ãƒƒã‚¸ã®é–²è¦§"
+msgstr "対戦表のジャッジの閲覧"
 
 #: users/permissions.py
 msgid "edit debate adjudicators (allocations)"
-msgstr "å¯¾æˆ¦è¡¨ã®ã‚¸ãƒ£ãƒƒã‚¸ã®ç·¨é›†"
+msgstr "対戦表のジャッジの編集"
 
 #: users/permissions.py
 msgid "view room allocations"
-msgstr "éƒ¨å±‹ã®é…ç½®ã®é–²è¦§"
+msgstr "部屋の配置の閲覧"
 
 #: users/permissions.py
 msgid "edit room allocations"
-msgstr "éƒ¨å±‹ã®é…ç½®ã®ç·¨é›†"
+msgstr "部屋の配置の編集"
 
 #: users/permissions.py
 msgid "edit and confirm outround team positions"
-msgstr "åˆã†ã¨ãƒ©ã‚¦ãƒ³ãƒ‰ã®ãƒãƒ¼ãƒ é…ç½®ã®ç·¨é›†ãƒ»æ‰¿èª"
+msgstr "合うとラウンドのチーム配置の編集・承認"
 
 #: users/permissions.py
 msgid "view confirmed ballots"
-msgstr "æ‰¿èªæ¸ˆã¿ãƒãƒ­ãƒƒãƒˆã®é–²è¦§"
+msgstr "承認済みバロットの閲覧"
 
 #: users/permissions.py
 msgid "edit non-confirmed ballots"
-msgstr "æœªæ‰¿èªãƒãƒ­ãƒƒãƒˆã®ç·¨é›†"
+msgstr "未承認バロットの編集"
 
 #: users/permissions.py
 msgid "view any ballot"
-msgstr "ä»»æ„ã®ãƒãƒ­ãƒƒãƒˆã®é–²è¦§"
+msgstr "任意のバロットの閲覧"
 
 #: users/permissions.py
 msgid "edit any ballot"
-msgstr "ä»»æ„ã®ãƒãƒ­ãƒƒãƒˆã®ç·¨é›†"
+msgstr "任意のバロットの編集"
 
 #: users/permissions.py
 msgid "create ballots"
-msgstr "ãƒãƒ­ãƒƒãƒˆã®ä½œæˆ"
+msgstr "バロットの作成"
 
 #: users/permissions.py
 msgid "confirm/discard any ballot"
-msgstr "ä»»æ„ã®ãƒãƒ­ãƒƒãƒˆã®æ‰¿èªãƒ»ç ´æ£„"
+msgstr "任意のバロットの承認・破棄"
 
 #: users/permissions.py
 msgid "confirm/discard others' ballots"
-msgstr "ä»–äººã®ãƒãƒ­ãƒƒãƒˆã®æ‰¿èªãƒ»ç ´æ£„"
+msgstr "他人のバロットの承認・破棄"
 
 #: users/permissions.py
 msgid "view ballot graph"
-msgstr "ãƒãƒ­ãƒƒãƒˆã‚°ãƒ©ãƒ•ã®é–²è¦§"
+msgstr "バロットグラフの閲覧"
 
 #: users/permissions.py
 msgid "view results entry page"
-msgstr "çµæžœå…¥åŠ›ãƒšãƒ¼ã‚¸ã®é–²è¦§"
+msgstr "結果入力ページの閲覧"
 
 #: users/permissions.py
 msgid "view motion per round"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã”ã¨ã®è«–é¡Œã®é–²è¦§"
+msgstr "ラウンドごとの論題の閲覧"
 
 #: users/permissions.py
 msgid "edit motion per round"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã”ã¨ã®è«–é¡Œã®ç·¨é›†"
+msgstr "ラウンドごとの論題の編集"
 
 #: users/permissions.py
 msgid "release draw to public"
-msgstr "å¯¾æˆ¦è¡¨ã®å…¬é–‹"
+msgstr "対戦表の公開"
 
 #: users/permissions.py
 msgid "release motion to public"
-msgstr "è«–é¡Œã®å…¬é–‹"
+msgstr "論題の公開"
 
 #: users/permissions.py
 msgid "unrelease draw to public"
-msgstr "å¯¾æˆ¦è¡¨ã®å…¬é–‹å–ã‚Šæ¶ˆã—"
+msgstr "対戦表の公開取り消し"
 
 #: users/permissions.py
 msgid "unrelease motion to public"
-msgstr "è«–é¡Œã®å…¬é–‹å–ã‚Šæ¶ˆã—"
+msgstr "論題の公開取り消し"
 
 #: users/permissions.py
 msgid "add debate start time"
-msgstr "è©¦åˆã®é–‹å§‹æ™‚åˆ»ã®è¿½åŠ "
+msgstr "試合の開始時刻の追加"
 
 #: users/permissions.py
 msgid "view draws (for the briefing room)"
-msgstr "å¯¾æˆ¦è¡¨ã®é–²è¦§ï¼ˆORå‘ã‘ï¼‰"
+msgstr "対戦表の閲覧（OR向け）"
 
 #: users/permissions.py
 msgid "display motion (for the briefing room)"
-msgstr "è«–é¡Œã®è¡¨ç¤ºï¼ˆORå‘ã‘ï¼‰"
+msgstr "論題の表示（OR向け）"
 
 #: users/permissions.py
 msgid "view existing preformed panels"
-msgstr "äº‹å‰è¨­å®šã•ã‚ŒãŸãƒ‘ãƒãƒ«ã®é–²è¦§"
+msgstr "事前設定されたパネルの閲覧"
 
 #: users/permissions.py
 msgid "edit preformed panels"
-msgstr "äº‹å‰è¨­å®šã•ã‚ŒãŸãƒ‘ãƒãƒ«ã®ç·¨é›†"
+msgstr "事前設定されたパネルの編集"
 
 #: users/permissions.py
 msgid "view the overviews of standings"
-msgstr "é †ä½ã®æ¦‚è¦ã®é–²è¦§"
+msgstr "順位の概要の閲覧"
 
 #: users/permissions.py
 msgid "view the most recent team standings"
-msgstr "ç›´è¿‘ã®ãƒãƒ¼ãƒ é †ä½ã®é–²è¦§"
+msgstr "直近のチーム順位の閲覧"
 
 #: users/permissions.py
 msgid "view the most recent speaker standings"
-msgstr "ç›´è¿‘ã®ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼é †ä½ã®é–²è¦§"
+msgstr "直近のスピーカー順位の閲覧"
 
 #: users/permissions.py
 msgid "view the most recent replies standings"
-msgstr "ç›´è¿‘ã®ãƒªãƒ—ãƒ©ã‚¤é †ä½ã®é–²è¦§"
+msgstr "直近のリプライ順位の閲覧"
 
 #: users/permissions.py
 msgid "view the most recent motions tab"
-msgstr "ç›´è¿‘ã®è«–é¡Œãƒšãƒ¼ã‚¸ã®é–²è¦§"
+msgstr "直近の論題ページの閲覧"
 
 #: users/permissions.py
 msgid "view the diversity tab"
-msgstr "ç›´è¿‘ã®ãƒ€ã‚¤ãƒãƒ¼ã‚·ãƒ†ã‚£ãƒšãƒ¼ã‚¸ã®é–²è¦§"
+msgstr "直近のダイバーシティページの閲覧"
 
 #: users/permissions.py
 msgid "view overview of judge feedback"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®æ¦‚è¦ã®é–²è¦§"
+msgstr "ジャッジフィードバックの概要の閲覧"
 
 #: users/permissions.py
 msgid "edit base scores of judges"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ã®ãƒ™ãƒ¼ã‚¹ã‚¹ã‚³ã‚¢ã®ç·¨é›†"
+msgstr "ジャッジのベーススコアの編集"
 
 #: users/permissions.py
 msgid "view feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®é–²è¦§"
+msgstr "フィードバックの閲覧"
 
 #: users/permissions.py
 msgid "toggle ignore feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®ç„¡è¦–çŠ¶æ³ã®å¤‰æ›´"
+msgstr "フィードバックの無視状況の変更"
 
 #: users/permissions.py
 msgid "toggle confirm feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®æ‰¿èªçŠ¶æ³ã®å¤‰æ›´"
+msgstr "フィードバックの承認状況の変更"
 
 #: users/permissions.py
 msgid "view feedback unsubmitted tab"
-msgstr "æœªæå‡ºãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ãƒšãƒ¼ã‚¸ã®é–²è¦§"
+msgstr "未提出フィードバックページの閲覧"
 
 #: users/permissions.py
 msgid "add feedback"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®è¿½åŠ "
+msgstr "フィードバックの追加"
 
 #: users/permissions.py
 msgid "view adjudicator break"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ–ãƒ¬ã‚¤ã‚¯ã®é–²è¦§"
+msgstr "ジャッジブレイクの閲覧"
 
 #: users/permissions.py
 msgid "edit adjudicator break"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸ãƒ–ãƒ¬ã‚¤ã‚¯ã®ç·¨é›†"
+msgstr "ジャッジブレイクの編集"
 
 #: users/permissions.py
 msgid "edit feedback questions"
-msgstr "ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã®è³ªå•äº‹é …ã®ç·¨é›†"
+msgstr "フィードバックの質問事項の編集"
 
 #: users/permissions.py
 msgid "edit break eligibility"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯è³‡æ ¼ã®ç·¨é›†"
+msgstr "ブレイク資格の編集"
 
 #: users/permissions.py
 msgid "view break eligibility"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯è³‡æ ¼ã®é–²è¦§"
+msgstr "ブレイク資格の閲覧"
 
 #: users/permissions.py
 msgid "edit break categories"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ç·¨é›†"
+msgstr "ブレイクカテゴリーの編集"
 
 #: users/permissions.py
 msgid "view break categories"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®é–²è¦§"
+msgstr "ブレイクカテゴリーの閲覧"
 
 #: users/permissions.py
 msgid "view speaker categories"
-msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®é–²è¦§"
+msgstr "スピーカーカテゴリーの閲覧"
 
 #: users/permissions.py
 msgid "edit speaker categories"
-msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚«ãƒ†ã‚´ãƒªãƒ¼ã®ç·¨é›†"
+msgstr "スピーカーカテゴリーの編集"
 
 #: users/permissions.py
 msgid "view speaker eligibility"
-msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼è³‡æ ¼ã®é–²è¦§"
+msgstr "スピーカー資格の閲覧"
 
 #: users/permissions.py
 msgid "edit speaker eligibility"
-msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼è³‡æ ¼ã®ç·¨é›†"
+msgstr "スピーカー資格の編集"
 
 #: users/permissions.py
 msgid "view break overview"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã®æ¦‚è¦ã®é–²è¦§"
+msgstr "ブレイクの概要の閲覧"
 
 #: users/permissions.py
 msgid "view breaks"
-msgstr "ãƒ–ãƒ¬ã‚¤ã‚¯ã®é–²è¦§"
+msgstr "ブレイクの閲覧"
 
 #: users/permissions.py
 msgid "generate all breaks"
-msgstr "å…¨ãƒ–ãƒ¬ã‚¤ã‚¯ã®ç”Ÿæˆ"
+msgstr "全ブレイクの生成"
 
 #: users/permissions.py
 msgid "view private urls"
-msgstr "private URLã®é–²è¦§"
+msgstr "private URLの閲覧"
 
 #: users/permissions.py
 msgid "generate private URLs"
-msgstr "private URLã®ç”Ÿæˆ"
+msgstr "private URLの生成"
 
 #: users/permissions.py
 msgid "view checkins"
-msgstr "ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã®é–²è¦§"
+msgstr "チェックインの閲覧"
 
 #: users/permissions.py
 msgid "edit participant check-in"
-msgstr "å‚åŠ è€…ã®ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã®ç·¨é›†"
+msgstr "参加者のチェックインの編集"
 
 #: users/permissions.py
 msgid "edit room check-in"
-msgstr "éƒ¨å±‹ã®ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã®ç·¨é›†"
+msgstr "部屋のチェックインの編集"
 
 #: users/permissions.py
 msgid "edit round attributes"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®å±žæ€§ã®ç·¨é›†"
+msgstr "ラウンドの属性の編集"
 
 #: users/permissions.py
 msgid "delete rounds"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®å‰Šé™¤"
+msgstr "ラウンドの削除"
 
 #: users/permissions.py
 msgid "create rounds"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰ã®ä½œæˆ"
+msgstr "ラウンドの作成"
 
 #: users/permissions.py
 msgid "confirm rounds"
@@ -1890,23 +1890,23 @@ msgstr ""
 
 #: users/permissions.py
 msgid "view email statuses"
-msgstr "ãƒ¡ãƒ¼ãƒ«çŠ¶æ³ã®é–²è¦§"
+msgstr "メール状況の閲覧"
 
 #: users/permissions.py
 msgid "send participants email messages"
-msgstr "å‚åŠ è€…ã¸ã®ãƒ¡ãƒ¼ãƒ«é€ä¿¡"
+msgstr "参加者へのメール送信"
 
 #: users/permissions.py
 msgid "export DebateXML"
-msgstr "DebateXMLã®å‡ºåŠ›"
+msgstr "DebateXMLの出力"
 
 #: users/permissions.py
 msgid "view settings"
-msgstr "è¨­å®šã®é–²è¦§"
+msgstr "設定の閲覧"
 
 #: users/permissions.py
 msgid "edit settings"
-msgstr "è¨­å®šã®ç·¨é›†"
+msgstr "設定の編集"
 
 #: users/permissions.py
 msgid "edit general questions"
@@ -1934,38 +1934,38 @@ msgstr ""
 
 #: users/templates/account_invitation_email.html
 msgid "Hello!"
-msgstr "ã“ã‚“ã«ã¡ã¯ï¼"
+msgstr "こんにちは！"
 
 #: users/templates/account_invitation_email.html
 #, python-format
-msgid "An administrator for the NekoTab site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
-msgstr "%(name)sã®NekoTabã‚µã‚¤ãƒˆã®ç®¡ç†è€…ãŒã€ã‚ãªãŸã‚’ã‚µã‚¤ãƒˆã«ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ä½œæˆã™ã‚‹ã‚ˆã†æ‹›å¾…ã—ã¾ã—ãŸã€‚%(protocol)s://%(domain)sã§ç¢ºèªã—ã¦ãã ã•ã„ã€‚"
+msgid "An administrator for the Tabbycat site hosting %(name)s has invited you to create an user account on their site, at %(protocol)s://%(domain)s."
+msgstr "%(name)sのTabbycatサイトの管理者が、あなたをサイトにユーザーアカウントを作成するよう招待しました。%(protocol)s://%(domain)sで確認してください。"
 
 #: users/templates/account_invitation_email.html
 msgid "If you accept, please use the link below to activate your account"
-msgstr "å—ã‘å…¥ã‚Œã‚‹ãªã‚‰ã€ä»¥ä¸‹ã®ãƒªãƒ³ã‚¯ã‚’ä½¿ã£ã¦ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’æœ‰åŠ¹åŒ–ã—ã¦ãã ã•ã„"
+msgstr "受け入れるなら、以下のリンクを使ってアカウントを有効化してください"
 
 #: users/templates/account_invitation_email.html
 msgid "If you do not accept, there is no action to be taken."
-msgstr "å—ã‘å…¥ã‚Œãªã„ãªã‚‰ã€ä½•ã‚‚ã—ãªãã¦ã‚‚å¤§ä¸ˆå¤«ã§ã™ã€‚"
+msgstr "受け入れないなら、何もしなくても大丈夫です。"
 
 #: users/templates/account_invitation_subject.txt
 #, python-format
-msgid "Invitation to join NekoTab site for %(name)s"
-msgstr "%(name)sã®NekoTabã‚µã‚¤ãƒˆã¸ã®æ‹›å¾…"
+msgid "Invitation to join Tabbycat site for %(name)s"
+msgstr "%(name)sのTabbycatサイトへの招待"
 
 #: users/templates/admin/auth/delete_user_warning.html
-msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the â€œPermissionsâ€ tab, unchecked the â€œActiveâ€ box, and save the user."
-msgstr "<strong>è­¦å‘Šï¼š</strong>ãƒ¦ãƒ¼ã‚¶ãŒä½•ã‹ã‚’è¡Œã£ãŸå¾Œã«ãƒ¦ãƒ¼ã‚¶ã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã¹ãã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¯ãƒ¦ãƒ¼ã‚¶ãŒè¡Œã£ãŸã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¨˜éŒ²ã—ã¦ãŠã‚Šã€ãƒ¦ãƒ¼ã‚¶ã‚’å‰Šé™¤ã™ã‚‹ã¨ãã‚Œã«é–¢é€£ã™ã‚‹ãƒ­ã‚°ã‚‚å‰Šé™¤ã•ã‚Œã¾ã™ã€‚ãƒ¦ãƒ¼ã‚¶ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ç„¡åŠ¹ã«ã—ãŸã„å ´åˆã¯ã€ãƒ¦ãƒ¼ã‚¶ã®ç·¨é›†ã«æˆ»ã‚Šã€ã€Œæ¨©é™ã€ã‚¿ãƒ–ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã€ã€Œã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã€ã®ãƒã‚§ãƒƒã‚¯ã‚’å¤–ã—ã¦ãã ã•ã„ã€‚"
+msgid "<strong>Warning:</strong> You shouldn't delete users from the database once they've done something, because the database logs actions taken by those users, and deleting the users also deletes the related logs. If you wish to deactivate a user account, go back to edit the user, click on the “Permissions” tab, unchecked the “Active” box, and save the user."
+msgstr "<strong>警告：</strong>ユーザが何かを行った後にユーザをデータベースから削除するべきではありません。データベースはユーザが行ったアクションを記録しており、ユーザを削除するとそれに関連するログも削除されます。ユーザアカウントを無効にしたい場合は、ユーザの編集に戻り、「権限」タブをクリックし、「アクティブ」のチェックを外してください。"
 
 #: users/templates/invite_user.html
 msgid "Back to Configuration"
-msgstr "è¨­å®šã«æˆ»ã‚‹"
+msgstr "設定に戻る"
 
 #: users/templates/invite_user.html
 msgctxt "button"
 msgid "Invite User"
-msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’æ‹›å¾…"
+msgstr "ユーザーを招待"
 
 #: users/templates/invite_user.html
 msgid "Note: if you submit this multiple times, multiple invite emails will be sent."
@@ -1974,24 +1974,24 @@ msgstr ""
 #: users/templates/signup.html
 msgctxt "page title"
 msgid "Create a new Account"
-msgstr "æ–°ã—ã„ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ä½œæˆ"
+msgstr "新しいアカウントを作成"
 
 #: users/templates/signup.html
 msgid "Create Account"
-msgstr "ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ä½œæˆ"
+msgstr "アカウントを作成"
 
 #: users/views.py
 msgid "Whoops! It looks like someone's already created the first user account. Please log in."
-msgstr "ãŠã£ã¨ï¼æ—¢ã«èª°ã‹ãŒæœ€åˆã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ä½œæˆã—ãŸã‚ˆã†ã§ã™ã€‚ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ãã ã•ã„ã€‚"
+msgstr "おっと！既に誰かが最初のユーザーアカウントを作成したようです。ログインしてください。"
 
 #: users/views.py
 #, python-format
 msgid "Welcome! You've created an account for %s."
-msgstr "ã‚ˆã†ã“ãï¼%sã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ä½œæˆã—ã¾ã—ãŸã€‚"
+msgstr "ようこそ！%sのアカウントを作成しました。"
 
 #: users/views.py
 msgid "Invite User"
-msgstr "ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’æ‹›å¾…"
+msgstr "ユーザーを招待"
 
 #: users/views.py
 msgid "Successfully invited user to create an account for the tournament."
@@ -1999,6 +1999,5 @@ msgstr ""
 
 #: users/views.py
 msgid "Accept Invitation"
-msgstr "æ‹›å¾…ã‚’å—ã‘å…¥ã‚Œã‚‹"
-
+msgstr "招待を受け入れる"
 

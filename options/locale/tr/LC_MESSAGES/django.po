@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: tr\n"
-"X-Crowdin-File: /develop/NekoTab/options/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/options/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 940\n"
 
 #: options/apps.py
 msgid "Tournament Options"
-msgstr "Turnuva SeÃ§enekleri"
+msgstr "Turnuva Seçenekleri"
 
 #: options/forms.py
 msgid "Mininum score must be less than maximum score"
@@ -44,7 +44,7 @@ msgstr ""
 
 #: options/models.py
 msgid "instance"
-msgstr "Ã¶rnek"
+msgstr "örnek"
 
 #: options/models.py
 msgid "tournament preference"
@@ -56,35 +56,35 @@ msgstr "turnuva tercihleri"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Score Rules"
-msgstr "Puan KurallarÄ±"
+msgstr "Puan Kuralları"
 
 #: options/preferences.py
 msgid "Minimum allowed score for substantive speeches"
-msgstr "Ana konuÅŸmalar iÃ§in izin verilen minimum puan"
+msgstr "Ana konuşmalar için izin verilen minimum puan"
 
 #: options/preferences.py
 msgid "Minimum speaker score"
-msgstr "Minimum konuÅŸmacÄ± puanÄ±"
+msgstr "Minimum konuşmacı puanı"
 
 #: options/preferences.py
 msgid "Maximum speaker score"
-msgstr "Maksimum konuÅŸmacÄ± puanÄ±"
+msgstr "Maksimum konuşmacı puanı"
 
 #: options/preferences.py
 msgid "Maximum allowed score for substantive speeches"
-msgstr "Ana konuÅŸmalar iÃ§in izin verilen maksimum puan"
+msgstr "Ana konuşmalar için izin verilen maksimum puan"
 
 #: options/preferences.py
 msgid "Speaker score step"
-msgstr "KonuÅŸmacÄ± puanÄ± adÄ±mÄ±"
+msgstr "Konuşmacı puanı adımı"
 
 #: options/preferences.py
 msgid "Score steps allowed for substantive speeches, e.g. full points (1) or half points (0.5)"
-msgstr "Ana konuÅŸmalar iÃ§in izin verilen puan adÄ±mlarÄ±, Ã¶rneÄŸin tam puan (1) veya yarÄ±m puan (0,5)"
+msgstr "Ana konuşmalar için izin verilen puan adımları, örneğin tam puan (1) veya yarım puan (0,5)"
 
 #: options/preferences.py
 msgid "The largest amount by which one team can beat another (0 means no limit)"
-msgstr "Bir takÄ±mÄ±n diÄŸerini yenebileceÄŸi en bÃ¼yÃ¼k miktar (0, sÄ±nÄ±r olmadÄ±ÄŸÄ± anlamÄ±na gelir)"
+msgstr "Bir takımın diğerini yenebileceği en büyük miktar (0, sınır olmadığı anlamına gelir)"
 
 #: options/preferences.py
 msgid "Maximum margin"
@@ -92,35 +92,35 @@ msgstr "Maksimum marj"
 
 #: options/preferences.py
 msgid "Minimum allowed score for reply speeches"
-msgstr "Ã–zet konuÅŸmalar iÃ§in izin verilen minimum puan"
+msgstr "Özet konuşmalar için izin verilen minimum puan"
 
 #: options/preferences.py
 msgid "Minimum reply score"
-msgstr "Minimum Ã¶zet puanÄ±"
+msgstr "Minimum özet puanı"
 
 #: options/preferences.py
 msgid "Maximum allowed score for reply speeches"
-msgstr "Ã–zet konuÅŸmalarÄ± iÃ§in izin verilen maksimum puan"
+msgstr "Özet konuşmaları için izin verilen maksimum puan"
 
 #: options/preferences.py
 msgid "Maximum reply score"
-msgstr "Maksimum Ã¶zet puanÄ±"
+msgstr "Maksimum özet puanı"
 
 #: options/preferences.py
 msgid "Score steps allowed for reply speeches, e.g. full points (1) or half points (0.5)"
-msgstr "Ã–zet konuÅŸmalarÄ± iÃ§in izin verilen puan adÄ±mlarÄ±, Ã¶rneÄŸin tam puan (1) veya yarÄ±m puan (0,5)"
+msgstr "Özet konuşmaları için izin verilen puan adımları, örneğin tam puan (1) veya yarım puan (0,5)"
 
 #: options/preferences.py
 msgid "Reply score step"
-msgstr "Ã–zet puanÄ± adÄ±mÄ±"
+msgstr "Özet puanı adımı"
 
 #: options/preferences.py
 msgid "If checked, a team's winning margin includes dissenting adjudicators"
-msgstr "Ä°ÅŸaretlenirse, bir takÄ±mÄ±n kazanma marjÄ± splitleyen jÃ¼rileri iÃ§erir"
+msgstr "İşaretlenirse, bir takımın kazanma marjı splitleyen jürileri içerir"
 
 #: options/preferences.py
 msgid "Margin includes dissenters"
-msgstr "Marj, splitleyenleri iÃ§erir"
+msgstr "Marj, splitleyenleri içerir"
 
 #: options/preferences.py
 msgid "Any explanatory text needed to introduce the ballot form, e.g. speaker scale"
@@ -132,79 +132,79 @@ msgstr ""
 
 #: options/preferences.py
 msgid "If checked, all speaker scores, including for duplicate speeches, will be counted for team scores"
-msgstr "Ä°ÅŸaretlenirse, yinelenen konuÅŸmalar da dahil olmak Ã¼zere tÃ¼m konuÅŸmacÄ± puanlarÄ± takÄ±m puanlarÄ±na dahil olur."
+msgstr "İşaretlenirse, yinelenen konuşmalar da dahil olmak üzere tüm konuşmacı puanları takım puanlarına dahil olur."
 
 #: options/preferences.py
 msgid "Team score includes ghosts"
-msgstr "TakÄ±m puanÄ±na gÃ¶lgeler dahil."
+msgstr "Takım puanına gölgeler dahil."
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Draw Rules"
-msgstr "Kura KurallarÄ±"
+msgstr "Kura Kuralları"
 
 #: options/preferences.py
 msgid "The auto-allocator will only take adjudicators at or above this score as voting panellists"
-msgstr "Otomatik tahsis, yalnÄ±zca bu puandaki veya bu puanÄ±n Ã¼zerindeki jÃ¼rileri oylayan panelist olarak alacaktÄ±r."
+msgstr "Otomatik tahsis, yalnızca bu puandaki veya bu puanın üzerindeki jürileri oylayan panelist olarak alacaktır."
 
 #: options/preferences.py
 msgid "Minimum adjudicator score to vote"
-msgstr "Oy kullanmak iÃ§in gerekli minimum jÃ¼ri puanÄ±"
+msgstr "Oy kullanmak için gerekli minimum jüri puanı"
 
 #: options/preferences.py
 msgid "Penalty applied by adjudicator auto-allocator for conflicts"
-msgstr "Conflictler iÃ§in jÃ¼ri otomatik tahsisi tarafÄ±ndan ceza uygulandÄ±"
+msgstr "Conflictler için jüri otomatik tahsisi tarafından ceza uygulandı"
 
 #: options/preferences.py
 msgid "Adjudicator conflict penalty"
-msgstr "JÃ¼ri conflict cezasÄ±"
+msgstr "Jüri conflict cezası"
 
 #: options/preferences.py
 msgid "Penalty applied by adjudicator auto-allocator for history"
-msgstr "GeÃ§miÅŸ iÃ§in jÃ¼ri otomatik tahsisi tarafÄ±ndan ceza uygulandÄ±"
+msgstr "Geçmiş için jüri otomatik tahsisi tarafından ceza uygulandı"
 
 #: options/preferences.py
 msgid "Adjudicator history penalty"
-msgstr "Hakem geÃ§miÅŸ cezasÄ±"
+msgstr "Hakem geçmiş cezası"
 
 #: options/preferences.py
 msgid "Penality applied by preformed panel auto-allocator for priority mismatch"
-msgstr "Ã–ncelik uyuÅŸmazlÄ±ÄŸÄ± iÃ§in Ã¶nceden kurulmuÅŸ panel otomatik tahsisi tarafÄ±ndan uygulanan ceza"
+msgstr "Öncelik uyuşmazlığı için önceden kurulmuş panel otomatik tahsisi tarafından uygulanan ceza"
 
 #: options/preferences.py
 msgid "Importance mismatch penalty"
-msgstr "Ã–nem uyuÅŸmazlÄ±ÄŸÄ± cezasÄ±"
+msgstr "Önem uyuşmazlığı cezası"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams seeing their own institution"
-msgstr "Kendi kurumunu gÃ¶ren ekipler iÃ§in conflict kaÃ§Ä±nma yÃ¶ntemi tarafÄ±ndan uygulanan ceza"
+msgstr "Kendi kurumunu gören ekipler için conflict kaçınma yöntemi tarafından uygulanan ceza"
 
 #: options/preferences.py
 msgid "Team institution penalty"
-msgstr "TakÄ±m kurum cezasÄ±"
+msgstr "Takım kurum cezası"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams seeing each other twice or more"
-msgstr "Birbirini iki veya daha fazla kez gÃ¶ren takÄ±mlar iÃ§in conflict kaÃ§Ä±nma yÃ¶ntemi tarafÄ±ndan uygulanan ceza"
+msgstr "Birbirini iki veya daha fazla kez gören takımlar için conflict kaçınma yöntemi tarafından uygulanan ceza"
 
 #: options/preferences.py
 msgid "Team history penalty"
-msgstr "TakÄ±m geÃ§miÅŸi cezasÄ±"
+msgstr "Takım geçmişi cezası"
 
 #: options/preferences.py
 msgid "If checked, the draw will try to avoid pairing teams against their own institution"
-msgstr "EÄŸer iÅŸaretlenirse, kura takÄ±mlarÄ± kendi kurumlarÄ±yla eÅŸleÅŸtirmeyi Ã¶nlemeye Ã§alÄ±ÅŸacaktÄ±r."
+msgstr "Eğer işaretlenirse, kura takımları kendi kurumlarıyla eşleştirmeyi önlemeye çalışacaktır."
 
 #: options/preferences.py
 msgid "Avoid same institution"
-msgstr "AynÄ± Kurumu Ã–nle"
+msgstr "Aynı Kurumu Önle"
 
 #: options/preferences.py
 msgid "If checked, the draw will try to avoid having teams see each other twice"
-msgstr "EÄŸer iÅŸaretlenirse, Kura takÄ±mlarÄ±n birbirlerini iki kez gÃ¶rmesini Ã¶nlemeye Ã§alÄ±ÅŸacaktÄ±r."
+msgstr "Eğer işaretlenirse, Kura takımların birbirlerini iki kez görmesini önlemeye çalışacaktır."
 
 #: options/preferences.py
 msgid "Avoid team history"
-msgstr "TakÄ±m GeÃ§miÅŸini Ã–nle"
+msgstr "Takım Geçmişini Önle"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams being in a pullup many times. Leave 0 for no penalty."
@@ -240,43 +240,43 @@ msgstr ""
 
 #: options/preferences.py
 msgid "How odd brackets are resolved (see documentation for further details)"
-msgstr "Tek sayÄ±lÄ± aÅŸamalar nasÄ±l Ã§Ã¶zÃ¼lÃ¼r (daha fazla ayrÄ±ntÄ± iÃ§in belgelere bakÄ±n)"
+msgstr "Tek sayılı aşamalar nasıl çözülür (daha fazla ayrıntı için belgelere bakın)"
 
 #: options/preferences.py
 msgid "Odd bracket resolution method"
-msgstr "Tek sayÄ±lÄ± aÅŸama Ã§Ã¶zÃ¼mleme yÃ¶ntemi"
+msgstr "Tek sayılı aşama çözümleme yöntemi"
 
 #: options/preferences.py
 msgid "Pull up from top"
-msgstr "YukarÄ±dan yukarÄ± Ã§ek"
+msgstr "Yukarıdan yukarı çek"
 
 #: options/preferences.py
 msgid "Pull up from bottom"
-msgstr "Alttan yukarÄ± Ã§ek"
+msgstr "Alttan yukarı çek"
 
 #: options/preferences.py
 msgid "Pull up from middle"
-msgstr "Ortadan yukarÄ± Ã§ek"
+msgstr "Ortadan yukarı çek"
 
 #: options/preferences.py
 msgid "Pull up at random"
-msgstr "Rastgele yukarÄ± Ã§ek"
+msgstr "Rastgele yukarı çek"
 
 #: options/preferences.py
 msgid "Intermediate brackets"
-msgstr "Ara aÅŸamalar"
+msgstr "Ara aşamalar"
 
 #: options/preferences.py
 msgid "Intermediate brackets with bubble-up-bubble-down"
-msgstr "yÃ¼kselen/alÃ§alan takÄ±mlar olan ara aÅŸamalar"
+msgstr "yükselen/alçalan takımlar olan ara aşamalar"
 
 #: options/preferences.py
 msgid "Intermediate 1 (pre-allocated sides)"
-msgstr "Ara 1 (Ã¶nceden tahsis edilmiÅŸ taraflar)"
+msgstr "Ara 1 (önceden tahsis edilmiş taraflar)"
 
 #: options/preferences.py
 msgid "Intermediate 2 (pre-allocated sides)"
-msgstr "Ara 2 (Ã¶nceden tahsis edilmiÅŸ taraflar)"
+msgstr "Ara 2 (önceden tahsis edilmiş taraflar)"
 
 #: options/preferences.py
 msgid "Pull up from the lowest draw strength by rank"
@@ -288,11 +288,11 @@ msgstr ""
 
 #: options/preferences.py
 msgid "How affirmative/negative positions are assigned (see documentation for further details)"
-msgstr "Olumlu/olumsuz pozisyonlar nasÄ±l atanÄ±r (daha fazla ayrÄ±ntÄ± iÃ§in belgelere bakÄ±n)"
+msgstr "Olumlu/olumsuz pozisyonlar nasıl atanır (daha fazla ayrıntı için belgelere bakın)"
 
 #: options/preferences.py
 msgid "Side allocations method"
-msgstr "Taraf tahsisat yÃ¶ntemi"
+msgstr "Taraf tahsisat yöntemi"
 
 #: options/preferences.py
 msgid "Random"
@@ -304,23 +304,23 @@ msgstr "Denge"
 
 #: options/preferences.py
 msgid "Pre-allocated"
-msgstr "Ã–nceden tahsis edilmiÅŸ"
+msgstr "Önceden tahsis edilmiş"
 
 #: options/preferences.py
 msgid "Manually enter from ballot"
 msgstr "Ballottan manuel olarak girme"
 
 #: options/preferences.py
-msgid "Slide: 1 vs 6, 2 vs 7, â€¦. Fold: 1 vs 10, 2 vs 9, â€¦. Adjacent: 1 vs 2, 3 vs 4, â€¦."
-msgstr "KaydÄ±rma: 1 vs 6, 2 vs 7, .... Katla: 1'e 10, 2'ye karÅŸÄ± 9, .... KomÅŸu: 1'e karÅŸÄ± 2, 3'e karÅŸÄ± 4, ...."
+msgid "Slide: 1 vs 6, 2 vs 7, …. Fold: 1 vs 10, 2 vs 9, …. Adjacent: 1 vs 2, 3 vs 4, …."
+msgstr "Kaydırma: 1 vs 6, 2 vs 7, .... Katla: 1'e 10, 2'ye karşı 9, .... Komşu: 1'e karşı 2, 3'e karşı 4, ...."
 
 #: options/preferences.py
 msgid "Pairing method"
-msgstr "EÅŸleÅŸtirme yÃ¶ntemi"
+msgstr "Eşleştirme yöntemi"
 
 #: options/preferences.py
 msgid "Slide"
-msgstr "KaydÄ±rma"
+msgstr "Kaydırma"
 
 #: options/preferences.py
 msgid "Fold"
@@ -328,27 +328,27 @@ msgstr "Katla"
 
 #: options/preferences.py
 msgid "Adjacent"
-msgstr "KomÅŸu"
+msgstr "Komşu"
 
 #: options/preferences.py
 msgid "Fold top, adjacent rest"
-msgstr "Tepeyi katla, kalanÄ± komÅŸu"
+msgstr "Tepeyi katla, kalanı komşu"
 
 #: options/preferences.py
 msgid "Method used to try to avoid teams facing each other multiple times or their own institution (see documentation for further details)"
-msgstr "TakÄ±mlarÄ±n birbirleriyle veya kendi kurumlarÄ±yla birden Ã§ok kez karÅŸÄ±laÅŸmasÄ±nÄ± Ã¶nlemek iÃ§in kullanÄ±lan yÃ¶ntem (daha fazla ayrÄ±ntÄ± iÃ§in belgelere bakÄ±n)"
+msgstr "Takımların birbirleriyle veya kendi kurumlarıyla birden çok kez karşılaşmasını önlemek için kullanılan yöntem (daha fazla ayrıntı için belgelere bakın)"
 
 #: options/preferences.py
 msgid "Conflict avoidance method"
-msgstr "Conflict kaÃ§Ä±nma yÃ¶ntemi"
+msgstr "Conflict kaçınma yöntemi"
 
 #: options/preferences.py
 msgid "Off"
-msgstr "KapalÄ±"
+msgstr "Kapalı"
 
 #: options/preferences.py
 msgid "One-up-one-down"
-msgstr "Bir-yukarÄ±-bir-aÅŸaÄŸÄ±"
+msgstr "Bir-yukarı-bir-aşağı"
 
 #: options/preferences.py
 msgid "Minimum cost matching (pullups determined beforehand)"
@@ -360,27 +360,27 @@ msgstr ""
 
 #: options/preferences.py
 msgid "If using pull-ups, restrict which teams can be pulled up. Two-team formats only. Has no effect on BP or intermediate brackets."
-msgstr "YukarÄ± Ã§ekme kullanÄ±yorsanÄ±z, hangi takÄ±mlarÄ±n yukarÄ± Ã§ekilebileceÄŸini kÄ±sÄ±tlayÄ±n. YalnÄ±zca iki takÄ±mlÄ± formatlar kullanÄ±n. Ä°P veya ara aÅŸamalar Ã¼zerinde hiÃ§bir etkisi yoktur."
+msgstr "Yukarı çekme kullanıyorsanız, hangi takımların yukarı çekilebileceğini kısıtlayın. Yalnızca iki takımlı formatlar kullanın. İP veya ara aşamalar üzerinde hiçbir etkisi yoktur."
 
 #: options/preferences.py
 msgid "Pullup restriction"
-msgstr "YukarÄ± Ã§ekme kÄ±sÄ±tlamasÄ±"
+msgstr "Yukarı çekme kısıtlaması"
 
 #: options/preferences.py
 msgid "No restriction"
-msgstr "KÄ±sÄ±tlama yok"
+msgstr "Kısıtlama yok"
 
 #: options/preferences.py
 msgid "Choose from teams who have been pulled up the fewest times so far"
-msgstr "Åžimdiye kadar en az kez yukarÄ± Ã§ekilen takÄ±mlar arasÄ±ndan seÃ§im yap"
+msgstr "Şimdiye kadar en az kez yukarı çekilen takımlar arasından seçim yap"
 
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by wins so far"
-msgstr "Åžimdiye kadarki galibiyetlere gÃ¶re en dÃ¼ÅŸÃ¼k kura gÃ¼cÃ¼ne sahip takÄ±mlar arasÄ±ndan seÃ§im yap"
+msgstr "Şimdiye kadarki galibiyetlere göre en düşük kura gücüne sahip takımlar arasından seçim yap"
 
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by speaks so far"
-msgstr "Åžimdiye kadarki en dÃ¼ÅŸÃ¼k kura gÃ¼cÃ¼ne sahip takÄ±mlar arasÄ±ndan seÃ§im yap"
+msgstr "Şimdiye kadarki en düşük kura gücüne sahip takımlar arasından seçim yap"
 
 #: options/preferences.py
 msgid "Penalty applied when determining which teams to pull up (for minimum cost matching)"
@@ -392,91 +392,91 @@ msgstr ""
 
 #: options/preferences.py
 msgid "In BP, how pullups are distributed. Only \"Anywhere\" is WUDC-compliant."
-msgstr "Ä°P'de, yukarÄ± Ã§ekmelerin nasÄ±l daÄŸÄ±tÄ±ldÄ±ÄŸÄ±. YalnÄ±zca \"Her Yerde\" WUDC uyumludur."
+msgstr "İP'de, yukarı çekmelerin nasıl dağıtıldığı. Yalnızca \"Her Yerde\" WUDC uyumludur."
 
 #: options/preferences.py
 msgid "BP pullup distribution"
-msgstr "Ä°P yukarÄ± Ã§ekim daÄŸÄ±tÄ±mÄ±"
+msgstr "İP yukarı çekim dağıtımı"
 
 #: options/preferences.py
 msgid "Anywhere in bracket"
-msgstr "AÅŸama iÃ§inde her yerde"
+msgstr "Aşama içinde her yerde"
 
 #: options/preferences.py
 msgid "All in the same room (not WUDC-compliant)"
-msgstr "Hepsi aynÄ± odada (WUDC uyumlu deÄŸil)"
+msgstr "Hepsi aynı odada (WUDC uyumlu değil)"
 
 #: options/preferences.py
 msgid "In BP, which position cost function to use (see documentation for details)"
-msgstr "Ä°P'de, hangi pozisyon maliyeti fonksiyonunun kullanÄ±lacaÄŸÄ± (ayrÄ±ntÄ±lar iÃ§in belgelere bakÄ±n)"
+msgstr "İP'de, hangi pozisyon maliyeti fonksiyonunun kullanılacağı (ayrıntılar için belgelere bakın)"
 
 #: options/preferences.py
 msgid "BP position cost"
-msgstr "Ä°P pozisyon maliyeti"
+msgstr "İP pozisyon maliyeti"
 
 #: options/preferences.py
 msgid "Simple"
 msgstr "Basit"
 
 #: options/preferences.py
-msgid "RÃ©nyi entropy"
-msgstr "RÃ©nyi entropisi"
+msgid "Rényi entropy"
+msgstr "Rényi entropisi"
 
 #: options/preferences.py
 msgid "Population variance"
-msgstr "PopÃ¼lasyon varyansÄ±"
+msgstr "Popülasyon varyansı"
 
 #: options/preferences.py
-msgid "RÃ©nyi order Î±, if BP position cost uses RÃ©nyi entropy. Shannon is Î± = 1, Hartley is Î± = 0, collision is Î± = 2. See documentation for details."
-msgstr "RÃ©nyi dÃ¼zen Î±, eÄŸer Ä°P pozisyon maliyeti RÃ©nyi entropisi kullanÄ±yorsa. Shannon Î± = 1, Hartley Î± = 0, Ã§arpÄ±ÅŸma Î± = 2'dir. AyrÄ±ntÄ±lar iÃ§in belgelere bakÄ±n."
+msgid "Rényi order α, if BP position cost uses Rényi entropy. Shannon is α = 1, Hartley is α = 0, collision is α = 2. See documentation for details."
+msgstr "Rényi düzen α, eğer İP pozisyon maliyeti Rényi entropisi kullanıyorsa. Shannon α = 1, Hartley α = 0, çarpışma α = 2'dir. Ayrıntılar için belgelere bakın."
 
 #: options/preferences.py
-msgid "RÃ©nyi order (BP)"
-msgstr "RÃ©nyi dÃ¼zeni (Ä°P)"
+msgid "Rényi order (BP)"
+msgstr "Rényi düzeni (İP)"
 
 #: options/preferences.py
 msgid "The BP position cost is raised to this power; higher exponents bias towards resolving fewer large position imbalances over more small ones. See documentation for details."
-msgstr "Ä°P pozisyon maliyeti bu Ã¼sse yÃ¼kseltilir; daha yÃ¼ksek Ã¼sler, daha kÃ¼Ã§Ã¼k olanlara gÃ¶re daha az bÃ¼yÃ¼k pozisyon dengesizliÄŸini Ã§Ã¶zmeye yÃ¶neliktir. AyrÄ±ntÄ±lar iÃ§in belgelere bakÄ±n."
+msgstr "İP pozisyon maliyeti bu üsse yükseltilir; daha yüksek üsler, daha küçük olanlara göre daha az büyük pozisyon dengesizliğini çözmeye yöneliktir. Ayrıntılar için belgelere bakın."
 
 #: options/preferences.py
 msgid "BP position cost exponent"
-msgstr "Ä°P pozisyon maliyeti Ã¼ssÃ¼"
+msgstr "İP pozisyon maliyeti üssü"
 
 #: options/preferences.py
 msgid "In BP, which method to use to solve the assignment problem. Only Hungarian with preshuffling is WUDC-compliant."
-msgstr "Ä°P'de, atama problemini Ã§Ã¶zmek iÃ§in hangi yÃ¶ntemin kullanÄ±lacaÄŸÄ±. YalnÄ±zca Ã¶n karÄ±ÅŸtÄ±rmalÄ± Macar WUDC uyumludur."
+msgstr "İP'de, atama problemini çözmek için hangi yöntemin kullanılacağı. Yalnızca ön karıştırmalı Macar WUDC uyumludur."
 
 #: options/preferences.py
 msgid "BP assignment method"
-msgstr "Ä°P atama yÃ¶ntemi"
+msgstr "İP atama yöntemi"
 
 #: options/preferences.py
 msgid "Hungarian algorithm (not WUDC-compliant)"
-msgstr "Macar algoritmasÄ± (WUDC uyumlu deÄŸil)"
+msgstr "Macar algoritması (WUDC uyumlu değil)"
 
 #: options/preferences.py
 msgid "Hungarian algorithm with preshuffling"
-msgstr "Ã–n karÄ±ÅŸtÄ±rmalÄ± Macar algoritmasÄ±"
+msgstr "Ön karıştırmalı Macar algoritması"
 
 #: options/preferences.py
 msgid "Automatically make all adjudicators available for all rounds"
-msgstr "TÃ¼m jÃ¼rileri otomatik olarak tÃ¼m turlar iÃ§in kullanÄ±labilir hale getirin"
+msgstr "Tüm jürileri otomatik olarak tüm turlar için kullanılabilir hale getirin"
 
 #: options/preferences.py
 msgid "Skip adjudicator check-ins"
-msgstr "JÃ¼ri giriÅŸlerini atla"
+msgstr "Jüri girişlerini atla"
 
 #: options/preferences.py
 msgid "Hide panellist positions in the UI (and don't allocate them)"
-msgstr "KullanÄ±cÄ± arayÃ¼zÃ¼nde panelist konumlarÄ±nÄ± gizle (ve tahsis etme)"
+msgstr "Kullanıcı arayüzünde panelist konumlarını gizle (ve tahsis etme)"
 
 #: options/preferences.py
 msgid "No panellist adjudicators"
-msgstr "Panelist jÃ¼ri yok"
+msgstr "Panelist jüri yok"
 
 #: options/preferences.py
 msgid "Hide trainee positions in the UI (and don't allocate them)"
-msgstr "KullanÄ±cÄ± arayÃ¼zÃ¼nde acemi pozisyonlarÄ±nÄ± gizle (ve tahsis etme)"
+msgstr "Kullanıcı arayüzünde acemi pozisyonlarını gizle (ve tahsis etme)"
 
 #: options/preferences.py
 msgid "No trainee adjudicators"
@@ -532,35 +532,35 @@ msgstr "Geri bildirim"
 
 #: options/preferences.py
 msgid "Minimum possible adjudicator score that can be given"
-msgstr "Verilebilecek minimum olasÄ± jÃ¼ri puanÄ±"
+msgstr "Verilebilecek minimum olası jüri puanı"
 
 #: options/preferences.py
 msgid "Minimum adjudicator score"
-msgstr "Minimum jÃ¼ri puanÄ±"
+msgstr "Minimum jüri puanı"
 
 #: options/preferences.py
 msgid "Maximum possible adjudicator score that can be given"
-msgstr "Verilebilecek maksimum jÃ¼ri puanÄ±"
+msgstr "Verilebilecek maksimum jüri puanı"
 
 #: options/preferences.py
 msgid "Maximum adjudicator score"
-msgstr "Maksimum jÃ¼ri puanÄ±"
+msgstr "Maksimum jüri puanı"
 
 #: options/preferences.py
 msgid "Used to inform available choices in the feedback forms for adjudicators (both online and printed) and feedback progress"
-msgstr "JÃ¼riler iÃ§in geri bildirim formlarÄ±ndaki mevcut seÃ§enekleri (hem Ã§evrimiÃ§i hem de basÄ±lÄ±) ve geri bildirim ilerlemesini bildirmek iÃ§in kullanÄ±lÄ±r"
+msgstr "Jüriler için geri bildirim formlarındaki mevcut seçenekleri (hem çevrimiçi hem de basılı) ve geri bildirim ilerlemesini bildirmek için kullanılır"
 
 #: options/preferences.py
 msgid "Allow and expect feedback to be submitted by"
-msgstr "Geri bildirimin ÅŸu kiÅŸi tarafÄ±ndan gÃ¶nderilmesine izin ver ve gÃ¶nderilmesini bekle"
+msgstr "Geri bildirimin şu kişi tarafından gönderilmesine izin ver ve gönderilmesini bekle"
 
 #: options/preferences.py
 msgid "Chairs on panellists and trainees"
-msgstr "BaÅŸkanlar panelist ve acemilerle"
+msgstr "Başkanlar panelist ve acemilerle"
 
 #: options/preferences.py
 msgid "Panellists on chairs, chairs on panellists and trainees"
-msgstr "Panelistler baÅŸkanlara, baÅŸkanlar panelistler ve kursiyerlere"
+msgstr "Panelistler başkanlara, başkanlar panelistler ve kursiyerlere"
 
 #: options/preferences.py
 msgid "Panellists and trainees on chairs, chairs on panellists and trainees"
@@ -568,7 +568,7 @@ msgstr ""
 
 #: options/preferences.py
 msgid "All adjudicators (including trainees) on each other"
-msgstr "TÃ¼m jÃ¼rilÅŸer (acemiler dahil) birbirlerine"
+msgstr "Tüm jürilşer (acemiler dahil) birbirlerine"
 
 #: options/preferences.py
 msgid "Panellists on eachother and chairs, trainees on chairs, chairs on everyone"
@@ -580,19 +580,19 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Expect feedback to be submitted by teams on"
-msgstr "TakÄ±mlar tarafÄ±ndan geri bildirim gÃ¶nderilmesi beklenenler:"
+msgstr "Takımlar tarafından geri bildirim gönderilmesi beklenenler:"
 
 #: options/preferences.py
 msgid "Used to inform available choices in the feedback forms for teams (both online and printed) and feedback progress; this option is used by, e.g., UADC"
-msgstr "TakÄ±mlar iÃ§in geri bildirim formlarÄ±ndaki mevcut seÃ§enekleri (hem Ã§evrimiÃ§i hem de basÄ±lÄ±) ve geri bildirim ilerlemesini bildirmek iÃ§in kullanÄ±lÄ±r; Bu seÃ§enek, UADC vb. tarafÄ±ndan kullanÄ±lÄ±r."
+msgstr "Takımlar için geri bildirim formlarındaki mevcut seçenekleri (hem çevrimiçi hem de basılı) ve geri bildirim ilerlemesini bildirmek için kullanılır; Bu seçenek, UADC vb. tarafından kullanılır."
 
 #: options/preferences.py
 msgid "Orallist only (voting panellists permitted, with prompts to select orallist)"
-msgstr "YalnÄ±zca karar sebebini aÃ§Ä±klayan jÃ¼riler (oylayan panelistlerine izin verilir, karar sebebini aÃ§Ä±klayanÄ± seÃ§me istemi bulunur)"
+msgstr "Yalnızca karar sebebini açıklayan jüriler (oylayan panelistlerine izin verilir, karar sebebini açıklayanı seçme istemi bulunur)"
 
 #: options/preferences.py
 msgid "All adjudicators in their panels (including trainees)"
-msgstr "Panellerindeki tÃ¼m jÃ¼riler (acemiler dahil)"
+msgstr "Panellerindeki tüm jüriler (acemiler dahil)"
 
 #: options/preferences.py
 msgid "No one"
@@ -600,31 +600,31 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Show unexpected feedback submissions in participants pages"
-msgstr "KatÄ±lÄ±mcÄ±larÄ±n sayfalarÄ±nda beklenmeyen geri bildirim gÃ¶nderimlerini gÃ¶ster"
+msgstr "Katılımcıların sayfalarında beklenmeyen geri bildirim gönderimlerini göster"
 
 #: options/preferences.py
 msgid "Displays unexpected feedback with a question mark symbol; only relevant if public participants and feedback progress are both enabled"
-msgstr "Beklenmeyen geri bildirimleri soru iÅŸareti simgesiyle gÃ¶rÃ¼ntÃ¼ler; yalnÄ±zca herkese aÃ§Ä±k katÄ±lÄ±mcÄ±lar ve geri bildirim ilerlemesinin her ikisi de etkinleÅŸtirilmiÅŸse geÃ§erlidir"
+msgstr "Beklenmeyen geri bildirimleri soru işareti simgesiyle görüntüler; yalnızca herkese açık katılımcılar ve geri bildirim ilerlemesinin her ikisi de etkinleştirilmişse geçerlidir"
 
 #: options/preferences.py
 msgid "Show if an adjudicator is a trainee (unaccredited)"
-msgstr "Bir jÃ¼rinin acemi olup olmadÄ±ÄŸÄ±nÄ± gÃ¶ster (akredite edilmemiÅŸ)"
+msgstr "Bir jürinin acemi olup olmadığını göster (akredite edilmemiş)"
 
 #: options/preferences.py
 msgid "Show unaccredited"
-msgstr "Akredite edilmemiÅŸ gÃ¶ster"
+msgstr "Akredite edilmemiş göster"
 
 #: options/preferences.py
 msgid "Any explanatory text needed to introduce the feedback form"
-msgstr "Geri bildirim formunu tanÄ±tmak iÃ§in gereken aÃ§Ä±klayÄ±cÄ± metinler"
+msgstr "Geri bildirim formunu tanıtmak için gereken açıklayıcı metinler"
 
 #: options/preferences.py
 msgid "Feedback introduction/explanation"
-msgstr "Geri bildirim tanÄ±tÄ±mÄ±/aÃ§Ä±klamasÄ±"
+msgstr "Geri bildirim tanıtımı/açıklaması"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Debate Rules"
-msgstr "MaÃ§ KurallarÄ±"
+msgstr "Maç Kuralları"
 
 #: options/preferences.py
 msgid "How many teams are in each debate (normally 2 but 4 for BP)"
@@ -636,83 +636,83 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Whether panels submit a ballot each or a single ballot for a debate during the preliminary rounds. Note: BP must use one per debate."
-msgstr "Panellerin Ã¶n turlarda bir tartÄ±ÅŸma iÃ§in her biri veya toplu ballot sunup sunmadÄ±ÄŸÄ±. Not: Ä°P maÃ§ baÅŸÄ±na bir tane kullanmalÄ±dÄ±r."
+msgstr "Panellerin ön turlarda bir tartışma için her biri veya toplu ballot sunup sunmadığı. Not: İP maç başına bir tane kullanmalıdır."
 
 #: options/preferences.py
 msgid "Ballots per debate, preliminary rounds"
-msgstr "MaÃ§ baÅŸÄ±na ballotlar, Ã¶n turlar"
+msgstr "Maç başına ballotlar, ön turlar"
 
 #: options/preferences.py
 msgid "One ballot per voting adjudicator"
-msgstr "Oylayan jÃ¼ri baÅŸÄ±na bir ballot"
+msgstr "Oylayan jüri başına bir ballot"
 
 #: options/preferences.py
 msgid "Consensus ballot (one ballot per debate)"
-msgstr "KonsensÃ¼s oylamasÄ± (maÃ§ baÅŸÄ±na bir ballot)"
+msgstr "Konsensüs oylaması (maç başına bir ballot)"
 
 #: options/preferences.py
 msgid "Whether panels submit a ballot each or a single ballot for a debate during the elimination rounds. Note: BP must use one per debate."
-msgstr "Panellerin Ã¶n turlarda bir tartÄ±ÅŸma iÃ§in her biri veya toplu ballot sunup sunmadÄ±ÄŸÄ±. Not: Ä°P maÃ§ baÅŸÄ±na bir tane kullanmalÄ±dÄ±r."
+msgstr "Panellerin ön turlarda bir tartışma için her biri veya toplu ballot sunup sunmadığı. Not: İP maç başına bir tane kullanmalıdır."
 
 #: options/preferences.py
 msgid "Ballots per debate, elimination rounds"
-msgstr "TartÄ±ÅŸma baÅŸÄ±na ballot, eleme turlarÄ±"
+msgstr "Tartışma başına ballot, eleme turları"
 
 #: options/preferences.py
 msgid "Whether adjudicator(s) must select the winning team in their ballot, and how it should be treated. Note: Not supported in BP."
-msgstr "JÃ¼ri(ler)in ballotda kazanan takÄ±mÄ± seÃ§mesi gerekip gerekmediÄŸi ve nasÄ±l ele alÄ±nmasÄ± gerektiÄŸi. Not: Ä°P'de desteklenmez."
+msgstr "Jüri(ler)in ballotda kazanan takımı seçmesi gerekip gerekmediği ve nasıl ele alınması gerektiği. Not: İP'de desteklenmez."
 
 #: options/preferences.py
 msgid "Winner Declaration in ballot(s)"
-msgstr "Ballotlarda Kazanan BeyanÄ±"
+msgstr "Ballotlarda Kazanan Beyanı"
 
 #: options/preferences.py
 msgid "Do not require separate winner selection"
-msgstr "AyrÄ± bir kazanan seÃ§imi gerektirme"
+msgstr "Ayrı bir kazanan seçimi gerektirme"
 
 #: options/preferences.py
 msgid "Require separate winner selection as a check on correct scores"
-msgstr "DoÄŸru puanlarÄ± kontrol etmek iÃ§in ayrÄ± bir kazanan seÃ§imi zorunlu kÄ±l"
+msgstr "Doğru puanları kontrol etmek için ayrı bir kazanan seçimi zorunlu kıl"
 
 #: options/preferences.py
 msgid "Require winner selection to break tied-point debates"
-msgstr "BaÄŸlantÄ±lÄ± nokta tartÄ±ÅŸmalarÄ±nÄ± kÄ±rmak iÃ§in kazanan seÃ§imini zorunlu kÄ±l"
+msgstr "Bağlantılı nokta tartışmalarını kırmak için kazanan seçimini zorunlu kıl"
 
 #: options/preferences.py
 msgid "Require winner selection, overriding scores"
-msgstr "Kazanan seÃ§imini zorunlu, puanlarÄ± geÃ§ersiz kÄ±l"
+msgstr "Kazanan seçimini zorunlu, puanları geçersiz kıl"
 
 #: options/preferences.py
 msgid "When ballots should ask for speaker scores."
-msgstr "Ballotlar ne zaman konuÅŸmacÄ± puanÄ± istemeli."
+msgstr "Ballotlar ne zaman konuşmacı puanı istemeli."
 
 #: options/preferences.py
 msgid "Require speaker scores"
-msgstr "KonuÅŸmacÄ± puanlarÄ± gerektir"
+msgstr "Konuşmacı puanları gerektir"
 
 #: options/preferences.py
 msgid "Always require speaker scores"
-msgstr "Her zaman konuÅŸmacÄ± puanlarÄ± gerektirir"
+msgstr "Her zaman konuşmacı puanları gerektirir"
 
 #: options/preferences.py
 msgid "Only require speaker scores in preliminary rounds"
-msgstr "Sadece Ã¶n turlarda konuÅŸmacÄ± puanlarÄ± gerektirir"
+msgstr "Sadece ön turlarda konuşmacı puanları gerektirir"
 
 #: options/preferences.py
 msgid "Never require speaker scores"
-msgstr "Asla konuÅŸmacÄ± puanlarÄ± gerektirme"
+msgstr "Asla konuşmacı puanları gerektirme"
 
 #: options/preferences.py
 msgid "How many substantive speakers on a team"
-msgstr "Bir takÄ±mda kaÃ§ ana konuÅŸmacÄ± var"
+msgstr "Bir takımda kaç ana konuşmacı var"
 
 #: options/preferences.py
 msgid "Substantive speakers"
-msgstr "Ana konuÅŸmacÄ±lar"
+msgstr "Ana konuşmacılar"
 
 #: options/preferences.py
 msgid "What to call the teams"
-msgstr "TakÄ±mlarÄ±n adlarÄ±"
+msgstr "Takımların adları"
 
 #: options/preferences.py
 msgid "Side names"
@@ -720,19 +720,19 @@ msgstr "Yan adlar"
 
 #: options/preferences.py
 msgid "Whether this style features scored reply speeches"
-msgstr "Bu stilin puanlanmÄ±ÅŸ Ã¶zetlere sahip olup olmadÄ±ÄŸÄ±"
+msgstr "Bu stilin puanlanmış özetlere sahip olup olmadığı"
 
 #: options/preferences.py
 msgid "Reply scores"
-msgstr "Ã–zet puanlarÄ±"
+msgstr "Özet puanları"
 
 #: options/preferences.py
 msgid "Whether to limit reply speeches to speakers who gave a substantive speech in the debate"
-msgstr "Ã–zetlerin tartÄ±ÅŸmada ana konuÅŸma yapan konuÅŸmacÄ±larla sÄ±nÄ±rlandÄ±rÄ±lÄ±p sÄ±nÄ±rlandÄ±rÄ±lmayacaÄŸÄ±"
+msgstr "Özetlerin tartışmada ana konuşma yapan konuşmacılarla sınırlandırılıp sınırlandırılmayacağı"
 
 #: options/preferences.py
 msgid "Require reply speaker to have given a substantive speech"
-msgstr "Ã–zet konuÅŸmacÄ±nÄ±n ana konuÅŸma yapmasÄ±nÄ± zorunlu kÄ±l"
+msgstr "Özet konuşmacının ana konuşma yapmasını zorunlu kıl"
 
 #: options/preferences.py
 msgid "Whether and how to use speech ranks within a debate"
@@ -760,251 +760,251 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Standings"
-msgstr "SÄ±ralamalar"
+msgstr "Sıralamalar"
 
 #: options/preferences.py
 msgid "The number of substantive speeches a speaker can miss and still be on the speaker tab (-1 means no limit)"
-msgstr "Bir konuÅŸmacÄ±nÄ±n kaÃ§Ä±rabileceÄŸi ve hala konuÅŸmacÄ± tabÄ±nda olabileceÄŸi ana konuÅŸma sayÄ±sÄ± (-1, sÄ±nÄ±r olmadÄ±ÄŸÄ± anlamÄ±na gelir)"
+msgstr "Bir konuşmacının kaçırabileceği ve hala konuşmacı tabında olabileceği ana konuşma sayısı (-1, sınır olmadığı anlamına gelir)"
 
 #: options/preferences.py
 msgid "Speeches missable for standings eligibility"
-msgstr "SÄ±ralama iÃ§in kaÃ§Ä±rÄ±labilecek maksimum konuÅŸma"
+msgstr "Sıralama için kaçırılabilecek maksimum konuşma"
 
 #: options/preferences.py
 msgid "The number of reply speeches a speaker can miss and still be on the replies tab (-1 means no limit)"
-msgstr "Bir konuÅŸmacÄ±nÄ±n kaÃ§Ä±rabileceÄŸi ve hala konuÅŸmacÄ± tabÄ±nda olabileceÄŸi Ã¶zet sayÄ±sÄ± (-1, sÄ±nÄ±r olmadÄ±ÄŸÄ± anlamÄ±na gelir)"
+msgstr "Bir konuşmacının kaçırabileceği ve hala konuşmacı tabında olabileceği özet sayısı (-1, sınır olmadığı anlamına gelir)"
 
 #: options/preferences.py
 msgid "Replies missable for standings eligibility"
-msgstr "SÄ±ralama iÃ§in kaÃ§Ä±rÄ±labilecek maksimum Ã¶zet"
+msgstr "Sıralama için kaçırılabilecek maksimum özet"
 
 #: options/preferences.py
 msgid "Metrics to use to rank teams (see documentation for further details)"
-msgstr "TakÄ±mlarÄ± sÄ±ralamak iÃ§in kullanÄ±lacak metrikler (daha fazla ayrÄ±ntÄ± iÃ§in belgelere bakÄ±n)"
+msgstr "Takımları sıralamak için kullanılacak metrikler (daha fazla ayrıntı için belgelere bakın)"
 
 #: options/preferences.py
 msgid "Team standings precedence"
-msgstr "TakÄ±m sÄ±ralamasÄ± Ã¶nceliÄŸi"
+msgstr "Takım sıralaması önceliği"
 
 #: options/preferences.py
 msgid "Metrics to calculate, but not used to rank teams"
-msgstr "Hesaplanacak ancak takÄ±mlarÄ± sÄ±ralamak iÃ§in kullanÄ±lmayacak metrikler"
+msgstr "Hesaplanacak ancak takımları sıralamak için kullanılmayacak metrikler"
 
 #: options/preferences.py
 msgid "Team standings extra metrics"
-msgstr "TakÄ±m sÄ±ralamasÄ± ekstra metrikler"
+msgstr "Takım sıralaması ekstra metrikler"
 
 #: options/preferences.py
 msgid "Metrics to use to rank speakers (see documentation for further details)"
-msgstr "KonuÅŸmacÄ±larÄ± sÄ±ralamak iÃ§in kullanÄ±lacak metrikler (daha fazla ayrÄ±ntÄ± iÃ§in belgelere bakÄ±n)"
+msgstr "Konuşmacıları sıralamak için kullanılacak metrikler (daha fazla ayrıntı için belgelere bakın)"
 
 #: options/preferences.py
 msgid "Speaker standings precedence"
-msgstr "KonuÅŸmacÄ± puan durumu Ã¶nceliÄŸi"
+msgstr "Konuşmacı puan durumu önceliği"
 
 #: options/preferences.py
 msgid "Metrics to calculate, but not used to rank speakers"
-msgstr "Hesaplanacak ancak konuÅŸmacÄ±larÄ± sÄ±ralamak iÃ§in kullanÄ±lmayacak metrikler"
+msgstr "Hesaplanacak ancak konuşmacıları sıralamak için kullanılmayacak metrikler"
 
 #: options/preferences.py
 msgid "Speaker standings extra metrics"
-msgstr "KonuÅŸmacÄ± sÄ±ralamasÄ± ekstra metrikler"
+msgstr "Konuşmacı sıralaması ekstra metrikler"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Tab Release"
-msgstr "Tab YayÄ±nlama"
+msgstr "Tab Yayınlama"
 
 #: options/preferences.py
 msgid "Enables public display of the team tab. Intended for use after the tournament."
-msgstr "TakÄ±m tabÄ±nÄ±n herkese aÃ§Ä±k gÃ¶rÃ¼ntÃ¼lenmesini saÄŸlar. Turnuvadan sonra kullanÄ±lmak Ã¼zere tasarlanmÄ±ÅŸtÄ±r."
+msgstr "Takım tabının herkese açık görüntülenmesini sağlar. Turnuvadan sonra kullanılmak üzere tasarlanmıştır."
 
 #: options/preferences.py
 msgid "Release team tab to public"
-msgstr "TakÄ±m tabÄ±nÄ± herkese aÃ§Ä±k olarak yayÄ±nla"
+msgstr "Takım tabını herkese açık olarak yayınla"
 
 #: options/preferences.py
 msgid "Only show scores for the top X teams in the public tab (set to 0 to show all teams)."
-msgstr "Herkese aÃ§Ä±k tabda yalnÄ±zca en iyi X takÄ±mÄ±n puanÄ±nÄ± gÃ¶ster (tÃ¼m takÄ±mlarÄ± gÃ¶stermek iÃ§in 0 olarak ayarlayÄ±n)."
+msgstr "Herkese açık tabda yalnızca en iyi X takımın puanını göster (tüm takımları göstermek için 0 olarak ayarlayın)."
 
 #: options/preferences.py
 msgid "Top teams cutoff"
-msgstr "En iyi x takÄ±m gÃ¶ster"
+msgstr "En iyi x takım göster"
 
 #: options/preferences.py
 msgid "Enables public display of the speaker tab. Intended for use after the tournament."
-msgstr "KonuÅŸmacÄ± tabÄ±nÄ±n herkese aÃ§Ä±k olarak gÃ¶rÃ¼ntÃ¼lenmesini saÄŸlar. Turnuvadan sonra kullanÄ±lmak Ã¼zere tasarlanmÄ±ÅŸtÄ±r."
+msgstr "Konuşmacı tabının herkese açık olarak görüntülenmesini sağlar. Turnuvadan sonra kullanılmak üzere tasarlanmıştır."
 
 #: options/preferences.py
 msgid "Release speaker tab to public"
-msgstr "KonuÅŸmacÄ± tabÄ±nÄ± herkese aÃ§Ä±k olarak yayÄ±nla"
+msgstr "Konuşmacı tabını herkese açık olarak yayınla"
 
 #: options/preferences.py
 msgid "Only show scores for the top X speakers in the public tab (set to 0 to show all speakers)."
-msgstr "Ortak tabda yalnÄ±zca en iyi X konuÅŸmacÄ±nÄ±n puanlarÄ±nÄ± gÃ¶ster (tÃ¼m konuÅŸmacÄ±larÄ± gÃ¶stermek iÃ§in 0 olarak ayarlayÄ±n)."
+msgstr "Ortak tabda yalnızca en iyi X konuşmacının puanlarını göster (tüm konuşmacıları göstermek için 0 olarak ayarlayın)."
 
 #: options/preferences.py
 msgid "Top speakers cutoff"
-msgstr "En iyi x konuÅŸmacÄ± gÃ¶ster"
+msgstr "En iyi x konuşmacı göster"
 
 #: options/preferences.py
 msgid "Enables public display of the replies tab. Intended for use after the tournament."
-msgstr "Ã–zet tabÄ±nÄ±n herkese aÃ§Ä±k olarak gÃ¶rÃ¼ntÃ¼lenmesini saÄŸlar. Turnuvadan sonra kullanÄ±lmak Ã¼zere tasarlanmÄ±ÅŸtÄ±r."
+msgstr "Özet tabının herkese açık olarak görüntülenmesini sağlar. Turnuvadan sonra kullanılmak üzere tasarlanmıştır."
 
 #: options/preferences.py
 msgid "Release replies tab to public"
-msgstr "Ã–zetleri herkese aÃ§Ä±k olarak yayÄ±nla"
+msgstr "Özetleri herkese açık olarak yayınla"
 
 #: options/preferences.py
 msgid "Only show scores for the top X repliers in the public tab (set to 0 to show all repliers)."
-msgstr "Genel sekmede yalnÄ±zca en iyi X Ã¶zet konuÅŸmacÄ±nÄ±n puanÄ±nÄ± gÃ¶ster (hepsinÅŸ gÃ¶stermek iÃ§in 0 olarak ayarlayÄ±n)."
+msgstr "Genel sekmede yalnızca en iyi X özet konuşmacının puanını göster (hepsinş göstermek için 0 olarak ayarlayın)."
 
 #: options/preferences.py
 msgid "Top replies cutoff"
-msgstr "En iyi x Ã¶zet konuÅŸmacÄ± gÃ¶ster"
+msgstr "En iyi x özet konuşmacı göster"
 
 #: options/preferences.py
-msgid "Enables public display of all motions and win/loss/selection information. This includes all motions â€” whether they have been marked as released or not. Intended for use after the tournament."
-msgstr "TÃ¼m Ã¶nergelerin ve galibiyet/maÄŸlubiyet/seÃ§im bilgilerinin herkese aÃ§Ä±k olarak gÃ¶rÃ¼ntÃ¼lenmesini saÄŸlar. Bu yayÄ±nlanmayanlar dahil tÃ¼m Ã¶nergeleri iÃ§erir. Turnuvadan sonra kullanÄ±lmak Ã¼zere tasarlanmÄ±ÅŸtÄ±r."
+msgid "Enables public display of all motions and win/loss/selection information. This includes all motions — whether they have been marked as released or not. Intended for use after the tournament."
+msgstr "Tüm önergelerin ve galibiyet/mağlubiyet/seçim bilgilerinin herkese açık olarak görüntülenmesini sağlar. Bu yayınlanmayanlar dahil tüm önergeleri içerir. Turnuvadan sonra kullanılmak üzere tasarlanmıştır."
 
 #: options/preferences.py
 msgid "Release motions tab to public"
-msgstr "Ã–nergeleri herkese aÃ§Ä±k olarak yayÄ±nla"
+msgstr "Önergeleri herkese açık olarak yayınla"
 
 #: options/preferences.py
 msgid "Enables public display of the feedback scores of all adjudicators"
-msgstr "TÃ¼m jÃ¼rilerin geri bildirim puanlarÄ±nÄ±n herkese aÃ§Ä±k olarak gÃ¶rÃ¼ntÃ¼lenmesini saÄŸlar"
+msgstr "Tüm jürilerin geri bildirim puanlarının herkese açık olarak görüntülenmesini sağlar"
 
 #: options/preferences.py
 msgid "Release adjudicator tab to public"
-msgstr "JÃ¼ri tabÄ±nÄ± herkese aÃ§Ä±k olarak yayÄ±nla"
+msgstr "Jüri tabını herkese açık olarak yayınla"
 
 #: options/preferences.py
 msgid "What (if released) the adjudicator tab shows"
-msgstr "JÃ¼ri tabÄ±nÄ±n (serbest bÄ±rakÄ±lÄ±rsa) ne gÃ¶sterdiÄŸi"
+msgstr "Jüri tabının (serbest bırakılırsa) ne gösterdiği"
 
 #: options/preferences.py
 msgid "Adjudicator tab displays"
-msgstr "JÃ¼ri tabÄ±nÄ±n gÃ¶sterdikleri"
+msgstr "Jüri tabının gösterdikleri"
 
 #: options/preferences.py
 msgid "Only shows base score"
-msgstr "Sadece temel puanÄ± gÃ¶sterir"
+msgstr "Sadece temel puanı gösterir"
 
 #: options/preferences.py
 msgid "Only shows final score"
-msgstr "Sadece final puanÄ±nÄ± gÃ¶sterir"
+msgstr "Sadece final puanını gösterir"
 
 #: options/preferences.py
 msgid "Shows base, final, and per-round scores"
-msgstr "Taban, final ve tur baÅŸÄ±na puanlarÄ± gÃ¶sterir"
+msgstr "Taban, final ve tur başına puanları gösterir"
 
 #: options/preferences.py
 msgid "Enables public display of every adjudicator's ballot. Intended for use after the tournament."
-msgstr "Her jÃ¼rinin ballotunun herkese aÃ§Ä±k olarak gÃ¶sterilmesini saÄŸlar. Turnuvadan sonra kullanÄ±lmak Ã¼zere tasarlanmÄ±ÅŸtÄ±r."
+msgstr "Her jürinin ballotunun herkese açık olarak gösterilmesini sağlar. Turnuvadan sonra kullanılmak üzere tasarlanmıştır."
 
 #: options/preferences.py
 msgid "Release ballots to public"
-msgstr "BallotlarÄ± herkese yayÄ±nla"
+msgstr "Ballotları herkese yayınla"
 
 #: options/preferences.py
 msgid "This releases all the results for all rounds (including silent and break rounds). Do so only after the tournament is finished!"
-msgstr "Bu, tÃ¼m turlar iÃ§in tÃ¼m sonuÃ§larÄ± yayÄ±nlar (sessiz ve break turlarÄ± dahil). Bunu sadece turnuva bittikten sonra yapÄ±n!"
+msgstr "Bu, tüm turlar için tüm sonuçları yayınlar (sessiz ve break turları dahil). Bunu sadece turnuva bittikten sonra yapın!"
 
 #: options/preferences.py
 msgid "Release all round results to public"
-msgstr "TÃ¼m tur sonuÃ§larÄ± herkese aÃ§Ä±k yayÄ±nla"
+msgstr "Tüm tur sonuçları herkese açık yayınla"
 
 #: options/preferences.py
 msgid "Enables display of confirmed ballots through private URLs. Intended for use after the tournament."
-msgstr "OnaylanmÄ±ÅŸ ballotlarÄ±n Ã¶zel URL'ler aracÄ±lÄ±ÄŸÄ±yla gÃ¶rÃ¼ntÃ¼lenmesini saÄŸlar. Turnuvadan sonra kullanÄ±lmak Ã¼zere tasarlanmÄ±ÅŸtÄ±r."
+msgstr "Onaylanmış ballotların özel URL'ler aracılığıyla görüntülenmesini sağlar. Turnuvadan sonra kullanılmak üzere tasarlanmıştır."
 
 #: options/preferences.py
 msgid "Release ballots through private URLs"
-msgstr "Ã–zel URL'ler aracÄ±lÄ±ÄŸÄ±yla ballotlarÄ± yayÄ±nla"
+msgstr "Özel URL'ler aracılığıyla ballotları yayınla"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Data Entry"
-msgstr "Veri GiriÅŸi"
+msgstr "Veri Girişi"
 
 #: options/preferences.py
 msgid "Whether adjudicators can submit ballots themselves, and how they do so"
-msgstr "JÃ¼rilerin ballotlarÄ±nÄ± kendilerinin gÃ¶nderip gÃ¶nderemeyecekleri ve nasÄ±l yapabilecekleri"
+msgstr "Jürilerin ballotlarını kendilerinin gönderip gönderemeyecekleri ve nasıl yapabilecekleri"
 
 #: options/preferences.py
 msgid "Ballot submissions from adjudicators"
-msgstr "JÃ¼ri ballot teslimi"
+msgstr "Jüri ballot teslimi"
 
 #: options/preferences.py options/presets.py
 msgid "Disabled (tab staff only)"
-msgstr "KapalÄ± (yalnÄ±zca tab personeli kullanabilir)"
+msgstr "Kapalı (yalnızca tab personeli kullanabilir)"
 
 #: options/preferences.py options/presets.py
 msgid "Use private URLs"
-msgstr "Ã–zel URL'ler kullan"
+msgstr "Özel URL'ler kullan"
 
 #: options/preferences.py options/presets.py
 msgid "Use publicly accessible form"
-msgstr "Genel eriÅŸime aÃ§Ä±k formu kullan"
+msgstr "Genel erişime açık formu kullan"
 
 #: options/preferences.py
 msgid "Whether participants can submit feedback themselves, and how they do so"
-msgstr "KatÄ±lÄ±mcÄ±larÄ±n kendilerinin geri bildirim gÃ¶nderip gÃ¶nderemeyecekleri ve nasÄ±l yapabilecekleri"
+msgstr "Katılımcıların kendilerinin geri bildirim gönderip gönderemeyecekleri ve nasıl yapabilecekleri"
 
 #: options/preferences.py
 msgid "Feedback submissions from participants"
-msgstr "KatÄ±lÄ±mcÄ± geri bildirim gÃ¶nderimi"
+msgstr "Katılımcı geri bildirim gönderimi"
 
 #: options/preferences.py
 msgid "If checked, users must enter a password when submitting public feedback and ballots"
-msgstr "Ä°ÅŸaretliyse, kullanÄ±cÄ±lar herkese aÃ§Ä±k geri bildirim ve ballot gÃ¶nderirken bir parola girmelidir"
+msgstr "İşaretliyse, kullanıcılar herkese açık geri bildirim ve ballot gönderirken bir parola girmelidir"
 
 #: options/preferences.py
 msgid "Require password for submission"
-msgstr "GÃ¶nderim iÃ§in parola iste"
+msgstr "Gönderim için parola iste"
 
 #: options/preferences.py
 msgid "Value of the password required for public submissions, if passwords are required"
-msgstr "Parolalar gerekliyse, herkese aÃ§Ä±k gÃ¶nderimler iÃ§in gereken parola"
+msgstr "Parolalar gerekliyse, herkese açık gönderimler için gereken parola"
 
 #: options/preferences.py
 msgid "Password for public submission"
-msgstr "Herkese aÃ§Ä±k gÃ¶nderim iÃ§in parola"
+msgstr "Herkese açık gönderim için parola"
 
 #: options/preferences.py
 msgid "Bypasses double checking by setting ballots to be automatically confirmed"
-msgstr "BallotlarÄ± otomatik olarak onaylanacak ÅŸekilde ayarlayarak Ã§ift kontrolÃ¼ atlar"
+msgstr "Ballotları otomatik olarak onaylanacak şekilde ayarlayarak çift kontrolü atlar"
 
 #: options/preferences.py
 msgid "Bypass double checking"
-msgstr "Ã‡ift kontrolÃ¼ atla"
+msgstr "Çift kontrolü atla"
 
 #: options/preferences.py
 msgid "Requires scores of draft ballots to be re-entered as part of the confirmation stage (to create more stringent check). Only applies to BP formats."
-msgstr "Taslak ballotlarÄ±n puanlarÄ±nÄ±n onay aÅŸamasÄ±nÄ±n bir parÃ§asÄ± olarak yeniden girilmesini gerektirir (daha sÄ±kÄ± kontrol oluÅŸturmak iÃ§in). YalnÄ±zca Ä°P biÃ§imleri iÃ§in geÃ§erlidir."
+msgstr "Taslak ballotların puanlarının onay aşamasının bir parçası olarak yeniden girilmesini gerektirir (daha sıkı kontrol oluşturmak için). Yalnızca İP biçimleri için geçerlidir."
 
 #: options/preferences.py
 msgid "Enforce blind confirmations"
-msgstr "KÃ¶r onay uygula"
+msgstr "Kör onay uygula"
 
 #: options/preferences.py
 msgid "Whether assistants can access pages that can reveal matchups and motions ahead of public release (these pages are useful for displaying draws/motions to the public and for printing ballots)."
-msgstr "AsistanlarÄ±n, eÅŸleÅŸmeleri ve hareketleri herkese aÃ§Ä±klanmadan Ã¶nce ortaya Ã§Ä±karabilecek sayfalara eriÅŸip eriÅŸemeyeceÄŸi (bu sayfalar, kura/Ã¶nergeleri yayÄ±nlama ve ballotlarÄ± yazdÄ±rmak iÃ§in kullanÄ±lÄ±r)."
+msgstr "Asistanların, eşleşmeleri ve hareketleri herkese açıklanmadan önce ortaya çıkarabilecek sayfalara erişip erişemeyeceği (bu sayfalar, kura/önergeleri yayınlama ve ballotları yazdırmak için kullanılır)."
 
 #: options/preferences.py
 msgid "Assistant user access"
-msgstr "YardÄ±mcÄ± kullanÄ±cÄ± eriÅŸimi"
+msgstr "Yardımcı kullanıcı erişimi"
 
 #: options/preferences.py
 msgid "All areas (results entry, draw display, and motions)"
-msgstr "TÃ¼m alanlar (sonuÃ§ giriÅŸi, kura ekranÄ± ve Ã¶nergeler)"
+msgstr "Tüm alanlar (sonuç girişi, kura ekranı ve önergeler)"
 
 #: options/preferences.py
 msgid "Just results entry and draw display"
-msgstr "Sadece sonuÃ§ giriÅŸi ve kura ekranÄ±"
+msgstr "Sadece sonuç girişi ve kura ekranı"
 
 #: options/preferences.py
 msgid "Only results entry"
-msgstr "YalnÄ±zca sonuÃ§ giriÅŸi"
+msgstr "Yalnızca sonuç girişi"
 
 #: options/preferences.py
 msgid "No access"
@@ -1012,39 +1012,39 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Whether participants can check themselves in/out through their private URL."
-msgstr "KatÄ±lÄ±mcÄ±larÄ±n Ã¶zel URL'leri Ã¼zerinden kendilerini giriÅŸ Ã§Ä±kÄ±ÅŸ yapÄ±p yapamayacaklarÄ±."
+msgstr "Katılımcıların özel URL'leri üzerinden kendilerini giriş çıkış yapıp yapamayacakları."
 
 #: options/preferences.py
 msgid "Participant self-checkin"
-msgstr "KatÄ±lÄ±mcÄ± kendi kendine giriÅŸ"
+msgstr "Katılımcı kendi kendine giriş"
 
 #: options/preferences.py
 msgid "The amount of time (in hours) before a speaker or adjudicator's check-in event expires"
-msgstr "Bir konuÅŸmacÄ±nÄ±n veya jÃ¼rinin giriÅŸ vaktinin sona ermesinden Ã¶nceki sÃ¼re (saat cinsinden)"
+msgstr "Bir konuşmacının veya jürinin giriş vaktinin sona ermesinden önceki süre (saat cinsinden)"
 
 #: options/preferences.py
 msgid "Check-In Window (People)"
-msgstr "GiriÅŸ aralÄ±ÄŸÄ± (KiÅŸi)"
+msgstr "Giriş aralığı (Kişi)"
 
 #: options/preferences.py
 msgid "The amount of time (in hours) before a room's check-in event expires"
-msgstr "Bir odanÄ±n giriÅŸ vaktinin sona ermesinden Ã¶nceki sÃ¼re (saat cinsinden)"
+msgstr "Bir odanın giriş vaktinin sona ermesinden önceki süre (saat cinsinden)"
 
 #: options/preferences.py
 msgid "Check-In Window (Rooms)"
-msgstr "GiriÅŸ aralÄ±ÄŸÄ± (Oda)"
+msgstr "Giriş aralığı (Oda)"
 
 #: options/preferences.py
 msgid "Whether the printed scoresheets should show the 'circle digits' prompt to help check bad handwriting"
-msgstr "YazdÄ±rÄ±lan sonuÃ§ kaÄŸÄ±tlarÄ±nÄ±n kÃ¶tÃ¼ el yazÄ±sÄ±nÄ± denetlemeye yardÄ±mcÄ± olmak iÃ§in 'basamaklarÄ± iÅŸaretle' istemini gÃ¶sterip gÃ¶stermemesi"
+msgstr "Yazdırılan sonuç kağıtlarının kötü el yazısını denetlemeye yardımcı olmak için 'basamakları işaretle' istemini gösterip göstermemesi"
 
 #: options/preferences.py
 msgid "Ballot Digit Checks"
-msgstr "Ballot basamak kontrolÃ¼"
+msgstr "Ballot basamak kontrolü"
 
 #: options/preferences.py
 msgid "The location to return scoresheets to, printed on pre-printed ballots. Set to 'TBA' to hide."
-msgstr "Ã–nceden basÄ±lmÄ±ÅŸ ballotlara basÄ±lmÄ±ÅŸ sonuÃ§ kaÄŸÄ±tlarÄ±nÄ±n iade edileceÄŸi yer. Gizlemek iÃ§in 'TBA' olarak ayarlayÄ±n."
+msgstr "Önceden basılmış ballotlara basılmış sonuç kağıtlarının iade edileceği yer. Gizlemek için 'TBA' olarak ayarlayın."
 
 #: options/preferences.py
 msgid "Score return location"
@@ -1052,7 +1052,7 @@ msgstr "Puan iade yeri"
 
 #: options/preferences.py
 msgid "The location to return feedback to, printed on pre-printed feedback forms. Set to 'TBA' to hide."
-msgstr "Ã–nceden basÄ±lmÄ±ÅŸ geri bildirim formlarÄ±na yazdÄ±rÄ±lmÄ±ÅŸ, geri bildirimin iade edileceÄŸi yer. Gizlemek iÃ§in 'TBA' olarak ayarlayÄ±n."
+msgstr "Önceden basılmış geri bildirim formlarına yazdırılmış, geri bildirimin iade edileceği yer. Gizlemek için 'TBA' olarak ayarlayın."
 
 #: options/preferences.py
 msgid "Feedback return location"
@@ -1060,23 +1060,23 @@ msgstr "Geri bildirim iade yeri"
 
 #: options/preferences.py
 msgid "Lets debates have their status as postponed, as to not block draw generation."
-msgstr "TartÄ±ÅŸmalarÄ±n, kura Ã¼retimini engellememek iÃ§in ertelenmiÅŸ olarak gÃ¶zÃ¼kmesine izin verir."
+msgstr "Tartışmaların, kura üretimini engellememek için ertelenmiş olarak gözükmesine izin verir."
 
 #: options/preferences.py
 msgid "Enable postponements"
-msgstr "Ertelemeleri etkinleÅŸtir"
+msgstr "Ertelemeleri etkinleştir"
 
 #: options/preferences.py
 msgid "Have each voting adjudicator submit a separate ballot."
-msgstr "Her oylayan jÃ¼rinin ayrÄ± bir ballot sunup sunmadÄ±ÄŸÄ±."
+msgstr "Her oylayan jürinin ayrı bir ballot sunup sunmadığı."
 
 #: options/preferences.py
 msgid "Individual voting ballots"
-msgstr "Bireysel oylama ballotlarÄ±"
+msgstr "Bireysel oylama ballotları"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Public Features"
-msgstr "Herkese AÃ§Ä±k Ã–zellikler"
+msgstr "Herkese Açık Özellikler"
 
 #: options/preferences.py
 msgid "Adds a flag signaling search engines to not include tournament pages in search results.Note that it may get ignored, and the other available settings will provide greater privacy."
@@ -1100,127 +1100,127 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Enables the public page listing all participants in the tournament"
-msgstr "Turnuvadaki tÃ¼m katÄ±lÄ±mcÄ±larÄ± listeleyen herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir"
+msgstr "Turnuvadaki tüm katılımcıları listeleyen herkese açık sayfayı etkinleştirir"
 
 #: options/preferences.py
 msgid "Enable public view of participants list"
-msgstr "KatÄ±lÄ±mcÄ± listesini herkese gÃ¶ster"
+msgstr "Katılımcı listesini herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page listing all institutions in the tournament"
-msgstr "Turnuvadaki tÃ¼m kurumlarÄ± listeleyen herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir"
+msgstr "Turnuvadaki tüm kurumları listeleyen herkese açık sayfayı etkinleştirir"
 
 #: options/preferences.py
 msgid "Enable public view of institutions list"
-msgstr "Kurumlar listesini herkese gÃ¶ster"
+msgstr "Kurumlar listesini herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page listing diversity statistics"
-msgstr "Ã‡eÅŸitlilik istatistiklerini listeleyen herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir"
+msgstr "Çeşitlilik istatistiklerini listeleyen herkese açık sayfayı etkinleştirir"
 
 #: options/preferences.py
 msgid "Enable public view of diversity info"
-msgstr "Ã‡eÅŸitlilik bilgilerini herkese gÃ¶ster"
+msgstr "Çeşitlilik bilgilerini herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page showing checkin statuses for individuals, institutions, and teams. Note that this page can be slow when used at very large tournaments."
-msgstr "Bireyler, kurumlar ve takÄ±mlar iÃ§in iade durumlarÄ±nÄ± gÃ¶steren herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir. Bu sayfanÄ±n Ã§ok bÃ¼yÃ¼k turnuvalarda yavaÅŸ Ã§alÄ±ÅŸabileceÄŸini unutmayÄ±n."
+msgstr "Bireyler, kurumlar ve takımlar için iade durumlarını gösteren herkese açık sayfayı etkinleştirir. Bu sayfanın çok büyük turnuvalarda yavaş çalışabileceğini unutmayın."
 
 #: options/preferences.py
 msgid "Enable public view of the checkin statuses"
-msgstr "Ä°ade durumlarÄ±nÄ± herkese gÃ¶ster"
+msgstr "İade durumlarını herkese göster"
 
 #: options/preferences.py
 msgid "If the participants list is enabled, displays break category eligibility on that page"
-msgstr "KatÄ±lÄ±mcÄ± listesi etkinse, bu sayfada break kategorisi uygunluÄŸu gÃ¶rÃ¼ntÃ¼lenir"
+msgstr "Katılımcı listesi etkinse, bu sayfada break kategorisi uygunluğu görüntülenir"
 
 #: options/preferences.py
 msgid "Show break categories on participants page"
-msgstr "KatÄ±lÄ±mcÄ±lar sayfasÄ±nda breaka kategorilerini gÃ¶ster"
+msgstr "Katılımcılar sayfasında breaka kategorilerini göster"
 
 #: options/preferences.py
 msgid "Enables the public page listing pre-allocated sides"
-msgstr "Ã–nceden ayrÄ±lmÄ±ÅŸ taraflarÄ± listeleyen herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir"
+msgstr "Önceden ayrılmış tarafları listeleyen herkese açık sayfayı etkinleştirir"
 
 #: options/preferences.py
 msgid "Show pre-allocated sides to public"
-msgstr "Ã–nceden ayrÄ±lmÄ±ÅŸ taraflarÄ± herkese gÃ¶ster"
+msgstr "Önceden ayrılmış tarafları herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page showing released draws"
-msgstr "YayÄ±nlanan kuralarÄ± gÃ¶steren herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir"
+msgstr "Yayınlanan kuraları gösteren herkese açık sayfayı etkinleştirir"
 
 #: options/preferences.py
 msgid "Enable public view of draw"
-msgstr "KurayÄ± herkese gÃ¶ster"
+msgstr "Kurayı herkese göster"
 
 #: options/preferences.py
 msgid "Disabled"
-msgstr "KapalÄ±"
+msgstr "Kapalı"
 
 #: options/preferences.py
 msgid "Show a single page for the current round's draw"
-msgstr "GeÃ§erli turun kurasÄ± iÃ§in tek bir sayfa gÃ¶ster"
+msgstr "Geçerli turun kurası için tek bir sayfa göster"
 
 #: options/preferences.py
 msgid "Show individual pages for all released draws"
-msgstr "YayÄ±nlanan tÃ¼m kuralar iÃ§in tek tek sayfa gÃ¶ster"
+msgstr "Yayınlanan tüm kuralar için tek tek sayfa göster"
 
 #: options/preferences.py
 msgid "Enables the public page showing results of non-silent rounds"
-msgstr "Sessiz olmayan turlarÄ±n sonuÃ§larÄ±nÄ± gÃ¶steren herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir"
+msgstr "Sessiz olmayan turların sonuçlarını gösteren herkese açık sayfayı etkinleştirir"
 
 #: options/preferences.py
 msgid "Enable public view of results"
-msgstr "SonuÃ§larÄ± herkese gÃ¶ster"
+msgstr "Sonuçları herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page showing motions that have been explicitly released to the public"
-msgstr "Herkese yayÄ±nlanan Ã¶nergeleri gÃ¶steren genel sayfayÄ± etkinleÅŸtirir"
+msgstr "Herkese yayınlanan önergeleri gösteren genel sayfayı etkinleştirir"
 
 #: options/preferences.py
 msgid "Enable public view of motions"
-msgstr "Ã–nergeleri herkese gÃ¶ster"
+msgstr "Önergeleri herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page showing team standings, showing wins only (not speaker scores or ranking)"
-msgstr "TakÄ±m sÄ±ralamalarÄ±nÄ± gÃ¶steren (yalnÄ±zca galibiyetleri gÃ¶sterir) herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir (konuÅŸmacÄ± puanlarÄ±nÄ± veya sÄ±ralamasÄ±nÄ± deÄŸil)"
+msgstr "Takım sıralamalarını gösteren (yalnızca galibiyetleri gösterir) herkese açık sayfayı etkinleştirir (konuşmacı puanlarını veya sıralamasını değil)"
 
 #: options/preferences.py
 msgid "Enable public view of team standings"
-msgstr "TakÄ±m sÄ±ralamalarÄ±nÄ± herkese gÃ¶ster"
+msgstr "Takım sıralamalarını herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page for each team and adjudicator showing their records"
-msgstr "Her takÄ±m ve jÃ¼rinin kayÄ±tlarÄ±nÄ± gÃ¶steren herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir"
+msgstr "Her takım ve jürinin kayıtlarını gösteren herkese açık sayfayı etkinleştirir"
 
 #: options/preferences.py
 msgid "Enable public record pages"
-msgstr "Genel kayÄ±t sayfalarÄ± herkese gÃ¶ster"
+msgstr "Genel kayıt sayfaları herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page showing the team breaks. Intended for use after the break announcement."
-msgstr "TakÄ±m breaklerini gÃ¶steren herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir. Break duyurusundan sonra kullanÄ±lmak Ã¼zere tasarlanmÄ±ÅŸtÄ±r."
+msgstr "Takım breaklerini gösteren herkese açık sayfayı etkinleştirir. Break duyurusundan sonra kullanılmak üzere tasarlanmıştır."
 
 #: options/preferences.py
 msgid "Release team breaks to public"
-msgstr "TakÄ±m breaklerini herkese gÃ¶ster"
+msgstr "Takım breaklerini herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page showing breaking adjudicators. Intended for use after the break announcement."
-msgstr "Break olan jÃ¼rileri gÃ¶steren herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir. Break duyurusundan sonra kullanÄ±lmak Ã¼zere tasarlanmÄ±ÅŸtÄ±r."
+msgstr "Break olan jürileri gösteren herkese açık sayfayı etkinleştirir. Break duyurusundan sonra kullanılmak üzere tasarlanmıştır."
 
 #: options/preferences.py
 msgid "Release adjudicators break to public"
-msgstr "JÃ¼ri breakini herkese gÃ¶ster"
+msgstr "Jüri breakini herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page detailing who has unsubmitted feedback"
-msgstr "Kimin gÃ¶nderilmemiÅŸ geri bildirimi olduÄŸunu gÃ¶steren herkese aÃ§Ä±k sayfayÄ± etkinleÅŸtirir"
+msgstr "Kimin gönderilmemiş geri bildirimi olduğunu gösteren herkese açık sayfayı etkinleştirir"
 
 #: options/preferences.py
 msgid "Enable public view of unsubmitted feedback"
-msgstr "GÃ¶nderilmemiÅŸ geri bildirimleri herkese gÃ¶ster"
+msgstr "Gönderilmemiş geri bildirimleri herkese göster"
 
 #: options/preferences.py
 msgid "Enables the public page showing the schedule"
@@ -1232,7 +1232,7 @@ msgstr ""
 
 #: options/preferences.py
 msgid "List of tournament staff, to be displayed on the tournament home page. Leave this blank or with the default text if you want to not show this information."
-msgstr "Turnuva ana sayfasÄ±nda gÃ¶rÃ¼ntÃ¼lenecek turnuva personelinin listesi. Bu bilgileri gÃ¶stermemek istiyorsanÄ±z bunu boÅŸ veya varsayÄ±lan metinle bÄ±rakÄ±n."
+msgstr "Turnuva ana sayfasında görüntülenecek turnuva personelinin listesi. Bu bilgileri göstermemek istiyorsanız bunu boş veya varsayılan metinle bırakın."
 
 #: options/preferences.py
 msgid "Tournament staff"
@@ -1240,91 +1240,91 @@ msgstr "Turnuva personeli"
 
 #: options/preferences.py
 msgid "Message to be displayed on the tournament home page"
-msgstr "Turnuva ana sayfasÄ±nda gÃ¶rÃ¼ntÃ¼lenecek mesaj"
+msgstr "Turnuva ana sayfasında görüntülenecek mesaj"
 
 #: options/preferences.py
 msgid "Welcome message"
-msgstr "HoÅŸ geldiniz mesajÄ±"
+msgstr "Hoş geldiniz mesajı"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "UI Options"
-msgstr "KullanÄ±cÄ± ArayÃ¼zÃ¼ SeÃ§enekleri"
+msgstr "Kullanıcı Arayüzü Seçenekleri"
 
 #: options/preferences.py
 msgid "If showing results to public, show splitting adjudicators in them"
-msgstr "SonuÃ§larÄ± herkese gÃ¶steriyorsanÄ±z, iÃ§lerinde splitleyen jÃ¼rileri gÃ¶sterir"
+msgstr "Sonuçları herkese gösteriyorsanız, içlerinde splitleyen jürileri gösterir"
 
 #: options/preferences.py
 msgid "Show splitting adjudicators"
-msgstr "Splitleyen jÃ¼rileri gÃ¶ster"
+msgstr "Splitleyen jürileri göster"
 
 #: options/preferences.py
 msgid "Whether and how to use code names for teams"
-msgstr "TakÄ±mlarÄ±n kod adlarÄ±nÄ±n nasÄ±l kullanÄ±lacaÄŸÄ±"
+msgstr "Takımların kod adlarının nasıl kullanılacağı"
 
 #: options/preferences.py
 msgid "Team code names"
-msgstr "TakÄ±m kod adlarÄ±"
+msgstr "Takım kod adları"
 
 #: options/preferences.py
 msgid "Do not use code names"
-msgstr "Kod adlarÄ±nÄ± kullanma"
+msgstr "Kod adlarını kullanma"
 
 #: options/preferences.py
 msgid "Use real names everywhere, and show code names in tooltips"
-msgstr "Her yerde gerÃ§ek adlarÄ± kullan ve araÃ§ ipuÃ§larÄ±nda kod adlarÄ±nÄ± gÃ¶ster"
+msgstr "Her yerde gerçek adları kullan ve araç ipuçlarında kod adlarını göster"
 
 #: options/preferences.py
 msgid "Use code names for public; real names with code names in tooltips for admins"
-msgstr "Herkese aÃ§Ä±k olarak kod adlarÄ± kullan; yÃ¶neticiler iÃ§in araÃ§ ipuÃ§larÄ±nda kod adlarÄ± ve gerÃ§ek adlarÄ± kullan"
+msgstr "Herkese açık olarak kod adları kullan; yöneticiler için araç ipuçlarında kod adları ve gerçek adları kullan"
 
 #: options/preferences.py
 msgid "Use code names for public; code names with real names in tooltips for admins"
-msgstr "Herkese aÃ§Ä±k olarak kod adlarÄ± kullan; YÃ¶neticiler iÃ§in araÃ§ ipuÃ§larÄ±nda gerÃ§ek adlarÄ± ve kod adlarÄ±nÄ± kullan"
+msgstr "Herkese açık olarak kod adları kullan; Yöneticiler için araç ipuçlarında gerçek adları ve kod adlarını kullan"
 
 #: options/preferences.py
 msgid "Use code names everywhere; do not use tooltips (real names show in some admin views)"
-msgstr "Kod adlarÄ±nÄ± her yerde kullan; araÃ§ ipuÃ§larÄ± kullanma (gerÃ§ek adlar bazÄ± yÃ¶netici gÃ¶rÃ¼nÃ¼mlerinde gÃ¶sterilir)"
+msgstr "Kod adlarını her yerde kullan; araç ipuçları kullanma (gerçek adlar bazı yönetici görünümlerinde gösterilir)"
 
 #: options/preferences.py
 msgid "Whether and how to use code names for participants"
-msgstr "KatÄ±lÄ±mcÄ±larÄ±n kod adlarÄ±nÄ±n nasÄ±l kullanÄ±lacaÄŸÄ±"
+msgstr "Katılımcıların kod adlarının nasıl kullanılacağı"
 
 #: options/preferences.py
 msgid "Participant code names"
-msgstr "KatÄ±lÄ±mcÄ± kod adlarÄ±"
+msgstr "Katılımcı kod adları"
 
 #: options/preferences.py
 msgid "Display team emoji in the public and admin interfaces"
-msgstr "TakÄ±m emojilerini herkese aÃ§Ä±k ve yÃ¶netici arayÃ¼zlerinde gÃ¶rÃ¼ntÃ¼le"
+msgstr "Takım emojilerini herkese açık ve yönetici arayüzlerinde görüntüle"
 
 #: options/preferences.py
 msgid "Show emoji"
-msgstr "Emoji gÃ¶ster"
+msgstr "Emoji göster"
 
 #: options/preferences.py
 msgid "In tables listing teams, adds a column showing their institutions"
-msgstr "TakÄ±mlarÄ± listeleyen tablolarda, kurumlarÄ±nÄ± gÃ¶steren bir sÃ¼tun ekler"
+msgstr "Takımları listeleyen tablolarda, kurumlarını gösteren bir sütun ekler"
 
 #: options/preferences.py
 msgid "Show team institutions"
-msgstr "TakÄ±m kurumlarÄ±nÄ± gÃ¶ster"
+msgstr "Takım kurumlarını göster"
 
 #: options/preferences.py
 msgid "Hide the institutions of adjudicators on public pages and on printed ballots"
-msgstr "JÃ¼rilerin kurumlarÄ±nÄ± herkese aÃ§Ä±k sayfalarda ve basÄ±lÄ± ballotlarda gizle"
+msgstr "Jürilerin kurumlarını herkese açık sayfalarda ve basılı ballotlarda gizle"
 
 #: options/preferences.py
 msgid "Show adjudicator institutions"
-msgstr "JÃ¼ri kurumlarÄ±nÄ± gÃ¶ster"
+msgstr "Jüri kurumlarını göster"
 
 #: options/preferences.py
 msgid "Enables a hover element on every team's name showing that team's speakers"
-msgstr "Her takÄ±mÄ±n adÄ±nda, o takÄ±mÄ±n konuÅŸmacÄ±larÄ±nÄ± gÃ¶steren bir vurgulu Ã¶ÄŸe etkinleÅŸtirir"
+msgstr "Her takımın adında, o takımın konuşmacılarını gösteren bir vurgulu öğe etkinleştirir"
 
 #: options/preferences.py
 msgid "Show speakers in draw"
-msgstr "Kurada konuÅŸmacÄ±larÄ± gÃ¶ster"
+msgstr "Kurada konuşmacıları göster"
 
 #: options/preferences.py
 msgid "Input team seed in simple team importer"
@@ -1352,111 +1352,111 @@ msgstr "Bildirimler"
 
 #: options/preferences.py
 msgid "The name of the organizer tasked with managing emails (in case of replies)"
-msgstr "E-postalarÄ± yÃ¶netmekle gÃ¶revli dÃ¼zenleyicinin adÄ± (yanÄ±t durumunda)"
+msgstr "E-postaları yönetmekle görevli düzenleyicinin adı (yanıt durumunda)"
 
 #: options/preferences.py
 msgid "Reply-to name"
-msgstr "YanÄ±t adÄ±"
+msgstr "Yanıt adı"
 
 #: options/preferences.py
 msgid "The email address for handling replies"
-msgstr "YanÄ±tlarÄ± iÅŸlemek iÃ§in e-posta adresi"
+msgstr "Yanıtları işlemek için e-posta adresi"
 
 #: options/preferences.py
 msgid "Reply-to address"
-msgstr "YanÄ±t adresi"
+msgstr "Yanıt adresi"
 
 #: options/preferences.py
 msgid "A secret key to accept email status events"
-msgstr "E-posta durumu olaylarÄ±nÄ± kabul etmek iÃ§in gizli anahtar"
+msgstr "E-posta durumu olaylarını kabul etmek için gizli anahtar"
 
 #: options/preferences.py
 msgid "Email status secret key"
-msgstr "E-posta durumu gizli anahtarÄ±"
+msgstr "E-posta durumu gizli anahtarı"
 
 #: options/preferences.py
-msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in NekoTab (for confirmation or checking)"
-msgstr "JÃ¼rilerin ballotlarÄ±nÄ±n bir kopyasÄ±nÄ±n, NekoTab'e girildikten sonra (onay veya kontrol iÃ§in) otomatik olarak (e-posta ile) gÃ¶nderilmesini saÄŸlar"
+msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in Tabbycat (for confirmation or checking)"
+msgstr "Jürilerin ballotlarının bir kopyasının, Tabbycat'e girildikten sonra (onay veya kontrol için) otomatik olarak (e-posta ile) gönderilmesini sağlar"
 
 #: options/preferences.py
 msgid "Ballot receipts"
-msgstr "Ballot makbuzlarÄ±"
+msgstr "Ballot makbuzları"
 
 #: options/preferences.py
 msgid "The subject line for emails sent to adjudicators with their submitted ballot. Use '{{ DEBATE }}' as a placeholder for the associated debate"
-msgstr "jÃ¼rilere gÃ¶nderilen ballotlarÄ±n birlikte gÃ¶nderilen e-postalarÄ±n konu satÄ±rÄ±. Ä°liÅŸkili maÃ§ iÃ§in yer tutucu olarak '{{ DEBATE }}' kullanÄ±n"
+msgstr "jürilere gönderilen ballotların birlikte gönderilen e-postaların konu satırı. İlişkili maç için yer tutucu olarak '{{ DEBATE }}' kullanın"
 
 #: options/preferences.py
 msgid "Ballot receipt subject line"
-msgstr "Ballot makbuzu konu satÄ±rÄ±"
+msgstr "Ballot makbuzu konu satırı"
 
 #: options/preferences.py
 msgid "The message body for emails sent to adjudicators with their submitted ballot."
-msgstr "JÃ¼ri gÃ¶nderilen ballotlarla birlikte gÃ¶nderilen e-postalarÄ±n mesaj gÃ¶vdesi."
+msgstr "Jüri gönderilen ballotlarla birlikte gönderilen e-postaların mesaj gövdesi."
 
 #: options/preferences.py
 msgid "Ballot receipt message"
-msgstr "Ballot alÄ±ndÄ± mesajÄ±"
+msgstr "Ballot alındı mesajı"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Motions"
-msgstr "Ã–nergeler"
+msgstr "Önergeler"
 
 #: options/preferences.py
 msgid "If checked, ballots require a motion to be entered"
-msgstr "Ä°ÅŸaretlenirse, ballotlar Ã¶nerge girilmesini gerektirir"
+msgstr "İşaretlenirse, ballotlar önerge girilmesini gerektirir"
 
 #: options/preferences.py
 msgid "Enable motions"
-msgstr "Ã–nergeleri etkinleÅŸtir"
+msgstr "Önergeleri etkinleştir"
 
 #: options/preferences.py
 msgid "Whether the printed scoresheets should hide the text of motions (even if they have been entered and released)"
-msgstr "YazdÄ±rÄ±lan sonuÃ§ kaÄŸÄ±tlarÄ±nÄ±n Ã¶nergelerin metnini gizlemesinin gerekip gerekmediÄŸi (girilmiÅŸ ve serbest bÄ±rakÄ±lmÄ±ÅŸ olsalar bile)"
+msgstr "Yazdırılan sonuç kağıtlarının önergelerin metnini gizlemesinin gerekip gerekmediği (girilmiş ve serbest bırakılmış olsalar bile)"
 
 #: options/preferences.py
 msgid "Ballot Hide Motions"
-msgstr "Ballot Ã–nerge Gizle"
+msgstr "Ballot Önerge Gizle"
 
 #: options/preferences.py
 msgid "Enables the motion veto field on ballots, to track veto statistics"
-msgstr "Veto istatistiklerini izlemek iÃ§in ballotda Ã¶nerge vetosu alanÄ±nÄ± etkinleÅŸtirir"
+msgstr "Veto istatistiklerini izlemek için ballotda önerge vetosu alanını etkinleştirir"
 
 #: options/preferences.py
 msgid "Motion vetoes"
-msgstr "Ã–nerge vetosu"
+msgstr "Önerge vetosu"
 
 #: options/preferences.py
 msgid "If showing results to public, show which motions were selected in the record"
-msgstr "SonuÃ§larÄ± herkese gÃ¶steriyorsanÄ±z, kayÄ±ta hangi Ã¶nergelerin alÄ±ndÄ±ÄŸÄ±nÄ± gÃ¶ster"
+msgstr "Sonuçları herkese gösteriyorsanız, kayıta hangi önergelerin alındığını göster"
 
 #: options/preferences.py
 msgid "Show motions in results"
-msgstr "SonuÃ§larda Ã¶nergeleri gÃ¶ster"
+msgstr "Sonuçlarda önergeleri göster"
 
 #: options/preferences.py
 msgid "Order in which are listed by round in the public view"
-msgstr "Herkese aÃ§Ä±k gÃ¶rÃ¼nÃ¼mde tura gÃ¶re listelendiÄŸi sÄ±ra"
+msgstr "Herkese açık görünümde tura göre listelendiği sıra"
 
 #: options/preferences.py
 msgid "Order to display motions"
-msgstr "Ã–nerge gÃ¶rÃ¼ntÃ¼leme sÄ±rasÄ±"
+msgstr "Önerge görüntüleme sırası"
 
 #: options/preferences.py
 msgid "Earliest round first"
-msgstr "Ã–nce ilk tur"
+msgstr "Önce ilk tur"
 
 #: options/preferences.py
 msgid "Latest round first"
-msgstr "Ã–nce son tur"
+msgstr "Önce son tur"
 
 #: options/preferences.py
 msgid "Whether motions can be reused from one round to another."
-msgstr "Ã–nergelerin bir turdan diÄŸerine kullanÄ±lÄ±p kullanÄ±lamayacaÄŸÄ±."
+msgstr "Önergelerin bir turdan diğerine kullanılıp kullanılamayacağı."
 
 #: options/preferences.py
 msgid "Allow motion reuse"
-msgstr "Ã–nergelerin yeniden kullanÄ±lmasÄ±na izin ver"
+msgstr "Önergelerin yeniden kullanılmasına izin ver"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Global Settings"
@@ -1464,11 +1464,11 @@ msgstr "Genel Ayarlar"
 
 #: options/preferences.py
 msgid "Enables external applications to access the site through a dedicated interface, subject to public information settings."
-msgstr "Harici uygulamalarÄ±n, bilgi ayarlarÄ±na tabi olarak siteye Ã¶zel bir arayÃ¼z Ã¼zerinden eriÅŸmesini saÄŸlar."
+msgstr "Harici uygulamaların, bilgi ayarlarına tabi olarak siteye özel bir arayüz üzerinden erişmesini sağlar."
 
 #: options/preferences.py
 msgid "Enable API access"
-msgstr "API eriÅŸimini etkinleÅŸtir"
+msgstr "API erişimini etkinleştir"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Registration"
@@ -1644,75 +1644,75 @@ msgstr ""
 
 #: options/presets.py
 msgid "Enable Public Information"
-msgstr "AÃ§Ä±k Bilgileri EtkinleÅŸtir"
+msgstr "Açık Bilgileri Etkinleştir"
 
 #: options/presets.py
 msgid "Disable Public Information"
-msgstr "AÃ§Ä±k Bilgileri Devre DÄ±ÅŸÄ± BÄ±rak"
+msgstr "Açık Bilgileri Devre Dışı Bırak"
 
 #: options/presets.py
 msgid "Australs Rules"
-msgstr "Australs KurallarÄ±"
+msgstr "Australs Kuralları"
 
 #: options/presets.py
 msgid "3 vs 3 with replies, chosen motions, intermediate brackets, one-up-one-down. Compliant with AIDA rules."
-msgstr "Cevaplar, seÃ§ilen Ã¶nergeler, ara aÅŸamalar, bir-yukarÄ±-bir-aÅŸaÄŸÄ±-ile 3'e 3. AIDA kurallarÄ±na uygundur."
+msgstr "Cevaplar, seçilen önergeler, ara aşamalar, bir-yukarı-bir-aşağı-ile 3'e 3. AIDA kurallarına uygundur."
 
 #: options/presets.py
 msgid "British Parliamentary Rules"
-msgstr "Ä°ngiliz Parlamenter KurallarÄ±"
+msgstr "İngiliz Parlamenter Kuralları"
 
 #: options/presets.py
 msgid "2 vs 2 vs 2 vs 2. Compliant with WUDC rules."
-msgstr "2'ye karÅŸÄ± 2'ye karÅŸÄ± 2'ye karÅŸÄ± 2. WUDC kurallarÄ±yla uyumludur."
+msgstr "2'ye karşı 2'ye karşı 2'ye karşı 2. WUDC kurallarıyla uyumludur."
 
 #: options/presets.py
 msgid "Canadian Parliamentary Rules"
-msgstr "Kanada Parlamenter KurallarÄ±"
+msgstr "Kanada Parlamenter Kuralları"
 
 #: options/presets.py
 msgid "2 vs 2 with replies (unscored) and POIs. May require additional configuration depending on regional variations."
-msgstr "Ã–zetler (puanlanmamÄ±ÅŸ) ve Ä°Ã‡N'lerle 2'ye 2. BÃ¶lgesel farklÄ±lÄ±klara baÄŸlÄ± olarak ek yapÄ±landÄ±rma gerektirebilir."
+msgstr "Özetler (puanlanmamış) ve İÇN'lerle 2'ye 2. Bölgesel farklılıklara bağlı olarak ek yapılandırma gerektirebilir."
 
 #: options/presets.py
 msgid "Australian Easters Rules"
-msgstr "Avustralya Paskalya KurallarÄ±"
+msgstr "Avustralya Paskalya Kuralları"
 
 #: options/presets.py
 msgid "3 vs 3 without replies, set motions, novices, intermediate bubbles, one-up-one-down. Compliant with AIDA rules."
-msgstr "Ã–zetsiz 3'e 3, belirli Ã¶nergeler, acemiler, ara baloncuklar, bir-yukarÄ±-bir-aÅŸaÄŸÄ±. AIDA kurallarÄ±na uygundur."
+msgstr "Özetsiz 3'e 3, belirli önergeler, acemiler, ara baloncuklar, bir-yukarı-bir-aşağı. AIDA kurallarına uygundur."
 
 #: options/presets.py
 msgid "2 vs 2 Impromptu"
-msgstr "DoÄŸaÃ§lama 2'e 2"
+msgstr "Doğaçlama 2'e 2"
 
 #: options/presets.py
 msgid "2 vs 2 with replies, chosen motions, chosen sides, and novice statuses."
-msgstr "Ã¶zetler, belirli Ã¶nergeler, belirli taraflar ve acemi durumlarÄ± ile 2'ye 2."
+msgstr "özetler, belirli önergeler, belirli taraflar ve acemi durumları ile 2'ye 2."
 
 #: options/presets.py
 msgid "3 vs 3 Prepared"
-msgstr "HazÄ±rlÄ±klÄ± 3'e 3"
+msgstr "Hazırlıklı 3'e 3"
 
 #: options/presets.py
 msgid "3 vs 3 with preallocated sides, publicly displayed sides and motions, and novice statuses."
-msgstr "Ã–nceden belirlenmiÅŸ taraflar, halka aÃ§Ä±k olarak gÃ¶rÃ¼ntÃ¼lenen taraflar ve Ã¶nergeler ve acemi statÃ¼leri ile 3'e 3."
+msgstr "Önceden belirlenmiş taraflar, halka açık olarak görüntülenen taraflar ve önergeler ve acemi statüleri ile 3'e 3."
 
 #: options/presets.py
 msgid "UADC Rules"
-msgstr "UADC KurallarÄ±"
+msgstr "UADC Kuralları"
 
 #: options/presets.py
 msgid "3 vs 3 with replies, chosen motions, and all adjudicators can receive feedback from teams."
-msgstr "Ã–zet, belirli Ã¶nergeler ve tÃ¼m jÃ¼riler takÄ±mlardan geri bildirim alabilir."
+msgstr "Özet, belirli önergeler ve tüm jüriler takımlardan geri bildirim alabilir."
 
 #: options/presets.py
 msgid "WSDC Rules"
-msgstr "WSDC KurallarÄ±"
+msgstr "WSDC Kuralları"
 
 #: options/presets.py
 msgid "3 vs 3 with replies, chosen motions, prop/opp side labels, and all adjudicators can receive feedback from teams."
-msgstr "Ã–zetler, belirli Ã¶nergeler, prop / opp taraf etiketleri ile 3'e 3 ve tÃ¼m jÃ¼riler takÄ±mlardan geri bildirim alabilir."
+msgstr "Özetler, belirli önergeler, prop / opp taraf etiketleri ile 3'e 3 ve tüm jüriler takımlardan geri bildirim alabilir."
 
 #: options/presets.py
 msgid "APDA Rules"
@@ -1732,27 +1732,27 @@ msgstr ""
 
 #: options/presets.py
 msgid "Public Information Options"
-msgstr "AÃ§Ä±k Bilgi SeÃ§enekleri"
+msgstr "Açık Bilgi Seçenekleri"
 
 #: options/presets.py
 msgid "For tournaments hosted online: this sets it up so that people can access the draw and other generally useful information via the tab site."
-msgstr "Ã‡evrimiÃ§i olarak dÃ¼zenlenen turnuvalar iÃ§in: Bu, insanlarÄ±n kuraya ve diÄŸer genel olarak yararlÄ± bilgilere tab sitesi Ã¼zerinden eriÅŸebilmeleri saÄŸlar."
+msgstr "Çevrimiçi olarak düzenlenen turnuvalar için: Bu, insanların kuraya ve diğer genel olarak yararlı bilgilere tab sitesi üzerinden erişebilmeleri sağlar."
 
 #: options/presets.py
 msgid "Tab Release Options"
-msgstr "Tab YayÄ±nlama SeÃ§enekleri"
+msgstr "Tab Yayınlama Seçenekleri"
 
 #: options/presets.py
 msgid "For when a tab is ready to be released. This will publicly display the results of all rounds, the team tab, the speaker tab, etc"
-msgstr "Bir tab yayÄ±nlanmaya hazÄ±r olduÄŸunda kullanÄ±lÄ±r. Bu, tÃ¼m turlarÄ±n sonuÃ§larÄ±nÄ±, takÄ±m tabÄ±nÄ±, konuÅŸmacÄ± tabÄ±nÄ± vb. herkese aÃ§Ä±k olarak gÃ¶sterir."
+msgstr "Bir tab yayınlanmaya hazır olduğunda kullanılır. Bu, tüm turların sonuçlarını, takım tabını, konuşmacı tabını vb. herkese açık olarak gösterir."
 
 #: options/presets.py
 msgid "Use Private URLs"
-msgstr "Ã–zel URL'ler kullan"
+msgstr "Özel URL'ler kullan"
 
 #: options/presets.py
 msgid "Enables participant data entry through private URLs."
-msgstr "Ã–zel URL'ler Ã¼zerinden katÄ±lÄ±mcÄ± veri giriÅŸe olanak tanÄ±r."
+msgstr "Özel URL'ler üzerinden katılımcı veri girişe olanak tanır."
 
 #: options/presets.py
 msgid "Use Public Forms"
@@ -1768,27 +1768,27 @@ msgstr "Ayarlama"
 
 #: options/templates/preferences_index.html
 msgid "The range of scores that can awarded to speeches, replies, and teams"
-msgstr "KonuÅŸmalara, Ã¶zetlere ve takÄ±mlara verilebilecek puan aralÄ±ÄŸÄ±"
+msgstr "Konuşmalara, özetlere ve takımlara verilebilecek puan aralığı"
 
 #: options/templates/preferences_index.html
 msgid "How teams are paired in the draw and how adjudicators are auto-allocated"
-msgstr "Kurada takÄ±mlarÄ±n nasÄ±l eÅŸleÅŸtirileceÄŸi ve jÃ¼rilerin nasÄ±l otomatik olarak tahsis edileceÄŸi"
+msgstr "Kurada takımların nasıl eşleştirileceği ve jürilerin nasıl otomatik olarak tahsis edileceği"
 
 #: options/templates/preferences_index.html
 msgid "How many speeches in a debate, how motions are decided, and whether reply speeches are used"
-msgstr "Bir maÃ§ta kaÃ§ konuÅŸma olduÄŸu, Ã¶nergelerin nasÄ±l kararlaÅŸtÄ±rÄ±ldÄ±ÄŸÄ± ve Ã¶zetlerin kullanÄ±lÄ±p kullanÄ±lmadÄ±ÄŸÄ±"
+msgstr "Bir maçta kaç konuşma olduğu, önergelerin nasıl kararlaştırıldığı ve özetlerin kullanılıp kullanılmadığı"
 
 #: options/templates/preferences_index.html
 msgid "How teams and speakers are ranked in the released tabs"
-msgstr "TakÄ±mlar ve konuÅŸmacÄ±larÄ±n yayÄ±nlanan tablarda nasÄ±l sÄ±ralandÄ±ÄŸÄ±"
+msgstr "Takımlar ve konuşmacıların yayınlanan tablarda nasıl sıralandığı"
 
 #: options/templates/preferences_index.html
 msgid "How adjudicators are ranked and who can submit feedback"
-msgstr "JÃ¼rilerin nasÄ±l sÄ±ralandÄ±ÄŸÄ± ve kimlerin geri bildirim gÃ¶nderebildiÄŸi"
+msgstr "Jürilerin nasıl sıralandığı ve kimlerin geri bildirim gönderebildiği"
 
 #: options/templates/preferences_index.html
 msgid "How and where are motions used"
-msgstr "Ã–nergelerin nasÄ±l ve nerede kullanÄ±ldÄ±ÄŸÄ±"
+msgstr "Önergelerin nasıl ve nerede kullanıldığı"
 
 #: options/templates/preferences_index.html
 msgid "How participants can register for the tournament"
@@ -1796,43 +1796,43 @@ msgstr ""
 
 #: options/templates/preferences_index.html
 msgid "When to release a public tab is made visible and what data it shows"
-msgstr "Herkese aÃ§Ä±k tabÄ±n ne zaman yayÄ±nlanacaÄŸÄ± ve hangi verilerin gÃ¶sterileceÄŸi gÃ¶rÃ¼nÃ¼r hale gelir"
+msgstr "Herkese açık tabın ne zaman yayınlanacağı ve hangi verilerin gösterileceği görünür hale gelir"
 
 #: options/templates/preferences_index.html
 msgid "How ballots, feedback, and check-ins are entered, including online submission options"
-msgstr "Ã‡evrimiÃ§i gÃ¶nderim seÃ§enekleri de dahil olmak Ã¼zere ballotlarÄ±n, geri bildirimlerin ve giriÅŸlerin nasÄ±l girildiÄŸi"
+msgstr "Çevrimiçi gönderim seçenekleri de dahil olmak üzere ballotların, geri bildirimlerin ve girişlerin nasıl girildiği"
 
 #: options/templates/preferences_index.html
 msgid "What information the site displays on the publicly accessible pages"
-msgstr "Sitenin herkese aÃ§Ä±k sayfalarda gÃ¶rÃ¼ntÃ¼lediÄŸi bilgiler"
+msgstr "Sitenin herkese açık sayfalarda görüntülediği bilgiler"
 
 #: options/templates/preferences_index.html
 msgid "Small tweaks in what information is presented by the interface"
-msgstr "ArayÃ¼z tarafÄ±ndan hangi bilgilerin sunulduÄŸu konusunda ince ayarlar"
+msgstr "Arayüz tarafından hangi bilgilerin sunulduğu konusunda ince ayarlar"
 
 #: options/templates/preferences_index.html
 msgid "Configures sending notifications, such as emails confirming ballot submissions or team points"
-msgstr "Ballot gÃ¶nderimlerini veya takÄ±m puanlarÄ±nÄ± onaylayan e-postalar gibi gÃ¶nderme bildirimlerini ayarlar"
+msgstr "Ballot gönderimlerini veya takım puanlarını onaylayan e-postalar gibi gönderme bildirimlerini ayarlar"
 
 #: options/templates/preferences_index.html
 msgid "Settings which can affect all tournaments on the site"
-msgstr "Sitedeki tÃ¼m turnuvalarÄ± etkileyebilecek ayarlar"
+msgstr "Sitedeki tüm turnuvaları etkileyebilecek ayarlar"
 
 #: options/templates/preferences_index.html
 msgid "Manually Set Current Round"
-msgstr "GeÃ§erli Turu El Ä°le Ayarla"
+msgstr "Geçerli Turu El İle Ayarla"
 
 #: options/templates/preferences_index.html
-msgid "NekoTab will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
-msgstr "NekoTab, her turun sonuÃ§ sayfasÄ±nda geÃ§erli turu ilerletmenizi isteyecektir. Ancak, bunu geÃ§ersiz kÄ±lmanÄ±zÄ± ve geÃ§erli turu baÅŸka bir ÅŸeye ayarlamanÄ±zÄ± gerektiren Ã¶zel durumlar varsa, bu sayfayÄ± kullanÄ±n."
+msgid "Tabbycat will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
+msgstr "Tabbycat, her turun sonuç sayfasında geçerli turu ilerletmenizi isteyecektir. Ancak, bunu geçersiz kılmanızı ve geçerli turu başka bir şeye ayarlamanızı gerektiren özel durumlar varsa, bu sayfayı kullanın."
 
 #: options/templates/preferences_index.html
 msgid "Set Round Weights for Tapered Scoring"
-msgstr "Konik Puanlama iÃ§in Tur AÄŸÄ±rlÄ±klarÄ± Ayarla"
+msgstr "Konik Puanlama için Tur Ağırlıkları Ayarla"
 
 #: options/templates/preferences_index.html
 msgid "Rounds can be weighted so that certain rounds are worth more team points."
-msgstr "Turlar, belirli turlarÄ±n daha fazla takÄ±m puanÄ± deÄŸerinde olacak ÅŸekilde aÄŸÄ±rlÄ±klandÄ±rÄ±labilir."
+msgstr "Turlar, belirli turların daha fazla takım puanı değerinde olacak şekilde ağırlıklandırılabilir."
 
 #: options/templates/preferences_index.html
 msgid "Invite User to Create an Account"
@@ -1844,7 +1844,7 @@ msgstr ""
 
 #: options/templates/preferences_index.html
 msgid "Presets"
-msgstr "Ã–nayarlar"
+msgstr "Önayarlar"
 
 #: options/templates/preferences_index.html
 msgid "These show changes to your configuration for common situations and debate formats. You may apply these settings or modify them for your tournament directly on the preset's page."
@@ -1858,17 +1858,17 @@ msgstr "%(preset)s uygula"
 #: options/templates/preferences_section_set.html
 #, python-format
 msgid "Configuration: %(section)s"
-msgstr "YapÄ±landÄ±rma: %(section)s"
+msgstr "Yapılandırma: %(section)s"
 
 #: options/templates/preferences_section_set.html
 #, python-format
 msgid "Edit Configuration: %(section)s"
-msgstr "YapÄ±landÄ±rmayÄ± DÃ¼zenle: %(section)s"
+msgstr "Yapılandırmayı Düzenle: %(section)s"
 
 #: options/templates/preferences_section_set.html
 #: options/templates/preset_edit.html
 msgid "Back to Configuration"
-msgstr "YapÄ±landÄ±rmaya Geri DÃ¶n"
+msgstr "Yapılandırmaya Geri Dön"
 
 #: options/templates/preset_edit.html
 #, python-format
@@ -1895,12 +1895,12 @@ msgstr ""
 #: options/utils.py
 #, python-format
 msgid "The following metrics can't be listed twice: %(duplicates)s"
-msgstr "AÅŸaÄŸÄ±daki metrikler iki kez listelenemez: %(duplicates)s"
+msgstr "Aşağıdaki metrikler iki kez listelenemez: %(duplicates)s"
 
 #: options/views.py
 #, python-format
 msgid "Tournament options (%(section)s) saved."
-msgstr "Turnuva seÃ§enekleri (%(section)s) kaydedildi."
+msgstr "Turnuva seçenekleri (%(section)s) kaydedildi."
 
 #: options/views.py
 #, python-format
@@ -1911,5 +1911,4 @@ msgstr ""
 #, python-format
 msgid "Tournament options saved based on preset %(name)s."
 msgstr ""
-
 

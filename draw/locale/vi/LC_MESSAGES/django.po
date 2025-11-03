@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: vi\n"
-"X-Crowdin-File: /develop/NekoTab/draw/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/draw/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 930\n"
 
 #: draw/admin.py
@@ -35,7 +35,7 @@ msgstr[0] ""
 
 #: draw/apps.py draw/views.py
 msgid "Draw"
-msgstr "Báº£ng Ä‘áº¥u"
+msgstr "Bảng đấu"
 
 #: draw/forms.py
 msgid "Full round name"
@@ -121,7 +121,7 @@ msgstr ""
 
 #: draw/generator/bphungarian.py
 #, python-format
-msgid "The RÃ©nyi order can't be negative, and it's currently set to %(alpha)f."
+msgid "The Rényi order can't be negative, and it's currently set to %(alpha)f."
 msgstr ""
 
 #: draw/generator/common.py
@@ -191,15 +191,15 @@ msgstr ""
 
 #: draw/models.py
 msgid "confirmed"
-msgstr "Ä‘Ã£ xÃ¡c nháº­n"
+msgstr "đã xác nhận"
 
 #: draw/models.py
 msgid "round"
-msgstr "vÃ²ng"
+msgstr "vòng"
 
 #: draw/models.py
 msgid "room"
-msgstr "phÃ²ng"
+msgstr "phòng"
 
 #: draw/models.py
 msgid "bracket"
@@ -207,11 +207,11 @@ msgstr ""
 
 #: draw/models.py
 msgid "room rank"
-msgstr "xáº¿p háº¡ng phÃ²ng"
+msgstr "xếp hạng phòng"
 
 #: draw/models.py
 msgid "importance"
-msgstr "má»©c Ä‘á»™ quan trá»ng"
+msgstr "mức độ quan trọng"
 
 #: draw/models.py
 msgid "result status"
@@ -227,11 +227,11 @@ msgstr ""
 
 #: draw/models.py
 msgid "debate"
-msgstr "tráº­n tranh biá»‡n"
+msgstr "trận tranh biện"
 
 #: draw/models.py
 msgid "debates"
-msgstr "cÃ¡c tráº­n tranh biá»‡n"
+msgstr "các trận tranh biện"
 
 #. Translators: This is appended to a list of teams, e.g. "Auckland
 #. 1, Vic Wellington 1 (sides not confirmed)". Mind the leading
@@ -244,11 +244,11 @@ msgstr ""
 #. vs Vic Wellington 1". Mind the leading and trailing spaces.
 #: draw/models.py
 msgid " vs "
-msgstr " Ä‘á»‘i Ä‘áº§u vá»›i "
+msgstr " đối đầu với "
 
 #: draw/models.py
 msgid "team"
-msgstr "Ä‘á»™i"
+msgstr "đội"
 
 #: draw/models.py
 msgid "side sequence"
@@ -256,11 +256,11 @@ msgstr ""
 
 #: draw/models.py
 msgid "debate team"
-msgstr "Ä‘á»™i"
+msgstr "đội"
 
 #: draw/models.py
 msgid "debate teams"
-msgstr "cÃ¡c Ä‘á»™i"
+msgstr "các đội"
 
 #: draw/models.py
 #, python-format
@@ -273,7 +273,7 @@ msgstr ""
 
 #: draw/models.py
 msgid "won"
-msgstr "tháº¯ng"
+msgstr "thắng"
 
 #: draw/models.py
 msgid "lost"
@@ -306,11 +306,11 @@ msgstr ""
 #: draw/tables.py
 #, python-format
 msgid "Team %(num)d"
-msgstr "Äá»™i %(num)d"
+msgstr "Đội %(num)d"
 
 #: draw/tables.py
 msgid "Room rank of this debate"
-msgstr "Xáº¿p háº¡ng phÃ²ng cá»§a tráº­n tranh biá»‡n nÃ y"
+msgstr "Xếp hạng phòng của trận tranh biện này"
 
 #: draw/tables.py
 msgid "Bracket of this debate"
@@ -352,11 +352,11 @@ msgstr "Phe"
 
 #: draw/tables.py
 msgid "Position this round"
-msgstr "Vá»‹ trÃ­ trong vÃ²ng nÃ y"
+msgstr "Vị trí trong vòng này"
 
 #: draw/tables.py
 msgid "Before"
-msgstr "TrÆ°á»›c"
+msgstr "Trước"
 
 #: draw/tables.py
 msgid "Side history before this round"
@@ -372,7 +372,7 @@ msgstr ""
 
 #: draw/tables.py
 msgid "Cost"
-msgstr "Chi phÃ­"
+msgstr "Chi phí"
 
 #: draw/tables.py
 msgid "Position cost"
@@ -380,7 +380,7 @@ msgstr ""
 
 #: draw/tables.py
 msgid "Status"
-msgstr "Tráº¡ng thÃ¡i"
+msgstr "Trạng thái"
 
 #: draw/tables.py
 msgid "Teams with this many points are permitted in this debate<br>\n"
@@ -405,11 +405,11 @@ msgid "position cost"
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "STOP!!! Read this first! Deleting debate teams from the database may crash NekoTab!"
-msgstr "CHÃš Ã: XÃ³a cÃ¡c Ä‘á»™i trong tráº­n tranh biá»‡n trong dá»¯ liá»‡u cÃ³ thá»ƒ khiáº¿n NekoTab gáº·p sá»± cá»‘."
+msgid "STOP!!! Read this first! Deleting debate teams from the database may crash Tabbycat!"
+msgstr "CHÚ Ý: Xóa các đội trong trận tranh biện trong dữ liệu có thể khiến Tabbycat gặp sự cố."
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
-msgid "NekoTab requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgid "Tabbycat requires that all debates have <strong>exactly</strong> one debate team for each side, and no other debate teams, at all times. If you delete any debate teams, you must then either replace each one with a new debate team in the same debate, or delete the associated debate objects. If you don't do this correctly, many pages <strong>will</strong> crash."
 msgstr ""
 
 #: draw/templates/admin/draw/debateteam/delete_warning.html
@@ -419,10 +419,10 @@ msgstr ""
 
 #: draw/templates/admin/draw/debateteam/edit_warning.html
 msgid "WARNING!!! If you are editing debate teams, read this first!"
-msgstr "CHÃš Ã: Náº¿u nhÆ° báº¡n Ä‘ang chá»‰nh sá»­a cÃ¡c Ä‘á»™i, Ä‘á»c"
+msgstr "CHÚ Ý: Nếu như bạn đang chỉnh sửa các đội, đọc"
 
 #: draw/templates/admin/draw/debateteam/edit_warning.html
-msgid "NekoTab requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
+msgid "Tabbycat requires that there be <strong>exactly</strong> one debate team for each side, and no other debate teams, in each debate. If you edit debate teams in the database, you must ensure that this remains the case. If you don't do this correctly, many pages <strong>will</strong> crash."
 msgstr ""
 
 #: draw/templates/draw_alerts_adjudicators.html
@@ -471,7 +471,7 @@ msgstr[0] ""
 #, python-format
 msgid "1 debate does not have a room."
 msgid_plural "%(ndebates)s debates do not have a room."
-msgstr[0] "CÃ³ %(ndebates)s tráº­n tranh biá»‡n khÃ´ng cÃ³ phÃ²ng."
+msgstr[0] "Có %(ndebates)s trận tranh biện không có phòng."
 
 #: draw/templates/draw_alerts_venues.html
 #, python-format
@@ -487,7 +487,7 @@ msgstr[0] ""
 
 #: draw/templates/draw_base.html
 msgid "Availability"
-msgstr "ÄÃ¡nh dáº¥u Sáºµn sÃ ng"
+msgstr "Đánh dấu Sẵn sàng"
 
 #: draw/templates/draw_base.html draw/templates/draw_status_draft.html
 msgid "Edit Sides/Matchups"
@@ -499,7 +499,7 @@ msgstr ""
 
 #: draw/templates/draw_base.html
 msgid "Draw Details"
-msgstr "Chi tiáº¿t báº£ng Ä‘áº¥u"
+msgstr "Chi tiết bảng đấu"
 
 #: draw/templates/draw_base.html
 msgid "Position Balance"
@@ -508,7 +508,7 @@ msgstr ""
 #: draw/templates/draw_base.html draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Draw"
-msgstr "Hiá»‡n thá»‹ báº£ng Ä‘áº¥u"
+msgstr "Hiện thị bảng đấu"
 
 #: draw/templates/draw_confirm_regeneration.html
 msgid "Confirm draw regeneration"
@@ -517,16 +517,16 @@ msgstr ""
 #: draw/templates/draw_confirm_regeneration.html
 #: draw/templates/draw_subpage.html
 msgid "Back to Draw"
-msgstr "Quay láº¡i báº£ng Ä‘áº¥u"
+msgstr "Quay lại bảng đấu"
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
 msgid "Confirm Draw Deletion for %(round)s"
-msgstr "XÃ¡c nháº­n xÃ³a báº£ng Ä‘áº¥u á»Ÿ vÃ²ng %(round)s"
+msgstr "Xác nhận xóa bảng đấu ở vòng %(round)s"
 
 #: draw/templates/draw_confirm_regeneration.html
 #, python-format
-msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> â€”  including their ballots and adjudicator allocations â€” and cannot be undone. You probably don't want to do this if any results have been entered!"
+msgid "Do you really want to regenerate the draw for %(round)s? This will delete <strong>all the debates in the current draw</strong> —  including their ballots and adjudicator allocations — and cannot be undone. You probably don't want to do this if any results have been entered!"
 msgstr ""
 
 #: draw/templates/draw_confirm_regeneration.html
@@ -536,30 +536,30 @@ msgstr ""
 
 #: draw/templates/draw_display_admin.html
 msgid "View Draw"
-msgstr "Xem báº£ng Ä‘áº¥u"
+msgstr "Xem bảng đấu"
 
 #: draw/templates/draw_display_admin.html
 #, python-format
 msgid "Debates start at %(start_time)s"
-msgstr "Tráº­n tranh biá»‡n báº¯t Ä‘áº§u tá»« %(start_time)s"
+msgstr "Trận tranh biện bắt đầu từ %(start_time)s"
 
 #: draw/templates/draw_display_admin.html
 msgid "Add Start Time"
-msgstr "ThÃªm thá»i gian báº¯t Ä‘áº§u"
+msgstr "Thêm thời gian bắt đầu"
 
 #: draw/templates/draw_display_admin.html
 msgid "Enter Results"
-msgstr "Nháº­p káº¿t quáº£"
+msgstr "Nhập kết quả"
 
 #: draw/templates/draw_display_admin.html
 msgid "Motion Details"
-msgstr "Chi tiáº¿t kiáº¿n nghá»‹"
+msgstr "Chi tiết kiến nghị"
 
 #: draw/templates/draw_display_admin.html
 #, python-format
 msgid "%(motions_count)s motion has been entered."
 msgid_plural "%(motions_count)s motions have been entered."
-msgstr[0] "CÃ³ %(motions_count)s kiáº¿n nghá»‹ Ä‘Ã£ Ä‘Æ°á»£c nháº­p."
+msgstr[0] "Có %(motions_count)s kiến nghị đã được nhập."
 
 #: draw/templates/draw_display_admin.html
 msgid "Edit the motion"
@@ -581,11 +581,11 @@ msgstr[0] ""
 
 #: draw/templates/draw_display_admin.html
 msgid "Release Draw"
-msgstr "CÃ´ng bá»‘ báº£ng Ä‘áº¥u"
+msgstr "Công bố bảng đấu"
 
 #: draw/templates/draw_display_admin.html
 msgid "You have not generated a draw for this round yet. There is nothing to release."
-msgstr "Báº¡n chÆ°a táº¡o báº£ng Ä‘áº¥u cho vÃ²ng nÃ y. KhÃ´ng cÃ³ gÃ¬ Ä‘á»ƒ cÃ´ng bá»‘."
+msgstr "Bạn chưa tạo bảng đấu cho vòng này. Không có gì để công bố."
 
 #: draw/templates/draw_display_admin.html
 msgid "The draw for this round is still in a draft state. Confirm the draw before releasing it."
@@ -597,11 +597,11 @@ msgstr ""
 
 #: draw/templates/draw_display_admin.html
 msgid "The draw has been released publicly."
-msgstr "Báº£ng Ä‘áº¥u Ä‘Ã£ Ä‘Æ°á»£c cÃ´ng khai."
+msgstr "Bảng đấu đã được công khai."
 
 #: draw/templates/draw_display_admin.html
 msgid "View public draw page"
-msgstr "Xem báº£ng Ä‘áº¥u cÃ´ng khai"
+msgstr "Xem bảng đấu công khai"
 
 #: draw/templates/draw_display_admin.html
 #, python-format
@@ -615,7 +615,7 @@ msgstr ""
 
 #: draw/templates/draw_display_admin.html
 msgid "Release draw to public"
-msgstr "CÃ´ng khai báº£ng Ä‘áº¥u"
+msgstr "Công khai bảng đấu"
 
 #: draw/templates/draw_display_admin.html
 msgid "Your tournament allows ballots and feedback to be submitted online by adjudicators. The draw must be released before they can do so."
@@ -682,7 +682,7 @@ msgstr[0] ""
 
 #: draw/templates/draw_display_admin.html
 msgid "View public motions page"
-msgstr "Xem trang cÃ´ng khai kiáº¿n nghá»‹"
+msgstr "Xem trang công khai kiến nghị"
 
 #: draw/templates/draw_display_admin.html
 #, python-format
@@ -697,12 +697,12 @@ msgstr ""
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Draw ordered by Room"
-msgstr "Hiá»ƒn thá»‹ báº£ng Ä‘áº¥u xáº¯p xáº¿p theo phÃ²ng"
+msgstr "Hiển thị bảng đấu xắp xếp theo phòng"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Draw ordered by Team"
-msgstr "Hiá»ƒn thá»‹ báº£ng Ä‘áº¥u xáº¯p xáº¿p theo Ä‘á»™i"
+msgstr "Hiển thị bảng đấu xắp xếp theo đội"
 
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
@@ -729,23 +729,23 @@ msgstr ""
 #: draw/templates/draw_display_admin.html
 #: draw/templates/draw_display_assistant.html
 msgid "Display Motions"
-msgstr "Hiá»ƒn thá»‹ cÃ¡c kiáº¿n nghá»‹"
+msgstr "Hiển thị các kiến nghị"
 
 #: draw/templates/draw_display_admin.html
 msgid "Email Motions"
-msgstr "Email cÃ¡c kiáº¿n nghá»‹"
+msgstr "Email các kiến nghị"
 
 #: draw/templates/draw_display_admin.html
 msgid "Email Motion"
-msgstr "Email kiáº¿n nghá»‹"
+msgstr "Email kiến nghị"
 
 #: draw/templates/draw_display_admin.html
 msgid "Start at"
-msgstr "Báº¯t Ä‘áº§u tá»«"
+msgstr "Bắt đầu từ"
 
 #: draw/templates/draw_display_assistant.html
 msgid "(for printing)"
-msgstr "(cho in áº¥n)"
+msgstr "(cho in ấn)"
 
 #: draw/templates/draw_display_assistant.html
 msgid "View Ballot Forms"
@@ -757,7 +757,7 @@ msgstr ""
 
 #: draw/templates/draw_display_by.html
 msgid "Scroll Speed"
-msgstr "Tá»‘c Ä‘á»™ cuá»™n"
+msgstr "Tốc độ cuộn"
 
 #: draw/templates/draw_display_by.html
 msgid "Fast"
@@ -765,60 +765,60 @@ msgstr "Nhanh"
 
 #: draw/templates/draw_display_by.html
 msgid "Medium"
-msgstr "Vá»«a"
+msgstr "Vừa"
 
 #: draw/templates/draw_display_by.html
 msgid "Slow"
-msgstr "Cháº­m"
+msgstr "Chậm"
 
 #: draw/templates/draw_display_by.html
 msgid "Extra Slow"
-msgstr "Ráº¥t cháº­m"
+msgstr "Rất chậm"
 
 #: draw/templates/draw_display_by.html
 msgid "Hide Adjudicators"
-msgstr "áº¨n giÃ¡m kháº£o"
+msgstr "Ẩn giám khảo"
 
 #: draw/templates/draw_display_by.html
 msgid "Show Adjudicators"
-msgstr "Hiá»‡n giÃ¡m kháº£o"
+msgstr "Hiện giám khảo"
 
 #: draw/templates/draw_display_by.html
 msgid "Text Size"
-msgstr "Cá»¡ chá»¯"
+msgstr "Cỡ chữ"
 
 #: draw/templates/draw_display_by.html
 msgid "Tiny"
-msgstr "Ráº¥t nhá»"
+msgstr "Rất nhỏ"
 
 #: draw/templates/draw_display_by.html
 msgid "Small"
-msgstr "Nhá»"
+msgstr "Nhỏ"
 
 #: draw/templates/draw_display_by.html
 msgid "Large"
-msgstr "Lá»›n"
+msgstr "Lớn"
 
 #: draw/templates/draw_display_by.html
 msgid "Huge"
-msgstr "Ráº¥t lá»›n"
+msgstr "Rất lớn"
 
 #: draw/templates/draw_display_by.html
 msgid "Stop Scroll"
-msgstr "Dá»«ng cuá»™n"
+msgstr "Dừng cuộn"
 
 #: draw/templates/draw_not_released.html
 #, python-format
 msgid "The draw for %(round)s has yet to be released."
-msgstr "Báº£ng Ä‘áº¥u cho vÃ²ng %(round)s chÆ°a Ä‘Æ°á»£c cÃ´ng bá»‘."
+msgstr "Bảng đấu cho vòng %(round)s chưa được công bố."
 
 #: draw/templates/draw_not_released.html
 msgid "The draw for the next round has yet to be released."
-msgstr "Báº£ng Ä‘áº¥u cho vÃ²ng sau chÆ°a Ä‘Æ°á»£c cÃ´ng bá»‘."
+msgstr "Bảng đấu cho vòng sau chưa được công bố."
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Adjudicator Allocations"
-msgstr "PhÃ¢n bá»• giÃ¡m kháº£o"
+msgstr "Phân bổ giám khảo"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "There are currently fewer adjudicators checked in than there are rooms."
@@ -826,27 +826,27 @@ msgstr ""
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Allocate adjudicators"
-msgstr "PhÃ¢n bá»• giÃ¡m kháº£o"
+msgstr "Phân bổ giám khảo"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Edit adjudicator allocation"
-msgstr "Chá»‰nh sá»­a phÃ¢n bá»• giÃ¡m kháº£o"
+msgstr "Chỉnh sửa phân bổ giám khảo"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Room Allocations"
-msgstr "PhÃ¢n bá»• phÃ²ng"
+msgstr "Phân bổ phòng"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Allocate rooms"
-msgstr "PhÃ¢n bá»• phÃ²ng"
+msgstr "Phân bổ phòng"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Edit room allocation"
-msgstr "Chá»‰nh sá»­a phÃ¢n bá»• phÃ²ng"
+msgstr "Chỉnh sửa phân bổ phòng"
 
 #: draw/templates/draw_status_confirmed.html
 msgid "Preformed Panels"
-msgstr "BÃ n giÃ¡m kháº£o chá»‰ Ä‘á»‹nh"
+msgstr "Bàn giám khảo chỉ định"
 
 #: draw/templates/draw_status_confirmed.html
 #, python-format
@@ -875,11 +875,11 @@ msgstr[0] ""
 
 #: draw/templates/draw_status_draft.html
 msgid "Delete Draw"
-msgstr "XÃ³a báº£ng Ä‘áº¥u"
+msgstr "Xóa bảng đấu"
 
 #: draw/templates/draw_status_draft.html
 msgid "Confirm Draw"
-msgstr "XÃ¡c nháº­n báº£ng Ä‘áº¥u"
+msgstr "Xác nhận bảng đấu"
 
 #: draw/templates/draw_status_draft.html
 #, python-format
@@ -893,7 +893,7 @@ msgstr ""
 
 #: draw/templates/draw_status_draft.html
 #, python-format
-msgid "The draw type for this round is set to <strong>manual</strong>, so NekoTab has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
+msgid "The draw type for this round is set to <strong>manual</strong>, so Tabbycat has just made a blank draw. Head on over to <a href=\"%(edit_matchups_url)s\" class=\"alert-link\">Edit Sides/Matchups</a> to fill it in."
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
@@ -902,7 +902,7 @@ msgid "The adjudicator score range is 0, and so adjudicator scores will be ignor
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
-msgid "NekoTab assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept NekoTab's random assignment."
+msgid "Tabbycat assigns sides in elimination rounds randomly. However, because in elimination rounds, many tournaments draw lots for sides in front of an audience, the sides are marked as \"unconfirmed\", so that it doesn't look like sides have been pre-assigned. After you confirm the draw, you'll need to confirm sides on the \"Edit Sides/Matchups\" page, even if you wish to accept Tabbycat's random assignment."
 msgstr ""
 
 #: draw/templates/draw_status_draft.html
@@ -920,7 +920,7 @@ msgstr ""
 
 #: draw/templates/position_balance.html
 #, python-format
-msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://NekoTab.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
+msgid "Your current position cost function is <strong>%(cost_func)s</strong>, raised to an exponent of <strong>%(exponent)s</strong>. <a href=\"https://tabbycat.readthedocs.io/en/latest/features/draw-generation-bp.html#position-cost-options\" target=_\"blank\">Read more about how position cost functions work</a> in our documentation."
 msgstr ""
 
 #: draw/templates/position_balance_break.html
@@ -937,21 +937,21 @@ msgstr ""
 
 #: draw/views.py
 msgid "No debates in this round"
-msgstr "KhÃ´ng cÃ³ tráº­n tranh biá»‡n nÃ o trong vÃ²ng nÃ y"
+msgstr "Không có trận tranh biện nào trong vòng này"
 
 #: draw/views.py
 #, python-format
 msgid "Draw for %(round)s"
-msgstr "Báº£ng Ä‘áº¥u cho vÃ²ng %(round)s"
+msgstr "Bảng đấu cho vòng %(round)s"
 
 #: draw/views.py
 msgid "Draws for Current Rounds"
-msgstr "Báº£ng Ä‘áº¥u cho cÃ¡c vÃ²ng hiá»‡n táº¡i"
+msgstr "Bảng đấu cho các vòng hiện tại"
 
 #: draw/views.py
 #, python-format
 msgid "debates start at %(time)s (in %(time_zone)s)"
-msgstr "tráº­n tranh biá»‡n báº¯t Ä‘áº§u tá»« %(time)s (á»Ÿ %(time_zone)s)"
+msgstr "trận tranh biện bắt đầu từ %(time)s (ở %(time_zone)s)"
 
 #: draw/views.py
 #, python-format
@@ -962,11 +962,11 @@ msgstr ""
 #, python-format
 msgid "debate starts at %(time)s"
 msgid_plural "debates start at %(time)s"
-msgstr[0] "tráº­n tranh biá»‡n báº¯t Ä‘áº§u tá»« %(time)s"
+msgstr[0] "trận tranh biện bắt đầu từ %(time)s"
 
 #: draw/views.py
 msgid "The draw for this round hasn't been released."
-msgstr "Báº£ng Ä‘áº¥u cho vÃ²ng nÃ y chÆ°a Ä‘Æ°á»£c cÃ´ng bá»‘."
+msgstr "Bảng đấu cho vòng này chưa được công bố."
 
 #: draw/views.py
 #, python-format
@@ -979,7 +979,7 @@ msgstr ""
 
 #: draw/views.py
 msgid "Position"
-msgstr "Vá»‹ trÃ­"
+msgstr "Vị trí"
 
 #: draw/views.py
 msgid "Team Pairings"
@@ -1014,10 +1014,10 @@ msgstr ""
 
 #: draw/views.py
 #, python-format
-msgid "RÃ©nyi entropy of order %(order)s"
+msgid "Rényi entropy of order %(order)s"
 msgstr ""
 
-#. Translators: This is appended to the string "RÃ©nyi entropy of order 1.0"
+#. Translators: This is appended to the string "Rényi entropy of order 1.0"
 #: draw/views.py
 msgid " (<i>i.e.</i>, Shannon entropy)"
 msgstr ""
@@ -1037,7 +1037,7 @@ msgstr ""
 #: draw/views.py
 #, python-format
 msgid "Could not create draw for %(round)s, there was already a draw!"
-msgstr "KhÃ´ng thá»ƒ táº¡o báº£ng Ä‘áº¥u cho vÃ²ng %(round)s, Ä‘Ã£ cÃ³ báº£ng Ä‘áº¥u cÃ³ sáºµn!"
+msgstr "Không thể tạo bảng đấu cho vòng %(round)s, đã có bảng đấu có sẵn!"
 
 #: draw/views.py
 #, python-format
@@ -1083,7 +1083,7 @@ msgstr ""
 
 #: draw/views.py
 msgid "Released the draw."
-msgstr "CÃ´ng bá»‘ báº£ng Ä‘áº¥u."
+msgstr "Công bố bảng đấu."
 
 #: draw/views.py
 msgid "The draw had been unreleased."
@@ -1105,5 +1105,4 @@ msgstr ""
 #: draw/views.py
 msgid "Edit Matchups"
 msgstr ""
-
 

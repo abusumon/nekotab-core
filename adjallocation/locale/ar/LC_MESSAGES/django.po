@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2023-02-05 00:56\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/NekoTab/adjallocation/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/adjallocation/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 922\n"
 
 #: adjallocation/allocators/base.py
@@ -68,15 +68,15 @@ msgstr ""
 
 #: adjallocation/apps.py
 msgid "Adjudicator Allocation"
-msgstr "ØªØ¹ÙŠÙŠÙ† Ø§Ù„Ù…Ø­ÙƒÙ…ÙŠÙ†"
+msgstr "تعيين المحكمين"
 
 #: adjallocation/consumers.py
 msgid "Draw is already released, unrelease draw to redo auto-allocations."
-msgstr "ØªÙ… Ø¥Ø¹Ù„Ø§Ù† Ø§Ù„Ù‚Ø±Ø¹Ø© Ù…Ø³Ø¨Ù‚Ø§ØŒ Ù‚Ù… Ø¨Ø±ÙØ¹Ù‡Ø§ Ù„Ø¥Ø¹Ø§Ø¯Ø© Ø§Ù„ØªÙˆØ²ÙŠØ¹ Ø§Ù„ØªÙ„Ù‚Ø§Ø¦ÙŠ "
+msgstr "تم إعلان القرعة مسبقا، قم برفعها لإعادة التوزيع التلقائي "
 
 #: adjallocation/consumers.py
 msgid "Draw is not confirmed, confirm draw to run auto-allocations."
-msgstr "Ù„Ù… ÙŠØªÙ… ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ù‚Ø±Ø¹Ø© Ø¨Ø¹Ø¯ØŒ Ù‚Ù… Ø¨ØªØ£ÙƒÙŠØ¯Ù‡Ø§ Ù„Ø¥Ø¬Ø±Ø§Ø¡ Ø§Ù„ØªÙˆØ²ÙŠØ¹ Ø§Ù„ØªÙ„Ù‚Ø§Ø¦ÙŠ "
+msgstr "لم يتم تأكيد القرعة بعد، قم بتأكيدها لإجراء التوزيع التلقائي "
 
 #: adjallocation/consumers.py
 msgid "There are no preformed panels available to allocate."
@@ -150,79 +150,79 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "chair"
-msgstr "Ø±Ø¦ÙŠØ³ Ø§Ù„Ø¬Ù„Ø³Ø©"
+msgstr "رئيس الجلسة"
 
 #: adjallocation/models.py
 msgid "panellist"
-msgstr "Ø£Ø¹Ø¶Ø§Ø¡ Ù„Ø¬Ù†Ø© Ø§Ù„ØªØ­ÙƒÙŠÙ…"
+msgstr "أعضاء لجنة التحكيم"
 
 #: adjallocation/models.py
 msgid "trainee"
-msgstr " Ù…Ø­ÙƒÙ… Ù…ØªØ¯Ø±Ø¨"
+msgstr " محكم متدرب"
 
 #: adjallocation/models.py
 msgid "debate"
-msgstr "Ù…Ù†Ø§Ø¸Ø±Ø©"
+msgstr "مناظرة"
 
 #: adjallocation/models.py
 msgid "adjudicator"
-msgstr "Ù…Ø­ÙƒÙ…"
+msgstr "محكم"
 
 #: adjallocation/models.py
 msgid "type"
-msgstr "Ù†ÙˆØ¹"
+msgstr "نوع"
 
 #: adjallocation/models.py
 msgid "available?"
-msgstr "Ù…ØªÙˆÙØ± ØŸ"
+msgstr "متوفر ؟"
 
 #: adjallocation/models.py
 msgid "debate adjudicator"
-msgstr "Ù…Ø­ÙƒÙ… Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
+msgstr "محكم المناظرة"
 
 #: adjallocation/models.py
 msgid "debate adjudicators"
-msgstr "Ù…Ø­ÙƒÙ…Ùˆ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
+msgstr "محكمو المناظرة"
 
 #: adjallocation/models.py
 msgid "team"
-msgstr "ÙØ±ÙŠÙ‚"
+msgstr "فريق"
 
 #: adjallocation/models.py
 msgid "adjudicator-team conflict"
-msgstr "ØªØ¹Ø§Ø±Ø¶ Ù…Ø­ÙƒÙ…-ÙØ±ÙŠÙ‚"
+msgstr "تعارض محكم-فريق"
 
 #: adjallocation/models.py
 msgid "adjudicator-team conflicts"
-msgstr "ØªØ¹Ø§Ø±Ø¶Ø§Øª (Ù…Ø­ÙƒÙ…-ÙØ±ÙŠÙ‚)"
+msgstr "تعارضات (محكم-فريق)"
 
 #: adjallocation/models.py
 msgid "adjudicator 1"
-msgstr "Ù…Ø­ÙƒÙ…-1"
+msgstr "محكم-1"
 
 #: adjallocation/models.py
 msgid "adjudicator 2"
-msgstr "Ù…Ø­ÙƒÙ…-2"
+msgstr "محكم-2"
 
 #: adjallocation/models.py
 msgid "adjudicator-adjudicator conflict"
-msgstr "ØªØ¹Ø§Ø±Ø¶ Ù…Ø­ÙƒÙ…-Ù…Ø­ÙƒÙ…"
+msgstr "تعارض محكم-محكم"
 
 #: adjallocation/models.py
 msgid "adjudicator-adjudicator conflicts"
-msgstr "ØªØ¹Ø§Ø±Ø¶Ø§Øª (Ù…Ø­ÙƒÙ…-Ù…Ø­ÙƒÙ…)"
+msgstr "تعارضات (محكم-محكم)"
 
 #: adjallocation/models.py
 msgid "institution"
-msgstr "Ù…Ø¤Ø³Ø³Ø©"
+msgstr "مؤسسة"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflict"
-msgstr "ØªØ¹Ø§Ø±Ø¶ Ù…Ø­ÙƒÙ…-Ù…Ø¤Ø³Ø³Ø©"
+msgstr "تعارض محكم-مؤسسة"
 
 #: adjallocation/models.py
 msgid "adjudicator-institution conflicts"
-msgstr "ØªØ¹Ø§Ø±Ø¶Ø§Øª (Ù…Ø­ÙƒÙ…-Ù…Ø¤Ø³Ø³Ø©)"
+msgstr "تعارضات (محكم-مؤسسة)"
 
 #: adjallocation/models.py
 msgid "team-institution conflict"
@@ -234,11 +234,11 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "round"
-msgstr "Ø¬ÙˆÙ„Ø©"
+msgstr "جولة"
 
 #: adjallocation/models.py
 msgid "importance"
-msgstr "Ø£Ù‡Ù…ÙŠØ©"
+msgstr "أهمية"
 
 #: adjallocation/models.py
 msgid "minimum bracket"
@@ -258,7 +258,7 @@ msgstr ""
 
 #: adjallocation/models.py
 msgid "room rank"
-msgstr "Ù…Ø³ØªÙˆÙ‰ Ø§Ù„Ù‚Ø§Ø¹Ø©"
+msgstr "مستوى القاعة"
 
 #: adjallocation/models.py
 msgid "Sequential number of panel, not used in any algorithms"
@@ -347,7 +347,7 @@ msgstr ""
 
 #: adjallocation/views.py
 msgid "Unknown"
-msgstr "Ù…Ø¬Ù‡ÙˆÙ„ "
+msgstr "مجهول "
 
 #: adjallocation/views.py
 msgid "Edit Allocation"
@@ -363,11 +363,11 @@ msgstr ""
 
 #: adjallocation/views.py
 msgid "Adjudicator-Team Conflicts"
-msgstr "ØªØ¹Ø§Ø±Ø¶Ø§Øª (Ù…Ø­ÙƒÙ…-ÙØ±ÙŠÙ‚)"
+msgstr "تعارضات (محكم-فريق)"
 
 #: adjallocation/views.py
 msgid "Save Adjudicator-Team Conflicts"
-msgstr "Ø­ÙØ¸ ØªØ¹Ø§Ø±Ø¶Ø§Øª (Ù…Ø¬ÙƒÙ…-ÙØ±ÙŠÙ‚)"
+msgstr "حفظ تعارضات (مجكم-فريق)"
 
 #: adjallocation/views.py
 #, python-format
@@ -393,7 +393,7 @@ msgstr[5] ""
 
 #: adjallocation/views.py
 msgid "No changes were made to adjudicator-team conflicts."
-msgstr "Ù„Ù… ÙŠØªÙ… ØªØºÙŠÙŠØ± Ù„ØªØ¹Ø§Ø±Ø¶Ø§Øª (Ù…Ø­ÙƒÙ…-ÙØ±ÙŠÙ‚)"
+msgstr "لم يتم تغيير لتعارضات (محكم-فريق)"
 
 #: adjallocation/views.py
 msgid "Adjudicator-Adjudicator Conflicts"
@@ -496,5 +496,4 @@ msgstr[5] ""
 #: adjallocation/views.py
 msgid "No changes were made to team-institution conflicts."
 msgstr ""
-
 

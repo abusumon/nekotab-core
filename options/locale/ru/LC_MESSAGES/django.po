@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: ru\n"
-"X-Crowdin-File: /develop/NekoTab/options/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/options/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 940\n"
 
@@ -44,83 +44,83 @@ msgstr ""
 
 #: options/models.py
 msgid "instance"
-msgstr "ÑÐºÐ·ÐµÐ¼Ð¿Ð»ÑÑ€"
+msgstr "экземпляр"
 
 #: options/models.py
 msgid "tournament preference"
-msgstr "Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ñ‚ÐµÐ½Ð¸Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°"
+msgstr "предпочтение турнира"
 
 #: options/models.py
 msgid "tournament preferences"
-msgstr "Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ñ‚ÐµÐ½Ð¸Ñ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°"
+msgstr "предпочтения турнира"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Score Rules"
-msgstr "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð° Ð±Ð°Ð»Ð»Ð¾Ð²"
+msgstr "Правила баллов"
 
 #: options/preferences.py
 msgid "Minimum allowed score for substantive speeches"
-msgstr "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð´Ð»Ñ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Минимальный допустимый балл для конструктивных речей"
 
 #: options/preferences.py
 msgid "Minimum speaker score"
-msgstr "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ð±Ð°Ð»Ð»"
+msgstr "Минимальный спикерский балл"
 
 #: options/preferences.py
 msgid "Maximum speaker score"
-msgstr "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ð±Ð°Ð»Ð»"
+msgstr "Максимальный спикерский балл"
 
 #: options/preferences.py
 msgid "Maximum allowed score for substantive speeches"
-msgstr "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð´Ð»Ñ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Максимальный допустимый балл для конструктивных речей"
 
 #: options/preferences.py
 msgid "Speaker score step"
-msgstr "Ð¨Ð°Ð³ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ñ… Ð±Ð°Ð»Ð»Ð¾Ð²"
+msgstr "Шаг спикерских баллов"
 
 #: options/preferences.py
 msgid "Score steps allowed for substantive speeches, e.g. full points (1) or half points (0.5)"
-msgstr "Ð¨Ð°Ð³ Ð±Ð°Ð»Ð»Ð¾Ð², Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ð´Ð»Ñ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ Ð¿Ð¾Ð»Ð½Ñ‹Ðµ Ð±Ð°Ð»Ð»Ñ‹ (1) Ð¸Ð»Ð¸ Ð¿Ð¾Ð»Ð¾Ð²Ð¸Ð½Ñ‹ Ð±Ð°Ð»Ð»Ð¾Ð² (0,5)"
+msgstr "Шаг баллов, допустимый для конструктивных речей, например полные баллы (1) или половины баллов (0,5)"
 
 #: options/preferences.py
 msgid "The largest amount by which one team can beat another (0 means no limit)"
-msgstr "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð±Ð°Ð»Ð»Ð¾Ð², Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ðµ Ð¾Ð´Ð½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¼Ð¾Ð¶ÐµÑ‚ Ð¾Ð¿ÐµÑ€ÐµÐ´Ð¸Ñ‚ÑŒ Ð´Ñ€ÑƒÐ³ÑƒÑŽ (0 Ð¾Ð·Ð½Ð°Ñ‡Ð°ÐµÑ‚ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²Ð¸Ðµ Ð¿Ñ€ÐµÐ´ÐµÐ»Ð°)"
+msgstr "Максимальное количество баллов, на которое одна команда может опередить другую (0 означает отсутствие предела)"
 
 #: options/preferences.py
 msgid "Maximum margin"
-msgstr "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¿Ñ€ÐµÐ´ÐµÐ»"
+msgstr "Максимальный предел"
 
 #: options/preferences.py
 msgid "Minimum allowed score for reply speeches"
-msgstr "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð´Ð»Ñ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Минимальный допустимый балл для заключительных речей"
 
 #: options/preferences.py
 msgid "Minimum reply score"
-msgstr "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Минимальный балл заключительных речей"
 
 #: options/preferences.py
 msgid "Maximum allowed score for reply speeches"
-msgstr "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð´Ð»Ñ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Максимальный допустимый балл для заключительных речей"
 
 #: options/preferences.py
 msgid "Maximum reply score"
-msgstr "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Максимальный балл заключительных речей"
 
 #: options/preferences.py
 msgid "Score steps allowed for reply speeches, e.g. full points (1) or half points (0.5)"
-msgstr "Ð¨Ð°Ð³ Ð±Ð°Ð»Ð»Ð¾Ð², Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ð´Ð»Ñ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€ Ð¿Ð¾Ð»Ð½Ñ‹Ðµ Ð±Ð°Ð»Ð»Ñ‹ (1) Ð¸Ð»Ð¸ Ð¿Ð¾Ð»Ð¾Ð²Ð¸Ð½Ñ‹ Ð±Ð°Ð»Ð»Ð¾Ð² (0,5)"
+msgstr "Шаг баллов, допустимый для заключительных речей, например полные баллы (1) или половины баллов (0,5)"
 
 #: options/preferences.py
 msgid "Reply score step"
-msgstr "Ð¨Ð°Ð³ Ð±Ð°Ð»Ð»Ð¾Ð² Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Шаг баллов заключительных речей"
 
 #: options/preferences.py
 msgid "If checked, a team's winning margin includes dissenting adjudicators"
-msgstr "Ð•ÑÐ»Ð¸ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð¾, Ñ‚Ð¾ Ð¿Ð¾Ð»Ðµ Ð²Ñ‹Ð¸Ð³Ñ€Ð°Ð²ÑˆÐµÐ¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð²ÐºÐ»ÑŽÑ‡Ð°ÐµÑ‚ Ð² ÑÐµÐ±Ñ Ð½Ðµ ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ð²ÑˆÐ¸Ñ…ÑÑ ÑÑƒÐ´ÐµÐ¹"
+msgstr "Если выбрано, то поле выигравшей команды включает в себя не согласившихся судей"
 
 #: options/preferences.py
 msgid "Margin includes dissenters"
-msgstr "ÐŸÐ¾Ð»Ðµ Ð²ÐºÐ»ÑŽÑ‡Ð°ÐµÑ‚ Ð½Ðµ ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ð²ÑˆÐ¸Ñ…ÑÑ"
+msgstr "Поле включает не согласившихся"
 
 #: options/preferences.py
 msgid "Any explanatory text needed to introduce the ballot form, e.g. speaker scale"
@@ -140,71 +140,71 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Draw Rules"
-msgstr "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð° ÑÐµÑ‚ÐºÐ¸"
+msgstr "Правила сетки"
 
 #: options/preferences.py
 msgid "The auto-allocator will only take adjudicators at or above this score as voting panellists"
-msgstr "ÐÐ²Ñ‚Ð¾Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð±ÑƒÐ´ÐµÑ‚ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ°Ðº ÑÑƒÐ´ÐµÐ¹ Ñ Ð¿Ñ€Ð°Ð²Ð¾Ð¼ Ð³Ð¾Ð»Ð¾ÑÐ° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‚ÐµÑ…, ÐºÑ‚Ð¾ Ð¸Ð¼ÐµÐµÑ‚ ÑÑ‚Ð¾Ñ‚ Ð±Ð°Ð»Ð» Ð¸Ð»Ð¸ Ð²Ñ‹ÑˆÐµ"
+msgstr "Автораспределение будет использовать как судей с правом голоса только тех, кто имеет этот балл или выше"
 
 #: options/preferences.py
 msgid "Minimum adjudicator score to vote"
-msgstr "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð´Ð»Ñ ÑÑƒÐ´ÑŒÐ¸, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¸Ð¼ÐµÑ‚ÑŒ Ð¿Ñ€Ð°Ð²Ð¾ Ð³Ð¾Ð»Ð¾ÑÐ°"
+msgstr "Минимальный балл для судьи, чтобы иметь право голоса"
 
 #: options/preferences.py
 msgid "Penalty applied by adjudicator auto-allocator for conflicts"
-msgstr "Ð¡Ð½Ð¸Ð¶ÐµÐ½Ð¸Ðµ, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ð¾Ðµ Ð¿Ñ€Ð¸ Ð°Ð²Ñ‚Ð¾Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ð¸ ÑÑƒÐ´ÐµÐ¹ Ð² ÑÐ»ÑƒÑ‡Ð°Ðµ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ð¾Ð²"
+msgstr "Снижение, используемое при автораспределении судей в случае конфликтов"
 
 #: options/preferences.py
 msgid "Adjudicator conflict penalty"
-msgstr "Ð¡Ð½Ð¸Ð¶ÐµÐ½Ð¸Ðµ Ð¿Ñ€Ð¸ ÑÑƒÐ´ÐµÐ¹ÑÐºÐ¾Ð¼ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ðµ"
+msgstr "Снижение при судейском конфликте"
 
 #: options/preferences.py
 msgid "Penalty applied by adjudicator auto-allocator for history"
-msgstr "Ð¡Ð½Ð¸Ð¶ÐµÐ½Ð¸Ðµ, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ð¾Ðµ Ð¿Ñ€Ð¸ Ð°Ð²Ñ‚Ð¾Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ð¸ ÑÑƒÐ´ÐµÐ¹ Ð² ÑÐ»ÑƒÑ‡Ð°Ðµ Ð¸ÑÑ‚Ð¾Ñ€Ð¸Ð¸"
+msgstr "Снижение, используемое при автораспределении судей в случае истории"
 
 #: options/preferences.py
 msgid "Adjudicator history penalty"
-msgstr "Ð¡Ð½Ð¸Ð¶ÐµÐ½Ð¸Ðµ Ð¿Ñ€Ð¸ Ð¸ÑÑ‚Ð¾Ñ€Ð¸Ð¸"
+msgstr "Снижение при истории"
 
 #: options/preferences.py
 msgid "Penality applied by preformed panel auto-allocator for priority mismatch"
-msgstr "Ð¡Ð½Ð¸Ð¶ÐµÐ½Ð¸Ðµ, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ð¾Ðµ Ð¿Ñ€Ð¸ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð¼ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ð¸ ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸Ð¸ Ð² ÑÐ²ÑÐ·Ð¸ Ñ Ð½ÐµÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð¸ÐµÐ¼ Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚Ð°"
+msgstr "Снижение, используемое при автоматическом распределении коллегии в связи с несоответствием приоритета"
 
 #: options/preferences.py
 msgid "Importance mismatch penalty"
-msgstr "Ð¡Ð½Ð¸Ð¶ÐµÐ½Ð¸Ðµ Ð¿Ñ€Ð¸ Ð½ÐµÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð¸Ð¸ Ð¿Ñ€Ð¸Ð¾Ñ€Ð¸Ñ‚ÐµÑ‚Ð°"
+msgstr "Снижение при несоответствии приоритета"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams seeing their own institution"
-msgstr "Ð¡Ð½Ð¸Ð¶ÐµÐ½Ð¸Ðµ Ð¿Ñ€Ð¸Ð¼ÐµÐ½Ð¸Ð¼Ð¾Ðµ Ð¿Ñ€Ð¸ Ð¼ÐµÑ‚Ð¾Ð´Ðµ Ð¸Ð·Ð±ÐµÐ¶Ð°Ð½Ð¸Ñ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ð¾Ð², Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð½Ðµ Ð¸Ð³Ñ€Ð°Ð»Ð¸ Ñ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð¸Ñ‚ÐµÐ»ÑÐ¼Ð¸ Ð¸Ñ… Ð¶Ðµ Ð¸Ð½ÑÑ‚Ð¸Ñ‚ÑƒÑ‚Ð°"
+msgstr "Снижение применимое при методе избежания конфликтов, чтобы команды не играли с представителями их же института"
 
 #: options/preferences.py
 msgid "Team institution penalty"
-msgstr "ÐžÑ‚Ñ€Ð¸Ñ†Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ ÐºÐ¾ÑÑ„Ñ„Ð¸Ñ†Ð¸ÐµÐ½Ñ‚ Ð¿Ñ€Ð¸ ÑÐ¾Ð²Ð¿Ð°Ð´ÐµÐ½Ð¸Ð¸ ÐºÐ»ÑƒÐ±Ð¾Ð²"
+msgstr "Отрицательный коэффициент при совпадении клубов"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams seeing each other twice or more"
-msgstr "Ð¡Ð½Ð¸Ð¶ÐµÐ½Ð¸Ðµ Ð¿Ñ€Ð¸Ð¼ÐµÐ½Ð¸Ð¼Ð¾Ðµ Ð¿Ñ€Ð¸ Ð¼ÐµÑ‚Ð¾Ð´Ðµ Ð¸Ð·Ð±ÐµÐ¶Ð°Ð½Ð¸Ñ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ð¾Ð², Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð½Ðµ Ð¸Ð³Ñ€Ð°Ð»Ð¸ Ð´Ñ€ÑƒÐ³ Ñ Ð´Ñ€ÑƒÐ³Ð¾Ð¼ Ð´Ð²Ð° Ñ€Ð°Ð·Ð° Ð¸Ð»Ð¸ Ð±Ð¾Ð»ÑŒÑˆÐµ"
+msgstr "Снижение применимое при методе избежания конфликтов, чтобы команды не играли друг с другом два раза или больше"
 
 #: options/preferences.py
 msgid "Team history penalty"
-msgstr "Ð¡Ð½Ð¸Ð¶ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ð¾Ð¹ Ð¸ÑÑ‚Ð¾Ñ€Ð¸Ð¸"
+msgstr "Снижение командной истории"
 
 #: options/preferences.py
 msgid "If checked, the draw will try to avoid pairing teams against their own institution"
-msgstr "Ð•ÑÐ»Ð¸ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð¾, ÑÐ¸ÑÑ‚ÐµÐ¼Ð° Ð¿Ð¾ÑÑ‚Ð°Ñ€Ð°ÐµÑ‚ÑÑ Ð½Ðµ ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸Ð· Ð¾Ð´Ð½Ð¾Ð³Ð¾ ÐºÐ»ÑƒÐ±Ð° Ð¸Ð³Ñ€Ð°Ñ‚ÑŒ Ð´Ñ€ÑƒÐ³ Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² Ð´Ñ€ÑƒÐ³Ð°"
+msgstr "Если отмечено, система постарается не ставить команды из одного клуба играть друг против друга"
 
 #: options/preferences.py
 msgid "Avoid same institution"
-msgstr "Ð˜Ð·Ð±ÐµÐ³Ð°Ñ‚ÑŒ Ñ‚Ð¾Ñ‚ Ð¶Ðµ ÐºÐ»ÑƒÐ±"
+msgstr "Избегать тот же клуб"
 
 #: options/preferences.py
 msgid "If checked, the draw will try to avoid having teams see each other twice"
-msgstr "Ð•ÑÐ»Ð¸ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð¾, Ð¿Ñ€Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ð¸ ÑÐµÑ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹, Ð¿Ð¾ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚Ð¸, Ð½Ðµ Ð±ÑƒÐ´ÑƒÑ‚ Ð¸Ð³Ñ€Ð°Ñ‚ÑŒ Ð´Ñ€ÑƒÐ³ Ñ Ð´Ñ€ÑƒÐ³Ð¾Ð¼ Ð²Ñ‚Ð¾Ñ€Ð¾Ð¹ Ñ€Ð°Ð·"
+msgstr "Если отмечено, при создании сетки команды, по возможности, не будут играть друг с другом второй раз"
 
 #: options/preferences.py
 msgid "Avoid team history"
-msgstr "Ð˜Ð·Ð±ÐµÐ³Ð°Ñ‚ÑŒ Ð¸ÑÑ‚Ð¾Ñ€Ð¸ÑŽ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Избегать историю команд"
 
 #: options/preferences.py
 msgid "Penalty applied by conflict avoidance method for teams being in a pullup many times. Leave 0 for no penalty."
@@ -240,43 +240,43 @@ msgstr ""
 
 #: options/preferences.py
 msgid "How odd brackets are resolved (see documentation for further details)"
-msgstr "ÐšÐ°Ðº Ñ€Ð°Ð·Ñ€ÐµÑˆÐ°ÑŽÑ‚ÑÑ Ð½ÐµÑ‡ÐµÑ‚Ð½Ñ‹Ðµ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´ (ÑÐ¼Ð¾Ñ‚Ñ€Ð¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð±Ð¾Ð»ÐµÐµ Ð¿Ð¾Ð´Ñ€Ð¾Ð±Ð½Ð¾Ð¹ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸)"
+msgstr "Как разрешаются нечетные группы команд (смотри документацию для более подробной информации)"
 
 #: options/preferences.py
 msgid "Odd bracket resolution method"
-msgstr "ÐœÐµÑ‚Ð¾Ð´ Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¸Ñ Ð½ÐµÑ‡ÐµÑ‚Ð½Ñ‹Ñ… Ð³Ñ€ÑƒÐ¿Ð¿ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Метод разрешения нечетных групп команд"
 
 #: options/preferences.py
 msgid "Pull up from top"
-msgstr "ÐŸÑƒÐ»Ð»-Ð°Ð¿ ÑÐ²ÐµÑ€Ñ…Ñƒ"
+msgstr "Пулл-ап сверху"
 
 #: options/preferences.py
 msgid "Pull up from bottom"
-msgstr "ÐŸÑƒÐ»Ð»-Ð°Ð¿ ÑÐ½Ð¸Ð·Ñƒ"
+msgstr "Пулл-ап снизу"
 
 #: options/preferences.py
 msgid "Pull up from middle"
-msgstr "ÐŸÑƒÐ»Ð»-Ð°Ð¿ Ñ ÑÐµÑ€ÐµÐ´Ð¸Ð½Ñ‹"
+msgstr "Пулл-ап с середины"
 
 #: options/preferences.py
 msgid "Pull up at random"
-msgstr "Ð¡Ð»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹ Ð¿ÑƒÐ»Ð»-Ð°Ð¿"
+msgstr "Случайны пулл-ап"
 
 #: options/preferences.py
 msgid "Intermediate brackets"
-msgstr "ÐŸÑ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚Ð¾Ñ‡Ð½Ñ‹Ðµ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Промежуточные группы команд"
 
 #: options/preferences.py
 msgid "Intermediate brackets with bubble-up-bubble-down"
-msgstr "ÐŸÑ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚Ð¾Ñ‡Ð½Ñ‹Ðµ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ñ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ð¸ÑÐ¼Ð¸"
+msgstr "Промежуточные группы команд с перемещениями"
 
 #: options/preferences.py
 msgid "Intermediate 1 (pre-allocated sides)"
-msgstr "ÐŸÑ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚Ð¾Ñ‡Ð½Ñ‹Ðµ 1 (Ð¿Ñ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ñ‹Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹)"
+msgstr "Промежуточные 1 (предварительно распределенные стороны)"
 
 #: options/preferences.py
 msgid "Intermediate 2 (pre-allocated sides)"
-msgstr "ÐŸÑ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚Ð¾Ñ‡Ð½Ñ‹Ðµ 2 (Ð¿Ñ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ñ‹Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹)"
+msgstr "Промежуточные 2 (предварительно распределенные стороны)"
 
 #: options/preferences.py
 msgid "Pull up from the lowest draw strength by rank"
@@ -288,67 +288,67 @@ msgstr ""
 
 #: options/preferences.py
 msgid "How affirmative/negative positions are assigned (see documentation for further details)"
-msgstr "ÐšÐ°Ðº Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÑÑŽÑ‚ÑÑ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ñ/Ð¾Ñ‚Ñ€Ð¸Ñ†Ð°Ð½Ð¸Ñ (ÑÐ¼Ð¾Ñ‚Ñ€Ð¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð´Ð°Ð»ÑŒÐ½ÐµÐ¹ÑˆÐ¸Ñ… Ð´ÐµÑ‚Ð°Ð»ÐµÐ¹)"
+msgstr "Как распределяются позиции утверждения/отрицания (смотри документацию для дальнейших деталей)"
 
 #: options/preferences.py
 msgid "Side allocations method"
-msgstr "ÐœÐµÑ‚Ð¾Ð´ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ñ ÑÑ‚Ð¾Ñ€Ð¾Ð½"
+msgstr "Метод распределения сторон"
 
 #: options/preferences.py
 msgid "Random"
-msgstr "Ð¡Ð»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¹"
+msgstr "Случайный"
 
 #: options/preferences.py
 msgid "Balance"
-msgstr "Ð‘Ð°Ð»Ð°Ð½Ñ"
+msgstr "Баланс"
 
 #: options/preferences.py
 msgid "Pre-allocated"
-msgstr "ÐŸÑ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¾"
+msgstr "Предварительно распределено"
 
 #: options/preferences.py
 msgid "Manually enter from ballot"
-msgstr "Ð’Ñ€ÑƒÑ‡Ð½ÑƒÑŽ Ð²Ð²ÐµÑÑ‚Ð¸ Ð¸Ð· Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
+msgstr "Вручную ввести из бэллота"
 
 #: options/preferences.py
-msgid "Slide: 1 vs 6, 2 vs 7, â€¦. Fold: 1 vs 10, 2 vs 9, â€¦. Adjacent: 1 vs 2, 3 vs 4, â€¦."
-msgstr "Ð¡ÐºÐ¾Ð»ÑŒÐ¶ÐµÐ½Ð¸Ðµ: 1 vs 6, 2 vs 7, â€¦. Ð¡Ð²Ð¾Ñ€Ð°Ñ‡Ð¸Ð²Ð°Ð½Ð¸Ðµ: 1 vs 10, 2 vs 9, â€¦. ÐŸÑ€Ð¸Ð¼Ñ‹ÐºÐ°Ð½Ð¸Ðµ: 1 vs 2, 3 vs 4, â€¦."
+msgid "Slide: 1 vs 6, 2 vs 7, …. Fold: 1 vs 10, 2 vs 9, …. Adjacent: 1 vs 2, 3 vs 4, …."
+msgstr "Скольжение: 1 vs 6, 2 vs 7, …. Сворачивание: 1 vs 10, 2 vs 9, …. Примыкание: 1 vs 2, 3 vs 4, …."
 
 #: options/preferences.py
 msgid "Pairing method"
-msgstr "ÐœÐµÑ‚Ð¾Ð´ Ð¿Ð°Ñ€Ð¾ÑÐ¾Ñ‡ÐµÑ‚Ð°Ð½Ð¸Ñ"
+msgstr "Метод паросочетания"
 
 #: options/preferences.py
 msgid "Slide"
-msgstr "Ð¡Ð»Ð°Ð¹Ð´"
+msgstr "Слайд"
 
 #: options/preferences.py
 msgid "Fold"
-msgstr "Ð¡Ð²Ð¾Ñ€Ð°Ñ‡Ð¸Ð²Ð°Ð½Ð¸Ðµ"
+msgstr "Сворачивание"
 
 #: options/preferences.py
 msgid "Adjacent"
-msgstr "ÐŸÑ€Ð¸Ð¼Ñ‹ÐºÐ°Ð½Ð¸Ðµ"
+msgstr "Примыкание"
 
 #: options/preferences.py
 msgid "Fold top, adjacent rest"
-msgstr "ÐŸÐµÑ€Ð²Ñ‹Ð¹ ÑÐ²Ð¾Ñ€Ð°Ñ‡Ð¸Ð²Ð°Ð½Ð¸ÐµÐ¼, Ð¾ÑÑ‚Ð°Ð»ÑŒÐ½Ñ‹Ðµ Ð¿Ñ€Ð¸Ð¼Ñ‹ÐºÐ°Ð½Ð¸ÐµÐ¼"
+msgstr "Первый сворачиванием, остальные примыканием"
 
 #: options/preferences.py
 msgid "Method used to try to avoid teams facing each other multiple times or their own institution (see documentation for further details)"
-msgstr "ÐœÐµÑ‚Ð¾Ð´, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð´Ð»Ñ Ñ‚Ð¾Ð³Ð¾, Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð½Ðµ Ð¸Ð³Ñ€Ð°Ð»Ð¸ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€Ð°Ð· Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² Ð¾Ð´Ð½Ð¸Ñ… Ð¸ Ñ‚ÐµÑ… Ð¶Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¸Ð»Ð¸ Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð¸Ð· ÑÐ²Ð¾ÐµÐ³Ð¾ ÐºÐ»ÑƒÐ±Ð° (ÑÐ¼. Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸ÑŽ)"
+msgstr "Метод, который используется для того, чтобы команды не играли несколько раз против одних и тех же команд или против команд из своего клуба (см. документацию)"
 
 #: options/preferences.py
 msgid "Conflict avoidance method"
-msgstr "ÐœÐµÑ‚Ð¾Ð´ Ð¸Ð·Ð±ÐµÐ¶Ð°Ð½Ð¸Ñ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚Ð¾Ð²"
+msgstr "Метод избежания конфликтов"
 
 #: options/preferences.py
 msgid "Off"
-msgstr "Ð’Ñ‹ÐºÐ»"
+msgstr "Выкл"
 
 #: options/preferences.py
 msgid "One-up-one-down"
-msgstr "ÐžÐ´Ð½Ð° Ð²Ð²ÐµÑ€Ñ… Ð¾Ð´Ð½Ð° Ð²Ð½Ð¸Ð·"
+msgstr "Одна вверх одна вниз"
 
 #: options/preferences.py
 msgid "Minimum cost matching (pullups determined beforehand)"
@@ -360,27 +360,27 @@ msgstr ""
 
 #: options/preferences.py
 msgid "If using pull-ups, restrict which teams can be pulled up. Two-team formats only. Has no effect on BP or intermediate brackets."
-msgstr "Ð•ÑÐ»Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð°ÑŽÑ‚ÑÑ Ð¿ÑƒÐ»Ð»-Ð°Ð¿Ñ‹, Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡Ð¸Ñ‚Ðµ, ÐºÐ°ÐºÐ¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¿ÑƒÐ»Ð»-Ð°Ð¿Ð½ÑƒÑ‚ÑŒ. Ð­Ñ‚Ð¾ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð½Ð° Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ñ‹ Ñ Ð´Ð²ÑƒÐ¼Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼Ð¸ Ð¸ Ð½Ðµ Ð²Ð»Ð¸ÑÐµÑ‚ Ð½Ð° Ð‘ÐŸÐ¤ Ð¸Ð»Ð¸ Ð¿Ñ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚Ð¾Ñ‡Ð½ÑƒÑŽ Ñ€Ð°ÑÑÑ‚Ð°Ð½Ð¾Ð²ÐºÑƒ."
+msgstr "Если использоаются пулл-апы, ограничите, какие команды можно пулл-апнуть. Это работает только на форматы с двумя командами и не влияет на БПФ или промежуточную расстановку."
 
 #: options/preferences.py
 msgid "Pullup restriction"
-msgstr "ÐžÐ³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ðµ Ð½Ð° Ð¿ÑƒÐ»Ð»-Ð°Ð¿"
+msgstr "Ограничение на пулл-ап"
 
 #: options/preferences.py
 msgid "No restriction"
-msgstr "ÐÐµÑ‚ Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ð¹"
+msgstr "Нет ограничений"
 
 #: options/preferences.py
 msgid "Choose from teams who have been pulled up the fewest times so far"
-msgstr "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¸Ð· ÐºÐ¾Ð¼Ð°Ð½Ð´, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð¿ÑƒÐ»Ð»-Ð°Ð¿Ð½ÑƒÑ‚Ñ‹ Ð¼ÐµÐ½ÑŒÑˆÐµÐµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ€Ð°Ð· Ð½Ð° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚"
+msgstr "Выберите из команд, которые были пулл-апнуты меньшее количество раз на данный момент"
 
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by wins so far"
-msgstr "Ð’Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ Ð¸Ð· ÐºÐ¾Ð¼Ð°Ð½Ð´ Ñ Ð½Ð°Ð¸Ð¼ÐµÐ½ÑŒÑˆÐµÐ¹ ÑÐ¸Ð»Ð¾Ð¹ ÑÐµÑ‚ÐºÐ¸ Ð¿Ð¾ Ð¿Ð¾Ð±ÐµÐ´Ð°Ð¼ Ð½Ð° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚"
+msgstr "Выбрать из команд с наименьшей силой сетки по победам на данный момент"
 
 #: options/preferences.py
 msgid "Choose from teams with the lowest draw strength by speaks so far"
-msgstr "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¸Ð· ÐºÐ¾Ð¼Ð°Ð½Ð´ Ñ Ð½Ð°Ð¸Ð¼ÐµÐ½ÑŒÑˆÐµÐ¹ ÑÐ¸Ð»Ð¾Ð¹ ÑÐµÑ‚ÐºÐ¸ Ð¿Ð¾ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¼ Ð½Ð° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚"
+msgstr "Выберите из команд с наименьшей силой сетки по спикерским на данный момент"
 
 #: options/preferences.py
 msgid "Penalty applied when determining which teams to pull up (for minimum cost matching)"
@@ -392,95 +392,95 @@ msgstr ""
 
 #: options/preferences.py
 msgid "In BP, how pullups are distributed. Only \"Anywhere\" is WUDC-compliant."
-msgstr "ÐšÐ°Ðº Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ñ‹ Ð¿ÑƒÐ»Ð»-Ð°Ð¿Ñ‹ Ð² Ð‘ÐŸÐ¤. Ð¢Ð¾Ð»ÑŒÐºÐ¾ \"Ð’ÐµÐ·Ð´Ðµ\" ÑÐ²Ð»ÑÐµÑ‚ÑÑ ÑÐ¾Ð²Ð¼ÐµÑÑ‚Ð¸Ð¼Ñ‹Ð¼ Ñ WUDC."
+msgstr "Как распределены пулл-апы в БПФ. Только \"Везде\" является совместимым с WUDC."
 
 #: options/preferences.py
 msgid "BP pullup distribution"
-msgstr "Ð Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð¿ÑƒÐ»Ð»-Ð°Ð¿Ð¾Ð² Ð² Ð‘ÐŸÐ¤"
+msgstr "Распределение пулл-апов в БПФ"
 
 #: options/preferences.py
 msgid "Anywhere in bracket"
-msgstr "Ð“Ð´Ðµ ÑƒÐ³Ð¾Ð´Ð½Ð¾ Ð² Ð³Ñ€ÑƒÐ¿Ð¿Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Где угодно в группе команд"
 
 #: options/preferences.py
 msgid "All in the same room (not WUDC-compliant)"
-msgstr "Ð’ÑÐµ Ð² Ð¾Ð´Ð½Ð¾Ð¹ ÐºÐ¾Ð¼Ð½Ð°Ñ‚Ðµ (Ð½Ðµ ÑÐ¾Ð²Ð¼ÐµÑÑ‚Ð¸Ð¼Ð¾ Ñ WUDC)"
+msgstr "Все в одной комнате (не совместимо с WUDC)"
 
 #: options/preferences.py
 msgid "In BP, which position cost function to use (see documentation for details)"
-msgstr "Ð’ Ð‘ÐŸÐ¤, ÐºÐ°ÐºÑƒÑŽ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑŽ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ (ÑÐ¼. Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð¿Ð¾Ð´Ñ€Ð¾Ð±Ð½Ð¾ÑÑ‚ÐµÐ¹)"
+msgstr "В БПФ, какую функцию стоимости позиции использовать (см. документацию для подробностей)"
 
 #: options/preferences.py
 msgid "BP position cost"
-msgstr "Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ Ð² Ð‘ÐŸÐ¤"
+msgstr "Стоимость позиции в БПФ"
 
 #: options/preferences.py
 msgid "Simple"
-msgstr "ÐŸÑ€Ð¾ÑÑ‚Ð¾Ð¹"
+msgstr "Простой"
 
 #: options/preferences.py
-msgid "RÃ©nyi entropy"
-msgstr "Ð­Ð½Ñ‚Ñ€Ð¾Ð¿Ð¸Ñ Ð ÐµÐ½ÑŒÐ¸"
+msgid "Rényi entropy"
+msgstr "Энтропия Реньи"
 
 #: options/preferences.py
 msgid "Population variance"
-msgstr "Ð Ð°Ð·Ð½Ð¸Ñ†Ð° ÑÐ¾Ð²Ð¾ÐºÑƒÐ¿Ð½Ð¾ÑÑ‚ÐµÐ¹"
+msgstr "Разница совокупностей"
 
 #: options/preferences.py
-msgid "RÃ©nyi order Î±, if BP position cost uses RÃ©nyi entropy. Shannon is Î± = 1, Hartley is Î± = 0, collision is Î± = 2. See documentation for details."
-msgstr "ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº Ð ÐµÐ½ÑŒÐ¸, ÐµÑÐ»Ð¸ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ Ð² Ð‘ÐŸÐ¤ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ ÑÐ½Ñ‚Ñ€Ð¾Ð¿Ð¸ÑŽ Ð ÐµÐ½ÑŒÐ¸. Ð£ Ð¨ÑÐ½Ð½Ð¾Ð½Ð° a=1, Ñƒ Ð¥Ð°Ñ€Ñ‚Ð»Ð¸ a=2. Ð¡Ð¼. Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð¿Ð¾Ð´Ñ€Ð¾Ð±Ð½Ð¾ÑÑ‚ÐµÐ¹."
+msgid "Rényi order α, if BP position cost uses Rényi entropy. Shannon is α = 1, Hartley is α = 0, collision is α = 2. See documentation for details."
+msgstr "Порядок Реньи, если стоимость позиции в БПФ использует энтропию Реньи. У Шэннона a=1, у Хартли a=2. См. документацию для подробностей."
 
 #: options/preferences.py
-msgid "RÃ©nyi order (BP)"
-msgstr "ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº Ð ÐµÐ½ÑŒÐ¸ (Ð‘ÐŸÐ¤)"
+msgid "Rényi order (BP)"
+msgstr "Порядок Реньи (БПФ)"
 
 #: options/preferences.py
 msgid "The BP position cost is raised to this power; higher exponents bias towards resolving fewer large position imbalances over more small ones. See documentation for details."
-msgstr "Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ Ð² Ð‘ÐŸÐ¤ Ð¿Ð¾Ð²Ñ‹ÑˆÐ°ÐµÑ‚ÑÑ Ð´Ð¾ ÑÑ‚Ð¾Ð³Ð¾ Ñ‡Ð¸ÑÐ»Ð°; Ð±Ð¾Ð»ÐµÐµ Ð²Ñ‹ÑÐ¾ÐºÐ¸Ðµ ÑÑ‚ÐµÐ¿ÐµÐ½Ð¸ Ð½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð½Ð° Ñ€ÐµÑˆÐµÐ½Ð¸Ðµ Ð±Ð¾Ð»ÐµÐµ ÐºÑ€ÑƒÐ¿Ð½Ñ‹Ñ… Ð´Ð¸ÑÐ±Ð°Ð»Ð°Ð½ÑÐ¾Ð² Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¹, Ð° Ð½Ðµ Ð±Ð¾Ð»ÐµÐµ Ð¼ÐµÐ»ÐºÐ¸Ñ…. ÐŸÐ¾Ð´Ñ€Ð¾Ð±Ð½ÐµÐµ ÑÐ¼. Ð² Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸Ð¸."
+msgstr "Стоимость позиции в БПФ повышается до этого числа; более высокие степени направлены на решение более крупных дисбалансов позиций, а не более мелких. Подробнее см. в документации."
 
 #: options/preferences.py
 msgid "BP position cost exponent"
-msgstr "Ð¡Ñ‚ÐµÐ¿ÐµÐ½ÑŒ ÑÑ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ Ð² Ð‘ÐŸÐ¤"
+msgstr "Степень стоимости позиции в БПФ"
 
 #: options/preferences.py
 msgid "In BP, which method to use to solve the assignment problem. Only Hungarian with preshuffling is WUDC-compliant."
-msgstr "Ð’ Ð‘ÐŸÐ¤, ÐºÐ°ÐºÐ¾Ð¹ Ð¼ÐµÑ‚Ð¾Ð´ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð»Ñ Ñ€ÐµÑˆÐµÐ½Ð¸Ñ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ñ‹ Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹. Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ð’ÐµÐ½Ð³ÐµÑ€ÑÐºÐ¸Ð¹ Ñ Ð¿ÐµÑ€ÐµÑ‚Ð°ÑÐ¾Ð²ÐºÐ¾Ð¹ ÑÐ¾Ð²Ð¼ÐµÑÑ‚Ð¸Ð¼ Ñ WUDC."
+msgstr "В БПФ, какой метод использовать для решения проблемы назначений. Только Венгерский с перетасовкой совместим с WUDC."
 
 #: options/preferences.py
 msgid "BP assignment method"
-msgstr "ÐœÐµÑ‚Ð¾Ð´ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ Ð‘ÐŸÐ¤"
+msgstr "Метод задания БПФ"
 
 #: options/preferences.py
 msgid "Hungarian algorithm (not WUDC-compliant)"
-msgstr "Ð’ÐµÐ½Ð³ÐµÑ€ÑÐºÐ¸Ð¹ Ð°Ð»Ð³Ð¾Ñ€Ð¸Ñ‚Ð¼ (Ð½Ðµ ÑÐ¾Ð²Ð¼ÐµÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ WUDC)"
+msgstr "Венгерский алгоритм (не совместимый с WUDC)"
 
 #: options/preferences.py
 msgid "Hungarian algorithm with preshuffling"
-msgstr "Ð’ÐµÐ½Ð³ÐµÑ€ÑÐºÐ¸Ð¹ Ð°Ð»Ð³Ð¾Ñ€Ð¸Ñ‚Ð¼ Ñ Ð¿ÐµÑ€ÐµÑ‚Ð°ÑÐ¾Ð²ÐºÐ¾Ð¹"
+msgstr "Венгерский алгоритм с перетасовкой"
 
 #: options/preferences.py
 msgid "Automatically make all adjudicators available for all rounds"
-msgstr "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ Ð²ÑÐµÑ… ÑÑƒÐ´ÐµÐ¹ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ð¼Ð¸ Ð´Ð»Ñ Ð²ÑÐµÑ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð²"
+msgstr "Автоматически сделать всех судей доступными для всех раундов"
 
 #: options/preferences.py
 msgid "Skip adjudicator check-ins"
-msgstr "ÐŸÑ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÑŽ ÑÑƒÐ´ÐµÐ¹"
+msgstr "Пропустить регистрацию судей"
 
 #: options/preferences.py
 msgid "Hide panellist positions in the UI (and don't allocate them)"
-msgstr "Ð¡ÐºÑ€Ñ‹Ñ‚ÑŒ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð² Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐµ (Ð¸ Ð½Ðµ Ð²Ñ‹Ð´ÐµÐ»ÑÑ‚ÑŒ Ð¸Ñ…)"
+msgstr "Скрыть позиции вингов в интерфейсе (и не выделять их)"
 
 #: options/preferences.py
 msgid "No panellist adjudicators"
-msgstr "ÐÐµÑ‚ Ð²Ð¸Ð½Ð³Ð¾Ð²"
+msgstr "Нет вингов"
 
 #: options/preferences.py
 msgid "Hide trainee positions in the UI (and don't allocate them)"
-msgstr "Ð¡ÐºÑ€Ñ‹Ñ‚ÑŒ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ° Ð² Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐµ (Ð¸ Ð½Ðµ Ð²Ñ‹Ð´ÐµÐ»ÑÑ‚ÑŒ Ð¸Ñ…)"
+msgstr "Скрыть позиции вингов без права голоса в интерфейсе (и не выделять их)"
 
 #: options/preferences.py
 msgid "No trainee adjudicators"
-msgstr "ÐÐµÑ‚ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
+msgstr "Нет вингов без права голоса"
 
 #: options/preferences.py
 msgid "How to handle teams who were marked available yet excluded froma round (a bye)"
@@ -528,39 +528,39 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Feedback"
-msgstr "ÐžÐ±Ñ€Ð°Ñ‚Ð½Ð°Ñ ÑÐ²ÑÐ·ÑŒ"
+msgstr "Обратная связь"
 
 #: options/preferences.py
 msgid "Minimum possible adjudicator score that can be given"
-msgstr "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð´Ð»Ñ ÑÑƒÐ´ÑŒÐ¸"
+msgstr "Минимальный балл для судьи"
 
 #: options/preferences.py
 msgid "Minimum adjudicator score"
-msgstr "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð´Ð»Ñ ÑÑƒÐ´ÑŒÐ¸"
+msgstr "Минимальный балл для судьи"
 
 #: options/preferences.py
 msgid "Maximum possible adjudicator score that can be given"
-msgstr "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð´Ð»Ñ ÑÑƒÐ´ÑŒÐ¸"
+msgstr "Максимальный балл для судьи"
 
 #: options/preferences.py
 msgid "Maximum adjudicator score"
-msgstr "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð±Ð°Ð»Ð» Ð´Ð»Ñ ÑÑƒÐ´ÑŒÐ¸"
+msgstr "Максимальный балл для судьи"
 
 #: options/preferences.py
 msgid "Used to inform available choices in the feedback forms for adjudicators (both online and printed) and feedback progress"
-msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð´Ð»Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð°Ñ… Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð½Ð° ÑÑƒÐ´ÐµÐ¹ (ÐºÐ°Ðº Ð² Ñ€ÐµÐ¶Ð¸Ð¼Ðµ Ð¾Ð½Ð»Ð°Ð¹Ð½, Ñ‚Ð°Ðº Ð¸ Ð² Ð¿ÐµÑ‡Ð°Ñ‚Ð½Ð¾Ð¼ Ð²Ð¸Ð´Ðµ) Ð¸ Ð¾ Ð¿Ñ€Ð¾Ð³Ñ€ÐµÑÑÐµ Ð² Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐµ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
+msgstr "Используется для информирования о доступных вариантах обратной связи на судей (как в режиме онлайн, так и в печатном виде) и о прогрессе в отправке обратной связи"
 
 #: options/preferences.py
 msgid "Allow and expect feedback to be submitted by"
-msgstr "Ð Ð°Ð·Ñ€ÐµÑˆÐ¸Ñ‚ÑŒ Ð¸ Ð¾Ð¶Ð¸Ð´Ð°Ñ‚ÑŒ, Ñ‡Ñ‚Ð¾ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð°Ñ ÑÐ²ÑÐ·ÑŒ Ð±ÑƒÐ´ÐµÑ‚ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð° Ð¾Ñ‚"
+msgstr "Разрешить и ожидать, что обратная связь будет представлена от"
 
 #: options/preferences.py
 msgid "Chairs on panellists and trainees"
-msgstr "Ð§ÑÐ¹Ñ€Ð¾Ð² Ð½Ð° Ð²Ð¸Ð½Ð³Ð¾Ð² Ð¸ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
+msgstr "Чэйров на вингов и вингов без права голоса"
 
 #: options/preferences.py
 msgid "Panellists on chairs, chairs on panellists and trainees"
-msgstr "Ð’Ð¸Ð½Ð³Ð¸ Ð½Ð° Ñ‡ÑÐ¹Ñ€Ð¾Ð², Ñ‡ÑÐ¹Ñ€Ñ‹ Ð½Ð° Ð²Ð¸Ð½Ð³Ð¾Ð² Ð¸ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
+msgstr "Винги на чэйров, чэйры на вингов и вингов без права голоса"
 
 #: options/preferences.py
 msgid "Panellists and trainees on chairs, chairs on panellists and trainees"
@@ -568,7 +568,7 @@ msgstr ""
 
 #: options/preferences.py
 msgid "All adjudicators (including trainees) on each other"
-msgstr "Ð’ÑÐµ ÑÑƒÐ´ÑŒÐ¸ (Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°) Ð´Ñ€ÑƒÐ³ Ð½Ð° Ð´Ñ€ÑƒÐ³Ð°"
+msgstr "Все судьи (включая вингов без права голоса) друг на друга"
 
 #: options/preferences.py
 msgid "Panellists on eachother and chairs, trainees on chairs, chairs on everyone"
@@ -580,19 +580,19 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Expect feedback to be submitted by teams on"
-msgstr "ÐžÐ¶Ð¸Ð´Ð°ÐµÑ‚ Ð¾Ð±Ñ€Ð°Ñ‚Ð½ÑƒÑŽ ÑÐ²ÑÐ·ÑŒ Ð¾Ñ‚ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð½Ð°"
+msgstr "Ожидает обратную связь от команд на"
 
 #: options/preferences.py
 msgid "Used to inform available choices in the feedback forms for teams (both online and printed) and feedback progress; this option is used by, e.g., UADC"
-msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð´Ð»Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð°Ñ… Ð² Ñ„Ð¾Ñ€Ð¼Ðµ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð´Ð»Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´ (ÐºÐ°Ðº Ð¾Ð½Ð»Ð°Ð¹Ð½, Ñ‚Ð°Ðº Ð¸ Ð¿ÐµÑ‡Ð°Ñ‚Ð½Ñ‹Ñ…) Ð¸ Ð¾ Ð¿Ñ€Ð¾Ð³Ñ€ÐµÑÑÐµ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸; ÑÑ‚Ð¾Ñ‚ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, Ð½Ð° UADC"
+msgstr "Используется для информирования о доступных вариантах в форме обратной связи для команд (как онлайн, так и печатных) и о прогрессе обратной связи; этот вариант используется, например, на UADC"
 
 #: options/preferences.py
 msgid "Orallist only (voting panellists permitted, with prompts to select orallist)"
-msgstr "Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð°ÑŽÑ‰Ð¸Ð¹ Ñ€Ð°Ð·Ð±Ð¾Ñ€ (Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ñ‹ Ð³Ð¾Ð»Ð¾ÑÐ°ÑŽÑ‰Ð¸Ðµ Ð²Ð¸Ð½Ð³Ð¸, Ñ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ¾Ð¼ Ð½Ð° Ð²Ñ‹Ð±Ð¾Ñ€ Ð´Ð°ÑŽÑ‰ÐµÐ³Ð¾ Ñ€Ð°Ð·Ð±Ð¾Ñ€)"
+msgstr "Только дающий разбор (разрешены голосающие винги, с запросом на выбор дающего разбор)"
 
 #: options/preferences.py
 msgid "All adjudicators in their panels (including trainees)"
-msgstr "Ð’ÑÐµ ÑÑƒÐ´ÑŒÐ¸ Ð² ÑÐ²Ð¾Ð¸Ñ… ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸ÑÑ… (Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ Ð²Ð¸Ð½Ð³Ð¾Ð² Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°)"
+msgstr "Все судьи в своих коллегиях (включая вингов без права голоса)"
 
 #: options/preferences.py
 msgid "No one"
@@ -600,31 +600,31 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Show unexpected feedback submissions in participants pages"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½ÐµÐ¾Ð¶Ð¸Ð´Ð°Ð½Ð½Ñ‹Ðµ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°Ñ… ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð²"
+msgstr "Показывать неожиданные формы обратной связи на страницах участников"
 
 #: options/preferences.py
 msgid "Displays unexpected feedback with a question mark symbol; only relevant if public participants and feedback progress are both enabled"
-msgstr "ÐžÑ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÑ‚ Ð½ÐµÐ¾Ð¶Ð¸Ð´Ð°Ð½Ð½ÑƒÑŽ Ð¾Ð±Ñ€Ð°Ñ‚Ð½ÑƒÑŽ ÑÐ²ÑÐ·ÑŒ Ñ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð¼ Ð·Ð½Ð°ÐºÐ° Ð²Ð¾Ð¿Ñ€Ð¾ÑÐ°; Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ ÐµÑÐ»Ð¸ Ð¾Ð´Ð½Ð¾Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¾ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾Ðµ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð² Ð¸ Ð¾Ñ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¾Ð³Ñ€ÐµÑÑÐ° Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
+msgstr "Отображает неожиданную обратную связь с символом знака вопроса; работает только если одновременно включено публичное отображение участников и отслеживание прогресса обратной связи"
 
 #: options/preferences.py
 msgid "Show if an adjudicator is a trainee (unaccredited)"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ, ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð»Ð¸ ÑÑƒÐ´ÑŒÑ Ð²Ð¸Ð½Ð³Ð¾Ð¼ Ð±ÐµÐ· Ð¿Ñ€Ð°Ð²Ð° Ð³Ð¾Ð»Ð¾ÑÐ°"
+msgstr "Показывать, является ли судья вингом без права голоса"
 
 #: options/preferences.py
 msgid "Show unaccredited"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð½Ðµ Ð¿Ñ€Ð¾ÑˆÐµÐ´ÑˆÐ¸Ñ… Ñ‚ÐµÑÑ‚"
+msgstr "Показывать не прошедших тест"
 
 #: options/preferences.py
 msgid "Any explanatory text needed to introduce the feedback form"
-msgstr "Ð›ÑŽÐ±Ð¾Ð¹ Ð¿Ð¾ÑÑÐ½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ñ‚ÐµÐºÑÑ‚, Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ð¹ Ð´Ð»Ñ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
+msgstr "Любой пояснительный текст, необходимый для представления формы обратной связи"
 
 #: options/preferences.py
 msgid "Feedback introduction/explanation"
-msgstr "Ð’Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ/Ð¾Ð±ÑŠÑÑÐ½ÐµÐ½Ð¸Ðµ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
+msgstr "Введение/объяснение обратной связи"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Debate Rules"
-msgstr "ÐŸÑ€Ð°Ð²Ð¸Ð»Ð° Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
+msgstr "Правила дебатов"
 
 #: options/preferences.py
 msgid "How many teams are in each debate (normally 2 but 4 for BP)"
@@ -636,27 +636,27 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Whether panels submit a ballot each or a single ballot for a debate during the preliminary rounds. Note: BP must use one per debate."
-msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑŽÑ‚ Ð»Ð¸ Ñ‡Ð»ÐµÐ½Ñ‹ ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸Ð¸ Ð¿Ð¾ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñƒ ÐºÐ°Ð¶Ð´Ñ‹Ð¹ Ð¸Ð»Ð¸ ÐµÐ´Ð¸Ð½Ñ‹Ð¹ Ð±ÑÐ»Ð»Ð¾Ñ‚ Ð²Ð¾ Ð²Ñ€ÐµÐ¼Ñ Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð². ÐŸÑ€Ð¸Ð¼ÐµÑ‡Ð°Ð½Ð¸Ñ - Ð² Ð‘ÐŸÐ¤ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ ÐµÐ´Ð¸Ð½Ñ‹Ð¹ Ð±ÑÐ»Ð»Ð¾Ñ‚ Ð½Ð° Ð¾Ð´Ð½Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ñ‹."
+msgstr "Отправляют ли члены коллегии по бэллоту каждый или единый бэллот во время отборочных раундов. Примечания - в БПФ используется единый бэллот на одни дебаты."
 
 #: options/preferences.py
 msgid "Ballots per debate, preliminary rounds"
-msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð½Ð° Ð¾Ð´Ð½Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ñ‹, Ð¾Ñ‚Ð±Ð¾Ñ€Ð¾Ñ‡Ð½Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹"
+msgstr "Бэллоты на одни дебаты, отборочные раунды"
 
 #: options/preferences.py
 msgid "One ballot per voting adjudicator"
-msgstr "ÐžÐ´Ð¸Ð½ Ð±ÑÐ»Ð»Ð¾Ñ‚ Ð½Ð° ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ Ð³Ð¾Ð»Ð¾ÑÑƒÑŽÑ‰ÐµÐ³Ð¾ ÑÑƒÐ´ÑŒÑŽ"
+msgstr "Один бэллот на каждого голосующего судью"
 
 #: options/preferences.py
 msgid "Consensus ballot (one ballot per debate)"
-msgstr "ÐšÐ¾Ð½ÑÐµÐ½ÑÑƒÑÐ½Ñ‹Ð¹ Ð±ÑÐ»Ð»Ð¾Ñ‚ (Ð¾Ð´Ð¸Ð½ Ð±ÑÐ»Ð»Ð¾Ñ‚ Ð½Ð° Ð¾Ð´Ð½Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ñ‹)"
+msgstr "Консенсусный бэллот (один бэллот на одни дебаты)"
 
 #: options/preferences.py
 msgid "Whether panels submit a ballot each or a single ballot for a debate during the elimination rounds. Note: BP must use one per debate."
-msgstr "ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑŽÑ‚ Ð»Ð¸ Ñ‡Ð»ÐµÐ½Ñ‹ ÐºÐ¾Ð»Ð»ÐµÐ³Ð¸Ð¸ Ð¿Ð¾ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñƒ ÐºÐ°Ð¶Ð´Ñ‹Ð¹ Ð¸Ð»Ð¸ ÐµÐ´Ð¸Ð½Ñ‹Ð¹ Ð±ÑÐ»Ð»Ð¾Ñ‚ Ð²Ð¾ Ð²Ñ€ÐµÐ¼Ñ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð². ÐŸÑ€Ð¸Ð¼ÐµÑ‡Ð°Ð½Ð¸Ñ - Ð² Ð‘ÐŸÐ¤ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ ÐµÐ´Ð¸Ð½Ñ‹Ð¹ Ð±ÑÐ»Ð»Ð¾Ñ‚ Ð½Ð° Ð¾Ð´Ð½Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ñ‹."
+msgstr "Отправляют ли члены коллегии по бэллоту каждый или единый бэллот во время брейковых раундов. Примечания - в БПФ используется единый бэллот на одни дебаты."
 
 #: options/preferences.py
 msgid "Ballots per debate, elimination rounds"
-msgstr "Ð‘ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð½Ð° Ð¾Ð´Ð½Ð¸ Ð´ÐµÐ±Ð°Ñ‚Ñ‹, Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹"
+msgstr "Бэллоты на одни дебаты, брейковые раунды"
 
 #: options/preferences.py
 msgid "Whether adjudicator(s) must select the winning team in their ballot, and how it should be treated. Note: Not supported in BP."
@@ -704,27 +704,27 @@ msgstr ""
 
 #: options/preferences.py
 msgid "How many substantive speakers on a team"
-msgstr "Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ñ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð² ÐºÐ¾Ð¼Ð°Ð½Ð´Ðµ"
+msgstr "Сколько конструктивных спикеров в команде"
 
 #: options/preferences.py
 msgid "Substantive speakers"
-msgstr "ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ðµ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹"
+msgstr "Конструктивные спикеры"
 
 #: options/preferences.py
 msgid "What to call the teams"
-msgstr "ÐšÐ°Ðº Ð½Ð°Ð·Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹"
+msgstr "Как назвать команды"
 
 #: options/preferences.py
 msgid "Side names"
-msgstr "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ñ ÑÑ‚Ð¾Ñ€Ð¾Ð½"
+msgstr "Названия сторон"
 
 #: options/preferences.py
 msgid "Whether this style features scored reply speeches"
-msgstr "Ð•ÑÑ‚ÑŒ Ð»Ð¸ Ð² ÑÑ‚Ð¾ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ðµ Ð¾Ñ†ÐµÐ½ÐºÐ° Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Есть ли в это формате оценка заключительных речей"
 
 #: options/preferences.py
 msgid "Reply scores"
-msgstr "Ð‘Ð°Ð»Ð»Ñ‹ Ð·Ð° Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ€ÐµÑ‡Ð¸"
+msgstr "Баллы за заключительные речи"
 
 #: options/preferences.py
 msgid "Whether to limit reply speeches to speakers who gave a substantive speech in the debate"
@@ -760,159 +760,159 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Standings"
-msgstr "ÐŸÐ¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ"
+msgstr "Положение"
 
 #: options/preferences.py
 msgid "The number of substantive speeches a speaker can miss and still be on the speaker tab (-1 means no limit)"
-msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¸Ð²Ð½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ ÑÐ¿Ð¸ÐºÐµÑ€ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ Ð¸ Ð²ÑÐµ ÐµÑ‰Ñ‘ Ð±Ñ‹Ñ‚ÑŒ Ð² ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¾Ð¼ Ñ‚ÑÐ±Ðµ (-1 Ð¾Ð·Ð½Ð°Ñ‡Ð°ÐµÑ‚ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²Ð¸Ðµ Ð»Ð¸Ð¼Ð¸Ñ‚Ð°)"
+msgstr "Количество конструктивных речей, которые спикер может пропустить и все ещё быть в спикерском тэбе (-1 означает отсутствие лимита)"
 
 #: options/preferences.py
 msgid "Speeches missable for standings eligibility"
-msgstr "Ð ÐµÑ‡Ð¸, Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ð´Ð»Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ð¸ Ð¼ÐµÑÑ‚"
+msgstr "Речи, отсутствующие для доступности мест"
 
 #: options/preferences.py
 msgid "The number of reply speeches a speaker can miss and still be on the replies tab (-1 means no limit)"
-msgstr "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ ÑÐ¿Ð¸ÐºÐµÑ€ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€Ð¾Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ Ð¸ Ð²ÑÐµ ÐµÑ‰Ñ‘ Ð±Ñ‹Ñ‚ÑŒ Ð² ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¾Ð¼ Ñ‚ÑÐ±Ðµ (-1 Ð¾Ð·Ð½Ð°Ñ‡Ð°ÐµÑ‚ Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²Ð¸Ðµ Ð»Ð¸Ð¼Ð¸Ñ‚Ð°)"
+msgstr "Количество заключительных речей, которые спикер может пропустить и все ещё быть в спикерском тэбе (-1 означает отсутствие лимита)"
 
 #: options/preferences.py
 msgid "Replies missable for standings eligibility"
-msgstr "Ð—Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ€ÐµÑ‡Ð¸, Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ð´Ð»Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚Ð¸ Ð¼ÐµÑÑ‚"
+msgstr "Заключительные речи, отсутствующие для доступности мест"
 
 #: options/preferences.py
 msgid "Metrics to use to rank teams (see documentation for further details)"
-msgstr "ÐœÐµÑ‚Ñ€Ð¸ÐºÐ¸, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ñ‹Ðµ Ð´Ð»Ñ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´ (ÑÐ¼Ð¾Ñ‚Ñ€Ð¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð´Ð°Ð»ÑŒÐ½ÐµÐ¹ÑˆÐ¸Ñ… Ð´ÐµÑ‚Ð°Ð»ÐµÐ¹)"
+msgstr "Метрики, используемые для ранжирования команд (смотри документацию для дальнейших деталей)"
 
 #: options/preferences.py
 msgid "Team standings precedence"
-msgstr "ÐŸÐµÑ€Ð²ÐµÐ½ÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Первенство положения команд"
 
 #: options/preferences.py
 msgid "Metrics to calculate, but not used to rank teams"
-msgstr "ÐœÐµÑ‚Ñ€Ð¸ÐºÐ¸ Ð´Ð»Ñ Ð¿Ð¾Ð´ÑÑ‡ÐµÑ‚Ð°, Ð½Ð¾ Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ñ‹Ðµ Ð´Ð»Ñ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Метрики для подсчета, но не используемые для ранжирования команд"
 
 #: options/preferences.py
 msgid "Team standings extra metrics"
-msgstr "Ð”Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ¸ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Дополнительные метрики положения команд"
 
 #: options/preferences.py
 msgid "Metrics to use to rank speakers (see documentation for further details)"
-msgstr "ÐœÐµÑ‚Ñ€Ð¸ÐºÐ¸, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ñ‹Ðµ Ð´Ð»Ñ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² (ÑÐ¼Ð¾Ñ‚Ñ€Ð¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð´Ð°Ð»ÑŒÐ½ÐµÐ¹ÑˆÐ¸Ñ… Ð´ÐµÑ‚Ð°Ð»ÐµÐ¹)"
+msgstr "Метрики, используемые для ранжирования спикеров (смотри документацию для дальнейших деталей)"
 
 #: options/preferences.py
 msgid "Speaker standings precedence"
-msgstr "ÐŸÐµÑ€Ð²ÐµÐ½ÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
+msgstr "Первенство положения спикеров"
 
 #: options/preferences.py
 msgid "Metrics to calculate, but not used to rank speakers"
-msgstr "ÐœÐµÑ‚Ñ€Ð¸ÐºÐ¸ Ð´Ð»Ñ Ð¿Ð¾Ð´ÑÑ‡ÐµÑ‚Ð°, Ð½Ð¾ Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ñ‹Ðµ Ð´Ð»Ñ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
+msgstr "Метрики для подсчета, но не используемые для ранжирования спикеров"
 
 #: options/preferences.py
 msgid "Speaker standings extra metrics"
-msgstr "Ð”Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ¸ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
+msgstr "Дополнительные метрики положения спикеров"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Tab Release"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸ÐºÐ°Ñ†Ð¸Ñ Ñ‚ÑÐ±Ð°"
+msgstr "Публикация тэба"
 
 #: options/preferences.py
 msgid "Enables public display of the team tab. Intended for use after the tournament."
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ñ‚ÑÐ±. ÐŸÑ€ÐµÐ´Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¾ Ð´Ð»Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°."
+msgstr "Публично показать командный тэб. Предназначено для использования после турнира."
 
 #: options/preferences.py
 msgid "Release team tab to public"
-msgstr "ÐžÐ¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ñ‚ÑÐ±"
+msgstr "Опубликовать командный тэб"
 
 #: options/preferences.py
 msgid "Only show scores for the top X teams in the public tab (set to 0 to show all teams)."
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð±Ð°Ð»Ð»Ñ‹ Ñ‚Ð¾Ð¿Ð¾Ð²Ñ‹Ñ… X ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð² Ð¾Ð±Ñ‰ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð¼ Ñ‚ÑÐ±Ðµ (ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ 0 Ð´Ð»Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð²ÑÐµÑ… ÐºÐ¾Ð¼Ð°Ð½Ð´)."
+msgstr "Показывать только баллы топовых X команд в общедоступном тэбе (установите 0 для отображения всех команд)."
 
 #: options/preferences.py
 msgid "Top teams cutoff"
-msgstr "ÐžÑ‚ÑÐµÑ‡ÐµÐ½Ð¸Ðµ Ð»ÑƒÑ‡ÑˆÐ¸Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Отсечение лучших команд"
 
 #: options/preferences.py
 msgid "Enables public display of the speaker tab. Intended for use after the tournament."
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ñ‚ÑÐ±. ÐŸÑ€ÐµÐ´Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¾ Ð´Ð»Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°."
+msgstr "Публично показать спикерский тэб. Предназначено для использования после турнира."
 
 #: options/preferences.py
 msgid "Release speaker tab to public"
-msgstr "ÐžÐ¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ñ‚ÑÐ±"
+msgstr "Опубликовать спикерский тэб"
 
 #: options/preferences.py
 msgid "Only show scores for the top X speakers in the public tab (set to 0 to show all speakers)."
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð±Ð°Ð»Ð»Ñ‹ Ñ‚Ð¾Ð¿Ð¾Ð²Ñ‹Ñ… X ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð² Ð¾Ð±Ñ‰ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð¼ Ñ‚ÑÐ±Ðµ (ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ 0 Ð´Ð»Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð²ÑÐµÑ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²)."
+msgstr "Показывать только баллы топовых X спикеров в общедоступном тэбе (установите 0 для отображения всех спикеров)."
 
 #: options/preferences.py
 msgid "Top speakers cutoff"
-msgstr "ÐžÑ‚ÑÐµÑ‡ÐµÐ½Ð¸Ðµ Ð»ÑƒÑ‡ÑˆÐ¸Ñ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
+msgstr "Отсечение лучших спикеров"
 
 #: options/preferences.py
 msgid "Enables public display of the replies tab. Intended for use after the tournament."
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ñ‚ÑÐ± ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹. ÐŸÑ€ÐµÐ´Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¾ Ð´Ð»Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°."
+msgstr "Публично показать тэб спикеров заключительных речей. Предназначено для использования после турнира."
 
 #: options/preferences.py
 msgid "Release replies tab to public"
-msgstr "ÐžÐ¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ñ‚ÑŒ Ñ‚ÑÐ± Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Опубликовать тэб заключительных речей"
 
 #: options/preferences.py
 msgid "Only show scores for the top X repliers in the public tab (set to 0 to show all repliers)."
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð±Ð°Ð»Ð»Ñ‹ Ñ‚Ð¾Ð¿Ð¾Ð²Ñ‹Ñ… X ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹ Ð² Ð¾Ð±Ñ‰ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð¼ Ñ‚ÑÐ±Ðµ (ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ðµ 0 Ð´Ð»Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð²ÑÐµÑ… ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²)."
+msgstr "Показывать только баллы топовых X спикеров заключительных речей в общедоступном тэбе (установите 0 для отображения всех спикеров)."
 
 #: options/preferences.py
 msgid "Top replies cutoff"
-msgstr "ÐžÑ‚ÑÐµÑ‡ÐµÐ½Ð¸Ðµ Ð»ÑƒÑ‡ÑˆÐ¸Ñ… Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÑ‡ÐµÐ¹"
+msgstr "Отсечение лучших заключительных речей"
 
 #: options/preferences.py
-msgid "Enables public display of all motions and win/loss/selection information. This includes all motions â€” whether they have been marked as released or not. Intended for use after the tournament."
-msgstr "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾Ðµ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ Ð²ÑÐµÑ… Ñ‚ÐµÐ¼ Ð¸ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾ Ð¿Ð¾Ð±ÐµÐ´Ð°Ñ…/Ð¿Ð¾Ñ€Ð°Ð¶ÐµÐ½Ð¸ÑÑ…/Ð²Ñ‹Ð±Ð¾Ñ€Ðµ. Ð­Ñ‚Ð¾ Ð²ÐºÐ»ÑŽÑ‡Ð°ÐµÑ‚ Ð²ÑÐµ Ñ‚ÐµÐ¼Ñ‹ - Ð²Ð½Ðµ Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ Ñ‚Ð¾Ð³Ð¾, Ð±Ñ‹Ð»Ð¸ Ð»Ð¸ Ð¾Ð½Ð¸ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ñ‹. ÐŸÑ€ÐµÐ´Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¾ Ð´Ð»Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°."
+msgid "Enables public display of all motions and win/loss/selection information. This includes all motions — whether they have been marked as released or not. Intended for use after the tournament."
+msgstr "Включить публичное отображение всех тем и информации о победах/поражениях/выборе. Это включает все темы - вне зависимости от того, были ли они опубликованы. Предназначено для использования после турнира."
 
 #: options/preferences.py
 msgid "Release motions tab to public"
-msgstr "ÐžÐ¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ñ‚ÑŒ Ñ‚ÑÐ± Ñ‚ÐµÐ¼"
+msgstr "Опубликовать тэб тем"
 
 #: options/preferences.py
 msgid "Enables public display of the feedback scores of all adjudicators"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð±Ð°Ð»Ð»Ñ‹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð²ÑÐµÑ… ÑÑƒÐ´ÐµÐ¹"
+msgstr "Публично показать баллы обратной связи всех судей"
 
 #: options/preferences.py
 msgid "Release adjudicator tab to public"
-msgstr "ÐžÐ¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ñ‚ÑŒ ÑÑƒÐ´ÐµÐ¹ÑÐºÐ¸Ð¹ Ñ‚ÑÐ±"
+msgstr "Опубликовать судейский тэб"
 
 #: options/preferences.py
 msgid "What (if released) the adjudicator tab shows"
-msgstr "Ð§Ñ‚Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ ÑÑƒÐ´ÐµÐ¹ÑÐºÐ¸Ð¹ Ñ‚ÑÐ± (ÐµÑÐ»Ð¸ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½)"
+msgstr "Что показывает судейский тэб (если опубликован)"
 
 #: options/preferences.py
 msgid "Adjudicator tab displays"
-msgstr "Ð¡ÑƒÐ´ÐµÐ¹ÑÐºÐ¸Ð¹ Ñ‚ÑÐ± Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÑ‚"
+msgstr "Судейский тэб отображает"
 
 #: options/preferences.py
 msgid "Only shows base score"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³"
+msgstr "Показывает только исходный рейтинг"
 
 #: options/preferences.py
 msgid "Only shows final score"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¸Ñ‚Ð¾Ð³Ð¾Ð²Ñ‹Ð¹ Ð±Ð°Ð»Ð»"
+msgstr "Показывает только итоговый балл"
 
 #: options/preferences.py
 msgid "Shows base, final, and per-round scores"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³, Ð¸Ñ‚Ð¾Ð³Ð¾Ð²Ñ‹Ð¹ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ Ð¸ Ñ€ÐµÐ¹Ñ‚Ð¸Ð½Ð³ Ð·Ð° ÐºÐ°Ð¶Ð´Ñ‹Ð¹ Ñ€Ð°ÑƒÐ½Ð´"
+msgstr "Показывает исходный рейтинг, итоговый рейтинг и рейтинг за каждый раунд"
 
 #: options/preferences.py
 msgid "Enables public display of every adjudicator's ballot. Intended for use after the tournament."
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ ÑÑƒÐ´ÑŒÐ¸. ÐŸÑ€ÐµÐ´Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¾ Ð´Ð»Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°."
+msgstr "Публично показать бэллоты каждого судьи. Предназначено для использования после турнира."
 
 #: options/preferences.py
 msgid "Release ballots to public"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾"
+msgstr "Показать бэллоты публично"
 
 #: options/preferences.py
 msgid "This releases all the results for all rounds (including silent and break rounds). Do so only after the tournament is finished!"
-msgstr "Ð­Ñ‚Ð¾ Ð¿ÑƒÐ±Ð»Ð¸ÐºÑƒÐµÑ‚ Ð²ÑÐµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð²ÑÐµÑ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð² (Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ñ‹Ðµ Ð¸ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹). Ð¡Ð´ÐµÐ»Ð°Ð¹Ñ‚Ðµ ÑÑ‚Ð¾ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾ÑÐ»Ðµ Ð¾ÐºÐ¾Ð½Ñ‡Ð°Ð½Ð¸Ñ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°!"
+msgstr "Это публикует все результаты всех раундов (включая закрытые и брейковые раунды). Сделайте это только после окончания турнира!"
 
 #: options/preferences.py
 msgid "Release all round results to public"
-msgstr "ÐžÐ¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð²ÑÐµÑ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð²"
+msgstr "Опубликовать результаты всех раундов"
 
 #: options/preferences.py
 msgid "Enables display of confirmed ballots through private URLs. Intended for use after the tournament."
@@ -924,59 +924,59 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Data Entry"
-msgstr "Ð’Ð²Ð¾Ð´ Ð´Ð°Ð½Ð½Ñ‹Ñ…"
+msgstr "Ввод данных"
 
 #: options/preferences.py
 msgid "Whether adjudicators can submit ballots themselves, and how they do so"
-msgstr "ÐœÐ¾Ð³ÑƒÑ‚ Ð»Ð¸ ÑÑƒÐ´ÑŒÐ¸ ÑÐ°Ð¼Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð¸ ÐºÐ°Ðº Ð¾Ð½Ð¸ ÑÑ‚Ð¾ Ð´ÐµÐ»Ð°ÑŽÑ‚"
+msgstr "Могут ли судьи сами отправлять бэллоты и как они это делают"
 
 #: options/preferences.py
 msgid "Ballot submissions from adjudicators"
-msgstr "ÐŸÑ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ ÑÑƒÐ´ÑŒÑÐ¼Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²"
+msgstr "Представление судьями бэллотов"
 
 #: options/preferences.py options/presets.py
 msgid "Disabled (tab staff only)"
-msgstr "ÐžÑ‚ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾ (Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ñ‚ÑÐ±Ð¼Ð°ÑÑ‚ÐµÑ€Ð¾Ð²)"
+msgstr "Отключено (только для тэбмастеров)"
 
 #: options/preferences.py options/presets.py
 msgid "Use private URLs"
-msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ URL"
+msgstr "Использовать личные URL"
 
 #: options/preferences.py options/presets.py
 msgid "Use publicly accessible form"
-msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð¾Ð±Ñ‰ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ Ñ„Ð¾Ñ€Ð¼Ñ‹"
+msgstr "Использовать общедоступные формы"
 
 #: options/preferences.py
 msgid "Whether participants can submit feedback themselves, and how they do so"
-msgstr "ÐœÐ¾Ð³ÑƒÑ‚ Ð»Ð¸ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸ ÑÐ°Ð¼Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð¸ ÐºÐ°Ðº Ð¾Ð½Ð¸ ÑÑ‚Ð¾ Ð´ÐµÐ»Ð°ÑŽÑ‚"
+msgstr "Могут ли участники сами отправлять формы обратной связи и как они это делают"
 
 #: options/preferences.py
 msgid "Feedback submissions from participants"
-msgstr "ÐŸÑ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ñ„Ð¾Ñ€Ð¼ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð¾Ñ‚ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð²"
+msgstr "Предоставление форм обратной связи от участников"
 
 #: options/preferences.py
 msgid "If checked, users must enter a password when submitting public feedback and ballots"
-msgstr "Ð•ÑÐ»Ð¸ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð¾, Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ð¸ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð²Ð²ÐµÑÑ‚Ð¸ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð¿Ñ€Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐµ Ñ„Ð¾Ñ€Ð¼ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²"
+msgstr "Если отмечено, пользователи должны ввести пароль при отправке форм обратной связи и бэллотов"
 
 #: options/preferences.py
 msgid "Require password for submission"
-msgstr "Ð—Ð°Ð¿Ñ€Ð°ÑˆÐ¸Ð²Ð°Ñ‚ÑŒ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð´Ð»Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸"
+msgstr "Запрашивать пароль для отправки"
 
 #: options/preferences.py
 msgid "Value of the password required for public submissions, if passwords are required"
-msgstr "Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ñ, Ñ‚Ñ€ÐµÐ±ÑƒÐµÐ¼Ð¾Ð³Ð¾ Ð´Ð»Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸, ÐµÑÐ»Ð¸ Ñ‚Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ"
+msgstr "Значение пароля, требуемого для отправки, если требуется пароль"
 
 #: options/preferences.py
 msgid "Password for public submission"
-msgstr "ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð´Ð»Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸"
+msgstr "Пароль для отправки"
 
 #: options/preferences.py
 msgid "Bypasses double checking by setting ballots to be automatically confirmed"
-msgstr "Ð˜Ð·Ð±ÐµÐ³Ð°ÐµÑ‚ Ð´Ð²Ð¾Ð¹Ð½ÑƒÑŽ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÑƒ, ÑƒÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°Ñ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²"
+msgstr "Избегает двойную проверку, устанавливая автоматическое подтверждение бэллотов"
 
 #: options/preferences.py
 msgid "Bypass double checking"
-msgstr "Ð˜Ð·Ð±ÐµÐ¶Ð°Ñ‚ÑŒ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð½Ð¾Ð¹ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸"
+msgstr "Избежать повторной проверки"
 
 #: options/preferences.py
 msgid "Requires scores of draft ballots to be re-entered as part of the confirmation stage (to create more stringent check). Only applies to BP formats."
@@ -988,23 +988,23 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Whether assistants can access pages that can reveal matchups and motions ahead of public release (these pages are useful for displaying draws/motions to the public and for printing ballots)."
-msgstr "Ð”Ð¾Ð¿ÑƒÑÐºÐ°ÑŽÑ‚ÑÑ Ð»Ð¸ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð½Ð¸ÐºÐ¸ Ðº ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°Ð¼, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ñ€Ð°ÑÐºÑ€Ñ‹Ñ‚ÑŒ Ñ‚ÐµÐ¼Ñ‹ Ð¸ ÑÐ¾Ñ‡ÐµÑ‚Ð°Ð½Ð¸Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´ Ð´Ð¾ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð¸Ñ (ÑÑ‚Ð¸ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð¿Ð¾Ð»ÐµÐ·Ð½Ñ‹ Ð´Ð»Ñ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾Ð³Ð¾ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐ¼/ÑÐµÑ‚ÐºÐ¸ Ð´Ð»Ñ Ð¿ÐµÑ‡Ð°Ñ‚Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²)."
+msgstr "Допускаются ли помощники к страницам, которые могут раскрыть темы и сочетания команд до опубликования (эти страницы полезны для публичного отображения тем/сетки для печати бэллотов)."
 
 #: options/preferences.py
 msgid "Assistant user access"
-msgstr "Ð”Ð¾ÑÑ‚ÑƒÐ¿ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð½Ð¸ÐºÐ° Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ"
+msgstr "Доступ помощника пользователя"
 
 #: options/preferences.py
 msgid "All areas (results entry, draw display, and motions)"
-msgstr "Ð’ÑÐµ Ð¾Ð±Ð»Ð°ÑÑ‚Ð¸ (Ð²Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð², Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÑÐµÑ‚ÐºÐ¸ Ð¸ Ñ‚ÐµÐ¼Ñ‹)"
+msgstr "Все области (введение результатов, отображение сетки и темы)"
 
 #: options/preferences.py
 msgid "Just results entry and draw display"
-msgstr "Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ð²Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð² Ð¸ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÑÐµÑ‚ÐºÐ¸"
+msgstr "Только введение результатов и отображение сетки"
 
 #: options/preferences.py
 msgid "Only results entry"
-msgstr "Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ð²Ð²Ð¾Ð´ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð²"
+msgstr "Только ввод результатов"
 
 #: options/preferences.py
 msgid "No access"
@@ -1012,51 +1012,51 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Whether participants can check themselves in/out through their private URL."
-msgstr "ÐœÐ¾Ð³ÑƒÑ‚ Ð»Ð¸ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¸ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¸Ñ‚ÑŒ/Ð¾Ñ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÐ²Ð¾ÑŽ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸ÑŽ Ñ‡ÐµÑ€ÐµÐ· ÑÐ²Ð¾Ð¹ Ð»Ð¸Ñ‡Ð½Ñ‹Ð¹ URL."
+msgstr "Могут ли участники подтвердить/отменить свою регистрацию через свой личный URL."
 
 #: options/preferences.py
 msgid "Participant self-checkin"
-msgstr "Ð¡Ð°Ð¼Ð¾ÑÑ‚Ð¾ÑÑ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð²"
+msgstr "Самостоятельная регистрация участников"
 
 #: options/preferences.py
 msgid "The amount of time (in hours) before a speaker or adjudicator's check-in event expires"
-msgstr "Ð’Ñ€ÐµÐ¼Ñ (Ð² Ñ‡Ð°ÑÐ°Ñ…) Ð´Ð¾ Ð¸ÑÑ‚ÐµÑ‡ÐµÐ½Ð¸Ñ ÑÑ€Ð¾ÐºÐ° Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ð° Ð¸Ð»Ð¸ ÑÑƒÐ´ÑŒÐ¸"
+msgstr "Время (в часах) до истечения срока регистрации спикера или судьи"
 
 #: options/preferences.py
 msgid "Check-In Window (People)"
-msgstr "ÐžÐºÐ½Ð¾ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ (Ð»ÑŽÐ´Ð¸)"
+msgstr "Окно регистрации (люди)"
 
 #: options/preferences.py
 msgid "The amount of time (in hours) before a room's check-in event expires"
-msgstr "Ð’Ñ€ÐµÐ¼Ñ (Ð² Ñ‡Ð°ÑÐ°Ñ…) Ð´Ð¾ Ð¸ÑÑ‚ÐµÑ‡ÐµÐ½Ð¸Ñ ÑÑ€Ð¾ÐºÐ° Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸"
+msgstr "Время (в часах) до истечения срока регистрации аудитории"
 
 #: options/preferences.py
 msgid "Check-In Window (Rooms)"
-msgstr "ÐžÐºÐ½Ð¾ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ (Ð°ÑƒÐ´Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸)"
+msgstr "Окно регистрации (аудитории)"
 
 #: options/preferences.py
 msgid "Whether the printed scoresheets should show the 'circle digits' prompt to help check bad handwriting"
-msgstr "Ð”Ð¾Ð»Ð¶Ð½Ñ‹ Ð»Ð¸ Ð¿ÐµÑ‡Ð°Ñ‚Ð½Ñ‹Ðµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ñ€Ð¾ÐºÑƒ Â«Ð¾Ð±Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†Ð¸Ñ„Ñ€ÑƒÂ», Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ð¾Ð¼Ð¾Ñ‡ÑŒ Ñ€Ð°ÑÐ¿Ð¾Ð·Ð½Ð°Ñ‚ÑŒ Ð¿Ð»Ð¾Ñ…Ð¾Ð¹ Ð¿Ð¾Ñ‡ÐµÑ€Ðº"
+msgstr "Должны ли печатные бэллоты показывать строку «обведите цифру», чтобы помочь распознать плохой почерк"
 
 #: options/preferences.py
 msgid "Ballot Digit Checks"
-msgstr "ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ†Ð¸Ñ„Ñ€ Ð² Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°Ñ…"
+msgstr "Проверка цифр в бэллотах"
 
 #: options/preferences.py
 msgid "The location to return scoresheets to, printed on pre-printed ballots. Set to 'TBA' to hide."
-msgstr "ÐœÐµÑÑ‚Ð¾, ÐºÑƒÐ´Ð° Ð¼Ð¾Ð¶Ð½Ð¾ ÑÐ´Ð°Ñ‚ÑŒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹, ÐµÑÐ»Ð¸ Ð¾Ð½Ð¸ Ð² Ð¿ÐµÑ‡Ð°Ñ‚Ð½Ð¾Ð¹ Ð¸Ð»Ð¸ Ð¿Ñ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾-Ñ€Ð°ÑÐ¿ÐµÑ‡Ð°Ñ‚Ð°Ð½Ð½Ð¾Ð¹ Ñ„Ð¾Ñ€Ð¼Ðµ. Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ \"TBA\" Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑÐºÑ€Ñ‹Ñ‚ÑŒ."
+msgstr "Место, куда можно сдать бэллоты, если они в печатной или предварительно-распечатанной форме. Установить \"TBA\" чтобы скрыть."
 
 #: options/preferences.py
 msgid "Score return location"
-msgstr "ÐœÐµÑÑ‚Ð¾ ÑÐ´Ð°Ñ‡Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð²"
+msgstr "Место сдачи бэллотов"
 
 #: options/preferences.py
 msgid "The location to return feedback to, printed on pre-printed feedback forms. Set to 'TBA' to hide."
-msgstr "ÐœÐµÑÑ‚Ð¾, ÐºÑƒÐ´Ð° Ð¼Ð¾Ð¶Ð½Ð¾ ÑÐ´Ð°Ñ‚ÑŒ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸, ÐµÑÐ»Ð¸ Ð¾Ð½Ð¸ Ð² Ð¿ÐµÑ‡Ð°Ñ‚Ð½Ð¾Ð¹ Ð¸Ð»Ð¸ Ð¿Ñ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾-Ñ€Ð°ÑÐ¿ÐµÑ‡Ð°Ñ‚Ð°Ð½Ð½Ð¾Ð¹ Ñ„Ð¾Ñ€Ð¼Ðµ. Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ \"TBA\" Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑÐºÑ€Ñ‹Ñ‚ÑŒ."
+msgstr "Место, куда можно сдать формы обратной связи, если они в печатной или предварительно-распечатанной форме. Установить \"TBA\" чтобы скрыть."
 
 #: options/preferences.py
 msgid "Feedback return location"
-msgstr "ÐœÐµÑÑ‚Ð¾ Ð´Ð»Ñ ÑÐ´Ð°Ñ‡Ð¸ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
+msgstr "Место для сдачи обратной связи"
 
 #: options/preferences.py
 msgid "Lets debates have their status as postponed, as to not block draw generation."
@@ -1076,7 +1076,7 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Public Features"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ñ‹Ðµ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚Ð¸"
+msgstr "Публичные возможности"
 
 #: options/preferences.py
 msgid "Adds a flag signaling search engines to not include tournament pages in search results.Note that it may get ignored, and the other available settings will provide greater privacy."
@@ -1100,127 +1100,127 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Enables the public page listing all participants in the tournament"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð¸ÑÐ¾Ðº Ð²ÑÐµÑ… ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð² Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°"
+msgstr "Публично показывать список всех участников турнира"
 
 #: options/preferences.py
 msgid "Enable public view of participants list"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð¸ÑÐ¾Ðº ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð²"
+msgstr "Публично показывать список участников"
 
 #: options/preferences.py
 msgid "Enables the public page listing all institutions in the tournament"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð¸ÑÐ¾Ðº Ð²ÑÐµÑ… ÐºÐ»ÑƒÐ±Ð¾Ð² Ð½Ð° Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ðµ Ð² Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¾Ð¼ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ðµ"
+msgstr "Показывать список всех клубов на турнире в открытом доступе"
 
 #: options/preferences.py
 msgid "Enable public view of institutions list"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð¸ÑÐ¾Ðº ÐºÐ»ÑƒÐ±Ð¾Ð²"
+msgstr "Показывать список клубов"
 
 #: options/preferences.py
 msgid "Enables the public page listing diversity statistics"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÑƒ Ð´Ð°Ð¹Ð²ÐµÑ€ÑÐ¸Ñ‚Ð¸"
+msgstr "Публично показывать статистику дайверсити"
 
 #: options/preferences.py
 msgid "Enable public view of diversity info"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ð´Ð°Ð¹Ð²ÐµÑ€ÑÐ¸Ñ‚Ð¸"
+msgstr "Публично показывать информацию о дайверсити"
 
 #: options/preferences.py
 msgid "Enables the public page showing checkin statuses for individuals, institutions, and teams. Note that this page can be slow when used at very large tournaments."
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ Ð¿Ñ€Ð¸ÑÑƒÑ‚ÑÑ‚Ð²Ð¸Ðµ ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð², ÐºÐ»ÑƒÐ±Ð¾Ð² Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´. ÐÐ° Ð¾Ñ‡ÐµÐ½ÑŒ ÐºÑ€ÑƒÐ¿Ð½Ñ‹Ñ… Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°Ñ… ÑÑ‚Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð¼Ð¾Ð¶ÐµÑ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ñ‚ÑŒ Ð¼ÐµÐ´Ð»ÐµÐ½Ð½ÐµÐµ."
+msgstr "Публично показывает присутствие участников, клубов и команд. На очень крупных турнирах эта страница может работать медленнее."
 
 #: options/preferences.py
 msgid "Enable public view of the checkin statuses"
-msgstr "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ ÑÑ‚Ð°Ñ‚ÑƒÑÐ¾Ð² Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸"
+msgstr "Включить публичный просмотр статусов регистрации"
 
 #: options/preferences.py
 msgid "If the participants list is enabled, displays break category eligibility on that page"
-msgstr "Ð•ÑÐ»Ð¸ ÑÐ¿Ð¸ÑÐ¾Ðº ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð² Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½, Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÑ‚ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ÑÑ‚ÑŒ Ð´Ð»Ñ Ð±Ñ€ÐµÐ¹ÐºÐ¾Ð²Ñ‹Ñ… ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹ Ð½Ð° ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ"
+msgstr "Если список участников включен, отображает доступность для брейковых категорий на эту страницу"
 
 #: options/preferences.py
 msgid "Show break categories on participants page"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð±Ñ€ÐµÐ¹ÐºÐ° Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°Ñ… ÑƒÑ‡Ð°ÑÑ‚Ð½Ð¸ÐºÐ¾Ð²"
+msgstr "Показывать категории брейка на страницах участников"
 
 #: options/preferences.py
 msgid "Enables the public page listing pre-allocated sides"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐ¿Ð¸ÑÐ¾Ðº Ñ Ð¿Ñ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ‹Ð¼Ð¸ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð°Ð¼Ð¸"
+msgstr "Публично показать список с предварительно назначенными сторонами"
 
 #: options/preferences.py
 msgid "Show pre-allocated sides to public"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð¿Ñ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ñ‹Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾"
+msgstr "Показывать предварительно распределенные стороны публично"
 
 #: options/preferences.py
 msgid "Enables the public page showing released draws"
-msgstr "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ, Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÑŽÑ‰ÑƒÑŽ Ð²Ñ‹Ð¿ÑƒÑ‰ÐµÐ½Ð½Ñ‹Ðµ ÑÐµÑ‚ÐºÐ¸"
+msgstr "Включить публичную страницу, показывающую выпущенные сетки"
 
 #: options/preferences.py
 msgid "Enable public view of draw"
-msgstr "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ ÑÐµÑ‚ÐºÐ¸"
+msgstr "Включить публичный просмотр сетки"
 
 #: options/preferences.py
 msgid "Disabled"
-msgstr "ÐžÑ‚ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾"
+msgstr "Отключено"
 
 #: options/preferences.py
 msgid "Show a single page for the current round's draw"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð´Ð»Ñ ÑÐµÑ‚ÐºÐ¸ Ð½Ð° Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´"
+msgstr "Показать отдельную страницу для сетки на текущий раунд"
 
 #: options/preferences.py
 msgid "Show individual pages for all released draws"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ñ‹Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð´Ð»Ñ Ð²ÑÐµÑ… Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð½Ñ‹Ñ… ÑÐµÑ‚Ð¾Ðº"
+msgstr "Показывать отдельные страницы для всех опубликованных сеток"
 
 #: options/preferences.py
 msgid "Enables the public page showing results of non-silent rounds"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ñ‹Ñ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð²"
+msgstr "Публично показать результаты открытых раундов"
 
 #: options/preferences.py
 msgid "Enable public view of results"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
+msgstr "Публично показывать результаты"
 
 #: options/preferences.py
 msgid "Enables the public page showing motions that have been explicitly released to the public"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ‚ÐµÐ¼Ñ‹, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð±Ñ‹Ð»Ð¸ Ð½Ð°Ð¿Ñ€ÑÐ¼ÑƒÑŽ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð´Ð»Ñ Ð¾Ð±Ñ‰ÐµÐ³Ð¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð°"
+msgstr "Публично показывать темы, которые были напрямую предоставлены для общего доступа"
 
 #: options/preferences.py
 msgid "Enable public view of motions"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ‚ÐµÐ¼Ñ‹"
+msgstr "Публично показывать темы"
 
 #: options/preferences.py
 msgid "Enables the public page showing team standings, showing wins only (not speaker scores or ranking)"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´, Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾Ð±ÐµÐ´Ñ‹ (Ð½Ðµ ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ðµ Ð±Ð°Ð»Ð»Ñ‹ Ð¸Ð»Ð¸ Ð¼ÐµÑÑ‚Ð°)"
+msgstr "Публично показывать положение команд, включая только победы (не спикерские баллы или места)"
 
 #: options/preferences.py
 msgid "Enable public view of team standings"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Публично показать положение команд"
 
 #: options/preferences.py
 msgid "Enables the public page for each team and adjudicator showing their records"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸ ÑÑƒÐ´ÑŒÐ¸"
+msgstr "Публично показывать результаты каждой команды и судьи"
 
 #: options/preferences.py
 msgid "Enable public record pages"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹"
+msgstr "Публично показывать результаты"
 
 #: options/preferences.py
 msgid "Enables the public page showing the team breaks. Intended for use after the break announcement."
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð±Ñ€ÐµÐ¹ÐºÐ°ÑŽÑ‰Ð¸ÐµÑÑ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹. ÐŸÑ€ÐµÐ´Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¾ Ð´Ð»Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ Ð¾Ð±ÑŠÑÐ²Ð»ÐµÐ½Ð¸Ñ Ð±Ñ€ÐµÐ¹ÐºÐ°."
+msgstr "Публично показать брейкающиеся команды. Предназначено для использования после объявления брейка."
 
 #: options/preferences.py
 msgid "Release team breaks to public"
-msgstr "ÐžÐ¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð±Ñ€ÐµÐ¹Ðº"
+msgstr "Опубликовать командный брейк"
 
 #: options/preferences.py
 msgid "Enables the public page showing breaking adjudicators. Intended for use after the break announcement."
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð±Ñ€ÐµÐ¹ÐºÐ½ÑƒÐ²ÑˆÐ¸Ñ…ÑÑ ÑÑƒÐ´ÐµÐ¹. ÐŸÑ€ÐµÐ´Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð° Ð´Ð»Ñ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ÑÐ»Ðµ Ð¾Ð±ÑŠÑÐ²Ð»ÐµÐ½Ð¸Ñ Ð±Ñ€ÐµÐ¹ÐºÐ°."
+msgstr "Публично показывать брейкнувшихся судей. Предназначена для использования после объявления брейка."
 
 #: options/preferences.py
 msgid "Release adjudicators break to public"
-msgstr "ÐžÐ¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ñ‚ÑŒ ÑÑƒÐ´ÐµÐ¹ÑÐºÐ¸Ð¹ Ð±Ñ€ÐµÐ¹Ðº"
+msgstr "Опубликовать судейский брейк"
 
 #: options/preferences.py
 msgid "Enables the public page detailing who has unsubmitted feedback"
-msgstr "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð¾ Ñ‚Ð¾Ð¼, ÐºÑ‚Ð¾ Ð½Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ð» Ð¾Ð±Ñ€Ð°Ñ‚Ð½ÑƒÑŽ ÑÐ²ÑÐ·ÑŒ"
+msgstr "Включить публичную страницу о том, кто не отправил обратную связь"
 
 #: options/preferences.py
 msgid "Enable public view of unsubmitted feedback"
-msgstr "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ Ð½ÐµÐ¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ð¾Ð¹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸"
+msgstr "Включить публичный просмотр неотправленной обратной связи"
 
 #: options/preferences.py
 msgid "Enables the public page showing the schedule"
@@ -1232,59 +1232,59 @@ msgstr ""
 
 #: options/preferences.py
 msgid "List of tournament staff, to be displayed on the tournament home page. Leave this blank or with the default text if you want to not show this information."
-msgstr "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð° Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð±ÑƒÐ´ÐµÑ‚ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚ÑŒÑÑ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°. ÐžÑÑ‚Ð°Ð²ÑŒÑ‚Ðµ ÑÑ‚Ð¾ Ð¿Ð¾Ð»Ðµ Ð¿ÑƒÑÑ‚Ñ‹Ð¼ Ð¸Ð»Ð¸ Ñ Ñ‚ÐµÐºÑÑ‚Ð¾Ð¼ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ, ÐµÑÐ»Ð¸ Ð²Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð½Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ñƒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ."
+msgstr "Список персонала турнира, который будет отображаться на главной странице турнира. Оставьте это поле пустым или с текстом по умолчанию, если вы хотите не показывать эту информацию."
 
 #: options/preferences.py
 msgid "Tournament staff"
-msgstr "ÐŸÐµÑ€ÑÐ¾Ð½Ð°Ð» Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°"
+msgstr "Персонал турнира"
 
 #: options/preferences.py
 msgid "Message to be displayed on the tournament home page"
-msgstr "Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ðµ Ð±ÑƒÐ´ÐµÑ‚ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚ÑŒÑÑ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð°"
+msgstr "Сообщение, которое будет отображаться на главной странице турнира"
 
 #: options/preferences.py
 msgid "Welcome message"
-msgstr "ÐŸÑ€Ð¸Ð²ÐµÑ‚ÑÑ‚Ð²ÐµÐ½Ð½Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ"
+msgstr "Приветственное сообщение"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "UI Options"
-msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ UI"
+msgstr "Настройки UI"
 
 #: options/preferences.py
 msgid "If showing results to public, show splitting adjudicators in them"
-msgstr "Ð•ÑÐ»Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾, Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð»Ð¸Ñ‚ÑƒÑŽÑ‰Ð¸Ñ… ÑÑƒÐ´ÐµÐ¹"
+msgstr "Если показывать результаты публично, показывать сплитующих судей"
 
 #: options/preferences.py
 msgid "Show splitting adjudicators"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð»Ð¸Ñ‚ÑƒÑŽÑ‰Ð¸Ñ… ÑÑƒÐ´ÐµÐ¹"
+msgstr "Показывать сплитующих судей"
 
 #: options/preferences.py
 msgid "Whether and how to use code names for teams"
-msgstr "ÐÑƒÐ¶Ð½Ð¾ Ð¸Ð»Ð¸ Ð¸ ÐºÐ°ÐºÐ¸Ð¼ Ð¾Ð±Ñ€Ð°Ð·Ð¾Ð¼ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð° Ð´Ð»Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Нужно или и каким образом использовать кодовые имена для команд"
 
 #: options/preferences.py
 msgid "Team code names"
-msgstr "ÐšÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Кодовые имена команд"
 
 #: options/preferences.py
 msgid "Do not use code names"
-msgstr "ÐÐµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð°"
+msgstr "Не использовать кодовые имена"
 
 #: options/preferences.py
 msgid "Use real names everywhere, and show code names in tooltips"
-msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰Ð¸Ðµ Ð¸Ð¼ÐµÐ½Ð° Ð²ÐµÐ·Ð´Ðµ Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð° Ð² Ð¿Ð¾Ð´ÑÐºÐ°Ð·ÐºÐ°Ñ…"
+msgstr "Использовать настоящие имена везде и показывать кодовые имена в подсказках"
 
 #: options/preferences.py
 msgid "Use code names for public; real names with code names in tooltips for admins"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð°; Ð½Ð°ÑÑ‚Ð¾ÑÑ‰Ð¸Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ Ñ ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ð¼Ð¸ Ð¸Ð¼ÐµÐ½Ð°Ð¼Ð¸ Ð² Ð¿Ð¾Ð´ÑÐºÐ°Ð·ÐºÐ°Ñ… Ð´Ð»Ñ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð¾Ð²"
+msgstr "Публично использовать кодовые имена; настоящие названия с кодовыми именами в подсказках для администраторов"
 
 #: options/preferences.py
 msgid "Use code names for public; code names with real names in tooltips for admins"
-msgstr "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð°; ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð° Ñ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰Ð¸Ð¼Ð¸ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÑÐ¼Ð¸ Ð² Ð¿Ð¾Ð´ÑÐºÐ°Ð·ÐºÐ°Ñ… Ð´Ð»Ñ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð¾Ð²"
+msgstr "Публично использовать кодовые имена; кодовые имена с настоящими названиями в подсказках для администраторов"
 
 #: options/preferences.py
 msgid "Use code names everywhere; do not use tooltips (real names show in some admin views)"
-msgstr "Ð’ÐµÐ·Ð´Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð´Ð¾Ð²Ñ‹Ðµ Ð¸Ð¼ÐµÐ½Ð°; Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð¿Ð¾Ð´ÑÐºÐ°Ð·ÐºÐ¸ (Ð½Ð°ÑÑ‚Ð¾ÑÑ‰Ð¸Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÑŽÑ‚ÑÑ Ð½Ð° Ð½ÐµÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°Ñ… Ð´Ð»Ñ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð¾Ð²)"
+msgstr "Везде использовать кодовые имена; не использовать подсказки (настоящие названия отображаются на некоторых страницах для администраторов)"
 
 #: options/preferences.py
 msgid "Whether and how to use code names for participants"
@@ -1296,19 +1296,19 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Display team emoji in the public and admin interfaces"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ðµ ÑÐ¼Ð¾Ð´Ð·Ð¸ Ð² Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ñ‹Ñ… Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐ°Ñ… Ð¸ Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐ°Ñ… Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð¾Ð²"
+msgstr "Показывать командные эмодзи в публичных интерфейсах и интерфейсах администраторов"
 
 #: options/preferences.py
 msgid "Show emoji"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐ¼Ð¾Ð´Ð·Ð¸"
+msgstr "Показать эмодзи"
 
 #: options/preferences.py
 msgid "In tables listing teams, adds a column showing their institutions"
-msgstr "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð² ÑÐ¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´ ÐºÐ¾Ð»Ð¾Ð½ÐºÑƒ Ñ Ð¸Ñ… ÐºÐ»ÑƒÐ±Ð¾Ð¼"
+msgstr "Добавить в список команд колонку с их клубом"
 
 #: options/preferences.py
 msgid "Show team institutions"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹ ÐºÐ¾Ð¼Ð°Ð½Ð´"
+msgstr "Показать клубы команд"
 
 #: options/preferences.py
 msgid "Hide the institutions of adjudicators on public pages and on printed ballots"
@@ -1316,15 +1316,15 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Show adjudicator institutions"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÐºÐ»ÑƒÐ±Ñ‹ ÑÑƒÐ´ÐµÐ¹"
+msgstr "Показать клубы судей"
 
 #: options/preferences.py
 msgid "Enables a hover element on every team's name showing that team's speakers"
-msgstr "Ð’ÐºÐ»ÑŽÑ‡Ð°ÐµÑ‚ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚, Ð¿Ñ€Ð¸ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼ Ð½Ð°Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ Ð½Ð° Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹, Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ ÐµÑ‘ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð²"
+msgstr "Включает элемент, при котором наведение на название каждой команды, показывает её спикеров"
 
 #: options/preferences.py
 msgid "Show speakers in draw"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð¸ÐºÐµÑ€Ð¾Ð² Ð² ÑÐµÑ‚ÐºÐµ"
+msgstr "Показывать спикеров в сетке"
 
 #: options/preferences.py
 msgid "Input team seed in simple team importer"
@@ -1348,59 +1348,59 @@ msgstr ""
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Notifications"
-msgstr "Ð£Ð²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ"
+msgstr "Уведомления"
 
 #: options/preferences.py
 msgid "The name of the organizer tasked with managing emails (in case of replies)"
-msgstr "Ð˜Ð¼Ñ Ð¾Ñ€Ð³Ð°Ð½Ð¸Ð·Ð°Ñ‚Ð¾Ñ€Ð°, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ð¿Ð¾Ñ€ÑƒÑ‡ÐµÐ½Ð¾ Ð·Ð°Ð½Ð¸Ð¼Ð°Ñ‚ÑŒÑÑ email (Ð² ÑÐ»ÑƒÑ‡Ð°Ðµ Ð¾Ñ‚Ð²ÐµÑ‚Ð¾Ð²)"
+msgstr "Имя организатора, которому поручено заниматься email (в случае ответов)"
 
 #: options/preferences.py
 msgid "Reply-to name"
-msgstr "ÐžÑ‚Ð²ÐµÑ‚Ð¸Ñ‚ÑŒ Ð½Ð° Ð¸Ð¼Ñ"
+msgstr "Ответить на имя"
 
 #: options/preferences.py
 msgid "The email address for handling replies"
-msgstr "ÐÐ´Ñ€ÐµÑ ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ñ‹ Ð´Ð»Ñ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ¸ Ð¾Ñ‚Ð²ÐµÑ‚Ð¾Ð²"
+msgstr "Адрес электронной почты для обработки ответов"
 
 #: options/preferences.py
 msgid "Reply-to address"
-msgstr "ÐžÑ‚Ð²ÐµÑ‚Ð¸Ñ‚ÑŒ Ð½Ð° Ð°Ð´Ñ€ÐµÑ"
+msgstr "Ответить на адрес"
 
 #: options/preferences.py
 msgid "A secret key to accept email status events"
-msgstr "Ð¡ÐµÐºÑ€ÐµÑ‚Ð½Ñ‹Ð¹ ÐºÐ»ÑŽÑ‡ Ð´Ð»Ñ Ð¿Ñ€Ð¸Ð½ÑÑ‚Ð¸Ñ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑÐ° ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ñ‹"
+msgstr "Секретный ключ для принятия событий статуса электронной почты"
 
 #: options/preferences.py
 msgid "Email status secret key"
-msgstr "Ð¡ÐµÐºÑ€ÐµÑ‚Ð½Ñ‹Ð¹ ÐºÐ»ÑŽÑ‡ ÑÑ‚Ð°Ñ‚ÑƒÑÐ° ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð¾Ð¹ Ð¿Ð¾Ñ‡Ñ‚Ñ‹"
+msgstr "Секретный ключ статуса электронной почты"
 
 #: options/preferences.py
-msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in NekoTab (for confirmation or checking)"
-msgstr "ÐŸÐ¾Ð·Ð²Ð¾Ð»ÑÐµÑ‚ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑÑƒÐ´ÑŒÑÐ¼ ÐºÐ¾Ð¿Ð¸Ð¸ Ð¸Ñ… Ð±ÑÐ»Ð»Ð¾Ñ‚Ð° (Ð¿Ð¾ email) Ð¿Ð¾ÑÐ»Ðµ Ð¸Ñ… Ð²Ð²Ð¾Ð´Ð° Ð² Ð¢abbycat (Ð´Ð»Ñ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ñ Ð¸Ð»Ð¸ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸)"
+msgid "Enables a copy of adjudicators' ballots to be automatically sent to them (by email) after they are entered in Tabbycat (for confirmation or checking)"
+msgstr "Позволяет автоматически отправлять судьям копии их бэллота (по email) после их ввода в Тabbycat (для подтверждения или проверки)"
 
 #: options/preferences.py
 msgid "Ballot receipts"
-msgstr "ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
+msgstr "Получение бэллота"
 
 #: options/preferences.py
 msgid "The subject line for emails sent to adjudicators with their submitted ballot. Use '{{ DEBATE }}' as a placeholder for the associated debate"
-msgstr "Ð¡Ñ‚Ñ€Ð¾ÐºÐ° Ñ‚ÐµÐ¼Ñ‹ Ð´Ð»Ñ email, Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÐ¼Ñ‹Ñ… ÑÑƒÐ´ÑŒÑÐ¼ Ñ Ð¸Ñ… Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð½Ñ‹Ð¼ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð¼. Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ {{ DEBATE }} ÐºÐ°Ðº Ð·Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒ Ð´Ð»Ñ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ð½Ñ‹Ñ… Ð´ÐµÐ±Ð°Ñ‚Ð¾Ð²"
+msgstr "Строка темы для email, отправляемых судьям с их подтвержденным бэллотом. Используйте {{ DEBATE }} как заполнитель для привязанных дебатов"
 
 #: options/preferences.py
 msgid "Ballot receipt subject line"
-msgstr "Ð¡Ñ‚Ñ€Ð¾ÐºÐ° Ñ‚ÐµÐ¼Ñ‹ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
+msgstr "Строка темы получения бэллота"
 
 #: options/preferences.py
 msgid "The message body for emails sent to adjudicators with their submitted ballot."
-msgstr "Ð¢ÐµÐ»Ð¾ Ð¿Ð¸ÑÑŒÐ¼Ð° Ð´Ð»Ñ email, Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÐ¼Ñ‹Ñ… ÑÑƒÐ´ÑŒÑÐ¼ Ñ Ð¸Ñ… Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ð¼ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð¾Ð¼."
+msgstr "Тело письма для email, отправляемых судьям с их отправленным бэллотом."
 
 #: options/preferences.py
 msgid "Ballot receipt message"
-msgstr "Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ð¸ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°"
+msgstr "Сообщение о получении бэллота"
 
 #: options/preferences.py options/templates/preferences_index.html
 msgid "Motions"
-msgstr "Ð¢ÐµÐ¼Ñ‹"
+msgstr "Темы"
 
 #: options/preferences.py
 msgid "If checked, ballots require a motion to be entered"
@@ -1412,43 +1412,43 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Whether the printed scoresheets should hide the text of motions (even if they have been entered and released)"
-msgstr "Ð”Ð¾Ð»Ð¶Ð½Ñ‹ Ð»Ð¸ Ñ€Ð°ÑÐ¿ÐµÑ‡Ð°Ñ‚Ð°Ð½Ð½Ñ‹Ðµ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ ÑÐºÑ€Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ‚ÐµÐºÑÑ‚ Ñ‚ÐµÐ¼ (Ð´Ð°Ð¶Ðµ ÐµÑÐ»Ð¸ Ð¾Ð½Ð¸ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð¸ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ñ‹)"
+msgstr "Должны ли распечатанные бэллоты скрывать текст тем (даже если они введены и опубликованы)"
 
 #: options/preferences.py
 msgid "Ballot Hide Motions"
-msgstr "Ð¡ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ‚ÐµÐ¼Ñƒ Ð² Ð±ÑÐ»Ð»Ð¾Ñ‚Ð°Ñ…"
+msgstr "Скрыть тему в бэллотах"
 
 #: options/preferences.py
 msgid "Enables the motion veto field on ballots, to track veto statistics"
-msgstr "Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð¿Ð¾Ð»Ðµ Ð´Ð»Ñ Ð²ÐµÑ‚Ð¾ Ð² Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹ Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¾Ñ‚ÑÐ»ÐµÐ¶Ð¸Ð²Ð°Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÑƒ Ð²ÐµÑ‚Ð¾"
+msgstr "Включить поле для вето в бэллоты чтобы отслеживать статистику вето"
 
 #: options/preferences.py
 msgid "Motion vetoes"
-msgstr "Ð’ÐµÑ‚Ð¾ Ð½Ð° Ñ‚ÐµÐ¼Ñ‹"
+msgstr "Вето на темы"
 
 #: options/preferences.py
 msgid "If showing results to public, show which motions were selected in the record"
-msgstr "Ð•ÑÐ»Ð¸ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹, ÑƒÐºÐ°Ð¶Ð¸Ñ‚Ðµ ÐºÐ°ÐºÐ¸Ðµ Ñ‚ÐµÐ¼Ñ‹ Ð±Ñ‹Ð»Ð¸ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ñ‹ Ð´Ð»Ñ Ð·Ð°Ð¿Ð¸ÑÐ¸"
+msgstr "Если публично показывать результаты, укажите какие темы были выбраны для записи"
 
 #: options/preferences.py
 msgid "Show motions in results"
-msgstr "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ñ‚ÐµÐ¼Ñ‹ Ð² Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð°Ñ…"
+msgstr "Показать темы в результатах"
 
 #: options/preferences.py
 msgid "Order in which are listed by round in the public view"
-msgstr "ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼ Ñ€Ð°ÑƒÐ½Ð´Ñ‹ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ñ‹ Ð´Ð»Ñ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾Ð³Ð¾ Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€Ð°"
+msgstr "Порядок, в котором раунды предоставлены для публичного просмотра"
 
 #: options/preferences.py
 msgid "Order to display motions"
-msgstr "ÐŸÐ¾Ñ€ÑÐ´Ð¾Ðº Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐ¼"
+msgstr "Порядок отображения тем"
 
 #: options/preferences.py
 msgid "Earliest round first"
-msgstr "Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ð¿ÐµÑ€Ð²Ñ‹Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹"
+msgstr "Сначала первые раунды"
 
 #: options/preferences.py
 msgid "Latest round first"
-msgstr "Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ Ñ€Ð°ÑƒÐ½Ð´Ñ‹"
+msgstr "Сначала последние раунды"
 
 #: options/preferences.py
 msgid "Whether motions can be reused from one round to another."
@@ -1548,7 +1548,7 @@ msgstr ""
 
 #: options/preferences.py
 msgid "Gender"
-msgstr "Ð“ÐµÐ½Ð´ÐµÑ€"
+msgstr "Гендер"
 
 #: options/preferences.py
 msgid "Public speaker categories"
@@ -1740,11 +1740,11 @@ msgstr ""
 
 #: options/presets.py
 msgid "Tab Release Options"
-msgstr "ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ†Ð¸Ð¸ Ñ‚ÑÐ±Ð°"
+msgstr "Параметры публикации тэба"
 
 #: options/presets.py
 msgid "For when a tab is ready to be released. This will publicly display the results of all rounds, the team tab, the speaker tab, etc"
-msgstr "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ ÐµÑÐ»Ð¸ Ð²Ñ‹ Ð³Ð¾Ñ‚Ð¾Ð²Ñ‹ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ñ‚ÑŒ Ñ‚ÑÐ±. Ð‘ÑƒÐ´ÑƒÑ‚ Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ñ‹ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð²ÑÐµÑ… Ñ€Ð°ÑƒÐ½Ð´Ð¾Ð², ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ñ‚ÑÐ±, ÑÐ¿Ð¸ÐºÐµÑ€ÑÐºÐ¸Ð¹ Ñ‚ÑÐ± Ð¸ Ñ‚.Ð´."
+msgstr "Используйте если вы готовы опубликовать тэб. Будут опубликованы результаты всех раундов, командный тэб, спикерский тэб и т.д."
 
 #: options/presets.py
 msgid "Use Private URLs"
@@ -1764,27 +1764,27 @@ msgstr ""
 
 #: options/templates/preferences_index.html
 msgid "Configuration"
-msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸"
+msgstr "Настройки"
 
 #: options/templates/preferences_index.html
 msgid "The range of scores that can awarded to speeches, replies, and teams"
-msgstr "Ð”Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½ Ð±Ð°Ð»Ð»Ð¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¿Ñ€Ð¸ÑÑƒÐ¶Ð´ÐµÐ½Ñ‹ Ñ€ÐµÑ‡Ð°Ð¼, Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¼ Ñ€ÐµÑ‡Ð°Ð¼ Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ð¼"
+msgstr "Диапазон баллов, которые могут быть присуждены речам, заключительным речам и командам"
 
 #: options/templates/preferences_index.html
 msgid "How teams are paired in the draw and how adjudicators are auto-allocated"
-msgstr "ÐšÐ°Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ ÑÐ¾Ñ‡ÐµÑ‚Ð°ÑŽÑ‚ÑÑ Ð² ÑÐµÑ‚ÐºÐµ Ð¸ ÐºÐ°Ðº ÑÑƒÐ´ÑŒÐ¸ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸ Ñ€Ð°ÑÐ¿Ñ€ÐµÐ´ÐµÐ»ÑÑŽÑ‚ÑÑ"
+msgstr "Как команды сочетаются в сетке и как судьи автоматически распределяются"
 
 #: options/templates/preferences_index.html
 msgid "How many speeches in a debate, how motions are decided, and whether reply speeches are used"
-msgstr "ÐšÐ°Ðº Ð¼Ð½Ð¾Ð³Ð¾ Ñ€ÐµÑ‡ÐµÐ¹ Ð² Ð´ÐµÐ±Ð°Ñ‚Ð°Ñ…, ÐºÐ°Ðº Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÑÑŽÑ‚ÑÑ Ñ‚ÐµÐ¼Ñ‹ Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑŽÑ‚ÑÑ Ð»Ð¸ Ð·Ð°ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ€ÐµÑ‡Ð¸"
+msgstr "Как много речей в дебатах, как определяются темы и используются ли заключительные речи"
 
 #: options/templates/preferences_index.html
 msgid "How teams and speakers are ranked in the released tabs"
-msgstr "ÐšÐ°Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ð¸ ÑÐ¿Ð¸ÐºÐµÑ€Ñ‹ Ñ€Ð°Ð½Ð¶Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹ Ð² Ð¾Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð½Ñ‹Ñ… Ñ‚ÑÐ±Ð°Ñ…"
+msgstr "Как команды и спикеры ранжированы в опубликованных тэбах"
 
 #: options/templates/preferences_index.html
 msgid "How adjudicators are ranked and who can submit feedback"
-msgstr "ÐšÐ°Ðº Ñ€Ð°Ð½Ð¶Ð¸Ñ€ÑƒÑŽÑ‚ÑÑ ÑÑƒÐ´ÑŒÐ¸ Ð¸ ÐºÑ‚Ð¾ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÑÑ‚ÑŒ Ð¾Ð±Ñ€Ð°Ñ‚Ð½ÑƒÑŽ ÑÐ²ÑÐ·ÑŒ"
+msgstr "Как ранжируются судьи и кто может предоставлять обратную связь"
 
 #: options/templates/preferences_index.html
 msgid "How and where are motions used"
@@ -1796,23 +1796,23 @@ msgstr ""
 
 #: options/templates/preferences_index.html
 msgid "When to release a public tab is made visible and what data it shows"
-msgstr "ÐšÐ¾Ð³Ð´Ð° ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ Ñ‚ÑÐ± Ð²Ð¸Ð´Ð¸Ð¼Ñ‹Ð¼ Ð´Ð»Ñ Ð²ÑÐµÑ… Ð¸ ÐºÐ°ÐºÐ¸Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ð½ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÑ‚"
+msgstr "Когда сделать тэб видимым для всех и какие данные он отображает"
 
 #: options/templates/preferences_index.html
 msgid "How ballots, feedback, and check-ins are entered, including online submission options"
-msgstr "ÐšÐ°Ðº Ð²Ð²Ð¾Ð´ÑÑ‚ÑÑ Ð±ÑÐ»Ð»Ð¾Ñ‚Ñ‹, Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¹ ÑÐ²ÑÐ·Ð¸ Ð¸ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸, Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ñ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸ÐµÐ¼ Ð¾Ð½Ð»Ð°Ð¹Ð½"
+msgstr "Как вводятся бэллоты, формы обратной связи и регистрации, включая варианты с предоставлением онлайн"
 
 #: options/templates/preferences_index.html
 msgid "What information the site displays on the publicly accessible pages"
-msgstr "ÐšÐ°ÐºÑƒÑŽ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÑ‚ ÑÐ°Ð¹Ñ‚ Ð½Ð° Ð¾Ð±Ñ‰ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ñ… ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°Ñ…"
+msgstr "Какую информацию отображает сайт на общедоступных страницах"
 
 #: options/templates/preferences_index.html
 msgid "Small tweaks in what information is presented by the interface"
-msgstr "ÐÐµÐ±Ð¾Ð»ÑŒÑˆÐ¸Ðµ Ñ…Ð¸Ñ‚Ñ€Ð¾ÑÑ‚Ð¸ Ð¾ Ñ‚Ð¾Ð¼, ÐºÐ°ÐºÐ°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð° Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐ¾Ð¼"
+msgstr "Небольшие хитрости о том, какая информация представлена интерфейсом"
 
 #: options/templates/preferences_index.html
 msgid "Configures sending notifications, such as emails confirming ballot submissions or team points"
-msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ð¹, Ñ‚Ð°ÐºÐ¸Ñ… ÐºÐ°Ðº email, Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´Ð°ÑŽÑ‰Ð¸Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÑƒ Ð±ÑÐ»Ð»Ð¾Ñ‚Ð° Ð¸Ð»Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ðµ Ð±Ð°Ð»Ð»Ñ‹"
+msgstr "Настройка отправки уведомлений, таких как email, подтверждающие отправку бэллота или командные баллы"
 
 #: options/templates/preferences_index.html
 msgid "Settings which can affect all tournaments on the site"
@@ -1820,11 +1820,11 @@ msgstr ""
 
 #: options/templates/preferences_index.html
 msgid "Manually Set Current Round"
-msgstr "Ð’Ñ€ÑƒÑ‡Ð½ÑƒÑŽ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´"
+msgstr "Вручную установить текущий раунд"
 
 #: options/templates/preferences_index.html
-msgid "NekoTab will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
-msgstr "NekoTab Ð±ÑƒÐ´ÐµÑ‚ Ð¿Ð¾Ð±ÑƒÐ¶Ð´Ð°Ñ‚ÑŒ Ð²Ð°Ñ Ð¿Ñ€Ð¾Ð´Ð²Ð¸Ð½ÑƒÑ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð² ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ Ñ€Ð°ÑƒÐ½Ð´Ð°. ÐžÐ´Ð½Ð°ÐºÐ¾, ÐµÑÐ»Ð¸ ÐµÑÑ‚ÑŒ Ð¾ÑÐ¾Ð±Ñ‹Ðµ Ð¾Ð±ÑÑ‚Ð¾ÑÑ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð°, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ñ‚Ñ€ÐµÐ±ÑƒÑŽÑ‚, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð²Ñ‹ Ð¿ÐµÑ€ÐµÐ¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ð»Ð¸ ÐµÐ³Ð¾ Ð¸ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ð»Ð¸ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´ Ð½Ð° Ñ‡Ñ‚Ð¾-Ñ‚Ð¾ Ð´Ñ€ÑƒÐ³Ð¾Ðµ, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ ÑÑ‚Ñƒ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ."
+msgid "Tabbycat will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page."
+msgstr "Tabbycat будет побуждать вас продвинуть текущий раунд на странице результатов каждого раунда. Однако, если есть особые обстоятельства, которые требуют, чтобы вы переопределили его и установили текущий раунд на что-то другое, используйте эту страницу."
 
 #: options/templates/preferences_index.html
 msgid "Set Round Weights for Tapered Scoring"
@@ -1844,7 +1844,7 @@ msgstr ""
 
 #: options/templates/preferences_index.html
 msgid "Presets"
-msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸"
+msgstr "Настройки"
 
 #: options/templates/preferences_index.html
 msgid "These show changes to your configuration for common situations and debate formats. You may apply these settings or modify them for your tournament directly on the preset's page."
@@ -1853,22 +1853,22 @@ msgstr ""
 #: options/templates/preferences_index.html
 #, python-format
 msgid "Apply %(preset)s"
-msgstr "ÐŸÑ€Ð¸Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ %(preset)s"
+msgstr "Применить %(preset)s"
 
 #: options/templates/preferences_section_set.html
 #, python-format
 msgid "Configuration: %(section)s"
-msgstr "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸: %(section)s"
+msgstr "Настройки: %(section)s"
 
 #: options/templates/preferences_section_set.html
 #, python-format
 msgid "Edit Configuration: %(section)s"
-msgstr "Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸: %(section)s"
+msgstr "Изменить настройки: %(section)s"
 
 #: options/templates/preferences_section_set.html
 #: options/templates/preset_edit.html
 msgid "Back to Configuration"
-msgstr "Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ðº Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°Ð¼"
+msgstr "Вернуться к настройкам"
 
 #: options/templates/preset_edit.html
 #, python-format
@@ -1899,12 +1899,12 @@ msgstr ""
 #: options/utils.py
 #, python-format
 msgid "The following metrics can't be listed twice: %(duplicates)s"
-msgstr "Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ Ð¼ÐµÑ‚Ñ€Ð¸ÐºÐ¸ Ð½Ðµ Ð¼Ð¾Ð³ÑƒÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¿ÐµÑ€ÐµÑ‡Ð¸ÑÐ»ÐµÐ½Ñ‹ Ð´Ð²Ð°Ð¶Ð´Ñ‹: %(duplicates)s"
+msgstr "Следующие метрики не могут быть перечислены дважды: %(duplicates)s"
 
 #: options/views.py
 #, python-format
 msgid "Tournament options (%(section)s) saved."
-msgstr "ÐžÐ¿Ñ†Ð¸Ð¸ Ñ‚ÑƒÑ€Ð½Ð¸Ñ€Ð° (%(section)s) ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹."
+msgstr "Опции турнира (%(section)s) сохранены."
 
 #: options/views.py
 #, python-format
@@ -1915,5 +1915,4 @@ msgstr ""
 #, python-format
 msgid "Tournament options saved based on preset %(name)s."
 msgstr ""
-
 

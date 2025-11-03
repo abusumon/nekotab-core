@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-06 01:33\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: fr\n"
-"X-Crowdin-File: /develop/NekoTab/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 954\n"
 
@@ -24,7 +24,7 @@ msgstr "Tour"
 
 #: utils/admin.py utils/tables.py
 msgid "Team"
-msgstr "Ã‰quipe"
+msgstr "Équipe"
 
 #: utils/admin.py
 msgid "Speaker"
@@ -36,7 +36,7 @@ msgstr "Tournoi"
 
 #: utils/admin.py utils/tables.py
 msgid "Side"
-msgstr "CÃ´tÃ©"
+msgstr "Côté"
 
 #: utils/admin.py utils/tables.py
 msgid "Motion"
@@ -44,7 +44,7 @@ msgstr "Motion"
 
 #: utils/admin.py
 msgid "Confirmed"
-msgstr "ConfirmÃ©"
+msgstr "Confirmé"
 
 #: utils/admin.py
 msgid "Adjudicator"
@@ -52,19 +52,19 @@ msgstr "Juge"
 
 #: utils/tables.py
 msgid "No Data Available"
-msgstr "Aucune donnÃ©e disponible"
+msgstr "Aucune donnée disponible"
 
 #: utils/tables.py
-msgid "â’¸"
-msgstr "â“…"
+msgid "Ⓒ"
+msgstr "Ⓟ"
 
 #: utils/tables.py
-msgid "â“‰"
-msgstr "â“ˆ"
+msgid "Ⓣ"
+msgstr "Ⓢ"
 
 #: utils/tables.py
 msgid "chair"
-msgstr "prÃ©sident"
+msgstr "président"
 
 #: utils/tables.py
 msgid "panellist"
@@ -75,12 +75,12 @@ msgid "trainee"
 msgstr "stagiaire"
 
 #: utils/tables.py
-msgid "â€”"
-msgstr "â€”"
+msgid "—"
+msgstr "—"
 
 #: utils/tables.py
 msgid "Redacted"
-msgstr "CaviardÃ©"
+msgstr "Caviardé"
 
 #: utils/tables.py
 #, python-format
@@ -90,7 +90,7 @@ msgstr "Voir le dossier %(d)s de %(a)s"
 #: utils/tables.py
 #, python-format
 msgid "View %(team)s's Record"
-msgstr "Voir le dossier d'Ã©quipe de %(team)s"
+msgstr "Voir le dossier d'équipe de %(team)s"
 
 #: utils/tables.py
 #, python-format
@@ -105,7 +105,7 @@ msgstr "Vrai nom : <strong>%(name)s</strong>"
 #: utils/tables.py
 #, python-format
 msgid "%(team)s won"
-msgstr "%(team)s a gagnÃ©"
+msgstr "%(team)s a gagné"
 
 #: utils/tables.py
 #, python-format
@@ -114,13 +114,13 @@ msgstr "%(team)s a perdu"
 
 #: utils/tables.py
 #, python-format
-msgid "%(team)sâ€”no result"
-msgstr "%(team)sâ€”aucun rÃ©sultat"
+msgid "%(team)s—no result"
+msgstr "%(team)s—aucun résultat"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s placed %(place)s"
-msgstr "%(team)s a placÃ© %(place)s"
+msgstr "%(team)s a placé %(place)s"
 
 #: utils/tables.py
 #, python-format
@@ -130,7 +130,7 @@ msgstr "%(team)s avance"
 #: utils/tables.py
 #, python-format
 msgid "%(team)s was eliminated"
-msgstr "%(team)s a Ã©tÃ© Ã©liminÃ©"
+msgstr "%(team)s a été éliminé"
 
 #: utils/tables.py
 msgid "View/edit debate ballot"
@@ -148,7 +148,7 @@ msgstr " vs. %(opposition)s"
 #: utils/tables.py
 #, python-format
 msgid "Won against %(team)s"
-msgstr "GagnÃ© contre %(team)s"
+msgstr "Gagné contre %(team)s"
 
 #: utils/tables.py
 #, python-format
@@ -158,16 +158,16 @@ msgstr "Perdu contre %(team)s"
 #: utils/tables.py
 #, python-format
 msgid "No result for debate against %(team)s"
-msgstr "Aucun rÃ©sultat pour dÃ©bat contre %(team)s"
+msgstr "Aucun résultat pour débat contre %(team)s"
 
 #: utils/tables.py
 #, python-format
 msgid "Total speaker score: <strong>%s</strong>"
-msgstr "Score dâ€™orateur total : <strong>%s</strong>"
+msgstr "Score d’orateur total : <strong>%s</strong>"
 
 #: utils/tables.py
 msgid "Teams in debate:"
-msgstr "Ã‰quipes au dÃ©bat :"
+msgstr "Équipes au débat :"
 
 #: utils/tables.py
 #, python-format
@@ -180,28 +180,28 @@ msgstr "??"
 
 #: utils/tables.py
 msgid "advancing"
-msgstr "avanÃ§ant"
+msgstr "avançant"
 
 #: utils/tables.py
 msgid "Advancing"
-msgstr "AvanÃ§ant"
+msgstr "Avançant"
 
 #: utils/tables.py
 msgid "eliminated"
-msgstr "Ã©liminÃ©"
+msgstr "éliminé"
 
 #: utils/tables.py
 msgid "Eliminated"
-msgstr "Ã‰liminÃ©"
+msgstr "Éliminé"
 
 #: utils/tables.py
 msgid "No result for debate"
-msgstr "Aucun rÃ©sultat au dÃ©bat"
+msgstr "Aucun résultat au débat"
 
 #: utils/tables.py
 #, python-format
 msgid "Placed %(place)s"
-msgstr "PlacÃ©e %(place)s"
+msgstr "Placée %(place)s"
 
 #: utils/tables.py
 msgid "Name"
@@ -217,7 +217,7 @@ msgstr "Membre du sein des juges"
 
 #: utils/tables.py
 msgid "Independent Adjudicator"
-msgstr "Juge indÃ©pendant"
+msgstr "Juge indépendant"
 
 #: utils/tables.py
 msgid "Always Trainee"
@@ -225,19 +225,19 @@ msgstr "Toujours Stagiaire"
 
 #: utils/tables.py
 msgid "in minority"
-msgstr "en minoritÃ©"
+msgstr "en minorité"
 
 #: utils/tables.py
 msgid "Debate Adjudicators"
-msgstr "Juges du dÃ©bat"
+msgstr "Juges du débat"
 
 #: utils/tables.py
 msgid "Categories"
-msgstr "CatÃ©gories"
+msgstr "Catégories"
 
 #: utils/tables.py
 msgid "Category"
-msgstr "CatÃ©gorie"
+msgstr "Catégorie"
 
 #: utils/tables.py
 #, python-format
@@ -257,12 +257,12 @@ msgstr "Salle"
 #, python-format
 msgid "Teams have met once"
 msgid_plural "Teams have met %(count)d times"
-msgstr[0] "Ã‰quipes se sont rencontrÃ©es une fois"
-msgstr[1] "Ã‰quipes se sont rencontrÃ©es %(count)d fois"
+msgstr[0] "Équipes se sont rencontrées une fois"
+msgstr[1] "Équipes se sont rencontrées %(count)d fois"
 
 #: utils/tables.py
 msgid "Teams are from the same institution"
-msgstr "Les Ã©quipes sont de la mÃªme institution"
+msgstr "Les équipes sont de la même institution"
 
 #: utils/tables.py
 msgid "Conflicts/Flags"
@@ -270,7 +270,7 @@ msgstr "Conflits/signalements"
 
 #: utils/tables.py
 msgid "The confirmed ballot"
-msgstr "La feuille confirmÃ©e"
+msgstr "La feuille confirmée"
 
 #: utils/tables.py
 msgid "No ballot"
@@ -298,12 +298,12 @@ msgstr "Afficher/Modifier feuille"
 
 #: utils/tables.py
 msgid "Result"
-msgstr "RÃ©sultat"
+msgstr "Résultat"
 
 #. Translators: "TBC" stands for "to be confirmed".
 #: utils/tables.py
 msgid "TBC"
-msgstr "Ã€C"
+msgstr "ÀC"
 
 #: utils/tables.py
 msgid "Bye"
@@ -315,20 +315,20 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Team iron-personed this round and the last."
-msgstr "Ã‰quipe avait un orateur-seul pendant les joutes actuelle et prÃ©cÃ©dente."
+msgstr "Équipe avait un orateur-seul pendant les joutes actuelle et précédente."
 
 #: utils/tables.py
 msgid "Team iron-personed this round."
-msgstr "Ã‰quipe avait un orateur-seul pendant la joute actuelle."
+msgstr "Équipe avait un orateur-seul pendant la joute actuelle."
 
 #: utils/tables.py
 msgid "Team iron-personed last round."
-msgstr "Ã‰quipe avait un orateur-seul pendant la joute prÃ©cÃ©dente."
+msgstr "Équipe avait un orateur-seul pendant la joute précédente."
 
 #: utils/tables.py
 #, python-format
 msgid "Team %(num)d"
-msgstr "Ã‰quipe %(num)d"
+msgstr "Équipe %(num)d"
 
 #: utils/tables.py
 msgid "Postpone"
@@ -336,11 +336,11 @@ msgstr "Reporter"
 
 #: utils/tables.py
 msgid "Event"
-msgstr "Ã‰vÃ¨nement"
+msgstr "Évènement"
 
 #: utils/tables.py
 msgid "Start Time"
-msgstr "Heure de dÃ©but"
+msgstr "Heure de début"
 
 #: utils/tables.py
 msgid "End Time"
@@ -348,6 +348,5 @@ msgstr "Heure de fin"
 
 #: utils/views.py
 msgid "Whoops! You're not meant to type that URL into your browser."
-msgstr "Oups ! Vous nâ€™Ã©tiez pas sensÃ© taper cet URL dans votre navigateur."
-
+msgstr "Oups ! Vous n’étiez pas sensé taper cet URL dans votre navigateur."
 

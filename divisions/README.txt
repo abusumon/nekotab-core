@@ -1,2 +1,1 @@
-﻿Support for divisions/leagues has been removed in NekoTab 2.4.
-
+Support for divisions/leagues has been removed in Tabbycat 2.4.

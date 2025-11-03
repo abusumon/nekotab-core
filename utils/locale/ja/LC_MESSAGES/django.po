@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:50\n"
@@ -12,167 +12,167 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: ja\n"
-"X-Crowdin-File: /develop/NekoTab/utils/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/utils/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 954\n"
 
 #: utils/admin.py utils/tables.py
 msgid "Round"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰"
+msgstr "ラウンド"
 
 #: utils/admin.py utils/tables.py
 msgid "Team"
-msgstr "ãƒãƒ¼ãƒ "
+msgstr "チーム"
 
 #: utils/admin.py
 msgid "Speaker"
-msgstr "ã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼"
+msgstr "スピーカー"
 
 #: utils/admin.py utils/tables.py
 msgid "Tournament"
-msgstr "å¤§ä¼š"
+msgstr "大会"
 
 #: utils/admin.py utils/tables.py
 msgid "Side"
-msgstr "ã‚µã‚¤ãƒ‰"
+msgstr "サイド"
 
 #: utils/admin.py utils/tables.py
 msgid "Motion"
-msgstr "ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³"
+msgstr "モーション"
 
 #: utils/admin.py
 msgid "Confirmed"
-msgstr "æ‰¿èªæ¸ˆã¿"
+msgstr "承認済み"
 
 #: utils/admin.py
 msgid "Adjudicator"
-msgstr "ã‚¸ãƒ£ãƒƒã‚¸"
+msgstr "ジャッジ"
 
 #: utils/tables.py
 msgid "No Data Available"
-msgstr "ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“"
+msgstr "データがありません"
 
 #: utils/tables.py
-msgid "â’¸"
+msgid "Ⓒ"
 msgstr ""
 
 #: utils/tables.py
-msgid "â“‰"
+msgid "Ⓣ"
 msgstr ""
 
 #: utils/tables.py
 msgid "chair"
-msgstr "ãƒã‚§ã‚¢"
+msgstr "チェア"
 
 #: utils/tables.py
 msgid "panellist"
-msgstr "ãƒ‘ãƒãƒ«"
+msgstr "パネル"
 
 #: utils/tables.py
 msgid "trainee"
-msgstr "ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼"
+msgstr "トレイニー"
 
 #: utils/tables.py
-msgid "â€”"
+msgid "—"
 msgstr ""
 
 #: utils/tables.py
 msgid "Redacted"
-msgstr "ãƒªãƒ€ã‚¯ãƒˆæ¸ˆã¿"
+msgstr "リダクト済み"
 
 #: utils/tables.py
 #, python-format
 msgid "View %(a)s's %(d)s Record"
-msgstr "%(a)sã®%(d)sã®è¨˜éŒ²ã‚’è¡¨ç¤º"
+msgstr "%(a)sの%(d)sの記録を表示"
 
 #: utils/tables.py
 #, python-format
 msgid "View %(team)s's Record"
-msgstr "%(team)sã®è¨˜éŒ²ã‚’è¡¨ç¤º"
+msgstr "%(team)sの記録を表示"
 
 #: utils/tables.py
 #, python-format
 msgid "Code name: <strong>%(name)s</strong>"
-msgstr "ã‚³ãƒ¼ãƒ‰åï¼š<strong>%(name)s</strong>"
+msgstr "コード名：<strong>%(name)s</strong>"
 
 #: utils/tables.py
 #, python-format
 msgid "Real name: <strong>%(name)s</strong>"
-msgstr "å®Ÿåï¼š<strong>%(name)s</strong>"
+msgstr "実名：<strong>%(name)s</strong>"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s won"
-msgstr "%(team)sã®å‹åˆ©"
+msgstr "%(team)sの勝利"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s lost"
-msgstr "%(team)sã®æ•—åŒ—"
+msgstr "%(team)sの敗北"
 
 #: utils/tables.py
 #, python-format
-msgid "%(team)sâ€”no result"
-msgstr "%(team)sãƒ¼çµæžœãªã—"
+msgid "%(team)s—no result"
+msgstr "%(team)sー結果なし"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s placed %(place)s"
-msgstr "%(team)sãŒ%(place)sä½"
+msgstr "%(team)sが%(place)s位"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s is advancing"
-msgstr "%(team)sãŒé€²å‡º"
+msgstr "%(team)sが進出"
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s was eliminated"
-msgstr "%(team)sãŒæ•—é€€"
+msgstr "%(team)sが敗退"
 
 #: utils/tables.py
 msgid "View/edit debate ballot"
-msgstr "è©¦åˆã®ãƒãƒ­ãƒƒãƒˆã‚’ç¢ºèª/ä¿®æ­£"
+msgstr "試合のバロットを確認/修正"
 
 #: utils/tables.py
 msgid "View debate ballot"
-msgstr "è©¦åˆã®ãƒãƒ­ãƒƒãƒˆã‚’ç¢ºèª"
+msgstr "試合のバロットを確認"
 
 #: utils/tables.py
 #, python-format
 msgid " vs %(opposition)s"
-msgstr "å¯¾%(opposition)s"
+msgstr "対%(opposition)s"
 
 #: utils/tables.py
 #, python-format
 msgid "Won against %(team)s"
-msgstr "%(team)sã«å‹åˆ©"
+msgstr "%(team)sに勝利"
 
 #: utils/tables.py
 #, python-format
 msgid "Lost to %(team)s"
-msgstr "%(team)sã«æ•—åŒ—"
+msgstr "%(team)sに敗北"
 
 #: utils/tables.py
 #, python-format
 msgid "No result for debate against %(team)s"
-msgstr "%(team)sã¨ã®è©¦åˆã®è¨˜éŒ²ãªã—"
+msgstr "%(team)sとの試合の記録なし"
 
 #: utils/tables.py
 #, python-format
 msgid "Total speaker score: <strong>%s</strong>"
-msgstr "åˆè¨ˆã‚¹ãƒ”ãƒ¼ã‚«ãƒ¼ã‚¹ã‚³ã‚¢ï¼š<strong>%s</strong>"
+msgstr "合計スピーカースコア：<strong>%s</strong>"
 
 #: utils/tables.py
 msgid "Teams in debate:"
-msgstr "è©¦åˆã®ãƒãƒ¼ãƒ ï¼š"
+msgstr "試合のチーム："
 
 #: utils/tables.py
 #, python-format
 msgid "%(team)s (%(side)s)"
-msgstr "%(team)sï¼ˆ%(side)sï¼‰"
+msgstr "%(team)s（%(side)s）"
 
 #: utils/tables.py
 msgid "??"
@@ -180,64 +180,64 @@ msgstr ""
 
 #: utils/tables.py
 msgid "advancing"
-msgstr "é€²å‡º"
+msgstr "進出"
 
 #: utils/tables.py
 msgid "Advancing"
-msgstr "é€²å‡º"
+msgstr "進出"
 
 #: utils/tables.py
 msgid "eliminated"
-msgstr "æ•—é€€"
+msgstr "敗退"
 
 #: utils/tables.py
 msgid "Eliminated"
-msgstr "æ•—é€€"
+msgstr "敗退"
 
 #: utils/tables.py
 msgid "No result for debate"
-msgstr "è©¦åˆã®çµæžœãªã—"
+msgstr "試合の結果なし"
 
 #: utils/tables.py
 #, python-format
 msgid "Placed %(place)s"
-msgstr "%(place)sä½"
+msgstr "%(place)s位"
 
 #: utils/tables.py
 msgid "Name"
-msgstr "åå‰"
+msgstr "名前"
 
 #: utils/tables.py
 msgid "Institution"
-msgstr "ã‚¤ãƒ³ã‚¹ãƒ†"
+msgstr "インステ"
 
 #: utils/tables.py
 msgid "Member of the Adjudication Core"
-msgstr "å¯©æŸ»å§”å“¡ã®ãƒ¡ãƒ³ãƒãƒ¼"
+msgstr "審査委員のメンバー"
 
 #: utils/tables.py
 msgid "Independent Adjudicator"
-msgstr "ã‚¤ãƒ³ãƒ‡ã‚£ãƒšãƒ³ãƒ‡ãƒ³ãƒˆã‚¸ãƒ£ãƒƒã‚¸"
+msgstr "インディペンデントジャッジ"
 
 #: utils/tables.py
 msgid "Always Trainee"
-msgstr "å¸¸ã«ãƒˆãƒ¬ã‚¤ãƒ‹ãƒ¼"
+msgstr "常にトレイニー"
 
 #: utils/tables.py
 msgid "in minority"
-msgstr "ãƒžã‚¤ãƒŽãƒªãƒ†ã‚£"
+msgstr "マイノリティ"
 
 #: utils/tables.py
 msgid "Debate Adjudicators"
-msgstr "è©¦åˆã®ã‚¸ãƒ£ãƒƒã‚¸"
+msgstr "試合のジャッジ"
 
 #: utils/tables.py
 msgid "Categories"
-msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼"
+msgstr "カテゴリー"
 
 #: utils/tables.py
 msgid "Category"
-msgstr "ã‚«ãƒ†ã‚´ãƒªãƒ¼"
+msgstr "カテゴリー"
 
 #: utils/tables.py
 #, python-format
@@ -251,58 +251,58 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Room"
-msgstr "ãƒ©ã‚¦ãƒ³ãƒ‰éƒ¨å±‹"
+msgstr "ラウンド部屋"
 
 #: utils/tables.py
 #, python-format
 msgid "Teams have met once"
 msgid_plural "Teams have met %(count)d times"
-msgstr[0] "ãƒãƒ¼ãƒ åŒå£«ãŒ%(count)då›žè©¦åˆã—ã¦ã„ã¾ã™ã€‚"
+msgstr[0] "チーム同士が%(count)d回試合しています。"
 
 #: utils/tables.py
 msgid "Teams are from the same institution"
-msgstr "ä¸¡ãƒãƒ¼ãƒ ã¨ã‚‚åŒã˜ã‚¤ãƒ³ã‚¹ãƒ†ã§ã™"
+msgstr "両チームとも同じインステです"
 
 #: utils/tables.py
 msgid "Conflicts/Flags"
-msgstr "ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆãƒ»ãƒ•ãƒ©ã‚°"
+msgstr "コンフリクト・フラグ"
 
 #: utils/tables.py
 msgid "The confirmed ballot"
-msgstr "æ‰¿èªæ¸ˆã¿ãƒãƒ­ãƒƒãƒˆ"
+msgstr "承認済みバロット"
 
 #: utils/tables.py
 msgid "No ballot"
-msgstr "ãƒãƒ­ãƒƒãƒˆãªã—"
+msgstr "バロットなし"
 
 #: utils/tables.py
 msgid "No scores"
-msgstr "ã‚¹ã‚³ã‚¢ãªã—"
+msgstr "スコアなし"
 
 #: utils/tables.py
 msgid "View Ballot"
-msgstr "ãƒãƒ­ãƒƒãƒˆã‚’è¡¨ç¤º"
+msgstr "バロットを表示"
 
 #: utils/tables.py
 msgid "The ballot you submitted"
-msgstr "ã‚ãªãŸãŒæå‡ºã—ãŸãƒãƒ­ãƒƒãƒˆ"
+msgstr "あなたが提出したバロット"
 
 #: utils/tables.py
 msgid "No Ballot"
-msgstr "ãƒãƒ­ãƒƒãƒˆãªã—"
+msgstr "バロットなし"
 
 #: utils/tables.py
 msgid "View/Edit Ballot"
-msgstr "ãƒãƒ­ãƒƒãƒˆã‚’è¡¨ç¤º/ç·¨é›†"
+msgstr "バロットを表示/編集"
 
 #: utils/tables.py
 msgid "Result"
-msgstr "çµæžœ"
+msgstr "結果"
 
 #. Translators: "TBC" stands for "to be confirmed".
 #: utils/tables.py
 msgid "TBC"
-msgstr "ç¢ºèªä¸­"
+msgstr "確認中"
 
 #: utils/tables.py
 msgid "Bye"
@@ -310,28 +310,28 @@ msgstr ""
 
 #: utils/tables.py
 msgid "Team was given a bye this round"
-msgstr "ä»Šã®ãƒ©ã‚¦ãƒ³ãƒ‰ã¯bye"
+msgstr "今のラウンドはbye"
 
 #: utils/tables.py
 msgid "Team iron-personed this round and the last."
-msgstr "å‰å›žã¨ä»Šå›žã®ãƒ©ã‚¦ãƒ³ãƒ‰ã§ã‚¢ã‚¤ã‚¢ãƒ³ã—ã¾ã—ãŸã€‚"
+msgstr "前回と今回のラウンドでアイアンしました。"
 
 #: utils/tables.py
 msgid "Team iron-personed this round."
-msgstr "ä»Šå›žã®ãƒ©ã‚¦ãƒ³ãƒ‰ã§ã‚¢ã‚¤ã‚¢ãƒ³ã—ã¾ã—ãŸã€‚"
+msgstr "今回のラウンドでアイアンしました。"
 
 #: utils/tables.py
 msgid "Team iron-personed last round."
-msgstr "å‰å›žã®ãƒ©ã‚¦ãƒ³ãƒ‰"
+msgstr "前回のラウンド"
 
 #: utils/tables.py
 #, python-format
 msgid "Team %(num)d"
-msgstr "ãƒãƒ¼ãƒ %(num)d"
+msgstr "チーム%(num)d"
 
 #: utils/tables.py
 msgid "Postpone"
-msgstr "å»¶æœŸã™ã‚‹"
+msgstr "延期する"
 
 #: utils/tables.py
 msgid "Event"
@@ -347,6 +347,5 @@ msgstr ""
 
 #: utils/views.py
 msgid "Whoops! You're not meant to type that URL into your browser."
-msgstr "ãŠã£ã¨ï¼ãã®URLã¯ãƒ–ãƒ©ã‚¦ã‚¶ã«æ‰“ã¡è¾¼ã‚€ç”¨ã®ã‚‚ã®ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
-
+msgstr "おっと！そのURLはブラウザに打ち込む用のものではありません。"
 

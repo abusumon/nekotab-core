@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:47\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/NekoTab/notifications/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/notifications/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 938\n"
 
 #: notifications/apps.py
 msgid "Notifications"
-msgstr "é€šçŸ¥æ "
+msgstr "通知栏"
 
 #: notifications/forms.py
 msgid "Recipient email address"
@@ -46,11 +46,11 @@ msgstr ""
 
 #: notifications/models.py
 msgid "email"
-msgstr "ç”µå­é‚®ä»¶"
+msgstr "电子邮件"
 
 #: notifications/models.py
 msgid "SMS"
-msgstr "çŸ­ä¿¡"
+msgstr "短信"
 
 #: notifications/models.py
 msgid "recipient"
@@ -66,11 +66,11 @@ msgstr ""
 
 #: notifications/models.py
 msgid "notification"
-msgstr "é€šçŸ¥æ "
+msgstr "通知栏"
 
 #: notifications/models.py
 msgid "timestamp"
-msgstr "æ—¶é—´æˆ³"
+msgstr "时间戳"
 
 #: notifications/models.py
 msgid "sent message"
@@ -126,15 +126,15 @@ msgstr ""
 
 #: notifications/models.py
 msgid "event"
-msgstr "äº‹ä»¶"
+msgstr "事件"
 
 #: notifications/models.py
 msgid "tournament"
-msgstr "æ¯”èµ›"
+msgstr "比赛"
 
 #: notifications/models.py
 msgid "round"
-msgstr "èµ›"
+msgstr "赛"
 
 #: notifications/models.py
 msgid "subject template"
@@ -227,7 +227,7 @@ msgid "Send Message(s)"
 msgstr ""
 
 #: notifications/templates/email_statuses.html
-msgid "Emails can be sent by NekoTab for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
+msgid "Emails can be sent by Tabbycat for a variety of purposes. Emails are sent when specific preferences are enabled (i.e. enabling Ballot Receipts) or through actions available on specific pages (i.e. the Draw Display page for matchups; or the Participants page for team registration). This page shows the status of previously-sent emails."
 msgstr ""
 
 #: notifications/templates/notifications_nav.html notifications/views.py
@@ -263,7 +263,7 @@ msgstr ""
 
 #: notifications/utils.py
 msgid "the chair"
-msgstr "ä¸»å¸­"
+msgstr "主席"
 
 #: notifications/utils.py
 msgid "the only"
@@ -271,11 +271,11 @@ msgstr ""
 
 #: notifications/utils.py
 msgid "a panellist"
-msgstr "æˆå‘˜"
+msgstr "成员"
 
 #: notifications/utils.py
 msgid "a trainee"
-msgstr "ä¸€ä½å®žä¹ ç”Ÿ"
+msgstr "一位实习生"
 
 #: notifications/utils.py
 msgid "TBA"
@@ -298,16 +298,16 @@ msgstr ""
 
 #: notifications/utils.py
 msgid "Win"
-msgstr "èƒœåˆ©"
+msgstr "胜利"
 
 #: notifications/utils.py
 msgid "Loss"
-msgstr "å¤±è´¥"
+msgstr "失败"
 
 #: notifications/utils.py
 #, python-format
 msgid "<li>%(pos)s: %(speaker)s (%(score)s)</li>"
-msgstr "<li>%(pos)sï¼š%(speaker)sï¼ˆ%(score)sï¼‰</li>"
+msgstr "<li>%(pos)s：%(speaker)s（%(score)s）</li>"
 
 #: notifications/utils.py
 #, python-format
@@ -316,7 +316,7 @@ msgstr ""
 
 #: notifications/utils.py
 msgid ", "
-msgstr "ï¼Œ"
+msgstr "，"
 
 #: notifications/views.py
 #, python-format
@@ -339,7 +339,7 @@ msgstr ""
 
 #: notifications/views.py
 msgid "N/A"
-msgstr "ä¸é€‚ç”¨"
+msgstr "不适用"
 
 #: notifications/views.py
 msgid "Not known"
@@ -373,7 +373,7 @@ msgstr ""
 
 #: notifications/views.py
 msgid "Time"
-msgstr "æ—¶é—´"
+msgstr "时间"
 
 #: notifications/views.py
 msgid "Email Participants"
@@ -386,7 +386,7 @@ msgid_plural "%(email_count)s emails have been queued for sending."
 msgstr[0] ""
 
 #: notifications/views.py
-msgid "No emails were sent â€” likely because no recipients were selected."
+msgid "No emails were sent — likely because no recipients were selected."
 msgstr ""
 
 #: notifications/views.py
@@ -403,18 +403,17 @@ msgstr ""
 
 #: notifications/views.py
 msgid "Adjudicator"
-msgstr "è£åˆ¤"
+msgstr "裁判"
 
 #: notifications/views.py
 msgid "Speaker"
-msgstr "è®²å‘˜"
+msgstr "讲员"
 
 #: notifications/views.py
 msgid "Speakers"
-msgstr "è®²å‘˜"
+msgstr "讲员"
 
 #: notifications/views.py
 msgid "Adjudicators"
-msgstr "è£åˆ¤"
-
+msgstr "裁判"
 

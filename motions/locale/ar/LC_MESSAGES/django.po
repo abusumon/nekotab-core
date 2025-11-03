@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-24 07:48+1000\n"
 "PO-Revision-Date: 2024-06-23 21:58\n"
@@ -11,87 +11,87 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: ar\n"
-"X-Crowdin-File: /develop/NekoTab/motions/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/motions/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 936\n"
 
 #: motions/apps.py motions/templates/public_motions.html
 msgid "Motions"
-msgstr "Ù‚Ø¶Ø§ÙŠØ§ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø©"
+msgstr "قضايا المناظرة"
 
 #: motions/models.py
 msgid "text"
-msgstr "Ù†Øµ"
+msgstr "نص"
 
 #: motions/models.py
 msgid "The full motion e.g., \"This House would straighten all bananas\""
-msgstr "Ù†Øµ Ø§Ù„Ù‚Ø¶ÙŠØ© ÙƒØ§Ù…Ù„Ø§. Ù…Ø«Ù„ \"Ø³ÙŠØ¬Ø¹Ù„ Ù‡Ø°Ø§ Ø§Ù„Ù…Ø¬Ù„Ø³ Ø´ÙƒÙ„ Ø§Ù„Ù…ÙˆØ² Ù…Ø³ØªÙ‚ÙŠÙ…Ø§\""
+msgstr "نص القضية كاملا. مثل \"سيجعل هذا المجلس شكل الموز مستقيما\""
 
 #: motions/models.py
 msgid "reference"
-msgstr "Ù…Ø¹Ø§Ø±Ø¶ "
+msgstr "معارض "
 
 #: motions/models.py
 msgid "Shortcode for the motion, e.g., \"Bananas\""
-msgstr "Ø§Ù„Ø±Ù…Ø² Ø§Ù„Ù…ØµØºØ± Ù„Ù„Ù‚Ø¶ÙŠØ© Ù…Ø«Ù„: \"Ø§Ù„Ù…ÙˆØ²\""
+msgstr "الرمز المصغر للقضية مثل: \"الموز\""
 
 #: motions/models.py
 msgid "info slide"
-msgstr "Ø´Ø±ÙŠØ­Ø© Ù…Ø¹Ù„ÙˆÙ…Ø§ØªÙŠØ©"
+msgstr "شريحة معلوماتية"
 
 #: motions/models.py
 msgid "The information slide for this topic; if it has one"
-msgstr "Ø§Ù„Ø´Ø±ÙŠØ­Ø© Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§ØªÙŠØ© Ù„Ù‡Ø°Ø§ Ø§Ù„Ù…ÙˆØ¶ÙˆØ¹Ø› ÙÙŠ Ø­Ø§Ù„ ÙƒØ§Ù† ÙŠØ­ØªÙˆÙŠ Ø¹Ù„Ù‰ ÙˆØ§Ø­Ø¯"
+msgstr "الشريحة المعلوماتية لهذا الموضوع؛ في حال كان يحتوي على واحد"
 
 #: motions/models.py
 msgid "tournament"
-msgstr "Ø¨Ø·ÙˆÙ„Ø©"
+msgstr "بطولة"
 
 #: motions/models.py
 msgid "rounds"
-msgstr "Ø¬ÙˆÙ„Ø§Øª"
+msgstr "جولات"
 
 #: motions/models.py
 msgid "motion"
-msgstr "Ù†Øµ Ø§Ù„Ù‚Ø¶ÙŠØ©"
+msgstr "نص القضية"
 
 #: motions/models.py
 msgid "motions"
-msgstr "Ù‚Ø¶Ø§ÙŠØ§"
+msgstr "قضايا"
 
 #: motions/models.py
 msgid "debate team"
-msgstr "ÙØ±ÙŠÙ‚ Ù…Ù†Ø§Ø¸Ø±Ø©"
+msgstr "فريق مناظرة"
 
 #: motions/models.py
 msgid "preferences"
-msgstr "Ø§Ù„ØªÙØ¶ÙŠÙ„Ø§Øª "
+msgstr "التفضيلات "
 
 #: motions/models.py
 msgid "ballot submission"
-msgstr "ØªØ³Ù„ÙŠÙ… Ø§Ù„Ù†ØªØ§Ø¦Ø¬"
+msgstr "تسليم النتائج"
 
 #: motions/models.py
 msgid "debate team motion preference"
-msgstr "ÙØ±ÙŠÙ‚ Ø§Ù„Ù…Ù†Ø§Ø¸Ø±Ø© ÙŠÙØ¶Ù„ Ø§Ù„Ù…ÙˆØ§Ø¶ÙŠØ¹"
+msgstr "فريق المناظرة يفضل المواضيع"
 
 #: motions/models.py
 msgid "debate team motion preferences"
-msgstr "Ø§Ù„Ù…ØªÙ†Ø§Ø¸Ø± ÙŠÙØ¶Ù„ÙˆÙ† Ø§Ù„Ù…ÙˆØ§Ø¶ÙŠØ¹ "
+msgstr "المتناظر يفضلون المواضيع "
 
 #: motions/models.py
 msgid "round"
-msgstr "Ø¬ÙˆÙ„Ø©"
+msgstr "جولة"
 
 #: motions/models.py
 msgid "sequence number"
-msgstr "Ø±Ù‚Ù… Ø§Ù„ØªØ³Ù„Ø³Ù„"
+msgstr "رقم التسلسل"
 
 #: motions/models.py
 msgid "The order in which motions are displayed"
-msgstr "Ø§Ù„ØªØ±ØªÙŠØ¨ Ø§Ù„ØªÙŠ ÙŠØªÙ… ÙÙŠÙ‡ Ø¹Ø±Ø¶ Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§"
+msgstr "الترتيب التي يتم فيه عرض القضايا"
 
 #: motions/models.py
 msgid "round motion"
@@ -103,35 +103,35 @@ msgstr ""
 
 #: motions/statistics.py
 msgid "extremely strong evidence"
-msgstr "Ø­Ø¬Ø¬ Ù‚ÙˆÙŠØ© Ø¬Ø¯Ø§Ù‹ "
+msgstr "حجج قوية جداً "
 
 #: motions/statistics.py
 msgid "strong evidence"
-msgstr "Ø­Ø¬Ø¬ Ù‚ÙˆÙŠØ© "
+msgstr "حجج قوية "
 
 #: motions/statistics.py
 msgid "moderate evidence"
-msgstr "Ø­Ø¬Ø¬ Ø¹Ø§Ø¯ÙŠØ© "
+msgstr "حجج عادية "
 
 #: motions/statistics.py
 msgid "weak evidence"
-msgstr "Ø­Ø¬Ø¬ Ø¶Ø¹ÙŠÙØ© "
+msgstr "حجج ضعيفة "
 
 #: motions/statistics.py
 msgid "very weak evidence"
-msgstr "Ø­Ø¬Ø¬ Ø¶Ø¹ÙŠÙØ© Ø¬Ø¯Ø§ "
+msgstr "حجج ضعيفة جدا "
 
 #: motions/statistics.py
 msgid "extremely weak evidence"
-msgstr "Ø­Ø¬Ø¬ Ø¶Ø¹ÙŠÙØ© Ù„Ù„ØºØ§ÙŠØ©"
+msgstr "حجج ضعيفة للغاية"
 
 #: motions/statistics.py
 msgid "balance inconclusive"
-msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ ØªÙˆØ§Ø²Ù† "
+msgstr "لا يوجد توازن "
 
 #: motions/statistics.py
 msgid "too few debates to get a meaningful statistic"
-msgstr "Ø¹Ø¯Ø¯ Ù‚Ù„ÙŠÙ„ Ù…Ù† Ø§Ù„Ø³Ø±Ø¯ Ù„Ù‡ Ù‚ÙŠÙ…Ø© "
+msgstr "عدد قليل من السرد له قيمة "
 
 #: motions/statistics.py
 #, python-format
@@ -140,7 +140,7 @@ msgstr ""
 
 #: motions/statistics.py
 #, python-format
-msgid "Ï‡Â² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced â€” at a %(level)s level of significance."
+msgid "χ² statistic is %(chisq).3f, providing %(evidence)s to suggest that this motion was imbalanced — at a %(level)s level of significance."
 msgstr ""
 
 #: motions/statistics.py
@@ -149,14 +149,14 @@ msgstr ""
 
 #: motions/statistics.py
 #, python-format
-msgid "Ï‡Â² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
+msgid "χ² statistic is %(chisq).3f, providing insufficient evidence to suggest that this motion was imbalanced at any level of significance."
 msgstr ""
 
 #: motions/templates/motion_global_statistics.html
 #: motions/templates/motion_round_statistics.html
 #: motions/templates/public_motions.html
 msgid "View Info Slide"
-msgstr "Ø¹Ø±Ø¶ Ø§Ù„Ù…ÙˆÙ„Ø§Ø© Ùˆ Ø§Ù„Ù…Ø¹Ø§Ø±Ø¶Ø© "
+msgstr "عرض المولاة و المعارضة "
 
 #: motions/templates/motion_statistics_bp_elim.html
 #, python-format
@@ -193,7 +193,7 @@ msgstr[5] ""
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgid "advanced"
-msgstr "Ù…ØªÙ‚Ø¯Ù…"
+msgstr "متقدم"
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgctxt "abbreviation for 'advanced', used when not enough space"
@@ -202,12 +202,12 @@ msgstr ""
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgid "eliminated"
-msgstr "Ø§Ù‚ØµØ§Ø¡"
+msgstr "اقصاء"
 
 #: motions/templates/motion_statistics_bp_elim.html
 msgctxt "abbreviation for 'eliminated', used when not enough space"
 msgid "elim."
-msgstr "Ø§Ù„Ù‚Ø¶Ø§Ø¡ "
+msgstr "القضاء "
 
 #: motions/templates/motion_statistics_bp_elim.html
 #, python-format
@@ -217,7 +217,7 @@ msgstr ""
 #: motions/templates/motion_statistics_bp_elim.html
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "No results for this motion"
-msgstr "Ù„Ø§ Ù†ØªØ§Ø¦Ø¬ Ù„Ù‡Ø°Ù‡ Ø§Ù„Ù‚Ø¶ÙŠØ©"
+msgstr "لا نتائج لهذه القضية"
 
 #: motions/templates/motion_statistics_bp_prelim.html
 msgid "Government"
@@ -283,7 +283,7 @@ msgstr[5] ""
 
 #: motions/templates/motion_statistics_twoteam.html
 msgid "No teams debated this motion"
-msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ ÙØ±Ù‚ ØªÙ†Ø§Ø¸Ø± ÙÙŠ Ù‡Ø°Ù‡ Ø§Ù„Ù‚Ø¶ÙŠØ© "
+msgstr "لا يوجد فرق تناظر في هذه القضية "
 
 #: motions/templates/motion_statistics_twoteam.html
 #, python-format
@@ -298,7 +298,7 @@ msgstr[5] ""
 
 #: motions/templates/motion_statistics_twoteam.html
 msgid "No teams vetoed this motion"
-msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ ÙØ±Ù‚ Ù‚Ø§Ù…Øª Ø¨Ø§Ù„ØªØµÙˆÙŠØª Ù„Ù‡Ø°Ù‡ Ø§Ù„Ù‚Ø¶ÙŠØ© "
+msgstr "لا يوجد فرق قامت بالتصويت لهذه القضية "
 
 #: motions/templates/motions_edit.html
 msgid "Edit Motion"
@@ -312,7 +312,7 @@ msgstr[5] ""
 
 #: motions/templates/motions_edit.html
 msgid "Display Draw"
-msgstr "Ø¹Ø±Ø¶ Ø§Ù„Ù‚Ø±Ø¹Ø©"
+msgstr "عرض القرعة"
 
 #: motions/templates/motions_edit.html
 msgid "This will replace all existing motions for this round. The motions themselves will still be in the database."
@@ -352,15 +352,15 @@ msgstr ""
 
 #: motions/templates/public_motions.html
 msgid "There are no motions available for this round."
-msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù‚Ø¶Ø§ÙŠØ§ ÙÙŠ Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø© "
+msgstr "لا يوجد قضايا في هذه الجولة "
 
 #: motions/templates/public_motions.html
 msgid "The motions for this round have not been released."
-msgstr "Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§ Ø§Ù„ØªÙŠ ØªÙ… Ø±ÙØ¶Ù‡Ø§ ÙÙŠ Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø© "
+msgstr "القضايا التي تم رفضها في هذه الجولة "
 
 #: motions/templates/public_motions.html
 msgid "The motion for this round has not been released."
-msgstr "Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§ Ø§Ù„ØªÙŠ ØªÙ… Ø±ÙØ¶Ù‡Ø§ ÙÙŠ Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø© "
+msgstr "القضايا التي تم رفضها في هذه الجولة "
 
 #: motions/templates/show.html
 #, python-format
@@ -396,8 +396,8 @@ msgstr[4] ""
 msgstr[5] ""
 
 #: motions/templates/show.html
-msgid "There are no motions for this round entered into NekoTab."
-msgstr "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù‚Ø¶Ø§ÙŠØ§ ÙÙŠ Ù‡Ø°Ù‡ Ø§Ù„Ø¬ÙˆÙ„Ø© "
+msgid "There are no motions for this round entered into Tabbycat."
+msgstr "لا يوجد قضايا في هذه الجولة "
 
 #: motions/utils.py
 msgid "Not all latest ballots have the same motion. The correct motion must be set manually."
@@ -409,7 +409,7 @@ msgstr ""
 
 #: motions/views.py
 msgid "The motion has been saved."
-msgstr "Ø§Ù„Ù‚Ø¶Ø§ÙŠØ§ Ø§Ù„ØªÙŠ Ù„Ù… ÙŠØªÙ… Ø­ÙØ¸Ù‡Ø§ "
+msgstr "القضايا التي لم يتم حفظها "
 
 #: motions/views.py
 #, python-format
@@ -474,6 +474,5 @@ msgstr ""
 
 #: motions/views.py
 msgid "Motion Statistics"
-msgstr "Ø¥Ø­ØµØ§Ø¦ÙŠØ§Øª Ø§Ù„Ù‚Ø¶ÙŠØ©"
-
+msgstr "إحصائيات القضية"
 

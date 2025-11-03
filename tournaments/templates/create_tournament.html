@@ -1,8 +1,8 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% load add_field_css i18n %}
 
 {% block head-title %}<span class="emoji">🏆</span>{% trans "Create New Tournament"%}{% endblock %}
-{% block page-title %}{% trans "NekoTab" %}{% endblock %}
+{% block page-title %}{% trans "Tabbycat" %}{% endblock %}
 {% block sidebar %}{% endblock %} {# Need to override sidebar manually it will crash when no tournaments are present. Ideally this would be handled with the Mixins but this is a relatively unique view as it is part of Tournaments but is admin-only and thus shown with the sidebar #}
 
 {% block page-alerts %}
@@ -12,16 +12,16 @@
 {% block content %}
 
   {% blocktrans trimmed asvar donation %}
-    NekoTab is free to use, although <a href="https://opencollective.com/NekoTab">donations</a> are encouraged.
+    Tabbycat is free to use, although <a href="https://opencollective.com/tabbycat">donations</a> are encouraged.
   {% endblocktrans %}
   {% include "components/explainer-card.html" with type="primary" p1=donation %}
 
   <div class="card border-info text-info mt-3">
     <div class="card-body">
 
-      <strong>{% trans "Just trying out NekoTab?" %}</strong>
+      <strong>{% trans "Just trying out Tabbycat?" %}</strong>
       {% blocktrans trimmed %}
-        If you're learning or playing around with NekoTab, it's easiest to
+        If you're learning or playing around with Tabbycat, it's easiest to
         create a demo tournament that is prepopulated with a fake (but typical)
         set of teams, adjudicators, rooms, and the like. You can then delete
         this demo tournament later on, or deploy a new instance for your real
@@ -64,7 +64,7 @@
 
       {% trans "Create Tournament" as title %}
       {% trans "Cancel and go back to the site home page" as subtitle %}
-      {% url 'NekoTab-index' as suburl %}
+      {% url 'tabbycat-index' as suburl %}
       {% include "components/form-submit.html" %}
 
     </form>

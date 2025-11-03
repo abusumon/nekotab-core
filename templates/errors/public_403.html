@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% load debate_tags i18n %}
 
 {% block page-title %}{% trans "Permission Denied (403)" %}{% endblock %}
@@ -16,7 +16,7 @@
           <a href="{{ url }}">Back to the tournament home page.</a>
         {% endblocktrans %}
       {% else %}
-        {% url 'NekoTab-index' as url %}
+        {% url 'tabbycat-index' as url %}
         {% blocktrans trimmed %}
           Whoops! This page isn't enabled for this tournament.
           <a href="{{ url }}">Back to the home page.</a>

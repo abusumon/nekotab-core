@@ -1,8 +1,5 @@
 {% load debate_tags i18n %}
 
-{# Safety: Only render tournament-dependent public nav when a tournament object is in context #}
-{% if tournament %}
-
 <!-- TAB RELEASES -->
 {% if pref.team_tab_released %}
   <li class="nav-item {% if tab_team_nav %}active{% endif %}">
@@ -187,8 +184,6 @@
   <li class="nav-item {% if feedback_progress_nav %}active{% endif %}">
     <a class="nav-link" href="{% tournamenturl 'public_feedback_progress' %}">{% trans "Feedback Progress" %}</a>
   </li>
-{% endif %}
-
 {% endif %}
 {% if pref.public_schedule %}
 <li class="nav-item {% if schedule_nav %}active{% endif %}">

@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:52\n"
@@ -11,15 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: kk\n"
-"X-Crowdin-File: /develop/NekoTab/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/adjfeedback/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 924\n"
 
 #: adjfeedback/admin.py
 msgid "Integer scales must have a minimum and maximum"
-msgstr "Ð‘Ò¯Ñ‚Ñ–Ð½ Ð±Ð°Ò“Ð°Ð½Ð½Ñ‹Ò£ ÐµÒ£ Ð°Ð·Ñ‹ Ð¶Ó™Ð½Ðµ ÐµÒ£ ÐºÓ©Ð±Ñ– Ð±Ð¾Ð»ÑƒÑ‹ Ñ‚Ð¸Ñ–Ñ"
+msgstr "Бүтін бағанның ең азы және ең көбі болуы тиіс"
 
 #: adjfeedback/admin.py
 msgid "Maximum value must be greater than the minimum"
@@ -27,19 +27,19 @@ msgstr ""
 
 #: adjfeedback/admin.py
 msgid "target"
-msgstr "Ð¼Ð°Ò›ÑÐ°Ñ‚"
+msgstr "мақсат"
 
 #: adjfeedback/admin.py adjfeedback/models.py
 msgid "source adjudicator"
-msgstr "Ð°Ò›Ð¿Ð°Ñ€Ð°Ñ‚ Ð±ÐµÑ€ÑƒÑˆÑ– Ñ‚Ó©Ñ€ÐµÑˆÑ–"
+msgstr "ақпарат беруші төреші"
 
 #: adjfeedback/admin.py adjfeedback/models.py
 msgid "source team"
-msgstr "Ð°Ò›Ð¿Ð°Ñ€Ð°Ñ‚ Ð±ÐµÑ€ÑƒÑˆÑ– Ñ‚Ð¾Ð¿"
+msgstr "ақпарат беруші топ"
 
 #: adjfeedback/admin.py
 msgid "Source"
-msgstr "ÐÒ›Ð¿Ð°Ñ€Ð°Ñ‚ Ð±ÐµÑ€ÑƒÑˆÑ–"
+msgstr "Ақпарат беруші"
 
 #: adjfeedback/admin.py
 #, python-format
@@ -82,19 +82,19 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "chair"
-msgstr "Ð¾Ð¹Ñ‹Ð½Ð½Ñ‹Ò£ Ð±Ð°Ñ Ñ‚Ó©Ñ€ÐµÑˆÑ–ÑÑ–"
+msgstr "ойынның бас төрешісі"
 
 #: adjfeedback/forms.py
 msgid "solo"
-msgstr "Ð´Ð°Ñ€Ð°"
+msgstr "дара"
 
 #: adjfeedback/forms.py
 msgid "panellist"
-msgstr "Ò›Ð¾ÑÑ‹Ð¼ÑˆÐ° Ñ‚Ó©Ñ€ÐµÑˆÑ–"
+msgstr "қосымша төреші"
 
 #: adjfeedback/forms.py
 msgid "trainee"
-msgstr "Ò¯Ð¹Ñ€ÐµÐ½ÑƒÑˆÑ–"
+msgstr "үйренуші"
 
 #. Translators: Please leave this blank, it should be left for the base Django translations.
 #: adjfeedback/forms.py
@@ -108,7 +108,7 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "Ignored"
-msgstr "Ð–Ð°ÑƒÐ°Ð¿ Ð±ÐµÑ€Ñ–Ð»Ð¼ÐµÐ³ÐµÐ½"
+msgstr "Жауап берілмеген"
 
 #. Translators: e.g. "Megan Pearson (chair)", with adjpos="chair"
 #: adjfeedback/forms.py
@@ -123,7 +123,7 @@ msgstr ""
 
 #: adjfeedback/forms.py
 msgid "-- Adjudicators --"
-msgstr "-- Ð¢Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€ --"
+msgstr "-- Төрешілер --"
 
 #: adjfeedback/forms.py
 msgid "Adjudicator this feedback is about"
@@ -175,19 +175,19 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "adjudicator"
-msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ–"
+msgstr "төреші"
 
 #: adjfeedback/models.py
 msgid "round"
-msgstr "Ð¾Ð¹Ñ‹Ð½"
+msgstr "ойын"
 
 #: adjfeedback/models.py
 msgid "score"
-msgstr "Ò±Ð¿Ð°Ð¹"
+msgstr "ұпай"
 
 #: adjfeedback/models.py
 msgid "timestamp"
-msgstr "ÑƒÐ°Ò›Ñ‹Ñ‚ Ð±ÐµÐ»Ð³Ñ–ÑÑ–"
+msgstr "уақыт белгісі"
 
 #: adjfeedback/models.py
 msgid "adjudicator base score history"
@@ -231,7 +231,7 @@ msgstr ""
 
 #: adjfeedback/models.py adjfeedback/views.py
 msgid "ignored"
-msgstr "Ð¶Ð°ÑƒÐ°Ð¿ Ð±ÐµÑ€Ñ–Ð»Ð¼ÐµÐ³ÐµÐ½"
+msgstr "жауап берілмеген"
 
 #: adjfeedback/models.py
 msgid "Whether the feedback should affect the adjudicator's score"
@@ -239,11 +239,11 @@ msgstr ""
 
 #: adjfeedback/models.py
 msgid "adjudicator feedback"
-msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð³Ðµ Ð±ÐµÑ€Ñ–Ð»Ð³ÐµÐ½ ÐºÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹Ñ"
+msgstr "төрешіге берілген кері байланыс"
 
 #: adjfeedback/models.py
 msgid "adjudicator feedbacks"
-msgstr "Ñ‚Ó©Ñ€ÐµÑˆÑ–Ð³Ðµ Ð±ÐµÑ€Ñ–Ð»Ð³ÐµÐ½ ÐºÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹ÑÑ‚Ð°Ñ€"
+msgstr "төрешіге берілген кері байланыстар"
 
 #: adjfeedback/models.py
 msgid "Either the source adjudicator or source team wasn't specified."
@@ -267,7 +267,7 @@ msgstr ""
 
 #: adjfeedback/tables.py
 msgid "N/A"
-msgstr "ÒšÐ¾Ð»Ð¶ÐµÑ‚Ñ–Ð¼ÑÑ–Ð·"
+msgstr "Қолжетімсіз"
 
 #: adjfeedback/tables.py
 msgid "Current weighted score"
@@ -343,7 +343,7 @@ msgstr ""
 #: adjfeedback/templates/add_feedback.html
 #: adjfeedback/templates/enter_feedback.html
 msgid "Enter Feedback"
-msgstr "ÐšÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹Ñ Ð±ÐµÑ€Ñƒ"
+msgstr "Кері байланыс беру"
 
 #: adjfeedback/templates/enter_feedback.html
 #: adjfeedback/templates/public_add_feedback.html
@@ -354,7 +354,7 @@ msgstr ""
 #: adjfeedback/templates/enter_feedback.html
 #: adjfeedback/templates/feedback_base.html
 msgid "Add Feedback"
-msgstr "ÐšÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹Ñ Ð±ÐµÑ€Ñƒ"
+msgstr "Кері байланыс беру"
 
 #: adjfeedback/templates/enter_feedback.html
 msgid "There are no feedback options because no rounds have been released to the public yet. Check back when they have!"
@@ -398,11 +398,11 @@ msgstr ""
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Important"
-msgstr "ÐœÐ°Ò£Ñ‹Ð·Ð´Ñ‹"
+msgstr "Маңызды"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "Comments"
-msgstr "ÐŸÑ–ÐºÑ–Ñ€Ð»ÐµÑ€"
+msgstr "Пікірлер"
 
 #: adjfeedback/templates/feedback_base.html
 msgid "By Source"
@@ -504,7 +504,7 @@ msgstr ""
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Confirm"
-msgstr "Ð Ð°ÑÑ‚Ð°Ñƒ"
+msgstr "Растау"
 
 #: adjfeedback/templates/feedback_card.html
 msgid "Ignored feedback is counted as having been submitted, but does not affect this adjudicator's score."
@@ -568,7 +568,7 @@ msgstr[1] ""
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
-msgid "Score Distributions (range is %(min_score)sâ€“%(max_score)s)"
+msgid "Score Distributions (range is %(min_score)s–%(max_score)s)"
 msgstr ""
 
 #: adjfeedback/templates/overview_breakdowns.html
@@ -577,7 +577,7 @@ msgstr ""
 
 #: adjfeedback/templates/overview_breakdowns.html
 msgid "Feedback"
-msgstr "ÐšÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹Ñ"
+msgstr "Кері байланыс"
 
 #: adjfeedback/templates/overview_breakdowns.html
 #, python-format
@@ -710,19 +710,19 @@ msgstr[1] ""
 
 #: adjfeedback/views.py
 msgid "Feedbacks"
-msgstr "ÐšÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹Ñ"
+msgstr "Кері байланыс"
 
 #: adjfeedback/views.py
 msgid "Find Feedback"
-msgstr "ÐšÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹ÑÑ‚Ñ‹ Ñ–Ð·Ð´ÐµÑƒ"
+msgstr "Кері байланысты іздеу"
 
 #: adjfeedback/views.py
 msgid "From Teams"
-msgstr "ÒšÐ°Ñ‚Ñ‹ÑÑƒÑˆÑ‹Ð»Ð°Ñ€"
+msgstr "Қатысушылар"
 
 #: adjfeedback/views.py
 msgid "From Adjudicators"
-msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–Ð»ÐµÑ€"
+msgstr "Төрешілер"
 
 #: adjfeedback/views.py
 msgid "Latest Feedback"
@@ -734,7 +734,7 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "Only Comments"
-msgstr "Ð¢ÐµÐº Ð¿Ñ–ÐºÑ–Ñ€Ð»ÐµÑ€"
+msgstr "Тек пікірлер"
 
 #: adjfeedback/views.py
 msgid "(250 most recent)"
@@ -742,7 +742,7 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "Important Feedback"
-msgstr "ÐœÐ°Ò£Ñ‹Ð·Ð´Ñ‹ ÐºÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹Ñ"
+msgstr "Маңызды кері байланыс"
 
 #: adjfeedback/views.py
 msgid "(rating was much higher/lower than expected)"
@@ -750,23 +750,23 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "A Team"
-msgstr "Ð¢Ð¾Ð¿"
+msgstr "Топ"
 
 #: adjfeedback/views.py
 msgid "Team"
-msgstr "Ð¢Ð¾Ð¿"
+msgstr "Топ"
 
 #: adjfeedback/views.py
 msgid "Institution"
-msgstr "ÒšÐ°ÑƒÑ‹Ð¼Ð´Ð°ÑÑ‚Ñ‹Ò›"
+msgstr "Қауымдастық"
 
 #: adjfeedback/views.py
 msgid "An Adjudicator"
-msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–"
+msgstr "Төреші"
 
 #: adjfeedback/views.py
 msgid "Adjudicator"
-msgstr "Ð¢Ó©Ñ€ÐµÑˆÑ–"
+msgstr "Төреші"
 
 #: adjfeedback/views.py
 #, python-format
@@ -789,7 +789,7 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "Feedback Progress"
-msgstr "ÐšÐµÑ€Ñ– Ð±Ð°Ð¹Ð»Ð°Ð½Ñ‹Ñ Ð±ÐµÑ€Ñƒ Ð´ÐµÒ£Ð³ÐµÐ¹Ñ–"
+msgstr "Кері байланыс беру деңгейі"
 
 #: adjfeedback/views.py
 #, python-format
@@ -805,15 +805,15 @@ msgstr ""
 
 #: adjfeedback/views.py
 msgid "confirmed"
-msgstr "Ð±ÐµÐºÑ–Ñ‚Ñ–Ð»Ð³ÐµÐ½"
+msgstr "бекітілген"
 
 #: adjfeedback/views.py
 msgid "un-confirmed"
-msgstr "Ð±ÐµÐºÑ–Ñ‚Ñ–Ð»Ð¼ÐµÐ³ÐµÐ½"
+msgstr "бекітілмеген"
 
 #: adjfeedback/views.py
 msgid "un-ignored"
-msgstr "Ð¶Ð°ÑƒÐ°Ð¿ Ð±ÐµÑ€Ñ–Ð»Ð³ÐµÐ½"
+msgstr "жауап берілген"
 
 #: adjfeedback/views.py
 #, python-format
@@ -825,5 +825,4 @@ msgstr[1] ""
 #: adjfeedback/views.py
 msgid "Custom Feedback Questions"
 msgstr ""
-
 

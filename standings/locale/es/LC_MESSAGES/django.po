@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:48\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: es-ES\n"
-"X-Crowdin-File: /develop/NekoTab/standings/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/standings/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 950\n"
 
 #: standings/base.py
 msgid "The same metric would be added twice:"
-msgstr "La misma mÃ©trica se agregarÃ­a dos veces:"
+msgstr "La misma métrica se agregaría dos veces:"
 
 #: standings/base.py
 msgid "The same ranking would be added twice:"
@@ -29,7 +29,7 @@ msgstr ""
 #: standings/base.py
 #, python-format
 msgid "Unrecognized metric code: \"%(code)s\""
-msgstr "CÃ³digo de mÃ©trica no reconocido: \"%(code)s\""
+msgstr "Código de métrica no reconocido: \"%(code)s\""
 
 #: standings/diversity.py
 msgid "All"
@@ -66,35 +66,35 @@ msgstr "Trainee"
 
 #: standings/diversity.py
 msgid "Average Rating"
-msgstr "CalificaciÃ³n promedio"
+msgstr "Calificación promedio"
 
 #: standings/diversity.py
 msgid "Median Rating"
-msgstr "CalificaciÃ³n mediana"
+msgstr "Calificación mediana"
 
 #: standings/diversity.py
 msgid "Upper Quartile Rating"
-msgstr "CalificaciÃ³n del cuartil superior"
+msgstr "Calificación del cuartil superior"
 
 #: standings/diversity.py
 msgid "Lower Quartile Rating"
-msgstr "CalificaciÃ³n del cuartil inferior"
+msgstr "Calificación del cuartil inferior"
 
 #: standings/diversity.py
 msgid "Average Rating From Teams"
-msgstr "CalificaciÃ³n promedio de los equipos"
+msgstr "Calificación promedio de los equipos"
 
 #: standings/diversity.py
 msgid "Average Rating From Chairs"
-msgstr "CalificaciÃ³n promedio de los principales"
+msgstr "Calificación promedio de los principales"
 
 #: standings/diversity.py
 msgid "Average Rating From Panellists"
-msgstr "CalificaciÃ³n promedio de los panelistas"
+msgstr "Calificación promedio de los panelistas"
 
 #: standings/diversity.py
 msgid "Average Rating From Trainees"
-msgstr "CalificaciÃ³n promedio de los trainee"
+msgstr "Calificación promedio de los trainee"
 
 #: standings/diversity.py
 msgid "Average Score"
@@ -155,7 +155,7 @@ msgstr "Victorias"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of firsts"
-msgstr "nÃºmero de primeros"
+msgstr "número de primeros"
 
 #: standings/speakers.py standings/teams.py
 msgid "1sts"
@@ -163,7 +163,7 @@ msgstr "1eros"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of seconds"
-msgstr "nÃºmero de segundos"
+msgstr "número de segundos"
 
 #: standings/speakers.py standings/teams.py
 msgid "2nds"
@@ -171,7 +171,7 @@ msgstr "2dos"
 
 #: standings/speakers.py standings/teams.py
 msgid "number of thirds"
-msgstr "nÃºmero de terceros"
+msgstr "número de terceros"
 
 #: standings/speakers.py standings/teams.py
 msgid "3rds"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: standings/speakers.py
 msgid "standard deviation"
-msgstr "desviaciÃ³n estÃ¡ndar"
+msgstr "desviación estándar"
 
 #: standings/speakers.py
 msgid "Stdev"
@@ -199,7 +199,7 @@ msgstr "Desv. est."
 
 #: standings/speakers.py
 msgid "number of speeches given"
-msgstr "nÃºmero de discursos dados"
+msgstr "número de discursos dados"
 
 #: standings/speakers.py
 msgid "Num"
@@ -239,7 +239,7 @@ msgstr "victorias"
 
 #: standings/teams.py
 msgid "total speaker score"
-msgstr "puntuaciÃ³n total de orador"
+msgstr "puntuación total de orador"
 
 #: standings/teams.py
 msgid "Spk"
@@ -335,7 +335,7 @@ msgstr ""
 
 #: standings/teams.py
 msgid "Who-beat-whom"
-msgstr "QuiÃ©n-venciÃ³-a-quiÃ©n"
+msgstr "Quién-venció-a-quién"
 
 #: standings/teams.py
 msgid "WBW"
@@ -431,7 +431,7 @@ msgstr ""
 
 #: standings/templates/standings_index.html
 msgid "Standings"
-msgstr "ClasificaciÃ³n"
+msgstr "Clasificación"
 
 #: standings/templates/standings_index.html
 msgid "Top Speaks"
@@ -631,7 +631,6 @@ msgid "Feedback Overview"
 msgstr ""
 
 #: standings/views.py
-msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
+msgid "An adjudicator's score is determined by a customisable mix of their base score and their feedback ratings. The current mix is specified below as the 'Score Components.' Feedback ratings are determined by averaging the results of all individual pieces of feedback across all rounds. <a href='https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html#how-is-an-adjudicator-s-score-determined'>Read more</a>."
 msgstr ""
-
 

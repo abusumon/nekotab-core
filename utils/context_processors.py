@@ -1,16 +1,13 @@
-﻿from django.conf import settings
+from django.conf import settings
 
 from tournaments.models import Tournament
 
 
 def debate_context(request):
 
-    # Be defensive: in some split-settings execution paths, version/codename
-    # may not be present on the settings object. Use getattr with defaults
-    # rather than raising AttributeError and breaking page renders.
     context = {
-        'NekoTab_version': getattr(settings, 'NekoTab_VERSION', ""),
-        'NekoTab_codename': getattr(settings, 'NekoTab_CODENAME', "no codename"),
+        'tabbycat_version': settings.TABBYCAT_VERSION or "",
+        'tabbycat_codename': settings.TABBYCAT_CODENAME or "no codename",
         'all_tournaments': Tournament.objects.filter(active=True),
         'disable_sentry': getattr(settings, 'DISABLE_SENTRY', False),
         'on_local': getattr(settings, 'ON_LOCAL', False),

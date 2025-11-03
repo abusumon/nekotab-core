@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import warnings
 
 from django.contrib.auth.models import AnonymousUser
@@ -162,15 +162,14 @@ class FakeRequest(object):
     user = AnonymousUser()
 
 
-class NekoTabTableBuilder(BaseTableBuilder):
+class TabbycatTableBuilder(BaseTableBuilder):
     """Extends TableBuilder to add convenience functions specific to
-    NekoTab."""
+    Tabbycat."""
 
     ADJ_SYMBOLS = {
-        # Use simple ASCII symbols to avoid encoding issues in some environments
-        AdjudicatorAllocation.POSITION_CHAIR: _("C"),
-        AdjudicatorAllocation.POSITION_ONLY: _("S"),  # Solo
-        AdjudicatorAllocation.POSITION_TRAINEE: _("T"),
+        AdjudicatorAllocation.POSITION_CHAIR: _("Ⓒ"),
+        AdjudicatorAllocation.POSITION_ONLY: _("Ⓒ"),
+        AdjudicatorAllocation.POSITION_TRAINEE: _("Ⓣ"),
     }
 
     ADJ_POSITION_NAMES = {

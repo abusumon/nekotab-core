@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:47\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /develop/NekoTab/results/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/results/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 948\n"
 
@@ -30,7 +30,7 @@ msgstr[0] ""
 
 #: results/admin.py
 msgid "Speaker"
-msgstr "è®²å‘˜"
+msgstr "讲员"
 
 #: results/apps.py results/templates/public_results_index.html results/views.py
 msgid "Results"
@@ -69,7 +69,7 @@ msgstr ""
 #: results/forms.py
 #, python-format
 msgid "%(team)s (%(side)s)"
-msgstr "%(team)sï¼ˆ%(side)sï¼‰"
+msgstr "%(team)s（%(side)s）"
 
 #: results/forms.py
 msgid "Winner"
@@ -175,11 +175,11 @@ msgstr ""
 
 #: results/models.py
 msgid "timestamp"
-msgstr "æ—¶é—´æˆ³"
+msgstr "时间戳"
 
 #: results/models.py
 msgid "version"
-msgstr "ç‰ˆæœ¬"
+msgstr "版本"
 
 #: results/models.py
 msgid "submitter type"
@@ -211,7 +211,7 @@ msgstr ""
 
 #: results/models.py
 msgid "IP address"
-msgstr "IPåœ°å€"
+msgstr "IP地址"
 
 #: results/models.py
 msgid "A tab room ballot must have a user associated."
@@ -219,11 +219,11 @@ msgstr ""
 
 #: results/models.py
 msgid "debate"
-msgstr "è¾©è®º"
+msgstr "辩论"
 
 #: results/models.py
 msgid "motion"
-msgstr "è¯é¢˜"
+msgstr "话题"
 
 #: results/models.py
 msgid "discarded"
@@ -272,11 +272,11 @@ msgstr ""
 
 #: results/models.py
 msgid "win"
-msgstr "èƒœåˆ©"
+msgstr "胜利"
 
 #: results/models.py
 msgid "margin"
-msgstr "èŒƒå›´"
+msgstr "范围"
 
 #: results/models.py
 msgid "score"
@@ -308,7 +308,7 @@ msgstr ""
 
 #: results/models.py
 msgid "points"
-msgstr "åˆ†"
+msgstr "分"
 
 #: results/models.py
 msgid "votes given"
@@ -332,11 +332,11 @@ msgstr ""
 
 #: results/models.py
 msgid "speaker"
-msgstr "è®²å‘˜"
+msgstr "讲员"
 
 #: results/models.py
 msgid "rank"
-msgstr "æŽ’å"
+msgstr "排名"
 
 #: results/models.py
 msgid "ghost"
@@ -364,7 +364,7 @@ msgstr ""
 
 #: results/models.py
 msgid "tournament"
-msgstr "æ¯”èµ›"
+msgstr "比赛"
 
 #: results/models.py
 msgid "sequence"
@@ -492,7 +492,7 @@ msgid "This can happen if you demote a panellist to trainee after a result has b
 msgstr ""
 
 #: results/templates/admin_results.html
-msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because NekoTab assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
+msgid "One or more debates in this round appear to have more than one confirmed ballot submission. This can cause unexpected results (or crashes), because Tabbycat assumes that each debate has at most one confirmed ballot submission. This inconsistency can generally only arise if you manipulate the database with SQL queries directly. You'll need to find the offending debate(s) and ballot submissions yourself in the Edit Database area, or if that doesn't work, you might need to find them using SQL queries directly."
 msgstr ""
 
 #: results/templates/admin_results.html
@@ -589,11 +589,11 @@ msgstr ""
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Rank"
-msgstr "æŽ’å"
+msgstr "排名"
 
 #: results/templates/ballot/ballot_scoresheet.html
 msgid "Margin"
-msgstr "èŒƒå›´"
+msgstr "范围"
 
 #: results/templates/ballot/ballot_set.html
 msgid "There are some problems with this scoresheet. Please review and correct them."
@@ -618,21 +618,21 @@ msgstr ""
 
 #: results/templates/ballot/ballot_set.html
 msgid "Solo Chair"
-msgstr "å–®ä¸»å¸­"
+msgstr "單主席"
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 msgid "Chair"
-msgstr "ä¸»å¸­"
+msgstr "主席"
 
 #: results/templates/ballot/ballot_set.html
 #: results/templates/ballot_entry_form.html
 msgid "Panellist"
-msgstr "æˆå‘˜"
+msgstr "成员"
 
 #: results/templates/ballot/ballot_set.html
 msgid "Trainee"
-msgstr "å®žä¹ ç”Ÿ"
+msgstr "实习生"
 
 #: results/templates/ballot/ballot_set.html
 msgid "Assign sides before entering scores"
@@ -723,7 +723,7 @@ msgstr ""
 
 #: results/templates/ballot_entry_base.html
 #, python-format
-msgid "%(team)s had speakers who spoke multiple times in the last round â€” i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
+msgid "%(team)s had speakers who spoke multiple times in the last round — i.e. an 'iron' person speech. Please carefully check the ballot to see if that is still the case for this round. If it is, ensure the speakers selected below reflect this."
 msgstr ""
 
 #: results/templates/ballot_entry_form.html
@@ -810,7 +810,7 @@ msgstr ""
 
 #: results/templates/public_add_ballot.html
 msgid "Who are you?"
-msgstr "æ‚¨æ˜¯è°ï¼Ÿ"
+msgstr "您是谁？"
 
 #: results/templates/public_add_ballot.html
 msgid "(click your name on this list)"
@@ -842,7 +842,7 @@ msgstr ""
 
 #: results/templates/public_ballot_set.html
 msgid "Motion"
-msgstr "è¯é¢˜"
+msgstr "话题"
 
 #: results/templates/public_ballot_set.html
 #, python-format
@@ -974,7 +974,7 @@ msgstr ""
 #: results/utils.py
 #, python-format
 msgid "Eliminated: %(eliminated_list)s"
-msgstr "æ·˜æ±°äº†ï¼š%(eliminated_list)s"
+msgstr "淘汰了：%(eliminated_list)s"
 
 #: results/utils.py
 #, python-format
@@ -996,42 +996,42 @@ msgstr ""
 #. Translators: Abbreviation for Prime Minister
 #: results/utils.py
 msgid "PM"
-msgstr "é¦–ç›¸"
+msgstr "首相"
 
 #. Translators: Abbreviation for Deputy Prime Minister
 #: results/utils.py
 msgid "DPM"
-msgstr "å‰¯é¦–ç›¸"
+msgstr "副首相"
 
 #. Translators: Abbreviation for Leader of the Opposition
 #: results/utils.py
 msgid "LO"
-msgstr "åå¯¹å…šé¢†è¢–"
+msgstr "反对党领袖"
 
 #. Translators: Abbreviation for Deputy Leader of the Opposition
 #: results/utils.py
 msgid "DLO"
-msgstr "åå¯¹å…šå‰¯é¢†è¢–"
+msgstr "反对党副领袖"
 
 #. Translators: Abbreviation for Member for the Government
 #: results/utils.py
 msgid "MG"
-msgstr "æ”¿åºœæˆå‘˜"
+msgstr "政府成员"
 
 #. Translators: Abbreviation for Government Whip
 #: results/utils.py
 msgid "GW"
-msgstr "æ”¿åºœå…šéž­"
+msgstr "政府党鞭"
 
 #. Translators: Abbreviation for Member for the Opposition
 #: results/utils.py
 msgid "MO"
-msgstr "åå¯¹å…šæˆå‘˜"
+msgstr "反对党成员"
 
 #. Translators: Abbreviation for Opposition Whip
 #: results/utils.py
 msgid "OW"
-msgstr "åå¯¹å…šå…šéž­"
+msgstr "反对党党鞭"
 
 #: results/utils.py
 msgid "Reply"
@@ -1039,7 +1039,7 @@ msgstr ""
 
 #: results/views.py
 msgid " vs "
-msgstr "å¯¹"
+msgstr "对"
 
 #: results/views.py
 #, python-format
@@ -1048,7 +1048,7 @@ msgstr ""
 
 #: results/views.py
 msgid "N/A"
-msgstr "ä¸é€‚ç”¨"
+msgstr "不适用"
 
 #: results/views.py
 msgid "New Ballot Set"
@@ -1157,10 +1157,9 @@ msgstr ""
 
 #: results/views.py
 msgid "Adjudicator"
-msgstr "è£åˆ¤"
+msgstr "裁判"
 
 #: results/views.py
 msgid "Merge Ballots"
 msgstr ""
-
 

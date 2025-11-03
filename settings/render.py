@@ -1,4 +1,4 @@
-﻿import logging
+import logging
 import os
 
 import dj_database_url
@@ -7,7 +7,7 @@ from sentry_sdk.integrations.logging import LoggingIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.redis import RedisIntegration
 
-from .core import NekoTab_VERSION
+from .core import TABBYCAT_VERSION
 
 # ==============================================================================
 # Render per https://render.com/docs/deploy-django
@@ -86,6 +86,5 @@ if not os.environ.get('DISABLE_SENTRY'):
             RedisIntegration(),
         ],
         send_default_pii=True,
-        release=NekoTab_VERSION,
+        release=TABBYCAT_VERSION,
     )
-

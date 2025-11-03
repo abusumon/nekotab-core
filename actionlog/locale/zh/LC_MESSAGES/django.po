@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-06 09:38+1000\n"
 "PO-Revision-Date: 2025-07-05 23:51\n"
@@ -11,155 +11,155 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-Language: zh-TW\n"
-"X-Crowdin-File: /develop/NekoTab/actionlog/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/actionlog/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-File-ID: 920\n"
 
 #: actionlog/apps.py
 msgid "Action Log"
-msgstr "å‹•ä½œç´€éŒ„"
+msgstr "動作紀錄"
 
 #: actionlog/models.py
 msgid "Changed adjudicator breaking status"
-msgstr "æ›´æ”¹è©•å¯©æ™‰ç´šç‹€æ…‹"
+msgstr "更改評審晉級狀態"
 
 #: actionlog/models.py
 msgid "Created adjudicator"
-msgstr "å·²å»ºç«‹è©•å¯©"
+msgstr "已建立評審"
 
 #: actionlog/models.py
 msgid "Edited adjudicator"
-msgstr "å·²ç·¨è¼¯è©•å¯©"
+msgstr "已編輯評審"
 
 #: actionlog/models.py
 msgid "Set adjudicator note"
-msgstr "è¨­å®šè©•å¯©å‚™è¨»"
+msgstr "設定評審備註"
 
 #: actionlog/models.py
 msgid "Auto-allocated adjudicators"
-msgstr "è‡ªå‹•åˆ†é…è©•å¯©"
+msgstr "自動分配評審"
 
 #: actionlog/models.py
 msgid "Saved adjudicator allocation"
-msgstr "å·²å„²å­˜è©•å¯©åˆ†é…"
+msgstr "已儲存評審分配"
 
 #: actionlog/models.py
 msgid "Edited adjudicators availability"
-msgstr "å·²è¨­ç½®è©•å¯©å¯ç”¨æ€§"
+msgstr "已設置評審可用性"
 
 #: actionlog/models.py
 msgid "Edited availability"
-msgstr "å·²ç·¨è¼¯å¯ç”¨æ€§"
+msgstr "已編輯可用性"
 
 #: actionlog/models.py
 msgid "Edited teams availability"
-msgstr "å·²ç·¨è¼¯éšŠä¼å¯ç”¨æ€§"
+msgstr "已編輯隊伍可用性"
 
 #: actionlog/models.py
 msgid "Edited room availability"
-msgstr "å·²ç·¨è¼¯å ´åœ°å¯ç”¨æ€§"
+msgstr "已編輯場地可用性"
 
 #: actionlog/models.py
 msgid "Checked in ballot set"
-msgstr "å·²æ–¼è©•åˆ†è¡¨æª¢æŸ¥"
+msgstr "已於評分表檢查"
 
 #: actionlog/models.py
 msgid "Confirmed ballot set"
-msgstr "å·²æ–¼è©•åˆ†è¡¨ç¢ºèª"
+msgstr "已於評分表確認"
 
 #: actionlog/models.py
 msgid "Created ballot set"
-msgstr "å»ºç«‹è©•åˆ†è¡¨"
+msgstr "建立評分表"
 
 #: actionlog/models.py
 msgid "Discarded ballot set"
-msgstr "å·²å»¢æ£„è©•åˆ†è¡¨"
+msgstr "已廢棄評分表"
 
 #: actionlog/models.py
 msgid "Edited ballot set"
-msgstr "ç·¨è¼¯è©•åˆ†è¡¨"
+msgstr "編輯評分表"
 
 #: actionlog/models.py
 msgid "Submitted ballot set from the public form"
-msgstr "å¾žå…¬é–‹è¡¨å–®æäº¤çš„è©•åˆ†è¡¨"
+msgstr "從公開表單提交的評分表"
 
 #: actionlog/models.py
 msgid "Edited break categories"
-msgstr "å·²ç·¨è¼¯æ™‰ç´šåˆ†é¡ž"
+msgstr "已編輯晉級分類"
 
 #: actionlog/models.py
 msgid "Deleted team break for category"
-msgstr "å·²åˆªé™¤è©²åˆ†é¡žçš„éšŠä¼æ™‰ç´šåå–®"
+msgstr "已刪除該分類的隊伍晉級名單"
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks"
-msgstr "å·²ç·¨è¼¯æ™‰ç´šéšŠä¼å‚™è¨»"
+msgstr "已編輯晉級隊伍備註"
 
 #: actionlog/models.py
 msgid "Edited break eligibility"
-msgstr "å·²ç·¨è¼¯æ™‰ç´šè³‡æ ¼"
+msgstr "已編輯晉級資格"
 
 #: actionlog/models.py
 msgid "Generated the team break for all categories"
-msgstr "å·²ç”¢ç”Ÿæ‰€æœ‰åˆ†é¡žçš„éšŠä¼æ™‰ç´šåå–®"
+msgstr "已產生所有分類的隊伍晉級名單"
 
 #: actionlog/models.py
 msgid "Generated the team break for one category"
-msgstr "å·²ç”¢ç”Ÿå–®ä¸€åˆ†é¡žçš„éšŠä¼æ™‰ç´šåå–®"
+msgstr "已產生單一分類的隊伍晉級名單"
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks and updated all team breaks"
-msgstr "å·²ç·¨è¼¯æ™‰ç´šéšŠä¼å‚™è¨»ä¸¦æ›´æ–°æ‰€æœ‰éšŠä¼æ™‰ç´šåå–®"
+msgstr "已編輯晉級隊伍備註並更新所有隊伍晉級名單"
 
 #: actionlog/models.py
 msgid "Edited breaking team remarks and updated this team break"
-msgstr "å·²ç·¨è¼¯æ™‰ç´šéšŠä¼å‚™è¨»ä¸¦æ›´æ–°æ­¤éšŠä¼æ™‰ç´šåå–®"
+msgstr "已編輯晉級隊伍備註並更新此隊伍晉級名單"
 
 #: actionlog/models.py
 msgid "Generated check in identifiers for adjudicators"
-msgstr "å·²ç”¢ç”Ÿè©•å¯©å ±åˆ°è­˜åˆ¥ç¢¼"
+msgstr "已產生評審報到識別碼"
 
 #: actionlog/models.py
 msgid "Generated check in identifiers for speakers"
-msgstr "å·²ç”¢ç”Ÿè¾¯å£«å ±åˆ°è­˜åˆ¥ç¢¼"
+msgstr "已產生辯士報到識別碼"
 
 #: actionlog/models.py
 msgid "Generated check in identifiers for rooms"
-msgstr "å·²ç”¢ç”Ÿå ´åœ°å ±åˆ°è­˜åˆ¥ç¢¼"
+msgstr "已產生場地報到識別碼"
 
 #: actionlog/models.py
 msgid "Edited adjudicator-adjudicator conflicts"
-msgstr "å·²ç·¨è¼¯è©•å¯©ä¹‹é–“çš„è¡çªç´€éŒ„"
+msgstr "已編輯評審之間的衝突紀錄"
 
 #: actionlog/models.py
 msgid "Edited adjudicator-institution conflicts"
-msgstr "å·²ç·¨è¼¯è©•å¯©èˆ‡æ©Ÿæ§‹é–“çš„è¡çªç´€éŒ„"
+msgstr "已編輯評審與機構間的衝突紀錄"
 
 #: actionlog/models.py
 msgid "Edited adjudicator-team conflicts"
-msgstr "å·²ç·¨è¼¯è©•å¯©èˆ‡éšŠä¼é–“çš„è¡çªç´€éŒ„"
+msgstr "已編輯評審與隊伍間的衝突紀錄"
 
 #: actionlog/models.py
 msgid "Edited team-institution conflicts"
-msgstr "å·²ç·¨è¼¯éšŠä¼èˆ‡æ©Ÿæ§‹é–“çš„è¡çªç´€éŒ„"
+msgstr "已編輯隊伍與機構間的衝突紀錄"
 
 #: actionlog/models.py
 msgid "Created debate"
-msgstr "å·²å»ºç«‹è³½äº‹"
+msgstr "已建立賽事"
 
 #: actionlog/models.py
 msgid "Edited debate"
-msgstr "å·²ç·¨è¼¯è³½äº‹"
+msgstr "已編輯賽事"
 
 #: actionlog/models.py
 msgid "Auto-prioritized debate importance"
-msgstr "å·²è‡ªå‹•å„ªå…ˆæŽ’åºè¾¯è«–é‡è¦æ€§"
+msgstr "已自動優先排序辯論重要性"
 
 #: actionlog/models.py
 msgid "Edited debate importance"
-msgstr "å·²ç·¨è¼¯è¾¯è«–é‡è¦æ€§"
+msgstr "已編輯辯論重要性"
 
 #: actionlog/models.py
 msgid "Saved divisions"
@@ -167,207 +167,207 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "Confirmed draw"
-msgstr "å·²ç¢ºèªè³½ç¨‹æŠ½ç±¤"
+msgstr "已確認賽程抽籤"
 
 #: actionlog/models.py
 msgid "Created draw"
-msgstr "å·²å»ºç«‹è³½ç¨‹æŠ½ç±¤"
+msgstr "已建立賽程抽籤"
 
 #: actionlog/models.py
 msgid "Regenerated draw"
-msgstr "å·²é‡æ–°ç”¢ç”Ÿè³½ç¨‹æŠ½ç±¤"
+msgstr "已重新產生賽程抽籤"
 
 #: actionlog/models.py
 msgid "Released draw"
-msgstr "å·²ç™¼å¸ƒè³½ç¨‹æŠ½ç±¤"
+msgstr "已發布賽程抽籤"
 
 #: actionlog/models.py
 msgid "Unreleased draw"
-msgstr "æœªç™¼å¸ƒè³½ç¨‹æŠ½ç±¤"
+msgstr "未發布賽程抽籤"
 
 #: actionlog/models.py
 msgid "Created feedback question"
-msgstr "å·²å»ºç«‹å›žé¥‹å•é¡Œ"
+msgstr "已建立回饋問題"
 
 #: actionlog/models.py
 msgid "Edited feedback question"
-msgstr "å·²ç·¨è¼¯å›žé¥‹å•é¡Œ"
+msgstr "已編輯回饋問題"
 
 #: actionlog/models.py
 msgid "Saved feedback"
-msgstr "å„²å­˜å›žé¥‹"
+msgstr "儲存回饋"
 
 #: actionlog/models.py
 msgid "Submitted feedback from the public form"
-msgstr "å·²å¾žå…¬é–‹è¡¨å–®æäº¤å›žé¥‹"
+msgstr "已從公開表單提交回饋"
 
 #: actionlog/models.py
 msgid "Created institution"
-msgstr "å·²å»ºç«‹æ©Ÿæ§‹"
+msgstr "已建立機構"
 
 #: actionlog/models.py
 msgid "Edited institution"
-msgstr "å·²ç·¨è¼¯æ©Ÿæ§‹"
+msgstr "已編輯機構"
 
 #: actionlog/models.py
 msgid "Saved a matchup manual edit"
-msgstr "å·²å„²å­˜æ‰‹å‹•ç·¨è¼¯çš„é…å°"
+msgstr "已儲存手動編輯的配對"
 
 #: actionlog/models.py
 msgid "Added/edited motion"
-msgstr "å·²æ–°å¢žï¼ç·¨è¼¯è¾¯é¡Œ"
+msgstr "已新增／編輯辯題"
 
 #: actionlog/models.py
 msgid "Released motions"
-msgstr "å·²ç™¼å¸ƒè¾¯é¡Œ"
+msgstr "已發布辯題"
 
 #: actionlog/models.py
 msgid "Unreleased motions"
-msgstr "æœªç™¼å¸ƒè¾¯é¡Œ"
+msgstr "未發布辯題"
 
 #: actionlog/models.py
 msgid "Edited tournament options"
-msgstr "å·²ç·¨è¼¯æ¯”è³½é¸é …"
+msgstr "已編輯比賽選項"
 
 #: actionlog/models.py
 msgid "Auto-allocated adjudicators to preformed panels"
-msgstr "å·²è‡ªå‹•åˆ†é…è©•å¯©è‡³é è¨­å°çµ„"
+msgstr "已自動分配評審至預設小組"
 
 #: actionlog/models.py
 msgid "Edited preformed panel adjudicator"
-msgstr "å·²ç·¨è¼¯é è¨­å°çµ„è©•å¯©"
+msgstr "已編輯預設小組評審"
 
 #: actionlog/models.py
 msgid "Created preformed panels"
-msgstr "å·²å»ºç«‹é è¨­å°çµ„"
+msgstr "已建立預設小組"
 
 #: actionlog/models.py
 msgid "Auto-allocated preformed panels to debates"
-msgstr "å·²è‡ªå‹•åˆ†é…é è¨­å°çµ„è‡³è¾¯è«–è³½äº‹"
+msgstr "已自動分配預設小組至辯論賽事"
 
 #: actionlog/models.py
 msgid "Deleted preformed panels"
-msgstr "å·²åˆªé™¤é è¨­å°çµ„"
+msgstr "已刪除預設小組"
 
 #: actionlog/models.py
 msgid "Auto-prioritized preformed panels"
-msgstr "å·²è‡ªå‹•å„ªå…ˆæŽ’åºé è¨­å°çµ„"
+msgstr "已自動優先排序預設小組"
 
 #: actionlog/models.py
 msgid "Edited preformed panel importance"
-msgstr "å·²ç·¨è¼¯é è¨­å°çµ„é‡è¦æ€§"
+msgstr "已編輯預設小組重要性"
 
 #: actionlog/models.py
 msgid "Advanced the current round to"
-msgstr "å·²å°‡ç›®å‰å›žåˆæŽ¨é€²è‡³"
+msgstr "已將目前回合推進至"
 
 #: actionlog/models.py
 msgid "Marked round as completed"
-msgstr "å·²æ¨™è¨˜è©²å›žåˆç‚ºå®Œæˆ"
+msgstr "已標記該回合為完成"
 
 #: actionlog/models.py
 msgid "Created round"
-msgstr "å·²å»ºç«‹å›žåˆ"
+msgstr "已建立回合"
 
 #: actionlog/models.py
 msgid "Edited round"
-msgstr "å·²ç·¨è¼¯å›žåˆ"
+msgstr "已編輯回合"
 
 #: actionlog/models.py
 msgid "Set start time"
-msgstr "è¨­å®šé–‹å§‹æ™‚é–“"
+msgstr "設定開始時間"
 
 #: actionlog/models.py
 msgid "Saved the sides status of a matchup"
-msgstr "å·²å„²å­˜å°æˆ°é›™æ–¹ç‹€æ…‹"
+msgstr "已儲存對戰雙方狀態"
 
 #: actionlog/models.py
 msgid "Imported adjudicators using the simple importer"
-msgstr "å·²ä½¿ç”¨ç°¡æ˜“åŒ¯å…¥å™¨åŒ¯å…¥è©•å¯©"
+msgstr "已使用簡易匯入器匯入評審"
 
 #: actionlog/models.py
 msgid "Imported institutions using the simple importer"
-msgstr "å·²ä½¿ç”¨ç°¡æ˜“åŒ¯å…¥å™¨åŒ¯å…¥æ©Ÿæ§‹"
+msgstr "已使用簡易匯入器匯入機構"
 
 #: actionlog/models.py
 msgid "Imported teams using the simple importer"
-msgstr "å·²ä½¿ç”¨ç°¡æ˜“åŒ¯å…¥å™¨åŒ¯å…¥éšŠä¼"
+msgstr "已使用簡易匯入器匯入隊伍"
 
 #: actionlog/models.py
 msgid "Imported rooms using the simple importer"
-msgstr "å·²ä½¿ç”¨ç°¡æ˜“åŒ¯å…¥å™¨åŒ¯å…¥æˆ¿é–“"
+msgstr "已使用簡易匯入器匯入房間"
 
 #: actionlog/models.py
 msgid "Edited speaker categories"
-msgstr "å·²ç·¨è¼¯è¾¯å£«åˆ†é¡ž"
+msgstr "已編輯辯士分類"
 
 #: actionlog/models.py
 msgid "Created speaker"
-msgstr "å·²å»ºç«‹è¾¯å£«"
+msgstr "已建立辯士"
 
 #: actionlog/models.py
 msgid "Edited speaker"
-msgstr "å·²ç·¨è¼¯è¾¯å£«"
+msgstr "已編輯辯士"
 
 #: actionlog/models.py
 msgid "Edited speaker category eligibility"
-msgstr "å·²ç·¨è¼¯è¾¯å£«åˆ†é¡žè³‡æ ¼"
+msgstr "已編輯辯士分類資格"
 
 #: actionlog/models.py
 msgid "Created team"
-msgstr "å·²å»ºç«‹éšŠä¼"
+msgstr "已建立隊伍"
 
 #: actionlog/models.py
 msgid "Edited team"
-msgstr "å·²ç·¨è¼¯éšŠä¼"
+msgstr "已編輯隊伍"
 
 #: actionlog/models.py
 msgid "Edited adjudicator base score"
-msgstr "å·²ç·¨è¼¯è©•å¯©åŸºç¤Žåˆ†æ•¸"
+msgstr "已編輯評審基礎分數"
 
 #: actionlog/models.py
 msgid "Created tournament"
-msgstr "å·²å»ºç«‹è³½äº‹"
+msgstr "已建立賽事"
 
 #: actionlog/models.py
 msgid "Edited tournament"
-msgstr "å·²ç·¨è¼¯è³½äº‹"
+msgstr "已編輯賽事"
 
 #: actionlog/models.py
 msgid "Updated adjudicator scores in bulk"
-msgstr "å·²æ‰¹æ¬¡æ›´æ–°è©•å¯©åˆ†æ•¸"
+msgstr "已批次更新評審分數"
 
 #: actionlog/models.py
 msgid "Invited user to the instance"
-msgstr "å·²é‚€è«‹ä½¿ç”¨è€…åŠ å…¥æ­¤å¯¦ä¾‹"
+msgstr "已邀請使用者加入此實例"
 
 #: actionlog/models.py
 msgid "Edited room categories"
-msgstr "å·²ç·¨è¼¯å ´åœ°åˆ†é¡ž"
+msgstr "已編輯場地分類"
 
 #: actionlog/models.py
 msgid "Created room category"
-msgstr "å·²å»ºç«‹å ´åœ°åˆ†é¡ž"
+msgstr "已建立場地分類"
 
 #: actionlog/models.py
 msgid "Edited room constraints"
-msgstr "å·²ç·¨è¼¯å ´åœ°é™åˆ¶æ¢ä»¶"
+msgstr "已編輯場地限制條件"
 
 #: actionlog/models.py
 msgid "Created room"
-msgstr "å·²å»ºç«‹æˆ¿é–“"
+msgstr "已建立房間"
 
 #: actionlog/models.py
 msgid "Edited room"
-msgstr "å·²ç·¨è¼¯æˆ¿é–“"
+msgstr "已編輯房間"
 
 #: actionlog/models.py
 msgid "Auto-allocated rooms"
-msgstr "å·²è‡ªå‹•åˆ†é…å ´åœ°"
+msgstr "已自動分配場地"
 
 #: actionlog/models.py
 msgid "Saved a room manual edit"
-msgstr "å·²å„²å­˜æ‰‹å‹•ç·¨è¼¯å ´åœ°"
+msgstr "已儲存手動編輯場地"
 
 #: actionlog/models.py
 msgid "Created question"
@@ -399,19 +399,19 @@ msgstr "API"
 
 #: actionlog/models.py
 msgid "Web"
-msgstr "ç¶²é "
+msgstr "網頁"
 
 #: actionlog/models.py
 msgid "type"
-msgstr "é¡žåž‹"
+msgstr "類型"
 
 #: actionlog/models.py
 msgid "timestamp"
-msgstr "æ™‚é–“æˆ³"
+msgstr "時間戳"
 
 #: actionlog/models.py
 msgid "user"
-msgstr "ä½¿ç”¨è€…"
+msgstr "使用者"
 
 #: actionlog/models.py
 msgid "IP address"
@@ -419,38 +419,37 @@ msgstr ""
 
 #: actionlog/models.py
 msgid "tournament"
-msgstr "ç«¶è³½"
+msgstr "競賽"
 
 #: actionlog/models.py
 msgid "round"
-msgstr "å›žåˆ"
+msgstr "回合"
 
 #: actionlog/models.py
 msgid "content type"
-msgstr "å…§å®¹é¡žåˆ¥"
+msgstr "內容類別"
 
 #: actionlog/models.py
 msgid "object ID"
-msgstr "ç‰©ä»¶ ID"
+msgstr "物件 ID"
 
 #: actionlog/models.py
 msgid "agent"
-msgstr "ä»£ç†"
+msgstr "代理"
 
 #: actionlog/models.py
 msgid "action log"
-msgstr "å‹•ä½œç´€éŒ„"
+msgstr "動作紀錄"
 
 #: actionlog/models.py
 msgid "action log entries"
-msgstr "æ“ä½œç´€éŒ„é …ç›®"
+msgstr "操作紀錄項目"
 
 #: actionlog/models.py
 msgid "All log entries require at least one of a user and an IP address."
-msgstr "æ‰€æœ‰æ“ä½œç´€éŒ„é …ç›®è‡³å°‘éœ€è¦åŒ…å«ä½¿ç”¨è€…æˆ– IP ä½å€ã€‚"
+msgstr "所有操作紀錄項目至少需要包含使用者或 IP 位址。"
 
 #: actionlog/models.py
 msgid "anonymous"
-msgstr "åŒ¿å"
-
+msgstr "匿名"
 

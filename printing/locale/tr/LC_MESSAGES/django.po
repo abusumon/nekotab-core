@@ -1,6 +1,6 @@
-﻿msgid ""
+msgid ""
 msgstr ""
-"Project-Id-Version: NekoTab\n"
+"Project-Id-Version: tabbycat\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-28 12:44-0400\n"
 "PO-Revision-Date: 2023-05-25 23:54\n"
@@ -12,104 +12,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
-"X-Crowdin-Project: NekoTab\n"
+"X-Crowdin-Project: tabbycat\n"
 "X-Crowdin-Language: tr\n"
-"X-Crowdin-File: /develop/NekoTab/printing/locale/en/LC_MESSAGES/django.po\n"
+"X-Crowdin-File: /develop/tabbycat/printing/locale/en/LC_MESSAGES/django.po\n"
 "X-Crowdin-Project-ID: 364715\n"
 "X-Crowdin-File-ID: 944\n"
 
 #: printing/templates/feedback_list.html
 msgid "Feedback Forms"
-msgstr "Geri Bildirim FormlarÄ±"
+msgstr "Geri Bildirim Formları"
 
 #: printing/templates/feedback_list.html
 #, python-format
 msgid "Printable Feedback Forms for %(round)s"
-msgstr "%(round)s iÃ§in yazdÄ±rÄ±labilir geri bildirim formlarÄ±"
+msgstr "%(round)s için yazdırılabilir geri bildirim formları"
 
 #: printing/templates/feedback_list.html
 msgid "No feedback questions have been added for either teams or adjudicators to answer."
-msgstr "Ne takÄ±mlarÄ±n ne de jÃ¼rilerin yanÄ±tlamasÄ± iÃ§in herhangi bir geri bildirim sorusu eklenmemiÅŸtir."
+msgstr "Ne takımların ne de jürilerin yanıtlaması için herhangi bir geri bildirim sorusu eklenmemiştir."
 
 #: printing/templates/feedback_list.html
 msgid "No feedback questions have been added for teams to answer."
-msgstr "TakÄ±mlarÄ±n yanÄ±tlamasÄ± iÃ§in herhangi bir geri bildirim sorusu eklenmemiÅŸtir."
+msgstr "Takımların yanıtlaması için herhangi bir geri bildirim sorusu eklenmemiştir."
 
 #: printing/templates/feedback_list.html
 msgid "No feedback questions have been added for adjudicators to answer."
-msgstr "JÃ¼rilerin yanÄ±tlamasÄ± iÃ§in herhangi bir geri bildirim sorusu eklenmemiÅŸtir."
+msgstr "Jürilerin yanıtlaması için herhangi bir geri bildirim sorusu eklenmemiştir."
 
 #: printing/templates/feedback_list.html
 #, python-format
-msgid "%(first_sentence)s Check the <a href=\"https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">documentation</a> for information on how to add these (otherwise these forms will be quite bare)."
-msgstr "%(first_sentence)s BunlarÄ±n nasÄ±l ekleneceÄŸi hakkÄ±nda bilgi iÃ§in <a href=\"https://NekoTab.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">belgeleri</a> kontrol edin (aksi takdirde bu formlar oldukÃ§a boÅŸ kalÄ±r)."
+msgid "%(first_sentence)s Check the <a href=\"https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">documentation</a> for information on how to add these (otherwise these forms will be quite bare)."
+msgstr "%(first_sentence)s Bunların nasıl ekleneceği hakkında bilgi için <a href=\"https://tabbycat.readthedocs.io/en/stable/features/adjudicator-feedback.html\" target=\"_blank\">belgeleri</a> kontrol edin (aksi takdirde bu formlar oldukça boş kalır)."
 
 #: printing/templates/feedback_list.html
-msgid "There are no feedback sheets available â€” perhaps adjudicators have not been allocated?"
-msgstr "Geri bildirim sayfasÄ± yok - belki de jÃ¼riler tahsis edilmedi?"
+msgid "There are no feedback sheets available — perhaps adjudicators have not been allocated?"
+msgstr "Geri bildirim sayfası yok - belki de jüriler tahsis edilmedi?"
 
 #: printing/templates/printables_list.html
 msgid "Use Ctrl+P for printing or saving to PDF. Be sure to set the appropriate <strong>page orientation</strong>, to turn off <strong>headers/footers</strong> and turn on <strong>background graphics</strong>. Works best in Chrome."
-msgstr "PDF'ye yazdÄ±rmak veya kaydetmek iÃ§in Ctrl+P tuÅŸlarÄ±nÄ± kullanÄ±n. <strong>Ã¼stbilgiler/altbilgiler'i</strong> kapatmak ve <strong>arka plan grafikleri'ni</strong> aÃ§mak iÃ§in uygun <strong>sayfa yÃ¶nÃ¼</strong> ayarladÄ±ÄŸÄ±nÄ±zdan emin olun. En iyi Chrome'da Ã§alÄ±ÅŸÄ±r."
+msgstr "PDF'ye yazdırmak veya kaydetmek için Ctrl+P tuşlarını kullanın. <strong>üstbilgiler/altbilgiler'i</strong> kapatmak ve <strong>arka plan grafikleri'ni</strong> açmak için uygun <strong>sayfa yönü</strong> ayarladığınızdan emin olun. En iyi Chrome'da çalışır."
 
 #: printing/templates/randomised_url_sheets.html
 #, python-format
 msgid "Printable %(sheet)s URLs"
-msgstr "YazdÄ±rÄ±labilir %(sheet)s URL'leri"
+msgstr "Yazdırılabilir %(sheet)s URL'leri"
 
 #: printing/templates/randomised_url_sheets.html
 msgid "This page is designed to be printed as double-sided A4 sheets, with the outside facing side showing the participant name and the inside facing side showing the URL. Use CTRL-P to print; for best results use Chrome."
-msgstr "Bu sayfa, dÄ±ÅŸa bakan tarafÄ± katÄ±lÄ±mcÄ± adÄ±nÄ±, iÃ§ tarafÄ± URL'yi gÃ¶sterecek ÅŸekilde Ã§ift taraflÄ± A4 sayfalarÄ± olarak yazdÄ±rÄ±lacak ÅŸekilde tasarlanmÄ±ÅŸtÄ±r. YazdÄ±rmak iÃ§in CTRL-P tuÅŸlarÄ±nÄ± kullanÄ±n; en iyi sonuÃ§lar iÃ§in Chrome'u kullanÄ±n."
+msgstr "Bu sayfa, dışa bakan tarafı katılımcı adını, iç tarafı URL'yi gösterecek şekilde çift taraflı A4 sayfaları olarak yazdırılacak şekilde tasarlanmıştır. Yazdırmak için CTRL-P tuşlarını kullanın; en iyi sonuçlar için Chrome'u kullanın."
 
 #: printing/templates/randomised_url_sheets.html
 #, python-format
 msgid "Private URL for %(name)s (%(group)s)"
-msgstr "%(name)s (%(group)s) iÃ§in Ã¶zel URL"
+msgstr "%(name)s (%(group)s) için özel URL"
 
 #: printing/templates/randomised_url_sheets.html
 msgid "Please bookmark the following URL, you will use it to submit forms throughout the tournament:"
-msgstr "LÃ¼tfen aÅŸaÄŸÄ±daki URL'yi yer imlerine ekleyin, turnuva boyunca form gÃ¶ndermek iÃ§in kullanacaksÄ±nÄ±z:"
+msgstr "Lütfen aşağıdaki URL'yi yer imlerine ekleyin, turnuva boyunca form göndermek için kullanacaksınız:"
 
 #: printing/templates/scoresheet_list.html
 msgid "Printable Scoresheets"
-msgstr "YazdÄ±rÄ±labilir SonuÃ§ KaÄŸÄ±tlarÄ±"
+msgstr "Yazdırılabilir Sonuç Kağıtları"
 
 #: printing/templates/scoresheet_list.html
 #, python-format
 msgid "for %(round)s"
-msgstr "%(round)s iÃ§in"
+msgstr "%(round)s için"
 
 #: printing/templates/scoresheet_list.html
 msgid "Edit Motion(s)"
-msgstr "Ã–nergeleri DÃ¼zenle"
+msgstr "Önergeleri Düzenle"
 
 #: printing/templates/scoresheet_list.html
-msgid "There are no scoresheets available â€” perhaps the round has not been drawn?"
-msgstr "Mevcut sonuÃ§ kaÄŸÄ±dÄ± yok - belki de kura Ã§ekilmedi?"
+msgid "There are no scoresheets available — perhaps the round has not been drawn?"
+msgstr "Mevcut sonuç kağıdı yok - belki de kura çekilmedi?"
 
 #: printing/templates/scoresheet_list.html
 msgid "Edit Ballot Motions"
-msgstr "Ballot Ã–nergelerini DÃ¼zenle"
+msgstr "Ballot Önergelerini Düzenle"
 
 #: printing/templates/scoresheet_list.html
 msgid "&times;"
 msgstr ""
 
 #: printing/templates/scoresheet_list.html
-msgid "Editing motions here will not save them permanently â€” it will only update the text used in the printed ballots below. This can be useful if using placeholder motions (to ensure confidentiality) in NekoTab, but you still want to print ballots with correct motions."
-msgstr "Burada Ã¶nergeleri dÃ¼zenlemek onlarÄ± kalÄ±cÄ± olarak kaydetmez - yalnÄ±zca aÅŸaÄŸÄ±daki basÄ±lÄ± ballotlarda kullanÄ±lan metni gÃ¼nceller. Bu, NekoTab'te yer tutucu Ã¶nergeler (gizliliÄŸi saÄŸlamak iÃ§in) kullanÄ±yorsanÄ±z, ancak yine de doÄŸru Ã¶nergelerle ballotlarÄ± yazdÄ±rmak istiyorsanÄ±z yararlÄ± olabilir."
+msgid "Editing motions here will not save them permanently — it will only update the text used in the printed ballots below. This can be useful if using placeholder motions (to ensure confidentiality) in Tabbycat, but you still want to print ballots with correct motions."
+msgstr "Burada önergeleri düzenlemek onları kalıcı olarak kaydetmez - yalnızca aşağıdaki basılı ballotlarda kullanılan metni günceller. Bu, Tabbycat'te yer tutucu önergeler (gizliliği sağlamak için) kullanıyorsanız, ancak yine de doğru önergelerle ballotları yazdırmak istiyorsanız yararlı olabilir."
 
 #: printing/templates/scoresheet_list.html
 msgid "Motion"
-msgstr "Ã–nerge"
+msgstr "Önerge"
 
 #: printing/templates/scoresheet_list.html
 msgid "Changes to motions will update in the displayed ballots automatically"
-msgstr "Ã–nergelerdeki deÄŸiÅŸiklikler, gÃ¶rÃ¼ntÃ¼lenen ballotlarda otomatik olarak gÃ¼ncellenecektir"
+msgstr "Önergelerdeki değişiklikler, görüntülenen ballotlarda otomatik olarak güncellenecektir"
 
 #: printing/templates/scoresheet_list.html
 msgid "Speeches are x minutes, the speaker score range is from x to x. You have x minutes to form an adjudication."
-msgstr "KonuÅŸmalar x dakikadÄ±r, konuÅŸmacÄ± puan aralÄ±ÄŸÄ± x'ten x'e kadardÄ±r. Bir karar oluÅŸturmak iÃ§in x dakikanÄ±z var."
+msgstr "Konuşmalar x dakikadır, konuşmacı puan aralığı x'ten x'e kadardır. Bir karar oluşturmak için x dakikanız var."
 
 #: printing/views.py
 msgid "Overall Score"
@@ -117,10 +117,9 @@ msgstr "Genel Skor"
 
 #: printing/views.py
 msgid "Unaffiliated"
-msgstr "BaÄŸÄ±msÄ±z"
+msgstr "Bağımsız"
 
 #: printing/views.py
 msgid "Team"
-msgstr "TakÄ±m"
-
+msgstr "Takım"
 

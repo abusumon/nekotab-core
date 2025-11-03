@@ -1,4 +1,4 @@
-﻿import json
+import json
 import logging
 from collections import OrderedDict
 
@@ -22,9 +22,9 @@ from results.prefetch import populate_confirmed_ballots
 from tournaments.models import Round
 from users.permissions import has_permission, Permission
 from utils.misc import redirect_round, redirect_tournament, reverse_round, reverse_tournament
-from utils.mixins import (AdministratorMixin, AssistantMixin, CacheMixin, NekoTabPageTitlesMixin,
+from utils.mixins import (AdministratorMixin, AssistantMixin, CacheMixin, TabbycatPageTitlesMixin,
                           WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConfigVarsMixin)
-from utils.tables import NekoTabTableBuilder
+from utils.tables import TabbycatTableBuilder
 from utils.views import ModelFormSetView, PostOnlyRedirectView, VueTableTemplateView
 
 from .forms import (RoundWeightForm, ScheduleEventForm, SetCurrentRoundMultipleBreakCategoriesForm,
@@ -43,13 +43,16 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
 
     def get(self, request, *args, **kwargs):
         tournaments = Tournament.objects.all()
-        # Always render the landing page, even if there is only one tournament.
-        # Keep the initial-setup shortcut to the blank-site start when there are
-        # no tournaments and no users yet.
-        if not tournaments.exists() and not User.objects.exists():
+        if request.GET.get('redirect', '') == 'false':
+            return super().get(request, *args, **kwargs)
+        if tournaments.count() == 1 and not request.user.is_authenticated:
+            logger.debug('One tournament only, user is: %s, redirecting to tournament-public-index', request.user)
+            return redirect_tournament('tournament-public-index', tournaments.first())
+        elif not tournaments.exists() and not User.objects.exists():
             logger.debug('No users and no tournaments, redirecting to blank-site-start')
             return redirect('blank-site-start')
-        return super().get(request, *args, **kwargs)
+        else:
+            return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         kwargs['tournaments'] = Tournament.objects.filter(active=True)
@@ -365,7 +368,7 @@ class FixDebateTeamsView(AdministratorMixin, TournamentMixin, TemplateView):
         return TemplateView.dispatch(self, request, *args, **kwargs)
 
 
-class StyleGuideView(TemplateView, NekoTabPageTitlesMixin):
+class StyleGuideView(TemplateView, TabbycatPageTitlesMixin):
     template_name = 'admin/style_guide.html'
     page_subtitle = 'Contextual sub title'
 
@@ -444,7 +447,7 @@ class PublicScheduleView(PublicTournamentPageMixin, VueTableTemplateView):
 
     def get_table(self):
         events = self.tournament.scheduleevent_set.all()
-        table = NekoTabTableBuilder(view=self, sort_key='start_time')
+        table = TabbycatTableBuilder(view=self, sort_key='start_time')
         table.add_schedule_event_columns(events)
         return table
 
