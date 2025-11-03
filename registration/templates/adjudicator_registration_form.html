@@ -7,7 +7,7 @@
 
     <form class="col-lg-8 ml-lg-auto mr-md-auto d-flex flex-column gap-3" action="." method="POST">
 
-      {% if pref.adjudicator_register_message %}
+      {% if pref and pref.adjudicator_register_message %}
         <div class="card">
           <div class="card-body pb-0">
             {{ pref.adjudicator_register_message|safe }}

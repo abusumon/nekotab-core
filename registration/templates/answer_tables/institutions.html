@@ -72,7 +72,7 @@
 
   {{ block.super }}
 
-  {% if pref.reg_institution_slots %}
+  {% if pref and pref.reg_institution_slots %}
     <div class="card">
       <div class="card-body row">
         <button class="btn btn-primary btn-block btn-success" type="submit" name="save_update_all">
