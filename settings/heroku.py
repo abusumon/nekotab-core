@@ -79,6 +79,9 @@ CACHES = {
             # "CONNECTION_POOL_KWARGS": {"max_connections": 5} # See above
             "SOCKET_CONNECT_TIMEOUT": 5,
             "SOCKET_TIMEOUT": 60,
+            "CONNECTION_POOL_KWARGS": {
+                "ssl_cert_reqs": None,
+            },
         },
     },
 }
