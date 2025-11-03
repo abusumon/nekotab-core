@@ -1,0 +1,445 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NekoTab - Debate Tournament Tabulation</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .hero {
+            padding: 120px 2rem 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .features {
+            background: white;
+            padding: 80px 2rem;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .feature-card p {
+            color: #666;
+        }
+        
+        .tournaments-section {
+            background: #f8f9fa;
+            padding: 80px 2rem;
+        }
+        
+        .tournaments-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tournament-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tournament-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .tournament-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .tournament-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tournament-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 2rem;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer h4 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+        
+        .footer ul {
+            list-style: none;
+        }
+        
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">🐱 NekoTab</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#tournaments">Tournaments</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'admin:index' %}">Dashboard</a></li>
+                    <li><a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="btn btn-primary">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to NekoTab</h1>
+        <p>The modern, powerful debate tournament tabulation system. Manage your tournaments with ease and precision.</p>
+        <div class="hero-buttons">
+            {% if user.is_authenticated %}
+                <a href="{% url 'tournament-create' %}" class="btn btn-primary">Create Tournament</a>
+                <a href="?redirect=false#tournaments" class="btn btn-secondary">View Tournaments</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Get Started</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="features-container">
+            <h2 class="section-title">Why Choose NekoTab?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Real-time tabulation and instant results processing for smooth tournament management.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Comprehensive Stats</h3>
+                    <p>Detailed analytics and standings with multiple tab methods and break calculations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Smart Allocation</h3>
+                    <p>Intelligent adjudicator allocation and venue assignment algorithms.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your tournament from any device with our responsive design.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Enterprise-grade security with role-based access control.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multi-Format</h3>
+                    <p>Supports BP, WSDC, Australs, and custom debate formats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tournaments Section -->
+    <section id="tournaments" class="tournaments-section">
+        <div class="tournaments-container">
+            <h2 class="section-title">
+                {% if tournaments %}
+                    Active Tournaments
+                {% else %}
+                    Ready to Start?
+                {% endif %}
+            </h2>
+            
+            {% if tournaments %}
+                <div class="tournament-grid">
+                    {% for tournament in tournaments %}
+                        <div class="tournament-card">
+                            <h3>{{ tournament.name }}</h3>
+                            <p>{{ tournament.short_name }}</p>
+                            <a href="/{{ tournament.slug }}/" class="btn btn-primary">View Tournament</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div style="text-align: center; padding: 2rem;">
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">
+                        {% if user.is_authenticated %}
+                            No active tournaments yet. Create your first tournament to get started!
+                        {% else %}
+                            Login to view and manage tournaments.
+                        {% endif %}
+                    </p>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'tournament-create' %}" class="btn btn-primary">Create Your First Tournament</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-primary">Login to Continue</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform Your Tournament?</h2>
+        <p>Join debate organizers worldwide who trust NekoTab for their tournament management needs.</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'tournament-create' %}" class="btn btn-secondary">Create Tournament Now</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-secondary">Get Started Free</a>
+        {% endif %}
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h4>NekoTab</h4>
+                <p>Modern debate tournament tabulation platform powered by Tabbycat.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tournaments">Tournaments</a></li>
+                    {% if user.is_superuser %}
+                        <li><a href="{% url 'admin:index' %}">Admin Dashboard</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://docs.tabbycat.app/" target="_blank">Documentation</a></li>
+                    <li><a href="https://github.com/TabbycatDebate/tabbycat" target="_blank">GitHub</a></li>
+                    {% if user.is_superuser %}
+                        <li><a href="{% url 'load-demo' %}">Load Demo</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NekoTab. Built with ❤️ using Tabbycat.</p>
+        </div>
+    </footer>
+</body>
+</html>

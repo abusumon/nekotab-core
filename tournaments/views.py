@@ -39,16 +39,12 @@ logger = logging.getLogger(__name__)
 
 
 class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConfigVarsMixin, TemplateView):
-    template_name = 'site_index.html'
+    template_name = 'nekotab_home.html'
 
     def get(self, request, *args, **kwargs):
+        # Always show the custom home page unless explicitly redirecting or starting fresh
         tournaments = Tournament.objects.all()
-        if request.GET.get('redirect', '') == 'false':
-            return super().get(request, *args, **kwargs)
-        if tournaments.count() == 1 and not request.user.is_authenticated:
-            logger.debug('One tournament only, user is: %s, redirecting to tournament-public-index', request.user)
-            return redirect_tournament('tournament-public-index', tournaments.first())
-        elif not tournaments.exists() and not User.objects.exists():
+        if not tournaments.exists() and not User.objects.exists():
             logger.debug('No users and no tournaments, redirecting to blank-site-start')
             return redirect('blank-site-start')
         else:
