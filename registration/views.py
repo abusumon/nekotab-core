@@ -144,7 +144,7 @@ class BaseCreateTeamFormView(LogActionMixin, PublicTournamentPageMixin, CustomQu
         return form
 
     def get_page_subtitle(self):
-        if self.steps.current == 'team' and hasattr(self, 'institution'):
+        if self.steps.current == 'team' and hasattr(self, 'institution') and self.institution:
             return _("from %s") % self.institution.name
         elif self.steps.current == 'speaker':
             team_form = self.get_team_form()
