@@ -291,7 +291,7 @@ class BaseCreateAdjudicatorFormView(LogActionMixin, PublicTournamentPageMixin, C
     action_log_type = ActionLogEntry.ActionType.ADJUDICATOR_REGISTER
 
     def get_page_subtitle(self):
-        if hasattr(self, 'institution'):
+        if hasattr(self, 'institution') and self.institution:
             return _("from %s") % self.institution.name
         return ''
 
