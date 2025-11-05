@@ -589,7 +589,8 @@
                         </form>
                     </li>
                 {% else %}
-                    <li><a href="{% url 'login' %}" class="btn btn-primary" aria-label="Login to get started">Get Started</a></li>
+                    <li><a href="{% url 'signup' %}" class="btn btn-primary" aria-label="Sign up for free account">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}" class="btn btn-secondary" aria-label="Login to existing account">Login</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -604,8 +605,8 @@
                 <a href="{% url 'tournament-create' %}" class="btn btn-primary" aria-label="Create a new tournament"><span role="img" aria-label="Trophy icon">🏆</span> Host a Tournament</a>
                 <a href="?redirect=false#tournaments" class="btn btn-secondary" aria-label="View existing tournaments">View Tournaments</a>
             {% else %}
-                <a href="{% url 'login' %}" class="btn btn-primary" aria-label="Login to get started">Get Started</a>
-                <a href="{% url 'login' %}" class="btn btn-secondary" aria-label="Login to host a tournament"><span role="img" aria-label="Trophy icon">🏆</span> Host a Tournament</a>
+                <a href="{% url 'signup' %}" class="btn btn-primary" aria-label="Sign up for free">Sign Up Free</a>
+                <a href="{% url 'login' %}" class="btn btn-secondary" aria-label="Login to your account">Login</a>
             {% endif %}
         </div>
     </header>

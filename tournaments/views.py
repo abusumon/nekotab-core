@@ -226,6 +226,11 @@ class CreateTournamentView(AdministratorMixin, WarnAboutDatabaseUseMixin, Create
     template_name = "create_tournament.html"
     db_warning_severity = messages.ERROR
 
+    def form_valid(self, form):
+        # Set the owner to the current user before saving
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
     def get_context_data(self, **kwargs):
         demo_datasets = [
             ('minimal8team', _("8-team generic dataset")),

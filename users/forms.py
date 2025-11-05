@@ -56,3 +56,22 @@ class AcceptInvitationForm(SetPasswordForm):
     def save(self, commit=True):
         self.user.username = self.cleaned_data['username']
         return super().save(commit=commit)
+
+
+class PublicSignupForm(UserCreationForm):
+    """A form for public user registration."""
+
+    class Meta(UserCreationForm.Meta):
+        fields = ("username", "email", "password1", "password2")
+        labels = {"email": _("Email address")}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].required = True
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user

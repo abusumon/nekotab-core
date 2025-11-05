@@ -45,6 +45,10 @@ class Tournament(models.Model):
         verbose_name=_("slug"),
         help_text=_("The sub-URL of the tournament, cannot have spaces, e.g. \"australs2016\""))
     active = models.BooleanField(verbose_name=_("active"), default=True)
+    owner = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='owned_tournaments',
+        verbose_name=_("owner"),
+        help_text=_("The user who created and owns this tournament (for payment/billing purposes)"))
 
     class Meta:
         verbose_name = _('tournament')

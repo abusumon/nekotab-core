@@ -16,7 +16,7 @@ from tournaments.mixins import TournamentMixin
 from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin
 
-from .forms import AcceptInvitationForm, InviteUserForm, SuperuserCreationForm
+from .forms import AcceptInvitationForm, InviteUserForm, PublicSignupForm, SuperuserCreationForm
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
@@ -100,3 +100,23 @@ class AcceptInvitationView(TournamentMixin, PasswordResetConfirmView):
         if not self.validlink:
             raise Http404
         return super().get_context_data(**kwargs)
+
+
+class PublicSignupView(FormView):
+    """A view for public user registration."""
+
+    form_class = PublicSignupForm
+    template_name = "public_signup.html"
+    success_url = reverse_lazy('tabbycat-index')
+
+    def dispatch(self, request, *args, **kwargs):
+        # Redirect if user is already logged in
+        if request.user.is_authenticated:
+            return redirect('tabbycat-index')
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        messages.success(self.request, _("Welcome! Your account has been created successfully. You can now create tournaments."))
+        return super().form_valid(form)
