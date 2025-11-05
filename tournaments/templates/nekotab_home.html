@@ -41,6 +41,16 @@
     <link rel="prefetch" href="{% url 'tournament-create' %}" as="document">
     {% endif %}
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KH41L8LQL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-7KH41L8LQL');
+    </script>
+    
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
