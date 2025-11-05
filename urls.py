@@ -23,7 +23,7 @@ urlpatterns = [
     # Indices
     path('',
         tournaments.views.PublicSiteIndexView.as_view(),
-        name='NekoTab-index'),
+        name='tabbycat-index'),
     path('start/',
         BlankSiteStartView.as_view(),
         name='blank-site-start'),
