@@ -4,8 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NekoTab - Debate Tournament Tabulation</title>
+    <title>NekoTab - Professional Debate Tournament Tabulation Software</title>
+    <meta name="description" content="NekoTab is a modern, open-source debate tournament tabulation platform. Manage draws, ballots, team registration, and live results for British Parliamentary, Australs, and other debate formats.">
+    <meta name="keywords" content="debate tabulation, tournament management, debate software, tabbycat, parliamentary debate, British Parliamentary, debate tab">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nekotab.app/">
+    <meta property="og:title" content="NekoTab - Professional Debate Tournament Tabulation">
+    <meta property="og:description" content="Modern debate tournament management system. Handle team registration, draws, judging, and live results with ease.">
+    <meta property="og:image" content="{% static 'logo-social.png' %}">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NekoTab - Debate Tournament Tabulation">
+    <meta name="twitter:description" content="Professional debate tournament management made simple.">
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'logo-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'logo-16x16.png' %}" sizes="16x16">
+    <link rel="apple-touch-icon" href="{% static 'logo-192x192.png' %}" sizes="192x192">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nekotab.app/">
+    
+    <!-- Critical CSS inline for better performance -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <!-- Prefetch important pages -->
+    <link rel="prefetch" href="{% url 'login' %}" as="document">
+    {% if user.is_authenticated %}
+    <link rel="prefetch" href="{% url 'tournament-create' %}" as="document">
+    {% endif %}
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "NekoTab",
+      "applicationCategory": "BusinessApplication",
+      "description": "Professional debate tournament tabulation and management software",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "NekoTab",
+        "url": "https://nekotab.app"
+      }
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -508,89 +564,89 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="navbar-container">
-            <a href="/" class="logo" style="text-decoration: none;">
-                <span style="font-size: 1.5rem;">🐱</span>
+            <a href="/" class="logo" style="text-decoration: none;" aria-label="NekoTab Home">
+                <span style="font-size: 1.5rem;" role="img" aria-label="Cat emoji">🐱</span>
                 <span>NekoTab</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#tournaments">Tournaments</a></li>
+                <li><a href="#features" aria-label="Go to features section">Features</a></li>
+                <li><a href="#tournaments" aria-label="Go to tournaments section">Tournaments</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'admin:index' %}" class="btn-nav">📊 Dashboard</a></li>
+                    <li><a href="{% url 'admin:index' %}" class="btn-nav" aria-label="Go to dashboard"><span role="img" aria-label="Chart icon">📊</span> Dashboard</a></li>
                     <li>
                         <form method="post" action="{% url 'logout' %}" style="display: inline; margin: 0;">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-secondary">Logout</button>
+                            <button type="submit" class="btn btn-secondary" aria-label="Logout from account">Logout</button>
                         </form>
                     </li>
                 {% else %}
-                    <li><a href="{% url 'login' %}" class="btn btn-primary">Get Started</a></li>
+                    <li><a href="{% url 'login' %}" class="btn btn-primary" aria-label="Login to get started">Get Started</a></li>
                 {% endif %}
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <header class="hero">
         <h1>Welcome to NekoTab</h1>
         <p>The modern, powerful debate tournament tabulation system. Manage your tournaments with ease and precision.</p>
         <div class="hero-buttons">
             {% if user.is_authenticated %}
-                <a href="{% url 'tournament-create' %}" class="btn btn-primary">🏆 Host a Tournament</a>
-                <a href="?redirect=false#tournaments" class="btn btn-secondary">View Tournaments</a>
+                <a href="{% url 'tournament-create' %}" class="btn btn-primary" aria-label="Create a new tournament"><span role="img" aria-label="Trophy icon">🏆</span> Host a Tournament</a>
+                <a href="?redirect=false#tournaments" class="btn btn-secondary" aria-label="View existing tournaments">View Tournaments</a>
             {% else %}
-                <a href="{% url 'login' %}" class="btn btn-primary">Get Started</a>
-                <a href="{% url 'login' %}" class="btn btn-secondary">🏆 Host a Tournament</a>
+                <a href="{% url 'login' %}" class="btn btn-primary" aria-label="Login to get started">Get Started</a>
+                <a href="{% url 'login' %}" class="btn btn-secondary" aria-label="Login to host a tournament"><span role="img" aria-label="Trophy icon">🏆</span> Host a Tournament</a>
             {% endif %}
         </div>
-    </section>
+    </header>
 
     <!-- Features Section -->
-    <section id="features" class="features">
+    <section id="features" class="features" aria-labelledby="features-heading">
         <div class="features-container">
-            <h2 class="section-title">Why Choose NekoTab?</h2>
+            <h2 id="features-heading" class="section-title">Why Choose NekoTab?</h2>
             <p class="section-subtitle">Everything you need to run successful debate tournaments, all in one place.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
+            <div class="features-grid" role="list">
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" role="img" aria-label="Lightning bolt icon">⚡</div>
                     <h3>Lightning Fast</h3>
                     <p>Real-time tabulation and instant results processing for smooth tournament management.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                </article>
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" role="img" aria-label="Chart icon">📊</div>
                     <h3>Comprehensive Stats</h3>
                     <p>Detailed analytics and standings with multiple tab methods and break calculations.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
+                </article>
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" role="img" aria-label="Target icon">🎯</div>
                     <h3>Smart Allocation</h3>
                     <p>Intelligent adjudicator allocation and venue assignment algorithms.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
+                </article>
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" role="img" aria-label="Mobile phone icon">📱</div>
                     <h3>Mobile Friendly</h3>
                     <p>Access your tournament from any device with our responsive design.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
+                </article>
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" role="img" aria-label="Lock icon">🔒</div>
                     <h3>Secure & Reliable</h3>
                     <p>Enterprise-grade security with role-based access control.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
+                </article>
+                <article class="feature-card" role="listitem">
+                    <div class="feature-icon" role="img" aria-label="Globe icon">🌍</div>
                     <h3>Multi-Format</h3>
                     <p>Supports BP, WSDC, Australs, and custom debate formats.</p>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Tournaments Section -->
-    <section id="tournaments" class="tournaments-section">
+    <section id="tournaments" class="tournaments-section" aria-labelledby="tournaments-heading">
         <div class="tournaments-container">
-            <h2 class="section-title">
+            <h2 id="tournaments-heading" class="section-title">
                 {% if tournaments %}
                     Active Tournaments
                 {% else %}
@@ -602,13 +658,13 @@
             {% endif %}
             
             {% if tournaments %}
-                <div class="tournament-grid">
+                <div class="tournament-grid" role="list">
                     {% for tournament in tournaments %}
-                        <div class="tournament-card">
+                        <article class="tournament-card" role="listitem">
                             <h3>{{ tournament.name }}</h3>
                             <p>{{ tournament.short_name }}</p>
-                            <a href="/{{ tournament.slug }}/" class="btn btn-primary">View Tournament</a>
-                        </div>
+                            <a href="/{{ tournament.slug }}/" class="btn btn-primary" aria-label="View {{ tournament.name }} tournament details">View Tournament</a>
+                        </article>
                     {% endfor %}
                 </div>
             {% else %}
@@ -621,9 +677,9 @@
                         {% endif %}
                     </p>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'tournament-create' %}" class="btn btn-primary">Create Your First Tournament</a>
+                        <a href="{% url 'tournament-create' %}" class="btn btn-primary" aria-label="Create your first tournament">Create Your First Tournament</a>
                     {% else %}
-                        <a href="{% url 'login' %}" class="btn btn-primary">Login to Continue</a>
+                        <a href="{% url 'login' %}" class="btn btn-primary" aria-label="Login to continue">Login to Continue</a>
                     {% endif %}
                 </div>
             {% endif %}
@@ -631,46 +687,50 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>Ready to Transform Your Tournament?</h2>
+    <section class="cta-section" aria-labelledby="cta-heading">
+        <h2 id="cta-heading">Ready to Transform Your Tournament?</h2>
         <p>Join debate organizers worldwide who trust NekoTab for their tournament management needs.</p>
         {% if user.is_authenticated %}
-            <a href="{% url 'tournament-create' %}" class="btn btn-secondary">Create Tournament Now</a>
+            <a href="{% url 'tournament-create' %}" class="btn btn-secondary" aria-label="Create a new tournament now">Create Tournament Now</a>
         {% else %}
-            <a href="{% url 'login' %}" class="btn btn-secondary">Get Started Free</a>
+            <a href="{% url 'login' %}" class="btn btn-secondary" aria-label="Get started for free">Get Started Free</a>
         {% endif %}
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo" aria-label="Site footer">
         <div class="footer-container">
             <div>
-                <h4>NekoTab</h4>
+                <h3>NekoTab</h3>
                 <p>Modern debate tournament tabulation platform powered by Tabbycat.</p>
             </div>
             <div>
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#tournaments">Tournaments</a></li>
-                    {% if user.is_superuser %}
-                        <li><a href="{% url 'admin:index' %}">Admin Dashboard</a></li>
-                    {% endif %}
-                </ul>
+                <h3>Quick Links</h3>
+                <nav aria-label="Footer quick links">
+                    <ul>
+                        <li><a href="#features" aria-label="Go to features section">Features</a></li>
+                        <li><a href="#tournaments" aria-label="Go to tournaments section">Tournaments</a></li>
+                        {% if user.is_superuser %}
+                            <li><a href="{% url 'admin:index' %}" aria-label="Go to admin dashboard">Admin Dashboard</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
             </div>
             <div>
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="https://docs.tabbycat.app/" target="_blank">Documentation</a></li>
-                    <li><a href="https://github.com/TabbycatDebate/tabbycat" target="_blank">GitHub</a></li>
-                    {% if user.is_superuser %}
-                        <li><a href="{% url 'load-demo' %}">Load Demo</a></li>
-                    {% endif %}
-                </ul>
+                <h3>Resources</h3>
+                <nav aria-label="Footer resources">
+                    <ul>
+                        <li><a href="https://docs.tabbycat.app/" target="_blank" rel="noopener noreferrer" aria-label="View documentation (opens in new tab)">Documentation</a></li>
+                        <li><a href="https://github.com/TabbycatDebate/tabbycat" target="_blank" rel="noopener noreferrer" aria-label="View GitHub repository (opens in new tab)">GitHub</a></li>
+                        {% if user.is_superuser %}
+                            <li><a href="{% url 'load-demo' %}" aria-label="Load demo tournament">Load Demo</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 NekoTab. Built with ❤️ using Tabbycat.</p>
+            <p>&copy; 2025 NekoTab. Built with <span role="img" aria-label="love">❤️</span> using Tabbycat.</p>
         </div>
     </footer>
 </body>

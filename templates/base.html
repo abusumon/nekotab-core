@@ -6,21 +6,33 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#663da0">
 
-  <title>{% if tournament %}{{ tournament.short_name }}{% else %}{% trans "Tabbycat" %}{% endif %} | {% if page_title %}{{ page_title }}{% else %}{% block page-title %}{% endblock %}{% endif %}</title>
+  <title>{% if tournament %}{{ tournament.short_name }}{% else %}{% trans "NekoTab" %}{% endif %} | {% if page_title %}{{ page_title }}{% else %}{% block page-title %}{% endblock %}{% endif %}</title>
 
   {% if tournament %}
     {% blocktrans trimmed with tournament=tournament.short_name asvar meta_description %}
-      The tab for {{ tournament }} runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats
+      The tab for {{ tournament }} runs on NekoTab, powered by Tabbycat - a modern debate tournament tabulation system for parliamentary debating formats
     {% endblocktrans %}
   {% else %}
     {% blocktrans trimmed asvar meta_description %}
-      This tab runs on Tabbycat, a source-available tab system for a variety of parliamentary debating formats
+      NekoTab - Professional debate tournament tabulation system. Manage draws, ballots, team registration, and live results for British Parliamentary, Australs, and other debate formats.
     {% endblocktrans %}
   {% endif %}
   <meta name="description" content="{{ meta_description }}" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{% if tournament %}{{ tournament.short_name }}{% else %}NekoTab{% endif %} | {% if page_title %}{{ page_title }}{% else %}{% block og-title %}Debate Tournament Tabulation{% endblock %}{% endif %}" />
   <meta property="og:description" content="{{ meta_description }}" />
   <meta property="og:image" content="{% static 'logo-social.png' %}" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{% if tournament %}{{ tournament.short_name }}{% else %}NekoTab{% endif %}" />
+  <meta name="twitter:description" content="{{ meta_description }}" />
+  <meta name="twitter:image" content="{% static 'logo-social.png' %}" />
 
   {% block noindex %}
     {% if tournament %}
@@ -31,16 +43,23 @@
   {% endblock %}
 
 
-  <link rel="preload" href="{% static 'fonts/Inter-Regular.woff2' %}" as="font" type="font/woff2">
+  <!-- Performance: Preload critical resources -->
+  <link rel="preload" href="{% static 'fonts/Inter-Regular.woff2' %}" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="{% static 'logo-32x32.png' %}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{% static 'logo-16x16.png' %}" sizes="16x16" />
+  <link rel="apple-touch-icon" href="{% static 'logo-192x192.png' %}" sizes="192x192" />
   <link rel="mask-icon" href="{% static 'safari-tab.svg' %}" color="rgb(102, 61, 160)">
+  
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   {% block extra-css %}{% endblock %}
   {% block extra-head %}{% endblock %}
 
   {% if not hmr %}
-  <link href="{% static 'vue/js/app.js' %}" rel=preload as=script>
+  <link href="{% static 'vue/js/app.js' %}" rel="preload" as="script">
   {% endif %}
 
   {% if not debug %}<!-- Analytics -->
