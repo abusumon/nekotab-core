@@ -219,7 +219,10 @@ class CompleteRoundView(RoundMixin, AdministratorMixin, LogActionMixin, PostOnly
 
 
 class CreateTournamentView(AdministratorMixin, WarnAboutDatabaseUseMixin, CreateView):
-    """This view allows a logged-in superuser to create a new tournament."""
+    """This view allows a logged-in administrator to create a new tournament.
+
+    Note: We'll open this up to paid users after payment integration.
+    """
 
     model = Tournament
     form_class = TournamentStartForm
