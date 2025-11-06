@@ -312,3 +312,7 @@ class ScheduleEventForm(ModelForm):
             'start_time': DateTimeInput(attrs={'type': 'datetime-local'}),
             'end_time':   DateTimeInput(attrs={'type': 'datetime-local'}),
         }
+
+
+class TournamentOTPForm(Form):
+    otp = CharField(label=_("One-Time Password"), max_length=8)

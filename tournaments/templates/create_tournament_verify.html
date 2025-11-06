@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head-title %}<span class="emoji">🔐</span>{% trans "Verify OTP" %}{% endblock %}
+{% block page-title %}{% trans "Verify OTP" %}{% endblock %}
+
+{% block content %}
+  <div class="card mt-3">
+    <div class="card-body">
+      <h5 class="card-title">{% trans "One-Time Password Required" %}</h5>
+      <p class="card-text">
+        {% blocktrans %}
+        To create your tournament, please enter the OTP you received from the admin.
+        Pricing: USD ${{ price_usd }} or BDT {{ price_bdt }}. Pay via bKash/Nagad to {{ bkash_number }} (personal).
+        For Payoneer, contact the admin.
+        {% endblocktrans %}
+      </p>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-group">
+          <label for="id_otp">{% trans "OTP" %}</label>
+          {{ form.otp }}
+        </div>
+        <button type="submit" class="btn btn-primary">{% trans "Submit OTP" %}</button>
+        <a class="btn btn-link" href="{% url 'tournament-create' %}" target="_blank">{% trans "Start a new request in a new window" %}</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -6,7 +6,11 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.db.models import Count, Q
-from django.shortcuts import redirect, resolve_url
+from django.shortcuts import redirect, resolve_url, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
+from django.urls import reverse_lazy
+import random
 from django.utils.html import format_html_join
 from django.utils.timezone import get_current_timezone_name
 from django.utils.translation import gettext_lazy as _
@@ -29,7 +33,7 @@ from utils.views import ModelFormSetView, PostOnlyRedirectView, VueTableTemplate
 
 from .forms import (RoundWeightForm, ScheduleEventForm, SetCurrentRoundMultipleBreakCategoriesForm,
                     SetCurrentRoundSingleBreakCategoryForm, TournamentConfigureForm,
-                    TournamentStartForm)
+                    TournamentStartForm, TournamentOTPForm)
 from .mixins import PublicTournamentPageMixin, RoundMixin, TournamentMixin
 from .models import ScheduleEvent, Tournament
 from .utils import get_side_name
@@ -218,7 +222,7 @@ class CompleteRoundView(RoundMixin, AdministratorMixin, LogActionMixin, PostOnly
             return redirect_round('availability-index', self.round.next)
 
 
-class CreateTournamentView(AdministratorMixin, WarnAboutDatabaseUseMixin, CreateView):
+class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, CreateView):
     """This view allows a logged-in administrator to create a new tournament.
 
     Note: We'll open this up to paid users after payment integration.
@@ -231,7 +235,36 @@ class CreateTournamentView(AdministratorMixin, WarnAboutDatabaseUseMixin, Create
 
     def form_valid(self, form):
         # Set the owner to the current user before saving
-        form.instance.owner = self.request.user
+        from .models import TournamentCreationRequest
+
+        # Prepare OTP and persist a creation request
+        otp = f"{random.randint(100000, 999999)}"
+        req = TournamentCreationRequest.objects.create(
+            user=self.request.user,
+            form_data=form.cleaned_data,
+            otp_code=otp,
+        )
+
+        # Try to send the OTP to the admin email; fail silently if not configured
+        try:
+            send_mail(
+                subject="New Tournament OTP",
+                message=(
+                    "A new tournament creation has been requested.\n\n"
+                    f"User: {self.request.user.username} ({self.request.user.email})\n"
+                    f"OTP: {otp}\n\n"
+                    f"Form data: {form.cleaned_data}"
+                ),
+                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', None),
+                recipient_list=["abusumon1701@gmail.com"],
+                fail_silently=True,
+            )
+        except Exception:
+            # If email backend isn't configured, just continue; OTP is stored in DB
+            pass
+
+        messages.info(self.request, _("We've generated an OTP. Please pay and contact the admin to receive your OTP, then enter it on the next screen."))
+        return redirect('tournament-create-verify', request_id=req.id)
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -246,8 +279,57 @@ class CreateTournamentView(AdministratorMixin, WarnAboutDatabaseUseMixin, Create
         return super().get_context_data(**kwargs)
 
     def get_success_url(self):
-        t = Tournament.objects.order_by('id').last()
-        return reverse_tournament('tournament-configure', tournament=t)
+        # Not used because we redirect to verification page in form_valid
+        return reverse_lazy('tournament-create')
+
+
+class TournamentOTPVerifyView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, FormView):
+    template_name = 'create_tournament_verify.html'
+    form_class = TournamentOTPForm
+
+    def dispatch(self, request, *args, **kwargs):
+        self.request_id = kwargs.get('request_id')
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['price_usd'] = 25
+        context['price_bdt'] = 2500
+        context['bkash_number'] = '01324202591'
+        context['nagad_number'] = '01324202591'
+        context['payoneer_info'] = 'Payoneer available on request'
+        return context
+
+    def form_valid(self, form):
+        from .models import TournamentCreationRequest
+        req = get_object_or_404(TournamentCreationRequest, id=self.request_id, user=self.request.user)
+
+        if req.is_expired():
+            req.status = TournamentCreationRequest.Status.EXPIRED
+            req.save(update_fields=['status'])
+            messages.error(self.request, _("Your OTP has expired. Please submit a new request."))
+            return redirect('tournament-create')
+
+        code = form.cleaned_data['otp']
+        if code != req.otp_code:
+            messages.error(self.request, _("That OTP is incorrect. Please try again."))
+            return super().form_invalid(form)
+
+        # Recreate and validate the original form data to construct the tournament
+        start_form = TournamentStartForm(data=req.form_data)
+        if not start_form.is_valid():
+            messages.error(self.request, _("Your original form data is no longer valid. Please submit again."))
+            return redirect('tournament-create')
+
+        # Set owner then save (creates rounds, etc.)
+        start_form.instance.owner = self.request.user
+        tournament = start_form.save()
+
+        req.status = TournamentCreationRequest.Status.COMPLETED
+        req.save(update_fields=['status'])
+
+        messages.success(self.request, _("Success! Your tournament has been created."))
+        return redirect(reverse_tournament('tournament-configure', tournament=tournament))
 
 
 class ConfigureTournamentView(AdministratorMixin, TournamentMixin, UpdateView):

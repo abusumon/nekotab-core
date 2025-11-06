@@ -57,13 +57,15 @@
 
   <div class="card mt-3">
     <div class="list-group list-group-flush">
-    <form action="." method="POST">
+    <form action="." method="POST" target="_blank">
       {% csrf_token %}
 
       {% include "components/form-main.html" %}
 
-      {% trans "Create Tournament" as title %}
-      {% trans "Cancel and go back to the site home page" as subtitle %}
+      {% trans "Ask for OTP" as title %}
+      {% blocktrans trimmed asvar subtitle %}
+        Pay to unlock tournament creation. Price: USD $25 or BDT 2500. Pay via bKash/Nagad to 01324202591 (personal), or Payoneer on request. After payment, click “Ask for OTP” and contact the admin to receive your OTP, then enter it on the next screen.
+      {% endblocktrans %}
       {% url 'tabbycat-index' as suburl %}
       {% include "components/form-submit.html" %}
 
