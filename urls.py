@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.urls import include, path
 from django.utils.translation import gettext as _
 from django.views.i18n import JavaScriptCatalog
+from django.views.generic import TemplateView
 
 import tournaments.views
 from importer.views import LoadDemoView
@@ -47,6 +48,10 @@ urlpatterns = [
     path('jsi18n/',
          JavaScriptCatalog.as_view(domain="djangojs"),
          name='javascript-catalog'),
+
+    # Google Search Console verification file
+    path('googlee0a2b1e83278e880.html',
+        TemplateView.as_view(template_name='verification/googlee0a2b1e83278e880.html')),
 
     # Summernote (WYSYWIG)
     path('summernote/',
