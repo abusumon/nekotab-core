@@ -111,6 +111,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Rewrite subdomain requests to slug-based paths (feature gated)
+    'utils.middleware.SubdomainTournamentMiddleware',
     'utils.middleware.DebateMiddleware',
 ]
 
@@ -406,3 +408,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# ==============================================================================
+# Subdomain routing (defaults; can be overridden in env-specific settings)
+# ==============================================================================
+
+# Disabled by default; enable in environment settings (e.g., heroku.py)
+SUBDOMAIN_TOURNAMENTS_ENABLED = bool(int(os.environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', '0')))
+SUBDOMAIN_BASE_DOMAIN = os.environ.get('SUBDOMAIN_BASE_DOMAIN', '')
+RESERVED_SUBDOMAINS = os.environ.get(
+    'RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media'
+).split(',')

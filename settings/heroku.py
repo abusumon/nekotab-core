@@ -148,6 +148,30 @@ else:
     DEFAULT_FROM_EMAIL = 'notconfigured@tabbycatsite'
 
 # ==============================================================================
+# Subdomain routing (production defaults)
+# ==============================================================================
+
+# Enable subdomain tournaments by default on Heroku; can be disabled with env var
+SUBDOMAIN_TOURNAMENTS_ENABLED = environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', 'true').lower() == 'true'
+SUBDOMAIN_BASE_DOMAIN = environ.get('SUBDOMAIN_BASE_DOMAIN', environ.get('HEROKU_APP_DOMAIN', 'nekotab.app'))
+RESERVED_SUBDOMAINS = environ.get('RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media').split(',')
+
+# Share session and CSRF across subdomains when base domain is configured
+if SUBDOMAIN_BASE_DOMAIN:
+    SESSION_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
+    CSRF_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
+    # Trusted origins must be full schemes; include wildcard for subdomains
+    csrf_trusted = [
+        f"https://{SUBDOMAIN_BASE_DOMAIN}",
+        f"https://*.{SUBDOMAIN_BASE_DOMAIN}",
+    ]
+    try:
+        # If prior settings exist, extend; else set new
+        CSRF_TRUSTED_ORIGINS = list(set(globals().get('CSRF_TRUSTED_ORIGINS', []) + csrf_trusted))
+    except Exception:
+        CSRF_TRUSTED_ORIGINS = csrf_trusted
+
+# ==============================================================================
 # Sentry
 # ==============================================================================
 
