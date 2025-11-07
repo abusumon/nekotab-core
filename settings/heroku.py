@@ -114,6 +114,8 @@ if environ.get('EMAIL_HOST', ''):
     EMAIL_HOST_PASSWORD = environ['EMAIL_HOST_PASSWORD']
     EMAIL_PORT = int(environ.get('EMAIL_PORT', 587))
     EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS', 'true').lower() == 'true'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_TIMEOUT = int(environ.get('EMAIL_TIMEOUT', 20))
 
 elif environ.get('SENDGRID_API_KEY', ''):
     SERVER_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'root@localhost')
@@ -123,6 +125,8 @@ elif environ.get('SENDGRID_API_KEY', ''):
     EMAIL_HOST_PASSWORD = environ['SENDGRID_API_KEY']
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_TIMEOUT = int(environ.get('EMAIL_TIMEOUT', 20))
 
 elif environ.get('SENDGRID_USERNAME', ''):
     # These settings are deprecated as of Tabbycat 2.6.0 (Ocicat).
@@ -136,6 +140,12 @@ elif environ.get('SENDGRID_USERNAME', ''):
     EMAIL_HOST_PASSWORD = environ['SENDGRID_PASSWORD']
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_TIMEOUT = int(environ.get('EMAIL_TIMEOUT', 20))
+else:
+    # Fallback: don't error, but log that no real email backend is configured.
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'notconfigured@tabbycatsite'
 
 # ==============================================================================
 # Sentry
