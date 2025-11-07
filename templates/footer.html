@@ -1,4 +1,4 @@
-{% load debate_tags static i18n cache tournamenturl %}
+{% load debate_tags static i18n cache %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% cache 600 footer tournament LANGUAGE_CODE %}
@@ -131,8 +131,9 @@
   </div>
 </div>
   {% if tournament and tournament.slug == 'ndf-nationals-2025' %}
-    {% tournamenturl 'tournament-public-index' as tpub %}
-    {% if request.path == tpub %}
+    {% if request %}
+      {% tournamenturl 'tournament-public-index' as tpub %}
+      {% if request.path == tpub %}
     <div class="row mt-4">
       <div class="col">
         <div class="card border-warning shadow-sm" style="max-width:960px;margin:0 auto;">
@@ -160,6 +161,7 @@
         </div>
       </div>
     </div>
+      {% endif %}
     {% endif %}
   {% endif %}
 
