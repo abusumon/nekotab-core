@@ -8,6 +8,10 @@
   <meta name="description" content="Run debate tournaments with confidence. Draws, allocations, ballots, standings, and breaks — all in one open‑source tool.">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo.png' %}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'logo.png' %}">
   <link rel="stylesheet" href="{% static 'css/landing.css' %}">
 </head>
 <body class="em-body">
@@ -16,11 +20,8 @@
   <header class="em-navbar" id="top">
     <div class="em-container em-nav-inner">
       <a class="em-logo" href="/">
-        <span class="em-logo-mark" aria-hidden="true"></span>
-        <span class="sr-only">EventMate.live</span>
         <picture>
-            <source srcset="{% static 'images/logo.png' %}" media="(prefers-color-scheme: dark)">
-            <img src="{% static 'images/logo.png' %}" alt="NekoTab logo">
+          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="160" height="40">
         </picture>
         <span class="sr-only">NekoTab</span>
       </a>
