@@ -55,8 +55,17 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
             return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        kwargs['tournaments'] = Tournament.objects.filter(active=True)
-        kwargs['inactive'] = Tournament.objects.filter(active=False)
+        # Provide only the logged-in user's tournaments on the landing page
+        user = self.request.user
+        if user.is_authenticated:
+            kwargs['my_tournaments_active'] = Tournament.objects.filter(owner=user, active=True)
+            kwargs['my_tournaments_inactive'] = Tournament.objects.filter(owner=user, active=False)
+        else:
+            kwargs['my_tournaments_active'] = []
+            kwargs['my_tournaments_inactive'] = []
+        # Retain legacy keys (filtered) in case other templates/components expect them
+        kwargs['tournaments'] = kwargs['my_tournaments_active']
+        kwargs['inactive'] = kwargs['my_tournaments_inactive']
         return super().get_context_data(**kwargs)
 
 

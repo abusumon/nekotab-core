@@ -79,6 +79,40 @@
     </div>
   </section>
 
+  {% if user.is_authenticated %}
+  <!-- My Tournaments Section -->
+  <section class="em-section em-my-tournaments" aria-labelledby="my-tournaments-title">
+    <div class="em-container">
+      <h2 id="my-tournaments-title" class="em-section-title">My Tournaments</h2>
+      {% if my_tournaments_active or my_tournaments_inactive %}
+        <div class="em-feature-grid">
+          {% for t in my_tournaments_active %}
+            <article class="em-feature-card em-my-t-card" aria-labelledby="tourn-{{ t.slug }}-title">
+              <div class="em-feature-img" aria-hidden="true"></div>
+              <div class="em-feature-text">
+                <h3 id="tourn-{{ t.slug }}-title" class="em-feature-title">{{ t.short_name|default:t.name }}</h3>
+                <p class="em-feature-desc">Status: Active · <a href="/{{ t.slug }}/" class="em-link">Public</a> · <a href="/{{ t.slug }}/admin/" class="em-link">Admin</a></p>
+              </div>
+            </article>
+          {% endfor %}
+          {% for t in my_tournaments_inactive %}
+            <article class="em-feature-card em-my-t-card em-inactive" aria-labelledby="tourn-{{ t.slug }}-title">
+              <div class="em-feature-img" aria-hidden="true"></div>
+              <div class="em-feature-text">
+                <h3 id="tourn-{{ t.slug }}-title" class="em-feature-title">{{ t.short_name|default:t.name }}</h3>
+                <p class="em-feature-desc">Status: Inactive · <a href="/{{ t.slug }}/" class="em-link">Public</a> · <a href="/{{ t.slug }}/admin/" class="em-link">Admin</a></p>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>You haven't created any tournaments yet.</p>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create your first tournament</a>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
   <!-- (Section removed per request) -->
 
   <!-- Your tabbing challenges, solved -->
