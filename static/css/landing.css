@@ -18,8 +18,8 @@ img { max-width:100%; display:block; }
 .em-container { max-width:1280px; margin:0 auto; padding:0 24px; }
 @media (min-width:1024px) { .em-container { padding:0 80px; } }
 
-/* Navbar */
-.em-navbar { position:sticky; top:0; z-index:1000; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.em-navbar { position:sticky; top:0; z-index:1000; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.04); transition: box-shadow .3s ease, background-color .3s ease; }
+.em-navbar.scrolled { box-shadow:0 4px 18px rgba(0,0,0,.08); background:#fff; }
 .em-nav-inner { display:flex; align-items:center; justify-content:space-between; min-height:64px; }
 @media (min-width:900px){ .em-nav-inner{ min-height:80px; } }
 .em-logo { display:flex; align-items:center; text-decoration:none; }
@@ -29,7 +29,9 @@ img { max-width:100%; display:block; }
 .em-burger { display:inline-flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; margin-left:16px; }
 .em-burger span { width:26px; height:3px; background:var(--em-text-dark); border-radius:2px; transition:.3s; }
 @media (min-width:900px){ .em-burger { display:none; } }
-.em-mobile-menu { display:flex; flex-direction:column; padding:24px; background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.12); }
+.em-mobile-menu { position:fixed; inset:0; display:flex; flex-direction:column; padding:24px; background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.12); transform:translateY(-100%); transition:transform .3s ease; }
+.em-mobile-menu.open { transform:translateY(0); }
+.no-scroll { overflow:hidden; }
 .em-mobile-menu a { padding:12px 0; border-bottom:1px solid var(--em-border-gray); font-weight:600; color:var(--em-text-dark); text-decoration:none; }
 .em-mobile-menu a:last-child { border-bottom:none; }
 
@@ -145,13 +147,8 @@ img { max-width:100%; display:block; }
 .em-included li { position:relative; padding-left:28px; margin-bottom:16px; line-height:1.6; }
 .em-included li:before { content:'✔'; position:absolute; left:0; top:0; color:var(--em-green); }
 
-/* Reviews */
-.em-reviews { background:#FAFBFF; }
-.em-reel { display:flex; gap:24px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; }
-.em-review { flex:0 0 340px; background:#fff; border-radius:20px; padding:32px; box-shadow:0 4px 16px rgba(0,0,0,.06); scroll-snap-align:start; }
-.em-stars { color:#FBBF24; margin-bottom:12px; }
-.em-review-text { font-style:italic; font-size:16px; margin:0 0 16px; }
-.em-reviewer { font-size:14px; font-weight:600; color:var(--em-text-gray); }
+/* Reviews (removed styles kept for reference; components removed in template) */
+.em-reviews { display:none; }
 
 /* Final CTA */
 .em-final { background:var(--em-indigo); color:#fff; text-align:center; }

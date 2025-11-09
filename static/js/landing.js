@@ -10,9 +10,28 @@
     burger.addEventListener('click', () => {
       const expanded = burger.getAttribute('aria-expanded') === 'true';
       burger.setAttribute('aria-expanded', String(!expanded));
-      if (expanded) { menu.hidden = true; } else { menu.hidden = false; }
+      document.documentElement.classList.toggle('no-scroll', !expanded);
+      if (expanded) {
+        menu.classList.remove('open');
+        setTimeout(()=>{ menu.hidden = true; }, 280);
+      } else {
+        menu.hidden = false;
+        requestAnimationFrame(()=> menu.classList.add('open'));
+      }
     });
   }
+
+  // Navbar shadow on scroll
+  const nav = document.querySelector('.em-navbar');
+  let lastY = window.scrollY;
+  const onScroll = () => {
+    const y = window.scrollY;
+    if (!nav) return;
+    if (y > 10 && !nav.classList.contains('scrolled')) nav.classList.add('scrolled');
+    if (y <= 10 && nav.classList.contains('scrolled')) nav.classList.remove('scrolled');
+    lastY = y;
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
 
   // Simple stat count-up when visible
   const nums = document.querySelectorAll('.em-num');
