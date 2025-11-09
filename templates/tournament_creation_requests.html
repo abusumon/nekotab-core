@@ -29,12 +29,13 @@
     <table aria-label="Tournament creation requests">
       <thead>
         <tr>
-          <th scope="col">Created</th>
+          <th scope="col">Email</th>
           <th scope="col">User</th>
           <th scope="col">Tournament Name</th>
           <th scope="col">Slug</th>
           <th scope="col">OTP</th>
           <th scope="col">Status</th>
+          <th scope="col">Created</th>
           <th scope="col">Expires</th>
           <th scope="col" class="actions">Actions</th>
         </tr>
@@ -42,14 +43,18 @@
       <tbody>
         {% for r in requests %}
           <tr>
-            <td>{{ r.created_at|date:'Y-m-d H:i' }}</td>
+            <td><a href="mailto:{{ r.user.email }}">{{ r.user.email }}</a></td>
             <td>{{ r.user.username }}</td>
             <td>{{ r.requested_name|default:'(missing)' }}</td>
             <td>{{ r.requested_slug|default:'(missing)' }}</td>
             <td class="otp">{{ r.otp_code }}</td>
             <td><span class="badge {% if r.status == 'expired' %}expired{% elif r.status == 'completed' %}completed{% elif r.status == 'pending' %}pending{% endif %}">{{ r.get_status_display }}</span></td>
+            <td>{{ r.created_at|date:'Y-m-d H:i' }}</td>
             <td>{{ r.expires_at|date:'Y-m-d H:i' }}</td>
-            <td class="actions"><button class="copy-btn" data-otp="{{ r.otp_code }}">Copy OTP</button></td>
+            <td class="actions">
+              <button class="copy-btn" data-otp="{{ r.otp_code }}">Copy OTP</button>
+              <button class="copy-btn" style="background:#10b981; margin-left:8px;" data-email="{{ r.user.email }}">Copy Email</button>
+            </td>
           </tr>
         {% empty %}
           <tr><td colspan="8">No creation requests yet.</td></tr>
@@ -61,9 +66,12 @@
     document.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const otp = btn.getAttribute('data-otp');
-        navigator.clipboard.writeText(otp).then(() => {
+        const email = btn.getAttribute('data-email');
+        const value = otp || email || '';
+        navigator.clipboard.writeText(value).then(() => {
+          const original = btn.textContent;
           btn.textContent = 'Copied!';
-          setTimeout(() => btn.textContent = 'Copy OTP', 1500);
+          setTimeout(() => btn.textContent = original, 1500);
         });
       });
     });

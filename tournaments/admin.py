@@ -40,7 +40,11 @@ class ScheduleEventAdmin(ModelAdmin):
 
 @admin.register(TournamentCreationRequest)
 class TournamentCreationRequestAdmin(ModelAdmin):
-    list_display = ('id', 'user', 'status', 'created_at', 'expires_at', 'otp_code')
+    list_display = ('id', 'user', 'user_email', 'status', 'created_at', 'expires_at', 'otp_code')
     list_filter = ('status', 'created_at')
     search_fields = ('user__username', 'user__email', 'id', 'otp_code')
     ordering = ('-created_at',)
+
+    def user_email(self, obj):
+        return obj.user.email
+    user_email.short_description = 'Email'

@@ -48,7 +48,7 @@ class TournamentCreationRequestListView(LoginRequiredMixin, WarnAboutDatabaseUse
     def get_context_data(self, **kwargs):
         from .models import TournamentCreationRequest
         ctx = super().get_context_data(**kwargs)
-        requests_qs = TournamentCreationRequest.objects.all()
+        requests_qs = TournamentCreationRequest.objects.select_related('user').all()
         ctx['requests'] = requests_qs
         return ctx
 from .utils import get_side_name
