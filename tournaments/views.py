@@ -302,24 +302,48 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
             otp_code=otp,
         )
 
-        # Try to send the OTP to the admin email; fail silently if not configured
+        # Try to send the OTP notification email to admins (and optionally requester)
         try:
-            send_mail(
-                subject="[NekoTab] New Tournament OTP",
-                message=(
-                    "A new tournament creation has been requested.\n\n"
-                    f"User: {self.request.user.username} ({self.request.user.email})\n"
-                    f"OTP Code: {otp}\n"
-                    f"Tournament Name: {form.cleaned_data.get('name')}\n"
-                    f"Slug: {form.cleaned_data.get('slug')}\n\n"
-                    "You can also view this in the OTP Requests page."\
-                ),
-                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'no-reply@nekotab.app'),
-                recipient_list=["abusumon1701@gmail.com"],
-                fail_silently=True,
-            )
-        except Exception:
-            pass
+            # Build recipient list from settings/env
+            admin_recipients = list(filter(None, getattr(settings, 'ADMIN_NOTIFICATION_EMAILS', [])))
+            # Fallbacks if not explicitly set
+            if not admin_recipients:
+                fallback_admin = getattr(settings, 'TAB_DIRECTOR_EMAIL', None)
+                if fallback_admin:
+                    admin_recipients = [fallback_admin]
+
+            recipient_list = admin_recipients[:]
+
+            # Optionally include requester copy, controlled by env setting
+            include_requester = getattr(settings, 'INCLUDE_REQUESTER_IN_OTP_EMAIL', False)
+            if include_requester and self.request.user.email:
+                recipient_list.append(self.request.user.email)
+
+            # Deduplicate while preserving order
+            seen = set()
+            recipient_list = [r for r in recipient_list if not (r in seen or seen.add(r))]
+
+            if not recipient_list:
+                logger.warning("OTP email not sent: no recipients configured (ADMIN_NOTIFICATION_EMAILS/TAB_DIRECTOR_EMAIL)")
+            else:
+                send_mail(
+                    subject="[NekoTab] New Tournament OTP",
+                    message=(
+                        "A new tournament creation has been requested.\n\n"
+                        f"User: {self.request.user.username} ({self.request.user.email})\n"
+                        f"OTP Code: {otp}\n"
+                        f"Tournament Name: {form.cleaned_data.get('name')}\n"
+                        f"Slug: {form.cleaned_data.get('slug')}\n\n"
+                        "You can also view this in the OTP Requests page."
+                    ),
+                    from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'no-reply@nekotab.app'),
+                    recipient_list=recipient_list,
+                    fail_silently=False,
+                )
+                logger.info("OTP email sent for tournament '%s' to %s", form.cleaned_data.get('name'), ", ".join(recipient_list))
+        except Exception as e:
+            # Do not block user flow on email errors; just log
+            logger.error("Failed to send OTP email: %s", e, exc_info=True)
 
         messages.info(self.request, _("We've generated an OTP. Please pay and contact the admin to receive your OTP, then enter it on the next screen."))
         return redirect('tournament-create-verify', request_id=req.id)

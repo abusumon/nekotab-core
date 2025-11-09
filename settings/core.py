@@ -419,3 +419,17 @@ SUBDOMAIN_BASE_DOMAIN = os.environ.get('SUBDOMAIN_BASE_DOMAIN', '')
 RESERVED_SUBDOMAINS = os.environ.get(
     'RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media'
 ).split(',')
+
+# ==============================================================================
+# Email (defaults; can be overridden in environment-specific settings)
+# ==============================================================================
+
+# Default from email for outbound messages
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'no-reply@nekotab.app')
+
+# Comma-separated list of admin notification emails for operational alerts
+_admin_emails = os.environ.get('ADMIN_NOTIFICATION_EMAILS', '').strip()
+ADMIN_NOTIFICATION_EMAILS = [e.strip() for e in _admin_emails.split(',') if e.strip()] if _admin_emails else []
+
+# Whether to include the requester (their account email) on OTP emails
+INCLUDE_REQUESTER_IN_OTP_EMAIL = os.environ.get('INCLUDE_REQUESTER_IN_OTP_EMAIL', 'false').lower() == 'true'
