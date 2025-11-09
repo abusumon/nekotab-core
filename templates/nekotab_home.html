@@ -1,0 +1,324 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EventMate.live — Meet your personal event assistant</title>
+  <meta name="description" content="Everything you need to host powerful events — in one tool.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+</head>
+<body class="em-body">
+
+  <!-- Navigation Bar -->
+  <header class="em-navbar" id="top">
+    <div class="em-container em-nav-inner">
+      <a class="em-logo" href="/">
+        <span class="em-logo-mark" aria-hidden="true"></span>
+        <span class="sr-only">EventMate.live</span>
+      </a>
+      <nav class="em-nav" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#why">Why EventMate</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Get Started</a>
+        <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+    <div id="em-mobile-menu" class="em-mobile-menu" hidden>
+      <a href="#features">Features</a>
+      <a href="#why">Why EventMate</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="em-hero" aria-labelledby="hero-title">
+    <div class="em-container em-hero-inner">
+      <div class="em-badge" aria-label="Backed by">Backed by organizers worldwide</div>
+      <h1 id="hero-title" class="em-hero-title">Meet your personal event assistant</h1>
+      <p class="em-hero-sub">Everything you need to host powerful events — in one tool. Plan, promote, and delight your attendees with less work.</p>
+      <div class="em-hero-ctas">
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Get Started for Free</a>
+        <a href="#features" class="em-btn em-btn--secondary">Explore Features</a>
+      </div>
+      <div class="em-hero-mockups">
+        <div class="em-phone-mockup" role="img" aria-label="Mobile app mockup"></div>
+        <div class="em-tabs-row" aria-label="Interface previews">
+          <div class="em-tab-card"></div>
+          <div class="em-tab-card"></div>
+          <div class="em-tab-card"></div>
+          <div class="em-tab-card"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events already on EventMate -->
+  <section class="em-section em-onboard" aria-labelledby="onboard-title">
+    <div class="em-container">
+      <h2 id="onboard-title" class="em-section-title">Events already on EventMate</h2>
+      <div class="em-testimonial">
+        <blockquote>
+          “EventMate helped us launch in days, not weeks — and our attendees loved the experience.”
+        </blockquote>
+        <div class="em-profile">
+          <div class="em-avatar" aria-hidden="true"></div>
+          <div>
+            <div class="em-name">Alex Rivera</div>
+            <div class="em-role">Community Organizer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Your event challenges, solved -->
+  <section class="em-section em-compare" aria-labelledby="compare-title">
+    <div class="em-container">
+      <h2 id="compare-title" class="em-section-title">Your event challenges, solved</h2>
+      <div class="em-compare-grid">
+        <div class="em-card em-card--danger">
+          <div class="em-card-img" aria-hidden="true"></div>
+          <h3>Traditional tools</h3>
+          <ul>
+            <li>Too many disconnected apps</li>
+            <li>Manual reminders and updates</li>
+            <li>Low attendee engagement</li>
+          </ul>
+        </div>
+        <div class="em-card em-card--indigo">
+          <div class="em-card-img" aria-hidden="true"></div>
+          <h3>EventMate</h3>
+          <ul>
+            <li>All-in-one planning and promotion</li>
+            <li>Automated updates and smart nudges</li>
+            <li>Delightful, modern attendee experience</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Features -->
+  <section id="features" class="em-section em-features" aria-labelledby="features-title">
+    <div class="em-container">
+      <h2 id="features-title" class="em-section-title">Everything you need to host powerful events — in one tool</h2>
+      <div class="em-feature-grid">
+        {% for i in "1234" %}
+        <article class="em-feature-card">
+          <div class="em-feature-img" aria-hidden="true"></div>
+          <div class="em-feature-text">
+            <h3 class="em-feature-title">Powerful feature {{ forloop.counter }}</h3>
+            <p class="em-feature-desc">Design, schedule, and manage sessions with ease. Keep your audience engaged from start to finish.</p>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Creators say it's like having a co-host on autopilot -->
+  <section class="em-section em-autopilot" aria-labelledby="auto-title">
+    <div class="em-container">
+      <h2 id="auto-title" class="em-section-title">Creators say it's like having a co-host on autopilot</h2>
+      <div class="em-auto-grid">
+        {% for i in "123" %}
+        <div class="em-box">
+          <div class="em-icon" aria-hidden="true"></div>
+          <h3>Do more with less</h3>
+          <p>Automations that save hours each week so you can focus on the experience.</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why creators switched -->
+  <section id="why" class="em-section em-why">
+    <div class="em-container">
+      <h2 class="em-section-title">Why creators switched</h2>
+      <div class="em-three-cols">
+        {% for i in "123" %}
+        <div class="em-three-item">
+          <div class="em-illus" aria-hidden="true"></div>
+          <div class="em-three-text">Beautiful attendee experience</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- More than just ticketing -->
+  <section class="em-section em-more">
+    <div class="em-container em-more-grid">
+      <div class="em-more-img" aria-hidden="true"></div>
+      <div>
+        <h2 class="em-section-title">More than just event ticketing</h2>
+        <ul class="em-checklist">
+          <li>Automated reminders and nudges</li>
+          <li>Smart schedules and session management</li>
+          <li>Real-time updates with push notifications</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="em-section em-stats" aria-label="Key stats">
+    <div class="em-container em-stats-inner">
+      <div class="em-stat"><div class="em-num" data-target="500">0</div><div class="em-label">Events powered</div></div>
+      <div class="em-stat"><div class="em-num" data-target="20000">0</div><div class="em-label">Attendees engaged</div></div>
+      <div class="em-stat"><div class="em-num" data-target="4">0</div><div class="em-label">Higher open rate than email</div></div>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="em-section em-steps">
+    <div class="em-container">
+      <h2 class="em-section-title">Getting started is simple</h2>
+      <div class="em-steps-grid">
+        {% for i in "123" %}
+        <div class="em-step">
+          <div class="em-step-num">{{ forloop.counter }}</div>
+          <div class="em-step-img" aria-hidden="true"></div>
+          <h3>Create your first event</h3>
+          <p>Set up your event details, sessions, and invitations.</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="em-section em-cats">
+    <div class="em-container">
+      <h2 class="em-section-title">Perfect for</h2>
+      <div class="em-cats-grid">
+        <div class="em-cat">
+          <div class="em-cat-img" aria-hidden="true"></div>
+          <div class="em-cat-title">Community Events</div>
+        </div>
+        <div class="em-cat">
+          <div class="em-cat-img" aria-hidden="true"></div>
+          <div class="em-cat-title">Business & Tech Meetups</div>
+        </div>
+        <div class="em-cat">
+          <div class="em-cat-img" aria-hidden="true"></div>
+          <div class="em-cat-title">Workshops & Masterclasses</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="em-section em-pricing">
+    <div class="em-container">
+      <h2 class="em-section-title">Simple pricing</h2>
+      <div class="em-pricing-card">
+        <div class="em-price-top">
+          <div class="em-plan">Starter</div>
+          <div class="em-price"><span>$</span>0</div>
+          <div class="em-period">per event</div>
+        </div>
+        <ul class="em-included">
+          <li>Unlimited attendees</li>
+          <li>Smart notifications</li>
+          <li>Modern landing pages</li>
+        </ul>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Create Your First Event</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews carousel (simple scroll) -->
+  <section class="em-section em-reviews">
+    <div class="em-container">
+      <h2 class="em-section-title">Loved by organizers</h2>
+      <div class="em-reel">
+        {% for i in "12345" %}
+        <div class="em-review">
+          <div class="em-stars" aria-hidden="true">★★★★★</div>
+          <p class="em-review-text">“Switching to EventMate was the best call we made this year.”</p>
+          <div class="em-reviewer">Jordan • Event Producer</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="em-section em-final">
+    <div class="em-container">
+      <h2 class="em-final-title">Meet your personal event assistant</h2>
+      <p class="em-final-sub">Plan, promote, and run events people love — with less effort.</p>
+      <div class="em-hero-ctas">
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--light">Get Started for Free</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="em-section em-faq">
+    <div class="em-container">
+      <h2 class="em-section-title">Frequently asked questions</h2>
+      <details class="em-acc">
+        <summary>Can I try EventMate for free?</summary>
+        <p>Yes. You can create events at no cost and upgrade as you grow.</p>
+      </details>
+      <details class="em-acc">
+        <summary>Is it mobile-friendly?</summary>
+        <p>Absolutely — built mobile-first with a beautiful attendee experience.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="em-footer" role="contentinfo">
+    <div class="em-container em-footer-grid">
+      <div>
+        <div class="em-logo em-logo--footer" aria-hidden="true"></div>
+        <p class="em-foot-desc">EventMate is the modern way to plan, promote, and run events your audience loves.</p>
+      </div>
+      <div>
+        <div class="em-foot-title">Product</div>
+        <ul class="em-foot-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Company</div>
+        <ul class="em-foot-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Resources</div>
+        <ul class="em-foot-links">
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="em-foot-bottom">
+      <div class="em-container">
+        <div class="em-copy">© <span id="em-year"></span> EventMate.live</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/landing.js' %}"></script>
+</body>
+</html>
