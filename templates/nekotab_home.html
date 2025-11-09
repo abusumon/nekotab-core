@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EventMate.live — Meet your personal event assistant</title>
-  <meta name="description" content="Everything you need to host powerful events — in one tool.">
+  <title>NekoTab — Debate Tabulation Made Simple</title>
+  <meta name="description" content="Run debate tournaments with confidence. Draws, allocations, ballots, standings, and breaks — all in one open‑source tool.">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/landing.css' %}">
@@ -20,34 +20,34 @@
         <span class="sr-only">EventMate.live</span>
       </a>
       <nav class="em-nav" aria-label="Primary">
-        <a href="#features">Features</a>
-        <a href="#why">Why EventMate</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Get Started</a>
+  <a href="#features">Features</a>
+  <a href="#why">Why NekoTab</a>
+  <a href="#formats">Formats</a>
+  <a href="#faq">FAQ</a>
+  <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create Tournament</a>
         <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
           <span></span><span></span><span></span>
         </button>
       </nav>
     </div>
     <div id="em-mobile-menu" class="em-mobile-menu" hidden>
-      <a href="#features">Features</a>
-      <a href="#why">Why EventMate</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Get Started</a>
+  <a href="#features">Features</a>
+  <a href="#why">Why NekoTab</a>
+  <a href="#formats">Formats</a>
+  <a href="#faq">FAQ</a>
+  <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Create Tournament</a>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="em-hero" aria-labelledby="hero-title">
     <div class="em-container em-hero-inner">
-      <div class="em-badge" aria-label="Backed by">Backed by organizers worldwide</div>
-      <h1 id="hero-title" class="em-hero-title">Meet your personal event assistant</h1>
-      <p class="em-hero-sub">Everything you need to host powerful events — in one tool. Plan, promote, and delight your attendees with less work.</p>
+      <div class="em-badge" aria-label="Open source">Open‑source debate tabulation</div>
+      <h1 id="hero-title" class="em-hero-title">Debate tabulation, automated</h1>
+      <p class="em-hero-sub">Run BP and other parliamentary formats with confidence. Draws, judge and venue allocations, ballots, standings, and breaks — built in.</p>
       <div class="em-hero-ctas">
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Get Started for Free</a>
-        <a href="#features" class="em-btn em-btn--secondary">Explore Features</a>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create a Tournament</a>
+        <a href="https://tabbycat.readthedocs.io/" target="_blank" rel="noopener" class="em-btn em-btn--secondary">Read the Docs</a>
       </div>
       <div class="em-hero-mockups">
         <div class="em-phone-mockup" role="img" aria-label="Mobile app mockup"></div>
@@ -61,46 +61,46 @@
     </div>
   </section>
 
-  <!-- Events already on EventMate -->
+  <!-- Trusted by tournaments -->
   <section class="em-section em-onboard" aria-labelledby="onboard-title">
     <div class="em-container">
-      <h2 id="onboard-title" class="em-section-title">Events already on EventMate</h2>
+      <h2 id="onboard-title" class="em-section-title">Trusted by tournaments worldwide</h2>
       <div class="em-testimonial">
         <blockquote>
-          “EventMate helped us launch in days, not weeks — and our attendees loved the experience.”
+          “NekoTab handled draws, judge allocation, and results so smoothly that our rounds started on time — every time.”
         </blockquote>
         <div class="em-profile">
           <div class="em-avatar" aria-hidden="true"></div>
           <div>
-            <div class="em-name">Alex Rivera</div>
-            <div class="em-role">Community Organizer</div>
+            <div class="em-name">Tournament Director</div>
+            <div class="em-role">Intervarsity BP</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Your event challenges, solved -->
+  <!-- Your tabbing challenges, solved -->
   <section class="em-section em-compare" aria-labelledby="compare-title">
     <div class="em-container">
-      <h2 id="compare-title" class="em-section-title">Your event challenges, solved</h2>
+      <h2 id="compare-title" class="em-section-title">Your tabbing challenges, solved</h2>
       <div class="em-compare-grid">
         <div class="em-card em-card--danger">
           <div class="em-card-img" aria-hidden="true"></div>
-          <h3>Traditional tools</h3>
+          <h3>Spreadsheets & stress</h3>
           <ul>
-            <li>Too many disconnected apps</li>
-            <li>Manual reminders and updates</li>
-            <li>Low attendee engagement</li>
+            <li>Manual power‑pairing and rooming</li>
+            <li>Judge and venue conflicts missed</li>
+            <li>Slow result entry and errors</li>
           </ul>
         </div>
         <div class="em-card em-card--indigo">
           <div class="em-card-img" aria-hidden="true"></div>
-          <h3>EventMate</h3>
+          <h3>NekoTab</h3>
           <ul>
-            <li>All-in-one planning and promotion</li>
-            <li>Automated updates and smart nudges</li>
-            <li>Delightful, modern attendee experience</li>
+            <li>Automated draws and smart allocations</li>
+            <li>Ballots, feedback, standings, and breaks</li>
+            <li>Public site, check‑ins, and notifications</li>
           </ul>
         </div>
       </div>
@@ -110,73 +110,120 @@
   <!-- Our Features -->
   <section id="features" class="em-section em-features" aria-labelledby="features-title">
     <div class="em-container">
-      <h2 id="features-title" class="em-section-title">Everything you need to host powerful events — in one tool</h2>
+      <h2 id="features-title" class="em-section-title">Everything you need to run a debate tournament</h2>
       <div class="em-feature-grid">
-        {% for i in "1234" %}
         <article class="em-feature-card">
           <div class="em-feature-img" aria-hidden="true"></div>
           <div class="em-feature-text">
-            <h3 class="em-feature-title">Powerful feature {{ forloop.counter }}</h3>
-            <p class="em-feature-desc">Design, schedule, and manage sessions with ease. Keep your audience engaged from start to finish.</p>
+            <h3 class="em-feature-title">Draws & power‑pairing</h3>
+            <p class="em-feature-desc">Generate fair draws with side balances, pull‑ups, and constraints for BP and other formats.</p>
           </div>
         </article>
-        {% endfor %}
+        <article class="em-feature-card">
+          <div class="em-feature-img" aria-hidden="true"></div>
+          <div class="em-feature-text">
+            <h3 class="em-feature-title">Judge & venue allocation</h3>
+            <p class="em-feature-desc">Assign adjudication panels and rooms with conflicts, feedback, and strength in mind.</p>
+          </div>
+        </article>
+        <article class="em-feature-card">
+          <div class="em-feature-img" aria-hidden="true"></div>
+          <div class="em-feature-text">
+            <h3 class="em-feature-title">Ballots & feedback</h3>
+            <p class="em-feature-desc">Enter and confirm ballots; collect adjudicator feedback to guide allocations.</p>
+          </div>
+        </article>
+        <article class="em-feature-card">
+          <div class="em-feature-img" aria-hidden="true"></div>
+          <div class="em-feature-text">
+            <h3 class="em-feature-title">Standings & breaks</h3>
+            <p class="em-feature-desc">Publish speaker/team standings and compute break categories with tie‑breakers.</p>
+          </div>
+        </article>
+        <article class="em-feature-card">
+          <div class="em-feature-img" aria-hidden="true"></div>
+          <div class="em-feature-text">
+            <h3 class="em-feature-title">Registration & check‑ins</h3>
+            <p class="em-feature-desc">Manage teams, speakers, and judges; track availability and attendance.</p>
+          </div>
+        </article>
+        <article class="em-feature-card">
+          <div class="em-feature-img" aria-hidden="true"></div>
+          <div class="em-feature-text">
+            <h3 class="em-feature-title">Public site & notifications</h3>
+            <p class="em-feature-desc">Share draws, results, and motion releases; notify participants with private links.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Creators say it's like having a co-host on autopilot -->
+  <!-- TDs say it runs itself -->
   <section class="em-section em-autopilot" aria-labelledby="auto-title">
     <div class="em-container">
-      <h2 id="auto-title" class="em-section-title">Creators say it's like having a co-host on autopilot</h2>
+      <h2 id="auto-title" class="em-section-title">Tournament directors say it runs itself</h2>
       <div class="em-auto-grid">
-        {% for i in "123" %}
         <div class="em-box">
           <div class="em-icon" aria-hidden="true"></div>
-          <h3>Do more with less</h3>
-          <p>Automations that save hours each week so you can focus on the experience.</p>
+          <h3>Fewer errors</h3>
+          <p>Conflict checks and validations reduce manual mistakes in every round.</p>
         </div>
-        {% endfor %}
+        <div class="em-box">
+          <div class="em-icon" aria-hidden="true"></div>
+          <h3>Faster rounds</h3>
+          <p>Quick draw generation and ballot entry keep tournaments on schedule.</p>
+        </div>
+        <div class="em-box">
+          <div class="em-icon" aria-hidden="true"></div>
+          <h3>Happier judges</h3>
+          <p>Private URLs and clear allocations make it easy to find rooms and submit results.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Why creators switched -->
+  <!-- Why tournaments switch -->
   <section id="why" class="em-section em-why">
     <div class="em-container">
-      <h2 class="em-section-title">Why creators switched</h2>
+      <h2 class="em-section-title">Why tournaments switch to NekoTab</h2>
       <div class="em-three-cols">
-        {% for i in "123" %}
         <div class="em-three-item">
           <div class="em-illus" aria-hidden="true"></div>
-          <div class="em-three-text">Beautiful attendee experience</div>
+          <div class="em-three-text">Accurate, transparent results</div>
         </div>
-        {% endfor %}
+        <div class="em-three-item">
+          <div class="em-illus" aria-hidden="true"></div>
+          <div class="em-three-text">Automation for complex workflows</div>
+        </div>
+        <div class="em-three-item">
+          <div class="em-illus" aria-hidden="true"></div>
+          <div class="em-three-text">Open‑source and community‑driven</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- More than just ticketing -->
+  <!-- More than just a draw generator -->
   <section class="em-section em-more">
     <div class="em-container em-more-grid">
       <div class="em-more-img" aria-hidden="true"></div>
       <div>
-        <h2 class="em-section-title">More than just event ticketing</h2>
+        <h2 class="em-section-title">Beyond the draw</h2>
         <ul class="em-checklist">
-          <li>Automated reminders and nudges</li>
-          <li>Smart schedules and session management</li>
-          <li>Real-time updates with push notifications</li>
+          <li>Check‑ins and availability management</li>
+          <li>Adjudicator feedback and panel strength</li>
+          <li>Public pages for draws, motions, and results</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="em-section em-stats" aria-label="Key stats">
+  <!-- Principles -->
+  <section class="em-section em-stats" aria-label="Principles">
     <div class="em-container em-stats-inner">
-      <div class="em-stat"><div class="em-num" data-target="500">0</div><div class="em-label">Events powered</div></div>
-      <div class="em-stat"><div class="em-num" data-target="20000">0</div><div class="em-label">Attendees engaged</div></div>
-      <div class="em-stat"><div class="em-num" data-target="4">0</div><div class="em-label">Higher open rate than email</div></div>
+      <div class="em-stat"><div class="em-label">Open‑source</div></div>
+      <div class="em-stat"><div class="em-label">Reliable & transparent</div></div>
+      <div class="em-stat"><div class="em-label">Built for debate formats</div></div>
     </div>
   </section>
 
@@ -197,59 +244,70 @@
     </div>
   </section>
 
-  <!-- Categories -->
-  <section class="em-section em-cats">
+  <!-- Formats we support -->
+  <section class="em-section em-cats" id="formats">
     <div class="em-container">
-      <h2 class="em-section-title">Perfect for</h2>
+      <h2 class="em-section-title">Formats we support</h2>
       <div class="em-cats-grid">
         <div class="em-cat">
           <div class="em-cat-img" aria-hidden="true"></div>
-          <div class="em-cat-title">Community Events</div>
+          <div class="em-cat-title">British Parliamentary (BP)</div>
         </div>
         <div class="em-cat">
           <div class="em-cat-img" aria-hidden="true"></div>
-          <div class="em-cat-title">Business & Tech Meetups</div>
+          <div class="em-cat-title">Australs / 3v3</div>
         </div>
         <div class="em-cat">
           <div class="em-cat-img" aria-hidden="true"></div>
-          <div class="em-cat-title">Workshops & Masterclasses</div>
+          <div class="em-cat-title">WSDC‑style</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- Open source -->
   <section id="pricing" class="em-section em-pricing">
     <div class="em-container">
-      <h2 class="em-section-title">Simple pricing</h2>
+      <h2 class="em-section-title">Free and open‑source</h2>
       <div class="em-pricing-card">
         <div class="em-price-top">
-          <div class="em-plan">Starter</div>
+          <div class="em-plan">NekoTab</div>
           <div class="em-price"><span>$</span>0</div>
-          <div class="em-period">per event</div>
+          <div class="em-period">self‑hosted</div>
         </div>
         <ul class="em-included">
-          <li>Unlimited attendees</li>
-          <li>Smart notifications</li>
-          <li>Modern landing pages</li>
+          <li>Draws, allocations, ballots, standings</li>
+          <li>Check‑ins, registration, notifications</li>
+          <li>Public site and API</li>
         </ul>
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Create Your First Event</a>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Create a Tournament</a>
+        <div style="margin-top:12px; text-align:center">
+          <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Reviews carousel (simple scroll) -->
+  <!-- Testimonials (simple scroll) -->
   <section class="em-section em-reviews">
     <div class="em-container">
-      <h2 class="em-section-title">Loved by organizers</h2>
+      <h2 class="em-section-title">What organizers say</h2>
       <div class="em-reel">
-        {% for i in "12345" %}
         <div class="em-review">
           <div class="em-stars" aria-hidden="true">★★★★★</div>
-          <p class="em-review-text">“Switching to EventMate was the best call we made this year.”</p>
-          <div class="em-reviewer">Jordan • Event Producer</div>
+          <p class="em-review-text">“The draw and panel tools saved us hours each round.”</p>
+          <div class="em-reviewer">Chief Adjudicator</div>
         </div>
-        {% endfor %}
+        <div class="em-review">
+          <div class="em-stars" aria-hidden="true">★★★★★</div>
+          <p class="em-review-text">“Publishing standings and breaks was one click — and error‑free.”</p>
+          <div class="em-reviewer">Tab Director</div>
+        </div>
+        <div class="em-review">
+          <div class="em-stars" aria-hidden="true">★★★★★</div>
+          <p class="em-review-text">“Private URLs made ballots and feedback painless.”</p>
+          <div class="em-reviewer">Adjudicator</div>
+        </div>
       </div>
     </div>
   </section>
@@ -257,10 +315,10 @@
   <!-- Final CTA -->
   <section class="em-section em-final">
     <div class="em-container">
-      <h2 class="em-final-title">Meet your personal event assistant</h2>
-      <p class="em-final-sub">Plan, promote, and run events people love — with less effort.</p>
+      <h2 class="em-final-title">Run tournaments with confidence</h2>
+      <p class="em-final-sub">Automate tabulation and keep your event on schedule.</p>
       <div class="em-hero-ctas">
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--light">Get Started for Free</a>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--light">Create a Tournament</a>
       </div>
     </div>
   </section>
@@ -270,12 +328,16 @@
     <div class="em-container">
       <h2 class="em-section-title">Frequently asked questions</h2>
       <details class="em-acc">
-        <summary>Can I try EventMate for free?</summary>
-        <p>Yes. You can create events at no cost and upgrade as you grow.</p>
+        <summary>Which formats does NekoTab support?</summary>
+        <p>British Parliamentary (BP) and other parliamentary styles including Australs/3v3 and WSDC‑style.</p>
       </details>
       <details class="em-acc">
-        <summary>Is it mobile-friendly?</summary>
-        <p>Absolutely — built mobile-first with a beautiful attendee experience.</p>
+        <summary>Can I import teams, judges, and venues?</summary>
+        <p>Yes — CSV imports are supported, and you can manage availability and conflicts.</p>
+      </details>
+      <details class="em-acc">
+        <summary>Is it free?</summary>
+        <p>NekoTab is free and open‑source. You can self‑host or deploy to providers like Heroku.</p>
       </details>
     </div>
   </section>
@@ -285,36 +347,36 @@
     <div class="em-container em-footer-grid">
       <div>
         <div class="em-logo em-logo--footer" aria-hidden="true"></div>
-        <p class="em-foot-desc">EventMate is the modern way to plan, promote, and run events your audience loves.</p>
+  <p class="em-foot-desc">NekoTab is open‑source debate tabulation software: draws, allocations, ballots, standings, and breaks.</p>
       </div>
       <div>
         <div class="em-foot-title">Product</div>
         <ul class="em-foot-links">
           <li><a href="#features">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#formats">Formats</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
       <div>
         <div class="em-foot-title">Company</div>
         <ul class="em-foot-links">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Careers</a></li>
+          <li><a href="https://tabbycat.readthedocs.io/" target="_blank" rel="noopener">Documentation</a></li>
+          <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="#top">Back to top</a></li>
         </ul>
       </div>
       <div>
         <div class="em-foot-title">Resources</div>
         <ul class="em-foot-links">
-          <li><a href="#">Help center</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Status</a></li>
+          <li><a href="/create/">Create a tournament</a></li>
+          <li><a href="/style/">Style guide</a></li>
+          <li><a href="/api" >API</a></li>
         </ul>
       </div>
     </div>
     <div class="em-foot-bottom">
       <div class="em-container">
-        <div class="em-copy">© <span id="em-year"></span> EventMate.live</div>
+        <div class="em-copy">© <span id="em-year"></span> NekoTab</div>
       </div>
     </div>
   </footer>
