@@ -38,6 +38,11 @@ urlpatterns = [
         LoadDemoView.as_view(),
         name='load-demo'),
 
+    # Claim unassigned tournament ownership (admin/superuser use primarily)
+    path('claim/<slug:slug>/',
+        tournaments.views.ClaimTournamentOwnershipView.as_view(),
+        name='tournament-claim'),
+
     # Top Level Pages
     path('style/',
         tournaments.views.StyleGuideView.as_view(),

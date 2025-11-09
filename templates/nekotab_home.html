@@ -109,6 +109,38 @@
         <p>You haven't created any tournaments yet.</p>
         <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create your first tournament</a>
       {% endif %}
+
+      {% if user.is_superuser and (unassigned_active or unassigned_inactive) %}
+        <h3 class="em-section-title" style="margin-top:2rem; font-size:1.5rem;">Unassigned tournaments (admin)</h3>
+        <div class="em-feature-grid">
+          {% for t in unassigned_active %}
+            <article class="em-feature-card em-my-t-card" aria-labelledby="u-{{ t.slug }}-title">
+              <div class="em-feature-img" aria-hidden="true"></div>
+              <div class="em-feature-text">
+                <h3 id="u-{{ t.slug }}-title" class="em-feature-title">{{ t.short_name|default:t.name }}</h3>
+                <p class="em-feature-desc">Status: Active · <a href="/{{ t.slug }}/" class="em-link">Public</a> · <a href="/{{ t.slug }}/admin/" class="em-link">Admin</a></p>
+                <form action="{% url 'tournament-claim' slug=t.slug %}" method="post" style="margin-top:8px;">
+                  {% csrf_token %}
+                  <button type="submit" class="em-btn em-btn--secondary">Claim Ownership</button>
+                </form>
+              </div>
+            </article>
+          {% endfor %}
+          {% for t in unassigned_inactive %}
+            <article class="em-feature-card em-my-t-card em-inactive" aria-labelledby="u-{{ t.slug }}-title">
+              <div class="em-feature-img" aria-hidden="true"></div>
+              <div class="em-feature-text">
+                <h3 id="u-{{ t.slug }}-title" class="em-feature-title">{{ t.short_name|default:t.name }}</h3>
+                <p class="em-feature-desc">Status: Inactive · <a href="/{{ t.slug }}/" class="em-link">Public</a> · <a href="/{{ t.slug }}/admin/" class="em-link">Admin</a></p>
+                <form action="{% url 'tournament-claim' slug=t.slug %}" method="post" style="margin-top:8px;">
+                  {% csrf_token %}
+                  <button type="submit" class="em-btn em-btn--secondary">Claim Ownership</button>
+                </form>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
   </section>
   {% endif %}

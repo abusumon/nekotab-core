@@ -60,13 +60,40 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
         if user.is_authenticated:
             kwargs['my_tournaments_active'] = Tournament.objects.filter(owner=user, active=True)
             kwargs['my_tournaments_inactive'] = Tournament.objects.filter(owner=user, active=False)
+            # For superusers, also surface unassigned tournaments so they can claim them
+            if user.is_superuser:
+                kwargs['unassigned_active'] = Tournament.objects.filter(owner__isnull=True, active=True)
+                kwargs['unassigned_inactive'] = Tournament.objects.filter(owner__isnull=True, active=False)
+            else:
+                kwargs['unassigned_active'] = []
+                kwargs['unassigned_inactive'] = []
         else:
             kwargs['my_tournaments_active'] = []
             kwargs['my_tournaments_inactive'] = []
+            kwargs['unassigned_active'] = []
+            kwargs['unassigned_inactive'] = []
         # Retain legacy keys (filtered) in case other templates/components expect them
         kwargs['tournaments'] = kwargs['my_tournaments_active']
         kwargs['inactive'] = kwargs['my_tournaments_inactive']
         return super().get_context_data(**kwargs)
+
+class ClaimTournamentOwnershipView(LoginRequiredMixin, PostOnlyRedirectView):
+    """Allows a logged-in user to claim ownership of a tournament that has no owner.
+    Superusers may override an existing owner if necessary.
+    """
+
+    def post(self, request, *args, **kwargs):
+        slug = kwargs.get('slug')
+        tournament = get_object_or_404(Tournament, slug=slug)
+
+        if tournament.owner is None or request.user.is_superuser:
+            tournament.owner = request.user
+            tournament.save(update_fields=['owner'])
+            messages.success(request, _("You now own '%(t)s'.") % {'t': tournament.name})
+        else:
+            messages.error(request, _("That tournament is already owned by another user."))
+
+        return redirect('tabbycat-index')
 
 
 class TournamentPublicHomeView(CacheMixin, TournamentMixin, TemplateView):
