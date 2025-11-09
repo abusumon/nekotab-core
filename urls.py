@@ -7,11 +7,13 @@ from django.dispatch import receiver
 from django.urls import include, path
 from django.utils.translation import gettext as _
 from django.views.i18n import JavaScriptCatalog
+from django.contrib.sitemaps.views import sitemap
 from django.views.generic import TemplateView
 
 import tournaments.views
 from importer.views import LoadDemoView
 from users.views import BlankSiteStartView
+from .sitemaps import StaticViewSitemap, TournamentSitemap
 
 admin.autodiscover()
 
@@ -63,6 +65,15 @@ urlpatterns = [
     # Google Search Console verification file
     path('googlee0a2b1e83278e880.html',
         TemplateView.as_view(template_name='verification/googlee0a2b1e83278e880.html')),
+
+    # SEO: Sitemap and robots
+    path('sitemap.xml',
+        sitemap,
+        {'sitemaps': {'static': StaticViewSitemap, 'tournaments': TournamentSitemap}},
+        name='sitemap'),
+    path('robots.txt',
+        TemplateView.as_view(template_name='robots.txt', content_type='text/plain'),
+        name='robots-txt'),
 
     # Summernote (WYSYWIG)
     path('summernote/',

@@ -7,6 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#663da0">
+  {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}" />{% endif %}
+  <meta name="keywords" content="{{ seo_keywords }}" />
+  <meta name="application-name" content="{{ seo_site_name }}" />
 
   <title>{% if tournament %}{{ tournament.short_name }}{% else %}{% trans "NekoTab" %}{% endif %} | {% if page_title %}{{ page_title }}{% else %}{% block page-title %}{% endblock %}{% endif %}</title>
 
@@ -26,13 +29,16 @@
   <meta property="og:title" content="{% if tournament %}{{ tournament.short_name }}{% else %}NekoTab{% endif %} | {% if page_title %}{{ page_title }}{% else %}{% block og-title %}Debate Tournament Tabulation{% endblock %}{% endif %}" />
   <meta property="og:description" content="{{ meta_description }}" />
   <meta property="og:image" content="{% static 'logo-social.png' %}" />
-  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:url" content="{{ canonical_url|default:request.build_absolute_uri }}" />
+  <meta property="og:site_name" content="{{ seo_site_name }}" />
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{% if tournament %}{{ tournament.short_name }}{% else %}NekoTab{% endif %}" />
   <meta name="twitter:description" content="{{ meta_description }}" />
   <meta name="twitter:image" content="{% static 'logo-social.png' %}" />
+  <meta name="twitter:site" content="@NekoTab" />
+  <meta name="twitter:creator" content="@NekoTab" />
 
   {% block noindex %}
     {% if tournament %}
@@ -41,6 +47,11 @@
             {% endif %}
     {% endif %}
   {% endblock %}
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "NekoTab Debate Tabulation", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "description": "Modern debate tournament tabulation software for parliamentary formats (BP, Australs, Asian Parliamentary). Manage motions, draws, allocations, ballots, and live results.", "url": "{{ seo_base_url }}", "image": "{{ seo_base_url }}/static/logo-social.png", "keywords": "{{ seo_keywords }}", "creator": {"@type": "Organization", "name": "NekoTab", "url": "{{ seo_base_url }}"}}
+  </script>
 
 
   <!-- Performance: Preload critical resources -->

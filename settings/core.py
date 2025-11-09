@@ -149,6 +149,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sitemaps',
     'channels', # For Websockets / real-time connections (above whitenoise)
     'django.contrib.staticfiles',
     'django.contrib.humanize',
@@ -439,3 +440,10 @@ INCLUDE_REQUESTER_IN_OTP_EMAIL = os.environ.get('INCLUDE_REQUESTER_IN_OTP_EMAIL'
 
 # Optional Reply-To header for outbound emails
 REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'supports@nekotab.app')
+
+# ==============================================================================
+# SEO / Canonical
+# ==============================================================================
+
+# Public site base URL for canonical tags and sitemap domain hints
+SITE_BASE_URL = os.environ.get('SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
