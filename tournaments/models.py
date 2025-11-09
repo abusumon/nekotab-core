@@ -659,4 +659,12 @@ class TournamentCreationRequest(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return "[%s] %s (%s)" % (self.tournament, self.title, self.start_time)
+        return f"TournamentCreationRequest {self.id} for {self.user}" 
+
+    @property
+    def requested_name(self):
+        return self.form_data.get('name')
+
+    @property
+    def requested_slug(self):
+        return self.form_data.get('slug')

@@ -36,6 +36,21 @@ from .forms import (RoundWeightForm, ScheduleEventForm, SetCurrentRoundMultipleB
                     TournamentStartForm, TournamentOTPForm)
 from .mixins import PublicTournamentPageMixin, RoundMixin, TournamentMixin
 from .models import ScheduleEvent, Tournament
+class TournamentCreationRequestListView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, TemplateView):
+    template_name = 'tournament_creation_requests.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_superuser:
+            messages.error(request, _("You do not have permission to view OTP requests."))
+            return redirect('tabbycat-index')
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        from .models import TournamentCreationRequest
+        ctx = super().get_context_data(**kwargs)
+        requests_qs = TournamentCreationRequest.objects.all()
+        ctx['requests'] = requests_qs
+        return ctx
 from .utils import get_side_name
 
 User = get_user_model()
@@ -270,10 +285,16 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
     db_warning_severity = messages.ERROR
 
     def form_valid(self, form):
-        # Set the owner to the current user before saving
+        # Superusers bypass OTP and create the tournament immediately
+        if self.request.user.is_superuser:
+            form.instance.owner = self.request.user
+            tournament = form.save()
+            messages.success(self.request, _("Success! Your tournament has been created."))
+            return redirect(reverse_tournament('tournament-configure', tournament=tournament))
+
+        # Otherwise, require OTP for non-superusers
         from .models import TournamentCreationRequest
 
-        # Prepare OTP and persist a creation request
         otp = f"{random.randint(100000, 999999)}"
         req = TournamentCreationRequest.objects.create(
             user=self.request.user,
@@ -296,12 +317,10 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
                 fail_silently=True,
             )
         except Exception:
-            # If email backend isn't configured, just continue; OTP is stored in DB
             pass
 
         messages.info(self.request, _("We've generated an OTP. Please pay and contact the admin to receive your OTP, then enter it on the next screen."))
         return redirect('tournament-create-verify', request_id=req.id)
-        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         demo_datasets = [
