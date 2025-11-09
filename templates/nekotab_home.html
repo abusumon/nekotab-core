@@ -18,6 +18,11 @@
       <a class="em-logo" href="/">
         <span class="em-logo-mark" aria-hidden="true"></span>
         <span class="sr-only">EventMate.live</span>
+        <picture>
+            <source srcset="{% static 'images/logo.png' %}" media="(prefers-color-scheme: dark)">
+            <img src="{% static 'images/logo.png' %}" alt="NekoTab logo">
+        </picture>
+        <span class="sr-only">NekoTab</span>
       </a>
       <nav class="em-nav" aria-label="Primary">
   <a href="#features">Features</a>

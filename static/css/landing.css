@@ -35,6 +35,31 @@ img { max-width:100%; display:block; }
 .em-mobile-menu a { padding:12px 0; border-bottom:1px solid var(--em-border-gray); font-weight:600; color:var(--em-text-dark); text-decoration:none; }
 .em-mobile-menu a:last-child { border-bottom:none; }
 
+/* logo image sizing */
+.em-logo-img {
+  display: inline-block;
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* mobile */
+@media (max-width: 767px) {
+  .em-logo-img {
+    width: 110px;
+  }
+}
+
+/* when navbar gets the .scrolled class */
+.em-navbar.scrolled .em-logo-img {
+  width: 140px;
+  transition: width .2s ease;
+}
+
+/* footer variant (if you replace footer logo with same class) */
+.em-footer .em-logo-img {
+  width: 120px;
+}
 /* Buttons */
 .em-btn { display:inline-block; border-radius:12px; padding:14px 32px; font-size:16px; font-weight:600; text-decoration:none; cursor:pointer; transition:.3s; }
 .em-btn--primary { background:var(--em-gradient); color:#fff; box-shadow:0 4px 14px rgba(99,102,241,.3); }

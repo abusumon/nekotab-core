@@ -655,15 +655,9 @@
     <section id="tournaments" class="tournaments-section" aria-labelledby="tournaments-heading">
         <div class="tournaments-container">
             <h2 id="tournaments-heading" class="section-title">
-                {% if user.is_authenticated %}
-                    My Tournaments
-                {% else %}
-                    Active Tournaments
-                {% endif %}
+                {% if user.is_authenticated %}My Tournaments{% else %}Active Tournaments{% endif %}
             </h2>
-            {% if tournaments %}
-                <p class="section-subtitle">Explore and manage your ongoing debate tournaments.</p>
-            {% endif %}
+            {% if tournaments %}<p class="section-subtitle">Explore and manage your ongoing debate tournaments.</p>{% endif %}
             
             {% if tournaments %}
                 <div class="tournament-grid" role="list">
