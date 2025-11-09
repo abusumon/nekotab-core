@@ -292,7 +292,7 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
             messages.success(self.request, _("Success! Your tournament has been created."))
             return redirect(reverse_tournament('tournament-configure', tournament=tournament))
 
-        # Otherwise, require OTP for non-superusers
+    # Otherwise, require OTP for non-superusers
         from .models import TournamentCreationRequest
 
         otp = f"{random.randint(100000, 999999)}"
@@ -305,14 +305,16 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
         # Try to send the OTP to the admin email; fail silently if not configured
         try:
             send_mail(
-                subject="New Tournament OTP",
+                subject="[NekoTab] New Tournament OTP",
                 message=(
                     "A new tournament creation has been requested.\n\n"
                     f"User: {self.request.user.username} ({self.request.user.email})\n"
-                    f"OTP: {otp}\n\n"
-                    f"Form data: {form.cleaned_data}"
+                    f"OTP Code: {otp}\n"
+                    f"Tournament Name: {form.cleaned_data.get('name')}\n"
+                    f"Slug: {form.cleaned_data.get('slug')}\n\n"
+                    "You can also view this in the OTP Requests page."\
                 ),
-                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', None),
+                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'no-reply@nekotab.app'),
                 recipient_list=["abusumon1701@gmail.com"],
                 fail_silently=True,
             )
