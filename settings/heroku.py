@@ -107,8 +107,12 @@ CHANNEL_LAYERS = {
 # ==============================================================================
 
 if environ.get('EMAIL_HOST', ''):
-    SERVER_EMAIL = environ['DEFAULT_FROM_EMAIL']
-    DEFAULT_FROM_EMAIL = environ['DEFAULT_FROM_EMAIL']
+    # Prefer env-provided DEFAULT_FROM_EMAIL; fall back to a sensible default
+    _default_from = environ.get('DEFAULT_FROM_EMAIL', 'supports@nekotab.app')
+    DEFAULT_FROM_EMAIL = _default_from
+    SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
+    REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
+
     EMAIL_HOST = environ['EMAIL_HOST']
     EMAIL_HOST_USER = environ['EMAIL_HOST_USER']
     EMAIL_HOST_PASSWORD = environ['EMAIL_HOST_PASSWORD']
@@ -118,8 +122,10 @@ if environ.get('EMAIL_HOST', ''):
     EMAIL_TIMEOUT = int(environ.get('EMAIL_TIMEOUT', 20))
 
 elif environ.get('SENDGRID_API_KEY', ''):
-    SERVER_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'root@localhost')
-    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'notconfigured@tabbycatsite')
+    _default_from = environ.get('DEFAULT_FROM_EMAIL', 'supports@nekotab.app')
+    DEFAULT_FROM_EMAIL = _default_from
+    SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
+    REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
     EMAIL_HOST = 'smtp.sendgrid.net'
     EMAIL_HOST_USER = 'apikey'
     EMAIL_HOST_PASSWORD = environ['SENDGRID_API_KEY']
@@ -133,8 +139,10 @@ elif environ.get('SENDGRID_USERNAME', ''):
     # When removing, also remove utils.mixins.WarnAboutLegacySendgridConfigVarsMixin and
     # templates/errors/legacy_sendgrid_warning.html (and references thereto).
     USING_LEGACY_SENDGRID_CONFIG_VARS = True
-    SERVER_EMAIL = environ['SENDGRID_USERNAME']
-    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', environ['SENDGRID_USERNAME'])
+    _default_from = environ.get('DEFAULT_FROM_EMAIL', environ['SENDGRID_USERNAME'])
+    DEFAULT_FROM_EMAIL = _default_from
+    SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
+    REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
     EMAIL_HOST = 'smtp.sendgrid.net'
     EMAIL_HOST_USER = environ['SENDGRID_USERNAME']
     EMAIL_HOST_PASSWORD = environ['SENDGRID_PASSWORD']
@@ -145,7 +153,9 @@ elif environ.get('SENDGRID_USERNAME', ''):
 else:
     # Fallback: don't error, but log that no real email backend is configured.
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'notconfigured@tabbycatsite'
+    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'supports@nekotab.app')
+    SERVER_EMAIL = environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
+    REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
 
 # ==============================================================================
 # Subdomain routing (production defaults)

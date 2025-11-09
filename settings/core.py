@@ -424,8 +424,11 @@ RESERVED_SUBDOMAINS = os.environ.get(
 # Email (defaults; can be overridden in environment-specific settings)
 # ==============================================================================
 
-# Default from email for outbound messages
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'no-reply@nekotab.app')
+# Default from email for outbound messages; prefer a reply-capable address
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'supports@nekotab.app')
+
+# Server email for error emails; default to from email
+SERVER_EMAIL = os.environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
 
 # Comma-separated list of admin notification emails for operational alerts
 _admin_emails = os.environ.get('ADMIN_NOTIFICATION_EMAILS', '').strip()
@@ -433,3 +436,6 @@ ADMIN_NOTIFICATION_EMAILS = [e.strip() for e in _admin_emails.split(',') if e.st
 
 # Whether to include the requester (their account email) on OTP emails
 INCLUDE_REQUESTER_IN_OTP_EMAIL = os.environ.get('INCLUDE_REQUESTER_IN_OTP_EMAIL', 'false').lower() == 'true'
+
+# Optional Reply-To header for outbound emails
+REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'supports@nekotab.app')

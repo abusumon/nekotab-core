@@ -337,7 +337,8 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
                         "You can also view this in the OTP Requests page."
                     ),
                     from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'no-reply@nekotab.app'),
-                    recipient_list=recipient_list,
+                    recipient_list=recipient_list or [getattr(settings, 'DEFAULT_FROM_EMAIL', 'supports@nekotab.app')],
+                    reply_to=[getattr(settings, 'REPLY_TO_EMAIL', getattr(settings, 'DEFAULT_FROM_EMAIL', 'supports@nekotab.app'))],
                     fail_silently=False,
                 )
                 logger.info("OTP email sent for tournament '%s' to %s", form.cleaned_data.get('name'), ", ".join(recipient_list))
