@@ -25,6 +25,12 @@
   <a href="#formats">Formats</a>
   <a href="#faq">FAQ</a>
   <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create Tournament</a>
+  {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}">Logout</a>
+  {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'signup' %}" class="em-btn em-btn--secondary">Sign Up</a>
+  {% endif %}
         <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
           <span></span><span></span><span></span>
         </button>
@@ -36,6 +42,12 @@
   <a href="#formats">Formats</a>
   <a href="#faq">FAQ</a>
   <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Create Tournament</a>
+  {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}" class="em-btn em-btn--secondary em-btn--block">Logout</a>
+  {% else %}
+    <a href="{% url 'login' %}" class="em-btn em-btn--secondary em-btn--block">Login</a>
+    <a href="{% url 'signup' %}" class="em-btn em-btn--secondary em-btn--block">Sign Up</a>
+  {% endif %}
     </div>
   </header>
 
