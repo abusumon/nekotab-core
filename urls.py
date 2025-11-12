@@ -13,7 +13,7 @@ from django.views.generic import TemplateView
 import tournaments.views
 from importer.views import LoadDemoView
 from users.views import BlankSiteStartView
-from .sitemaps import StaticViewSitemap, TournamentSitemap
+from tabbycat.sitemaps import StaticViewSitemap, TournamentSitemap
 
 admin.autodiscover()
 
