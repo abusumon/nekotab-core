@@ -89,11 +89,9 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         # === TOURNAMENT STATS ===
         context['total_tournaments'] = Tournament.objects.count()
         context['active_tournaments'] = Tournament.objects.filter(active=True).count()
-        context['tournaments_today'] = Tournament.objects.filter(created__date=today).count()
-        context['tournaments_7d'] = Tournament.objects.filter(created__gte=last_7d).count()
         
-        # Recent tournaments
-        context['recent_tournaments'] = Tournament.objects.select_related('owner').order_by('-created')[:10]
+        # Recent tournaments (ordered by id desc since Tournament has no created timestamp)
+        context['recent_tournaments'] = Tournament.objects.select_related('owner').order_by('-id')[:10]
         
         # === DEBATE STATS ===
         total_rounds = Round.objects.count()
@@ -207,7 +205,7 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
     paginate_by = 50
     
     def get_queryset(self):
-        queryset = Tournament.objects.select_related('owner').order_by('-created')
+        queryset = Tournament.objects.select_related('owner').order_by('-id')
         
         # Search
         search = self.request.GET.get('search', '')
