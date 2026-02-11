@@ -1,5 +1,4 @@
 import logging
-import uuid
 from typing import Union
 
 from django.conf import settings
@@ -9,7 +8,6 @@ from django.db.models import Count, F, Prefetch, Q
 from django.urls import reverse
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
-from django.utils import timezone
 
 from draw.types import DebateSide
 from participants.models import Person
@@ -625,46 +623,3 @@ class ScheduleEvent(models.Model):
         verbose_name = _('schedule event')
         verbose_name_plural = _('schedule events')
         ordering = ['tournament', 'start_time']
-
-
-class TournamentCreationRequest(models.Model):
-    """Stores a pending tournament creation request gated by OTP verification."""
-
-    class Status(models.TextChoices):
-        PENDING = 'pending', _('Pending')
-        VERIFIED = 'verified', _('Verified')
-        COMPLETED = 'completed', _('Completed')
-        EXPIRED = 'expired', _('Expired')
-
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='tournament_creation_requests')
-    form_data = models.JSONField()
-    otp_code = models.CharField(max_length=8)
-    status = models.CharField(max_length=16, choices=Status.choices, default=Status.PENDING)
-    created_at = models.DateTimeField(default=timezone.now)
-    expires_at = models.DateTimeField()
-
-    def save(self, *args, **kwargs):
-        if not self.expires_at:
-            # Default expiry: 48 hours from creation
-            self.expires_at = timezone.now() + timezone.timedelta(hours=48)
-        super().save(*args, **kwargs)
-
-    def is_expired(self) -> bool:
-        return timezone.now() >= self.expires_at
-
-    class Meta:
-        verbose_name = _('tournament creation request')
-        verbose_name_plural = _('tournament creation requests')
-        ordering = ['-created_at']
-
-    def __str__(self):
-        return f"TournamentCreationRequest {self.id} for {self.user}" 
-
-    @property
-    def requested_name(self):
-        return self.form_data.get('name')
-
-    @property
-    def requested_slug(self):
-        return self.form_data.get('slug')

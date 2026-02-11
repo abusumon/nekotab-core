@@ -435,9 +435,6 @@ SERVER_EMAIL = os.environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
 _admin_emails = os.environ.get('ADMIN_NOTIFICATION_EMAILS', '').strip()
 ADMIN_NOTIFICATION_EMAILS = [e.strip() for e in _admin_emails.split(',') if e.strip()] if _admin_emails else []
 
-# Whether to include the requester (their account email) on OTP emails
-INCLUDE_REQUESTER_IN_OTP_EMAIL = os.environ.get('INCLUDE_REQUESTER_IN_OTP_EMAIL', 'false').lower() == 'true'
-
 # Optional Reply-To header for outbound emails
 REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'supports@nekotab.app')
 

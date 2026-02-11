@@ -107,18 +107,31 @@ class APIV1RootView(PublicAPIMixin, GenericAPIView):
     destroy=extend_schema(summary="Delete tournament", parameters=[tournament_parameter]),
 )
 class TournamentViewSet(PublicAPIMixin, APILogActionMixin, ModelViewSet):
-    # Don't use TournamentAPIMixin here, it's not filtering objects by tournament.
-    queryset = Tournament.objects.all().prefetch_related(
-        'breakcategory_set',
-        Prefetch('round_set',
-            queryset=Round.objects.filter(completed=False).annotate(Count('debate')).order_by('seq'),
-            to_attr='current_round_set'),
-    )
+    # Multi-tenancy: scope tournament list to user's owned/permitted tournaments.
     serializer_class = serializers.TournamentSerializer
     lookup_field = 'slug'
     lookup_url_kwarg = 'tournament_slug'
     action_log_type_created = ActionLogEntry.ActionType.TOURNAMENT_CREATE
     action_log_type_updated = ActionLogEntry.ActionType.TOURNAMENT_EDIT
+
+    def get_queryset(self):
+        base_qs = Tournament.objects.all().prefetch_related(
+            'breakcategory_set',
+            Prefetch('round_set',
+                queryset=Round.objects.filter(completed=False).annotate(Count('debate')).order_by('seq'),
+                to_attr='current_round_set'),
+        )
+        user = self.request.user
+        if not user.is_authenticated:
+            return base_qs.none()
+        if user.is_superuser:
+            return base_qs
+        # Non-superusers see only tournaments they own or have permissions for
+        from users.models import Permission as UserPermission
+        permitted_ids = UserPermission.objects.filter(
+            user=user,
+        ).values_list('tournament_id', flat=True).distinct()
+        return base_qs.filter(Q(owner=user) | Q(id__in=permitted_ids)).distinct()
 
 
 @extend_schema(tags=['tournaments'], parameters=[tournament_parameter])

@@ -4,48 +4,9 @@
 {% cache 600 footer tournament LANGUAGE_CODE %}
 <div class="row mt-3">
 
-  {# Conditional ad: only on NDF Nationals 2025 public index page #}
-  {% if tournament and tournament.slug == 'ndf-nationals-2025' %}
-    {% if request %}
-      {% tournamenturl 'tournament-public-index' as tpub %}
-      {% if request.path == tpub %}
-      <div class="col-12 mb-3">
-        <div class="card border-warning shadow-sm" style="max-width:960px;margin:0 auto;">
-          <div class="card-body p-3">
-            <p class="mb-1" style="font-size:0.95rem; font-weight:600;">
-              🚀 <span lang="bn">এখন আপনার নিজস্ব Tab (Tabbycat) মাত্র</span> <strong>৳২৫০০</strong> / USD $25 — <span lang="bn">bKash / Nagad এ পেমেন্ট করে দ্রুত সেটআপ করান।</span>
-            </p>
-            <p class="mb-2 small text-muted">
-              Build a professional debate tab platform for your club, circuit, or nationals. Fast deployment, training support, and customization available.
-            </p>
-            <p class="mb-2" style="font-weight:600;">
-              <strong>Want your own club‑name Tabbycat?</strong> Contact admin for details.
-              <span lang="bn">আপনার ক্লাবের নামে কাস্টম Tabbycat চান? বিস্তারিত জানতে অ্যাডমিনের সাথে যোগাযোগ করুন।</span>
-            </p>
-            <ul class="small mb-2" style="padding-left:1.1rem;">
-              <li><span lang="bn">বাংলা + English friendly interface & full automation</span></li>
-              <li>Payment: bKash / Nagad (BDT 2500) <span lang="bn">বা আন্তর্জাতিক</span> Payoneer (USD $25)</li>
-              <li>Email: <a href="mailto:abusumon1701@gmail.com">abusumon1701@gmail.com</a> / <a href="mailto:support@nekotab.app">support@nekotab.app</a></li>
-              <li><span lang="bn">Quick onboarding & premium support</span></li>
-            </ul>
-            <div class="d-flex flex-wrap gap-2">
-              <a href="mailto:support@nekotab.app" class="btn btn-sm btn-warning mr-2 mb-2">Email Support</a>
-              <a href="mailto:abusumon1701@gmail.com" class="btn btn-sm btn-outline-secondary mb-2">Contact Admin</a>
-            </div>
-            <p class="small mb-0 text-muted">
-              <span lang="bn">অফার সীমিত সময়ের জন্য। এখনই শুরু করুন!</span> Build your own tab today — <strong>scalable, secure, bilingual.</strong>
-            </p>
-          </div>
-        </div>
-      </div>
-      {% endif %}
-    {% endif %}
-  {% endif %}
-
   <div class="navbar navbar-light container-fluid small">
 
     <div class="row mt-3 mb-2">
-
       <div class="col-lg-6 col-md-5">
         <h6 class="d-inline-block">
           {% if tournament and tabbycat_codename %}

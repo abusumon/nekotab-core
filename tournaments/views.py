@@ -5,12 +5,12 @@ from collections import OrderedDict
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.db import models
 from django.db.models import Count, Q
 from django.shortcuts import redirect, resolve_url, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
-import random
 from django.utils.html import format_html_join
 from django.utils.timezone import get_current_timezone_name
 from django.utils.translation import gettext_lazy as _
@@ -33,24 +33,10 @@ from utils.views import ModelFormSetView, PostOnlyRedirectView, VueTableTemplate
 
 from .forms import (RoundWeightForm, ScheduleEventForm, SetCurrentRoundMultipleBreakCategoriesForm,
                     SetCurrentRoundSingleBreakCategoryForm, TournamentConfigureForm,
-                    TournamentStartForm, TournamentOTPForm)
+                    TournamentStartForm)
 from .mixins import PublicTournamentPageMixin, RoundMixin, TournamentMixin
 from .models import ScheduleEvent, Tournament
-class TournamentCreationRequestListView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, TemplateView):
-    template_name = 'tournament_creation_requests.html'
 
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_superuser:
-            messages.error(request, _("You do not have permission to view OTP requests."))
-            return redirect('tabbycat-index')
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        from .models import TournamentCreationRequest
-        ctx = super().get_context_data(**kwargs)
-        requests_qs = TournamentCreationRequest.objects.select_related('user').all()
-        ctx['requests'] = requests_qs
-        return ctx
 from .utils import get_side_name
 
 User = get_user_model()
@@ -70,12 +56,23 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
             return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        # Provide only the logged-in user's tournaments on the landing page
+        # Multi-tenancy: each user sees ONLY their own tournaments
         user = self.request.user
         if user.is_authenticated:
-            kwargs['my_tournaments_active'] = Tournament.objects.filter(owner=user, active=True)
-            kwargs['my_tournaments_inactive'] = Tournament.objects.filter(owner=user, active=False)
-            # For superusers, also surface unassigned tournaments so they can claim them
+            # Users with tournament-level permissions can also see those tournaments
+            from users.models import Permission as UserPermission
+            permitted_tournament_ids = UserPermission.objects.filter(
+                user=user,
+            ).values_list('tournament_id', flat=True).distinct()
+
+            owned_or_permitted = Tournament.objects.filter(
+                models.Q(owner=user) | models.Q(id__in=permitted_tournament_ids)
+            ).distinct()
+
+            kwargs['my_tournaments_active'] = owned_or_permitted.filter(active=True)
+            kwargs['my_tournaments_inactive'] = owned_or_permitted.filter(active=False)
+
+            # Superusers can also see unassigned tournaments
             if user.is_superuser:
                 kwargs['unassigned_active'] = Tournament.objects.filter(owner__isnull=True, active=True)
                 kwargs['unassigned_inactive'] = Tournament.objects.filter(owner__isnull=True, active=False)
@@ -274,10 +271,8 @@ class CompleteRoundView(RoundMixin, AdministratorMixin, LogActionMixin, PostOnly
 
 
 class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, CreateView):
-    """This view allows a logged-in administrator to create a new tournament.
-
-    Note: We'll open this up to paid users after payment integration.
-    """
+    """This view allows any logged-in user to create a new tournament.
+    The creator automatically becomes the sole owner."""
 
     model = Tournament
     form_class = TournamentStartForm
@@ -285,69 +280,30 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
     db_warning_severity = messages.ERROR
 
     def form_valid(self, form):
-        # Superusers bypass OTP and create the tournament immediately
-        if self.request.user.is_superuser:
-            form.instance.owner = self.request.user
-            tournament = form.save()
-            messages.success(self.request, _("Success! Your tournament has been created."))
-            return redirect(reverse_tournament('tournament-configure', tournament=tournament))
+        form.instance.owner = self.request.user
+        tournament = form.save()
+        messages.success(self.request, _("Success! Your tournament has been created."))
 
-    # Otherwise, require OTP for non-superusers
-        from .models import TournamentCreationRequest
-
-        otp = f"{random.randint(100000, 999999)}"
-        req = TournamentCreationRequest.objects.create(
-            user=self.request.user,
-            form_data=form.cleaned_data,
-            otp_code=otp,
-        )
-
-        # Try to send the OTP notification email to admins (and optionally requester)
+        # Send admin notification email (non-blocking)
         try:
-            # Build recipient list from settings/env
-            admin_recipients = list(filter(None, getattr(settings, 'ADMIN_NOTIFICATION_EMAILS', [])))
-            # Fallbacks if not explicitly set
-            if not admin_recipients:
-                fallback_admin = getattr(settings, 'TAB_DIRECTOR_EMAIL', None)
-                if fallback_admin:
-                    admin_recipients = [fallback_admin]
-
-            recipient_list = admin_recipients[:]
-
-            # Optionally include requester copy, controlled by env setting
-            include_requester = getattr(settings, 'INCLUDE_REQUESTER_IN_OTP_EMAIL', False)
-            if include_requester and self.request.user.email:
-                recipient_list.append(self.request.user.email)
-
-            # Deduplicate while preserving order
-            seen = set()
-            recipient_list = [r for r in recipient_list if not (r in seen or seen.add(r))]
-
-            if not recipient_list:
-                logger.warning("OTP email not sent: no recipients configured (ADMIN_NOTIFICATION_EMAILS/TAB_DIRECTOR_EMAIL)")
-            else:
-                send_mail(
-                    subject="[NekoTab] New Tournament OTP",
-                    message=(
-                        "A new tournament creation has been requested.\n\n"
-                        f"User: {self.request.user.username} ({self.request.user.email})\n"
-                        f"OTP Code: {otp}\n"
-                        f"Tournament Name: {form.cleaned_data.get('name')}\n"
-                        f"Slug: {form.cleaned_data.get('slug')}\n\n"
-                        "You can also view this in the OTP Requests page."
-                    ),
-                    from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'no-reply@nekotab.app'),
-                    recipient_list=recipient_list or [getattr(settings, 'DEFAULT_FROM_EMAIL', 'supports@nekotab.app')],
-                    reply_to=[getattr(settings, 'REPLY_TO_EMAIL', getattr(settings, 'DEFAULT_FROM_EMAIL', 'supports@nekotab.app'))],
-                    fail_silently=False,
-                )
-                logger.info("OTP email sent for tournament '%s' to %s", form.cleaned_data.get('name'), ", ".join(recipient_list))
+            send_mail(
+                subject="[NekoTab] New Tournament Created",
+                message=(
+                    "A new tournament has been created on NekoTab.\n\n"
+                    f"Created by: {self.request.user.username} ({self.request.user.email})\n"
+                    f"Tournament Name: {tournament.name}\n"
+                    f"Slug: {tournament.slug}\n"
+                    f"URL: {self.request.build_absolute_uri('/' + tournament.slug + '/')}\n"
+                ),
+                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'no-reply@nekotab.app'),
+                recipient_list=['abusumon1701@gmail.com'],
+                fail_silently=True,
+            )
+            logger.info("Tournament creation email sent for '%s'", tournament.name)
         except Exception as e:
-            # Do not block user flow on email errors; just log
-            logger.error("Failed to send OTP email: %s", e, exc_info=True)
+            logger.error("Failed to send tournament creation email: %s", e, exc_info=True)
 
-        messages.info(self.request, _("We've generated an OTP. Please pay and contact the admin to receive your OTP, then enter it on the next screen."))
-        return redirect('tournament-create-verify', request_id=req.id)
+        return redirect(reverse_tournament('tournament-configure', tournament=tournament))
 
     def get_context_data(self, **kwargs):
         demo_datasets = [
@@ -361,57 +317,7 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
         return super().get_context_data(**kwargs)
 
     def get_success_url(self):
-        # Not used because we redirect to verification page in form_valid
         return reverse_lazy('tournament-create')
-
-
-class TournamentOTPVerifyView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, FormView):
-    template_name = 'create_tournament_verify.html'
-    form_class = TournamentOTPForm
-
-    def dispatch(self, request, *args, **kwargs):
-        self.request_id = kwargs.get('request_id')
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['price_usd'] = 25
-        context['price_bdt'] = 2500
-        context['bkash_number'] = '01324202591'
-        context['nagad_number'] = '01324202591'
-        context['payoneer_info'] = 'Payoneer available on request'
-        return context
-
-    def form_valid(self, form):
-        from .models import TournamentCreationRequest
-        req = get_object_or_404(TournamentCreationRequest, id=self.request_id, user=self.request.user)
-
-        if req.is_expired():
-            req.status = TournamentCreationRequest.Status.EXPIRED
-            req.save(update_fields=['status'])
-            messages.error(self.request, _("Your OTP has expired. Please submit a new request."))
-            return redirect('tournament-create')
-
-        code = form.cleaned_data['otp']
-        if code != req.otp_code:
-            messages.error(self.request, _("That OTP is incorrect. Please try again."))
-            return super().form_invalid(form)
-
-        # Recreate and validate the original form data to construct the tournament
-        start_form = TournamentStartForm(data=req.form_data)
-        if not start_form.is_valid():
-            messages.error(self.request, _("Your original form data is no longer valid. Please submit again."))
-            return redirect('tournament-create')
-
-        # Set owner then save (creates rounds, etc.)
-        start_form.instance.owner = self.request.user
-        tournament = start_form.save()
-
-        req.status = TournamentCreationRequest.Status.COMPLETED
-        req.save(update_fields=['status'])
-
-        messages.success(self.request, _("Success! Your tournament has been created."))
-        return redirect(reverse_tournament('tournament-configure', tournament=tournament))
 
 
 class ConfigureTournamentView(AdministratorMixin, TournamentMixin, UpdateView):

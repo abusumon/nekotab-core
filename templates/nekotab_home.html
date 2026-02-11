@@ -7,7 +7,7 @@
   <title>NekoTab — Debate Tabulation Made Simple</title>
   <meta name="description" content="Run debate tournaments with confidence. Draws, allocations, ballots, standings, and breaks — all in one open‑source tool.">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo.png' %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo.png' %}">
@@ -16,138 +16,167 @@
 </head>
 <body class="em-body">
 
-  <!-- Navigation Bar -->
+  <!-- ==================== NAVBAR ==================== -->
   <header class="em-navbar" id="top">
     <div class="em-container em-nav-inner">
       <a class="em-logo" href="/">
         <picture>
           <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="160" height="40">
         </picture>
-        <span class="sr-only">NekoTab</span>
       </a>
       <nav class="em-nav" aria-label="Primary">
-  <a href="#features">Features</a>
-  <a href="#why">Why NekoTab</a>
-  <a href="#formats">Formats</a>
-  <a href="#faq">FAQ</a>
-  {% if user.is_superuser %}
-    <a href="{% url 'tournament-create-requests' %}">OTP Requests</a>
-  {% endif %}
-  <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create Tournament</a>
-  {% if user.is_authenticated %}
-    <form id="logout-form-desktop" action="{% url 'logout' %}" method="post" style="display:inline-block; margin-left:12px;">
-      {% csrf_token %}
-      <button type="submit" class="em-btn em-btn--secondary" aria-label="Logout">Logout</button>
-    </form>
-  {% else %}
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'signup' %}" class="em-btn em-btn--secondary">Sign Up</a>
-  {% endif %}
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#formats">Formats</a>
+        <a href="#faq">FAQ</a>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Create Tournament</a>
+        {% if user.is_authenticated %}
+          <form action="{% url 'logout' %}" method="post" style="display:inline-block; margin-left:8px;">
+            {% csrf_token %}
+            <button type="submit" class="em-btn em-btn--ghost" aria-label="Logout">Logout</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}" class="em-btn em-btn--ghost">Login</a>
+          <a href="{% url 'signup' %}" class="em-btn em-btn--secondary em-btn--sm">Sign Up</a>
+        {% endif %}
         <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
           <span></span><span></span><span></span>
         </button>
       </nav>
     </div>
+    <!-- Mobile Menu -->
     <div id="em-mobile-menu" class="em-mobile-menu" hidden>
-  <a href="#features">Features</a>
-  <a href="#why">Why NekoTab</a>
-  <a href="#formats">Formats</a>
-  <a href="#faq">FAQ</a>
-  {% if user.is_superuser %}
-    <a href="{% url 'tournament-create-requests' %}">OTP Requests</a>
-  {% endif %}
-  <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Create Tournament</a>
-  {% if user.is_authenticated %}
-    <form id="logout-form-mobile" action="{% url 'logout' %}" method="post" style="margin-top:12px;">
-      {% csrf_token %}
-      <button type="submit" class="em-btn em-btn--secondary em-btn--block" aria-label="Logout">Logout</button>
-    </form>
-  {% else %}
-    <a href="{% url 'login' %}" class="em-btn em-btn--secondary em-btn--block">Login</a>
-    <a href="{% url 'signup' %}" class="em-btn em-btn--secondary em-btn--block">Sign Up</a>
-  {% endif %}
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#formats">Formats</a>
+      <a href="#faq">FAQ</a>
+      <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Create Tournament</a>
+      {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post" style="margin-top:12px;">
+          {% csrf_token %}
+          <button type="submit" class="em-btn em-btn--ghost em-btn--block" aria-label="Logout">Logout</button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}" class="em-btn em-btn--ghost em-btn--block">Login</a>
+        <a href="{% url 'signup' %}" class="em-btn em-btn--secondary em-btn--block">Sign Up</a>
+      {% endif %}
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- ==================== HERO ==================== -->
   <section class="em-hero" aria-labelledby="hero-title">
     <div class="em-container em-hero-inner">
-      <div class="em-badge" aria-label="Open source">Open‑source debate tabulation</div>
-      <h1 id="hero-title" class="em-hero-title">Debate tabulation, automated</h1>
-      <p class="em-hero-sub">Run BP and other parliamentary formats with confidence. Draws, judge and venue allocations, ballots, standings, and breaks — built in.</p>
-      <div class="em-hero-ctas">
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create a Tournament</a>
-        <a href="https://tabbycat.readthedocs.io/" target="_blank" rel="noopener" class="em-btn em-btn--secondary">Read the Docs</a>
+      <div class="em-badge" aria-label="Open source">
+        <span class="em-badge-dot"></span>
+        Open‑source &middot; Free to self-host
       </div>
-      <div class="em-hero-mockups">
-        <div class="em-phone-mockup" role="img" aria-label="Mobile app mockup"></div>
-        <div class="em-tabs-row" aria-label="Interface previews">
-          <div class="em-tab-card"></div>
-          <div class="em-tab-card"></div>
-          <div class="em-tab-card"></div>
-          <div class="em-tab-card"></div>
+      <h1 id="hero-title" class="em-hero-title">
+        Debate tabulation,<br><span class="em-gradient-text">fully automated</span>
+      </h1>
+      <p class="em-hero-sub">Generate fair draws, allocate judges, enter ballots, compute standings, and manage breaks — all from one powerful platform built for BP, Australs, and WSDC formats.</p>
+      <div class="em-hero-ctas">
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--lg">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M12 5v14M5 12h14"/></svg>
+          Create a Tournament
+        </a>
+        <a href="https://tabbycat.readthedocs.io/" target="_blank" rel="noopener" class="em-btn em-btn--outline em-btn--lg">Read the Docs →</a>
+      </div>
+      <!-- Dashboard Preview Mockup -->
+      <div class="em-hero-visual">
+        <div class="em-browser-frame">
+          <div class="em-browser-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="em-browser-content">
+            <img src="https://placehold.co/900x500/EEF2FF/6366F1?text=NekoTab+Dashboard&font=inter" alt="NekoTab Dashboard Preview" loading="lazy">
+          </div>
         </div>
+      </div>
+    </div>
+    <!-- Decorative blobs -->
+    <div class="em-hero-blob em-hero-blob--1"></div>
+    <div class="em-hero-blob em-hero-blob--2"></div>
+  </section>
+
+  <!-- ==================== TRUSTED BY (social proof) ==================== -->
+  <section class="em-section em-trust" aria-label="Trusted by debate communities">
+    <div class="em-container">
+      <p class="em-trust-label">Trusted by debate communities worldwide</p>
+      <div class="em-trust-logos">
+        <div class="em-trust-item">🏛️ University Societies</div>
+        <div class="em-trust-item">🌍 National Circuits</div>
+        <div class="em-trust-item">🏆 International Tournaments</div>
+        <div class="em-trust-item">📚 School Leagues</div>
       </div>
     </div>
   </section>
 
+  <!-- ==================== MY TOURNAMENTS ==================== -->
   {% if user.is_authenticated %}
-  <!-- My Tournaments Section -->
   <section class="em-section em-my-tournaments" aria-labelledby="my-tournaments-title">
     <div class="em-container">
-      <h2 id="my-tournaments-title" class="em-section-title">My Tournaments</h2>
+      <div class="em-section-header">
+        <h2 id="my-tournaments-title" class="em-section-title em-section-title--left">My Tournaments</h2>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">+ New Tournament</a>
+      </div>
       {% if my_tournaments_active or my_tournaments_inactive %}
-        <div class="em-feature-grid">
+        <div class="em-tournament-grid">
           {% for t in my_tournaments_active %}
-            <article class="em-feature-card em-my-t-card" aria-labelledby="tourn-{{ t.slug }}-title">
-              <div class="em-feature-img" aria-hidden="true"></div>
-              <div class="em-feature-text">
-                <h3 id="tourn-{{ t.slug }}-title" class="em-feature-title">{{ t.short_name|default:t.name }}</h3>
-                <p class="em-feature-desc">Status: Active · <a href="/{{ t.slug }}/" class="em-link">Public</a> · <a href="/{{ t.slug }}/admin/" class="em-link">Admin</a></p>
+            <article class="em-tournament-card em-tournament-card--active">
+              <div class="em-tournament-status"><span class="em-status-dot em-status-dot--active"></span> Active</div>
+              <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
+              <div class="em-tournament-actions">
+                <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public Site</a>
+                <a href="/{{ t.slug }}/admin/" class="em-btn em-btn--primary em-btn--xs">Admin Panel</a>
               </div>
             </article>
           {% endfor %}
           {% for t in my_tournaments_inactive %}
-            <article class="em-feature-card em-my-t-card em-inactive" aria-labelledby="tourn-{{ t.slug }}-title">
-              <div class="em-feature-img" aria-hidden="true"></div>
-              <div class="em-feature-text">
-                <h3 id="tourn-{{ t.slug }}-title" class="em-feature-title">{{ t.short_name|default:t.name }}</h3>
-                <p class="em-feature-desc">Status: Inactive · <a href="/{{ t.slug }}/" class="em-link">Public</a> · <a href="/{{ t.slug }}/admin/" class="em-link">Admin</a></p>
+            <article class="em-tournament-card em-tournament-card--inactive">
+              <div class="em-tournament-status"><span class="em-status-dot em-status-dot--inactive"></span> Inactive</div>
+              <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
+              <div class="em-tournament-actions">
+                <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public Site</a>
+                <a href="/{{ t.slug }}/admin/" class="em-btn em-btn--ghost em-btn--xs">Admin Panel</a>
               </div>
             </article>
           {% endfor %}
         </div>
       {% else %}
-        <p>You haven't created any tournaments yet.</p>
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create your first tournament</a>
+        <div class="em-empty-state">
+          <div class="em-empty-icon">📋</div>
+          <p>You haven't created any tournaments yet.</p>
+          <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create your first tournament</a>
+        </div>
       {% endif %}
 
       {% if user.is_superuser %}
         {% if unassigned_active or unassigned_inactive %}
-          <h3 class="em-section-title" style="margin-top:2rem; font-size:1.5rem;">Unassigned tournaments (admin)</h3>
-          <div class="em-feature-grid">
+          <h3 class="em-subsection-title">Unassigned Tournaments (Admin)</h3>
+          <div class="em-tournament-grid">
             {% for t in unassigned_active %}
-              <article class="em-feature-card em-my-t-card" aria-labelledby="u-{{ t.slug }}-title">
-                <div class="em-feature-img" aria-hidden="true"></div>
-                <div class="em-feature-text">
-                  <h3 id="u-{{ t.slug }}-title" class="em-feature-title">{{ t.short_name|default:t.name }}</h3>
-                  <p class="em-feature-desc">Status: Active · <a href="/{{ t.slug }}/" class="em-link">Public</a> · <a href="/{{ t.slug }}/admin/" class="em-link">Admin</a></p>
-                  <form action="{% url 'tournament-claim' slug=t.slug %}" method="post" style="margin-top:8px;">
+              <article class="em-tournament-card em-tournament-card--unassigned">
+                <div class="em-tournament-status"><span class="em-status-dot em-status-dot--active"></span> Active · No Owner</div>
+                <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
+                <div class="em-tournament-actions">
+                  <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public</a>
+                  <a href="/{{ t.slug }}/admin/" class="em-btn em-btn--ghost em-btn--xs">Admin</a>
+                  <form action="{% url 'tournament-claim' slug=t.slug %}" method="post" style="display:inline;">
                     {% csrf_token %}
-                    <button type="submit" class="em-btn em-btn--secondary">Claim Ownership</button>
+                    <button type="submit" class="em-btn em-btn--secondary em-btn--xs">Claim</button>
                   </form>
                 </div>
               </article>
             {% endfor %}
             {% for t in unassigned_inactive %}
-              <article class="em-feature-card em-my-t-card em-inactive" aria-labelledby="u-{{ t.slug }}-title">
-                <div class="em-feature-img" aria-hidden="true"></div>
-                <div class="em-feature-text">
-                  <h3 id="u-{{ t.slug }}-title" class="em-feature-title">{{ t.short_name|default:t.name }}</h3>
-                  <p class="em-feature-desc">Status: Inactive · <a href="/{{ t.slug }}/" class="em-link">Public</a> · <a href="/{{ t.slug }}/admin/" class="em-link">Admin</a></p>
-                  <form action="{% url 'tournament-claim' slug=t.slug %}" method="post" style="margin-top:8px;">
+              <article class="em-tournament-card em-tournament-card--unassigned">
+                <div class="em-tournament-status"><span class="em-status-dot em-status-dot--inactive"></span> Inactive · No Owner</div>
+                <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
+                <div class="em-tournament-actions">
+                  <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public</a>
+                  <form action="{% url 'tournament-claim' slug=t.slug %}" method="post" style="display:inline;">
                     {% csrf_token %}
-                    <button type="submit" class="em-btn em-btn--secondary">Claim Ownership</button>
+                    <button type="submit" class="em-btn em-btn--secondary em-btn--xs">Claim</button>
                   </form>
                 </div>
               </article>
@@ -159,256 +188,215 @@
   </section>
   {% endif %}
 
-  <!-- (Section removed per request) -->
+  <!-- ==================== FEATURES ==================== -->
+  <section id="features" class="em-section em-features" aria-labelledby="features-title">
+    <div class="em-container">
+      <div class="em-section-eyebrow">Features</div>
+      <h2 id="features-title" class="em-section-title">Everything you need to run a tournament</h2>
+      <p class="em-section-subtitle">From registration to break announcements — NekoTab handles it all.</p>
+      <div class="em-feature-grid em-feature-grid--3col">
+        <article class="em-feature-card">
+          <div class="em-feature-icon">🎲</div>
+          <h3 class="em-feature-title">Draws &amp; Power-Pairing</h3>
+          <p class="em-feature-desc">Generate fair draws with side balancing, pull-ups, and constraints for BP and other formats.</p>
+        </article>
+        <article class="em-feature-card">
+          <div class="em-feature-icon">⚖️</div>
+          <h3 class="em-feature-title">Judge Allocation</h3>
+          <p class="em-feature-desc">Smart panel assignments considering conflicts, feedback scores, and institutional clashes.</p>
+        </article>
+        <article class="em-feature-card">
+          <div class="em-feature-icon">📝</div>
+          <h3 class="em-feature-title">Ballots &amp; Feedback</h3>
+          <p class="em-feature-desc">Digital ballot entry with validation, plus structured adjudicator feedback collection.</p>
+        </article>
+        <article class="em-feature-card">
+          <div class="em-feature-icon">📊</div>
+          <h3 class="em-feature-title">Standings &amp; Breaks</h3>
+          <p class="em-feature-desc">Real-time speaker and team standings with configurable tie-breaking and break categories.</p>
+        </article>
+        <article class="em-feature-card">
+          <div class="em-feature-icon">✅</div>
+          <h3 class="em-feature-title">Registration &amp; Check-ins</h3>
+          <p class="em-feature-desc">Manage teams, speakers, and judges. Track availability and attendance with QR codes.</p>
+        </article>
+        <article class="em-feature-card">
+          <div class="em-feature-icon">🌐</div>
+          <h3 class="em-feature-title">Public Site</h3>
+          <p class="em-feature-desc">Share draws, results, motions, and notifications. Private URLs for participants.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <!-- Your tabbing challenges, solved -->
+  <!-- ==================== COMPARISON ==================== -->
   <section class="em-section em-compare" aria-labelledby="compare-title">
     <div class="em-container">
       <h2 id="compare-title" class="em-section-title">Your tabbing challenges, solved</h2>
       <div class="em-compare-grid">
         <div class="em-card em-card--danger">
-          <div class="em-card-img" aria-hidden="true"></div>
-          <h3>Spreadsheets & stress</h3>
+          <div class="em-card-header">
+            <span class="em-card-emoji">😰</span>
+            <h3>Spreadsheets &amp; Stress</h3>
+          </div>
           <ul>
-            <li>Manual power‑pairing and rooming</li>
+            <li>Manual power-pairing and rooming</li>
             <li>Judge and venue conflicts missed</li>
-            <li>Slow result entry and errors</li>
+            <li>Slow result entry and human errors</li>
+            <li>No public draw release</li>
           </ul>
         </div>
         <div class="em-card em-card--indigo">
-          <div class="em-card-img" aria-hidden="true"></div>
-          <h3>NekoTab</h3>
+          <div class="em-card-header">
+            <span class="em-card-emoji">🚀</span>
+            <h3>NekoTab</h3>
+          </div>
           <ul>
             <li>Automated draws and smart allocations</li>
-            <li>Ballots, feedback, standings, and breaks</li>
-            <li>Public site, check‑ins, and notifications</li>
+            <li>Conflict detection built in</li>
+            <li>Digital ballots with validation</li>
+            <li>Public site, check-ins, and notifications</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Our Features -->
-  <section id="features" class="em-section em-features" aria-labelledby="features-title">
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section id="how-it-works" class="em-section em-steps-section">
     <div class="em-container">
-      <h2 id="features-title" class="em-section-title">Everything you need to run a debate tournament</h2>
-      <div class="em-feature-grid">
-        <article class="em-feature-card">
-          <div class="em-feature-img" aria-hidden="true"></div>
-          <div class="em-feature-text">
-            <h3 class="em-feature-title">Draws & power‑pairing</h3>
-            <p class="em-feature-desc">Generate fair draws with side balances, pull‑ups, and constraints for BP and other formats.</p>
-          </div>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-img" aria-hidden="true"></div>
-          <div class="em-feature-text">
-            <h3 class="em-feature-title">Judge & venue allocation</h3>
-            <p class="em-feature-desc">Assign adjudication panels and rooms with conflicts, feedback, and strength in mind.</p>
-          </div>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-img" aria-hidden="true"></div>
-          <div class="em-feature-text">
-            <h3 class="em-feature-title">Ballots & feedback</h3>
-            <p class="em-feature-desc">Enter and confirm ballots; collect adjudicator feedback to guide allocations.</p>
-          </div>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-img" aria-hidden="true"></div>
-          <div class="em-feature-text">
-            <h3 class="em-feature-title">Standings & breaks</h3>
-            <p class="em-feature-desc">Publish speaker/team standings and compute break categories with tie‑breakers.</p>
-          </div>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-img" aria-hidden="true"></div>
-          <div class="em-feature-text">
-            <h3 class="em-feature-title">Registration & check‑ins</h3>
-            <p class="em-feature-desc">Manage teams, speakers, and judges; track availability and attendance.</p>
-          </div>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-img" aria-hidden="true"></div>
-          <div class="em-feature-text">
-            <h3 class="em-feature-title">Public site & notifications</h3>
-            <p class="em-feature-desc">Share draws, results, and motion releases; notify participants with private links.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- TDs say it runs itself -->
-  <section class="em-section em-autopilot" aria-labelledby="auto-title">
-    <div class="em-container">
-      <h2 id="auto-title" class="em-section-title">Tournament directors say it runs itself</h2>
-      <div class="em-auto-grid">
-        <div class="em-box">
-          <div class="em-icon" aria-hidden="true"></div>
-          <h3>Fewer errors</h3>
-          <p>Conflict checks and validations reduce manual mistakes in every round.</p>
-        </div>
-        <div class="em-box">
-          <div class="em-icon" aria-hidden="true"></div>
-          <h3>Faster rounds</h3>
-          <p>Quick draw generation and ballot entry keep tournaments on schedule.</p>
-        </div>
-        <div class="em-box">
-          <div class="em-icon" aria-hidden="true"></div>
-          <h3>Happier judges</h3>
-          <p>Private URLs and clear allocations make it easy to find rooms and submit results.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why tournaments switch -->
-  <section id="why" class="em-section em-why">
-    <div class="em-container">
-      <h2 class="em-section-title">Why tournaments switch to NekoTab</h2>
-      <div class="em-three-cols">
-        <div class="em-three-item">
-          <div class="em-illus" aria-hidden="true"></div>
-          <div class="em-three-text">Accurate, transparent results</div>
-        </div>
-        <div class="em-three-item">
-          <div class="em-illus" aria-hidden="true"></div>
-          <div class="em-three-text">Automation for complex workflows</div>
-        </div>
-        <div class="em-three-item">
-          <div class="em-illus" aria-hidden="true"></div>
-          <div class="em-three-text">Open‑source and community‑driven</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- More than just a draw generator -->
-  <section class="em-section em-more">
-    <div class="em-container em-more-grid">
-      <div class="em-more-img" aria-hidden="true"></div>
-      <div>
-        <h2 class="em-section-title">Beyond the draw</h2>
-        <ul class="em-checklist">
-          <li>Check‑ins and availability management</li>
-          <li>Adjudicator feedback and panel strength</li>
-          <li>Public pages for draws, motions, and results</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Principles -->
-  <section class="em-section em-stats" aria-label="Principles">
-    <div class="em-container em-stats-inner">
-      <div class="em-stat"><div class="em-label">Open‑source</div></div>
-      <div class="em-stat"><div class="em-label">Reliable & transparent</div></div>
-      <div class="em-stat"><div class="em-label">Built for debate formats</div></div>
-    </div>
-  </section>
-
-  <!-- How to use -->
-  <section class="em-section em-steps">
-    <div class="em-container">
-      <h2 class="em-section-title">Getting started is simple</h2>
+      <div class="em-section-eyebrow">How It Works</div>
+      <h2 class="em-section-title">Getting started takes 3 minutes</h2>
       <div class="em-steps-grid">
-        {% for i in "123" %}
         <div class="em-step">
-          <div class="em-step-num">{{ forloop.counter }}</div>
-          <div class="em-step-img" aria-hidden="true"></div>
-          <h3>Create your first event</h3>
-          <p>Set up your event details, sessions, and invitations.</p>
+          <div class="em-step-num">1</div>
+          <h3>Create an Account</h3>
+          <p>Sign up with just a username and password. No verification required.</p>
         </div>
-        {% endfor %}
+        <div class="em-step-connector"></div>
+        <div class="em-step">
+          <div class="em-step-num">2</div>
+          <h3>Set Up Your Tournament</h3>
+          <p>Name it, pick a format preset, and import your teams, judges, and venues.</p>
+        </div>
+        <div class="em-step-connector"></div>
+        <div class="em-step">
+          <div class="em-step-num">3</div>
+          <h3>Run &amp; Publish</h3>
+          <p>Generate draws, enter ballots, and share results on a public site — all automated.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Formats we support -->
+  <!-- ==================== STATS STRIP ==================== -->
+  <section class="em-section em-stats" aria-label="Key principles">
+    <div class="em-container em-stats-inner">
+      <div class="em-stat">
+        <div class="em-stat-icon">🔓</div>
+        <div class="em-stat-text">Open‑source</div>
+      </div>
+      <div class="em-stat">
+        <div class="em-stat-icon">⚡</div>
+        <div class="em-stat-text">Lightning fast</div>
+      </div>
+      <div class="em-stat">
+        <div class="em-stat-icon">🛡️</div>
+        <div class="em-stat-text">Reliable &amp; secure</div>
+      </div>
+      <div class="em-stat">
+        <div class="em-stat-icon">🎯</div>
+        <div class="em-stat-text">Purpose-built for debate</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FORMATS ==================== -->
   <section class="em-section em-cats" id="formats">
     <div class="em-container">
-      <h2 class="em-section-title">Formats we support</h2>
+      <div class="em-section-eyebrow">Formats</div>
+      <h2 class="em-section-title">Built for every debate style</h2>
       <div class="em-cats-grid">
-        <div class="em-cat">
-          <div class="em-cat-img" aria-hidden="true"></div>
-          <div class="em-cat-title">British Parliamentary (BP)</div>
+        <div class="em-cat em-cat--bp">
+          <div class="em-cat-overlay"></div>
+          <div class="em-cat-content">
+            <div class="em-cat-icon">🇬🇧</div>
+            <div class="em-cat-title">British Parliamentary (BP)</div>
+            <p class="em-cat-desc">4-team format with opening and closing halves</p>
+          </div>
         </div>
-        <div class="em-cat">
-          <div class="em-cat-img" aria-hidden="true"></div>
-          <div class="em-cat-title">Australs / 3v3</div>
+        <div class="em-cat em-cat--australs">
+          <div class="em-cat-overlay"></div>
+          <div class="em-cat-content">
+            <div class="em-cat-icon">🇦🇺</div>
+            <div class="em-cat-title">Australs / 3v3</div>
+            <p class="em-cat-desc">Two-team format with 3 speakers per side</p>
+          </div>
         </div>
-        <div class="em-cat">
-          <div class="em-cat-img" aria-hidden="true"></div>
-          <div class="em-cat-title">WSDC‑style</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing (updated) -->
-  <section id="pricing" class="em-section em-pricing">
-    <div class="em-container">
-      <h2 class="em-section-title">Simple Pricing</h2>
-      <div class="em-pricing-card">
-        <div class="em-price-top">
-          <div class="em-plan">NekoTab License</div>
-          <div class="em-price"><span>BDT</span> 2500</div>
-          <div class="em-period">one‑time setup</div>
-        </div>
-        <ul class="em-included">
-          <li>Draws, allocations, ballots, standings</li>
-          <li>Check‑ins, registration, notifications</li>
-          <li>Public site and API</li>
-          <li>Pay via bKash / Nagad / Payoneer</li>
-        </ul>
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Get Started</a>
-        <div style="margin-top:16px; text-align:center; font-size:14px;">
-          To purchase: <strong>bKash</strong> / <strong>Nagad</strong> / <strong>Payoneer</strong><br>
-          <span style="opacity:.8">After payment, you receive deployment assistance.</span>
+        <div class="em-cat em-cat--wsdc">
+          <div class="em-cat-overlay"></div>
+          <div class="em-cat-content">
+            <div class="em-cat-icon">🌏</div>
+            <div class="em-cat-title">WSDC‑style</div>
+            <p class="em-cat-desc">World Schools format with reply speeches</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- (Testimonials removed per request) -->
+  <!-- ==================== FAQ ==================== -->
+  <section id="faq" class="em-section em-faq">
+    <div class="em-container em-faq-container">
+      <div class="em-section-eyebrow">FAQ</div>
+      <h2 class="em-section-title">Frequently asked questions</h2>
+      <div class="em-faq-list">
+        <details class="em-acc">
+          <summary>Which formats does NekoTab support?</summary>
+          <p>British Parliamentary (BP), Australs/3v3, WSDC‑style, and other parliamentary formats. You can configure speaker counts, sides, and scoring to match your needs.</p>
+        </details>
+        <details class="em-acc">
+          <summary>Can I import teams, judges, and venues?</summary>
+          <p>Yes — CSV imports are fully supported. You can also manage availability, conflicts, and institutional clashes from the admin panel.</p>
+        </details>
+        <details class="em-acc">
+          <summary>Is it free to use?</summary>
+          <p>NekoTab is open‑source and free to self-host. You can also use our hosted service for a simple one-time fee.</p>
+        </details>
+        <details class="em-acc">
+          <summary>How do I create a tournament?</summary>
+          <p>Just sign up, click "Create Tournament", fill in a name and number of rounds, and you're ready to go. No approval or verification needed.</p>
+        </details>
+        <details class="em-acc">
+          <summary>Can participants submit their own ballots?</summary>
+          <p>Yes — you can enable public ballot submission or use private URLs sent to participants for secure, individual access.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 
-  <!-- Final CTA -->
+  <!-- ==================== FINAL CTA ==================== -->
   <section class="em-section em-final">
     <div class="em-container">
-      <h2 class="em-final-title">Run tournaments with confidence</h2>
-      <p class="em-final-sub">Automate tabulation and keep your event on schedule.</p>
+      <h2 class="em-final-title">Ready to run your next tournament?</h2>
+      <p class="em-final-sub">Sign up for free and create your first event in under 3 minutes.</p>
       <div class="em-hero-ctas">
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--light">Create a Tournament</a>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--light em-btn--lg">
+          Create a Tournament
+        </a>
+        <a href="{% url 'signup' %}" class="em-btn em-btn--outline-light em-btn--lg">Sign Up Free</a>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="em-section em-faq">
-    <div class="em-container">
-      <h2 class="em-section-title">Frequently asked questions</h2>
-      <details class="em-acc">
-        <summary>Which formats does NekoTab support?</summary>
-        <p>British Parliamentary (BP) and other parliamentary styles including Australs/3v3 and WSDC‑style.</p>
-      </details>
-      <details class="em-acc">
-        <summary>Can I import teams, judges, and venues?</summary>
-        <p>Yes — CSV imports are supported, and you can manage availability and conflicts.</p>
-      </details>
-      <details class="em-acc">
-        <summary>Is it free?</summary>
-        <p>NekoTab is free and open‑source. You can self‑host or deploy to providers like Heroku.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="em-footer" role="contentinfo">
     <div class="em-container em-footer-grid">
       <div>
-        <div class="em-logo em-logo--footer" aria-hidden="true"></div>
-  <p class="em-foot-desc">NekoTab is open‑source debate tabulation software: draws, allocations, ballots, standings, and breaks.</p>
+        <a href="/" class="em-logo em-logo--footer">
+          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img">
+        </a>
+        <p class="em-foot-desc">Open-source debate tabulation: draws, allocations, ballots, standings, and breaks — all in one place.</p>
       </div>
       <div>
         <div class="em-foot-title">Product</div>
@@ -416,28 +404,33 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#formats">Formats</a></li>
           <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="em-foot-title">Company</div>
-        <ul class="em-foot-links">
-          <li><a href="https://tabbycat.readthedocs.io/" target="_blank" rel="noopener">Documentation</a></li>
-          <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="#top">Back to top</a></li>
+          <li><a href="/api">API</a></li>
         </ul>
       </div>
       <div>
         <div class="em-foot-title">Resources</div>
         <ul class="em-foot-links">
-          <li><a href="/create/">Create a tournament</a></li>
-          <li><a href="/style/">Style guide</a></li>
-          <li><a href="/api" >API</a></li>
+          <li><a href="https://tabbycat.readthedocs.io/" target="_blank" rel="noopener">Documentation</a></li>
+          <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="/create/">Create Tournament</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Account</div>
+        <ul class="em-foot-links">
+          {% if user.is_authenticated %}
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/create/">New Tournament</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          {% endif %}
         </ul>
       </div>
     </div>
     <div class="em-foot-bottom">
       <div class="em-container">
-        <div class="em-copy">© <span id="em-year"></span> NekoTab</div>
+        <div class="em-copy">© <span id="em-year"></span> NekoTab · Built with ❤️ for the debate community</div>
       </div>
     </div>
   </footer>

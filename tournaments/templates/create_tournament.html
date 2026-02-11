@@ -62,9 +62,9 @@
 
       {% include "components/form-main.html" %}
 
-      {% trans "Ask for OTP" as title %}
+      {% trans "Create Tournament" as title %}
       {% blocktrans trimmed asvar subtitle %}
-        Pay to unlock tournament creation. Price: USD $25 or BDT 2500. Pay via bKash/Nagad to 01324202591 (personal), or Payoneer on request. After payment, click “Ask for OTP” and contact the admin to receive your OTP, then enter it on the next screen.
+        Fill in the details above and click "Create Tournament" to get started. Your tournament will be ready instantly.
       {% endblocktrans %}
       {% url 'tabbycat-index' as suburl %}
       {% include "components/form-submit.html" %}
