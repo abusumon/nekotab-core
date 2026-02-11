@@ -1,5 +1,6 @@
 import logging
 import re
+import time
 from html import unescape
 from smtplib import SMTPException
 from threading import Thread
@@ -291,6 +292,10 @@ class SendCampaignView(SuperuserRequiredMixin, View):
                     logger.error(f"Failed to send to {recipient.email}: {e}")
                 
                 recipient.save()
+                
+                # Rate limiting: Resend free tier allows max 2 emails/second
+                # Wait 0.6 seconds between emails to stay under the limit
+                time.sleep(0.6)
             
             # Update campaign stats
             campaign.successful_sends = successful
@@ -322,3 +327,89 @@ class CampaignStatsAPIView(SuperuserRequiredMixin, View):
             'failed_sends': campaign.failed_sends,
             'success_rate': campaign.success_rate,
         })
+
+
+class RetryFailedEmailsView(SuperuserRequiredMixin, View):
+    """Retry sending emails to recipients that previously failed."""
+    
+    def post(self, request, pk):
+        campaign = get_object_or_404(EmailCampaign, pk=pk)
+        
+        # Get failed recipients
+        failed_recipients = campaign.recipients.filter(
+            status=CampaignRecipient.Status.FAILED
+        )
+        
+        failed_count = failed_recipients.count()
+        if failed_count == 0:
+            messages.info(request, _("No failed recipients to retry."))
+            return redirect('campaigns:detail', pk=pk)
+        
+        # Reset failed recipients to pending
+        failed_recipients.update(
+            status=CampaignRecipient.Status.PENDING,
+            error_message=''
+        )
+        
+        # Update campaign status
+        campaign.status = EmailCampaign.Status.SENDING
+        campaign.save()
+        
+        # Start sending in background thread
+        thread = Thread(target=self._retry_failed_emails, args=(campaign.pk,))
+        thread.daemon = True
+        thread.start()
+        
+        messages.success(request, _(f"Retrying {failed_count} failed emails..."))
+        return redirect('campaigns:detail', pk=pk)
+    
+    def _retry_failed_emails(self, campaign_pk):
+        """Background task to retry failed emails."""
+        try:
+            campaign = EmailCampaign.objects.get(pk=campaign_pk)
+            recipients = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING)
+            
+            plain_text = campaign.plain_text_content
+            if not plain_text:
+                plain_text = strip_tags(campaign.html_content)
+                plain_text = unescape(plain_text)
+                plain_text = re.sub(r'\n\s*\n', '\n\n', plain_text)
+            
+            new_successful = 0
+            new_failed = 0
+            
+            for recipient in recipients:
+                try:
+                    email = EmailMultiAlternatives(
+                        subject=campaign.subject,
+                        body=plain_text,
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        to=[recipient.email],
+                    )
+                    email.attach_alternative(campaign.html_content, "text/html")
+                    email.send(fail_silently=False)
+                    
+                    recipient.status = CampaignRecipient.Status.SENT
+                    recipient.sent_at = timezone.now()
+                    recipient.error_message = ''
+                    new_successful += 1
+                    
+                except Exception as e:
+                    recipient.status = CampaignRecipient.Status.FAILED
+                    recipient.error_message = str(e)
+                    new_failed += 1
+                    logger.error(f"Failed to send to {recipient.email}: {e}")
+                
+                recipient.save()
+                
+                # Rate limiting: Wait 0.6 seconds between emails
+                time.sleep(0.6)
+            
+            # Update campaign stats
+            campaign.successful_sends += new_successful
+            campaign.failed_sends = new_failed
+            campaign.status = EmailCampaign.Status.SENT
+            campaign.save()
+            
+        except Exception as e:
+            logger.error(f"Retry sending failed: {e}", exc_info=True)

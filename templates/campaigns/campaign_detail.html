@@ -155,6 +155,19 @@
         <span style="font-size: 13px; color: var(--nt-text-muted);">{{ campaign.total_recipients }} total</span>
       </div>
       
+      {% if campaign.failed_sends > 0 and campaign.status == 'sent' %}
+      <div class="alert alert-warning" style="margin-bottom: 16px;">
+        <strong>⚠️ {{ campaign.failed_sends }} emails failed to send</strong>
+        <p style="margin: 8px 0 0; font-size: 13px;">This was likely due to rate limiting. You can retry sending to failed recipients.</p>
+      </div>
+      <form action="{% url 'campaigns:retry_failed' campaign.pk %}" method="post" style="margin-bottom: 16px;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-warning" style="width: 100%;">
+          🔄 Retry {{ campaign.failed_sends }} Failed Emails
+        </button>
+      </form>
+      {% endif %}
+      
       <div class="table-container">
         <table>
           <thead>

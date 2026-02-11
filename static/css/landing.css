@@ -69,9 +69,10 @@ body.em-body { padding-top: 64px; }
 .em-burger span { width: 20px; height: 2px; background: var(--nt-text); border-radius: 2px; transition: 0.3s; }
 @media (max-width:899px) { .em-burger { display: inline-flex; } }
 
-/* Mobile */
-.em-mobile-menu { position: fixed; inset: 0; display: flex; flex-direction: column; padding: 80px 24px 24px; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); transform: translateY(-100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); z-index: 999; }
-.em-mobile-menu.open { transform: translateY(0); }
+/* Mobile Menu - hidden by default */
+.em-mobile-menu { position: fixed; inset: 0; display: none; flex-direction: column; padding: 80px 24px 24px; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); z-index: 999; }
+.em-mobile-menu[hidden] { display: none !important; }
+.em-mobile-menu.open { display: flex; }
 .em-mobile-menu a { padding: 16px 0; border-bottom: 1px solid var(--nt-border-light); font-weight: 600; color: var(--nt-text); text-decoration: none; font-size: 18px; }
 
 /* ======================== BUTTONS ======================== */
