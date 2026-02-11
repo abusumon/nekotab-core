@@ -168,6 +168,10 @@ def has_permission(user: 'settings.AUTH_USER_MODEL', permission: permission_type
     if user.is_superuser:
         return True
 
+    # Tournament owners have full access
+    if hasattr(tournament, 'owner_id') and tournament.owner_id == user.pk:
+        return True
+
     if isinstance(permission, bool):
         return permission
 

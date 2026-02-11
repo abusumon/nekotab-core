@@ -13,6 +13,9 @@ from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.utils.html import format_html_join
 from django.utils.timezone import get_current_timezone_name
+
+from users.models import UserPermission
+from users.permissions import Permission
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, FormView, UpdateView
@@ -282,6 +285,18 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
     def form_valid(self, form):
         form.instance.owner = self.request.user
         tournament = form.save()
+
+        # Grant the creator all permissions on this tournament
+        UserPermission.objects.bulk_create([
+            UserPermission(user=self.request.user, permission=perm, tournament=tournament)
+            for perm in Permission
+        ], ignore_conflicts=True)
+
+        # Warm the permission cache for the creator
+        if not hasattr(self.request.user, '_permissions'):
+            self.request.user._permissions = {}
+        self.request.user._permissions[tournament.slug] = set(Permission)
+
         messages.success(self.request, _("Success! Your tournament has been created."))
 
         # Send admin notification email (non-blocking)
@@ -325,6 +340,7 @@ class ConfigureTournamentView(AdministratorMixin, TournamentMixin, UpdateView):
     form_class = TournamentConfigureForm
     template_name = "configure_tournament.html"
     slug_url_kwarg = 'tournament_slug'
+    edit_permission = Permission.EDIT_SETTINGS
 
     def get_success_url(self):
         t = self.tournament

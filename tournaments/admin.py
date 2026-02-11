@@ -36,6 +36,3 @@ class ScheduleEventAdmin(ModelAdmin):
     list_filter = ('tournament', 'type')
     search_fields = ('title',)
     ordering = ('tournament', 'start_time')
-
-
-
