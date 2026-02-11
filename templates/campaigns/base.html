@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Email Campaigns{% endblock %} | NekoTab Admin</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{% static 'logo.png' %}">
+  <style>
+    :root {
+      --nt-bg: #f8fafc;
+      --nt-bg-card: #ffffff;
+      --nt-primary: #6366f1;
+      --nt-primary-hover: #4f46e5;
+      --nt-primary-light: #eef2ff;
+      --nt-success: #10b981;
+      --nt-success-light: #d1fae5;
+      --nt-warning: #f59e0b;
+      --nt-warning-light: #fef3c7;
+      --nt-danger: #ef4444;
+      --nt-danger-light: #fee2e2;
+      --nt-text: #0f172a;
+      --nt-text-secondary: #475569;
+      --nt-text-muted: #94a3b8;
+      --nt-border: #e2e8f0;
+      --nt-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --nt-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
+      --nt-radius: 12px;
+      --nt-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--nt-font); background: var(--nt-bg); color: var(--nt-text); line-height: 1.6; }
+    
+    /* Layout */
+    .layout { display: flex; min-height: 100vh; }
+    
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--nt-bg-card);
+      border-right: 1px solid var(--nt-border);
+      padding: 24px 0;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar-logo { padding: 0 20px 24px; border-bottom: 1px solid var(--nt-border); margin-bottom: 16px; }
+    .sidebar-logo img { height: 32px; width: auto; }
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      color: var(--nt-text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .sidebar-nav a:hover { background: var(--nt-primary-light); color: var(--nt-primary); }
+    .sidebar-nav a.active { background: var(--nt-primary-light); color: var(--nt-primary); border-right: 3px solid var(--nt-primary); }
+    .sidebar-nav a svg { width: 20px; height: 20px; opacity: 0.7; }
+    .sidebar-section { padding: 12px 20px 8px; font-size: 11px; font-weight: 700; color: var(--nt-text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .sidebar-footer { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--nt-border); }
+    .sidebar-user { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+    .sidebar-avatar { width: 32px; height: 32px; background: var(--nt-primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px; }
+    
+    /* Main Content */
+    .main { flex: 1; padding: 32px 40px; overflow-y: auto; }
+    .main-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+    .page-title { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+    .page-subtitle { color: var(--nt-text-secondary); font-size: 14px; margin-top: 4px; }
+    
+    /* Cards */
+    .card { background: var(--nt-bg-card); border: 1px solid var(--nt-border); border-radius: var(--nt-radius); padding: 24px; box-shadow: var(--nt-shadow); }
+    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--nt-border); }
+    .card-title { font-size: 16px; font-weight: 700; }
+    
+    /* Stats Grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 32px; }
+    .stat-card { background: var(--nt-bg-card); border: 1px solid var(--nt-border); border-radius: var(--nt-radius); padding: 20px; }
+    .stat-card.primary { background: var(--nt-primary); color: #fff; border: none; }
+    .stat-label { font-size: 12px; font-weight: 600; color: var(--nt-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .stat-card.primary .stat-label { color: rgba(255,255,255,0.7); }
+    .stat-value { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; }
+    .stat-card.primary .stat-value { color: #fff; }
+    
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 10px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; font-family: inherit; }
+    .btn-primary { background: var(--nt-primary); color: #fff; }
+    .btn-primary:hover { background: var(--nt-primary-hover); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(99,102,241,0.3); }
+    .btn-secondary { background: var(--nt-primary-light); color: var(--nt-primary); }
+    .btn-secondary:hover { background: #e0e7ff; }
+    .btn-success { background: var(--nt-success); color: #fff; }
+    .btn-success:hover { background: #059669; }
+    .btn-danger { background: var(--nt-danger); color: #fff; }
+    .btn-danger:hover { background: #dc2626; }
+    .btn-ghost { background: transparent; color: var(--nt-text-secondary); }
+    .btn-ghost:hover { background: var(--nt-bg); }
+    .btn-sm { padding: 8px 14px; font-size: 13px; }
+    .btn-lg { padding: 14px 28px; font-size: 15px; }
+    
+    /* Forms */
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--nt-text); }
+    .form-hint { font-size: 12px; color: var(--nt-text-muted); margin-top: 4px; }
+    .form-control { width: 100%; padding: 12px 16px; font-size: 14px; border: 1px solid var(--nt-border); border-radius: 10px; font-family: inherit; transition: all 0.2s; background: #fff; }
+    .form-control:focus { outline: none; border-color: var(--nt-primary); box-shadow: 0 0 0 3px var(--nt-primary-light); }
+    .form-control::placeholder { color: var(--nt-text-muted); }
+    textarea.form-control { min-height: 120px; resize: vertical; }
+    .form-check { display: flex; align-items: center; gap: 8px; }
+    .form-check-input { width: 18px; height: 18px; accent-color: var(--nt-primary); }
+    
+    /* Table */
+    .table-container { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--nt-border); }
+    th { font-size: 12px; font-weight: 600; color: var(--nt-text-muted); text-transform: uppercase; letter-spacing: 0.05em; background: var(--nt-bg); }
+    tr:hover td { background: var(--nt-bg); }
+    
+    /* Badges */
+    .badge { display: inline-flex; align-items: center; padding: 4px 10px; font-size: 11px; font-weight: 600; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .badge-draft { background: var(--nt-border); color: var(--nt-text-secondary); }
+    .badge-sending { background: var(--nt-warning-light); color: #b45309; }
+    .badge-sent { background: var(--nt-success-light); color: #047857; }
+    .badge-failed { background: var(--nt-danger-light); color: #b91c1c; }
+    
+    /* Empty State */
+    .empty-state { text-align: center; padding: 60px 20px; }
+    .empty-icon { font-size: 48px; margin-bottom: 16px; }
+    .empty-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .empty-text { color: var(--nt-text-secondary); margin-bottom: 24px; }
+    
+    /* Alert */
+    .alert { padding: 16px 20px; border-radius: 10px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px; }
+    .alert-success { background: var(--nt-success-light); color: #047857; }
+    .alert-warning { background: var(--nt-warning-light); color: #b45309; }
+    .alert-danger { background: var(--nt-danger-light); color: #b91c1c; }
+    .alert-info { background: var(--nt-primary-light); color: var(--nt-primary); }
+    
+    /* Preview Frame */
+    .preview-frame { width: 100%; height: 500px; border: 1px solid var(--nt-border); border-radius: var(--nt-radius); background: #fff; }
+    
+    /* Grid layouts */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+    
+    /* Messages */
+    .messages { margin-bottom: 24px; }
+    .message { padding: 14px 20px; border-radius: 10px; margin-bottom: 8px; font-size: 14px; font-weight: 500; }
+    .message.success { background: var(--nt-success-light); color: #047857; }
+    .message.error { background: var(--nt-danger-light); color: #b91c1c; }
+    .message.warning { background: var(--nt-warning-light); color: #b45309; }
+    .message.info { background: var(--nt-primary-light); color: var(--nt-primary); }
+    
+    /* Actions dropdown */
+    .actions { display: flex; gap: 8px; }
+    
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { padding: 20px; }
+      .main-header { flex-direction: column; align-items: flex-start; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+    
+    /* Progress bar */
+    .progress { height: 8px; background: var(--nt-border); border-radius: 4px; overflow: hidden; }
+    .progress-bar { height: 100%; background: var(--nt-success); transition: width 0.3s ease; }
+    
+    /* Tabs */
+    .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--nt-border); margin-bottom: 24px; }
+    .tab { padding: 12px 20px; font-size: 14px; font-weight: 600; color: var(--nt-text-secondary); border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
+    .tab:hover { color: var(--nt-text); }
+    .tab.active { color: var(--nt-primary); border-bottom-color: var(--nt-primary); }
+  </style>
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <img src="{% static 'logo.png' %}" alt="NekoTab">
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">Campaigns</div>
+        <a href="{% url 'campaigns:list' %}" class="{% if request.resolver_match.url_name == 'list' %}active{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          All Campaigns
+        </a>
+        <a href="{% url 'campaigns:create' %}" class="{% if request.resolver_match.url_name == 'create' %}active{% endif %}">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          New Campaign
+        </a>
+        
+        <div class="sidebar-section" style="margin-top: 24px;">Navigation</div>
+        <a href="{% url 'tabbycat-index' %}">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Back to Site
+        </a>
+        <a href="/database/">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Django Admin
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar">{{ request.user.username|slice:":2"|upper }}</div>
+          <div>
+            <div style="font-weight: 600;">{{ request.user.username }}</div>
+            <div style="font-size: 11px; color: var(--nt-text-muted);">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main">
+      {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "campaigns/base.html" %}
+
+{% block title %}Delete Campaign{% endblock %}
+
+{% block content %}
+<div class="main-header">
+  <h1 class="page-title">Delete Campaign</h1>
+</div>
+
+<div class="card" style="max-width: 500px;">
+  <div class="alert alert-danger">
+    <strong>⚠️ Warning:</strong> This action cannot be undone.
+  </div>
+  
+  <p style="margin-bottom: 24px;">
+    Are you sure you want to delete the campaign <strong>"{{ object.name }}"</strong>?
+  </p>
+  
+  <form method="post">
+    {% csrf_token %}
+    <div style="display: flex; gap: 12px;">
+      <a href="{% url 'campaigns:detail' object.pk %}" class="btn btn-ghost">Cancel</a>
+      <button type="submit" class="btn btn-danger">Yes, Delete Campaign</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

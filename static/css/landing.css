@@ -48,12 +48,14 @@ html.no-scroll { overflow: hidden; }
 
 /* ======================== NAVBAR ======================== */
 .em-navbar {
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid transparent; transition: border-color var(--nt-ease), box-shadow var(--nt-ease);
 }
 .em-navbar.scrolled { border-bottom-color: var(--nt-border); box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
 .em-nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 8px; }
+/* Spacer to prevent content from going under fixed navbar */
+body.em-body { padding-top: 64px; }
 .em-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
 .em-logo-img { width: 130px; height: auto; object-fit: contain; transition: width var(--nt-ease); }
 .em-navbar.scrolled .em-logo-img { width: 110px; }

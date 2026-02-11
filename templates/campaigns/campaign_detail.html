@@ -1,0 +1,208 @@
+{% extends "campaigns/base.html" %}
+{% load static %}
+
+{% block title %}{{ campaign.name }}{% endblock %}
+
+{% block content %}
+<div class="main-header">
+  <div>
+    <h1 class="page-title">{{ campaign.name }}</h1>
+    <p class="page-subtitle">{{ campaign.subject }}</p>
+  </div>
+  <div style="display: flex; gap: 12px;">
+    {% if campaign.is_editable %}
+    <a href="{% url 'campaigns:edit' campaign.pk %}" class="btn btn-secondary">✏️ Edit</a>
+    {% endif %}
+    <form action="{% url 'campaigns:duplicate' campaign.pk %}" method="post" style="display: inline;">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-ghost">📋 Duplicate</button>
+    </form>
+  </div>
+</div>
+
+<!-- Status Card -->
+<div class="stats-grid">
+  <div class="stat-card {% if campaign.status == 'sent' %}primary{% endif %}">
+    <div class="stat-label">Status</div>
+    <div class="stat-value" style="font-size: 24px;">
+      <span class="badge badge-{{ campaign.status }}" style="font-size: 14px; padding: 8px 16px;">
+        {{ campaign.get_status_display }}
+      </span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Total Recipients</div>
+    <div class="stat-value">{{ campaign.total_recipients }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Successful Sends</div>
+    <div class="stat-value" style="color: var(--nt-success);">{{ campaign.successful_sends }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Failed Sends</div>
+    <div class="stat-value" style="color: var(--nt-danger);">{{ campaign.failed_sends }}</div>
+  </div>
+</div>
+
+{% if campaign.status == 'sending' %}
+<div class="alert alert-info">
+  <strong>⏳ Campaign is being sent...</strong>
+  <span>Progress: {{ campaign.successful_sends|add:campaign.failed_sends }}/{{ campaign.total_recipients }}</span>
+</div>
+<div class="progress" style="margin-bottom: 24px;">
+  <div class="progress-bar" style="width: {% widthratio campaign.successful_sends|add:campaign.failed_sends campaign.total_recipients 100 %}%;"></div>
+</div>
+{% endif %}
+
+<div class="grid-2">
+  <!-- Left Column -->
+  <div>
+    <!-- Preview Card -->
+    <div class="card" style="margin-bottom: 24px;">
+      <div class="card-header">
+        <h2 class="card-title">📧 Email Preview</h2>
+        <a href="{% url 'campaigns:preview' campaign.pk %}" target="_blank" class="btn btn-ghost btn-sm">Open Full Preview ↗</a>
+      </div>
+      
+      <div style="border: 1px solid var(--nt-border); border-radius: var(--nt-radius); overflow: hidden;">
+        <div style="background: var(--nt-bg); padding: 12px 16px; border-bottom: 1px solid var(--nt-border); display: flex; gap: 8px;">
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #fca5a5;"></div>
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #fcd34d;"></div>
+          <div style="width: 10px; height: 10px; border-radius: 50%; background: #6ee7b7;"></div>
+        </div>
+        <iframe src="{% url 'campaigns:preview' campaign.pk %}" style="width: 100%; height: 400px; border: none;"></iframe>
+      </div>
+    </div>
+    
+    <!-- Campaign Info -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">📋 Campaign Details</h2>
+      </div>
+      
+      <table style="width: 100%;">
+        <tr>
+          <td style="padding: 12px 0; color: var(--nt-text-muted); width: 140px;">Created</td>
+          <td style="padding: 12px 0;">{{ campaign.created_at|date:"M d, Y H:i" }}</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 0; color: var(--nt-text-muted);">Created By</td>
+          <td style="padding: 12px 0;">{{ campaign.created_by.username|default:"—" }}</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 0; color: var(--nt-text-muted);">Sent At</td>
+          <td style="padding: 12px 0;">{{ campaign.sent_at|date:"M d, Y H:i"|default:"—" }}</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 0; color: var(--nt-text-muted);">Preview Text</td>
+          <td style="padding: 12px 0;">{{ campaign.preview_text|default:"—" }}</td>
+        </tr>
+        {% if campaign.status == 'sent' %}
+        <tr>
+          <td style="padding: 12px 0; color: var(--nt-text-muted);">Success Rate</td>
+          <td style="padding: 12px 0;">
+            <strong style="color: var(--nt-success);">{{ campaign.success_rate }}%</strong>
+          </td>
+        </tr>
+        {% endif %}
+      </table>
+    </div>
+  </div>
+  
+  <!-- Right Column -->
+  <div>
+    <!-- Send Actions -->
+    {% if campaign.is_editable %}
+    <div class="card" style="margin-bottom: 24px;">
+      <div class="card-header">
+        <h2 class="card-title">🚀 Send Campaign</h2>
+      </div>
+      
+      <!-- Test Email -->
+      <div style="margin-bottom: 24px;">
+        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">1. Send Test Email</h4>
+        <form action="{% url 'campaigns:send_test' campaign.pk %}" method="post" style="display: flex; gap: 8px;">
+          {% csrf_token %}
+          <input type="email" name="test_email" class="form-control" placeholder="your@email.com" required style="flex: 1;">
+          <button type="submit" class="btn btn-secondary">Send Test</button>
+        </form>
+        <p class="form-hint" style="margin-top: 8px;">Preview the email in your inbox before sending to everyone.</p>
+      </div>
+      
+      <hr style="border: none; border-top: 1px solid var(--nt-border); margin: 24px 0;">
+      
+      <!-- Launch Campaign -->
+      <div>
+        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">2. Launch Campaign</h4>
+        <div class="alert alert-warning" style="margin-bottom: 16px;">
+          ⚠️ This will send the email to <strong>{{ total_subscribers }} subscribers</strong>. This action cannot be undone.
+        </div>
+        <form action="{% url 'campaigns:send' campaign.pk %}" method="post" onsubmit="return confirm('Are you sure you want to send this campaign to {{ total_subscribers }} subscribers? This cannot be undone.');">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">
+            🚀 Send to {{ total_subscribers }} Subscribers
+          </button>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+    
+    <!-- Recipients -->
+    {% if recent_recipients %}
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">👥 Recent Recipients</h2>
+        <span style="font-size: 13px; color: var(--nt-text-muted);">{{ campaign.total_recipients }} total</span>
+      </div>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for recipient in recent_recipients %}
+            <tr>
+              <td style="font-size: 13px;">{{ recipient.email }}</td>
+              <td>
+                <span class="badge badge-{{ recipient.status }}">{{ recipient.get_status_display }}</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% endif %}
+    
+    <!-- Danger Zone -->
+    <div class="card" style="margin-top: 24px; border-color: var(--nt-danger-light);">
+      <div class="card-header">
+        <h2 class="card-title" style="color: var(--nt-danger);">⚠️ Danger Zone</h2>
+      </div>
+      <p style="font-size: 14px; color: var(--nt-text-secondary); margin-bottom: 16px;">
+        Once you delete a campaign, there is no going back. Please be certain.
+      </p>
+      <a href="{% url 'campaigns:delete' campaign.pk %}" class="btn btn-danger btn-sm">Delete Campaign</a>
+    </div>
+  </div>
+</div>
+
+{% if campaign.status == 'sending' %}
+<script>
+// Auto-refresh stats while sending
+setInterval(function() {
+  fetch('{% url "campaigns:stats" campaign.pk %}')
+    .then(response => response.json())
+    .then(data => {
+      if (data.status !== 'sending') {
+        location.reload();
+      }
+    });
+}, 5000);
+</script>
+{% endif %}
+{% endblock %}

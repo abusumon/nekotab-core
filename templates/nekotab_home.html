@@ -33,6 +33,9 @@
         <a href="#faq">FAQ</a>
         <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Create Tournament</a>
         {% if user.is_authenticated %}
+          {% if user.is_superuser %}
+          <a href="{% url 'campaigns:list' %}" class="em-btn em-btn--ghost" style="margin-left:4px;" title="Email Campaigns">📧</a>
+          {% endif %}
           <form action="{% url 'logout' %}" method="post" style="display:inline-block; margin-left:8px;">
             {% csrf_token %}
             <button type="submit" class="em-btn em-btn--ghost" aria-label="Logout">Logout</button>

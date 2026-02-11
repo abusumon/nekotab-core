@@ -1,0 +1,109 @@
+{% extends "campaigns/base.html" %}
+{% load static %}
+
+{% block title %}Email Campaigns{% endblock %}
+
+{% block content %}
+<div class="main-header">
+  <div>
+    <h1 class="page-title">📧 Email Campaigns</h1>
+    <p class="page-subtitle">Send promotional emails to your subscribers</p>
+  </div>
+  <a href="{% url 'campaigns:create' %}" class="btn btn-primary btn-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+    New Campaign
+  </a>
+</div>
+
+<!-- Stats -->
+<div class="stats-grid">
+  <div class="stat-card primary">
+    <div class="stat-label">Total Subscribers</div>
+    <div class="stat-value">{{ total_subscribers }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Total Campaigns</div>
+    <div class="stat-value">{{ total_campaigns }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Campaigns Sent</div>
+    <div class="stat-value">{{ sent_campaigns }}</div>
+  </div>
+</div>
+
+<!-- Campaigns List -->
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">All Campaigns</h2>
+  </div>
+  
+  {% if campaigns %}
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Campaign</th>
+          <th>Status</th>
+          <th>Recipients</th>
+          <th>Success Rate</th>
+          <th>Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for campaign in campaigns %}
+        <tr>
+          <td>
+            <a href="{% url 'campaigns:detail' campaign.pk %}" style="text-decoration: none; color: var(--nt-text);">
+              <strong>{{ campaign.name }}</strong>
+              <div style="font-size: 12px; color: var(--nt-text-muted);">{{ campaign.subject|truncatechars:50 }}</div>
+            </a>
+          </td>
+          <td>
+            <span class="badge badge-{{ campaign.status }}">{{ campaign.get_status_display }}</span>
+          </td>
+          <td>{{ campaign.total_recipients }}</td>
+          <td>
+            {% if campaign.status == 'sent' %}
+              {{ campaign.success_rate }}%
+            {% else %}
+              —
+            {% endif %}
+          </td>
+          <td style="font-size: 13px; color: var(--nt-text-muted);">{{ campaign.created_at|date:"M d, Y" }}</td>
+          <td>
+            <div class="actions">
+              <a href="{% url 'campaigns:detail' campaign.pk %}" class="btn btn-ghost btn-sm">View</a>
+              {% if campaign.is_editable %}
+              <a href="{% url 'campaigns:edit' campaign.pk %}" class="btn btn-secondary btn-sm">Edit</a>
+              {% endif %}
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+  {% if is_paginated %}
+  <div style="padding: 20px; display: flex; justify-content: center; gap: 8px;">
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-ghost btn-sm">← Previous</a>
+    {% endif %}
+    <span style="padding: 8px 16px; color: var(--nt-text-muted);">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-ghost btn-sm">Next →</a>
+    {% endif %}
+  </div>
+  {% endif %}
+  
+  {% else %}
+  <div class="empty-state">
+    <div class="empty-icon">📭</div>
+    <h3 class="empty-title">No campaigns yet</h3>
+    <p class="empty-text">Create your first email campaign to engage with your subscribers.</p>
+    <a href="{% url 'campaigns:create' %}" class="btn btn-primary">Create Your First Campaign</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

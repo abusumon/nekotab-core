@@ -123,6 +123,7 @@ TABBYCAT_APPS = (
     'api',
     'availability',
     'breakqual',
+    'campaigns',
     'checkins',
     'divisions', # obsolete
     'draw',

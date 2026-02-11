@@ -86,6 +86,10 @@ urlpatterns = [
     path('notifications/',
         include('notifications.urls')),
 
+    # Email Campaigns (superuser only)
+    path('campaigns/',
+        include('campaigns.urls')),
+
     # API
     path('api',
         include('api.urls')),
