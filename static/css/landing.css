@@ -267,6 +267,11 @@ html.no-scroll { overflow: hidden; }
 /* Accessibility */
 :focus-visible { outline: 2px solid var(--nt-primary); outline-offset: 2px; border-radius: 4px; }
 
+/* ======================== ADS ======================== */
+.em-ad-section { padding: 24px 0; background: var(--nt-bg-alt); }
+.em-ad-banner { display: block; margin: 0 auto; min-height: 90px; background: var(--nt-border-light); border-radius: var(--nt-radius); overflow: hidden; }
+@media (max-width:767px) { .em-ad-banner { min-height: 50px; } }
+
 /* ======================== RESPONSIVE ======================== */
 @media (max-width:767px) {
   .em-nav a:not(.em-btn) { display: none; }
