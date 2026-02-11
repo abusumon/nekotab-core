@@ -3,7 +3,7 @@ from datetime import timedelta
 from collections import Counter
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Count, Q, Sum
 from django.db.models.functions import TruncDate, TruncHour
 from django.http import JsonResponse
@@ -18,14 +18,13 @@ from .models import PageView, DailyStats, ActiveSession
 User = get_user_model()
 
 
-class SuperuserRequiredMixin(UserPassesTestMixin):
+class SuperuserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     """Only superusers can access the dashboard."""
+    login_url = '/accounts/login/'
+    raise_exception = False
     
     def test_func(self):
-        return self.request.user.is_authenticated and self.request.user.is_superuser
-    
-    def handle_no_permission(self):
-        return redirect('login')
+        return self.request.user.is_superuser
 
 
 class DashboardView(SuperuserRequiredMixin, TemplateView):
