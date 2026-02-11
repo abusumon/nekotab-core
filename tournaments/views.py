@@ -63,7 +63,7 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
         user = self.request.user
         if user.is_authenticated:
             # Users with tournament-level permissions can also see those tournaments
-            from users.models import Permission as UserPermission
+            from users.models import UserPermission
             permitted_tournament_ids = UserPermission.objects.filter(
                 user=user,
             ).values_list('tournament_id', flat=True).distinct()
