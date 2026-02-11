@@ -13,7 +13,7 @@ from django.views.generic import TemplateView
 import tournaments.views
 from importer.views import LoadDemoView
 from users.views import BlankSiteStartView
-from tabbycat.sitemaps import StaticViewSitemap, TournamentSitemap
+from sitemaps import StaticViewSitemap, TournamentSitemap
 
 admin.autodiscover()
 
@@ -89,6 +89,10 @@ urlpatterns = [
     # Email Campaigns (superuser only)
     path('campaigns/',
         include('campaigns.urls')),
+
+    # Admin Analytics Dashboard (superuser only)
+    path('analytics/',
+        include('analytics.urls')),
 
     # API
     path('api',

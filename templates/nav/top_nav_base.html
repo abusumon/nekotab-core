@@ -102,6 +102,18 @@
     </ul>
 
     <ul class="navbar-nav navbar-my-lg-0">
+      {% if user.is_superuser %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'analytics:dashboard' %}" title="{% trans 'Admin Dashboard' %}">
+          📊
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'campaigns:campaign_list' %}" title="{% trans 'Email Campaigns' %}">
+          📧
+        </a>
+      </li>
+      {% endif %}
       <li class="nav-item">
         {% if user.is_authenticated %}
           <form id="logout-form" action="{% url 'logout' %}" method="post">

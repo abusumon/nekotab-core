@@ -114,12 +114,15 @@ MIDDLEWARE = [
     # Rewrite subdomain requests to slug-based paths (feature gated)
     'utils.middleware.SubdomainTournamentMiddleware',
     'utils.middleware.DebateMiddleware',
+    # Analytics tracking middleware
+    'analytics.middleware.AnalyticsMiddleware',
 ]
 
 TABBYCAT_APPS = (
     'actionlog',
     'adjallocation',
     'adjfeedback',
+    'analytics',
     'api',
     'availability',
     'breakqual',
