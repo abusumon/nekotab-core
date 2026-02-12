@@ -101,8 +101,9 @@ class SubdomainTournamentMiddleware(object):
 
                     # Prefix the path if valid and not already prefixed
                     if exists and not request.path_info.startswith(f'/{label}/'):
-                        # Avoid interfering with static/media/admin/api
-                        bad_prefixes = ('/static/', '/media/', '/admin/', '/database/', '/api')
+                        # Avoid interfering with static/media/admin/api/analytics/campaigns/accounts
+                        bad_prefixes = ('/static/', '/media/', '/admin/', '/database/', '/api',
+                                        '/analytics/', '/accounts/', '/campaigns/', '/notifications/')
                         if not request.path_info.startswith(bad_prefixes):
                             new_path = f'/{label}{request.path_info}'
                             request.path_info = new_path

@@ -22,9 +22,15 @@ class SuperuserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     """Only superusers can access the dashboard."""
     login_url = '/accounts/login/'
     raise_exception = False
-    
+
     def test_func(self):
-        return self.request.user.is_superuser
+        return self.request.user.is_authenticated and self.request.user.is_superuser
+
+    def handle_no_permission(self):
+        if self.request.user.is_authenticated:
+            # Authenticated but not superuser — redirect to home instead of 403
+            return redirect('/')
+        return super().handle_no_permission()
 
 
 class DashboardView(SuperuserRequiredMixin, TemplateView):
@@ -128,7 +134,9 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         ).values('device_type').annotate(
             count=Count('id')
         ).order_by('-count')
-        context['device_stats'] = {d['device_type']: d['count'] for d in devices}
+        device_stats = {d['device_type']: d['count'] for d in devices}
+        context['device_stats'] = device_stats
+        context['device_total'] = sum(device_stats.values()) or 1  # avoid division by zero
         
         # === BROWSER BREAKDOWN ===
         browsers = PageView.objects.filter(

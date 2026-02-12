@@ -717,14 +717,13 @@
                     <h3>📱 Device Breakdown</h3>
                 </div>
                 <div class="card-body">
-                    {% with total=device_stats.Desktop|default:0|add:device_stats.Mobile|default:0|add:device_stats.Tablet|default:0|add:device_stats.Unknown|default:0 %}
                     <div style="margin-bottom: 20px;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                             <span>Desktop</span>
                             <span style="color: var(--text-secondary);">{{ device_stats.Desktop|default:0 }}</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill purple" style="width: {% widthratio device_stats.Desktop|default:0 total|default:1 100 %}%;"></div>
+                            <div class="progress-fill purple" style="width: {% widthratio device_stats.Desktop|default:0 device_total 100 %}%;"></div>
                         </div>
                     </div>
                     
@@ -734,7 +733,7 @@
                             <span style="color: var(--text-secondary);">{{ device_stats.Mobile|default:0 }}</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill blue" style="width: {% widthratio device_stats.Mobile|default:0 total|default:1 100 %}%;"></div>
+                            <div class="progress-fill blue" style="width: {% widthratio device_stats.Mobile|default:0 device_total 100 %}%;"></div>
                         </div>
                     </div>
                     
@@ -744,10 +743,9 @@
                             <span style="color: var(--text-secondary);">{{ device_stats.Tablet|default:0 }}</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-fill green" style="width: {% widthratio device_stats.Tablet|default:0 total|default:1 100 %}%;"></div>
+                            <div class="progress-fill green" style="width: {% widthratio device_stats.Tablet|default:0 device_total 100 %}%;"></div>
                         </div>
                     </div>
-                    {% endwith %}
                     
                     <!-- Browser Stats -->
                     <h4 style="font-size: 14px; margin: 24px 0 16px; color: var(--text-secondary);">Top Browsers</h4>
@@ -940,13 +938,23 @@
                     // Update visitors list
                     const container = document.getElementById('live-visitors-list');
                     if (data.visitors.length > 0) {
-                        container.innerHTML = data.visitors.map(v => `
-                            <div class="visitor-item">
-                                <div class="visitor-dot"></div>
-                                <div class="visitor-path">${v.path}</div>
-                                <div class="visitor-location">${v.country || ''}</div>
-                            </div>
-                        `).join('');
+                        container.innerHTML = '';
+                        data.visitors.forEach(v => {
+                            const item = document.createElement('div');
+                            item.className = 'visitor-item';
+                            const dot = document.createElement('div');
+                            dot.className = 'visitor-dot';
+                            const pathEl = document.createElement('div');
+                            pathEl.className = 'visitor-path';
+                            pathEl.textContent = v.path;
+                            const locEl = document.createElement('div');
+                            locEl.className = 'visitor-location';
+                            locEl.textContent = v.country || '';
+                            item.appendChild(dot);
+                            item.appendChild(pathEl);
+                            item.appendChild(locEl);
+                            container.appendChild(item);
+                        });
                     } else {
                         container.innerHTML = `
                             <div class="visitor-item">
