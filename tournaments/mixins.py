@@ -98,11 +98,14 @@ class TournamentMixin(TabbycatPageTitlesMixin, TournamentFromUrlMixin):
         t = self.tournament
 
         if not getattr(settings, 'DISABLE_SENTRY', False):
-            from sentry_sdk import set_context
-            set_context("Tabbycat debug info", {
-                "Tab director email": getattr(settings, 'TAB_DIRECTOR_EMAIL', "not provided"),
-                "Tournament preferences": self.tournament.preferences.all(),
-            })
+            try:
+                from sentry_sdk import set_context
+                set_context("Tabbycat debug info", {
+                    "Tab director email": getattr(settings, 'TAB_DIRECTOR_EMAIL', "not provided"),
+                    "Tournament": str(self.tournament),
+                })
+            except Exception:
+                pass
 
         # Lack of current_round caused by creating a tournament without rounds
         if t.current_round is None:
