@@ -213,7 +213,11 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
     paginate_by = 50
     
     def get_queryset(self):
-        queryset = Tournament.objects.select_related('owner').order_by('-id')
+        queryset = Tournament.objects.select_related('owner').annotate(
+            num_rounds=Count('round'),
+            num_completed_rounds=Count('round', filter=Q(round__completed=True)),
+            num_debates=Count('round__debate', distinct=True),
+        ).order_by('-id')
         
         # Search
         search = self.request.GET.get('search', '')
@@ -230,6 +234,14 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
             queryset = queryset.filter(active=True)
         elif status == 'inactive':
             queryset = queryset.filter(active=False)
+        elif status == 'live':
+            # "Live" = active tournament with at least one round that has
+            # draw_status == 'R' (released) and is not completed
+            queryset = queryset.filter(
+                active=True,
+                round__draw_status=Round.Status.RELEASED,
+                round__completed=False,
+            ).distinct()
         
         return queryset
     
@@ -239,6 +251,12 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
         context['status'] = self.request.GET.get('status', '')
         context['total_tournaments'] = Tournament.objects.count()
         context['active_tournaments'] = Tournament.objects.filter(active=True).count()
+        # Live tournaments: active with at least one unreleased/in-progress round
+        context['live_tournaments'] = Tournament.objects.filter(
+            active=True,
+            round__draw_status=Round.Status.RELEASED,
+            round__completed=False,
+        ).distinct().count()
         return context
 
 

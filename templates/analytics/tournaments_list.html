@@ -331,7 +331,15 @@
         
         @media (max-width: 768px) {
             .sidebar { transform: translateX(-100%); }
-            .main-content { margin-left: 0; }
+            .main-content { margin-left: 0; padding: 16px; }
+            .header { flex-direction: column; align-items: flex-start; }
+            .header h2 { font-size: 22px; }
+            .filters { flex-direction: column; }
+            .search-box { min-width: unset; }
+            table { font-size: 13px; }
+            th, td { padding: 10px 8px; }
+            .avatar { width: 30px; height: 30px; font-size: 13px; }
+            .tournament-name { font-size: 13px; }
         }
     </style>
 </head>
@@ -367,7 +375,7 @@
         
         <nav class="nav-section">
             <div class="nav-label">Manage</div>
-            <a href="{% url 'campaigns:campaign_list' %}" class="nav-link">
+            <a href="{% url 'campaigns:list' %}" class="nav-link">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
@@ -402,6 +410,10 @@
                     <div class="header-stat-value">{{ active_tournaments }}</div>
                     <div class="header-stat-label">Active</div>
                 </div>
+                <div class="header-stat">
+                    <div class="header-stat-value" style="color: var(--success);">{{ live_tournaments }}</div>
+                    <div class="header-stat-label">Live Now</div>
+                </div>
             </div>
         </div>
 
@@ -416,6 +428,7 @@
                 <option value="">All Status</option>
                 <option value="active" {% if status == 'active' %}selected{% endif %}>Active</option>
                 <option value="inactive" {% if status == 'inactive' %}selected{% endif %}>Inactive</option>
+                <option value="live" {% if status == 'live' %}selected{% endif %}>🔴 Live Now</option>
             </select>
             <button type="submit" class="btn btn-primary">Filter</button>
         </form>
@@ -427,6 +440,8 @@
                         <th>Tournament</th>
                         <th>Created By</th>
                         <th>Created</th>
+                        <th>Rounds</th>
+                        <th>Debates</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -454,7 +469,18 @@
                             {% endif %}
                         </td>
                         <td style="color: var(--text-secondary);">
+                            {% if tournament.created_at %}
+                            {{ tournament.created_at|date:"M d, Y" }}<br>
+                            <small>{{ tournament.created_at|timesince }} ago</small>
+                            {% else %}
                             —
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span style="color: var(--text-primary);">{{ tournament.num_completed_rounds }}/{{ tournament.num_rounds }}</span>
+                        </td>
+                        <td>
+                            <span style="color: var(--text-secondary);">{{ tournament.num_debates }}</span>
                         </td>
                         <td>
                             {% if tournament.active %}
@@ -469,7 +495,7 @@
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="5">
+                        <td colspan="7">
                             <div class="empty-state">
                                 <div class="empty-state-icon">🏆</div>
                                 <p>No tournaments found</p>

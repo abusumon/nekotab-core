@@ -14,6 +14,8 @@ class AnalyticsMiddleware:
         r'^/favicon',
         r'^/__debug__/',
         r'^/admin/jsi18n/',
+        r'^/analytics/',
+        r'^/database/',
         r'\.ico$',
         r'\.js$',
         r'\.css$',
@@ -58,11 +60,11 @@ class AnalyticsMiddleware:
         
         # Device type
         if 'mobile' in ua or 'android' in ua and 'mobile' in ua:
-            device = 'mobile'
+            device = 'Mobile'
         elif 'tablet' in ua or 'ipad' in ua:
-            device = 'tablet'
+            device = 'Tablet'
         else:
-            device = 'desktop'
+            device = 'Desktop'
         
         # Browser
         if 'firefox' in ua:

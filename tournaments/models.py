@@ -50,6 +50,9 @@ class Tournament(models.Model):
         related_name='owned_tournaments',
         verbose_name=_("owner"),
         help_text=_("The user who created and owns this tournament (for payment/billing purposes)"))
+    created_at = models.DateTimeField(auto_now_add=True, null=True,
+        verbose_name=_("created at"),
+        help_text=_("When this tournament was created"))
 
     class Meta:
         verbose_name = _('tournament')
