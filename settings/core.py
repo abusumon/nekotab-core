@@ -429,8 +429,8 @@ RESERVED_SUBDOMAINS = os.environ.get(
 # Email (defaults; can be overridden in environment-specific settings)
 # ==============================================================================
 
-# Default from email for outbound messages; prefer a reply-capable address
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'supports@nekotab.app')
+# Default from email for outbound messages; include display name for branding
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'NekoTab <noreply@nekotab.app>')
 
 # Server email for error emails; default to from email
 SERVER_EMAIL = os.environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
