@@ -310,7 +310,7 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
                     f"Slug: {tournament.slug}\n"
                     f"URL: {self.request.build_absolute_uri('/' + tournament.slug + '/')}\n"
                 ),
-                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'NekoTab <noreply@nekotab.app>'),
+                from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=['abusumon1701@gmail.com'],
                 fail_silently=True,
             )

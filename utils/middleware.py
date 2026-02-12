@@ -45,13 +45,40 @@ class DebateMiddleware(object):
         return None
 
 
+def get_subdomain_url(tournament_slug, path='/', scheme='https'):
+    """Build a full subdomain URL for a tournament.
+
+    Args:
+        tournament_slug: The tournament's slug (e.g. 'ndf-nationals-2025')
+        path: The path portion (e.g. '/motions/')
+        scheme: URL scheme, defaults to 'https'
+
+    Returns:
+        Full URL like 'https://ndf-nationals-2025.nekotab.app/motions/'
+        or None if subdomain routing is disabled.
+    """
+    if not getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False):
+        return None
+    base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
+    if not base_domain:
+        return None
+    if not path.startswith('/'):
+        path = '/' + path
+    return f"{scheme}://{tournament_slug}.{base_domain}{path}"
+
+
 class SubdomainTournamentMiddleware(object):
     """
     Allows accessing tournaments using subdomains, e.g.
-    https://ndf-nationals-2025.example.com/teams/ will be internally
-    rewritten to https://example.com/ndf-nationals-2025/teams/
+    https://ndf-nationals-2025.nekotab.app/motions/ will be internally
+    rewritten so that Django sees the path as /ndf-nationals-2025/motions/
 
-    This is a transparent path prefixer and does not change URL reversing.
+    When a subdomain is detected, the middleware:
+    1. Prefixes request.path_info with /<slug>/ so Django's URL resolver
+       matches the existing <slug:tournament_slug>/ URL patterns.
+    2. Sets request.subdomain_tournament = slug so that templates and
+       context processors can generate subdomain-aware canonical URLs.
+
     Enable by setting SUBDOMAIN_TOURNAMENTS_ENABLED=true and
     SUBDOMAIN_BASE_DOMAIN=nekotab.app (or your root domain).
     """
@@ -59,6 +86,12 @@ class SubdomainTournamentMiddleware(object):
     RESERVED_SUBDOMAINS_DEFAULT = {
         'www', 'admin', 'api', 'static', 'media', 'jet', 'database'
     }
+
+    # Paths that should never be rewritten (global routes)
+    BAD_PREFIXES = (
+        '/static/', '/media/', '/admin/', '/database/', '/api/',
+        '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
+    )
 
     def __init__(self, get_response):
         self.get_response = get_response
@@ -69,44 +102,78 @@ class SubdomainTournamentMiddleware(object):
             self.reserved = self.RESERVED_SUBDOMAINS_DEFAULT
         else:
             self.reserved = set(reserved)
-        self.slug_re = re.compile(r'^[a-z0-9-]+$')
+        self.slug_re = re.compile(r'^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$')
+
+    def _extract_tournament_subdomain(self, request):
+        """Extract tournament slug from the Host header subdomain.
+        Returns the slug string, or None if not a tournament subdomain."""
+        try:
+            host = request.get_host().split(':')[0].lower()
+        except Exception:
+            return None
+
+        if not host or not host.endswith(self.base_domain):
+            return None
+
+        # Strip base domain and trailing dot: "slug.nekotab.app" -> "slug"
+        subpart = host[:-len(self.base_domain)].rstrip('.')
+        if not subpart:
+            return None
+
+        # Only single-label subdomains (no nested like a.b.nekotab.app)
+        if '.' in subpart:
+            return None
+
+        label = subpart
+        if not label or label in self.reserved or not self.slug_re.match(label):
+            return None
+
+        return label
 
     def __call__(self, request):
-        # Short-circuit if feature disabled or misconfigured
+        # Always initialize the flag
+        request.subdomain_tournament = None
+
         if not self.enabled or not self.base_domain:
             return self.get_response(request)
 
-        try:
-            host = request.get_host().split(':')[0]
-        except Exception:
-            host = ''
+        label = self._extract_tournament_subdomain(request)
+        if not label:
+            return self.get_response(request)
 
-        # Only act for subdomains of the configured base domain
-        if host and host.endswith(self.base_domain):
-            # strip base domain and any trailing dot
-            subpart = host[: -len(self.base_domain)]
-            if subpart.endswith('.'):
-                subpart = subpart[:-1]
+        # Verify this slug belongs to a real tournament (cached 5 min)
+        cache_key = f"subdom_tour_exists_{label}"
+        exists = cache.get(cache_key)
+        if exists is None:
+            exists = Tournament.objects.filter(slug=label).exists()
+            cache.set(cache_key, exists, 300)
 
-            if subpart:
-                # Only support single-label subdomains for tournaments
-                label = subpart.split('.')[-1]
-                if label and label not in self.reserved and self.slug_re.match(label):
-                    # Confirm this looks like a real tournament (cached)
-                    cache_key = f"subdom_tour_exists_{label}"
-                    exists = cache.get(cache_key)
-                    if exists is None:
-                        exists = Tournament.objects.filter(slug=label).exists()
-                        cache.set(cache_key, exists, 60)
+        if not exists:
+            return self.get_response(request)
 
-                    # Prefix the path if valid and not already prefixed
-                    if exists and not request.path_info.startswith(f'/{label}/'):
-                        # Avoid interfering with static/media/admin/api/analytics/campaigns/accounts
-                        bad_prefixes = ('/static/', '/media/', '/admin/', '/database/', '/api',
-                                        '/analytics/', '/accounts/', '/campaigns/', '/notifications/')
-                        if not request.path_info.startswith(bad_prefixes):
-                            new_path = f'/{label}{request.path_info}'
-                            request.path_info = new_path
-                            request.path = new_path
+        # Tag the request so context processors / templates know
+        request.subdomain_tournament = label
+
+        # Prefix the path so Django's URL resolver finds the right view,
+        # but only if not already prefixed and not a global route
+        if (not request.path_info.startswith(f'/{label}/')
+                and not request.path_info.startswith(self.BAD_PREFIXES)):
+
+            # Guard against double-prefixing: if the first path segment is
+            # already another tournament's slug, don't prepend ours.
+            first_segment = request.path_info.strip('/').split('/')[0] if request.path_info.strip('/') else ''
+            if first_segment and first_segment != label:
+                other_key = f"subdom_tour_exists_{first_segment}"
+                other_exists = cache.get(other_key)
+                if other_exists is None:
+                    other_exists = Tournament.objects.filter(slug=first_segment).exists()
+                    cache.set(other_key, other_exists, 300)
+                if other_exists:
+                    # Path is for a different tournament — don't rewrite
+                    return self.get_response(request)
+
+            new_path = f'/{label}{request.path_info}'
+            request.path_info = new_path
+            request.path = new_path
 
         return self.get_response(request)

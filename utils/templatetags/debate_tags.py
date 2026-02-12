@@ -62,20 +62,17 @@ class TournamentURLNode(URLNode):
 
     def render(self, context):
         """Add the tournament in the context to the arguments, then render as
-        usual."""
+        usual. When the request is served via a tournament subdomain, strip
+        the /<slug>/ prefix from the generated URL so that links stay relative
+        to the subdomain root (e.g. /motions/ instead of /slug/motions/)."""
 
-        # In order to take advantage of the superclass's method, the easiest
-        # thing to do is to grab the string we want to insert, and turn it into
-        # a (literal) Variable for the superclass. This is a little roundabout,
-        # since we're creating a variable only for it to be turned back into
-        # the string again, but it's better than copy-pasting the superclass's
-        # method itself.
         try:
             tournament_slug = context['tournament'].slug
         except KeyError:
-            raise TemplateSyntaxError("tournamenturl can only be used in contexts with a tournament rtf ")
+            raise TemplateSyntaxError("tournamenturl can only be used in contexts with a tournament")
+        tournament_slug_str = tournament_slug
         tournament_slug = Variable("'" + tournament_slug + "'")
-        self.args = list(self._args)      # make a copy in case render() gets called multiple times
+        self.args = list(self._args)
         self.kwargs = dict(self._kwargs)
 
         if self.kwargs:
@@ -83,7 +80,23 @@ class TournamentURLNode(URLNode):
         else:
             self.args.insert(0, tournament_slug)
 
-        return super().render(context)
+        result = super().render(context)
+
+        # If we're on a tournament subdomain, strip the slug prefix from paths
+        request = context.get('request')
+        subdomain = getattr(request, 'subdomain_tournament', None) if request else None
+        if subdomain and subdomain == tournament_slug_str:
+            prefix = f'/{tournament_slug_str}/'
+            if self.asvar:
+                val = context.get(self.asvar, '')
+                if isinstance(val, str) and val.startswith(prefix):
+                    context[self.asvar] = '/' + val[len(prefix):]
+                return result
+            else:
+                if isinstance(result, str) and result.startswith(prefix):
+                    return '/' + result[len(prefix):]
+
+        return result
 
 
 class TournamentAbsoluteURLNode(TournamentURLNode):
@@ -112,13 +125,14 @@ class RoundURLNode(URLNode):
         super().__init__(view_name, args, kwargs, asvar)
 
     def render(self, context):
-        """Add the round to the arguments, then render as usual."""
+        """Add the round to the arguments, then render as usual.
+        Strip slug prefix when served via tournament subdomain."""
 
-        # Similar comment as for TournamentURLNode.render()
         round = self.round.resolve(context) if self.round else context['round']
-        tournament_slug = Variable("'" + round.tournament.slug + "'")
+        tournament_slug_str = round.tournament.slug
+        tournament_slug = Variable("'" + tournament_slug_str + "'")
         round_seq = Variable("'%d'" % round.seq)
-        self.args = list(self._args)      # make a copy in case render() gets called multiple times
+        self.args = list(self._args)
         self.kwargs = dict(self._kwargs)
 
         if self.kwargs:
@@ -127,7 +141,23 @@ class RoundURLNode(URLNode):
         else:
             self.args = [tournament_slug, round_seq] + self.args
 
-        return super().render(context)
+        result = super().render(context)
+
+        # Strip slug prefix on subdomain
+        request = context.get('request')
+        subdomain = getattr(request, 'subdomain_tournament', None) if request else None
+        if subdomain and subdomain == tournament_slug_str:
+            prefix = f'/{tournament_slug_str}/'
+            if self.asvar:
+                val = context.get(self.asvar, '')
+                if isinstance(val, str) and val.startswith(prefix):
+                    context[self.asvar] = '/' + val[len(prefix):]
+                return result
+            else:
+                if isinstance(result, str) and result.startswith(prefix):
+                    return '/' + result[len(prefix):]
+
+        return result
 
 
 def get_url_args(parser, token):

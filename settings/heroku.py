@@ -108,7 +108,7 @@ CHANNEL_LAYERS = {
 
 if environ.get('EMAIL_HOST', ''):
     # Prefer env-provided DEFAULT_FROM_EMAIL; fall back to a sensible default
-    _default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab <noreply@nekotab.app>')
+    _default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
     DEFAULT_FROM_EMAIL = _default_from
     SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
     REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
@@ -122,7 +122,7 @@ if environ.get('EMAIL_HOST', ''):
     EMAIL_TIMEOUT = int(environ.get('EMAIL_TIMEOUT', 20))
 
 elif environ.get('SENDGRID_API_KEY', ''):
-    _default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab <noreply@nekotab.app>')
+    _default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
     DEFAULT_FROM_EMAIL = _default_from
     SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
     REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
@@ -153,9 +153,9 @@ elif environ.get('SENDGRID_USERNAME', ''):
 else:
     # Fallback: don't error, but log that no real email backend is configured.
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab <noreply@nekotab.app>')
+    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
     SERVER_EMAIL = environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
-    REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
+    REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab.app>')
 
 # ==============================================================================
 # Subdomain routing (production defaults)

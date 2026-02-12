@@ -152,6 +152,11 @@ class Tournament(models.Model):
     def get_public_url(self):
         return reverse('tournament-public-index', kwargs={'tournament_slug': self.slug})
 
+    def get_subdomain_url(self, path='/'):
+        """Return the full subdomain URL for this tournament, or None if disabled."""
+        from utils.middleware import get_subdomain_url
+        return get_subdomain_url(self.slug, path)
+
     # --------------------------------------------------------------------------
     # Convenience querysets
     # --------------------------------------------------------------------------
