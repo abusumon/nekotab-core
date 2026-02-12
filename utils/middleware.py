@@ -2,7 +2,9 @@ import re
 
 from django.conf import settings
 from django.core.cache import cache
+from django.http import HttpResponseNotFound
 from django.shortcuts import get_object_or_404
+from django.template.loader import render_to_string
 
 from tournaments.models import Round, Tournament
 
@@ -149,7 +151,19 @@ class SubdomainTournamentMiddleware(object):
             cache.set(cache_key, exists, 300)
 
         if not exists:
-            return self.get_response(request)
+            # Tournament subdomain doesn't exist — return a friendly 404
+            try:
+                html = render_to_string('errors/subdomain_404.html', {
+                    'subdomain': label,
+                    'base_domain': self.base_domain,
+                })
+                return HttpResponseNotFound(html)
+            except Exception:
+                return HttpResponseNotFound(
+                    f'<h1>Tournament not found</h1>'
+                    f'<p>No tournament exists at <strong>{label}.{self.base_domain}</strong>.</p>'
+                    f'<p><a href="https://{self.base_domain}/">Go to NekoTab home</a></p>'
+                )
 
         # Tag the request so context processors / templates know
         request.subdomain_tournament = label

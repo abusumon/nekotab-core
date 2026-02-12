@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tournament Not Found | NekoTab</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      text-align: center;
+      max-width: 500px;
+    }
+    .error-code {
+      font-size: 96px;
+      font-weight: 800;
+      color: #663da0;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    p {
+      color: #999;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .subdomain {
+      color: #b388ff;
+      font-weight: 600;
+    }
+    .actions {
+      margin-top: 32px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    a.btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    a.btn:hover { opacity: 0.85; }
+    a.btn-primary {
+      background: #663da0;
+      color: #fff;
+    }
+    a.btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="error-code">404</div>
+    <h1>Tournament Not Found</h1>
+    <p>No tournament exists at <span class="subdomain">{{ subdomain }}.{{ base_domain }}</span>.</p>
+    <p>The tournament may have been removed, or the URL might be incorrect.</p>
+    <div class="actions">
+      <a href="https://{{ base_domain }}/" class="btn btn-primary">Go to NekoTab</a>
+      <a href="https://{{ base_domain }}/create/" class="btn btn-secondary">Create Tournament</a>
+    </div>
+  </div>
+</body>
+</html>
