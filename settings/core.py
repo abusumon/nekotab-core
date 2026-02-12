@@ -430,7 +430,7 @@ RESERVED_SUBDOMAINS = os.environ.get(
 # ==============================================================================
 
 # Default from email for outbound messages; include display name for branding
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'NekoTab <noreply@nekotab.app>')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
 
 # Server email for error emails; default to from email
 SERVER_EMAIL = os.environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
@@ -440,7 +440,7 @@ _admin_emails = os.environ.get('ADMIN_NOTIFICATION_EMAILS', '').strip()
 ADMIN_NOTIFICATION_EMAILS = [e.strip() for e in _admin_emails.split(',') if e.strip()] if _admin_emails else []
 
 # Optional Reply-To header for outbound emails
-REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'supports@nekotab.app')
+REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab.app>')
 
 # ==============================================================================
 # SEO / Canonical
