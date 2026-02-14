@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}Discussion{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <forum-thread-detail></forum-thread-detail>
+
+  <noscript>
+    <div class="card">
+      <div class="card-body">
+        <p>Loading thread discussion...</p>
+        <p>JavaScript is required to view argument tree discussions.</p>
+      </div>
+    </div>
+  </noscript>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.threadConfig = {
+    threadSlug: '{{ thread_slug }}',
+    apiBase: '{% url "forum:api-forum-thread-detail" slug=thread_slug %}',
+    postCreateUrl: '{% url "forum:api-forum-post-create" %}',
+    voteUrl: '{% url "forum:api-forum-vote" %}',
+    reportUrl: '{% url "forum:api-forum-report" %}',
+    bookmarkUrl: '{% url "forum:api-forum-bookmarks" %}',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}Motion Doctor{% endblock %}
+{% block og-title %}Motion Doctor — AI Debate Motion Analysis{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Analyze any debate motion instantly with AI. Get clash areas, definition traps, burden splits, POIs, and strategic frameworks. Free tool by NekoTab." />
+<meta name="keywords" content="motion analysis, debate AI, motion doctor, clash areas, debate strategy" />
+{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <motion-doctor></motion-doctor>
+
+  <noscript>
+    <div class="card">
+      <div class="card-body">
+        <h2>Motion Doctor</h2>
+        <p>Paste any debate motion and get instant AI-powered analysis.</p>
+        <p>JavaScript is required to use this tool.</p>
+      </div>
+    </div>
+  </noscript>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.motionDoctorConfig = {
+    analyzeUrl: '{% url "motionbank:api-motion-doctor" %}',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

@@ -13,7 +13,7 @@ from django.views.generic import TemplateView
 import tournaments.views
 from importer.views import LoadDemoView
 from users.views import BlankSiteStartView
-from sitemaps import StaticViewSitemap, TournamentSitemap
+from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
 
 admin.autodiscover()
 
@@ -63,7 +63,11 @@ urlpatterns = [
     # SEO: Sitemap and robots
     path('sitemap.xml',
         sitemap,
-        {'sitemaps': {'static': StaticViewSitemap, 'tournaments': TournamentSitemap}},
+        {'sitemaps': {
+            'static': StaticViewSitemap,
+            'tournaments': TournamentSitemap,
+            'motions': MotionBankSitemap,
+        }},
         name='sitemap'),
     path('robots.txt',
         TemplateView.as_view(template_name='robots.txt', content_type='text/plain'),
@@ -104,6 +108,18 @@ urlpatterns = [
     # Archive import/export
     path('archive/',
         include('importer.urls_archive')),
+
+    # Global Debate Forum
+    path('forum/',
+        include('forum.urls')),
+
+    # Global Motion Bank
+    path('motions-bank/',
+        include('motionbank.urls')),
+
+    # Global Debate Passport
+    path('passport/',
+        include('passport.urls')),
 
     # Tournament URLs
     path('<slug:tournament_slug>/',

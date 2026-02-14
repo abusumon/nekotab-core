@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}New Discussion{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <forum-create></forum-create>
+
+  <noscript>
+    <div class="card">
+      <div class="card-body">
+        <p>JavaScript is required to create a new discussion thread.</p>
+        <a href="{% url 'forum:forum-home' %}">Back to Forum</a>
+      </div>
+    </div>
+  </noscript>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.forumCreateConfig = {
+    apiUrl: '{% url "forum:api-forum-threads" %}',
+    tagsUrl: '{% url "forum:api-forum-tags" %}',
+    redirectBase: '{% url "forum:forum-home" %}',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

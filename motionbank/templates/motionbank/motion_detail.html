@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}{{ motion.text|truncatechars:80 }}{% endblock %}
+{% block og-title %}{{ motion.text|truncatechars:100 }} — NekoTab Motion Bank{% endblock %}
+
+{% block extra-head %}
+{% if motion %}
+<meta name="description" content="Analyze and discuss: {{ motion.text|truncatechars:160 }}. See AI analysis, community case outlines, and debates. {{ motion.tournament_name }} {{ motion.year }}." />
+<meta name="keywords" content="{{ seo_keywords }}, debate motion, {{ motion.get_format_display }}" />
+<link rel="canonical" href="{{ canonical_url }}" />
+
+<!-- Open Graph for motion sharing -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ motion.text|truncatechars:100 }}" />
+<meta property="og:description" content="AI-analyzed debate motion from {{ motion.tournament_name }} ({{ motion.year }}). Format: {{ motion.get_format_display }}. Difficulty: {{ motion.get_difficulty_display }}." />
+
+<!-- Structured Data: Motion Page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "{{ motion.text|truncatechars:200|escapejs }}",
+  "description": "Debate motion analysis and discussion",
+  "datePublished": "{{ motion.created_at|date:'c' }}",
+  "dateModified": "{{ motion.updated_at|date:'c' }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "NekoTab"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Competitive Debate Motion"
+  },
+  "keywords": "{{ seo_keywords }}"
+}
+</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  {% if motion %}
+  <!-- Server-rendered content for SEO -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h1 class="h3 mb-3">{{ motion.text }}</h1>
+
+      <div class="d-flex flex-wrap mb-3" style="gap: 8px;">
+        <span class="badge badge-primary">{{ motion.get_format_display }}</span>
+        <span class="badge badge-info">{{ motion.get_motion_type_display }}</span>
+        <span class="badge badge-secondary">Difficulty: {{ motion.get_difficulty_display }}</span>
+        {% if motion.tournament_name %}
+        <span class="badge badge-dark">{{ motion.tournament_name }}</span>
+        {% endif %}
+        {% if motion.year %}
+        <span class="badge badge-dark">{{ motion.year }}</span>
+        {% endif %}
+        {% if motion.region %}
+        <span class="badge badge-outline-secondary">{{ motion.region }}</span>
+        {% endif %}
+        <span class="badge badge-light">{{ motion.get_prep_type_display }}</span>
+      </div>
+
+      {% if motion.info_slide %}
+      <div class="alert alert-light border mb-3">
+        <strong>Info Slide:</strong>
+        {{ motion.info_slide|safe }}
+      </div>
+      {% endif %}
+
+      {% if motion.round_info %}
+      <p class="text-muted">Round: {{ motion.round_info }}</p>
+      {% endif %}
+
+      {% if motion.theme_tags %}
+      <div class="mb-3">
+        {% for tag in motion.theme_tags %}
+        <span class="badge badge-outline-primary mr-1">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Vue.js takes over for interactive elements -->
+  <motion-detail></motion-detail>
+
+  {% else %}
+  <div class="card">
+    <div class="card-body text-center">
+      <h2>Motion Not Found</h2>
+      <p>This motion doesn't exist or hasn't been approved yet.</p>
+      <a href="{% url 'motionbank:motionbank-home' %}" class="btn btn-primary">Browse Motion Bank</a>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}
+
+{% block js %}
+{% if motion %}
+<script>
+  window.motionDetailConfig = {
+    motionSlug: '{{ motion.slug }}',
+    apiUrl: '{% url "motionbank:api-motionbank-detail" slug=motion.slug %}',
+    rateUrl: '{% url "motionbank:api-motionbank-rate" %}',
+    outlinesUrl: '{% url "motionbank:api-case-outlines" motion_id=motion.id %}',
+    doctorUrl: '{% url "motionbank:api-motion-doctor" %}',
+    practiceUrl: '{% url "motionbank:api-practice-sessions" %}',
+    forumUrl: '{% url "forum:api-forum-threads" %}?motion={{ motion.id }}',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+    motionId: {{ motion.id }},
+  };
+  window.vueData = {};
+</script>
+{% endif %}
+{{ block.super }}
+{% endblock js %}

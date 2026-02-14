@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}{{ page_title }}{% endblock %}
+
+{% block extra-head %}
+{% if passport %}
+<meta name="description" content="{{ passport.display_name }} — {{ passport.get_experience_level_display }} debater from {{ passport.country }}. {{ passport.institution }}. {{ passport.get_primary_format_display }} format." />
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  {% if is_private %}
+  <div class="card">
+    <div class="card-body text-center py-5">
+      <span class="emoji" style="font-size: 3rem;">🔒</span>
+      <h2 class="mt-3">Private Profile</h2>
+      <p class="text-muted">This debater has chosen to keep their passport private.</p>
+      <a href="{% url 'passport:passport-directory' %}" class="btn btn-primary mt-2">Browse Public Passports</a>
+    </div>
+  </div>
+  {% elif passport %}
+  <!-- Server-rendered overview for SEO -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="d-flex align-items-center mb-3">
+        {% if passport.country_code %}
+        <span class="mr-2" style="font-size: 2rem;">{{ passport.country_code|lower }}</span>
+        {% endif %}
+        <div>
+          <h1 class="h3 mb-0">{{ passport.display_name }}</h1>
+          <p class="text-muted mb-0">
+            {{ passport.get_experience_level_display }} ·
+            {{ passport.get_primary_format_display }}
+            {% if passport.institution %} · {{ passport.institution }}{% endif %}
+            {% if passport.country %} · {{ passport.country }}{% endif %}
+          </p>
+        </div>
+      </div>
+
+      {% if passport.bio %}
+      <p>{{ passport.bio }}</p>
+      {% endif %}
+
+      <div class="d-flex flex-wrap" style="gap: 8px;">
+        {% if passport.is_speaker %}<span class="badge badge-primary">Speaker</span>{% endif %}
+        {% if passport.is_judge %}<span class="badge badge-info">Judge</span>{% endif %}
+        {% if passport.is_ca %}<span class="badge badge-warning">Chief Adjudicator</span>{% endif %}
+        {% if passport.is_coach %}<span class="badge badge-success">Coach</span>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Vue.js takes over for charts, analytics, interactive sections -->
+  <passport-profile></passport-profile>
+  {% else %}
+  <div class="card">
+    <div class="card-body text-center">
+      <h2>Passport Not Found</h2>
+      <p>This debater hasn't created their passport yet.</p>
+      <a href="{% url 'passport:passport-directory' %}" class="btn btn-primary">Browse Passports</a>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}
+
+{% block js %}
+{% if passport %}
+<script>
+  window.passportProfileConfig = {
+    userId: {{ passport.user_id }},
+    apiUrl: '{% url "passport:api-passport-detail" user_id=passport.user_id %}',
+    badgesUrl: '{% url "forum:api-forum-badges" user_id=passport.user_id %}',
+    tournamentsUrl: '{% url "passport:api-passport-tournaments" %}',
+    isOwner: {{ user.id|default:0 }} === {{ passport.user_id }},
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+  };
+  window.vueData = {};
+</script>
+{% endif %}
+{{ block.super }}
+{% endblock js %}

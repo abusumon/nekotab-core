@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}Edit Your Passport{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <passport-edit></passport-edit>
+
+  <noscript>
+    <div class="card">
+      <div class="card-body">
+        <p>JavaScript is required to edit your passport.</p>
+      </div>
+    </div>
+  </noscript>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.passportEditConfig = {
+    apiUrl: '{% url "passport:api-passport-me" %}',
+    tournamentsUrl: '{% url "passport:api-passport-tournaments" %}',
+    recomputeUrl: '{% url "passport:api-passport-recompute" %}',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

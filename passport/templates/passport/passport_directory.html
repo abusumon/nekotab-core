@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}Debate Passports{% endblock %}
+{% block og-title %}Global Debate Passports — NekoTab{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Discover debaters worldwide. Browse debate passports showing tournament histories, performance analytics, skill radar graphs, and partnership data." />
+{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <passport-directory></passport-directory>
+
+  <noscript>
+    <div class="card">
+      <div class="card-body">
+        <h2>Global Debate Passports</h2>
+        <p>Browse debater profiles from around the world. Each passport tracks tournament history, performance analytics, and skill development.</p>
+      </div>
+    </div>
+  </noscript>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.passportDirectoryConfig = {
+    apiBase: '{% url "passport:api-passport-list" %}',
+    profileBase: '{% url "passport:passport-directory" %}profile/',
+    leaderboardUrl: '{% url "passport:api-leaderboard" %}',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

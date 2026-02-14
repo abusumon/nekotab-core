@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}Your Analytics Dashboard{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <passport-dashboard></passport-dashboard>
+
+  <noscript>
+    <div class="card">
+      <div class="card-body">
+        <p>JavaScript is required for analytics dashboards.</p>
+      </div>
+    </div>
+  </noscript>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.passportDashboardConfig = {
+    meUrl: '{% url "passport:api-passport-me" %}',
+    tournamentsUrl: '{% url "passport:api-passport-tournaments" %}',
+    partnershipsUrl: '{% url "passport:api-passport-partnerships" %}',
+    recomputeUrl: '{% url "passport:api-passport-recompute" %}',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

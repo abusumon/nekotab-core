@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}Global Motion Bank{% endblock %}
+{% block og-title %}Global Motion Bank — NekoTab{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Browse thousands of debate motions from tournaments worldwide. Filter by format, year, region, difficulty, and theme. AI-powered motion analysis included." />
+<meta name="keywords" content="debate motions, BP motions, WSDC motions, debate topics, motion bank, debate practice" />
+<link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+<!-- Structured Data for Motion Bank -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "NekoTab Global Motion Bank",
+  "description": "Comprehensive database of debate motions from tournaments worldwide with AI-powered analysis",
+  "url": "{{ request.build_absolute_uri }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "NekoTab",
+    "url": "{{ request.scheme }}://{{ request.get_host }}"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <motion-bank-home></motion-bank-home>
+
+  <noscript>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2>Global Motion Bank</h2>
+        <p>The world's largest searchable database of competitive debate motions.</p>
+        <h3>Features</h3>
+        <ul>
+          <li>Filter by format: BP, WSDC, AP, Public Forum, Lincoln-Douglas, Policy</li>
+          <li>Filter by year, region, tournament, theme, and difficulty</li>
+          <li>AI Motion Doctor — instant analysis of any motion</li>
+          <li>Community case outlines with voting</li>
+          <li>Linked discussion threads for each motion</li>
+          <li>Practice tracking and rating system</li>
+        </ul>
+        <h3>Motion Doctor</h3>
+        <p>Paste any debate motion and get AI-powered analysis including:</p>
+        <ul>
+          <li>Hidden assumptions and definition traps</li>
+          <li>Clash areas and burden split</li>
+          <li>Gov and Opp structural approaches</li>
+          <li>10 suggested POIs</li>
+          <li>Weighing options and common framing mistakes</li>
+        </ul>
+      </div>
+    </div>
+  </noscript>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.motionBankConfig = {
+    apiBase: '{% url "motionbank:api-motionbank-list" %}',
+    filtersUrl: '{% url "motionbank:api-motionbank-filters" %}',
+    doctorUrl: '{% url "motionbank:api-motion-doctor" %}',
+    submitUrl: '{% url "motionbank:motionbank-submit" %}',
+    motionDetailBase: '{% url "motionbank:motionbank-home" %}motion/',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

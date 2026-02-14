@@ -200,6 +200,24 @@ vueComponents.BallotEntryContainer = BallotEntryContainer
 // Check-Ins (thus delays loading quagga)
 vueComponents.CheckInScanContainer = () => import('../../checkins/templates/CheckInScanContainer.vue')
 
+// Forum
+vueComponents.ForumHome = () => import('../../forum/templates/ForumHome.vue')
+vueComponents.ForumThreadDetail = () => import('../../forum/templates/ForumThreadDetail.vue')
+vueComponents.ForumCreate = () => import('../../forum/templates/ForumCreate.vue')
+vueComponents.ArgumentTreePost = () => import('../../forum/templates/ArgumentTreePost.vue')
+
+// Motion Bank
+vueComponents.MotionBankHome = () => import('../../motionbank/templates/MotionBankHome.vue')
+vueComponents.MotionDetail = () => import('../../motionbank/templates/MotionDetail.vue')
+vueComponents.MotionDoctor = () => import('../../motionbank/templates/MotionDoctor.vue')
+vueComponents.MotionSubmit = () => import('../../motionbank/templates/MotionSubmit.vue')
+
+// Debate Passport
+vueComponents.PassportProfile = () => import('../../passport/templates/PassportProfile.vue')
+vueComponents.PassportDashboard = () => import('../../passport/templates/PassportDashboard.vue')
+vueComponents.PassportDirectory = () => import('../../passport/templates/PassportDirectory.vue')
+vueComponents.PassportEdit = () => import('../../passport/templates/PassportEdit.vue')
+
 // -----------------------------------------------------------------------------
 // Main Vue Instance
 // -----------------------------------------------------------------------------

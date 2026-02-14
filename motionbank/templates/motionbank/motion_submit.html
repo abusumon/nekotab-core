@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block page-title %}Submit a Motion{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <motion-submit></motion-submit>
+
+  <noscript>
+    <div class="card">
+      <div class="card-body">
+        <p>JavaScript is required to submit a motion.</p>
+        <a href="{% url 'motionbank:motionbank-home' %}">Back to Motion Bank</a>
+      </div>
+    </div>
+  </noscript>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.motionSubmitConfig = {
+    apiUrl: '{% url "motionbank:api-motionbank-list" %}',
+    isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}
