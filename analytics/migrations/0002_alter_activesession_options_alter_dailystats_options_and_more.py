@@ -125,10 +125,27 @@ class Migration(migrations.Migration):
             name='device_type',
             field=models.CharField(blank=True, max_length=20),
         ),
-        migrations.AlterField(
-            model_name='pageview',
-            name='id',
-            field=models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
+        # Drop the old bigint PK and recreate as UUID
+        migrations.RunSQL(
+            sql=[
+                'ALTER TABLE analytics_pageview DROP CONSTRAINT IF EXISTS analytics_pageview_pkey;',
+                'ALTER TABLE analytics_pageview DROP COLUMN id;',
+                'ALTER TABLE analytics_pageview ADD COLUMN id uuid DEFAULT gen_random_uuid() NOT NULL;',
+                'ALTER TABLE analytics_pageview ADD PRIMARY KEY (id);',
+            ],
+            reverse_sql=[
+                'ALTER TABLE analytics_pageview DROP CONSTRAINT IF EXISTS analytics_pageview_pkey;',
+                'ALTER TABLE analytics_pageview DROP COLUMN id;',
+                'ALTER TABLE analytics_pageview ADD COLUMN id bigserial NOT NULL;',
+                'ALTER TABLE analytics_pageview ADD PRIMARY KEY (id);',
+            ],
+            state_operations=[
+                migrations.AlterField(
+                    model_name='pageview',
+                    name='id',
+                    field=models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
+                ),
+            ],
         ),
         migrations.AlterField(
             model_name='pageview',
