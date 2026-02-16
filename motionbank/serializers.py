@@ -99,7 +99,7 @@ class MotionEntryDetailSerializer(MotionEntryListSerializer):
         from django.db.models import Q
         related = MotionEntry.objects.filter(
             is_approved=True,
-        ).exclude(pk=obj.pk)
+        ).exclude(pk=obj.pk).select_related('stats', 'analysis')
 
         # Filter by overlapping theme tags
         q = Q()
@@ -155,13 +155,13 @@ class MotionRatingSerializer(serializers.ModelSerializer):
             defaults={'score': validated_data['score']},
         )
 
-        # Update stats
+        # Update stats in a single aggregate query
         motion = validated_data['motion']
-        from django.db.models import Avg
+        from django.db.models import Avg, Count
         stats, _ = MotionStats.objects.get_or_create(motion=motion)
-        agg = motion.ratings.aggregate(avg=Avg('score'))
+        agg = motion.ratings.aggregate(avg=Avg('score'), count=Count('id'))
         stats.average_rating = agg['avg'] or 0
-        stats.total_ratings = motion.ratings.count()
+        stats.total_ratings = agg['count']
         stats.save()
 
         return rating

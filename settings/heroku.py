@@ -192,10 +192,11 @@ if SUBDOMAIN_BASE_DOMAIN:
 # Sentry
 # ==============================================================================
 
-if not environ.get('DISABLE_SENTRY'):
+_sentry_dsn = environ.get('SENTRY_DSN')
+if not environ.get('DISABLE_SENTRY') and _sentry_dsn:
     DISABLE_SENTRY = False
     sentry_sdk.init(
-        dsn=environ.get('SENTRY_DSN', 'https://6bf2099f349542f4b9baf73ca9789597@o85113.ingest.sentry.io/185382'),
+        dsn=_sentry_dsn,
         integrations=[
             DjangoIntegration(),
             LoggingIntegration(event_level=logging.WARNING),

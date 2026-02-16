@@ -628,7 +628,14 @@ export default {
             level: this.level,
           }),
         })
-        if (!response.ok) throw new Error('Analysis failed — server returned ' + response.status)
+        if (!response.ok) {
+          let msg = 'Analysis failed (HTTP ' + response.status + ')'
+          try {
+            const errData = await response.json()
+            msg = errData.detail || (errData.motion_text && errData.motion_text[0]) || msg
+          } catch (_e) { /* no JSON body */ }
+          throw new Error(msg)
+        }
         const data = await response.json()
 
         this.report = data.report || data.analysis || data
@@ -641,7 +648,7 @@ export default {
         this.cached = data.cached || false
         this.activeTab = 'quick'
       } catch (e) {
-        this.error = 'Failed to analyze motion. Please try again.'
+        this.error = e.message || 'Failed to analyze motion. Please try again.'
         console.error(e)
       }
 
@@ -659,7 +666,7 @@ export default {
         const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value ||
           document.cookie.split(';').find(c => c.trim().startsWith('csrftoken='))?.split('=')[1]
 
-        await fetch(feedbackUrl, {
+        const resp = await fetch(feedbackUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -673,6 +680,10 @@ export default {
             was_helpful: this.feedbackHelpful,
           }),
         })
+        if (!resp.ok) {
+          const errMsg = resp.status === 400 ? 'Feedback already submitted.' : 'Failed to submit feedback.'
+          throw new Error(errMsg)
+        }
         this.feedbackSubmitted = true
       } catch (e) {
         console.error('Feedback submission failed:', e)

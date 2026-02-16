@@ -267,8 +267,15 @@ class MotionDoctorPipeline:
     """Orchestrates the 4-prompt Motion Doctor pipeline."""
 
     def __init__(self):
-        self.api_key = environ.get('OPENAI_API_KEY') or environ.get('ANTHROPIC_API_KEY')
-        self.provider = 'anthropic' if environ.get('ANTHROPIC_API_KEY') else 'openai'
+        if environ.get('ANTHROPIC_API_KEY'):
+            self.api_key = environ['ANTHROPIC_API_KEY']
+            self.provider = 'anthropic'
+        elif environ.get('OPENAI_API_KEY'):
+            self.api_key = environ['OPENAI_API_KEY']
+            self.provider = 'openai'
+        else:
+            self.api_key = None
+            self.provider = 'openai'
         self.model_version = self._get_model_name()
 
     def _get_model_name(self):

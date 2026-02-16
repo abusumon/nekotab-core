@@ -1,13 +1,12 @@
 import json
 import logging
-from os import environ
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Count, Avg, F, Q
-from django.shortcuts import get_object_or_404
+from django.db.models import F, Q
 from django.views.generic import TemplateView
 
 from rest_framework import generics, permissions, status, filters
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -25,6 +24,12 @@ from .serializers import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+class StandardPagination(PageNumberPagination):
+    page_size = 25
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 
 # =============================================================================
@@ -87,6 +92,7 @@ class MotionSubmitView(LoginRequiredMixin, TemplateView):
 # =============================================================================
 
 class MotionEntryListAPI(generics.ListCreateAPIView):
+    pagination_class = StandardPagination
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['text', 'tournament_name', 'region']
     ordering_fields = ['created_at', 'year', 'difficulty']
@@ -180,9 +186,11 @@ class CaseOutlineVoteAPI(APIView):
 
     def post(self, request, outline_id):
         from django.db import transaction
-        outline = get_object_or_404(CaseOutline, pk=outline_id)
         with transaction.atomic():
-            outline = CaseOutline.objects.select_for_update().get(pk=outline_id)
+            try:
+                outline = CaseOutline.objects.select_for_update().get(pk=outline_id)
+            except CaseOutline.DoesNotExist:
+                return Response({'detail': 'Outline not found'}, status=status.HTTP_404_NOT_FOUND)
             vote, created = CaseOutlineVote.objects.get_or_create(
                 user=request.user, case_outline=outline,
             )
@@ -195,16 +203,19 @@ class CaseOutlineVoteAPI(APIView):
 
     def delete(self, request, outline_id):
         from django.db import transaction
-        outline = get_object_or_404(CaseOutline, pk=outline_id)
         with transaction.atomic():
-            outline = CaseOutline.objects.select_for_update().get(pk=outline_id)
+            try:
+                outline = CaseOutline.objects.select_for_update().get(pk=outline_id)
+            except CaseOutline.DoesNotExist:
+                return Response({'detail': 'Outline not found'}, status=status.HTTP_404_NOT_FOUND)
             deleted, _ = CaseOutlineVote.objects.filter(
                 user=request.user, case_outline=outline,
             ).delete()
             if deleted and outline.upvotes > 0:
                 outline.upvotes = F('upvotes') - 1
                 outline.save(update_fields=['upvotes'])
-        return Response(status=status.HTTP_204_NO_CONTENT)
+                return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({'detail': 'No vote to remove'}, status=status.HTTP_404_NOT_FOUND)
 
 
 class MotionDoctorAnalyzeAPI(APIView):
@@ -223,10 +234,11 @@ class MotionDoctorAnalyzeAPI(APIView):
         info_slide = serializer.validated_data.get('info_slide', '')
         level = serializer.validated_data.get('level', 'open')
 
-        # Check for cached report (exact match)
+        # Check for cached report (exact match including infoslide)
         existing_report = MotionReport.objects.filter(
             motion_text__iexact=motion_text,
             format=debate_format,
+            info_slide=info_slide,
         ).order_by('-created_at').first()
 
         if existing_report and existing_report.report_json:
@@ -238,6 +250,8 @@ class MotionDoctorAnalyzeAPI(APIView):
                 'plan': existing_report.plan_json,
                 'validation_log': existing_report.validation_log,
                 'model_version': existing_report.model_version,
+                'pipeline_stages': {},
+                'pipeline_duration_ms': existing_report.pipeline_duration_ms,
                 'cached': True,
             })
 
@@ -353,9 +367,9 @@ class MotionFiltersAPI(APIView):
         regions = sorted(motions.exclude(region='').values_list('region', flat=True).distinct())
         tournaments = sorted(motions.exclude(tournament_name='').values_list('tournament_name', flat=True).distinct())
 
-        # Collect all unique theme tags
+        # Collect all unique theme tags (skip empty)
         themes = set()
-        for tags in motions.values_list('theme_tags', flat=True):
+        for tags in motions.exclude(theme_tags=[]).values_list('theme_tags', flat=True):
             if tags:
                 themes.update(tags)
 

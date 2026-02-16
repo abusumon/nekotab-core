@@ -93,7 +93,6 @@ class MotionEntry(models.Model):
             models.Index(fields=['motion_type']),
             models.Index(fields=['difficulty']),
             models.Index(fields=['-created_at']),
-            models.Index(fields=['slug']),
         ]
 
     def __str__(self):
