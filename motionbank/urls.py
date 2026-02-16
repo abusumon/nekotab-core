@@ -18,5 +18,6 @@ urlpatterns = [
     path('api/outlines/<int:motion_id>/', views.CaseOutlineListAPI.as_view(), name='api-case-outlines'),
     path('api/outlines/<int:outline_id>/vote/', views.CaseOutlineVoteAPI.as_view(), name='api-case-outline-vote'),
     path('api/doctor/analyze/', views.MotionDoctorAnalyzeAPI.as_view(), name='api-motion-doctor'),
+    path('api/doctor/feedback/', views.MotionReportFeedbackAPI.as_view(), name='api-motion-doctor-feedback'),
     path('api/practice/', views.PracticeSessionAPI.as_view(), name='api-practice-sessions'),
 ]

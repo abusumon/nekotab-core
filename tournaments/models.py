@@ -28,7 +28,7 @@ PROHIBITED_TOURNAMENT_SLUGS = [
 
 
 def validate_tournament_slug(value):
-    if value in PROHIBITED_TOURNAMENT_SLUGS:
+    if value.lower() in PROHIBITED_TOURNAMENT_SLUGS:
         raise ValidationError(_("You can't use this as a tournament slug, "
             "because it's reserved for a Tabbycat system URL. Please try "
             "another one."))

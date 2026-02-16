@@ -1,3 +1,5 @@
+import uuid
+
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -262,3 +264,181 @@ class PracticeSession(models.Model):
 
     def __str__(self):
         return f"{self.user} practiced: {self.motion.text[:60]}"
+
+
+# =============================================================================
+# Motion Profile (Structured Classifier Output)
+# =============================================================================
+
+class MotionProfile(models.Model):
+    """Structured classifier output for a motion — the 'brain' of Motion Doctor."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    motion = models.OneToOneField(MotionEntry, on_delete=models.CASCADE,
+        related_name='profile', verbose_name=_("motion"))
+
+    # Classification fields
+    format = models.CharField(max_length=20, blank=True, verbose_name=_("debate format"))
+    motion_type = models.CharField(max_length=50, blank=True, verbose_name=_("motion type"),
+        help_text=_("policy / value / actor / regret / comparative / unclear"))
+    domain_primary = models.CharField(max_length=100, blank=True, verbose_name=_("primary domain"),
+        help_text=_("bioethics / ai / econ / war / identity / etc."))
+    domain_secondary = models.JSONField(default=list, blank=True, verbose_name=_("secondary domains"))
+
+    # Motion structure
+    actor = models.CharField(max_length=200, blank=True, verbose_name=_("actor"),
+        help_text=_("e.g., the_state, UN, parents"))
+    action = models.CharField(max_length=200, blank=True, verbose_name=_("action"),
+        help_text=_("e.g., ban, regulate, subsidize"))
+    object_field = models.CharField(max_length=300, blank=True, verbose_name=_("object"),
+        help_text=_("e.g., genetic engineering, social media"))
+
+    # Scope
+    scope = models.JSONField(default=dict, blank=True, verbose_name=_("scope"),
+        help_text=_("geography, timeframe, subjects, exceptions"))
+
+    # Flags & metadata
+    requires_model = models.BooleanField(default=False, verbose_name=_("requires gov model"))
+    ambiguity_flags = models.JSONField(default=list, blank=True, verbose_name=_("ambiguity flags"))
+    keywords = models.JSONField(default=list, blank=True, verbose_name=_("extracted keywords"))
+    constraints = models.JSONField(default=list, blank=True, verbose_name=_("constraints"))
+    extracted_entities = models.JSONField(default=dict, blank=True, verbose_name=_("extracted entities"))
+    confidence = models.FloatField(default=0.0, verbose_name=_("classifier confidence"))
+
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
+
+    class Meta:
+        verbose_name = _("motion profile")
+        verbose_name_plural = _("motion profiles")
+
+    def __str__(self):
+        return f"Profile: {self.motion_type} / {self.domain_primary} (conf={self.confidence:.2f})"
+
+
+# =============================================================================
+# Archetype Library
+# =============================================================================
+
+class Archetype(models.Model):
+    """A reusable debate archetype — the coaching knowledge base."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=200, unique=True, verbose_name=_("archetype name"),
+        help_text=_("e.g., bioethics_restriction, prohibition_black_market"))
+    description = models.TextField(blank=True, verbose_name=_("description"))
+
+    # Classification
+    domain_tags = models.JSONField(default=list, blank=True, verbose_name=_("domain tags"))
+    trigger_features = models.JSONField(default=dict, blank=True, verbose_name=_("trigger features"),
+        help_text=_("Keywords/patterns that activate this archetype"))
+
+    # Coaching content
+    canonical_clashes = models.JSONField(default=list, blank=True, verbose_name=_("canonical clash axes"))
+    canonical_stakeholders = models.JSONField(default=list, blank=True, verbose_name=_("canonical stakeholders"))
+    gov_playbook = models.JSONField(default=dict, blank=True, verbose_name=_("gov playbook"))
+    opp_playbook = models.JSONField(default=dict, blank=True, verbose_name=_("opp playbook"))
+    extension_templates = models.JSONField(default=dict, blank=True, verbose_name=_("extension templates"))
+    definition_traps = models.JSONField(default=list, blank=True, verbose_name=_("definition traps"))
+    weighing_tools = models.JSONField(default=list, blank=True, verbose_name=_("weighing tools"))
+    red_flags = models.JSONField(default=list, blank=True, verbose_name=_("red flags"),
+        help_text=_("Common mistakes or things to avoid"))
+
+    # For retrieval
+    embedding = models.JSONField(default=list, blank=True, verbose_name=_("embedding vector"))
+
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("updated at"))
+
+    class Meta:
+        verbose_name = _("archetype")
+        verbose_name_plural = _("archetypes")
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+
+class ArchetypeExample(models.Model):
+    """Example motions linked to an archetype for retrieval."""
+
+    archetype = models.ForeignKey(Archetype, on_delete=models.CASCADE,
+        related_name='examples', verbose_name=_("archetype"))
+    example_motion_text = models.TextField(verbose_name=_("example motion text"))
+    notes = models.TextField(blank=True, verbose_name=_("notes"))
+    embedding = models.JSONField(default=list, blank=True, verbose_name=_("embedding vector"))
+
+    class Meta:
+        verbose_name = _("archetype example")
+        verbose_name_plural = _("archetype examples")
+
+    def __str__(self):
+        return f"{self.archetype.name}: {self.example_motion_text[:80]}"
+
+
+# =============================================================================
+# Motion Report (Full Doctor Output)
+# =============================================================================
+
+class MotionReport(models.Model):
+    """The full Motion Doctor report — generated JSON output."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    motion = models.ForeignKey(MotionEntry, on_delete=models.CASCADE,
+        related_name='reports', verbose_name=_("motion"), null=True, blank=True)
+    motion_text = models.TextField(verbose_name=_("motion text"),
+        help_text=_("Stored separately so reports work for ad-hoc motions too"))
+    info_slide = models.TextField(blank=True, verbose_name=_("info slide"))
+    format = models.CharField(max_length=20, blank=True, verbose_name=_("format"))
+
+    # Full report JSON (the big schema from the plan)
+    report_json = models.JSONField(default=dict, verbose_name=_("report JSON"))
+
+    # Pipeline intermediaries (for debugging / re-runs)
+    profile_json = models.JSONField(default=dict, blank=True, verbose_name=_("motion profile JSON"))
+    plan_json = models.JSONField(default=dict, blank=True, verbose_name=_("planner outline JSON"))
+    validation_log = models.JSONField(default=list, blank=True, verbose_name=_("validation log"))
+
+    # Metadata
+    model_version = models.CharField(max_length=100, blank=True, verbose_name=_("model version"))
+    pipeline_duration_ms = models.PositiveIntegerField(null=True, blank=True,
+        verbose_name=_("pipeline duration (ms)"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
+
+    class Meta:
+        verbose_name = _("motion report")
+        verbose_name_plural = _("motion reports")
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Report for: {self.motion_text[:80]}"
+
+
+# =============================================================================
+# Report Feedback (Evaluation Loop)
+# =============================================================================
+
+class MotionReportFeedback(models.Model):
+    """User feedback on a Motion Doctor report — drives evaluation."""
+
+    report = models.ForeignKey(MotionReport, on_delete=models.CASCADE,
+        related_name='feedback', verbose_name=_("report"))
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        related_name='report_feedback', verbose_name=_("user"))
+
+    rating = models.PositiveSmallIntegerField(verbose_name=_("overall rating"),
+        help_text=_("1–5 stars"))
+    was_specific = models.BooleanField(default=False, verbose_name=_("was motion-specific"))
+    was_fair = models.BooleanField(default=False, verbose_name=_("was fair / balanced"))
+    was_helpful = models.BooleanField(default=False, verbose_name=_("was helpful"))
+    generic_section = models.CharField(max_length=100, blank=True,
+        verbose_name=_("which section felt generic"))
+    free_text = models.TextField(blank=True, verbose_name=_("free text feedback"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
+
+    class Meta:
+        verbose_name = _("report feedback")
+        verbose_name_plural = _("report feedback")
+        unique_together = ('report', 'user')
+
+    def __str__(self):
+        return f"Feedback by {self.user} on report {self.report_id}"

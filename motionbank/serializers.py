@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import (
     MotionEntry, MotionAnalysis, MotionStats,
     MotionRating, CaseOutline, CaseOutlineVote, PracticeSession,
+    MotionReport, MotionReportFeedback,
 )
 
 
@@ -67,7 +68,10 @@ class MotionEntryListSerializer(serializers.ModelSerializer):
         ]
 
     def get_has_analysis(self, obj):
-        return hasattr(obj, 'analysis')
+        try:
+            return obj.analysis is not None
+        except MotionAnalysis.DoesNotExist:
+            return False
 
 
 class MotionEntryDetailSerializer(MotionEntryListSerializer):
@@ -165,9 +169,28 @@ class MotionRatingSerializer(serializers.ModelSerializer):
 
 class MotionDoctorInputSerializer(serializers.Serializer):
     """Input for the Motion Doctor analysis tool."""
-    motion_text = serializers.CharField(max_length=1000)
+    motion_text = serializers.CharField(max_length=2000)
     format = serializers.ChoiceField(choices=MotionEntry.MotionFormat.choices, required=False)
-    info_slide = serializers.CharField(required=False, allow_blank=True)
+    info_slide = serializers.CharField(required=False, allow_blank=True, max_length=5000)
+    level = serializers.ChoiceField(
+        choices=[('novice', 'Novice'), ('intermediate', 'Intermediate'), ('open', 'Open')],
+        required=False, default='open',
+    )
+
+
+class MotionReportFeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MotionReportFeedback
+        fields = [
+            'id', 'report', 'rating', 'was_specific', 'was_fair',
+            'was_helpful', 'generic_section', 'free_text', 'created_at',
+        ]
+        read_only_fields = ['created_at']
+
+    def validate_rating(self, value):
+        if value < 1 or value > 5:
+            raise serializers.ValidationError("Rating must be between 1 and 5")
+        return value
 
 
 class PracticeSessionSerializer(serializers.ModelSerializer):
@@ -180,9 +203,9 @@ class PracticeSessionSerializer(serializers.ModelSerializer):
         validated_data['user'] = self.context['request'].user
         session = super().create(validated_data)
 
-        # Update stats
+        # Update stats atomically
+        from django.db.models import F
         stats, _ = MotionStats.objects.get_or_create(motion=validated_data['motion'])
-        stats.times_practiced += 1
-        stats.save()
+        MotionStats.objects.filter(pk=stats.pk).update(times_practiced=F('times_practiced') + 1)
 
         return session

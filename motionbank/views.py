@@ -14,12 +14,14 @@ from rest_framework.views import APIView
 from .models import (
     MotionEntry, MotionAnalysis, MotionStats,
     MotionRating, CaseOutline, CaseOutlineVote, PracticeSession,
+    MotionReport, MotionReportFeedback, Archetype,
 )
 from .serializers import (
     MotionEntryListSerializer, MotionEntryDetailSerializer,
     MotionEntryCreateSerializer, MotionAnalysisSerializer,
     MotionRatingSerializer, CaseOutlineSerializer,
     MotionDoctorInputSerializer, PracticeSessionSerializer,
+    MotionReportFeedbackSerializer,
 )
 
 logger = logging.getLogger(__name__)
@@ -94,7 +96,7 @@ class MotionEntryListAPI(generics.ListCreateAPIView):
         qs = MotionEntry.objects.filter(is_approved=True).select_related('stats', 'analysis')
 
         # Multi-filter support
-        fmt = self.request.query_params.get('format')
+        fmt = self.request.query_params.get('debate_format')
         if fmt:
             qs = qs.filter(format=fmt)
 
@@ -177,29 +179,40 @@ class CaseOutlineVoteAPI(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, outline_id):
+        from django.db import transaction
         outline = get_object_or_404(CaseOutline, pk=outline_id)
-        vote, created = CaseOutlineVote.objects.get_or_create(
-            user=request.user, case_outline=outline,
-        )
-        if created:
-            CaseOutline.objects.filter(pk=outline.pk).update(upvotes=F('upvotes') + 1)
-            outline.refresh_from_db()
-            return Response({'upvotes': outline.upvotes}, status=status.HTTP_201_CREATED)
+        with transaction.atomic():
+            outline = CaseOutline.objects.select_for_update().get(pk=outline_id)
+            vote, created = CaseOutlineVote.objects.get_or_create(
+                user=request.user, case_outline=outline,
+            )
+            if created:
+                outline.upvotes = F('upvotes') + 1
+                outline.save(update_fields=['upvotes'])
+                outline.refresh_from_db()
+                return Response({'upvotes': outline.upvotes}, status=status.HTTP_201_CREATED)
         return Response({'detail': 'Already voted'}, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, outline_id):
+        from django.db import transaction
         outline = get_object_or_404(CaseOutline, pk=outline_id)
-        deleted, _ = CaseOutlineVote.objects.filter(
-            user=request.user, case_outline=outline,
-        ).delete()
-        if deleted:
-            CaseOutline.objects.filter(pk=outline.pk, upvotes__gt=0).update(upvotes=F('upvotes') - 1)
+        with transaction.atomic():
+            outline = CaseOutline.objects.select_for_update().get(pk=outline_id)
+            deleted, _ = CaseOutlineVote.objects.filter(
+                user=request.user, case_outline=outline,
+            ).delete()
+            if deleted and outline.upvotes > 0:
+                outline.upvotes = F('upvotes') - 1
+                outline.save(update_fields=['upvotes'])
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class MotionDoctorAnalyzeAPI(APIView):
-    """AI-powered motion analysis endpoint — the Motion Doctor."""
-    permission_classes = [permissions.AllowAny]
+    """AI-powered motion analysis endpoint — the Motion Doctor.
+
+    Pipeline: Profiler → Planner → Generator → Validator
+    """
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         serializer = MotionDoctorInputSerializer(data=request.data)
@@ -208,139 +221,113 @@ class MotionDoctorAnalyzeAPI(APIView):
         motion_text = serializer.validated_data['motion_text']
         debate_format = serializer.validated_data.get('format', 'bp')
         info_slide = serializer.validated_data.get('info_slide', '')
+        level = serializer.validated_data.get('level', 'open')
 
-        # Check if this motion already has an analysis
-        existing = MotionEntry.objects.filter(text__iexact=motion_text).first()
-        if existing and hasattr(existing, 'analysis'):
+        # Check for cached report (exact match)
+        existing_report = MotionReport.objects.filter(
+            motion_text__iexact=motion_text,
+            format=debate_format,
+        ).order_by('-created_at').first()
+
+        if existing_report and existing_report.report_json:
             return Response({
-                'motion_id': existing.id,
-                'analysis': MotionAnalysisSerializer(existing.analysis).data,
+                'report_id': str(existing_report.id),
+                'motion_text': motion_text,
+                'report': existing_report.report_json,
+                'profile': existing_report.profile_json,
+                'plan': existing_report.plan_json,
+                'validation_log': existing_report.validation_log,
+                'model_version': existing_report.model_version,
                 'cached': True,
             })
 
-        # Generate AI analysis
-        analysis = self._generate_analysis(motion_text, debate_format, info_slide)
+        # Run the 4-prompt pipeline
+        from .prompts import MotionDoctorPipeline
+
+        pipeline = MotionDoctorPipeline()
+
+        # Retrieve archetypes (simple keyword match for now; embeddings later)
+        archetypes = self._get_matching_archetypes(motion_text)
+        similar_motions = self._get_similar_motions(motion_text)
+
+        report, metadata = pipeline.run(
+            motion_text=motion_text,
+            debate_format=debate_format,
+            info_slide=info_slide,
+            archetypes=archetypes,
+            similar_motions=similar_motions,
+        )
+
+        # Persist the report
+        motion_entry = MotionEntry.objects.filter(text__iexact=motion_text).first()
+        saved_report = MotionReport.objects.create(
+            motion=motion_entry,
+            motion_text=motion_text,
+            info_slide=info_slide,
+            format=debate_format,
+            report_json=report,
+            profile_json=metadata.get('profile', {}),
+            plan_json=metadata.get('plan', {}),
+            validation_log=metadata.get('validation_issues', []),
+            model_version=metadata.get('model_version', 'fallback'),
+            pipeline_duration_ms=metadata.get('pipeline_duration_ms'),
+        )
 
         return Response({
+            'report_id': str(saved_report.id),
             'motion_text': motion_text,
-            'analysis': analysis,
+            'report': report,
+            'profile': metadata.get('profile', {}),
+            'plan': metadata.get('plan', {}),
+            'validation_log': metadata.get('validation_issues', []),
+            'model_version': metadata.get('model_version', 'fallback'),
+            'pipeline_stages': metadata.get('stages', {}),
+            'pipeline_duration_ms': metadata.get('pipeline_duration_ms'),
             'cached': False,
         })
 
-    def _generate_analysis(self, motion_text, debate_format, info_slide=''):
-        """Generate structured motion analysis.
+    def _get_matching_archetypes(self, motion_text):
+        """Retrieve matching archetypes via keyword overlap."""
+        text_lower = motion_text.lower()
+        results = []
+        for arch in Archetype.objects.all()[:50]:
+            triggers = arch.trigger_features
+            if isinstance(triggers, dict):
+                keywords = triggers.get('keywords', [])
+                if any(kw.lower() in text_lower for kw in keywords):
+                    results.append({
+                        'name': arch.name,
+                        'domain_tags': arch.domain_tags,
+                        'canonical_clashes': arch.canonical_clashes,
+                        'canonical_stakeholders': arch.canonical_stakeholders,
+                        'gov_playbook': arch.gov_playbook,
+                        'opp_playbook': arch.opp_playbook,
+                        'definition_traps': arch.definition_traps,
+                        'weighing_tools': arch.weighing_tools,
+                    })
+        return results[:5]
 
-        This is a template-based fallback. In production, this would call
-        an AI service (OpenAI, Claude, etc.) for intelligent analysis.
-        """
-        # Determine motion type from prefix
-        text_lower = motion_text.lower().strip()
-        if text_lower.startswith('thw ') or text_lower.startswith('this house would'):
-            motion_type = 'THW (Policy-leaning)'
-        elif text_lower.startswith('thbt ') or text_lower.startswith('this house believes that'):
-            motion_type = 'THBT (Value-leaning)'
-        elif text_lower.startswith('thr ') or text_lower.startswith('this house regrets'):
-            motion_type = 'THR (Evaluative)'
-        elif text_lower.startswith('ths ') or text_lower.startswith('this house supports'):
-            motion_type = 'THS (Stance)'
-        else:
-            motion_type = 'General'
+    def _get_similar_motions(self, motion_text):
+        """Retrieve similar motion texts via simple text search."""
+        keywords = [w for w in motion_text.split() if len(w) > 4][:5]
+        if not keywords:
+            return []
+        q = Q()
+        for kw in keywords:
+            q |= Q(text__icontains=kw)
+        similar = MotionEntry.objects.filter(q, is_approved=True).exclude(
+            text__iexact=motion_text,
+        ).values_list('text', flat=True)[:10]
+        return list(similar)
 
-        format_name = dict(MotionEntry.MotionFormat.choices).get(debate_format, 'British Parliamentary')
 
-        analysis = {
-            'motion_type_detected': motion_type,
-            'format': str(format_name),
-            'hidden_assumptions': [
-                f"The motion assumes a specific actor or mechanism is available",
-                f"There may be an implicit status quo being challenged",
-                f"The scope of '{motion_text[:50]}...' needs clear definition",
-            ],
-            'model_problems': [
-                "Defining the exact mechanism or policy change required",
-                "Establishing who the relevant stakeholders are",
-                "Determining the appropriate timeframe for evaluation",
-            ],
-            'clash_areas': [
-                "Principled vs. pragmatic evaluation",
-                "Rights of individuals vs. collective welfare",
-                "Short-term consequences vs. long-term systemic change",
-                "Status quo defense vs. burden of proof on change",
-            ],
-            'framing_mistakes': [
-                "Over-narrowing the definition to avoid clash",
-                "Failing to establish clear metrics for success",
-                "Ignoring the strongest opposition arguments in framing",
-            ],
-            'gov_approach': {
-                'structure': f"For {format_name}: Clear mechanism → stakeholder impact → principled justification",
-                'key_args': [
-                    "Establish clear harm in status quo",
-                    "Present actionable mechanism",
-                    "Show net benefit across stakeholders",
-                ],
-            },
-            'opp_approach': {
-                'structure': "Challenge mechanism feasibility → show unintended consequences → defend status quo value",
-                'key_args': [
-                    "Attack the feasibility or desirability of the change",
-                    "Present stronger counter-mechanisms",
-                    "Show that the costs outweigh the benefits",
-                ],
-            },
-            'definition_traps': [
-                "Avoid overly specific geographic or temporal definitions",
-                "Don't define away the opposition's ground",
-                "Ensure definitions are fair, clear, and debatable",
-            ],
-            'burden_split': (
-                "Gov must prove that the proposed change is desirable and feasible. "
-                "Opp must either defend the status quo or present a superior alternative."
-            ),
-            'likely_extensions': {
-                'CG': "Deeper principled analysis or new stakeholder group",
-                'CO': "Systemic critique or long-term consequences",
-            },
-            'weighing_options': [
-                "Scope of impact (how many people affected)",
-                "Severity of harm/benefit",
-                "Likelihood of the scenario occurring",
-                "Reversibility of consequences",
-            ],
-            'suggested_pois': [
-                f"Can you clarify your exact mechanism for implementing this?",
-                f"What happens to [affected group] under your model?",
-                f"How do you account for the unintended consequences of [X]?",
-                f"Where is your principled line for when this applies?",
-                f"Isn't this exactly what happens in [counter-example country]?",
-                f"How do you weigh [value A] against [value B]?",
-                f"What's the counterfactual — what happens if we don't do this?",
-                f"How do you respond to [strongest opp/gov argument]?",
-                f"Are you assuming perfect implementation?",
-                f"What empirical evidence supports your causal chain?",
-            ],
-            'difficulty_estimate': 3,
-            'difficulty_rationale': 'Moderate complexity — requires balanced analysis of competing values',
-        }
+class MotionReportFeedbackAPI(generics.CreateAPIView):
+    """Submit feedback on a Motion Doctor report."""
+    serializer_class = MotionReportFeedbackSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-        # Try to call AI service if available
-        ai_api_key = environ.get('OPENAI_API_KEY') or environ.get('ANTHROPIC_API_KEY')
-        if ai_api_key:
-            try:
-                analysis = self._call_ai_service(motion_text, debate_format, info_slide, ai_api_key)
-            except Exception as e:
-                logger.warning(f"AI analysis failed, using template: {e}")
-
-        return analysis
-
-    def _call_ai_service(self, motion_text, debate_format, info_slide, api_key):
-        """Call external AI API for intelligent motion analysis.
-
-        Override this method to integrate with OpenAI, Anthropic, or other AI services.
-        """
-        # Placeholder for AI integration
-        # In production, this would make an API call to generate analysis
-        raise NotImplementedError("AI service integration not yet configured")
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class PracticeSessionAPI(generics.ListCreateAPIView):

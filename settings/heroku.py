@@ -20,8 +20,8 @@ if environ.get('TAB_DIRECTOR_EMAIL', ''):
 if environ.get('DJANGO_SECRET_KEY', ''):
     SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
+# Allow specific host headers
+ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', '.nekotab.app,.herokuapp.com,localhost').split(',')
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -166,10 +166,17 @@ SUBDOMAIN_TOURNAMENTS_ENABLED = environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', 'tr
 SUBDOMAIN_BASE_DOMAIN = environ.get('SUBDOMAIN_BASE_DOMAIN', environ.get('HEROKU_APP_DOMAIN', 'nekotab.app'))
 RESERVED_SUBDOMAINS = environ.get('RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media').split(',')
 
-# Share session and CSRF across subdomains when base domain is configured
+# Share CSRF across subdomains when base domain is configured, but scope session
+# cookies to prevent tournament subdomain owners from hijacking sessions.
 if SUBDOMAIN_BASE_DOMAIN:
-    SESSION_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
+    # Session cookie is NOT shared across subdomains — each subdomain gets its own
+    # session, preventing malicious tournament owners from reading other sessions.
+    SESSION_COOKIE_DOMAIN = None  # default: only the exact domain that set it
+    SESSION_COOKIE_NAME = 'nekotab_sessionid'
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    # CSRF cookie must be shared across subdomains for cross-subdomain form posts
     CSRF_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
+    CSRF_COOKIE_SAMESITE = 'Lax'
     # Trusted origins must be full schemes; include wildcard for subdomains
     csrf_trusted = [
         f"https://{SUBDOMAIN_BASE_DOMAIN}",
@@ -188,7 +195,7 @@ if SUBDOMAIN_BASE_DOMAIN:
 if not environ.get('DISABLE_SENTRY'):
     DISABLE_SENTRY = False
     sentry_sdk.init(
-        dsn="https://6bf2099f349542f4b9baf73ca9789597@o85113.ingest.sentry.io/185382",
+        dsn=environ.get('SENTRY_DSN', 'https://6bf2099f349542f4b9baf73ca9789597@o85113.ingest.sentry.io/185382'),
         integrations=[
             DjangoIntegration(),
             LoggingIntegration(event_level=logging.WARNING),
