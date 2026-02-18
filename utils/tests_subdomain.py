@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 
 from tournaments.models import Tournament
 from utils.middleware import SubdomainTournamentMiddleware, get_subdomain_url
+from utils.misc import build_tournament_absolute_uri
 
 User = get_user_model()
 
@@ -192,3 +193,59 @@ class CanonicalUrlTest(TestCase):
         self.assertEqual(response.status_code, 200)
         content = response.content.decode()
         self.assertIn('https://nekotab.app/canonical-test/', content)
+
+
+@override_settings(**SUBDOMAIN_SETTINGS)
+class BuildTournamentAbsoluteUriTest(TestCase):
+    """Test the build_tournament_absolute_uri helper avoids double-slug."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.tournament = Tournament.objects.create(
+            name='URI Test',
+            short_name='URI',
+            slug='uri-test',
+            seq=1,
+            active=True,
+        )
+
+    def test_subdomain_strips_slug_prefix(self):
+        """Path /uri-test/motions/ should become https://uri-test.nekotab.app/motions/."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='uri-test.nekotab.app', secure=True)
+        url = build_tournament_absolute_uri(request, self.tournament, '/uri-test/motions/')
+        self.assertEqual(url, 'https://uri-test.nekotab.app/motions/')
+
+    def test_subdomain_root_path(self):
+        """None path should become https://uri-test.nekotab.app/uri-test/"""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='uri-test.nekotab.app', secure=True)
+        url = build_tournament_absolute_uri(request, self.tournament)
+        self.assertEqual(url, 'https://uri-test.nekotab.app/')
+
+    def test_subdomain_path_without_slug_prefix(self):
+        """Path /motions/ stays as /motions/ on subdomain."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='uri-test.nekotab.app', secure=True)
+        url = build_tournament_absolute_uri(request, self.tournament, '/motions/')
+        self.assertEqual(url, 'https://uri-test.nekotab.app/motions/')
+
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=False)
+    def test_fallback_to_build_absolute_uri(self):
+        """When subdomain disabled, falls back to request.build_absolute_uri."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='nekotab.app')
+        url = build_tournament_absolute_uri(request, self.tournament, '/uri-test/motions/')
+        self.assertIn('/uri-test/motions/', url)
+
+    def test_no_double_slug_with_reverse_tournament(self):
+        """Simulating a typical view call: reverse_tournament + build_tournament_absolute_uri."""
+        from utils.misc import reverse_tournament
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='uri-test.nekotab.app', secure=True)
+        path = reverse_tournament('tournament-admin-home', self.tournament)
+        url = build_tournament_absolute_uri(request, self.tournament, path)
+        # Should NOT contain /uri-test/uri-test/
+        self.assertNotIn('/uri-test/uri-test/', url)
+        # Should contain the slug exactly once in the domain
+        self.assertTrue(url.startswith('https://uri-test.nekotab.app/'))

@@ -15,7 +15,7 @@ from participants.emoji import EMOJI_NAMES
 from participants.models import Adjudicator, Coach, Speaker, Team, TournamentInstitution
 from tournaments.mixins import PublicTournamentPageMixin, TournamentMixin
 from users.permissions import Permission
-from utils.misc import reverse_tournament
+from utils.misc import build_tournament_absolute_uri, reverse_tournament
 from utils.mixins import AdministratorMixin
 from utils.tables import TabbycatTableBuilder
 from utils.views import ModelFormSetView, VueTableTemplateView
@@ -191,9 +191,9 @@ class BaseCreateTeamFormView(LogActionMixin, PublicTournamentPageMixin, CustomQu
             populate_invitation_url_keys([invitation], self.tournament)
             invitation.save()
 
-            invite_url = self.request.build_absolute_uri(
+            invite_url = build_tournament_absolute_uri(
+                self.request, self.tournament,
                 reverse_tournament('reg-create-speaker', self.tournament, kwargs={'pk': team.pk}) + '?key=%s' % invitation.url_key,
-                # replace with query={'key': invitation.url_key} in Django 5.2
             )
             messages.warning(self.request, ngettext(
                 "Your team only has %(num)d speaker! Invite the other speakers to register using this link: <a href='%(link)s'>%(link)s</a>",
@@ -413,9 +413,9 @@ class InstitutionalLandingPageView(TournamentMixin, InstitutionalRegistrationMix
 
         invitations = Invitation.objects.filter(tournament=self.tournament, institution=self.institution).select_related('for_content_type')
         for invitation in invitations:
-            kwargs['%s_invitation_link' % invitation.for_content_type.model] = self.request.build_absolute_uri(
-                reverse_tournament('reg-create-%s' % invitation.for_content_type.model, self.tournament) + '?key=%s' % invitation.url_key,
-                # replace with query={'key': invitation.url_key} in Django 5.2
+            path = reverse_tournament('reg-create-%s' % invitation.for_content_type.model, self.tournament) + '?key=%s' % invitation.url_key
+            kwargs['%s_invitation_link' % invitation.for_content_type.model] = build_tournament_absolute_uri(
+                self.request, self.tournament, path,
             )
         return super().get_context_data(**kwargs)
 

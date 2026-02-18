@@ -38,7 +38,7 @@ from tournaments.mixins import (CurrentRoundMixin, DebateDragAndDropMixin,
 from tournaments.models import Round
 from tournaments.utils import get_side_name
 from users.permissions import Permission
-from utils.misc import reverse_round, reverse_tournament
+from utils.misc import build_tournament_absolute_uri, reverse_round, reverse_tournament
 from utils.mixins import AdministratorMixin
 from utils.tables import TabbycatTableBuilder
 from utils.views import PostOnlyRedirectView, VueTableTemplateView
@@ -402,8 +402,8 @@ class EmailAdjudicatorAssignmentsView(RoundTemplateEmailCreateView):
 
     def get_extra(self):
         extra = super().get_extra()
-        extra['url'] = self.request.build_absolute_uri(
-            reverse_tournament('privateurls-person-index', self.tournament, kwargs={'url_key': '0'}))[:-2]
+        path = reverse_tournament('privateurls-person-index', self.tournament, kwargs={'url_key': '0'})
+        extra['url'] = build_tournament_absolute_uri(self.request, self.tournament, path)[:-2]
         return extra
 
     def get_person_type(self, person, **kwargs):

@@ -18,7 +18,7 @@ from results.utils import side_and_position_names
 from tournaments.mixins import (CurrentRoundMixin, OptionalAssistantTournamentPageMixin,
                                 RoundMixin, TournamentMixin)
 from users.permissions import Permission
-from utils.misc import reverse_tournament
+from utils.misc import build_tournament_absolute_uri, reverse_tournament
 from utils.mixins import AdministratorMixin
 from venues.serializers import VenueSerializer
 
@@ -237,7 +237,7 @@ class BasePrintableRandomisedURLs(TournamentMixin, AdministratorMixin, TemplateV
     def add_urls(self, participants):
         for participant in participants:
             url = reverse_tournament('privateurls-person-index', self.tournament, kwargs={'url_key': participant['url_key']})
-            abs_url = self.request.build_absolute_uri(url)
+            abs_url = build_tournament_absolute_uri(self.request, self.tournament, url)
             qr_code = qrcode.make(abs_url, image_factory=svg.SvgPathImage)
 
             participant['url'] = abs_url

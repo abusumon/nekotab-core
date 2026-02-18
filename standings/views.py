@@ -19,7 +19,7 @@ from results.models import SpeakerScore, TeamScore
 from tournaments.mixins import PublicTournamentPageMixin, RoundMixin, SingleObjectFromTournamentMixin, TournamentMixin
 from tournaments.models import Round
 from users.permissions import Permission
-from utils.misc import reverse_tournament
+from utils.misc import build_tournament_absolute_uri, reverse_tournament
 from utils.mixins import AdministratorMixin
 from utils.tables import TabbycatTableBuilder
 from utils.views import VueTableTemplateView
@@ -691,7 +691,8 @@ class EmailTeamStandingsView(RoundTemplateEmailCreateView):
     def get_extra(self):
         extra = super().get_extra()
         if self.tournament.pref('public_team_standings'):
-            extra['url'] = self.request.build_absolute_uri(reverse_tournament('standings-public-teams-current', self.tournament))
+            path = reverse_tournament('standings-public-teams-current', self.tournament)
+            extra['url'] = build_tournament_absolute_uri(self.request, self.tournament, path)
         else:
             extra['url'] = ""
         return extra

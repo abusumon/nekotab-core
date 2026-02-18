@@ -28,7 +28,7 @@ from results.models import BallotSubmission
 from results.prefetch import populate_confirmed_ballots
 from tournaments.models import Round
 from users.permissions import has_permission, Permission
-from utils.misc import redirect_round, redirect_tournament, reverse_round, reverse_tournament
+from utils.misc import build_tournament_absolute_uri, redirect_round, redirect_tournament, reverse_round, reverse_tournament
 from utils.mixins import (AdministratorMixin, AssistantMixin, CacheMixin, TabbycatPageTitlesMixin,
                           WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConfigVarsMixin)
 from utils.tables import TabbycatTableBuilder
@@ -299,6 +299,9 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
 
         messages.success(self.request, _("Success! Your tournament has been created."))
 
+        # Build the tournament URL (subdomain-aware)
+        tournament_url = build_tournament_absolute_uri(self.request, tournament)
+
         # Send admin notification email (non-blocking)
         try:
             send_mail(
@@ -308,15 +311,45 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
                     f"Created by: {self.request.user.username} ({self.request.user.email})\n"
                     f"Tournament Name: {tournament.name}\n"
                     f"Slug: {tournament.slug}\n"
-                    f"URL: {self.request.build_absolute_uri('/' + tournament.slug + '/')}\n"
+                    f"URL: {tournament_url}\n"
                 ),
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=['abusumon1701@gmail.com'],
                 fail_silently=True,
             )
-            logger.info("Tournament creation email sent for '%s'", tournament.name)
+            logger.info("Tournament creation admin email sent for '%s'", tournament.name)
         except Exception as e:
-            logger.error("Failed to send tournament creation email: %s", e, exc_info=True)
+            logger.error("Failed to send tournament creation admin email: %s", e, exc_info=True)
+
+        # Send welcome email to the creator/owner (non-blocking)
+        owner_email = getattr(self.request.user, 'email', None)
+        if owner_email:
+            try:
+                send_mail(
+                    subject=f"Your NekoTab Tournament \"{tournament.name}\" is Ready!",
+                    message=(
+                        f"Hi {self.request.user.username},\n\n"
+                        f"Your tournament \"{tournament.name}\" has been successfully created on NekoTab!\n\n"
+                        f"You can access your tournament dashboard here:\n"
+                        f"{tournament_url}\n\n"
+                        f"Quick Links:\n"
+                        f"- Admin Dashboard: {tournament_url}\n"
+                        f"- Tournament Slug: {tournament.slug}\n\n"
+                        f"Next Steps:\n"
+                        f"1. Configure your tournament format and settings\n"
+                        f"2. Add teams, adjudicators and venues\n"
+                        f"3. Generate draws and start tabbing!\n\n"
+                        f"If you have any questions, reply to this email or visit our documentation.\n\n"
+                        f"Happy tabbing!\n"
+                        f"The NekoTab Team\n"
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[owner_email],
+                    fail_silently=True,
+                )
+                logger.info("Tournament creation owner email sent to '%s' for '%s'", owner_email, tournament.name)
+            except Exception as e:
+                logger.error("Failed to send tournament creation owner email: %s", e, exc_info=True)
 
         return redirect(reverse_tournament('tournament-configure', tournament=tournament))
 

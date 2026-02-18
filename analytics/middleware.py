@@ -99,6 +99,16 @@ class AnalyticsMiddleware:
     def track_request(self, request):
         """Track the page view and update active session."""
         path = request.path
+
+        # When served via a tournament subdomain, the middleware rewrites
+        # request.path to include a /<slug>/ prefix.  Strip it so that
+        # analytics records the *real* URL the user sees.
+        subdomain_slug = getattr(request, 'subdomain_tournament', None)
+        if subdomain_slug:
+            slug_prefix = f'/{subdomain_slug}/'
+            display_path = '/' + path[len(slug_prefix):] if path.startswith(slug_prefix) else path
+        else:
+            display_path = path
         
         if not self.should_track(path):
             return
@@ -116,11 +126,20 @@ class AnalyticsMiddleware:
             device, browser, os = self.parse_user_agent(user_agent)
             
             user = request.user if request.user.is_authenticated else None
+
+            # Build the canonical full URL (subdomain-aware)
+            if subdomain_slug:
+                from django.conf import settings
+                base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
+                scheme = 'https' if request.is_secure() else 'http'
+                full_url = f'{scheme}://{subdomain_slug}.{base_domain}{display_path}'
+            else:
+                full_url = request.build_absolute_uri()
             
             # Create page view record
             PageView.objects.create(
-                path=path,
-                full_url=request.build_absolute_uri(),
+                path=display_path,
+                full_url=full_url,
                 session_key=session_key,
                 user=user,
                 ip_address=ip_address,
@@ -137,7 +156,7 @@ class AnalyticsMiddleware:
                 defaults={
                     'user': user,
                     'ip_address': ip_address,
-                    'current_path': path,
+                    'current_path': display_path,
                     'last_activity': timezone.now(),
                 }
             )

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
@@ -32,7 +33,9 @@ class TournamentSitemap(Sitemap):
         return Tournament.objects.filter(active=True)
 
     def location(self, obj):
-        # Canonical path for tournament home under slug routing
+        # When subdomain routing is enabled, sitemaps should still use
+        # path-based URLs since the sitemap XML is served from the main domain.
+        # Search engines will discover the subdomain via canonical tags.
         return f"/{obj.slug}/"
 
     def lastmod(self, obj):

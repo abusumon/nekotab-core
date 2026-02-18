@@ -80,3 +80,38 @@ def add_query_string_parameter(url, key, value):
     query_parts[key] = value
     query = urlencode(query_parts, safe='/')
     return urlunparse((scheme, netloc, path, params, query, fragment))
+
+
+def build_tournament_absolute_uri(request, tournament, path=None):
+    """Build a full absolute URL for a tournament page, subdomain-aware.
+
+    When subdomain routing is enabled, returns e.g.
+        https://slug.nekotab.app/motions/
+    When disabled, falls back to request.build_absolute_uri(path), e.g.
+        https://nekotab.app/slug/motions/
+
+    ``path`` should be the result of reverse_tournament() or any path that
+    starts with /<slug>/.  If *path* is None the tournament root is used.
+
+    The function strips a leading /<slug>/ prefix from *path* when building
+    the subdomain form so callers never have to worry about double-slugs.
+    """
+    from django.conf import settings
+
+    slug = tournament.slug
+    if path is None:
+        path = f'/{slug}/'
+
+    subdomain_enabled = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
+    base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
+
+    if subdomain_enabled and base_domain:
+        # Strip slug prefix from path: /slug/motions/ -> /motions/
+        slug_prefix = f'/{slug}/'
+        if path.startswith(slug_prefix):
+            path = '/' + path[len(slug_prefix):]
+
+        scheme = 'https' if request.is_secure() else 'http'
+        return f'{scheme}://{slug}.{base_domain}{path}'
+    else:
+        return request.build_absolute_uri(path)

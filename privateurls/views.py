@@ -18,7 +18,7 @@ from participants.views import BaseRecordView
 from tournaments.mixins import PersonalizablePublicTournamentPageMixin, SingleObjectByRandomisedUrlMixin, TournamentMixin
 from tournaments.models import Round
 from users.permissions import Permission
-from utils.misc import reverse_tournament
+from utils.misc import build_tournament_absolute_uri, reverse_tournament
 from utils.mixins import AdministratorMixin
 from utils.tables import TabbycatTableBuilder
 from utils.views import PostOnlyRedirectView, VueTableTemplateView
@@ -72,7 +72,7 @@ class RandomisedUrlsView(RandomisedUrlsMixin, VueTableTemplateView):
                 return {'text': _("no URL"), 'class': 'text-warning'}
             path = reverse_tournament('privateurls-person-index', self.tournament,
                 kwargs={'url_key': person.url_key})
-            return {'text': request.build_absolute_uri(path), 'class': 'small mixed-text'}
+            return {'text': build_tournament_absolute_uri(request, self.tournament, path), 'class': 'small mixed-text'}
 
         def build_link(person):
             if person.url_key is None:
@@ -161,7 +161,8 @@ class EmailRandomisedUrlsView(RoleColumnMixin, TournamentTemplateEmailCreateView
 
     def get_extra(self) -> Dict[str, Any]:
         extra = super().get_extra()
-        extra['url'] = self.request.build_absolute_uri(reverse_tournament('privateurls-person-index', self.tournament, kwargs={'url_key': '0'}))[:-2]
+        path = reverse_tournament('privateurls-person-index', self.tournament, kwargs={'url_key': '0'})
+        extra['url'] = build_tournament_absolute_uri(self.request, self.tournament, path)[:-2]
         return extra
 
     def get_table(self) -> TabbycatTableBuilder:
@@ -174,8 +175,8 @@ class EmailRandomisedUrlsView(RoleColumnMixin, TournamentTemplateEmailCreateView
                 'class': 'small' if p.url_key else 'small text-warning',
             }
             if p.url_key:
-                cell['link'] = self.request.build_absolute_uri(
-                    reverse_tournament('privateurls-person-index', self.tournament, kwargs={'url_key': p.url_key}))
+                path = reverse_tournament('privateurls-person-index', self.tournament, kwargs={'url_key': p.url_key})
+                cell['link'] = build_tournament_absolute_uri(self.request, self.tournament, path)
             data.append(cell)
 
         table.add_column({'key': 'url', 'tooltip': _("URL Key"), 'icon': 'terminal'}, data)
@@ -231,9 +232,8 @@ class PersonIndexView(SingleObjectByRandomisedUrlMixin, PersonalizablePublicTour
             kwargs['debateteams'] = BaseRecordView.allocations_set(team, False, self.tournament)
 
             if invitation := team.invitation_set.first():
-                kwargs['speaker_invite_link'] = self.request.build_absolute_uri(
-                    reverse_tournament('reg-create-speaker', self.tournament, kwargs={'pk': team.pk}) + '?key=' + invitation.url_key,
-                )
+                path = reverse_tournament('reg-create-speaker', self.tournament, kwargs={'pk': team.pk}) + '?key=' + invitation.url_key
+                kwargs['speaker_invite_link'] = build_tournament_absolute_uri(self.request, self.tournament, path)
 
         kwargs['draw_released'] = t.current_round.draw_status == Round.Status.RELEASED
         kwargs['feedback_pref'] = t.pref('participant_feedback') == 'private-urls'
