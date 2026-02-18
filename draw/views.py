@@ -6,7 +6,6 @@ from zoneinfo import ZoneInfo
 
 from django.contrib import messages
 from django.db.models import OuterRef, Subquery
-from django.http import HttpResponseRedirect
 from django.utils import timezone
 from django.utils.functional import cached_property
 from django.utils.html import escape, format_html
@@ -38,7 +37,7 @@ from tournaments.mixins import (CurrentRoundMixin, DebateDragAndDropMixin,
 from tournaments.models import Round
 from tournaments.utils import get_side_name
 from users.permissions import Permission
-from utils.misc import build_tournament_absolute_uri, reverse_round, reverse_tournament
+from utils.misc import build_tournament_absolute_uri, redirect_round, reverse_round, reverse_tournament
 from utils.mixins import AdministratorMixin
 from utils.tables import TabbycatTableBuilder
 from utils.views import PostOnlyRedirectView, VueTableTemplateView
@@ -685,7 +684,7 @@ class CreateDrawView(DrawStatusEdit):
                 "<p>Please fix this issue before attempting to create the draw.</p>",
             ) % {'message': str(e)}))
             logger.warning("User error creating draw: " + str(e), exc_info=True)
-            return HttpResponseRedirect(reverse_round('availability-index', self.round))
+            return redirect_round('availability-index', self.round)
         except DrawFatalError as e:
             messages.error(request, mark_safe(_(
                 "<p>The draw could not be created, because the following error occurred: "
@@ -694,7 +693,7 @@ class CreateDrawView(DrawStatusEdit):
                 "contact the developers.</p>",
             ) % {'message': str(e)}))
             logger.exception("Fatal error creating draw: " + str(e))
-            return HttpResponseRedirect(reverse_round('availability-index', self.round))
+            return redirect_round('availability-index', self.round)
         except StandingsError as e:
             message = _(
                 "<p>The team standings could not be generated, because the following error occurred: "
@@ -706,7 +705,7 @@ class CreateDrawView(DrawStatusEdit):
             instructions = BaseStandingsView.admin_standings_error_instructions % {'standings_options_url': standings_options_url}
             messages.error(request, mark_safe(message + instructions))
             logger.exception("Error generating standings for draw: " + str(e))
-            return HttpResponseRedirect(reverse_round('availability-index', self.round))
+            return redirect_round('availability-index', self.round)
 
         relevant_adj_venue_constraints = VenueConstraint.objects.filter(
                 adjudicator__in=self.tournament.relevant_adjudicators)
@@ -730,7 +729,7 @@ class ConfirmDrawCreationView(DrawStatusEdit):
                 messages.error(request, _("There is no draw."))
             else:
                 messages.info(request, _("The draw had already been confirmed."))
-            return HttpResponseRedirect(reverse_round('draw', self.round))
+            return redirect_round('draw', self.round)
 
         self.round.draw_status = Round.Status.CONFIRMED
         self.round.save()
@@ -772,7 +771,7 @@ class DrawReleaseView(DrawStatusEdit):
                 messages.info(request, _("The draw has already been released."))
             else:
                 messages.error(request, _("The draw must be confirmed before being released."))
-            return HttpResponseRedirect(reverse_round('draw', self.round))
+            return redirect_round('draw', self.round)
 
         self.round.draw_status = Round.Status.RELEASED
         self.round.save()
@@ -790,7 +789,7 @@ class DrawUnreleaseView(DrawStatusEdit):
     def post(self, request, *args, **kwargs):
         if self.round.draw_status != Round.Status.RELEASED:
             messages.info(request, _("The draw had been unreleased."))
-            return HttpResponseRedirect(reverse_round('draw', self.round))
+            return redirect_round('draw', self.round)
 
         self.round.draw_status = Round.Status.CONFIRMED
         self.round.save()

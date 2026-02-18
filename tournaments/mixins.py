@@ -24,7 +24,8 @@ from participants.prefetch import populate_win_counts
 from participants.serializers import InstitutionSerializer
 from tournaments.serializers import RoundSerializer, TournamentSerializer
 from utils.misc import (add_query_string_parameter, redirect_tournament,
-                        reverse_round, reverse_tournament)
+                        reverse_round, reverse_tournament,
+                        subdomain_reverse_round, subdomain_reverse_tournament)
 from utils.mixins import AssistantMixin, CacheMixin, TabbycatPageTitlesMixin
 from utils.serializers import django_rest_json_render
 
@@ -83,11 +84,14 @@ class TournamentMixin(TabbycatPageTitlesMixin, TournamentFromUrlMixin):
     """
     def get_redirect_url(self, *args, **kwargs):
         # Override if self.tournament_redirect_pattern_name is specified,
-        # otherwise just pass down the chain
+        # otherwise just pass down the chain.
+        # Uses subdomain_reverse_tournament so redirects go directly to
+        # the subdomain URL when subdomain routing is enabled.
         if self.tournament_redirect_pattern_name:
             try:
-                return reverse_tournament(self.tournament_redirect_pattern_name,
-                        self.tournament, args=args, kwargs=kwargs)
+                return subdomain_reverse_tournament(
+                    self.tournament_redirect_pattern_name,
+                    self.tournament, args=args, kwargs=kwargs)
             except NoReverseMatch:
                 logger.warning("No reverse match for %s", self.tournament_redirect_pattern_name)
                 pass
@@ -243,11 +247,13 @@ class RoundMixin(RoundFromUrlMixin, TournamentMixin):
 
     def get_redirect_url(self, *args, **kwargs):
         # Override if self.round_redirect_pattern_name is specified,
-        # otherwise just pass down the chain
+        # otherwise just pass down the chain.
+        # Uses subdomain_reverse_round for subdomain-aware redirects.
         if self.round_redirect_pattern_name:
             try:
-                return reverse_round(self.round_redirect_pattern_name,
-                                     self.round, args=args, kwargs=kwargs)
+                return subdomain_reverse_round(
+                    self.round_redirect_pattern_name,
+                    self.round, args=args, kwargs=kwargs)
             except NoReverseMatch:
                 pass
         return super().get_redirect_url(*args, **kwargs)

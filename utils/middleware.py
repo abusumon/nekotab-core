@@ -2,7 +2,7 @@ import re
 
 from django.conf import settings
 from django.core.cache import cache
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 
@@ -20,19 +20,43 @@ class DebateMiddleware(object):
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         if 'tournament_slug' in view_kwargs and request.path.split('/')[1] != 'api':
-            cached_key = "%s_%s" % (view_kwargs['tournament_slug'], 'object')
+            slug = view_kwargs['tournament_slug']
+
+            # --- Redirect path-based access to subdomain ---
+            # When subdomain routing is enabled and the request arrived on the
+            # main domain (not already via a subdomain), 301-redirect GET/HEAD
+            # requests to the canonical subdomain URL.
+            subdomain_on = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
+            base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
+            already_subdomain = getattr(request, 'subdomain_tournament', None)
+
+            if (subdomain_on and base_domain
+                    and not already_subdomain
+                    and request.method in ('GET', 'HEAD')):
+                path = request.get_full_path()  # includes query string
+                slug_prefix = f'/{slug}/'
+                if path.startswith(slug_prefix):
+                    clean_path = '/' + path[len(slug_prefix):]
+                elif path == f'/{slug}':
+                    clean_path = '/'
+                else:
+                    clean_path = path
+                return HttpResponsePermanentRedirect(
+                    f'https://{slug}.{base_domain}{clean_path}')
+
+            # --- Cache tournament object ---
+            cached_key = "%s_%s" % (slug, 'object')
             cached_tournament_object = cache.get(cached_key)
 
             if cached_tournament_object:
                 request.tournament = cached_tournament_object
             else:
                 request.tournament = get_object_or_404(
-                    Tournament,
-                    slug=view_kwargs['tournament_slug'])
+                    Tournament, slug=slug)
                 cache.set(cached_key, request.tournament, None)
 
             if 'round_seq' in view_kwargs:
-                cached_key = "%s_%s_%s" % (view_kwargs['tournament_slug'],
+                cached_key = "%s_%s_%s" % (slug,
                                            view_kwargs['round_seq'], 'object')
                 cached_round_object = cache.get(cached_key)
                 if cached_round_object:

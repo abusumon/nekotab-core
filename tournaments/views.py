@@ -351,7 +351,7 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
             except Exception as e:
                 logger.error("Failed to send tournament creation owner email: %s", e, exc_info=True)
 
-        return redirect(reverse_tournament('tournament-configure', tournament=tournament))
+        return redirect_tournament('tournament-configure', tournament)
 
     def get_context_data(self, **kwargs):
         demo_datasets = [
