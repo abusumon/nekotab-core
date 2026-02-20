@@ -288,7 +288,10 @@ class SubdomainTournamentMiddleware:
                 Tournament.objects.filter(slug=label).exists()
                 or Tournament.objects.filter(slug__iexact=label).exists()
             )
-            cache.set(cache_key, cached, 300)
+            # Only cache positive results for a long time.  Negative results
+            # use a short TTL so that a newly created tournament becomes
+            # reachable quickly even if a bot/crawler hit the subdomain first.
+            cache.set(cache_key, cached, 300 if cached else 15)
 
         if not cached:
             logger.warning(

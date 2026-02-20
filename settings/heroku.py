@@ -166,12 +166,14 @@ SUBDOMAIN_TOURNAMENTS_ENABLED = environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', 'tr
 SUBDOMAIN_BASE_DOMAIN = environ.get('SUBDOMAIN_BASE_DOMAIN', environ.get('HEROKU_APP_DOMAIN', 'nekotab.app'))
 RESERVED_SUBDOMAINS = environ.get('RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media').split(',')
 
-# Share CSRF across subdomains when base domain is configured, but scope session
-# cookies to prevent tournament subdomain owners from hijacking sessions.
+# Share cookies across subdomains when base domain is configured.
+# This is safe because tournament owners do NOT have the ability to run
+# arbitrary server code or set cookies on their subdomains — all subdomains
+# are served by the same Heroku app.  Without this, users lose their
+# authenticated session when redirected from the base domain to a tournament
+# subdomain (e.g., after creating a tournament).
 if SUBDOMAIN_BASE_DOMAIN:
-    # Session cookie is NOT shared across subdomains — each subdomain gets its own
-    # session, preventing malicious tournament owners from reading other sessions.
-    SESSION_COOKIE_DOMAIN = None  # default: only the exact domain that set it
+    SESSION_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
     SESSION_COOKIE_NAME = 'nekotab_sessionid'
     SESSION_COOKIE_SAMESITE = 'Lax'
     # CSRF cookie must be shared across subdomains for cross-subdomain form posts
