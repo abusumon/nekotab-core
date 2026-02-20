@@ -645,6 +645,7 @@ class DeleteTournamentsView(SuperuserRequiredMixin, View):
     """Hard-delete one or more tournaments and log the audit trail."""
 
     def post(self, request):
+        from django.core.mail import send_mail
         from django.db import transaction as db_transaction
         from retention.engine import _clear_protect_refs, _clear_caches, _snapshot_counts, _owner_info
         from retention.models import TournamentDeletionLog
@@ -693,6 +694,29 @@ class DeleteTournamentsView(SuperuserRequiredMixin, View):
                 deleted.append({'id': tid, 'slug': slug, 'name': name})
                 logger.info("Dashboard hard-delete: %s (id=%d) by %s",
                             slug, tid, request.user.username)
+
+                # Notify the owner via email
+                if owner_email:
+                    try:
+                        send_mail(
+                            f'[NekoTab] Tournament "{name}" has been deleted',
+                            f'Hi {owner_username or "there"},\n\n'
+                            f'Your tournament "{name}" ({slug}) has been permanently '
+                            f'deleted by an administrator ({request.user.username}).\n\n'
+                            f'Summary at time of deletion:\n'
+                            f'  Teams: {counts["team_count"]}\n'
+                            f'  Rounds: {counts["round_count"]}\n'
+                            f'  Debates: {counts["debate_count"]}\n\n'
+                            f'If you believe this was done in error, please contact '
+                            f'the site administrator.\n\n'
+                            f'— NekoTab',
+                            settings.DEFAULT_FROM_EMAIL,
+                            [owner_email],
+                            fail_silently=True,
+                        )
+                    except Exception:
+                        logger.exception("Failed to send deletion email for %s to %s",
+                                         slug, owner_email)
 
             except Exception as exc:
                 logger.exception("Failed to delete tournament %s (id=%d)", slug, tid)

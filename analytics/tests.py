@@ -810,3 +810,27 @@ class DeleteTournamentsViewTests(TestCase):
         self._post_delete([self.tournament.id])
         self.assertFalse(Team.objects.filter(id=team.id).exists())
         self.assertFalse(Debate.objects.filter(id=debate.id).exists())
+
+    # --- Email notification ---
+
+    def test_owner_email_sent_on_delete(self):
+        """Owner should receive an email after their tournament is deleted."""
+        from django.core import mail
+        tid = self.tournament.id
+        self._post_delete([tid])
+        # Django's test runner uses locmem email backend
+        matching = [m for m in mail.outbox if 'Delete Me' in m.subject]
+        self.assertEqual(len(matching), 1)
+        msg = matching[0]
+        self.assertIn('deladmin@test.com', msg.to)
+        self.assertIn('permanently deleted', msg.body)
+        self.assertIn('Teams: ', msg.body)
+
+    def test_no_email_when_owner_has_no_email(self):
+        """If the owner has no email, deletion should still succeed without error."""
+        self.tournament.owner.email = ''
+        self.tournament.owner.save()
+        tid = self.tournament.id
+        response = self._post_delete([tid])
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['deleted_count'], 1)
