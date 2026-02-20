@@ -228,7 +228,7 @@ class SubdomainTournamentMiddleware:
     }
 
     BAD_PREFIXES = (
-        '/static/', '/media/', '/admin/', '/database/', '/api/',
+        '/static/', '/media/', '/database/', '/api/',
         '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
     )
 

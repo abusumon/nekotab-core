@@ -80,12 +80,33 @@ class SubdomainMiddlewareTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_global_paths_not_rewritten(self):
-        """Admin/analytics/static paths should not be rewritten on subdomains."""
-        for path in ['/admin/', '/analytics/', '/static/css/style.css']:
+        """Analytics/static/database paths should not be rewritten on subdomains."""
+        for path in ['/analytics/', '/static/css/style.css', '/database/']:
             response = self.client.get(path, HTTP_HOST='test-tourney.nekotab.app')
             # Should not produce a 500 from double-prefixing
             self.assertNotEqual(response.status_code, 500,
                                 msg=f"Path {path} returned 500 on tournament subdomain")
+
+    def test_tournament_admin_paths_rewritten_on_subdomain(self):
+        """Tournament admin paths like /admin/configure/ MUST be rewritten on subdomains.
+
+        These are tournament-scoped pages, not Django admin. The Django admin
+        lives at /database/ and is excluded via BAD_PREFIXES. Tournament admin
+        paths must be rewritten so that Django's URL resolver can match them
+        against <slug:tournament_slug>/admin/... patterns.
+        """
+        factory = RequestFactory()
+        request = factory.get('/admin/configure/', HTTP_HOST='test-tourney.nekotab.app')
+
+        def get_response(req):
+            # Path should be rewritten with slug prefix
+            self.assertEqual(req.path_info, '/test-tourney/admin/configure/')
+            self.assertEqual(req.subdomain_tournament, 'test-tourney')
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTournamentMiddleware(get_response)
+        middleware(request)
 
     def test_no_double_prefix_for_other_tournament(self):
         """If path already has another tournament's slug, don't double-prefix."""
@@ -249,3 +270,129 @@ class BuildTournamentAbsoluteUriTest(TestCase):
         self.assertNotIn('/uri-test/uri-test/', url)
         # Should contain the slug exactly once in the domain
         self.assertTrue(url.startswith('https://uri-test.nekotab.app/'))
+
+
+@override_settings(**SUBDOMAIN_SETTINGS)
+class TournamentCreationFlowTest(TestCase):
+    """Regression tests for the tournament creation → configure flow.
+
+    These verify the fix for the bug where /admin/configure/ on a tournament
+    subdomain returned 404 because SubdomainTournamentMiddleware skipped URL
+    rewriting for paths starting with /admin/.
+    """
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.superuser = User.objects.create_superuser(
+            'superadmin', 'admin@test.com', 'password',
+        )
+
+    def test_superuser_can_open_create_tournament_page(self):
+        """Superuser can access /create/ on the base domain."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/create/', HTTP_HOST='nekotab.app')
+        self.assertEqual(response.status_code, 200)
+
+    def test_redirect_tournament_generates_correct_url(self):
+        """redirect_tournament('tournament-configure', t) should produce a
+        valid subdomain URL pointing to /admin/configure/."""
+        from utils.misc import _to_subdomain_url
+        from django.urls import reverse
+        t = Tournament.objects.create(
+            slug='test-create', name='Test Create', seq=1, active=True,
+            owner=self.superuser,
+        )
+        path = reverse('tournament-configure',
+                        kwargs={'tournament_slug': t.slug})
+        self.assertEqual(path, '/test-create/admin/configure/')
+        subdomain_url = _to_subdomain_url(t.slug, path)
+        self.assertEqual(subdomain_url,
+                         'https://test-create.nekotab.app/admin/configure/')
+
+    def test_configure_route_works_on_subdomain(self):
+        """GET /admin/configure/ on the tournament subdomain should NOT 404."""
+        t = Tournament.objects.create(
+            slug='cfg-sub', name='Configure Sub', seq=1, active=True,
+            owner=self.superuser,
+        )
+        self.client.force_login(self.superuser)
+        response = self.client.get('/admin/configure/',
+                                   HTTP_HOST='cfg-sub.nekotab.app')
+        # Should resolve (200) or redirect (302), never 404
+        self.assertIn(response.status_code, [200, 302],
+                      msg=f"Expected 200/302, got {response.status_code}")
+
+    def test_configure_route_works_on_base_domain_path(self):
+        """GET /cfg-path/admin/configure/ on the base domain should work."""
+        t = Tournament.objects.create(
+            slug='cfg-path', name='Configure Path', seq=1, active=True,
+            owner=self.superuser,
+        )
+        self.client.force_login(self.superuser)
+        response = self.client.get('/cfg-path/admin/configure/',
+                                   HTTP_HOST='nekotab.app')
+        self.assertIn(response.status_code, [200, 301, 302])
+
+    def test_tournament_admin_home_works_on_subdomain(self):
+        """GET /admin/ on the tournament subdomain should resolve."""
+        t = Tournament.objects.create(
+            slug='admin-sub', name='Admin Sub', seq=1, active=True,
+            owner=self.superuser,
+        )
+        self.client.force_login(self.superuser)
+        response = self.client.get('/admin/',
+                                   HTTP_HOST='admin-sub.nekotab.app')
+        self.assertIn(response.status_code, [200, 302])
+
+    def test_visibility_gate_does_not_block_superuser(self):
+        """Superuser should never be blocked by the visibility gate."""
+        t = Tournament.objects.create(
+            slug='hidden-su', name='Hidden SU', seq=1, active=True,
+            is_listed=False,
+        )
+        self.client.force_login(self.superuser)
+        response = self.client.get('/',
+                                   HTTP_HOST='hidden-su.nekotab.app')
+        self.assertNotEqual(response.status_code, 404,
+                            msg="Superuser should not get 404 for unlisted tournament")
+
+    def test_visibility_gate_blocks_anonymous(self):
+        """Anonymous users should get 404 for unlisted tournaments."""
+        t = Tournament.objects.create(
+            slug='hidden-anon', name='Hidden Anon', seq=1, active=True,
+            is_listed=False,
+        )
+        response = self.client.get('/',
+                                   HTTP_HOST='hidden-anon.nekotab.app')
+        self.assertEqual(response.status_code, 404)
+
+    def test_no_redirect_loop_in_create_flow(self):
+        """Creating a tournament and following the redirect should not loop."""
+        self.client.force_login(self.superuser)
+        # POST to create
+        response = self.client.post('/create/', {
+            'name': 'Loop Test',
+            'short_name': 'Loop',
+            'slug': 'loop-test',
+            'seq': 1,
+        }, HTTP_HOST='nekotab.app')
+        # Should redirect (302)
+        self.assertEqual(response.status_code, 302)
+        redirect_url = response['Location']
+        # The redirect should point to the configure page on subdomain
+        self.assertIn('loop-test', redirect_url)
+        self.assertIn('/admin/configure/', redirect_url)
+
+    def test_subdomain_cache_warmed_after_creation(self):
+        """After tournament creation, the subdomain cache should be warm."""
+        from django.core.cache import cache
+        self.client.force_login(self.superuser)
+        self.client.post('/create/', {
+            'name': 'Cache Warm Test',
+            'short_name': 'CW',
+            'slug': 'cache-warm',
+            'seq': 1,
+        }, HTTP_HOST='nekotab.app')
+        cached = cache.get('subdom_tour_exists_cache-warm')
+        self.assertTrue(cached,
+                        msg="Subdomain cache should be True after creation")

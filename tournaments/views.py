@@ -376,6 +376,10 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
             except Exception as e:
                 logger.error("Failed to send tournament creation owner email: %s", e, exc_info=True)
 
+        # Warm the subdomain-exists cache so the redirect lands immediately
+        from django.core.cache import cache
+        cache.set(f'subdom_tour_exists_{tournament.slug.lower()}', True, 300)
+
         return redirect_tournament('tournament-configure', tournament)
 
     def get_context_data(self, **kwargs):
