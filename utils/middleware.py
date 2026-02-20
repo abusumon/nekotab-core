@@ -102,11 +102,21 @@ class DebateMiddleware:
             cache.set(cached_key, tournament, 3600)
 
         # ------------------------------------------------------------------
-        # Visibility gate – return 404 (not 403) to avoid leaking existence
+        # Visibility gate – only applied to PRIVATE routes (admin/assistant)
+        #
+        # Public routes are open to everyone (including anonymous users) as
+        # long as the tournament exists.  View-level mixins like
+        # ``PublicTournamentPageMixin`` handle per-page enable/disable via
+        # tournament preferences.
+        #
+        # ``is_listed`` controls whether a tournament appears in global
+        # lists/showcase and the tournament switcher – it does NOT block
+        # direct access to the tournament's own public pages.
         # ------------------------------------------------------------------
-        user = getattr(request, 'user', None)
-        if not self._user_can_see(request.tournament, user):
-            return self._tournament_not_found_response(slug, request)
+        if self._is_private_route(request, slug):
+            user = getattr(request, 'user', None)
+            if not self._user_has_tournament_access(request.tournament, user):
+                return self._tournament_not_found_response(slug, request)
 
         # ------------------------------------------------------------------
         # Resolve round (if present)
@@ -127,14 +137,40 @@ class DebateMiddleware:
     # -- helpers ---------------------------------------------------------------
 
     @staticmethod
-    def _user_can_see(tournament, user):
-        """Return True if *user* is allowed to see *tournament*.
+    def _is_private_route(request, tournament_slug):
+        """Return True if the request targets an admin/assistant (private) route.
 
-        Uses the same visibility queryset as ``TournamentQuerySet.visible_to``
-        but avoids an extra DB hit when the tournament is already resolved.
+        Classification uses the tournament-relative URL path:
+        - ``admin/…``  → PRIVATE
+        - ``assistant/…`` → PRIVATE
+        - everything else → PUBLIC (view-level mixins handle per-page prefs)
+
+        Falls back to ``request.resolver_match.url_name`` / namespace hints
+        when available, but the path-prefix check is authoritative because
+        `process_view` is only reached after URL resolution succeeds.
         """
-        if tournament.is_listed:
+        path = request.path_info
+        # Strip the tournament slug prefix to get the relative path
+        prefix = f'/{tournament_slug}/'
+        if path.lower().startswith(prefix.lower()):
+            relative = path[len(prefix):]
+        else:
+            relative = path.lstrip('/')
+
+        PRIVATE_PREFIXES = ('admin/', 'assistant/')
+        # Exact match for bare admin or assistant (no trailing content)
+        if relative in ('admin', 'assistant'):
             return True
+        return relative.startswith(PRIVATE_PREFIXES)
+
+    @staticmethod
+    def _user_has_tournament_access(tournament, user):
+        """Return True if *user* has admin/assistant-level access to
+        *tournament*.
+
+        This is used exclusively for private (admin/assistant) routes.
+        Public pages are accessible without this check.
+        """
         if user is None or not getattr(user, 'is_authenticated', False):
             return False
         if user.is_superuser:

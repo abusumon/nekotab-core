@@ -6,7 +6,7 @@ from django.test import TestCase, RequestFactory, override_settings
 from django.contrib.auth import get_user_model
 
 from tournaments.models import Tournament
-from utils.middleware import SubdomainTournamentMiddleware, get_subdomain_url
+from utils.middleware import SubdomainTournamentMiddleware, DebateMiddleware, get_subdomain_url
 from utils.misc import build_tournament_absolute_uri
 
 User = get_user_model()
@@ -356,14 +356,26 @@ class TournamentCreationFlowTest(TestCase):
         self.assertNotEqual(response.status_code, 404,
                             msg="Superuser should not get 404 for unlisted tournament")
 
-    def test_visibility_gate_blocks_anonymous(self):
-        """Anonymous users should get 404 for unlisted tournaments."""
+    def test_anonymous_can_access_public_page_of_unlisted_tournament(self):
+        """Anonymous users should be able to access the public index of an
+        unlisted tournament via direct URL — ``is_listed`` only controls
+        whether the tournament appears in global lists."""
         t = Tournament.objects.create(
             slug='hidden-anon', name='Hidden Anon', seq=1, active=True,
             is_listed=False,
         )
         response = self.client.get('/',
                                    HTTP_HOST='hidden-anon.nekotab.app')
+        self.assertEqual(response.status_code, 200)
+
+    def test_anonymous_blocked_from_admin_of_unlisted_tournament(self):
+        """Anonymous users must NOT access admin pages of any tournament."""
+        t = Tournament.objects.create(
+            slug='hidden-admin', name='Hidden Admin', seq=1, active=True,
+            is_listed=False,
+        )
+        response = self.client.get('/admin/',
+                                   HTTP_HOST='hidden-admin.nekotab.app')
         self.assertEqual(response.status_code, 404)
 
     def test_no_redirect_loop_in_create_flow(self):
@@ -396,3 +408,202 @@ class TournamentCreationFlowTest(TestCase):
         cached = cache.get('subdom_tour_exists_cache-warm')
         self.assertTrue(cached,
                         msg="Subdomain cache should be True after creation")
+
+
+@override_settings(**SUBDOMAIN_SETTINGS)
+class PublicAccessRegressionTest(TestCase):
+    """Regression tests for anonymous access to public tournament pages.
+
+    Verifies that the visibility gate does not block anonymous users from
+    public pages, while still protecting admin/assistant routes.
+    """
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.superuser = User.objects.create_superuser(
+            'pub-admin', 'pub-admin@test.com', 'password',
+        )
+        cls.regular_user = User.objects.create_user(
+            'pub-regular', 'pub-regular@test.com', 'password',
+        )
+        # Listed tournament
+        cls.listed = Tournament.objects.create(
+            name='Listed Tournament', short_name='Listed',
+            slug='listed-pub', seq=1, active=True, is_listed=True,
+            owner=cls.superuser,
+        )
+        # Unlisted tournament
+        cls.unlisted = Tournament.objects.create(
+            name='Unlisted Tournament', short_name='Unlisted',
+            slug='unlisted-pub', seq=2, active=True, is_listed=False,
+            owner=cls.superuser,
+        )
+
+    def setUp(self):
+        from django.core.cache import cache
+        cache.clear()
+
+    # ---- Anonymous access to PUBLIC routes ----
+
+    def test_anonymous_public_index_listed_subdomain(self):
+        """Anonymous GET to / on a listed tournament subdomain -> 200."""
+        response = self.client.get('/', HTTP_HOST='listed-pub.nekotab.app')
+        self.assertEqual(response.status_code, 200)
+
+    def test_anonymous_public_index_unlisted_subdomain(self):
+        """Anonymous GET to / on an unlisted tournament subdomain -> 200.
+        ``is_listed`` only controls global lists, not direct access."""
+        response = self.client.get('/', HTTP_HOST='unlisted-pub.nekotab.app')
+        self.assertEqual(response.status_code, 200)
+
+    def test_anonymous_public_index_path_mode(self):
+        """Anonymous GET to /<slug>/ in path mode -> 200."""
+        response = self.client.get('/listed-pub/', HTTP_HOST='nekotab.app')
+        # May redirect to subdomain (301), which is fine
+        self.assertIn(response.status_code, [200, 301])
+
+    def test_anonymous_public_index_unlisted_path_mode(self):
+        """Anonymous GET to /<slug>/ for unlisted tournament -> 200/301."""
+        response = self.client.get('/unlisted-pub/', HTTP_HOST='nekotab.app')
+        self.assertIn(response.status_code, [200, 301])
+
+    def test_anonymous_public_subpage_subdomain(self):
+        """Anonymous access to /motions/ on subdomain should work."""
+        response = self.client.get('/motions/', HTTP_HOST='listed-pub.nekotab.app')
+        self.assertIn(response.status_code, [200, 302])
+
+    # ---- Anonymous access to PRIVATE routes -> 404 ----
+
+    def test_anonymous_admin_home_subdomain_404(self):
+        """Anonymous GET to /admin/ on subdomain -> 404."""
+        response = self.client.get('/admin/', HTTP_HOST='listed-pub.nekotab.app')
+        self.assertEqual(response.status_code, 404)
+
+    def test_anonymous_admin_configure_subdomain_404(self):
+        """Anonymous GET to /admin/configure/ on subdomain -> 404."""
+        response = self.client.get('/admin/configure/', HTTP_HOST='listed-pub.nekotab.app')
+        self.assertEqual(response.status_code, 404)
+
+    def test_anonymous_assistant_subdomain_404(self):
+        """Anonymous GET to /assistant/ on subdomain -> 404."""
+        response = self.client.get('/assistant/', HTTP_HOST='listed-pub.nekotab.app')
+        self.assertEqual(response.status_code, 404)
+
+    def test_anonymous_admin_path_mode_404(self):
+        """Anonymous GET to /<slug>/admin/ in path mode -> 404."""
+        # Subdomain routing may redirect, so test with subdomain disabled
+        with self.settings(SUBDOMAIN_TOURNAMENTS_ENABLED=False):
+            response = self.client.get('/listed-pub/admin/')
+            self.assertEqual(response.status_code, 404)
+
+    # ---- Authenticated but unauthorized to PRIVATE routes -> 404 ----
+
+    def test_unauthorized_user_admin_subdomain_404(self):
+        """Authenticated user without permission to /admin/ -> 404."""
+        self.client.force_login(self.regular_user)
+        response = self.client.get('/admin/', HTTP_HOST='unlisted-pub.nekotab.app')
+        self.assertEqual(response.status_code, 404)
+
+    def test_unauthorized_user_assistant_subdomain_404(self):
+        """Authenticated user without permission to /assistant/ -> 404."""
+        self.client.force_login(self.regular_user)
+        response = self.client.get('/assistant/', HTTP_HOST='unlisted-pub.nekotab.app')
+        self.assertEqual(response.status_code, 404)
+
+    # ---- Authorized access to PRIVATE routes ----
+
+    def test_owner_admin_subdomain_200(self):
+        """Owner can access /admin/ on subdomain."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/admin/', HTTP_HOST='unlisted-pub.nekotab.app')
+        self.assertIn(response.status_code, [200, 302])
+
+    def test_superuser_admin_subdomain_200(self):
+        """Superuser can access /admin/ on any tournament."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/admin/', HTTP_HOST='listed-pub.nekotab.app')
+        self.assertIn(response.status_code, [200, 302])
+
+    # ---- is_listed isolation in global lists ----
+
+    def test_unlisted_excluded_from_tournament_list(self):
+        """Unlisted tournament should not appear in visible_to() for anon."""
+        qs = Tournament.objects.visible_to(None)
+        self.assertIn(self.listed, qs)
+        self.assertNotIn(self.unlisted, qs)
+
+    def test_unlisted_included_for_owner(self):
+        """Owner should see unlisted tournament in visible_to()."""
+        qs = Tournament.objects.visible_to(self.superuser)
+        self.assertIn(self.unlisted, qs)
+
+    def test_unlisted_excluded_for_random_user(self):
+        """Random user should not see unlisted tournament in visible_to()."""
+        qs = Tournament.objects.visible_to(self.regular_user)
+        self.assertNotIn(self.unlisted, qs)
+
+
+@override_settings(**SUBDOMAIN_SETTINGS)
+class RouteClassifierTest(TestCase):
+    """Unit tests for DebateMiddleware._is_private_route."""
+
+    def _make_request(self, path, host='test.nekotab.app'):
+        from django.test import RequestFactory
+        factory = RequestFactory()
+        return factory.get(path, HTTP_HOST=host)
+
+    def test_root_is_public(self):
+        request = self._make_request('/myslug/')
+        self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_motions_is_public(self):
+        request = self._make_request('/myslug/motions/')
+        self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_draw_is_public(self):
+        request = self._make_request('/myslug/draw/')
+        self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_results_is_public(self):
+        request = self._make_request('/myslug/results/')
+        self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_break_is_public(self):
+        request = self._make_request('/myslug/break/')
+        self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_schedule_is_public(self):
+        request = self._make_request('/myslug/schedule/')
+        self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_admin_root_is_private(self):
+        request = self._make_request('/myslug/admin/')
+        self.assertTrue(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_admin_configure_is_private(self):
+        request = self._make_request('/myslug/admin/configure/')
+        self.assertTrue(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_admin_results_is_private(self):
+        request = self._make_request('/myslug/admin/results/')
+        self.assertTrue(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_assistant_root_is_private(self):
+        request = self._make_request('/myslug/assistant/')
+        self.assertTrue(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_assistant_draw_is_private(self):
+        request = self._make_request('/myslug/assistant/draw/')
+        self.assertTrue(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_participants_is_public(self):
+        request = self._make_request('/myslug/participants/')
+        self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_registration_is_public(self):
+        request = self._make_request('/myslug/registration/')
+        self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
+
+    def test_feedback_is_public(self):
+        request = self._make_request('/myslug/feedback/')
+        self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
