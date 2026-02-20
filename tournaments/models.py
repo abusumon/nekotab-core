@@ -1,4 +1,5 @@
 import logging
+import re
 from typing import Union
 
 from django.conf import settings
@@ -16,6 +17,9 @@ from utils.models import UniqueConstraint
 
 logger = logging.getLogger(__name__)
 
+# Compiled DNS-label regex (RFC 952 / 1123).
+_DNS_LABEL_RE = re.compile(r'^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$')
+
 
 PROHIBITED_TOURNAMENT_SLUGS = [
     'jet', 'database', 'admin', 'accounts', 'summernote',  # System
@@ -24,7 +28,26 @@ PROHIBITED_TOURNAMENT_SLUGS = [
     'favicon.ico', 'robots.txt',  # Files that must be at top level
     '__debug__', 'static', 'style', 'i18n', 'jsi18n',  # Misc
     'forum', 'motions-bank', 'passport',  # Global apps
+    'analytics', 'campaigns',  # Admin apps
 ]
+
+
+def normalize_slug(value):
+    """Normalise an arbitrary string into a DNS-safe tournament slug.
+
+    - lowercases
+    - replaces spaces/underscores with hyphens
+    - strips invalid characters
+    - collapses multiple hyphens
+    - trims leading/trailing hyphens
+    """
+    import re as _re
+    s = value.lower().strip()
+    s = _re.sub(r'[\s_]+', '-', s)           # spaces/underscores → hyphens
+    s = _re.sub(r'[^a-z0-9-]', '', s)        # strip invalid chars
+    s = _re.sub(r'-{2,}', '-', s)            # collapse multiple hyphens
+    s = s.strip('-')                          # trim leading/trailing hyphens
+    return s or 'tournament'
 
 
 def validate_tournament_slug(value):
@@ -32,6 +55,43 @@ def validate_tournament_slug(value):
         raise ValidationError(_("You can't use this as a tournament slug, "
             "because it's reserved for a Tabbycat system URL. Please try "
             "another one."))
+
+
+def validate_dns_safe_slug(value):
+    """Validate that a slug is safe for DNS subdomain routing.
+
+    This validator is applied to NEW tournaments to ensure all future slugs
+    work with subdomain routing.  Existing tournaments with non-compliant
+    slugs are grandfathered (this validator is only called during form
+    validation, not on every ``save()``).
+    """
+    if not value:
+        raise ValidationError(_("Slug cannot be empty."))
+    if '_' in value:
+        suggested = normalize_slug(value)
+        raise ValidationError(
+            _("Slugs cannot contain underscores (they break subdomain "
+              "routing). Try: \"%(suggested)s\""),
+            params={'suggested': suggested},
+            code='underscore',
+        )
+    if value != value.lower():
+        suggested = normalize_slug(value)
+        raise ValidationError(
+            _("Slugs must be lowercase for consistent URLs. "
+              "Try: \"%(suggested)s\""),
+            params={'suggested': suggested},
+            code='uppercase',
+        )
+    if not _DNS_LABEL_RE.match(value):
+        suggested = normalize_slug(value)
+        raise ValidationError(
+            _("Slug must start and end with a letter or number, and contain "
+              "only lowercase letters, numbers, and hyphens. "
+              "Try: \"%(suggested)s\""),
+            params={'suggested': suggested},
+            code='dns_unsafe',
+        )
 
 
 class Tournament(models.Model):
@@ -44,9 +104,9 @@ class Tournament(models.Model):
     seq = models.IntegerField(blank=True, null=True,
         verbose_name=_("sequence number"),
         help_text=_("A number that determines the relative order in which tournaments are displayed on the homepage."))
-    slug = models.SlugField(unique=True, validators=[validate_tournament_slug],
+    slug = models.SlugField(unique=True, validators=[validate_tournament_slug, validate_dns_safe_slug],
         verbose_name=_("slug"),
-        help_text=_("The sub-URL of the tournament, cannot have spaces, e.g. \"australs2016\""))
+        help_text=_("The sub-URL of the tournament. Use only lowercase letters, numbers, and hyphens, e.g. \"australs-2016\""))
     active = models.BooleanField(verbose_name=_("active"), default=True)
     owner = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True, blank=True,
         related_name='owned_tournaments',
@@ -165,26 +225,18 @@ class Tournament(models.Model):
 
         Uses subdomain URL when subdomain routing is enabled and the slug is
         DNS-safe, otherwise falls back to the path-based public URL.
+        ``get_subdomain_url`` already returns ``None`` for DNS-unsafe slugs,
+        so a simple truthiness check is sufficient.
         """
         subdomain_url = self.get_subdomain_url()
-        if subdomain_url and self.is_subdomain_safe:
+        if subdomain_url:
             return subdomain_url
         return self.get_public_url()
 
     @property
     def is_subdomain_safe(self):
-        """Check if this tournament's slug is safe for use as a DNS subdomain.
-
-        DNS hostnames are case-insensitive and do not allow underscores.
-        Slugs must start and end with an alphanumeric character.
-        """
-        import re
-        slug = self.slug
-        if not slug:
-            return False
-        # DNS labels: lowercase alphanumeric, hyphens allowed in the middle,
-        # no underscores, must start/end with alnum
-        return bool(re.match(r'^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$', slug.lower())) and '_' not in slug
+        """Check if this tournament's slug is safe for use as a DNS subdomain."""
+        return bool(self.slug) and bool(_DNS_LABEL_RE.match(self.slug.lower())) and '_' not in self.slug
 
     # --------------------------------------------------------------------------
     # Convenience querysets

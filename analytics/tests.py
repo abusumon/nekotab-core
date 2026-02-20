@@ -325,3 +325,161 @@ class TournamentSlugEdgeCaseTests(TestCase):
         t = Tournament.objects.create(name='Lead Hyphen', slug='-abc', owner=self.user)
         # Should fall back to path-based URL (not DNS-safe)
         self.assertEqual(t.view_url, '/-abc/')
+
+
+class RedirectLoopRegressionTests(TestCase):
+    """Regression tests for the redirect loop bug.
+
+    A redirect loop occurred when ``SubdomainTournamentMiddleware`` tried to
+    case-correct the hostname.  Because DNS is case-insensitive, browsers
+    always lowercase the hostname, so a 301 to a mixed-case hostname
+    immediately re-lowercases and produces an infinite loop.
+
+    These tests verify that no middleware path creates a redirect back to
+    itself.
+    """
+
+    def setUp(self):
+        self.user = User.objects.create_user(username='looptest', password='password')
+        self.factory = RequestFactory()
+
+    def tearDown(self):
+        cache.clear()
+
+    def _get_subdomain_middleware(self):
+        from utils.middleware import SubdomainTournamentMiddleware
+        return SubdomainTournamentMiddleware(lambda req: None)
+
+    def _get_debate_middleware(self):
+        from utils.middleware import DebateMiddleware
+        return DebateMiddleware(lambda req: None)
+
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    def test_mixed_case_slug_no_redirect_loop(self):
+        """A mixed-case slug must NOT cause a redirect from subdomain middleware."""
+        Tournament.objects.create(name='Mixed', slug='NDF-Nationals', owner=self.user)
+        mw = self._get_subdomain_middleware()
+
+        # Simulate browser hitting lowercase hostname
+        request = self.factory.get('/', HTTP_HOST='ndf-nationals.nekotab.app')
+        result = mw(request)
+
+        # Must NOT be a redirect (any redirect risks a loop)
+        if result is not None and hasattr(result, 'status_code'):
+            self.assertNotIn(result.status_code, [301, 302],
+                "SubdomainTournamentMiddleware must not redirect for case "
+                "mismatch — this causes an infinite redirect loop.")
+        # The subdomain label should be set on the request
+        self.assertEqual(getattr(request, 'subdomain_tournament', None), 'ndf-nationals')
+
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    def test_underscore_slug_never_redirected_to_subdomain(self):
+        """A tournament with underscores must NEVER be redirected to a subdomain."""
+        Tournament.objects.create(name='Underscore', slug='my_tournament', owner=self.user)
+        mw = self._get_debate_middleware()
+
+        request = self.factory.get('/my_tournament/')
+        request.user = self.user
+        request.subdomain_tournament = None
+        result = mw.process_view(request, None, [], {'tournament_slug': 'my_tournament'})
+
+        # Should NOT redirect
+        if result is not None and hasattr(result, 'status_code'):
+            self.assertNotEqual(result.status_code, 301,
+                "Underscore slug must not be redirected to subdomain (invalid DNS label).")
+        self.assertEqual(request.tournament.slug, 'my_tournament')
+
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    def test_subdomain_request_does_not_redirect_again(self):
+        """When already on the subdomain, DebateMiddleware must not redirect back."""
+        Tournament.objects.create(name='Test', slug='test-tournament', owner=self.user)
+
+        smw = self._get_subdomain_middleware()
+        dmw = self._get_debate_middleware()
+
+        request = self.factory.get('/', HTTP_HOST='test-tournament.nekotab.app')
+        request.user = self.user
+
+        # First, SubdomainTournamentMiddleware sets the label
+        smw(request)
+        self.assertEqual(request.subdomain_tournament, 'test-tournament')
+
+        # Then, DebateMiddleware should resolve the tournament, NOT redirect
+        result = dmw.process_view(request, None, [],
+                                  {'tournament_slug': 'test-tournament'})
+        self.assertIsNone(result, "DebateMiddleware must not redirect when already on subdomain.")
+        self.assertEqual(request.tournament.slug, 'test-tournament')
+
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    def test_base_domain_redirects_only_once(self):
+        """A request to the base domain path should redirect exactly once to the subdomain."""
+        Tournament.objects.create(name='Test', slug='test-tournament', owner=self.user)
+        mw = self._get_debate_middleware()
+
+        request = self.factory.get('/test-tournament/', HTTP_HOST='nekotab.app')
+        request.user = self.user
+        request.subdomain_tournament = None
+        result = mw.process_view(request, None, [], {'tournament_slug': 'test-tournament'})
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result.status_code, 301)
+        location = result['Location']
+        self.assertIn('test-tournament.nekotab.app', location)
+        # Hostname in redirect MUST be lowercase
+        import re
+        hostname_match = re.search(r'://([^/]+)', location)
+        if hostname_match:
+            self.assertEqual(hostname_match.group(1), hostname_match.group(1).lower(),
+                "Redirect hostname must be lowercase to prevent loops.")
+
+
+class DNSSafeSlugValidationTests(TestCase):
+    """Test DNS-safe slug enforcement at tournament creation."""
+
+    def test_normalize_slug_basic(self):
+        from tournaments.models import normalize_slug
+        self.assertEqual(normalize_slug('My Tournament'), 'my-tournament')
+        self.assertEqual(normalize_slug('test_slug'), 'test-slug')
+        self.assertEqual(normalize_slug('Test_My Tournament'), 'test-my-tournament')
+        self.assertEqual(normalize_slug('--leading-trailing--'), 'leading-trailing')
+        self.assertEqual(normalize_slug('!!!'), 'tournament')
+        self.assertEqual(normalize_slug('UPPER'), 'upper')
+        self.assertEqual(normalize_slug('multiple   spaces'), 'multiple-spaces')
+        self.assertEqual(normalize_slug('a__b'), 'a-b')
+
+    def test_validate_dns_safe_slug_rejects_underscore(self):
+        from django.core.exceptions import ValidationError
+        from tournaments.models import validate_dns_safe_slug
+        with self.assertRaises(ValidationError) as ctx:
+            validate_dns_safe_slug('test_slug')
+        self.assertEqual(ctx.exception.code, 'underscore')
+        self.assertIn('test-slug', str(ctx.exception.message))
+
+    def test_validate_dns_safe_slug_rejects_uppercase(self):
+        from django.core.exceptions import ValidationError
+        from tournaments.models import validate_dns_safe_slug
+        with self.assertRaises(ValidationError) as ctx:
+            validate_dns_safe_slug('MyTournament')
+        self.assertEqual(ctx.exception.code, 'uppercase')
+
+    def test_validate_dns_safe_slug_accepts_valid(self):
+        from tournaments.models import validate_dns_safe_slug
+        # Should not raise
+        validate_dns_safe_slug('my-tournament-2025')
+        validate_dns_safe_slug('australs2016')
+        validate_dns_safe_slug('a')
+        validate_dns_safe_slug('123')
+
+    def test_form_auto_normalises_slug(self):
+        from tournaments.forms import TournamentStartForm
+        data = {
+            'name': 'Test Tournament',
+            'short_name': 'Test',
+            'slug': 'My_Tournament',
+            'num_prelim_rounds': 5,
+        }
+        form = TournamentStartForm(data=data)
+        # The form should not be valid because of other model validation,
+        # but the slug should have been normalised in clean_slug
+        form.is_valid()
+        self.assertEqual(form.cleaned_data.get('slug'), 'my-tournament')

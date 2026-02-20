@@ -16,7 +16,7 @@ from options.presets import all_presets, data_entry_presets_for_form, presets_fo
 from users.groups import all_groups
 from users.models import Group
 
-from .models import Round, ScheduleEvent, Tournament
+from .models import Round, ScheduleEvent, Tournament, normalize_slug
 from .signals import update_tournament_cache
 from .utils import auto_make_rounds
 
@@ -36,6 +36,17 @@ class TournamentStartForm(ModelForm):
         required=False,
         label=_("Number of teams in the open break"),
         help_text=_("Leave blank if there are no break rounds."))
+
+    def clean_slug(self):
+        """Auto-normalise the slug to be DNS-safe and provide a helpful
+        suggestion when the raw value is not acceptable."""
+        raw = self.cleaned_data.get('slug', '')
+        normalised = normalize_slug(raw)
+        if normalised != raw:
+            # Replace the value with the normalised version so the user
+            # gets it pre-filled if they resubmit without changes.
+            self.cleaned_data['slug'] = normalised
+        return normalised
 
     @staticmethod
     def add_default_feedback_questions(tournament):

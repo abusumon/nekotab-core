@@ -21,11 +21,18 @@ def _subdomain_settings():
 def _to_subdomain_url(slug, path):
     """Convert a path-based tournament URL to a full subdomain URL.
     Strips the /<slug>/ prefix from the path and prepends the subdomain host.
-    Always uses HTTPS (production subdomains require it)."""
+    Always uses HTTPS (production subdomains require it).
+
+    Returns None if the slug is not DNS-safe.
+    """
+    from utils.middleware import is_slug_dns_safe
+    if not is_slug_dns_safe(slug):
+        return None
     slug_prefix = f'/{slug}/'
     if path.startswith(slug_prefix):
         path = '/' + path[len(slug_prefix):]
-    return f'https://{slug}.{_subdomain_settings()[1]}{path}'
+    # Always lowercase the hostname portion (DNS is case-insensitive).
+    return f'https://{slug.lower()}.{_subdomain_settings()[1]}{path}'
 
 
 def get_ip_address(request):
@@ -36,14 +43,17 @@ def get_ip_address(request):
 
 
 def redirect_tournament(to, tournament, *args, **kwargs):
-    """Redirect to a tournament view. When subdomain routing is enabled,
-    redirects directly to the subdomain URL (e.g. https://slug.nekotab.app/...)."""
+    """Redirect to a tournament view. When subdomain routing is enabled and
+    the slug is DNS-safe, redirects to the subdomain URL. Otherwise uses
+    the standard path-based URL."""
     enabled, base_domain = _subdomain_settings()
     if enabled and base_domain:
         reverse_kwargs = {k: v for k, v in kwargs.items() if k != 'permanent'}
         reverse_kwargs['tournament_slug'] = tournament.slug
         path = reverse(to, args=args, kwargs=reverse_kwargs)
-        return redirect(_to_subdomain_url(tournament.slug, path))
+        subdomain_url = _to_subdomain_url(tournament.slug, path)
+        if subdomain_url is not None:
+            return redirect(subdomain_url)
     return redirect(to, tournament_slug=tournament.slug, *args, **kwargs)
 
 
@@ -54,25 +64,29 @@ def reverse_tournament(to, tournament, *args, **kwargs):
 
 
 def subdomain_reverse_tournament(to, tournament, *args, **kwargs):
-    """Like reverse_tournament but returns a full subdomain URL when enabled.
-    Falls back to the normal path when subdomain routing is disabled."""
+    """Like reverse_tournament but returns a full subdomain URL when enabled
+    and the slug is DNS-safe. Falls back to the normal path otherwise."""
     path = reverse_tournament(to, tournament, *args, **kwargs)
     enabled, base_domain = _subdomain_settings()
     if enabled and base_domain:
-        return _to_subdomain_url(tournament.slug, path)
+        subdomain_url = _to_subdomain_url(tournament.slug, path)
+        if subdomain_url is not None:
+            return subdomain_url
     return path
 
 
 def redirect_round(to, round, *args, **kwargs):
-    """Redirect to a round view. When subdomain routing is enabled,
-    redirects directly to the subdomain URL."""
+    """Redirect to a round view. When subdomain routing is enabled and the
+    slug is DNS-safe, redirects to the subdomain URL."""
     enabled, base_domain = _subdomain_settings()
     if enabled and base_domain:
         reverse_kwargs = {k: v for k, v in kwargs.items() if k != 'permanent'}
         reverse_kwargs['tournament_slug'] = round.tournament.slug
         reverse_kwargs['round_seq'] = round.seq
         path = reverse(to, args=args, kwargs=reverse_kwargs)
-        return redirect(_to_subdomain_url(round.tournament.slug, path))
+        subdomain_url = _to_subdomain_url(round.tournament.slug, path)
+        if subdomain_url is not None:
+            return redirect(subdomain_url)
     return redirect(to, tournament_slug=round.tournament.slug,
                     round_seq=round.seq, *args, **kwargs)
 
@@ -85,11 +99,14 @@ def reverse_round(to, round, *args, **kwargs):
 
 
 def subdomain_reverse_round(to, round, *args, **kwargs):
-    """Like reverse_round but returns a full subdomain URL when enabled."""
+    """Like reverse_round but returns a full subdomain URL when enabled
+    and the slug is DNS-safe."""
     path = reverse_round(to, round, *args, **kwargs)
     enabled, base_domain = _subdomain_settings()
     if enabled and base_domain:
-        return _to_subdomain_url(round.tournament.slug, path)
+        subdomain_url = _to_subdomain_url(round.tournament.slug, path)
+        if subdomain_url is not None:
+            return subdomain_url
     return path
 
 
@@ -160,6 +177,7 @@ def build_tournament_absolute_uri(request, tournament, path=None):
     base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
 
     if subdomain_enabled and base_domain:
-        return _to_subdomain_url(slug, path)
-    else:
-        return request.build_absolute_uri(path)
+        subdomain_url = _to_subdomain_url(slug, path)
+        if subdomain_url is not None:
+            return subdomain_url
+    return request.build_absolute_uri(path)

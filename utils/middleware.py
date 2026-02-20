@@ -11,147 +11,191 @@ from tournaments.models import Round, Tournament
 
 logger = logging.getLogger(__name__)
 
+# Compiled once; matches RFC-952/1123-compliant DNS labels.
+_DNS_LABEL_RE = re.compile(r'^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$')
 
-class DebateMiddleware(object):
+
+def is_slug_dns_safe(slug):
+    """Return True if *slug* can be used as a DNS subdomain label.
+
+    Rules: lowercase alphanumeric + hyphens, no underscores, must start and
+    end with an alphanumeric character.  Single-char slugs like ``a`` are fine.
+    """
+    if not slug:
+        return False
+    return '_' not in slug and bool(_DNS_LABEL_RE.match(slug.lower()))
+
+
+def _is_base_domain(host, base_domain):
+    """Return True if *host* is the bare base domain (no subdomain)."""
+    return host == base_domain or host == f'www.{base_domain}'
+
+
+class DebateMiddleware:
 
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-        response = self.get_response(request)
-        return response
+        return self.get_response(request)
 
     def process_view(self, request, view_func, view_args, view_kwargs):
-        if 'tournament_slug' in view_kwargs and request.path.split('/')[1] != 'api':
-            slug = view_kwargs['tournament_slug']
+        if 'tournament_slug' not in view_kwargs:
+            return None
+        if request.path.split('/')[1] == 'api':
+            return None
 
-            # --- Redirect path-based access to subdomain ---
-            # When subdomain routing is enabled and the request arrived on the
-            # main domain (not already via a subdomain), 301-redirect GET/HEAD
-            # requests to the canonical subdomain URL — but only if the slug
-            # is safe for use as a DNS label.
-            subdomain_on = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
-            base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
-            already_subdomain = getattr(request, 'subdomain_tournament', None)
+        slug = view_kwargs['tournament_slug']
 
-            if (subdomain_on and base_domain
-                    and not already_subdomain
-                    and request.method in ('GET', 'HEAD')):
-                # Only redirect if the slug is DNS-safe (no underscores,
-                # starts/ends with alnum, lowercase-compatible).
-                dns_safe = (
-                    bool(re.match(r'^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$', slug.lower()))
-                    and '_' not in slug
-                )
-                if dns_safe:
-                    path = request.get_full_path()  # includes query string
-                    slug_prefix = f'/{slug}/'
-                    if path.startswith(slug_prefix):
-                        clean_path = '/' + path[len(slug_prefix):]
-                    elif path == f'/{slug}':
-                        clean_path = '/'
-                    else:
-                        clean_path = path
-                    return HttpResponsePermanentRedirect(
-                        f'https://{slug}.{base_domain}{clean_path}')
+        # ------------------------------------------------------------------
+        # Rule: Redirect path-based access → subdomain  (exactly ONE hop)
+        #
+        # Conditions that MUST ALL be true:
+        #   1. Subdomain routing is globally enabled
+        #   2. The slug is DNS-safe
+        #   3. The request is on the bare base domain (not already a subdomain)
+        #   4. The client issued a safe method (GET / HEAD)
+        #   5. SubdomainTournamentMiddleware did NOT already tag this request
+        #      (i.e. we are not inside a rewritten subdomain request)
+        # ------------------------------------------------------------------
+        subdomain_on = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
+        base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
+        already_subdomain = getattr(request, 'subdomain_tournament', None)
 
-            # --- Cache tournament object ---
-            cached_key = "%s_%s" % (slug, 'object')
-            cached_tournament_object = cache.get(cached_key)
+        if (subdomain_on and base_domain
+                and not already_subdomain
+                and request.method in ('GET', 'HEAD')
+                and is_slug_dns_safe(slug)):
+            # Extra guard: only redirect if we are truly on the base domain.
+            # Behind a proxy the Host header is preserved (Heroku, Cloudflare).
+            try:
+                host = request.get_host().split(':')[0].lower()
+            except Exception:
+                host = ''
 
-            if cached_tournament_object:
-                request.tournament = cached_tournament_object
-            else:
-                try:
-                    request.tournament = Tournament.objects.get(slug=slug)
-                except Tournament.DoesNotExist:
-                    logger.warning(
-                        "Tournament not found: slug=%s, path=%s, user=%s, ip=%s, referer=%s",
-                        slug,
-                        request.path,
-                        getattr(request.user, 'username', 'anonymous'),
-                        request.META.get('REMOTE_ADDR', 'unknown'),
-                        request.META.get('HTTP_REFERER', 'none'),
-                    )
-                    # Try case-insensitive lookup as a fallback
-                    try:
-                        request.tournament = Tournament.objects.get(slug__iexact=slug)
-                        # Cache with the correct slug
-                        cache.set(cached_key, request.tournament, 3600)
-                        return None
-                    except (Tournament.DoesNotExist, Tournament.MultipleObjectsReturned):
-                        pass
-
-                    # Return a friendly error page instead of a raw 404
-                    try:
-                        html = render_to_string('errors/tournament_not_found.html', {
-                            'slug': slug,
-                            'request': request,
-                        })
-                        return HttpResponseNotFound(html)
-                    except Exception:
-                        raise Http404(f"Tournament '{slug}' does not exist.")
-                cache.set(cached_key, request.tournament, 3600)
-
-            if 'round_seq' in view_kwargs:
-                cached_key = "%s_%s_%s" % (slug,
-                                           view_kwargs['round_seq'], 'object')
-                cached_round_object = cache.get(cached_key)
-                if cached_round_object:
-                    request.round = cached_round_object
+            if _is_base_domain(host, base_domain):
+                full_path = request.get_full_path()
+                slug_prefix = f'/{slug}/'
+                if full_path.startswith(slug_prefix):
+                    clean_path = '/' + full_path[len(slug_prefix):]
+                elif full_path == f'/{slug}':
+                    clean_path = '/'
                 else:
-                    request.round = get_object_or_404(
-                        Round,
-                        tournament=request.tournament,
-                        seq=view_kwargs['round_seq'])
-                    cache.set(cached_key, request.round, 3600)
+                    clean_path = full_path
+                target = f'https://{slug.lower()}.{base_domain}{clean_path}'
+                logger.debug("DebateMiddleware: redirecting %s → %s", request.path, target)
+                return HttpResponsePermanentRedirect(target)
+
+        # ------------------------------------------------------------------
+        # Resolve and cache the tournament object
+        # ------------------------------------------------------------------
+        cached_key = "%s_%s" % (slug, 'object')
+        cached_tournament = cache.get(cached_key)
+
+        if cached_tournament:
+            request.tournament = cached_tournament
+        else:
+            tournament = self._resolve_tournament(slug, request)
+            if tournament is None:
+                return self._tournament_not_found_response(slug, request)
+            request.tournament = tournament
+            cache.set(cached_key, tournament, 3600)
+
+        # ------------------------------------------------------------------
+        # Resolve round (if present)
+        # ------------------------------------------------------------------
+        if 'round_seq' in view_kwargs:
+            round_key = "%s_%s_%s" % (slug, view_kwargs['round_seq'], 'object')
+            cached_round = cache.get(round_key)
+            if cached_round:
+                request.round = cached_round
+            else:
+                request.round = get_object_or_404(
+                    Round, tournament=request.tournament,
+                    seq=view_kwargs['round_seq'])
+                cache.set(round_key, request.round, 3600)
 
         return None
+
+    # -- helpers ---------------------------------------------------------------
+
+    @staticmethod
+    def _resolve_tournament(slug, request):
+        """Try exact match, then case-insensitive fallback.  Returns
+        Tournament or None."""
+        try:
+            return Tournament.objects.get(slug=slug)
+        except Tournament.DoesNotExist:
+            pass
+
+        # Case-insensitive fallback (covers subdomain-lowered hostnames)
+        try:
+            tournament = Tournament.objects.get(slug__iexact=slug)
+            logger.info("DebateMiddleware: case-insensitive fallback "
+                        "'%s' → '%s'", slug, tournament.slug)
+            return tournament
+        except (Tournament.DoesNotExist, Tournament.MultipleObjectsReturned):
+            pass
+
+        logger.warning(
+            "Tournament not found: slug=%s, path=%s, user=%s, ip=%s, referer=%s",
+            slug, request.path,
+            getattr(request.user, 'username', 'anonymous'),
+            request.META.get('REMOTE_ADDR', 'unknown'),
+            request.META.get('HTTP_REFERER', 'none'),
+        )
+        return None
+
+    @staticmethod
+    def _tournament_not_found_response(slug, request):
+        try:
+            html = render_to_string('errors/tournament_not_found.html', {
+                'slug': slug, 'request': request,
+            })
+            return HttpResponseNotFound(html)
+        except Exception:
+            raise Http404(f"Tournament '{slug}' does not exist.")
 
 
 def get_subdomain_url(tournament_slug, path='/', scheme='https'):
     """Build a full subdomain URL for a tournament.
 
-    Args:
-        tournament_slug: The tournament's slug (e.g. 'ndf-nationals-2025')
-        path: The path portion (e.g. '/motions/')
-        scheme: URL scheme, defaults to 'https'
-
-    Returns:
-        Full URL like 'https://ndf-nationals-2025.nekotab.app/motions/'
-        or None if subdomain routing is disabled.
+    Returns the URL string, or ``None`` when subdomain routing is disabled
+    **or the slug is not DNS-safe**.
     """
     if not getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False):
         return None
     base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
     if not base_domain:
         return None
+    if not is_slug_dns_safe(tournament_slug):
+        return None
     if not path.startswith('/'):
         path = '/' + path
-    return f"{scheme}://{tournament_slug}.{base_domain}{path}"
+    # Always lowercase the slug in the hostname (DNS is case-insensitive).
+    return f"{scheme}://{tournament_slug.lower()}.{base_domain}{path}"
 
 
-class SubdomainTournamentMiddleware(object):
-    """
-    Allows accessing tournaments using subdomains, e.g.
-    https://ndf-nationals-2025.nekotab.app/motions/ will be internally
-    rewritten so that Django sees the path as /ndf-nationals-2025/motions/
+class SubdomainTournamentMiddleware:
+    """Allows accessing tournaments via subdomains, e.g.
+    ``https://my-tournament.nekotab.app/motions/`` is internally rewritten so
+    Django sees ``/my-tournament/motions/``.
 
-    When a subdomain is detected, the middleware:
-    1. Prefixes request.path_info with /<slug>/ so Django's URL resolver
-       matches the existing <slug:tournament_slug>/ URL patterns.
-    2. Sets request.subdomain_tournament = slug so that templates and
-       context processors can generate subdomain-aware canonical URLs.
+    Key invariants enforced here:
 
-    Enable by setting SUBDOMAIN_TOURNAMENTS_ENABLED=true and
-    SUBDOMAIN_BASE_DOMAIN=nekotab.app (or your root domain).
+    * **No redirect loops.**  Subdomain hosts are inherently lowercase (DNS is
+      case-insensitive).  Exact slug mismatches due to case are resolved by a
+      case-insensitive DB lookup rather than a redirect.
+    * Requests on a recognised tournament subdomain get
+      ``request.subdomain_tournament`` set to the slug *as stored in the DB*
+      so downstream code (templates, ``DebateMiddleware``) can detect it.
+    * Global routes (``/static/``, ``/admin/``, etc.) are never rewritten.
     """
 
     RESERVED_SUBDOMAINS_DEFAULT = {
-        'www', 'admin', 'api', 'static', 'media', 'jet', 'database'
+        'www', 'admin', 'api', 'static', 'media', 'jet', 'database',
     }
 
-    # Paths that should never be rewritten (global routes)
     BAD_PREFIXES = (
         '/static/', '/media/', '/admin/', '/database/', '/api/',
         '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
@@ -162,15 +206,12 @@ class SubdomainTournamentMiddleware(object):
         self.enabled = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
         self.base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
         reserved = getattr(settings, 'RESERVED_SUBDOMAINS', None)
-        if reserved is None:
-            self.reserved = self.RESERVED_SUBDOMAINS_DEFAULT
-        else:
-            self.reserved = set(reserved)
-        self.slug_re = re.compile(r'^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$')
+        self.reserved = set(reserved) if reserved is not None else self.RESERVED_SUBDOMAINS_DEFAULT
+        self.slug_re = _DNS_LABEL_RE
 
     def _extract_tournament_subdomain(self, request):
         """Extract tournament slug from the Host header subdomain.
-        Returns the slug string, or None if not a tournament subdomain."""
+        Returns the slug string (always lowercase), or None."""
         try:
             host = request.get_host().split(':')[0].lower()
         except Exception:
@@ -179,23 +220,17 @@ class SubdomainTournamentMiddleware(object):
         if not host or not host.endswith(self.base_domain):
             return None
 
-        # Strip base domain and trailing dot: "slug.nekotab.app" -> "slug"
         subpart = host[:-len(self.base_domain)].rstrip('.')
-        if not subpart:
+        if not subpart or '.' in subpart:
             return None
 
-        # Only single-label subdomains (no nested like a.b.nekotab.app)
-        if '.' in subpart:
+        if subpart in self.reserved or not self.slug_re.match(subpart):
             return None
 
-        label = subpart
-        if not label or label in self.reserved or not self.slug_re.match(label):
-            return None
-
-        return label
+        return subpart
 
     def __call__(self, request):
-        # Always initialize the flag
+        # Always initialise so downstream code can rely on the attribute.
         request.subdomain_tournament = None
 
         if not self.enabled or not self.base_domain:
@@ -205,43 +240,33 @@ class SubdomainTournamentMiddleware(object):
         if not label:
             return self.get_response(request)
 
-        # Verify this slug belongs to a real tournament (cached 5 min)
+        # -----------------------------------------------------------------
+        # Verify the slug belongs to a real tournament.
+        #
+        # Because DNS hostnames are case-insensitive, the *label* extracted
+        # from the Host header is always lowercase.  The DB slug may have
+        # mixed case.  We therefore use a **case-insensitive** existence
+        # check and NEVER redirect to a differently-cased hostname (that
+        # would loop because browsers re-lowercase the host).
+        # -----------------------------------------------------------------
         cache_key = f"subdom_tour_exists_{label}"
-        exists = cache.get(cache_key)
-        if exists is None:
-            exists = Tournament.objects.filter(slug=label).exists()
-            # Also try case-insensitive lookup for slugs that differ only in case
-            if not exists:
-                try:
-                    real_tournament = Tournament.objects.get(slug__iexact=label)
-                    # Found with case-insensitive match — redirect to correct slug
-                    exists = 'redirect'
-                    cache.set(cache_key, exists, 300)
-                    correct_url = f'https://{real_tournament.slug}.{self.base_domain}{request.path}'
-                    return HttpResponsePermanentRedirect(correct_url)
-                except (Tournament.DoesNotExist, Tournament.MultipleObjectsReturned):
-                    pass
-            cache.set(cache_key, exists, 300)
+        cached = cache.get(cache_key)
+        if cached is None:
+            # Try exact first (fast path), then case-insensitive.
+            cached = (
+                Tournament.objects.filter(slug=label).exists()
+                or Tournament.objects.filter(slug__iexact=label).exists()
+            )
+            cache.set(cache_key, cached, 300)
 
-        if exists == 'redirect':
-            # Stale redirect cache entry — re-check
-            try:
-                real_tournament = Tournament.objects.get(slug__iexact=label)
-                correct_url = f'https://{real_tournament.slug}.{self.base_domain}{request.path}'
-                return HttpResponsePermanentRedirect(correct_url)
-            except (Tournament.DoesNotExist, Tournament.MultipleObjectsReturned):
-                exists = False
-                cache.set(cache_key, exists, 300)
-
-        if not exists:
+        if not cached:
             logger.warning(
-                "Subdomain tournament not found: subdomain=%s, path=%s, ip=%s, referer=%s",
-                label,
-                request.path,
+                "Subdomain tournament not found: subdomain=%s, path=%s, "
+                "ip=%s, referer=%s",
+                label, request.path,
                 request.META.get('REMOTE_ADDR', 'unknown'),
                 request.META.get('HTTP_REFERER', 'none'),
             )
-            # Tournament subdomain doesn't exist — return a friendly 404
             try:
                 html = render_to_string('errors/subdomain_404.html', {
                     'subdomain': label,
@@ -251,29 +276,36 @@ class SubdomainTournamentMiddleware(object):
             except Exception:
                 return HttpResponseNotFound(
                     f'<h1>Tournament not found</h1>'
-                    f'<p>No tournament exists at <strong>{label}.{self.base_domain}</strong>.</p>'
-                    f'<p><a href="https://{self.base_domain}/">Go to NekoTab home</a></p>'
+                    f'<p>No tournament exists at '
+                    f'<strong>{label}.{self.base_domain}</strong>.</p>'
+                    f'<p><a href="https://{self.base_domain}/">Go to NekoTab '
+                    f'home</a></p>'
                 )
 
-        # Tag the request so context processors / templates know
+        # Tag the request.  Use the lowercase label (matches the hostname the
+        # user actually sees in their browser bar).
         request.subdomain_tournament = label
 
-        # Prefix the path so Django's URL resolver finds the right view,
-        # but only if not already prefixed and not a global route
-        if (not request.path_info.startswith(f'/{label}/')
-                and not request.path_info.startswith(self.BAD_PREFIXES)):
+        # -----------------------------------------------------------------
+        # Prefix the path so Django's URL resolver matches the existing
+        # <slug:tournament_slug>/... patterns — unless already prefixed or
+        # the path is a global route.
+        # -----------------------------------------------------------------
+        if request.path_info.startswith(self.BAD_PREFIXES):
+            return self.get_response(request)
 
-            # Guard against double-prefixing: if the first path segment is
-            # already another tournament's slug, don't prepend ours.
-            first_segment = request.path_info.strip('/').split('/')[0] if request.path_info.strip('/') else ''
-            if first_segment and first_segment != label:
-                other_key = f"subdom_tour_exists_{first_segment}"
-                other_exists = cache.get(other_key)
-                if other_exists is None:
-                    other_exists = Tournament.objects.filter(slug=first_segment).exists()
-                    cache.set(other_key, other_exists, 300)
-                if other_exists:
-                    # Path is for a different tournament — don't rewrite
+        if not request.path_info.startswith(f'/{label}/'):
+            # Guard: if the first segment is *another* tournament's slug,
+            # don't blindly prepend ours (prevents cross-tournament
+            # confusion on subdomain).
+            first_seg = request.path_info.strip('/').split('/')[0] if request.path_info.strip('/') else ''
+            if first_seg and first_seg != label:
+                seg_key = f"subdom_tour_exists_{first_seg}"
+                seg_exists = cache.get(seg_key)
+                if seg_exists is None:
+                    seg_exists = Tournament.objects.filter(slug=first_seg).exists()
+                    cache.set(seg_key, seg_exists, 300)
+                if seg_exists:
                     return self.get_response(request)
 
             new_path = f'/{label}{request.path_info}'
