@@ -11,7 +11,9 @@ from .models import Round, ScheduleEvent, Tournament
 
 @admin.register(Tournament)
 class TournamentAdmin(ModelAdmin):
-    list_display = ('name', 'slug', 'seq', 'short_name', 'current_round', 'active')
+    list_display = ('name', 'slug', 'seq', 'short_name', 'current_round',
+                    'active', 'is_listed', 'retention_exempt')
+    list_filter = ('active', 'is_listed', 'retention_exempt')
     ordering = ('seq', )
 
 

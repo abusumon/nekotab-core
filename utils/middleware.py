@@ -102,6 +102,13 @@ class DebateMiddleware:
             cache.set(cached_key, tournament, 3600)
 
         # ------------------------------------------------------------------
+        # Visibility gate – return 404 (not 403) to avoid leaking existence
+        # ------------------------------------------------------------------
+        user = getattr(request, 'user', None)
+        if not self._user_can_see(request.tournament, user):
+            return self._tournament_not_found_response(slug, request)
+
+        # ------------------------------------------------------------------
         # Resolve round (if present)
         # ------------------------------------------------------------------
         if 'round_seq' in view_kwargs:
@@ -118,6 +125,30 @@ class DebateMiddleware:
         return None
 
     # -- helpers ---------------------------------------------------------------
+
+    @staticmethod
+    def _user_can_see(tournament, user):
+        """Return True if *user* is allowed to see *tournament*.
+
+        Uses the same visibility queryset as ``TournamentQuerySet.visible_to``
+        but avoids an extra DB hit when the tournament is already resolved.
+        """
+        if tournament.is_listed:
+            return True
+        if user is None or not getattr(user, 'is_authenticated', False):
+            return False
+        if user.is_superuser:
+            return True
+        # Owner check via the tournament field
+        if hasattr(tournament, 'owner_id') and tournament.owner_id == user.pk:
+            return True
+        # Permission or membership check
+        from users.models import Membership, UserPermission  # noqa: E402
+        if UserPermission.objects.filter(user=user, tournament=tournament).exists():
+            return True
+        if Membership.objects.filter(user=user, group__tournament=tournament).exists():
+            return True
+        return False
 
     @staticmethod
     def _resolve_tournament(slug, request):

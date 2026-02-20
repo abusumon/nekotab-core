@@ -136,6 +136,7 @@ TABBYCAT_APPS = (
     'printing',
     'privateurls',
     'results',
+    'retention',
     'tournaments',
     'venues',
     'utils',
@@ -451,3 +452,36 @@ REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab
 
 # Public site base URL for canonical tags and sitemap domain hints
 SITE_BASE_URL = os.environ.get('SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
+
+# ==============================================================================
+# Tournament Retention / Auto-cleanup
+# ==============================================================================
+
+# Number of days after creation before a tournament becomes eligible for
+# automatic deletion.  Set to 0 to disable retention enforcement.
+TOURNAMENT_RETENTION_DAYS = int(os.environ.get('TOURNAMENT_RETENTION_DAYS', '0'))
+
+# DELETE_ONLY  — delete without exporting
+# EXPORT_THEN_DELETE — export archive first, then delete
+TOURNAMENT_RETENTION_MODE = os.environ.get('TOURNAMENT_RETENTION_MODE', 'EXPORT_THEN_DELETE')
+
+# CSV  — multi-CSV zip archive  (default, no external deps)
+# JSON — single structured JSON file
+TOURNAMENT_EXPORT_FORMAT = os.environ.get('TOURNAMENT_EXPORT_FORMAT', 'CSV')
+
+# LOCAL_MEDIA   — save to MEDIA_ROOT/archives/
+# S3_COMPATIBLE — use boto3 + env vars (AWS_ACCESS_KEY_ID, etc.)
+TOURNAMENT_EXPORT_STORAGE = os.environ.get('TOURNAMENT_EXPORT_STORAGE', 'LOCAL_MEDIA')
+
+# Grace period in hours before a scheduled tournament is actually deleted.
+TOURNAMENT_RETENTION_GRACE_HOURS = int(os.environ.get('TOURNAMENT_RETENTION_GRACE_HOURS', '24'))
+
+# Comma-separated list of extra emails to notify about deletions (in addition
+# to the tournament owner).
+_notify_raw = os.environ.get('TOURNAMENT_EXPORT_NOTIFY_EMAILS', '').strip()
+TOURNAMENT_EXPORT_NOTIFY_EMAILS = [e.strip() for e in _notify_raw.split(',') if e.strip()] if _notify_raw else []
+
+# S3-compatible storage settings (only used when TOURNAMENT_EXPORT_STORAGE == 'S3_COMPATIBLE')
+TOURNAMENT_EXPORT_S3_BUCKET = os.environ.get('TOURNAMENT_EXPORT_S3_BUCKET', '')
+TOURNAMENT_EXPORT_S3_ENDPOINT = os.environ.get('TOURNAMENT_EXPORT_S3_ENDPOINT', '')
+TOURNAMENT_EXPORT_S3_REGION = os.environ.get('TOURNAMENT_EXPORT_S3_REGION', 'auto')

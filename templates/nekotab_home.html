@@ -212,6 +212,51 @@
   </section>
   {% endif %}
 
+  <!-- ==================== SHARED WITH ME ==================== -->
+  {% if user.is_authenticated and shared_tournaments %}
+  <section class="em-section em-shared-tournaments" aria-labelledby="shared-title">
+    <div class="em-container">
+      <div class="em-section-header">
+        <h2 id="shared-title" class="em-section-title em-section-title--left">Shared with Me</h2>
+      </div>
+      <div class="em-tournament-grid">
+        {% for t in shared_tournaments %}
+          <article class="em-tournament-card em-tournament-card--shared">
+            <div class="em-tournament-status"><span class="em-status-dot em-status-dot--shared"></span> Shared</div>
+            <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
+            <div class="em-tournament-actions">
+              <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public Site</a>
+              <a href="/{{ t.slug }}/admin/" class="em-btn em-btn--primary em-btn--xs">Admin Panel</a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- ==================== PUBLIC SHOWCASE ==================== -->
+  {% if listed_tournaments %}
+  <section class="em-section em-public-tournaments" aria-labelledby="public-title">
+    <div class="em-container">
+      <div class="em-section-header">
+        <h2 id="public-title" class="em-section-title em-section-title--left">Public Showcase</h2>
+      </div>
+      <div class="em-tournament-grid">
+        {% for t in listed_tournaments %}
+          <article class="em-tournament-card em-tournament-card--listed">
+            <div class="em-tournament-status"><span class="em-status-dot em-status-dot--listed"></span> Public</div>
+            <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
+            <div class="em-tournament-actions">
+              <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">View</a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
   <!-- ==================== FEATURES ==================== -->
   <section id="features" class="em-section em-features" aria-labelledby="features-title">
     <div class="em-container">

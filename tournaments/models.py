@@ -94,6 +94,53 @@ def validate_dns_safe_slug(value):
         )
 
 
+class TournamentQuerySet(models.QuerySet):
+    """Custom queryset that adds tenant-isolation helpers."""
+
+    def visible_to(self, user):
+        """Return tournaments *user* is allowed to see.
+
+        Visibility rules (at least one must match):
+        1. ``tournament.owner == user``
+        2. User has a tournament-scoped role (``UserPermission`` or ``Group``
+           membership)
+        3. ``tournament.is_listed`` is True (public showcase)
+        4. User is a superuser (sees everything)
+
+        Anonymous users see only listed tournaments.
+        """
+        from users.models import Membership, UserPermission
+        qs = self.filter(active=True)
+
+        if user is None or not user.is_authenticated:
+            return qs.filter(is_listed=True)
+
+        if user.is_superuser:
+            return qs
+
+        permission_ids = (
+            UserPermission.objects
+            .filter(user=user)
+            .values_list('tournament_id', flat=True)
+        )
+        membership_ids = (
+            Membership.objects
+            .filter(user=user)
+            .values_list('group__tournament_id', flat=True)
+        )
+
+        return qs.filter(
+            Q(owner=user)
+            | Q(id__in=permission_ids)
+            | Q(id__in=membership_ids)
+            | Q(is_listed=True)
+        ).distinct()
+
+
+class TournamentManager(models.Manager.from_queryset(TournamentQuerySet)):
+    pass
+
+
 class Tournament(models.Model):
     name = models.CharField(max_length=100,
         verbose_name=_("name"),
@@ -115,6 +162,24 @@ class Tournament(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True,
         verbose_name=_("created at"),
         help_text=_("When this tournament was created"))
+
+    # ── Isolation / visibility ──────────────────────────────────────────
+    is_listed = models.BooleanField(default=False,
+        verbose_name=_("publicly listed"),
+        help_text=_("If enabled, this tournament appears in the public showcase "
+                    "and is visible to all users (even those without a role)."))
+
+    # ── Retention / auto-cleanup ────────────────────────────────────────
+    retention_exempt = models.BooleanField(default=False,
+        verbose_name=_("exempt from auto-deletion"),
+        help_text=_("If enabled, this tournament will never be automatically "
+                    "deleted by the retention policy."))
+    scheduled_for_deletion_at = models.DateTimeField(null=True, blank=True,
+        verbose_name=_("scheduled for deletion at"),
+        help_text=_("If set, the tournament is in the grace period and will be "
+                    "deleted after this timestamp."))
+
+    objects = TournamentManager()
 
     class Meta:
         verbose_name = _('tournament')

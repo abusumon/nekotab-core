@@ -8,10 +8,12 @@ def debate_context(request):
     subdomain_enabled = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
     base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
 
+    user = getattr(request, 'user', None)
+
     context = {
         'tabbycat_version': settings.TABBYCAT_VERSION or "",
         'tabbycat_codename': settings.TABBYCAT_CODENAME or "no codename",
-        'all_tournaments': Tournament.objects.filter(active=True),
+        'all_tournaments': Tournament.objects.visible_to(user),
         'disable_sentry': getattr(settings, 'DISABLE_SENTRY', False),
         'on_local': getattr(settings, 'ON_LOCAL', False),
         'hmr': getattr(settings, 'USE_WEBPACK_SERVER', False),

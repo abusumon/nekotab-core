@@ -59,38 +59,63 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
             return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        # Multi-tenancy: each user sees ONLY their own tournaments
+        # Multi-tenancy: each user sees ONLY their own + shared + listed tournaments
         user = self.request.user
         if user.is_authenticated:
-            # Users with tournament-level permissions can also see those tournaments
-            from users.models import UserPermission
-            permitted_tournament_ids = UserPermission.objects.filter(
-                user=user,
-            ).values_list('tournament_id', flat=True).distinct()
+            visible = Tournament.objects.visible_to(user)
+            kwargs['my_tournaments_active'] = visible.filter(
+                models.Q(owner=user)
+            ).filter(active=True)
+            kwargs['my_tournaments_inactive'] = visible.filter(
+                models.Q(owner=user)
+            ).filter(active=False)
 
-            owned_or_permitted = Tournament.objects.filter(
-                models.Q(owner=user) | models.Q(id__in=permitted_tournament_ids)
-            ).distinct()
-
-            kwargs['my_tournaments_active'] = owned_or_permitted.filter(active=True)
-            kwargs['my_tournaments_inactive'] = owned_or_permitted.filter(active=False)
+            # "Shared with me" = visible but not owned by me and not just listed
+            kwargs['shared_tournaments'] = visible.filter(active=True).exclude(
+                owner=user,
+            ).exclude(
+                # Exclude purely-listed tournaments (ones where user has no role)
+                models.Q(is_listed=True)
+                & ~models.Q(owner=user)
+                & ~models.Q(id__in=self._get_permission_ids(user))
+                & ~models.Q(id__in=self._get_membership_ids(user))
+            )
 
             # Superusers can also see unassigned tournaments
             if user.is_superuser:
                 kwargs['unassigned_active'] = Tournament.objects.filter(owner__isnull=True, active=True)
                 kwargs['unassigned_inactive'] = Tournament.objects.filter(owner__isnull=True, active=False)
             else:
-                kwargs['unassigned_active'] = []
-                kwargs['unassigned_inactive'] = []
+                kwargs['unassigned_active'] = Tournament.objects.none()
+                kwargs['unassigned_inactive'] = Tournament.objects.none()
         else:
-            kwargs['my_tournaments_active'] = []
-            kwargs['my_tournaments_inactive'] = []
-            kwargs['unassigned_active'] = []
-            kwargs['unassigned_inactive'] = []
+            kwargs['my_tournaments_active'] = Tournament.objects.none()
+            kwargs['my_tournaments_inactive'] = Tournament.objects.none()
+            kwargs['shared_tournaments'] = Tournament.objects.none()
+            kwargs['unassigned_active'] = Tournament.objects.none()
+            kwargs['unassigned_inactive'] = Tournament.objects.none()
+
+        # Listed / public showcase tournaments (always shown if any)
+        kwargs['listed_tournaments'] = Tournament.objects.filter(
+            is_listed=True, active=True,
+        )
+
         # Retain legacy keys (filtered) in case other templates/components expect them
         kwargs['tournaments'] = kwargs['my_tournaments_active']
         kwargs['inactive'] = kwargs['my_tournaments_inactive']
         return super().get_context_data(**kwargs)
+
+    @staticmethod
+    def _get_permission_ids(user):
+        from users.models import UserPermission
+        return UserPermission.objects.filter(user=user).values_list(
+            'tournament_id', flat=True).distinct()
+
+    @staticmethod
+    def _get_membership_ids(user):
+        from users.models import Membership
+        return Membership.objects.filter(user=user).values_list(
+            'group__tournament_id', flat=True).distinct()
 
 class ClaimTournamentOwnershipView(LoginRequiredMixin, PostOnlyRedirectView):
     """Allows a logged-in user to claim ownership of a tournament that has no owner.
