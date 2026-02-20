@@ -1,4 +1,5 @@
 import json
+import logging
 from datetime import timedelta
 from collections import Counter
 
@@ -16,6 +17,7 @@ from results.models import BallotSubmission
 from .models import PageView, DailyStats, ActiveSession
 
 User = get_user_model()
+logger = logging.getLogger(__name__)
 
 
 class SuperuserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
@@ -242,6 +244,15 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
                 round__draw_status=Round.Status.RELEASED,
                 round__completed=False,
             ).distinct()
+        elif status == 'broken':
+            # Filter to tournaments whose slugs are not DNS-safe
+            # (these will have broken subdomain links)
+            queryset = queryset.filter(
+                Q(slug__contains='_') |
+                Q(slug__startswith='-') |
+                Q(slug__endswith='-') |
+                Q(slug='')
+            )
         
         return queryset
     
@@ -257,6 +268,13 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
             round__draw_status=Round.Status.RELEASED,
             round__completed=False,
         ).distinct().count()
+        # Count tournaments with potentially broken slugs (not DNS-safe)
+        context['broken_slug_count'] = Tournament.objects.filter(
+            Q(slug__contains='_') |
+            Q(slug__startswith='-') |
+            Q(slug__endswith='-') |
+            Q(slug='')
+        ).count()
         return context
 
 

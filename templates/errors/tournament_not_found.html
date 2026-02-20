@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Not Found - NekoTab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --border: #2a2a3a;
+            --text-primary: #ffffff;
+            --text-secondary: #8888aa;
+            --accent: #7c3aed;
+            --accent-light: #8b5cf6;
+            --warning: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 560px;
+            width: 100%;
+            padding: 48px 32px;
+            text-align: center;
+        }
+
+        .emoji {
+            font-size: 72px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .message {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .slug-box {
+            display: inline-block;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: var(--warning);
+            margin-bottom: 24px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        .help-text {
+            margin-top: 32px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .help-text strong { color: var(--text-primary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="emoji">😿</span>
+        <h1>Tournament Not Found</h1>
+        <p class="message">
+            This tournament is no longer available. It may have been deleted,
+            renamed, or you may not have permission to access it.
+        </p>
+
+        {% if slug %}
+        <div class="slug-box">/{{ slug }}/</div>
+        {% endif %}
+
+        <div class="actions">
+            <a href="/" class="btn btn-primary">Go to Homepage</a>
+            <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+        </div>
+
+        <div class="help-text">
+            <p><strong>Possible reasons:</strong></p>
+            <p>
+                • The tournament was deleted by its owner<br>
+                • The URL or slug was changed<br>
+                • The tournament link is outdated
+            </p>
+            <p style="margin-top: 12px;">
+                If you believe this is an error, please contact the tournament organizer
+                or <a href="mailto:support@nekotab.app" style="color: var(--accent-light);">NekoTab support</a>.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -14,6 +14,21 @@ def update_tournament_cache(sender, instance, **kwargs):
     cache.delete("%s_%s" % (instance.slug, 'object'))
 
 
+@receiver(post_delete, sender=Tournament)
+def clear_tournament_cache_on_delete(sender, instance, **kwargs):
+    """Clear all cache entries related to a tournament when it is deleted.
+
+    This prevents stale cache entries from making deleted tournaments appear
+    to still exist (or erroneously mapping to their old data).
+    """
+    cache.delete("%s_%s" % (instance.slug, 'object'))
+    # Also clear the subdomain existence cache
+    cache.delete("subdom_tour_exists_%s" % instance.slug)
+    cache.delete("subdom_tour_exists_%s" % instance.slug.lower())
+    logger.info("Cleared caches for deleted tournament: slug=%s, id=%s",
+                instance.slug, instance.id)
+
+
 @receiver(post_delete, sender=Round)
 @receiver(post_save, sender=Round)
 def update_round_cache(sender, instance, **kwargs):

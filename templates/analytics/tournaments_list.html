@@ -320,6 +320,8 @@
             margin-bottom: 16px;
         }
         
+        .badge-danger { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+        
         .tournament-link {
             color: var(--accent-light);
             text-decoration: none;
@@ -327,6 +329,22 @@
         
         .tournament-link:hover {
             text-decoration: underline;
+        }
+        
+        .tournament-link-disabled {
+            color: var(--text-secondary);
+            cursor: not-allowed;
+            text-decoration: line-through;
+            font-size: 12px;
+        }
+        
+        .slug-warning {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            color: var(--warning);
+            margin-top: 2px;
         }
         
         @media (max-width: 768px) {
@@ -414,6 +432,12 @@
                     <div class="header-stat-value" style="color: var(--success);">{{ live_tournaments }}</div>
                     <div class="header-stat-label">Live Now</div>
                 </div>
+                {% if broken_slug_count %}
+                <div class="header-stat">
+                    <div class="header-stat-value" style="color: var(--danger);">{{ broken_slug_count }}</div>
+                    <div class="header-stat-label">Broken Slugs</div>
+                </div>
+                {% endif %}
             </div>
         </div>
 
@@ -429,6 +453,7 @@
                 <option value="active" {% if status == 'active' %}selected{% endif %}>Active</option>
                 <option value="inactive" {% if status == 'inactive' %}selected{% endif %}>Inactive</option>
                 <option value="live" {% if status == 'live' %}selected{% endif %}>🔴 Live Now</option>
+                {% if broken_slug_count %}<option value="broken" {% if status == 'broken' %}selected{% endif %}>⚠️ Broken Slugs</option>{% endif %}
             </select>
             <button type="submit" class="btn btn-primary">Filter</button>
         </form>
@@ -453,6 +478,9 @@
                             <div class="tournament-info">
                                 <span class="tournament-name">{{ tournament.name }}</span>
                                 <span class="tournament-short">{{ tournament.short_name }}</span>
+                                {% if not tournament.is_subdomain_safe %}
+                                <span class="slug-warning" title="Slug '{{ tournament.slug }}' contains characters not safe for subdomain routing (underscores, uppercase, leading/trailing hyphens)">⚠️ slug issue</span>
+                                {% endif %}
                             </div>
                         </td>
                         <td>
@@ -490,7 +518,7 @@
                             {% endif %}
                         </td>
                         <td>
-                            <a href="/{{ tournament.slug }}/" class="tournament-link" target="_blank">View →</a>
+                            <a href="{{ tournament.view_url }}" class="tournament-link" target="_blank">View →</a>
                         </td>
                     </tr>
                     {% empty %}

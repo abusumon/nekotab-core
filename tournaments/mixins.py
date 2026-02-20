@@ -68,8 +68,18 @@ class TournamentFromUrlMixin:
             return cached_tournament
 
         # and if it was in neither place, retrieve the object
-        tournament = get_object_or_404(Tournament, slug=slug)
-        cache.set(key, tournament, None)
+        try:
+            tournament = Tournament.objects.get(slug=slug)
+        except Tournament.DoesNotExist:
+            # Try case-insensitive fallback before giving up
+            try:
+                tournament = Tournament.objects.get(slug__iexact=slug)
+                logger.info("Tournament resolved via case-insensitive fallback: '%s' → '%s'",
+                            slug, tournament.slug)
+            except (Tournament.DoesNotExist, Tournament.MultipleObjectsReturned):
+                logger.warning("Tournament not found in TournamentFromUrlMixin: slug=%s", slug)
+                raise
+        cache.set(key, tournament, 3600)
         self._tournament_from_url = tournament
         return tournament
 

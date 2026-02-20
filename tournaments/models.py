@@ -159,6 +159,33 @@ class Tournament(models.Model):
         from utils.middleware import get_subdomain_url
         return get_subdomain_url(self.slug, path)
 
+    @property
+    def view_url(self):
+        """Return the best public URL for viewing this tournament.
+
+        Uses subdomain URL when subdomain routing is enabled and the slug is
+        DNS-safe, otherwise falls back to the path-based public URL.
+        """
+        subdomain_url = self.get_subdomain_url()
+        if subdomain_url and self.is_subdomain_safe:
+            return subdomain_url
+        return self.get_public_url()
+
+    @property
+    def is_subdomain_safe(self):
+        """Check if this tournament's slug is safe for use as a DNS subdomain.
+
+        DNS hostnames are case-insensitive and do not allow underscores.
+        Slugs must start and end with an alphanumeric character.
+        """
+        import re
+        slug = self.slug
+        if not slug:
+            return False
+        # DNS labels: lowercase alphanumeric, hyphens allowed in the middle,
+        # no underscores, must start/end with alnum
+        return bool(re.match(r'^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$', slug.lower())) and '_' not in slug
+
     # --------------------------------------------------------------------------
     # Convenience querysets
     # --------------------------------------------------------------------------
