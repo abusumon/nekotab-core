@@ -121,6 +121,9 @@ urlpatterns = [
     path('passport/',
         include('passport.urls')),
 
+    # Retention archive downloads
+    path('', include('retention.urls')),
+
     # Tournament URLs
     path('<slug:tournament_slug>/',
         include('tournaments.urls')),

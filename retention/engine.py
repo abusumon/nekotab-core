@@ -119,12 +119,47 @@ def _clear_caches(tournament):
         cache.delete(f"{slug}_{r}_object")
 
 
-def _export(tournament, fmt=None):
+def _export(tournament, fmt=None, export_dir=None):
     """Export tournament data and return the archive path."""
     fmt = fmt or _get_export_format()
+    output_path = None
+    if export_dir:
+        import os
+        os.makedirs(export_dir, exist_ok=True)
+        from datetime import datetime
+        ts = datetime.utcnow().strftime('%Y%m%d%H%M%S')
+        ext = 'json' if fmt.upper() == 'JSON' else 'zip'
+        output_path = os.path.join(
+            export_dir,
+            f'{tournament.slug}-{tournament.id}-{ts}-archive.{ext}',
+        )
     if fmt.upper() == 'JSON':
-        return export_tournament_json(tournament)
-    return export_tournament_csv_zip(tournament)
+        return export_tournament_json(tournament, output_path=output_path)
+    return export_tournament_csv_zip(tournament, output_path=output_path)
+
+
+def _clear_protect_refs(tournament):
+    """Pre-clear PROTECT FK references that would block CASCADE deletion.
+
+    Django's PROTECT handler raises ``ProtectedError`` even when the
+    protecting objects are themselves scheduled for cascade deletion.  We
+    neutralise those references explicitly before calling
+    ``tournament.delete()``.
+    """
+    from draw.models import DebateTeam
+    from tournaments.models import ScheduleEvent
+
+    # ScheduleEvent.round = PROTECT (nullable) — set to NULL
+    ScheduleEvent.objects.filter(tournament=tournament).update(round=None)
+
+    # DebateTeam.team = PROTECT — delete explicitly (they cascade from Debate anyway)
+    DebateTeam.objects.filter(debate__round__tournament=tournament).delete()
+
+    # BallotSubmission.participant_submitter = PROTECT (nullable) — set to NULL
+    from results.models import BallotSubmission
+    BallotSubmission.objects.filter(
+        debate__round__tournament=tournament,
+    ).update(participant_submitter=None)
 
 
 # ---------------------------------------------------------------------------
@@ -181,7 +216,7 @@ def schedule_eligible(retention_days=None, dry_run=False):
     return result
 
 
-def process_deletions(mode=None, dry_run=False):
+def process_deletions(mode=None, dry_run=False, export_dir=None):
     """Delete (and optionally export) all tournaments past their grace period.
 
     Returns list of (slug, log) tuples.
@@ -208,7 +243,7 @@ def process_deletions(mode=None, dry_run=False):
         try:
             # Export first if required
             if mode == 'EXPORT_THEN_DELETE':
-                archive_path = _export(t)
+                archive_path = _export(t, export_dir=export_dir)
                 TournamentDeletionLog.objects.create(
                     tournament_id=t.id, slug=t.slug, name=t.name,
                     owner_email=owner_email, owner_username=owner_username,
@@ -223,6 +258,7 @@ def process_deletions(mode=None, dry_run=False):
             name = t.name
 
             with transaction.atomic():
+                _clear_protect_refs(t)
                 _clear_caches(t)
                 t.delete()  # CASCADE handles all related objects
 
@@ -234,18 +270,7 @@ def process_deletions(mode=None, dry_run=False):
                 **counts,
             )
 
-            _notify_owner(
-                type('FakeTournament', (), {'slug': slug, 'owner': None})(),
-                f"[NekoTab] Tournament \"{name}\" has been deleted",
-                f"Your tournament \"{name}\" ({slug}) has been archived "
-                f"and permanently deleted.\n\n"
-                + (f"Archive: {archive_path}\n\n" if archive_path else "")
-                + f"Teams: {counts['team_count']}, Rounds: {counts['round_count']}, "
-                  f"Debates: {counts['debate_count']}\n\n"
-                  f"— NekoTab",
-            )
-
-            # For post-deletion notification, send to saved email directly
+            # Send notification (tournament already deleted — use saved info)
             recipients = list(getattr(settings, 'TOURNAMENT_EXPORT_NOTIFY_EMAILS', []))
             if owner_email and owner_email not in recipients:
                 recipients.insert(0, owner_email)
@@ -284,12 +309,12 @@ def process_deletions(mode=None, dry_run=False):
     return result
 
 
-def run_retention_cycle(retention_days=None, mode=None, dry_run=False):
+def run_retention_cycle(retention_days=None, mode=None, dry_run=False, export_dir=None):
     """Full retention cycle: schedule eligible → delete past-grace.
 
     This is the single entry point called by the management command and
     scheduler.
     """
     scheduled = schedule_eligible(retention_days=retention_days, dry_run=dry_run)
-    deleted = process_deletions(mode=mode, dry_run=dry_run)
+    deleted = process_deletions(mode=mode, dry_run=dry_run, export_dir=export_dir)
     return scheduled, deleted

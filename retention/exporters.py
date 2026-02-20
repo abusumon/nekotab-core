@@ -149,6 +149,45 @@ def _qs_venues(t):
     return Venue.objects.filter(tournament=t).order_by('id')
 
 
+def _qs_user_permissions(t):
+    from users.models import UserPermission
+    return (UserPermission.objects.filter(tournament=t)
+            .select_related('user')
+            .order_by('id'))
+
+
+def _qs_groups(t):
+    from users.models import Group
+    return Group.objects.filter(tournament=t).order_by('id')
+
+
+def _qs_schedule_events(t):
+    from tournaments.models import ScheduleEvent
+    return (ScheduleEvent.objects.filter(tournament=t)
+            .order_by('start_time'))
+
+
+def _qs_adj_conflicts_team(t):
+    from adjallocation.models import AdjudicatorTeamConflict
+    return (AdjudicatorTeamConflict.objects.filter(adjudicator__tournament=t)
+            .select_related('adjudicator', 'team')
+            .order_by('id'))
+
+
+def _qs_adj_conflicts_adj(t):
+    from adjallocation.models import AdjudicatorAdjudicatorConflict
+    return (AdjudicatorAdjudicatorConflict.objects.filter(adjudicator1__tournament=t)
+            .select_related('adjudicator1', 'adjudicator2')
+            .order_by('id'))
+
+
+def _qs_adj_conflicts_inst(t):
+    from adjallocation.models import AdjudicatorInstitutionConflict
+    return (AdjudicatorInstitutionConflict.objects.filter(adjudicator__tournament=t)
+            .select_related('adjudicator', 'institution')
+            .order_by('id'))
+
+
 # ---------------------------------------------------------------------------
 # Column extractors — safe attribute access with ``__`` traversal
 # ---------------------------------------------------------------------------
@@ -245,6 +284,26 @@ CSV_TABLES = [
     ('breaking_teams.csv', _qs_breaking_teams, [
         'id', 'break_category__name', 'team__short_name', 'team__id',
         'rank', 'break_rank', 'remark',
+    ]),
+    ('user_permissions.csv', _qs_user_permissions, [
+        'id', 'user__username', 'user__email', 'permission',
+    ]),
+    ('groups.csv', _qs_groups, [
+        'id', 'name', 'permissions',
+    ]),
+    ('schedule_events.csv', _qs_schedule_events, [
+        'id', 'title', 'type', 'start_time', 'end_time', 'round__seq',
+    ]),
+    ('adj_team_conflicts.csv', _qs_adj_conflicts_team, [
+        'id', 'adjudicator__name', 'adjudicator__id', 'team__short_name', 'team__id',
+    ]),
+    ('adj_adj_conflicts.csv', _qs_adj_conflicts_adj, [
+        'id', 'adjudicator1__name', 'adjudicator1__id',
+        'adjudicator2__name', 'adjudicator2__id',
+    ]),
+    ('adj_institution_conflicts.csv', _qs_adj_conflicts_inst, [
+        'id', 'adjudicator__name', 'adjudicator__id',
+        'institution__name', 'institution__id',
     ]),
 ]
 

@@ -171,6 +171,22 @@ class MiddlewareVisibilityTestCase(TestCase):
         resp = self.client.get(f'/{self.hidden_t.slug}/')
         self.assertEqual(resp.status_code, 404)
 
+    def test_hidden_tournament_returns_404_for_anon(self):
+        resp = self.client.get(f'/{self.hidden_t.slug}/')
+        self.assertEqual(resp.status_code, 404)
+
+    def test_guessing_slug_returns_404(self):
+        """A user guessing a valid slug they have no access to gets 404."""
+        self.client.login(username='user', password='pw')
+        resp = self.client.get(f'/{self.hidden_t.slug}/admin/')
+        self.assertEqual(resp.status_code, 404)
+
+    def test_response_body_does_not_contain_hidden_name(self):
+        """404 page must not reveal the tournament name."""
+        self.client.login(username='user', password='pw')
+        resp = self.client.get(f'/{self.hidden_t.slug}/')
+        self.assertNotContains(resp, self.hidden_t.name, status_code=404)
+
     def test_listed_tournament_returns_200_for_stranger(self):
         self.client.login(username='user', password='pw')
         resp = self.client.get(f'/{self.listed_t.slug}/')

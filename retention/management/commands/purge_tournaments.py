@@ -55,11 +55,18 @@ class Command(BaseCommand):
             help='Override TOURNAMENT_RETENTION_MODE. '
                  '"delete" = DELETE_ONLY, "export-delete" = EXPORT_THEN_DELETE.',
         )
+        parser.add_argument(
+            '--export-dir',
+            type=str,
+            default=None,
+            help='Directory to write archive zip files into (overrides MEDIA_ROOT/archives/).',
+        )
 
     def handle(self, *args, **options):
         dry_run = options['dry_run']
         retention_days = options['retention_days']
         mode_arg = options['mode']
+        export_dir = options['export_dir']
 
         # Map CLI arg to settings constant
         mode_map = {
@@ -90,6 +97,7 @@ class Command(BaseCommand):
             retention_days=retention_days,
             mode=mode,
             dry_run=dry_run,
+            export_dir=export_dir,
         )
 
         # Report

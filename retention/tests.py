@@ -252,6 +252,40 @@ class RetentionCycleTestCase(TestCase):
         )
         self.assertTrue(Tournament.objects.filter(pk=self.t.pk).exists())
 
+    @override_settings(TOURNAMENT_RETENTION_GRACE_HOURS=0)
+    def test_export_dir_override(self):
+        """Archives should be written to the specified directory."""
+        export_dir = os.path.join(self.tmpdir, 'custom-export')
+        with self.settings(MEDIA_ROOT=self.tmpdir):
+            run_retention_cycle(
+                retention_days=90,
+                mode='EXPORT_THEN_DELETE',
+                dry_run=False,
+                export_dir=export_dir,
+            )
+        self.assertTrue(os.path.isdir(export_dir))
+        zips = [f for f in os.listdir(export_dir) if f.endswith('.zip')]
+        self.assertGreaterEqual(len(zips), 1)
+
+    @override_settings(TOURNAMENT_RETENTION_GRACE_HOURS=0)
+    def test_export_failure_prevents_deletion(self):
+        """If the export fails, the tournament must NOT be deleted."""
+        with self.settings(MEDIA_ROOT='/nonexistent/impossible/path'):
+            run_retention_cycle(
+                retention_days=90,
+                mode='EXPORT_THEN_DELETE',
+                dry_run=False,
+            )
+        # Tournament should still exist (export failed → no deletion)
+        self.assertTrue(Tournament.objects.filter(pk=self.t.pk).exists())
+        # Failure should be logged
+        self.assertTrue(
+            TournamentDeletionLog.objects.filter(
+                tournament_id=self.t.pk,
+                status=TournamentDeletionLog.Status.FAILED,
+            ).exists()
+        )
+
 
 class PurgeCommandTestCase(TestCase):
     """Tests for the ``purge_tournaments`` management command."""

@@ -30,7 +30,7 @@ class TournamentSitemap(Sitemap):
     priority = 0.8
 
     def items(self):
-        return Tournament.objects.filter(active=True)
+        return Tournament.objects.filter(active=True, is_listed=True)
 
     def location(self, obj):
         # When subdomain routing is enabled, sitemaps should still use

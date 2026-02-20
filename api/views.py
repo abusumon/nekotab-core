@@ -126,12 +126,21 @@ class TournamentViewSet(PublicAPIMixin, APILogActionMixin, ModelViewSet):
             return base_qs.none()
         if user.is_superuser:
             return base_qs
-        # Non-superusers see only tournaments they own or have permissions for
-        from users.models import Permission as UserPermission
+        # Non-superusers see only tournaments they own, have permissions
+        # for, have group membership in, or that are publicly listed.
+        from users.models import Membership, UserPermission
         permitted_ids = UserPermission.objects.filter(
             user=user,
         ).values_list('tournament_id', flat=True).distinct()
-        return base_qs.filter(Q(owner=user) | Q(id__in=permitted_ids)).distinct()
+        membership_ids = Membership.objects.filter(
+            user=user,
+        ).values_list('group__tournament_id', flat=True).distinct()
+        return base_qs.filter(
+            Q(owner=user)
+            | Q(id__in=permitted_ids)
+            | Q(id__in=membership_ids)
+            | Q(is_listed=True)
+        ).distinct()
 
 
 @extend_schema(tags=['tournaments'], parameters=[tournament_parameter])
