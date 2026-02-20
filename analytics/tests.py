@@ -483,3 +483,150 @@ class DNSSafeSlugValidationTests(TestCase):
         # but the slug should have been normalised in clean_slug
         form.is_valid()
         self.assertEqual(form.cleaned_data.get('slug'), 'my-tournament')
+
+
+# ---------------------------------------------------------------------------
+# Database Usage Analytics Tests
+# ---------------------------------------------------------------------------
+
+class DbUsageViewTests(TestCase):
+    """Tests for the /analytics/db-usage/ page."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.superuser = User.objects.create_superuser(
+            'dbadmin', 'dbadmin@test.com', 'password',
+        )
+        cls.regular_user = User.objects.create_user(
+            'dbregular', 'dbregular@test.com', 'password',
+        )
+        # Create a tournament with some data to verify row counts
+        cls.tournament = Tournament.objects.create(
+            name='DB Test Tournament',
+            short_name='DBTest',
+            slug='db-test',
+            seq=1,
+            active=True,
+            owner=cls.superuser,
+        )
+        cls.round = Round.objects.create(
+            tournament=cls.tournament,
+            seq=1,
+            name='Round 1',
+            abbreviation='R1',
+        )
+
+    def setUp(self):
+        cache.clear()
+
+    def test_superuser_can_access_db_usage(self):
+        """Superuser should get 200 on /analytics/db-usage/."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/analytics/db-usage/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_regular_user_redirected_from_db_usage(self):
+        """Non-superuser should be redirected away from db-usage."""
+        self.client.force_login(self.regular_user)
+        response = self.client.get('/analytics/db-usage/')
+        self.assertIn(response.status_code, [302, 403])
+
+    def test_anonymous_redirected_from_db_usage(self):
+        """Anonymous user should be redirected to login."""
+        response = self.client.get('/analytics/db-usage/')
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/accounts/login/', response.url)
+
+    def test_tournament_appears_in_usage_data(self):
+        """At least one tournament should appear in the usage data."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/analytics/db-usage/')
+        self.assertEqual(response.status_code, 200)
+        usage_data = response.context['usage_data']
+        self.assertTrue(len(usage_data) >= 1)
+        slugs = [t['slug'] for t in usage_data]
+        self.assertIn('db-test', slugs)
+
+    def test_row_counts_match_fixtures(self):
+        """Row counts for the test tournament should reflect created fixtures."""
+        from participants.models import Team, Speaker
+        # Create some teams and speakers
+        team1 = Team.objects.create(
+            tournament=self.tournament,
+            reference='Team Alpha',
+        )
+        team2 = Team.objects.create(
+            tournament=self.tournament,
+            reference='Team Beta',
+        )
+        Speaker.objects.create(team=team1, name='Speaker 1')
+        Speaker.objects.create(team=team2, name='Speaker 2')
+        Speaker.objects.create(team=team1, name='Speaker 3')
+
+        self.client.force_login(self.superuser)
+        response = self.client.get('/analytics/db-usage/')
+        usage_data = response.context['usage_data']
+        db_test = next(t for t in usage_data if t['slug'] == 'db-test')
+
+        self.assertEqual(db_test['breakdown']['teams']['rows'], 2)
+        self.assertEqual(db_test['breakdown']['speakers']['rows'], 3)
+        self.assertEqual(db_test['breakdown']['rounds']['rows'], 1)
+
+    def test_search_filter(self):
+        """Search filter should filter tournaments by slug/name."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/analytics/db-usage/?search=db-test')
+        usage_data = response.context['usage_data']
+        self.assertTrue(all('db-test' in t['slug'] or 'db-test' in t['name'].lower()
+                            for t in usage_data))
+
+    def test_status_filter_active(self):
+        """Status=active should only return active tournaments."""
+        Tournament.objects.create(
+            name='Inactive Test', slug='inactive-db', seq=2,
+            active=False, owner=self.superuser,
+        )
+        self.client.force_login(self.superuser)
+        response = self.client.get('/analytics/db-usage/?status=active')
+        usage_data = response.context['usage_data']
+        self.assertTrue(all(t['active'] for t in usage_data))
+
+    def test_top_filter(self):
+        """Top N filter should limit results."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/analytics/db-usage/?top=1')
+        usage_data = response.context['usage_data']
+        self.assertTrue(len(usage_data) <= 1)
+
+    def test_refresh_cache_requires_post(self):
+        """GET to refresh endpoint should not work (method not allowed)."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/analytics/db-usage/refresh/')
+        self.assertEqual(response.status_code, 405)
+
+    def test_refresh_cache_clears_and_redirects(self):
+        """POST to refresh should clear cache and redirect to db-usage."""
+        self.client.force_login(self.superuser)
+        # Prime the cache
+        self.client.get('/analytics/db-usage/')
+        self.assertIsNotNone(cache.get('analytics_db_usage_v1'))
+        # Refresh
+        response = self.client.post('/analytics/db-usage/refresh/')
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('db-usage', response.url)
+        self.assertIsNone(cache.get('analytics_db_usage_v1'))
+
+    def test_totals_in_context(self):
+        """Context should contain totals dict."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/analytics/db-usage/')
+        totals = response.context['totals']
+        self.assertIn('rows', totals)
+        self.assertIn('tournament_count', totals)
+        self.assertGreaterEqual(totals['tournament_count'], 1)
+
+    def test_refresh_requires_superuser(self):
+        """Non-superuser should be blocked from refresh endpoint."""
+        self.client.force_login(self.regular_user)
+        response = self.client.post('/analytics/db-usage/refresh/')
+        self.assertIn(response.status_code, [302, 403])

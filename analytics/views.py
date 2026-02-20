@@ -3,9 +3,12 @@ import logging
 from datetime import timedelta
 from collections import Counter
 
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.db.models import Count, Q, Sum
+from django.core.cache import cache
+from django.db import connection
+from django.db.models import Count, Max, Q, Sum
 from django.db.models.functions import TruncDate, TruncHour
 from django.http import JsonResponse
 from django.shortcuts import redirect
@@ -370,3 +373,269 @@ class ExportUsersView(SuperuserRequiredMixin, View):
             ])
         
         return response
+
+
+# ---------------------------------------------------------------------------
+# Database Usage Analytics
+# ---------------------------------------------------------------------------
+
+DB_USAGE_CACHE_KEY = 'analytics_db_usage_v1'
+DB_USAGE_CACHE_TTL = 60 * 15  # 15 minutes
+
+
+def _get_db_usage_data():
+    """Compute per-tournament database usage metrics.
+
+    Returns a dict with keys:
+        tournaments  – list of per-tournament dicts, sorted by total_rows desc
+        totals       – aggregate totals across all tournaments
+        db_size      – overall database size info (or None)
+        cached_at    – ISO timestamp of when the data was generated
+    """
+    from draw.models import Debate, DebateTeam
+    from adjallocation.models import DebateAdjudicator
+    from participants.models import Team, Speaker, Adjudicator
+
+    all_tournaments = Tournament.objects.all().order_by('id')
+    tournament_map = {t.id: t for t in all_tournaments}
+    tournament_ids = list(tournament_map.keys())
+
+    # ------------------------------------------------------------------
+    # Row counts grouped by tournament
+    # ------------------------------------------------------------------
+
+    # Direct FK to tournament
+    teams_by_t = dict(
+        Team.objects.filter(tournament_id__in=tournament_ids)
+        .values('tournament_id')
+        .annotate(count=Count('id'))
+        .values_list('tournament_id', 'count')
+    )
+    # Speaker → Team → Tournament
+    speakers_by_t = dict(
+        Speaker.objects.filter(team__tournament_id__in=tournament_ids)
+        .values('team__tournament_id')
+        .annotate(count=Count('id'))
+        .values_list('team__tournament_id', 'count')
+    )
+    # Adjudicator direct FK (nullable — count only those with tournament)
+    adjs_by_t = dict(
+        Adjudicator.objects.filter(tournament_id__in=tournament_ids)
+        .values('tournament_id')
+        .annotate(count=Count('id'))
+        .values_list('tournament_id', 'count')
+    )
+    # Round → Tournament
+    rounds_by_t = dict(
+        Round.objects.filter(tournament_id__in=tournament_ids)
+        .values('tournament_id')
+        .annotate(count=Count('id'))
+        .values_list('tournament_id', 'count')
+    )
+    # Debate → Round → Tournament
+    debates_by_t = dict(
+        Debate.objects.filter(round__tournament_id__in=tournament_ids)
+        .values('round__tournament_id')
+        .annotate(count=Count('id'))
+        .values_list('round__tournament_id', 'count')
+    )
+    # BallotSubmission → Debate → Round → Tournament
+    ballots_by_t = dict(
+        BallotSubmission.objects.filter(debate__round__tournament_id__in=tournament_ids)
+        .values('debate__round__tournament_id')
+        .annotate(count=Count('id'))
+        .values_list('debate__round__tournament_id', 'count')
+    )
+    # DebateTeam → Debate → Round → Tournament
+    debate_teams_by_t = dict(
+        DebateTeam.objects.filter(debate__round__tournament_id__in=tournament_ids)
+        .values('debate__round__tournament_id')
+        .annotate(count=Count('id'))
+        .values_list('debate__round__tournament_id', 'count')
+    )
+    # DebateAdjudicator → Debate → Round → Tournament
+    debate_adjs_by_t = dict(
+        DebateAdjudicator.objects.filter(debate__round__tournament_id__in=tournament_ids)
+        .values('debate__round__tournament_id')
+        .annotate(count=Count('id'))
+        .values_list('debate__round__tournament_id', 'count')
+    )
+
+    # Last activity: latest ballot timestamp per tournament
+    last_activity_by_t = dict(
+        BallotSubmission.objects.filter(debate__round__tournament_id__in=tournament_ids)
+        .values('debate__round__tournament_id')
+        .annotate(last=Max('timestamp'))
+        .values_list('debate__round__tournament_id', 'last')
+    )
+
+    # ------------------------------------------------------------------
+    # Estimate bytes per table (Postgres only, graceful fallback)
+    # ------------------------------------------------------------------
+    table_sizes = {}  # table_name → total bytes
+    table_total_rows = {}  # table_name → total row count
+    can_estimate_bytes = False
+
+    if connection.vendor == 'postgresql':
+        TABLE_NAMES = [
+            'participants_team', 'participants_speaker', 'participants_adjudicator',
+            'tournaments_round', 'draw_debate', 'results_ballotsubmission',
+            'draw_debateteam', 'adjallocation_debateadjudicator',
+        ]
+        try:
+            with connection.cursor() as cursor:
+                for tbl in TABLE_NAMES:
+                    cursor.execute(
+                        "SELECT pg_total_relation_size(%s), "
+                        "(SELECT COUNT(*) FROM {}) ".format(tbl),  # noqa: S608
+                        [tbl],
+                    )
+                    row = cursor.fetchone()
+                    if row:
+                        table_sizes[tbl] = row[0] or 0
+                        table_total_rows[tbl] = row[1] or 0
+            can_estimate_bytes = True
+        except Exception:
+            can_estimate_bytes = False
+
+    # Model → (table_name, by_t_dict)
+    MODEL_MAP = [
+        ('teams', 'participants_team', teams_by_t),
+        ('speakers', 'participants_speaker', speakers_by_t),
+        ('adjudicators', 'participants_adjudicator', adjs_by_t),
+        ('rounds', 'tournaments_round', rounds_by_t),
+        ('debates', 'draw_debate', debates_by_t),
+        ('ballots', 'results_ballotsubmission', ballots_by_t),
+        ('debate_teams', 'draw_debateteam', debate_teams_by_t),
+        ('debate_adjs', 'adjallocation_debateadjudicator', debate_adjs_by_t),
+    ]
+
+    # ------------------------------------------------------------------
+    # Build per-tournament breakdown
+    # ------------------------------------------------------------------
+    results = []
+    grand_total_rows = 0
+    grand_total_bytes = 0
+
+    for tid, t in tournament_map.items():
+        breakdown = {}
+        total_rows = 0
+        total_bytes = 0.0
+
+        for label, table_name, by_t in MODEL_MAP:
+            row_count = by_t.get(tid, 0)
+            breakdown[label] = {'rows': row_count}
+            total_rows += row_count
+
+            if can_estimate_bytes and table_total_rows.get(table_name, 0) > 0:
+                share = row_count / table_total_rows[table_name]
+                est_bytes = share * table_sizes[table_name]
+                breakdown[label]['bytes'] = int(est_bytes)
+                total_bytes += est_bytes
+            else:
+                breakdown[label]['bytes'] = None
+
+        impact_score = total_rows + (total_bytes / 1024 if total_bytes else 0)
+
+        results.append({
+            'id': t.id,
+            'slug': t.slug,
+            'name': t.name,
+            'active': t.active,
+            'total_rows': total_rows,
+            'total_bytes': int(total_bytes) if can_estimate_bytes else None,
+            'total_mb': round(total_bytes / (1024 * 1024), 2) if can_estimate_bytes else None,
+            'impact_score': round(impact_score, 1),
+            'breakdown': breakdown,
+            'last_activity': last_activity_by_t.get(tid),
+        })
+
+        grand_total_rows += total_rows
+        grand_total_bytes += total_bytes
+
+    results.sort(key=lambda r: r['total_rows'], reverse=True)
+
+    # ------------------------------------------------------------------
+    # Overall DB size (Postgres only)
+    # ------------------------------------------------------------------
+    db_size = None
+    if connection.vendor == 'postgresql':
+        try:
+            with connection.cursor() as cursor:
+                db_name = settings.DATABASES['default']['NAME']
+                cursor.execute("SELECT pg_database_size(%s)", [db_name])
+                raw = cursor.fetchone()[0]
+                db_size = {
+                    'bytes': raw,
+                    'mb': round(raw / (1024 * 1024), 2),
+                    'gb': round(raw / (1024 * 1024 * 1024), 3),
+                }
+        except Exception:
+            pass
+
+    return {
+        'tournaments': results,
+        'totals': {
+            'rows': grand_total_rows,
+            'bytes': int(grand_total_bytes) if can_estimate_bytes else None,
+            'mb': round(grand_total_bytes / (1024 * 1024), 2) if can_estimate_bytes else None,
+            'tournament_count': len(results),
+        },
+        'db_size': db_size,
+        'can_estimate_bytes': can_estimate_bytes,
+        'cached_at': timezone.now().isoformat(),
+    }
+
+
+class DbUsageView(SuperuserRequiredMixin, TemplateView):
+    """Per-tournament database usage analytics."""
+    template_name = 'analytics/db_usage.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Try cache first
+        data = cache.get(DB_USAGE_CACHE_KEY)
+        if data is None:
+            data = _get_db_usage_data()
+            cache.set(DB_USAGE_CACHE_KEY, data, DB_USAGE_CACHE_TTL)
+
+        # Apply filters
+        tournaments = data['tournaments']
+
+        status_filter = self.request.GET.get('status', '')
+        if status_filter == 'active':
+            tournaments = [t for t in tournaments if t['active']]
+        elif status_filter == 'inactive':
+            tournaments = [t for t in tournaments if not t['active']]
+
+        search = self.request.GET.get('search', '').strip().lower()
+        if search:
+            tournaments = [
+                t for t in tournaments
+                if search in t['slug'].lower() or search in t['name'].lower()
+            ]
+
+        top_n = self.request.GET.get('top', '')
+        if top_n and top_n.isdigit():
+            tournaments = tournaments[:int(top_n)]
+
+        context.update({
+            'usage_data': tournaments,
+            'totals': data['totals'],
+            'db_size': data['db_size'],
+            'can_estimate_bytes': data['can_estimate_bytes'],
+            'cached_at': data['cached_at'],
+            'search': self.request.GET.get('search', ''),
+            'status': status_filter,
+            'top': top_n,
+        })
+        return context
+
+
+class RefreshDbUsageCacheView(SuperuserRequiredMixin, View):
+    """Clear DB usage cache and redirect back."""
+
+    def post(self, request):
+        cache.delete(DB_USAGE_CACHE_KEY)
+        return redirect('analytics:db_usage')
