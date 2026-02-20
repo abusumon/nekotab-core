@@ -630,3 +630,183 @@ class DbUsageViewTests(TestCase):
         self.client.force_login(self.regular_user)
         response = self.client.post('/analytics/db-usage/refresh/')
         self.assertIn(response.status_code, [302, 403])
+
+
+# ---------------------------------------------------------------------------
+# Tournament Deletion Tests
+# ---------------------------------------------------------------------------
+
+class DeleteTournamentsViewTests(TestCase):
+    """Tests for POST /analytics/tournaments/delete/."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.superuser = User.objects.create_superuser(
+            'deladmin', 'deladmin@test.com', 'password',
+        )
+        cls.regular_user = User.objects.create_user(
+            'delregular', 'delregular@test.com', 'password',
+        )
+
+    def setUp(self):
+        cache.clear()
+        self.tournament = Tournament.objects.create(
+            name='Delete Me', short_name='DelMe', slug='delete-me',
+            seq=1, active=True, owner=self.superuser,
+        )
+        self.round = Round.objects.create(
+            tournament=self.tournament, seq=1,
+            name='Round 1', abbreviation='R1',
+        )
+
+    def tearDown(self):
+        cache.clear()
+
+    def _post_delete(self, ids, user=None):
+        import json
+        self.client.force_login(user or self.superuser)
+        return self.client.post(
+            '/analytics/tournaments/delete/',
+            data=json.dumps({'tournament_ids': ids}),
+            content_type='application/json',
+        )
+
+    # --- Access control ---
+
+    def test_requires_superuser(self):
+        """Non-superuser should be blocked."""
+        response = self._post_delete([self.tournament.id], user=self.regular_user)
+        self.assertIn(response.status_code, [302, 403])
+
+    def test_anonymous_blocked(self):
+        """Anonymous user should be redirected to login."""
+        import json
+        response = self.client.post(
+            '/analytics/tournaments/delete/',
+            data=json.dumps({'tournament_ids': [self.tournament.id]}),
+            content_type='application/json',
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('login', response.url)
+
+    def test_get_not_allowed(self):
+        """GET method should return 405."""
+        self.client.force_login(self.superuser)
+        response = self.client.get('/analytics/tournaments/delete/')
+        self.assertEqual(response.status_code, 405)
+
+    # --- Validation ---
+
+    def test_empty_body_returns_400(self):
+        """Invalid JSON body should return 400."""
+        self.client.force_login(self.superuser)
+        response = self.client.post(
+            '/analytics/tournaments/delete/',
+            data='not json',
+            content_type='application/json',
+        )
+        self.assertEqual(response.status_code, 400)
+
+    def test_empty_ids_returns_400(self):
+        """Empty tournament_ids list should return 400."""
+        response = self._post_delete([])
+        self.assertEqual(response.status_code, 400)
+
+    def test_nonexistent_ids_returns_404(self):
+        """IDs that don't match any tournament should return 404."""
+        response = self._post_delete([99999])
+        self.assertEqual(response.status_code, 404)
+
+    def test_non_integer_ids_returns_400(self):
+        """Non-integer IDs should return 400."""
+        import json
+        self.client.force_login(self.superuser)
+        response = self.client.post(
+            '/analytics/tournaments/delete/',
+            data=json.dumps({'tournament_ids': ['abc']}),
+            content_type='application/json',
+        )
+        self.assertEqual(response.status_code, 400)
+
+    # --- Single deletion ---
+
+    def test_single_delete_success(self):
+        """Superuser can delete a single tournament."""
+        tid = self.tournament.id
+        response = self._post_delete([tid])
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertEqual(data['deleted_count'], 1)
+        self.assertEqual(data['failed_count'], 0)
+        self.assertEqual(data['deleted'][0]['id'], tid)
+        self.assertFalse(Tournament.objects.filter(id=tid).exists())
+
+    def test_cascade_deletes_rounds(self):
+        """Deleting a tournament should cascade-delete its rounds."""
+        round_id = self.round.id
+        self._post_delete([self.tournament.id])
+        self.assertFalse(Round.objects.filter(id=round_id).exists())
+
+    def test_audit_log_created(self):
+        """Deletion should create a TournamentDeletionLog entry."""
+        from retention.models import TournamentDeletionLog
+        tid = self.tournament.id
+        self._post_delete([tid])
+        log = TournamentDeletionLog.objects.filter(
+            tournament_id=tid,
+            status=TournamentDeletionLog.Status.DELETED,
+        )
+        self.assertTrue(log.exists())
+        entry = log.first()
+        self.assertEqual(entry.slug, 'delete-me')
+        self.assertEqual(entry.name, 'Delete Me')
+
+    # --- Bulk deletion ---
+
+    def test_bulk_delete(self):
+        """Multiple tournaments should be deleted in one request."""
+        t2 = Tournament.objects.create(
+            name='Delete Me Too', short_name='DM2', slug='delete-me-2',
+            seq=2, active=True, owner=self.superuser,
+        )
+        Round.objects.create(
+            tournament=t2, seq=1, name='R1', abbreviation='R1',
+        )
+        ids = [self.tournament.id, t2.id]
+        response = self._post_delete(ids)
+        data = response.json()
+        self.assertEqual(data['deleted_count'], 2)
+        self.assertFalse(Tournament.objects.filter(id__in=ids).exists())
+
+    def test_partial_failure_reports_both(self):
+        """If some IDs are valid and some are not, only existing ones are deleted."""
+        tid = self.tournament.id
+        response = self._post_delete([tid, 99999])
+        data = response.json()
+        # 99999 doesn't exist so queryset only picks up the valid one
+        self.assertEqual(data['deleted_count'], 1)
+        self.assertFalse(Tournament.objects.filter(id=tid).exists())
+
+    # --- Cache busting ---
+
+    def test_db_usage_cache_cleared(self):
+        """Deletion should bust the DB usage cache."""
+        cache.set('analytics_db_usage_v1', {'dummy': True}, 3600)
+        self._post_delete([self.tournament.id])
+        self.assertIsNone(cache.get('analytics_db_usage_v1'))
+
+    # --- Related data (team + debate) ---
+
+    def test_cascade_deletes_teams_and_debates(self):
+        """Teams, debates, and related objects should cascade-delete."""
+        from participants.models import Team
+        from draw.models import Debate
+
+        team = Team.objects.create(
+            tournament=self.tournament, reference='Team X',
+        )
+        debate = Debate.objects.create(round=self.round)
+
+        self._post_delete([self.tournament.id])
+        self.assertFalse(Team.objects.filter(id=team.id).exists())
+        self.assertFalse(Debate.objects.filter(id=debate.id).exists())

@@ -639,3 +639,78 @@ class RefreshDbUsageCacheView(SuperuserRequiredMixin, View):
     def post(self, request):
         cache.delete(DB_USAGE_CACHE_KEY)
         return redirect('analytics:db_usage')
+
+
+class DeleteTournamentsView(SuperuserRequiredMixin, View):
+    """Hard-delete one or more tournaments and log the audit trail."""
+
+    def post(self, request):
+        from django.db import transaction as db_transaction
+        from retention.engine import _clear_protect_refs, _clear_caches, _snapshot_counts, _owner_info
+        from retention.models import TournamentDeletionLog
+
+        try:
+            body = json.loads(request.body)
+        except (json.JSONDecodeError, ValueError):
+            return JsonResponse({'error': 'Invalid JSON body.'}, status=400)
+
+        raw_ids = body.get('tournament_ids', [])
+        if not raw_ids or not isinstance(raw_ids, list):
+            return JsonResponse({'error': 'tournament_ids must be a non-empty list.'}, status=400)
+
+        # Sanitise to ints
+        try:
+            tournament_ids = [int(tid) for tid in raw_ids]
+        except (TypeError, ValueError):
+            return JsonResponse({'error': 'All tournament_ids must be integers.'}, status=400)
+
+        tournaments = Tournament.objects.filter(id__in=tournament_ids)
+        if not tournaments.exists():
+            return JsonResponse({'error': 'No matching tournaments found.'}, status=404)
+
+        deleted = []
+        failed = []
+
+        for t in tournaments:
+            owner_email, owner_username = _owner_info(t)
+            counts = _snapshot_counts(t)
+            slug = t.slug
+            tid = t.id
+            name = t.name
+
+            try:
+                with db_transaction.atomic():
+                    _clear_protect_refs(t)
+                    _clear_caches(t)
+                    t.delete()
+
+                TournamentDeletionLog.objects.create(
+                    tournament_id=tid, slug=slug, name=name,
+                    owner_email=owner_email, owner_username=owner_username,
+                    status=TournamentDeletionLog.Status.DELETED,
+                    **counts,
+                )
+                deleted.append({'id': tid, 'slug': slug, 'name': name})
+                logger.info("Dashboard hard-delete: %s (id=%d) by %s",
+                            slug, tid, request.user.username)
+
+            except Exception as exc:
+                logger.exception("Failed to delete tournament %s (id=%d)", slug, tid)
+                TournamentDeletionLog.objects.create(
+                    tournament_id=tid, slug=slug, name=name,
+                    owner_email=owner_email, owner_username=owner_username,
+                    status=TournamentDeletionLog.Status.FAILED,
+                    error_message=str(exc),
+                    **counts,
+                )
+                failed.append({'id': tid, 'slug': slug, 'error': str(exc)})
+
+        # Bust the DB-usage cache so refreshed data appears immediately
+        cache.delete(DB_USAGE_CACHE_KEY)
+
+        return JsonResponse({
+            'deleted': deleted,
+            'failed': failed,
+            'deleted_count': len(deleted),
+            'failed_count': len(failed),
+        })
