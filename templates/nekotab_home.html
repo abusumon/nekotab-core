@@ -5,19 +5,134 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-adsense-account" content="ca-pub-4135779137186219">
-  <title>NekoTab — Debate Tabulation Made Simple</title>
-  <meta name="description" content="Run debate tournaments with confidence. Draws, allocations, ballots, standings, and breaks — all in one open‑source tool.">
+  <title>NekoTab — Free Debate Tournament Tabulation Software | AI Motion Analysis</title>
+  <meta name="description" content="NekoTab is the #1 open-source debate tournament platform. Run British Parliamentary, Australs & WSDC tournaments with automated draws, digital ballots, AI motion analysis, and real-time results. Free to use.">
+  <meta name="keywords" content="debate tournament software, debate tabulation, british parliamentary debate, BP debate tab, australs debate, WSDC debate, motion analysis AI, debate motions, tournament management, debate platform, open source debate, tabbycat alternative">
+  <link rel="canonical" href="https://nekotab.app/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nekotab.app/" />
+  <meta property="og:title" content="NekoTab — The Complete Debate Platform" />
+  <meta property="og:description" content="Run debate tournaments with automated draws, AI motion analysis, global motion bank, debate forum, and debater passports. Free & open-source." />
+  <meta property="og:image" content="{% static 'logo-social.png' %}" />
+  <meta property="og:site_name" content="NekoTab" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://nekotab.app/" />
+  <meta name="twitter:title" content="NekoTab — The Complete Debate Platform" />
+  <meta name="twitter:description" content="Run debate tournaments with automated draws, AI motion analysis, and real-time results. Free & open-source." />
+  <meta name="twitter:image" content="{% static 'logo-social.png' %}" />
+
+  <!-- Performance: Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo.png' %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo.png' %}">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'logo.png' %}">
+  <meta name="theme-color" content="#6366f1">
+
   <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4135779137186219" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KH41L8LQL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7KH41L8LQL');
+  </script>
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NekoTab",
+    "url": "https://nekotab.app",
+    "logo": "https://nekotab.app/static/logo.png",
+    "description": "Open-source debate tournament tabulation and community platform",
+    "sameAs": [
+      "https://github.com/abusumon/nekotab-app"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: WebSite with search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "NekoTab",
+    "url": "https://nekotab.app",
+    "description": "The complete debate platform — tournament tabulation, AI motion analysis, global motion bank, debate forum, and debater passports.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://nekotab.app/motions-bank/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NekoTab Debate Tabulation",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "description": "Modern debate tournament tabulation software for parliamentary formats (BP, Australs, WSDC). Manage motions, draws, allocations, ballots, and live results.",
+    "url": "https://nekotab.app",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Which formats does NekoTab support?", "acceptedAnswer": {"@type": "Answer", "text": "British Parliamentary (BP), Australs/3v3, WSDC-style, and other parliamentary formats. You can configure speaker counts, sides, and scoring to match your needs."}},
+      {"@type": "Question", "name": "Can I import teams, judges, and venues?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — CSV imports are fully supported. You can also manage availability, conflicts, and institutional clashes from the admin panel."}},
+      {"@type": "Question", "name": "Is it free to use?", "acceptedAnswer": {"@type": "Answer", "text": "NekoTab is open-source and free to self-host. You can also use our hosted service for a simple one-time fee."}},
+      {"@type": "Question", "name": "What is the Motion Doctor?", "acceptedAnswer": {"@type": "Answer", "text": "The Motion Doctor is an AI-powered analysis tool that takes any debate motion and produces a comprehensive coaching-grade report including clash maps, argument suggestions, POI ideas, extension strategies, and difficulty metrics."}},
+      {"@type": "Question", "name": "How does the Motion Bank work?", "acceptedAnswer": {"@type": "Answer", "text": "The Motion Bank is a searchable database of thousands of real debate motions from tournaments worldwide, filterable by format, region, year, theme, and difficulty level."}},
+      {"@type": "Question", "name": "What is the Debate Passport?", "acceptedAnswer": {"@type": "Answer", "text": "The Debate Passport is your personal debate profile that tracks tournament participation, speaker scores, wins, and achievements across all tournaments hosted on NekoTab."}},
+      {"@type": "Question", "name": "Can I use NekoTab for school-level tournaments?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. NekoTab supports all major school debating formats including WSDC-style and modified Australs."}}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nekotab.app/"}
+    ]
+  }
+  </script>
 </head>
 <body class="em-body">
+  <!-- Skip to content (accessibility) -->
+  <a href="#main-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#6366f1;color:#fff;padding:8px 16px;z-index:10000;transition:top .3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
 
   <!-- ==================== NAVBAR ==================== -->
   <header class="em-navbar" id="top">
@@ -57,6 +172,7 @@
     <div id="em-mobile-menu" class="em-mobile-menu" hidden>
       <a href="#features">Features</a>
       <a href="#tools">Tools</a>
+      <a href="/learn/">📚 Learn</a>
       <a href="{% url 'motionbank:motion-doctor' %}">🩺 Motion Doctor</a>
       <a href="{% url 'motionbank:motionbank-home' %}">📋 Motion Bank</a>
       <a href="{% url 'forum:forum-home' %}">💬 Forum</a>
@@ -76,7 +192,7 @@
   </header>
 
   <!-- ==================== HERO ==================== -->
-  <section class="em-hero" aria-labelledby="hero-title">
+  <section class="em-hero" id="main-content" aria-labelledby="hero-title">
     <div class="em-container em-hero-inner">
       <div class="em-badge" aria-label="Open source">
         <span class="em-badge-dot"></span>
@@ -93,14 +209,48 @@
         </a>
         <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--outline em-btn--lg">🩺 Try Motion Doctor</a>
       </div>
-      <!-- Dashboard Preview Mockup -->
+      <!-- Dashboard Preview -->
       <div class="em-hero-visual">
         <div class="em-browser-frame">
           <div class="em-browser-dots">
             <span></span><span></span><span></span>
           </div>
-          <div class="em-browser-content">
-            <img src="https://placehold.co/900x500/EEF2FF/6366F1?text=NekoTab+Dashboard&font=inter" alt="NekoTab Dashboard Preview" loading="lazy">
+          <div class="em-browser-content em-dashboard-preview">
+            <div class="em-dash-header">
+              <div class="em-dash-nav">
+                <span class="em-dash-logo-pill">NekoTab</span>
+                <span class="em-dash-nav-item em-dash-nav-item--active">Dashboard</span>
+                <span class="em-dash-nav-item">Draws</span>
+                <span class="em-dash-nav-item">Ballots</span>
+                <span class="em-dash-nav-item">Results</span>
+              </div>
+            </div>
+            <div class="em-dash-body">
+              <div class="em-dash-sidebar">
+                <div class="em-dash-sidebar-item em-dash-sidebar-item--active">📊 Overview</div>
+                <div class="em-dash-sidebar-item">🎲 Draws</div>
+                <div class="em-dash-sidebar-item">⚖️ Allocations</div>
+                <div class="em-dash-sidebar-item">📝 Ballots</div>
+                <div class="em-dash-sidebar-item">📈 Standings</div>
+                <div class="em-dash-sidebar-item">✅ Breaks</div>
+              </div>
+              <div class="em-dash-main">
+                <div class="em-dash-stats-row">
+                  <div class="em-dash-stat-card"><div class="em-dash-stat-num">24</div><div class="em-dash-stat-label">Teams</div></div>
+                  <div class="em-dash-stat-card"><div class="em-dash-stat-num">16</div><div class="em-dash-stat-label">Judges</div></div>
+                  <div class="em-dash-stat-card"><div class="em-dash-stat-num">5</div><div class="em-dash-stat-label">Rounds</div></div>
+                  <div class="em-dash-stat-card em-dash-stat-card--accent"><div class="em-dash-stat-num">R3</div><div class="em-dash-stat-label">Current</div></div>
+                </div>
+                <div class="em-dash-table">
+                  <div class="em-dash-table-head">
+                    <span>Room</span><span>OG</span><span>OO</span><span>CG</span><span>CO</span><span>Status</span>
+                  </div>
+                  <div class="em-dash-table-row"><span>Room 1</span><span>Oxford A</span><span>Cambridge B</span><span>Yale C</span><span>Harvard D</span><span class="em-dash-status em-dash-status--done">✓</span></div>
+                  <div class="em-dash-table-row"><span>Room 2</span><span>UNSW A</span><span>Monash B</span><span>NUS C</span><span>UQ D</span><span class="em-dash-status em-dash-status--pending">⏳</span></div>
+                  <div class="em-dash-table-row"><span>Room 3</span><span>KCL A</span><span>LSE B</span><span>UCL C</span><span>Durham D</span><span class="em-dash-status em-dash-status--done">✓</span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -110,28 +260,27 @@
     <div class="em-hero-blob em-hero-blob--2"></div>
   </section>
 
-  <!-- ==================== AD BANNER 1 ==================== -->
-  <section class="em-ad-section">
-    <div class="em-container">
-      <ins class="adsbygoogle em-ad-banner"
-           style="display:block"
-           data-ad-client="ca-pub-4135779137186219"
-           data-ad-slot="auto"
-           data-ad-format="horizontal"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </section>
-
   <!-- ==================== TRUSTED BY (social proof) ==================== -->
   <section class="em-section em-trust" aria-label="Trusted by debate communities">
     <div class="em-container">
       <p class="em-trust-label">Trusted by debate communities worldwide</p>
       <div class="em-trust-logos">
-        <div class="em-trust-item">🏛️ University Societies</div>
-        <div class="em-trust-item">🌍 National Circuits</div>
-        <div class="em-trust-item">🏆 International Tournaments</div>
-        <div class="em-trust-item">📚 School Leagues</div>
+        <div class="em-trust-item">
+          <span class="em-trust-icon">🏛️</span>
+          <span class="em-trust-text">University Societies</span>
+        </div>
+        <div class="em-trust-item">
+          <span class="em-trust-icon">🌍</span>
+          <span class="em-trust-text">National Circuits</span>
+        </div>
+        <div class="em-trust-item">
+          <span class="em-trust-icon">🏆</span>
+          <span class="em-trust-text">International Tournaments</span>
+        </div>
+        <div class="em-trust-item">
+          <span class="em-trust-icon">📚</span>
+          <span class="em-trust-text">School Leagues</span>
+        </div>
       </div>
     </div>
   </section>
@@ -306,121 +455,121 @@
       <h2 id="tools-title" class="em-section-title">A complete debate ecosystem</h2>
       <p class="em-section-subtitle">NekoTab isn't just tabulation — it's the all-in-one platform for the global debate community.</p>
 
-      <div class="em-feature-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-top:40px;">
+      <div class="em-tools-grid">
         <!-- Motion Doctor -->
-        <article class="em-feature-card" style="border-left:4px solid #6366F1; background:white; position:relative; overflow:hidden;">
-          <div style="position:absolute; top:-10px; right:-10px; font-size:4rem; opacity:0.07;">🩺</div>
-          <div class="em-feature-icon" style="background:linear-gradient(135deg,#6366F1,#8B5CF6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-size:2rem;">🩺</div>
-          <h3 class="em-feature-title" style="font-size:1.25rem;">Motion Doctor</h3>
+        <article class="em-tool-card em-tool-card--indigo">
+          <div class="em-tool-bg-icon">🩺</div>
+          <div class="em-feature-icon em-feature-icon--lg">🩺</div>
+          <h3 class="em-tool-title">Motion Doctor</h3>
           <p class="em-feature-desc">AI-powered 4-stage motion analysis: Profiler → Planner → Generator → Validator. Get clash maps, definition traps, POIs, gov/opp strategies, extensions, and difficulty metrics — all specific to your motion.</p>
-          <div style="margin-top:12px;">
-            <span style="display:inline-block; padding:2px 8px; background:#EEF2FF; color:#6366F1; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">Clash Map</span>
-            <span style="display:inline-block; padding:2px 8px; background:#EEF2FF; color:#6366F1; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">POIs</span>
-            <span style="display:inline-block; padding:2px 8px; background:#EEF2FF; color:#6366F1; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">Extensions</span>
-            <span style="display:inline-block; padding:2px 8px; background:#EEF2FF; color:#6366F1; border-radius:20px; font-size:0.75rem; font-weight:600;">Bias Metrics</span>
+          <div class="em-tool-tags">
+            <span class="em-tag em-tag--indigo">Clash Map</span>
+            <span class="em-tag em-tag--indigo">POIs</span>
+            <span class="em-tag em-tag--indigo">Extensions</span>
+            <span class="em-tag em-tag--indigo">Bias Metrics</span>
           </div>
-          <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--primary em-btn--sm" style="margin-top:16px;">Try Motion Doctor →</a>
+          <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--primary em-btn--sm em-tool-cta">Try Motion Doctor →</a>
         </article>
 
         <!-- Motion Bank -->
-        <article class="em-feature-card" style="border-left:4px solid #10B981; background:white; position:relative; overflow:hidden;">
-          <div style="position:absolute; top:-10px; right:-10px; font-size:4rem; opacity:0.07;">📋</div>
-          <div class="em-feature-icon" style="font-size:2rem;">📋</div>
-          <h3 class="em-feature-title" style="font-size:1.25rem;">Global Motion Bank</h3>
+        <article class="em-tool-card em-tool-card--green">
+          <div class="em-tool-bg-icon">📋</div>
+          <div class="em-feature-icon em-feature-icon--lg">📋</div>
+          <h3 class="em-tool-title">Global Motion Bank</h3>
           <p class="em-feature-desc">Thousands of motions from real tournaments worldwide. Filter by format, year, region, theme, and difficulty. AI analysis, community case outlines, and practice tracking included.</p>
-          <div style="margin-top:12px;">
-            <span style="display:inline-block; padding:2px 8px; background:#ECFDF5; color:#10B981; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">BP</span>
-            <span style="display:inline-block; padding:2px 8px; background:#ECFDF5; color:#10B981; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">WSDC</span>
-            <span style="display:inline-block; padding:2px 8px; background:#ECFDF5; color:#10B981; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">Australs</span>
-            <span style="display:inline-block; padding:2px 8px; background:#ECFDF5; color:#10B981; border-radius:20px; font-size:0.75rem; font-weight:600;">Ratings</span>
+          <div class="em-tool-tags">
+            <span class="em-tag em-tag--green">BP</span>
+            <span class="em-tag em-tag--green">WSDC</span>
+            <span class="em-tag em-tag--green">Australs</span>
+            <span class="em-tag em-tag--green">Ratings</span>
           </div>
-          <a href="{% url 'motionbank:motionbank-home' %}" class="em-btn em-btn--sm" style="margin-top:16px; background:#10B981; color:white; border:none;">Browse Motions →</a>
+          <a href="{% url 'motionbank:motionbank-home' %}" class="em-btn em-btn--sm em-tool-cta em-btn--green">Browse Motions →</a>
         </article>
 
         <!-- Debate Forum -->
-        <article class="em-feature-card" style="border-left:4px solid #F59E0B; background:white; position:relative; overflow:hidden;">
-          <div style="position:absolute; top:-10px; right:-10px; font-size:4rem; opacity:0.07;">💬</div>
-          <div class="em-feature-icon" style="font-size:2rem;">💬</div>
-          <h3 class="em-feature-title" style="font-size:1.25rem;">Debate Forum</h3>
+        <article class="em-tool-card em-tool-card--amber">
+          <div class="em-tool-bg-icon">💬</div>
+          <div class="em-feature-icon em-feature-icon--lg">💬</div>
+          <h3 class="em-tool-title">Debate Forum</h3>
           <p class="em-feature-desc">Structured discussions with argument trees, verified badges (CA, Worlds Breaker), and topic categories. Share strategies, analyze motions together, and learn from the community.</p>
-          <div style="margin-top:12px;">
-            <span style="display:inline-block; padding:2px 8px; background:#FFFBEB; color:#F59E0B; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">Arguments</span>
-            <span style="display:inline-block; padding:2px 8px; background:#FFFBEB; color:#F59E0B; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">Badges</span>
-            <span style="display:inline-block; padding:2px 8px; background:#FFFBEB; color:#F59E0B; border-radius:20px; font-size:0.75rem; font-weight:600;">Categories</span>
+          <div class="em-tool-tags">
+            <span class="em-tag em-tag--amber">Arguments</span>
+            <span class="em-tag em-tag--amber">Badges</span>
+            <span class="em-tag em-tag--amber">Categories</span>
           </div>
-          <a href="{% url 'forum:forum-home' %}" class="em-btn em-btn--sm" style="margin-top:16px; background:#F59E0B; color:white; border:none;">Join Forum →</a>
+          <a href="{% url 'forum:forum-home' %}" class="em-btn em-btn--sm em-tool-cta em-btn--amber">Join Forum →</a>
         </article>
 
         <!-- Debate Passport -->
-        <article class="em-feature-card" style="border-left:4px solid #EF4444; background:white; position:relative; overflow:hidden;">
-          <div style="position:absolute; top:-10px; right:-10px; font-size:4rem; opacity:0.07;">🪪</div>
-          <div class="em-feature-icon" style="font-size:2rem;">🪪</div>
-          <h3 class="em-feature-title" style="font-size:1.25rem;">Debate Passport</h3>
+        <article class="em-tool-card em-tool-card--red">
+          <div class="em-tool-bg-icon">🪪</div>
+          <div class="em-feature-icon em-feature-icon--lg">🪪</div>
+          <h3 class="em-tool-title">Debate Passport</h3>
           <p class="em-feature-desc">Your debate profile across all tournaments. Track your record, achievements, and growth. Connect with debaters worldwide through the global directory.</p>
-          <div style="margin-top:12px;">
-            <span style="display:inline-block; padding:2px 8px; background:#FEF2F2; color:#EF4444; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">Profile</span>
-            <span style="display:inline-block; padding:2px 8px; background:#FEF2F2; color:#EF4444; border-radius:20px; font-size:0.75rem; font-weight:600; margin-right:4px;">Stats</span>
-            <span style="display:inline-block; padding:2px 8px; background:#FEF2F2; color:#EF4444; border-radius:20px; font-size:0.75rem; font-weight:600;">Directory</span>
+          <div class="em-tool-tags">
+            <span class="em-tag em-tag--red">Profile</span>
+            <span class="em-tag em-tag--red">Stats</span>
+            <span class="em-tag em-tag--red">Directory</span>
           </div>
-          <a href="{% url 'passport:passport-dashboard' %}" class="em-btn em-btn--sm" style="margin-top:16px; background:#EF4444; color:white; border:none;">View Passport →</a>
+          <a href="{% url 'passport:passport-dashboard' %}" class="em-btn em-btn--sm em-tool-cta em-btn--red">View Passport →</a>
         </article>
       </div>
     </div>
   </section>
 
   <!-- ==================== MOTION DOCTOR SPOTLIGHT ==================== -->
-  <section class="em-section" aria-labelledby="doctor-spotlight-title" style="background:linear-gradient(135deg, #312E81 0%, #4338CA 50%, #6366F1 100%); color:white;">
+  <section class="em-section em-spotlight" aria-labelledby="doctor-spotlight-title">
     <div class="em-container">
-      <div style="text-align:center; max-width:800px; margin:0 auto;">
-        <div class="em-section-eyebrow" style="color:#C7D2FE;">AI-Powered</div>
-        <h2 id="doctor-spotlight-title" style="font-size:2.25rem; font-weight:800; margin-bottom:16px; color:white;">Motion Doctor: Your Debate Coach on Demand</h2>
-        <p style="font-size:1.1rem; color:#C7D2FE; margin-bottom:40px;">Paste any motion. Get a coaching-grade analysis in seconds. Our 4-stage AI pipeline ensures every insight is specific, fair, and motion-aware.</p>
+      <div class="em-spotlight-header">
+        <div class="em-section-eyebrow em-spotlight-eyebrow">AI-Powered</div>
+        <h2 id="doctor-spotlight-title" class="em-spotlight-title">Motion Doctor: Your Debate Coach on Demand</h2>
+        <p class="em-spotlight-sub">Paste any motion. Get a coaching-grade analysis in seconds. Our 4-stage AI pipeline ensures every insight is specific, fair, and motion-aware.</p>
       </div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; margin-bottom:40px;">
-        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:20px; backdrop-filter:blur(10px);">
-          <div style="font-size:2rem; margin-bottom:8px;">🎯</div>
-          <h4 style="font-size:1rem; font-weight:700; margin-bottom:6px; color:white;">Stage 1: Profiler</h4>
-          <p style="font-size:0.85rem; color:#C7D2FE; margin:0;">Classifies motion type, domain, actor, ambiguity flags, and confidence level.</p>
+      <div class="em-spotlight-grid">
+        <div class="em-spotlight-card">
+          <div class="em-spotlight-card-icon">🎯</div>
+          <h4 class="em-spotlight-card-title">Stage 1: Profiler</h4>
+          <p class="em-spotlight-card-desc">Classifies motion type, domain, actor, ambiguity flags, and confidence level.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:20px; backdrop-filter:blur(10px);">
-          <div style="font-size:2rem; margin-bottom:8px;">🗺️</div>
-          <h4 style="font-size:1rem; font-weight:700; margin-bottom:6px; color:white;">Stage 2: Planner</h4>
-          <p style="font-size:0.85rem; color:#C7D2FE; margin:0;">Retrieves matching archetypes and similar motions to plan the analysis outline.</p>
+        <div class="em-spotlight-card">
+          <div class="em-spotlight-card-icon">🗺️</div>
+          <h4 class="em-spotlight-card-title">Stage 2: Planner</h4>
+          <p class="em-spotlight-card-desc">Retrieves matching archetypes and similar motions to plan the analysis outline.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:20px; backdrop-filter:blur(10px);">
-          <div style="font-size:2rem; margin-bottom:8px;">📝</div>
-          <h4 style="font-size:1rem; font-weight:700; margin-bottom:6px; color:white;">Stage 3: Generator</h4>
-          <p style="font-size:0.85rem; color:#C7D2FE; margin:0;">Produces the full report: clashes, POIs, strategies, extensions, metrics — all motion-specific.</p>
+        <div class="em-spotlight-card">
+          <div class="em-spotlight-card-icon">📝</div>
+          <h4 class="em-spotlight-card-title">Stage 3: Generator</h4>
+          <p class="em-spotlight-card-desc">Produces the full report: clashes, POIs, strategies, extensions, metrics — all motion-specific.</p>
         </div>
-        <div style="background:rgba(255,255,255,0.1); border-radius:12px; padding:20px; backdrop-filter:blur(10px);">
-          <div style="font-size:2rem; margin-bottom:8px;">✅</div>
-          <h4 style="font-size:1rem; font-weight:700; margin-bottom:6px; color:white;">Stage 4: Validator</h4>
-          <p style="font-size:0.85rem; color:#C7D2FE; margin:0;">Checks for specificity, fairness, and hallucinations — auto-repairs any weak sections.</p>
-        </div>
-      </div>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; max-width:700px; margin:0 auto 32px;">
-        <div style="text-align:center; padding:12px;">
-          <div style="font-size:1.5rem; font-weight:800; color:white;">7</div>
-          <div style="font-size:0.8rem; color:#C7D2FE;">Analysis Tabs</div>
-        </div>
-        <div style="text-align:center; padding:12px;">
-          <div style="font-size:1.5rem; font-weight:800; color:white;">3–6</div>
-          <div style="font-size:0.8rem; color:#C7D2FE;">Clash Axes</div>
-        </div>
-        <div style="text-align:center; padding:12px;">
-          <div style="font-size:1.5rem; font-weight:800; color:white;">5+</div>
-          <div style="font-size:0.8rem; color:#C7D2FE;">Motion-specific POIs</div>
-        </div>
-        <div style="text-align:center; padding:12px;">
-          <div style="font-size:1.5rem; font-weight:800; color:white;">4</div>
-          <div style="font-size:0.8rem; color:#C7D2FE;">BP Positions</div>
+        <div class="em-spotlight-card">
+          <div class="em-spotlight-card-icon">✅</div>
+          <h4 class="em-spotlight-card-title">Stage 4: Validator</h4>
+          <p class="em-spotlight-card-desc">Checks for specificity, fairness, and hallucinations — auto-repairs any weak sections.</p>
         </div>
       </div>
 
-      <div style="text-align:center;">
-        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--light em-btn--lg" style="font-weight:700;">
+      <div class="em-spotlight-stats">
+        <div class="em-spotlight-stat">
+          <div class="em-spotlight-stat-num">7</div>
+          <div class="em-spotlight-stat-label">Analysis Tabs</div>
+        </div>
+        <div class="em-spotlight-stat">
+          <div class="em-spotlight-stat-num">3–6</div>
+          <div class="em-spotlight-stat-label">Clash Axes</div>
+        </div>
+        <div class="em-spotlight-stat">
+          <div class="em-spotlight-stat-num">5+</div>
+          <div class="em-spotlight-stat-label">Motion-specific POIs</div>
+        </div>
+        <div class="em-spotlight-stat">
+          <div class="em-spotlight-stat-num">4</div>
+          <div class="em-spotlight-stat-label">BP Positions</div>
+        </div>
+      </div>
+
+      <div class="em-spotlight-cta">
+        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--light em-btn--lg em-btn--bold">
           🩺 Try Motion Doctor Free →
         </a>
       </div>
@@ -457,19 +606,6 @@
           </ul>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ==================== AD BANNER 2 ==================== -->
-  <section class="em-ad-section">
-    <div class="em-container">
-      <ins class="adsbygoogle em-ad-banner"
-           style="display:block"
-           data-ad-client="ca-pub-4135779137186219"
-           data-ad-slot="auto"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </section>
 
@@ -556,35 +692,22 @@
     </div>
   </section>
 
-  <!-- ==================== AD BANNER 3 ==================== -->
-  <section class="em-ad-section">
-    <div class="em-container">
-      <ins class="adsbygoogle em-ad-banner"
-           style="display:block"
-           data-ad-client="ca-pub-4135779137186219"
-           data-ad-slot="auto"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-  </section>
-
   <!-- ==================== FAQ ==================== -->
   <section id="faq" class="em-section em-faq">
 
   <!-- ==================== LEARN / CONTENT HUB PROMO ==================== -->
-  <section class="em-section" style="background:#f0fdf4;">
-    <div class="em-container" style="text-align:center; max-width:700px;">
-      <div class="em-section-eyebrow" style="color:#10B981;">Resources</div>
+  <section class="em-section em-learn-promo">
+    <div class="em-container em-learn-promo-inner">
+      <div class="em-section-eyebrow em-learn-promo-eyebrow">Resources</div>
       <h2 class="em-section-title">Learn Debate</h2>
       <p class="em-section-subtitle">Free guides on debate formats, judging, speaker training, and tournament hosting. Whether you're starting out or sharpening advanced skills.</p>
-      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:24px;">
-        <a href="/learn/?category=formats" class="em-btn em-btn--sm" style="background:#f0fdf4; color:#10B981; border:1px solid #10B981;">🏛️ Formats</a>
-        <a href="/learn/?category=judging" class="em-btn em-btn--sm" style="background:#f0fdf4; color:#10B981; border:1px solid #10B981;">⚖️ Judging</a>
-        <a href="/learn/?category=training" class="em-btn em-btn--sm" style="background:#f0fdf4; color:#10B981; border:1px solid #10B981;">🎤 Training</a>
-        <a href="/learn/?category=hosting" class="em-btn em-btn--sm" style="background:#f0fdf4; color:#10B981; border:1px solid #10B981;">📋 Hosting</a>
+      <div class="em-learn-promo-cats">
+        <a href="/learn/?category=formats" class="em-btn em-btn--sm em-btn--outline-green">🏛️ Formats</a>
+        <a href="/learn/?category=judging" class="em-btn em-btn--sm em-btn--outline-green">⚖️ Judging</a>
+        <a href="/learn/?category=training" class="em-btn em-btn--sm em-btn--outline-green">🎤 Training</a>
+        <a href="/learn/?category=hosting" class="em-btn em-btn--sm em-btn--outline-green">📋 Hosting</a>
       </div>
-      <a href="/learn/" class="em-btn em-btn--primary em-btn--lg" style="margin-top:24px;">Browse All Guides →</a>
+      <a href="/learn/" class="em-btn em-btn--primary em-btn--lg em-learn-promo-main-cta">Browse All Guides →</a>
     </div>
   </section>
 
@@ -612,6 +735,22 @@
         <details class="em-acc">
           <summary>Can participants submit their own ballots?</summary>
           <p>Yes — you can enable public ballot submission or use private URLs sent to participants for secure, individual access.</p>
+        </details>
+        <details class="em-acc">
+          <summary>What is the Motion Doctor?</summary>
+          <p>The Motion Doctor is an AI-powered analysis tool that takes any debate motion and produces a comprehensive coaching-grade report. It includes clash maps, argument suggestions for all teams, Points of Information ideas, extension strategies for BP closing halves, and difficulty/fairness metrics. It uses a 4-stage pipeline (Profiler → Planner → Generator → Validator) to ensure high-quality, motion-specific output.</p>
+        </details>
+        <details class="em-acc">
+          <summary>How does the Motion Bank work?</summary>
+          <p>The Motion Bank is a searchable database of thousands of real debate motions from tournaments worldwide. You can filter by format (BP, Australs, WSDC), region, year, theme, and difficulty level. Each motion includes metadata, community ratings, and the option to run it through the Motion Doctor for AI analysis.</p>
+        </details>
+        <details class="em-acc">
+          <summary>What is the Debate Passport?</summary>
+          <p>The Debate Passport is your personal debate profile that tracks your tournament participation, speaker scores, wins, and achievements across all tournaments hosted on NekoTab. It provides a career overview and connects you with the global debater directory. Think of it as a debate CV that builds automatically as you compete.</p>
+        </details>
+        <details class="em-acc">
+          <summary>Can I use NekoTab for school-level tournaments?</summary>
+          <p>Absolutely. NekoTab supports all major school debating formats including WSDC-style and modified Australs. The setup process is the same — create a tournament, configure the format preset, import participants, and start running rounds. Many school debating leagues use NekoTab for their competitions.</p>
         </details>
       </div>
     </div>
@@ -699,5 +838,35 @@
   </footer>
 
   <script src="{% static 'js/landing.js' %}"></script>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; color:#e0e0e0; padding:16px 24px; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,.3); font-size:14px;">
+    <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <p style="margin:0; flex:1; min-width:280px;">
+        We use cookies for authentication, analytics (Google Analytics), and advertising (Google AdSense). By continuing to use this site, you consent to our use of cookies.
+        <a href="/privacy/" style="color:#a78bfa; text-decoration:underline;">Privacy Policy</a>
+      </p>
+      <div style="display:flex; gap:8px; flex-shrink:0;">
+        <button onclick="acceptCookies()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept All</button>
+        <button onclick="acceptCookies()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">Essential Only</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      if(!localStorage.getItem('cookie_consent')){
+        document.getElementById('cookie-consent').style.display='block';
+      }
+    })();
+    function acceptCookies(){
+      localStorage.setItem('cookie_consent','1');
+      document.getElementById('cookie-consent').style.display='none';
+    }
+  </script>
+
+  <!-- Back to Top Button -->
+  <button id="em-back-to-top" class="em-back-to-top" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 </body>
 </html>

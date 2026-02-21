@@ -49,9 +49,33 @@
     {% endif %}
   {% endblock %}
 
-  <!-- Structured Data: Organization -->
+  <!-- Structured Data: Organization + WebSite -->
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "NekoTab Debate Tabulation", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "description": "Modern debate tournament tabulation software for parliamentary formats (BP, Australs, Asian Parliamentary). Manage motions, draws, allocations, ballots, and live results.", "url": "{{ seo_base_url }}", "image": "{{ seo_base_url }}/static/logo-social.png", "keywords": "{{ seo_keywords }}", "creator": {"@type": "Organization", "name": "NekoTab", "url": "{{ seo_base_url }}"}}
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NekoTab",
+    "url": "{{ seo_base_url }}",
+    "logo": "{{ seo_base_url }}/static/logo.png",
+    "description": "Open-source debate tournament tabulation and community platform",
+    "sameAs": ["https://github.com/abusumon/nekotab-app"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "NekoTab",
+    "url": "{{ seo_base_url }}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ seo_base_url }}/motions-bank/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "NekoTab Debate Tabulation", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "description": "Modern debate tournament tabulation software for parliamentary formats (BP, Australs, Asian Parliamentary). Manage motions, draws, allocations, ballots, and live results.", "url": "{{ seo_base_url }}", "image": "{{ seo_base_url }}/static/logo-social.png", "keywords": "{{ seo_keywords }}", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "creator": {"@type": "Organization", "name": "NekoTab", "url": "{{ seo_base_url }}"}}
   </script>
 
 
@@ -245,6 +269,31 @@
     {% endif %}
 
   {% endblock js %}
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; color:#e0e0e0; padding:16px 24px; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,.3); font-size:14px;">
+    <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <p style="margin:0; flex:1; min-width:280px;">
+        We use cookies for authentication, analytics (Google Analytics), and advertising (Google AdSense). By continuing to use this site, you consent to our use of cookies.
+        <a href="/privacy/" style="color:#a78bfa; text-decoration:underline;">Privacy Policy</a>
+      </p>
+      <div style="display:flex; gap:8px; flex-shrink:0;">
+        <button onclick="acceptCookies()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept All</button>
+        <button onclick="acceptCookies()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">Essential Only</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      if(!localStorage.getItem('cookie_consent')){
+        document.getElementById('cookie-consent').style.display='block';
+      }
+    })();
+    function acceptCookies(){
+      localStorage.setItem('cookie_consent','1');
+      document.getElementById('cookie-consent').style.display='none';
+    }
+  </script>
 
 </body>
 </html>

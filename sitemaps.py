@@ -7,7 +7,14 @@ from tournaments.models import Tournament
 
 class StaticViewSitemap(Sitemap):
     changefreq = "weekly"
-    priority = 0.7
+
+    _priorities = {
+        'tabbycat-index': 1.0,
+        'motionbank:motion-doctor': 0.9,
+        'motionbank:motionbank-home': 0.9,
+        'forum:forum-home': 0.7,
+        'passport:passport-directory': 0.6,
+    }
 
     def items(self):
         # Only include pages with meaningful content — exclude utility/auth pages
@@ -21,6 +28,9 @@ class StaticViewSitemap(Sitemap):
 
     def location(self, item):
         return reverse(item)
+
+    def priority(self, item):
+        return self._priorities.get(item, 0.7)
 
 
 class TournamentSitemap(Sitemap):

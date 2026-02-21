@@ -99,8 +99,18 @@
     </header>
 
     {# ── Article Body ── #}
-    <div class="article-body mt-4">
+    <div class="article-body mt-4" style="font-size: 1.05rem; line-height: 1.8; color: #1e293b;">
       {{ article.body|safe }}
+    </div>
+
+    {# ── Share / utility bar ── #}
+    <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+      <div>
+        <small class="text-muted">Found this helpful? Share it:</small>
+        <a href="https://twitter.com/intent/tweet?url={{ canonical_url|urlencode }}&text={{ article.seo_title|urlencode }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary ml-2" title="Share on Twitter">Twitter</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ canonical_url|urlencode }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary ml-1" title="Share on LinkedIn">LinkedIn</a>
+      </div>
+      <a href="{% url 'content:learn-hub' %}" class="btn btn-sm btn-outline-primary">← Back to Guides</a>
     </div>
 
     {# ── Draft notice ── #}
@@ -119,8 +129,13 @@
       <div class="row">
         {% for related in related_articles %}
         <div class="col-md-6 mb-3">
-          <div class="card h-100">
+          <div class="card h-100 shadow-sm">
             <div class="card-body">
+              {% if related.category %}
+              <span class="badge badge-secondary mb-2" style="width:fit-content; font-size:0.7rem;">
+                {{ related.category.icon }} {{ related.category.name }}
+              </span>
+              {% endif %}
               <h5 class="card-title">
                 <a href="{{ related.get_absolute_url }}" class="text-dark">{{ related.title }}</a>
               </h5>
