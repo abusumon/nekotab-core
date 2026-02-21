@@ -148,6 +148,7 @@ TABBYCAT_APPS = (
     'forum',
     'motionbank',
     'passport',
+    'content',
 )
 
 INSTALLED_APPS = (

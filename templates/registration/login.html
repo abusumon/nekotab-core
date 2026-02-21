@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load add_field_css i18n %}
 
+{% block noindex %}<meta name="robots" content="noindex, nofollow" />{% endblock %}
 {% block page-title %}🔓{% trans "Login" context "page title" %}{% endblock %}
 {% block head-title %}{% endblock %}
 

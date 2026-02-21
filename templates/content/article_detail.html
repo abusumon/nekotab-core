@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block page-title %}{{ article.seo_title }}{% endblock %}
+{% block og-title %}{{ article.seo_title }}{% endblock %}
+
+{% block noindex %}
+  {% if noindex %}<meta name="robots" content="noindex, follow">{% endif %}
+{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="{{ article.seo_description }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ article.seo_title }} — NekoTab Learn" />
+<meta property="og:description" content="{{ article.seo_description }}" />
+<meta property="article:published_time" content="{{ article.created_at|date:'c' }}" />
+<meta property="article:modified_time" content="{{ article.updated_at|date:'c' }}" />
+{% if article.category %}
+<meta property="article:section" content="{{ article.category.name }}" />
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ article.seo_title }}",
+  "description": "{{ article.seo_description }}",
+  "url": "{{ canonical_url }}",
+  "datePublished": "{{ article.created_at|date:'c' }}",
+  "dateModified": "{{ article.updated_at|date:'c' }}",
+  "author": {
+    "@type": "Organization",
+    "name": "NekoTab"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "NekoTab",
+    "url": "{{ seo_base_url }}"
+  }{% if article.category %},
+  "articleSection": "{{ article.category.name }}"{% endif %}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width: 800px;">
+
+  {# ── Breadcrumbs ── #}
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb bg-transparent px-0" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1" />
+      </li>
+      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{% url 'content:learn-hub' %}" itemprop="item"><span itemprop="name">Learn</span></a>
+        <meta itemprop="position" content="2" />
+      </li>
+      {% if article.category %}
+      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{% url 'content:learn-hub' %}?category={{ article.category.slug }}" itemprop="item">
+          <span itemprop="name">{{ article.category.name }}</span>
+        </a>
+        <meta itemprop="position" content="3" />
+      </li>
+      <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{{ article.title|truncatewords:6 }}</span>
+        <meta itemprop="position" content="4" />
+      </li>
+      {% else %}
+      <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{{ article.title|truncatewords:6 }}</span>
+        <meta itemprop="position" content="3" />
+      </li>
+      {% endif %}
+    </ol>
+  </nav>
+
+  {# ── Article Header ── #}
+  <article>
+    <header class="mb-4">
+      {% if article.category %}
+      <a href="{% url 'content:learn-hub' %}?category={{ article.category.slug }}" class="badge badge-secondary mb-2">
+        {{ article.category.icon }} {{ article.category.name }}
+      </a>
+      {% endif %}
+
+      <h1 class="mb-3">{{ article.title }}</h1>
+
+      <p class="lead text-muted">{{ article.summary }}</p>
+
+      <div class="d-flex align-items-center text-muted small border-top border-bottom py-2 mt-3">
+        <span class="mr-3">📖 {{ article.reading_time_minutes }} min read</span>
+        <span class="mr-3">Updated {{ article.updated_at|date:"M j, Y" }}</span>
+        {% if article.status == 'draft' %}
+        <span class="badge badge-warning">Draft — Preview Only</span>
+        {% endif %}
+      </div>
+    </header>
+
+    {# ── Article Body ── #}
+    <div class="article-body mt-4">
+      {{ article.body|safe }}
+    </div>
+
+    {# ── Draft notice ── #}
+    {% if article.status == 'draft' %}
+    <div class="alert alert-info mt-4">
+      <strong>This article is still being written.</strong>
+      Check back soon for the complete guide, or explore other published articles below.
+    </div>
+    {% endif %}
+
+    {# ── Related articles ── #}
+    {% if related_articles %}
+    <hr class="mt-5">
+    <div class="mt-4">
+      <h3>Related Articles</h3>
+      <div class="row">
+        {% for related in related_articles %}
+        <div class="col-md-6 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="{{ related.get_absolute_url }}" class="text-dark">{{ related.title }}</a>
+              </h5>
+              <p class="card-text text-muted small">{{ related.summary|truncatewords:20 }}</p>
+              <small class="text-muted">{{ related.reading_time_minutes }} min read</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {# ── CTAs ── #}
+    <div class="mt-5 p-4 bg-light rounded text-center">
+      <h4>Explore More</h4>
+      <p class="text-muted">Discover debate resources, analyze motions with AI, or host your own tournament.</p>
+      <a href="{% url 'content:learn-hub' %}" class="btn btn-outline-primary mr-2">All Guides</a>
+      <a href="{% url 'motionbank:motion-doctor' %}" class="btn btn-outline-secondary mr-2">🩺 Motion Doctor</a>
+      <a href="{% url 'tournament-create' %}" class="btn btn-primary">Create Tournament</a>
+    </div>
+  </article>
+
+</div>
+{% endblock %}

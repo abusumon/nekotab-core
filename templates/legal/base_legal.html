@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{# Base layout for all legal/trust pages — clean, readable, consistent #}
+
+{% block body-class %}legal-page{% endblock %}
+
+{% block noindex %}
+{# Trust pages are always indexable #}
+{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width: 800px;">
+
+  {# ── Breadcrumbs ── #}
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb bg-transparent px-0" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1" />
+      </li>
+      <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{% block legal-title %}{% endblock %}</span>
+        <meta itemprop="position" content="2" />
+      </li>
+    </ol>
+  </nav>
+
+  <article class="legal-content">
+    <header class="mb-4">
+      <h1 class="mb-2">{% block legal-heading %}{% endblock %}</h1>
+      <p class="text-muted small">Last updated: {% block legal-date %}February 2026{% endblock %}</p>
+    </header>
+
+    <div class="legal-body">
+      {% block legal-body %}{% endblock %}
+    </div>
+  </article>
+
+  {# ── Cross-links to other legal pages ── #}
+  <hr class="mt-5">
+  <div class="row text-center mt-4 mb-3">
+    <div class="col">
+      <p class="text-muted small mb-2">Other policies</p>
+      <a href="{% url 'content:about' %}" class="btn btn-outline-secondary btn-sm mr-1 mb-1">About</a>
+      <a href="{% url 'content:contact' %}" class="btn btn-outline-secondary btn-sm mr-1 mb-1">Contact</a>
+      <a href="{% url 'content:privacy' %}" class="btn btn-outline-secondary btn-sm mr-1 mb-1">Privacy</a>
+      <a href="{% url 'content:terms' %}" class="btn btn-outline-secondary btn-sm mr-1 mb-1">Terms</a>
+      <a href="{% url 'content:disclaimer' %}" class="btn btn-outline-secondary btn-sm mb-1">Disclaimer</a>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

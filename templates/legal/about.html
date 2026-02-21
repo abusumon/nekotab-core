@@ -1,0 +1,78 @@
+{% extends "legal/base_legal.html" %}
+{% load i18n static %}
+
+{% block page-title %}About NekoTab{% endblock %}
+{% block og-title %}About NekoTab{% endblock %}
+
+{% block extra-head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About NekoTab",
+  "description": "Learn about NekoTab — the modern debate tournament platform for parliamentary debating.",
+  "url": "{{ canonical_url }}",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "NekoTab",
+    "url": "{{ seo_base_url }}",
+    "description": "NekoTab provides modern debate tournament tabulation, AI-powered motion analysis, and community tools for debaters worldwide.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "support@nekotab.app",
+      "contactType": "customer support"
+    }
+  }
+}
+</script>
+{% endblock %}
+
+{% block legal-title %}About{% endblock %}
+{% block legal-heading %}About NekoTab{% endblock %}
+
+{% block legal-body %}
+<section class="mb-4">
+  <h2>Our Mission</h2>
+  <p>
+    NekoTab is a modern debate tournament platform built for the global parliamentary debating community.
+    We provide free, open-source tabulation software alongside AI-powered debate tools — making it easier
+    for organisers to run tournaments and for debaters to improve their skills.
+  </p>
+</section>
+
+<section class="mb-4">
+  <h2>What We Offer</h2>
+  <ul>
+    <li><strong>Tournament Tabulation</strong> — Full-featured tab software supporting British Parliamentary (BP), Australs, WSDC, and other parliamentary formats. Manage draws, allocations, ballots, standings, and break categories.</li>
+    <li><strong>Motion Doctor</strong> — AI-powered motion analysis providing clash maps, POI suggestions, team strategies, extensions, and fairness metrics for any debate motion.</li>
+    <li><strong>Global Motion Bank</strong> — A searchable database of thousands of real tournament motions, filterable by format, region, year, and theme.</li>
+    <li><strong>Debate Forum</strong> — A structured discussion space for debaters to share strategies, analyze motions, and learn from the community.</li>
+    <li><strong>Debate Passport</strong> — Career profiles tracking tournament participation, performance, and achievements across the global circuit.</li>
+  </ul>
+</section>
+
+<section class="mb-4">
+  <h2>Built on Open Source</h2>
+  <p>
+    NekoTab is built on the foundation of <a href="https://github.com/TabbycatDebate/tabbycat" target="_blank" rel="noopener">Tabbycat</a>,
+    the leading open-source debate tabulation system developed by volunteers. We extend this foundation with
+    additional features for the modern debate community while maintaining our commitment to open-source principles.
+  </p>
+</section>
+
+<section class="mb-4">
+  <h2>Who We Are</h2>
+  <p>
+    NekoTab is maintained by a small team of passionate debaters and developers who believe in making debate
+    technology accessible to everyone — from university societies to national circuits and international championships.
+  </p>
+</section>
+
+<section class="mb-4">
+  <h2>Get in Touch</h2>
+  <p>
+    Have questions, feedback, or partnership enquiries? We'd love to hear from you.
+  </p>
+  <a href="{% url 'content:contact' %}" class="btn btn-primary">Contact Us</a>
+</section>
+{% endblock %}

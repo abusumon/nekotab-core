@@ -1,0 +1,97 @@
+{% extends "legal/base_legal.html" %}
+{% load i18n %}
+
+{% block page-title %}Terms of Service{% endblock %}
+{% block og-title %}Terms of Service{% endblock %}
+{% block legal-title %}Terms of Service{% endblock %}
+{% block legal-heading %}Terms of Service{% endblock %}
+
+{% block legal-body %}
+<section class="mb-4">
+  <h2>1. Acceptance of Terms</h2>
+  <p>By accessing or using NekoTab at <strong>nekotab.app</strong> ("the Service"), you agree to be bound by these Terms of Service. If you do not agree, please do not use the Service.</p>
+</section>
+
+<section class="mb-4">
+  <h2>2. Description of Service</h2>
+  <p>NekoTab provides debate tournament tabulation software, motion analysis tools, a motion database, a discussion forum, and debate career profiles. The Service is provided on an "as is" and "as available" basis.</p>
+</section>
+
+<section class="mb-4">
+  <h2>3. Accounts</h2>
+  <ul>
+    <li>You must provide accurate information when creating an account.</li>
+    <li>You are responsible for maintaining the security of your account credentials.</li>
+    <li>You are responsible for all activities that occur under your account.</li>
+    <li>You must be at least 13 years old to use the Service.</li>
+  </ul>
+</section>
+
+<section class="mb-4">
+  <h2>4. Tournament Data</h2>
+  <ul>
+    <li>Tournament administrators are responsible for the accuracy of tournament data they enter.</li>
+    <li>By enabling public visibility, you consent to tournament results, participant names, and related data being displayed publicly.</li>
+    <li>NekoTab does not independently verify the accuracy of tournament data.</li>
+  </ul>
+</section>
+
+<section class="mb-4">
+  <h2>5. Acceptable Use</h2>
+  <p>You agree not to:</p>
+  <ul>
+    <li>Use the Service for any unlawful purpose</li>
+    <li>Upload or transmit malicious code, spam, or harmful content</li>
+    <li>Attempt to gain unauthorized access to any part of the Service</li>
+    <li>Interfere with or disrupt the Service or its infrastructure</li>
+    <li>Scrape data or use automated tools without permission</li>
+    <li>Impersonate others or misrepresent your affiliation</li>
+    <li>Post content that is defamatory, threatening, or violates the rights of others</li>
+  </ul>
+</section>
+
+<section class="mb-4">
+  <h2>6. User Content</h2>
+  <p>You retain ownership of content you create (tournament data, forum posts, profiles). By posting content on public areas of the Service, you grant NekoTab a non-exclusive, worldwide license to display and distribute that content as part of the Service.</p>
+</section>
+
+<section class="mb-4">
+  <h2>7. Intellectual Property</h2>
+  <p>NekoTab's software, design, and original content are protected by applicable intellectual property laws. The underlying tabulation engine is based on open-source Tabbycat software, licensed under its respective terms.</p>
+</section>
+
+<section class="mb-4">
+  <h2>8. AI-Generated Content</h2>
+  <p>The Motion Doctor feature provides AI-generated analysis for educational purposes. AI outputs are not guaranteed to be accurate, complete, or unbiased. Users should exercise independent judgment when using AI-generated content for debate preparation or adjudication.</p>
+</section>
+
+<section class="mb-4">
+  <h2>9. Limitation of Liability</h2>
+  <p>To the maximum extent permitted by law, NekoTab shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Service. Our total liability for any claim shall not exceed the amount you paid us (if any) in the 12 months preceding the claim.</p>
+</section>
+
+<section class="mb-4">
+  <h2>10. Service Availability</h2>
+  <p>We strive to maintain high uptime but do not guarantee uninterrupted access. We may perform maintenance, updates, or modifications that temporarily affect availability. We are not liable for any downtime or data loss.</p>
+</section>
+
+<section class="mb-4">
+  <h2>11. Termination</h2>
+  <p>We reserve the right to suspend or terminate accounts that violate these terms. You may delete your account at any time by contacting <a href="mailto:support@nekotab.app">support@nekotab.app</a>.</p>
+</section>
+
+<section class="mb-4">
+  <h2>12. Changes to Terms</h2>
+  <p>We may modify these Terms from time to time. Material changes will be communicated via the Service. Continued use after changes constitutes acceptance of the updated Terms.</p>
+</section>
+
+<section class="mb-4">
+  <h2>13. Governing Law</h2>
+  <p>These Terms are governed by applicable law. Any disputes arising from these Terms or the Service shall be resolved through good-faith negotiation before pursuing formal proceedings.</p>
+</section>
+
+<section class="mb-4">
+  <h2>14. Contact</h2>
+  <p>Questions about these Terms? Contact <a href="mailto:support@nekotab.app">support@nekotab.app</a> or visit our <a href="{% url 'content:contact' %}">contact page</a>.</p>
+</section>
+{% endblock %}

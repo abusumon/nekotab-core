@@ -10,11 +10,9 @@ class StaticViewSitemap(Sitemap):
     priority = 0.7
 
     def items(self):
+        # Only include pages with meaningful content — exclude utility/auth pages
         return [
             'tabbycat-index',
-            'tournament-create',
-            'load-demo',
-            'blank-site-start',
             'forum:forum-home',
             'motionbank:motionbank-home',
             'motionbank:motion-doctor',

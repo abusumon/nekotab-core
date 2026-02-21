@@ -1,4 +1,41 @@
 User-agent: *
-Disallow:
+Allow: /
+Allow: /learn/
+Allow: /about/
+Allow: /contact/
+Allow: /privacy/
+Allow: /terms/
+Allow: /disclaimer/
+Allow: /forum/
+Allow: /motions-bank/
+Allow: /passport/
+
+# Block auth, admin, utility, and internal pages
+Disallow: /accounts/
+Disallow: /start/
+Disallow: /load-demo/
+Disallow: /claim/
+Disallow: /create/
+Disallow: /style/
+Disallow: /database/
+Disallow: /jet/
+Disallow: /summernote/
+Disallow: /campaigns/
+Disallow: /analytics/
+Disallow: /archive/
+Disallow: /api/
+Disallow: /jsi18n/
+Disallow: /i18n/
+Disallow: /notifications/
+
+# Block tournament admin/assistant areas
+Disallow: /*/admin/
+Disallow: /*/assistant/
+Disallow: /*/privateurls/
+
+# Block parameterized/filtered pages from creating duplicates
+Disallow: /*?sort=
+Disallow: /*?page=
+Disallow: /*?lang=
 
 Sitemap: {{ seo_base_url }}/sitemap.xml

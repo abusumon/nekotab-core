@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block page-title %}Learn Debate{% endblock %}
+{% block og-title %}Learn Debate — Guides & Resources{% endblock %}
+
+{% block noindex %}
+{# Learn hub is always indexable #}
+{% endblock %}
+
+{% block extra-head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Learn Debate — NekoTab Guides & Resources",
+  "description": "Free guides on debate formats, judging, speaker training, and tournament hosting.",
+  "url": "{{ canonical_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "NekoTab",
+    "url": "{{ seo_base_url }}"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+
+  {# ── Breadcrumbs ── #}
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb bg-transparent px-0">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Learn</li>
+    </ol>
+  </nav>
+
+  {# ── Hero section ── #}
+  <div class="mb-4">
+    <h1 class="mb-2">Learn Debate</h1>
+    <p class="lead text-muted">
+      Free guides on debate formats, adjudication, speaker training, and tournament organisation.
+      Whether you're a first-time debater or an experienced chief adjudicator, there's something here for you.
+    </p>
+  </div>
+
+  {# ── Category filter ── #}
+  <div class="mb-4">
+    <div class="d-flex flex-wrap gap-2">
+      <a href="{% url 'content:learn-hub' %}"
+         class="btn btn-sm {% if not active_category %}btn-primary{% else %}btn-outline-secondary{% endif %} mr-1 mb-1">
+        All
+      </a>
+      {% for cat in categories %}
+      <a href="{% url 'content:learn-hub' %}?category={{ cat.slug }}"
+         class="btn btn-sm {% if active_category == cat.slug %}btn-primary{% else %}btn-outline-secondary{% endif %} mr-1 mb-1">
+        {{ cat.icon }} {{ cat.name }}
+        <span class="badge badge-light ml-1">{{ cat.published_count }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# ── Article grid ── #}
+  {% if articles %}
+  <div class="row">
+    {% for article in articles %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          {% if article.category %}
+          <span class="badge badge-secondary mb-2" style="width:fit-content;">
+            {{ article.category.icon }} {{ article.category.name }}
+          </span>
+          {% endif %}
+          <h3 class="h5 card-title">
+            <a href="{{ article.get_absolute_url }}" class="text-dark stretched-link">
+              {{ article.title }}
+            </a>
+          </h3>
+          <p class="card-text text-muted small flex-grow-1">{{ article.summary|truncatewords:30 }}</p>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <small class="text-muted">{{ article.reading_time_minutes }} min read</small>
+            <small class="text-muted">{{ article.updated_at|date:"M j, Y" }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="text-center py-5">
+    <div style="font-size:3rem;">📚</div>
+    <h3 class="mt-3">No articles found</h3>
+    <p class="text-muted">
+      {% if active_category %}
+        No published articles in this category yet. Check back soon!
+      {% else %}
+        Content is being prepared. Check back soon for debate guides and resources.
+      {% endif %}
+    </p>
+    {% if active_category %}
+    <a href="{% url 'content:learn-hub' %}" class="btn btn-outline-primary">View all articles</a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {# ── CTA ── #}
+  <div class="text-center mt-5 mb-3 p-4 bg-light rounded">
+    <h3>Ready to put theory into practice?</h3>
+    <p class="text-muted mb-3">Create a tournament on NekoTab and experience modern debate tabulation.</p>
+    <a href="{% url 'tournament-create' %}" class="btn btn-primary mr-2">Create Tournament</a>
+    <a href="{% url 'motionbank:motionbank-home' %}" class="btn btn-outline-secondary">Browse Motion Bank</a>
+  </div>
+
+</div>
+{% endblock %}

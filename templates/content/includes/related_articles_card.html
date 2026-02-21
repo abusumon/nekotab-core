@@ -1,0 +1,17 @@
+{% load i18n %}
+{% if articles %}
+<div class="card mt-3 border-0 bg-light">
+  <div class="card-body">
+    <h6 class="card-title text-muted mb-2">📚 Learn More</h6>
+    <ul class="list-unstyled mb-0">
+      {% for article in articles %}
+      <li class="mb-1">
+        <a href="{{ article.get_absolute_url }}" class="text-primary small">
+          {{ article.title }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}

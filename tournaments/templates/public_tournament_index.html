@@ -1,20 +1,45 @@
 {% extends "base.html" %}
-{% load debate_tags i18n static %}
+{% load debate_tags i18n static content_tags %}
 
 {% block noindex %}
   {% if pref.search_engine_indexing == "none" %}
     <meta name="robots" content="noindex">
+  {% elif not meets_content_threshold %}
+    <meta name="robots" content="noindex, follow">
   {% endif %}
 {% endblock %}
 
-{% block head-title %}<span class="emoji">👋</span>
+{% block extra-head %}
+{# Structured Data: Event #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "{{ tournament.name }}",
+  "description": "{{ tournament.name }} — debate tournament hosted on NekoTab.",
+  "url": "{{ canonical_url|default:request.build_absolute_uri }}",
+  "organizer": {
+    "@type": "Organization",
+    "name": "{% if content_block and content_block.host_organization %}{{ content_block.host_organization }}{% else %}{{ tournament.name }}{% endif %}"
+  }{% if content_block and content_block.start_date %},
+  "startDate": "{{ content_block.start_date|date:'Y-m-d' }}"{% endif %}{% if content_block and content_block.end_date %},
+  "endDate": "{{ content_block.end_date|date:'Y-m-d' }}"{% endif %}{% if content_block and content_block.location %},
+  "location": {
+    "@type": "Place",
+    "name": "{{ content_block.location }}"
+  }{% endif %}
+}
+</script>
+{% endblock %}
 
+{% block head-title %}<span class="emoji">🏆</span>
 {% blocktrans trimmed with tournament=tournament.name %}
-    Welcome to {{ tournament }}
+    {{ tournament }}
 {% endblocktrans %}{% endblock %}
+
 {% block page-title %}
   {% blocktrans trimmed with tournament=tournament.name %}
-    Welcome to {{ tournament }}
+    {{ tournament }}
   {% endblocktrans %}
 {% endblock %}
 
@@ -29,17 +54,151 @@
 
 {% block content %}
 
+  {# ── Breadcrumbs ── #}
+  <nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb bg-transparent px-0" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">{% trans "Home" %}</span></a>
+        <meta itemprop="position" content="1" />
+      </li>
+      <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{{ tournament.short_name|default:tournament.name }}</span>
+        <meta itemprop="position" content="2" />
+      </li>
+    </ol>
+  </nav>
+
+  {# ── Hero Header ── #}
+  <div class="card mb-3 border-0 shadow-sm">
+    <div class="card-body">
+      <div class="d-md-flex justify-content-between align-items-start">
+        <div>
+          <h1 class="h3 mb-1">🏆 {{ tournament.name }}</h1>
+          <div class="text-muted mb-2">
+            {% if content_block and content_block.host_organization %}
+              <span class="mr-3">🏛️ {{ content_block.host_organization }}</span>
+            {% endif %}
+            {% if content_block and content_block.location %}
+              <span class="mr-3">📍 {{ content_block.location }}</span>
+            {% endif %}
+            {% if content_block and content_block.format_description %}
+              <span class="mr-3">🎯 {{ content_block.format_description }}</span>
+            {% endif %}
+          </div>
+          {% if content_block and content_block.start_date %}
+            <div class="text-muted small">
+              📅
+              {% if content_block.end_date and content_block.start_date != content_block.end_date %}
+                {{ content_block.start_date|date:"M j, Y" }} — {{ content_block.end_date|date:"M j, Y" }}
+              {% else %}
+                {{ content_block.start_date|date:"M j, Y" }}
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="mt-2 mt-md-0">
+          {% if content_block and content_block.status_label %}
+            <span class="badge badge-{% if content_block.status_label == 'Completed' %}success{% elif content_block.status_label == 'In Progress' %}primary{% else %}secondary{% endif %} px-3 py-2"
+                  style="font-size: 0.85rem;">
+              {{ content_block.status_label }}
+            </span>
+          {% elif tournament.active %}
+            <span class="badge badge-primary px-3 py-2" style="font-size: 0.85rem;">{% trans "Active" %}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# ── Summary Cards ── #}
+  <div class="row mb-3">
+    <div class="col-6 col-md-3 mb-2">
+      <div class="card text-center border-0 shadow-sm h-100">
+        <div class="card-body py-3">
+          <div class="h4 mb-0 text-primary">{{ team_count }}</div>
+          <small class="text-muted">{% trans "Teams" %}</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 mb-2">
+      <div class="card text-center border-0 shadow-sm h-100">
+        <div class="card-body py-3">
+          <div class="h4 mb-0 text-primary">{{ round_count }}</div>
+          <small class="text-muted">{% trans "Rounds" %} {% if completed_round_count %}({{ completed_round_count }} {% trans "done" %}){% endif %}</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 mb-2">
+      <div class="card text-center border-0 shadow-sm h-100">
+        <div class="card-body py-3">
+          <div class="h4 mb-0 text-primary">{{ adj_count }}</div>
+          <small class="text-muted">{% trans "Adjudicators" %}</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 mb-2">
+      <div class="card text-center border-0 shadow-sm h-100">
+        <div class="card-body py-3">
+          <div class="h4 mb-0 text-primary">{{ motion_count }}</div>
+          <small class="text-muted">{% trans "Motions" %}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# ── Quick navigation CTAs ── #}
+  <div class="mb-3 d-flex flex-wrap" style="gap: 8px;">
+    {% if pref.public_results and tournament.rounds_with_released_results.exists %}
+      {% tournamenturl 'results-public-index' as results_url %}
+      <a href="{{ results_url }}" class="btn btn-primary btn-sm">📊 {% trans "View Results" %}</a>
+    {% endif %}
+    {% if pref.public_draw != 'off' %}
+      {% tournamenturl 'draw-public-current-rounds' as draw_url %}
+      <a href="{{ draw_url }}" class="btn btn-outline-primary btn-sm">👁️ {% trans "View Draw" %}</a>
+    {% endif %}
+    {% if pref.public_motions %}
+      {% tournamenturl 'motions-public' as motions_url %}
+      <a href="{{ motions_url }}" class="btn btn-outline-primary btn-sm">📝 {% trans "View Motions" %}</a>
+    {% endif %}
+    {% if pref.public_participants %}
+      {% tournamenturl 'participants-public-list' as participants_url %}
+      <a href="{{ participants_url }}" class="btn btn-outline-primary btn-sm">👥 {% trans "Participants" %}</a>
+    {% endif %}
+    <a href="{% url 'tournament-create' %}" class="btn btn-outline-secondary btn-sm">➕ {% trans "Host Your Own" %}</a>
+  </div>
+
   {% if pref.welcome_message %}
-    <div class="card">
+    <div class="card mb-3 border-0 shadow-sm">
       <div class="card-body pb-0">
         {{ pref.welcome_message|safe }}
       </div>
     </div>
   {% endif %}
 
+  {# ── About This Tournament (editable by owner) ── #}
+  {% if content_block and content_block.about_text %}
+    <div class="card mb-3 border-0 shadow-sm">
+      <div class="card-header bg-white border-bottom-0">
+        <h2 class="h5 mb-0">📖 {% trans "About This Tournament" %}</h2>
+      </div>
+      <div class="card-body pt-0">
+        {{ content_block.about_text|linebreaksbr }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# ── Contextual Content (deterministic, SEO-friendly) ── #}
+  <div class="card mb-3 border-0 shadow-sm">
+    <div class="card-body">
+      {% tournament_context_text tournament content_block %}
+    </div>
+  </div>
+
   <div class="row">
 
-    <div class="col-md">
+    <div class="col-md-8">
+
+      {# ── Tournament Links (existing functionality, preserved) ── #}
 
       <div class="list-group mt-2">
 
@@ -249,8 +408,8 @@
       </div>
 
       {% if pref.tournament_staff %}
-        <div class="card mt-3">
-          <div class="card-header h6">
+        <div class="card mt-3 border-0 shadow-sm">
+          <div class="card-header bg-white h6">
             {% trans "Tournament Staff" %}
           </div>
           <div class="card-body">
@@ -258,6 +417,43 @@
           </div>
         </div>
       {% endif %}
+
+    </div>
+
+    {# ── Right Sidebar ── #}
+    <div class="col-md-4">
+
+      {# Related Learn articles (cross-linking) #}
+      {% if content_block and content_block.format_description %}
+        {% with content_block.format_description|lower as fmt %}
+          {% if "bp" in fmt or "british" in fmt %}
+            {% show_related_articles "bp" %}
+          {% elif "australs" in fmt or "3v3" in fmt %}
+            {% show_related_articles "australs" %}
+          {% elif "wsdc" in fmt or "world schools" in fmt %}
+            {% show_related_articles "wsdc" %}
+          {% endif %}
+        {% endwith %}
+      {% endif %}
+
+      {# Host CTA card #}
+      <div class="card mt-3 border-0 shadow-sm">
+        <div class="card-body text-center">
+          <div style="font-size: 2rem;">📋</div>
+          <h6 class="mt-2">{% trans "Host Your Own Tournament" %}</h6>
+          <p class="text-muted small">{% trans "NekoTab makes it easy to run debate tournaments with automated draws, smart allocations, digital ballots, and live results." %}</p>
+          <a href="{% url 'tournament-create' %}" class="btn btn-primary btn-sm btn-block">{% trans "Create Tournament" %}</a>
+        </div>
+      </div>
+
+      {# Learn section CTA #}
+      <div class="card mt-3 border-0 bg-light">
+        <div class="card-body text-center">
+          <h6>📚 {% trans "Learn Debate" %}</h6>
+          <p class="text-muted small mb-2">{% trans "Guides on formats, judging, and speaker training." %}</p>
+          <a href="/learn/" class="btn btn-outline-primary btn-sm">{% trans "Browse Guides" %}</a>
+        </div>
+      </div>
 
     </div>
 

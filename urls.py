@@ -14,6 +14,7 @@ import tournaments.views
 from importer.views import LoadDemoView
 from users.views import BlankSiteStartView
 from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
+from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
 
 admin.autodiscover()
 
@@ -67,6 +68,8 @@ urlpatterns = [
             'static': StaticViewSitemap,
             'tournaments': TournamentSitemap,
             'motions': MotionBankSitemap,
+            'articles': LearnArticleSitemap,
+            'trust': TrustPagesSitemap,
         }},
         name='sitemap'),
     path('robots.txt',
@@ -120,6 +123,9 @@ urlpatterns = [
     # Global Debate Passport
     path('passport/',
         include('passport.urls')),
+
+    # Content: Learn hub + Trust/Legal pages
+    path('', include('content.urls')),
 
     # Retention archive downloads
     path('', include('retention.urls')),

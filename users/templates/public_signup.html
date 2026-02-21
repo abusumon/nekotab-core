@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
+{% block noindex %}<meta name="robots" content="noindex, nofollow" />{% endblock %}
 {% block page-title %}{% trans "Create Your Account" %}{% endblock %}
 {% block head-title %}<title>{% trans "Sign Up" %} | {{ SITE_NAME }}</title>{% endblock %}
 

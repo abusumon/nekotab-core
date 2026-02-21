@@ -1,0 +1,110 @@
+{% extends "legal/base_legal.html" %}
+{% load i18n %}
+
+{% block page-title %}Privacy Policy{% endblock %}
+{% block og-title %}Privacy Policy{% endblock %}
+{% block legal-title %}Privacy Policy{% endblock %}
+{% block legal-heading %}Privacy Policy{% endblock %}
+
+{% block legal-body %}
+<section class="mb-4">
+  <h2>1. Introduction</h2>
+  <p>
+    This Privacy Policy explains how NekoTab ("we", "us", "our") collects, uses, and protects your
+    personal information when you use our website at <strong>nekotab.app</strong> and related services.
+  </p>
+  <p>
+    By using NekoTab, you agree to the collection and use of information as described in this policy.
+  </p>
+</section>
+
+<section class="mb-4">
+  <h2>2. Information We Collect</h2>
+  <h3>2.1 Account Information</h3>
+  <p>When you create an account, we collect your username, email address, and password (stored securely as a hash).</p>
+
+  <h3>2.2 Tournament Data</h3>
+  <p>When you create or participate in tournaments, we store tournament names, participant names, team affiliations, scores, and other tabulation data you provide.</p>
+
+  <h3>2.3 Usage Data</h3>
+  <p>We automatically collect information about how you interact with our service, including pages visited, features used, browser type, device information, and IP address. This data is collected via Google Analytics and our internal analytics system.</p>
+
+  <h3>2.4 Contact Information</h3>
+  <p>If you contact us via our contact form, we collect your name, email, and message content.</p>
+</section>
+
+<section class="mb-4">
+  <h2>3. How We Use Your Information</h2>
+  <ul>
+    <li>To provide and maintain our tournament tabulation services</li>
+    <li>To authenticate your identity and manage your account</li>
+    <li>To display public tournament results and standings</li>
+    <li>To improve our services and user experience</li>
+    <li>To respond to your enquiries and support requests</li>
+    <li>To send important service notifications</li>
+    <li>To detect and prevent abuse or security threats</li>
+  </ul>
+</section>
+
+<section class="mb-4">
+  <h2>4. Data Sharing</h2>
+  <p>We do not sell your personal information. We may share data in the following circumstances:</p>
+  <ul>
+    <li><strong>Public tournament data:</strong> Tournament results, standings, and participant names may be displayed publicly on tournament pages if the tournament administrator enables public visibility.</li>
+    <li><strong>Service providers:</strong> We use third-party services for hosting, analytics, and email delivery that may process data on our behalf.</li>
+    <li><strong>Legal requirements:</strong> We may disclose information if required by law or to protect the rights and safety of our users.</li>
+  </ul>
+</section>
+
+<section class="mb-4">
+  <h2>5. Cookies and Tracking</h2>
+  <p>We use essential cookies for authentication and session management. We also use Google Analytics to understand site usage. You can control cookie preferences through your browser settings.</p>
+</section>
+
+<section class="mb-4">
+  <h2>6. Advertising</h2>
+  <p>We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits to this and other websites. You can opt out of personalised advertising at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.</p>
+</section>
+
+<section class="mb-4">
+  <h2>7. Data Retention</h2>
+  <p>
+    We retain your account data for as long as your account is active. Tournament data is retained for
+    archival and historical purposes unless deletion is requested. You may request account deletion by
+    contacting us at <a href="mailto:support@nekotab.app">support@nekotab.app</a>.
+  </p>
+</section>
+
+<section class="mb-4">
+  <h2>8. Data Security</h2>
+  <p>We implement industry-standard security measures including encrypted connections (HTTPS), secure password hashing, and access controls. However, no method of transmission over the internet is 100% secure.</p>
+</section>
+
+<section class="mb-4">
+  <h2>9. Your Rights</h2>
+  <p>Depending on your jurisdiction, you may have the right to:</p>
+  <ul>
+    <li>Access the personal information we hold about you</li>
+    <li>Request correction of inaccurate data</li>
+    <li>Request deletion of your data</li>
+    <li>Object to or restrict certain processing</li>
+    <li>Data portability</li>
+  </ul>
+  <p>To exercise these rights, contact us at <a href="mailto:support@nekotab.app">support@nekotab.app</a>.</p>
+</section>
+
+<section class="mb-4">
+  <h2>10. Children's Privacy</h2>
+  <p>NekoTab is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected such information, please contact us immediately.</p>
+</section>
+
+<section class="mb-4">
+  <h2>11. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "last updated" date. Continued use of the service constitutes acceptance of the updated policy.</p>
+</section>
+
+<section class="mb-4">
+  <h2>12. Contact</h2>
+  <p>For privacy-related enquiries, contact us at <a href="mailto:support@nekotab.app">support@nekotab.app</a> or via our <a href="{% url 'content:contact' %}">contact page</a>.</p>
+</section>
+{% endblock %}

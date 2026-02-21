@@ -141,6 +141,47 @@ class TournamentPublicHomeView(CacheMixin, TournamentMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         kwargs['public_index'] = True
+        t = self.tournament
+
+        # --- Tournament stats for summary cards ---
+        try:
+            kwargs['team_count'] = t.team_set.count()
+        except Exception:
+            kwargs['team_count'] = 0
+        try:
+            kwargs['round_count'] = t.round_set.count()
+            kwargs['completed_round_count'] = t.round_set.filter(completed=True).count()
+        except Exception:
+            kwargs['round_count'] = 0
+            kwargs['completed_round_count'] = 0
+        try:
+            kwargs['adj_count'] = t.adjudicator_set.count()
+        except Exception:
+            kwargs['adj_count'] = 0
+        try:
+            from motions.models import Motion
+            kwargs['motion_count'] = Motion.objects.filter(round__tournament=t).count()
+        except Exception:
+            kwargs['motion_count'] = 0
+        try:
+            kwargs['speaker_count'] = t.speaker_set.count()
+        except Exception:
+            kwargs['speaker_count'] = 0
+
+        # --- Content block (editable tournament description) ---
+        try:
+            from content.models import TournamentContentBlock
+            kwargs['content_block'] = TournamentContentBlock.objects.get(tournament=t)
+        except Exception:
+            kwargs['content_block'] = None
+
+        # --- Content threshold for noindex decision ---
+        try:
+            from content.templatetags.content_tags import content_threshold_met as _threshold
+            kwargs['meets_content_threshold'] = _threshold(t)
+        except Exception:
+            kwargs['meets_content_threshold'] = False
+
         return super().get_context_data(**kwargs)
 
 
