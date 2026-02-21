@@ -40,6 +40,8 @@
             border-right: 1px solid var(--border);
             padding: 20px 0;
             z-index: 100;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
         }
         
         .logo {
@@ -183,6 +185,7 @@
             border-radius: 8px;
             color: var(--text-primary);
             font-size: 14px;
+            font-family: inherit;
             cursor: pointer;
         }
         
@@ -200,6 +203,7 @@
             border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
+            font-family: inherit;
             cursor: pointer;
             transition: all 0.2s;
             text-decoration: none;
@@ -328,9 +332,51 @@
             margin-bottom: 16px;
         }
         
+        /* Mobile Header */
+        .mobile-header {
+            display: none; position: fixed;
+            top: 0; left: 0; right: 0; height: 56px;
+            background: var(--bg-card); border-bottom: 1px solid var(--border);
+            z-index: 99; align-items: center; padding: 0 16px; gap: 12px;
+        }
+        .hamburger {
+            background: none; border: none; color: var(--text-primary); cursor: pointer;
+            padding: 8px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+        }
+        .hamburger:hover { background: var(--bg-hover); }
+        .hamburger svg { width: 24px; height: 24px; }
+        .mobile-header .mobile-title {
+            font-size: 16px; font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .sidebar-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.5); z-index: 99;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+        /* Fade-in */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card { animation: fadeInUp 0.4s ease both; }
+
+        /* Table responsive */
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
         @media (max-width: 768px) {
+            .mobile-header { display: flex; }
+            .sidebar-overlay.visible { display: block; }
             .sidebar { transform: translateX(-100%); }
-            .main-content { margin-left: 0; padding: 16px; }
+            .sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.4); }
+            .main-content { margin-left: 0; padding: 72px 16px 16px; }
             .header { flex-direction: column; align-items: flex-start; }
             .header h2 { font-size: 22px; }
             .filters { flex-direction: column; }
@@ -343,8 +389,19 @@
     </style>
 </head>
 <body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+        <span class="mobile-title">🐱 NekoTab</span>
+    </header>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
         <div class="logo">
             <h1>🐱 NekoTab</h1>
             <span>Admin Dashboard</span>
@@ -442,6 +499,7 @@
         </form>
 
         <div class="card">
+            <div class="table-wrap">
             <table>
                 <thead>
                     <tr>
@@ -505,6 +563,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            </div>
             
             {% if is_paginated %}
             <div class="pagination">
@@ -521,5 +580,25 @@
             {% endif %}
         </div>
     </main>
+
+    <script>
+    // Mobile sidebar toggle
+    (function() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const toggle = document.getElementById('menuToggle');
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('visible');
+        }
+        if (toggle && sidebar && overlay) {
+            toggle.addEventListener('click', function() {
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('visible');
+            });
+            overlay.addEventListener('click', closeSidebar);
+        }
+    })();
+    </script>
 </body>
 </html>

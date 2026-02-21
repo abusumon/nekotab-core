@@ -286,10 +286,11 @@ class LiveVisitorsAPIView(SuperuserRequiredMixin, View):
     
     def get(self, request):
         ActiveSession.cleanup_stale()
+        total_count = ActiveSession.objects.count()
         sessions = ActiveSession.objects.all()[:20]
         
         return JsonResponse({
-            'count': sessions.count(),
+            'count': total_count,
             'visitors': [
                 {
                     'path': s.current_path,

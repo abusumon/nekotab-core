@@ -40,6 +40,7 @@
             padding: 20px 0;
             z-index: 100;
             overflow-y: auto;
+            transition: transform 0.3s ease;
         }
         .logo { padding: 0 24px 24px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
         .logo h1 {
@@ -266,17 +267,95 @@
             font-size: 14px; font-weight: 600; cursor: pointer;
         }
 
+        /* Mobile Header */
+        .mobile-header {
+            display: none; position: fixed;
+            top: 0; left: 0; right: 0; height: 56px;
+            background: var(--bg-card); border-bottom: 1px solid var(--border);
+            z-index: 99; align-items: center; padding: 0 16px; gap: 12px;
+        }
+        .hamburger {
+            background: none; border: none; color: var(--text-primary); cursor: pointer;
+            padding: 8px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+        }
+        .hamburger:hover { background: var(--bg-hover); }
+        .hamburger svg { width: 24px; height: 24px; }
+        .mobile-header .mobile-title {
+            font-size: 16px; font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .sidebar-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.5); z-index: 99;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+        /* Toast notifications */
+        .toast-container {
+            position: fixed; top: 24px; right: 24px; z-index: 2000;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .toast {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 20px; border-radius: 12px; font-size: 14px; font-weight: 500;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            animation: toastIn 0.3s ease; min-width: 280px;
+        }
+        .toast.success { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--success); }
+        .toast.error { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: var(--danger); }
+        .toast.removing { animation: toastOut 0.3s ease forwards; }
+        @keyframes toastIn { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes toastOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(100px); } }
+
+        /* Selected row */
+        tr.selected td { background: rgba(124, 58, 237, 0.08) !important; }
+
+        /* Fade-in */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .stat-card, .table-card { animation: fadeInUp 0.4s ease both; }
+        .stat-card:nth-child(2) { animation-delay: 0.05s; }
+        .stat-card:nth-child(3) { animation-delay: 0.1s; }
+        .stat-card:nth-child(4) { animation-delay: 0.15s; }
+
+        /* Modal animation */
+        .modal-overlay.visible .modal {
+            animation: modalIn 0.25s ease;
+        }
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
         @media (max-width: 768px) {
-            .sidebar { display: none; }
-            .main-content { margin-left: 0; padding: 16px; }
+            .mobile-header { display: flex; }
+            .sidebar-overlay.visible { display: block; }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.4); }
+            .main-content { margin-left: 0; padding: 72px 16px 16px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .table-card { overflow-x: auto; }
+            .bulk-bar { left: 0; }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+        <span class="mobile-title">🐱 NekoTab</span>
+    </header>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="toast-container" id="toastContainer"></div>
+
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
         <div class="logo">
             <h1>🐱 NekoTab</h1>
             <span>Admin Dashboard</span>
@@ -481,7 +560,6 @@
                         <td class="text-right">{{ t.breakdown.debates.rows }}</td>
                         <td class="text-right">{{ t.breakdown.ballots.rows }}</td>
                         <td class="bar-cell">
-                            {% widthratio t.total_rows totals.rows 100 as pct %}
                             <div class="text-small">{% widthratio t.total_rows totals.rows 100 %}%</div>
                             <div class="bar-bg">
                                 <div class="bar-fill" style="width: {% widthratio t.total_rows totals.rows 100 %}%;"></div>
@@ -589,6 +667,16 @@
             const deleteList = document.getElementById('deleteList');
             let pendingIds = [];
 
+            function showToast(message, type) {
+                const container = document.getElementById('toastContainer');
+                if (!container) return;
+                const toast = document.createElement('div');
+                toast.className = 'toast ' + type;
+                toast.textContent = message;
+                container.appendChild(toast);
+                setTimeout(() => { toast.classList.add('removing'); setTimeout(() => toast.remove(), 300); }, 4000);
+            }
+
             function getChecked() {
                 return Array.from(document.querySelectorAll('.row-checkbox:checked'));
             }
@@ -597,35 +685,50 @@
                 const checked = getChecked();
                 selectedCountEl.textContent = checked.length;
                 bulkBar.classList.toggle('visible', checked.length > 0);
+                document.querySelectorAll('.row-checkbox').forEach(cb => {
+                    cb.closest('tr').classList.toggle('selected', cb.checked);
+                });
             }
 
-            // Select-all
-            document.querySelector('.select-all-checkbox').addEventListener('change', function() {
-                document.querySelectorAll('.row-checkbox').forEach(cb => cb.checked = this.checked);
-                updateBulkBar();
-            });
+            // Select-all (guard: checkbox only exists when table has data)
+            const selectAllCb = document.querySelector('.select-all-checkbox');
+            if (selectAllCb) {
+                selectAllCb.addEventListener('change', function() {
+                    document.querySelectorAll('.row-checkbox').forEach(cb => cb.checked = this.checked);
+                    updateBulkBar();
+                });
+            }
 
             // Individual checkboxes
             document.querySelectorAll('.row-checkbox').forEach(cb => {
                 cb.addEventListener('change', updateBulkBar);
             });
 
+            function escapeHtml(str) {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
             function showModal(items) {
                 pendingIds = items.map(i => i.id);
                 deleteList.innerHTML = items.map(i =>
-                    `<li><strong>${i.name}</strong> <span style="color:var(--text-secondary);">(id: ${i.id})</span></li>`
+                    `<li><strong>${escapeHtml(i.name)}</strong> <span style="color:var(--text-secondary);">(id: ${i.id})</span></li>`
                 ).join('');
                 modal.classList.add('visible');
             }
 
             // Bulk delete button
-            document.getElementById('bulkDeleteBtn').addEventListener('click', function() {
-                const items = getChecked().map(cb => {
-                    const row = cb.closest('tr');
-                    return { id: parseInt(cb.value), name: row.dataset.tname };
+            const bulkDeleteBtn = document.getElementById('bulkDeleteBtn');
+            if (bulkDeleteBtn) {
+                bulkDeleteBtn.addEventListener('click', function() {
+                    const items = getChecked().map(cb => {
+                        const row = cb.closest('tr');
+                        return { id: parseInt(cb.value), name: row.dataset.tname };
+                    });
+                    if (items.length) showModal(items);
                 });
-                if (items.length) showModal(items);
-            });
+            }
 
             // Per-row delete buttons
             document.querySelectorAll('.btn-delete-row').forEach(btn => {
@@ -640,6 +743,22 @@
                 pendingIds = [];
             });
 
+            // ESC key to close modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('visible')) {
+                    modal.classList.remove('visible');
+                    pendingIds = [];
+                }
+            });
+
+            // Backdrop click to close modal
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('visible');
+                    pendingIds = [];
+                }
+            });
+
             // Confirm
             document.getElementById('confirmDelete').addEventListener('click', function() {
                 this.disabled = true;
@@ -649,23 +768,32 @@
                     headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrfToken},
                     body: JSON.stringify({ tournament_ids: pendingIds }),
                 })
-                .then(r => r.json())
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                    return r.json();
+                })
                 .then(data => {
                     modal.classList.remove('visible');
-                    if (data.deleted_count) {
+                    if (data.deleted_count && Array.isArray(data.deleted)) {
                         data.deleted.forEach(d => {
                             const row = document.querySelector(`tr[data-tid="${d.id}"]`);
-                            if (row) row.remove();
+                            if (row) {
+                                row.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                                row.style.opacity = '0';
+                                row.style.transform = 'translateX(-20px)';
+                                setTimeout(() => row.remove(), 300);
+                            }
                         });
+                        showToast(`${data.deleted_count} tournament(s) deleted successfully`, 'success');
                     }
                     if (data.failed_count) {
-                        alert(`${data.deleted_count} deleted, ${data.failed_count} failed. Check logs.`);
+                        showToast(`${data.deleted_count} deleted, ${data.failed_count} failed. Check logs.`, 'error');
                     }
                     updateBulkBar();
-                    setTimeout(() => location.reload(), 800);
+                    setTimeout(() => location.reload(), 1500);
                 })
                 .catch(() => {
-                    alert('Delete request failed. Please try again.');
+                    showToast('Delete request failed. Please try again.', 'error');
                     modal.classList.remove('visible');
                 })
                 .finally(() => {
@@ -673,6 +801,24 @@
                     this.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:16px;height:16px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg> Delete Permanently';
                 });
             });
+        })();
+
+        // Mobile sidebar toggle
+        (function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const toggle = document.getElementById('menuToggle');
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('visible');
+            }
+            if (toggle && sidebar && overlay) {
+                toggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('open');
+                    overlay.classList.toggle('visible');
+                });
+                overlay.addEventListener('click', closeSidebar);
+            }
         })();
     </script>
 </body>

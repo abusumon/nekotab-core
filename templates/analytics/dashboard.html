@@ -46,6 +46,8 @@
             border-right: 1px solid var(--border);
             padding: 20px 0;
             z-index: 100;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
         }
         
         .logo {
@@ -146,6 +148,7 @@
             border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
+            font-family: inherit;
             cursor: pointer;
             transition: all 0.2s;
             text-decoration: none;
@@ -252,6 +255,7 @@
             gap: 4px;
             font-size: 13px;
             margin-top: 8px;
+            color: var(--text-secondary);
         }
         
         .stat-change.up { color: var(--success); }
@@ -447,17 +451,25 @@
         }
         
         @media (max-width: 768px) {
+            .mobile-header { display: flex; }
+            .sidebar-overlay.visible { display: block; }
             .sidebar {
                 transform: translateX(-100%);
             }
-            
+            .sidebar.open {
+                transform: translateX(0);
+                box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+            }
             .main-content {
                 margin-left: 0;
+                padding: 72px 16px 16px;
             }
-            
+            .header { flex-direction: column; align-items: flex-start; }
+            .header-actions { flex-wrap: wrap; }
             .stats-grid {
                 grid-template-columns: 1fr;
             }
+            .charts-row { grid-template-columns: 1fr; }
         }
         
         /* Period Selector */
@@ -508,11 +520,63 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--text-secondary);
         }
+
+        /* Mobile Header */
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 56px;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            z-index: 99;
+            align-items: center;
+            padding: 0 16px;
+            gap: 12px;
+        }
+        .hamburger {
+            background: none; border: none;
+            color: var(--text-primary); cursor: pointer;
+            padding: 8px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hamburger:hover { background: var(--bg-hover); }
+        .hamburger svg { width: 24px; height: 24px; }
+        .mobile-header .mobile-title {
+            font-size: 16px; font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .sidebar-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.5); z-index: 99;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stat-card, .card { animation: fadeInUp 0.4s ease both; }
+        .stat-card:nth-child(2), .card:nth-child(2) { animation-delay: 0.05s; }
+        .stat-card:nth-child(3) { animation-delay: 0.1s; }
+        .stat-card:nth-child(4) { animation-delay: 0.15s; }
     </style>
 </head>
 <body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+        <span class="mobile-title">🐱 NekoTab</span>
+    </header>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
         <div class="logo">
             <h1>🐱 NekoTab</h1>
             <span>Admin Dashboard</span>
@@ -594,8 +658,8 @@
                 <div class="stat-icon purple">👥</div>
                 <div class="stat-label">Total Users</div>
                 <div class="stat-value">{{ total_users }}</div>
-                <div class="stat-change up">
-                    <span>+{{ today_signups }}</span> today
+                <div class="stat-change {% if today_signups %}up{% endif %}">
+                    {% if today_signups %}<span>+{{ today_signups }}</span> today{% else %}<span>0</span> new today{% endif %}
                 </div>
             </div>
             
@@ -603,7 +667,7 @@
                 <div class="stat-icon blue">🏆</div>
                 <div class="stat-label">Tournaments</div>
                 <div class="stat-value">{{ total_tournaments }}</div>
-                <div class="stat-change up">
+                <div class="stat-change">
                     <span>{{ active_tournaments }}</span> active
                 </div>
             </div>
@@ -612,7 +676,7 @@
                 <div class="stat-icon green">📊</div>
                 <div class="stat-label">Page Views (24h)</div>
                 <div class="stat-value">{{ views_24h }}</div>
-                <div class="stat-change up">
+                <div class="stat-change">
                     <span>{{ unique_24h }}</span> unique
                 </div>
             </div>
@@ -621,8 +685,8 @@
                 <div class="stat-icon orange">🗳️</div>
                 <div class="stat-label">Ballots Submitted</div>
                 <div class="stat-value">{{ total_ballots }}</div>
-                <div class="stat-change up">
-                    <span>+{{ ballots_today }}</span> today
+                <div class="stat-change {% if ballots_today %}up{% endif %}">
+                    {% if ballots_today %}<span>+{{ ballots_today }}</span> today{% else %}<span>0</span> today{% endif %}
                 </div>
             </div>
         </div>
@@ -805,7 +869,13 @@
                                             {% endif %}
                                         </div>
                                     </td>
-                                    <td style="color: var(--text-secondary);">—</td>
+                                    <td style="color: var(--text-secondary);">
+                                        {% if tournament.created_at %}
+                                        {{ tournament.created_at|timesince }} ago
+                                        {% else %}
+                                        —
+                                        {% endif %}
+                                    </td>
                                     <td>
                                         {% if tournament.active %}
                                         <span class="badge badge-success">Active</span>
@@ -859,8 +929,10 @@
 
     <script>
         // Traffic Chart
-        const ctx = document.getElementById('trafficChart').getContext('2d');
-        let trafficChart = new Chart(ctx, {
+        const trafficCanvas = document.getElementById('trafficChart');
+        if (!trafficCanvas) { console.warn('trafficChart canvas not found'); }
+        const ctx = trafficCanvas ? trafficCanvas.getContext('2d') : null;
+        let trafficChart = ctx ? new Chart(ctx, {
             type: 'line',
             data: {
                 labels: [],
@@ -909,17 +981,22 @@
                     mode: 'index'
                 }
             }
-        });
+        }) : null;
 
         // Load traffic data
         function loadTrafficData(period) {
+            if (!trafficChart) return;
             fetch(`{% url 'analytics:api_traffic' %}?period=${period}`)
-                .then(r => r.json())
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                    return r.json();
+                })
                 .then(data => {
-                    trafficChart.data.labels = data.labels;
-                    trafficChart.data.datasets[0].data = data.data;
+                    trafficChart.data.labels = data.labels || [];
+                    trafficChart.data.datasets[0].data = data.data || [];
                     trafficChart.update();
-                });
+                })
+                .catch(err => console.warn('Failed to load traffic data:', err));
         }
 
         // Period selector
@@ -937,13 +1014,18 @@
         // Update live visitor count every 10 seconds
         function updateLiveVisitors() {
             fetch('{% url "analytics:api_live_visitors" %}')
-                .then(r => r.json())
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                    return r.json();
+                })
                 .then(data => {
-                    document.getElementById('live-count').textContent = data.count;
+                    const liveCountEl = document.getElementById('live-count');
+                    if (liveCountEl) liveCountEl.textContent = data.count || 0;
                     
                     // Update visitors list
                     const container = document.getElementById('live-visitors-list');
-                    if (data.visitors.length > 0) {
+                    if (!container) return;
+                    if (data.visitors && data.visitors.length > 0) {
                         container.innerHTML = '';
                         data.visitors.forEach(v => {
                             const item = document.createElement('div');
@@ -969,10 +1051,38 @@
                             </div>
                         `;
                     }
-                });
+                })
+                .catch(err => console.warn('Failed to update live visitors:', err));
         }
 
-        setInterval(updateLiveVisitors, 10000);
+        let liveInterval = setInterval(updateLiveVisitors, 10000);
+        // Pause polling when tab is hidden to save resources
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                clearInterval(liveInterval);
+            } else {
+                updateLiveVisitors();
+                liveInterval = setInterval(updateLiveVisitors, 10000);
+            }
+        });
+
+        // Mobile sidebar toggle
+        (function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const toggle = document.getElementById('menuToggle');
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('visible');
+            }
+            if (toggle && sidebar && overlay) {
+                toggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('open');
+                    overlay.classList.toggle('visible');
+                });
+                overlay.addEventListener('click', closeSidebar);
+            }
+        })();
     </script>
 </body>
 </html>
