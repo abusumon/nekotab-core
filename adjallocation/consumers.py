@@ -1,4 +1,5 @@
 import logging
+from html import escape as html_escape
 from itertools import groupby
 from operator import attrgetter
 
@@ -115,7 +116,8 @@ class AdjudicatorAllocationWorkerConsumer(EditDebateOrPanelWorkerMixin):
                     "Successfully auto-allocated adjudicators to debates. However, there was a warning:",
                     "Successfully auto-allocated adjudicators to debates. However, there were %(count)d warnings:",
                     len(user_warnings)) % {'count': len(user_warnings)}
-                msg = "<div>" + msg + "</div><ul class=\"mt-1 mb-0\"><li>" + "</li><li>".join(user_warnings) + "</li></ul>"
+                escaped_warnings = [html_escape(w) for w in user_warnings]
+                msg = "<div>" + msg + "</div><ul class=\"mt-1 mb-0\"><li>" + "</li><li>".join(escaped_warnings) + "</li></ul>"
                 level = 'warning'
             else:
                 msg = _("Successfully auto-allocated adjudicators to debates.")
@@ -161,7 +163,8 @@ class AdjudicatorAllocationWorkerConsumer(EditDebateOrPanelWorkerMixin):
                 "Successfully auto-allocated adjudicators to preformed panels. However, there was a warning:",
                 "Successfully auto-allocated adjudicators to preformed panels. However, there were %(count)d warnings:",
                 len(user_warnings)) % {'count': len(user_warnings)}
-            msg = "<div>" + msg + "</div><ul class=\"mt-1 mb-0\"><li>" + "</li><li>".join(user_warnings) + "</li></ul>"
+            escaped_warnings = [html_escape(w) for w in user_warnings]
+            msg = "<div>" + msg + "</div><ul class=\"mt-1 mb-0\"><li>" + "</li><li>".join(escaped_warnings) + "</li></ul>"
             level = 'warning'
         else:
             msg = _("Successfully auto-allocated adjudicators to preformed panels.")

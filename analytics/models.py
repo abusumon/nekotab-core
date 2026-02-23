@@ -1,4 +1,6 @@
 import uuid
+from datetime import timedelta
+
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
@@ -111,5 +113,5 @@ class ActiveSession(models.Model):
     @classmethod
     def cleanup_stale(cls):
         """Remove sessions inactive for more than 5 minutes."""
-        cutoff = timezone.now() - timezone.timedelta(minutes=5)
+        cutoff = timezone.now() - timedelta(minutes=5)
         cls.objects.filter(last_activity__lt=cutoff).delete()

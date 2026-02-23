@@ -1,7 +1,6 @@
 import json
 import logging
 from datetime import timedelta
-from collections import Counter
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -13,6 +12,8 @@ from django.db.models.functions import TruncDate, TruncHour
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.utils import timezone
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView, ListView, View
 
 from tournaments.models import Tournament, Round
@@ -38,6 +39,7 @@ class SuperuserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
         return super().handle_no_permission()
 
 
+@method_decorator(cache_page(60), name='dispatch')
 class DashboardView(SuperuserRequiredMixin, TemplateView):
     """Main analytics dashboard with overview stats."""
     template_name = 'analytics/dashboard.html'
@@ -287,7 +289,7 @@ class LiveVisitorsAPIView(SuperuserRequiredMixin, View):
     def get(self, request):
         ActiveSession.cleanup_stale()
         total_count = ActiveSession.objects.count()
-        sessions = ActiveSession.objects.all()[:20]
+        sessions = ActiveSession.objects.select_related('user').all()[:20]
         
         return JsonResponse({
             'count': total_count,
@@ -348,19 +350,22 @@ class TrafficChartAPIView(SuperuserRequiredMixin, View):
 
 
 class ExportUsersView(SuperuserRequiredMixin, View):
-    """Export all users with emails as CSV."""
-    
-    def get(self, request):
+    """Export all users with emails as CSV (POST only for CSRF protection)."""
+
+    def post(self, request):
         import csv
         from django.http import HttpResponse
-        
+
+        logger.info("User export triggered by %s from %s",
+                    request.user.username, request.META.get('REMOTE_ADDR'))
+
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="nekotab_users.csv"'
-        
+
         writer = csv.writer(response)
         writer.writerow(['Username', 'Email', 'First Name', 'Last Name', 'Date Joined', 'Last Login', 'Is Active', 'Is Staff', 'Is Superuser'])
-        
-        for user in User.objects.all().order_by('-date_joined'):
+
+        for user in User.objects.all().iterator():
             writer.writerow([
                 user.username,
                 user.email,
@@ -728,7 +733,7 @@ class DeleteTournamentsView(SuperuserRequiredMixin, View):
                     error_message=str(exc),
                     **counts,
                 )
-                failed.append({'id': tid, 'slug': slug, 'error': str(exc)})
+                failed.append({'id': tid, 'slug': slug, 'error': 'Deletion failed. Check server logs for details.'})
 
         # Bust the DB-usage cache so refreshed data appears immediately
         cache.delete(DB_USAGE_CACHE_KEY)

@@ -12,58 +12,58 @@
 
 {% block page-subnav-sections %}
 
-  <div class="btn-group scroll-speeds d-none d-md-flex">
-    <div class="btn btn-outline-secondary">
+  <div class="btn-group scroll-speeds d-none d-md-flex" role="group" aria-label="{% trans 'Scroll Speed' %}">
+    <span class="btn btn-outline-secondary">
       {% trans "Scroll Speed" %}
-    </div>
-    <div class="btn btn-outline-primary" data-target="0.07" id="scroll_draw1">
+    </span>
+    <button type="button" class="btn btn-outline-primary" data-target="0.07" id="scroll_draw1">
       {% trans "Fast" %}
-    </div>
-    <div class="btn btn-outline-primary" data-target="0.055" id="scroll_draw2">
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-target="0.055" id="scroll_draw2">
       {% trans "Medium" %}
-    </div>
-    <div class="btn btn-outline-primary" data-target="0.04" id="scroll_draw3">
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-target="0.04" id="scroll_draw3">
       {% trans "Slow" %}
-    </div>
-    <div class="btn btn-outline-primary" data-target="0.025" id="scroll_draw4">
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-target="0.025" id="scroll_draw4">
       {% trans "Extra Slow" %}
-    </div>
+    </button>
   </div>
 
   <div class="d-none d-md-flex">
-    <div class="btn btn-outline-primary" id="hide_adjudicators">
+    <button type="button" class="btn btn-outline-primary" id="hide_adjudicators">
       {% trans "Hide Adjudicators" %}
-    </div>
-    <div class="btn btn-outline-primary" id="show_adjudicators" style="display: none;">
+    </button>
+    <button type="button" class="btn btn-outline-primary" id="show_adjudicators" style="display: none;">
       {% trans "Show Adjudicators" %}
-    </div>
+    </button>
   </div>
 
-  <div class="btn-group text-size d-none d-md-flex">
-    <div class="btn btn-outline-secondary">
+  <div class="btn-group text-size d-none d-md-flex" role="group" aria-label="{% trans 'Text Size' %}">
+    <span class="btn btn-outline-secondary">
       {% trans "Text Size" %}
-    </div>
-    <div class="btn btn-outline-primary" data-target="draw-xs" id="tiny_text">
+    </span>
+    <button type="button" class="btn btn-outline-primary" data-target="draw-xs" id="tiny_text">
       {% trans "Tiny" %}
-    </div>
-    <div class="btn btn-outline-primary" data-target="draw-s" id="small_text">
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-target="draw-s" id="small_text">
       {% trans "Small" %}
-    </div>
-    <div class="btn btn-outline-primary" data-target="draw-m" id="medium_text">
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-target="draw-m" id="medium_text">
       {% trans "Medium" %}
-    </div>
-    <div class="btn btn-outline-primary" data-target="draw-l" id="large_text">
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-target="draw-l" id="large_text">
       {% trans "Large" %}
-    </div>
-    <div class="btn btn-outline-primary" data-target="draw-xl" id="huge_text">
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-target="draw-xl" id="huge_text">
       {% trans "Huge" %}
-    </div>
+    </button>
   </div>
 
-  <div class="btn btn-secondary btn-sm btn btn-stop-scrolling fixed-top text-white mt-2 mr-2"
+  <button type="button" class="btn btn-secondary btn-sm btn-stop-scrolling fixed-top text-white mt-2 mr-2"
      data-target="draw-xs" id="stop_scrolling">
     {% trans "Stop Scroll" %}
-  </div>
+  </button>
 
 {% endblock %}
 

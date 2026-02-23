@@ -61,6 +61,7 @@ class Debate(models.Model):
     importance = models.IntegerField(default=0, choices=[(i, i) for i in range(-2, 3)],
         verbose_name=_("importance"))
     result_status = models.CharField(max_length=1, choices=STATUS_CHOICES, default=STATUS_NONE,
+        db_index=True,
         verbose_name=_("result status"))
     sides_confirmed = models.BooleanField(default=True,
         verbose_name=_("sides confirmed"),
@@ -258,6 +259,9 @@ class DebateTeam(models.Model):
     class Meta:
         verbose_name = _("debate team")
         verbose_name_plural = _("debate teams")
+        constraints = [
+            models.UniqueConstraint(fields=['debate', 'side'], name='unique_debate_side'),
+        ]
 
     def __str__(self):
         return '{} in {}'.format(self.team.short_name, self.debate)

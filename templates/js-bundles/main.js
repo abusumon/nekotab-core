@@ -48,11 +48,28 @@ window.$ = $ // Set for browser window
 // Add alerts programmatically
 $.fn.extend({
   showAlert: function (alerttype, message, timeout) {
-    $('#messages-container').prepend(`
-      <div id='alertdiv' class='alert alert-${alerttype} fade show'>
-        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-        <span aria-hidden='true'>&times;</span></button>${message}
-      </div>`)
+    // Sanitise inputs to prevent DOM-based XSS — build via DOM API
+    var SAFE_TYPES = ['success', 'info', 'warning', 'danger', 'primary', 'secondary']
+    var safeType = SAFE_TYPES.indexOf(alerttype) !== -1 ? alerttype : 'info'
+
+    var alertDiv = document.createElement('div')
+    alertDiv.id = 'alertdiv'
+    alertDiv.className = 'alert alert-' + safeType + ' alert-dismissible fade show'
+
+    var closeBtn = document.createElement('button')
+    closeBtn.type = 'button'
+    closeBtn.className = 'close'
+    closeBtn.setAttribute('data-dismiss', 'alert')
+    closeBtn.setAttribute('aria-label', 'Close')
+    closeBtn.innerHTML = '<span aria-hidden="true">&times;</span>'
+
+    var textNode = document.createTextNode(message)
+    alertDiv.appendChild(closeBtn)
+    alertDiv.appendChild(textNode)
+
+    var container = document.getElementById('messages-container')
+    if (container) container.prepend(alertDiv)
+
     if (timeout && timeout !== 0) {
       // this will automatically close the alert and remove this if the users don't within in 5s
       setTimeout(() => {

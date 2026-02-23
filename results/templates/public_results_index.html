@@ -13,6 +13,11 @@
       Results for {{ round }}
     {% endblocktrans %}
     {% include "components/item-action.html" with icon="trending-up" %}
+  {% empty %}
+    <li class="list-group-item text-center text-muted py-5">
+      <i data-feather="inbox" class="mb-2"></i>
+      <p>{% trans "No results have been released yet. Check back later!" %}</p>
+    </li>
   {% endfor %}
 </ul>
 

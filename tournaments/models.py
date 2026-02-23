@@ -154,7 +154,7 @@ class Tournament(models.Model):
     slug = models.SlugField(unique=True, validators=[validate_tournament_slug, validate_dns_safe_slug],
         verbose_name=_("slug"),
         help_text=_("The sub-URL of the tournament. Use only lowercase letters, numbers, and hyphens, e.g. \"australs-2016\""))
-    active = models.BooleanField(verbose_name=_("active"), default=True)
+    active = models.BooleanField(verbose_name=_("active"), default=True, db_index=True)
     owner = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True, blank=True,
         related_name='owned_tournaments',
         verbose_name=_("owner"),
@@ -165,6 +165,7 @@ class Tournament(models.Model):
 
     # ── Isolation / visibility ──────────────────────────────────────────
     is_listed = models.BooleanField(default=False,
+        db_index=True,
         verbose_name=_("publicly listed"),
         help_text=_("If enabled, this tournament appears in the public showcase "
                     "and is visible to all users (even those without a role)."))
@@ -462,12 +463,14 @@ class Round(models.Model):
     seq = models.PositiveIntegerField(verbose_name=_("sequence number"),
         help_text=_("A number that determines the order of the round, should count consecutively from 1 for the first round"))
     completed = models.BooleanField(default=False,
+        db_index=True,
         verbose_name=_("completed"),
         help_text=_("True if the round is over, which normally means all results have been entered and confirmed"))
 
     name = models.CharField(max_length=40, verbose_name=_("name"), help_text=_("e.g. \"Round 1\""))
     abbreviation = models.CharField(max_length=10, verbose_name=_("abbreviation"), help_text=_("e.g. \"R1\""))
     stage = models.CharField(max_length=1, choices=Stage.choices, default=Stage.PRELIMINARY,
+        db_index=True,
         verbose_name=_("stage"),
         help_text=_("Preliminary = inrounds, elimination = outrounds"))
     draw_type = models.CharField(max_length=1, choices=DrawType.choices,

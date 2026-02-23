@@ -3,6 +3,7 @@
 # ==============================================================================
 
 import os
+from settings.core import _env_bool
 
 ALLOWED_HOSTS = ["*"]
 
@@ -17,7 +18,7 @@ DATABASES = {
     }
 }
 
-if bool(int(os.environ['DOCKER_REDIS'])) if 'DOCKER_REDIS' in os.environ else False:
+if _env_bool('DOCKER_REDIS'):
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",

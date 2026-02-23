@@ -133,6 +133,9 @@ class VenueConstraint(models.Model):
     class Meta:
         verbose_name = _("room constraint")
         verbose_name_plural = _("room constraints")
+        indexes = [
+            models.Index(fields=['subject_content_type', 'subject_id'], name='venue_constraint_subject_idx'),
+        ]
 
     def __str__(self):
         return "%s for %s [%s]" % (self.subject, self.category, self.priority)

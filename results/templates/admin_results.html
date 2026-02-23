@@ -13,11 +13,11 @@
   </a>
 
   <div class="modal fade" id="ironSpeeches" tabindex="-1" role="dialog"
-       aria-labelledby="" aria-hidden="true">
+       aria-labelledby="ironSpeechesTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">{% trans "Teams who have recently missed a speaker" %}</h4>
+          <h4 class="modal-title" id="ironSpeechesTitle">{% trans "Teams who have recently missed a speaker" %}</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -111,7 +111,7 @@
     {% blocktrans trimmed asvar message %}
       One or more debates in this round appear to have more than one confirmed
       ballot submission. This can cause unexpected results (or crashes), because
-      Tabbycat assumes that each debate has at most one confirmed ballot
+      NekoTab assumes that each debate has at most one confirmed ballot
       submission. This inconsistency can generally only arise if you manipulate
       the database with SQL queries directly. You'll need to find the offending
       debate(s) and ballot submissions yourself in the Edit Database area, or if

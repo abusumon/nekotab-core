@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Count, F, Q
+from django.db.models import Count, F, Max, Q
+from django.db.models.functions import Coalesce
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
@@ -73,6 +74,7 @@ class ForumThreadListAPI(generics.ListCreateAPIView):
     def get_queryset(self):
         qs = ForumThread.objects.annotate(
             _reply_count=Count('posts'),
+            _last_activity=Coalesce(Max('posts__created_at'), F('created_at')),
         ).select_related('author', 'linked_motion').prefetch_related('tags', 'author__forum_badges')
 
         # Filters
@@ -116,6 +118,7 @@ class ForumThreadListAPI(generics.ListCreateAPIView):
 class ForumThreadDetailAPI(generics.RetrieveAPIView):
     queryset = ForumThread.objects.annotate(
         _reply_count=Count('posts'),
+        _last_activity=Coalesce(Max('posts__created_at'), F('created_at')),
     ).select_related('author', 'linked_motion').prefetch_related(
         'tags', 'posts__author', 'posts__children', 'posts__votes', 'author__forum_badges',
     )
@@ -140,7 +143,7 @@ class ForumPostCreateAPI(generics.CreateAPIView):
 
 
 class ForumPostUpdateAPI(generics.UpdateAPIView):
-    queryset = ForumPost.objects.all()
+    queryset = ForumPost.objects.select_related('author').prefetch_related('votes', 'children')
     serializer_class = ForumPostSerializer
     permission_classes = [permissions.IsAuthenticated]
 

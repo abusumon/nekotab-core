@@ -1,9 +1,8 @@
 import logging
-from threading import Lock
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.db import models
+from django.db import models, transaction
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
@@ -41,6 +40,7 @@ class Submission(models.Model):
     submitter_type = models.CharField(max_length=1, choices=Submitter.choices,
         verbose_name=_("submitter type"))
     confirmed = models.BooleanField(default=False,
+        db_index=True,
         verbose_name=_("confirmed"))
 
     # relevant for private URL submissions
@@ -62,8 +62,6 @@ class Submission(models.Model):
     ip_address = models.GenericIPAddressField(blank=True, null=True,
         verbose_name=_("IP address"))
 
-    save_lock = Lock()
-
     class Meta:
         abstract = True
 
@@ -76,13 +74,21 @@ class Submission(models.Model):
         return self._unique_filter_args
 
     def save(self, *args, **kwargs):
-        # Use a lock to protect against the possibility that two submissions do this
-        # at the same time and get the same version number or both be confirmed.
-        with self.save_lock:
+        # Use a database-level lock (SELECT FOR UPDATE) to protect against the
+        # possibility that two submissions in separate worker processes race to
+        # get the same version number or both be confirmed.  The old approach
+        # used threading.Lock(), which only serialised within a single process.
+        with transaction.atomic():
+            # Lock existing rows for this debate/round to prevent concurrent
+            # version assignment or double-confirmation.
+            existing = (
+                self.__class__.objects
+                .select_for_update()
+                .filter(**self._unique_filter_args)
+            )
 
             # Assign the version field to one more than the current maximum version.
             if self.pk is None:
-                existing = self.__class__.objects.filter(**self._unique_filter_args)
                 if existing.exists():
                     self.version = existing.aggregate(models.Max('version'))['version__max'] + 1
                 else:
@@ -90,8 +96,7 @@ class Submission(models.Model):
 
             # Check for uniqueness.
             if self.confirmed:
-                unconfirmed = self.__class__.objects.filter(confirmed=True,
-                        **self._unique_unconfirm_args()).exclude(pk=self.pk).update(confirmed=False)
+                unconfirmed = existing.filter(confirmed=True).exclude(pk=self.pk).update(confirmed=False)
                 if unconfirmed > 0:
                     logger.info("Unconfirmed %d %s so that %s could be confirmed", unconfirmed, self._meta.verbose_name_plural, self)
 

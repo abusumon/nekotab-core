@@ -175,6 +175,9 @@ class PreformedPanelAdjudicator(models.Model):
     class Meta:
         verbose_name = _("preformed panel adjudicator")
         verbose_name_plural = _("preformed panel adjudicators")
+        constraints = [
+            models.UniqueConstraint(fields=['panel', 'adjudicator'], name='unique_panel_adjudicator'),
+        ]
 
     def __str__(self):
         return "[{x.id}] {x.adjudicator.name} in panel {x.panel_id}".format(x=self)

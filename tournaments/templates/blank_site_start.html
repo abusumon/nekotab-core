@@ -4,7 +4,7 @@
 {% block nav %}{% endblock %}
 
 {% block head-title %}{% endblock %}
-{% block page-title %}{% trans "Welcome to Tabbycat!" %}{% endblock %}
+{% block page-title %}{% trans "Welcome to NekoTab!" %}{% endblock %}
 
 {% block content %}
 
@@ -17,7 +17,7 @@
       <form action="." method="POST">
       {% csrf_token %}
 
-        {% trans "Welcome to Tabbycat!" as title %}
+        {% trans "Welcome to NekoTab!" as title %}
         {% include "components/form-title.html" with emoji="👋" %}
 
         {% blocktrans trimmed asvar p1 %}

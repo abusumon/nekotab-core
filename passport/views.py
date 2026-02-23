@@ -45,8 +45,13 @@ class PassportProfileView(TemplateView):
         context = super().get_context_data(**kwargs)
         user_id = kwargs.get('user_id')
         try:
-            passport = DebatePassport.objects.select_related('user', 'cached_stats').get(user_id=user_id)
-            if not passport.is_public and self.request.user.id != user_id:
+            user_id_int = int(user_id)
+        except (TypeError, ValueError):
+            context['page_title'] = 'Passport Not Found'
+            return context
+        try:
+            passport = DebatePassport.objects.select_related('user', 'cached_stats').get(user_id=user_id_int)
+            if not passport.is_public and self.request.user.id != user_id_int:
                 context['page_title'] = 'Private Profile'
                 context['is_private'] = True
             else:

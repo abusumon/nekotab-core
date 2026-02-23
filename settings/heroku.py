@@ -204,6 +204,6 @@ if not environ.get('DISABLE_SENTRY') and _sentry_dsn:
             LoggingIntegration(event_level=logging.WARNING),
             RedisIntegration(),
         ],
-        send_default_pii=True,
+        send_default_pii=False,
         release=TABBYCAT_VERSION,
     )

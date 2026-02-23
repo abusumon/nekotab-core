@@ -4,9 +4,12 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from django import forms
+import logging
 import time
 
 from .models import Article, ArticleCategory
+
+logger = logging.getLogger(__name__)
 
 
 # ============================================================
@@ -100,6 +103,7 @@ class ContactForm(forms.Form):
     def clean_form_loaded_at(self):
         """Reject submissions faster than 3 seconds (bot behavior)."""
         loaded_at = self.cleaned_data.get('form_loaded_at', 0)
+        # Prefer server-side timestamp if available via view
         if time.time() - loaded_at < 3:
             raise forms.ValidationError("Submission too fast.")
         return loaded_at
@@ -111,7 +115,8 @@ class ContactView(FormView):
     success_url = '/contact/?sent=1'
 
     def get_initial(self):
-        return {'form_loaded_at': time.time()}
+        self.request.session['contact_form_loaded_at'] = time.time()
+        return {}
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
@@ -122,16 +127,21 @@ class ContactView(FormView):
 
     def form_valid(self, form):
         d = form.cleaned_data
+        # Check server-side timestamp (tamper-proof)
+        loaded_at = self.request.session.pop('contact_form_loaded_at', 0)
+        if time.time() - loaded_at < 3:
+            form.add_error(None, "Submission too fast.")
+            return self.form_invalid(form)
         try:
             send_mail(
                 subject=f"[NekoTab Contact] {d['subject']}",
-                message=f"From: {escape(d['name'])} <{d['email']}>\n\n{escape(d['message'])}",
+                message=f"From: {d['name']} <{d['email']}>\n\n{d['message']}",
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=['support@nekotab.app'],
                 fail_silently=True,
             )
         except Exception:
-            pass  # Fail silently — log via Sentry in production
+            logger.exception("Failed to send contact form email")
         return super().form_valid(form)
 
 

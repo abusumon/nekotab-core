@@ -137,7 +137,7 @@ class Person(models.Model):
         verbose_name=_("name"))
     last_name = models.CharField(max_length=70, blank=True, null=True, verbose_name=_("last name"),
         help_text=_("The last name may be used for team names or code names"))
-    email = models.EmailField(blank=True, null=True,
+    email = models.EmailField(blank=True, null=True, db_index=True,
         verbose_name=_("email address"))
     phone = models.CharField(max_length=40, blank=True,
         verbose_name=_("phone"))

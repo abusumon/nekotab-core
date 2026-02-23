@@ -822,7 +822,8 @@ class BaseStandingsView(TournamentAPIMixin, TournamentPublicAPIMixin, GenericAPI
 
     def get_metrics(self):
         if self.request.query_params.get('metrics'):
-            return self.request.query_params.get('metrics').split(","), self.request.query_params.get('extra_metrics').split(",")
+            extra = self.request.query_params.get('extra_metrics', '')
+            return self.request.query_params.get('metrics').split(","), extra.split(",") if extra else []
 
         pref_model = self.model.__name__.lower()
         return self.tournament.pref(pref_model + '_standings_precedence'), self.tournament.pref(pref_model + '_standings_extra_metrics')
@@ -832,8 +833,18 @@ class BaseStandingsView(TournamentAPIMixin, TournamentPublicAPIMixin, GenericAPI
         return qs
 
     def get_max_round(self):
-        if self.request.query_params.get('round'):
-            return Round.objects.get(tournament=self.tournament, seq=int(self.request.query_params.get('round')))
+        round_param = self.request.query_params.get('round')
+        if round_param:
+            try:
+                seq = int(round_param)
+            except (TypeError, ValueError):
+                from rest_framework.exceptions import ValidationError
+                raise ValidationError({'round': 'Must be an integer.'})
+            try:
+                return Round.objects.get(tournament=self.tournament, seq=seq)
+            except Round.DoesNotExist:
+                from rest_framework.exceptions import ValidationError
+                raise ValidationError({'round': f'Round with seq={seq} not found.'})
         return Round.objects.filter(tournament=self.tournament).order_by('seq').last()
 
     @extend_schema(tags=['standings'], parameters=[

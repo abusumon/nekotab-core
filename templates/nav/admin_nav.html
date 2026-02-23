@@ -1,13 +1,13 @@
 {% load debate_tags static i18n %}
 
-<div class="list-group border-0 card text-center text-md-left" id="sidebar" data-children=".list-group-item">
+<nav class="list-group border-0 card text-center text-md-left" id="sidebar" data-children=".list-group-item" aria-label="{% trans 'Admin sidebar' %}">
 
   <div class="list-group-item d-inline-block main-menu-item">
     <a href="#tlisth" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"
        class="tournament-title d-flex justify-content-between align-items-center">
       <div class="mx-auto mx-md-0 text-center">
         {% blocktrans trimmed asvar logo_alt %}
-          Tabbycat Logo
+          NekoTab Logo
         {% endblocktrans %}
         {% if on_local %}
           {% include "nav/logo_local.html" with width=18 height=18 alt=logo_alt %}
@@ -81,7 +81,7 @@
         <span class="circle-icon small-circle"></span><i data-feather="book"></i>{% trans "Participants" %}
       </a>
       <a href="{% tournamenturl 'privateurls-list' %}"
-         class="list-group-item" data-parent="#setuph}">
+         class="list-group-item" data-parent="#setuph">
         <span class="circle-icon small-circle"></span><i data-feather="link"></i>{% trans "Private URLs" %}
       </a>
       <a href="{% tournamenturl 'tournament-set-schedule' %}"
@@ -309,4 +309,4 @@
     </form>
   </div>
 
-</div>
+</nav>

@@ -380,7 +380,7 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
                     f"URL: {tournament_url}\n"
                 ),
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=['abusumon1701@gmail.com'],
+                recipient_list=[getattr(settings, 'ADMIN_NOTIFICATION_EMAIL', settings.DEFAULT_FROM_EMAIL)],
                 fail_silently=True,
             )
             logger.info("Tournament creation admin email sent for '%s'", tournament.name)

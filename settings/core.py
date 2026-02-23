@@ -4,6 +4,14 @@ from django.contrib.messages import constants as messages
 from django.utils.translation import gettext_lazy as _
 
 
+def _env_bool(name, default=False):
+    """Parse a boolean environment variable.  Accepts 1/0, true/false, yes/no (case-insensitive)."""
+    val = os.environ.get(name, '')
+    if not val:
+        return default
+    return val.strip().lower() in ('1', 'true', 'yes')
+
+
 BASE_DIR = os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -13,10 +21,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ADMINS = ('Tabbycat Debate', 'contact@tabbycat-debate.org'),
 MANAGERS = ADMINS
-DEBUG = bool(int(os.environ['DEBUG'])) if 'DEBUG' in os.environ else False
+DEBUG = _env_bool('DEBUG')
 ENABLE_DEBUG_TOOLBAR = False # Must default to false; overriden in Dev config
 DISABLE_SENTRY = True # Overriden in Heroku config
-SECRET_KEY = r'#2q43u&tp4((4&m3i8v%w-6z6pp7m(v0-6@w@i!j5n)n15epwc'
+
+# SECRET_KEY must be provided via environment variable in all environments.
+# local.py generates a random key for development; production configs
+# (heroku.py, render.py) read DJANGO_SECRET_KEY from the environment.
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
+if not SECRET_KEY and not os.environ.get('LOCAL_SETTINGS', ''):
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured(
+        "DJANGO_SECRET_KEY environment variable is required. "
+        "Set it in your environment or use local.py for development."
+    )
 
 # ==============================================================================
 # Version
@@ -96,9 +114,9 @@ FORMAT_MODULE_PATH = [
 # ==============================================================================
 
 MIDDLEWARE = [
-    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # User language preferences; must be after Session
@@ -203,7 +221,6 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.template.context_processors.request',  # for Jet
                 'utils.context_processors.debate_context',  # for tournament config vars
-                'django.template.context_processors.i18n',  # for serving static language translations
                 'dynamic_preferences.processors.global_preferences',
             ],
             'loaders': [
@@ -369,6 +386,14 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': os.environ.get('API_THROTTLE_ANON', '60/minute'),
+        'user': os.environ.get('API_THROTTLE_USER', '300/minute'),
+    },
     'DEFAULT_PAGINATION_CLASS': 'drf_link_header_pagination.LinkHeaderLimitOffsetPagination',
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
@@ -378,7 +403,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Tabbycat API',
+    'TITLE': 'NekoTab API',
     'DESCRIPTION': 'Parliamentary debate tabulation software',
     'VERSION': '1.3.0',
     'SERVE_INCLUDE_SCHEMA': False,
@@ -397,8 +422,22 @@ SPECTACULAR_SETTINGS = {
 # CORS-related settings for REST framework
 # ----------------------------------------
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    o.strip() for o in
+    os.environ.get('CORS_ALLOWED_ORIGINS', 'https://nekotab.app,https://www.nekotab.app').split(',')
+    if o.strip()
+]
 CORS_URLS_REGEX = r'^/api(/.*)?$'
+
+# ==============================================================================
+# Security headers
+# ==============================================================================
+
+SECURE_HSTS_SECONDS = int(os.environ.get('SECURE_HSTS_SECONDS', 31536000))
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
 # ==============================================================================
 # Password validators
@@ -424,7 +463,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # ==============================================================================
 
 # Disabled by default; enable in environment settings (e.g., heroku.py)
-SUBDOMAIN_TOURNAMENTS_ENABLED = bool(int(os.environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', '0')))
+SUBDOMAIN_TOURNAMENTS_ENABLED = _env_bool('SUBDOMAIN_TOURNAMENTS_ENABLED')
 SUBDOMAIN_BASE_DOMAIN = os.environ.get('SUBDOMAIN_BASE_DOMAIN', '')
 RESERVED_SUBDOMAINS = os.environ.get(
     'RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media'

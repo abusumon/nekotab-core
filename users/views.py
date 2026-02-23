@@ -4,10 +4,15 @@ from threading import Lock
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetView
+from django.core.mail import send_mail
 from django.http.response import Http404
 from django.shortcuts import redirect
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.translation import gettext_lazy as _
+from django.views import View
 from django.views.generic import FormView
 
 from actionlog.mixins import LogActionMixin
@@ -17,6 +22,7 @@ from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin
 
 from .forms import AcceptInvitationForm, InviteUserForm, PublicSignupForm, SuperuserCreationForm
+from .tokens import email_verification_token
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
@@ -103,7 +109,11 @@ class AcceptInvitationView(TournamentMixin, PasswordResetConfirmView):
 
 
 class PublicSignupView(FormView):
-    """A view for public user registration."""
+    """A view for public user registration.
+
+    Creates an inactive account and sends a verification email.  The user
+    must click the link in the email to activate the account.
+    """
 
     form_class = PublicSignupForm
     template_name = "public_signup.html"
@@ -117,6 +127,53 @@ class PublicSignupView(FormView):
 
     def form_valid(self, form):
         user = form.save()
-        login(self.request, user)
-        messages.success(self.request, _("Welcome! Your account has been created successfully. You can now create tournaments."))
+
+        # Build verification URL
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        token = email_verification_token.make_token(user)
+        verify_url = self.request.build_absolute_uri(
+            f'/accounts/verify/{uid}/{token}/'
+        )
+
+        # Send verification email
+        subject = _("Verify your NekoTab account")
+        body = render_to_string('registration/email_verification.html', {
+            'user': user,
+            'verify_url': verify_url,
+        })
+        try:
+            send_mail(subject, body, None, [user.email], fail_silently=False)
+            messages.success(
+                self.request,
+                _("Account created! Please check your email to verify your account before logging in."),
+            )
+        except Exception:
+            logger.warning('Failed to send verification email to %s', user.email, exc_info=True)
+            messages.warning(
+                self.request,
+                _("Account created, but we couldn't send a verification email. Please contact an administrator."),
+            )
+
         return super().form_valid(form)
+
+
+class ActivateAccountView(View):
+    """Activate a user account via the token link sent by email."""
+
+    def get(self, request, uidb64, token):
+        try:
+            uid = force_str(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+
+        if user is not None and email_verification_token.check_token(user, token):
+            user.is_active = True
+            user.save(update_fields=['is_active'])
+            login(request, user)
+            messages.success(request, _("Your email has been verified. Welcome to NekoTab!"))
+            logger.info('User %s verified email and activated account.', user.username)
+        else:
+            messages.error(request, _("The verification link is invalid or has expired."))
+
+        return redirect('tabbycat-index')

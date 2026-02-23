@@ -92,7 +92,7 @@
     <ul class="list-group">
       {% tournamenturl 'tournament-set-current-round' as url %}
       {% trans "Manually Set Current Round" as title %}
-      {% trans "Tabbycat will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page." as description %}
+        {% trans "NekoTab will prompt you to advance the current round on each round's results page. However, if there are special circumstances that require you to override this and set the current round to something else, use this page." as description %}
       {% include "components/item-action.html" with type="primary" icon="clock" text=title extra=description %}
 
       {% tournamenturl 'set-round-weights' as url %}

@@ -21,10 +21,15 @@ if os.environ.get('DJANGO_SECRET_KEY', ''):
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '.nekotab.app').split(',')
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# HTTPS enforcement
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -79,12 +84,12 @@ CHANNEL_LAYERS = {
 if not os.environ.get('DISABLE_SENTRY'):
     DISABLE_SENTRY = False
     sentry_sdk.init(
-        dsn="https://6bf2099f349542f4b9baf73ca9789597@o85113.ingest.sentry.io/185382",
+        dsn=os.environ.get('SENTRY_DSN', ''),
         integrations=[
             DjangoIntegration(),
             LoggingIntegration(event_level=logging.WARNING),
             RedisIntegration(),
         ],
-        send_default_pii=True,
+        send_default_pii=False,
         release=TABBYCAT_VERSION,
     )

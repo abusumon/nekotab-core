@@ -93,8 +93,8 @@ class ForumThread(models.Model):
 
     title = models.CharField(max_length=300, verbose_name=_("title"))
     slug = models.SlugField(max_length=320, unique=True, verbose_name=_("slug"))
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-        related_name='forum_threads', verbose_name=_("author"))
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
+        null=True, blank=True, related_name='forum_threads', verbose_name=_("author"))
 
     # Structured categorization
     debate_format = models.CharField(max_length=20, choices=DebateFormat.choices,
@@ -138,6 +138,9 @@ class ForumThread(models.Model):
 
     @property
     def last_activity(self):
+        # Use annotation when available to avoid N+1 queries
+        if hasattr(self, '_last_activity') and self._last_activity is not None:
+            return self._last_activity
         last_post = self.posts.order_by('-created_at').first()
         return last_post.created_at if last_post else self.created_at
 
@@ -162,9 +165,9 @@ class ForumPost(models.Model):
 
     thread = models.ForeignKey(ForumThread, on_delete=models.CASCADE,
         related_name='posts', verbose_name=_("thread"))
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-        related_name='forum_posts', verbose_name=_("author"))
-    parent = models.ForeignKey('self', on_delete=models.CASCADE,
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
+        null=True, blank=True, related_name='forum_posts', verbose_name=_("author"))
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL,
         null=True, blank=True, related_name='children', verbose_name=_("parent post"),
         help_text=_("The post this is replying to (for argument tree structure)"))
 
@@ -201,8 +204,10 @@ class ForumPost(models.Model):
 
     @property
     def vote_score(self):
-        upvotes = self.votes.filter(vote_type=ForumVote.VoteType.UPVOTE).count()
-        downvotes = self.votes.filter(vote_type=ForumVote.VoteType.DOWNVOTE).count()
+        # Use prefetch cache when available to avoid 2 queries per post
+        votes = self.votes.all()
+        upvotes = sum(1 for v in votes if v.vote_type == ForumVote.VoteType.UPVOTE)
+        downvotes = sum(1 for v in votes if v.vote_type == ForumVote.VoteType.DOWNVOTE)
         return upvotes - downvotes
 
 
@@ -274,13 +279,16 @@ class ForumReport(models.Model):
         related_name='reports', verbose_name=_("post"))
     reason = models.CharField(max_length=20, choices=ReportReason.choices, verbose_name=_("reason"))
     details = models.TextField(blank=True, verbose_name=_("details"))
-    resolved = models.BooleanField(default=False, verbose_name=_("resolved"))
+    resolved = models.BooleanField(default=False, db_index=True, verbose_name=_("resolved"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
 
     class Meta:
         verbose_name = _("forum report")
         verbose_name_plural = _("forum reports")
         ordering = ['-created_at']
+        constraints = [
+            models.UniqueConstraint(fields=['reporter', 'post'], name='unique_report_per_user'),
+        ]
 
     def __str__(self):
         return f"Report by {self.reporter} on {self.post}"

@@ -1656,16 +1656,18 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ('id', 'url', 'username', 'password', 'is_superuser', 'is_staff', 'email', 'is_active', 'date_joined', 'last_login', 'tournaments')
-        read_only_fields = ('date_joined', 'last_login')
+        read_only_fields = ('date_joined', 'last_login', 'is_superuser', 'is_staff')
         extra_kwargs = {
             'password': {'write_only': True},
         }
 
     def create(self, validated_data):
+        from django.contrib.auth.password_validation import validate_password
+        password = validated_data.get('password')
+        validate_password(password)
         user = self.Meta.model(**validated_data)
-        user.set_password(validated_data['password'])
+        user.set_password(password)
         user.save()
-
         return user
 
 

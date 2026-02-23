@@ -34,7 +34,7 @@ class APIEnabledPermission(BasePermission):
 class PublicPreferencePermission(BasePermission):
 
     def has_permission(self, request, view):
-        return (request.user and request.user.is_staff) or (
+        return (request.user.is_authenticated and request.user.is_staff) or (
             request.method in SAFE_METHODS and self.get_tournament_preference(view, view.access_operator))
 
     def get_tournament_preference(self, view, op):
@@ -77,7 +77,9 @@ class PerTournamentPermissionRequired(BasePermission):
         }).get(getattr(view, 'action', view.request.method), False)
 
     def has_permission(self, request, view):
-        if not hasattr(view, 'tournament') or not request.user:
-            return True
+        if not request.user or not request.user.is_authenticated:
+            return False
+        if not hasattr(view, 'tournament'):
+            return request.user.is_staff
         perm = self.get_required_permission(view)
         return has_permission(request.user, perm, view.tournament)

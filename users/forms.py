@@ -59,7 +59,11 @@ class AcceptInvitationForm(SetPasswordForm):
 
 
 class PublicSignupForm(UserCreationForm):
-    """A form for public user registration."""
+    """A form for public user registration.
+
+    Creates the user with ``is_active=False`` so they must verify their
+    email address before they can log in.
+    """
 
     class Meta(UserCreationForm.Meta):
         fields = ("username", "email", "password1", "password2")
@@ -69,9 +73,16 @@ class PublicSignupForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
 
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if get_user_model().objects.filter(email=email, is_active=True).exists():
+            raise forms.ValidationError(_("An account with this email address already exists."))
+        return email
+
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']
+        user.is_active = False  # require email verification
         if commit:
             user.save()
         return user

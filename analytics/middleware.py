@@ -1,10 +1,26 @@
 import re
+import threading
+import time
+
 from django.utils import timezone
 from .models import PageView, ActiveSession
 
 
 class AnalyticsMiddleware:
-    """Middleware to track page views and active sessions."""
+    """Middleware to track page views and active sessions.
+
+    PageView records are buffered in memory and flushed via bulk_create
+    every BUFFER_SIZE inserts or FLUSH_INTERVAL seconds — whichever comes
+    first.  This turns N individual INSERTs into a single multi-row INSERT,
+    dramatically reducing DB round-trips under load.
+    """
+
+    BUFFER_SIZE = 50          # max records before forced flush
+    FLUSH_INTERVAL = 10       # seconds between time-based flushes
+
+    _buffer: list = []
+    _buffer_lock = threading.Lock()
+    _last_flush: float = 0.0  # monotonic timestamp of last flush
     
     # Paths to exclude from tracking
     EXCLUDED_PATTERNS = [
@@ -59,7 +75,7 @@ class AnalyticsMiddleware:
         ua = ua_string.lower()
         
         # Device type
-        if 'mobile' in ua or 'android' in ua and 'mobile' in ua:
+        if ('mobile' in ua or 'android' in ua) and 'tablet' not in ua:
             device = 'Mobile'
         elif 'tablet' in ua or 'ipad' in ua:
             device = 'Tablet'
@@ -136,8 +152,8 @@ class AnalyticsMiddleware:
             else:
                 full_url = request.build_absolute_uri()
             
-            # Create page view record
-            PageView.objects.create(
+            # Buffer the page view for bulk insertion
+            pv = PageView(
                 path=display_path,
                 full_url=full_url,
                 session_key=session_key,
@@ -149,6 +165,7 @@ class AnalyticsMiddleware:
                 browser=browser,
                 os=os,
             )
+            self._enqueue(pv)
             
             # Update active session
             ActiveSession.objects.update_or_create(
@@ -167,5 +184,41 @@ class AnalyticsMiddleware:
                 ActiveSession.cleanup_stale()
                 
         except Exception:
-            # Silently fail - don't break the site for analytics
-            pass
+            # Don't break the site for analytics — but log so we can debug
+            import logging
+            logging.getLogger(__name__).warning('Analytics tracking failed', exc_info=True)
+
+    # ------------------------------------------------------------------
+    # Write-behind buffer helpers
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def _enqueue(cls, page_view):
+        """Add a PageView to the buffer and flush if thresholds are met."""
+        with cls._buffer_lock:
+            cls._buffer.append(page_view)
+            now = time.monotonic()
+            should_flush = (
+                len(cls._buffer) >= cls.BUFFER_SIZE
+                or (now - cls._last_flush) >= cls.FLUSH_INTERVAL
+            )
+        if should_flush:
+            cls._flush()
+
+    @classmethod
+    def _flush(cls):
+        """Bulk-write buffered PageView records to the database."""
+        with cls._buffer_lock:
+            if not cls._buffer:
+                return
+            batch = cls._buffer[:]
+            cls._buffer = []
+            cls._last_flush = time.monotonic()
+        try:
+            PageView.objects.bulk_create(batch, ignore_conflicts=True)
+        except Exception:
+            import logging
+            logging.getLogger(__name__).warning(
+                'Analytics bulk flush failed for %d records', len(batch),
+                exc_info=True,
+            )
