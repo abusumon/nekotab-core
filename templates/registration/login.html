@@ -2,7 +2,7 @@
 {% load add_field_css i18n %}
 
 {% block noindex %}<meta name="robots" content="noindex, nofollow" />{% endblock %}
-{% block page-title %}🔓{% trans "Login" context "page title" %}{% endblock %}
+{% block page-title %}{% trans "Login" context "page title" %}{% endblock %}
 {% block head-title %}{% endblock %}
 
 {% block nav %}
@@ -13,15 +13,7 @@
   </div>
 </nav>
 {% endblock %}
-{% block page-alerts %}
-<!--[if lte IE 9]>
-<div class="alert alert-warning">
-  Hey it looks like you are running an old version of Internet Explorer. As a
-  result some parts of NekoTab <strong>may not work properly</strong>. Switch to a newer
-  browser if possible!
-</div>
-<![endif]-->
-{% endblock %}
+{% block page-alerts %}{% endblock %}
 
 {% block content %}
 

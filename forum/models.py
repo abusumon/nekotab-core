@@ -11,7 +11,7 @@ class ForumTag(models.Model):
     """Tags for categorizing forum posts (e.g., 'Strategy', 'Theory')."""
     name = models.CharField(max_length=50, unique=True, verbose_name=_("name"))
     slug = models.SlugField(max_length=60, unique=True, verbose_name=_("slug"))
-    color = models.CharField(max_length=7, default="#663da0", verbose_name=_("color hex"),
+    color = models.CharField(max_length=7, default="#6366f1", verbose_name=_("color hex"),
         help_text=_("Hex color for tag badge"))
     description = models.CharField(max_length=200, blank=True, verbose_name=_("description"))
 

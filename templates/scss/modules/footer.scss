@@ -2,22 +2,21 @@
 // Footer Layout Changes
 //------------------------------------------------------------------------------
 
-// As per http://v4-alpha.getbootstrap.com/examples/sticky-footer-navbar/
-
 html {
   min-height: 100%;
   position: relative;
 }
 
 body {
-  margin-bottom: $footer-height;
+  /* Use padding-bottom instead of fixed margin for dynamic footer height */
+  padding-bottom: 40px;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  height: $footer-height;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-top: auto;
 
   a {
     border-bottom: 1px solid theme-color("secondary");
@@ -28,30 +27,6 @@ body {
 //------------------------------------------------------------------------------
 // Responsive tweaks
 //------------------------------------------------------------------------------
-
-// Applies just to phones
-@include media-breakpoint-up(xs) {
-
-  .footer {
-    height: $footer-height * 0.9;
-  }
-}
-
-// Applies just to tablets
-@include media-breakpoint-up(sm) {
-
-  .footer {
-    height: $footer-height * 0.95;
-  }
-}
-
-// Applies just to laptops/desktops
-@include media-breakpoint-up(lg) {
-
-  .footer {
-    height: $footer-height;
-  }
-}
 
 // For Desktops
 @media (min-width: breakpoint-min(sm, $grid-breakpoints)) {

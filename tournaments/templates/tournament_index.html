@@ -3,16 +3,7 @@
 
 {% block content %}
 
-  {% if round.is_break_round %}
-    {% blocktrans trimmed with amount=tournament.billable_teams asvar text %}
-      We hope you've enjoyed using NekoTab for your tournament. We would appreciate if you would
-      make a donation to the project in order to support its ongoing development and maintenance.
-      For a tournament of this size, we suggest a donation of <strong>${{ amount }}</strong>.
-      <a href="https://opencollective.com/tabbycat">Learn more about donating.</a>
-    {% endblocktrans %}
-    {% include "components/item-info.html" with type="info" icon="heart" %}
-    <hr>
-  {% endif %}
+
 
   {% haspermission "add.team" as teams_perm %}
   {% haspermission "edit.roundavailability.team" as availability_perm %}
@@ -30,10 +21,9 @@
             tournament. There are a number of ways to do this. For small-to-medium
             tournaments, the simple importer is your best bet.
           {% endblocktrans %}
-          {# Translators: The documentation where the link goes to is in English; translations should mention this with "(in English)" after the link. #}
           {% blocktrans trimmed %}
             For more information, please consult our
-            <a href="https://tabbycat.readthedocs.io/en/{{ readthedocs_version }}/use/importing-data.html" class="alert-link" target="_blank">
+            <a href="https://github.com/abusumon/nekotab-app/wiki" class="alert-link" target="_blank">
             documentation on importing initial data</a>.
           {% endblocktrans %}
         </p>

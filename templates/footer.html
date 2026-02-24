@@ -19,37 +19,25 @@
           {% blocktrans trimmed %}
             NekoTab is an open-source project developed by volunteers and is free to use.
           {% endblocktrans %}
-          {% if tournament and tournament.billable_teams > 0 %}
-            {% blocktrans trimmed with amount=tournament.billable_teams %}
-              For a tournament of this size, we suggest <a href="https://opencollective.com/tabbycat/contribute/licensing-29466/checkout?amount={{ amount }}">a donation of <strong>${{ amount }}</strong></a>.
-            {% endblocktrans %}
-            <a href="https://opencollective.com/tabbycat">
-              {% trans "Learn more about donating." %}
-            </a>
-          {% else %}
-            {% blocktrans trimmed %}
-              <a href="https://opencollective.com/tabbycat">Donations to NekoTab from individuals or organisations</a> are much appreciated and help us to continue to develop, support, and maintain NekoTab.
-            {% endblocktrans %}
-          {% endif %}
         </p>
       </div>
 
       <div class="col-lg-4 col-md-4 mt-2 mt-md-0">
-        <h6 class="d-inline-block">{% blocktrans trimmed %}Still timing debates with the stopwatch app?{% endblocktrans %}</h6>
+        <h6 class="d-inline-block">{% trans "Need help?" %}</h6>
         <p class="text-muted">
           {% blocktrans trimmed %}
-            Using an app designed for debate timekeeping makes speaking and adjudicating easier!
-            Check out <a href="https://itunes.apple.com/app/apple-store/id1156065589?pt=814172&ct=Tabbycat%20Installs&mt=8">Timekept</a> (iPhone/iPad)
-            or <a href="https://play.google.com/store/apps/details?id=net.czlee.debatekeeper&referrer=utm_source%3Dtabbycat%26utm_medium%3Dfooter">Debatekeeper</a> (Android).
+            Visit our <a href="https://github.com/abusumon/nekotab-app/wiki">documentation</a> or
+            <a href="/contact/">contact us</a> if you need help setting up your tournament.
           {% endblocktrans %}
         </p>
       </div>
 
       <div class="col-lg-2 col-md-3 mt-2 mt-md-0">
-        <h6 class="d-inline-block">{% blocktrans trimmed %}Our Organisation{% endblocktrans %}</h6>
+        <h6 class="d-inline-block">{% trans "Open Source" %}</h6>
         <p class="text-muted">
           {% blocktrans trimmed %}
-            NekoTab is supported by the <a href="https://tabbycat-debate.org/">Tabbycat Debate Association</a>, a non-profit for advancing open debate technology.
+            NekoTab is <a href="https://github.com/abusumon/nekotab-app">open source on GitHub</a>.
+            Contributions and feedback are welcome.
           {% endblocktrans %}
         </p>
       </div>
@@ -59,45 +47,33 @@
       <div class="col mt-2">
         <ul class="nav justify-content-center" aria-label="{% trans 'Site links' %}">
           <li class="nav-item p-2">
-            <i data-feather="globe"></i>
+            <i data-feather="globe" aria-hidden="true"></i>
             <a class="nav-link p-0 d-inline-block" href="#" data-toggle="modal" data-target="#setLanguageModal">
               {% trans "Language" as local_language_label %}
               Language {% if LANGUAGE_CODE != 'en' and local_language_label != "Language" %} / {{ local_language_label }}{% endif %}
             </a>
           </li>
           <li class="nav-item p-2">
-            <i data-feather="github"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://github.com/TabbycatDebate/tabbycat/" target="_blank" rel="noopener noreferrer">
+            <i data-feather="github" aria-hidden="true"></i>
+            <a class="nav-link p-0 d-inline-block" href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener noreferrer">
               {% trans "GitHub" %}
             </a>
           </li>
           <li class="nav-item p-2">
-            <i data-feather="book"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://tabbycat.readthedocs.io/en/stable/" target="_blank" rel="noopener noreferrer">
+            <i data-feather="book" aria-hidden="true"></i>
+            <a class="nav-link p-0 d-inline-block" href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener noreferrer">
               {% trans "Documentation" %}
             </a>
           </li>
           <li class="nav-item p-2">
-            <i data-feather="help-circle"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://tabbycat.readthedocs.io/en/stable/about/support.html" target="_blank" rel="noopener noreferrer">
+            <i data-feather="help-circle" aria-hidden="true"></i>
+            <a class="nav-link p-0 d-inline-block" href="/contact/">
               {% trans "Support" %}
-            </a>
-          </li>
-          <li class="nav-item p-2">
-            <i data-feather="facebook"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://www.facebook.com/TabbycatDebate/" target="_blank" rel="noopener noreferrer">
-              {% trans "Facebook" %}
-            </a>
-          </li>
-          <li class="nav-item p-2">
-            <i data-feather="upload-cloud"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://github.com/TabbycatDebate/tabbycat#%EF%B8%8F-installation">
-              {% trans "Set Up A Copy" %}
             </a>
           </li>
         </ul>
 
-        {# Trust / Legal links — required for AdSense compliance #}
+        {# Trust / Legal links #}
         <ul class="nav justify-content-center mt-2">
           <li class="nav-item p-2">
             <a class="nav-link p-0 d-inline-block text-muted small" href="/learn/">Learn</a>

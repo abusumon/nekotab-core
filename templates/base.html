@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#663da0">
+  <meta name="theme-color" content="#6366f1">
   <meta name="google-adsense-account" content="ca-pub-4135779137186219">
   {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}" />{% endif %}
   <meta name="keywords" content="{{ seo_keywords }}" />
@@ -87,7 +87,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{% static 'logo-32x32.png' %}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{% static 'logo-16x16.png' %}" sizes="16x16" />
-  <link rel="mask-icon" href="{% static 'safari-tab.svg' %}" color="rgb(102, 61, 160)">
+  <link rel="mask-icon" href="{% static 'safari-tab.svg' %}" color="#6366f1">
   
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   {% block extra-css %}{% endblock %}
@@ -253,7 +253,8 @@
     <script>
       window.buildData = { // Pass to Sentry
         version: '{% if tabbycat_version %}{{ tabbycat_version }}{% else %}?{% endif %}',
-        sentry: {% if disable_sentry %}false{% else %}true{% endif %}
+        sentry: {% if disable_sentry %}false{% else %}true{% endif %},
+        sentryDsn: '{{ SENTRY_DSN|default:"" }}'
       }
     </script>
 
