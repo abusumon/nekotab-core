@@ -5,6 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-adsense-account" content="ca-pub-4135779137186219">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4135779137186219"
+      crossorigin="anonymous"></script>
   <title>NekoTab — Free Debate Tournament Tabulation Software | AI Motion Analysis</title>
   <meta name="description" content="NekoTab is the #1 open-source debate tournament platform. Run British Parliamentary, Australs & WSDC tournaments with automated draws, digital ballots, AI motion analysis, and real-time results. Free to use.">
   <meta name="keywords" content="debate tournament software, debate tabulation, british parliamentary debate, BP debate tab, australs debate, WSDC debate, motion analysis AI, debate motions, tournament management, debate platform, open source debate, tabbycat alternative">
@@ -45,6 +48,7 @@
   <script>
     function loadAdSense() {
       if (document.getElementById('adsense-script')) return;
+      if (document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]')) return;
       var s = document.createElement('script');
       s.id = 'adsense-script';
       s.async = true;
