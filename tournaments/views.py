@@ -151,9 +151,18 @@ class TournamentPublicHomeView(CacheMixin, TournamentMixin, TemplateView):
         try:
             kwargs['round_count'] = t.round_set.count()
             kwargs['completed_round_count'] = t.round_set.filter(completed=True).count()
+            # For the SVG ring progress widget
+            kwargs['remaining_round_count'] = kwargs['round_count'] - kwargs['completed_round_count']
+            if kwargs['round_count'] > 0:
+                progress = kwargs['completed_round_count'] / kwargs['round_count']
+                kwargs['ring_offset'] = int(157 * (1 - progress))
+            else:
+                kwargs['ring_offset'] = 157
         except Exception:
             kwargs['round_count'] = 0
             kwargs['completed_round_count'] = 0
+            kwargs['remaining_round_count'] = 0
+            kwargs['ring_offset'] = 157
         try:
             kwargs['adj_count'] = t.adjudicator_set.count()
         except Exception:

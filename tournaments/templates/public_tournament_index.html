@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load debate_tags i18n static content_tags %}
 
+{% block body-class %}pti-dashboard{% endblock %}
+
 {% block noindex %}
   {% if pref.search_engine_indexing == "none" %}
     <meta name="robots" content="noindex">
@@ -30,6 +32,469 @@
   }{% endif %}
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block extra-css %}
+<style>
+/* ═══════════════════════════════════════════════════
+   NEKOTAB DASHBOARD — PUBLIC TOURNAMENT VIEW v2
+   Design: sidebar + header + stat cards + panels
+═══════════════════════════════════════════════════ */
+
+:root {
+  /* surfaces */
+  --bg:        #F0F2F8;
+  --surface:   #FFFFFF;
+  --surface-2: #F7F8FC;
+  --surface-3: #EEF0F8;
+  --border:    #E4E7F2;
+  --border-2:  #D8DCF0;
+  /* brand */
+  --v:      #6366f1;
+  --v-soft: rgba(99,102,241,.09);
+  --v-mid:  rgba(99,102,241,.18);
+  --v-text: #4f46e5;
+  /* neutrals */
+  --ink:    #0F1020;
+  --ink-2:  #2A2D48;
+  --ink-3:  #5A5E80;
+  --muted:  #9498BC;
+  --ghost:  #C8CCE4;
+  /* status */
+  --green:      #16A36A;
+  --green-soft: rgba(22,163,106,.09);
+  --amber:      #C98A00;
+  --amber-soft: rgba(201,138,0,.09);
+  --red:        #D63B5A;
+  --red-soft:   rgba(214,59,90,.09);
+  /* type */
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+  --mono:  'JetBrains Mono', monospace;
+  /* geometry */
+  --r-xs: 5px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  /* elevation */
+  --sh-1: 0 1px 3px rgba(15,16,32,.05), 0 1px 2px rgba(15,16,32,.04);
+  --sh-2: 0 3px 12px rgba(15,16,32,.07), 0 1px 4px rgba(15,16,32,.05);
+  --sh-v: 0 4px 18px rgba(99,102,241,.22), 0 1px 4px rgba(99,102,241,.14);
+}
+
+/* ─── Reset base.html wrappers for full-bleed dashboard ─── */
+body.pti-dashboard { overflow: hidden; background: var(--bg); }
+body.pti-dashboard > .container-fluid { padding: 0 !important; max-width: 100% !important; }
+body.pti-dashboard > .container-fluid > main.main { padding: 0 !important; margin: 0 !important; }
+body.pti-dashboard > .container-fluid > main.main > .row { margin: 0 !important; }
+body.pti-dashboard > .container-fluid > main.main > .row > .col { padding: 0 !important; }
+body.pti-dashboard > footer { display: none !important; }
+
+/* ─── App wrapper ─── */
+.pti-app {
+  width: 100%; min-height: 100vh; display: flex; flex-direction: column;
+  font-family: var(--sans); font-size: 13.5px; line-height: 1.5;
+  color: var(--ink); -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════
+   HEADER
+═══════════════════════════════════════ */
+.pti-header {
+  height: 52px; background: var(--surface); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 20px 0 0; gap: 0;
+  flex-shrink: 0; position: sticky; top: 0; z-index: 50; box-shadow: var(--sh-1);
+}
+.pti-header-logo {
+  width: 220px; flex-shrink: 0; padding: 0 18px;
+  display: flex; align-items: center; gap: 9px;
+  border-right: 1px solid var(--border); height: 100%;
+  text-decoration: none;
+}
+.pti-logo-mark {
+  width: 26px; height: 26px; border-radius: 7px; background: var(--v);
+  display: grid; place-items: center; font-size: 13px; flex-shrink: 0;
+}
+.pti-logo-text {
+  font-family: var(--serif); font-size: 17px; font-style: italic;
+  color: var(--ink); letter-spacing: -.015em; text-decoration: none;
+}
+.pti-header-nav {
+  display: flex; align-items: center; padding: 0 20px; gap: 2px; height: 100%;
+}
+.pti-header-tab {
+  display: flex; align-items: center; gap: 6px; padding: 0 13px; height: 100%;
+  font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer;
+  border-bottom: 2px solid transparent; transition: all .15s;
+  white-space: nowrap; text-decoration: none;
+}
+.pti-header-tab:hover { color: var(--ink-2); text-decoration: none; }
+.pti-header-tab.active {
+  color: var(--v-text); border-bottom-color: var(--v); font-weight: 600;
+}
+.pti-header-spacer { flex: 1; }
+.pti-header-actions { display: flex; align-items: center; gap: 8px; }
+.pti-header-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; font-weight: 600; padding: 6px 13px;
+  border-radius: var(--r-sm); cursor: pointer; border: none;
+  transition: all .15s; white-space: nowrap; font-family: var(--sans);
+  text-decoration: none;
+}
+.pti-hbtn-round {
+  background: var(--v-soft); color: var(--v-text);
+  border: 1px solid var(--v-mid); font-family: var(--mono);
+  font-size: 11.5px; gap: 7px;
+}
+.pti-round-pip {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--v);
+  animation: ptipip 1.8s ease-in-out infinite;
+}
+@keyframes ptipip { 0%,100%{opacity:1} 50%{opacity:.3} }
+.pti-hbtn-icon {
+  width: 30px; height: 30px; border-radius: var(--r-sm);
+  background: var(--surface-2); border: 1px solid var(--border);
+  display: grid; place-items: center; font-size: 14px; cursor: pointer;
+  text-decoration: none; color: inherit;
+}
+.pti-hbtn-icon:hover { background: var(--surface-3); text-decoration: none; color: inherit; }
+.pti-hbtn-ghost {
+  background: transparent; color: var(--muted); text-decoration: none;
+}
+.pti-hbtn-ghost:hover { background: var(--surface-3); color: var(--ink-2); text-decoration: none; }
+
+/* ═══════════════════════════════════════
+   BODY (sidebar + main)
+═══════════════════════════════════════ */
+.pti-body { flex: 1; display: flex; overflow: hidden; }
+
+/* ═══════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════ */
+.pti-sidebar {
+  width: 220px; flex-shrink: 0; background: var(--surface);
+  border-right: 1px solid var(--border); display: flex;
+  flex-direction: column; overflow-y: auto;
+}
+.pti-sidebar-context {
+  margin: 12px 10px 4px; padding: 10px 12px;
+  background: var(--v-soft); border: 1px solid var(--v-mid);
+  border-radius: var(--r-md);
+}
+.pti-sc-label {
+  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 3px;
+}
+.pti-sc-name {
+  font-size: 13px; font-weight: 700; color: var(--ink);
+  margin-bottom: 1px; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pti-sc-meta {
+  font-family: var(--mono); font-size: 10px; color: var(--muted);
+}
+.pti-nav-group { padding: 6px 8px; }
+.pti-nav-group-label {
+  font-family: var(--mono); font-size: 9px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ghost);
+  padding: 10px 10px 4px;
+}
+.pti-nav-item {
+  display: flex; align-items: center; gap: 9px; padding: 8px 10px;
+  border-radius: var(--r-sm); font-size: 13px; font-weight: 500;
+  color: var(--ink-3); cursor: pointer; position: relative;
+  transition: all .14s; text-decoration: none; list-style: none;
+}
+.pti-nav-item:hover { background: var(--surface-2); color: var(--ink-2); text-decoration: none; }
+.pti-nav-item.active {
+  background: var(--v-soft); color: var(--v-text); font-weight: 600;
+}
+.pti-nav-item.active::before {
+  content: ''; position: absolute; left: 0; top: 7px; bottom: 7px;
+  width: 3px; border-radius: 0 3px 3px 0; background: var(--v);
+}
+.pti-nav-icon {
+  font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; opacity: .7;
+}
+.pti-nav-item.active .pti-nav-icon { opacity: 1; }
+.pti-nav-badge {
+  margin-left: auto; font-family: var(--mono); font-size: 10px;
+  font-weight: 600; background: var(--v-mid); color: var(--v-text);
+  padding: 1px 7px; border-radius: 99px;
+}
+.pti-sidebar-footer {
+  margin-top: auto; padding: 10px; border-top: 1px solid var(--border);
+}
+.pti-user-chip {
+  display: flex; align-items: center; gap: 9px; padding: 8px 9px;
+  border-radius: var(--r-sm); cursor: pointer; transition: background .14s;
+  text-decoration: none; color: inherit;
+}
+.pti-user-chip:hover { background: var(--surface-2); text-decoration: none; color: inherit; }
+.pti-user-avatar {
+  width: 28px; height: 28px; border-radius: 50%; background: var(--v);
+  display: grid; place-items: center; font-size: 11px; font-weight: 700;
+  color: white; flex-shrink: 0;
+}
+.pti-user-name { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+.pti-user-role { font-size: 10.5px; color: var(--muted); font-family: var(--mono); }
+
+/* ═══════════════════════════════════════
+   MAIN CONTENT
+═══════════════════════════════════════ */
+.pti-main {
+  flex: 1; overflow-y: auto; background: var(--bg);
+}
+.pti-page-head {
+  padding: 22px 28px 0; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.pti-page-eyebrow {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 4px;
+}
+.pti-page-title {
+  font-family: var(--serif); font-size: 24px; font-style: italic;
+  color: var(--ink); font-weight: 400; line-height: 1.15;
+}
+.pti-page-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px;
+  font-size: 12.5px; color: var(--ink-3);
+}
+.pti-page-meta span { display: inline-flex; align-items: center; gap: 5px; }
+.pti-page-head-actions {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-top: 4px;
+}
+.pti-content { padding: 20px 28px 40px; }
+
+/* ─── Stat cards ─── */
+.pti-stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-bottom: 20px;
+}
+.pti-stat-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 18px 20px; box-shadow: var(--sh-1);
+  position: relative; overflow: hidden; transition: box-shadow .18s, transform .18s;
+}
+.pti-stat-card:hover { box-shadow: var(--sh-2); transform: translateY(-1px); }
+.pti-stat-card::after {
+  content: ''; position: absolute; bottom: 0; left: 20px; right: 20px;
+  height: 2px; border-radius: 99px; background: var(--border);
+  opacity: 0; transition: opacity .18s;
+}
+.pti-stat-card:hover::after { opacity: 1; }
+.pti-stat-label {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 8px;
+}
+.pti-stat-value {
+  font-family: var(--serif); font-size: 40px; font-style: italic;
+  font-weight: 400; color: var(--ink); line-height: 1;
+}
+.pti-stat-sub {
+  font-size: 11px; color: var(--ghost); margin-top: 5px;
+  font-family: var(--mono);
+}
+
+/* ─── Content row (main + aside) ─── */
+.pti-content-row {
+  display: grid; grid-template-columns: 1fr 280px; gap: 16px; align-items: start;
+}
+
+/* ─── Panel (card wrapper) ─── */
+.pti-panel {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-1);
+  margin-bottom: 14px;
+}
+.pti-panel:last-child { margin-bottom: 0; }
+.pti-panel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; border-bottom: 1px solid var(--border);
+}
+.pti-panel-title {
+  font-size: 13.5px; font-weight: 700; color: var(--ink);
+  display: flex; align-items: center; gap: 8px;
+}
+.pti-panel-title-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--v);
+  animation: ptipip 1.8s ease-in-out infinite;
+}
+.pti-panel-actions { display: flex; gap: 7px; }
+
+/* ─── Buttons ─── */
+.pti-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-size: 12px; font-weight: 600;
+  padding: 6px 13px; border-radius: var(--r-sm); border: none;
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+  text-decoration: none;
+}
+.pti-btn-ghost {
+  background: var(--surface-2); color: var(--ink-3);
+  border: 1px solid var(--border);
+}
+.pti-btn-ghost:hover {
+  background: var(--surface-3); color: var(--ink-2);
+  border-color: var(--border-2); text-decoration: none;
+}
+.pti-btn-primary {
+  background: var(--v); color: white; box-shadow: var(--sh-v);
+}
+.pti-btn-primary:hover {
+  background: #5558e8; transform: translateY(-1px);
+  color: white; text-decoration: none;
+}
+
+/* ─── Status chip ─── */
+.pti-status-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 600;
+  padding: 4px 10px; border-radius: 6px; white-space: nowrap;
+}
+.pti-sc-active  { background: var(--v-soft); color: var(--v-text); border: 1px solid var(--v-mid); }
+.pti-sc-done    { background: var(--green-soft); color: var(--green); border: 1px solid rgba(22,163,106,.15); }
+.pti-sc-default { background: var(--surface-3); color: var(--ink-3); border: 1px solid var(--border); }
+
+/* ─── Quick actions ─── */
+.pti-quick-list { padding: 8px; }
+.pti-quick-item {
+  display: flex; align-items: center; gap: 11px; padding: 10px 11px;
+  border-radius: var(--r-md); cursor: pointer; transition: background .14s;
+  text-decoration: none; color: inherit;
+}
+.pti-quick-item:hover { background: var(--surface-2); text-decoration: none; color: inherit; }
+.pti-qi-icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  display: grid; place-items: center; font-size: 16px; flex-shrink: 0;
+}
+.pti-qi-v { background: var(--v-soft); }
+.pti-qi-g { background: var(--green-soft); }
+.pti-qi-a { background: var(--amber-soft); }
+.pti-qi-r { background: var(--red-soft); }
+.pti-qi-title { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.pti-qi-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.pti-qi-arrow {
+  margin-left: auto; color: var(--ghost); font-size: 16px;
+  transition: transform .14s, color .14s;
+}
+.pti-quick-item:hover .pti-qi-arrow { transform: translateX(2px); color: var(--muted); }
+
+/* ─── Completion ring ─── */
+.pti-ring-wrap {
+  padding: 20px; display: flex; align-items: center; gap: 18px;
+}
+.pti-ring-svg { flex-shrink: 0; }
+.pti-ring-bg { fill: none; stroke: var(--surface-3); stroke-width: 7; }
+.pti-ring-fill {
+  fill: none; stroke: var(--v); stroke-width: 7; stroke-linecap: round;
+  stroke-dasharray: 157; transform: rotate(-90deg); transform-origin: center;
+  transition: stroke-dashoffset .6s ease;
+}
+.pti-ring-val {
+  font-family: var(--serif); font-size: 17px; font-style: italic;
+  fill: var(--ink); text-anchor: middle; dominant-baseline: middle;
+}
+.pti-ring-sub {
+  font-family: var(--mono); font-size: 8px; fill: var(--muted);
+  text-anchor: middle; dominant-baseline: middle;
+}
+.pti-ri-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.pti-ri-row {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; margin-bottom: 4px; color: var(--ink-3);
+}
+.pti-ri-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* ─── About / info section ─── */
+.pti-about { padding: 18px 20px; }
+.pti-about h2 { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.pti-about p, .pti-about div { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+
+/* ─── CTA cards ─── */
+.pti-cta { padding: 24px 20px; text-align: center; }
+.pti-cta-emoji { font-size: 28px; margin-bottom: 8px; }
+.pti-cta-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.pti-cta-desc { font-size: 12px; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+
+/* ─── Alert inside dashboard ─── */
+.pti-alert {
+  margin: 0 28px 0; padding: 14px 18px; border-radius: var(--r-md);
+  background: var(--v-soft); border: 1px solid var(--v-mid);
+  font-size: 13px; color: var(--v-text); display: flex; align-items: center; gap: 8px;
+}
+
+/* ─── Nav list (inside panels) ─── */
+.pti-nav-list { list-style: none; padding: 0; margin: 0; }
+.pti-nav-list-item { margin-bottom: 2px; }
+.pti-nav-link {
+  display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+  border-radius: var(--r-sm); font-size: 13px; font-weight: 500;
+  color: var(--ink-3); transition: all .14s; text-decoration: none;
+}
+.pti-nav-link:hover { background: var(--surface-2); color: var(--ink-2); text-decoration: none; }
+.pti-nav-link-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; opacity: .65; }
+.pti-nav-link-disabled { opacity: .5; cursor: default; }
+.pti-nav-link-disabled:hover { background: transparent; color: var(--ink-3); }
+
+/* ─── Section divider ─── */
+.pti-divider {
+  display: flex; align-items: center; gap: 10px; margin: 6px 0 14px;
+}
+.pti-divider::before, .pti-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.pti-divider-label {
+  font-family: var(--mono); font-size: 9.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ghost);
+  white-space: nowrap;
+}
+
+/* ─── Animations ─── */
+@keyframes ptiFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.pti-fade-1 { animation: ptiFadeUp .35s ease-out .05s both; }
+.pti-fade-2 { animation: ptiFadeUp .35s ease-out .12s both; }
+.pti-fade-3 { animation: ptiFadeUp .35s ease-out .20s both; }
+.pti-fade-4 { animation: ptiFadeUp .35s ease-out .28s both; }
+.pti-fade-5 { animation: ptiFadeUp .35s ease-out .36s both; }
+
+/* ─── Responsive ─── */
+@media (max-width: 1100px) {
+  .pti-content-row { grid-template-columns: 1fr; }
+  .pti-aside-col {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .pti-aside-col .pti-panel { margin-bottom: 0; }
+}
+@media (max-width: 768px) {
+  .pti-sidebar { display: none; }
+  .pti-header-logo { width: auto; border-right: none; padding: 0 14px; }
+  .pti-header-nav { padding: 0 8px; gap: 0; overflow-x: auto; }
+  .pti-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .pti-page-head { flex-direction: column; gap: 12px; padding: 16px 16px 0; }
+  .pti-content { padding: 16px 16px 32px; }
+}
+@media (max-width: 520px) {
+  .pti-stats-row { grid-template-columns: 1fr; }
+  .pti-stat-card { padding: 14px 16px; }
+  .pti-stat-value { font-size: 32px; }
+  .pti-header-nav { display: none; }
+}
+</style>
 {% endblock %}
 
 {% block head-title %}<span class="emoji">🏆</span>
@@ -43,421 +508,876 @@
   {% endblocktrans %}
 {% endblock %}
 
-{% block page-alerts %}
-  {% if not pref.team_tab_released and not pref.motion_tab_released and pref.public_draw == 'off' and not pref.public_results and not pref.public_motions and not pref.public_team_standings and not pref.public_breaking_teams and not pref.public_breaking_adjs and not pref.public_participants and not pref.feedback_progress and pref.participant_ballots == 'off' and pref.participant_feedback == 'off' %}
-    <div class="alert alert-info">
-      <i data-feather="alert-circle"></i>
-      {% trans "There is currently no public information available for this tournament." %}
-    </div>
-  {% endif %}
-{% endblock %}
+{# Suppress base.html's default nav, header, subheader, footer #}
+{% block nav %}{% endblock %}
+{% block header %}{% endblock %}
+{% block subheader %}{% endblock %}
+{% block footer %}{% endblock %}
 
 {% block content %}
+<div class="pti-app">
 
-  {# ── Breadcrumbs ── #}
-  <nav aria-label="breadcrumb" class="mb-3">
-    <ol class="breadcrumb bg-transparent px-0" itemscope itemtype="https://schema.org/BreadcrumbList">
-      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="/" itemprop="item"><span itemprop="name">{% trans "Home" %}</span></a>
-        <meta itemprop="position" content="1" />
-      </li>
-      <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <span itemprop="name">{{ tournament.short_name|default:tournament.name }}</span>
-        <meta itemprop="position" content="2" />
-      </li>
-    </ol>
-  </nav>
+  {# ═══════════════════════════════════════
+     HEADER BAR
+  ═══════════════════════════════════════ #}
+  <header class="pti-header">
+    <a class="pti-header-logo" href="/">
+      <div class="pti-logo-mark">🐱</div>
+      <div class="pti-logo-text">NekoTab</div>
+    </a>
 
-  {# ── Hero Header ── #}
-  <div class="card mb-3 border-0 shadow-sm">
-    <div class="card-body">
-      <div class="d-md-flex justify-content-between align-items-start">
-        <div>
-          <h1 class="h3 mb-1">🏆 {{ tournament.name }}</h1>
-          <div class="text-muted mb-2">
-            {% if content_block and content_block.host_organization %}
-              <span class="mr-3">🏛️ {{ content_block.host_organization }}</span>
-            {% endif %}
-            {% if content_block and content_block.location %}
-              <span class="mr-3">📍 {{ content_block.location }}</span>
-            {% endif %}
-            {% if content_block and content_block.format_description %}
-              <span class="mr-3">🎯 {{ content_block.format_description }}</span>
-            {% endif %}
-          </div>
-          {% if content_block and content_block.start_date %}
-            <div class="text-muted small">
-              📅
-              {% if content_block.end_date and content_block.start_date != content_block.end_date %}
-                {{ content_block.start_date|date:"M j, Y" }} — {{ content_block.end_date|date:"M j, Y" }}
-              {% else %}
-                {{ content_block.start_date|date:"M j, Y" }}
-              {% endif %}
-            </div>
-          {% endif %}
+    <nav class="pti-header-nav">
+      <a class="pti-header-tab active" href="{% tournamenturl 'tournament-public-index' %}">{% trans "Home" %}</a>
+      {% if pref.public_results and tournament.rounds_with_released_results.exists %}
+        <a class="pti-header-tab" href="{% tournamenturl 'results-public-index' %}">{% trans "Results" %}</a>
+      {% endif %}
+      {% if pref.public_draw != 'off' %}
+        <a class="pti-header-tab" href="{% tournamenturl 'draw-public-current-rounds' %}">{% trans "Draw" %}</a>
+      {% endif %}
+      {% if pref.public_motions %}
+        <a class="pti-header-tab" href="{% tournamenturl 'motions-public' %}">{% trans "Motions" %}</a>
+      {% endif %}
+      {% if pref.public_participants %}
+        <a class="pti-header-tab" href="{% tournamenturl 'participants-public-list' %}">{% trans "Participants" %}</a>
+      {% endif %}
+    </nav>
+
+    <div class="pti-header-spacer"></div>
+
+    <div class="pti-header-actions">
+      {% if completed_round_count %}
+        <div class="pti-hbtn-round pti-header-btn">
+          <span class="pti-round-pip"></span>
+          {{ completed_round_count }}/{{ round_count }} {% trans "Rounds" %}
         </div>
-        <div class="mt-2 mt-md-0">
-          {% if content_block and content_block.status_label %}
-            <span class="badge badge-{% if content_block.status_label == 'Completed' %}success{% elif content_block.status_label == 'In Progress' %}primary{% else %}secondary{% endif %} px-3 py-2"
-                  style="font-size: 0.85rem;">
-              {{ content_block.status_label }}
-            </span>
-          {% elif tournament.active %}
-            <span class="badge badge-primary px-3 py-2" style="font-size: 0.85rem;">{% trans "Active" %}</span>
-          {% endif %}
-        </div>
-      </div>
+      {% endif %}
+      <a href="/" class="pti-hbtn-icon" title="{% trans 'Home' %}">🏠</a>
+      {% if user.is_authenticated %}
+        <a href="{% tournamenturl 'tournament-admin-home' %}" class="pti-hbtn-icon" title="{% trans 'Admin' %}">⚙️</a>
+      {% endif %}
     </div>
-  </div>
+  </header>
 
-  {# ── Summary Cards ── #}
-  <div class="row mb-3">
-    <div class="col-6 col-md-3 mb-2">
-      <div class="card text-center border-0 shadow-sm h-100">
-        <div class="card-body py-3">
-          <div class="h4 mb-0 text-primary">{{ team_count }}</div>
-          <small class="text-muted">{% trans "Teams" %}</small>
+  {# ═══════════════════════════════════════
+     BODY (sidebar + main)
+  ═══════════════════════════════════════ #}
+  <div class="pti-body">
+
+    {# ─── SIDEBAR ─── #}
+    <aside class="pti-sidebar">
+
+      {# Tournament context chip #}
+      <div class="pti-sidebar-context">
+        <div class="pti-sc-label">{% trans "Tournament" %}</div>
+        <div class="pti-sc-name">{{ tournament.short_name|default:tournament.name }}</div>
+        <div class="pti-sc-meta">
+          {% if content_block and content_block.format_description %}{{ content_block.format_description }} · {% endif %}{{ round_count }} {% trans "Rounds" %}
         </div>
       </div>
-    </div>
-    <div class="col-6 col-md-3 mb-2">
-      <div class="card text-center border-0 shadow-sm h-100">
-        <div class="card-body py-3">
-          <div class="h4 mb-0 text-primary">{{ round_count }}</div>
-          <small class="text-muted">{% trans "Rounds" %} {% if completed_round_count %}({{ completed_round_count }} {% trans "done" %}){% endif %}</small>
-        </div>
-      </div>
-    </div>
-    <div class="col-6 col-md-3 mb-2">
-      <div class="card text-center border-0 shadow-sm h-100">
-        <div class="card-body py-3">
-          <div class="h4 mb-0 text-primary">{{ adj_count }}</div>
-          <small class="text-muted">{% trans "Adjudicators" %}</small>
-        </div>
-      </div>
-    </div>
-    <div class="col-6 col-md-3 mb-2">
-      <div class="card text-center border-0 shadow-sm h-100">
-        <div class="card-body py-3">
-          <div class="h4 mb-0 text-primary">{{ motion_count }}</div>
-          <small class="text-muted">{% trans "Motions" %}</small>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  {# ── Quick navigation CTAs ── #}
-  <div class="mb-3 d-flex flex-wrap" style="gap: 8px;">
-    {% if pref.public_results and tournament.rounds_with_released_results.exists %}
-      {% tournamenturl 'results-public-index' as results_url %}
-      <a href="{{ results_url }}" class="btn btn-primary btn-sm">📊 {% trans "View Results" %}</a>
-    {% endif %}
-    {% if pref.public_draw != 'off' %}
-      {% tournamenturl 'draw-public-current-rounds' as draw_url %}
-      <a href="{{ draw_url }}" class="btn btn-outline-primary btn-sm">👁️ {% trans "View Draw" %}</a>
-    {% endif %}
-    {% if pref.public_motions %}
-      {% tournamenturl 'motions-public' as motions_url %}
-      <a href="{{ motions_url }}" class="btn btn-outline-primary btn-sm">📝 {% trans "View Motions" %}</a>
-    {% endif %}
-    {% if pref.public_participants %}
-      {% tournamenturl 'participants-public-list' as participants_url %}
-      <a href="{{ participants_url }}" class="btn btn-outline-primary btn-sm">👥 {% trans "Participants" %}</a>
-    {% endif %}
-    <a href="{% url 'tournament-create' %}" class="btn btn-outline-secondary btn-sm">➕ {% trans "Host Your Own" %}</a>
-  </div>
+      {# ── Browse Group ── #}
+      <div class="pti-nav-group">
+        <div class="pti-nav-group-label">{% trans "Browse" %}</div>
 
-  {% if pref.welcome_message %}
-    <div class="card mb-3 border-0 shadow-sm">
-      <div class="card-body pb-0">
-        {{ pref.welcome_message|safe }}
-      </div>
-    </div>
-  {% endif %}
+        <a class="pti-nav-item active" href="{% tournamenturl 'tournament-public-index' %}">
+          <span class="pti-nav-icon">📊</span> {% trans "Overview" %}
+        </a>
 
-  {# ── About This Tournament (editable by owner) ── #}
-  {% if content_block and content_block.about_text %}
-    <div class="card mb-3 border-0 shadow-sm">
-      <div class="card-header bg-white border-bottom-0">
-        <h2 class="h5 mb-0">📖 {% trans "About This Tournament" %}</h2>
-      </div>
-      <div class="card-body pt-0">
-        {{ content_block.about_text|linebreaksbr }}
-      </div>
-    </div>
-  {% endif %}
-
-  {# ── Contextual Content (deterministic, SEO-friendly) ── #}
-  <div class="card mb-3 border-0 shadow-sm">
-    <div class="card-body">
-      {% tournament_context_text tournament content_block %}
-    </div>
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-8">
-
-      {# ── Tournament Links (existing functionality, preserved) ── #}
-
-      <div class="list-group mt-2">
-
-        {% if pref.team_tab_released > 0 %}
-          {% trans "Team Tab" as text %}
-          {% tournamenturl 'standings-public-tab-team' as url %}
-          {% include "components/item-action.html" with icon="users" %}
-        {% endif %}
-
-        {% if pref.break_category_tabs_released > 0 %}
-          {% for category in tournament.break_categories_nongeneral %}
-            {% blocktrans asvar text trimmed with category=category.name %}
-              {{ category }} Team Tab
-            {% endblocktrans %}
-            {% tournamenturl 'standings-public-tab-break-category' category=category.slug as url %}
-            {% include "components/item-action.html" with icon="users" %}
-          {% endfor %}
-        {% endif %}
-
-        {% if pref.speaker_tab_released > 0 %}
-          {% trans "Speaker Tab" as text %}
-          {% tournamenturl 'standings-public-tab-speaker' as url %}
-          {% include "components/item-action.html" with icon="user" %}
-        {% endif %}
-
-        {% if pref.speaker_category_tabs_released > 0 %}
-          {% for category in tournament.speakercategory_set.all %}
-            {% if category.public %}
-              {% blocktrans asvar text trimmed with category=category.name %}
-                {{ category }} Speaker Tab
-              {% endblocktrans %}
-              {% tournamenturl 'standings-public-tab-speaker-category' category=category.slug as url %}
-              {% include "components/item-action.html" with icon="user" %}
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-
-        {% if pref.replies_tab_released > 0 %}
-          {% trans "Replies Tab" as text %}
-          {% tournamenturl 'standings-public-tab-replies' as url %}
-          {% include "components/item-action.html" with icon="corner-up-right" %}
-        {% endif %}
-
-        {% if pref.adjudicators_tab_released %}
-          {% trans "Adjudicator Tab" as text %}
-          {% tournamenturl 'standings-public-adjudicators-tab' as url %}
-          {% include "components/item-action.html" with icon="sun" %}
-        {% endif %}
-
-        {% if pref.motion_tab_released %}
-          {% trans "Motions Tab" as text %}
-          {% tournamenturl 'motions-public-statistics' as url %}
-          {% include "components/item-action.html" with icon="file-text" %}
-        {% endif %}
-
-        {% if public_side_allocations %}
-          {% trans "Sides" as text %}
-          {% tournamenturl 'draw-public-side-allocations' as url %}
-          {% include "components/item-action.html" with icon="shuffle" %}
+        {% if pref.public_results and tournament.rounds_with_released_results.exists %}
+          <a class="pti-nav-item" href="{% tournamenturl 'results-public-index' %}">
+            <span class="pti-nav-icon">📈</span> {% trans "Results" %}
+          </a>
         {% endif %}
 
         {% if pref.public_draw == 'current' and not pref.team_tab_released %}
-          {% tournamenturl 'draw-public-current-rounds' as url %}
+          {% tournamenturl 'draw-public-current-rounds' as draw_url %}
           {% if tournament.public_draws_available %}
-            {% if tournament.current_rounds|length == 1 %}
-              {% blocktrans trimmed with round=current_round.name asvar draw_for_round_text %}
-                Draw for {{ round }}
-              {% endblocktrans %}
-            {% else %}
-              {% trans "Draws for Current Rounds" as draw_for_round_text %}
-            {% endif %}
-            {% include "components/item-action.html" with icon="eye" text=draw_for_round_text %}
+            <a class="pti-nav-item" href="{{ draw_url }}">
+              <span class="pti-nav-icon">🎲</span>
+              {% if tournament.current_rounds|length == 1 %}
+                {% blocktrans trimmed with round=current_round.name %}Draw for {{ round }}{% endblocktrans %}
+              {% else %}
+                {% trans "Current Draws" %}
+              {% endif %}
+            </a>
           {% else %}
-            {% if tournament.current_rounds|length == 1 %}
-              {% blocktrans trimmed with round=current_round.name asvar draw_for_round_text %}
-                {{ round }}'s draw has yet to be released
-              {% endblocktrans %}
-            {% else %}
-              {% trans "The draw for the next round has yet to be released" as draw_for_round_text %}
-            {% endif %}
-            {% include "components/item-info.html" with icon="eye-off" text=draw_for_round_text type="muted" nopad=True %}
+            <span class="pti-nav-item" style="opacity:.5;cursor:default;">
+              <span class="pti-nav-icon">🕐</span>
+              {% if tournament.current_rounds|length == 1 %}
+                {% blocktrans trimmed with round=current_round.name %}{{ round }}'s draw has yet to be released{% endblocktrans %}
+              {% else %}
+                {% trans "Draw not yet released" %}
+              {% endif %}
+            </span>
           {% endif %}
-        {% endif %}
-
-        {% if pref.public_schedule %}
-          {% trans "Schedule" as text %}
-          {% tournamenturl 'tournament-public-schedule' as url %}
-          {% include "components/item-action.html" with icon="clock" %}
-        {% endif %}
-
-        {% if pref.public_checkins %}
-          {% trans "Check-Ins" as text %}
-          {% tournamenturl 'checkins-public-status' as url %}
-          {% include "components/item-action.html" with icon="compass" %}
-        {% endif %}
-
-        {% if pref.public_results and tournament.rounds_with_released_results.exists %}
-          {% trans "Results" as text %}
-          {% tournamenturl 'results-public-index' as url %}
-          {% include "components/item-action.html" with icon="trending-up" %}
-        {% endif %}
-
-        {% if pref.public_motions %}
-          {% trans "Motions" as text %}
-          {% tournamenturl 'motions-public' as url %}
-          {% include "components/item-action.html" with icon="file-text" %}
-        {% endif %}
-
-        {% if pref.public_motions and not pref.motion_tab_released and pref.draw_side_allocations == 'manual-ballot' %}
-          {% trans "Sides" as text %}
-          {% tournamenturl 'draw-public-side-allocations' as url %}
-          {% include "components/item-action.html" with icon="shuffle" %}
-        {% endif %}
-
-        {% if pref.public_team_standings and current_round.prev and not pref.team_tab_released %}
-          {% trans "Team Standings" as text %}
-          {% tournamenturl 'standings-public-teams-current' as url %}
-          {% include "components/item-action.html" with icon="bar-chart-2" %}
-        {% endif %}
-
-        {% if pref.public_breaking_teams %}
-          {% for category in tournament.breakcategory_set.all %}
-            {% blocktrans trimmed asvar text with category=category.name %}
-              {{ category }} Break
-            {% endblocktrans %}
-            {% tournamenturl 'breakqual-public-teams' category.slug as url %}
-            {% include "components/item-action.html" with icon="pie-chart" %}
-          {% endfor %}
-        {% endif %}
-
-        {% if pref.public_breaking_adjs %}
-          {% trans "Breaking Adjudicators" as text %}
-          {% tournamenturl 'breakqual-public-adjs' as url %}
-          {% include "components/item-action.html" with icon="shield" %}
-        {% endif %}
-
-        {% if pref.public_diversity %}
-          {% trans "Diversity" as text %}
-          {% tournamenturl 'standings-public-diversity' as url %}
-          {% include "components/item-action.html" with icon="globe" %}
-        {% endif %}
-
-        {% if pref.public_participants %}
-          {% trans "Participants" as text %}
-          {% tournamenturl 'participants-public-list' as url %}
-          {% include "components/item-action.html" with icon="users" %}
-        {% endif %}
-
-        {% if pref.public_institutions_list %}
-          {% trans "Institutions" as text %}
-          {% tournamenturl 'participants-public-institutions-list' as url %}
-          {% include "components/item-action.html" with icon="flag" %}
-        {% endif %}
-
-        {% if pref.feedback_progress %}
-          {% trans "Feedback Progress" as text %}
-          {% tournamenturl 'public_feedback_progress' as url %}
-          {% include "components/item-action.html" with icon="aperture" %}
-        {% endif %}
-
-        {% if pref.participant_ballots == 'public' %}
-          {% for round in tournament.current_rounds %}
-            {% blocktrans trimmed with round=round.name asvar text %}Enter Ballot for {{round }}{% endblocktrans %}
-            {% roundurl 'results-public-ballot-submission-index' as url %}
-            {% include "components/item-action.html" with icon="plus-circle" %}
-          {% endfor %}
-        {% endif %}
-
-        {% if pref.participant_feedback == 'public' %}
-          {% trans "Enter Feedback" as text %}
-          {% tournamenturl 'adjfeedback-public-add-index' as url %}
-          {% include "components/item-action.html" with icon="plus-square" %}
         {% endif %}
 
         {% if pref.public_draw == 'all-released' %}
           {% for r in tournament.round_set.all %}
             {% if r.draw_status == r.Status.RELEASED %}
-              {% blocktrans trimmed asvar text with round=r.name %}
-                Draw for {{ round }}
-              {% endblocktrans %}
-              {% roundurl 'draw-public-for-round' r as url %}
-              {% include "components/item-action.html" with icon="eye" %}
+              <a class="pti-nav-item" href="{% roundurl 'draw-public-for-round' r %}">
+                <span class="pti-nav-icon">👁️</span>
+                {% blocktrans trimmed with round=r.name %}Draw for {{ round }}{% endblocktrans %}
+              </a>
             {% endif %}
           {% endfor %}
         {% endif %}
 
-      </div>
-
-      <div class="list-group mt-2">
-        {% if pref.institution_registration %}
-          {% trans "Register Institution" as text %}
-          {% tournamenturl 'reg-create-institution' as url %}
-          {% include "components/item-action.html" with icon="home" %}
+        {% if pref.public_motions %}
+          <a class="pti-nav-item" href="{% tournamenturl 'motions-public' %}">
+            <span class="pti-nav-icon">💬</span> {% trans "Motions" %}
+          </a>
         {% endif %}
 
-        {% if pref.open_team_registration %}
-          {% trans "Register Open Team" as text %}
-          {% tournamenturl 'reg-create-team' as url %}
-          {% include "components/item-action.html" with icon="users" %}
+        {% if pref.public_team_standings and current_round.prev and not pref.team_tab_released %}
+          <a class="pti-nav-item" href="{% tournamenturl 'standings-public-teams-current' %}">
+            <span class="pti-nav-icon">📊</span> {% trans "Team Standings" %}
+          </a>
         {% endif %}
 
-        {% if pref.open_adj_registration %}
-          {% trans "Register Open Adjudicator" as text %}
-          {% tournamenturl 'reg-create-adjudicator' as url %}
-          {% include "components/item-action.html" with icon="columns" %}
+        {% if public_side_allocations %}
+          <a class="pti-nav-item" href="{% tournamenturl 'draw-public-side-allocations' %}">
+            <span class="pti-nav-icon">🔀</span> {% trans "Sides" %}
+          </a>
         {% endif %}
       </div>
 
-      {% if pref.tournament_staff %}
-        <div class="card mt-3 border-0 shadow-sm">
-          <div class="card-header bg-white h6">
-            {% trans "Tournament Staff" %}
-          </div>
-          <div class="card-body">
-            {{ pref.tournament_staff|safe }}
-          </div>
-        </div>
-      {% endif %}
+      {# ── Tabs Group (released final tabs) ── #}
+      {% if pref.team_tab_released > 0 or pref.speaker_tab_released > 0 or pref.replies_tab_released > 0 or pref.adjudicators_tab_released or pref.motion_tab_released or pref.break_category_tabs_released > 0 or pref.speaker_category_tabs_released > 0 %}
+        <div class="pti-nav-group">
+          <div class="pti-nav-group-label">{% trans "Tabs & Breaks" %}</div>
 
-    </div>
-
-    {# ── Right Sidebar ── #}
-    <div class="col-md-4">
-
-      {# Related Learn articles (cross-linking) #}
-      {% if content_block and content_block.format_description %}
-        {% with content_block.format_description|lower as fmt %}
-          {% if "bp" in fmt or "british" in fmt %}
-            {% show_related_articles "bp" %}
-          {% elif "australs" in fmt or "3v3" in fmt %}
-            {% show_related_articles "australs" %}
-          {% elif "wsdc" in fmt or "world schools" in fmt %}
-            {% show_related_articles "wsdc" %}
+          {% if pref.team_tab_released > 0 %}
+            <a class="pti-nav-item" href="{% tournamenturl 'standings-public-tab-team' %}">
+              <span class="pti-nav-icon">👥</span> {% trans "Team Tab" %}
+            </a>
           {% endif %}
-        {% endwith %}
+
+          {% if pref.break_category_tabs_released > 0 %}
+            {% for category in tournament.break_categories_nongeneral %}
+              <a class="pti-nav-item" href="{% tournamenturl 'standings-public-tab-break-category' category=category.slug %}">
+                <span class="pti-nav-icon">👥</span>
+                {% blocktrans trimmed with category=category.name %}{{ category }} Tab{% endblocktrans %}
+              </a>
+            {% endfor %}
+          {% endif %}
+
+          {% if pref.speaker_tab_released > 0 %}
+            <a class="pti-nav-item" href="{% tournamenturl 'standings-public-tab-speaker' %}">
+              <span class="pti-nav-icon">🎤</span> {% trans "Speaker Tab" %}
+            </a>
+          {% endif %}
+
+          {% if pref.speaker_category_tabs_released > 0 %}
+            {% for category in tournament.speakercategory_set.all %}
+              {% if category.public %}
+                <a class="pti-nav-item" href="{% tournamenturl 'standings-public-tab-speaker-category' category=category.slug %}">
+                  <span class="pti-nav-icon">🎤</span>
+                  {% blocktrans trimmed with category=category.name %}{{ category }} Speaker Tab{% endblocktrans %}
+                </a>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
+          {% if pref.replies_tab_released > 0 %}
+            <a class="pti-nav-item" href="{% tournamenturl 'standings-public-tab-replies' %}">
+              <span class="pti-nav-icon">↩️</span> {% trans "Replies Tab" %}
+            </a>
+          {% endif %}
+
+          {% if pref.adjudicators_tab_released %}
+            <a class="pti-nav-item" href="{% tournamenturl 'standings-public-adjudicators-tab' %}">
+              <span class="pti-nav-icon">⚖️</span> {% trans "Adjudicator Tab" %}
+            </a>
+          {% endif %}
+
+          {% if pref.motion_tab_released %}
+            <a class="pti-nav-item" href="{% tournamenturl 'motions-public-statistics' %}">
+              <span class="pti-nav-icon">💬</span> {% trans "Motions Tab" %}
+            </a>
+          {% endif %}
+
+          {% if pref.public_breaking_teams %}
+            {% for category in tournament.breakcategory_set.all %}
+              <a class="pti-nav-item" href="{% tournamenturl 'breakqual-public-teams' category.slug %}">
+                <span class="pti-nav-icon">🥇</span>
+                {% blocktrans trimmed with category=category.name %}{{ category }} Break{% endblocktrans %}
+              </a>
+            {% endfor %}
+          {% endif %}
+
+          {% if pref.public_breaking_adjs %}
+            <a class="pti-nav-item" href="{% tournamenturl 'breakqual-public-adjs' %}">
+              <span class="pti-nav-icon">🛡️</span> {% trans "Breaking Adjudicators" %}
+            </a>
+          {% endif %}
+        </div>
       {% endif %}
 
-      {# Host CTA card #}
-      <div class="card mt-3 border-0 shadow-sm">
-        <div class="card-body text-center">
-          <div style="font-size: 2rem;">📋</div>
-          <h6 class="mt-2">{% trans "Host Your Own Tournament" %}</h6>
-          <p class="text-muted small">{% trans "NekoTab makes it easy to run debate tournaments with automated draws, smart allocations, digital ballots, and live results." %}</p>
-          <a href="{% url 'tournament-create' %}" class="btn btn-primary btn-sm btn-block">{% trans "Create Tournament" %}</a>
+      {# ── Information Group ── #}
+      {% if pref.public_participants or pref.public_institutions_list or pref.public_schedule or pref.public_checkins or pref.public_diversity or pref.feedback_progress %}
+        <div class="pti-nav-group">
+          <div class="pti-nav-group-label">{% trans "Information" %}</div>
+
+          {% if pref.public_participants %}
+            <a class="pti-nav-item" href="{% tournamenturl 'participants-public-list' %}">
+              <span class="pti-nav-icon">👥</span> {% trans "Participants" %}
+            </a>
+          {% endif %}
+
+          {% if pref.public_institutions_list %}
+            <a class="pti-nav-item" href="{% tournamenturl 'participants-public-institutions-list' %}">
+              <span class="pti-nav-icon">🏛️</span> {% trans "Institutions" %}
+            </a>
+          {% endif %}
+
+          {% if pref.public_schedule %}
+            <a class="pti-nav-item" href="{% tournamenturl 'tournament-public-schedule' %}">
+              <span class="pti-nav-icon">📅</span> {% trans "Schedule" %}
+            </a>
+          {% endif %}
+
+          {% if pref.public_checkins %}
+            <a class="pti-nav-item" href="{% tournamenturl 'checkins-public-status' %}">
+              <span class="pti-nav-icon">✅</span> {% trans "Check-Ins" %}
+            </a>
+          {% endif %}
+
+          {% if pref.public_diversity %}
+            <a class="pti-nav-item" href="{% tournamenturl 'standings-public-diversity' %}">
+              <span class="pti-nav-icon">🌍</span> {% trans "Diversity" %}
+            </a>
+          {% endif %}
+
+          {% if pref.feedback_progress %}
+            <a class="pti-nav-item" href="{% tournamenturl 'public_feedback_progress' %}">
+              <span class="pti-nav-icon">📋</span> {% trans "Feedback Progress" %}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {# ── Actions Group ── #}
+      {% if pref.participant_ballots == 'public' or pref.participant_feedback == 'public' or pref.institution_registration or pref.open_team_registration or pref.open_adj_registration %}
+        <div class="pti-nav-group">
+          <div class="pti-nav-group-label">{% trans "Actions" %}</div>
+
+          {% if pref.participant_ballots == 'public' %}
+            {% for round in tournament.current_rounds %}
+              <a class="pti-nav-item" href="{% roundurl 'results-public-ballot-submission-index' round %}">
+                <span class="pti-nav-icon">📝</span>
+                {% blocktrans trimmed with round=round.name %}Enter Ballot · {{ round }}{% endblocktrans %}
+              </a>
+            {% endfor %}
+          {% endif %}
+
+          {% if pref.participant_feedback == 'public' %}
+            <a class="pti-nav-item" href="{% tournamenturl 'adjfeedback-public-add-index' %}">
+              <span class="pti-nav-icon">💡</span> {% trans "Enter Feedback" %}
+            </a>
+          {% endif %}
+
+          {% if pref.institution_registration %}
+            <a class="pti-nav-item" href="{% tournamenturl 'reg-create-institution' %}">
+              <span class="pti-nav-icon">🏠</span> {% trans "Register Institution" %}
+            </a>
+          {% endif %}
+
+          {% if pref.open_team_registration %}
+            <a class="pti-nav-item" href="{% tournamenturl 'reg-create-team' %}">
+              <span class="pti-nav-icon">👥</span> {% trans "Register Open Team" %}
+            </a>
+          {% endif %}
+
+          {% if pref.open_adj_registration %}
+            <a class="pti-nav-item" href="{% tournamenturl 'reg-create-adjudicator' %}">
+              <span class="pti-nav-icon">⚖️</span> {% trans "Register Open Adjudicator" %}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {# Sidebar footer #}
+      <div class="pti-sidebar-footer">
+        <a class="pti-user-chip" href="/">
+          <div class="pti-user-avatar">🐱</div>
+          <div>
+            <div class="pti-user-name">NekoTab</div>
+            <div class="pti-user-role">{% trans "Debate Tabulation" %}</div>
+          </div>
+        </a>
+      </div>
+
+    </aside>
+    {# ─── END SIDEBAR ─── #}
+
+    {# ─── MAIN AREA ─── #}
+    <main class="pti-main">
+
+      {# Messages / Alerts #}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="pti-alert" style="margin-top:12px;">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if not pref.team_tab_released and not pref.motion_tab_released and pref.public_draw == 'off' and not pref.public_results and not pref.public_motions and not pref.public_team_standings and not pref.public_breaking_teams and not pref.public_breaking_adjs and not pref.public_participants and not pref.feedback_progress and pref.participant_ballots == 'off' and pref.participant_feedback == 'off' %}
+        <div class="pti-alert" style="margin-top:12px;">
+          ℹ️ {% trans "There is currently no public information available for this tournament." %}
+        </div>
+      {% endif %}
+
+      {# ── Page Head ── #}
+      <div class="pti-page-head pti-fade-1">
+        <div>
+          <div class="pti-page-eyebrow">
+            {{ tournament.short_name|default:tournament.name }}
+            {% if content_block and content_block.format_description %} · {{ content_block.format_description }}{% endif %}
+          </div>
+          <h1 class="pti-page-title">{{ tournament.name }}</h1>
+          <div class="pti-page-meta">
+            {% if content_block and content_block.host_organization %}
+              <span>🏛️ {{ content_block.host_organization }}</span>
+            {% endif %}
+            {% if content_block and content_block.location %}
+              <span>📍 {{ content_block.location }}</span>
+            {% endif %}
+            {% if content_block and content_block.start_date %}
+              <span>📅
+                {% if content_block.end_date and content_block.start_date != content_block.end_date %}
+                  {{ content_block.start_date|date:"M j, Y" }} — {{ content_block.end_date|date:"M j, Y" }}
+                {% else %}
+                  {{ content_block.start_date|date:"M j, Y" }}
+                {% endif %}
+              </span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="pti-page-head-actions">
+          {% if content_block and content_block.status_label %}
+            <span class="pti-status-chip {% if content_block.status_label == 'Completed' %}pti-sc-done{% elif content_block.status_label == 'In Progress' %}pti-sc-active{% else %}pti-sc-default{% endif %}">
+              {{ content_block.status_label }}
+            </span>
+          {% elif tournament.active %}
+            <span class="pti-status-chip pti-sc-active">{% trans "Active" %}</span>
+          {% endif %}
+          {% if pref.public_results and tournament.rounds_with_released_results.exists %}
+            {% tournamenturl 'results-public-index' as results_url %}
+            <a href="{{ results_url }}" class="pti-btn pti-btn-primary">📊 {% trans "View Results" %}</a>
+          {% endif %}
         </div>
       </div>
 
-      {# Learn section CTA #}
-      <div class="card mt-3 border-0 bg-light">
-        <div class="card-body text-center">
-          <h6>📚 {% trans "Learn Debate" %}</h6>
-          <p class="text-muted small mb-2">{% trans "Guides on formats, judging, and speaker training." %}</p>
-          <a href="/learn/" class="btn btn-outline-primary btn-sm">{% trans "Browse Guides" %}</a>
-        </div>
-      </div>
+      <div class="pti-content">
 
-    </div>
+        {# ── Stat Cards ── #}
+        <div class="pti-stats-row pti-fade-2">
+          <div class="pti-stat-card">
+            <div class="pti-stat-label">{% trans "Teams" %}</div>
+            <div class="pti-stat-value">{{ team_count }}</div>
+            <div class="pti-stat-sub">{% if speaker_count %}{{ speaker_count }} {% trans "speakers" %}{% else %}&nbsp;{% endif %}</div>
+          </div>
+          <div class="pti-stat-card">
+            <div class="pti-stat-label">{% trans "Judges" %}</div>
+            <div class="pti-stat-value">{{ adj_count }}</div>
+            <div class="pti-stat-sub">&nbsp;</div>
+          </div>
+          <div class="pti-stat-card">
+            <div class="pti-stat-label">{% trans "Rounds" %}</div>
+            <div class="pti-stat-value">{{ round_count }}</div>
+            <div class="pti-stat-sub">{% if completed_round_count %}{{ completed_round_count }} {% trans "completed" %}{% else %}&nbsp;{% endif %}</div>
+          </div>
+          <div class="pti-stat-card">
+            <div class="pti-stat-label">{% trans "Motions" %}</div>
+            <div class="pti-stat-value">{{ motion_count }}</div>
+            <div class="pti-stat-sub">&nbsp;</div>
+          </div>
+        </div>
+
+        {# ── Content Row ── #}
+        <div class="pti-content-row">
+
+          {# ── LEFT COLUMN ── #}
+          <div>
+
+            {# Welcome Message #}
+            {% if pref.welcome_message %}
+              <div class="pti-panel pti-fade-3">
+                <div class="pti-about">
+                  {{ pref.welcome_message|safe }}
+                </div>
+              </div>
+            {% endif %}
+
+            {# About This Tournament #}
+            {% if content_block and content_block.about_text %}
+              <div class="pti-panel pti-fade-3">
+                <div class="pti-panel-header">
+                  <div class="pti-panel-title">📖 {% trans "About This Tournament" %}</div>
+                </div>
+                <div class="pti-about">
+                  {{ content_block.about_text|linebreaksbr }}
+                </div>
+              </div>
+            {% endif %}
+
+            {# Contextual SEO Content #}
+            <div class="pti-panel pti-fade-3">
+              <div class="pti-about">
+                {% tournament_context_text tournament content_block %}
+              </div>
+            </div>
+
+            {# Tournament Information Panel (links for mobile / legacy) #}
+            <div class="pti-panel pti-fade-3">
+              <div class="pti-panel-header">
+                <div class="pti-panel-title">
+                  <span class="pti-panel-title-dot"></span>
+                  {% trans "Tournament Information" %}
+                </div>
+              </div>
+
+              <ul class="pti-nav-list" style="padding: 8px 10px;">
+
+                {# Tab Releases #}
+                {% if pref.team_tab_released > 0 %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'standings-public-tab-team' %}">
+                      <span class="pti-nav-link-icon">👥</span> {% trans "Team Tab" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.break_category_tabs_released > 0 %}
+                  {% for category in tournament.break_categories_nongeneral %}
+                    <li class="pti-nav-list-item">
+                      <a class="pti-nav-link" href="{% tournamenturl 'standings-public-tab-break-category' category=category.slug %}">
+                        <span class="pti-nav-link-icon">👥</span>
+                        {% blocktrans trimmed with category=category.name %}{{ category }} Team Tab{% endblocktrans %}
+                      </a>
+                    </li>
+                  {% endfor %}
+                {% endif %}
+
+                {% if pref.speaker_tab_released > 0 %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'standings-public-tab-speaker' %}">
+                      <span class="pti-nav-link-icon">🎤</span> {% trans "Speaker Tab" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.speaker_category_tabs_released > 0 %}
+                  {% for category in tournament.speakercategory_set.all %}
+                    {% if category.public %}
+                      <li class="pti-nav-list-item">
+                        <a class="pti-nav-link" href="{% tournamenturl 'standings-public-tab-speaker-category' category=category.slug %}">
+                          <span class="pti-nav-link-icon">🎤</span>
+                          {% blocktrans trimmed with category=category.name %}{{ category }} Speaker Tab{% endblocktrans %}
+                        </a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+
+                {% if pref.replies_tab_released > 0 %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'standings-public-tab-replies' %}">
+                      <span class="pti-nav-link-icon">↩️</span> {% trans "Replies Tab" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.adjudicators_tab_released %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'standings-public-adjudicators-tab' %}">
+                      <span class="pti-nav-link-icon">⚖️</span> {% trans "Adjudicator Tab" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.motion_tab_released %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'motions-public-statistics' %}">
+                      <span class="pti-nav-link-icon">💬</span> {% trans "Motions Tab" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {# Draws #}
+                {% if pref.public_draw == 'current' and not pref.team_tab_released %}
+                  {% tournamenturl 'draw-public-current-rounds' as draw_url %}
+                  {% if tournament.public_draws_available %}
+                    <li class="pti-nav-list-item">
+                      <a class="pti-nav-link" href="{{ draw_url }}">
+                        <span class="pti-nav-link-icon">👁️</span>
+                        {% if tournament.current_rounds|length == 1 %}
+                          {% blocktrans trimmed with round=current_round.name %}Draw for {{ round }}{% endblocktrans %}
+                        {% else %}
+                          {% trans "Draws for Current Rounds" %}
+                        {% endif %}
+                      </a>
+                    </li>
+                  {% else %}
+                    <li class="pti-nav-list-item">
+                      <span class="pti-nav-link pti-nav-link-disabled">
+                        <span class="pti-nav-link-icon">🕐</span>
+                        {% if tournament.current_rounds|length == 1 %}
+                          {% blocktrans trimmed with round=current_round.name %}{{ round }}'s draw has yet to be released{% endblocktrans %}
+                        {% else %}
+                          {% trans "The draw for the next round has yet to be released" %}
+                        {% endif %}
+                      </span>
+                    </li>
+                  {% endif %}
+                {% endif %}
+
+                {% if pref.public_draw == 'all-released' %}
+                  {% for r in tournament.round_set.all %}
+                    {% if r.draw_status == r.Status.RELEASED %}
+                      <li class="pti-nav-list-item">
+                        <a class="pti-nav-link" href="{% roundurl 'draw-public-for-round' r %}">
+                          <span class="pti-nav-link-icon">👁️</span>
+                          {% blocktrans trimmed with round=r.name %}Draw for {{ round }}{% endblocktrans %}
+                        </a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+
+                {% if public_side_allocations %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'draw-public-side-allocations' %}">
+                      <span class="pti-nav-link-icon">🔀</span> {% trans "Sides" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {# Results & Standings #}
+                {% if pref.public_results and tournament.rounds_with_released_results.exists %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'results-public-index' %}">
+                      <span class="pti-nav-link-icon">📈</span> {% trans "Results" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.public_motions %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'motions-public' %}">
+                      <span class="pti-nav-link-icon">💬</span> {% trans "Motions" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.public_team_standings and current_round.prev and not pref.team_tab_released %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'standings-public-teams-current' %}">
+                      <span class="pti-nav-link-icon">📊</span> {% trans "Team Standings" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {# Breaks #}
+                {% if pref.public_breaking_teams %}
+                  {% for category in tournament.breakcategory_set.all %}
+                    <li class="pti-nav-list-item">
+                      <a class="pti-nav-link" href="{% tournamenturl 'breakqual-public-teams' category.slug %}">
+                        <span class="pti-nav-link-icon">🥇</span>
+                        {% blocktrans trimmed with category=category.name %}{{ category }} Break{% endblocktrans %}
+                      </a>
+                    </li>
+                  {% endfor %}
+                {% endif %}
+
+                {% if pref.public_breaking_adjs %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'breakqual-public-adjs' %}">
+                      <span class="pti-nav-link-icon">🛡️</span> {% trans "Breaking Adjudicators" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {# Misc #}
+                {% if pref.public_schedule %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'tournament-public-schedule' %}">
+                      <span class="pti-nav-link-icon">📅</span> {% trans "Schedule" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.public_checkins %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'checkins-public-status' %}">
+                      <span class="pti-nav-link-icon">✅</span> {% trans "Check-Ins" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.public_diversity %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'standings-public-diversity' %}">
+                      <span class="pti-nav-link-icon">🌍</span> {% trans "Diversity" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.public_participants %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'participants-public-list' %}">
+                      <span class="pti-nav-link-icon">👥</span> {% trans "Participants" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.public_institutions_list %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'participants-public-institutions-list' %}">
+                      <span class="pti-nav-link-icon">🏛️</span> {% trans "Institutions" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if pref.feedback_progress %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'public_feedback_progress' %}">
+                      <span class="pti-nav-link-icon">📋</span> {% trans "Feedback Progress" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+                {# Participation Actions #}
+                {% if pref.participant_ballots == 'public' %}
+                  {% for round in tournament.current_rounds %}
+                    <li class="pti-nav-list-item">
+                      <a class="pti-nav-link" href="{% roundurl 'results-public-ballot-submission-index' round %}">
+                        <span class="pti-nav-link-icon">📝</span>
+                        {% blocktrans trimmed with round=round.name %}Enter Ballot for {{ round }}{% endblocktrans %}
+                      </a>
+                    </li>
+                  {% endfor %}
+                {% endif %}
+
+                {% if pref.participant_feedback == 'public' %}
+                  <li class="pti-nav-list-item">
+                    <a class="pti-nav-link" href="{% tournamenturl 'adjfeedback-public-add-index' %}">
+                      <span class="pti-nav-link-icon">💡</span> {% trans "Enter Feedback" %}
+                    </a>
+                  </li>
+                {% endif %}
+
+              </ul>
+
+              {# Registration Links #}
+              {% if pref.institution_registration or pref.open_team_registration or pref.open_adj_registration %}
+                <div style="border-top: 1px solid var(--border); padding: 8px 10px;">
+                  <div class="pti-divider">
+                    <span class="pti-divider-label">{% trans "Registration" %}</span>
+                  </div>
+                  <ul class="pti-nav-list">
+                    {% if pref.institution_registration %}
+                      <li class="pti-nav-list-item">
+                        <a class="pti-nav-link" href="{% tournamenturl 'reg-create-institution' %}">
+                          <span class="pti-nav-link-icon">🏠</span> {% trans "Register Institution" %}
+                        </a>
+                      </li>
+                    {% endif %}
+                    {% if pref.open_team_registration %}
+                      <li class="pti-nav-list-item">
+                        <a class="pti-nav-link" href="{% tournamenturl 'reg-create-team' %}">
+                          <span class="pti-nav-link-icon">👥</span> {% trans "Register Open Team" %}
+                        </a>
+                      </li>
+                    {% endif %}
+                    {% if pref.open_adj_registration %}
+                      <li class="pti-nav-list-item">
+                        <a class="pti-nav-link" href="{% tournamenturl 'reg-create-adjudicator' %}">
+                          <span class="pti-nav-link-icon">⚖️</span> {% trans "Register Open Adjudicator" %}
+                        </a>
+                      </li>
+                    {% endif %}
+                  </ul>
+                </div>
+              {% endif %}
+
+            </div>
+            {# End Tournament Information Panel #}
+
+            {# Tournament Staff #}
+            {% if pref.tournament_staff %}
+              <div class="pti-panel pti-fade-3">
+                <div class="pti-panel-header">
+                  <div class="pti-panel-title">🎓 {% trans "Tournament Staff" %}</div>
+                </div>
+                <div class="pti-about">{{ pref.tournament_staff|safe }}</div>
+              </div>
+            {% endif %}
+
+          </div>
+          {# ── END LEFT COLUMN ── #}
+
+          {# ── RIGHT ASIDE ── #}
+          <div class="pti-aside-col">
+
+            {# Round Completion Widget #}
+            {% if round_count %}
+              <div class="pti-panel pti-fade-4">
+                <div class="pti-panel-header">
+                  <div class="pti-panel-title">{% trans "Round Progress" %}</div>
+                </div>
+                <div class="pti-ring-wrap">
+                  <svg class="pti-ring-svg" width="72" height="72" viewBox="0 0 72 72">
+                    <circle class="pti-ring-bg" cx="36" cy="36" r="25"/>
+                    <circle class="pti-ring-fill" cx="36" cy="36" r="25"
+                      style="stroke-dashoffset: {{ ring_offset|default:'157' }};"/>
+                    <text class="pti-ring-val" x="36" y="34">{{ completed_round_count }}/{{ round_count }}</text>
+                    <text class="pti-ring-sub" x="36" y="44">{% trans "rounds" %}</text>
+                  </svg>
+                  <div>
+                    <div class="pti-ri-title">{% trans "Tournament Progress" %}</div>
+                    <div class="pti-ri-row">
+                      <div class="pti-ri-dot" style="background:var(--green)"></div>
+                      <span>{{ completed_round_count }} {% trans "completed" %}</span>
+                    </div>
+                    {% if remaining_round_count %}
+                      <div class="pti-ri-row">
+                        <div class="pti-ri-dot" style="background:var(--amber)"></div>
+                        <span>{{ remaining_round_count }} {% trans "remaining" %}</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
+            {# Quick Links #}
+            <div class="pti-panel pti-fade-4">
+              <div class="pti-panel-header">
+                <div class="pti-panel-title">⚡ {% trans "Quick Links" %}</div>
+              </div>
+              <div class="pti-quick-list">
+                {% if pref.public_results and tournament.rounds_with_released_results.exists %}
+                  <a class="pti-quick-item" href="{% tournamenturl 'results-public-index' %}">
+                    <div class="pti-qi-icon pti-qi-v">📊</div>
+                    <div>
+                      <div class="pti-qi-title">{% trans "View Results" %}</div>
+                      <div class="pti-qi-sub">{% trans "Released rounds" %}</div>
+                    </div>
+                    <div class="pti-qi-arrow">›</div>
+                  </a>
+                {% endif %}
+
+                {% if pref.public_draw != 'off' %}
+                  <a class="pti-quick-item" href="{% tournamenturl 'draw-public-current-rounds' %}">
+                    <div class="pti-qi-icon pti-qi-a">🎲</div>
+                    <div>
+                      <div class="pti-qi-title">{% trans "Current Draw" %}</div>
+                      <div class="pti-qi-sub">{% trans "View the draw" %}</div>
+                    </div>
+                    <div class="pti-qi-arrow">›</div>
+                  </a>
+                {% endif %}
+
+                {% if pref.public_motions %}
+                  <a class="pti-quick-item" href="{% tournamenturl 'motions-public' %}">
+                    <div class="pti-qi-icon pti-qi-g">💬</div>
+                    <div>
+                      <div class="pti-qi-title">{% trans "Motions" %}</div>
+                      <div class="pti-qi-sub">{% trans "Released motions" %}</div>
+                    </div>
+                    <div class="pti-qi-arrow">›</div>
+                  </a>
+                {% endif %}
+
+                {% if pref.public_participants %}
+                  <a class="pti-quick-item" href="{% tournamenturl 'participants-public-list' %}">
+                    <div class="pti-qi-icon pti-qi-v">👥</div>
+                    <div>
+                      <div class="pti-qi-title">{% trans "Participants" %}</div>
+                      <div class="pti-qi-sub">{{ team_count }} {% trans "teams" %} · {{ adj_count }} {% trans "judges" %}</div>
+                    </div>
+                    <div class="pti-qi-arrow">›</div>
+                  </a>
+                {% endif %}
+
+                {% if pref.public_schedule %}
+                  <a class="pti-quick-item" href="{% tournamenturl 'tournament-public-schedule' %}">
+                    <div class="pti-qi-icon pti-qi-a">📅</div>
+                    <div>
+                      <div class="pti-qi-title">{% trans "Schedule" %}</div>
+                      <div class="pti-qi-sub">{% trans "Round schedule" %}</div>
+                    </div>
+                    <div class="pti-qi-arrow">›</div>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+
+            {# Related Learn Articles #}
+            {% if content_block and content_block.format_description %}
+              {% with content_block.format_description|lower as fmt %}
+                {% if "bp" in fmt or "british" in fmt %}
+                  {% show_related_articles "bp" %}
+                {% elif "australs" in fmt or "3v3" in fmt %}
+                  {% show_related_articles "australs" %}
+                {% elif "wsdc" in fmt or "world schools" in fmt %}
+                  {% show_related_articles "wsdc" %}
+                {% endif %}
+              {% endwith %}
+            {% endif %}
+
+            {# Host CTA #}
+            <div class="pti-panel pti-fade-5">
+              <div class="pti-cta">
+                <div class="pti-cta-emoji">📋</div>
+                <div class="pti-cta-title">{% trans "Host Your Own Tournament" %}</div>
+                <div class="pti-cta-desc">{% trans "NekoTab makes it easy to run debate tournaments with automated draws, smart allocations, digital ballots, and live results." %}</div>
+                <a href="{% url 'tournament-create' %}" class="pti-btn pti-btn-primary" style="width:100%;justify-content:center;">{% trans "Create Tournament" %}</a>
+              </div>
+            </div>
+
+            {# Learn CTA #}
+            <div class="pti-panel pti-fade-5">
+              <div class="pti-cta">
+                <div class="pti-cta-emoji">📚</div>
+                <div class="pti-cta-title">{% trans "Learn Debate" %}</div>
+                <div class="pti-cta-desc">{% trans "Guides on formats, judging, and speaker training." %}</div>
+                <a href="/learn/" class="pti-btn pti-btn-ghost" style="width:100%;justify-content:center;">{% trans "Browse Guides" %}</a>
+              </div>
+            </div>
+
+          </div>
+          {# ── END RIGHT ASIDE ── #}
+
+        </div>
+        {# ── END CONTENT ROW ── #}
+
+        {# ── Breadcrumbs (SEO) ── #}
+        <nav aria-label="breadcrumb" style="margin-top: 24px;">
+          <ol class="breadcrumb bg-transparent px-0 mb-0" style="font-size: 12px;" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a href="/" itemprop="item"><span itemprop="name">{% trans "Home" %}</span></a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span itemprop="name">{{ tournament.short_name|default:tournament.name }}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </nav>
+
+      </div>
+      {# ── END CONTENT ── #}
+
+    </main>
+    {# ─── END MAIN ─── #}
 
   </div>
+  {# ─── END BODY ─── #}
 
-
+</div>
+{# ─── END APP ─── #}
 {% endblock content %}

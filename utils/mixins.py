@@ -140,10 +140,10 @@ class WarnAboutDatabaseUseMixin(ContextMixin):
         return cursor.fetchone()[0]
 
     def get_context_data(self, **kwargs):
-        if 'DATABASE_URL' in os.environ and self.request.user.is_authenticated:
-            rows = self.get_database_row_count()
-            if rows >= 8000:
-                kwargs['database_rows_used'] = rows
+        # if 'DATABASE_URL' in os.environ and self.request.user.is_authenticated:
+        #     rows = self.get_database_row_count()
+        #     if rows >= 8000:
+        #         kwargs['database_rows_used'] = rows
 
         return super().get_context_data(**kwargs)
 

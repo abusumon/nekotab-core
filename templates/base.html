@@ -7,10 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#6366f1">
+
+  <!-- AdSense: load for all users by default (no cookie consent needed) -->
   <meta name="google-adsense-account" content="ca-pub-4135779137186219">
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4135779137186219"
-      crossorigin="anonymous"></script>
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4135779137186219"
+    crossorigin="anonymous"></script>
+
   {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}" />{% endif %}
   <meta name="keywords" content="{{ seo_keywords }}" />
   <meta name="application-name" content="{{ seo_site_name }}" />
@@ -27,7 +30,7 @@
     {% endblocktrans %}
   {% endif %}
   <meta name="description" content="{{ meta_description }}" />
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="{% if tournament %}{{ tournament.short_name }}{% else %}NekoTab{% endif %} | {% if page_title %}{{ page_title }}{% else %}{% block og-title %}Debate Tournament Tabulation{% endblock %}{% endif %}" />
@@ -35,7 +38,7 @@
   <meta property="og:image" content="{% static 'logo-social.png' %}" />
   <meta property="og:url" content="{{ canonical_url|default:request.build_absolute_uri }}" />
   <meta property="og:site_name" content="{{ seo_site_name }}" />
-  
+
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{% if tournament %}{{ tournament.short_name }}{% else %}NekoTab{% endif %}" />
@@ -46,9 +49,9 @@
 
   {% block noindex %}
     {% if tournament %}
-            {% if pref.search_engine_indexing != "all" %}
-                <meta name="robots" content="noindex">
-            {% endif %}
+      {% if pref.search_engine_indexing != "all" %}
+        <meta name="robots" content="noindex">
+      {% endif %}
     {% endif %}
   {% endblock %}
 
@@ -81,44 +84,53 @@
   {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "NekoTab Debate Tabulation", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "description": "Modern debate tournament tabulation software for parliamentary formats (BP, Australs, Asian Parliamentary). Manage motions, draws, allocations, ballots, and live results.", "url": "{{ seo_base_url }}", "image": "{{ seo_base_url }}/static/logo-social.png", "keywords": "{{ seo_keywords }}", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "creator": {"@type": "Organization", "name": "NekoTab", "url": "{{ seo_base_url }}"}}
   </script>
 
-
-  <!-- Performance: Preload critical resources -->
+  <!-- Performance -->
   <link rel="preload" href="{% static 'fonts/Inter-Regular.woff2' %}" as="font" type="font/woff2" crossorigin>
-  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
-  
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{% static 'logo-32x32.png' %}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{% static 'logo-16x16.png' %}" sizes="16x16" />
   <link rel="mask-icon" href="{% static 'safari-tab.svg' %}" color="#6366f1">
-  
+
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   {% block extra-css %}{% endblock %}
   {% block extra-head %}{% endblock %}
 
   {% if not hmr %}
-  <link href="{% static 'vue/js/app.js' %}" rel="preload" as="script">
+    <link href="{% static 'vue/js/app.js' %}" rel="preload" as="script">
   {% endif %}
 
-  <!-- Google tag (gtag.js) — loaded only after cookie consent -->
+  <!-- GA4: only after consent -->
   <script>
     function loadGA4() {
-      if (document.getElementById('ga4-script')) return;
-      var s = document.createElement('script');
-      s.id = 'ga4-script';
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7KH41L8LQL';
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', 'G-7KH41L8LQL');
+      try {
+        if (window.__ga4_loaded) return;
+        window.__ga4_loaded = true;
+
+        var s = document.createElement('script');
+        s.id = 'ga4-script';
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7KH41L8LQL';
+        document.head.appendChild(s);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-7KH41L8LQL');
+      } catch (e) {
+        // If blocked by adblock/ETP, ignore silently
+      }
     }
-    if (localStorage.getItem('cookie_consent') === 'all') { loadGA4(); }
+
+    if (localStorage.getItem('cookie_consent') === 'all') {
+      loadGA4();
+    }
   </script>
 
-  {% if LANGUAGE_CODE == 'tzl' %}<!-- In-context translations; use Talossan -->
+  {% if LANGUAGE_CODE == 'tzl' %}
+  <!-- In-context translations; use Talossan -->
   <script>
     var _jipt = [];
     _jipt.push(['project', 'tabbycat']);
@@ -138,14 +150,12 @@
   <div class="container-fluid">
 
     {% if user_role == "admin" %}
-      <!-- Fake full height for menu -->
       <div class="row">
         <div class="col-md-2 col-1 float-left pl-0 pr-lg-3 pr-md-3 pr-0 d-none d-sm-block width fake-sidebar">
           <div class="list-group-item"></div>
         </div>
       </div>
 
-      <!-- Insert a second level column structure for a side nav -->
       <div class="row">
         <div class="admin-sidebar col-md-2 col-1 float-left pl-0 pr-md-3 pr-0 collapse width show">
           {% block sidebar %}{% include "nav/admin_nav.html" %}{% endblock %}
@@ -157,9 +167,7 @@
 
     {% block header %}
       <div class="row d-print-none {% if user_role == "admin" %}mb-md-3{% endif %}" id="pageTitle">
-
         <div class="col-md m-3 h2 d-flex align-items-center">
-
           <div style="min-height: 100px;">
             {% if page_title %}
               {% if page_emoji %}<span class="emoji">{{ page_emoji }}</span>{% endif %}
@@ -173,14 +181,11 @@
               <small class="text-muted d-md-inline d-block">{% block sub-title %}{% endblock %}</small>
             {% endif %}
           </div>
-
         </div>
-
       </div>
     {% endblock header %}
 
     {% block subheader %}
-
       <div class="row page-navs">
         <div class="col">
           <div class="d-lg-flex justify-content-lg-between">
@@ -200,7 +205,6 @@
           {% block page-alerts %}{% endblock %}
         </div>
       </div>
-
     {% endblock subheader %}
 
     <div class="row">
@@ -210,14 +214,11 @@
     </div>
 
     {% if user_role == "admin" %}
-
         </main>
       </div>
-
     {% else %}
         </main>
     {% endif %}
-
   </div>
 
   {% if user_role != "admin" %}
@@ -251,10 +252,9 @@
   {% endblock %}
 
   {% block js %}
-
     <script src="{% statici18n LANGUAGE_CODE %}"></script>
     <script>
-      window.buildData = { // Pass to Sentry
+      window.buildData = {
         version: '{% if tabbycat_version %}{{ tabbycat_version }}{% else %}?{% endif %}',
         sentry: {% if disable_sentry %}false{% else %}true{% endif %},
         sentryDsn: '{{ SENTRY_DSN|default:"" }}'
@@ -262,9 +262,7 @@
     </script>
 
     {% if hmr %}
-      <!-- webpack dev server (live js) -->
       <script type="text/javascript" src="http://localhost:8888/js/app.js"></script>
-      <!-- livereload (live css) -->
       <script>
         document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
         ':35729/livereload.js?snipver=1"></' + 'script>')
@@ -272,10 +270,9 @@
     {% else %}
       <script type="text/javascript" src="{% static 'vue/js/app.js' %}"></script>
     {% endif %}
-
   {% endblock js %}
 
-  <!-- Cookie Consent Banner -->
+  <!-- Cookie Consent Banner (only for analytics) -->
   <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; color:#e0e0e0; padding:16px 24px; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,.3); font-size:14px;">
     <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
       <p style="margin:0; flex:1; min-width:280px;">
@@ -283,11 +280,12 @@
         <a href="/privacy/" style="color:#a78bfa; text-decoration:underline;">Privacy Policy</a>
       </p>
       <div style="display:flex; gap:8px; flex-shrink:0;">
-        <button onclick="acceptAllCookies()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept All</button>
-        <button onclick="acceptEssentialOnly()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">Essential Only</button>
+        <button onclick="acceptAllCookies()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept Analytics</button>
+        <button onclick="acceptEssentialOnly()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">No Thanks</button>
       </div>
     </div>
   </div>
+
   <script>
     (function(){
       var consent = localStorage.getItem('cookie_consent');
@@ -295,11 +293,13 @@
         document.getElementById('cookie-consent').style.display='block';
       }
     })();
+
     function acceptAllCookies(){
       localStorage.setItem('cookie_consent','all');
       document.getElementById('cookie-consent').style.display='none';
       if (typeof loadGA4 === 'function') loadGA4();
     }
+
     function acceptEssentialOnly(){
       localStorage.setItem('cookie_consent','essential');
       document.getElementById('cookie-consent').style.display='none';

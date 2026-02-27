@@ -46,16 +46,11 @@
 
   <!-- Google AdSense & GA4 — loaded only after full cookie consent -->
   <script>
-    function loadAdSense() {
-      if (document.getElementById('adsense-script')) return;
-      if (document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]')) return;
-      var s = document.createElement('script');
-      s.id = 'adsense-script';
-      s.async = true;
-      s.crossOrigin = 'anonymous';
-      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4135779137186219';
-      document.head.appendChild(s);
-    }
+  window.adsbygoogle window.adsbygoogle || [];
+  window.adsbygoogle.requestNonPersonalizedAds = 1;
+  </script>
+
+  <script>
     function loadGA4Landing() {
       if (document.getElementById('ga4-script')) return;
       var s = document.createElement('script');
@@ -71,7 +66,6 @@
     }
     if (localStorage.getItem('cookie_consent') === 'all') {
       loadGA4Landing();
-      loadAdSense();
     }
   </script>
 
@@ -865,7 +859,7 @@
   <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; color:#e0e0e0; padding:16px 24px; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,.3); font-size:14px;">
     <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
       <p style="margin:0; flex:1; min-width:280px;">
-        We use cookies for authentication and, with your consent, analytics (Google Analytics).
+        We use cookies for authentication. We show ads (non-personalized by default). With your consent, we enable analytics.
         <a href="/privacy/" style="color:#a78bfa; text-decoration:underline;">Privacy Policy</a>
       </p>
       <div style="display:flex; gap:8px; flex-shrink:0;">
@@ -884,7 +878,7 @@
       localStorage.setItem('cookie_consent','all');
       document.getElementById('cookie-consent').style.display='none';
       if (typeof loadGA4Landing === 'function') loadGA4Landing();
-      if (typeof loadAdSense === 'function') loadAdSense();
+      
     }
     function acceptEssentialOnly(){
       localStorage.setItem('cookie_consent','essential');
