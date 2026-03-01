@@ -34,7 +34,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block extra-css %}
@@ -70,10 +70,8 @@
   --amber-soft: rgba(201,138,0,.09);
   --red:        #D63B5A;
   --red-soft:   rgba(214,59,90,.09);
-  /* type */
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans:  'DM Sans', system-ui, sans-serif;
-  --mono:  'JetBrains Mono', monospace;
+  /* type — IBM Plex Mono everywhere */
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   /* geometry */
   --r-xs: 5px;
   --r-sm: 8px;
@@ -97,7 +95,7 @@ body.pti-dashboard > footer { display: none !important; }
 /* ─── App wrapper ─── */
 .pti-app {
   width: 100%; min-height: 100vh; display: flex; flex-direction: column;
-  font-family: var(--sans); font-size: 13.5px; line-height: 1.5;
+  font-family: var(--mono); font-size: 13.5px; line-height: 1.5;
   color: var(--ink); -webkit-font-smoothing: antialiased;
 }
 
@@ -120,8 +118,8 @@ body.pti-dashboard > footer { display: none !important; }
   display: grid; place-items: center; font-size: 13px; flex-shrink: 0;
 }
 .pti-logo-text {
-  font-family: var(--serif); font-size: 17px; font-style: italic;
-  color: var(--ink); letter-spacing: -.015em; text-decoration: none;
+  font-family: var(--mono); font-size: 15px; font-weight: 700;
+  color: var(--ink); letter-spacing: -.03em; text-decoration: none;
 }
 .pti-header-nav {
   display: flex; align-items: center; padding: 0 20px; gap: 2px; height: 100%;
@@ -142,7 +140,7 @@ body.pti-dashboard > footer { display: none !important; }
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 12.5px; font-weight: 600; padding: 6px 13px;
   border-radius: var(--r-sm); cursor: pointer; border: none;
-  transition: all .15s; white-space: nowrap; font-family: var(--sans);
+  transition: all .15s; white-space: nowrap; font-family: var(--mono);
   text-decoration: none;
 }
 .pti-hbtn-round {
@@ -260,8 +258,8 @@ body.pti-dashboard > footer { display: none !important; }
   margin-bottom: 4px;
 }
 .pti-page-title {
-  font-family: var(--serif); font-size: 24px; font-style: italic;
-  color: var(--ink); font-weight: 400; line-height: 1.15;
+  font-family: var(--mono); font-size: 22px; font-weight: 700;
+  color: var(--ink); letter-spacing: -.03em; line-height: 1.15;
 }
 .pti-page-meta {
   display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px;
@@ -296,8 +294,8 @@ body.pti-dashboard > footer { display: none !important; }
   margin-bottom: 8px;
 }
 .pti-stat-value {
-  font-family: var(--serif); font-size: 40px; font-style: italic;
-  font-weight: 400; color: var(--ink); line-height: 1;
+  font-family: var(--mono); font-size: 36px; font-weight: 700;
+  color: var(--ink); line-height: 1; letter-spacing: -.04em;
 }
 .pti-stat-sub {
   font-size: 11px; color: var(--ghost); margin-top: 5px;
@@ -333,7 +331,7 @@ body.pti-dashboard > footer { display: none !important; }
 /* ─── Buttons ─── */
 .pti-btn {
   display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--sans); font-size: 12px; font-weight: 600;
+  font-family: var(--mono); font-size: 12px; font-weight: 600;
   padding: 6px 13px; border-radius: var(--r-sm); border: none;
   cursor: pointer; transition: all .15s; white-space: nowrap;
   text-decoration: none;
@@ -400,7 +398,7 @@ body.pti-dashboard > footer { display: none !important; }
   transition: stroke-dashoffset .6s ease;
 }
 .pti-ring-val {
-  font-family: var(--serif); font-size: 17px; font-style: italic;
+  font-family: var(--mono); font-size: 15px; font-weight: 700;
   fill: var(--ink); text-anchor: middle; dominant-baseline: middle;
 }
 .pti-ring-sub {

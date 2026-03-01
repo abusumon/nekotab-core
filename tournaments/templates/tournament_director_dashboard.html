@@ -1,0 +1,1065 @@
+{% extends "base.html" %}
+{% load debate_tags i18n static %}
+
+{% block body-class %}td-dashboard{% endblock %}
+
+{% block extra-head %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block extra-css %}
+<style>
+/* ═══════════════════════════════════════════════════
+   NEKOTAB — TAB DIRECTOR DASHBOARD v1
+   Typography: IBM Plex Mono everywhere
+═══════════════════════════════════════════════════ */
+
+:root {
+  /* surfaces */
+  --bg:        #F0F2F8;
+  --surface:   #FFFFFF;
+  --surface-2: #F7F8FC;
+  --surface-3: #EEF0F8;
+  --border:    #E4E7F2;
+  --border-2:  #D8DCF0;
+  /* brand */
+  --v:      #6366f1;
+  --v-soft: rgba(99,102,241,.09);
+  --v-mid:  rgba(99,102,241,.18);
+  --v-text: #4f46e5;
+  /* neutrals */
+  --ink:    #0F1020;
+  --ink-2:  #2A2D48;
+  --ink-3:  #5A5E80;
+  --muted:  #9498BC;
+  --ghost:  #C8CCE4;
+  /* status */
+  --green:      #16A36A;
+  --green-soft: rgba(22,163,106,.09);
+  --amber:      #C98A00;
+  --amber-soft: rgba(201,138,0,.09);
+  --red:        #D63B5A;
+  --red-soft:   rgba(214,59,90,.09);
+  /* type — IBM Plex Mono everywhere */
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* geometry */
+  --r-xs: 5px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  /* elevation */
+  --sh-1: 0 1px 3px rgba(15,16,32,.05), 0 1px 2px rgba(15,16,32,.04);
+  --sh-2: 0 3px 12px rgba(15,16,32,.07), 0 1px 4px rgba(15,16,32,.05);
+  --sh-v: 0 4px 18px rgba(99,102,241,.22), 0 1px 4px rgba(99,102,241,.14);
+}
+
+/* ─── Reset base.html wrappers ─── */
+body.td-dashboard { overflow: hidden; background: var(--bg); }
+body.td-dashboard > .container-fluid { padding: 0 !important; max-width: 100% !important; }
+body.td-dashboard > .container-fluid > main.main { padding: 0 !important; margin: 0 !important; }
+body.td-dashboard > .container-fluid > main.main > .row { margin: 0 !important; }
+body.td-dashboard > .container-fluid > main.main > .row > .col { padding: 0 !important; }
+body.td-dashboard > footer { display: none !important; }
+
+/* ─── App wrapper ─── */
+.td-app {
+  width: 100%; min-height: 100vh; display: flex; flex-direction: column;
+  font-family: var(--mono); font-size: 13.5px; line-height: 1.5;
+  color: var(--ink); -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════
+   HEADER
+═══════════════════════════════════════ */
+.td-header {
+  height: 52px; background: var(--surface); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 20px 0 0; gap: 0;
+  flex-shrink: 0; position: sticky; top: 0; z-index: 50; box-shadow: var(--sh-1);
+}
+.td-header-logo {
+  width: 220px; flex-shrink: 0; padding: 0 18px;
+  display: flex; align-items: center; gap: 9px;
+  border-right: 1px solid var(--border); height: 100%;
+  text-decoration: none;
+}
+.td-logo-mark {
+  width: 26px; height: 26px; border-radius: 7px; background: var(--v);
+  display: grid; place-items: center; font-size: 13px; flex-shrink: 0;
+}
+.td-logo-text {
+  font-family: var(--mono); font-size: 15px; font-weight: 700;
+  color: var(--ink); letter-spacing: -.03em; text-decoration: none;
+}
+
+/* ─ Header Tabs ─ */
+.td-header-nav {
+  display: flex; align-items: center; padding: 0 20px; gap: 2px; height: 100%;
+}
+.td-header-tab {
+  display: flex; align-items: center; gap: 6px; padding: 0 13px; height: 100%;
+  font-size: 12px; font-weight: 500; color: var(--muted); cursor: pointer;
+  border-bottom: 2px solid transparent; transition: all .15s;
+  white-space: nowrap; text-decoration: none; font-family: var(--mono);
+}
+.td-header-tab:hover { color: var(--ink-2); text-decoration: none; }
+.td-header-tab.active {
+  color: var(--v-text); border-bottom-color: var(--v); font-weight: 600;
+}
+.td-header-spacer { flex: 1; }
+
+/* ─ Header Actions ─ */
+.td-header-actions { display: flex; align-items: center; gap: 8px; }
+.td-round-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+  padding: 6px 13px; border-radius: var(--r-sm); cursor: default;
+  background: var(--v-soft); color: var(--v-text);
+  border: 1px solid var(--v-mid);
+}
+.td-round-pip {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--v);
+  animation: tdpip 1.8s ease-in-out infinite;
+}
+@keyframes tdpip { 0%,100%{opacity:1} 50%{opacity:.3} }
+.td-hbtn-icon {
+  width: 30px; height: 30px; border-radius: var(--r-sm);
+  background: var(--surface-2); border: 1px solid var(--border);
+  display: grid; place-items: center; font-size: 14px; cursor: pointer;
+  text-decoration: none; color: inherit; position: relative;
+}
+.td-hbtn-icon:hover { background: var(--surface-3); text-decoration: none; color: inherit; }
+.td-notif-dot {
+  position: absolute; top: 4px; right: 4px; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--red);
+}
+.td-logout-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+  padding: 6px 12px; border-radius: var(--r-sm); border: none;
+  background: transparent; color: var(--muted); cursor: pointer;
+  transition: all .15s;
+}
+.td-logout-btn:hover { background: var(--red-soft); color: var(--red); }
+
+/* ═══════════════════════════════════════
+   BODY (sidebar + main)
+═══════════════════════════════════════ */
+.td-body { flex: 1; display: flex; overflow: hidden; }
+
+/* ═══════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════ */
+.td-sidebar {
+  width: 220px; flex-shrink: 0; background: var(--surface);
+  border-right: 1px solid var(--border); display: flex;
+  flex-direction: column; overflow-y: auto;
+}
+.td-sidebar-context {
+  margin: 12px 10px 4px; padding: 10px 12px;
+  background: var(--v-soft); border: 1px solid var(--v-mid);
+  border-radius: var(--r-md);
+}
+.td-sc-label {
+  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 3px;
+}
+.td-sc-name {
+  font-size: 13px; font-weight: 700; color: var(--ink);
+  margin-bottom: 1px; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis;
+}
+.td-sc-meta {
+  font-family: var(--mono); font-size: 10px; color: var(--muted);
+}
+
+/* ─ Nav groups ─ */
+.td-nav-group { padding: 6px 8px; }
+.td-nav-group-label {
+  font-family: var(--mono); font-size: 9px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ghost);
+  padding: 10px 10px 4px;
+}
+.td-nav-item {
+  display: flex; align-items: center; gap: 9px; padding: 8px 10px;
+  border-radius: var(--r-sm); font-size: 12.5px; font-weight: 500;
+  color: var(--ink-3); cursor: pointer; position: relative;
+  transition: all .14s; text-decoration: none; list-style: none;
+  font-family: var(--mono);
+}
+.td-nav-item:hover { background: var(--surface-2); color: var(--ink-2); text-decoration: none; }
+.td-nav-item.active {
+  background: var(--v-soft); color: var(--v-text); font-weight: 600;
+}
+.td-nav-item.active::before {
+  content: ''; position: absolute; left: 0; top: 7px; bottom: 7px;
+  width: 3px; border-radius: 0 3px 3px 0; background: var(--v);
+}
+.td-nav-icon {
+  font-size: 14px; width: 20px; text-align: center; flex-shrink: 0; opacity: .7;
+}
+.td-nav-item.active .td-nav-icon { opacity: 1; }
+.td-nav-badge {
+  margin-left: auto; font-family: var(--mono); font-size: 10px;
+  font-weight: 600; background: var(--v-mid); color: var(--v-text);
+  padding: 1px 7px; border-radius: 99px;
+}
+
+/* ─ User chip footer ─ */
+.td-sidebar-footer {
+  margin-top: auto; padding: 10px; border-top: 1px solid var(--border);
+}
+.td-user-chip {
+  display: flex; align-items: center; gap: 9px; padding: 8px 9px;
+  border-radius: var(--r-sm); cursor: pointer; transition: background .14s;
+  text-decoration: none; color: inherit;
+}
+.td-user-chip:hover { background: var(--surface-2); text-decoration: none; color: inherit; }
+.td-user-avatar {
+  width: 28px; height: 28px; border-radius: 50%; background: var(--v);
+  display: grid; place-items: center; font-size: 11px; font-weight: 700;
+  color: white; flex-shrink: 0;
+}
+.td-user-name { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+.td-user-role { font-size: 10px; color: var(--muted); font-family: var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+
+/* ═══════════════════════════════════════
+   MAIN CONTENT
+═══════════════════════════════════════ */
+.td-main { flex: 1; overflow-y: auto; background: var(--bg); }
+
+/* ─ Page head ─ */
+.td-page-head {
+  padding: 22px 28px 0; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.td-page-eyebrow {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 4px;
+}
+.td-page-title {
+  font-family: var(--mono); font-size: 22px; font-weight: 700;
+  color: var(--ink); letter-spacing: -.03em; line-height: 1.15;
+}
+.td-page-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px;
+  font-size: 11.5px; color: var(--ink-3); font-family: var(--mono);
+}
+.td-page-meta span { display: inline-flex; align-items: center; gap: 5px; }
+.td-page-head-actions {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-top: 4px;
+}
+.td-content { padding: 20px 28px 40px; }
+
+/* ─── Stat cards ─── */
+.td-stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-bottom: 20px;
+}
+.td-stat-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 18px 20px; box-shadow: var(--sh-1);
+  position: relative; overflow: hidden; transition: box-shadow .18s, transform .18s;
+}
+.td-stat-card:hover { box-shadow: var(--sh-2); transform: translateY(-1px); }
+.td-stat-card::after {
+  content: ''; position: absolute; bottom: 0; left: 20px; right: 20px;
+  height: 2px; border-radius: 99px; background: var(--border);
+  opacity: 0; transition: opacity .18s;
+}
+.td-stat-card:hover::after { opacity: 1; }
+.td-stat-label {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 8px;
+}
+.td-stat-value {
+  font-family: var(--mono); font-size: 36px; font-weight: 700;
+  color: var(--ink); line-height: 1; letter-spacing: -.04em;
+}
+.td-stat-sub {
+  font-size: 11px; color: var(--ghost); margin-top: 5px;
+  font-family: var(--mono);
+}
+
+/* ─── Content row (main + aside) ─── */
+.td-content-row {
+  display: grid; grid-template-columns: 1fr 280px; gap: 16px; align-items: start;
+}
+
+/* ═══════════════════════════════════════
+   PANEL (card wrapper)
+═══════════════════════════════════════ */
+.td-panel {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-1);
+  margin-bottom: 14px;
+}
+.td-panel:last-child { margin-bottom: 0; }
+.td-panel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; border-bottom: 1px solid var(--border);
+}
+.td-panel-title {
+  font-size: 13px; font-weight: 700; color: var(--ink); font-family: var(--mono);
+  display: flex; align-items: center; gap: 8px;
+}
+.td-panel-title-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--v);
+  animation: tdpip 1.8s ease-in-out infinite;
+}
+.td-panel-actions { display: flex; gap: 7px; }
+
+/* ─── Buttons ─── */
+.td-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+  padding: 6px 13px; border-radius: var(--r-sm); border: none;
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+  text-decoration: none;
+}
+.td-btn-ghost {
+  background: var(--surface-2); color: var(--ink-3);
+  border: 1px solid var(--border);
+}
+.td-btn-ghost:hover {
+  background: var(--surface-3); color: var(--ink-2);
+  border-color: var(--border-2); text-decoration: none;
+}
+.td-btn-primary {
+  background: var(--v); color: white; box-shadow: var(--sh-v);
+}
+.td-btn-primary:hover {
+  background: #5558e8; transform: translateY(-1px);
+  color: white; text-decoration: none;
+}
+.td-btn-danger {
+  background: var(--red-soft); color: var(--red);
+  border: 1px solid rgba(214,59,90,.15);
+}
+.td-btn-danger:hover { background: rgba(214,59,90,.14); text-decoration: none; }
+.td-btn:disabled, .td-btn[disabled] {
+  opacity: .45; cursor: not-allowed; pointer-events: none;
+}
+
+/* ─── Status chips ─── */
+.td-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 600;
+  padding: 3px 9px; border-radius: 6px; white-space: nowrap;
+}
+.td-chip-active  { background: var(--v-soft); color: var(--v-text); border: 1px solid var(--v-mid); }
+.td-chip-done    { background: var(--green-soft); color: var(--green); border: 1px solid rgba(22,163,106,.15); }
+.td-chip-pending { background: var(--amber-soft); color: var(--amber); border: 1px solid rgba(201,138,0,.12); }
+.td-chip-missing { background: var(--red-soft); color: var(--red); border: 1px solid rgba(214,59,90,.12); }
+.td-chip-default { background: var(--surface-3); color: var(--ink-3); border: 1px solid var(--border); }
+
+/* ═══════════════════════════════════════
+   ROUND PROGRESS TRACKER
+═══════════════════════════════════════ */
+.td-round-tracker {
+  display: flex; align-items: center; gap: 0; padding: 14px 20px;
+  border-bottom: 1px solid var(--border); overflow-x: auto;
+}
+.td-rt-step {
+  display: flex; align-items: center; gap: 0; flex-shrink: 0;
+}
+.td-rt-dot {
+  width: 28px; height: 28px; border-radius: 50%; display: grid;
+  place-items: center; font-size: 11px; font-weight: 700;
+  font-family: var(--mono); cursor: default; transition: all .15s;
+  border: 2px solid var(--border);
+  background: var(--surface); color: var(--muted);
+}
+.td-rt-dot.done {
+  background: var(--green); border-color: var(--green); color: white;
+}
+.td-rt-dot.active {
+  background: var(--v); border-color: var(--v); color: white;
+  box-shadow: 0 0 0 3px var(--v-soft);
+}
+.td-rt-dot.pending {
+  background: var(--surface-2); border-color: var(--border); color: var(--ghost);
+}
+.td-rt-line {
+  width: 24px; height: 2px; background: var(--border); flex-shrink: 0;
+}
+.td-rt-line.done { background: var(--green); }
+.td-rt-label {
+  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
+  text-align: center; margin-top: 4px;
+}
+.td-rt-step-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+}
+
+/* ═══════════════════════════════════════
+   MOTION STRIP
+═══════════════════════════════════════ */
+.td-motion-strip {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 20px; border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+.td-motion-label {
+  font-family: var(--mono); font-size: 9.5px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  flex-shrink: 0;
+}
+.td-motion-text {
+  font-size: 13px; font-weight: 500; color: var(--ink-2);
+  font-family: var(--mono); flex: 1; line-height: 1.45;
+}
+.td-motion-actions { flex-shrink: 0; }
+
+/* ═══════════════════════════════════════
+   DRAW TABLE
+═══════════════════════════════════════ */
+.td-draw-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  font-family: var(--mono); font-size: 12px;
+}
+.td-draw-table thead th {
+  font-size: 9.5px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); padding: 10px 12px;
+  border-bottom: 1px solid var(--border); background: var(--surface-2);
+  text-align: left; white-space: nowrap; position: sticky; top: 0;
+}
+.td-draw-table tbody tr {
+  transition: background .12s;
+}
+.td-draw-table tbody tr:hover { background: var(--surface-2); }
+.td-draw-table tbody td {
+  padding: 10px 12px; border-bottom: 1px solid var(--border);
+  vertical-align: middle; color: var(--ink-2); font-weight: 500;
+}
+.td-draw-table tbody td:first-child { font-weight: 700; color: var(--ink); }
+.td-draw-room {
+  display: flex; align-items: center; gap: 8px;
+}
+.td-draw-room-num {
+  width: 24px; height: 24px; border-radius: 6px; background: var(--surface-3);
+  display: grid; place-items: center; font-size: 10px; font-weight: 700;
+  color: var(--ink-3); flex-shrink: 0;
+}
+.td-team-cell { font-size: 12px; font-weight: 500; }
+.td-team-inst {
+  font-size: 10px; color: var(--muted); font-weight: 400; margin-top: 1px;
+}
+
+/* ─── Draw footer progress ─── */
+.td-draw-footer {
+  display: flex; align-items: center; gap: 12px; padding: 12px 20px;
+  border-top: 1px solid var(--border); background: var(--surface-2);
+}
+.td-draw-progress-bar {
+  flex: 1; height: 6px; border-radius: 99px; background: var(--surface-3);
+  overflow: hidden;
+}
+.td-draw-progress-fill {
+  height: 100%; border-radius: 99px; background: var(--v);
+  transition: width .4s ease;
+}
+.td-draw-progress-text {
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  color: var(--ink-3); white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════
+   RIGHT SIDEBAR WIDGETS
+═══════════════════════════════════════ */
+
+/* ─ Completion ring ─ */
+.td-ring-wrap {
+  padding: 20px; display: flex; align-items: center; gap: 18px;
+}
+.td-ring-svg { flex-shrink: 0; }
+.td-ring-bg { fill: none; stroke: var(--surface-3); stroke-width: 7; }
+.td-ring-fill {
+  fill: none; stroke: var(--v); stroke-width: 7; stroke-linecap: round;
+  stroke-dasharray: 157; transform: rotate(-90deg); transform-origin: center;
+  transition: stroke-dashoffset .6s ease;
+}
+.td-ring-val {
+  font-family: var(--mono); font-size: 15px; font-weight: 700;
+  fill: var(--ink); text-anchor: middle; dominant-baseline: middle;
+}
+.td-ring-sub {
+  font-family: var(--mono); font-size: 8px; fill: var(--muted);
+  text-anchor: middle; dominant-baseline: middle;
+}
+.td-ri-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.td-ri-row {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 11.5px; margin-bottom: 4px; color: var(--ink-3);
+  font-family: var(--mono);
+}
+.td-ri-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* ─ Quick Actions ─ */
+.td-quick-list { padding: 8px; }
+.td-quick-item {
+  display: flex; align-items: center; gap: 11px; padding: 10px 11px;
+  border-radius: var(--r-md); cursor: pointer; transition: background .14s;
+  text-decoration: none; color: inherit;
+}
+.td-quick-item:hover { background: var(--surface-2); text-decoration: none; color: inherit; }
+.td-quick-item.disabled {
+  opacity: .45; cursor: not-allowed; pointer-events: none;
+}
+.td-qi-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: grid; place-items: center; font-size: 15px; flex-shrink: 0;
+}
+.td-qi-v { background: var(--v-soft); }
+.td-qi-g { background: var(--green-soft); }
+.td-qi-a { background: var(--amber-soft); }
+.td-qi-r { background: var(--red-soft); }
+.td-qi-title { font-size: 12.5px; font-weight: 600; color: var(--ink-2); font-family: var(--mono); }
+.td-qi-sub { font-size: 10.5px; color: var(--muted); margin-top: 1px; font-family: var(--mono); }
+.td-qi-arrow {
+  margin-left: auto; color: var(--ghost); font-size: 16px;
+  transition: transform .14s, color .14s;
+}
+.td-quick-item:hover .td-qi-arrow { transform: translateX(2px); color: var(--muted); }
+
+/* ─ Check-in Widget ─ */
+.td-checkin-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+  padding: 14px 16px;
+}
+.td-checkin-block {
+  text-align: center; padding: 10px 6px; border-radius: var(--r-md);
+  background: var(--surface-2); border: 1px solid var(--border);
+}
+.td-checkin-val {
+  font-family: var(--mono); font-size: 18px; font-weight: 700;
+  color: var(--ink); line-height: 1;
+}
+.td-checkin-label {
+  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  margin-top: 4px;
+}
+.td-checkin-sub {
+  font-family: var(--mono); font-size: 10px; color: var(--ghost);
+  margin-top: 2px;
+}
+
+/* ─── Animations ─── */
+@keyframes tdFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.td-fade-1 { animation: tdFadeUp .35s ease-out .05s both; }
+.td-fade-2 { animation: tdFadeUp .35s ease-out .12s both; }
+.td-fade-3 { animation: tdFadeUp .35s ease-out .20s both; }
+.td-fade-4 { animation: tdFadeUp .35s ease-out .28s both; }
+.td-fade-5 { animation: tdFadeUp .35s ease-out .36s both; }
+
+/* ─── Responsive ─── */
+@media (max-width: 1100px) {
+  .td-content-row { grid-template-columns: 1fr; }
+  .td-aside-col {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .td-aside-col .td-panel { margin-bottom: 0; }
+}
+@media (max-width: 768px) {
+  .td-sidebar { display: none; }
+  .td-header-logo { width: auto; border-right: none; padding: 0 14px; }
+  .td-header-nav { padding: 0 8px; gap: 0; overflow-x: auto; }
+  .td-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .td-page-head { flex-direction: column; gap: 12px; padding: 16px 16px 0; }
+  .td-content { padding: 16px 16px 32px; }
+}
+@media (max-width: 520px) {
+  .td-stats-row { grid-template-columns: 1fr; }
+  .td-stat-value { font-size: 28px; }
+  .td-header-nav { display: none; }
+}
+</style>
+{% endblock %}
+
+{% block head-title %}{% trans "Tab Director" %} · {{ tournament.name }}{% endblock %}
+
+{# Suppress base.html defaults #}
+{% block nav %}{% endblock %}
+{% block header %}{% endblock %}
+{% block subheader %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="td-app">
+
+  {# ═══════════════════════════════════════
+     HEADER BAR
+  ═══════════════════════════════════════ #}
+  <header class="td-header">
+    <a class="td-header-logo" href="/">
+      <div class="td-logo-mark">🐱</div>
+      <div class="td-logo-text">NekoTab</div>
+    </a>
+
+    <nav class="td-header-nav">
+      <a class="td-header-tab active" href="{% tournamenturl 'tournament-admin-home' %}">
+        <span>📊</span> {% trans "Dashboard" %}
+      </a>
+      <a class="td-header-tab" href="{% tournamenturl 'draw-index' %}">
+        <span>🎲</span> {% trans "Draws" %}
+      </a>
+      <a class="td-header-tab" href="{% tournamenturl 'results-round-list' %}">
+        <span>📝</span> {% trans "Ballots" %}
+      </a>
+      <a class="td-header-tab" href="{% tournamenturl 'standings-index' %}">
+        <span>📈</span> {% trans "Results" %}
+      </a>
+    </nav>
+
+    <div class="td-header-spacer"></div>
+
+    <div class="td-header-actions">
+      {% if current_round %}
+        <div class="td-round-pill">
+          <span class="td-round-pip"></span>
+          {% blocktrans trimmed with round=current_round.name status=current_round.get_status_display %}
+            {{ round }} · {{ status }}
+          {% endblocktrans %}
+        </div>
+      {% endif %}
+
+      <a href="#" class="td-hbtn-icon" title="{% trans 'Notifications' %}">
+        🔔
+        {% if unread_notifications %}<span class="td-notif-dot"></span>{% endif %}
+      </a>
+      <a href="{% tournamenturl 'tournament-public-index' %}" class="td-hbtn-icon" title="{% trans 'Public View' %}">👁️</a>
+
+      <form method="post" action="{% url 'logout' %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="td-logout-btn" title="{% trans 'Logout' %}">
+          🚪 {% trans "Logout" %}
+        </button>
+      </form>
+    </div>
+  </header>
+
+  {# ═══════════════════════════════════════
+     BODY (sidebar + main)
+  ═══════════════════════════════════════ #}
+  <div class="td-body">
+
+    {# ─── SIDEBAR ─── #}
+    <aside class="td-sidebar">
+
+      {# Tournament context chip #}
+      <div class="td-sidebar-context">
+        <div class="td-sc-label">{% trans "Tournament" %}</div>
+        <div class="td-sc-name">{{ tournament.short_name|default:tournament.name }}</div>
+        <div class="td-sc-meta">
+          {% if tournament.pref.tournament_format %}{{ tournament.pref.tournament_format }}{% endif %}
+          · {{ round_count }} {% trans "Rounds" %}
+        </div>
+      </div>
+
+      {# ── Tabulation Group ── #}
+      <div class="td-nav-group">
+        <div class="td-nav-group-label">{% trans "Tabulation" %}</div>
+        <a class="td-nav-item active" href="{% tournamenturl 'tournament-admin-home' %}">
+          <span class="td-nav-icon">📊</span> {% trans "Overview" %}
+        </a>
+        <a class="td-nav-item" href="{% tournamenturl 'draw-index' %}">
+          <span class="td-nav-icon">🎲</span> {% trans "Draws" %}
+          {% if current_round %}<span class="td-nav-badge">{{ current_round.abbreviation }}</span>{% endif %}
+        </a>
+        <a class="td-nav-item" href="{% tournamenturl 'adjallocation-index' %}">
+          <span class="td-nav-icon">⚖️</span> {% trans "Allocations" %}
+        </a>
+        <a class="td-nav-item" href="{% tournamenturl 'results-round-list' %}">
+          <span class="td-nav-icon">📝</span> {% trans "Ballots" %}
+          {% if ballots_pending_count %}<span class="td-nav-badge">{{ ballots_pending_count }}</span>{% endif %}
+        </a>
+        <a class="td-nav-item" href="{% tournamenturl 'standings-index' %}">
+          <span class="td-nav-icon">📈</span> {% trans "Standings" %}
+        </a>
+        <a class="td-nav-item" href="{% tournamenturl 'breakqual-index' %}">
+          <span class="td-nav-icon">🏆</span> {% trans "Breaks" %}
+        </a>
+      </div>
+
+      {# ── Setup Group ── #}
+      <div class="td-nav-group">
+        <div class="td-nav-group-label">{% trans "Setup" %}</div>
+        <a class="td-nav-item" href="{% tournamenturl 'participants-team-list' %}">
+          <span class="td-nav-icon">👥</span> {% trans "Teams" %}
+          <span class="td-nav-badge">{{ team_count }}</span>
+        </a>
+        <a class="td-nav-item" href="{% tournamenturl 'participants-adjudicator-list' %}">
+          <span class="td-nav-icon">🧑‍⚖️</span> {% trans "Judges" %}
+          <span class="td-nav-badge">{{ adj_count }}</span>
+        </a>
+        <a class="td-nav-item" href="{% tournamenturl 'venues-list' %}">
+          <span class="td-nav-icon">🏠</span> {% trans "Venues" %}
+          <span class="td-nav-badge">{{ venue_count }}</span>
+        </a>
+        <a class="td-nav-item" href="{% tournamenturl 'options-tournament-index' %}">
+          <span class="td-nav-icon">⚙️</span> {% trans "Settings" %}
+        </a>
+      </div>
+
+      {# User chip footer #}
+      <div class="td-sidebar-footer">
+        <div class="td-user-chip">
+          <div class="td-user-avatar">{{ user.username|first|upper }}</div>
+          <div>
+            <div class="td-user-name">{{ user.get_full_name|default:user.username }}</div>
+            <div class="td-user-role">
+              {% if user.is_superuser %}{% trans "Admin" %}{% else %}{% trans "Tabber" %}{% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+    {# ─── END SIDEBAR ─── #}
+
+    {# ─── MAIN AREA ─── #}
+    <main class="td-main">
+
+      {# Messages / Alerts #}
+      {% if messages %}
+        {% for message in messages %}
+          <div style="margin:12px 28px 0; padding:14px 18px; border-radius:var(--r-md); background:var(--v-soft); border:1px solid var(--v-mid); font-size:13px; color:var(--v-text); display:flex; align-items:center; gap:8px; font-family:var(--mono);">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {# ── Page Head ── #}
+      <div class="td-page-head td-fade-1">
+        <div>
+          <div class="td-page-eyebrow">
+            {% trans "Tab Director" %} · {{ tournament.short_name|default:tournament.name }}
+          </div>
+          <h1 class="td-page-title">{% trans "Overview" %}</h1>
+          <div class="td-page-meta">
+            {% if current_round %}
+              <span>🔵 {% blocktrans with round=current_round.name %}{{ round }}{% endblocktrans %}</span>
+              <span>📌 {{ current_round.get_status_display }}</span>
+            {% endif %}
+            <span>👥 {{ team_count }} {% trans "teams" %}</span>
+            <span>⚖️ {{ adj_count }} {% trans "judges" %}</span>
+          </div>
+        </div>
+        <div class="td-page-head-actions">
+          {% if current_round %}
+            <span class="td-chip td-chip-active">
+              <span class="td-round-pip"></span>
+              {{ current_round.name }} · {{ current_round.get_status_display }}
+            </span>
+          {% endif %}
+          {% if current_round.status == current_round.Status.NONE %}
+            <a href="{% roundurl 'draw-create' current_round %}" class="td-btn td-btn-primary">🎲 {% trans "Generate Draw" %}</a>
+          {% elif current_round.status == current_round.Status.DRAFT %}
+            <a href="{% roundurl 'draw-confirm' current_round %}" class="td-btn td-btn-primary">✅ {% trans "Confirm Draw" %}</a>
+          {% elif current_round.status == current_round.Status.CONFIRMED %}
+            <a href="{% roundurl 'draw-release' current_round %}" class="td-btn td-btn-primary">📢 {% trans "Release Draw" %}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="td-content">
+
+        {# ── Stat Cards ── #}
+        <div class="td-stats-row td-fade-2">
+          <div class="td-stat-card">
+            <div class="td-stat-label">{% trans "Teams" %}</div>
+            <div class="td-stat-value">{{ team_count }}</div>
+            <div class="td-stat-sub">{{ institution_count|default:"0" }} {% trans "institutions" %}</div>
+          </div>
+          <div class="td-stat-card">
+            <div class="td-stat-label">{% trans "Judges" %}</div>
+            <div class="td-stat-value">{{ adj_count }}</div>
+            <div class="td-stat-sub">{{ adj_checkedin_count|default:"0" }} {% trans "checked in" %}</div>
+          </div>
+          <div class="td-stat-card">
+            <div class="td-stat-label">{% trans "Rounds" %}</div>
+            <div class="td-stat-value">{{ round_count }}</div>
+            <div class="td-stat-sub">{{ completed_round_count|default:"0" }} {% trans "completed" %}</div>
+          </div>
+          <div class="td-stat-card">
+            <div class="td-stat-label">{% trans "Current" %}</div>
+            <div class="td-stat-value">{{ current_round.abbreviation|default:"—" }}</div>
+            <div class="td-stat-sub">{{ current_round.get_status_display|default:"No active round" }}</div>
+          </div>
+        </div>
+
+        {# ── Content Row ── #}
+        <div class="td-content-row">
+
+          {# ── LEFT: Current Draw Panel ── #}
+          <div>
+            <div class="td-panel td-fade-3">
+
+              {# Panel header #}
+              <div class="td-panel-header">
+                <div class="td-panel-title">
+                  <span class="td-panel-title-dot"></span>
+                  {% if current_round %}
+                    {% blocktrans with round=current_round.name %}{{ round }} Current Draw{% endblocktrans %}
+                  {% else %}
+                    {% trans "Current Draw" %}
+                  {% endif %}
+                </div>
+                <div class="td-panel-actions">
+                  <a href="{% if current_round %}{% roundurl 'draw-display' current_round %}{% else %}#{% endif %}" class="td-btn td-btn-ghost">👁️ {% trans "Full View" %}</a>
+                  <a href="{% if current_round %}{% roundurl 'draw-display' current_round %}{% else %}#{% endif %}" class="td-btn td-btn-ghost">📤 {% trans "Export" %}</a>
+                </div>
+              </div>
+
+              {# Round progress tracker #}
+              {% if rounds %}
+                <div class="td-round-tracker">
+                  {% for round in rounds %}
+                    <div class="td-rt-step">
+                      <div class="td-rt-step-wrap">
+                        <div class="td-rt-dot {% if round.completed %}done{% elif round == current_round %}active{% else %}pending{% endif %}">
+                          {% if round.completed %}✓{% else %}{{ round.seq }}{% endif %}
+                        </div>
+                        <div class="td-rt-label">{{ round.abbreviation }}</div>
+                      </div>
+                    </div>
+                    {% if not forloop.last %}
+                      <div class="td-rt-line {% if round.completed %}done{% endif %}"></div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {# Motion strip #}
+              {% if current_round and current_round_motion %}
+                <div class="td-motion-strip">
+                  <div class="td-motion-label">{% trans "Motion" %}</div>
+                  <div class="td-motion-text">{{ current_round_motion }}</div>
+                  <div class="td-motion-actions">
+                    <button class="td-btn td-btn-ghost" title="{% trans 'Analyze motion' %}">🩺 {% trans "Analyze" %}</button>
+                  </div>
+                </div>
+              {% endif %}
+
+              {# Draw table #}
+              {% if draw_rooms %}
+                <div style="overflow-x: auto;">
+                  <table class="td-draw-table">
+                    <thead>
+                      <tr>
+                        <th>{% trans "Room" %}</th>
+                        <th>{% trans "OG" %}</th>
+                        <th>{% trans "OO" %}</th>
+                        <th>{% trans "CG" %}</th>
+                        <th>{% trans "CO" %}</th>
+                        <th>{% trans "Status" %}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for room in draw_rooms %}
+                        <tr>
+                          <td>
+                            <div class="td-draw-room">
+                              <div class="td-draw-room-num">{{ room.room_number|default:forloop.counter }}</div>
+                              <span>{{ room.venue_name|default:"—" }}</span>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="td-team-cell">{{ room.og_team|default:"—" }}</div>
+                            {% if room.og_institution %}<div class="td-team-inst">{{ room.og_institution }}</div>{% endif %}
+                          </td>
+                          <td>
+                            <div class="td-team-cell">{{ room.oo_team|default:"—" }}</div>
+                            {% if room.oo_institution %}<div class="td-team-inst">{{ room.oo_institution }}</div>{% endif %}
+                          </td>
+                          <td>
+                            <div class="td-team-cell">{{ room.cg_team|default:"—" }}</div>
+                            {% if room.cg_institution %}<div class="td-team-inst">{{ room.cg_institution }}</div>{% endif %}
+                          </td>
+                          <td>
+                            <div class="td-team-cell">{{ room.co_team|default:"—" }}</div>
+                            {% if room.co_institution %}<div class="td-team-inst">{{ room.co_institution }}</div>{% endif %}
+                          </td>
+                          <td>
+                            {% if room.ballot_status == 'done' %}
+                              <span class="td-chip td-chip-done">✓ {% trans "Done" %}</span>
+                            {% elif room.ballot_status == 'pending' %}
+                              <span class="td-chip td-chip-pending">⏳ {% trans "Pending" %}</span>
+                            {% else %}
+                              <span class="td-chip td-chip-missing">✗ {% trans "Missing" %}</span>
+                            {% endif %}
+                          </td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+
+                {# Footer progress bar #}
+                <div class="td-draw-footer">
+                  <div class="td-draw-progress-text">
+                    {{ ballots_submitted|default:"0" }}/{{ ballots_total|default:"0" }} {% trans "ballots" %}
+                  </div>
+                  <div class="td-draw-progress-bar">
+                    <div class="td-draw-progress-fill" style="width: {{ ballot_progress_pct|default:'0' }}%;"></div>
+                  </div>
+                  <div class="td-draw-progress-text">
+                    {{ ballot_progress_pct|default:"0" }}%
+                  </div>
+                </div>
+              {% else %}
+                <div style="padding:40px 20px; text-align:center; color:var(--muted); font-family:var(--mono); font-size:13px;">
+                  {% if current_round %}
+                    {% trans "No draw generated yet. Use the 'Generate Draw' button above." %}
+                  {% else %}
+                    {% trans "No active round. Create or advance to a round to begin." %}
+                  {% endif %}
+                </div>
+              {% endif %}
+
+            </div>
+            {# End draw panel #}
+          </div>
+          {# ── END LEFT COLUMN ── #}
+
+          {# ── RIGHT: Widgets ── #}
+          <div class="td-aside-col">
+
+            {# Completion Ring #}
+            <div class="td-panel td-fade-4">
+              <div class="td-panel-header">
+                <div class="td-panel-title">{% trans "Ballot Completion" %}</div>
+              </div>
+              <div class="td-ring-wrap">
+                <svg class="td-ring-svg" width="72" height="72" viewBox="0 0 72 72">
+                  <circle class="td-ring-bg" cx="36" cy="36" r="25"/>
+                  <circle class="td-ring-fill" cx="36" cy="36" r="25"
+                    style="stroke-dashoffset: {{ ballot_ring_offset|default:'157' }};"/>
+                  <text class="td-ring-val" x="36" y="34">{{ ballot_progress_pct|default:"0" }}%</text>
+                  <text class="td-ring-sub" x="36" y="44">{% trans "complete" %}</text>
+                </svg>
+                <div>
+                  <div class="td-ri-title">{% trans "Current Round" %}</div>
+                  <div class="td-ri-row">
+                    <div class="td-ri-dot" style="background:var(--green)"></div>
+                    <span>{{ ballots_done|default:"0" }} {% trans "submitted" %}</span>
+                  </div>
+                  <div class="td-ri-row">
+                    <div class="td-ri-dot" style="background:var(--amber)"></div>
+                    <span>{{ ballots_pending|default:"0" }} {% trans "pending" %}</span>
+                  </div>
+                  <div class="td-ri-row">
+                    <div class="td-ri-dot" style="background:var(--red)"></div>
+                    <span>{{ ballots_missing|default:"0" }} {% trans "missing" %}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {# Quick Actions #}
+            <div class="td-panel td-fade-4">
+              <div class="td-panel-header">
+                <div class="td-panel-title">⚡ {% trans "Quick Actions" %}</div>
+              </div>
+              <div class="td-quick-list">
+                {# Generate Draw #}
+                <a class="td-quick-item {% if not can_generate_draw %}disabled{% endif %}"
+                   href="{% if current_round %}{% roundurl 'draw-create' current_round %}{% else %}#{% endif %}">
+                  <div class="td-qi-icon td-qi-v">🎲</div>
+                  <div>
+                    <div class="td-qi-title">{% trans "Generate Draw" %}</div>
+                    <div class="td-qi-sub">{% trans "Create pairings for current round" %}</div>
+                  </div>
+                  <div class="td-qi-arrow">›</div>
+                </a>
+
+                {# Auto-Allocate Judges #}
+                <a class="td-quick-item {% if not can_allocate %}disabled{% endif %}"
+                   href="{% if current_round %}{% roundurl 'adjallocation-round' current_round %}{% else %}#{% endif %}">
+                  <div class="td-qi-icon td-qi-a">⚖️</div>
+                  <div>
+                    <div class="td-qi-title">{% trans "Allocate Judges" %}</div>
+                    <div class="td-qi-sub">{% trans "Auto-assign adjudicators" %}</div>
+                  </div>
+                  <div class="td-qi-arrow">›</div>
+                </a>
+
+                {# Enter Ballots #}
+                <a class="td-quick-item {% if not can_enter_ballots %}disabled{% endif %}"
+                   href="{% if current_round %}{% roundurl 'results-round-list' current_round %}{% else %}#{% endif %}">
+                  <div class="td-qi-icon td-qi-g">📝</div>
+                  <div>
+                    <div class="td-qi-title">{% trans "Enter Ballots" %}</div>
+                    <div class="td-qi-sub">{% trans "Submit or review ballots" %}</div>
+                  </div>
+                  <div class="td-qi-arrow">›</div>
+                </a>
+
+                {# Advance Round #}
+                <a class="td-quick-item {% if not can_advance_round %}disabled{% endif %}"
+                   href="{% tournamenturl 'tournament-advance-round' %}">
+                  <div class="td-qi-icon td-qi-r">⏭️</div>
+                  <div>
+                    <div class="td-qi-title">{% trans "Advance Round" %}</div>
+                    <div class="td-qi-sub">{% trans "Close current, open next" %}</div>
+                  </div>
+                  <div class="td-qi-arrow">›</div>
+                </a>
+              </div>
+            </div>
+
+            {# Check-In Status #}
+            <div class="td-panel td-fade-5">
+              <div class="td-panel-header">
+                <div class="td-panel-title">✅ {% trans "Check-In Status" %}</div>
+              </div>
+              <div class="td-checkin-grid">
+                <div class="td-checkin-block">
+                  <div class="td-checkin-val">{{ teams_checkedin|default:"—" }}</div>
+                  <div class="td-checkin-label">{% trans "Teams" %}</div>
+                  <div class="td-checkin-sub">/{{ team_count }}</div>
+                </div>
+                <div class="td-checkin-block">
+                  <div class="td-checkin-val">{{ adj_checkedin_count|default:"—" }}</div>
+                  <div class="td-checkin-label">{% trans "Judges" %}</div>
+                  <div class="td-checkin-sub">/{{ adj_count }}</div>
+                </div>
+                <div class="td-checkin-block">
+                  <div class="td-checkin-val">{{ venues_checkedin|default:"—" }}</div>
+                  <div class="td-checkin-label">{% trans "Venues" %}</div>
+                  <div class="td-checkin-sub">/{{ venue_count }}</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          {# ── END RIGHT ASIDE ── #}
+
+        </div>
+        {# ── END CONTENT ROW ── #}
+
+      </div>
+      {# ── END CONTENT ── #}
+
+    </main>
+    {# ─── END MAIN ─── #}
+
+  </div>
+  {# ─── END BODY ─── #}
+
+</div>
+{# ─── END APP ─── #}
+{% endblock content %}
