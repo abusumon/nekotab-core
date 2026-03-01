@@ -27,29 +27,47 @@ class ForumPostSerializer(serializers.ModelSerializer):
     vote_score = serializers.IntegerField(read_only=True)
     children = serializers.SerializerMethodField()
     user_vote = serializers.SerializerMethodField()
+    depth = serializers.SerializerMethodField()
 
     class Meta:
         model = ForumPost
         fields = [
             'id', 'thread', 'author', 'author_name', 'author_badges',
             'parent', 'post_type', 'post_type_display', 'content',
-            'is_edited', 'vote_score', 'user_vote', 'children',
+            'is_edited', 'is_deleted', 'score', 'vote_score', 'user_vote',
+            'depth', 'children',
             'created_at', 'updated_at',
         ]
-        read_only_fields = ['author', 'is_edited', 'created_at', 'updated_at']
+        read_only_fields = ['author', 'is_edited', 'is_deleted', 'score', 'created_at', 'updated_at']
 
     def get_children(self, obj):
-        children = obj.children.all()
+        children = [c for c in obj.children.all() if not c.is_deleted]
         return ForumPostSerializer(children, many=True, context=self.context).data
 
     def get_user_vote(self, obj):
         request = self.context.get('request')
         if request and request.user.is_authenticated:
-            # Iterate prefetch cache instead of .filter() to avoid N+1 queries
             for vote in obj.votes.all():
                 if vote.user_id == request.user.id:
                     return vote.vote_type
         return None
+
+    def get_depth(self, obj):
+        """Compute depth from parent chain (capped at 10 for safety)."""
+        depth = 0
+        current = obj
+        seen = set()
+        while current.parent_id is not None and depth < 10:
+            if current.pk in seen:
+                break
+            seen.add(current.pk)
+            depth += 1
+            # Use prefetch cache if available
+            try:
+                current = current.parent
+            except Exception:
+                break
+        return depth
 
 
 class ForumThreadListSerializer(serializers.ModelSerializer):
@@ -70,7 +88,7 @@ class ForumThreadListSerializer(serializers.ModelSerializer):
             'topic_category', 'category_display',
             'skill_level', 'skill_display',
             'region', 'tags', 'linked_motion',
-            'is_pinned', 'is_locked', 'view_count',
+            'is_pinned', 'is_locked', 'view_count', 'score', 'comment_count',
             'reply_count', 'last_activity',
             'created_at', 'updated_at',
         ]
@@ -83,8 +101,15 @@ class ForumThreadDetailSerializer(ForumThreadListSerializer):
         fields = ForumThreadListSerializer.Meta.fields + ['posts']
 
     def get_posts(self, obj):
-        # Iterate prefetch cache instead of .filter() to avoid extra queries
-        root_posts = [p for p in obj.posts.all() if p.parent_id is None]
+        # Only root posts that are NOT soft-deleted
+        root_posts = [p for p in obj.posts.all() if p.parent_id is None and not p.is_deleted]
+        # Sort by request param
+        request = self.context.get('request')
+        comment_sort = request.query_params.get('comment_sort', 'top') if request else 'top'
+        if comment_sort == 'new':
+            root_posts.sort(key=lambda p: p.created_at, reverse=True)
+        else:  # 'top' default
+            root_posts.sort(key=lambda p: p.vote_score, reverse=True)
         return ForumPostSerializer(root_posts, many=True, context=self.context).data
 
 
@@ -122,6 +147,9 @@ class ForumThreadCreateSerializer(serializers.ModelSerializer):
             post_type=ForumPost.PostType.OPENING,
             content=initial_post_content,
         )
+        # Initialize comment_count
+        thread.comment_count = 1
+        thread.save(update_fields=['comment_count'])
         return thread
 
 
@@ -139,6 +167,8 @@ class ForumVoteSerializer(serializers.ModelSerializer):
             user=user, post=post,
             defaults={'vote_type': vote_type},
         )
+        # Refresh cached score on the post
+        post.refresh_score()
         return vote
 
 
@@ -150,6 +180,11 @@ class ForumBookmarkSerializer(serializers.ModelSerializer):
 
 
 class ForumReportSerializer(serializers.ModelSerializer):
+    reporter_name = serializers.CharField(source='reporter.username', read_only=True)
+    post_thread_slug = serializers.CharField(source='post.thread.slug', read_only=True)
+
     class Meta:
         model = ForumReport
-        fields = ['id', 'post', 'reason', 'details']
+        fields = ['id', 'reporter', 'reporter_name', 'post', 'post_thread_slug',
+                  'reason', 'details', 'resolved', 'created_at']
+        read_only_fields = ['reporter', 'resolved', 'created_at']

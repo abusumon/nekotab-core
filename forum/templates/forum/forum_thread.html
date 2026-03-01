@@ -27,7 +27,23 @@
     voteUrl: '{% url "forum:api-forum-vote" %}',
     reportUrl: '{% url "forum:api-forum-report" %}',
     bookmarkUrl: '{% url "forum:api-forum-bookmarks" %}',
+    deletePostUrlBase: '/forum/api/posts/',
+    threadDeleteUrl: '{% url "forum:api-forum-thread-delete" slug=thread_slug %}',
+    threadLockUrl: '{% url "forum:api-forum-thread-lock" slug=thread_slug %}',
+    threadUnlockUrl: '{% url "forum:api-forum-thread-unlock" slug=thread_slug %}',
     isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},
+    isStaff: {{ user.is_staff|yesno:"true,false" }},
+    postTypes: [
+      {value: 'opening', label: 'Opening Post', icon: '📝', color: '#6366f1'},
+      {value: 'counter', label: 'Counterargument', icon: '⚔️', color: '#e74c3c'},
+      {value: 'support', label: 'Support', icon: '✅', color: '#2ecc71'},
+      {value: 'clarification', label: 'Clarification', icon: '💡', color: '#3498db'},
+      {value: 'example', label: 'Example', icon: '📌', color: '#f39c12'},
+      {value: 'rebuttal', label: 'Rebuttal', icon: '🛡️', color: '#e67e22'},
+      {value: 'extension', label: 'Extension', icon: '🔗', color: '#9b59b6'},
+      {value: 'framework', label: 'Framework', icon: '🏗️', color: '#1abc9c'},
+      {value: 'weighing', label: 'Weighing', icon: '⚖️', color: '#34495e'},
+    ],
   };
   window.vueData = {};
 </script>

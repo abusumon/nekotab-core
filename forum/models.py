@@ -115,7 +115,12 @@ class ForumThread(models.Model):
     # Metadata
     is_pinned = models.BooleanField(default=False, verbose_name=_("pinned"))
     is_locked = models.BooleanField(default=False, verbose_name=_("locked"))
+    is_deleted = models.BooleanField(default=False, db_index=True, verbose_name=_("soft-deleted"))
     view_count = models.PositiveIntegerField(default=0, verbose_name=_("view count"))
+    score = models.IntegerField(default=0, db_index=True, verbose_name=_("score"),
+        help_text=_("Cached net score of the opening post (updated on vote)"))
+    comment_count = models.PositiveIntegerField(default=0, verbose_name=_("comment count"),
+        help_text=_("Cached count of non-deleted posts (updated on post create/delete)"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("updated at"))
 
@@ -125,6 +130,7 @@ class ForumThread(models.Model):
         ordering = ['-is_pinned', '-updated_at']
         indexes = [
             models.Index(fields=['-created_at']),
+            models.Index(fields=['-score', '-created_at']),
             models.Index(fields=['debate_format', 'topic_category']),
             models.Index(fields=['skill_level']),
         ]
@@ -177,6 +183,9 @@ class ForumPost(models.Model):
 
     # Metadata
     is_edited = models.BooleanField(default=False, verbose_name=_("edited"))
+    is_deleted = models.BooleanField(default=False, db_index=True, verbose_name=_("soft-deleted"))
+    score = models.IntegerField(default=0, db_index=True, verbose_name=_("cached score"),
+        help_text=_("Net vote score (upvotes − downvotes), updated on vote"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("updated at"))
 
@@ -186,6 +195,7 @@ class ForumPost(models.Model):
         ordering = ['created_at']
         indexes = [
             models.Index(fields=['thread', 'created_at']),
+            models.Index(fields=['thread', '-score']),
             models.Index(fields=['parent']),
         ]
 
@@ -204,11 +214,29 @@ class ForumPost(models.Model):
 
     @property
     def vote_score(self):
-        # Use prefetch cache when available to avoid 2 queries per post
-        votes = self.votes.all()
-        upvotes = sum(1 for v in votes if v.vote_type == ForumVote.VoteType.UPVOTE)
-        downvotes = sum(1 for v in votes if v.vote_type == ForumVote.VoteType.DOWNVOTE)
-        return upvotes - downvotes
+        """Live score from prefetch cache; falls back to cached field."""
+        try:
+            votes = self.votes.all()
+            up = sum(1 for v in votes if v.vote_type == 'up')
+            dn = sum(1 for v in votes if v.vote_type == 'down')
+            return up - dn
+        except Exception:
+            return self.score
+
+    def refresh_score(self):
+        """Recompute and persist cached score from votes table."""
+        from django.db.models import Sum, Case, When, IntegerField, Value
+        agg = self.votes.aggregate(
+            total=Sum(Case(
+                When(vote_type='up', then=Value(1)),
+                When(vote_type='down', then=Value(-1)),
+                default=Value(0),
+                output_field=IntegerField(),
+            ))
+        )
+        self.score = agg['total'] or 0
+        ForumPost.objects.filter(pk=self.pk).update(score=self.score)
+        return self.score
 
 
 # =============================================================================
