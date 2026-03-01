@@ -84,17 +84,28 @@
   --sh-v: 0 4px 18px rgba(99,102,241,.22), 0 1px 4px rgba(99,102,241,.14);
 }
 
-/* ─── Reset base.html wrappers for full-bleed dashboard ─── */
-body.pti-dashboard { overflow: hidden; background: var(--bg); }
-body.pti-dashboard > .container-fluid { padding: 0 !important; max-width: 100% !important; }
-body.pti-dashboard > .container-fluid > main.main { padding: 0 !important; margin: 0 !important; }
-body.pti-dashboard > .container-fluid > main.main > .row { margin: 0 !important; }
-body.pti-dashboard > .container-fluid > main.main > .row > .col { padding: 0 !important; }
+/* ─── Height chain: html → body → Bootstrap wrappers → .pti-app ─── */
+html { height: 100%; }
+body.pti-dashboard {
+  height: 100%; margin: 0; overflow: hidden; background: var(--bg);
+}
+body.pti-dashboard > .container-fluid {
+  padding: 0 !important; max-width: 100% !important; height: 100%;
+}
+body.pti-dashboard > .container-fluid > main.main {
+  padding: 0 !important; margin: 0 !important; height: 100%;
+}
+body.pti-dashboard > .container-fluid > main.main > .row {
+  margin: 0 !important; height: 100%;
+}
+body.pti-dashboard > .container-fluid > main.main > .row > .col {
+  padding: 0 !important; height: 100%;
+}
 body.pti-dashboard > footer { display: none !important; }
 
 /* ─── App wrapper ─── */
 .pti-app {
-  width: 100%; min-height: 100vh; display: flex; flex-direction: column;
+  width: 100%; height: 100%; display: flex; flex-direction: column;
   font-family: var(--mono); font-size: 13.5px; line-height: 1.5;
   color: var(--ink); -webkit-font-smoothing: antialiased;
 }
@@ -135,7 +146,7 @@ body.pti-dashboard > footer { display: none !important; }
   color: var(--v-text); border-bottom-color: var(--v); font-weight: 600;
 }
 .pti-header-spacer { flex: 1; }
-.pti-header-actions { display: flex; align-items: center; gap: 8px; }
+.pti-header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .pti-header-btn {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 12.5px; font-weight: 600; padding: 6px 13px;
@@ -166,17 +177,21 @@ body.pti-dashboard > footer { display: none !important; }
 .pti-hbtn-ghost:hover { background: var(--surface-3); color: var(--ink-2); text-decoration: none; }
 
 /* ═══════════════════════════════════════
-   BODY (sidebar + main)
+   BODY SHELL (sidebar + main)
 ═══════════════════════════════════════ */
-.pti-body { flex: 1; display: flex; overflow: hidden; }
+.pti-body {
+  flex: 1 1 0;          /* take remaining space after header */
+  display: flex;
+  min-height: 0;        /* CRITICAL: allow flex children to shrink & scroll */
+}
 
 /* ═══════════════════════════════════════
    SIDEBAR
 ═══════════════════════════════════════ */
 .pti-sidebar {
-  width: 220px; flex-shrink: 0; background: var(--surface);
+  width: 220px; flex: 0 0 220px; background: var(--surface);
   border-right: 1px solid var(--border); display: flex;
-  flex-direction: column; overflow-y: auto;
+  flex-direction: column; overflow-y: auto; min-height: 0;
 }
 .pti-sidebar-context {
   margin: 12px 10px 4px; padding: 10px 12px;
@@ -190,8 +205,9 @@ body.pti-dashboard > footer { display: none !important; }
 }
 .pti-sc-name {
   font-size: 13px; font-weight: 700; color: var(--ink);
-  margin-bottom: 1px; white-space: nowrap; overflow: hidden;
+  margin-bottom: 1px; overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
 }
 .pti-sc-meta {
   font-family: var(--mono); font-size: 10px; color: var(--muted);
@@ -246,7 +262,8 @@ body.pti-dashboard > footer { display: none !important; }
    MAIN CONTENT
 ═══════════════════════════════════════ */
 .pti-main {
-  flex: 1; overflow-y: auto; background: var(--bg);
+  flex: 1 1 0; overflow-y: auto; min-height: 0;
+  background: var(--bg);
 }
 .pti-page-head {
   padding: 22px 28px 0; display: flex; align-items: flex-start;
@@ -260,6 +277,7 @@ body.pti-dashboard > footer { display: none !important; }
 .pti-page-title {
   font-family: var(--mono); font-size: 22px; font-weight: 700;
   color: var(--ink); letter-spacing: -.03em; line-height: 1.15;
+  word-wrap: break-word; overflow-wrap: break-word;
 }
 .pti-page-meta {
   display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px;
@@ -269,7 +287,10 @@ body.pti-dashboard > footer { display: none !important; }
 .pti-page-head-actions {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-top: 4px;
 }
-.pti-content { padding: 20px 28px 40px; }
+.pti-content {
+  padding: 20px 28px 40px;
+  max-width: 1320px; margin-left: auto; margin-right: auto; width: 100%;
+}
 
 /* ─── Stat cards ─── */
 .pti-stats-row {
@@ -357,6 +378,7 @@ body.pti-dashboard > footer { display: none !important; }
   display: inline-flex; align-items: center; gap: 5px;
   font-family: var(--mono); font-size: 10.5px; font-weight: 600;
   padding: 4px 10px; border-radius: 6px; white-space: nowrap;
+  flex-shrink: 0;
 }
 .pti-sc-active  { background: var(--v-soft); color: var(--v-text); border: 1px solid var(--v-mid); }
 .pti-sc-done    { background: var(--green-soft); color: var(--green); border: 1px solid rgba(22,163,106,.15); }
@@ -442,8 +464,15 @@ body.pti-dashboard > footer { display: none !important; }
 }
 .pti-nav-link:hover { background: var(--surface-2); color: var(--ink-2); text-decoration: none; }
 .pti-nav-link-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; opacity: .65; }
-.pti-nav-link-disabled { opacity: .5; cursor: default; }
+.pti-nav-link-disabled { opacity: .45; cursor: default; pointer-events: none; }
 .pti-nav-link-disabled:hover { background: transparent; color: var(--ink-3); }
+
+/* Sidebar disabled nav items (draw not released, etc.) */
+.pti-nav-item-disabled,
+span.pti-nav-item[style*="opacity"] {
+  opacity: .45 !important; cursor: default !important; pointer-events: none;
+}
+.pti-nav-item-disabled:hover { background: transparent; color: var(--ink-3); }
 
 /* ─── Section divider ─── */
 .pti-divider {
@@ -484,13 +513,17 @@ body.pti-dashboard > footer { display: none !important; }
   .pti-header-nav { padding: 0 8px; gap: 0; overflow-x: auto; }
   .pti-stats-row { grid-template-columns: repeat(2, 1fr); }
   .pti-page-head { flex-direction: column; gap: 12px; padding: 16px 16px 0; }
-  .pti-content { padding: 16px 16px 32px; }
+  .pti-page-title { font-size: 18px; }
+  .pti-content { padding: 16px 16px 32px; max-width: 100%; }
 }
 @media (max-width: 520px) {
   .pti-stats-row { grid-template-columns: 1fr; }
   .pti-stat-card { padding: 14px 16px; }
-  .pti-stat-value { font-size: 32px; }
+  .pti-stat-value { font-size: 28px; }
   .pti-header-nav { display: none; }
+  .pti-page-title { font-size: 16px; }
+  .pti-page-head-actions { width: 100%; }
+  .pti-page-head-actions .pti-btn { width: 100%; justify-content: center; }
 }
 </style>
 {% endblock %}
@@ -515,9 +548,7 @@ body.pti-dashboard > footer { display: none !important; }
 {% block content %}
 <div class="pti-app">
 
-  {# ═══════════════════════════════════════
-     HEADER BAR
-  ═══════════════════════════════════════ #}
+  {% comment %}HEADER{% endcomment %}
   <header class="pti-header">
     <a class="pti-header-logo" href="/">
       <div class="pti-logo-mark">🐱</div>
@@ -556,9 +587,6 @@ body.pti-dashboard > footer { display: none !important; }
     </div>
   </header>
 
-  {# ═══════════════════════════════════════
-     BODY (sidebar + main)
-  ═══════════════════════════════════════ #}
   <div class="pti-body">
 
     {# ─── SIDEBAR ─── #}
