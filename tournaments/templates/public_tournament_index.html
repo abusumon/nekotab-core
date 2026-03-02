@@ -40,8 +40,9 @@
 {% block extra-css %}
 <style>
 /* ═══════════════════════════════════════════════════
-   NEKOTAB DASHBOARD — PUBLIC TOURNAMENT VIEW v2
-   Design: sidebar + header + stat cards + panels
+   NEKOTAB DASHBOARD — PUBLIC TOURNAMENT VIEW v3
+   MOBILE-FIRST responsive rewrite
+   bp: base(0) → sm(480) → md(768) → lg(1024)
 ═══════════════════════════════════════════════════ */
 
 :root {
@@ -70,8 +71,8 @@
   --amber-soft: rgba(201,138,0,.09);
   --red:        #D63B5A;
   --red-soft:   rgba(214,59,90,.09);
-  /* type — IBM Plex Mono everywhere */
-  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* type */
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   /* geometry */
   --r-xs: 5px;
   --r-sm: 8px;
@@ -82,12 +83,15 @@
   --sh-1: 0 1px 3px rgba(15,16,32,.05), 0 1px 2px rgba(15,16,32,.04);
   --sh-2: 0 3px 12px rgba(15,16,32,.07), 0 1px 4px rgba(15,16,32,.05);
   --sh-v: 0 4px 18px rgba(99,102,241,.22), 0 1px 4px rgba(99,102,241,.14);
+  /* bottom nav height for offsetting */
+  --bottom-nav-h: 60px;
 }
 
-/* ─── Height chain: html → body → Bootstrap wrappers → .pti-app ─── */
+/* ─── Height chain: Bootstrap wrappers → .pti-app ─── */
 html { height: 100%; }
 body.pti-dashboard {
-  height: 100%; margin: 0; overflow: hidden; background: var(--bg);
+  height: 100%; margin: 0; background: var(--bg);
+  /* allow scrolling on mobile — no overflow:hidden */
 }
 body.pti-dashboard > .container-fluid {
   padding: 0 !important; max-width: 100% !important; height: 100%;
@@ -105,23 +109,77 @@ body.pti-dashboard > footer { display: none !important; }
 
 /* ─── App wrapper ─── */
 .pti-app {
-  width: 100%; height: 100%; display: flex; flex-direction: column;
-  font-family: var(--mono); font-size: 13.5px; line-height: 1.5;
-  color: var(--ink); -webkit-font-smoothing: antialiased;
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--mono);
+  font-size: clamp(12.5px, 0.78rem + 0.15vw, 13.5px);
+  line-height: 1.5;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* ═══════════════════════════════════════
-   HEADER
+   HEADER — mobile-first (compact)
 ═══════════════════════════════════════ */
 .pti-header {
-  height: 52px; background: var(--surface); border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; padding: 0 20px 0 0; gap: 0;
-  flex-shrink: 0; position: sticky; top: 0; z-index: 50; box-shadow: var(--sh-1);
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(10px, 2vw, 20px) 0 0;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header, 50);
+  box-shadow: var(--sh-1);
 }
+
+/* Hamburger (mobile only) */
+.pti-hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 12px;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.pti-hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--ink-2);
+  border-radius: 2px;
+  transition: transform .2s, opacity .2s;
+}
+.pti-hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.pti-hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.pti-hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
 .pti-header-logo {
-  width: 220px; flex-shrink: 0; padding: 0 18px;
-  display: flex; align-items: center; gap: 9px;
-  border-right: 1px solid var(--border); height: 100%;
+  flex-shrink: 0;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
   text-decoration: none;
 }
 .pti-logo-mark {
@@ -132,67 +190,114 @@ body.pti-dashboard > footer { display: none !important; }
   font-family: var(--mono); font-size: 15px; font-weight: 700;
   color: var(--ink); letter-spacing: -.03em; text-decoration: none;
 }
+
+/* Header nav (hidden on mobile, visible md+) */
 .pti-header-nav {
-  display: flex; align-items: center; padding: 0 20px; gap: 2px; height: 100%;
+  display: none;
+  align-items: center;
+  padding: 0 16px;
+  gap: 2px;
+  height: 100%;
 }
 .pti-header-tab {
-  display: flex; align-items: center; gap: 6px; padding: 0 13px; height: 100%;
+  display: flex; align-items: center; gap: 6px; padding: 0 12px; height: 100%;
   font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer;
   border-bottom: 2px solid transparent; transition: all .15s;
-  white-space: nowrap; text-decoration: none;
+  white-space: nowrap; text-decoration: none; min-height: 44px;
 }
 .pti-header-tab:hover { color: var(--ink-2); text-decoration: none; }
 .pti-header-tab.active {
   color: var(--v-text); border-bottom-color: var(--v); font-weight: 600;
 }
+
 .pti-header-spacer { flex: 1; }
-.pti-header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.pti-header-actions {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+}
 .pti-header-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12.5px; font-weight: 600; padding: 6px 13px;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 600; padding: 6px 10px;
   border-radius: var(--r-sm); cursor: pointer; border: none;
   transition: all .15s; white-space: nowrap; font-family: var(--mono);
-  text-decoration: none;
+  text-decoration: none; min-height: 44px;
 }
 .pti-hbtn-round {
   background: var(--v-soft); color: var(--v-text);
   border: 1px solid var(--v-mid); font-family: var(--mono);
-  font-size: 11.5px; gap: 7px;
+  font-size: 11px; gap: 6px;
 }
 .pti-round-pip {
   width: 6px; height: 6px; border-radius: 50%; background: var(--v);
-  animation: ptipip 1.8s ease-in-out infinite;
 }
 @keyframes ptipip { 0%,100%{opacity:1} 50%{opacity:.3} }
 .pti-hbtn-icon {
-  width: 30px; height: 30px; border-radius: var(--r-sm);
+  width: 36px; height: 36px; border-radius: var(--r-sm);
   background: var(--surface-2); border: 1px solid var(--border);
   display: grid; place-items: center; font-size: 14px; cursor: pointer;
-  text-decoration: none; color: inherit;
+  text-decoration: none; color: inherit; min-height: 44px;
 }
 .pti-hbtn-icon:hover { background: var(--surface-3); text-decoration: none; color: inherit; }
-.pti-hbtn-ghost {
-  background: transparent; color: var(--muted); text-decoration: none;
+
+/* ── md+ header upgrades ── */
+@media (min-width: 768px) {
+  .pti-hamburger { display: none; }
+  .pti-header-logo {
+    width: 220px;
+    border-right: 1px solid var(--border);
+    padding: 0 18px;
+  }
+  .pti-header-nav { display: flex; }
+  .pti-header-btn { font-size: 12.5px; padding: 6px 13px; }
+  .pti-hbtn-round { font-size: 11.5px; }
 }
-.pti-hbtn-ghost:hover { background: var(--surface-3); color: var(--ink-2); text-decoration: none; }
 
 /* ═══════════════════════════════════════
-   BODY SHELL (sidebar + main)
+   MOBILE DRAWER (sidebar overlay on mobile)
 ═══════════════════════════════════════ */
-.pti-body {
-  flex: 1 1 0;          /* take remaining space after header */
-  display: flex;
-  min-height: 0;        /* CRITICAL: allow flex children to shrink & scroll */
+.pti-drawer-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15,16,32,.4);
+  z-index: 90;
 }
+.pti-drawer-backdrop.open { display: block; }
 
-/* ═══════════════════════════════════════
-   SIDEBAR
-═══════════════════════════════════════ */
 .pti-sidebar {
-  width: 220px; flex: 0 0 220px; background: var(--surface);
-  border-right: 1px solid var(--border); display: flex;
-  flex-direction: column; overflow-y: auto; min-height: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  min-height: 0;
+  /* Mobile: off-screen drawer */
+  position: fixed;
+  top: 52px;
+  left: 0;
+  bottom: 0;
+  width: min(280px, 85vw);
+  z-index: 95;
+  transform: translateX(-100%);
+  transition: transform .25s ease;
 }
+.pti-sidebar.open {
+  transform: translateX(0);
+}
+
+/* md+: static sidebar */
+@media (min-width: 768px) {
+  .pti-sidebar {
+    position: static;
+    width: 220px;
+    flex: 0 0 220px;
+    transform: none;
+    transition: none;
+  }
+  .pti-drawer-backdrop { display: none !important; }
+}
+
 .pti-sidebar-context {
   margin: 12px 10px 4px; padding: 10px 12px;
   background: var(--v-soft); border: 1px solid var(--v-mid);
@@ -219,10 +324,12 @@ body.pti-dashboard > footer { display: none !important; }
   padding: 10px 10px 4px;
 }
 .pti-nav-item {
-  display: flex; align-items: center; gap: 9px; padding: 8px 10px;
+  display: flex; align-items: center; gap: 9px;
+  padding: 10px 10px;  /* ≥44px tall for touch */
   border-radius: var(--r-sm); font-size: 13px; font-weight: 500;
   color: var(--ink-3); cursor: pointer; position: relative;
   transition: all .14s; text-decoration: none; list-style: none;
+  min-height: 44px;
 }
 .pti-nav-item:hover { background: var(--surface-2); color: var(--ink-2); text-decoration: none; }
 .pti-nav-item.active {
@@ -247,7 +354,7 @@ body.pti-dashboard > footer { display: none !important; }
 .pti-user-chip {
   display: flex; align-items: center; gap: 9px; padding: 8px 9px;
   border-radius: var(--r-sm); cursor: pointer; transition: background .14s;
-  text-decoration: none; color: inherit;
+  text-decoration: none; color: inherit; min-height: 44px;
 }
 .pti-user-chip:hover { background: var(--surface-2); text-decoration: none; color: inherit; }
 .pti-user-avatar {
@@ -259,93 +366,218 @@ body.pti-dashboard > footer { display: none !important; }
 .pti-user-role { font-size: 10.5px; color: var(--muted); font-family: var(--mono); }
 
 /* ═══════════════════════════════════════
+   BOTTOM NAVIGATION (mobile only)
+═══════════════════════════════════════ */
+.pti-bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: var(--bottom-nav-h);
+  padding-bottom: var(--sai-bottom, 0px);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  z-index: 80;
+  box-shadow: 0 -1px 6px rgba(15,16,32,.06);
+}
+.pti-bnav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  padding: 6px 2px;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  min-height: 44px;
+  transition: color .15s;
+}
+.pti-bnav-item:hover,
+.pti-bnav-item:active { text-decoration: none; }
+.pti-bnav-item.active { color: var(--v-text); }
+.pti-bnav-icon { font-size: 20px; line-height: 1; }
+
+/* Hide bottom nav on md+ */
+@media (min-width: 768px) {
+  .pti-bottom-nav { display: none; }
+}
+
+/* ═══════════════════════════════════════
+   BODY SHELL (sidebar + main)
+═══════════════════════════════════════ */
+.pti-body {
+  flex: 1 1 0;
+  display: flex;
+  min-height: 0;
+  /* On mobile, add padding for bottom nav + safe area */
+  padding-bottom: calc(var(--bottom-nav-h) + var(--sai-bottom, 0px));
+}
+@media (min-width: 768px) {
+  .pti-body {
+    padding-bottom: 0;
+    /* desktop: restore overflow:hidden on body for sidebar+main flex */
+    overflow: hidden;
+  }
+  body.pti-dashboard {
+    overflow: hidden;
+  }
+}
+
+/* ═══════════════════════════════════════
    MAIN CONTENT
 ═══════════════════════════════════════ */
 .pti-main {
-  flex: 1 1 0; overflow-y: auto; min-height: 0;
+  flex: 1 1 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  min-height: 0;
   background: var(--bg);
 }
+
+/* Page header: stacked on mobile */
 .pti-page-head {
-  padding: 22px 28px 0; display: flex; align-items: flex-start;
-  justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding: clamp(12px, 3vw, 22px) clamp(14px, 3vw, 28px) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .pti-page-eyebrow {
-  font-family: var(--mono); font-size: 10px; font-weight: 600;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
-  margin-bottom: 4px;
+  font-family: var(--mono);
+  font-size: clamp(9px, 0.55rem + 0.1vw, 10px);
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
 }
 .pti-page-title {
-  font-family: var(--mono); font-size: 22px; font-weight: 700;
-  color: var(--ink); letter-spacing: -.03em; line-height: 1.15;
-  word-wrap: break-word; overflow-wrap: break-word;
+  font-family: var(--mono);
+  font-size: clamp(16px, 1rem + 0.6vw, 22px);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.03em;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .pti-page-meta {
-  display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px;
-  font-size: 12.5px; color: var(--ink-3);
+  display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 4px;
+  font-size: clamp(11px, 0.7rem + 0.1vw, 12.5px);
+  color: var(--ink-3);
 }
-.pti-page-meta span { display: inline-flex; align-items: center; gap: 5px; }
+.pti-page-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .pti-page-head-actions {
-  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding-top: 4px;
-}
-.pti-content {
-  padding: 20px 28px 40px;
-  max-width: 1320px; margin-left: auto; margin-right: auto; width: 100%;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
 }
 
-/* ─── Stat cards ─── */
+/* md+: side-by-side page head */
+@media (min-width: 768px) {
+  .pti-page-head {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .pti-page-head-actions { padding-top: 4px; }
+}
+
+/* Content area */
+.pti-content {
+  padding: clamp(12px, 3vw, 20px) clamp(14px, 3vw, 28px) clamp(24px, 5vw, 40px);
+  max-width: 1320px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* ─── Stat cards — mobile: 2-col, sm: 2, md: 4 ─── */
 .pti-stats-row {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(8px, 1.5vw, 12px);
+  margin-bottom: clamp(14px, 2vw, 20px);
 }
 .pti-stat-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--r-lg); padding: 18px 20px; box-shadow: var(--sh-1);
-  position: relative; overflow: hidden; transition: box-shadow .18s, transform .18s;
+  border-radius: var(--r-lg);
+  padding: clamp(12px, 2vw, 18px) clamp(14px, 2vw, 20px);
+  box-shadow: var(--sh-1);
+  position: relative; overflow: hidden;
 }
-.pti-stat-card:hover { box-shadow: var(--sh-2); transform: translateY(-1px); }
-.pti-stat-card::after {
-  content: ''; position: absolute; bottom: 0; left: 20px; right: 20px;
-  height: 2px; border-radius: 99px; background: var(--border);
-  opacity: 0; transition: opacity .18s;
-}
-.pti-stat-card:hover::after { opacity: 1; }
 .pti-stat-label {
-  font-family: var(--mono); font-size: 10px; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
-  margin-bottom: 8px;
+  font-family: var(--mono);
+  font-size: clamp(8.5px, 0.55rem + 0.08vw, 10px);
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
 }
 .pti-stat-value {
-  font-family: var(--mono); font-size: 36px; font-weight: 700;
-  color: var(--ink); line-height: 1; letter-spacing: -.04em;
+  font-family: var(--mono);
+  font-size: clamp(24px, 1.5rem + 1vw, 36px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -.04em;
 }
 .pti-stat-sub {
-  font-size: 11px; color: var(--ghost); margin-top: 5px;
+  font-size: clamp(9.5px, 0.6rem + 0.08vw, 11px);
+  color: var(--ghost); margin-top: 4px;
   font-family: var(--mono);
 }
 
-/* ─── Content row (main + aside) ─── */
+@media (min-width: 768px) {
+  .pti-stats-row { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ─── Content row: stacked mobile → side-by-side lg ─── */
 .pti-content-row {
-  display: grid; grid-template-columns: 1fr 280px; gap: 16px; align-items: start;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, 2vw, 16px);
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .pti-content-row { grid-template-columns: 1fr 280px; }
+}
+
+/* Aside column: grid on tablet when stacked */
+.pti-aside-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(10px, 1.5vw, 14px);
+}
+@media (min-width: 480px) and (max-width: 1023px) {
+  .pti-aside-col {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
 }
 
 /* ─── Panel (card wrapper) ─── */
 .pti-panel {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-1);
-  margin-bottom: 14px;
+  margin-bottom: clamp(10px, 1.5vw, 14px);
 }
 .pti-panel:last-child { margin-bottom: 0; }
 .pti-panel-header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 20px; border-bottom: 1px solid var(--border);
+  padding: clamp(10px, 2vw, 14px) clamp(14px, 2vw, 20px);
+  border-bottom: 1px solid var(--border);
 }
 .pti-panel-title {
-  font-size: 13.5px; font-weight: 700; color: var(--ink);
+  font-size: clamp(12px, 0.78rem + 0.1vw, 13.5px);
+  font-weight: 700; color: var(--ink);
   display: flex; align-items: center; gap: 8px;
 }
 .pti-panel-title-dot {
   width: 7px; height: 7px; border-radius: 50%; background: var(--v);
-  animation: ptipip 1.8s ease-in-out infinite;
 }
 .pti-panel-actions { display: flex; gap: 7px; }
 
@@ -353,9 +585,9 @@ body.pti-dashboard > footer { display: none !important; }
 .pti-btn {
   display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--mono); font-size: 12px; font-weight: 600;
-  padding: 6px 13px; border-radius: var(--r-sm); border: none;
+  padding: 8px 14px; border-radius: var(--r-sm); border: none;
   cursor: pointer; transition: all .15s; white-space: nowrap;
-  text-decoration: none;
+  text-decoration: none; min-height: 44px;
 }
 .pti-btn-ghost {
   background: var(--surface-2); color: var(--ink-3);
@@ -369,8 +601,13 @@ body.pti-dashboard > footer { display: none !important; }
   background: var(--v); color: white; box-shadow: var(--sh-v);
 }
 .pti-btn-primary:hover {
-  background: #5558e8; transform: translateY(-1px);
-  color: white; text-decoration: none;
+  background: #5558e8; color: white; text-decoration: none;
+}
+
+/* Mobile: full-width primary actions */
+@media (max-width: 479px) {
+  .pti-page-head-actions { width: 100%; }
+  .pti-page-head-actions .pti-btn { width: 100%; justify-content: center; }
 }
 
 /* ─── Status chip ─── */
@@ -387,9 +624,10 @@ body.pti-dashboard > footer { display: none !important; }
 /* ─── Quick actions ─── */
 .pti-quick-list { padding: 8px; }
 .pti-quick-item {
-  display: flex; align-items: center; gap: 11px; padding: 10px 11px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 10px;
   border-radius: var(--r-md); cursor: pointer; transition: background .14s;
-  text-decoration: none; color: inherit;
+  text-decoration: none; color: inherit; min-height: 44px;
 }
 .pti-quick-item:hover { background: var(--surface-2); text-decoration: none; color: inherit; }
 .pti-qi-icon {
@@ -410,7 +648,8 @@ body.pti-dashboard > footer { display: none !important; }
 
 /* ─── Completion ring ─── */
 .pti-ring-wrap {
-  padding: 20px; display: flex; align-items: center; gap: 18px;
+  padding: clamp(14px, 2.5vw, 20px);
+  display: flex; align-items: center; gap: 14px;
 }
 .pti-ring-svg { flex-shrink: 0; }
 .pti-ring-bg { fill: none; stroke: var(--surface-3); stroke-width: 7; }
@@ -437,37 +676,42 @@ body.pti-dashboard > footer { display: none !important; }
 }
 
 /* ─── About / info section ─── */
-.pti-about { padding: 18px 20px; }
+.pti-about { padding: clamp(14px, 2vw, 18px) clamp(14px, 2vw, 20px); }
 .pti-about h2 { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
 .pti-about p, .pti-about div { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
 
 /* ─── CTA cards ─── */
-.pti-cta { padding: 24px 20px; text-align: center; }
+.pti-cta { padding: clamp(16px, 3vw, 24px) clamp(14px, 2.5vw, 20px); text-align: center; }
 .pti-cta-emoji { font-size: 28px; margin-bottom: 8px; }
 .pti-cta-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
 .pti-cta-desc { font-size: 12px; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
 
 /* ─── Alert inside dashboard ─── */
 .pti-alert {
-  margin: 0 28px 0; padding: 14px 18px; border-radius: var(--r-md);
+  margin: 0 clamp(14px, 3vw, 28px);
+  padding: 12px 14px;
+  border-radius: var(--r-md);
   background: var(--v-soft); border: 1px solid var(--v-mid);
-  font-size: 13px; color: var(--v-text); display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--v-text);
+  display: flex; align-items: center; gap: 8px;
 }
 
 /* ─── Nav list (inside panels) ─── */
 .pti-nav-list { list-style: none; padding: 0; margin: 0; }
 .pti-nav-list-item { margin-bottom: 2px; }
 .pti-nav-link {
-  display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
   border-radius: var(--r-sm); font-size: 13px; font-weight: 500;
   color: var(--ink-3); transition: all .14s; text-decoration: none;
+  min-height: 44px;
 }
 .pti-nav-link:hover { background: var(--surface-2); color: var(--ink-2); text-decoration: none; }
 .pti-nav-link-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; opacity: .65; }
 .pti-nav-link-disabled { opacity: .45; cursor: default; pointer-events: none; }
 .pti-nav-link-disabled:hover { background: transparent; color: var(--ink-3); }
 
-/* Sidebar disabled nav items (draw not released, etc.) */
+/* Sidebar disabled nav items */
 .pti-nav-item-disabled,
 span.pti-nav-item[style*="opacity"] {
   opacity: .45 !important; cursor: default !important; pointer-events: none;
@@ -487,43 +731,41 @@ span.pti-nav-item[style*="opacity"] {
   white-space: nowrap;
 }
 
-/* ─── Animations ─── */
+/* ─── Animations (reduced for perf) ─── */
 @keyframes ptiFadeUp {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.pti-fade-1 { animation: ptiFadeUp .35s ease-out .05s both; }
-.pti-fade-2 { animation: ptiFadeUp .35s ease-out .12s both; }
-.pti-fade-3 { animation: ptiFadeUp .35s ease-out .20s both; }
-.pti-fade-4 { animation: ptiFadeUp .35s ease-out .28s both; }
-.pti-fade-5 { animation: ptiFadeUp .35s ease-out .36s both; }
+@media (prefers-reduced-motion: no-preference) {
+  .pti-fade-1 { animation: ptiFadeUp .3s ease-out .05s both; }
+  .pti-fade-2 { animation: ptiFadeUp .3s ease-out .1s both; }
+  .pti-fade-3 { animation: ptiFadeUp .3s ease-out .15s both; }
+  .pti-fade-4 { animation: ptiFadeUp .3s ease-out .2s both; }
+  .pti-fade-5 { animation: ptiFadeUp .3s ease-out .25s both; }
+  .pti-round-pip { animation: ptipip 1.8s ease-in-out infinite; }
+  .pti-panel-title-dot { animation: ptipip 1.8s ease-in-out infinite; }
+}
 
-/* ─── Responsive ─── */
-@media (max-width: 1100px) {
-  .pti-content-row { grid-template-columns: 1fr; }
-  .pti-aside-col {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-  }
-  .pti-aside-col .pti-panel { margin-bottom: 0; }
+/* ─── Focus states ─── */
+.pti-btn:focus-visible,
+.pti-nav-item:focus-visible,
+.pti-nav-link:focus-visible,
+.pti-quick-item:focus-visible,
+.pti-header-tab:focus-visible,
+.pti-bnav-item:focus-visible,
+.pti-hbtn-icon:focus-visible {
+  outline: 2px solid var(--v);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
 }
-@media (max-width: 768px) {
-  .pti-sidebar { display: none; }
-  .pti-header-logo { width: auto; border-right: none; padding: 0 14px; }
-  .pti-header-nav { padding: 0 8px; gap: 0; overflow-x: auto; }
-  .pti-stats-row { grid-template-columns: repeat(2, 1fr); }
-  .pti-page-head { flex-direction: column; gap: 12px; padding: 16px 16px 0; }
-  .pti-page-title { font-size: 18px; }
-  .pti-content { padding: 16px 16px 32px; max-width: 100%; }
-}
-@media (max-width: 520px) {
-  .pti-stats-row { grid-template-columns: 1fr; }
-  .pti-stat-card { padding: 14px 16px; }
-  .pti-stat-value { font-size: 28px; }
-  .pti-header-nav { display: none; }
-  .pti-page-title { font-size: 16px; }
-  .pti-page-head-actions { width: 100%; }
-  .pti-page-head-actions .pti-btn { width: 100%; justify-content: center; }
+
+/* ─── Print ─── */
+@media print {
+  .pti-header, .pti-sidebar, .pti-bottom-nav,
+  .pti-drawer-backdrop, .pti-hamburger { display: none !important; }
+  .pti-body { padding-bottom: 0; overflow: visible; }
+  .pti-main { overflow: visible; }
+  .pti-app { height: auto; min-height: auto; }
 }
 </style>
 {% endblock %}
@@ -548,14 +790,22 @@ span.pti-nav-item[style*="opacity"] {
 {% block content %}
 <div class="pti-app">
 
+  {# ─── Skip link for keyboard/screen-reader users ─── #}
+  <a class="nk-skip-link" href="#ptiMain">{% trans "Skip to main content" %}</a>
+
   {% comment %}HEADER{% endcomment %}
   <header class="pti-header">
+    {# Hamburger — mobile only, toggled by JS below #}
+    <button class="pti-hamburger" id="ptiMenuBtn" aria-label="{% trans 'Open menu' %}" aria-expanded="false" aria-controls="ptiSidebar">
+      <span></span><span></span><span></span>
+    </button>
+
     <a class="pti-header-logo" href="/">
       <div class="pti-logo-mark">🐱</div>
       <div class="pti-logo-text">NekoTab</div>
     </a>
 
-    <nav class="pti-header-nav">
+    <nav class="pti-header-nav" aria-label="{% trans 'Tournament navigation' %}">
       <a class="pti-header-tab active" href="{% tournamenturl 'tournament-public-index' %}">{% trans "Home" %}</a>
       {% if pref.public_results and tournament.rounds_with_released_results.exists %}
         <a class="pti-header-tab" href="{% tournamenturl 'results-public-index' %}">{% trans "Results" %}</a>
@@ -589,8 +839,11 @@ span.pti-nav-item[style*="opacity"] {
 
   <div class="pti-body">
 
-    {# ─── SIDEBAR ─── #}
-    <aside class="pti-sidebar">
+    {# ─── DRAWER BACKDROP (mobile) ─── #}
+    <div class="pti-drawer-backdrop" id="ptiBackdrop"></div>
+
+    {# ─── SIDEBAR (drawer on mobile, static on md+) ─── #}
+    <aside class="pti-sidebar" id="ptiSidebar" role="navigation" aria-label="{% trans 'Sidebar navigation' %}" aria-hidden="true">
 
       {# Tournament context chip #}
       <div class="pti-sidebar-context">
@@ -838,7 +1091,7 @@ span.pti-nav-item[style*="opacity"] {
     {# ─── END SIDEBAR ─── #}
 
     {# ─── MAIN AREA ─── #}
-    <main class="pti-main">
+    <main class="pti-main" id="ptiMain">
 
       {# Messages / Alerts #}
       {% if messages %}
@@ -1402,6 +1655,88 @@ span.pti-nav-item[style*="opacity"] {
   </div>
   {# ─── END BODY ─── #}
 
+  {# ─── BOTTOM NAVIGATION (mobile only) ─── #}
+  <nav class="pti-bottom-nav" aria-label="{% trans 'Mobile navigation' %}">
+    <a class="pti-bnav-item active" href="{% tournamenturl 'tournament-public-index' %}">
+      <span class="pti-bnav-icon">🏠</span>
+      <span>{% trans "Home" %}</span>
+    </a>
+    {% if pref.public_results and tournament.rounds_with_released_results.exists %}
+      <a class="pti-bnav-item" href="{% tournamenturl 'results-public-index' %}">
+        <span class="pti-bnav-icon">📊</span>
+        <span>{% trans "Results" %}</span>
+      </a>
+    {% endif %}
+    {% if pref.public_draw != 'off' %}
+      <a class="pti-bnav-item" href="{% tournamenturl 'draw-public-current-rounds' %}">
+        <span class="pti-bnav-icon">🎲</span>
+        <span>{% trans "Draw" %}</span>
+      </a>
+    {% endif %}
+    {% if pref.public_participants %}
+      <a class="pti-bnav-item" href="{% tournamenturl 'participants-public-list' %}">
+        <span class="pti-bnav-icon">👥</span>
+        <span>{% trans "People" %}</span>
+      </a>
+    {% endif %}
+    <button class="pti-bnav-item" id="ptiBnavMenu" aria-label="{% trans 'Open full menu' %}" aria-expanded="false" aria-controls="ptiSidebar">
+      <span class="pti-bnav-icon">☰</span>
+      <span>{% trans "Menu" %}</span>
+    </button>
+  </nav>
+
 </div>
 {# ─── END APP ─── #}
+
+{# ─── Hamburger + bottom-nav drawer toggle ─── #}
+<script>
+(function() {
+  var btn      = document.getElementById('ptiMenuBtn');
+  var bnav     = document.getElementById('ptiBnavMenu');
+  var sidebar  = document.getElementById('ptiSidebar');
+  var backdrop = document.getElementById('ptiBackdrop');
+  if (!btn || !sidebar || !backdrop) return;
+
+  function setDrawer(open) {
+    sidebar.setAttribute('aria-hidden', String(!open));
+    btn.setAttribute('aria-expanded', String(open));
+    if (bnav) bnav.setAttribute('aria-expanded', String(open));
+  }
+
+  function toggle() {
+    var open = sidebar.classList.toggle('open');
+    backdrop.classList.toggle('open', open);
+    setDrawer(open);
+    // Prevent body scroll when drawer open on mobile
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  function close() {
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('open');
+    setDrawer(false);
+    document.body.style.overflow = '';
+  }
+  btn.addEventListener('click', toggle);
+  backdrop.addEventListener('click', close);
+  if (bnav) bnav.addEventListener('click', toggle);
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) close();
+  });
+  // Auto-close drawer on md+ resize; also un-hide sidebar for desktop
+  var mq = window.matchMedia('(min-width: 768px)');
+  function onBreakpoint(e) {
+    if (e.matches) {
+      close();
+      sidebar.setAttribute('aria-hidden', 'false');
+    } else {
+      // Closing already set aria-hidden true
+    }
+  }
+  mq.addEventListener('change', onBreakpoint);
+  // Initialize: if already at desktop on load, reveal sidebar
+  if (mq.matches) sidebar.setAttribute('aria-hidden', 'false');
+})();
+</script>
 {% endblock content %}

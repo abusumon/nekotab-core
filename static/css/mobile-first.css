@@ -1,0 +1,446 @@
+/* ═══════════════════════════════════════════════════════════════
+   NEKOTAB — Mobile-First Responsive Foundation
+   ═══════════════════════════════════════════════════════════════
+   Import BEFORE page-specific styles.
+   Breakpoints (mobile-first):
+     base: 0–479px
+     sm:   480px+
+     md:   768px+
+     lg:   1024px+
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 0. RESET ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+img, video, svg, canvas { display: block; max-width: 100%; height: auto; }
+table { max-width: 100%; }
+
+/* ── 1. TOKENS ────────────────────────────────────────────── */
+:root {
+  /* ─ Spacing scale ─ */
+  --sp-xs:  4px;
+  --sp-sm:  8px;
+  --sp-md:  16px;
+  --sp-lg:  24px;
+  --sp-xl:  40px;
+  --sp-2xl: 64px;
+
+  /* ─ Font sizes (fluid via clamp) ─ */
+  --fs-xs:   clamp(0.6875rem, 0.65rem + 0.15vw, 0.75rem);   /* ~11–12px */
+  --fs-sm:   clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);     /* ~12–13px */
+  --fs-base: clamp(0.8125rem, 0.78rem + 0.2vw, 0.875rem);   /* ~13–14px */
+  --fs-md:   clamp(0.9375rem, 0.88rem + 0.25vw, 1rem);      /* ~15–16px */
+  --fs-lg:   clamp(1.125rem, 1rem + 0.5vw, 1.375rem);       /* ~18–22px */
+  --fs-xl:   clamp(1.375rem, 1.15rem + 0.9vw, 1.75rem);     /* ~22–28px */
+  --fs-2xl:  clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);        /* ~28–40px */
+
+  /* ─ Font families ─ */
+  --font-sans: 'Inter', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* ─ Line heights ─ */
+  --lh-tight:  1.2;
+  --lh-normal: 1.5;
+  --lh-loose:  1.7;
+
+  /* ─ Radii ─ */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* ─ Brand colors ─ */
+  --c-primary:      #6366f1;
+  --c-primary-hover: #4f46e5;
+  --c-primary-soft: rgba(99,102,241,.09);
+  --c-primary-mid:  rgba(99,102,241,.18);
+  --c-primary-text: #4f46e5;
+
+  /* ─ Surfaces ─ */
+  --c-bg:        #F0F2F8;
+  --c-surface:   #FFFFFF;
+  --c-surface-2: #F7F8FC;
+  --c-surface-3: #EEF0F8;
+  --c-border:    #E4E7F2;
+  --c-border-2:  #D8DCF0;
+
+  /* ─ Text ─ */
+  --c-ink:    #0F1020;
+  --c-ink-2:  #2A2D48;
+  --c-ink-3:  #5A5E80;
+  --c-muted:  #9498BC;
+  --c-ghost:  #C8CCE4;
+
+  /* ─ Status ─ */
+  --c-green:      #16A36A;
+  --c-green-soft: rgba(22,163,106,.09);
+  --c-amber:      #C98A00;
+  --c-amber-soft: rgba(201,138,0,.09);
+  --c-red:        #D63B5A;
+  --c-red-soft:   rgba(214,59,90,.09);
+
+  /* ─ Shadows ─ */
+  --shadow-xs:  0 1px 2px rgba(15,16,32,.04);
+  --shadow-sm:  0 1px 3px rgba(15,16,32,.05), 0 1px 2px rgba(15,16,32,.04);
+  --shadow-md:  0 3px 12px rgba(15,16,32,.07), 0 1px 4px rgba(15,16,32,.05);
+  --shadow-lg:  0 10px 20px rgba(15,16,32,.08), 0 4px 8px rgba(15,16,32,.05);
+  --shadow-primary: 0 4px 18px rgba(99,102,241,.22), 0 1px 4px rgba(99,102,241,.14);
+
+  /* ─ Z-index layers ─ */
+  --z-base:    1;
+  --z-sticky:  10;
+  --z-header:  50;
+  --z-overlay: 100;
+  --z-modal:   200;
+  --z-toast:   300;
+
+  /* ─ Safe area insets (iOS notch) ─ */
+  --sai-top:    env(safe-area-inset-top, 0px);
+  --sai-right:  env(safe-area-inset-right, 0px);
+  --sai-bottom: env(safe-area-inset-bottom, 0px);
+  --sai-left:   env(safe-area-inset-left, 0px);
+}
+
+/* ── 2. TYPOGRAPHY ────────────────────────────────────────── */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--c-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* ── 3. LAYOUT PRIMITIVES ─────────────────────────────────── */
+
+/* Container: full-width mobile, max-width desktop */
+.nk-container {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: clamp(var(--sp-md), 4vw, var(--sp-xl));
+}
+
+/* Stack: vertical spacing */
+.nk-stack       { display: flex; flex-direction: column; }
+.nk-stack-xs    { gap: var(--sp-xs); }
+.nk-stack-sm    { gap: var(--sp-sm); }
+.nk-stack-md    { gap: var(--sp-md); }
+.nk-stack-lg    { gap: var(--sp-lg); }
+.nk-stack-xl    { gap: var(--sp-xl); }
+
+/* Responsive grid: auto-fit */
+.nk-grid {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 480px) {
+  .nk-grid--2 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 768px) {
+  .nk-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .nk-grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 1024px) {
+  .nk-grid--auto {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+/* Card */
+.nk-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(var(--sp-md), 3vw, var(--sp-lg));
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── 4. COMPONENT PRIMITIVES ──────────────────────────────── */
+
+/* Button */
+.nk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+  white-space: nowrap;
+  text-decoration: none;
+  min-height: 44px; /* accessibility: tap target */
+  line-height: 1.4;
+}
+.nk-btn:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+}
+.nk-btn--primary {
+  background: var(--c-primary);
+  color: #fff;
+  box-shadow: var(--shadow-primary);
+}
+.nk-btn--primary:hover {
+  background: var(--c-primary-hover);
+  color: #fff;
+  text-decoration: none;
+}
+.nk-btn--ghost {
+  background: var(--c-surface-2);
+  color: var(--c-ink-3);
+  border: 1px solid var(--c-border);
+}
+.nk-btn--ghost:hover {
+  background: var(--c-surface-3);
+  color: var(--c-ink-2);
+  text-decoration: none;
+}
+.nk-btn--block { width: 100%; }
+
+/* Input */
+.nk-input {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--fs-base);
+  padding: 10px 14px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  color: var(--c-ink);
+  min-height: 44px; /* accessibility */
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.nk-input:focus {
+  outline: none;
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 3px var(--c-primary-soft);
+}
+
+/* Badge */
+.nk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+.nk-badge--primary { background: var(--c-primary-soft); color: var(--c-primary-text); }
+.nk-badge--green   { background: var(--c-green-soft);   color: var(--c-green); }
+.nk-badge--amber   { background: var(--c-amber-soft);   color: var(--c-amber); }
+.nk-badge--red     { background: var(--c-red-soft);     color: var(--c-red); }
+
+/* ── 5. ACCESSIBILITY ─────────────────────────────────────── */
+
+/* Focus-visible global */
+:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* Skip link */
+.nk-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: var(--sp-sm);
+  z-index: var(--z-toast);
+  background: var(--c-primary);
+  color: #fff;
+  padding: var(--sp-sm) var(--sp-md);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+.nk-skip-link:focus {
+  left: var(--sp-md);
+}
+
+/* Tap targets — only on nk-* / pti-* components; avoids breaking Bootstrap */
+.nk-btn, .nk-input,
+[class^="pti-"] > a,
+[class^="pti-"] > button,
+[class^="pti-"] > summary {
+  min-height: 44px;
+}
+
+/* ── 6. RESPONSIVE TABLE WRAPPER ──────────────────────────── */
+.nk-table-scroll {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-inline: calc(-1 * var(--sp-md));
+  padding-inline: var(--sp-md);
+}
+/* Scroll hint gradient */
+.nk-table-scroll::after {
+  content: '';
+  position: sticky;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to left, var(--c-surface), transparent);
+  pointer-events: none;
+}
+
+/* Card-style table rows on mobile */
+.nk-table-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+.nk-table-card-row {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-md);
+}
+.nk-table-card-row dt {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.nk-table-card-row dd {
+  margin: 0 0 var(--sp-sm) 0;
+  font-size: var(--fs-base);
+  color: var(--c-ink-2);
+}
+.nk-table-card-row dd:last-child { margin-bottom: 0; }
+
+/* ── 7. FORM LAYOUT ──────────────────────────────────────── */
+.nk-form-grid {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .nk-form-grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.nk-form-group label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-ink-2);
+  margin-bottom: var(--sp-xs);
+}
+.nk-form-error {
+  font-size: var(--fs-xs);
+  color: var(--c-red);
+  margin-top: var(--sp-xs);
+}
+
+/* ── 8. MODAL / DIALOG ───────────────────────────────────── */
+/* Mobile: bottom sheet; Desktop: centered */
+.nk-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,16,32,.45);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: flex-end; /* bottom sheet by default */
+  justify-content: center;
+}
+.nk-dialog {
+  background: var(--c-surface);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  width: 100%;
+  max-height: 90dvh;
+  overflow-y: auto;
+  padding: var(--sp-lg);
+  padding-bottom: calc(var(--sp-lg) + var(--sai-bottom));
+}
+@media (min-width: 768px) {
+  .nk-dialog-backdrop {
+    align-items: center;
+  }
+  .nk-dialog {
+    max-width: 560px;
+    border-radius: var(--radius-lg);
+    max-height: 80vh;
+    padding-bottom: var(--sp-lg);
+  }
+}
+
+/* ── 9. UTILITY CLASSES ───────────────────────────────────── */
+.nk-sr-only {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0,0,0,0); overflow: hidden;
+}
+
+/* Hide/show at breakpoints (mobile-first) */
+.nk-hide-sm  { display: none !important; }
+.nk-hide-md  { display: initial; }
+.nk-hide-lg  { display: initial; }
+@media (min-width: 480px) {
+  .nk-show-sm  { display: initial !important; }
+  .nk-hide-sm  { display: initial !important; }
+}
+@media (max-width: 479px) {
+  .nk-show-sm { display: none !important; }
+}
+@media (min-width: 768px) {
+  .nk-show-md { display: initial !important; }
+}
+@media (max-width: 767px) {
+  .nk-show-md { display: none !important; }
+  .nk-hide-md { display: initial !important; }
+}
+@media (min-width: 1024px) {
+  .nk-show-lg { display: initial !important; }
+}
+@media (max-width: 1023px) {
+  .nk-show-lg { display: none !important; }
+  .nk-hide-lg { display: initial !important; }
+}
+
+/* Full-width buttons on mobile */
+@media (max-width: 479px) {
+  .nk-btn--mobile-block {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Text truncation */
+.nk-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nk-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── 10. PRINT ─────────────────────────────────────────────── */
+@media print {
+  .nk-no-print { display: none !important; }
+}
