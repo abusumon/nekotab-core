@@ -5,13 +5,20 @@
   <h2><span class="emoji">😿</span> Page Not Found (404)</h2>
 {% endblock %}
 
+{% block noindex %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
 {% block nav %}{% endblock %}
 
 {% block content %}
   <div class="card">
-    <div class="card-body h4">
-      Sorry, there doesn't appear to be a page at this URL.
-      <a href="/">Go back to the homepage?</a>
+    <div class="card-body">
+      <h3 class="mb-3">Sorry, there doesn't appear to be a page at this URL.</h3>
+      <p class="mb-3">The page may have been moved, renamed, or deleted.</p>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="/" class="btn btn-primary">Go to Homepage</a>
+        <a href="{% url 'motionbank:motionbank-home' %}" class="btn btn-outline-secondary">Motion Bank</a>
+        <a href="{% url 'forum:forum-home' %}" class="btn btn-outline-secondary">Forum</a>
+      </div>
     </div>
   </div>
 {% endblock %}

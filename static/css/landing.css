@@ -284,15 +284,15 @@ body.em-body { padding-top: 64px; }
 /* ======================== DASHBOARD PREVIEW ======================== */
 .em-dashboard-preview { background: #f8fafc; padding: 0; font-family: var(--nt-font); }
 .em-dash-header { background: #fff; border-bottom: 1px solid var(--nt-border); padding: 10px 16px; }
-.em-dash-nav { display: flex; align-items: center; gap: 16px; }
+.em-dash-nav { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .em-dash-logo-pill { background: var(--nt-gradient); color: #fff; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; }
 .em-dash-nav-item { font-size: 11px; color: var(--nt-text-muted); font-weight: 500; cursor: default; }
 .em-dash-nav-item--active { color: var(--nt-primary); font-weight: 700; border-bottom: 2px solid var(--nt-primary); padding-bottom: 2px; }
 .em-dash-body { display: flex; min-height: 220px; }
 .em-dash-sidebar { width: 140px; background: #fff; border-right: 1px solid var(--nt-border); padding: 12px 0; flex-shrink: 0; }
-.em-dash-sidebar-item { padding: 6px 14px; font-size: 11px; color: var(--nt-text-secondary); cursor: default; }
+.em-dash-sidebar-item { padding: 6px 14px; font-size: 11px; color: var(--nt-text-secondary); cursor: default; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .em-dash-sidebar-item--active { background: var(--nt-primary-light); color: var(--nt-primary); font-weight: 600; border-right: 2px solid var(--nt-primary); }
-.em-dash-main { flex: 1; padding: 16px; }
+.em-dash-main { flex: 1; padding: 16px; min-width: 0; }
 .em-dash-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
 .em-dash-stat-card { background: #fff; border: 1px solid var(--nt-border); border-radius: 8px; padding: 10px; text-align: center; }
 .em-dash-stat-card--accent { background: var(--nt-primary-light); border-color: #c7d2fe; }
@@ -311,6 +311,9 @@ body.em-body { padding-top: 64px; }
   .em-dash-table-head, .em-dash-table-row { grid-template-columns: 1fr 1fr 0.5fr; }
   .em-dash-table-head span:nth-child(3), .em-dash-table-head span:nth-child(4),
   .em-dash-table-row span:nth-child(3), .em-dash-table-row span:nth-child(4) { display: none; }
+  /* Prevent hero visual from overflowing */
+  .em-hero-visual { margin-top: 32px; }
+  .em-browser-frame { border-radius: var(--nt-radius); }
 }
 
 /* ======================== TRUST SECTION ENHANCED ======================== */
@@ -389,4 +392,57 @@ body.em-body { padding-top: 64px; }
 @media (max-width:767px) {
   .em-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
   .em-footer-grid > div:first-child { grid-column: 1 / -1; }
+}
+
+/* ======================== MOBILE LAYOUT SAFETY ======================== */
+/* Prevent text overlap and ensure scroll safety on mobile */
+@media (max-width:767px) {
+  /* Reduce hero padding to prevent headline overflow */
+  .em-hero { padding: 72px 0 48px; }
+  .em-hero-title { font-size: clamp(28px, 7vw, 40px); line-height: 1.12; }
+  .em-hero-sub { font-size: 15px; margin-bottom: 28px; }
+  .em-hero-ctas { flex-direction: column; align-items: stretch; gap: 10px; }
+  .em-hero-ctas .em-btn { width: 100%; justify-content: center; }
+
+  /* Tool cards: single column, no absolute positioning leaks */
+  .em-tools-grid { grid-template-columns: 1fr; }
+  .em-tool-card { position: relative; overflow: hidden; }
+  .em-tool-bg-icon { font-size: 3rem; top: -5px; right: -5px; }
+
+  /* Spotlight section */
+  .em-spotlight-title { font-size: 1.5rem; }
+  .em-spotlight-grid { grid-template-columns: 1fr; }
+
+  /* Steps: vertical stack */
+  .em-steps-grid { flex-direction: column; align-items: stretch; gap: 20px; }
+  .em-step { padding: 0; text-align: left; display: flex; gap: 14px; align-items: flex-start; }
+  .em-step-num { flex-shrink: 0; margin: 0; }
+
+  /* Section spacing */
+  .em-section { padding: 48px 0; }
+  .em-section-title { font-size: clamp(22px, 5vw, 32px); }
+  .em-section-subtitle { font-size: 14px; margin-bottom: 32px; }
+
+  /* Prevent cookie consent banner from overlapping FAQ accordion */
+  body.em-body { padding-bottom: 80px; }
+
+  /* Compare cards: stack */
+  .em-compare-grid { grid-template-columns: 1fr; }
+
+  /* Formats cards */
+  .em-cats-grid { grid-template-columns: 1fr; }
+  .em-cat { height: 160px; }
+
+  /* Feature grid */
+  .em-feature-grid--3col { grid-template-columns: 1fr; }
+
+  /* Prevent z-index fights */
+  .em-back-to-top { bottom: 96px; z-index: 9990; }
+}
+
+/* Cookie consent banner: ensure it doesn't cover content permanently */
+#cookie-consent {
+  /* Banner on mobile should not block scrollable content */
+  max-height: 50vh;
+  overflow-y: auto;
 }

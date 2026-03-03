@@ -50,8 +50,8 @@ class AnalyticsMiddleware:
     def __call__(self, request):
         response = self.get_response(request)
         
-        # Only track successful page loads
-        if response.status_code == 200:
+        # Track successful page loads AND 404s (for broken link diagnosis)
+        if response.status_code in (200, 404):
             self.track_request(request)
         
         return response

@@ -102,32 +102,11 @@
     <link href="{% static 'vue/js/app.js' %}" rel="preload" as="script">
   {% endif %}
 
-  <!-- GA4: only after consent -->
+  <!-- GA4 + Cookie Consent: shared module -->
+  <script src="{% static 'js/cookie-consent.js' %}"></script>
   <script>
-    function loadGA4() {
-      try {
-        if (window.__ga4_loaded) return;
-        window.__ga4_loaded = true;
-
-        var s = document.createElement('script');
-        s.id = 'ga4-script';
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7KH41L8LQL';
-        document.head.appendChild(s);
-
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'G-7KH41L8LQL');
-      } catch (e) {
-        // If blocked by adblock/ETP, ignore silently
-      }
-    }
-
-    if (localStorage.getItem('cookie_consent') === 'all') {
-      loadGA4();
-    }
+    // Load GA4 immediately if consent was already given (no flicker)
+    if (NekoConsent.getConsent() === 'all') { NekoConsent._loadGA4(); }
   </script>
 
   {% if LANGUAGE_CODE == 'tzl' %}
@@ -281,31 +260,12 @@
         <a href="/privacy/" style="color:#a78bfa; text-decoration:underline;">Privacy Policy</a>
       </p>
       <div style="display:flex; gap:8px; flex-shrink:0;">
-        <button onclick="acceptAllCookies()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept Analytics</button>
-        <button onclick="acceptEssentialOnly()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">No Thanks</button>
+        <button onclick="NekoConsent.acceptAll()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept Analytics</button>
+        <button onclick="NekoConsent.acceptEssential()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">No Thanks</button>
       </div>
     </div>
   </div>
-
-  <script>
-    (function(){
-      var consent = localStorage.getItem('cookie_consent');
-      if (!consent) {
-        document.getElementById('cookie-consent').style.display='block';
-      }
-    })();
-
-    function acceptAllCookies(){
-      localStorage.setItem('cookie_consent','all');
-      document.getElementById('cookie-consent').style.display='none';
-      if (typeof loadGA4 === 'function') loadGA4();
-    }
-
-    function acceptEssentialOnly(){
-      localStorage.setItem('cookie_consent','essential');
-      document.getElementById('cookie-consent').style.display='none';
-    }
-  </script>
+  <script>NekoConsent.init();</script>
 
 </body>
 </html>

@@ -132,6 +132,10 @@ MIDDLEWARE = [
     # Rewrite subdomain requests to slug-based paths (feature gated)
     'utils.middleware.SubdomainTournamentMiddleware',
     'utils.middleware.DebateMiddleware',
+    # 404 diagnostic logging
+    'utils.middleware_404.Log404Middleware',
+    # Redirect fallback: serves django.contrib.redirects entries
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     # Analytics tracking middleware
     'analytics.middleware.AnalyticsMiddleware',
 ]
@@ -177,6 +181,8 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sitemaps',
+    'django.contrib.sites',
+    'django.contrib.redirects',
     'channels', # For Websockets / real-time connections (above whitenoise)
     'django.contrib.staticfiles',
     'django.contrib.humanize',
@@ -311,6 +317,16 @@ for app in TABBYCAT_APPS:
         'handlers': ['console'],
         'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
     }
+
+# 404 diagnostic logger — routes to console (visible in Heroku logs)
+LOGGING['loggers']['nekotab.404'] = {
+    'handlers': ['console'],
+    'level': 'WARNING',
+    'propagate': False,
+}
+
+# Required by django.contrib.redirects
+SITE_ID = 1
 
 # ==============================================================================
 # Messages

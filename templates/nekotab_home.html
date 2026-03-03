@@ -46,27 +46,14 @@
 
   <!-- Google AdSense & GA4 — loaded only after full cookie consent -->
   <script>
-  window.adsbygoogle window.adsbygoogle || [];
+  window.adsbygoogle = window.adsbygoogle || [];
   window.adsbygoogle.requestNonPersonalizedAds = 1;
   </script>
 
+  <!-- GA4 + Cookie Consent: shared module -->
+  <script src="{% static 'js/cookie-consent.js' %}"></script>
   <script>
-    function loadGA4Landing() {
-      if (document.getElementById('ga4-script')) return;
-      var s = document.createElement('script');
-      s.id = 'ga4-script';
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7KH41L8LQL';
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', 'G-7KH41L8LQL');
-    }
-    if (localStorage.getItem('cookie_consent') === 'all') {
-      loadGA4Landing();
-    }
+    if (NekoConsent.getConsent() === 'all') { NekoConsent._loadGA4(); }
   </script>
 
   <!-- Structured Data: Organization -->
@@ -710,6 +697,7 @@
 
   <!-- ==================== FAQ ==================== -->
   <section id="faq" class="em-section em-faq">
+  </section>
 
   <!-- ==================== LEARN / CONTENT HUB PROMO ==================== -->
   <section class="em-section em-learn-promo">
@@ -728,6 +716,7 @@
   </section>
 
   <!-- ==================== FAQ (continued) ==================== -->
+  <section class="em-section em-faq">
     <div class="em-container em-faq-container">
       <div class="em-section-eyebrow">FAQ</div>
       <h2 class="em-section-title">Frequently asked questions</h2>
@@ -855,7 +844,7 @@
 
   <script src="{% static 'js/landing.js' %}"></script>
 
-  <!-- Cookie Consent Banner -->
+  <!-- Cookie Consent Banner (uses shared module loaded in <head>) -->
   <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; color:#e0e0e0; padding:16px 24px; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,.3); font-size:14px;">
     <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
       <p style="margin:0; flex:1; min-width:280px;">
@@ -863,28 +852,12 @@
         <a href="/privacy/" style="color:#a78bfa; text-decoration:underline;">Privacy Policy</a>
       </p>
       <div style="display:flex; gap:8px; flex-shrink:0;">
-        <button onclick="acceptAllCookies()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept All</button>
-        <button onclick="acceptEssentialOnly()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">Essential Only</button>
+        <button onclick="NekoConsent.acceptAll()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept All</button>
+        <button onclick="NekoConsent.acceptEssential()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">Essential Only</button>
       </div>
     </div>
   </div>
-  <script>
-    (function(){
-      if(!localStorage.getItem('cookie_consent')){
-        document.getElementById('cookie-consent').style.display='block';
-      }
-    })();
-    function acceptAllCookies(){
-      localStorage.setItem('cookie_consent','all');
-      document.getElementById('cookie-consent').style.display='none';
-      if (typeof loadGA4Landing === 'function') loadGA4Landing();
-      
-    }
-    function acceptEssentialOnly(){
-      localStorage.setItem('cookie_consent','essential');
-      document.getElementById('cookie-consent').style.display='none';
-    }
-  </script>
+  <script>NekoConsent.init();</script>
 
   <!-- Back to Top Button -->
   <button id="em-back-to-top" class="em-back-to-top" aria-label="Back to top" title="Back to top">
