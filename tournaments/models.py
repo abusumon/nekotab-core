@@ -104,11 +104,13 @@ class TournamentQuerySet(models.QuerySet):
         1. ``tournament.owner == user``
         2. User has a tournament-scoped role (``UserPermission`` or ``Group``
            membership)
-        3. ``tournament.is_listed`` is True (public showcase)
-        4. User is a superuser (sees everything)
+        3. User is a member of the tournament's organization
+        4. ``tournament.is_listed`` is True (public showcase)
+        5. User is a superuser (sees everything)
 
         Anonymous users see only listed tournaments.
         """
+        from organizations.models import OrganizationMembership
         from users.models import Membership, UserPermission
         qs = self.filter(active=True)
 
@@ -128,11 +130,17 @@ class TournamentQuerySet(models.QuerySet):
             .filter(user=user)
             .values_list('group__tournament_id', flat=True)
         )
+        org_ids = (
+            OrganizationMembership.objects
+            .filter(user=user)
+            .values_list('organization_id', flat=True)
+        )
 
         return qs.filter(
             Q(owner=user)
             | Q(id__in=permission_ids)
             | Q(id__in=membership_ids)
+            | Q(organization_id__in=org_ids)
             | Q(is_listed=True)
         ).distinct()
 
@@ -159,6 +167,13 @@ class Tournament(models.Model):
         related_name='owned_tournaments',
         verbose_name=_("owner"),
         help_text=_("The user who created and owns this tournament (for payment/billing purposes)"))
+    organization = models.ForeignKey(
+        'organizations.Organization', on_delete=models.CASCADE,
+        null=True, blank=True,
+        related_name='tournaments',
+        verbose_name=_("organization"),
+        help_text=_("The organization this tournament belongs to. "
+                    "All org members get access based on their org role."))
     created_at = models.DateTimeField(auto_now_add=True, null=True,
         verbose_name=_("created at"),
         help_text=_("When this tournament was created"))

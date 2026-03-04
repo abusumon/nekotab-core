@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "My Organizations" %}{% endblock %}
+{% block head-title %}{% trans "My Organizations" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>{% trans "My Organizations" %}</h2>
+    <a href="{% url 'org-create' %}" class="btn btn-success btn-sm">
+      <i data-feather="plus"></i> {% trans "Create Organization" %}
+    </a>
+  </div>
+
+  {% if organizations %}
+    <div class="row">
+      {% for org in organizations %}
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ org.name }}</h5>
+              <p class="card-text text-muted">
+                {{ org.tournaments.count }} tournament{{ org.tournaments.count|pluralize }}
+                &middot;
+                {{ org.memberships.count }} member{{ org.memberships.count|pluralize }}
+              </p>
+              <a href="{% url 'org-detail' org_slug=org.slug %}" class="btn btn-outline-primary btn-sm">
+                {% trans "View" %}
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card">
+      <div class="card-body text-center py-5">
+        <p class="text-muted mb-3">{% trans "You don't belong to any organizations yet." %}</p>
+        <a href="{% url 'org-create' %}" class="btn btn-primary">
+          {% trans "Create your first organization" %}
+        </a>
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

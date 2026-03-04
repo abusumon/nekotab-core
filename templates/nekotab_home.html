@@ -155,6 +155,7 @@
         <a href="#faq">FAQ</a>
         <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Create Tournament</a>
         {% if user.is_authenticated %}
+          <a href="{% url 'org-list' %}" class="em-btn em-btn--ghost em-btn--sm" title="My Organizations">🏢 Orgs</a>
           {% if user.is_superuser %}
           <a href="{% url 'campaigns:list' %}" class="em-btn em-btn--ghost" style="margin-left:4px;" title="Email Campaigns">📧</a>
           {% endif %}
@@ -183,6 +184,7 @@
       <a href="#faq">FAQ</a>
       <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Create Tournament</a>
       {% if user.is_authenticated %}
+        <a href="{% url 'org-list' %}" class="em-btn em-btn--ghost em-btn--block">🏢 My Organizations</a>
         <form action="{% url 'logout' %}" method="post" style="margin-top:12px;">
           {% csrf_token %}
           <button type="submit" class="em-btn em-btn--ghost em-btn--block" aria-label="Logout">Logout</button>

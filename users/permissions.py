@@ -172,6 +172,27 @@ def has_permission(user: 'settings.AUTH_USER_MODEL', permission: permission_type
     if hasattr(tournament, 'owner_id') and tournament.owner_id == user.pk:
         return True
 
+    # Organization-level access: org OWNER/ADMIN get full tournament access,
+    # org MEMBER gets access (view-level mixins handle granularity).
+    if hasattr(tournament, 'organization_id') and tournament.organization_id:
+        from organizations.models import OrganizationMembership
+        org_membership = OrganizationMembership.objects.filter(
+            organization_id=tournament.organization_id,
+            user=user,
+        ).first()
+        if org_membership is not None:
+            # Org owners and admins get unconditional access
+            if org_membership.role in (
+                OrganizationMembership.Role.OWNER,
+                OrganizationMembership.Role.ADMIN,
+            ):
+                return True
+            # Org members get access (individual tournament perms still apply)
+            if org_membership.role == OrganizationMembership.Role.MEMBER:
+                # Members can access the tournament but specific permission
+                # checks fall through to the existing per-tournament logic
+                pass
+
     if isinstance(permission, bool):
         return permission
 

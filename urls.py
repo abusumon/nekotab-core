@@ -104,6 +104,10 @@ urlpatterns = [
     path('analytics/',
         include('analytics.urls')),
 
+    # Organizations (multi-tenant)
+    path('organizations/',
+        include('organizations.urls')),
+
     # API
     path('api',
         include('api.urls')),

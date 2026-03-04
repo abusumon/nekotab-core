@@ -154,6 +154,7 @@ TABBYCAT_APPS = (
     'draw',
     'motions',
     'options',
+    'organizations',
     'participants',
     'printing',
     'privateurls',

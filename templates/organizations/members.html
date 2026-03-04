@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Members" %} — {{ organization.name }}{% endblock %}
+{% block head-title %}{% trans "Organization Members" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>{{ organization.name }} — {% trans "Members" %}</h2>
+    <a href="{% url 'org-detail' org_slug=organization.slug %}" class="btn btn-outline-secondary btn-sm">
+      &larr; {% trans "Back" %}
+    </a>
+  </div>
+
+  {% if is_admin %}
+  <div class="card mb-4">
+    <div class="card-header">{% trans "Add Member" %}</div>
+    <div class="card-body">
+      <form method="post" action="{% url 'org-add-member' org_slug=organization.slug %}" class="row g-2 align-items-end">
+        {% csrf_token %}
+        <div class="col-md-5">
+          <label class="form-label">{% trans "Username or Email" %}</label>
+          <input type="text" name="username" class="form-control" required placeholder="{% trans 'e.g. johndoe or john@example.com' %}">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">{% trans "Role" %}</label>
+          <select name="role" class="form-select">
+            {% for value, label in roles %}
+              {% if value != 'owner' %}
+                <option value="{{ value }}" {% if value == 'member' %}selected{% endif %}>{{ label }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success w-100">{% trans "Add" %}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="card">
+    <div class="card-header">{% trans "Current Members" %} ({{ members|length }})</div>
+    <ul class="list-group list-group-flush">
+      {% for m in members %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>{{ m.user.username }}</strong>
+            {% if m.user.email %}<small class="text-muted">({{ m.user.email }})</small>{% endif %}
+            <span class="badge bg-{% if m.role == 'owner' %}danger{% elif m.role == 'admin' %}warning{% elif m.role == 'member' %}primary{% else %}secondary{% endif %} ms-2">
+              {{ m.get_role_display }}
+            </span>
+          </div>
+          {% if is_admin %}
+            <div class="d-flex gap-1">
+              <form method="post" action="{% url 'org-change-role' org_slug=organization.slug membership_id=m.pk %}" class="d-inline">
+                {% csrf_token %}
+                <select name="role" class="form-select form-select-sm d-inline-block" style="width: auto;" onchange="this.form.submit()">
+                  {% for value, label in roles %}
+                    <option value="{{ value }}" {% if value == m.role %}selected{% endif %}>{{ label }}</option>
+                  {% endfor %}
+                </select>
+              </form>
+              <form method="post" action="{% url 'org-remove-member' org_slug=organization.slug membership_id=m.pk %}" class="d-inline"
+                    onsubmit="return confirm('{% trans "Remove this member?" %}')">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger btn-sm">&times;</button>
+              </form>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

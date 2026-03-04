@@ -178,6 +178,19 @@ class DebateMiddleware:
         # Owner check via the tournament field
         if hasattr(tournament, 'owner_id') and tournament.owner_id == user.pk:
             return True
+        # Organization membership check (org OWNER/ADMIN/MEMBER → access)
+        if hasattr(tournament, 'organization_id') and tournament.organization_id:
+            from organizations.models import OrganizationMembership
+            if OrganizationMembership.objects.filter(
+                organization_id=tournament.organization_id,
+                user=user,
+                role__in=[
+                    OrganizationMembership.Role.OWNER,
+                    OrganizationMembership.Role.ADMIN,
+                    OrganizationMembership.Role.MEMBER,
+                ],
+            ).exists():
+                return True
         # Permission or membership check
         from users.models import Membership, UserPermission  # noqa: E402
         if UserPermission.objects.filter(user=user, tournament=tournament).exists():

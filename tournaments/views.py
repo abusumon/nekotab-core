@@ -71,6 +71,11 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
             ).filter(active=False)
 
             # "Shared with me" = visible but not owned by me and not just listed
+            from organizations.models import OrganizationMembership
+            user_org_ids = list(
+                OrganizationMembership.objects.filter(user=user)
+                .values_list('organization_id', flat=True)
+            )
             kwargs['shared_tournaments'] = visible.filter(active=True).exclude(
                 owner=user,
             ).exclude(
@@ -79,6 +84,17 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
                 & ~models.Q(owner=user)
                 & ~models.Q(id__in=self._get_permission_ids(user))
                 & ~models.Q(id__in=self._get_membership_ids(user))
+                & ~models.Q(organization_id__in=user_org_ids)
+            )
+
+            # Organization context: group user's tournaments by org
+            from organizations.models import get_user_organizations
+            kwargs['user_organizations'] = get_user_organizations(user).prefetch_related(
+                models.Prefetch(
+                    'tournaments',
+                    queryset=Tournament.objects.filter(active=True),
+                    to_attr='active_tournaments',
+                ),
             )
 
             # Superusers can also see unassigned tournaments
@@ -94,6 +110,7 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
             kwargs['shared_tournaments'] = Tournament.objects.none()
             kwargs['unassigned_active'] = Tournament.objects.none()
             kwargs['unassigned_inactive'] = Tournament.objects.none()
+            kwargs['user_organizations'] = []
 
         # Listed / public showcase tournaments (always shown if any)
         kwargs['listed_tournaments'] = Tournament.objects.filter(
@@ -359,6 +376,32 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
+
+        # Auto-assign organization: use user's existing org, or create one
+        from organizations.models import Organization, OrganizationMembership
+        user = self.request.user
+        org_membership = OrganizationMembership.objects.filter(
+            user=user,
+            role__in=[OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
+        ).select_related('organization').first()
+
+        if org_membership:
+            form.instance.organization = org_membership.organization
+        else:
+            # Create a personal org for first-time users
+            org_slug = f"org-{user.username}"[:80]
+            org, created = Organization.objects.get_or_create(
+                slug=org_slug,
+                defaults={'name': f"{user.username}'s Organization"},
+            )
+            if created:
+                OrganizationMembership.objects.create(
+                    organization=org,
+                    user=user,
+                    role=OrganizationMembership.Role.OWNER,
+                )
+            form.instance.organization = org
+
         tournament = form.save()
 
         # Grant the creator all permissions on this tournament
