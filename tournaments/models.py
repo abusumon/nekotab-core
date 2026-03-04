@@ -248,7 +248,6 @@ class Tournament(models.Model):
         help_text=_("The user who created and owns this tournament (for payment/billing purposes)"))
     organization = models.ForeignKey(
         'organizations.Organization', on_delete=models.PROTECT,
-        null=True, blank=True,
         related_name='tournaments',
         verbose_name=_("organization"),
         help_text=_("The organization this tournament belongs to. "

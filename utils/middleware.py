@@ -279,6 +279,9 @@ class SubdomainTournamentMiddleware:
     BAD_PREFIXES = (
         '/static/', '/media/', '/database/', '/api/',
         '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
+        '/summernote/', '/jet/', '/organizations/', '/archive/',
+        '/forum/', '/motions-bank/', '/passport/',
+        '/i18n/', '/jsi18n/',
     )
 
     def __init__(self, get_response):
