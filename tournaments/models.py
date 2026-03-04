@@ -145,6 +145,85 @@ class TournamentQuerySet(models.QuerySet):
         ).distinct()
 
 
+    def nav_for_user(self, user):
+        """Return visible tournaments annotated with per-user permission flags.
+
+        Produces a **single SQL query** with boolean ``Exists()`` subquery
+        annotations — no N+1, no Python loops.
+
+        Annotated fields on each row:
+          - ``user_can_admin``  – admin-level access (org OWNER/ADMIN, tournament owner, direct perm/group)
+          - ``user_can_assist`` – assistant-level access (adds org MEMBER)
+          - ``user_can_edit_db`` – mirrors ``user_can_admin``
+        """
+        from django.db.models import BooleanField, Case, Exists, F, OuterRef, Value, When
+        from organizations.models import OrganizationMembership
+        from users.models import Membership, UserPermission
+
+        qs = self.visible_to(user)
+
+        if user is None or not getattr(user, 'is_authenticated', False):
+            return qs.annotate(
+                user_can_admin=Value(False, output_field=BooleanField()),
+                user_can_assist=Value(False, output_field=BooleanField()),
+                user_can_edit_db=Value(False, output_field=BooleanField()),
+            ).only('id', 'slug', 'name', 'short_name')
+
+        if user.is_superuser:
+            return qs.annotate(
+                user_can_admin=Value(True, output_field=BooleanField()),
+                user_can_assist=Value(True, output_field=BooleanField()),
+                user_can_edit_db=Value(True, output_field=BooleanField()),
+            ).only('id', 'slug', 'name', 'short_name')
+
+        # --- Correlated subqueries (run inside the single SELECT) ----------
+        org_admin_sq = OrganizationMembership.objects.filter(
+            user=user,
+            organization_id=OuterRef('organization_id'),
+            role__in=[OrganizationMembership.Role.OWNER,
+                      OrganizationMembership.Role.ADMIN],
+        )
+        org_member_sq = OrganizationMembership.objects.filter(
+            user=user,
+            organization_id=OuterRef('organization_id'),
+            role__in=[OrganizationMembership.Role.OWNER,
+                      OrganizationMembership.Role.ADMIN,
+                      OrganizationMembership.Role.MEMBER],
+        )
+        direct_perm_sq = UserPermission.objects.filter(
+            user=user,
+            tournament_id=OuterRef('pk'),
+        )
+        group_sq = Membership.objects.filter(
+            user=user,
+            group__tournament_id=OuterRef('pk'),
+        )
+
+        can_admin = Case(
+            When(owner=user, then=Value(True)),
+            When(Exists(org_admin_sq), then=Value(True)),
+            When(Exists(direct_perm_sq), then=Value(True)),
+            When(Exists(group_sq), then=Value(True)),
+            default=Value(False),
+            output_field=BooleanField(),
+        )
+        can_assist = Case(
+            When(owner=user, then=Value(True)),
+            When(Exists(org_member_sq), then=Value(True)),
+            When(Exists(direct_perm_sq), then=Value(True)),
+            When(Exists(group_sq), then=Value(True)),
+            default=Value(False),
+            output_field=BooleanField(),
+        )
+
+        return qs.annotate(
+            user_can_admin=can_admin,
+            user_can_assist=can_assist,
+        ).annotate(
+            user_can_edit_db=F('user_can_admin'),
+        ).only('id', 'slug', 'name', 'short_name')
+
+
 class TournamentManager(models.Manager.from_queryset(TournamentQuerySet)):
     pass
 

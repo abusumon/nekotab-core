@@ -1,57 +1,90 @@
+import logging
+
 from django.conf import settings
+from django.core.cache import cache
 
 from tournaments.models import Tournament
 
+logger = logging.getLogger(__name__)
 
-def _annotate_tournament_access(tournaments, user):
-    """Annotate each tournament with per-user access flags for template use.
+# ── Navbar tournament cache ──────────────────────────────────────────────
+#
+# Per-user key incorporates the permission-cache version so that org-
+# membership changes (which bump the version in organizations/signals.py)
+# automatically invalidate the stale navbar list.
+#
+# Anonymous users share a single global key.
+#
+# Cache stores a list of NavTournament (lightweight, no ORM state).
 
-    Adds to each tournament object:
-      - ``user_can_admin``: True if user has admin-level access
-      - ``user_can_assist``: True if user has assistant-level access
+NAV_CACHE_KEY = "nav_tournaments:u%d:v%d"
+NAV_CACHE_KEY_ANON = "nav_tournaments:anon"
+NAV_CACHE_TTL = 120  # seconds
+
+
+class NavTournament:
+    """Lightweight, cache-safe tournament representation for navbar rendering.
+
+    Has the same attribute interface expected by the sidebar / top-nav
+    templates (``slug``, ``name``, ``user_can_admin``, etc.) without ORM
+    overhead or stale-state risks.
     """
+    __slots__ = ('pk', 'slug', 'name', 'short_name',
+                 'user_can_admin', 'user_can_assist', 'user_can_edit_db')
+
+    def __init__(self, **kwargs):
+        for key in self.__slots__:
+            setattr(self, key, kwargs.get(key))
+
+    def __str__(self):
+        return self.short_name or self.name
+
+    def __repr__(self):
+        return f"NavTournament(slug={self.slug!r})"
+
+
+def _get_nav_tournaments(user):
+    """Return a list of :class:`NavTournament` for the current user.
+
+    First request hits the DB (single query via ``nav_for_user``); the
+    result is cached per-user with a versioned key so that membership
+    changes invalidate it immediately.
+    """
+    from organizations.signals import get_perm_cache_version
+
     if user is None or not getattr(user, 'is_authenticated', False):
-        for t in tournaments:
-            t.user_can_admin = False
-            t.user_can_assist = False
-        return tournaments
+        cached = cache.get(NAV_CACHE_KEY_ANON)
+        if cached is not None:
+            return cached
+        result = _evaluate_nav_qs(None)
+        cache.set(NAV_CACHE_KEY_ANON, result, NAV_CACHE_TTL)
+        return result
 
-    if user.is_superuser:
-        for t in tournaments:
-            t.user_can_admin = True
-            t.user_can_assist = True
-        return tournaments
+    version = get_perm_cache_version(user.pk)
+    key = NAV_CACHE_KEY % (user.pk, version)
+    cached = cache.get(key)
+    if cached is not None:
+        return cached
 
-    from organizations.models import OrganizationMembership
-    from users.models import Membership, UserPermission
+    result = _evaluate_nav_qs(user)
+    cache.set(key, result, NAV_CACHE_TTL)
+    return result
 
-    # Batch-fetch org memberships for all orgs the user belongs to
-    user_org_roles = dict(
-        OrganizationMembership.objects.filter(user=user)
-        .values_list('organization_id', 'role')
-    )
-    # Batch-fetch tournament IDs where user has direct permissions/memberships
-    perm_tournament_ids = set(
-        UserPermission.objects.filter(user=user)
-        .values_list('tournament_id', flat=True)
-    )
-    group_tournament_ids = set(
-        Membership.objects.filter(user=user)
-        .values_list('group__tournament_id', flat=True)
-    )
 
-    ADMIN_ROLES = {OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN}
-    ASSIST_ROLES = ADMIN_ROLES | {OrganizationMembership.Role.MEMBER}
-
-    for t in tournaments:
-        org_role = user_org_roles.get(t.organization_id)
-        is_owner = hasattr(t, 'owner_id') and t.owner_id == user.pk
-        has_direct = (t.pk in perm_tournament_ids or t.pk in group_tournament_ids)
-
-        t.user_can_admin = is_owner or (org_role in ADMIN_ROLES) or has_direct
-        t.user_can_assist = is_owner or (org_role in ASSIST_ROLES) or has_direct
-
-    return tournaments
+def _evaluate_nav_qs(user):
+    """Execute ``nav_for_user()`` and convert to a list of NavTournament."""
+    return [
+        NavTournament(
+            pk=t.pk,
+            slug=t.slug,
+            name=t.name,
+            short_name=t.short_name,
+            user_can_admin=t.user_can_admin,
+            user_can_assist=t.user_can_assist,
+            user_can_edit_db=t.user_can_edit_db,
+        )
+        for t in Tournament.objects.nav_for_user(user)
+    ]
 
 
 def debate_context(request):
@@ -64,9 +97,7 @@ def debate_context(request):
     context = {
         'tabbycat_version': settings.TABBYCAT_VERSION or "",
         'tabbycat_codename': settings.TABBYCAT_CODENAME or "no codename",
-        'all_tournaments': _annotate_tournament_access(
-            list(Tournament.objects.visible_to(user)), user,
-        ),
+        'all_tournaments': _get_nav_tournaments(user),
         'disable_sentry': getattr(settings, 'DISABLE_SENTRY', False),
         'on_local': getattr(settings, 'ON_LOCAL', False),
         'hmr': getattr(settings, 'USE_WEBPACK_SERVER', False),

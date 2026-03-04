@@ -309,22 +309,27 @@ class CacheInvalidationTests(TestCase):
 
 
 # ────────────────────────────────────────────────────────────────────────────
-# Sidebar tournament-list isolation tests
+# Sidebar tournament-list isolation tests  (DB-annotated via nav_for_user)
 # ────────────────────────────────────────────────────────────────────────────
 
-class SidebarAnnotationTests(TestCase):
-    """Test _annotate_tournament_access flags per role."""
+class NavAnnotationTests(TestCase):
+    """Test nav_for_user() DB-side annotations per role.
+
+    The test tournament is ``is_listed=True`` so every role can see it;
+    we're testing the *flags*, not visibility.
+    """
 
     def setUp(self):
-        self.org = Organization.objects.create(name="Sidebar Org", slug="sidebar-org")
+        cache.clear()
+        self.org = Organization.objects.create(name="Nav Org", slug="nav-org")
         self.tournament = Tournament.objects.create(
-            name="Sidebar T", slug="sidebar-t", organization=self.org)
-        self.owner = User.objects.create_user("sb_owner", password="pass")
-        self.admin = User.objects.create_user("sb_admin", password="pass")
-        self.member = User.objects.create_user("sb_member", password="pass")
-        self.viewer = User.objects.create_user("sb_viewer", password="pass")
-        self.outsider = User.objects.create_user("sb_outsider", password="pass")
-        self.superuser = User.objects.create_superuser("sb_super", password="pass")
+            name="Nav T", slug="nav-t", organization=self.org, is_listed=True)
+        self.owner = User.objects.create_user("nav_owner", password="pass")
+        self.admin = User.objects.create_user("nav_admin", password="pass")
+        self.member = User.objects.create_user("nav_member", password="pass")
+        self.viewer = User.objects.create_user("nav_viewer", password="pass")
+        self.outsider = User.objects.create_user("nav_outsider", password="pass")
+        self.superuser = User.objects.create_superuser("nav_super", password="pass")
 
         OrganizationMembership.objects.create(
             organization=self.org, user=self.owner,
@@ -339,93 +344,98 @@ class SidebarAnnotationTests(TestCase):
             organization=self.org, user=self.viewer,
             role=OrganizationMembership.Role.VIEWER)
 
-    def _annotate(self, user):
-        from utils.context_processors import _annotate_tournament_access
-        tournaments = list(Tournament.objects.filter(pk=self.tournament.pk))
-        _annotate_tournament_access(tournaments, user)
-        return tournaments[0]
+    def _get(self, user):
+        """Return the test tournament as annotated by nav_for_user()."""
+        qs = Tournament.objects.nav_for_user(user)
+        for t in qs:
+            if t.pk == self.tournament.pk:
+                return t
+        self.fail("Tournament not visible to user")
 
     # ── Owner ──
 
     def test_owner_can_admin(self):
-        t = self._annotate(self.owner)
-        self.assertTrue(t.user_can_admin)
+        self.assertTrue(self._get(self.owner).user_can_admin)
 
     def test_owner_can_assist(self):
-        t = self._annotate(self.owner)
-        self.assertTrue(t.user_can_assist)
+        self.assertTrue(self._get(self.owner).user_can_assist)
+
+    def test_owner_can_edit_db(self):
+        self.assertTrue(self._get(self.owner).user_can_edit_db)
 
     # ── Admin ──
 
     def test_admin_can_admin(self):
-        t = self._annotate(self.admin)
-        self.assertTrue(t.user_can_admin)
+        self.assertTrue(self._get(self.admin).user_can_admin)
 
     def test_admin_can_assist(self):
-        t = self._annotate(self.admin)
-        self.assertTrue(t.user_can_assist)
+        self.assertTrue(self._get(self.admin).user_can_assist)
+
+    def test_admin_can_edit_db(self):
+        self.assertTrue(self._get(self.admin).user_can_edit_db)
 
     # ── Member ──
 
     def test_member_cannot_admin(self):
-        t = self._annotate(self.member)
-        self.assertFalse(t.user_can_admin)
+        self.assertFalse(self._get(self.member).user_can_admin)
 
     def test_member_can_assist(self):
-        t = self._annotate(self.member)
-        self.assertTrue(t.user_can_assist)
+        self.assertTrue(self._get(self.member).user_can_assist)
+
+    def test_member_cannot_edit_db(self):
+        self.assertFalse(self._get(self.member).user_can_edit_db)
 
     # ── Viewer ──
 
     def test_viewer_cannot_admin(self):
-        t = self._annotate(self.viewer)
-        self.assertFalse(t.user_can_admin)
+        self.assertFalse(self._get(self.viewer).user_can_admin)
 
     def test_viewer_cannot_assist(self):
-        t = self._annotate(self.viewer)
-        self.assertFalse(t.user_can_assist)
+        self.assertFalse(self._get(self.viewer).user_can_assist)
 
-    # ── Outsider ──
+    def test_viewer_cannot_edit_db(self):
+        self.assertFalse(self._get(self.viewer).user_can_edit_db)
+
+    # ── Outsider (sees listed tournament, no flags) ──
 
     def test_outsider_cannot_admin(self):
-        t = self._annotate(self.outsider)
-        self.assertFalse(t.user_can_admin)
+        self.assertFalse(self._get(self.outsider).user_can_admin)
 
     def test_outsider_cannot_assist(self):
-        t = self._annotate(self.outsider)
-        self.assertFalse(t.user_can_assist)
+        self.assertFalse(self._get(self.outsider).user_can_assist)
+
+    def test_outsider_cannot_edit_db(self):
+        self.assertFalse(self._get(self.outsider).user_can_edit_db)
 
     # ── Superuser ──
 
     def test_superuser_can_admin(self):
-        t = self._annotate(self.superuser)
-        self.assertTrue(t.user_can_admin)
+        self.assertTrue(self._get(self.superuser).user_can_admin)
 
     def test_superuser_can_assist(self):
-        t = self._annotate(self.superuser)
-        self.assertTrue(t.user_can_assist)
+        self.assertTrue(self._get(self.superuser).user_can_assist)
+
+    def test_superuser_can_edit_db(self):
+        self.assertTrue(self._get(self.superuser).user_can_edit_db)
 
     # ── Anonymous ──
 
     def test_anonymous_cannot_admin(self):
-        t = self._annotate(AnonymousUser())
-        self.assertFalse(t.user_can_admin)
+        self.assertFalse(self._get(None).user_can_admin)
 
     def test_anonymous_cannot_assist(self):
-        t = self._annotate(AnonymousUser())
-        self.assertFalse(t.user_can_assist)
+        self.assertFalse(self._get(None).user_can_assist)
 
     # ── Cross-org isolation ──
 
-    def test_other_org_member_cannot_admin(self):
-        """User who is OWNER in OrgX must NOT get admin on OrgY's tournament."""
+    def test_other_org_owner_cannot_admin(self):
+        """OWNER of OrgX must NOT get admin on OrgY's tournament."""
         org_x = Organization.objects.create(name="Org X", slug="org-x")
         user_x = User.objects.create_user("user_x", password="pass")
         OrganizationMembership.objects.create(
             organization=org_x, user=user_x,
             role=OrganizationMembership.Role.OWNER)
-        t = self._annotate(user_x)
-        self.assertFalse(t.user_can_admin)
+        self.assertFalse(self._get(user_x).user_can_admin)
 
     def test_other_org_member_cannot_assist(self):
         org_x = Organization.objects.create(name="Org X2", slug="org-x2")
@@ -433,8 +443,7 @@ class SidebarAnnotationTests(TestCase):
         OrganizationMembership.objects.create(
             organization=org_x, user=user_x,
             role=OrganizationMembership.Role.MEMBER)
-        t = self._annotate(user_x)
-        self.assertFalse(t.user_can_assist)
+        self.assertFalse(self._get(user_x).user_can_assist)
 
     # ── Tournament owner (direct) ──
 
@@ -443,12 +452,116 @@ class SidebarAnnotationTests(TestCase):
         direct_owner = User.objects.create_user("t_owner", password="pass")
         self.tournament.owner = direct_owner
         self.tournament.save()
-        t = self._annotate(direct_owner)
-        self.assertTrue(t.user_can_admin)
+        self.assertTrue(self._get(direct_owner).user_can_admin)
 
     def test_tournament_owner_can_assist(self):
         direct_owner = User.objects.create_user("t_owner2", password="pass")
         self.tournament.owner = direct_owner
         self.tournament.save()
-        t = self._annotate(direct_owner)
-        self.assertTrue(t.user_can_assist)
+        self.assertTrue(self._get(direct_owner).user_can_assist)
+
+
+class NavVisibilityTests(TestCase):
+    """Test that nav_for_user() correctly scopes *which* tournaments appear."""
+
+    def setUp(self):
+        cache.clear()
+        self.org_a = Organization.objects.create(name="VisOrg A", slug="vis-a")
+        self.org_b = Organization.objects.create(name="VisOrg B", slug="vis-b")
+        self.t_private = Tournament.objects.create(
+            name="Private T", slug="priv-t", organization=self.org_a,
+            is_listed=False)
+        self.t_listed = Tournament.objects.create(
+            name="Listed T", slug="listed-t", organization=self.org_b,
+            is_listed=True)
+        self.user_a = User.objects.create_user("vis_ua", password="pass")
+        OrganizationMembership.objects.create(
+            organization=self.org_a, user=self.user_a,
+            role=OrganizationMembership.Role.ADMIN)
+
+    def _slugs(self, user):
+        return set(
+            Tournament.objects.nav_for_user(user)
+            .values_list('slug', flat=True)
+        )
+
+    def test_org_member_sees_own_private(self):
+        self.assertIn('priv-t', self._slugs(self.user_a))
+
+    def test_org_member_sees_listed(self):
+        self.assertIn('listed-t', self._slugs(self.user_a))
+
+    def test_outsider_sees_only_listed(self):
+        outsider = User.objects.create_user("vis_outsider", password="pass")
+        slugs = self._slugs(outsider)
+        self.assertIn('listed-t', slugs)
+        self.assertNotIn('priv-t', slugs)
+
+    def test_anonymous_sees_only_listed(self):
+        slugs = self._slugs(None)
+        self.assertIn('listed-t', slugs)
+        self.assertNotIn('priv-t', slugs)
+
+    def test_superuser_sees_all(self):
+        su = User.objects.create_superuser("vis_su", password="pass")
+        slugs = self._slugs(su)
+        self.assertIn('priv-t', slugs)
+        self.assertIn('listed-t', slugs)
+
+
+class NavQueryCountTests(TestCase):
+    """Ensure nav_for_user() and the caching layer stay within query budget."""
+
+    def setUp(self):
+        cache.clear()
+        self.org = Organization.objects.create(name="QC Org", slug="qc-org")
+        # Create 10 tournaments to prove no N+1
+        for i in range(10):
+            Tournament.objects.create(
+                name=f"QC T{i}", slug=f"qc-t{i}", organization=self.org)
+        self.user = User.objects.create_user("qc_user", password="pass")
+        OrganizationMembership.objects.create(
+            organization=self.org, user=self.user,
+            role=OrganizationMembership.Role.ADMIN)
+        self.superuser = User.objects.create_superuser("qc_su", password="pass")
+
+    def test_regular_user_single_query(self):
+        """nav_for_user() for an authenticated user: 1 DB query."""
+        with self.assertNumQueries(1):
+            list(Tournament.objects.nav_for_user(self.user))
+
+    def test_anonymous_single_query(self):
+        with self.assertNumQueries(1):
+            list(Tournament.objects.nav_for_user(None))
+
+    def test_superuser_single_query(self):
+        with self.assertNumQueries(1):
+            list(Tournament.objects.nav_for_user(self.superuser))
+
+    def test_ten_tournaments_still_one_query(self):
+        """Even with 10 tournaments, only 1 DB query should run."""
+        with self.assertNumQueries(1):
+            list(Tournament.objects.nav_for_user(self.user))
+
+    def test_cached_result_zero_queries(self):
+        """After caching, _get_nav_tournaments must hit 0 DB queries."""
+        from utils.context_processors import _get_nav_tournaments
+        _get_nav_tournaments(self.user)          # prime cache
+        with self.assertNumQueries(0):
+            result = _get_nav_tournaments(self.user)
+        self.assertEqual(len(result), 10)
+
+    def test_cached_anonymous_zero_queries(self):
+        from utils.context_processors import _get_nav_tournaments
+        _get_nav_tournaments(None)               # prime cache
+        with self.assertNumQueries(0):
+            _get_nav_tournaments(None)
+
+    def test_cache_invalidated_on_version_bump(self):
+        """Bumping perm_version must cause a cache miss (fresh query)."""
+        from organizations.signals import bump_perm_cache_version
+        from utils.context_processors import _get_nav_tournaments
+        _get_nav_tournaments(self.user)           # prime cache
+        bump_perm_cache_version(self.user.pk)     # simulate membership change
+        with self.assertNumQueries(1):
+            _get_nav_tournaments(self.user)
