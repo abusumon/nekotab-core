@@ -306,3 +306,149 @@ class CacheInvalidationTests(TestCase):
         m.delete()
         v3 = get_perm_cache_version(self.user.id)
         self.assertGreater(v3, v2)
+
+
+# ────────────────────────────────────────────────────────────────────────────
+# Sidebar tournament-list isolation tests
+# ────────────────────────────────────────────────────────────────────────────
+
+class SidebarAnnotationTests(TestCase):
+    """Test _annotate_tournament_access flags per role."""
+
+    def setUp(self):
+        self.org = Organization.objects.create(name="Sidebar Org", slug="sidebar-org")
+        self.tournament = Tournament.objects.create(
+            name="Sidebar T", slug="sidebar-t", organization=self.org)
+        self.owner = User.objects.create_user("sb_owner", password="pass")
+        self.admin = User.objects.create_user("sb_admin", password="pass")
+        self.member = User.objects.create_user("sb_member", password="pass")
+        self.viewer = User.objects.create_user("sb_viewer", password="pass")
+        self.outsider = User.objects.create_user("sb_outsider", password="pass")
+        self.superuser = User.objects.create_superuser("sb_super", password="pass")
+
+        OrganizationMembership.objects.create(
+            organization=self.org, user=self.owner,
+            role=OrganizationMembership.Role.OWNER)
+        OrganizationMembership.objects.create(
+            organization=self.org, user=self.admin,
+            role=OrganizationMembership.Role.ADMIN)
+        OrganizationMembership.objects.create(
+            organization=self.org, user=self.member,
+            role=OrganizationMembership.Role.MEMBER)
+        OrganizationMembership.objects.create(
+            organization=self.org, user=self.viewer,
+            role=OrganizationMembership.Role.VIEWER)
+
+    def _annotate(self, user):
+        from utils.context_processors import _annotate_tournament_access
+        tournaments = list(Tournament.objects.filter(pk=self.tournament.pk))
+        _annotate_tournament_access(tournaments, user)
+        return tournaments[0]
+
+    # ── Owner ──
+
+    def test_owner_can_admin(self):
+        t = self._annotate(self.owner)
+        self.assertTrue(t.user_can_admin)
+
+    def test_owner_can_assist(self):
+        t = self._annotate(self.owner)
+        self.assertTrue(t.user_can_assist)
+
+    # ── Admin ──
+
+    def test_admin_can_admin(self):
+        t = self._annotate(self.admin)
+        self.assertTrue(t.user_can_admin)
+
+    def test_admin_can_assist(self):
+        t = self._annotate(self.admin)
+        self.assertTrue(t.user_can_assist)
+
+    # ── Member ──
+
+    def test_member_cannot_admin(self):
+        t = self._annotate(self.member)
+        self.assertFalse(t.user_can_admin)
+
+    def test_member_can_assist(self):
+        t = self._annotate(self.member)
+        self.assertTrue(t.user_can_assist)
+
+    # ── Viewer ──
+
+    def test_viewer_cannot_admin(self):
+        t = self._annotate(self.viewer)
+        self.assertFalse(t.user_can_admin)
+
+    def test_viewer_cannot_assist(self):
+        t = self._annotate(self.viewer)
+        self.assertFalse(t.user_can_assist)
+
+    # ── Outsider ──
+
+    def test_outsider_cannot_admin(self):
+        t = self._annotate(self.outsider)
+        self.assertFalse(t.user_can_admin)
+
+    def test_outsider_cannot_assist(self):
+        t = self._annotate(self.outsider)
+        self.assertFalse(t.user_can_assist)
+
+    # ── Superuser ──
+
+    def test_superuser_can_admin(self):
+        t = self._annotate(self.superuser)
+        self.assertTrue(t.user_can_admin)
+
+    def test_superuser_can_assist(self):
+        t = self._annotate(self.superuser)
+        self.assertTrue(t.user_can_assist)
+
+    # ── Anonymous ──
+
+    def test_anonymous_cannot_admin(self):
+        t = self._annotate(AnonymousUser())
+        self.assertFalse(t.user_can_admin)
+
+    def test_anonymous_cannot_assist(self):
+        t = self._annotate(AnonymousUser())
+        self.assertFalse(t.user_can_assist)
+
+    # ── Cross-org isolation ──
+
+    def test_other_org_member_cannot_admin(self):
+        """User who is OWNER in OrgX must NOT get admin on OrgY's tournament."""
+        org_x = Organization.objects.create(name="Org X", slug="org-x")
+        user_x = User.objects.create_user("user_x", password="pass")
+        OrganizationMembership.objects.create(
+            organization=org_x, user=user_x,
+            role=OrganizationMembership.Role.OWNER)
+        t = self._annotate(user_x)
+        self.assertFalse(t.user_can_admin)
+
+    def test_other_org_member_cannot_assist(self):
+        org_x = Organization.objects.create(name="Org X2", slug="org-x2")
+        user_x = User.objects.create_user("user_x2", password="pass")
+        OrganizationMembership.objects.create(
+            organization=org_x, user=user_x,
+            role=OrganizationMembership.Role.MEMBER)
+        t = self._annotate(user_x)
+        self.assertFalse(t.user_can_assist)
+
+    # ── Tournament owner (direct) ──
+
+    def test_tournament_owner_can_admin(self):
+        """Tournament.owner gets admin even without org membership."""
+        direct_owner = User.objects.create_user("t_owner", password="pass")
+        self.tournament.owner = direct_owner
+        self.tournament.save()
+        t = self._annotate(direct_owner)
+        self.assertTrue(t.user_can_admin)
+
+    def test_tournament_owner_can_assist(self):
+        direct_owner = User.objects.create_user("t_owner2", password="pass")
+        self.tournament.owner = direct_owner
+        self.tournament.save()
+        t = self._annotate(direct_owner)
+        self.assertTrue(t.user_can_assist)

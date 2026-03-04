@@ -35,7 +35,7 @@
           {# ── Filtered tournament list ── #}
           {% for tournament in all_tournaments %}
 
-            {% if user.is_superuser %}
+            {% if tournament.user_can_admin %}
               <a class="dropdown-item px-2" href="{% url 'tournament-admin-home' tournament_slug=tournament.slug %}">
                 <i data-feather="settings"></i>
                 {% blocktrans trimmed %}
@@ -44,7 +44,7 @@
               </a>
             {% endif %}
 
-            {% if user.is_authenticated %}
+            {% if tournament.user_can_assist %}
               <a class="dropdown-item px-2" href="{% url 'tournament-assistant-home' tournament_slug=tournament.slug %}">
                 <i data-feather="pocket"></i>
                 {% blocktrans trimmed %}
@@ -69,7 +69,7 @@
           {% endfor %}
         {% endif %}
 
-        {% if user.is_staff %}
+        {% if user.is_superuser %}
           <a href="{% url 'admin:index' %}" target="_blank" class="dropdown-item px-2">
             <i data-feather="database"></i>{% translate "Edit Database" %}
           </a>
