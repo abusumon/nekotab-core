@@ -27,6 +27,10 @@ class OrgAccessMixin:
         return get_object_or_404(Organization, slug=slug)
 
     def dispatch(self, request, *args, **kwargs):
+        # Anonymous users are handled by LoginRequiredMixin on the view,
+        # but guard defensively in case this mixin is used standalone.
+        if not request.user.is_authenticated:
+            raise Http404
         self.organization = self.get_organization()
         if not OrganizationMembership.objects.filter(
             organization=self.organization, user=request.user,
@@ -39,6 +43,8 @@ class OrgAdminMixin(OrgAccessMixin):
     """Requires ADMIN or OWNER role."""
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            raise Http404
         self.organization = self.get_organization()
         if not user_is_org_admin(request.user, self.organization):
             return HttpResponseForbidden("You don't have admin access to this organization.")

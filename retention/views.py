@@ -1,12 +1,12 @@
 import os
 
-from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import user_passes_test
 from django.http import FileResponse, Http404, HttpResponseBadRequest
 
 from .models import TournamentDeletionLog
 
 
-@staff_member_required
+@user_passes_test(lambda u: u.is_active and u.is_superuser)
 def download_archive(request, log_id):
     """Serve an archive zip/json file for download.
 

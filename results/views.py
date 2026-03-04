@@ -900,7 +900,7 @@ class PostponeDebateView(AdministratorMixin, RoundMixin, PostOnlyRedirectView):
     round_redirect_pattern_name = 'results-round-list'
 
     def post(self, request, *args, **kwargs):
-        debate = Debate.objects.get(id=kwargs.pop('debate_id'))
+        debate = Debate.objects.get(id=kwargs.pop('debate_id'), round__tournament=self.tournament)
         debate.result_status = Debate.STATUS_POSTPONED
         debate.save()
 

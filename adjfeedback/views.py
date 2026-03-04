@@ -632,7 +632,7 @@ class BaseAdjudicatorActionView(LogActionMixin, AdministratorMixin, TournamentMi
     def get_adjudicator(self, request):
         try:
             adj_id = int(request.POST["adj_id"])
-            adjudicator = Adjudicator.objects.get(id=adj_id)
+            adjudicator = Adjudicator.objects.get(id=adj_id, tournament=self.tournament)
         except (ValueError, Adjudicator.DoesNotExist, Adjudicator.MultipleObjectsReturned):
             raise AdjudicatorActionError(_("Whoops! I didn't recognise that adjudicator: %(adjudicator)s") % {'adjudicator': adj_id})
         return adjudicator
@@ -678,7 +678,7 @@ class SetAdjudicatorBreakingStatusView(AdministratorMixin, TournamentMixin, LogA
     def post(self, request, *args, **kwargs):
         body = self.request.body.decode('utf-8')
         posted_info = json.loads(body)
-        adjudicator = Adjudicator.objects.get(id=posted_info['id'])
+        adjudicator = Adjudicator.objects.get(id=posted_info['id'], tournament=self.tournament)
         adjudicator.breaking = posted_info['breaking']
         adjudicator.save()
         return JsonResponse(json.dumps(True), safe=False)
@@ -742,7 +742,10 @@ class PublicFeedbackProgress(PublicTournamentPageMixin, BaseFeedbackProgressView
 class BaseFeedbackToggleView(AdministratorMixin, TournamentMixin, PostOnlyRedirectView):
 
     def post(self, request, *args, **kwargs):
-        feedback = AdjudicatorFeedback.objects.get(id=kwargs['feedback_id'])
+        feedback = AdjudicatorFeedback.objects.get(
+            id=kwargs['feedback_id'],
+            adjudicator__tournament=self.tournament,
+        )
         feedback = self.modify_feedback(feedback)
         feedback.save()
 

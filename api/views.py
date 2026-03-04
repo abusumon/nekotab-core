@@ -1138,7 +1138,7 @@ class BallotViewSet(RoundAPIMixin, TournamentPublicAPIMixin, ModelViewSet):
         if hasattr(self, '_debate'):
             return self._debate
 
-        self._debate = get_object_or_404(Debate, pk=self.kwargs.get('debate_pk'))
+        self._debate = get_object_or_404(Debate, pk=self.kwargs.get('debate_pk'), round__tournament=self.tournament)
         return self._debate
 
     def lookup_kwargs(self):
