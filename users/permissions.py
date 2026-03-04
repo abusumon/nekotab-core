@@ -10,7 +10,19 @@ if TYPE_CHECKING:
 
     from tournaments.models import Tournament
 
-PERM_CACHE_KEY = "user_%d_%s_%s_permission"
+PERM_CACHE_KEY = "user_%d_%s_%s_v%d_permission"
+
+
+def _get_perm_cache_version(user_id):
+    """Return the current permission cache version for a user.
+
+    This version is bumped by organizations.signals when org membership
+    changes, which naturally invalidates all stale permission cache entries
+    without needing to enumerate and delete them individually.
+    """
+    from django.core.cache import cache as _cache
+    version = _cache.get("perm_version:%d" % user_id)
+    return version if version is not None else 1
 
 
 class Permission(TextChoices):
@@ -205,7 +217,7 @@ def has_permission(user: 'settings.AUTH_USER_MODEL', permission: permission_type
     else:
         user._permissions[tournament.slug] = set()
 
-    cached_perm = cache.get(PERM_CACHE_KEY % (user.pk, tournament.slug, str(permission)))
+    cached_perm = cache.get(PERM_CACHE_KEY % (user.pk, tournament.slug, str(permission), _get_perm_cache_version(user.pk)))
     if cached_perm is not None:
         if cached_perm:
             user._permissions[tournament.slug].add(permission)
@@ -217,7 +229,7 @@ def has_permission(user: 'settings.AUTH_USER_MODEL', permission: permission_type
     )
     if perm:
         user._permissions[tournament.slug].add(permission)
-        cache.set(PERM_CACHE_KEY % (user.pk, tournament.slug, str(permission)), perm)
+        cache.set(PERM_CACHE_KEY % (user.pk, tournament.slug, str(permission), _get_perm_cache_version(user.pk)), perm)
     return perm
 
 

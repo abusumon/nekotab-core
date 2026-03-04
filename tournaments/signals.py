@@ -12,6 +12,9 @@ logger = logging.getLogger(__name__)
 @receiver(post_save, sender=Tournament)
 def update_tournament_cache(sender, instance, **kwargs):
     cache.delete("%s_%s" % (instance.slug, 'object'))
+    # Also bust subdomain existence cache on save (not just delete)
+    cache.delete("subdom_tour_exists_%s" % instance.slug)
+    cache.delete("subdom_tour_exists_%s" % instance.slug.lower())
 
 
 @receiver(post_delete, sender=Tournament)

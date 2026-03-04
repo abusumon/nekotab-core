@@ -85,11 +85,30 @@ class AdministratorMixin(UserPassesTestMixin, ContextMixin):
 
 
 class AssistantMixin(UserPassesTestMixin, ContextMixin):
-    """Mixin for views that are for assistants."""
+    """Mixin for views that are for assistants.
+
+    Defense-in-depth: in addition to middleware gating, this mixin checks
+    that the user is an org member (if the tournament belongs to one) and
+    that the assistant_access preference allows it.
+    """
     view_role = "assistant"
 
     def test_func(self) -> bool:
-        return self.request.user.is_authenticated and (self.request.user.is_staff or not hasattr(self, 'tournament') or self.tournament.pref('assistant_access') != 'none')
+        if not self.request.user.is_authenticated:
+            return False
+        if self.request.user.is_superuser:
+            return True
+        if self.request.user.is_staff:
+            return True
+        if not hasattr(self, 'tournament'):
+            return True
+        # Organization membership check (defense-in-depth)
+        if (hasattr(self.tournament, 'organization_id')
+                and self.tournament.organization_id):
+            from organizations.models import user_is_org_member
+            if not user_is_org_member(self.request.user, self.tournament.organization):
+                return False
+        return self.tournament.pref('assistant_access') != 'none'
 
     def get_context_data(self, **kwargs):
         kwargs["user_role"] = self.view_role
