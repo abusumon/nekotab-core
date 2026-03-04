@@ -177,7 +177,7 @@ TABBYCAT_APPS = (
 INSTALLED_APPS = (
     'daphne',
     'jet',
-    'django.contrib.admin',
+    'utils.admin_site.NekoTabAdminConfig',  # custom admin site (replaces 'django.contrib.admin')
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

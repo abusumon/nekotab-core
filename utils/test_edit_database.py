@@ -229,6 +229,9 @@ class UserCanAdminAnyTournamentTests(EditDatabaseSetupMixin, TestCase):
 
 # ── Integration: /database/ route ───────────────────────────────────────
 
+NO_PERM_MSG = "permission to view or edit"
+
+
 @override_settings(
     AUTHENTICATION_BACKENDS=[
         'utils.admin_site.TournamentAdminBackend',
@@ -242,25 +245,78 @@ class AdminRouteAccessTests(EditDatabaseSetupMixin, TestCase):
         self.client.force_login(user)
         return self.client.get('/database/', follow=True)
 
+    # ── Superuser ───────────────────────────────────────────────────────
+
     def test_superuser_can_access(self):
         resp = self._login_and_get(self.superuser)
         self.assertEqual(resp.status_code, 200)
+
+    def test_superuser_sees_models(self):
+        resp = self._login_and_get(self.superuser)
+        content = resp.content.decode().lower()
+        self.assertNotIn(NO_PERM_MSG, content)
+        self.assertIn('participants', content)
+
+    # ── Tournament owner ────────────────────────────────────────────────
 
     def test_tournament_owner_can_access(self):
         resp = self._login_and_get(self.owner)
         self.assertEqual(resp.status_code, 200)
 
+    def test_tournament_owner_sees_models(self):
+        """Owner should see allowed app sections and NOT the no-permission message."""
+        resp = self._login_and_get(self.owner)
+        content = resp.content.decode().lower()
+        self.assertNotIn(NO_PERM_MSG, content)
+        # Should see at least some whitelisted app sections
+        self.assertIn('participants', content)
+        self.assertIn('tournaments', content)
+
+    def test_tournament_owner_cannot_see_auth(self):
+        """Owner must NOT see sensitive app labels like auth."""
+        resp = self._login_and_get(self.owner)
+        # Look for the auth app section heading (not just the word "auth" anywhere)
+        content = resp.content.decode()
+        # Django admin renders app labels as section links like /database/auth/
+        self.assertNotIn('/database/auth/', content)
+
+    # ── Org OWNER ───────────────────────────────────────────────────────
+
     def test_org_owner_can_access(self):
         resp = self._login_and_get(self.org_owner)
         self.assertEqual(resp.status_code, 200)
+
+    def test_org_owner_sees_models(self):
+        resp = self._login_and_get(self.org_owner)
+        content = resp.content.decode().lower()
+        self.assertNotIn(NO_PERM_MSG, content)
+        self.assertIn('participants', content)
+
+    # ── Org ADMIN ───────────────────────────────────────────────────────
 
     def test_org_admin_can_access(self):
         resp = self._login_and_get(self.org_admin)
         self.assertEqual(resp.status_code, 200)
 
+    def test_org_admin_sees_models(self):
+        resp = self._login_and_get(self.org_admin)
+        content = resp.content.decode().lower()
+        self.assertNotIn(NO_PERM_MSG, content)
+        self.assertIn('venues', content)
+
+    # ── Denied roles ────────────────────────────────────────────────────
+
     def test_outsider_redirected(self):
         resp = self._login_and_get(self.outsider)
         # Should be redirected to admin login page
+        self.assertIn('/database/login/', resp.redirect_chain[-1][0])
+
+    def test_org_member_redirected(self):
+        resp = self._login_and_get(self.org_member)
+        self.assertIn('/database/login/', resp.redirect_chain[-1][0])
+
+    def test_org_viewer_redirected(self):
+        resp = self._login_and_get(self.org_viewer)
         self.assertIn('/database/login/', resp.redirect_chain[-1][0])
 
     def test_anonymous_redirected(self):

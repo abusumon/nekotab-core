@@ -1,4 +1,4 @@
-"""Custom Django AdminSite and auth backend for NekoTab SaaS.
+"""Custom Django AdminSite, AdminConfig, and auth backend for NekoTab SaaS.
 
 The default Django admin requires ``is_staff=True`` to access any admin page.
 In NekoTab, tournament owners and org OWNER/ADMIN users should also be able
@@ -7,10 +7,15 @@ staff in the ``auth_user`` table.
 
 This module provides:
 
-1. **NekoTabAdminSite** — overrides ``has_permission()`` to admit qualifying
+1. **NekoTabAdminConfig** — a Django ``AdminConfig`` subclass that sets
+   ``default_site`` so our custom admin site is created *before*
+   ``autodiscover()`` runs and all ``@admin.register()`` decorators attach
+   models to it.
+
+2. **NekoTabAdminSite** — overrides ``has_permission()`` to admit qualifying
    users (superuser, staff, tournament owner, org OWNER/ADMIN).
 
-2. **TournamentAdminBackend** — a Django authentication backend that grants
+3. **TournamentAdminBackend** — a Django authentication backend that grants
    Django model-level permissions (``has_perm``, ``has_module_perms``) to the
    same set of qualifying users so that they can browse and edit models inside
    the admin.
@@ -23,6 +28,7 @@ as a future hardening step.
 import logging
 
 from django.contrib.admin import AdminSite as BaseAdminSite
+from django.contrib.admin.apps import AdminConfig
 
 logger = logging.getLogger(__name__)
 
@@ -88,6 +94,20 @@ class NekoTabAdminSite(BaseAdminSite):
         if user.is_superuser or user.is_staff:
             return True
         return _user_can_admin_any_tournament(user)
+
+
+# ── Custom AdminConfig ──────────────────────────────────────────────────
+
+class NekoTabAdminConfig(AdminConfig):
+    """AppConfig that sets ``default_site`` to :class:`NekoTabAdminSite`.
+
+    Use ``'utils.admin_site.NekoTabAdminConfig'`` in ``INSTALLED_APPS``
+    instead of ``'django.contrib.admin'`` so the custom admin site is
+    created *before* ``autodiscover()`` runs and all ``@admin.register()``
+    decorators attach their models to it.
+    """
+
+    default_site = 'utils.admin_site.NekoTabAdminSite'
 
 
 # ── Auth Backend ────────────────────────────────────────────────────────
