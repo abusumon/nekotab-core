@@ -140,11 +140,16 @@
   <!-- ==================== NAVBAR ==================== -->
   <header class="em-navbar" id="top">
     <div class="em-container em-nav-inner">
-      <a class="em-logo" href="/">
-        <picture>
-          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="160" height="40">
-        </picture>
-      </a>
+      <div class="em-nav-start">
+        <button class="em-back-btn" onclick="history.back()" aria-label="Go back" title="Go back">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <a class="em-logo" href="/">
+          <picture>
+            <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="160" height="40">
+          </picture>
+        </a>
+      </div>
       <nav class="em-nav" aria-label="Primary">
         <a href="#features">Features</a>
         <a href="#tools">Tools</a>
@@ -845,6 +850,14 @@
   </footer>
 
   <script src="{% static 'js/landing.js' %}"></script>
+
+  <!-- Mobile Fixed CTA -->
+  <div class="em-mobile-cta-bar">
+    <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right:6px;flex-shrink:0;"><path d="M12 5v14M5 12h14"/></svg>
+      Create a Tournament
+    </a>
+  </div>
 
   <!-- Cookie Consent Banner (uses shared module loaded in <head>) -->
   <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; color:#e0e0e0; padding:16px 24px; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,.3); font-size:14px;">

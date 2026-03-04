@@ -444,3 +444,30 @@ h1, h2, h3, h4, h5, h6 {
 @media print {
   .nk-no-print { display: none !important; }
 }
+
+/* ── 11. BASE NAV MOBILE ──────────────────────────────────── */
+/* Back button for base.html inner pages (hidden on desktop) */
+.nk-back-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border: none; background: transparent;
+  cursor: pointer; border-radius: 8px; color: inherit; flex-shrink: 0;
+  transition: background 0.2s;
+}
+.nk-back-btn:hover { background: rgba(0,0,0,0.05); }
+.nk-back-btn svg { flex-shrink: 0; }
+
+/* Bootstrap navbar mobile touch-target improvements */
+@media (max-width:991px) {
+  .navbar-toggler {
+    min-width: 44px; min-height: 44px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .navbar .dropdown-item {
+    min-height: 44px; display: flex; align-items: center;
+  }
+  .navbar .nav-link,
+  .navbar .btn.nav-link,
+  .navbar .btn-link.nav-link {
+    min-height: 44px; display: flex; align-items: center;
+  }
+}

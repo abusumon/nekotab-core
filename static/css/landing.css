@@ -54,6 +54,7 @@ html.no-scroll { overflow: hidden; }
 }
 .em-navbar.scrolled { border-bottom-color: var(--nt-border); box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
 .em-nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 8px; }
+.em-nav-start { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
 /* Spacer to prevent content from going under fixed navbar */
 body.em-body { padding-top: 64px; }
 .em-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
@@ -68,6 +69,12 @@ body.em-body { padding-top: 64px; }
 .em-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
 .em-burger span { width: 20px; height: 2px; background: var(--nt-text); border-radius: 2px; transition: 0.3s; }
 @media (max-width:899px) { .em-burger { display: inline-flex; } }
+
+/* Mobile Back Button */
+.em-back-btn { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; border: none; background: transparent; cursor: pointer; border-radius: 8px; color: var(--nt-text); flex-shrink: 0; transition: background var(--nt-ease); }
+.em-back-btn:hover { background: var(--nt-bg-alt); }
+.em-back-btn svg { flex-shrink: 0; }
+@media (max-width:899px) { .em-back-btn { display: inline-flex; } }
 
 /* Mobile Menu - hidden by default */
 .em-mobile-menu { position: fixed; inset: 0; display: none; flex-direction: column; padding: 80px 24px 24px; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); z-index: 999; }
@@ -423,8 +430,8 @@ body.em-body { padding-top: 64px; }
   .em-section-title { font-size: clamp(22px, 5vw, 32px); }
   .em-section-subtitle { font-size: 14px; margin-bottom: 32px; }
 
-  /* Prevent cookie consent banner from overlapping FAQ accordion */
-  body.em-body { padding-bottom: 80px; }
+  /* Prevent cookie consent / CTA bar from overlapping FAQ accordion */
+  body.em-body { padding-bottom: 88px; }
 
   /* Compare cards: stack */
   .em-compare-grid { grid-template-columns: 1fr; }
@@ -436,8 +443,8 @@ body.em-body { padding-top: 64px; }
   /* Feature grid */
   .em-feature-grid--3col { grid-template-columns: 1fr; }
 
-  /* Prevent z-index fights */
-  .em-back-to-top { bottom: 96px; z-index: 9990; }
+  /* Prevent z-index fights — above CTA bar */
+  .em-back-to-top { bottom: 108px; z-index: 9990; }
 }
 
 /* Cookie consent banner: ensure it doesn't cover content permanently */
@@ -445,4 +452,27 @@ body.em-body { padding-top: 64px; }
   /* Banner on mobile should not block scrollable content */
   max-height: 50vh;
   overflow-y: auto;
+}
+
+/* ======================== MOBILE CTA BAR ======================== */
+.em-mobile-cta-bar { display: none; }
+@media (max-width:767px) {
+  .em-mobile-cta-bar {
+    display: flex; position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    z-index: 998; box-shadow: 0 -2px 12px rgba(0,0,0,0.08); justify-content: center; gap: 8px;
+  }
+  .em-mobile-cta-bar .em-btn {
+    flex: 1; max-width: 420px; text-align: center; justify-content: center;
+    min-height: 48px; font-size: 15px; font-weight: 700;
+  }
+}
+
+/* ======================== MOBILE TOUCH TARGETS ======================== */
+@media (max-width:767px) {
+  .em-btn { min-height: 44px; }
+  .em-btn--xs { min-height: 36px; }
+  .em-burger { min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
+  .em-mobile-menu a { min-height: 44px; display: flex; align-items: center; }
 }

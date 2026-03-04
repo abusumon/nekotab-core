@@ -2,6 +2,11 @@
 
 <nav class="navbar navbar-expand-lg navbar-light" aria-label="{% trans 'Main navigation' %}">
 
+  <!-- Mobile back button (hidden on lg+) -->
+  <button class="nk-back-btn d-lg-none" onclick="history.back()" aria-label="{% trans 'Go back' %}" title="{% trans 'Go back' %}">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+
   {# Decisions about whether to show items in the menu are based on the role of the user (not the view). #}
   {% blocktrans trimmed asvar logo_alt %}
     NekoTab Logo
