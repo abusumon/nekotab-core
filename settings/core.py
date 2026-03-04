@@ -475,6 +475,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Authentication backends
+# The TournamentAdminBackend grants admin model permissions to tournament
+# owners and org OWNER/ADMIN users so they can use the /database/ editor.
+AUTHENTICATION_BACKENDS = [
+    'utils.admin_site.TournamentAdminBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 # ==============================================================================
 # Subdomain routing (defaults; can be overridden in env-specific settings)
 # ==============================================================================

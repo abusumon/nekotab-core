@@ -69,7 +69,7 @@
           {% endfor %}
         {% endif %}
 
-        {% if user.is_superuser %}
+        {% if user.is_superuser or user_can_edit_db %}
           <a href="{% url 'admin:index' %}" target="_blank" class="dropdown-item px-2">
             <i data-feather="database"></i>{% translate "Edit Database" %}
           </a>

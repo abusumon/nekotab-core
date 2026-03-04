@@ -30,7 +30,7 @@
       <a href="{% url 'tournament-create' %}" class="list-group-item" data-parent="#titleh">
         <i data-feather="edit-2"></i>{% trans "New Tournament" %}
       </a>
-      {% if user.is_superuser %}
+      {% if user.is_superuser or user_can_edit_db %}
       <a href="{% url 'admin:index' %}" target="_blank" class="list-group-item" data-parent="#titleh">
         <i data-feather="database"></i>{% trans "Edit Database" %}
       </a>

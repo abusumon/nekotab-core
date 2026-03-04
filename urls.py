@@ -15,6 +15,12 @@ from importer.views import LoadDemoView
 from users.views import BlankSiteStartView
 from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
 from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
+from utils.admin_site import NekoTabAdminSite
+
+# Replace the default admin site so tournament owners / org OWNER|ADMIN
+# can access /database/ without needing is_staff=True.
+admin.site = NekoTabAdminSite(name='admin')
+admin.sites.site = admin.site
 
 admin.autodiscover()
 

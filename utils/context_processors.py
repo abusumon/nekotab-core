@@ -94,10 +94,13 @@ def debate_context(request):
 
     user = getattr(request, 'user', None)
 
+    nav_tournaments = _get_nav_tournaments(user)
+
     context = {
         'tabbycat_version': settings.TABBYCAT_VERSION or "",
         'tabbycat_codename': settings.TABBYCAT_CODENAME or "no codename",
-        'all_tournaments': _get_nav_tournaments(user),
+        'all_tournaments': nav_tournaments,
+        'user_can_edit_db': any(t.user_can_edit_db for t in nav_tournaments),
         'disable_sentry': getattr(settings, 'DISABLE_SENTRY', False),
         'on_local': getattr(settings, 'ON_LOCAL', False),
         'hmr': getattr(settings, 'USE_WEBPACK_SERVER', False),
