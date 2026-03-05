@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from utils.admin import ModelAdmin
+from utils.admin_tenant import TournamentScopedAdminMixin
 
 from .models import ActionLogEntry
 
@@ -10,7 +11,8 @@ from .models import ActionLogEntry
 
 
 @admin.register(ActionLogEntry)
-class ActionLogEntryAdmin(ModelAdmin):
+class ActionLogEntryAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
     list_display = ('type', 'user', 'ip_address', 'timestamp', 'content_object',
                     'tournament', 'round')
     list_filter = ('tournament', 'user', 'type', 'content_type', 'round')

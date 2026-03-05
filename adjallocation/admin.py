@@ -3,6 +3,7 @@ from django.db.models import Prefetch
 
 from draw.models import DebateTeam
 from utils.admin import ModelAdmin
+from utils.admin_tenant import TournamentScopedAdminMixin
 
 from .models import (AdjudicatorAdjudicatorConflict, AdjudicatorInstitutionConflict,
                      AdjudicatorTeamConflict, DebateAdjudicator, PreformedPanel,
@@ -10,7 +11,8 @@ from .models import (AdjudicatorAdjudicatorConflict, AdjudicatorInstitutionConfl
 
 
 @admin.register(DebateAdjudicator)
-class DebateAdjudicatorAdmin(ModelAdmin):
+class DebateAdjudicatorAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'debate__round__tournament'
     list_display = ('debate', 'adjudicator', 'type')
     search_fields = ('adjudicator__name', 'type')
     raw_id_fields = ('debate',)
@@ -27,7 +29,8 @@ class DebateAdjudicatorAdmin(ModelAdmin):
 
 
 @admin.register(AdjudicatorTeamConflict)
-class AdjudicatorTeamConflictAdmin(ModelAdmin):
+class AdjudicatorTeamConflictAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'adjudicator__tournament'
     list_display = ('adjudicator', 'team')
     list_select_related = ('adjudicator__institution', 'team__tournament')
     search_fields = ('adjudicator__name', 'team__short_name', 'team__long_name')
@@ -39,7 +42,8 @@ class AdjudicatorTeamConflictAdmin(ModelAdmin):
 
 
 @admin.register(AdjudicatorAdjudicatorConflict)
-class AdjudicatorAdjudicatorConflictAdmin(ModelAdmin):
+class AdjudicatorAdjudicatorConflictAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'adjudicator1__tournament'
     list_display = ('adjudicator1', 'adjudicator2')
     list_select_related = ('adjudicator1__institution', 'adjudicator2__institution')
     search_fields = ('adjudicator1__name', 'adjudicator2__name',
@@ -47,14 +51,16 @@ class AdjudicatorAdjudicatorConflictAdmin(ModelAdmin):
 
 
 @admin.register(AdjudicatorInstitutionConflict)
-class AdjudicatorInstitutionConflictAdmin(ModelAdmin):
+class AdjudicatorInstitutionConflictAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'adjudicator__tournament'
     list_display = ('adjudicator', 'institution')
     list_select_related = ('adjudicator__institution', 'institution')
     search_fields = ('adjudicator__name', 'institution__name')
 
 
 @admin.register(TeamInstitutionConflict)
-class TeamInstitutionConflictAdmin(ModelAdmin):
+class TeamInstitutionConflictAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'team__tournament'
     list_display = ('team', 'institution')
     list_select_related = ('team__institution', 'team__tournament', 'institution')
     search_fields = ('team__short_name', 'team__long_name', 'institution__name')
@@ -67,7 +73,8 @@ class PreformedPanelAdjudicatorInline(admin.TabularInline):
 
 
 @admin.register(PreformedPanel)
-class PreformedPanelAdmin(ModelAdmin):
+class PreformedPanelAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'round__tournament'
     list_filter = ('round', 'round__tournament')
     list_display = ('id', 'round', 'importance', 'bracket_min', 'bracket_max', 'room_rank', 'liveness')
     list_select_related = ('round__tournament',)

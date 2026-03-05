@@ -9,6 +9,7 @@ from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
 from draw.models import DebateTeam
 from registration.models import Answer
 from utils.admin import custom_titled_filter, ModelAdmin
+from utils.admin_tenant import TournamentScopedAdminMixin
 
 from .models import AdjudicatorBaseScoreHistory, AdjudicatorFeedback, AdjudicatorFeedbackQuestion
 
@@ -18,7 +19,8 @@ from .models import AdjudicatorBaseScoreHistory, AdjudicatorFeedback, Adjudicato
 # ==============================================================================
 
 @admin.register(AdjudicatorBaseScoreHistory)
-class AdjudicatorBaseScoreHistoryAdmin(ModelAdmin):
+class AdjudicatorBaseScoreHistoryAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'adjudicator__tournament'
     list_display = ('adjudicator', 'round', 'score', 'timestamp')
     list_filter  = ('adjudicator', 'round')
     ordering     = ('timestamp',)
@@ -48,7 +50,8 @@ class QuestionForm(forms.ModelForm):
 
 
 @admin.register(AdjudicatorFeedbackQuestion)
-class AdjudicatorFeedbackQuestionAdmin(DynamicArrayMixin, ModelAdmin):
+class AdjudicatorFeedbackQuestionAdmin(TournamentScopedAdminMixin, DynamicArrayMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
     form = QuestionForm
     list_display = ('reference', 'text', 'seq', 'tournament', 'answer_type',
                     'required', 'from_adj', 'from_team')
@@ -94,7 +97,8 @@ class RoundListFilter(admin.SimpleListFilter):
 # ==============================================================================
 
 @admin.register(AdjudicatorFeedback)
-class AdjudicatorFeedbackAdmin(ModelAdmin):
+class AdjudicatorFeedbackAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'adjudicator__tournament'
     list_display  = ('adjudicator', 'confirmed', 'ignored', 'score', 'version', 'get_source')
     search_fields = ('adjudicator__name', 'adjudicator__institution__name',
             'score', 'source_adjudicator__adjudicator__name',

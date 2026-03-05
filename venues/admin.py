@@ -5,12 +5,14 @@ from gfklookupwidget.widgets import GfkLookupWidget
 
 from availability.admin import RoundAvailabilityInline
 from utils.admin import ModelAdmin
+from utils.admin_tenant import TournamentScopedAdminMixin
 
 from .models import Venue, VenueCategory, VenueConstraint
 
 
 @admin.register(Venue)
-class VenueAdmin(ModelAdmin):
+class VenueAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
     list_display = ('display_name', 'priority', 'tournament', 'categories_list')
     list_filter = ('venuecategory', 'priority', 'tournament')
     search_fields = ('name',)

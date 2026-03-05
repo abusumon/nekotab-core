@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
 from utils.admin import ModelAdmin
+from utils.admin_tenant import TournamentScopedAdminMixin
 
 from .models import DebateIdentifier, Event, PersonIdentifier, VenueIdentifier
 
@@ -16,7 +17,8 @@ class PersonIdentifierAdmin(ModelAdmin):
 
 
 @admin.register(DebateIdentifier)
-class DebateIdentifierAdmin(ModelAdmin):
+class DebateIdentifierAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'debate__round__tournament'
     base_model = DebateIdentifier
     list_display = ('debate', 'barcode')
     list_filter = ('debate__round',)
@@ -24,7 +26,8 @@ class DebateIdentifierAdmin(ModelAdmin):
 
 
 @admin.register(VenueIdentifier)
-class VenueIdentifierAdmin(ModelAdmin):
+class VenueIdentifierAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'venue__tournament'
     base_model = VenueIdentifier
     list_display = ('venue', 'barcode')
     list_filter = ('venue__venuecategory',)

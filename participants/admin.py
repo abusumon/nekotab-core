@@ -13,6 +13,7 @@ from breakqual.models import BreakCategory
 from draw.models import TeamSideAllocation
 from tournaments.models import Tournament
 from utils.admin import ModelAdmin
+from utils.admin_tenant import TournamentScopedAdminMixin
 from venues.admin import VenueConstraintInline
 
 from .emoji import pick_unused_emoji, populate_code_names_from_emoji, set_emoji
@@ -54,7 +55,8 @@ class InstitutionAdmin(ModelAdmin):
 
 
 @admin.register(TournamentInstitution)
-class TournamentInstitutionAdmin(ModelAdmin):
+class TournamentInstitutionAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
     list_filter = ('institution', 'tournament')
     list_display = (
         'institution',
@@ -72,7 +74,8 @@ class TournamentInstitutionAdmin(ModelAdmin):
 
 
 @admin.register(Coach)
-class CoachAdmin(ModelAdmin):
+class CoachAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament_institution__tournament'
     list_display = (
         "name",
         "tournament_institution",
@@ -88,7 +91,8 @@ class CoachAdmin(ModelAdmin):
 
 
 @admin.register(Speaker)
-class SpeakerAdmin(ModelAdmin):
+class SpeakerAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'team__tournament'
     list_filter = ('team__tournament', 'team__institution')
     list_display = ('name', 'team', 'gender')
     search_fields = ('name', 'team__short_name', 'team__long_name',
@@ -101,7 +105,8 @@ class SpeakerAdmin(ModelAdmin):
 # ==============================================================================
 
 @admin.register(SpeakerCategory)
-class SpeakerCategoryAdmin(ModelAdmin):
+class SpeakerCategoryAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
     list_display = ('name', 'slug', 'seq', 'tournament', 'limit', 'public')
     list_filter = ('tournament', )
     ordering = ('tournament', 'seq')
@@ -159,7 +164,8 @@ class AdjudicatorTeamConflictInline(admin.TabularInline):
 
 
 @admin.register(Team)
-class TeamAdmin(ModelAdmin):
+class TeamAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
     form = TeamForm
     list_display = ('long_name', 'short_name', 'emoji_code', 'institution',
                     'tournament')
@@ -260,7 +266,8 @@ class AdjudicatorForm(forms.ModelForm):
 
 
 @admin.register(Adjudicator)
-class AdjudicatorAdmin(ModelAdmin):
+class AdjudicatorAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
     form = AdjudicatorForm
     list_display = ('name', 'institution', 'tournament', 'trainee',
                     'independent', 'adj_core', 'gender', 'base_score')

@@ -1,5 +1,7 @@
 from django.contrib import admin
 
+from utils.admin_tenant import OrganizationScopedAdminMixin
+
 from .models import Organization, OrganizationMembership
 
 
@@ -20,6 +22,53 @@ class OrganizationAdmin(admin.ModelAdmin):
         return obj.memberships.count()
     member_count.short_description = 'Members'
 
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        from .models import OrganizationMembership as OM
+        org_ids = OM.objects.filter(
+            user=request.user,
+            role__in=[OM.Role.OWNER, OM.Role.ADMIN],
+        ).values_list('organization_id', flat=True)
+        return qs.filter(id__in=org_ids)
+
+    def has_view_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        if obj is None:
+            return super().has_view_permission(request, obj)
+        return OrganizationMembership.objects.filter(
+            user=request.user,
+            organization=obj,
+            role__in=[OrganizationMembership.Role.OWNER,
+                      OrganizationMembership.Role.ADMIN],
+        ).exists()
+
+    def has_change_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        if obj is None:
+            return super().has_change_permission(request, obj)
+        return OrganizationMembership.objects.filter(
+            user=request.user,
+            organization=obj,
+            role__in=[OrganizationMembership.Role.OWNER,
+                      OrganizationMembership.Role.ADMIN],
+        ).exists()
+
+    def has_delete_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        if obj is None:
+            return super().has_delete_permission(request, obj)
+        return OrganizationMembership.objects.filter(
+            user=request.user,
+            organization=obj,
+            role__in=[OrganizationMembership.Role.OWNER,
+                      OrganizationMembership.Role.ADMIN],
+        ).exists()
+
 
 @admin.register(OrganizationMembership)
 class OrganizationMembershipAdmin(admin.ModelAdmin):
@@ -27,3 +76,50 @@ class OrganizationMembershipAdmin(admin.ModelAdmin):
     list_filter = ('role', 'organization')
     search_fields = ('user__username', 'user__email', 'organization__name')
     raw_id_fields = ('user',)
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        org_ids = OrganizationMembership.objects.filter(
+            user=request.user,
+            role__in=[OrganizationMembership.Role.OWNER,
+                      OrganizationMembership.Role.ADMIN],
+        ).values_list('organization_id', flat=True)
+        return qs.filter(organization_id__in=org_ids)
+
+    def has_view_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        if obj is None:
+            return super().has_view_permission(request, obj)
+        return OrganizationMembership.objects.filter(
+            user=request.user,
+            organization=obj.organization,
+            role__in=[OrganizationMembership.Role.OWNER,
+                      OrganizationMembership.Role.ADMIN],
+        ).exists()
+
+    def has_change_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        if obj is None:
+            return super().has_change_permission(request, obj)
+        return OrganizationMembership.objects.filter(
+            user=request.user,
+            organization=obj.organization,
+            role__in=[OrganizationMembership.Role.OWNER,
+                      OrganizationMembership.Role.ADMIN],
+        ).exists()
+
+    def has_delete_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        if obj is None:
+            return super().has_delete_permission(request, obj)
+        return OrganizationMembership.objects.filter(
+            user=request.user,
+            organization=obj.organization,
+            role__in=[OrganizationMembership.Role.OWNER,
+                      OrganizationMembership.Role.ADMIN],
+        ).exists()

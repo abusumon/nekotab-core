@@ -1,4 +1,5 @@
 from django.contrib import admin
+from utils.admin_tenant import TournamentScopedAdminMixin
 from .models import Article, ArticleCategory, TournamentContentBlock
 
 
@@ -32,7 +33,8 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 @admin.register(TournamentContentBlock)
-class TournamentContentBlockAdmin(admin.ModelAdmin):
+class TournamentContentBlockAdmin(TournamentScopedAdminMixin, admin.ModelAdmin):
+    tournament_lookup = 'tournament'
     list_display = ('tournament', 'host_organization', 'format_description', 'status_label', 'updated_at')
     search_fields = ('tournament__name', 'host_organization')
     raw_id_fields = ('tournament',)

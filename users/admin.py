@@ -8,6 +8,8 @@ from django.utils.translation import gettext_lazy as _
 
 from .models import Group, Membership, UserPermission
 
+from utils.admin_tenant import TournamentScopedAdminMixin
+
 
 # ==============================================================================
 # Authentication and Authorization
@@ -67,12 +69,14 @@ class UserAdmin(BaseUserAdmin):
 
 
 @admin.register(UserPermission)
-class UserPermissionAdmin(admin.ModelAdmin):
+class UserPermissionAdmin(TournamentScopedAdminMixin, admin.ModelAdmin):
+    tournament_lookup = 'tournament'
     list_display = ('user', 'permission', 'tournament')
 
 
 @admin.register(Group)
-class GroupAdmin(admin.ModelAdmin):
+class GroupAdmin(TournamentScopedAdminMixin, admin.ModelAdmin):
+    tournament_lookup = 'tournament'
     list_display = ('name', 'tournament')
 
 

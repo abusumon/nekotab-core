@@ -2,12 +2,14 @@ from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 
 from utils.admin import ModelAdmin
+from utils.admin_tenant import TournamentScopedAdminMixin
 
 from .models import RoundAvailability
 
 
 @admin.register(RoundAvailability)
-class RoundAvailabilityAdmin(ModelAdmin):
+class RoundAvailabilityAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'round__tournament'
     list_display = ('content_object', 'content_type', 'round')
     list_filter = ('content_type__model', 'round')
 
