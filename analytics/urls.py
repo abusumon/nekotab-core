@@ -6,6 +6,7 @@ app_name = 'analytics'
 urlpatterns = [
     path('', views.DashboardView.as_view(), name='dashboard'),
     path('users/', views.UsersListView.as_view(), name='users'),
+    path('users/delete/', views.DeleteUsersView.as_view(), name='delete_users'),
     path('users/export/', views.ExportUsersView.as_view(), name='export_users'),
     path('tournaments/', views.TournamentsListView.as_view(), name='tournaments'),
     path('tournaments/delete/', views.DeleteTournamentsView.as_view(), name='delete_tournaments'),

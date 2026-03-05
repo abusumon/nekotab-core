@@ -744,3 +744,63 @@ class DeleteTournamentsView(SuperuserRequiredMixin, View):
             'deleted_count': len(deleted),
             'failed_count': len(failed),
         })
+
+
+class DeleteUsersView(SuperuserRequiredMixin, View):
+    """Hard-delete one or more users. Superusers cannot be deleted."""
+
+    def post(self, request):
+        from django.db import transaction as db_transaction
+
+        try:
+            body = json.loads(request.body)
+        except (json.JSONDecodeError, ValueError):
+            return JsonResponse({'error': 'Invalid JSON body.'}, status=400)
+
+        raw_ids = body.get('user_ids', [])
+        if not raw_ids or not isinstance(raw_ids, list):
+            return JsonResponse({'error': 'user_ids must be a non-empty list.'}, status=400)
+
+        try:
+            user_ids = [int(uid) for uid in raw_ids]
+        except (TypeError, ValueError):
+            return JsonResponse({'error': 'All user_ids must be integers.'}, status=400)
+
+        # Never allow deleting the requesting user or any superuser
+        users = User.objects.filter(id__in=user_ids)
+        if not users.exists():
+            return JsonResponse({'error': 'No matching users found.'}, status=404)
+
+        deleted = []
+        skipped = []
+        failed = []
+
+        for u in users:
+            if u.id == request.user.id:
+                skipped.append({'id': u.id, 'username': u.username, 'reason': 'Cannot delete yourself.'})
+                continue
+            if u.is_superuser:
+                skipped.append({'id': u.id, 'username': u.username, 'reason': 'Cannot delete a superuser.'})
+                continue
+
+            uid = u.id
+            username = u.username
+            email = u.email
+
+            try:
+                with db_transaction.atomic():
+                    u.delete()
+                deleted.append({'id': uid, 'username': username, 'email': email})
+                logger.info("User deleted: %s (id=%d) by %s", username, uid, request.user.username)
+            except Exception as exc:
+                logger.exception("Failed to delete user %s (id=%d)", username, uid)
+                failed.append({'id': uid, 'username': username, 'error': str(exc)})
+
+        return JsonResponse({
+            'deleted': deleted,
+            'skipped': skipped,
+            'failed': failed,
+            'deleted_count': len(deleted),
+            'skipped_count': len(skipped),
+            'failed_count': len(failed),
+        })

@@ -248,6 +248,73 @@
         }
         
         tr:hover td { background: var(--bg-hover); }
+
+        /* Checkbox styling */
+        .row-checkbox {
+            width: 18px; height: 18px; cursor: pointer;
+            accent-color: var(--accent);
+        }
+        .row-checkbox:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        /* Delete toolbar */
+        .delete-toolbar {
+            display: none;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-radius: 10px;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.25s ease both;
+        }
+        .delete-toolbar.visible { display: flex; }
+        .delete-toolbar .selected-count {
+            font-size: 14px; font-weight: 600; color: var(--danger);
+        }
+        .btn-danger {
+            background: var(--danger); color: white;
+        }
+        .btn-danger:hover { background: #dc2626; }
+        .btn-sm { padding: 8px 16px; font-size: 13px; border-radius: 8px; }
+        .btn-ghost {
+            background: transparent; color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+        /* Modal */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px);
+            z-index: 1000; align-items: center; justify-content: center;
+        }
+        .modal-overlay.visible { display: flex; }
+        .modal {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 32px; max-width: 440px; width: 90%;
+            animation: fadeInUp 0.2s ease both;
+        }
+        .modal h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .modal p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; }
+        .modal .user-list-preview {
+            max-height: 120px; overflow-y: auto;
+            background: var(--bg-dark); border-radius: 8px;
+            padding: 10px 14px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary);
+        }
+        .modal .user-list-preview span { color: var(--text-primary); font-weight: 500; }
+        .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 24px; right: 24px; z-index: 2000;
+            padding: 14px 22px; border-radius: 10px; font-size: 14px; font-weight: 500;
+            color: white; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.3s ease both;
+            transition: opacity 0.3s;
+        }
+        .toast-success { background: var(--success); }
+        .toast-error { background: var(--danger); }
         
         .avatar {
             width: 40px;
@@ -498,11 +565,24 @@
             </a>
         </form>
 
+        <!-- Delete Toolbar (appears when users are selected) -->
+        <div class="delete-toolbar" id="deleteToolbar">
+            <span class="selected-count" id="selectedCount">0 selected</span>
+            <button type="button" class="btn btn-danger btn-sm" id="deleteSelectedBtn">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                Delete Selected
+            </button>
+            <button type="button" class="btn btn-ghost btn-sm" id="clearSelectionBtn">Clear</button>
+        </div>
+
         <div class="card">
             <div class="table-wrap">
             <table>
                 <thead>
                     <tr>
+                        <th style="width:40px;"><input type="checkbox" class="row-checkbox" id="selectAll" title="Select all"></th>
                         <th>User</th>
                         <th>Email</th>
                         <th>Joined</th>
@@ -513,6 +593,12 @@
                 <tbody>
                     {% for user in users %}
                     <tr>
+                        <td>
+                            <input type="checkbox" class="row-checkbox user-checkbox"
+                                   value="{{ user.id }}"
+                                   data-username="{{ user.username }}"
+                                   {% if user.is_superuser %}disabled title="Superusers cannot be deleted"{% endif %}>
+                        </td>
                         <td>
                             <div class="user-info">
                                 <div class="avatar">{{ user.username.0|upper }}</div>
@@ -553,7 +639,7 @@
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="5">
+                        <td colspan="6">
                             <div class="empty-state">
                                 <div class="empty-state-icon">👥</div>
                                 <p>No users found</p>
@@ -581,6 +667,24 @@
         </div>
     </main>
 
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal">
+            <h3>🗑️ Delete Users</h3>
+            <p>Are you sure you want to permanently delete the following users? This action <strong style="color:var(--danger)">cannot be undone</strong>.</p>
+            <div class="user-list-preview" id="deletePreview"></div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-ghost btn-sm" id="cancelDeleteBtn">Cancel</button>
+                <button type="button" class="btn btn-danger btn-sm" id="confirmDeleteBtn">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </svg>
+                    Confirm Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
     // Mobile sidebar toggle
     (function() {
@@ -598,6 +702,136 @@
             });
             overlay.addEventListener('click', closeSidebar);
         }
+    })();
+
+    // ── User Delete Logic ──
+    (function() {
+        const checkboxes = () => document.querySelectorAll('.user-checkbox:not(:disabled)');
+        const selectAll = document.getElementById('selectAll');
+        const toolbar = document.getElementById('deleteToolbar');
+        const countEl = document.getElementById('selectedCount');
+        const deleteBtn = document.getElementById('deleteSelectedBtn');
+        const clearBtn = document.getElementById('clearSelectionBtn');
+        const modal = document.getElementById('deleteModal');
+        const preview = document.getElementById('deletePreview');
+        const cancelBtn = document.getElementById('cancelDeleteBtn');
+        const confirmBtn = document.getElementById('confirmDeleteBtn');
+
+        function getSelected() {
+            return Array.from(checkboxes()).filter(cb => cb.checked);
+        }
+
+        function updateToolbar() {
+            const sel = getSelected();
+            const count = sel.length;
+            if (count > 0) {
+                toolbar.classList.add('visible');
+                countEl.textContent = count + ' user' + (count !== 1 ? 's' : '') + ' selected';
+            } else {
+                toolbar.classList.remove('visible');
+            }
+            // Update select-all state
+            const all = checkboxes();
+            selectAll.checked = all.length > 0 && sel.length === all.length;
+            selectAll.indeterminate = sel.length > 0 && sel.length < all.length;
+        }
+
+        // Checkbox events
+        document.querySelector('.table-wrap').addEventListener('change', function(e) {
+            if (e.target.classList.contains('user-checkbox')) updateToolbar();
+        });
+
+        selectAll.addEventListener('change', function() {
+            checkboxes().forEach(cb => cb.checked = selectAll.checked);
+            updateToolbar();
+        });
+
+        clearBtn.addEventListener('click', function() {
+            checkboxes().forEach(cb => cb.checked = false);
+            selectAll.checked = false;
+            selectAll.indeterminate = false;
+            updateToolbar();
+        });
+
+        // Open modal
+        deleteBtn.addEventListener('click', function() {
+            const sel = getSelected();
+            if (!sel.length) return;
+            preview.innerHTML = sel.map(cb =>
+                '<div style="padding:3px 0;">• <span>' + cb.dataset.username + '</span> (ID: ' + cb.value + ')</div>'
+            ).join('');
+            modal.classList.add('visible');
+        });
+
+        // Close modal
+        cancelBtn.addEventListener('click', function() { modal.classList.remove('visible'); });
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) modal.classList.remove('visible');
+        });
+
+        // Toast helper
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            toast.className = 'toast toast-' + type;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3500);
+        }
+
+        // Get CSRF token from cookies
+        function getCookie(name) {
+            let v = null;
+            document.cookie.split(';').forEach(function(c) {
+                c = c.trim();
+                if (c.startsWith(name + '=')) v = decodeURIComponent(c.substring(name.length + 1));
+            });
+            return v;
+        }
+
+        // Confirm delete
+        confirmBtn.addEventListener('click', function() {
+            const sel = getSelected();
+            if (!sel.length) return;
+            const userIds = sel.map(cb => parseInt(cb.value));
+
+            confirmBtn.disabled = true;
+            confirmBtn.textContent = 'Deleting…';
+
+            fetch('{% url "analytics:delete_users" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: JSON.stringify({ user_ids: userIds }),
+            })
+            .then(r => r.json())
+            .then(data => {
+                modal.classList.remove('visible');
+                confirmBtn.disabled = false;
+                confirmBtn.textContent = 'Confirm Delete';
+
+                if (data.deleted_count > 0) {
+                    showToast(data.deleted_count + ' user' + (data.deleted_count !== 1 ? 's' : '') + ' deleted.', 'success');
+                }
+                if (data.skipped_count > 0) {
+                    showToast(data.skipped_count + ' user' + (data.skipped_count !== 1 ? 's' : '') + ' skipped (superuser/self).', 'error');
+                }
+                if (data.failed_count > 0) {
+                    showToast(data.failed_count + ' deletion' + (data.failed_count !== 1 ? 's' : '') + ' failed.', 'error');
+                }
+                // Reload after short delay
+                if (data.deleted_count > 0) {
+                    setTimeout(function() { location.reload(); }, 1200);
+                }
+            })
+            .catch(function(err) {
+                modal.classList.remove('visible');
+                confirmBtn.disabled = false;
+                confirmBtn.textContent = 'Confirm Delete';
+                showToast('Network error: ' + err.message, 'error');
+            });
+        });
     })();
     </script>
 </body>
