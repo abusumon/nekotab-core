@@ -44,13 +44,11 @@
 
   <link rel="stylesheet" href="{% static 'css/landing.css' %}">
 
-  <!-- Google AdSense & GA4 — loaded only after full cookie consent -->
+  <!-- GA4 + Cookie Consent -->
   <script>
   window.adsbygoogle = window.adsbygoogle || [];
   window.adsbygoogle.requestNonPersonalizedAds = 1;
   </script>
-
-  <!-- GA4 + Cookie Consent: shared module -->
   <script src="{% static 'js/cookie-consent.js' %}"></script>
   <script>
     if (NekoConsent.getConsent() === 'all') { NekoConsent._loadGA4(); }
@@ -134,91 +132,179 @@
   </script>
 </head>
 <body class="em-body">
-  <!-- Skip to content (accessibility) -->
+  <!-- Skip to content -->
   <a href="#main-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#6366f1;color:#fff;padding:8px 16px;z-index:10000;transition:top .3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
 
-  <!-- ==================== NAVBAR ==================== -->
-  <header class="em-navbar" id="top">
+  <!-- ========================================================
+       NAVBAR — Linear-inspired, conversion-oriented
+       ======================================================== -->
+  <header class="em-navbar em-navbar--dark" id="top">
     <div class="em-container em-nav-inner">
-      <div class="em-nav-start">
-        <button class="em-back-btn" onclick="history.back()" aria-label="Go back" title="Go back">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <a class="em-logo" href="/">
-          <picture>
-            <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="160" height="40">
-          </picture>
-        </a>
-      </div>
-      <nav class="em-nav" aria-label="Primary">
-        <a href="#features">Features</a>
-        <a href="#tools">Tools</a>
-        <a href="/learn/">Learn</a>
-        <a href="{% url 'motionbank:motion-doctor' %}">🩺 Motion Doctor</a>
-        <a href="{% url 'motionbank:motionbank-home' %}">Motion Bank</a>
-        <a href="{% url 'forum:forum-home' %}">Forum</a>
-        <a href="#faq">FAQ</a>
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Create Tournament</a>
+      <!-- Logo -->
+      <a class="em-logo" href="/">
+        <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="120" height="32">
+      </a>
+
+      <!-- Center Navigation -->
+      <nav class="em-nav-center" aria-label="Primary">
+        <!-- Product dropdown -->
+        <div class="em-nav-dropdown">
+          <button class="em-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">
+            Product
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l3 3 3-3"/></svg>
+          </button>
+          <div class="em-dropdown-panel" role="menu">
+            <a href="#features" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon">🎲</div>
+              <div><div class="em-dd-label">Tournament Engine</div><div class="em-dd-desc">Draws, allocations, ballots & standings</div></div>
+            </a>
+            <a href="{% url 'motionbank:motion-doctor' %}" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon">🩺</div>
+              <div><div class="em-dd-label">Motion Doctor</div><div class="em-dd-desc">AI-powered motion analysis</div></div>
+            </a>
+            <a href="{% url 'motionbank:motionbank-home' %}" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--green">📋</div>
+              <div><div class="em-dd-label">Motion Bank</div><div class="em-dd-desc">Global database of debate motions</div></div>
+            </a>
+            <a href="{% url 'passport:passport-dashboard' %}" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--blue">🪪</div>
+              <div><div class="em-dd-label">Debate Passport</div><div class="em-dd-desc">Persistent debater profiles & tracking</div></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Solutions dropdown -->
+        <div class="em-nav-dropdown">
+          <button class="em-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">
+            Solutions
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l3 3 3-3"/></svg>
+          </button>
+          <div class="em-dropdown-panel" role="menu">
+            <a href="#use-cases" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--amber">🏛️</div>
+              <div><div class="em-dd-label">For Organizers</div><div class="em-dd-desc">Run tournaments end-to-end</div></div>
+            </a>
+            <a href="#use-cases" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--blue">🎓</div>
+              <div><div class="em-dd-label">For Institutions</div><div class="em-dd-desc">University societies & school leagues</div></div>
+            </a>
+            <a href="#use-cases" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--green">🎤</div>
+              <div><div class="em-dd-label">For Debaters</div><div class="em-dd-desc">Prep, compete, and grow</div></div>
+            </a>
+            <a href="#use-cases" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--red">⚖️</div>
+              <div><div class="em-dd-label">For Judges</div><div class="em-dd-desc">Adjudicate with confidence</div></div>
+            </a>
+          </div>
+        </div>
+
+        <a href="{% url 'forum:forum-home' %}" class="em-nav-link">Community</a>
+        <a href="/learn/" class="em-nav-link">Resources</a>
+        <a href="https://github.com/abusumon/nekotab-app/wiki" class="em-nav-link" target="_blank" rel="noopener">Docs</a>
+      </nav>
+
+      <!-- Right side -->
+      <div class="em-nav-end">
         {% if user.is_authenticated %}
-          <a href="{% url 'org-list' %}" class="em-btn em-btn--ghost em-btn--sm" title="My Organizations">🏢 Orgs</a>
+          <a href="{% url 'org-list' %}" class="em-nav-link" title="My Organizations">Orgs</a>
           {% if user.is_superuser %}
-          <a href="{% url 'campaigns:list' %}" class="em-btn em-btn--ghost" style="margin-left:4px;" title="Email Campaigns">📧</a>
+          <a href="{% url 'campaigns:list' %}" class="em-nav-link" title="Campaigns">📧</a>
           {% endif %}
-          <form action="{% url 'logout' %}" method="post" style="display:inline-block; margin-left:8px;">
+          <form action="{% url 'logout' %}" method="post" style="display:inline-block;">
             {% csrf_token %}
-            <button type="submit" class="em-btn em-btn--ghost" aria-label="Logout">Logout</button>
+            <button type="submit" class="em-btn--nav-signin" aria-label="Logout">Logout</button>
           </form>
         {% else %}
-          <a href="{% url 'login' %}" class="em-btn em-btn--ghost">Login</a>
-          <a href="{% url 'signup' %}" class="em-btn em-btn--secondary em-btn--sm">Sign Up</a>
+          <a href="{% url 'login' %}" class="em-btn--nav-signin">Sign in</a>
         {% endif %}
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Get Started</a>
         <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
           <span></span><span></span><span></span>
         </button>
-      </nav>
+      </div>
     </div>
+
     <!-- Mobile Menu -->
     <div id="em-mobile-menu" class="em-mobile-menu" hidden>
-      <a href="#features">Features</a>
-      <a href="#tools">Tools</a>
-      <a href="/learn/">📚 Learn</a>
-      <a href="{% url 'motionbank:motion-doctor' %}">🩺 Motion Doctor</a>
-      <a href="{% url 'motionbank:motionbank-home' %}">📋 Motion Bank</a>
-      <a href="{% url 'forum:forum-home' %}">💬 Forum</a>
-      <a href="{% url 'passport:passport-dashboard' %}">🪪 Passport</a>
-      <a href="#faq">FAQ</a>
-      <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Create Tournament</a>
-      {% if user.is_authenticated %}
-        <a href="{% url 'org-list' %}" class="em-btn em-btn--ghost em-btn--block">🏢 My Organizations</a>
-        <form action="{% url 'logout' %}" method="post" style="margin-top:12px;">
-          {% csrf_token %}
-          <button type="submit" class="em-btn em-btn--ghost em-btn--block" aria-label="Logout">Logout</button>
-        </form>
-      {% else %}
-        <a href="{% url 'login' %}" class="em-btn em-btn--ghost em-btn--block">Login</a>
-        <a href="{% url 'signup' %}" class="em-btn em-btn--secondary em-btn--block">Sign Up</a>
-      {% endif %}
+      <div class="em-mobile-menu-section">
+        <div class="em-mobile-menu-label">Product</div>
+        <a href="#features">🎲 Tournament Engine</a>
+        <a href="{% url 'motionbank:motion-doctor' %}">🩺 Motion Doctor</a>
+        <a href="{% url 'motionbank:motionbank-home' %}">📋 Motion Bank</a>
+        <a href="{% url 'passport:passport-dashboard' %}">🪪 Debate Passport</a>
+      </div>
+      <div class="em-mobile-menu-section">
+        <div class="em-mobile-menu-label">Explore</div>
+        <a href="{% url 'forum:forum-home' %}">💬 Community</a>
+        <a href="/learn/">📚 Resources</a>
+        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">📖 Docs</a>
+        <a href="#faq">❓ FAQ</a>
+      </div>
+      <div class="em-mobile-menu-section" style="margin-top: 16px;">
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Get Started</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'org-list' %}" class="em-btn em-btn--ghost em-btn--block">🏢 My Organizations</a>
+          <form action="{% url 'logout' %}" method="post" style="margin-top:8px;">
+            {% csrf_token %}
+            <button type="submit" class="em-btn em-btn--ghost em-btn--block" aria-label="Logout">Logout</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}" class="em-btn em-btn--ghost em-btn--block">Sign in</a>
+          <a href="{% url 'signup' %}" class="em-btn em-btn--secondary em-btn--block">Create Account</a>
+        {% endif %}
+      </div>
     </div>
   </header>
 
-  <!-- ==================== HERO ==================== -->
+  <!-- ========================================================
+       HERO — Dark gradient, international SaaS feel
+       ======================================================== -->
   <section class="em-hero" id="main-content" aria-labelledby="hero-title">
     <div class="em-container em-hero-inner">
       <div class="em-badge" aria-label="Open source">
         <span class="em-badge-dot"></span>
-        Open‑source &middot; Free to self-host
+        Open-source &middot; Free to self-host
       </div>
+
       <h1 id="hero-title" class="em-hero-title">
-        The complete<br><span class="em-gradient-text">debate platform</span>
+        The operating system<br><span class="em-gradient-text">for debate</span>
       </h1>
-      <p class="em-hero-sub">Tournament tabulation, AI motion analysis, global motion bank, debate forum, and debater passports — everything the debate community needs in one place.</p>
+
+      <p class="em-hero-sub">
+        Run tournaments, analyze motions with AI, and connect the global debate community — all from a single platform built for every format.
+      </p>
+
       <div class="em-hero-ctas">
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--lg">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><path d="M12 5v14M5 12h14"/></svg>
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--white em-btn--lg">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
           Create a Tournament
         </a>
-        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--outline em-btn--lg">🩺 Try Motion Doctor</a>
+        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--outline-light em-btn--lg">
+          Try Motion Doctor
+        </a>
       </div>
+
+      <!-- Trust metrics inside hero -->
+      <div class="em-hero-trust">
+        <div class="em-hero-trust-item">
+          <span class="em-hero-trust-icon">🏛️</span>
+          University Societies
+        </div>
+        <div class="em-hero-trust-item">
+          <span class="em-hero-trust-icon">🌍</span>
+          National Circuits
+        </div>
+        <div class="em-hero-trust-item">
+          <span class="em-hero-trust-icon">🏆</span>
+          International Tournaments
+        </div>
+        <div class="em-hero-trust-item">
+          <span class="em-hero-trust-icon">📚</span>
+          School Leagues
+        </div>
+      </div>
+
       <!-- Dashboard Preview -->
       <div class="em-hero-visual">
         <div class="em-browser-frame">
@@ -265,39 +351,28 @@
         </div>
       </div>
     </div>
-    <!-- Decorative blobs -->
-    <div class="em-hero-blob em-hero-blob--1"></div>
-    <div class="em-hero-blob em-hero-blob--2"></div>
   </section>
 
-  <!-- ==================== TRUSTED BY (social proof) ==================== -->
-  <section class="em-section em-trust" aria-label="Trusted by debate communities">
+  <!-- ========================================================
+       TRUST BAR — Social proof strip
+       ======================================================== -->
+  <section class="em-trust-bar" aria-label="Trusted by debate communities">
     <div class="em-container">
       <p class="em-trust-label">Trusted by debate communities worldwide</p>
       <div class="em-trust-logos">
-        <div class="em-trust-item">
-          <span class="em-trust-icon">🏛️</span>
-          <span class="em-trust-text">University Societies</span>
-        </div>
-        <div class="em-trust-item">
-          <span class="em-trust-icon">🌍</span>
-          <span class="em-trust-text">National Circuits</span>
-        </div>
-        <div class="em-trust-item">
-          <span class="em-trust-icon">🏆</span>
-          <span class="em-trust-text">International Tournaments</span>
-        </div>
-        <div class="em-trust-item">
-          <span class="em-trust-icon">📚</span>
-          <span class="em-trust-text">School Leagues</span>
-        </div>
+        <div class="em-trust-item"><span>🏛️</span> University Societies</div>
+        <div class="em-trust-item"><span>🌍</span> National Circuits</div>
+        <div class="em-trust-item"><span>🏆</span> International Tournaments</div>
+        <div class="em-trust-item"><span>📚</span> School Leagues</div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== MY TOURNAMENTS ==================== -->
+  <!-- ========================================================
+       AUTH: MY TOURNAMENTS
+       ======================================================== -->
   {% if user.is_authenticated %}
-  <section class="em-section em-my-tournaments" aria-labelledby="my-tournaments-title">
+  <section class="em-section em-section--alt" aria-labelledby="my-tournaments-title">
     <div class="em-container">
       <div class="em-section-header">
         <h2 id="my-tournaments-title" class="em-section-title em-section-title--left">My Tournaments</h2>
@@ -372,17 +447,17 @@
   </section>
   {% endif %}
 
-  <!-- ==================== SHARED WITH ME ==================== -->
+  <!-- AUTH: SHARED WITH ME -->
   {% if user.is_authenticated and shared_tournaments %}
-  <section class="em-section em-shared-tournaments" aria-labelledby="shared-title">
+  <section class="em-section em-section--white" aria-labelledby="shared-title">
     <div class="em-container">
       <div class="em-section-header">
         <h2 id="shared-title" class="em-section-title em-section-title--left">Shared with Me</h2>
       </div>
       <div class="em-tournament-grid">
         {% for t in shared_tournaments %}
-          <article class="em-tournament-card em-tournament-card--shared">
-            <div class="em-tournament-status"><span class="em-status-dot em-status-dot--shared"></span> Shared</div>
+          <article class="em-tournament-card">
+            <div class="em-tournament-status"><span class="em-status-dot em-status-dot--active"></span> Shared</div>
             <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
             <div class="em-tournament-actions">
               <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public Site</a>
@@ -395,17 +470,17 @@
   </section>
   {% endif %}
 
-  <!-- ==================== PUBLIC SHOWCASE ==================== -->
+  <!-- PUBLIC SHOWCASE -->
   {% if listed_tournaments %}
-  <section class="em-section em-public-tournaments" aria-labelledby="public-title">
+  <section class="em-section em-section--white" aria-labelledby="public-title">
     <div class="em-container">
       <div class="em-section-header">
         <h2 id="public-title" class="em-section-title em-section-title--left">Public Showcase</h2>
       </div>
       <div class="em-tournament-grid">
         {% for t in listed_tournaments %}
-          <article class="em-tournament-card em-tournament-card--listed">
-            <div class="em-tournament-status"><span class="em-status-dot em-status-dot--listed"></span> Public</div>
+          <article class="em-tournament-card">
+            <div class="em-tournament-status"><span class="em-status-dot em-status-dot--active"></span> Public</div>
             <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
             <div class="em-tournament-actions">
               <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">View</a>
@@ -417,17 +492,77 @@
   </section>
   {% endif %}
 
-  <!-- ==================== FEATURES ==================== -->
-  <section id="features" class="em-section em-features" aria-labelledby="features-title">
+  <!-- ========================================================
+       PRODUCT PILLARS — 5 core capabilities
+       ======================================================== -->
+  <section class="em-section em-section--white" aria-labelledby="pillars-title">
     <div class="em-container">
-      <div class="em-section-eyebrow">Features</div>
+      <div class="em-section-eyebrow">Platform</div>
+      <h2 id="pillars-title" class="em-section-title">One platform, every capability</h2>
+      <p class="em-section-subtitle">NekoTab brings together everything the debate ecosystem needs — from running tournaments to building careers.</p>
+
+      <div class="em-pillars-grid">
+        <article class="em-pillar">
+          <div class="em-pillar-icon em-pillar-icon--indigo">🎲</div>
+          <h3 class="em-pillar-title">Tournament Engine</h3>
+          <p class="em-pillar-desc">Automated draws, smart judge allocation, digital ballots, real-time standings, and break calculations — for BP, Australs, WSDC and more.</p>
+          <a href="#features" class="em-pillar-link">
+            Explore features <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+        <article class="em-pillar">
+          <div class="em-pillar-icon em-pillar-icon--indigo">🩺</div>
+          <h3 class="em-pillar-title">AI Motion Intelligence</h3>
+          <p class="em-pillar-desc">Paste any motion, get a coaching-grade analysis: clash maps, argument strategies, POIs, extension ideas, and fairness metrics — in seconds.</p>
+          <a href="{% url 'motionbank:motion-doctor' %}" class="em-pillar-link">
+            Try Motion Doctor <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+        <article class="em-pillar">
+          <div class="em-pillar-icon em-pillar-icon--green">📋</div>
+          <h3 class="em-pillar-title">Global Motion Bank</h3>
+          <p class="em-pillar-desc">Thousands of real motions from tournaments worldwide. Filter by format, region, year, theme, and difficulty. Community ratings and AI analysis included.</p>
+          <a href="{% url 'motionbank:motionbank-home' %}" class="em-pillar-link">
+            Browse motions <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+        <article class="em-pillar">
+          <div class="em-pillar-icon em-pillar-icon--red">🪪</div>
+          <h3 class="em-pillar-title">Debate Identity</h3>
+          <p class="em-pillar-desc">Your Debate Passport tracks tournament participation, speaker scores, wins, and achievements. Build a persistent debate profile that grows with your career.</p>
+          <a href="{% url 'passport:passport-dashboard' %}" class="em-pillar-link">
+            View Passport <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+        <article class="em-pillar">
+          <div class="em-pillar-icon em-pillar-icon--amber">💬</div>
+          <h3 class="em-pillar-title">Community Hub</h3>
+          <p class="em-pillar-desc">Structured discussions with argument trees, verified badges, and topic categories. Share strategies, analyze motions, and learn from debaters worldwide.</p>
+          <a href="{% url 'forum:forum-home' %}" class="em-pillar-link">
+            Join the forum <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FEATURES GRID — Tournament capabilities detail
+       ======================================================== -->
+  <section id="features" class="em-section em-section--alt" aria-labelledby="features-title">
+    <div class="em-container">
+      <div class="em-section-eyebrow">Tournament Engine</div>
       <h2 id="features-title" class="em-section-title">Everything you need to run a tournament</h2>
       <p class="em-section-subtitle">From registration to break announcements — NekoTab handles it all.</p>
-      <div class="em-feature-grid em-feature-grid--3col">
+      <div class="em-features-grid">
         <article class="em-feature-card">
           <div class="em-feature-icon">🎲</div>
           <h3 class="em-feature-title">Draws &amp; Power-Pairing</h3>
-          <p class="em-feature-desc">Generate fair draws with side balancing, pull-ups, and constraints for BP and other formats.</p>
+          <p class="em-feature-desc">Fair draws with side balancing, pull-ups, and constraints for BP and all formats.</p>
         </article>
         <article class="em-feature-card">
           <div class="em-feature-icon">⚖️</div>
@@ -442,7 +577,7 @@
         <article class="em-feature-card">
           <div class="em-feature-icon">📊</div>
           <h3 class="em-feature-title">Standings &amp; Breaks</h3>
-          <p class="em-feature-desc">Real-time speaker and team standings with configurable tie-breaking and break categories.</p>
+          <p class="em-feature-desc">Real-time standings with configurable tie-breaking rules and break categories.</p>
         </article>
         <article class="em-feature-card">
           <div class="em-feature-icon">✅</div>
@@ -458,111 +593,109 @@
     </div>
   </section>
 
-  <!-- ==================== PLATFORM TOOLS ==================== -->
-  <section id="tools" class="em-section" aria-labelledby="tools-title" style="background:#f8faff;">
+  <!-- ========================================================
+       USE-CASE SEGMENTATION — Four audience pillars
+       ======================================================== -->
+  <section id="use-cases" class="em-section em-section--white" aria-labelledby="usecase-title">
     <div class="em-container">
-      <div class="em-section-eyebrow">Beyond Tabulation</div>
-      <h2 id="tools-title" class="em-section-title">A complete debate ecosystem</h2>
-      <p class="em-section-subtitle">NekoTab isn't just tabulation — it's the all-in-one platform for the global debate community.</p>
+      <div class="em-section-eyebrow">Built for everyone</div>
+      <h2 id="usecase-title" class="em-section-title">Find your place in the debate ecosystem</h2>
+      <p class="em-section-subtitle">Whether you organize, compete, adjudicate, or manage — NekoTab is built for you.</p>
 
-      <div class="em-tools-grid">
-        <!-- Motion Doctor -->
-        <article class="em-tool-card em-tool-card--indigo">
-          <div class="em-tool-bg-icon">🩺</div>
-          <div class="em-feature-icon em-feature-icon--lg">🩺</div>
-          <h3 class="em-tool-title">Motion Doctor</h3>
-          <p class="em-feature-desc">AI-powered 4-stage motion analysis: Profiler → Planner → Generator → Validator. Get clash maps, definition traps, POIs, gov/opp strategies, extensions, and difficulty metrics — all specific to your motion.</p>
-          <div class="em-tool-tags">
-            <span class="em-tag em-tag--indigo">Clash Map</span>
-            <span class="em-tag em-tag--indigo">POIs</span>
-            <span class="em-tag em-tag--indigo">Extensions</span>
-            <span class="em-tag em-tag--indigo">Bias Metrics</span>
-          </div>
-          <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--primary em-btn--sm em-tool-cta">Try Motion Doctor →</a>
+      <div class="em-usecase-grid">
+        <article class="em-usecase">
+          <div class="em-usecase-accent em-usecase-accent--indigo"></div>
+          <div class="em-usecase-icon">🏛️</div>
+          <h3 class="em-usecase-title">Tournament Organizers &amp; Tabmasters</h3>
+          <p class="em-usecase-desc">Run every aspect of your tournament from a single admin panel — draws, allocations, ballots, and live results.</p>
+          <ul class="em-usecase-features">
+            <li>Automated draw generation with power-pairing</li>
+            <li>Smart adjudicator allocation with conflict detection</li>
+            <li>Digital ballots with real-time validation</li>
+            <li>Public site with live draw and result publishing</li>
+          </ul>
         </article>
 
-        <!-- Motion Bank -->
-        <article class="em-tool-card em-tool-card--green">
-          <div class="em-tool-bg-icon">📋</div>
-          <div class="em-feature-icon em-feature-icon--lg">📋</div>
-          <h3 class="em-tool-title">Global Motion Bank</h3>
-          <p class="em-feature-desc">Thousands of motions from real tournaments worldwide. Filter by format, year, region, theme, and difficulty. AI analysis, community case outlines, and practice tracking included.</p>
-          <div class="em-tool-tags">
-            <span class="em-tag em-tag--green">BP</span>
-            <span class="em-tag em-tag--green">WSDC</span>
-            <span class="em-tag em-tag--green">Australs</span>
-            <span class="em-tag em-tag--green">Ratings</span>
-          </div>
-          <a href="{% url 'motionbank:motionbank-home' %}" class="em-btn em-btn--sm em-tool-cta em-btn--green">Browse Motions →</a>
+        <article class="em-usecase">
+          <div class="em-usecase-accent em-usecase-accent--green"></div>
+          <div class="em-usecase-icon">🎓</div>
+          <h3 class="em-usecase-title">Debate Societies &amp; Institutions</h3>
+          <p class="em-usecase-desc">Manage your society's tournaments, track debater progress, and build your community on one platform.</p>
+          <ul class="em-usecase-features">
+            <li>Organization accounts with multi-user management</li>
+            <li>Season-long debater performance tracking</li>
+            <li>Training resources via the Learn hub</li>
+            <li>Self-hosting available for data sovereignty</li>
+          </ul>
         </article>
 
-        <!-- Debate Forum -->
-        <article class="em-tool-card em-tool-card--amber">
-          <div class="em-tool-bg-icon">💬</div>
-          <div class="em-feature-icon em-feature-icon--lg">💬</div>
-          <h3 class="em-tool-title">Debate Forum</h3>
-          <p class="em-feature-desc">Structured discussions with argument trees, verified badges (CA, Worlds Breaker), and topic categories. Share strategies, analyze motions together, and learn from the community.</p>
-          <div class="em-tool-tags">
-            <span class="em-tag em-tag--amber">Arguments</span>
-            <span class="em-tag em-tag--amber">Badges</span>
-            <span class="em-tag em-tag--amber">Categories</span>
-          </div>
-          <a href="{% url 'forum:forum-home' %}" class="em-btn em-btn--sm em-tool-cta em-btn--amber">Join Forum →</a>
+        <article class="em-usecase">
+          <div class="em-usecase-accent em-usecase-accent--amber"></div>
+          <div class="em-usecase-icon">🎤</div>
+          <h3 class="em-usecase-title">Debaters &amp; Speakers</h3>
+          <p class="em-usecase-desc">Prepare for tournaments with AI motion analysis, browse the global motion bank, and track your career.</p>
+          <ul class="em-usecase-features">
+            <li>Motion Doctor for AI-powered prep assistance</li>
+            <li>Global Motion Bank for practice and study</li>
+            <li>Debate Passport with career-long statistics</li>
+            <li>Community forum for peer discussion</li>
+          </ul>
         </article>
 
-        <!-- Debate Passport -->
-        <article class="em-tool-card em-tool-card--red">
-          <div class="em-tool-bg-icon">🪪</div>
-          <div class="em-feature-icon em-feature-icon--lg">🪪</div>
-          <h3 class="em-tool-title">Debate Passport</h3>
-          <p class="em-feature-desc">Your debate profile across all tournaments. Track your record, achievements, and growth. Connect with debaters worldwide through the global directory.</p>
-          <div class="em-tool-tags">
-            <span class="em-tag em-tag--red">Profile</span>
-            <span class="em-tag em-tag--red">Stats</span>
-            <span class="em-tag em-tag--red">Directory</span>
-          </div>
-          <a href="{% url 'passport:passport-dashboard' %}" class="em-btn em-btn--sm em-tool-cta em-btn--red">View Passport →</a>
+        <article class="em-usecase">
+          <div class="em-usecase-accent em-usecase-accent--blue"></div>
+          <div class="em-usecase-icon">⚖️</div>
+          <h3 class="em-usecase-title">Judges &amp; Adjudicators</h3>
+          <p class="em-usecase-desc">Access draws, submit ballots digitally, and track your adjudication record and feedback scores.</p>
+          <ul class="em-usecase-features">
+            <li>Mobile-friendly ballot submission</li>
+            <li>Structured feedback collection and scores</li>
+            <li>Adjudicator career tracking via Passport</li>
+            <li>Motion analysis for adjudication prep</li>
+          </ul>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ==================== MOTION DOCTOR SPOTLIGHT ==================== -->
-  <section class="em-section em-spotlight" aria-labelledby="doctor-spotlight-title">
+  <!-- ========================================================
+       MOTION DOCTOR SPOTLIGHT — Dark accent section
+       ======================================================== -->
+  <section class="em-section em-section--spotlight" aria-labelledby="doctor-spotlight-title">
     <div class="em-container">
       <div class="em-spotlight-header">
-        <div class="em-section-eyebrow em-spotlight-eyebrow">AI-Powered</div>
-        <h2 id="doctor-spotlight-title" class="em-spotlight-title">Motion Doctor: Your Debate Coach on Demand</h2>
-        <p class="em-spotlight-sub">Paste any motion. Get a coaching-grade analysis in seconds. Our 4-stage AI pipeline ensures every insight is specific, fair, and motion-aware.</p>
+        <div class="em-section-eyebrow">AI-Powered</div>
+        <h2 id="doctor-spotlight-title" class="em-spotlight-title">Motion Doctor: Coaching-grade analysis in seconds</h2>
+        <p class="em-spotlight-sub">Paste any motion. Our 4-stage AI pipeline produces specific, fair, and motion-aware insights — clash maps, argument strategies, POIs, extensions, and difficulty metrics.</p>
       </div>
 
       <div class="em-spotlight-grid">
         <div class="em-spotlight-card">
-          <div class="em-spotlight-card-icon">🎯</div>
-          <h4 class="em-spotlight-card-title">Stage 1: Profiler</h4>
+          <div class="em-spotlight-card-step">Stage 1</div>
+          <h4 class="em-spotlight-card-title">Profiler</h4>
           <p class="em-spotlight-card-desc">Classifies motion type, domain, actor, ambiguity flags, and confidence level.</p>
         </div>
         <div class="em-spotlight-card">
-          <div class="em-spotlight-card-icon">🗺️</div>
-          <h4 class="em-spotlight-card-title">Stage 2: Planner</h4>
+          <div class="em-spotlight-card-step">Stage 2</div>
+          <h4 class="em-spotlight-card-title">Planner</h4>
           <p class="em-spotlight-card-desc">Retrieves matching archetypes and similar motions to plan the analysis outline.</p>
         </div>
         <div class="em-spotlight-card">
-          <div class="em-spotlight-card-icon">📝</div>
-          <h4 class="em-spotlight-card-title">Stage 3: Generator</h4>
-          <p class="em-spotlight-card-desc">Produces the full report: clashes, POIs, strategies, extensions, metrics — all motion-specific.</p>
+          <div class="em-spotlight-card-step">Stage 3</div>
+          <h4 class="em-spotlight-card-title">Generator</h4>
+          <p class="em-spotlight-card-desc">Produces the full report: clashes, strategies, POIs, extensions, and metrics.</p>
         </div>
         <div class="em-spotlight-card">
-          <div class="em-spotlight-card-icon">✅</div>
-          <h4 class="em-spotlight-card-title">Stage 4: Validator</h4>
-          <p class="em-spotlight-card-desc">Checks for specificity, fairness, and hallucinations — auto-repairs any weak sections.</p>
+          <div class="em-spotlight-card-step">Stage 4</div>
+          <h4 class="em-spotlight-card-title">Validator</h4>
+          <p class="em-spotlight-card-desc">Checks for specificity, fairness, and hallucinations — auto-repairs weak sections.</p>
         </div>
       </div>
 
       <div class="em-spotlight-stats">
         <div class="em-spotlight-stat">
           <div class="em-spotlight-stat-num">7</div>
-          <div class="em-spotlight-stat-label">Analysis Tabs</div>
+          <div class="em-spotlight-stat-label">Analysis Sections</div>
         </div>
         <div class="em-spotlight-stat">
           <div class="em-spotlight-stat-num">3–6</div>
@@ -579,21 +712,25 @@
       </div>
 
       <div class="em-spotlight-cta">
-        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--light em-btn--lg em-btn--bold">
-          🩺 Try Motion Doctor Free →
+        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--light em-btn--lg">
+          Try Motion Doctor Free →
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ==================== COMPARISON ==================== -->
-  <section class="em-section em-compare" aria-labelledby="compare-title">
+  <!-- ========================================================
+       COMPARISON — Before/After
+       ======================================================== -->
+  <section class="em-section em-section--alt" aria-labelledby="compare-title">
     <div class="em-container">
+      <div class="em-section-eyebrow">Why NekoTab</div>
       <h2 id="compare-title" class="em-section-title">Your tabbing challenges, solved</h2>
+      <p class="em-section-subtitle">Stop battling spreadsheets. Start running tournaments with confidence.</p>
       <div class="em-compare-grid">
-        <div class="em-card em-card--danger">
-          <div class="em-card-header">
-            <span class="em-card-emoji">😰</span>
+        <div class="em-compare-card em-compare-card--danger">
+          <div class="em-compare-header">
+            <span class="em-compare-emoji">😰</span>
             <h3>Spreadsheets &amp; Stress</h3>
           </div>
           <ul>
@@ -601,115 +738,167 @@
             <li>Judge and venue conflicts missed</li>
             <li>Slow result entry and human errors</li>
             <li>No public draw release</li>
+            <li>No persistent data between tournaments</li>
           </ul>
         </div>
-        <div class="em-card em-card--indigo">
-          <div class="em-card-header">
-            <span class="em-card-emoji">🚀</span>
+        <div class="em-compare-card em-compare-card--success">
+          <div class="em-compare-header">
+            <span class="em-compare-emoji">✨</span>
             <h3>NekoTab</h3>
           </div>
           <ul>
             <li>Automated draws and smart allocations</li>
-            <li>Conflict detection built in</li>
-            <li>Digital ballots with validation</li>
-            <li>Public site, check-ins, and notifications</li>
+            <li>Built-in conflict and clash detection</li>
+            <li>Digital ballots with real-time validation</li>
+            <li>Public site with live results and notifications</li>
+            <li>Persistent profiles via Debate Passport</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== HOW IT WORKS ==================== -->
-  <section id="how-it-works" class="em-section em-steps-section">
+  <!-- ========================================================
+       HOW IT WORKS — 3 steps
+       ======================================================== -->
+  <section id="how-it-works" class="em-section em-section--white">
     <div class="em-container">
       <div class="em-section-eyebrow">How It Works</div>
       <h2 class="em-section-title">Getting started takes 3 minutes</h2>
+      <p class="em-section-subtitle">No verification. No approval. Just create and go.</p>
       <div class="em-steps-grid">
         <div class="em-step">
           <div class="em-step-num">1</div>
-          <h3>Create an Account</h3>
-          <p>Sign up with just a username and password. No verification required.</p>
+          <div>
+            <h3>Create an Account</h3>
+            <p>Sign up with just a username and password. Instant access.</p>
+          </div>
         </div>
         <div class="em-step-connector"></div>
         <div class="em-step">
           <div class="em-step-num">2</div>
-          <h3>Set Up Your Tournament</h3>
-          <p>Name it, pick a format preset, and import your teams, judges, and venues.</p>
+          <div>
+            <h3>Set Up Your Tournament</h3>
+            <p>Name it, pick a format, and import your teams, judges, and venues.</p>
+          </div>
         </div>
         <div class="em-step-connector"></div>
         <div class="em-step">
           <div class="em-step-num">3</div>
-          <h3>Run &amp; Publish</h3>
-          <p>Generate draws, enter ballots, and share results on a public site — all automated.</p>
+          <div>
+            <h3>Run &amp; Publish</h3>
+            <p>Generate draws, enter ballots, and share results — all automated.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== STATS STRIP ==================== -->
-  <section class="em-section em-stats" aria-label="Key principles">
-    <div class="em-container em-stats-inner">
-      <div class="em-stat">
-        <div class="em-stat-icon">🔓</div>
-        <div class="em-stat-text">Open‑source</div>
-      </div>
-      <div class="em-stat">
-        <div class="em-stat-icon">⚡</div>
-        <div class="em-stat-text">Lightning fast</div>
-      </div>
-      <div class="em-stat">
-        <div class="em-stat-icon">🛡️</div>
-        <div class="em-stat-text">Reliable &amp; secure</div>
-      </div>
-      <div class="em-stat">
-        <div class="em-stat-icon">🎯</div>
-        <div class="em-stat-text">Purpose-built for debate</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== FORMATS ==================== -->
-  <section class="em-section em-cats" id="formats">
+  <!-- ========================================================
+       FORMATS — Supported debate formats
+       ======================================================== -->
+  <section class="em-section em-section--alt" id="formats">
     <div class="em-container">
       <div class="em-section-eyebrow">Formats</div>
       <h2 class="em-section-title">Built for every debate style</h2>
-      <div class="em-cats-grid">
-        <div class="em-cat em-cat--bp">
-          <div class="em-cat-overlay"></div>
-          <div class="em-cat-content">
-            <div class="em-cat-icon">🇬🇧</div>
-            <div class="em-cat-title">British Parliamentary (BP)</div>
-            <p class="em-cat-desc">4-team format with opening and closing halves</p>
+      <p class="em-section-subtitle">First-class support for the world's major parliamentary debate formats.</p>
+      <div class="em-formats-grid">
+        <div class="em-format-card em-format-card--bp">
+          <div class="em-format-overlay"></div>
+          <div class="em-format-content">
+            <div class="em-format-icon">🇬🇧</div>
+            <div class="em-format-title">British Parliamentary (BP)</div>
+            <p class="em-format-desc">4-team format with opening and closing halves</p>
           </div>
         </div>
-        <div class="em-cat em-cat--australs">
-          <div class="em-cat-overlay"></div>
-          <div class="em-cat-content">
-            <div class="em-cat-icon">🇦🇺</div>
-            <div class="em-cat-title">Australs / 3v3</div>
-            <p class="em-cat-desc">Two-team format with 3 speakers per side</p>
+        <div class="em-format-card em-format-card--australs">
+          <div class="em-format-overlay"></div>
+          <div class="em-format-content">
+            <div class="em-format-icon">🇦🇺</div>
+            <div class="em-format-title">Australs / 3v3</div>
+            <p class="em-format-desc">Two-team format with 3 speakers per side</p>
           </div>
         </div>
-        <div class="em-cat em-cat--wsdc">
-          <div class="em-cat-overlay"></div>
-          <div class="em-cat-content">
-            <div class="em-cat-icon">🌏</div>
-            <div class="em-cat-title">WSDC‑style</div>
-            <p class="em-cat-desc">World Schools format with reply speeches</p>
+        <div class="em-format-card em-format-card--wsdc">
+          <div class="em-format-overlay"></div>
+          <div class="em-format-content">
+            <div class="em-format-icon">🌏</div>
+            <div class="em-format-title">WSDC-style</div>
+            <p class="em-format-desc">World Schools format with reply speeches</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== FAQ ==================== -->
-  <section id="faq" class="em-section em-faq">
+  <!-- ========================================================
+       ENTERPRISE / CREDIBILITY — Trust & technical confidence
+       ======================================================== -->
+  <section class="em-section em-section--white" aria-labelledby="credibility-title">
+    <div class="em-container">
+      <div class="em-section-eyebrow">Trust &amp; Security</div>
+      <h2 id="credibility-title" class="em-section-title">Built for reliability at any scale</h2>
+      <p class="em-section-subtitle">Open-source foundations with enterprise-grade practices — designed for institutions worldwide.</p>
+
+      <div class="em-cred-grid">
+        <div class="em-cred-card">
+          <div class="em-cred-icon">🔓</div>
+          <h3 class="em-cred-title">Open Source</h3>
+          <p class="em-cred-desc">Full source code on GitHub. Audit, contribute, and verify every line.</p>
+        </div>
+        <div class="em-cred-card">
+          <div class="em-cred-icon">🏠</div>
+          <h3 class="em-cred-title">Self-Hosting</h3>
+          <p class="em-cred-desc">Deploy on your own infrastructure. Full data sovereignty for your organization.</p>
+        </div>
+        <div class="em-cred-card">
+          <div class="em-cred-icon">🛡️</div>
+          <h3 class="em-cred-title">Secure by Design</h3>
+          <p class="em-cred-desc">CSRF protection, session security, and input validation as standard.</p>
+        </div>
+        <div class="em-cred-card">
+          <div class="em-cred-icon">⚡</div>
+          <h3 class="em-cred-title">Production-Ready</h3>
+          <p class="em-cred-desc">Docker-based deployment. Built to handle tournaments of any size reliably.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- ==================== LEARN / CONTENT HUB PROMO ==================== -->
-  <section class="em-section em-learn-promo">
+  <!-- ========================================================
+       STATS STRIP — Key metrics / principles
+       ======================================================== -->
+  <section class="em-section em-section--gradient" aria-label="Key principles">
+    <div class="em-container em-stats-inner">
+      <div class="em-stat">
+        <div class="em-stat-icon">🔓</div>
+        <div class="em-stat-value">100%</div>
+        <div class="em-stat-label">Open-source</div>
+      </div>
+      <div class="em-stat">
+        <div class="em-stat-icon">⚡</div>
+        <div class="em-stat-value">3min</div>
+        <div class="em-stat-label">Setup time</div>
+      </div>
+      <div class="em-stat">
+        <div class="em-stat-icon">🌍</div>
+        <div class="em-stat-value">3+</div>
+        <div class="em-stat-label">Debate formats</div>
+      </div>
+      <div class="em-stat">
+        <div class="em-stat-icon">🎯</div>
+        <div class="em-stat-value">4-stage</div>
+        <div class="em-stat-label">AI pipeline</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       LEARN PROMO — Resources & Education
+       ======================================================== -->
+  <section class="em-section em-section--green">
     <div class="em-container em-learn-promo-inner">
-      <div class="em-section-eyebrow em-learn-promo-eyebrow">Resources</div>
+      <div class="em-section-eyebrow">Resources</div>
       <h2 class="em-section-title">Learn Debate</h2>
       <p class="em-section-subtitle">Free guides on debate formats, judging, speaker training, and tournament hosting. Whether you're starting out or sharpening advanced skills.</p>
       <div class="em-learn-promo-cats">
@@ -718,19 +907,23 @@
         <a href="/learn/?category=training" class="em-btn em-btn--sm em-btn--outline-green">🎤 Training</a>
         <a href="/learn/?category=hosting" class="em-btn em-btn--sm em-btn--outline-green">📋 Hosting</a>
       </div>
-      <a href="/learn/" class="em-btn em-btn--primary em-btn--lg em-learn-promo-main-cta">Browse All Guides →</a>
+      <div style="margin-top: 24px;">
+        <a href="/learn/" class="em-btn em-btn--primary em-btn--lg">Browse All Guides →</a>
+      </div>
     </div>
   </section>
 
-  <!-- ==================== FAQ (continued) ==================== -->
-  <section class="em-section em-faq">
+  <!-- ========================================================
+       FAQ — Frequently asked questions
+       ======================================================== -->
+  <section id="faq" class="em-section em-section--white">
     <div class="em-container em-faq-container">
       <div class="em-section-eyebrow">FAQ</div>
       <h2 class="em-section-title">Frequently asked questions</h2>
       <div class="em-faq-list">
         <details class="em-acc">
           <summary>Which formats does NekoTab support?</summary>
-          <p>British Parliamentary (BP), Australs/3v3, WSDC‑style, and other parliamentary formats. You can configure speaker counts, sides, and scoring to match your needs.</p>
+          <p>British Parliamentary (BP), Australs/3v3, WSDC-style, and other parliamentary formats. You can configure speaker counts, sides, and scoring to match your needs.</p>
         </details>
         <details class="em-acc">
           <summary>Can I import teams, judges, and venues?</summary>
@@ -738,7 +931,7 @@
         </details>
         <details class="em-acc">
           <summary>Is it free to use?</summary>
-          <p>NekoTab is open‑source and free to self-host. You can also use our hosted service for a simple one-time fee.</p>
+          <p>NekoTab is open-source and free to self-host. You can also use our hosted service for a simple one-time fee.</p>
         </details>
         <details class="em-acc">
           <summary>How do I create a tournament?</summary>
@@ -758,65 +951,72 @@
         </details>
         <details class="em-acc">
           <summary>What is the Debate Passport?</summary>
-          <p>The Debate Passport is your personal debate profile that tracks your tournament participation, speaker scores, wins, and achievements across all tournaments hosted on NekoTab. It provides a career overview and connects you with the global debater directory. Think of it as a debate CV that builds automatically as you compete.</p>
+          <p>The Debate Passport is your personal debate profile that tracks your tournament participation, speaker scores, wins, and achievements across all tournaments hosted on NekoTab. It provides a career overview and connects you with the global debater directory.</p>
         </details>
         <details class="em-acc">
-          <summary>Can I use NekoTab for school-level tournaments?</summary>
-          <p>Absolutely. NekoTab supports all major school debating formats including WSDC-style and modified Australs. The setup process is the same — create a tournament, configure the format preset, import participants, and start running rounds. Many school debating leagues use NekoTab for their competitions.</p>
+          <summary>Can I self-host NekoTab?</summary>
+          <p>Yes. NekoTab is fully open-source and can be deployed on your own infrastructure using Docker. Self-hosting gives you complete data sovereignty and customization options.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- ==================== FINAL CTA ==================== -->
+  <!-- ========================================================
+       FINAL CTA — Conversion close
+       ======================================================== -->
   <section class="em-section em-final">
-    <div class="em-container">
-      <h2 class="em-final-title">Ready to elevate your debate experience?</h2>
-      <p class="em-final-sub">Run tournaments, analyze motions with AI, or join the global debate community — all free.</p>
-      <div class="em-hero-ctas" style="flex-wrap:wrap; justify-content:center; gap:12px;">
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--light em-btn--lg">
+    <div class="em-container em-final-inner">
+      <h2 class="em-final-title">Ready to run your next tournament?</h2>
+      <p class="em-final-sub">Join debate communities worldwide using NekoTab to organize, compete, and grow.</p>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--white em-btn--lg">
           Create a Tournament
         </a>
-        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--outline-light em-btn--lg">🩺 Motion Doctor</a>
+        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--outline-light em-btn--lg">Try Motion Doctor</a>
+        {% if not user.is_authenticated %}
         <a href="{% url 'signup' %}" class="em-btn em-btn--outline-light em-btn--lg">Sign Up Free</a>
+        {% endif %}
       </div>
     </div>
   </section>
 
-  <!-- ==================== FOOTER ==================== -->
+  <!-- ========================================================
+       FOOTER — Premium SaaS footer with 6 columns
+       ======================================================== -->
   <footer class="em-footer" role="contentinfo">
     <div class="em-container em-footer-grid">
       <div>
-        <a href="/" class="em-logo em-logo--footer">
+        <a href="/" class="em-logo">
           <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img">
         </a>
-        <p class="em-foot-desc">Open-source debate tabulation: draws, allocations, ballots, standings, and breaks — all in one place.</p>
+        <p class="em-foot-desc">The operating system for debate. Open-source tournament tabulation, AI motion analysis, and a global debate community.</p>
       </div>
       <div>
-        <div class="em-foot-title">Tabulation</div>
+        <div class="em-foot-title">Product</div>
         <ul class="em-foot-links">
-          <li><a href="#features">Features</a></li>
+          <li><a href="#features">Tournament Engine</a></li>
+          <li><a href="{% url 'motionbank:motion-doctor' %}">Motion Doctor</a></li>
+          <li><a href="{% url 'motionbank:motionbank-home' %}">Motion Bank</a></li>
+          <li><a href="{% url 'passport:passport-dashboard' %}">Debate Passport</a></li>
           <li><a href="#formats">Formats</a></li>
-          <li><a href="/create/">Create Tournament</a></li>
-          <li><a href="/api">API</a></li>
         </ul>
       </div>
       <div>
-        <div class="em-foot-title">Tools</div>
+        <div class="em-foot-title">Community</div>
         <ul class="em-foot-links">
-          <li><a href="{% url 'motionbank:motion-doctor' %}">🩺 Motion Doctor</a></li>
-          <li><a href="{% url 'motionbank:motionbank-home' %}">📋 Motion Bank</a></li>
-          <li><a href="{% url 'forum:forum-home' %}">💬 Debate Forum</a></li>
-          <li><a href="{% url 'passport:passport-dashboard' %}">🪪 Debate Passport</a></li>
+          <li><a href="{% url 'forum:forum-home' %}">Debate Forum</a></li>
+          <li><a href="/learn/">Learn Debate</a></li>
+          <li><a href="{% url 'org-list' %}">Organizations</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
       <div>
         <div class="em-foot-title">Resources</div>
         <ul class="em-foot-links">
-          <li><a href="/learn/">📚 Learn Debate</a></li>
           <li><a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Documentation</a></li>
           <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="/api">API</a></li>
+          <li><a href="/create/">Create Tournament</a></li>
         </ul>
       </div>
       <div>
@@ -836,15 +1036,20 @@
             <li><a href="/">Dashboard</a></li>
             <li><a href="/create/">New Tournament</a></li>
           {% else %}
-            <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Sign in</a></li>
+            <li><a href="{% url 'signup' %}">Create Account</a></li>
           {% endif %}
         </ul>
       </div>
     </div>
     <div class="em-foot-bottom">
-      <div class="em-container">
-        <div class="em-copy">© <span id="em-year"></span> NekoTab · Built with ❤️ for the debate community</div>
+      <div class="em-container em-foot-bottom-inner">
+        <div class="em-copy">© <span id="em-year"></span> NekoTab. Open-source debate platform.</div>
+        <div class="em-foot-bottom-links">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -859,7 +1064,7 @@
     </a>
   </div>
 
-  <!-- Cookie Consent Banner (uses shared module loaded in <head>) -->
+  <!-- Cookie Consent Banner -->
   <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; color:#e0e0e0; padding:16px 24px; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,.3); font-size:14px;">
     <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
       <p style="margin:0; flex:1; min-width:280px;">
