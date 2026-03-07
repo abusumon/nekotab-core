@@ -66,6 +66,7 @@ class TournamentCreateView(WorkspaceAdminMixin, CreateView):
 
     def form_valid(self, form):
         from breakqual.models import BreakCategory
+        from breakqual.utils import auto_make_break_rounds
         from tournaments.forms import TournamentStartForm
         from tournaments.utils import auto_make_rounds
         from users.models import UserPermission
@@ -93,6 +94,11 @@ class TournamentCreateView(WorkspaceAdminMixin, CreateView):
             )
             open_break.full_clean()
             open_break.save()
+
+        # Generate break rounds (SF, GF, etc.) if a break category exists
+        open_break = BreakCategory.objects.filter(tournament=tournament, is_general=True).first()
+        if open_break and not tournament.break_rounds().exists():
+            auto_make_break_rounds(open_break, tournament, False)
 
         # Create default permission groups and feedback questions
         TournamentStartForm.add_default_permission_groups(tournament)
