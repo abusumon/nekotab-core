@@ -1,9 +1,13 @@
 from django.conf import settings
+from django.core.cache import cache
 from django.http import HttpResponseNotFound
 from django.shortcuts import redirect
 from django.template import loader
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
+
+from users.permissions import Permission
 
 from .forms import WorkspaceTournamentCreateForm
 from .workspace_mixins import WorkspaceAccessMixin, WorkspaceAdminMixin
@@ -61,14 +65,52 @@ class TournamentCreateView(WorkspaceAdminMixin, CreateView):
         return ctx
 
     def form_valid(self, form):
+        from breakqual.models import BreakCategory
+        from tournaments.forms import TournamentStartForm
+        from tournaments.utils import auto_make_rounds
+        from users.models import UserPermission
+
         tournament = form.save(commit=False)
         tournament.organization = self.organization
         tournament.owner = self.request.user
         tournament.active = True
         tournament.save()
+
         # Create initial preliminary rounds
-        from tournaments.utils import auto_make_rounds
         auto_make_rounds(tournament, form.cleaned_data['num_prelim_rounds'])
+
+        # Create open break category if break size specified
+        break_size = form.cleaned_data.get('break_size')
+        if break_size:
+            open_break = BreakCategory(
+                tournament=tournament,
+                name=_("Open"),
+                slug="open",
+                seq=1,
+                break_size=break_size,
+                is_general=True,
+                priority=100,
+            )
+            open_break.full_clean()
+            open_break.save()
+
+        # Create default permission groups and feedback questions
+        TournamentStartForm.add_default_permission_groups(tournament)
+        TournamentStartForm.add_default_feedback_questions(tournament)
+
+        # Set current round
+        tournament.current_round = tournament.round_set.order_by('seq').first()
+        tournament.save()
+
+        # Grant the creator all permissions on this tournament
+        UserPermission.objects.bulk_create([
+            UserPermission(user=self.request.user, permission=perm, tournament=tournament)
+            for perm in Permission
+        ], ignore_conflicts=True)
+
+        # Warm the subdomain-exists cache so the redirect lands immediately
+        cache.set(f'subdom_tour_exists_{tournament.slug.lower()}', True, 300)
+
         return redirect('/tournaments/')
 
 

@@ -2,7 +2,7 @@ from django import forms
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
-from tournaments.models import Tournament, validate_dns_safe_slug
+from tournaments.models import Tournament, normalize_slug, validate_dns_safe_slug
 from .models import Organization
 
 
@@ -15,8 +15,14 @@ class WorkspaceTournamentCreateForm(forms.ModelForm):
         }
 
     num_prelim_rounds = forms.IntegerField(
-        min_value=1, max_value=50, initial=5,
+        min_value=1,
         label=_("Number of preliminary rounds"),
+    )
+
+    break_size = forms.IntegerField(
+        min_value=2, required=False,
+        label=_("Number of teams in the open break"),
+        help_text=_("Leave blank if there are no break rounds."),
     )
 
     def __init__(self, *args, organization=None, **kwargs):
@@ -27,8 +33,10 @@ class WorkspaceTournamentCreateForm(forms.ModelForm):
             field.widget.attrs.setdefault('class', 'form-control')
 
     def clean_slug(self):
-        slug = self.cleaned_data['slug'].lower()
-        validate_dns_safe_slug(slug)
+        raw = self.cleaned_data.get('slug', '')
+        slug = normalize_slug(raw)
+        if slug != raw:
+            self.cleaned_data['slug'] = slug
         if Tournament.objects.filter(slug__iexact=slug).exists():
             raise forms.ValidationError(_("This slug is already taken."))
         from organizations.models import Organization
