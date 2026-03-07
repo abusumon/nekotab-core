@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load add_field_css i18n %}
+
+{% block noindex %}<meta name="robots" content="noindex, nofollow" />{% endblock %}
+{% block page-title %}{% trans "Create a Tournament" %}{% endblock %}
+{% block head-title %}{% trans "Create a Tournament" %}{% endblock %}
+{% block sidebar %}{% endblock %}
+{% block page-alerts %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card mt-4">
+      <div class="list-group list-group-flush">
+        <form method="POST">
+          {% csrf_token %}
+
+          {% trans "Create a new tournament" as title %}
+          {% include "components/form-title.html" with icon="award" %}
+
+          <div class="list-group-item pt-3 pb-3">
+            <p class="text-muted mb-3">
+              {% trans "Set up a standalone tournament. An organization will be created automatically to manage it." %}
+            </p>
+
+            {% if form.errors %}
+              {% include "components/form-errors.html" with errors=form.errors %}
+            {% endif %}
+
+            {% for field in form %}
+              <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field|addcss:"form-control" }}
+                {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
+                {% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="list-group-item">
+            <button type="submit" class="btn btn-success btn-block">
+              {% trans "Create Tournament" %}
+            </button>
+            <a href="{% url 'tabbycat-index' %}" class="btn btn-outline-secondary btn-block mt-2">
+              {% trans "Cancel" %}
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

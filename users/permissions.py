@@ -184,26 +184,34 @@ def has_permission(user: 'settings.AUTH_USER_MODEL', permission: permission_type
     if hasattr(tournament, 'owner_id') and tournament.owner_id == user.pk:
         return True
 
-    # Organization-level access: org OWNER/ADMIN get full tournament access,
-    # org MEMBER gets access (view-level mixins handle granularity).
+    # Organization-level access: resolve org membership role against the
+    # ROLE_PERMISSIONS mapping.  Owner/Admin get full access, other roles
+    # get a defined permission set.  Cache the role lookup to avoid a DB
+    # query on every permission check.
     if hasattr(tournament, 'organization_id') and tournament.organization_id:
         from organizations.models import OrganizationMembership
-        org_membership = OrganizationMembership.objects.filter(
-            organization_id=tournament.organization_id,
-            user=user,
-        ).first()
-        if org_membership is not None:
-            # Org owners and admins get unconditional access
-            if org_membership.role in (
-                OrganizationMembership.Role.OWNER,
-                OrganizationMembership.Role.ADMIN,
-            ):
+        from organizations.permissions import ROLE_PERMISSIONS
+
+        version = _get_perm_cache_version(user.pk)
+        cache_key = PERM_CACHE_KEY % (user.pk, tournament.slug, 'org_role', version)
+        cached_role = cache.get(cache_key)
+
+        if cached_role is None:
+            org_role = OrganizationMembership.objects.filter(
+                organization_id=tournament.organization_id,
+                user=user,
+            ).values_list('role', flat=True).first()
+            cached_role = org_role or '__none__'
+            cache.set(cache_key, cached_role, 600)
+
+        if cached_role != '__none__':
+            role_perms = ROLE_PERMISSIONS.get(cached_role)
+            if role_perms == '__all__':
                 return True
-            # Org members get access (individual tournament perms still apply)
-            if org_membership.role == OrganizationMembership.Role.MEMBER:
-                # Members can access the tournament but specific permission
-                # checks fall through to the existing per-tournament logic
-                pass
+            if isinstance(role_perms, set) and permission in role_perms:
+                return True
+            # Role doesn't grant this permission — fall through to
+            # per-tournament UserPermission / Group checks below
 
     if isinstance(permission, bool):
         return permission
@@ -223,10 +231,24 @@ def has_permission(user: 'settings.AUTH_USER_MODEL', permission: permission_type
             user._permissions[tournament.slug].add(permission)
         return cached_perm
 
-    perm = (
-        user.userpermission_set.filter(permission=permission, tournament=tournament).exists() or
-        user.membership_set.filter(group__permissions__contains=[permission], group__tournament=tournament).exists()
-    )
+    # Check direct permission first, then group-based permissions.
+    # The group.permissions field is an ArrayField on PostgreSQL and a JSONField
+    # on SQLite.  ``__contains`` is not supported on SQLite's JSONField, so we
+    # fall back to fetching group permissions in Python when needed.
+    perm = user.userpermission_set.filter(permission=permission, tournament=tournament).exists()
+    if not perm:
+        from django.db import connection
+        if connection.vendor == 'postgresql':
+            perm = user.membership_set.filter(
+                group__permissions__contains=[permission],
+                group__tournament=tournament,
+            ).exists()
+        else:
+            # SQLite fallback: evaluate in Python
+            for m in user.membership_set.select_related('group').filter(group__tournament=tournament):
+                if permission in (m.group.permissions or []):
+                    perm = True
+                    break
     if perm:
         user._permissions[tournament.slug].add(permission)
         cache.set(PERM_CACHE_KEY % (user.pk, tournament.slug, str(permission), _get_perm_cache_version(user.pk)), perm)

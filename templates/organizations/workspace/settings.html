@@ -1,0 +1,49 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Settings" %}{% endblock %}
+{% block header-title %}{% trans "Organization Settings" %}{% endblock %}
+
+{% block content %}
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "General" %}</h2>
+  </div>
+  <table class="ws-table">
+    <tbody>
+      <tr>
+        <td style="font-weight:500;width:160px;">{% trans "Name" %}</td>
+        <td>{{ organization.name }}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">{% trans "Slug" %}</td>
+        <td><code style="font-size:13px;">{{ organization.slug }}</code></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">{% trans "Description" %}</td>
+        <td>{{ organization.description|default:"—" }}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">{% trans "Workspace" %}</td>
+        <td>
+          {% if organization.is_workspace_enabled %}
+            <span class="ws-badge ws-badge-active">{% trans "Enabled" %}</span>
+          {% else %}
+            <span class="ws-badge ws-badge-inactive">{% trans "Disabled" %}</span>
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">{% trans "Created" %}</td>
+        <td style="color:var(--ws-text-muted);">{{ organization.created_at|date:"N j, Y" }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="mt-3">
+    <p style="color:var(--ws-text-muted);font-size:13px;">
+      {% trans "To edit organization settings, use the admin panel." %}
+    </p>
+    <a href="/database/organizations/organization/{{ organization.pk }}/change/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Edit in Admin" %}</a>
+  </div>
+</div>
+{% endblock %}

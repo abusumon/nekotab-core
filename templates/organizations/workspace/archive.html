@@ -1,0 +1,42 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Archive" %}{% endblock %}
+{% block header-title %}{% trans "Archived Tournaments" %}{% endblock %}
+
+{% block content %}
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Archived Tournaments" %}</h2>
+  </div>
+
+  {% if archived_tournaments %}
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th>{% trans "Name" %}</th>
+          <th>{% trans "Slug" %}</th>
+          <th>{% trans "Created" %}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for t in archived_tournaments %}
+          <tr>
+            <td style="font-weight:500;">{{ t.short_name }}</td>
+            <td><code style="font-size:13px;">{{ t.slug }}</code></td>
+            <td style="color:var(--ws-text-muted);font-size:13px;">{{ t.created_at|date:"N j, Y"|default:"—" }}</td>
+            <td>
+              <a href="/tournaments/{{ t.slug }}/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "View" %}</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="ws-empty">
+      <p>{% trans "No archived tournaments." %}</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

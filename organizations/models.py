@@ -35,6 +35,22 @@ class Organization(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("updated at"))
 
+    # ── Workspace support ───────────────────────────────────────────────
+    is_workspace_enabled = models.BooleanField(
+        default=False,
+        db_index=True,
+        verbose_name=_("workspace enabled"),
+        help_text=_("When enabled, this organization is accessible via its own subdomain."),
+    )
+    description = models.TextField(
+        blank=True, default="",
+        verbose_name=_("description"),
+    )
+    logo = models.ImageField(
+        upload_to='org_logos/', blank=True, null=True,
+        verbose_name=_("logo"),
+    )
+
     class Meta:
         verbose_name = _("organization")
         verbose_name_plural = _("organizations")
@@ -42,6 +58,16 @@ class Organization(models.Model):
 
     def __str__(self):
         return self.name
+
+    def clean(self):
+        super().clean()
+        if self.is_workspace_enabled:
+            from tournaments.models import Tournament
+            if Tournament.objects.filter(slug__iexact=self.slug).exists():
+                from django.core.exceptions import ValidationError
+                raise ValidationError({
+                    'slug': _("This slug is already in use by a tournament."),
+                })
 
 
 class OrganizationMembership(models.Model):
@@ -58,10 +84,13 @@ class OrganizationMembership(models.Model):
     """
 
     class Role(models.TextChoices):
-        OWNER = 'owner', _("Owner")
-        ADMIN = 'admin', _("Admin")
-        MEMBER = 'member', _("Member")
-        VIEWER = 'viewer', _("Viewer")
+        OWNER     = 'owner',     _("Owner")
+        ADMIN     = 'admin',     _("Admin")
+        TABMASTER = 'tabmaster', _("Tabmaster")
+        EDITOR    = 'editor',    _("Editor")
+        VIEWER    = 'viewer',    _("Viewer")
+        # Legacy alias — existing DB rows use 'member'; treated as EDITOR level.
+        MEMBER    = 'member',    _("Member")
 
     organization = models.ForeignKey(
         Organization,
@@ -96,10 +125,12 @@ class OrganizationMembership(models.Model):
     # -- Role hierarchy helpers -----------------------------------------------
 
     ROLE_HIERARCHY = {
-        Role.OWNER: 4,
-        Role.ADMIN: 3,
-        Role.MEMBER: 2,
-        Role.VIEWER: 1,
+        Role.OWNER:     5,
+        Role.ADMIN:     4,
+        Role.TABMASTER: 3,
+        Role.EDITOR:    2,
+        Role.MEMBER:    2,   # legacy alias — same level as EDITOR
+        Role.VIEWER:    1,
     }
 
     @property
@@ -110,6 +141,11 @@ class OrganizationMembership(models.Model):
         """Return True if this membership's role is >= *minimum_role*."""
         min_level = self.ROLE_HIERARCHY.get(minimum_role, 0)
         return self.role_level >= min_level
+
+    @property
+    def is_admin_or_above(self):
+        """Template-friendly shortcut: True if ADMIN or OWNER."""
+        return self.has_role_at_least(self.Role.ADMIN)
 
 
 # ---------------------------------------------------------------------------

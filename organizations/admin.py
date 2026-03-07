@@ -13,7 +13,8 @@ class OrganizationMembershipInline(admin.TabularInline):
 
 @admin.register(Organization)
 class OrganizationAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'created_at', 'member_count')
+    list_display = ('name', 'slug', 'is_workspace_enabled', 'created_at', 'member_count')
+    list_filter = ('is_workspace_enabled',)
     search_fields = ('name', 'slug')
     prepopulated_fields = {'slug': ('name',)}
     inlines = [OrganizationMembershipInline]

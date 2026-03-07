@@ -12,6 +12,7 @@ from django.views.generic import TemplateView
 
 import tournaments.views
 from importer.views import LoadDemoView
+from organizations import views as organizations_views
 from users.views import BlankSiteStartView
 from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
 from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
@@ -131,6 +132,19 @@ urlpatterns = [
 
     # Retention archive downloads
     path('', include('retention.urls')),
+
+    # Marketing pages
+    path('for-organizers/',
+        TemplateView.as_view(template_name='marketing/for_organizers.html'),
+        name='for-organizers'),
+
+    # Registration flows
+    path('register/tournament/',
+        tournaments.views.RegisterTournamentView.as_view(),
+        name='register-tournament'),
+    path('register/organization/',
+        organizations_views.RegisterOrganizationView.as_view(),
+        name='register-organization'),
 
     # Tournament URLs
     path('<slug:tournament_slug>/',

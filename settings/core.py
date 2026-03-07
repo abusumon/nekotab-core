@@ -130,7 +130,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Rewrite subdomain requests to slug-based paths (feature gated)
-    'utils.middleware.SubdomainTournamentMiddleware',
+    'utils.middleware.SubdomainTenantMiddleware',
     'utils.middleware.DebateMiddleware',
     # 404 diagnostic logging
     'utils.middleware_404.Log404Middleware',
@@ -141,6 +141,7 @@ MIDDLEWARE = [
 ]
 
 TABBYCAT_APPS = (
+    'core',
     'actionlog',
     'adjallocation',
     'adjfeedback',
@@ -493,6 +494,18 @@ SUBDOMAIN_BASE_DOMAIN = os.environ.get('SUBDOMAIN_BASE_DOMAIN', '')
 RESERVED_SUBDOMAINS = os.environ.get(
     'RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media'
 ).split(',')
+
+# Organization workspace routing; when False, SubdomainTenantMiddleware
+# behaves identically to the old SubdomainTournamentMiddleware.
+ORGANIZATION_WORKSPACES_ENABLED = _env_bool('ORGANIZATION_WORKSPACES_ENABLED')
+
+# Cross-subdomain session/CSRF cookies: when a base domain is configured,
+# set the cookie domain to the parent domain so that a session created at
+# nekotab.app is also valid at orgslug.nekotab.app.
+# Production configs (heroku.py) may override these with stricter settings.
+if SUBDOMAIN_BASE_DOMAIN:
+    SESSION_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
+    CSRF_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
 
 # ==============================================================================
 # Email (defaults; can be overridden in environment-specific settings)

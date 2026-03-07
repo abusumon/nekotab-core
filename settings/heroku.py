@@ -21,7 +21,14 @@ if environ.get('DJANGO_SECRET_KEY', ''):
     SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
 # Allow specific host headers
-ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', '.nekotab.app,.herokuapp.com,localhost').split(',')
+# Use HEROKU_APP_HOSTNAME (e.g. "nekotab-prod.herokuapp.com") instead of the
+# broad ".herokuapp.com" wildcard to avoid accepting requests for other apps
+# on the same shared domain.
+_heroku_host = environ.get('HEROKU_APP_HOSTNAME', '')
+_default_hosts = '.nekotab.app,localhost'
+if _heroku_host:
+    _default_hosts += ',' + _heroku_host
+ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', _default_hosts).split(',')
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -165,6 +172,10 @@ else:
 SUBDOMAIN_TOURNAMENTS_ENABLED = environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', 'true').lower() == 'true'
 SUBDOMAIN_BASE_DOMAIN = environ.get('SUBDOMAIN_BASE_DOMAIN', environ.get('HEROKU_APP_DOMAIN', 'nekotab.app'))
 RESERVED_SUBDOMAINS = environ.get('RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media').split(',')
+
+# Organization workspace routing; when False, SubdomainTenantMiddleware
+# behaves identically to the old SubdomainTournamentMiddleware.
+ORGANIZATION_WORKSPACES_ENABLED = environ.get('ORGANIZATION_WORKSPACES_ENABLED', 'false').lower() == 'true'
 
 # Share cookies across subdomains when base domain is configured.
 # This is safe because tournament owners do NOT have the ability to run

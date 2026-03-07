@@ -47,7 +47,7 @@ def bump_perm_cache_version(user_id):
         # Key doesn't exist yet — initialise it
         cache.set(key, 2, timeout=None)
         new_version = 2
-    logger.info("Permission cache version bumped for user %d → v%d", user_id, new_version)
+    logger.info("Permission cache version bumped for user %d -> v%d", user_id, new_version)
     return new_version
 
 
@@ -88,3 +88,49 @@ def invalidate_perms_on_membership_delete(sender, instance, **kwargs):
         "Membership deleted: user=%d org=%d",
         instance.user_id, instance.organization_id,
     )
+
+
+# ---------------------------------------------------------------------------
+# Subdomain slug reservation sync
+# ---------------------------------------------------------------------------
+
+@receiver(post_save, sender='organizations.Organization')
+def sync_org_slug_reservation(sender, instance, **kwargs):
+    """Create or remove a SubdomainSlugReservation when an organization
+    is saved, depending on whether workspace mode is enabled."""
+    from core.models import SubdomainSlugReservation
+    if instance.is_workspace_enabled:
+        SubdomainSlugReservation.objects.get_or_create(
+            slug=instance.slug.lower(),
+            defaults={
+                'tenant_type': 'organization',
+                'organization': instance,
+            },
+        )
+    else:
+        # Workspace disabled — remove any existing reservation for this org
+        SubdomainSlugReservation.objects.filter(
+            organization=instance, tenant_type='organization',
+        ).delete()
+
+
+# ---------------------------------------------------------------------------
+# Tenant cache invalidation (for SubdomainTenantMiddleware)
+# ---------------------------------------------------------------------------
+
+@receiver(post_save, sender='organizations.Organization')
+def invalidate_tenant_cache_on_org_save(sender, instance, **kwargs):
+    """Bust tenant resolution caches when an organization is saved."""
+    cache.delete(f"tenant_type_{instance.slug}")
+    cache.delete(f"tenant_type_{instance.slug.lower()}")
+    cache.delete(f"org_obj_{instance.slug}")
+    cache.delete(f"org_obj_{instance.slug.lower()}")
+
+
+@receiver(post_delete, sender='organizations.Organization')
+def invalidate_tenant_cache_on_org_delete(sender, instance, **kwargs):
+    """Bust tenant resolution caches when an organization is deleted."""
+    cache.delete(f"tenant_type_{instance.slug}")
+    cache.delete(f"tenant_type_{instance.slug.lower()}")
+    cache.delete(f"org_obj_{instance.slug}")
+    cache.delete(f"org_obj_{instance.slug.lower()}")

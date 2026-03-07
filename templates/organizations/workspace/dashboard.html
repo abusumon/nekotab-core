@@ -1,0 +1,52 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Dashboard" %}{% endblock %}
+{% block header-title %}{% trans "Dashboard" %}{% endblock %}
+
+{% block content %}
+<div class="ws-stats">
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Active Tournaments" %}</div>
+    <div class="ws-stat-value">{{ active_tournaments|length }}</div>
+  </div>
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Members" %}</div>
+    <div class="ws-stat-value">{{ member_count }}</div>
+  </div>
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Total Tournaments" %}</div>
+    <div class="ws-stat-value">{{ total_tournament_count }}</div>
+  </div>
+</div>
+
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Active Tournaments" %}</h2>
+    {% if membership and membership.is_admin_or_above %}
+      <a href="/tournaments/new/" class="ws-btn ws-btn-primary ws-btn-sm">{% trans "New Tournament" %}</a>
+    {% endif %}
+  </div>
+
+  {% if active_tournaments %}
+    <div class="ws-tournament-grid">
+      {% for t in active_tournaments %}
+        <div class="ws-tournament-card">
+          <h4><a href="/tournaments/{{ t.slug }}/">{{ t.short_name }}</a></h4>
+          <div class="meta">
+            {{ t.name }}
+            {% if t.created_at %} · {{ t.created_at|date:"N j, Y" }}{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="ws-empty">
+      <p>{% trans "No active tournaments yet." %}</p>
+      {% if membership and membership.is_admin_or_above %}
+        <a href="/tournaments/new/" class="ws-btn ws-btn-primary">{% trans "Create your first tournament" %}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

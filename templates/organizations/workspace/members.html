@@ -1,0 +1,50 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Members" %}{% endblock %}
+{% block header-title %}{% trans "Members" %}{% endblock %}
+
+{% block content %}
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Organization Members" %}</h2>
+  </div>
+
+  {% if members %}
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th>{% trans "User" %}</th>
+          <th>{% trans "Email" %}</th>
+          <th>{% trans "Role" %}</th>
+          <th>{% trans "Joined" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in members %}
+          <tr>
+            <td style="font-weight:500;">{{ m.user.get_full_name|default:m.user.username }}</td>
+            <td style="color:var(--ws-text-muted);font-size:13px;">{{ m.user.email|default:"—" }}</td>
+            <td>
+              {% if m.role == 'owner' %}
+                <span class="ws-badge ws-badge-owner">{% trans "Owner" %}</span>
+              {% elif m.role == 'admin' %}
+                <span class="ws-badge ws-badge-admin">{% trans "Admin" %}</span>
+              {% elif m.role == 'viewer' %}
+                <span class="ws-badge ws-badge-viewer">{% trans "Viewer" %}</span>
+              {% else %}
+                <span class="ws-badge ws-badge-member">{{ m.get_role_display }}</span>
+              {% endif %}
+            </td>
+            <td style="color:var(--ws-text-muted);font-size:13px;">{{ m.joined_at|date:"N j, Y" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="ws-empty">
+      <p>{% trans "No members found." %}</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

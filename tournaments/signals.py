@@ -15,6 +15,9 @@ def update_tournament_cache(sender, instance, **kwargs):
     # Also bust subdomain existence cache on save (not just delete)
     cache.delete("subdom_tour_exists_%s" % instance.slug)
     cache.delete("subdom_tour_exists_%s" % instance.slug.lower())
+    # Bust tenant-type cache so SubdomainTenantMiddleware re-resolves
+    cache.delete("tenant_type_%s" % instance.slug)
+    cache.delete("tenant_type_%s" % instance.slug.lower())
 
 
 @receiver(post_delete, sender=Tournament)
@@ -28,8 +31,25 @@ def clear_tournament_cache_on_delete(sender, instance, **kwargs):
     # Also clear the subdomain existence cache
     cache.delete("subdom_tour_exists_%s" % instance.slug)
     cache.delete("subdom_tour_exists_%s" % instance.slug.lower())
+    # Bust tenant-type cache so SubdomainTenantMiddleware re-resolves
+    cache.delete("tenant_type_%s" % instance.slug)
+    cache.delete("tenant_type_%s" % instance.slug.lower())
     logger.info("Cleared caches for deleted tournament: slug=%s, id=%s",
                 instance.slug, instance.id)
+
+
+@receiver(post_save, sender=Tournament)
+def sync_slug_reservation_on_save(sender, instance, created, **kwargs):
+    """Create a SubdomainSlugReservation when a new tournament is created."""
+    if created:
+        from core.models import SubdomainSlugReservation
+        SubdomainSlugReservation.objects.get_or_create(
+            slug=instance.slug.lower(),
+            defaults={
+                'tenant_type': 'tournament',
+                'tournament': instance,
+            },
+        )
 
 
 @receiver(post_delete, sender=Round)

@@ -7,7 +7,10 @@ from django.contrib.auth import get_user_model
 
 from organizations.models import Organization
 from tournaments.models import Tournament
-from utils.middleware import SubdomainTournamentMiddleware, DebateMiddleware, get_subdomain_url
+from utils.middleware import (
+    SubdomainTournamentMiddleware, SubdomainTenantMiddleware,
+    DebateMiddleware, get_subdomain_url,
+)
 from utils.misc import build_tournament_absolute_uri
 
 User = get_user_model()
@@ -677,3 +680,274 @@ class RouteClassifierTest(TestCase):
     def test_feedback_is_public(self):
         request = self._make_request('/myslug/feedback/')
         self.assertFalse(DebateMiddleware._is_private_route(request, 'myslug'))
+
+
+# ==============================================================================
+# Phase 3 — SubdomainTenantMiddleware tests
+# ==============================================================================
+
+TENANT_SETTINGS = {
+    **SUBDOMAIN_SETTINGS,
+    'ORGANIZATION_WORKSPACES_ENABLED': False,
+}
+
+TENANT_SETTINGS_ORG_ENABLED = {
+    **SUBDOMAIN_SETTINGS,
+    'ORGANIZATION_WORKSPACES_ENABLED': True,
+}
+
+
+@override_settings(**TENANT_SETTINGS)
+class TenantMiddlewareLegacyModeTest(TestCase):
+    """When ORGANIZATION_WORKSPACES_ENABLED=False, SubdomainTenantMiddleware
+    must behave identically to SubdomainTournamentMiddleware."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.org = Organization.objects.create(
+            name='Tenant Org', slug='tenant-org', is_workspace_enabled=True)
+        cls.tournament = Tournament.objects.create(
+            name='Tenant T', short_name='TT', slug='tenant-t',
+            seq=1, active=True, organization=cls.org)
+
+    def setUp(self):
+        from django.core.cache import cache
+        cache.clear()
+
+    def test_tournament_subdomain_resolves(self):
+        """Tournament subdomains still work in legacy mode."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='tenant-t.nekotab.app')
+
+        def get_response(req):
+            self.assertEqual(req.tenant_type, 'tournament')
+            self.assertEqual(req.subdomain_tournament, 'tenant-t')
+            self.assertIsNone(req.tenant_organization)
+            self.assertEqual(req.path_info, '/tenant-t/')
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+    def test_org_workspace_disabled_ignores_org_subdomain(self):
+        """Org subdomains are NOT resolved when workspaces disabled."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='tenant-org.nekotab.app')
+
+        middleware = SubdomainTenantMiddleware(lambda req: None)
+        response = middleware(request)
+        # Should return 404 (not found), not resolve as organization
+        self.assertIsNone(request.tenant_organization)
+        self.assertNotEqual(request.tenant_type, 'organization')
+
+    def test_request_attributes_set_on_root_domain(self):
+        """Root domain requests should have all tenant attributes as None."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='nekotab.app')
+
+        def get_response(req):
+            self.assertIsNone(req.tenant_type)
+            self.assertIsNone(req.subdomain_tournament)
+            self.assertIsNone(req.tenant_organization)
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+    def test_global_paths_not_rewritten(self):
+        """BAD_PREFIXES paths must not be rewritten on tournament subdomains."""
+        factory = RequestFactory()
+        for path in ['/static/css/style.css', '/database/', '/summernote/editor/x/']:
+            request = factory.get(path, HTTP_HOST='tenant-t.nekotab.app')
+            captured_path = [None]
+
+            def get_response(req, _c=captured_path):
+                _c[0] = req.path_info
+                from django.http import HttpResponse
+                return HttpResponse('ok')
+
+            middleware = SubdomainTenantMiddleware(get_response)
+            middleware(request)
+            self.assertEqual(
+                captured_path[0], path,
+                msg=f"{path} was rewritten to {captured_path[0]}; should be excluded")
+
+    def test_admin_paths_rewritten_on_tournament_subdomain(self):
+        """Tournament admin paths like /admin/configure/ must be rewritten."""
+        factory = RequestFactory()
+        request = factory.get('/admin/configure/', HTTP_HOST='tenant-t.nekotab.app')
+
+        def get_response(req):
+            self.assertEqual(req.path_info, '/tenant-t/admin/configure/')
+            self.assertEqual(req.subdomain_tournament, 'tenant-t')
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=False)
+    def test_disabled_subdomain_routing(self):
+        """When subdomain routing disabled, nothing is resolved."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='tenant-t.nekotab.app')
+
+        def get_response(req):
+            self.assertIsNone(req.tenant_type)
+            self.assertIsNone(req.subdomain_tournament)
+            self.assertEqual(req.path_info, '/')
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+    def test_reserved_subdomain_not_resolved(self):
+        """Reserved subdomains should not resolve as any tenant."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='admin.nekotab.app')
+
+        def get_response(req):
+            self.assertIsNone(req.tenant_type)
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+
+@override_settings(**TENANT_SETTINGS_ORG_ENABLED)
+class TenantMiddlewareOrgEnabledTest(TestCase):
+    """Tests for SubdomainTenantMiddleware when ORGANIZATION_WORKSPACES_ENABLED=True."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.org = Organization.objects.create(
+            name='WS Org', slug='ws-org', is_workspace_enabled=True)
+        cls.org_disabled = Organization.objects.create(
+            name='Plain Org', slug='plain-org', is_workspace_enabled=False)
+        cls.tournament = Tournament.objects.create(
+            name='WS T', short_name='WT', slug='ws-t',
+            seq=1, active=True, organization=cls.org)
+
+    def setUp(self):
+        from django.core.cache import cache
+        cache.clear()
+
+    def test_tournament_subdomain_still_works_when_org_enabled(self):
+        """Tournament subdomains must still resolve correctly."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='ws-t.nekotab.app')
+
+        def get_response(req):
+            self.assertEqual(req.tenant_type, 'tournament')
+            self.assertEqual(req.subdomain_tournament, 'ws-t')
+            self.assertIsNone(req.tenant_organization)
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+    def test_org_subdomain_resolves_when_enabled(self):
+        """Workspace org subdomains should be resolved as organization tenant."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='ws-org.nekotab.app')
+
+        def get_response(req):
+            self.assertEqual(req.tenant_type, 'organization')
+            self.assertIsNone(req.subdomain_tournament)
+            self.assertEqual(req.tenant_organization, self.org)
+            # path_info should NOT be rewritten for org tenants
+            self.assertEqual(req.path_info, '/')
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+    def test_org_urlconf_set_for_workspace(self):
+        """Organization tenant should set request.urlconf."""
+        factory = RequestFactory()
+        request = factory.get('/members/', HTTP_HOST='ws-org.nekotab.app')
+
+        def get_response(req):
+            self.assertEqual(req.urlconf, 'organizations.workspace_urls')
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+    def test_disabled_workspace_org_not_resolved(self):
+        """Non-workspace orgs should not resolve even when feature is on."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='plain-org.nekotab.app')
+
+        middleware = SubdomainTenantMiddleware(lambda req: None)
+        response = middleware(request)
+        self.assertIsNone(request.tenant_organization)
+        self.assertNotEqual(request.tenant_type, 'organization')
+
+    def test_tournament_takes_priority_over_org(self):
+        """If both a tournament and org have the same slug, tournament wins."""
+        # Create an org with the same slug as the tournament (bypass clean)
+        org_dup = Organization.objects.create(
+            name='Dup Org', slug='ws-t', is_workspace_enabled=True)
+
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='ws-t.nekotab.app')
+
+        def get_response(req):
+            self.assertEqual(req.tenant_type, 'tournament')
+            self.assertEqual(req.subdomain_tournament, 'ws-t')
+            self.assertIsNone(req.tenant_organization)
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+        # Clean up the duplicate slug org
+        org_dup.delete()
+
+    def test_request_attributes_set_correctly_tournament(self):
+        """All three request attributes should be correct for tournament."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='ws-t.nekotab.app')
+
+        def get_response(req):
+            self.assertEqual(req.tenant_type, 'tournament')
+            self.assertEqual(req.subdomain_tournament, 'ws-t')
+            self.assertIsNone(req.tenant_organization)
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+    def test_request_attributes_set_correctly_organization(self):
+        """All three request attributes should be correct for organization."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='ws-org.nekotab.app')
+
+        def get_response(req):
+            self.assertEqual(req.tenant_type, 'organization')
+            self.assertIsNone(req.subdomain_tournament)
+            self.assertEqual(req.tenant_organization, self.org)
+            from django.http import HttpResponse
+            return HttpResponse('ok')
+
+        middleware = SubdomainTenantMiddleware(get_response)
+        middleware(request)
+
+    def test_nonexistent_subdomain_returns_404(self):
+        """Unknown subdomains should return 404."""
+        factory = RequestFactory()
+        request = factory.get('/', HTTP_HOST='nonexistent.nekotab.app')
+
+        middleware = SubdomainTenantMiddleware(lambda req: None)
+        response = middleware(request)
+        self.assertEqual(response.status_code, 404)

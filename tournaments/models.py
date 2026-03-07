@@ -290,6 +290,16 @@ class Tournament(models.Model):
         else:
             return str(self.name)
 
+    def clean(self):
+        super().clean()
+        from organizations.models import Organization
+        if Organization.objects.filter(
+            slug__iexact=self.slug, is_workspace_enabled=True,
+        ).exists():
+            raise ValidationError({
+                'slug': _("This slug is already in use by an organization workspace."),
+            })
+
     # --------------------------------------------------------------------------
     # Properties related to preferences
     # --------------------------------------------------------------------------

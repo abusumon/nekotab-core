@@ -1,14 +1,18 @@
 import logging
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import transaction
 from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
+
+from .forms import OrganizationRegistrationForm
 
 from .models import (
     Organization, OrganizationMembership,
@@ -248,3 +252,23 @@ class OrganizationChangeMemberRoleView(LoginRequiredMixin, OrgAdminMixin, View):
             'user': membership.user.username, 'role': new_role,
         })
         return redirect('org-members', org_slug=self.organization.slug)
+
+
+class RegisterOrganizationView(LoginRequiredMixin, CreateView):
+    """Public registration flow: create an organization workspace."""
+    form_class = OrganizationRegistrationForm
+    template_name = 'registration/register_organization.html'
+
+    def form_valid(self, form):
+        with transaction.atomic():
+            org = form.save(commit=False)
+            org.is_workspace_enabled = True
+            org.save()
+            OrganizationMembership.objects.create(
+                organization=org,
+                user=self.request.user,
+                role=OrganizationMembership.Role.OWNER,
+            )
+
+        base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
+        return redirect(f"https://{org.slug}.{base}/tournaments/new/")

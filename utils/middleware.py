@@ -3,6 +3,7 @@ import re
 
 from django.conf import settings
 from django.core.cache import cache
+from django.core.exceptions import DisallowedHost
 from django.http import Http404, HttpResponseNotFound, HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
@@ -100,6 +101,14 @@ class DebateMiddleware:
                 return self._tournament_not_found_response(slug, request)
             request.tournament = tournament
             cache.set(cached_key, tournament, 3600)
+
+        # ------------------------------------------------------------------
+        # Cross-tenant isolation: if this request is on an org subdomain,
+        # the tournament must belong to that organization.
+        # ------------------------------------------------------------------
+        tenant_org = getattr(request, 'tenant_organization', None)
+        if tenant_org and request.tournament.organization_id != tenant_org.pk:
+            return self._tournament_not_found_response(slug, request)
 
         # ------------------------------------------------------------------
         # Visibility gate – only applied to PRIVATE routes (admin/assistant)
@@ -399,3 +408,211 @@ class SubdomainTournamentMiddleware:
             request.path = new_path
 
         return self.get_response(request)
+
+
+class SubdomainTenantMiddleware:
+    """Resolves subdomain to Tournament or Organization workspace.
+
+    Drop-in replacement for ``SubdomainTournamentMiddleware``.  When
+    ``ORGANIZATION_WORKSPACES_ENABLED`` is ``False`` (default), behaviour is
+    identical to the old middleware — only tournament subdomains are resolved.
+
+    Sets on every request:
+        request.tenant_type          — ``'tournament'`` | ``'organization'`` | ``None``
+        request.tenant_organization  — ``Organization`` instance or ``None``
+        request.subdomain_tournament — slug ``str`` or ``None`` (backward compat)
+    """
+
+    RESERVED_SUBDOMAINS_DEFAULT = {
+        'www', 'admin', 'api', 'static', 'media', 'jet', 'database',
+    }
+
+    BAD_PREFIXES = (
+        '/static/', '/media/', '/database/', '/api/',
+        '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
+        '/summernote/', '/jet/', '/organizations/', '/archive/',
+        '/forum/', '/motions-bank/', '/passport/',
+        '/i18n/', '/jsi18n/',
+    )
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+        self.enabled = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
+        self.base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
+        self.org_workspaces_enabled = getattr(settings, 'ORGANIZATION_WORKSPACES_ENABLED', False)
+        reserved = getattr(settings, 'RESERVED_SUBDOMAINS', None)
+        self.reserved = set(reserved) if reserved is not None else self.RESERVED_SUBDOMAINS_DEFAULT
+        self.slug_re = _DNS_LABEL_RE
+
+    # -- subdomain extraction --------------------------------------------------
+
+    def _extract_subdomain(self, request):
+        """Extract the subdomain label from the Host header.
+
+        Returns the label (always lowercase) or ``None``.
+        """
+        try:
+            host = request.get_host().split(':')[0].lower()
+        except (KeyError, ValueError, DisallowedHost):
+            return None
+
+        if not host or not self.base_domain or not host.endswith(self.base_domain):
+            return None
+
+        subpart = host[:-len(self.base_domain)].rstrip('.')
+        if not subpart or '.' in subpart:
+            return None
+
+        if subpart in self.reserved or not self.slug_re.match(subpart):
+            return None
+
+        return subpart
+
+    # -- tenant resolution -----------------------------------------------------
+
+    def _tournament_exists(self, label):
+        """Check (with cache) whether *label* belongs to a tournament."""
+        cache_key = f"subdom_tour_exists_{label}"
+        cached = cache.get(cache_key)
+        if cached is not None:
+            return cached
+        exists = (
+            Tournament.objects.filter(slug=label).exists()
+            or Tournament.objects.filter(slug__iexact=label).exists()
+        )
+        cache.set(cache_key, exists, 300 if exists else 15)
+        return exists
+
+    def _get_workspace_org(self, label):
+        """Return the Organization for *label* if it has workspaces enabled.
+
+        Returns the Organization instance or ``None``.
+        """
+        cache_key = f"org_obj_{label}"
+        cached = cache.get(cache_key)
+        if cached is not None:
+            return cached if cached != '__none__' else None
+        from organizations.models import Organization
+        try:
+            org = Organization.objects.get(slug__iexact=label, is_workspace_enabled=True)
+        except Organization.DoesNotExist:
+            cache.set(cache_key, '__none__', 15)
+            return None
+        cache.set(cache_key, org, 300)
+        return org
+
+    def _resolve_tenant(self, label):
+        """Resolve *label* to a (tenant_type, value) pair.
+
+        Returns one of:
+          ('tournament', slug_str)
+          ('organization', Organization)
+          (None, None)
+        """
+        if not self.org_workspaces_enabled:
+            # Legacy mode: tournament-only
+            if self._tournament_exists(label):
+                return ('tournament', label)
+            return (None, None)
+
+        # Full mode: tournament-first, then organization
+        if self._tournament_exists(label):
+            return ('tournament', label)
+        org = self._get_workspace_org(label)
+        if org:
+            return ('organization', org)
+        return (None, None)
+
+    # -- request handling ------------------------------------------------------
+
+    def __call__(self, request):
+        # Always initialise so downstream code can rely on the attributes.
+        request.tenant_type = None
+        request.tenant_organization = None
+        request.subdomain_tournament = None  # backward compat
+
+        if not self.enabled or not self.base_domain:
+            return self.get_response(request)
+
+        label = self._extract_subdomain(request)
+        if not label:
+            return self.get_response(request)
+
+        tenant_type, value = self._resolve_tenant(label)
+
+        if tenant_type == 'tournament':
+            return self._handle_tournament(request, label)
+        elif tenant_type == 'organization':
+            return self._handle_organization(request, value)
+        else:
+            return self._handle_not_found(request, label)
+
+    # -- tournament path (identical to SubdomainTournamentMiddleware) -----------
+
+    def _handle_tournament(self, request, label):
+        """Rewrite the path for a tournament subdomain — identical behaviour
+        to ``SubdomainTournamentMiddleware``."""
+        request.tenant_type = 'tournament'
+        request.subdomain_tournament = label
+
+        # Skip rewriting for global routes
+        if request.path_info.startswith(self.BAD_PREFIXES):
+            return self.get_response(request)
+
+        if not request.path_info.startswith(f'/{label}/'):
+            # Guard: if the first segment is another tournament's slug,
+            # don't blindly prepend ours.
+            first_seg = request.path_info.strip('/').split('/')[0] if request.path_info.strip('/') else ''
+            if first_seg and first_seg != label:
+                seg_key = f"subdom_tour_exists_{first_seg}"
+                seg_exists = cache.get(seg_key)
+                if seg_exists is None:
+                    seg_exists = Tournament.objects.filter(slug=first_seg).exists()
+                    cache.set(seg_key, seg_exists, 300)
+                if seg_exists:
+                    return self.get_response(request)
+
+            new_path = f'/{label}{request.path_info}'
+            request.path_info = new_path
+            request.path = new_path
+
+        return self.get_response(request)
+
+    # -- organization workspace path -------------------------------------------
+
+    def _handle_organization(self, request, org):
+        """Set request attributes for an organization workspace.
+
+        Does NOT rewrite ``path_info`` — the org workspace has its own URL
+        config set via ``request.urlconf``.
+        """
+        request.tenant_type = 'organization'
+        request.tenant_organization = org
+        request.urlconf = 'organizations.workspace_urls'
+        return self.get_response(request)
+
+    # -- not found -------------------------------------------------------------
+
+    def _handle_not_found(self, request, label):
+        """Return a 404 for an unrecognised subdomain."""
+        logger.warning(
+            "Subdomain tenant not found: subdomain=%s, path=%s, "
+            "ip=%s, referer=%s",
+            label, request.path,
+            request.META.get('REMOTE_ADDR', 'unknown'),
+            request.META.get('HTTP_REFERER', 'none'),
+        )
+        try:
+            html = render_to_string('errors/subdomain_404.html', {
+                'subdomain': label,
+                'base_domain': self.base_domain,
+            })
+            return HttpResponseNotFound(html)
+        except Exception:
+            return HttpResponseNotFound(
+                f'<h1>Not found</h1>'
+                f'<p>No tournament or workspace exists at '
+                f'<strong>{label}.{self.base_domain}</strong>.</p>'
+                f'<p><a href="https://{self.base_domain}/">Go to NekoTab '
+                f'home</a></p>'
+            )

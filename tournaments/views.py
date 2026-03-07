@@ -19,6 +19,8 @@ from users.permissions import Permission
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, FormView, UpdateView
+from django.forms import IntegerField
+from django.forms import ModelForm as BaseModelForm
 
 from actionlog.mixins import LogActionMixin
 from actionlog.models import ActionLogEntry
@@ -488,6 +490,67 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
 
     def get_success_url(self):
         return reverse_lazy('tournament-create')
+
+
+class RegisterTournamentForm(BaseModelForm):
+    """Simplified tournament creation form for the registration flow.
+    Unlike TournamentStartForm, this doesn't create break categories,
+    permission groups, or feedback questions — those are set up when
+    the organizer configures the tournament later."""
+
+    class Meta:
+        model = Tournament
+        fields = ('name', 'short_name', 'slug')
+
+    num_prelim_rounds = IntegerField(
+        min_value=1, max_value=50, initial=5,
+        label=_("Number of preliminary rounds"))
+
+    def clean_slug(self):
+        from .models import normalize_slug
+        raw = self.cleaned_data.get('slug', '')
+        normalised = normalize_slug(raw)
+        if normalised != raw:
+            self.cleaned_data['slug'] = normalised
+        return normalised
+
+
+class RegisterTournamentView(LoginRequiredMixin, CreateView):
+    """Streamlined registration flow for single-tournament creation.
+    Auto-creates a backend-only Organization with is_workspace_enabled=False."""
+
+    model = Tournament
+    form_class = RegisterTournamentForm
+    template_name = 'registration/register_tournament.html'
+
+    def form_valid(self, form):
+        from django.db import transaction
+        from organizations.models import Organization, OrganizationMembership
+        from .utils import auto_make_rounds
+
+        with transaction.atomic():
+            org = Organization.objects.create(
+                name=form.cleaned_data['name'],
+                slug=form.cleaned_data['slug'],
+                is_workspace_enabled=False,
+            )
+            OrganizationMembership.objects.create(
+                organization=org,
+                user=self.request.user,
+                role=OrganizationMembership.Role.OWNER,
+            )
+            tournament = form.save(commit=False)
+            tournament.organization = org
+            tournament.owner = self.request.user
+            tournament.save()
+            auto_make_rounds(tournament, form.cleaned_data['num_prelim_rounds'])
+            tournament.current_round = tournament.round_set.order_by('seq').first()
+            tournament.save()
+
+        base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
+        if getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False) and base:
+            return redirect(f"https://{tournament.slug}.{base}/admin/")
+        return redirect(f"/{tournament.slug}/admin/")
 
 
 class ConfigureTournamentView(AdministratorMixin, TournamentMixin, UpdateView):

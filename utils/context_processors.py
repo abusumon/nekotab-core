@@ -142,4 +142,10 @@ def debate_context(request):
         if hasattr(request, 'round'):
             context['round'] = request.round
 
+    # Organization workspace context
+    tenant_org = getattr(request, 'tenant_organization', None)
+    if tenant_org:
+        context['workspace_org'] = tenant_org
+        context['workspace_url'] = f"https://{tenant_org.slug}.{base_domain}/"
+
     return context

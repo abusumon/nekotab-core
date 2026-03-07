@@ -1,0 +1,43 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Create Tournament" %}{% endblock %}
+{% block header-title %}{% trans "Create Tournament" %}{% endblock %}
+
+{% block content %}
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "New Tournament" %}</h2>
+  </div>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">
+        {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+      </div>
+    {% endif %}
+
+    {% for field in form %}
+      <div class="form-group mb-3">
+        <label for="{{ field.id_for_label }}" style="font-weight:500;font-size:14px;">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}
+          <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+        {% if field.errors %}
+          {% for error in field.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <div class="mt-4">
+      <button type="submit" class="ws-btn ws-btn-primary">{% trans "Create Tournament" %}</button>
+      <a href="/tournaments/" class="ws-btn ws-btn-secondary ml-2">{% trans "Cancel" %}</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

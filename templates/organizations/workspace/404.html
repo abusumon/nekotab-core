@@ -1,0 +1,15 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Page Not Found" %}{% endblock %}
+{% block header-title %}{% trans "Page Not Found (404)" %}{% endblock %}
+
+{% block content %}
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Page Not Found" %}</h2>
+  </div>
+  <p style="color:var(--ws-text-muted);">{% trans "Sorry, there doesn't appear to be a page at this URL." %}</p>
+  <a href="/" class="ws-btn ws-btn-primary">{% trans "Go to Dashboard" %}</a>
+</div>
+{% endblock %}

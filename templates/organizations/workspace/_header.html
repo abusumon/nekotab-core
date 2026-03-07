@@ -1,0 +1,10 @@
+{% load i18n %}
+<h1 class="workspace-header-title">{% block header-title %}{% endblock %}</h1>
+<div class="workspace-header-actions">
+  {% if user.is_authenticated %}
+    <span class="text-muted" style="font-size:14px;">{{ user.username }}</span>
+    <a href="/accounts/logout/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Log out" %}</a>
+  {% else %}
+    <a href="/accounts/login/" class="ws-btn ws-btn-primary ws-btn-sm">{% trans "Log in" %}</a>
+  {% endif %}
+</div>

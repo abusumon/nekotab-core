@@ -565,3 +565,97 @@ class NavQueryCountTests(TestCase):
         bump_perm_cache_version(self.user.pk)     # simulate membership change
         with self.assertNumQueries(1):
             _get_nav_tournaments(self.user)
+
+
+# ────────────────────────────────────────────────────────────────────────────
+# Phase 1 — Workspace foundation model tests
+# ────────────────────────────────────────────────────────────────────────────
+
+class WorkspaceFieldDefaultsTests(TestCase):
+    """Test that new Organization workspace fields have correct defaults."""
+
+    def test_new_org_defaults_workspace_disabled(self):
+        org = Organization.objects.create(name="Default Org", slug="default-org")
+        org.refresh_from_db()
+        self.assertFalse(org.is_workspace_enabled)
+
+    def test_new_org_defaults_description_blank(self):
+        org = Organization.objects.create(name="Desc Org", slug="desc-org")
+        org.refresh_from_db()
+        self.assertEqual(org.description, "")
+
+    def test_new_org_defaults_logo_null(self):
+        org = Organization.objects.create(name="Logo Org", slug="logo-org")
+        org.refresh_from_db()
+        self.assertFalse(org.logo)  # falsy when no file
+
+    def test_workspace_enabled_can_be_set(self):
+        org = Organization.objects.create(
+            name="WS Org", slug="ws-org", is_workspace_enabled=True)
+        org.refresh_from_db()
+        self.assertTrue(org.is_workspace_enabled)
+
+    def test_description_accepts_text(self):
+        org = Organization.objects.create(
+            name="Text Org", slug="text-org", description="A test org")
+        org.refresh_from_db()
+        self.assertEqual(org.description, "A test org")
+
+
+class ExtendedRoleHierarchyTests(TestCase):
+    """Test the extended role choices and hierarchy levels."""
+
+    def setUp(self):
+        self.org = Organization.objects.create(name="Role Org", slug="role-org")
+
+    def _create_membership(self, role):
+        user = User.objects.create_user(f"user_{role}", password="testpass")
+        return OrganizationMembership.objects.create(
+            organization=self.org, user=user, role=role)
+
+    def test_tabmaster_role_level(self):
+        m = self._create_membership(OrganizationMembership.Role.TABMASTER)
+        self.assertEqual(m.role_level, 3)
+
+    def test_editor_role_level(self):
+        m = self._create_membership(OrganizationMembership.Role.EDITOR)
+        self.assertEqual(m.role_level, 2)
+
+    def test_member_role_still_valid(self):
+        """Existing role='member' rows still work and map to level 2."""
+        m = self._create_membership(OrganizationMembership.Role.MEMBER)
+        self.assertEqual(m.role, 'member')
+        self.assertEqual(m.role_level, 2)
+
+    def test_owner_role_level(self):
+        m = self._create_membership(OrganizationMembership.Role.OWNER)
+        self.assertEqual(m.role_level, 5)
+
+    def test_admin_role_level(self):
+        m = self._create_membership(OrganizationMembership.Role.ADMIN)
+        self.assertEqual(m.role_level, 4)
+
+    def test_viewer_role_level(self):
+        m = self._create_membership(OrganizationMembership.Role.VIEWER)
+        self.assertEqual(m.role_level, 1)
+
+    def test_has_role_at_least_tabmaster_ge_editor(self):
+        m = self._create_membership(OrganizationMembership.Role.TABMASTER)
+        self.assertTrue(m.has_role_at_least(OrganizationMembership.Role.EDITOR))
+
+    def test_has_role_at_least_tabmaster_lt_admin(self):
+        m = self._create_membership(OrganizationMembership.Role.TABMASTER)
+        self.assertFalse(m.has_role_at_least(OrganizationMembership.Role.ADMIN))
+
+    def test_has_role_at_least_admin_ge_tabmaster(self):
+        m = self._create_membership(OrganizationMembership.Role.ADMIN)
+        self.assertTrue(m.has_role_at_least(OrganizationMembership.Role.TABMASTER))
+
+    def test_has_role_at_least_editor_eq_member(self):
+        """EDITOR and MEMBER are at the same level; each satisfies the other."""
+        m = self._create_membership(OrganizationMembership.Role.EDITOR)
+        self.assertTrue(m.has_role_at_least(OrganizationMembership.Role.MEMBER))
+
+    def test_has_role_at_least_viewer_lt_editor(self):
+        m = self._create_membership(OrganizationMembership.Role.VIEWER)
+        self.assertFalse(m.has_role_at_least(OrganizationMembership.Role.EDITOR))

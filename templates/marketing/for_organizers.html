@@ -1,0 +1,455 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NekoTab for Organizers — Run Debate Tournaments at Any Scale</title>
+  <meta name="description" content="Whether you're running a single tournament or managing an entire debate circuit, NekoTab has you covered. Choose single-tournament mode or create an organization workspace.">
+  <link rel="canonical" href="https://nekotab.app/for-organizers/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nekotab.app/for-organizers/" />
+  <meta property="og:title" content="NekoTab for Organizers — Run Debate Tournaments at Any Scale" />
+  <meta property="og:description" content="Choose single-tournament mode or create an organization workspace to manage multiple tournaments, shared judge pools, and team members." />
+  <meta property="og:image" content="{% static 'logo-social.png' %}" />
+  <meta property="og:site_name" content="NekoTab" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NekoTab for Organizers" />
+  <meta name="twitter:description" content="Single tournaments or full organization workspaces — everything you need to run debate at any scale." />
+  <meta name="twitter:image" content="{% static 'logo-social.png' %}" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo.png' %}">
+  <meta name="theme-color" content="#6366f1">
+
+  <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+  <link rel="stylesheet" href="{% static 'css/marketing.css' %}">
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nekotab.app/"},
+      {"@type": "ListItem", "position": 2, "name": "For Organizers", "item": "https://nekotab.app/for-organizers/"}
+    ]
+  }
+  </script>
+</head>
+<body class="em-body">
+  <!-- Skip to content -->
+  <a href="#main-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#6366f1;color:#fff;padding:8px 16px;z-index:10000;transition:top .3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
+
+  <!-- ========================================================
+       NAVBAR — Same as homepage for consistency
+       ======================================================== -->
+  <header class="em-navbar em-navbar--dark" id="top">
+    <div class="em-container em-nav-inner">
+      <a class="em-logo" href="/">
+        <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="120" height="32">
+      </a>
+      <nav class="em-nav-center" aria-label="Primary">
+        <a href="/" class="em-nav-link">Home</a>
+        <a href="{% url 'motionbank:motionbank-home' %}" class="em-nav-link">Motion Bank</a>
+        <a href="{% url 'forum:forum-home' %}" class="em-nav-link">Community</a>
+        <a href="/learn/" class="em-nav-link">Resources</a>
+      </nav>
+      <div class="em-nav-end">
+        {% if user.is_authenticated %}
+          <a href="{% url 'org-list' %}" class="em-nav-link">My Orgs</a>
+          <form action="{% url 'logout' %}" method="post" style="display:inline-block;">
+            {% csrf_token %}
+            <button type="submit" class="em-btn--nav-signin">Logout</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}" class="em-btn--nav-signin">Sign in</a>
+        {% endif %}
+        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Get Started</a>
+        <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="em-mobile-menu" class="em-mobile-menu" hidden>
+      <div class="em-mobile-menu-section">
+        <a href="/">Home</a>
+        <a href="{% url 'motionbank:motionbank-home' %}">Motion Bank</a>
+        <a href="{% url 'forum:forum-home' %}">Community</a>
+        <a href="/learn/">Resources</a>
+      </div>
+      <div class="em-mobile-menu-section" style="margin-top:16px;">
+        <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--block">Create Tournament</a>
+        <a href="{% url 'register-organization' %}" class="em-btn em-btn--secondary em-btn--block">Create Workspace</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       HERO — "Run Debate Tournaments at Any Scale"
+       ======================================================== -->
+  <section class="em-hero mk-hero" id="main-content" aria-labelledby="mk-hero-title">
+    <div class="em-container mk-hero-inner">
+      <div class="em-badge">
+        <span class="em-badge-dot"></span>
+        For Organizers
+      </div>
+
+      <h1 id="mk-hero-title" class="em-hero-title">
+        Run Debate Tournaments<br><span class="em-gradient-text">at Any Scale</span>
+      </h1>
+
+      <p class="em-hero-sub">
+        From a single weekend tournament to a multi-event national circuit — NekoTab gives you the tools to organize, manage, and grow your debate community.
+      </p>
+
+      <div class="em-hero-ctas">
+        <a href="#choose-path" class="em-btn em-btn--white em-btn--lg">
+          Choose Your Path
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="margin-left:6px;"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       DECISION CARDS — Two paths
+       ======================================================== -->
+  <section class="em-section mk-decision" id="choose-path" aria-labelledby="mk-decision-title">
+    <div class="em-container">
+      <div class="mk-section-header">
+        <h2 id="mk-decision-title" class="mk-section-title">Two Ways to Get Started</h2>
+        <p class="mk-section-sub">Pick the path that matches your needs. You can always upgrade later.</p>
+      </div>
+
+      <div class="mk-cards-row">
+        <!-- Single Tournament Card -->
+        <div class="mk-decision-card">
+          <div class="mk-card-icon">🏆</div>
+          <h3 class="mk-card-title">Single Tournament</h3>
+          <p class="mk-card-desc">Perfect for one-off events. Get a tournament running in under 2 minutes with automated draws, digital ballots, and live results.</p>
+          <ul class="mk-card-features">
+            <li>Instant setup — no org required</li>
+            <li>Own subdomain (<code>slug.nekotab.app</code>)</li>
+            <li>Full tab functionality</li>
+            <li>Automated draws &amp; allocations</li>
+            <li>Public results page</li>
+          </ul>
+          <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--block mk-card-cta">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            Create a Tournament
+          </a>
+          <p class="mk-card-note">Free &middot; No credit card</p>
+        </div>
+
+        <!-- Organization Workspace Card -->
+        <div class="mk-decision-card mk-decision-card--featured">
+          <div class="mk-card-badge">Recommended for circuits</div>
+          <div class="mk-card-icon">🏢</div>
+          <h3 class="mk-card-title">Organization Workspace</h3>
+          <p class="mk-card-desc">Manage multiple tournaments, invite team members, and build your debate community under one unified workspace.</p>
+          <ul class="mk-card-features">
+            <li>Multiple tournaments in one place</li>
+            <li>Team roles (Owner, Admin, Tabmaster, Editor, Viewer)</li>
+            <li>Organization dashboard</li>
+            <li>Shared judge pools (coming soon)</li>
+            <li>Custom branding (coming soon)</li>
+          </ul>
+          <a href="{% url 'register-organization' %}" class="em-btn em-btn--white em-btn--block mk-card-cta">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            Create a Workspace
+          </a>
+          <p class="mk-card-note">Free &middot; Upgrade anytime</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       COMPARISON TABLE — Feature matrix
+       ======================================================== -->
+  <section class="em-section mk-compare" id="compare" aria-labelledby="mk-compare-title">
+    <div class="em-container">
+      <div class="mk-section-header">
+        <h2 id="mk-compare-title" class="mk-section-title">Feature Comparison</h2>
+        <p class="mk-section-sub">See what's included in each mode.</p>
+      </div>
+
+      <div class="mk-table-wrap">
+        <table class="mk-table" role="table">
+          <thead>
+            <tr>
+              <th scope="col">Feature</th>
+              <th scope="col">Single Tournament</th>
+              <th scope="col">Organization Workspace</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tournaments</td>
+              <td>1</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Automated Draws</td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Digital Ballots</td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Public Results</td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Own Subdomain</td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Team Members</td>
+              <td>Owner only</td>
+              <td>Owner, Admin, Tabmaster, Editor, Viewer</td>
+            </tr>
+            <tr>
+              <td>Organization Dashboard</td>
+              <td><span class="mk-cross" aria-label="No">—</span></td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Tournament Archive</td>
+              <td><span class="mk-cross" aria-label="No">—</span></td>
+              <td><span class="mk-check" aria-label="Yes">✓</span></td>
+            </tr>
+            <tr>
+              <td>Shared Judge Pool</td>
+              <td><span class="mk-cross" aria-label="No">—</span></td>
+              <td>Coming soon</td>
+            </tr>
+            <tr>
+              <td>Custom Branding</td>
+              <td><span class="mk-cross" aria-label="No">—</span></td>
+              <td>Coming soon</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       WORKSPACE WALKTHROUGH — 5-step visual flow
+       ======================================================== -->
+  <section class="em-section mk-walkthrough" id="walkthrough" aria-labelledby="mk-walk-title">
+    <div class="em-container">
+      <div class="mk-section-header">
+        <h2 id="mk-walk-title" class="mk-section-title">How the Workspace Works</h2>
+        <p class="mk-section-sub">From sign-up to running your first tournament in 5 steps.</p>
+      </div>
+
+      <div class="mk-steps">
+        <div class="mk-step">
+          <div class="mk-step-number">1</div>
+          <h3 class="mk-step-title">Create Your Workspace</h3>
+          <p class="mk-step-desc">Pick a name and slug for your organization. You get your own subdomain instantly.</p>
+        </div>
+        <div class="mk-step-connector" aria-hidden="true"></div>
+        <div class="mk-step">
+          <div class="mk-step-number">2</div>
+          <h3 class="mk-step-title">Invite Your Team</h3>
+          <p class="mk-step-desc">Add tabmasters, editors, and viewers. Everyone gets role-based access to the tournaments they need.</p>
+        </div>
+        <div class="mk-step-connector" aria-hidden="true"></div>
+        <div class="mk-step">
+          <div class="mk-step-number">3</div>
+          <h3 class="mk-step-title">Create Tournaments</h3>
+          <p class="mk-step-desc">Launch tournaments from your dashboard. They live under your organization with shared settings and members.</p>
+        </div>
+        <div class="mk-step-connector" aria-hidden="true"></div>
+        <div class="mk-step">
+          <div class="mk-step-number">4</div>
+          <h3 class="mk-step-title">Run &amp; Manage</h3>
+          <p class="mk-step-desc">Generate draws, collect ballots, release results — all the tabulation tools you know, now under one roof.</p>
+        </div>
+        <div class="mk-step-connector" aria-hidden="true"></div>
+        <div class="mk-step">
+          <div class="mk-step-number">5</div>
+          <h3 class="mk-step-title">Archive &amp; Grow</h3>
+          <p class="mk-step-desc">Past tournaments stay in your archive. Build a track record and grow your circuit over multiple seasons.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       USE CASES — Who it's for
+       ======================================================== -->
+  <section class="em-section mk-usecases" id="use-cases" aria-labelledby="mk-uc-title">
+    <div class="em-container">
+      <div class="mk-section-header">
+        <h2 id="mk-uc-title" class="mk-section-title">Built for Every Debate Community</h2>
+        <p class="mk-section-sub">From regional clubs to national federations — NekoTab scales with you.</p>
+      </div>
+
+      <div class="mk-uc-grid">
+        <div class="mk-uc-card">
+          <div class="mk-uc-icon">🏛️</div>
+          <h3 class="mk-uc-name">National Federations</h3>
+          <p class="mk-uc-desc">Manage national circuit tournaments, coordinate across regions, and maintain a unified calendar and ranking system.</p>
+        </div>
+        <div class="mk-uc-card">
+          <div class="mk-uc-icon">🎓</div>
+          <h3 class="mk-uc-name">University Societies</h3>
+          <p class="mk-uc-desc">Run intervarsity and internal tournaments. Hand off tab duties between exec years without losing tournament history.</p>
+        </div>
+        <div class="mk-uc-card">
+          <div class="mk-uc-icon">🔄</div>
+          <h3 class="mk-uc-name">Debating Circuits</h3>
+          <p class="mk-uc-desc">Operate a multi-event circuit with consistent branding, shared adjudicator pools, and season-long standings.</p>
+        </div>
+        <div class="mk-uc-card">
+          <div class="mk-uc-icon">📚</div>
+          <h3 class="mk-uc-name">Training Programs</h3>
+          <p class="mk-uc-desc">Run training rounds and practice tournaments under a single workspace. Track development across multiple events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       HOW IT WORKS — Horizontal flow
+       ======================================================== -->
+  <section class="em-section mk-flow" id="how-it-works" aria-labelledby="mk-flow-title">
+    <div class="em-container">
+      <div class="mk-section-header">
+        <h2 id="mk-flow-title" class="mk-section-title">The Tournament Lifecycle</h2>
+        <p class="mk-section-sub">Every tournament follows a proven workflow.</p>
+      </div>
+
+      <div class="mk-flow-row">
+        <div class="mk-flow-item">
+          <div class="mk-flow-icon">📝</div>
+          <div class="mk-flow-label">Setup</div>
+          <p class="mk-flow-desc">Import teams, judges, venues. Set format and preferences.</p>
+        </div>
+        <div class="mk-flow-arrow" aria-hidden="true">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+        <div class="mk-flow-item">
+          <div class="mk-flow-icon">🎲</div>
+          <div class="mk-flow-label">Draw</div>
+          <p class="mk-flow-desc">Automated draw generation, judge allocation, room assignment.</p>
+        </div>
+        <div class="mk-flow-arrow" aria-hidden="true">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+        <div class="mk-flow-item">
+          <div class="mk-flow-icon">📊</div>
+          <div class="mk-flow-label">Ballot</div>
+          <p class="mk-flow-desc">Digital ballots with real-time entry and automated validation.</p>
+        </div>
+        <div class="mk-flow-arrow" aria-hidden="true">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+        <div class="mk-flow-item">
+          <div class="mk-flow-icon">🏆</div>
+          <div class="mk-flow-label">Results</div>
+          <p class="mk-flow-desc">Standings, breaks, and elimination rounds — published instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FINAL CTA — Repeat the decision
+       ======================================================== -->
+  <section class="em-section em-final mk-final-cta">
+    <div class="em-container em-final-inner">
+      <h2 class="em-final-title">Ready to organize?</h2>
+      <p class="em-final-sub">Start with a single tournament or set up your organization workspace — it's free either way.</p>
+      <div class="mk-final-buttons">
+        <a href="{% url 'register-tournament' %}" class="em-btn em-btn--white em-btn--lg">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Create a Tournament
+        </a>
+        <a href="{% url 'register-organization' %}" class="em-btn em-btn--outline-light em-btn--lg">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          Create a Workspace
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER — Same as homepage
+       ======================================================== -->
+  <footer class="em-footer" role="contentinfo">
+    <div class="em-container em-footer-grid">
+      <div>
+        <a href="/" class="em-logo">
+          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img">
+        </a>
+        <p class="em-foot-desc">The operating system for debate. Open-source tournament tabulation, AI motion analysis, and a global debate community.</p>
+      </div>
+      <div>
+        <div class="em-foot-title">Product</div>
+        <ul class="em-foot-links">
+          <li><a href="/#features">Tournament Engine</a></li>
+          <li><a href="{% url 'motionbank:motion-doctor' %}">Motion Doctor</a></li>
+          <li><a href="{% url 'motionbank:motionbank-home' %}">Motion Bank</a></li>
+          <li><a href="{% url 'passport:passport-dashboard' %}">Debate Passport</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Community</div>
+        <ul class="em-foot-links">
+          <li><a href="{% url 'forum:forum-home' %}">Debate Forum</a></li>
+          <li><a href="/learn/">Learn Debate</a></li>
+          <li><a href="{% url 'org-list' %}">Organizations</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Resources</div>
+        <ul class="em-foot-links">
+          <li><a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Documentation</a></li>
+          <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="/api">API</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Company</div>
+        <ul class="em-foot-links">
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="em-foot-bottom">
+      <div class="em-container em-foot-bottom-inner">
+        <div class="em-copy">&copy; <span id="em-year"></span> NekoTab. Open-source debate platform.</div>
+        <div class="em-foot-bottom-links">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/landing.js' %}"></script>
+</body>
+</html>
