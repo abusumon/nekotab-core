@@ -36,6 +36,39 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # ==============================================================================
+# Subdomain routing (production defaults)
+# ==============================================================================
+
+SUBDOMAIN_TOURNAMENTS_ENABLED = os.environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', 'true').lower() == 'true'
+SUBDOMAIN_BASE_DOMAIN = os.environ.get('SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
+RESERVED_SUBDOMAINS = os.environ.get('RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media').split(',')
+
+# Organization workspace routing; when False, SubdomainTenantMiddleware
+# behaves identically to the old SubdomainTournamentMiddleware.
+ORGANIZATION_WORKSPACES_ENABLED = os.environ.get('ORGANIZATION_WORKSPACES_ENABLED', 'false').lower() == 'true'
+
+# Share cookies across subdomains when base domain is configured.
+# This is safe because tournament owners do NOT have the ability to run
+# arbitrary server code or set cookies on their subdomains — all subdomains
+# are served by the same Render app.  Without this, users lose their
+# authenticated session when redirected from the base domain to a tournament
+# subdomain (e.g., after creating a tournament).
+if SUBDOMAIN_BASE_DOMAIN:
+    SESSION_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
+    SESSION_COOKIE_NAME = 'nekotab_sessionid'
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    CSRF_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
+    CSRF_COOKIE_SAMESITE = 'Lax'
+    csrf_trusted = [
+        f"https://{SUBDOMAIN_BASE_DOMAIN}",
+        f"https://*.{SUBDOMAIN_BASE_DOMAIN}",
+    ]
+    try:
+        CSRF_TRUSTED_ORIGINS = list(set(globals().get('CSRF_TRUSTED_ORIGINS', []) + csrf_trusted))
+    except Exception:
+        CSRF_TRUSTED_ORIGINS = csrf_trusted
+
+# ==============================================================================
 # Postgres
 # ==============================================================================
 
