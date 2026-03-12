@@ -122,16 +122,22 @@
 
     <ul class="navbar-nav navbar-my-lg-0">
       {% if user.is_superuser %}
+      {% url 'analytics:dashboard' as analytics_url %}
+      {% url 'campaigns:list' as campaigns_url %}
+      {% if analytics_url %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'analytics:dashboard' %}" title="{% trans 'Admin Dashboard' %}">
+        <a class="nav-link" href="{{ analytics_url }}" title="{% trans 'Admin Dashboard' %}">
           📊
         </a>
       </li>
+      {% endif %}
+      {% if campaigns_url %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'campaigns:list' %}" title="{% trans 'Email Campaigns' %}">
+        <a class="nav-link" href="{{ campaigns_url }}" title="{% trans 'Email Campaigns' %}">
           📧
         </a>
       </li>
+      {% endif %}
       {% endif %}
       <li class="nav-item">
         {% if user.is_authenticated %}
