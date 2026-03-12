@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load debate_tags %}
+{% load debate_tags ad_tags %}
 
 {% block content %}
 
@@ -10,6 +10,10 @@
   </div>
 
 {% endblock content %}
+
+{% block ad_above_footer %}
+  {% ad_unit "AUTO_TABLE" "horizontal" %}
+{% endblock ad_above_footer %}
 
 {% block js %}
 

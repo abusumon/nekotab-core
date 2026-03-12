@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n static %}
+{% load i18n static ad_tags %}
 
 {% block page-title %}{{ article.seo_title }}{% endblock %}
 {% block og-title %}{{ article.seo_title }}{% endblock %}
@@ -102,6 +102,9 @@
     <div class="article-body mt-4" style="font-size: 1.05rem; line-height: 1.8; color: #1e293b;">
       {{ article.body|safe }}
     </div>
+
+    {# ── In-content ad (after article body) ── #}
+    {% ad_unit "AUTO_CONTENT" "auto" %}
 
     {# ── Share / utility bar ── #}
     <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">

@@ -1,0 +1,11 @@
+{% if show %}
+<div class="nekotab-ad{% if layout %} nekotab-ad--{{ layout }}{% endif %}" role="complementary" aria-label="Advertisement">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="{{ publisher_id }}"
+       data-ad-slot="{{ slot_id }}"
+       data-ad-format="{{ ad_format }}"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+{% endif %}

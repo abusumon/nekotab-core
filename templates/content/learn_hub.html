@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n static %}
+{% load i18n static ad_tags %}
 
 {% block page-title %}Learn Debate — Free Guides & Resources{% endblock %}
 {% block og-title %}Learn Debate — Free Guides & Resources | NekoTab{% endblock %}
@@ -124,6 +124,9 @@
     {% endif %}
   </div>
   {% endif %}
+
+  {# ── Ad before CTA ── #}
+  {% ad_unit "AUTO_FOOTER" "horizontal" %}
 
   {# ── CTA ── #}
   <div class="text-center mt-5 mb-3 p-4 bg-light rounded">

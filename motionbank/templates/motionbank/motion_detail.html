@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static i18n ad_tags %}
 
 {% block page-title %}{{ motion.text|truncatechars:80 }}{% endblock %}
 {% block og-title %}{{ motion.text|truncatechars:100 }} — NekoTab Motion Bank{% endblock %}
@@ -82,6 +82,9 @@
       {% endif %}
     </div>
   </div>
+
+  {# Ad between motion info and interactive analysis #}
+  {% ad_unit "AUTO_CONTENT" "horizontal" %}
 
   <!-- Vue.js takes over for interactive elements -->
   <motion-detail></motion-detail>

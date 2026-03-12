@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static i18n ad_tags %}
 
 {% block head-title %}{% trans "Motions" %}{% endblock %}
 {% block page-title %}{% trans "Motions" %}{% endblock %}
@@ -55,5 +55,7 @@
       </div>
     </div>
   {% endfor %}
+
+  {% ad_unit "AUTO_FOOTER" "horizontal" %}
 
 {% endblock content %}

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load debate_tags i18n %}
+{% load debate_tags i18n ad_tags %}
 
 {% block head-title %}<span class="emoji">💥</span> {% trans "Results" %}{% endblock %}
 {% block page-title %}💥 {% trans "Results" %}{% endblock %}
@@ -20,5 +20,7 @@
     </li>
   {% endfor %}
 </ul>
+
+{% ad_unit "AUTO_FOOTER" "horizontal" %}
 
 {% endblock content %}

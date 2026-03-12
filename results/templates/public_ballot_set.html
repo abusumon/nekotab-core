@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load debate_tags i18n humanize %}
+{% load debate_tags i18n humanize ad_tags %}
 
 {% block page-title %}
   {% if use_code_names %}
@@ -135,5 +135,7 @@
     </div>
 
   {% endfor %}
+
+  {% ad_unit "AUTO_FOOTER" "horizontal" %}
 
 {% endblock %}

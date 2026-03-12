@@ -8,11 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#6366f1">
 
-  <!-- AdSense: load for all users by default (no cookie consent needed) -->
-  <meta name="google-adsense-account" content="ca-pub-4135779137186219">
+  <!-- AdSense: only load on public pages when enabled -->
+  {% if adsense_enabled and user_role != "admin" and user_role != "assistant" %}
+  <meta name="google-adsense-account" content="{{ adsense_publisher_id }}">
   <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4135779137186219"
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}"
     crossorigin="anonymous"></script>
+  {% endif %}
 
   {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}" />{% endif %}
   <meta name="keywords" content="{{ seo_keywords }}" />
@@ -95,6 +97,9 @@
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/mobile-first.css' %}" />
+  {% if adsense_enabled %}
+  <style>.nekotab-ad{margin:1rem 0;overflow:hidden;text-align:center;min-height:50px}.nekotab-ad--sidebar{margin:12px 0}</style>
+  {% endif %}
   {% block extra-css %}{% endblock %}
   {% block extra-head %}{% endblock %}
 
@@ -202,6 +207,7 @@
   </div>
 
   {% if user_role != "admin" %}
+    {% block ad_above_footer %}{% endblock ad_above_footer %}
     <footer class="footer">
       <div class="container-fluid">
         {% block footer %}{% include "footer.html" %}{% endblock footer %}

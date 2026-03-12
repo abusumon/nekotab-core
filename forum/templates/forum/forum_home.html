@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static i18n ad_tags %}
 
 {% block page-title %}Global Debate Forum{% endblock %}
 {% block og-title %}Global Debate Forum{% endblock %}
@@ -11,6 +11,7 @@
 
 {% block content %}
 <div id="vueMount">
+  {% ad_unit "AUTO_CONTENT" "horizontal" %}
   <forum-home></forum-home>
 
   <noscript>

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load debate_tags i18n static content_tags %}
+{% load debate_tags i18n static content_tags ad_tags %}
 
 {% block body-class %}pti-dashboard{% endblock %}
 
@@ -1607,6 +1607,9 @@ span.pti-nav-item[style*="opacity"] {
                 {% endif %}
               {% endwith %}
             {% endif %}
+
+            {# Ad unit — sidebar position #}
+            {% ad_unit "AUTO_ASIDE" "auto" "sidebar" %}
 
             {# Host CTA #}
             <div class="pti-panel pti-fade-5">

@@ -4,10 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-adsense-account" content="ca-pub-4135779137186219">
+  {% if adsense_enabled %}
+  <meta name="google-adsense-account" content="{{ adsense_publisher_id }}">
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4135779137186219"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}"
       crossorigin="anonymous"></script>
+  {% endif %}
   <title>NekoTab — Free Debate Tournament Tabulation Software | AI Motion Analysis</title>
   <meta name="description" content="NekoTab is the #1 open-source debate tournament platform. Run British Parliamentary, Australs & WSDC tournaments with automated draws, digital ballots, AI motion analysis, and real-time results. Free to use.">
   <meta name="keywords" content="debate tournament software, debate tabulation, british parliamentary debate, BP debate tab, australs debate, WSDC debate, motion analysis AI, debate motions, tournament management, debate platform, open source debate, tabbycat alternative">
@@ -45,10 +47,12 @@
   <link rel="stylesheet" href="{% static 'css/landing.css' %}">
 
   <!-- GA4 + Cookie Consent -->
+  {% if adsense_enabled %}
   <script>
   window.adsbygoogle = window.adsbygoogle || [];
   window.adsbygoogle.requestNonPersonalizedAds = 1;
   </script>
+  {% endif %}
   <script src="{% static 'js/cookie-consent.js' %}"></script>
   <script>
     if (NekoConsent.getConsent() === 'all') { NekoConsent._loadGA4(); }

@@ -106,6 +106,9 @@ def debate_context(request):
         'hmr': getattr(settings, 'USE_WEBPACK_SERVER', False),
         'subdomain_enabled': subdomain_enabled,
         'subdomain_base_domain': base_domain,
+        # AdSense
+        'adsense_enabled': getattr(settings, 'ADSENSE_ENABLED', False),
+        'adsense_publisher_id': getattr(settings, 'ADSENSE_PUBLISHER_ID', ''),
         # SEO defaults
         'seo_site_name': 'NekoTab Debate Tabulation',
         'seo_keywords': 'debate tab, debate tabulation, parliamentary debating, BP motions, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, british parliamentary, debate results live',

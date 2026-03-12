@@ -525,6 +525,13 @@ ADMIN_NOTIFICATION_EMAILS = [e.strip() for e in _admin_emails.split(',') if e.st
 REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab.app>')
 
 # ==============================================================================
+# AdSense / Monetization
+# ==============================================================================
+
+ADSENSE_ENABLED = _env_bool('ADSENSE_ENABLED', default=True)
+ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID', 'ca-pub-4135779137186219')
+
+# ==============================================================================
 # SEO / Canonical
 # ==============================================================================
 
