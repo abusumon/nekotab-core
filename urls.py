@@ -147,7 +147,7 @@ urlpatterns = [
         name='register-organization'),
 
     # Tournament URLs
-    path('tournaments/<slug:tournament_slug>/',
+    path('<slug:tournament_slug>/',
         include('tournaments.urls')),
 ]
 
