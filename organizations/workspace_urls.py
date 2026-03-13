@@ -24,6 +24,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('jsi18n/', JavaScriptCatalog.as_view(domain="djangojs"), name='javascript-catalog'),
     path('api/', include('api.urls')),
+    path('notifications/', include('notifications.urls')),
 
     # Organization management (needed by nav template's {% url 'org-list' %})
     path('organizations/', include('organizations.urls')),

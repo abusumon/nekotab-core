@@ -288,6 +288,24 @@ class TournamentCreateTest(TestCase):
 
 
 @override_settings(**WORKSPACE_SETTINGS)
+class WorkspaceNotificationsRouteTest(TestCase):
+    """Ensure workspace URLconf includes notifications routes used by shared templates."""
+
+    def setUp(self):
+        self.org = Organization.objects.create(
+            name='Notif Org', slug='notif-org', is_workspace_enabled=True)
+
+    def test_notifications_test_email_route_exists_in_workspace(self):
+        response = self.client.get(
+            '/notifications/send-test-email/',
+            HTTP_HOST='notif-org.nekotab.app',
+        )
+        # Route should exist; unauthenticated users are redirected to login.
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/accounts/login/', response.url)
+
+
+@override_settings(**WORKSPACE_SETTINGS)
 class WorkspaceBreakGenerationUnitTest(TestCase):
     """Direct unit tests for break round generation in the workspace flow.
     Bypasses the HTTP layer to avoid SQLite compatibility issues with
