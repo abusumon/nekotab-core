@@ -29,6 +29,9 @@ class PublicMotionsView(PublicTournamentPageMixin, TemplateView):
     public_page_preference = 'public_motions'
     template_name = 'public_motions.html'
 
+    def is_page_enabled(self, tournament):
+        return True
+
     def get_context_data(self, **kwargs):
         order_by = 'seq' if self.tournament.pref('public_motions_order') == 'forward' else '-seq'
 
