@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load add_field_css i18n %}
+
+{% block head-title %}<span class="emoji">🎤</span>{% trans "Create IE Tournament"%}{% endblock %}
+{% block page-title %}{% trans "NekoTab" %}{% endblock %}
+{% block sidebar %}{% endblock %}
+
+{% block page-alerts %}
+  {% include 'errors/database_limit_warning.html' %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="card mt-3">
+    <div class="list-group list-group-flush">
+    <form action="." method="POST">
+      {% csrf_token %}
+
+      {% include "components/form-main.html" %}
+
+      {% trans "Create IE Tournament" as title %}
+      {% blocktrans trimmed asvar subtitle %}
+        Fill in the details above and click "Create IE Tournament" to get started. Your IE tournament will be ready instantly.
+      {% endblocktrans %}
+      {% url 'tabbycat-index' as suburl %}
+      {% include "components/form-submit.html" %}
+
+    </form>
+    </div>
+  </div>
+
+<script>
+document.querySelectorAll('form').forEach(function(form) {
+  form.addEventListener('submit', function() {
+    var btns = form.querySelectorAll('button[type="submit"]');
+    btns.forEach(function(btn) {
+      btn.disabled = true;
+      btn.textContent = btn.textContent.trim() + ' \u2026';
+    });
+    setTimeout(function() {
+      btns.forEach(function(btn) { btn.disabled = false; });
+    }, 10000);
+  });
+});
+</script>
+
+{% endblock %}
