@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Individual Events" %}{% endblock %}
+
+{% block content %}
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">{% trans "Individual Events" %}</h5>
+    <p class="card-text text-muted">
+      {% trans "Manage speech and interpretation events for this tournament." %}
+    </p>
+
+    {% if user_role == "admin" %}
+    <a href="{% url 'ie-admin-setup' tournament_slug=tournament_slug %}"
+       class="btn btn-primary btn-sm mr-2">
+      {% trans "Create Event" %}
+    </a>
+    {% endif %}
+  </div>
+</div>
+
+<div id="vueMount">
+  <div class="card">
+    <div class="card-header">{% trans "Events" %}</div>
+    <div class="card-body">
+      <p class="text-muted">
+        {% trans "Events and standings are loaded from the Individual Events API." %}
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.NEKOSPEECH_URL = '{{ nekospeech_url|escapejs }}';
+  window.ieConfig = {
+    tournamentId: {{ tournament_id }},
+    apiBaseUrl: '{{ api_base_url|escapejs }}',
+    token: '{{ ie_token|default:""|escapejs }}',
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

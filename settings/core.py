@@ -36,6 +36,10 @@ if not SECRET_KEY and not os.environ.get('LOCAL_SETTINGS', ''):
         "Set it in your environment or use local.py for development."
     )
 
+# nekospeech API URL (for the separate Heroku app).
+# Defaults to '/api/ie' for local / same-origin deployments.
+NEKOSPEECH_URL = os.environ.get('NEKOSPEECH_URL', '/api/ie')
+
 # ==============================================================================
 # Version
 # ==============================================================================
@@ -173,6 +177,7 @@ TABBYCAT_APPS = (
     'motionbank',
     'passport',
     'content',
+    'speech_events',
 )
 
 INSTALLED_APPS = (

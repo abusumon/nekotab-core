@@ -26,6 +26,7 @@ urlpatterns = [
     path('standings/',              include('standings.urls_public')),
     path('tab/',                    include('standings.urls_public')),
     path('registration/',           include('registration.urls_public')),
+    path('ie/',                     include('speech_events.urls_public')),
 
     # Public Schedule
     path('schedule/',               views.PublicScheduleView.as_view(), name='tournament-public-schedule'),
@@ -49,6 +50,7 @@ urlpatterns = [
     path('admin/users/',            include('users.urls_admin')),
     path('admin/venues/',           include('venues.urls_admin')),
     path('admin/registration/',     include('registration.urls_admin')),
+    path('admin/ie/',               include('speech_events.urls_admin')),
 
     # Application URLs for assistant pages
     path('assistant/feedback/',     include('adjfeedback.urls_assistant')),

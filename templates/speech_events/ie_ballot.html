@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "IE Ballot" %}{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <ie-ballot-form :room-id="ieConfig.roomId">
+  </ie-ballot-form>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.NEKOSPEECH_URL = '{{ nekospeech_url|escapejs }}';
+  window.ieConfig = {
+    tournamentId: {{ tournament_id }},
+    eventId: {{ event_id }},
+    roomId: {{ room_id }},
+    apiBaseUrl: '{{ api_base_url|escapejs }}',
+    token: '{{ ie_token|default:""|escapejs }}',
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

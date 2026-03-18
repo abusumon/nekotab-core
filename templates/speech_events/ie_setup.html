@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "IE Setup Wizard" %}{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <ie-setup-wizard></ie-setup-wizard>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.NEKOSPEECH_URL = '{{ nekospeech_url|escapejs }}';
+  window.ieConfig = {
+    tournamentId: {{ tournament_id }},
+    apiBaseUrl: '{{ api_base_url|escapejs }}',
+    token: '{{ ie_token|default:""|escapejs }}',
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}
