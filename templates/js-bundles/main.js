@@ -235,6 +235,15 @@ vueComponents.PassportDashboard = () => import('../../passport/templates/Passpor
 vueComponents.PassportDirectory = () => import('../../passport/templates/PassportDirectory.vue')
 vueComponents.PassportEdit = () => import('../../passport/templates/PassportEdit.vue')
 
+// Individual Events (Speech Events)
+// NOTE: Must use kebab-case keys because Vue 2's PascalCase resolution
+// converts "ie-" to "Ie" not "IE", so IESetupWizard would never match
+// <ie-setup-wizard> in DOM templates.
+vueComponents['ie-setup-wizard'] = () => import('../ie/IESetupWizard.vue')
+vueComponents['ie-room-draw'] = () => import('../ie/IERoomDraw.vue')
+vueComponents['ie-ballot-form'] = () => import('../ie/IEBallotForm.vue')
+vueComponents['ie-standings'] = () => import('../ie/IEStandings.vue')
+
 // -----------------------------------------------------------------------------
 // Main Vue Instance
 // -----------------------------------------------------------------------------
