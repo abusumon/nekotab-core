@@ -38,12 +38,15 @@ class IESetupView(AdministratorMixin, TournamentMixin, TemplateView):
     edit_permission = Permission.EDIT_SETTINGS
 
     def get_context_data(self, **kwargs):
+        from utils.misc import subdomain_reverse_tournament
         kwargs['tournament_slug'] = self.tournament.slug
         kwargs['tournament_id'] = self.tournament.id
         kwargs['api_base_url'] = '/api/ie/'
         kwargs['nekospeech_url'] = django_settings.NEKOSPEECH_URL
         kwargs['nekospeech_api_key'] = django_settings.NEKOSPEECH_IE_API_KEY
         kwargs['ie_token'] = issue_ie_token(self.request.user, role='director')
+        kwargs['dashboard_url'] = subdomain_reverse_tournament(
+            'ie-admin-dashboard', self.tournament)
         kwargs['full_width_layout'] = True
         return super().get_context_data(**kwargs)
 

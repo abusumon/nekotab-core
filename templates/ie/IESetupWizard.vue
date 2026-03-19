@@ -180,8 +180,7 @@ export default {
         })
         // Success — redirect to IE dashboard
         var cfg = window.ieConfig || {}
-        var slug = cfg.tournamentSlug || ''
-        window.location.href = slug ? ('/' + slug + '/admin/ie/') : '/admin/ie/'
+        window.location.href = cfg.dashboardUrl || '/admin/ie/'
       } catch (e) {
         this.error = e.message
         // Stay on Step 3 — do not reset
