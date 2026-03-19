@@ -88,6 +88,36 @@ export default {
       var cfg = window.ieConfig || {}
       return (window.NEKOSPEECH_URL || cfg.apiBaseUrl || '/api/ie').replace(/\/$/, '')
     },
+    async apiFetch (url, options) {
+      options = options || {}
+      var cfg = window.ieConfig || {}
+      var headers = Object.assign({}, options.headers || {})
+      if (cfg.apiKey) headers['X-IE-Api-Key'] = cfg.apiKey
+      if (options.body) headers['Content-Type'] = 'application/json'
+
+      var response
+      try {
+        response = await fetch(this.apiBase() + url, Object.assign({}, options, { headers: headers }))
+      } catch (networkErr) {
+        throw new Error('Cannot reach IE service. Is nekospeech running? (' + networkErr.message + ')')
+      }
+
+      if (!response.ok) {
+        var detail = 'HTTP ' + response.status
+        try {
+          var errData = await response.json()
+          detail = errData.detail || errData.message || detail
+        } catch (_) {
+          if (response.status === 403) detail = 'Authentication failed — check NEKOSPEECH_IE_API_KEY'
+          else if (response.status === 404) detail = 'Endpoint not found — check NEKOSPEECH_URL'
+          else if (response.status === 502) detail = 'IE service is down — check nekospeech on Heroku'
+          else detail = 'Server error ' + response.status
+        }
+        throw new Error(detail)
+      }
+
+      return response.json()
+    },
     ballotBadgeClass (room) {
       var status = room.ballot_status || (room.confirmed ? 'confirmed' : 'no_ballot')
       if (status === 'confirmed') return 'badge-success'
@@ -103,11 +133,7 @@ export default {
     async fetchDraw () {
       this.loading = true
       try {
-        var resp = await fetch(
-          this.apiBase() + '/draw/' + this.eventId + '/round/' + this.roundNumber + '/'
-        )
-        if (!resp.ok) throw new Error('Failed to load draw')
-        var data = await resp.json()
+        var data = await this.apiFetch('/draw/' + this.eventId + '/round/' + this.roundNumber + '/')
         this.rooms = data.rooms || []
       } catch (e) {
         this.error = e.message
@@ -119,16 +145,9 @@ export default {
       this.confirmingRoom = roomId
       this.error = ''
       try {
-        var token = window.ieConfig ? window.ieConfig.token : ''
-        var resp = await fetch(this.apiBase() + '/ballots/' + roomId + '/confirm/', {
+        await this.apiFetch('/ballots/' + roomId + '/confirm/', {
           method: 'POST',
-          headers: { 'Authorization': 'Bearer ' + token },
         })
-        if (!resp.ok) {
-          var body = await resp.json()
-          this.error = body.detail || 'Confirm failed'
-          return
-        }
         // Update local state
         var room = this.rooms.find(function (r) { return r.id === roomId })
         if (room) room.confirmed = true
@@ -152,11 +171,6 @@ export default {
         wsBase = protocol + '//' + window.location.host + base
       }
       var url = wsBase + '/ws/tournament/' + tournamentId + '/'
-      // Pass JWT token for authenticated WebSocket connections
-      var token = window.ieConfig ? window.ieConfig.token : ''
-      if (token) {
-        url += '?token=' + encodeURIComponent(token)
-      }
       this.ws = new WebSocket(url)
 
       var self = this

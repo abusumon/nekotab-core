@@ -40,6 +40,9 @@ if not SECRET_KEY and not os.environ.get('LOCAL_SETTINGS', ''):
 # Defaults to '/api/ie' for local / same-origin deployments.
 NEKOSPEECH_URL = os.environ.get('NEKOSPEECH_URL', '/api/ie')
 
+# IE API Key — must match NEKOSPEECH_IE_API_KEY on the nekospeech Heroku app
+NEKOSPEECH_IE_API_KEY = os.environ.get('NEKOSPEECH_IE_API_KEY', '')
+
 # ==============================================================================
 # Version
 # ==============================================================================

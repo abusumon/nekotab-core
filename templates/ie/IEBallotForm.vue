@@ -108,22 +108,45 @@ export default {
       var cfg = window.ieConfig || {}
       return (window.NEKOSPEECH_URL || cfg.apiBaseUrl || '/api/ie').replace(/\/$/, '')
     },
+    async apiFetch (url, options) {
+      options = options || {}
+      var cfg = window.ieConfig || {}
+      var headers = Object.assign({}, options.headers || {})
+      if (cfg.apiKey) headers['X-IE-Api-Key'] = cfg.apiKey
+      if (options.body) headers['Content-Type'] = 'application/json'
+
+      var response
+      try {
+        response = await fetch(this.apiBase() + url, Object.assign({}, options, { headers: headers }))
+      } catch (networkErr) {
+        throw new Error('Cannot reach IE service. Is nekospeech running? (' + networkErr.message + ')')
+      }
+
+      if (!response.ok) {
+        var detail = 'HTTP ' + response.status
+        try {
+          var errData = await response.json()
+          detail = errData.detail || errData.message || detail
+        } catch (_) {
+          if (response.status === 403) detail = 'Authentication failed — check NEKOSPEECH_IE_API_KEY'
+          else if (response.status === 404) detail = 'Endpoint not found — check NEKOSPEECH_URL'
+          else if (response.status === 502) detail = 'IE service is down — check nekospeech on Heroku'
+          else detail = 'Server error ' + response.status
+        }
+        throw new Error(detail)
+      }
+
+      return response.json()
+    },
     async fetchRoom () {
       this.loading = true
       try {
         const cfg = window.ieConfig || {}
-        const token = cfg.token || ''
-        const headers = token ? { 'Authorization': 'Bearer ' + token } : {}
         const eventId = cfg.eventId || 0
 
         // First try to load existing results for this room (for editing)
-        const resultsResp = await fetch(
-          this.apiBase() + '/ballots/' + this.roomId + '/',
-          { headers }
-        )
-
-        if (resultsResp && resultsResp.ok) {
-          const data = await resultsResp.json()
+        try {
+          const data = await this.apiFetch('/ballots/' + this.roomId + '/')
           if (data && data.length > 0) {
             // Room already has results — load for editing
             this.entries = data.map(r => ({
@@ -136,6 +159,8 @@ export default {
             this.loading = false
             return
           }
+        } catch (_) {
+          // No existing results or error — fall through to draw lookup
         }
 
         // No existing results — find the room by trying each round's draw
@@ -149,19 +174,18 @@ export default {
 
         let foundRoom = null
         for (const rn of roundsToTry) {
-          const drawResp = await fetch(
-            this.apiBase() + '/draw/' + eventId + '/round/' + rn + '/',
-            { headers }
-          )
-          if (!drawResp || !drawResp.ok) continue
-          const drawData = await drawResp.json()
-          const rooms = drawData.rooms || []
-          const room = rooms.find(r => r.id === this.roomId)
-          if (room) {
-            foundRoom = room
-            this.roundNumber = rn
-            this.roomNumber = room.room_number
-            break
+          try {
+            const drawData = await this.apiFetch('/draw/' + eventId + '/round/' + rn + '/')
+            const rooms = drawData.rooms || []
+            const room = rooms.find(r => r.id === this.roomId)
+            if (room) {
+              foundRoom = room
+              this.roundNumber = rn
+              this.roomNumber = room.room_number
+              break
+            }
+          } catch (_) {
+            continue
           }
         }
 
@@ -190,7 +214,6 @@ export default {
       this.error = ''
       this.success = ''
       try {
-        var token = window.ieConfig ? window.ieConfig.token : ''
         var payload = {
           room_id: this.roomId,
           results: this.entries.map(function (e) {
@@ -201,26 +224,16 @@ export default {
             }
           }),
         }
-        var resp = await fetch(this.apiBase() + '/ballots/submit/', {
+        var result = await this.apiFetch('/ballots/submit/', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token,
-          },
           body: JSON.stringify(payload),
         })
-        if (!resp.ok) {
-          var body = await resp.json()
-          this.error = body.detail || 'Submission failed'
-          return
-        }
-        var result = await resp.json()
         this.success = 'Ballot submitted successfully!'
         if (result.round_complete) {
           this.success += ' All rooms in this round are complete.'
         }
       } catch (e) {
-        this.error = 'Network error: ' + e.message
+        this.error = e.message
       } finally {
         this.submitting = false
       }

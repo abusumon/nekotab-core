@@ -129,6 +129,42 @@ export default {
       var cfg = window.ieConfig || {}
       return (window.NEKOSPEECH_URL || cfg.apiBaseUrl || '/api/ie').replace(/\/$/, '')
     },
+    apiHeaders () {
+      var cfg = window.ieConfig || {}
+      var headers = { 'Content-Type': 'application/json' }
+      if (cfg.apiKey) headers['X-IE-Api-Key'] = cfg.apiKey
+      return headers
+    },
+    async apiFetch (url, options) {
+      options = options || {}
+      var cfg = window.ieConfig || {}
+      var headers = Object.assign({}, options.headers || {})
+      if (cfg.apiKey) headers['X-IE-Api-Key'] = cfg.apiKey
+      if (options.body) headers['Content-Type'] = 'application/json'
+
+      var response
+      try {
+        response = await fetch(this.apiBase() + url, Object.assign({}, options, { headers: headers }))
+      } catch (networkErr) {
+        throw new Error('Cannot reach IE service. Is nekospeech running? (' + networkErr.message + ')')
+      }
+
+      if (!response.ok) {
+        var detail = 'HTTP ' + response.status
+        try {
+          var errData = await response.json()
+          detail = errData.detail || errData.message || detail
+        } catch (_) {
+          if (response.status === 403) detail = 'Authentication failed — check NEKOSPEECH_IE_API_KEY'
+          else if (response.status === 404) detail = 'Endpoint not found — check NEKOSPEECH_URL'
+          else if (response.status === 502) detail = 'IE service is down — check nekospeech on Heroku'
+          else detail = 'Server error ' + response.status
+        }
+        throw new Error(detail)
+      }
+
+      return response.json()
+    },
     eventLabel (val) {
       var et = this.eventTypes.find(function (e) { return e.value === val })
       return et ? et.label : val
@@ -137,21 +173,10 @@ export default {
       this.submitting = true
       this.error = ''
       try {
-        var token = window.ieConfig ? window.ieConfig.token : ''
-        var resp = await fetch(this.apiBase() + '/events/', {
+        var event = await this.apiFetch('/events/', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token,
-          },
           body: JSON.stringify(this.form),
         })
-        if (!resp.ok) {
-          var body = await resp.json()
-          this.error = body.detail || 'Failed to create event'
-          return
-        }
-        var event = await resp.json()
         // Redirect or emit success
         if (window.ieConfig && window.ieConfig.onCreated) {
           window.ieConfig.onCreated(event)
@@ -159,7 +184,7 @@ export default {
           window.location.reload()
         }
       } catch (e) {
-        this.error = 'Network error: ' + e.message
+        this.error = e.message
       } finally {
         this.submitting = false
       }

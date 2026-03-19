@@ -18,6 +18,7 @@
     eventId: {{ event_id }},
     roomId: {{ room_id }},
     apiBaseUrl: '{{ api_base_url|escapejs }}',
+    apiKey: '{{ nekospeech_api_key|default:""|escapejs }}',
     token: '{{ ie_token|default:""|escapejs }}',
   };
   window.vueData = {};

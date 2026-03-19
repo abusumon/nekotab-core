@@ -74,12 +74,40 @@ export default {
       var cfg = window.ieConfig || {}
       return (window.NEKOSPEECH_URL || cfg.apiBaseUrl || '/api/ie').replace(/\/$/, '')
     },
+    async apiFetch (url, options) {
+      options = options || {}
+      var cfg = window.ieConfig || {}
+      var headers = Object.assign({}, options.headers || {})
+      if (cfg.apiKey) headers['X-IE-Api-Key'] = cfg.apiKey
+      if (options.body) headers['Content-Type'] = 'application/json'
+
+      var response
+      try {
+        response = await fetch(this.apiBase() + url, Object.assign({}, options, { headers: headers }))
+      } catch (networkErr) {
+        throw new Error('Cannot reach IE service. Is nekospeech running? (' + networkErr.message + ')')
+      }
+
+      if (!response.ok) {
+        var detail = 'HTTP ' + response.status
+        try {
+          var errData = await response.json()
+          detail = errData.detail || errData.message || detail
+        } catch (_) {
+          if (response.status === 403) detail = 'Authentication failed — check NEKOSPEECH_IE_API_KEY'
+          else if (response.status === 404) detail = 'Endpoint not found — check NEKOSPEECH_URL'
+          else if (response.status === 502) detail = 'IE service is down — check nekospeech on Heroku'
+          else detail = 'Server error ' + response.status
+        }
+        throw new Error(detail)
+      }
+
+      return response.json()
+    },
     async fetchStandings () {
       this.loading = true
       try {
-        var resp = await fetch(this.apiBase() + '/standings/' + this.eventId + '/')
-        if (!resp.ok) throw new Error('Failed to load standings')
-        this.standings = await resp.json()
+        this.standings = await this.apiFetch('/standings/' + this.eventId + '/')
       } catch (_e) {
         this.standings = { event_id: this.eventId, rounds_complete: 0, entries: [] }
       } finally {
@@ -103,11 +131,6 @@ export default {
         wsBase = protocol + '//' + window.location.host + base
       }
       var url = wsBase + '/ws/tournament/' + tournamentId + '/'
-      // Pass JWT token for authenticated WebSocket connections
-      var token = window.ieConfig ? window.ieConfig.token : ''
-      if (token) {
-        url += '?token=' + encodeURIComponent(token)
-      }
       this.ws = new WebSocket(url)
 
       var self = this

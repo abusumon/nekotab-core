@@ -266,6 +266,26 @@
     </div>
   </div>
 
+  <div class="list-group-item d-inline-block">
+    <a href="#ieh" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"
+       class="collapsed">
+      <i data-feather="mic"></i>
+      <span class="d-none d-md-inline">{% trans "Individual Events" %}</span>
+      <i data-feather="chevron-down" class="sidebar-expand d-none d-md-inline"></i>
+      <i data-feather="chevron-up" class="sidebar-expand d-none d-md-inline"></i>
+    </a>
+    <div class="collapse" id="ieh">
+      <a href="{% tournamenturl 'ie-admin-dashboard' %}"
+         class="list-group-item" data-parent="#ieh">
+        <i data-feather="maximize"></i>{% trans "Overview" %}
+      </a>
+      <a href="{% tournamenturl 'ie-admin-setup' %}"
+         class="list-group-item" data-parent="#ieh">
+        <i data-feather="plus-circle"></i>{% trans "Create Event" %}
+      </a>
+    </div>
+  </div>
+
   {% for r in tournament.rounds_for_nav %}
     {% ifchanged r.stage %}
       {% if r.stage == 'E' %}
