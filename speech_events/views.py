@@ -26,6 +26,7 @@ class IEDashboardView(AdministratorMixin, TournamentMixin, TemplateView):
         kwargs['nekospeech_url'] = django_settings.NEKOSPEECH_URL
         kwargs['has_ie_events'] = True
         kwargs['ie_token'] = issue_ie_token(self.request.user, role='director')
+        kwargs['full_width_layout'] = True
         return super().get_context_data(**kwargs)
 
 
@@ -41,6 +42,7 @@ class IESetupView(AdministratorMixin, TournamentMixin, TemplateView):
         kwargs['api_base_url'] = '/api/ie/'
         kwargs['nekospeech_url'] = django_settings.NEKOSPEECH_URL
         kwargs['ie_token'] = issue_ie_token(self.request.user, role='director')
+        kwargs['full_width_layout'] = True
         return super().get_context_data(**kwargs)
 
 
@@ -58,6 +60,7 @@ class IERoomDrawView(AdministratorMixin, TournamentMixin, TemplateView):
         kwargs['api_base_url'] = '/api/ie/'
         kwargs['nekospeech_url'] = django_settings.NEKOSPEECH_URL
         kwargs['ie_token'] = issue_ie_token(self.request.user, role='director')
+        kwargs['full_width_layout'] = True
         return super().get_context_data(**kwargs)
 
 
@@ -75,6 +78,7 @@ class IEBallotView(AdministratorMixin, TournamentMixin, TemplateView):
         kwargs['api_base_url'] = '/api/ie/'
         kwargs['nekospeech_url'] = django_settings.NEKOSPEECH_URL
         kwargs['ie_token'] = issue_ie_token(self.request.user, role='director')
+        kwargs['full_width_layout'] = True
         return super().get_context_data(**kwargs)
 
 
@@ -121,6 +125,7 @@ class IEAdminStandingsView(AdministratorMixin, TournamentMixin, TemplateView):
         kwargs['api_base_url'] = '/api/ie/'
         kwargs['nekospeech_url'] = django_settings.NEKOSPEECH_URL
         kwargs['ie_token'] = issue_ie_token(self.request.user, role='director')
+        kwargs['full_width_layout'] = True
         return super().get_context_data(**kwargs)
 
 

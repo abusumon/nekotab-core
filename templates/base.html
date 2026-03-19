@@ -127,14 +127,14 @@
 <body class="{% block body-class %}{% endblock %}">
 
   {% block nav %}
-    {% if user_role != "admin" %}
+    {% if user_role != "admin" or full_width_layout %}
       {% include "nav/top_nav_base.html" %}
     {% endif %}
   {% endblock nav %}
 
   <div class="container-fluid">
 
-    {% if user_role == "admin" %}
+    {% if user_role == "admin" and not full_width_layout %}
       <div class="row">
         <div class="col-md-2 col-1 float-left pl-0 pr-lg-3 pr-md-3 pr-0 d-none d-sm-block width fake-sidebar">
           <div class="list-group-item"></div>
@@ -198,7 +198,7 @@
       </div>
     </div>
 
-    {% if user_role == "admin" %}
+    {% if user_role == "admin" and not full_width_layout %}
         </main>
       </div>
     {% else %}
@@ -206,7 +206,7 @@
     {% endif %}
   </div>
 
-  {% if user_role != "admin" %}
+  {% if user_role != "admin" or full_width_layout %}
     {% block ad_above_footer %}{% endblock ad_above_footer %}
     <footer class="footer">
       <div class="container-fluid">
