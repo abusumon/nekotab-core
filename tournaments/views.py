@@ -589,7 +589,7 @@ class CreateIETournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Crea
         from django.core.cache import cache
         cache.set(f'subdom_tour_exists_{tournament.slug.lower()}', True, 300)
 
-        return redirect_tournament('tournament-configure', tournament)
+        return redirect_tournament('ie-admin-dashboard', tournament)
 
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)

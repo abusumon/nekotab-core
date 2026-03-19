@@ -14,6 +14,7 @@
   window.NEKOSPEECH_URL = '{{ nekospeech_url|escapejs }}';
   window.ieConfig = {
     tournamentId: {{ tournament_id }},
+    tournamentSlug: '{{ tournament_slug|escapejs }}',
     apiBaseUrl: '{{ api_base_url|escapejs }}',
     apiKey: '{{ nekospeech_api_key|default:""|escapejs }}',
     token: '{{ ie_token|default:""|escapejs }}',

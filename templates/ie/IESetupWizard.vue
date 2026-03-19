@@ -83,12 +83,13 @@
             <tr><th>Tiebreak</th><td>{{ form.tiebreak_method }}</td></tr>
           </tbody>
         </table>
-        <div v-if="error" class="alert alert-danger">{{ error }}</div>
+        <div v-if="error && !submitting" class="alert alert-danger">{{ error }}</div>
         <div class="d-flex justify-content-between">
-          <button class="btn btn-outline-secondary btn-sm" @click="step = 2">← Back</button>
+          <button v-if="!submitting" class="btn btn-outline-secondary btn-sm" @click="step = 2">← Back</button>
+          <span v-else></span>
           <button class="btn btn-success btn-sm" :disabled="submitting" @click="createEvent">
             <span v-if="submitting" class="spinner-border spinner-border-sm mr-1"></span>
-            Create Event
+            {{ submitting ? 'Creating...' : 'Create Event' }}
           </button>
         </div>
       </div>
@@ -173,18 +174,17 @@ export default {
       this.submitting = true
       this.error = ''
       try {
-        var event = await this.apiFetch('/events/', {
+        await this.apiFetch('/events/', {
           method: 'POST',
           body: JSON.stringify(this.form),
         })
-        // Redirect or emit success
-        if (window.ieConfig && window.ieConfig.onCreated) {
-          window.ieConfig.onCreated(event)
-        } else {
-          window.location.reload()
-        }
+        // Success — redirect to IE dashboard
+        var cfg = window.ieConfig || {}
+        var slug = cfg.tournamentSlug || ''
+        window.location.href = slug ? ('/' + slug + '/admin/ie/') : '/admin/ie/'
       } catch (e) {
         this.error = e.message
+        // Stay on Step 3 — do not reset
       } finally {
         this.submitting = false
       }
