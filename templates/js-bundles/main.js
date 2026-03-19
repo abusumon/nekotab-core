@@ -240,6 +240,7 @@ vueComponents.PassportEdit = () => import('../../passport/templates/PassportEdit
 // converts "ie-" to "Ie" not "IE", so IESetupWizard would never match
 // <ie-setup-wizard> in DOM templates.
 vueComponents['ie-setup-wizard'] = () => import('../ie/IESetupWizard.vue')
+vueComponents['ie-dashboard'] = () => import('../ie/IEDashboard.vue')
 vueComponents['ie-room-draw'] = () => import('../ie/IERoomDraw.vue')
 vueComponents['ie-ballot-form'] = () => import('../ie/IEBallotForm.vue')
 vueComponents['ie-standings'] = () => import('../ie/IEStandings.vue')
