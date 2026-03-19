@@ -248,6 +248,7 @@ vueComponents['ie-entry-manager'] = () => import('../ie/IEEntryManager.vue')
 vueComponents['ie-judge-links'] = () => import('../ie/IEJudgeLinks.vue')
 vueComponents['ie-finalists'] = () => import('../ie/IEFinalists.vue')
 vueComponents['ie-public-landing'] = () => import('../ie/IEPublicLanding.vue')
+vueComponents['ie-tournament-prep'] = () => import('../ie/IETournamentPrep.vue')
 
 // -----------------------------------------------------------------------------
 // Main Vue Instance

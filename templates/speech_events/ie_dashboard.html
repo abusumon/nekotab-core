@@ -4,12 +4,58 @@
 {% block page-title %}{% trans "Individual Events" %}{% endblock %}
 
 {% block content %}
-<div class="card mb-3">
+<!-- Workflow Guidance -->
+<div class="card mb-3 {% if speaker_count == 0 %}border-warning{% endif %}">
   <div class="card-body">
     <h5 class="card-title">{% trans "Individual Events" %}</h5>
     <p class="card-text text-muted">
       {% trans "Manage speech and interpretation events for this tournament." %}
     </p>
+
+    <!-- Workflow Steps -->
+    <div class="d-flex align-items-center flex-wrap mb-3">
+      <span class="mr-3">
+        <span class="badge {% if institution_count > 0 %}badge-success{% else %}badge-secondary{% endif %} mr-1">1</span>
+        {% if institution_count > 0 %}
+          <strong>{{ institution_count }}</strong> {% trans "Schools" %} ✓
+        {% else %}
+          {% trans "Add Schools" %}
+        {% endif %}
+      </span>
+      <span class="mr-3">→</span>
+      <span class="mr-3">
+        <span class="badge {% if speaker_count > 0 %}badge-success{% else %}badge-secondary{% endif %} mr-1">2</span>
+        {% if speaker_count > 0 %}
+          <strong>{{ speaker_count }}</strong> {% trans "Speakers" %} ✓
+        {% else %}
+          {% trans "Add Speakers" %}
+        {% endif %}
+      </span>
+      <span class="mr-3">→</span>
+      <span class="mr-3">
+        <span class="badge {% if judge_count > 0 %}badge-success{% else %}badge-secondary{% endif %} mr-1">3</span>
+        {% if judge_count > 0 %}
+          <strong>{{ judge_count }}</strong> {% trans "Judges" %} ✓
+        {% else %}
+          {% trans "Add Judges" %}
+        {% endif %}
+      </span>
+      <span class="mr-3">→</span>
+      <span class="mr-3">
+        <span class="badge badge-info mr-1">4</span>
+        {% trans "Create Events" %}
+      </span>
+      <span class="mr-3">→</span>
+      <span class="mr-3">
+        <span class="badge badge-info mr-1">5</span>
+        {% trans "Register Entries & Draw" %}
+      </span>
+    </div>
+
+    <a href="{% url 'ie-admin-prep' tournament_slug=tournament_slug %}"
+       class="btn {% if speaker_count == 0 %}btn-warning{% else %}btn-outline-primary{% endif %} btn-sm mr-2">
+      {% trans "Manage Participants" %}
+    </a>
     <a href="{% url 'ie-admin-setup' tournament_slug=tournament_slug %}"
        class="btn btn-primary btn-sm mr-2">
       {% trans "Create Event" %}
