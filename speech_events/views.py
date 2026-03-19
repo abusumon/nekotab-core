@@ -51,6 +51,106 @@ class IESetupView(AdministratorMixin, TournamentMixin, TemplateView):
         return super().get_context_data(**kwargs)
 
 
+class IEEntryManagerView(AdministratorMixin, TournamentMixin, TemplateView):
+    template_name = 'speech_events/ie_entries.html'
+    page_title = _("IE Entries")
+    page_emoji = '🎤'
+    edit_permission = Permission.EDIT_SETTINGS
+
+    def get_context_data(self, **kwargs):
+        event_id = self.kwargs['event_id']
+        # Fetch event name/type from nekospeech
+        event_name = ''
+        event_type = ''
+        num_rounds = 3
+        try:
+            import json
+            import urllib.request
+            nekospeech_url = django_settings.NEKOSPEECH_URL.rstrip('/')
+            headers = {}
+            api_key = django_settings.NEKOSPEECH_IE_API_KEY
+            if api_key:
+                headers["X-IE-Api-Key"] = api_key
+            req = urllib.request.Request(
+                f"{nekospeech_url}/events/{event_id}/", headers=headers)
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read())
+                event_name = data.get('name', '')
+                event_type = data.get('event_type', '')
+                num_rounds = data.get('num_rounds', 3)
+        except Exception:
+            pass
+
+        kwargs['tournament_slug'] = self.tournament.slug
+        kwargs['tournament_id'] = self.tournament.id
+        kwargs['event_id'] = event_id
+        kwargs['event_name'] = event_name
+        kwargs['event_type'] = event_type
+        kwargs['num_rounds'] = num_rounds
+        kwargs['api_base_url'] = '/api/ie/'
+        kwargs['nekospeech_url'] = django_settings.NEKOSPEECH_URL
+        kwargs['nekospeech_api_key'] = django_settings.NEKOSPEECH_IE_API_KEY
+        kwargs['ie_token'] = issue_ie_token(self.request.user, role='director')
+        kwargs['full_width_layout'] = True
+        return super().get_context_data(**kwargs)
+
+
+class IEFinalistsView(AdministratorMixin, TournamentMixin, TemplateView):
+    template_name = 'speech_events/ie_finalists.html'
+    page_title = _("IE Finals")
+    page_emoji = '🎤'
+    edit_permission = Permission.EDIT_SETTINGS
+
+    def get_context_data(self, **kwargs):
+        event_id = self.kwargs['event_id']
+        num_rounds = 3
+        try:
+            import json
+            import urllib.request
+            nekospeech_url = django_settings.NEKOSPEECH_URL.rstrip('/')
+            headers = {}
+            api_key = django_settings.NEKOSPEECH_IE_API_KEY
+            if api_key:
+                headers["X-IE-Api-Key"] = api_key
+            req = urllib.request.Request(
+                f"{nekospeech_url}/events/{event_id}/", headers=headers)
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read())
+                num_rounds = data.get('num_rounds', 3)
+        except Exception:
+            pass
+
+        kwargs['tournament_slug'] = self.tournament.slug
+        kwargs['tournament_id'] = self.tournament.id
+        kwargs['event_id'] = event_id
+        kwargs['num_rounds'] = num_rounds
+        kwargs['api_base_url'] = '/api/ie/'
+        kwargs['nekospeech_url'] = django_settings.NEKOSPEECH_URL
+        kwargs['nekospeech_api_key'] = django_settings.NEKOSPEECH_IE_API_KEY
+        kwargs['ie_token'] = issue_ie_token(self.request.user, role='director')
+        kwargs['full_width_layout'] = True
+        return super().get_context_data(**kwargs)
+
+
+class IEJudgeLinksPageView(AdministratorMixin, TournamentMixin, TemplateView):
+    template_name = 'speech_events/ie_judge_links.html'
+    page_title = _("IE Judge Links")
+    page_emoji = '🎤'
+    edit_permission = Permission.RELEASE_DRAW
+
+    def get_context_data(self, **kwargs):
+        kwargs['tournament_slug'] = self.tournament.slug
+        kwargs['tournament_id'] = self.tournament.id
+        kwargs['event_id'] = self.kwargs['event_id']
+        kwargs['round_number'] = self.kwargs['round_number']
+        kwargs['api_base_url'] = '/api/ie/'
+        kwargs['nekospeech_url'] = django_settings.NEKOSPEECH_URL
+        kwargs['nekospeech_api_key'] = django_settings.NEKOSPEECH_IE_API_KEY
+        kwargs['ie_token'] = issue_ie_token(self.request.user, role='director')
+        kwargs['full_width_layout'] = True
+        return super().get_context_data(**kwargs)
+
+
 class IERoomDrawView(AdministratorMixin, TournamentMixin, TemplateView):
     template_name = 'speech_events/ie_draw.html'
     page_title = _("IE Room Draw")
@@ -90,7 +190,7 @@ class IEBallotView(AdministratorMixin, TournamentMixin, TemplateView):
 
 
 class IEPublicDashboardView(PublicTournamentPageMixin, TemplateView):
-    template_name = 'speech_events/ie_dashboard.html'
+    template_name = 'speech_events/ie_public.html'
     public_page_preference = 'public_results'
     page_title = _("Individual Events")
     page_emoji = '🎤'

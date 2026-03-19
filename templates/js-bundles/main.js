@@ -244,6 +244,10 @@ vueComponents['ie-dashboard'] = () => import('../ie/IEDashboard.vue')
 vueComponents['ie-room-draw'] = () => import('../ie/IERoomDraw.vue')
 vueComponents['ie-ballot-form'] = () => import('../ie/IEBallotForm.vue')
 vueComponents['ie-standings'] = () => import('../ie/IEStandings.vue')
+vueComponents['ie-entry-manager'] = () => import('../ie/IEEntryManager.vue')
+vueComponents['ie-judge-links'] = () => import('../ie/IEJudgeLinks.vue')
+vueComponents['ie-finalists'] = () => import('../ie/IEFinalists.vue')
+vueComponents['ie-public-landing'] = () => import('../ie/IEPublicLanding.vue')
 
 // -----------------------------------------------------------------------------
 // Main Vue Instance

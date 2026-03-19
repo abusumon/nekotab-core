@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "IE Finals" %}{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <ie-finalists></ie-finalists>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.NEKOSPEECH_URL = '{{ nekospeech_url|escapejs }}';
+  window.ieConfig = {
+    tournamentId: {{ tournament_id }},
+    tournamentSlug: '{{ tournament_slug|escapejs }}',
+    eventId: {{ event_id }},
+    numRounds: {{ num_rounds }},
+    apiBaseUrl: '{{ api_base_url|escapejs }}',
+    apiKey: '{{ nekospeech_api_key|default:""|escapejs }}',
+    token: '{{ ie_token|default:""|escapejs }}',
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}
