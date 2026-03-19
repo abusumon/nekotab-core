@@ -22,9 +22,6 @@ def issue_ie_token(user, *, role="director", ttl_seconds=3600):
     Returns:
         Encoded JWT string.
     """
-    import hashlib, sys
-    key_hash = hashlib.sha256(settings.SECRET_KEY.encode()).hexdigest()[:16]
-    print(f"JWT_SIGN_DEBUG: key_len={len(settings.SECRET_KEY)} key_sha256_prefix={key_hash} key_first5={repr(settings.SECRET_KEY[:5])}", file=sys.stderr, flush=True)
     now = int(time.time())
     payload = {
         "user_id": user.id,
