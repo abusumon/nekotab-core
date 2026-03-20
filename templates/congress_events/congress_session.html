@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Live Session Floor" %}{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <congress-live-session-floor></congress-live-session-floor>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.congressConfig = {
+    tournamentId: {{ tournament_id }},
+    tournamentSlug: '{{ tournament_slug|escapejs }}',
+    nekocongressUrl: '{{ nekocongress_url|escapejs }}',
+    apiKey: '{{ nekocongress_api_key|default:""|escapejs }}',
+    token: '{{ congress_token|default:""|escapejs }}',
+    sessionId: {{ session_id }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

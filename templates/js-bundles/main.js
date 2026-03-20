@@ -250,6 +250,18 @@ vueComponents['ie-finalists'] = () => import('../ie/IEFinalists.vue')
 vueComponents['ie-public-landing'] = () => import('../ie/IEPublicLanding.vue')
 vueComponents['ie-tournament-prep'] = () => import('../ie/IETournamentPrep.vue')
 
+// Congressional Debate (nekocongress)
+vueComponents['congress-dashboard'] = () => import('../congress/CongressDashboard.vue')
+vueComponents['congress-setup-wizard'] = () => import('../congress/CongressSetupWizard.vue')
+vueComponents['congress-docket-manager'] = () => import('../congress/DocketManager.vue')
+vueComponents['congress-chamber-assignment'] = () => import('../congress/ChamberAssignment.vue')
+vueComponents['congress-po-election'] = () => import('../congress/POElection.vue')
+vueComponents['congress-live-session-floor'] = () => import('../congress/LiveSessionFloor.vue')
+vueComponents['congress-scorer-ballot'] = () => import('../congress/ScorerBallot.vue')
+vueComponents['congress-parliamentarian-panel'] = () => import('../congress/ParliamentarianPanel.vue')
+vueComponents['congress-standings'] = () => import('../congress/CongressStandings.vue')
+vueComponents['congress-student-session-view'] = () => import('../congress/StudentSessionView.vue')
+
 // -----------------------------------------------------------------------------
 // Main Vue Instance
 // -----------------------------------------------------------------------------

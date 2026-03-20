@@ -43,6 +43,10 @@ NEKOSPEECH_URL = os.environ.get('NEKOSPEECH_URL', '/api/ie')
 # IE API Key — must match NEKOSPEECH_IE_API_KEY on the nekospeech Heroku app
 NEKOSPEECH_IE_API_KEY = os.environ.get('NEKOSPEECH_IE_API_KEY', '')
 
+# nekocongress API URL (for the separate Congress microservice).
+NEKOCONGRESS_URL = os.environ.get('NEKOCONGRESS_URL', '/api/congress')
+NEKOCONGRESS_API_KEY = os.environ.get('NEKOCONGRESS_API_KEY', '')
+
 # ==============================================================================
 # Version
 # ==============================================================================
@@ -181,6 +185,7 @@ TABBYCAT_APPS = (
     'passport',
     'content',
     'speech_events',
+    'congress_events',
 )
 
 INSTALLED_APPS = (

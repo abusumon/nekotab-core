@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Scorer Ballot" %}{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <congress-scorer-ballot></congress-scorer-ballot>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.congressConfig = {
+    tournamentId: {{ tournament_id }},
+    tournamentSlug: '{{ tournament_slug|escapejs }}',
+    nekocongressUrl: '{{ nekocongress_url|escapejs }}',
+    apiKey: '{{ nekocongress_api_key|default:""|escapejs }}',
+    token: '{{ congress_token|default:""|escapejs }}',
+    sessionId: {{ session_id }},
+    judgerId: {{ judge_id|default:"0" }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}

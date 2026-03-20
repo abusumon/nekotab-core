@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Student Session View" %}{% endblock %}
+
+{% block content %}
+<div id="vueMount">
+  <congress-student-session-view></congress-student-session-view>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+  window.congressConfig = {
+    tournamentId: {{ tournament_id }},
+    tournamentSlug: '{{ tournament_slug|escapejs }}',
+    nekocongressUrl: '{{ nekocongress_url|escapejs }}',
+    token: '{{ congress_token|default:""|escapejs }}',
+    sessionId: {{ session_id }},
+  };
+  window.vueData = {};
+</script>
+{{ block.super }}
+{% endblock js %}
