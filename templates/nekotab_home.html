@@ -158,22 +158,57 @@
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l3 3 3-3"/></svg>
           </button>
           <div class="em-dropdown-panel" role="menu">
-            <a href="#features" class="em-dd-item" role="menuitem">
-              <div class="em-dd-icon">🎲</div>
-              <div><div class="em-dd-label">Tournament Engine</div><div class="em-dd-desc">Draws, allocations, ballots & standings</div></div>
+            <!-- Tab Room with nested flyout -->
+            <div class="em-dd-nested">
+              <button class="em-dd-item em-dd-nested-trigger" role="menuitem" aria-expanded="false" type="button">
+                <div class="em-dd-icon">🎲</div>
+                <div class="em-dd-nested-label-wrap">
+                  <div class="em-dd-label">Tab Room</div>
+                  <div class="em-dd-desc">Tournament management platform</div>
+                </div>
+                <svg class="em-dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 2.5l3.5 3.5-3.5 3.5"/></svg>
+              </button>
+              <div class="em-dd-flyout" role="menu">
+                <a href="https://nekotab.app/register/organization/" class="em-dd-item" role="menuitem">
+                  <div class="em-dd-icon em-dd-icon--blue">🏢</div>
+                  <div>
+                    <div class="em-dd-label">Organization Workspace</div>
+                    <div class="em-dd-desc">A branded workspace to manage multiple tournaments under one roof</div>
+                  </div>
+                </a>
+                <a href="https://nekotab.app/create/" class="em-dd-item" role="menuitem">
+                  <div class="em-dd-icon em-dd-icon--amber">🎯</div>
+                  <div>
+                    <div class="em-dd-label">Single Tournament</div>
+                    <div class="em-dd-desc">Set up and run one tournament — no organization workspace needed</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- IE Suite -->
+            <a href="https://nekotab.app/create/ie/" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--green">🎤</div>
+              <div>
+                <div class="em-dd-label">IE Suite</div>
+                <div class="em-dd-desc">Individual events management</div>
+              </div>
             </a>
-            <a href="{% url 'motionbank:motion-doctor' %}" class="em-dd-item" role="menuitem">
-              <div class="em-dd-icon">🩺</div>
-              <div><div class="em-dd-label">Motion Doctor</div><div class="em-dd-desc">AI-powered motion analysis</div></div>
-            </a>
-            <a href="{% url 'motionbank:motionbank-home' %}" class="em-dd-item" role="menuitem">
+            <!-- Motion Bank -->
+            <a href="https://nekotab.app/motions-bank/" class="em-dd-item" role="menuitem">
               <div class="em-dd-icon em-dd-icon--green">📋</div>
-              <div><div class="em-dd-label">Motion Bank</div><div class="em-dd-desc">Global database of debate motions</div></div>
+              <div>
+                <div class="em-dd-label">Motion Bank</div>
+                <div class="em-dd-desc">Global database of debate motions</div>
+              </div>
             </a>
-            <a href="{% url 'passport:passport-dashboard' %}" class="em-dd-item" role="menuitem">
-              <div class="em-dd-icon em-dd-icon--blue">🪪</div>
-              <div><div class="em-dd-label">Debate Passport</div><div class="em-dd-desc">Persistent debater profiles & tracking</div></div>
-            </a>
+            <!-- Oratory Bank (Coming Soon) -->
+            <div class="em-dd-item em-dd-item--disabled" role="menuitem" aria-disabled="true">
+              <div class="em-dd-icon em-dd-icon--blue">📝</div>
+              <div>
+                <div class="em-dd-label">Oratory Bank <span class="em-badge-soon">Coming Soon</span></div>
+                <div class="em-dd-desc">Scripts, pieces &amp; public speaking resources</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -233,10 +268,24 @@
     <div id="em-mobile-menu" class="em-mobile-menu" hidden>
       <div class="em-mobile-menu-section">
         <div class="em-mobile-menu-label">Product</div>
-        <a href="#features">🎲 Tournament Engine</a>
-        <a href="{% url 'motionbank:motion-doctor' %}">🩺 Motion Doctor</a>
-        <a href="{% url 'motionbank:motionbank-home' %}">📋 Motion Bank</a>
-        <a href="{% url 'passport:passport-dashboard' %}">🪪 Debate Passport</a>
+        <!-- Tab Room accordion -->
+        <button class="em-mobile-accordion-trigger" aria-expanded="false" type="button">
+          🎲 Tab Room
+          <svg class="em-mobile-accordion-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+        </button>
+        <div class="em-mobile-accordion-panel" hidden>
+          <a href="https://nekotab.app/register/organization/">
+            🏢 Organization Workspace
+            <span class="em-mobile-sub-desc">Manage multiple tournaments under one roof</span>
+          </a>
+          <a href="https://nekotab.app/create/">
+            🎯 Single Tournament
+            <span class="em-mobile-sub-desc">Set up and run one tournament</span>
+          </a>
+        </div>
+        <a href="https://nekotab.app/create/ie/">🎤 IE Suite</a>
+        <a href="https://nekotab.app/motions-bank/">📋 Motion Bank</a>
+        <span class="em-mobile-menu-disabled">📝 Oratory Bank <span class="em-badge-soon">Coming Soon</span></span>
       </div>
       <div class="em-mobile-menu-section">
         <div class="em-mobile-menu-label">Solutions</div>

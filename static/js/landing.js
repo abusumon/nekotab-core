@@ -111,6 +111,50 @@
     if (e.key === 'Escape') closeAllDropdowns();
   });
 
+  // ==================== NESTED FLYOUT (Tab Room) ====================
+  var nestedTriggers = document.querySelectorAll('.em-dd-nested-trigger');
+  nestedTriggers.forEach(function(trigger) {
+    trigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var nested = trigger.closest('.em-dd-nested');
+      if (!nested) return;
+      var isOpen = nested.classList.contains('open');
+      // Close all nested flyouts first
+      document.querySelectorAll('.em-dd-nested.open').forEach(function(n) {
+        n.classList.remove('open');
+        var t = n.querySelector('.em-dd-nested-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        nested.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Close nested flyouts when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.em-dd-nested')) {
+      document.querySelectorAll('.em-dd-nested.open').forEach(function(n) {
+        n.classList.remove('open');
+        var t = n.querySelector('.em-dd-nested-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // ==================== MOBILE ACCORDION (Tab Room) ====================
+  var accordionTriggers = document.querySelectorAll('.em-mobile-accordion-trigger');
+  accordionTriggers.forEach(function(trigger) {
+    trigger.addEventListener('click', function() {
+      var panel = trigger.nextElementSibling;
+      if (!panel || !panel.classList.contains('em-mobile-accordion-panel')) return;
+      var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+      panel.hidden = isOpen;
+    });
+  });
+
   // ==================== FADE-IN ANIMATIONS ====================
   var animated = document.querySelectorAll(
     '.em-pillar, .em-feature-card, .em-usecase, .em-spotlight-card, ' +
