@@ -17,6 +17,7 @@
       <thead class="thead-light">
         <tr>
           <th>Room #</th>
+          <th>Name</th>
           <th>Judge</th>
           <th>Entries</th>
           <th>Status</th>
@@ -27,6 +28,28 @@
         <template v-for="room in rooms">
           <tr :key="room.id">
             <td class="font-weight-bold">{{ room.room_number }}</td>
+            <td>
+              <template v-if="isDirector">
+                <div v-if="renamingRoomId === room.id" class="d-flex align-items-center">
+                  <input v-model="renameValue" type="text" maxlength="100"
+                         class="form-control form-control-sm" style="width: 140px"
+                         placeholder="e.g. Room 101"
+                         @keyup.enter="saveRoomName(room)"
+                         @keyup.escape="renamingRoomId = null" />
+                  <button class="btn btn-sm btn-outline-success ml-1" :disabled="renamingSaving"
+                          @click="saveRoomName(room)">&#10003;</button>
+                  <button class="btn btn-sm btn-outline-secondary ml-1"
+                          @click="renamingRoomId = null">&times;</button>
+                </div>
+                <span v-else class="text-primary" style="cursor:pointer; border-bottom: 1px dashed #007bff"
+                      @click="startRename(room)">
+                  {{ room.nickname || '—' }}
+                </span>
+              </template>
+              <template v-else>
+                {{ room.nickname || '—' }}
+              </template>
+            </td>
             <td>
               <span v-if="room.judge_name">{{ room.judge_name }}</span>
               <span v-else class="text-muted">Unassigned</span>
@@ -62,7 +85,7 @@
           </tr>
           <!-- Inline Ballot Edit Row -->
           <tr v-if="editingRoomId === room.id" :key="'edit-' + room.id">
-            <td :colspan="isDirector ? 5 : 4">
+            <td :colspan="isDirector ? 6 : 5">
               <div class="border rounded p-3 bg-light">
                 <div v-if="editLoading" class="text-center py-2">
                   <span class="spinner-border spinner-border-sm"></span> Loading results...
@@ -131,6 +154,10 @@ export default {
       editSaving: false,
       editError: '',
       editSuccess: '',
+      // Room rename state
+      renamingRoomId: null,
+      renameValue: '',
+      renamingSaving: false,
     }
   },
   computed: {
@@ -277,6 +304,25 @@ export default {
         this.editError = e.message
       } finally {
         this.editSaving = false
+      }
+    },
+    startRename (room) {
+      this.renamingRoomId = room.id
+      this.renameValue = room.nickname || ''
+    },
+    async saveRoomName (room) {
+      this.renamingSaving = true
+      try {
+        var updated = await this.apiFetch('/draw/rename-room/', {
+          method: 'POST',
+          body: JSON.stringify({ room_id: room.id, nickname: this.renameValue || null }),
+        })
+        room.nickname = updated.nickname
+        this.renamingRoomId = null
+      } catch (e) {
+        this.error = e.message
+      } finally {
+        this.renamingSaving = false
       }
     },
     connectWebSocket () {
