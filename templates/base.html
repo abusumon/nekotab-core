@@ -38,7 +38,7 @@
   <meta property="og:title" content="{% if tournament %}{{ tournament.short_name }}{% else %}NekoTab{% endif %} | {% if page_title %}{{ page_title }}{% else %}{% block og-title %}Debate Tournament Tabulation{% endblock %}{% endif %}" />
   <meta property="og:description" content="{{ meta_description }}" />
   <meta property="og:image" content="{% static 'logo-social.png' %}" />
-  <meta property="og:url" content="{{ canonical_url|default:request.build_absolute_uri }}" />
+  <meta property="og:url" content="{% if canonical_url %}{{ canonical_url }}{% elif request %}{{ request.build_absolute_uri }}{% endif %}" />
   <meta property="og:site_name" content="{{ seo_site_name }}" />
 
   <!-- Twitter -->
