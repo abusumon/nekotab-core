@@ -85,13 +85,14 @@
   --sh-v: 0 4px 18px rgba(99,102,241,.22), 0 1px 4px rgba(99,102,241,.14);
   /* bottom nav height for offsetting */
   --bottom-nav-h: 60px;
+  --sai-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* ─── Height chain: Bootstrap wrappers → .pti-app ─── */
 html { height: 100%; }
 body.pti-dashboard {
   height: 100%; margin: 0; background: var(--bg);
-  /* allow scrolling on mobile — no overflow:hidden */
+  overflow: hidden; /* prevent body scroll — content scrolls inside .pti-main */
 }
 body.pti-dashboard > .container-fluid {
   padding: 0 !important; max-width: 100% !important; height: 100%;
@@ -110,8 +111,8 @@ body.pti-dashboard > footer { display: none !important; }
 /* ─── App wrapper ─── */
 .pti-app {
   width: 100%;
-  min-height: 100%;
-  min-height: 100dvh;
+  height: 100%;      /* fallback for older browsers */
+  height: 100dvh;    /* dynamic viewport height — accounts for mobile browser chrome */
   display: flex;
   flex-direction: column;
   font-family: var(--mono);
@@ -415,17 +416,13 @@ body.pti-dashboard > footer { display: none !important; }
   flex: 1 1 0;
   display: flex;
   min-height: 0;
-  /* On mobile, add padding for bottom nav + safe area */
+  overflow: hidden; /* contain scroll to .pti-main on all viewports */
+  /* On mobile, add padding for fixed bottom nav + safe area */
   padding-bottom: calc(var(--bottom-nav-h) + var(--sai-bottom, 0px));
 }
 @media (min-width: 768px) {
   .pti-body {
     padding-bottom: 0;
-    /* desktop: restore overflow:hidden on body for sidebar+main flex */
-    overflow: hidden;
-  }
-  body.pti-dashboard {
-    overflow: hidden;
   }
 }
 
