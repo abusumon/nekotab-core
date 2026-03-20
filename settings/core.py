@@ -43,8 +43,9 @@ NEKOSPEECH_URL = os.environ.get('NEKOSPEECH_URL', '/api/ie')
 # IE API Key — must match NEKOSPEECH_IE_API_KEY on the nekospeech Heroku app
 NEKOSPEECH_IE_API_KEY = os.environ.get('NEKOSPEECH_IE_API_KEY', '')
 
-# nekocongress API URL (for the separate Congress microservice).
-NEKOCONGRESS_URL = os.environ.get('NEKOCONGRESS_URL', '/api/congress')
+# nekocongress backend URL.  Nginx proxies /api/congress/ to this.
+# Vue frontends also use this as the base for direct API calls.
+NEKOCONGRESS_URL = os.environ.get('NEKOCONGRESS_URL', '')
 NEKOCONGRESS_API_KEY = os.environ.get('NEKOCONGRESS_API_KEY', '')
 
 # ==============================================================================
