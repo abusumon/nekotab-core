@@ -92,27 +92,26 @@
 html { height: 100%; }
 body.pti-dashboard {
   height: 100%; margin: 0; background: var(--bg);
-  overflow: hidden; /* prevent body scroll — content scrolls inside .pti-main */
+  overflow: hidden;
 }
 body.pti-dashboard > .container-fluid {
-  padding: 0 !important; max-width: 100% !important; height: 100%;
+  padding: 0 !important; max-width: 100% !important;
 }
 body.pti-dashboard > .container-fluid > main.main {
-  padding: 0 !important; margin: 0 !important; height: 100%;
+  padding: 0 !important; margin: 0 !important;
 }
 body.pti-dashboard > .container-fluid > main.main > .row {
-  margin: 0 !important; height: 100%;
+  margin: 0 !important;
 }
 body.pti-dashboard > .container-fluid > main.main > .row > .col {
-  padding: 0 !important; height: 100%;
+  padding: 0 !important;
 }
 body.pti-dashboard > footer { display: none !important; }
 
-/* ─── App wrapper ─── */
+/* ─── App wrapper — fixed to viewport, bypasses Bootstrap wrappers ─── */
 .pti-app {
-  width: 100%;
-  height: 100%;      /* fallback for older browsers */
-  height: 100dvh;    /* dynamic viewport height — accounts for mobile browser chrome */
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
   flex-direction: column;
   font-family: var(--mono);
@@ -373,10 +372,7 @@ body.pti-dashboard > footer { display: none !important; }
   display: flex;
   align-items: center;
   justify-content: space-around;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  flex-shrink: 0;
   min-height: var(--bottom-nav-h);
   padding-bottom: var(--sai-bottom, 0px);
   background: var(--surface);
@@ -416,14 +412,7 @@ body.pti-dashboard > footer { display: none !important; }
   flex: 1 1 0;
   display: flex;
   min-height: 0;
-  overflow: hidden; /* contain scroll to .pti-main on all viewports */
-  /* On mobile, add padding for fixed bottom nav + safe area */
-  padding-bottom: calc(var(--bottom-nav-h) + var(--sai-bottom, 0px));
-}
-@media (min-width: 768px) {
-  .pti-body {
-    padding-bottom: 0;
-  }
+  overflow: hidden;
 }
 
 /* ═══════════════════════════════════════
@@ -762,7 +751,7 @@ span.pti-nav-item[style*="opacity"] {
   .pti-drawer-backdrop, .pti-hamburger { display: none !important; }
   .pti-body { padding-bottom: 0; overflow: visible; }
   .pti-main { overflow: visible; }
-  .pti-app { height: auto; min-height: auto; }
+  .pti-app { position: static; height: auto; min-height: auto; }
 }
 </style>
 {% endblock %}
