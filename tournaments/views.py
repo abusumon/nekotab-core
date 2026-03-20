@@ -36,7 +36,7 @@ from utils.mixins import (AdministratorMixin, AssistantMixin, CacheMixin, Tabbyc
 from utils.tables import TabbycatTableBuilder
 from utils.views import ModelFormSetView, PostOnlyRedirectView, VueTableTemplateView
 
-from .forms import (IETournamentStartForm, RoundWeightForm, ScheduleEventForm,
+from .forms import (CongressTournamentStartForm, IETournamentStartForm, RoundWeightForm, ScheduleEventForm,
                     SetCurrentRoundMultipleBreakCategoriesForm,
                     SetCurrentRoundSingleBreakCategoryForm, TournamentConfigureForm,
                     TournamentStartForm)
@@ -596,6 +596,107 @@ class CreateIETournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Crea
 
     def get_success_url(self):
         return reverse_lazy('ie-tournament-create')
+
+
+class CreateCongressTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, CreateView):
+    """Create a new Congressional Debate tournament.
+    After creation, redirects to the Congress setup wizard."""
+
+    model = Tournament
+    form_class = CongressTournamentStartForm
+    template_name = "create_congress_tournament.html"
+    db_warning_severity = messages.ERROR
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+
+        from organizations.models import Organization, OrganizationMembership
+        user = self.request.user
+        org_membership = OrganizationMembership.objects.filter(
+            user=user,
+            role__in=[OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
+        ).select_related('organization').first()
+
+        if org_membership:
+            form.instance.organization = org_membership.organization
+        else:
+            org_slug = f"org-{user.username}"[:80]
+            org, created = Organization.objects.get_or_create(
+                slug=org_slug,
+                defaults={'name': f"{user.username}'s Organization"},
+            )
+            if created:
+                OrganizationMembership.objects.create(
+                    organization=org,
+                    user=user,
+                    role=OrganizationMembership.Role.OWNER,
+                )
+            form.instance.organization = org
+
+        tournament = form.save()
+
+        UserPermission.objects.bulk_create([
+            UserPermission(user=self.request.user, permission=perm, tournament=tournament)
+            for perm in Permission
+        ], ignore_conflicts=True)
+
+        if not hasattr(self.request.user, '_permissions'):
+            self.request.user._permissions = {}
+        self.request.user._permissions[tournament.slug] = set(Permission)
+
+        messages.success(self.request, _("Success! Your Congress tournament has been created. Complete the setup wizard below."))
+
+        tournament_url = build_tournament_absolute_uri(self.request, tournament)
+
+        try:
+            send_mail(
+                subject="[NekoTab] New Congress Tournament Created",
+                message=(
+                    "A new Congress tournament has been created on NekoTab.\n\n"
+                    f"Created by: {self.request.user.username} ({self.request.user.email})\n"
+                    f"Tournament Name: {tournament.name}\n"
+                    f"Slug: {tournament.slug}\n"
+                    f"URL: {tournament_url}\n"
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[getattr(settings, 'ADMIN_NOTIFICATION_EMAIL', settings.DEFAULT_FROM_EMAIL)],
+                fail_silently=True,
+            )
+        except Exception as e:
+            logger.error("Failed to send Congress tournament creation admin email: %s", e, exc_info=True)
+
+        owner_email = getattr(self.request.user, 'email', None)
+        if owner_email:
+            try:
+                send_mail(
+                    subject=f'Your NekoTab Congress Tournament "{tournament.name}" is Ready!',
+                    message=(
+                        f"Hi {self.request.user.username},\n\n"
+                        f'Your Congress tournament "{tournament.name}" has been created on NekoTab!\n\n'
+                        f"You can access your tournament here:\n"
+                        f"{tournament_url}\n\n"
+                        f"Next Steps:\n"
+                        f"1. Complete the Congress setup wizard\n"
+                        f"2. Add legislators (students) and scorers\n"
+                        f"3. Set up your docket with legislation\n"
+                        f"4. Create chambers and start sessions!\n\n"
+                        f"Happy tabbing!\n"
+                        f"The NekoTab Team\n"
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[owner_email],
+                    fail_silently=True,
+                )
+            except Exception as e:
+                logger.error("Failed to send Congress tournament creation owner email: %s", e, exc_info=True)
+
+        from django.core.cache import cache
+        cache.set(f'subdom_tour_exists_{tournament.slug.lower()}', True, 300)
+
+        return redirect_tournament('congress-admin-setup', tournament)
+
+    def get_success_url(self):
+        return reverse_lazy('congress-tournament-create')
 
 
 class RegisterTournamentForm(BaseModelForm):

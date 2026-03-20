@@ -133,6 +133,41 @@ class IETournamentStartForm(ModelForm):
             Group.objects.create(name=group.name, permissions=group.permissions, tournament=tournament)
 
 
+class CongressTournamentStartForm(ModelForm):
+    """Tournament creation form for Congressional Debate.
+    Creates a tournament shell and redirects to the Congress setup wizard."""
+
+    class Meta:
+        model = Tournament
+        fields = ('name', 'short_name', 'slug')
+
+    num_prelim_sessions = IntegerField(
+        min_value=1,
+        label=_("Number of preliminary sessions"))
+
+    def clean_slug(self):
+        raw = self.cleaned_data.get('slug', '')
+        normalised = normalize_slug(raw)
+        if normalised != raw:
+            self.cleaned_data['slug'] = normalised
+        return normalised
+
+    def save(self):
+        tournament = super().save()
+        auto_make_rounds(tournament, self.cleaned_data["num_prelim_sessions"])
+
+        self.add_default_permission_groups(tournament)
+        tournament.current_round = tournament.round_set.order_by('seq').first()
+        tournament.save()
+
+        return tournament
+
+    @staticmethod
+    def add_default_permission_groups(tournament: Tournament):
+        for group in all_groups():
+            Group.objects.create(name=group.name, permissions=group.permissions, tournament=tournament)
+
+
 class TournamentConfigureForm(ModelForm):
 
     class Meta:
