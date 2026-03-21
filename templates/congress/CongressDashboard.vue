@@ -95,9 +95,9 @@ export default {
       config: cfg,
       stats: { chambers: 0, legislators: 0, sessions: 0, legislation: 0 },
       activeSessions: [],
-      setupUrl: `/admin/congress/setup/`,
-      docketUrl: `/admin/congress/docket/`,
-      chambersUrl: `/admin/congress/chambers/`,
+      setupUrl: `/${slug}/admin/congress/setup/`,
+      docketUrl: `/${slug}/admin/congress/docket/`,
+      chambersUrl: `/${slug}/admin/congress/chambers/`,
       standingsUrl: `/${slug}/admin/congress/standings/`,
       error: null,
     }
