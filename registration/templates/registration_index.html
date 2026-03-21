@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load i18n debate_tags %}
+
+{% block head-title %}{% trans "Registration" %}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-lg-8 ml-lg-auto mr-md-auto">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{% trans "Tournament Registration" %}</h5>
+        <p>{% blocktrans with name=tournament.name %}Register to participate in {{ name }}.{% endblocktrans %}</p>
+
+        <div class="list-group mt-3">
+          {% if institution_registration %}
+          <a href="{% tournament_url 'reg-create-institution' %}" class="list-group-item list-group-item-action">
+            <div class="d-flex align-items-center">
+              <span class="me-2">🏫</span>
+              <div>
+                <h6 class="mb-0">{% trans "Register an Institution" %}</h6>
+                <small class="text-muted">{% trans "Register your school or institution and get a private link for your teams." %}</small>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+
+          {% if open_team_registration %}
+          <a href="{% tournament_url 'reg-create-team' %}" class="list-group-item list-group-item-action">
+            <div class="d-flex align-items-center">
+              <span class="me-2">👯</span>
+              <div>
+                <h6 class="mb-0">{% trans "Register a Team" %}</h6>
+                <small class="text-muted">{% trans "Register a debating team for this tournament." %}</small>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+
+          {% if open_adjudicator_registration %}
+          <a href="{% tournament_url 'reg-create-adjudicator' %}" class="list-group-item list-group-item-action">
+            <div class="d-flex align-items-center">
+              <span class="me-2">🎓</span>
+              <div>
+                <h6 class="mb-0">{% trans "Register as an Adjudicator" %}</h6>
+                <small class="text-muted">{% trans "Sign up to judge at this tournament." %}</small>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+
+        {% if not institution_registration and not open_team_registration and not open_adjudicator_registration %}
+        <div class="alert alert-info mt-3">
+          {% trans "Registration is currently closed for this tournament." %}
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

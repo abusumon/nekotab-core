@@ -16,6 +16,9 @@ urlpatterns = [
         views.APIRootView.as_view(),
         name='api-root'),
 
+    path('/',
+        views.APIRootView.as_view()),
+
     path('/schema', include([
         path('.yml', SpectacularAPIView.as_view(), name='api-schema'),
         path('/redoc/', SpectacularRedocView.as_view(url_name='api-schema'), name='redoc'),

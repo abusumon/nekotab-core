@@ -4,6 +4,9 @@ from . import views
 
 
 urlpatterns = [
+    path('',
+        views.RegistrationIndexView.as_view(),
+        name='registration-index'),
     path('institution/', include([
         path('new/', views.CreateInstitutionFormView.as_view(),
             name='reg-create-institution'),

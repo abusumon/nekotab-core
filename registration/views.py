@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext as _, gettext_lazy, ngettext
 from django.views.generic.edit import CreateView, FormView
+from django.views.generic.base import TemplateView
 from formtools.wizard.views import SessionWizardView
 
 from actionlog.mixins import LogActionMixin
@@ -58,6 +59,17 @@ class InstitutionalRegistrationMixin:
 
     def get_success_url(self):
         return reverse_tournament('reg-inst-landing', self.tournament, kwargs={'url_key': self.kwargs['url_key']})
+
+
+class RegistrationIndexView(TournamentMixin, TemplateView):
+    template_name = 'registration_index.html'
+
+    def get_context_data(self, **kwargs):
+        t = self.tournament
+        kwargs['institution_registration'] = t.pref('institution_registration')
+        kwargs['open_team_registration'] = t.pref('open_team_registration')
+        kwargs['open_adjudicator_registration'] = t.pref('open_adjudicator_registration')
+        return super().get_context_data(**kwargs)
 
 
 class CreateInstitutionFormView(LogActionMixin, PublicTournamentPageMixin, CustomQuestionFormMixin, SessionWizardView):
