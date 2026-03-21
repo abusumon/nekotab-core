@@ -328,7 +328,7 @@ class IEGenerateJudgeLinksView(AdministratorMixin, TournamentMixin, View):
         links = []
 
         for room in draw_data.get('rooms', []):
-            if not room.get('judge_id'):
+            if not room.get('judge_id') or not room.get('id'):
                 continue
             ballot_token = issue_judge_ballot_token(
                 judge_id=room['judge_id'],
@@ -339,7 +339,7 @@ class IEGenerateJudgeLinksView(AdministratorMixin, TournamentMixin, View):
             links.append({
                 'judge_id': room['judge_id'],
                 'judge_name': room.get('judge_name', ''),
-                'room_number': room['room_number'],
+                'room_number': room.get('room_number', ''),
                 'room_id': room['id'],
                 'ballot_url': f"{base_url}{ballot_token}/",
             })
