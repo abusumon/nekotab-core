@@ -217,6 +217,10 @@ export default {
           throw new Error(data.detail || `HTTP ${resp.status}`)
         }
         this.success = true
+        // Redirect to congress dashboard after a brief delay
+        setTimeout(() => {
+          window.location.href = `/t/${this.config.tournamentSlug}/admin/congress/`
+        }, 1500)
       } catch (e) {
         this.error = e.message
       } finally {
