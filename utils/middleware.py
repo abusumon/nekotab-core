@@ -446,10 +446,11 @@ class SubdomainTenantMiddleware:
 
     # -- subdomain extraction --------------------------------------------------
 
-    def _extract_subdomain(self, request):
-        """Extract the subdomain label from the Host header.
+    def _extract_raw_subdomain(self, request):
+        """Extract the raw subdomain label from the Host header.
 
-        Returns the label (always lowercase) or ``None``.
+        Returns the label (always lowercase) or ``None``.  Does **not**
+        filter out reserved subdomains — callers must check that.
         """
         try:
             host = request.get_host().split(':')[0].lower()
@@ -463,10 +464,20 @@ class SubdomainTenantMiddleware:
         if not subpart or '.' in subpart:
             return None
 
-        if subpart in self.reserved or not self.slug_re.match(subpart):
+        if not self.slug_re.match(subpart):
             return None
 
         return subpart
+
+    def _extract_subdomain(self, request):
+        """Extract a *tenant-eligible* subdomain label.
+
+        Returns ``None`` for reserved subdomains.
+        """
+        label = self._extract_raw_subdomain(request)
+        if label and label in self.reserved:
+            return None
+        return label
 
     # -- tenant resolution -----------------------------------------------------
 
@@ -533,6 +544,13 @@ class SubdomainTenantMiddleware:
 
         if not self.enabled or not self.base_domain:
             return self.get_response(request)
+
+        # Redirect reserved subdomains (www, admin, api, …) to the bare domain.
+        raw_label = self._extract_raw_subdomain(request)
+        if raw_label and raw_label in self.reserved:
+            scheme = 'https' if request.is_secure() else 'http'
+            dest = f"{scheme}://{self.base_domain}{request.get_full_path()}"
+            return HttpResponsePermanentRedirect(dest)
 
         label = self._extract_subdomain(request)
         if not label:

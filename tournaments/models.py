@@ -23,6 +23,7 @@ _DNS_LABEL_RE = re.compile(r'^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$')
 
 PROHIBITED_TOURNAMENT_SLUGS = [
     'jet', 'database', 'admin', 'accounts', 'summernote',  # System
+    'www', 'media',  # Reserved subdomains
     'start', 'create', 'load-demo', # Setup Wizards
     'tournament', 'notifications', 'archive', 'api', # Cross-Tournament app's view roots
     'favicon.ico', 'robots.txt',  # Files that must be at top level
