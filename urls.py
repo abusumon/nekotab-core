@@ -62,9 +62,11 @@ urlpatterns = [
          JavaScriptCatalog.as_view(domain="djangojs"),
          name='javascript-catalog'),
 
-    # Google Search Console verification file
+    # Google Search Console verification files
     path('googlee0a2b1e83278e880.html',
         TemplateView.as_view(template_name='verification/googlee0a2b1e83278e880.html')),
+    path('google4a7d5456478d704b.html',
+        TemplateView.as_view(template_name='verification/google4a7d5456478d704b.html')),
 
     # SEO: Sitemap and robots
     path('sitemap.xml',
