@@ -13,6 +13,7 @@ from users.permissions import Permission
 from utils.mixins import AdministratorMixin
 
 from congress_events.jwt_utils import issue_congress_token
+from participants.models import Adjudicator, Speaker
 
 
 class CongressDashboardView(AdministratorMixin, TournamentMixin, TemplateView):
