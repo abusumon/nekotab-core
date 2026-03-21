@@ -45,7 +45,7 @@ class AdminBreakIndexView(AdministratorMixin, TournamentMixin, TemplateView):
     def get_context_data(self, **kwargs):
         tournament = self.tournament
         kwargs['categories'] = breakcategories_with_counts(tournament)
-        kwargs['no_teams_eligible'] = not BreakCategory.team_set.through.objects.filter(breakcategory__tournament=tournament).exists()
+        kwargs['no_teams_eligible'] = not BreakCategory.breaking_teams.through.objects.filter(breakcategory__tournament=tournament).exists()
         kwargs['break_not_generated'] = not BreakingTeam.objects.filter(break_category__tournament=tournament).exists()
         return super().get_context_data(**kwargs)
 

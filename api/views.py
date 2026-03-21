@@ -744,7 +744,7 @@ class PersonCheckinMixin:
 
     def get_queryset(self):
         p_filter = Q()
-        if self.participant_requester.id is not None:
+        if self.participant_requester and self.participant_requester.id is not None:
             p_filter &= Q(id=self.participant_requester.id)
         return super().get_queryset().filter(p_filter)
 
@@ -855,7 +855,10 @@ class BaseStandingsView(TournamentAPIMixin, TournamentPublicAPIMixin, GenericAPI
         """Get current standings"""
         metrics, extra_metrics = self.get_metrics()
         generator = self.generator(metrics, ('rank',), extra_metrics)
-        standings = generator.generate(self.get_queryset(), round=self.get_max_round())
+        max_round = self.get_max_round()
+        if max_round is None:
+            return Response([])
+        standings = generator.generate(self.get_queryset(), round=max_round)
         serializer = self.get_serializer(iter(standings), many=True)
         return Response(serializer.data)
 
