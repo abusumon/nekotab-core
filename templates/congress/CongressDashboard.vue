@@ -95,10 +95,10 @@ export default {
       config: cfg,
       stats: { chambers: 0, legislators: 0, sessions: 0, legislation: 0 },
       activeSessions: [],
-      setupUrl: `/${slug}/congress/setup/`,
-      docketUrl: `/${slug}/congress/docket/`,
-      chambersUrl: `/${slug}/congress/chambers/`,
-      standingsUrl: `/${slug}/congress/standings/`,
+      setupUrl: `/${slug}/admin/congress/setup/`,
+      docketUrl: `/${slug}/admin/congress/docket/`,
+      chambersUrl: `/${slug}/admin/congress/chambers/`,
+      standingsUrl: `/${slug}/admin/congress/standings/`,
       error: null,
     }
   },
@@ -113,7 +113,7 @@ export default {
       return fetch(`${this.config.nekocongressUrl}${path}`, { headers: this.headers() })
     },
     sessionUrl (id) {
-      return `/${this.config.tournamentSlug}/congress/session/${id}/`
+      return `/${this.config.tournamentSlug}/admin/congress/session/${id}/`
     },
     async loadStats () {
       try {
