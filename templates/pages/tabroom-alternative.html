@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Free Tabroom Alternative{% endblock %}
+{% block head-title %}<span class="emoji">🌐</span> Tabroom Alternative{% endblock %}
+
+{% block sub-title %}
+<meta name="description" content="Looking for a free Tabroom alternative? NekoTab supports BP, WSDC, Australs and international debate formats. No NSDA membership required.">
+<link rel="canonical" href="https://nekotab.app/tabroom-alternative/" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1>A Free, International Alternative to Tabroom</h1>
+
+      <p class="lead">Tabroom is built for the US forensics ecosystem and
+      requires NSDA membership. If you run international parliamentary debate
+      tournaments (BP, WSDC, Australs), NekoTab is a free, modern alternative
+      with purpose-built features.</p>
+
+      <h2>Why Choose NekoTab Over Tabroom</h2>
+      <ul>
+        <li><strong>International formats:</strong> First-class support for BP, WSDC, Australs — not just US policy/LD</li>
+        <li><strong>No NSDA membership required:</strong> Open to all debate communities worldwide</li>
+        <li><strong>Completely free:</strong> No per-tournament fees, no hidden charges</li>
+        <li><strong>AI Motion Doctor:</strong> Coaching-grade motion analysis unavailable elsewhere</li>
+        <li><strong>Open source:</strong> Full transparency, community-driven development</li>
+        <li><strong>Modern interface:</strong> Mobile-friendly digital ballots and real-time results</li>
+      </ul>
+
+      <h2>Supported Formats</h2>
+      <p>NekoTab supports British Parliamentary (BP), Australs/3v3, WSDC-style,
+      and other parliamentary formats. Configure speaker counts, sides, and
+      scoring to match your needs.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'register-tournament' %}" class="btn btn-primary btn-lg">
+          Try NekoTab Free
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

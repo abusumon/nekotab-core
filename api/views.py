@@ -62,7 +62,6 @@ id_parameter = OpenApiParameter('id', description="The object's primary key", ty
 @extend_schema(tags=['root'], summary="API root")
 class APIRootView(PublicAPIMixin, GenericAPIView):
     name = "API Root"
-    serializer_class = serializers.RootSerializer
 
     def get(self, request, format=None):
         """API Entrypoint; info about versions"""
@@ -79,20 +78,14 @@ class APIRootView(PublicAPIMixin, GenericAPIView):
 @extend_schema(tags=['root'], summary="API v1 root")
 class APIV1RootView(PublicAPIMixin, GenericAPIView):
     name = "API Version 1 Root"
-    serializer_class = serializers.V1RootSerializer
-    lookup_field = 'slug'
-    lookup_url_kwarg = 'tournament_slug'
 
     def get(self, request, format=None):
         """Entrypoint for version 1 of the API"""
-        tournaments_create_url = reverse('api-tournament-list', request=request, format=format)
-        institution_create_url = reverse('api-global-institution-list', request=request, format=format)
-        users_create_url = reverse('api-user-list', request=request, format=format)
         return Response({
             "_links": {
-                "tournaments": tournaments_create_url,
-                "institutions": institution_create_url,
-                "users": users_create_url,
+                "tournaments": reverse('api-tournament-list', request=request, format=format),
+                "institutions": reverse('api-global-institution-list', request=request, format=format),
+                "users": reverse('api-user-list', request=request, format=format),
             },
         })
 

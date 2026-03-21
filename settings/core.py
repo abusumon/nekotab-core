@@ -142,6 +142,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
     # Rewrite subdomain requests to slug-based paths (feature gated)
     'utils.middleware.SubdomainTenantMiddleware',
     'utils.middleware.DebateMiddleware',
@@ -200,6 +201,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.sites',
     'django.contrib.redirects',
+    'axes',
     'channels', # For Websockets / real-time connections (above whitenoise)
     'django.contrib.staticfiles',
     'django.contrib.humanize',
@@ -472,6 +474,7 @@ CORS_URLS_REGEX = r'^/api(/.*)?$'
 
 SECURE_HSTS_SECONDS = int(os.environ.get('SECURE_HSTS_SECONDS', 31536000))
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
@@ -498,6 +501,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # The TournamentAdminBackend grants admin model permissions to tournament
 # owners and org OWNER/ADMIN users so they can use the /database/ editor.
 AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',
     'utils.admin_site.TournamentAdminBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -588,3 +592,13 @@ TOURNAMENT_EXPORT_NOTIFY_EMAILS = [e.strip() for e in _notify_raw.split(',') if 
 TOURNAMENT_EXPORT_S3_BUCKET = os.environ.get('TOURNAMENT_EXPORT_S3_BUCKET', '')
 TOURNAMENT_EXPORT_S3_ENDPOINT = os.environ.get('TOURNAMENT_EXPORT_S3_ENDPOINT', '')
 TOURNAMENT_EXPORT_S3_REGION = os.environ.get('TOURNAMENT_EXPORT_S3_REGION', 'auto')
+
+# ==============================================================================
+# Brute-Force Protection (django-axes)
+# ==============================================================================
+
+AXES_FAILURE_LIMIT = 10
+AXES_COOLOFF_TIME = 1                 # 1-hour lockout
+AXES_LOCKOUT_PARAMETERS = [['ip_address']]
+AXES_RESET_ON_SUCCESS = True
+AXES_VERBOSE = False

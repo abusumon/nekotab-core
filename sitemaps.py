@@ -14,6 +14,9 @@ class StaticViewSitemap(Sitemap):
         'motionbank:motionbank-home': 0.9,
         'forum:forum-home': 0.7,
         'passport:passport-directory': 0.6,
+        'seo-free-tab': 0.9,
+        'seo-bp-tab': 0.9,
+        'seo-tabroom-alt': 0.9,
     }
 
     def items(self):
@@ -24,6 +27,9 @@ class StaticViewSitemap(Sitemap):
             'motionbank:motionbank-home',
             'motionbank:motion-doctor',
             'passport:passport-directory',
+            'seo-free-tab',
+            'seo-bp-tab',
+            'seo-tabroom-alt',
         ]
 
     def location(self, item):

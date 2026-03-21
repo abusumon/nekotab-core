@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}British Parliamentary Debate Tabulation{% endblock %}
+{% block head-title %}<span class="emoji">🇬🇧</span> BP Debate Tab{% endblock %}
+
+{% block sub-title %}
+<meta name="description" content="Free British Parliamentary debate tabulation with NekoTab. 4-team BP draws, power-pairing, side balancing, digital ballots, live standings. No fees.">
+<link rel="canonical" href="https://nekotab.app/bp-debate-tabulation/" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1>British Parliamentary Debate Tabulation — Free &amp; Hosted</h1>
+
+      <p class="lead">NekoTab provides full support for the British Parliamentary
+      (BP) format with 4-team draws, power-pairing, side balancing, pull-ups,
+      and swing teams — all generated automatically.</p>
+
+      <h2>BP-Specific Features</h2>
+      <ul>
+        <li>4-team draws with Opening Government, Opening Opposition, Closing Government, and Closing Opposition</li>
+        <li>Power-pairing across all elimination brackets</li>
+        <li>Side balance constraints and pull-up management</li>
+        <li>Speaker and team tab calculation with configurable tie-breaking</li>
+        <li>Break eligibility rules for novice and open categories</li>
+        <li>Digital ballots with 1st through 4th ranking validation</li>
+      </ul>
+
+      <h2>How BP Draws Work in NekoTab</h2>
+      <p>NekoTab's draw engine automatically generates fair BP rooms by
+      power-pairing teams based on current standings. Side balancing ensures
+      no team is unfairly placed, and conflict detection prevents institutional
+      clashes. Pull-ups are handled automatically when bracket sizes are uneven.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'register-tournament' %}" class="btn btn-primary btn-lg">
+          Create a BP Tournament — Free
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

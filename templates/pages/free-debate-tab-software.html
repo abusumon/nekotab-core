@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Free Debate Tabulation Software{% endblock %}
+{% block head-title %}<span class="emoji">🎯</span> Free Debate Tab Software{% endblock %}
+
+{% block sub-title %}
+<meta name="description" content="NekoTab is free debate tabulation software supporting BP, WSDC, Australs and more. Automated draws, digital ballots, live standings. No fees, no setup.">
+<link rel="canonical" href="https://nekotab.app/free-debate-tab-software/" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1>Free Debate Tabulation Software for Every Format</h1>
+
+      <p class="lead">NekoTab is a completely free, open-source debate tournament
+      management platform. Run BP, WSDC, Australs, and other parliamentary debate
+      tournaments with automated draws, digital ballot entry, real-time standings,
+      and break calculations — all from your browser.</p>
+
+      <h2>Why NekoTab Is Free</h2>
+      <p>Unlike other solutions that charge per tournament or require technical
+      setup and ongoing hosting costs, NekoTab is hosted for you at no charge.
+      Create an account, set up your tournament, and start tabbing in under
+      3 minutes.</p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li>Automated draws with power-pairing, side balancing, and pull-ups</li>
+        <li>Smart adjudicator allocation with conflict detection</li>
+        <li>Digital ballot entry with real-time validation</li>
+        <li>Live public standings and break announcements</li>
+        <li>AI-powered Motion Doctor for coaching-grade motion analysis</li>
+        <li>Global Motion Bank with thousands of real debate motions</li>
+        <li>Debate Passport for career-long participant tracking</li>
+      </ul>
+
+      <h2>Supported Formats</h2>
+      <p>NekoTab supports British Parliamentary (BP), Australs/3v3, WSDC-style,
+      and other parliamentary formats. Configure speaker counts, sides, and
+      scoring to match your exact tournament needs.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'register-tournament' %}" class="btn btn-primary btn-lg">
+          Create Your First Tournament — Free
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

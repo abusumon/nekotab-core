@@ -152,6 +152,17 @@ urlpatterns = [
         organizations_views.RegisterOrganizationView.as_view(),
         name='register-organization'),
 
+    # SEO landing pages
+    path('free-debate-tab-software/',
+        TemplateView.as_view(template_name='pages/free-debate-tab-software.html'),
+        name='seo-free-tab'),
+    path('bp-debate-tabulation/',
+        TemplateView.as_view(template_name='pages/bp-debate-tabulation.html'),
+        name='seo-bp-tab'),
+    path('tabroom-alternative/',
+        TemplateView.as_view(template_name='pages/tabroom-alternative.html'),
+        name='seo-tabroom-alt'),
+
     # Tournament URLs
     path('<slug:tournament_slug>/',
         include('tournaments.urls')),
