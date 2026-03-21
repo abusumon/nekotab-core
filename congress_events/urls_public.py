@@ -7,6 +7,6 @@ urlpatterns = [
         views.CongressStudentView.as_view(),
         name='congress-public-student'),
     path('standings/',
-        views.CongressStandingsView.as_view(),
+        views.CongressPublicStandingsView.as_view(),
         name='congress-public-standings'),
 ]

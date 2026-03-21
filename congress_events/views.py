@@ -149,6 +149,23 @@ class CongressStandingsView(AdministratorMixin, TournamentMixin, TemplateView):
         return super().get_context_data(**kwargs)
 
 
+class CongressPublicStandingsView(TournamentMixin, TemplateView):
+    """Public standings view — no admin required."""
+    template_name = 'congress_events/congress_standings.html'
+    page_title = _("Congress Standings")
+    page_emoji = '🏆'
+
+    def get_context_data(self, **kwargs):
+        t = self.tournament
+        kwargs['tournament_slug'] = t.slug
+        kwargs['tournament_id'] = t.id
+        kwargs['nekocongress_url'] = getattr(django_settings, 'NEKOCONGRESS_URL', '')
+        kwargs['congress_token'] = issue_congress_token(
+            self.request.user, role='viewer', tournament_id=t.id)
+        kwargs['full_width_layout'] = True
+        return super().get_context_data(**kwargs)
+
+
 class CongressStudentView(TournamentMixin, TemplateView):
     """Public student-facing view — no admin required."""
     template_name = 'congress_events/congress_student.html'
