@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n ad_tags %}
 
 {% block page-title %}{% trans "Create Organization" %}{% endblock %}
 {% block head-title %}{% trans "Create Organization" %}{% endblock %}
@@ -36,3 +36,7 @@
   </div>
 </div>
 {% endblock %}
+
+{% block ad_above_footer %}
+  {% ad_unit "AUTO_FOOTER" "horizontal" %}
+{% endblock ad_above_footer %}

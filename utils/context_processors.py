@@ -109,6 +109,9 @@ def debate_context(request):
         # AdSense
         'adsense_enabled': getattr(settings, 'ADSENSE_ENABLED', False),
         'adsense_publisher_id': getattr(settings, 'ADSENSE_PUBLISHER_ID', ''),
+        'adsense_slot_content': getattr(settings, 'ADSENSE_SLOT_CONTENT', ''),
+        'adsense_slot_footer': getattr(settings, 'ADSENSE_SLOT_FOOTER', ''),
+        'adsense_slot_table': getattr(settings, 'ADSENSE_SLOT_TABLE', ''),
         # SEO defaults
         'seo_site_name': 'NekoTab Debate Tabulation',
         'seo_keywords': 'debate tab, debate tabulation, parliamentary debating, BP motions, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, british parliamentary, debate results live',

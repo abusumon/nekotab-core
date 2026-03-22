@@ -552,6 +552,9 @@ REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab
 
 ADSENSE_ENABLED = _env_bool('ADSENSE_ENABLED', default=True)
 ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID', 'ca-pub-4135779137186219')
+ADSENSE_SLOT_CONTENT = os.environ.get('ADSENSE_SLOT_CONTENT', '7630939625')
+ADSENSE_SLOT_FOOTER = os.environ.get('ADSENSE_SLOT_FOOTER', '7630939625')
+ADSENSE_SLOT_TABLE = os.environ.get('ADSENSE_SLOT_TABLE', '7630939625')
 
 # ==============================================================================
 # SEO / Canonical
