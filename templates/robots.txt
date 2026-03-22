@@ -11,12 +11,9 @@ Allow: /motions-bank/
 Allow: /passport/
 
 # Block auth, admin, utility, and internal pages
-Disallow: /accounts/
 Disallow: /start/
 Disallow: /load-demo/
 Disallow: /claim/
-Disallow: /create/
-Disallow: /style/
 Disallow: /database/
 Disallow: /jet/
 Disallow: /summernote/

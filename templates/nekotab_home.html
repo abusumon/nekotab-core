@@ -176,7 +176,7 @@
                     <div class="em-dd-desc">A branded workspace to manage multiple tournaments under one roof</div>
                   </div>
                 </a>
-                <a href="https://nekotab.app/create/" class="em-dd-item" role="menuitem">
+                <a href="https://nekotab.app/register/tournament/" class="em-dd-item" role="menuitem">
                   <div class="em-dd-icon em-dd-icon--amber">🎯</div>
                   <div>
                     <div class="em-dd-label">Single Tournament</div>
@@ -289,7 +289,7 @@
             🏢 Organization Workspace
             <span class="em-mobile-sub-desc">Manage multiple tournaments under one roof</span>
           </a>
-          <a href="https://nekotab.app/create/">
+          <a href="https://nekotab.app/register/tournament/">
             🎯 Single Tournament
             <span class="em-mobile-sub-desc">Set up and run one tournament</span>
           </a>
@@ -1148,7 +1148,7 @@
           <li><a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Documentation</a></li>
           <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="/api">API</a></li>
-          <li><a href="/create/">Create Tournament</a></li>
+          <li><a href="/register/tournament/">Create Tournament</a></li>
         </ul>
       </div>
       <div>
@@ -1166,7 +1166,7 @@
         <ul class="em-foot-links">
           {% if user.is_authenticated %}
             <li><a href="/">Dashboard</a></li>
-            <li><a href="/create/">New Tournament</a></li>
+            <li><a href="/register/tournament/">New Tournament</a></li>
           {% else %}
             <li><a href="{% url 'login' %}">Sign in</a></li>
             <li><a href="{% url 'signup' %}">Create Account</a></li>
