@@ -75,8 +75,13 @@ class PublicSignupForm(UserCreationForm):
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        if get_user_model().objects.filter(email=email, is_active=True).exists():
-            raise forms.ValidationError(_("An account with this email address already exists."))
+        existing = get_user_model().objects.filter(email__iexact=email).first()
+        if existing:
+            if existing.is_active:
+                raise forms.ValidationError(_("An account with this email address already exists."))
+            else:
+                # Delete the old unverified account so a fresh one can be created
+                existing.delete()
         return email
 
     def save(self, commit=True):

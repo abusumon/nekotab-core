@@ -174,6 +174,9 @@ class ActivateAccountView(View):
             messages.success(request, _("Your email has been verified. Welcome to NekoTab!"))
             logger.info('User %s verified email and activated account.', user.username)
         else:
-            messages.error(request, _("The verification link is invalid or has expired."))
+            messages.error(request, _(
+                "The verification link is invalid or has expired. "
+                "Please register again to get a new verification email."
+            ))
 
         return redirect('tabbycat-index')
