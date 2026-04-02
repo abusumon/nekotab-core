@@ -134,7 +134,7 @@ html.no-scroll { overflow: hidden; }
 
 /* Logo */
 .em-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-.em-logo-img { width: 120px; height: auto; object-fit: contain; transition: filter var(--nt-ease), width var(--nt-ease); }
+.em-logo-img { width: 120px; height: auto; object-fit: contain; transition: filter var(--nt-ease), width var(--nt-ease); will-change: filter; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .em-navbar.scrolled .em-logo-img { width: 110px; }
 
 /* Center Navigation */

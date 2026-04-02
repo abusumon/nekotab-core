@@ -99,6 +99,9 @@ urlpatterns = [
     # Accounts
     path('accounts/', include('users.urls')),
 
+    # Social auth (Google OAuth etc.)
+    path('accounts/', include('allauth.urls')),
+
     # Notifications
     path('notifications/',
         include('notifications.urls')),

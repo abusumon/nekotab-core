@@ -19,7 +19,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Overwritten in local.py or heroku.py
 # ==============================================================================
 
-ADMINS = ('Tabbycat Debate', 'contact@tabbycat-debate.org'),
+ADMINS = ('NekoTab', 'contact@nekotab.app'),
 MANAGERS = ADMINS
 DEBUG = _env_bool('DEBUG')
 ENABLE_DEBUG_TOOLBAR = False # Must default to false; overriden in Dev config
@@ -140,6 +140,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     # Must be after SessionMiddleware
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'axes.middleware.AxesMiddleware',
@@ -192,6 +193,10 @@ TABBYCAT_APPS = (
 )
 
 INSTALLED_APPS = (
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     'daphne',
     'jet',
     'utils.admin_site.NekoTabAdminConfig',  # custom admin site (replaces 'django.contrib.admin')
@@ -446,12 +451,12 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.3.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'SCHEMA_PATH_PREFIX': r'api/v\d+',
-    'CONTACT': {'name': 'Étienne Beaulé', 'email': 'ebeaule@tabbycat-debate.org'},
+    'CONTACT': {'name': 'NekoTab', 'email': 'contact@nekotab.app'},
     'LICENSE': {'name': 'AGPL 3', 'url': 'https://www.gnu.org/licenses/agpl-3.0.en.html'},
     'EXTENSIONS_INFO': {
         "x-logo": {
             "url": "/static/logo.svg",
-            "altText": "Tabbycat logo",
+            "altText": "NekoTab logo",
         },
     }
 }
@@ -504,7 +509,27 @@ AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesStandaloneBackend',
     'utils.admin_site.TournamentAdminBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.environ.get('GOOGLE_CLIENT_ID', ''),
+            'secret': os.environ.get('GOOGLE_CLIENT_SECRET', ''),
+        },
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+    }
+}
+
+# django-allauth configuration
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # We handle verification in users.views
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # ==============================================================================
 # Subdomain routing (defaults; can be overridden in env-specific settings)

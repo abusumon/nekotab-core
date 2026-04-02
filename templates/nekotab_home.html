@@ -38,10 +38,14 @@
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Preload critical assets -->
+  <link rel="preload" href="{% static 'logo.png' %}" as="image" fetchpriority="high">
+
   <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo.png' %}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo-16x16.png' %}">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'logo.png' %}">
+  <link rel="mask-icon" href="{% static 'safari-tab.svg' %}" color="#6366f1">
   <meta name="theme-color" content="#6366f1">
 
   <link rel="stylesheet" href="{% static 'css/landing.css' %}">
@@ -53,10 +57,7 @@
   window.adsbygoogle.requestNonPersonalizedAds = 1;
   </script>
   {% endif %}
-  <script src="{% static 'js/cookie-consent.js' %}"></script>
-  <script>
-    if (NekoConsent.getConsent() === 'all') { NekoConsent._loadGA4(); }
-  </script>
+  <script defer src="{% static 'js/cookie-consent.js' %}" onload="if(NekoConsent.getConsent()==='all')NekoConsent._loadGA4();"></script>
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
@@ -64,8 +65,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "NekoTab",
-    "url": "https://nekotab.app",
-    "logo": "https://nekotab.app/static/logo.png",
+    "url": "{{ seo_base_url }}",
+    "logo": "{{ seo_base_url }}/static/logo.png",
     "description": "Open-source debate tournament tabulation and community platform",
     "sameAs": [
       "https://github.com/abusumon/nekotab-app"
@@ -146,7 +147,7 @@
     <div class="em-container em-nav-inner">
       <!-- Logo -->
       <a class="em-logo" href="/">
-        <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="120" height="32">
+        <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="120" height="32" fetchpriority="high">
       </a>
 
       <!-- Center Navigation -->

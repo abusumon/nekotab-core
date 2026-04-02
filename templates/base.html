@@ -93,6 +93,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{% static 'logo-32x32.png' %}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{% static 'logo-16x16.png' %}" sizes="16x16" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'logo.png' %}" />
   <link rel="mask-icon" href="{% static 'safari-tab.svg' %}" color="#6366f1">
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
@@ -108,11 +109,7 @@
   {% endif %}
 
   <!-- GA4 + Cookie Consent: shared module -->
-  <script src="{% static 'js/cookie-consent.js' %}"></script>
-  <script>
-    // Load GA4 immediately if consent was already given (no flicker)
-    if (NekoConsent.getConsent() === 'all') { NekoConsent._loadGA4(); }
-  </script>
+  <script defer src="{% static 'js/cookie-consent.js' %}" onload="if(NekoConsent.getConsent()==='all')NekoConsent._loadGA4();"></script>
 
   {% if LANGUAGE_CODE == 'tzl' %}
   <!-- In-context translations; use Talossan -->
