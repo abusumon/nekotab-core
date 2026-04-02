@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import admin, messages
 from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
+from django.http import HttpResponseRedirect
 from django.urls import include, path
 from django.utils.translation import gettext as _
 from django.views.i18n import JavaScriptCatalog
@@ -93,7 +94,12 @@ urlpatterns = [
     # Admin area
     path('jet/',
         include('jet.urls', 'jet')),
+    path('jet/dashboard/',
+        lambda request: HttpResponseRedirect('/database/'),
+        name='jet-dashboard-redirect'),
     path('database/',
+        admin.site.urls),
+    path('admin/',
         admin.site.urls),
 
     # Accounts
