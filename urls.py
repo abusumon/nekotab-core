@@ -13,6 +13,7 @@ from django.views.generic import TemplateView
 
 import tournaments.views
 from importer.views import LoadDemoView
+from participant_crm.views import UnsubscribeView as CrmUnsubscribeView
 from organizations import views as organizations_views
 from users.views import BlankSiteStartView
 from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
@@ -115,6 +116,11 @@ urlpatterns = [
     # Email Campaigns (superuser only)
     path('campaigns/',
         include('campaigns.urls')),
+
+    # CRM unsubscribe (public)
+    path('unsubscribe/',
+        CrmUnsubscribeView.as_view(),
+        name='crm-unsubscribe'),
 
     # Admin Analytics Dashboard (superuser only)
     path('analytics/',

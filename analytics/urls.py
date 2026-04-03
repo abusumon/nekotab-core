@@ -1,9 +1,11 @@
-from django.urls import path
+from django.urls import include, path
 from . import views
 
 app_name = 'analytics'
 
 urlpatterns = [
+    # Participant CRM (nested under /analytics/participants/)
+    path('participants/', include('participant_crm.urls')),
     path('', views.DashboardView.as_view(), name='dashboard'),
     path('users/', views.UsersListView.as_view(), name='users'),
     path('users/delete/', views.DeleteUsersView.as_view(), name='delete_users'),

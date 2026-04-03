@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>{% block title %}Participants{% endblock %} - NekoTab Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-hover: #1a1a25;
+            --border: #2a2a3a;
+            --text-primary: #ffffff;
+            --text-secondary: #8888aa;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            position: fixed; left: 0; top: 0; width: 260px; height: 100vh;
+            background: var(--bg-card); border-right: 1px solid var(--border);
+            padding: 20px 0; z-index: 100; overflow-y: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo { padding: 0 24px 24px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+        .logo h1 {
+            font-size: 24px; font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .logo span { font-size: 12px; color: var(--text-secondary); display: block; margin-top: 4px; }
+        .nav-section { padding: 0 12px; margin-bottom: 24px; }
+        .nav-label {
+            font-size: 11px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--text-secondary); padding: 0 12px; margin-bottom: 8px;
+        }
+        .nav-link {
+            display: flex; align-items: center; gap: 12px; padding: 12px;
+            color: var(--text-secondary); text-decoration: none; border-radius: 8px;
+            transition: all 0.2s; font-size: 14px; font-weight: 500;
+        }
+        .nav-link:hover, .nav-link.active { background: var(--bg-hover); color: var(--text-primary); }
+        .nav-link.active {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.1));
+            color: var(--accent-light);
+        }
+        .nav-link svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+        /* ── Main ── */
+        .main-content { margin-left: 260px; padding: 32px; min-height: 100vh; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+        .header h2 { font-size: 28px; font-weight: 700; }
+        .header-stats { display: flex; gap: 24px; }
+        .header-stat { text-align: center; }
+        .header-stat-value { font-size: 24px; font-weight: 700; color: var(--accent-light); }
+        .header-stat-label { font-size: 12px; color: var(--text-secondary); }
+
+        /* ── Filters ── */
+        .filters { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+        .search-box { flex: 1; min-width: 200px; position: relative; }
+        .search-box input {
+            width: 100%; padding: 12px 16px 12px 44px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 14px;
+        }
+        .search-box input:focus { outline: none; border-color: var(--accent); }
+        .search-box svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--text-secondary); }
+        select {
+            padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--text-primary); font-size: 14px; font-family: inherit; cursor: pointer;
+        }
+        select:focus { outline: none; border-color: var(--accent); }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px;
+            border: none; border-radius: 8px; font-size: 14px; font-weight: 500;
+            font-family: inherit; cursor: pointer; transition: all 0.2s; text-decoration: none;
+        }
+        .btn-primary { background: linear-gradient(135deg, var(--accent), #ec4899); color: white; }
+        .btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); }
+        .btn-sm { padding: 8px 16px; font-size: 13px; }
+
+        /* ── Card & Table ── */
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden; animation: fadeInUp 0.4s ease both;
+        }
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 16px; border-bottom: 1px solid var(--border); }
+        th {
+            font-size: 12px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.5px; color: var(--text-secondary); background: var(--bg-hover);
+        }
+        tr:hover td { background: var(--bg-hover); }
+        .row-checkbox { width: 18px; height: 18px; cursor: pointer; accent-color: var(--accent); }
+
+        /* ── Badges ── */
+        .badge {
+            display: inline-flex; padding: 4px 10px; border-radius: 20px;
+            font-size: 12px; font-weight: 500; white-space: nowrap;
+        }
+        .badge-debater    { background: rgba(124,58,237,0.15); color: #7c3aed; border: 1px solid rgba(124,58,237,0.3); }
+        .badge-adjudicator{ background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+        .badge-tab_director{background: rgba(59,130,246,0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); }
+        .badge-hybrid     { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
+        .badge-success    { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+        .badge-warning    { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+        .badge-tag {
+            background: rgba(124,58,237,0.1); color: #a78bfa; border: 1px solid rgba(124,58,237,0.2);
+            font-size: 11px; padding: 2px 8px; border-radius: 12px; margin-right: 4px;
+        }
+
+        /* ── Participant row ── */
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 600; color: white; flex-shrink: 0;
+        }
+        .user-details { display: flex; flex-direction: column; }
+        .user-name { font-weight: 500; }
+        .user-email { font-size: 12px; color: var(--text-secondary); }
+        .sub-yes { color: var(--success); }
+        .sub-no  { color: var(--danger); }
+
+        /* ── Bulk-action toolbar ── */
+        .bulk-toolbar {
+            display: none; align-items: center; gap: 12px; padding: 12px 20px;
+            background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 10px; margin-bottom: 16px; animation: fadeInUp 0.25s ease both;
+        }
+        .bulk-toolbar.visible { display: flex; }
+        .bulk-toolbar .selected-count { font-size: 14px; font-weight: 600; color: var(--accent-light); }
+        .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+        .btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+        /* ── Pagination ── */
+        .pagination { display: flex; justify-content: center; gap: 8px; padding: 24px; }
+        .pagination a, .pagination span { padding: 8px 14px; border-radius: 8px; text-decoration: none; font-size: 14px; }
+        .pagination a { background: var(--bg-hover); color: var(--text-primary); }
+        .pagination a:hover { background: var(--accent); }
+        .pagination .current { background: var(--accent); color: white; }
+
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); }
+        .empty-state-icon { font-size: 48px; margin-bottom: 16px; }
+
+        /* ── Mobile ── */
+        .mobile-header {
+            display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px;
+            background: var(--bg-card); border-bottom: 1px solid var(--border);
+            z-index: 99; align-items: center; padding: 0 16px; gap: 12px;
+        }
+        .hamburger {
+            background: none; border: none; color: var(--text-primary); cursor: pointer;
+            padding: 8px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+        }
+        .hamburger:hover { background: var(--bg-hover); }
+        .hamburger svg { width: 24px; height: 24px; }
+        .mobile-header .mobile-title {
+            font-size: 16px; font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 99; }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .mobile-header { display: flex; }
+            .sidebar-overlay.visible { display: block; }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.4); }
+            .main-content { margin-left: 0; padding: 72px 16px 16px; }
+            .header { flex-direction: column; align-items: flex-start; }
+            .header h2 { font-size: 22px; }
+            .filters { flex-direction: column; }
+            .search-box { min-width: unset; }
+            table { font-size: 13px; }
+            th, td { padding: 10px 8px; }
+            .avatar { width: 30px; height: 30px; font-size: 13px; }
+        }
+        {% block extra_css %}{% endblock %}
+    </style>
+</head>
+<body>
+    <!-- Mobile header -->
+    <header class="mobile-header">
+        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <span class="mobile-title">🐱 NekoTab</span>
+    </header>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <h1>🐱 NekoTab</h1>
+            <span>Admin Dashboard</span>
+        </div>
+
+        <nav class="nav-section">
+            <div class="nav-label">Analytics</div>
+            <a href="{% url 'analytics:dashboard' %}" class="nav-link{% if active_nav == 'dashboard' %} active{% endif %}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                Dashboard
+            </a>
+            <a href="{% url 'analytics:users' %}" class="nav-link{% if active_nav == 'users' %} active{% endif %}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                All Users
+            </a>
+            <a href="{% url 'analytics:tournaments' %}" class="nav-link{% if active_nav == 'tournaments' %} active{% endif %}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                Tournaments
+            </a>
+            <a href="{% url 'analytics:db_usage' %}" class="nav-link{% if active_nav == 'db_usage' %} active{% endif %}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                DB Usage
+            </a>
+        </nav>
+
+        <nav class="nav-section">
+            <div class="nav-label">Participant CRM</div>
+            <a href="{% url 'analytics:participants_all' %}" class="nav-link{% if active_nav == 'participants_all' %} active{% endif %}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                All Participants
+            </a>
+            <a href="{% url 'analytics:participants_debaters' %}" class="nav-link{% if active_nav == 'participants_debaters' %} active{% endif %}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                Debaters
+            </a>
+            <a href="{% url 'analytics:participants_adjudicators' %}" class="nav-link{% if active_nav == 'participants_adjudicators' %} active{% endif %}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+                Adjudicators
+            </a>
+            <a href="{% url 'analytics:participants_tab_directors' %}" class="nav-link{% if active_nav == 'participants_tab_directors' %} active{% endif %}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                Tab Directors
+            </a>
+        </nav>
+
+        <nav class="nav-section">
+            <div class="nav-label">Manage</div>
+            <a href="{% url 'campaigns:list' %}" class="nav-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                Email Campaigns
+            </a>
+            <a href="/admin/" class="nav-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Django Admin
+            </a>
+            <a href="/" class="nav-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                Back to Site
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script>
+    // Sidebar toggle (mobile)
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('visible');
+        });
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('visible');
+        });
+    }
+    {% block extra_js %}{% endblock %}
+    </script>
+</body>
+</html>

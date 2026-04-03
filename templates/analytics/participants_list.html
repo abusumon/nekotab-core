@@ -1,0 +1,232 @@
+{% extends "analytics/_base_crm.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h2>{{ page_emoji }} {{ page_title }}</h2>
+    <div class="header-stats">
+        <div class="header-stat">
+            <div class="header-stat-value">{{ total_profiles }}</div>
+            <div class="header-stat-label">Total</div>
+        </div>
+        <div class="header-stat">
+            <div class="header-stat-value">{{ total_debaters }}</div>
+            <div class="header-stat-label">Debaters</div>
+        </div>
+        <div class="header-stat">
+            <div class="header-stat-value">{{ total_adjudicators }}</div>
+            <div class="header-stat-label">Adjudicators</div>
+        </div>
+        <div class="header-stat">
+            <div class="header-stat-value">{{ total_tab_directors }}</div>
+            <div class="header-stat-label">Tab Directors</div>
+        </div>
+        {% if total_hybrid %}
+        <div class="header-stat">
+            <div class="header-stat-value">{{ total_hybrid }}</div>
+            <div class="header-stat-label">Hybrid</div>
+        </div>
+        {% endif %}
+        <div class="header-stat">
+            <div class="header-stat-value">{{ total_subscribed }}</div>
+            <div class="header-stat-label">Subscribed</div>
+        </div>
+    </div>
+</div>
+
+<!-- Filters -->
+<form method="get" class="filters">
+    <div class="search-box">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" name="search" placeholder="Search by name or email..." value="{{ search }}">
+    </div>
+    <select name="tournament">
+        <option value="">All Tournaments</option>
+        {% for t in tournaments %}
+        <option value="{{ t.id }}" {% if selected_tournament == t.id|stringformat:"d" %}selected{% endif %}>{{ t.short_name }}</option>
+        {% endfor %}
+    </select>
+    <select name="activity">
+        <option value="">Any Time</option>
+        <option value="30" {% if selected_activity == '30' %}selected{% endif %}>Last 30 days</option>
+        <option value="90" {% if selected_activity == '90' %}selected{% endif %}>Last 90 days</option>
+        <option value="365" {% if selected_activity == '365' %}selected{% endif %}>Last year</option>
+    </select>
+    <select name="subscribed">
+        <option value="">All</option>
+        <option value="yes" {% if selected_subscribed == 'yes' %}selected{% endif %}>Subscribed</option>
+        <option value="no" {% if selected_subscribed == 'no' %}selected{% endif %}>Unsubscribed</option>
+    </select>
+    {% if tags %}
+    <select name="tag">
+        <option value="">All Tags</option>
+        {% for tag in tags %}
+        <option value="{{ tag.id }}" {% if selected_tag == tag.id|stringformat:"d" %}selected{% endif %}>{{ tag.name }}</option>
+        {% endfor %}
+    </select>
+    {% endif %}
+    <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+    <form method="post" action="{% url 'analytics:participants_export' %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Export CSV
+        </button>
+    </form>
+</form>
+
+<!-- Bulk action toolbar -->
+<div class="bulk-toolbar" id="bulkToolbar">
+    <span class="selected-count" id="selectedCount">0 selected</span>
+    <input type="text" id="tagInput" placeholder="Tag name..." style="padding:8px 12px;background:var(--bg-dark);border:1px solid var(--border);border-radius:8px;color:var(--text-primary);font-size:13px;width:160px;">
+    <button type="button" class="btn btn-primary btn-sm" id="addTagBtn">Add Tag</button>
+    <button type="button" class="btn btn-ghost btn-sm" id="clearSelectionBtn">Clear</button>
+</div>
+
+<!-- Table -->
+<div class="card">
+    <div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th style="width:40px;"><input type="checkbox" class="row-checkbox" id="selectAll" title="Select all"></th>
+                <th>Participant</th>
+                {% if show_role_badge %}<th>Role</th>{% endif %}
+                <th>Tournaments</th>
+                {% if show_rounds_debated %}<th>Rounds Debated</th>{% endif %}
+                {% if show_rounds_adjudicated %}<th>Rounds Adjudicated</th>{% endif %}
+                {% if show_user_info %}<th>Username</th>{% endif %}
+                <th>Subscribed</th>
+                <th>Tags</th>
+                <th>Last Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in profiles %}
+            <tr>
+                <td><input type="checkbox" class="row-checkbox profile-checkbox" value="{{ profile.id }}" data-name="{{ profile.name }}"></td>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar">{{ profile.name|make_list|first|upper }}</div>
+                        <div class="user-details">
+                            <span class="user-name">{{ profile.name }}</span>
+                            <span class="user-email">{{ profile.email }}</span>
+                        </div>
+                    </div>
+                </td>
+                {% if show_role_badge %}
+                <td><span class="badge badge-{{ profile.primary_role }}">{{ profile.get_primary_role_display }}</span></td>
+                {% endif %}
+                <td>{{ profile.tournament_count }}</td>
+                {% if show_rounds_debated %}<td>{{ profile.total_rounds_debated }}</td>{% endif %}
+                {% if show_rounds_adjudicated %}<td>{{ profile.total_rounds_adjudicated }}</td>{% endif %}
+                {% if show_user_info %}
+                <td>{% if profile.user %}{{ profile.user.username }}{% else %}<span style="color:var(--text-secondary);">—</span>{% endif %}</td>
+                {% endif %}
+                <td>
+                    {% if profile.email_subscribed %}
+                        <span class="sub-yes">●</span> Yes
+                    {% else %}
+                        <span class="sub-no">●</span> No
+                    {% endif %}
+                </td>
+                <td>
+                    {% for tag in profile.tags.all %}
+                        <span class="badge-tag">{{ tag.name }}</span>
+                    {% endfor %}
+                </td>
+                <td style="color:var(--text-secondary);font-size:13px;">
+                    {% if profile.last_active %}
+                        {{ profile.last_active|date:"M d, Y" }}
+                    {% else %}
+                        —
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="10" class="empty-state">
+                    <div class="empty-state-icon">📭</div>
+                    <h3>No participants found</h3>
+                    <p style="margin-top:8px;">Run the populate command to import participant data.</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    {% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1{% if search %}&search={{ search }}{% endif %}">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if search %}&search={{ search }}{% endif %}">&lsaquo; Prev</a>
+        {% endif %}
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <span class="current">{{ num }}</span>
+            {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+                <a href="?page={{ num }}{% if search %}&search={{ search }}{% endif %}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if search %}&search={{ search }}{% endif %}">Next &rsaquo;</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}{% if search %}&search={{ search }}{% endif %}">Last &raquo;</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+// Select all / bulk actions
+const selectAll = document.getElementById('selectAll');
+const toolbar = document.getElementById('bulkToolbar');
+const countEl = document.getElementById('selectedCount');
+const checkboxes = () => document.querySelectorAll('.profile-checkbox');
+
+function updateToolbar() {
+    const checked = document.querySelectorAll('.profile-checkbox:checked');
+    if (checked.length > 0) {
+        toolbar.classList.add('visible');
+        countEl.textContent = checked.length + ' selected';
+    } else {
+        toolbar.classList.remove('visible');
+    }
+}
+
+if (selectAll) {
+    selectAll.addEventListener('change', function() {
+        checkboxes().forEach(cb => { cb.checked = this.checked; });
+        updateToolbar();
+    });
+}
+document.addEventListener('change', function(e) {
+    if (e.target.classList.contains('profile-checkbox')) updateToolbar();
+});
+document.getElementById('clearSelectionBtn')?.addEventListener('click', function() {
+    checkboxes().forEach(cb => { cb.checked = false; });
+    if (selectAll) selectAll.checked = false;
+    updateToolbar();
+});
+
+// Add tag
+document.getElementById('addTagBtn')?.addEventListener('click', function() {
+    const tagName = document.getElementById('tagInput').value.trim();
+    if (!tagName) return;
+    const ids = Array.from(document.querySelectorAll('.profile-checkbox:checked')).map(cb => cb.value);
+    if (!ids.length) return;
+
+    const form = new FormData();
+    form.append('tag_name', tagName);
+    ids.forEach(id => form.append('profile_ids', id));
+    form.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+
+    fetch('{% url "analytics:participants_add_tag" %}', { method: 'POST', body: form })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) location.reload();
+        });
+});
+{% endblock %}

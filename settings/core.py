@@ -190,6 +190,7 @@ TABBYCAT_APPS = (
     'content',
     'speech_events',
     'congress_events',
+    'participant_crm',
 )
 
 INSTALLED_APPS = (
