@@ -12,7 +12,7 @@
   <div class="col-md-8 col-lg-6">
     <div class="card mt-4">
       <div class="list-group list-group-flush">
-        <form method="POST">
+        <form method="POST" id="register-org-form">
           {% csrf_token %}
 
           {% trans "Create a new organization workspace" as title %}
@@ -23,14 +23,34 @@
               {% trans "Set up an organization workspace with its own subdomain. You'll be able to manage multiple tournaments under one roof." %}
             </p>
 
+            {# ── Permanent subdomain warning ─────────────────────────────── #}
+            <div class="alert alert-warning d-flex align-items-start mb-3" role="alert">
+              <i data-feather="alert-triangle" class="me-2 flex-shrink-0 mt-1" style="width:18px;height:18px;"></i>
+              <div>
+                <strong>{% trans "Your subdomain is permanent." %}</strong>
+                {% blocktrans %}
+                  Once you create your organization, the subdomain (<code>yourslug.nekotab.app</code>)
+                  <strong>cannot be changed</strong>. Choose carefully — this becomes your permanent workspace URL.
+                {% endblocktrans %}
+              </div>
+            </div>
+
             {% if form.errors %}
               {% include "components/form-errors.html" with errors=form.errors %}
             {% endif %}
 
             {% for field in form %}
-              <div class="form-group">
+              <div class="form-group mb-3">
                 <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field|addcss:"form-control" }}
+                {% if field.name == 'slug' %}
+                  <div class="input-group">
+                    {{ field|addcss:"form-control" }}
+                    <span class="input-group-text text-muted small">.nekotab.app</span>
+                  </div>
+                  <div id="slug-availability" class="mt-1 small" style="min-height:1.2em;"></div>
+                {% else %}
+                  {{ field|addcss:"form-control" }}
+                {% endif %}
                 {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
                 {% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
               </div>
@@ -38,7 +58,7 @@
           </div>
 
           <div class="list-group-item">
-            <button type="submit" class="btn btn-success btn-block">
+            <button type="submit" class="btn btn-success btn-block" id="submit-btn">
               {% trans "Create Organization" %}
             </button>
             <a href="{% url 'tabbycat-index' %}" class="btn btn-outline-secondary btn-block mt-2">
@@ -51,3 +71,46 @@
   </div>
 </div>
 {% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script>
+(function () {
+  const slugInput = document.querySelector('input[name="slug"]');
+  const feedback = document.getElementById('slug-availability');
+  const submitBtn = document.getElementById('submit-btn');
+  if (!slugInput || !feedback) return;
+
+  let debounceTimer;
+
+  function checkSlug(slug) {
+    if (!slug || slug.length < 3) {
+      feedback.textContent = '';
+      submitBtn.disabled = false;
+      return;
+    }
+    feedback.innerHTML = '<span class="text-muted">Checking&hellip;</span>';
+    fetch(`/organizations/api/check-slug/?slug=${encodeURIComponent(slug)}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.available) {
+          feedback.innerHTML = '<span class="text-success"><i data-feather="check-circle" style="width:13px;height:13px;"></i> Available</span>';
+          submitBtn.disabled = false;
+        } else {
+          feedback.innerHTML = `<span class="text-danger"><i data-feather="x-circle" style="width:13px;height:13px;"></i> ${data.reason}</span>`;
+          submitBtn.disabled = true;
+        }
+        if (window.feather) feather.replace();
+      })
+      .catch(() => {
+        feedback.textContent = '';
+        submitBtn.disabled = false;
+      });
+  }
+
+  slugInput.addEventListener('input', function () {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => checkSlug(this.value.trim().toLowerCase()), 400);
+  });
+})();
+</script>

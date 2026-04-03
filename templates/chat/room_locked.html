@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% blocktrans with room=room.get_room_type_display %}Enter PIN — {{ room }}{% endblocktrans %}{% endblock %}
+{% block head-title %}{% trans "Chat Room" %}{% endblock %}
+{% block sidebar %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center" style="min-height: 60vh;">
+  <div class="col-sm-10 col-md-6 col-lg-4">
+    <div class="card shadow-sm">
+      <div class="card-body py-5 px-4 text-center">
+
+        <div class="mb-3">
+          <i data-feather="lock" style="width:48px;height:48px;color:#6366f1;"></i>
+        </div>
+        <h4 class="mb-1">{{ room.get_room_type_display }}</h4>
+        <p class="text-muted small mb-4">
+          {{ tournament.name }}
+        </p>
+
+        {% if messages %}
+          {% for msg in messages %}
+            <div class="alert alert-{{ msg.tags|default:'danger' }} py-2 text-start">{{ msg }}</div>
+          {% endfor %}
+        {% endif %}
+
+        <p class="text-muted mb-3">{% trans "Enter the PIN to access this room." %}</p>
+
+        <form method="POST" action="{% url 'chat:chat-pin-verify' tournament_slug=tournament.slug room_type=room_type %}" id="pin-form">
+          {% csrf_token %}
+          {# Six individual PIN digit boxes #}
+          <div class="d-flex justify-content-center gap-2 mb-4" id="pin-boxes">
+            {% for i in "123456" %}
+              <input
+                type="text"
+                maxlength="1"
+                class="form-control text-center fw-bold fs-4 pin-digit"
+                style="width:3rem;height:3.5rem;letter-spacing:0;"
+                inputmode="text"
+                autocomplete="off"
+              >
+            {% endfor %}
+          </div>
+          <input type="hidden" name="pin" id="pin-hidden">
+          <button type="submit" class="btn btn-primary btn-lg w-100" id="enter-btn" disabled>
+            {% trans "Enter Room" %}
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script>
+(function () {
+  const digits = document.querySelectorAll('.pin-digit');
+  const hidden = document.getElementById('pin-hidden');
+  const btn = document.getElementById('enter-btn');
+
+  function syncHidden() {
+    const val = Array.from(digits).map(d => d.value).join('');
+    hidden.value = val;
+    btn.disabled = val.replace(/\s/g, '').length < 1;
+  }
+
+  digits.forEach((el, idx) => {
+    el.addEventListener('input', function () {
+      // Accept any character, move to next box
+      if (this.value.length >= 1 && idx < digits.length - 1) {
+        digits[idx + 1].focus();
+      }
+      syncHidden();
+    });
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Backspace' && !this.value && idx > 0) {
+        digits[idx - 1].focus();
+        digits[idx - 1].value = '';
+        syncHidden();
+      }
+      if (e.key === 'Enter') {
+        document.getElementById('pin-form').submit();
+      }
+    });
+    el.addEventListener('paste', function (e) {
+      e.preventDefault();
+      const pasted = (e.clipboardData || window.clipboardData).getData('text').trim();
+      pasted.split('').forEach((ch, i) => {
+        if (digits[i]) digits[i].value = ch;
+      });
+      syncHidden();
+      const lastFilled = Math.min(pasted.length - 1, digits.length - 1);
+      digits[lastFilled].focus();
+    });
+  });
+
+  digits[0].focus();
+})();
+</script>
+{% endblock %}

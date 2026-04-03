@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% blocktrans with name=tournament.name %}Chat Rooms — {{ name }}{% endblocktrans %}{% endblock %}
+{% block head-title %}{% trans "Chat Room Management" %}{% endblock %}
+{% block sidebar %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4" style="max-width:860px;">
+
+  <div class="d-flex align-items-center mb-4 gap-3">
+    <h3 class="mb-0">{% trans "Chat Rooms" %}</h3>
+    <span class="text-muted">— {{ tournament.name }}</span>
+  </div>
+
+  {% if messages %}
+    {% for msg in messages %}
+      <div class="alert alert-{{ msg.tags|default:'info' }} alert-dismissible fade show" role="alert">
+        {{ msg }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <div class="row g-3">
+    {% for room in rooms %}
+      <div class="col-md-4">
+        <div class="card h-100 {% if not room.is_active %}border-secondary opacity-75{% else %}border-primary{% endif %}">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <strong>{{ room.get_room_type_display }}</strong>
+            {% if room.is_active %}
+              <span class="badge bg-success">{% trans "Active" %}</span>
+            {% else %}
+              <span class="badge bg-secondary">{% trans "Disabled" %}</span>
+            {% endif %}
+          </div>
+          <div class="card-body">
+
+            {# PIN display #}
+            <div class="mb-3">
+              <label class="form-label small text-muted mb-1">{% trans "Current PIN" %}</label>
+              <div class="d-flex align-items-center gap-2">
+                <code class="fs-5 fw-bold" id="pin-{{ room.room_type }}">{{ room.pin }}</code>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="copyPin('{{ room.pin }}', this)" title="Copy PIN">
+                  <i data-feather="copy" style="width:13px;height:13px;"></i>
+                </button>
+              </div>
+            </div>
+
+            {# Message count #}
+            <p class="text-muted small mb-3">
+              {{ room.messages.count }} message{{ room.messages.count|pluralize }}
+            </p>
+
+            {# Set custom PIN #}
+            <form method="POST" class="mb-2">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="set_pin">
+              <input type="hidden" name="room_type" value="{{ room.room_type }}">
+              <div class="input-group input-group-sm">
+                <input type="text" name="new_pin" class="form-control" placeholder="{% trans 'New PIN' %}" maxlength="10" required>
+                <button type="submit" class="btn btn-outline-primary">{% trans "Set" %}</button>
+              </div>
+            </form>
+
+            {# Regenerate PIN #}
+            <form method="POST" class="mb-2">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="regenerate_pin">
+              <input type="hidden" name="room_type" value="{{ room.room_type }}">
+              <button type="submit" class="btn btn-sm btn-outline-warning w-100">
+                <i data-feather="refresh-cw" style="width:13px;height:13px;"></i> {% trans "Generate New PIN" %}
+              </button>
+            </form>
+
+            {# Enter room link #}
+            {% if room.is_active %}
+              <a href="{% url 'chat:chat-room' tournament_slug=tournament.slug room_type=room.room_type %}"
+                 class="btn btn-sm btn-primary w-100 mb-2" target="_blank" rel="noopener">
+                <i data-feather="message-circle" style="width:13px;height:13px;"></i> {% trans "Enter Room" %}
+              </a>
+            {% endif %}
+
+          </div>
+          <div class="card-footer d-flex gap-2">
+            {# Purge history #}
+            <form method="POST" class="flex-fill" onsubmit="return confirm('{% trans "Delete all messages in this room?" %}')">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="purge_history">
+              <input type="hidden" name="room_type" value="{{ room.room_type }}">
+              <button type="submit" class="btn btn-sm btn-outline-danger w-100">
+                <i data-feather="trash-2" style="width:13px;height:13px;"></i> {% trans "Clear History" %}
+              </button>
+            </form>
+
+            {# Toggle room #}
+            <form method="POST" class="flex-fill">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="toggle_room">
+              <input type="hidden" name="room_type" value="{{ room.room_type }}">
+              <button type="submit" class="btn btn-sm {% if room.is_active %}btn-outline-secondary{% else %}btn-outline-success{% endif %} w-100">
+                {% if room.is_active %}{% trans "Disable" %}{% else %}{% trans "Enable" %}{% endif %}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <div class="alert alert-warning">
+          {% trans "No chat rooms found for this tournament. Run the management command to create them." %}
+          <br><code>python manage.py create_missing_chat_rooms --tournament {{ tournament.slug }}</code>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="mt-4">
+    <h6 class="text-muted">{% trans "Share room links" %}</h6>
+    <div class="list-group">
+      {% for room in rooms %}
+        {% if room.is_active %}
+          <div class="list-group-item d-flex justify-content-between align-items-center py-2">
+            <span class="small">
+              <strong>{{ room.get_room_type_display }}</strong> —
+              <code>{{ request.scheme }}://{{ request.get_host }}/{{ tournament.slug }}/chat/{{ room.room_type }}/</code>
+            </span>
+            <button class="btn btn-xs btn-outline-secondary btn-sm"
+              onclick="navigator.clipboard.writeText('{{ request.scheme }}://{{ request.get_host }}/{{ tournament.slug }}/chat/{{ room.room_type }}/')">
+              <i data-feather="copy" style="width:12px;height:12px;"></i>
+            </button>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script>
+function copyPin(pin, btn) {
+  navigator.clipboard.writeText(pin).then(() => {
+    btn.innerHTML = '<i data-feather="check" style="width:13px;height:13px;"></i>';
+    if (window.feather) feather.replace();
+    setTimeout(() => {
+      btn.innerHTML = '<i data-feather="copy" style="width:13px;height:13px;"></i>';
+      if (window.feather) feather.replace();
+    }, 1500);
+  });
+}
+</script>
+{% endblock %}

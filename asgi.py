@@ -11,6 +11,7 @@ django.setup()
 
 from actionlog.consumers import ActionLogEntryConsumer # noqa: E402 (has to come after settings)
 from adjallocation.consumers import AdjudicatorAllocationWorkerConsumer, PanelEditConsumer # noqa: E402 (has to come after settings)
+from chat.routing import websocket_urlpatterns as chat_ws_patterns # noqa: E402
 from checkins.consumers import CheckInEventConsumer # noqa: E402 (has to come after settings)
 from draw.consumers import DebateEditConsumer # noqa: E402 (has to come after settings)
 from notifications.consumers import NotificationQueueConsumer # noqa: E402 (has to come after settings)
@@ -34,6 +35,8 @@ application = ProtocolTypeRouter({
             # Draw and Preformed Panel Edits
             re_path(r'^ws/(?P<tournament_slug>[-\w_]+)/round/(?P<round_seq>[-\w_]+)/debates/$', DebateEditConsumer.as_asgi()),
             re_path(r'^ws/(?P<tournament_slug>[-\w_]+)/round/(?P<round_seq>[-\w_]+)/panels/$', PanelEditConsumer.as_asgi()),
+            # Tournament Chat Rooms
+            *chat_ws_patterns,
         ]),
     ),
 

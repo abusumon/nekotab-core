@@ -51,6 +51,18 @@ class Organization(models.Model):
         verbose_name=_("logo"),
     )
 
+    # ── Lifecycle ─────────────────────────────────────────────────────────────
+    is_active = models.BooleanField(
+        default=True,
+        db_index=True,
+        verbose_name=_("active"),
+        help_text=_("Inactive organizations are hidden from the registration flow."),
+    )
+    deactivation_reason = models.TextField(
+        blank=True, default='',
+        verbose_name=_("deactivation reason"),
+    )
+
     class Meta:
         verbose_name = _("organization")
         verbose_name_plural = _("organizations")

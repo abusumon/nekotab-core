@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
-from django.http import Http404, HttpResponseForbidden
+from django.http import Http404, HttpResponseForbidden, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -69,12 +69,34 @@ class OrganizationListView(LoginRequiredMixin, ListView):
             'memberships', 'tournaments',
         )
 
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        owned = OrganizationMembership.objects.filter(
+            user=self.request.user,
+            role=OrganizationMembership.Role.OWNER,
+            organization__is_active=True,
+        ).select_related('organization').first()
+        ctx['user_owned_org'] = owned.organization if owned else None
+        return ctx
+
 
 class OrganizationCreateView(LoginRequiredMixin, CreateView):
     """Create a new organization. The creator becomes OWNER."""
     model = Organization
     fields = ['name', 'slug']
     template_name = 'organizations/create.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            existing = OrganizationMembership.objects.filter(
+                user=request.user,
+                role=OrganizationMembership.Role.OWNER,
+                organization__is_active=True,
+            ).select_related('organization').first()
+            if existing:
+                messages.info(request, _("You already own an organization workspace."))
+                return redirect('org-detail', org_slug=existing.organization.slug)
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         org = form.save()
@@ -259,6 +281,23 @@ class RegisterOrganizationView(LoginRequiredMixin, CreateView):
     form_class = OrganizationRegistrationForm
     template_name = 'registration/register_organization.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            existing = OrganizationMembership.objects.filter(
+                user=request.user,
+                role=OrganizationMembership.Role.OWNER,
+                organization__is_active=True,
+            ).select_related('organization').first()
+            if existing:
+                base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
+                messages.info(
+                    request,
+                    _("You already have an organization workspace. "
+                      "Each account is limited to one workspace."),
+                )
+                return redirect(f"https://{existing.organization.slug}.{base}/")
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         with transaction.atomic():
             org = form.save(commit=False)
@@ -272,3 +311,47 @@ class RegisterOrganizationView(LoginRequiredMixin, CreateView):
 
         base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
         return redirect(f"https://{org.slug}.{base}/tournaments/new/")
+
+
+class OrgSlugAvailabilityView(View):
+    """AJAX endpoint: GET /organizations/api/check-slug/?slug=xyz
+    Returns JSON {available: bool, reason: str}.
+    """
+
+    # Slugs that are reserved at the system level (subdomains or URL prefixes)
+    RESERVED_SLUGS = {
+        'www', 'admin', 'api', 'jet', 'database', 'static', 'media',
+        'app', 'mail', 'help', 'support', 'status', 'blog', 'docs',
+        'nekotab', 'tabbycat', 'accounts', 'auth', 'login', 'logout',
+        'register', 'signup', 'settings', 'profile', 'dashboard',
+        'organizations', 'tournaments', 'campaigns', 'analytics',
+        'forum', 'motions', 'participants', 'adjudicators', 'teams',
+        'checkins', 'results', 'draw', 'feedback', 'venues', 'breaks',
+        'notifications', 'passport', 'congress', 'speech',
+    }
+
+    def get(self, request, *args, **kwargs):
+        slug = request.GET.get('slug', '').strip().lower()
+
+        if not slug:
+            return JsonResponse({'available': False, 'reason': 'Slug is required.'})
+
+        import re
+        if not re.match(r'^[a-z0-9][a-z0-9-]*[a-z0-9]$', slug) or len(slug) < 3:
+            return JsonResponse({'available': False, 'reason': 'Slug must be at least 3 characters, lowercase letters, digits, and hyphens only.'})
+
+        if slug in self.RESERVED_SLUGS:
+            return JsonResponse({'available': False, 'reason': 'This slug is reserved.'})
+
+        if Organization.objects.filter(slug__iexact=slug).exists():
+            return JsonResponse({'available': False, 'reason': 'This slug is already taken.'})
+
+        # Also check against tournament slugs
+        try:
+            from tournaments.models import Tournament
+            if Tournament.objects.filter(slug__iexact=slug).exists():
+                return JsonResponse({'available': False, 'reason': 'This slug is already in use by a tournament.'})
+        except Exception:
+            pass
+
+        return JsonResponse({'available': True, 'reason': ''})

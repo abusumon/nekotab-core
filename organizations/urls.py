@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.OrganizationListView.as_view(), name='org-list'),
     path('create/', views.OrganizationCreateView.as_view(), name='org-create'),
+    path('api/check-slug/', views.OrgSlugAvailabilityView.as_view(), name='org-check-slug'),
     path('<slug:org_slug>/', views.OrganizationDetailView.as_view(), name='org-detail'),
     path('<slug:org_slug>/edit/', views.OrganizationUpdateView.as_view(), name='org-edit'),
     path('<slug:org_slug>/members/', views.OrganizationMembersView.as_view(), name='org-members'),

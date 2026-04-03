@@ -183,6 +183,9 @@ urlpatterns = [
     # Tournament URLs
     path('<slug:tournament_slug>/',
         include('tournaments.urls')),
+
+    # Tournament Chat Rooms
+    path('<slug:tournament_slug>/chat/', include('chat.urls')),
 ]
 
 if settings.DEBUG and settings.ENABLE_DEBUG_TOOLBAR:  # Only serve debug toolbar when on DEBUG
