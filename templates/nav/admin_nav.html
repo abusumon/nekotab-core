@@ -9,11 +9,7 @@
         {% blocktrans trimmed asvar logo_alt %}
           NekoTab Logo
         {% endblocktrans %}
-        {% if on_local %}
-          {% include "nav/logo_local.html" with width=18 height=18 alt=logo_alt %}
-        {% else %}
           {% include "nav/logo.html" with width=18 height=18 alt=logo_alt %}
-        {% endif %}
       </div>
       <div class="mb-0 d-none d-md-inline h6 mr-auto pt-1 pl-2 pr-2">
         {{ tournament }}

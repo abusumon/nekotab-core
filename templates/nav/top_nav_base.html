@@ -16,11 +16,7 @@
 
       <button class="btn btn-link mr-2 p-0 navbar-brand dropdown-toggle" id="tournamentdrop"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {% if on_local %}
-          {% include "nav/logo_local.html" with width=33 height=33 alt=logo_alt %}
-        {% else %}
           {% include "nav/logo.html" with width=33 height=33 alt=logo_alt %}
-        {% endif %}
         {% if tournament %}{{ tournament }}{% else %}NekoTab{% endif %}
       </button>
 
