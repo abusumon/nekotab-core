@@ -97,6 +97,17 @@
           <td style="padding: 12px 0; color: var(--nt-text-muted);">Preview Text</td>
           <td style="padding: 12px 0;">{{ campaign.preview_text|default:"—" }}</td>
         </tr>
+        <tr>
+          <td style="padding: 12px 0; color: var(--nt-text-muted);">Target Audience</td>
+          <td style="padding: 12px 0;">
+            {% if audience %}
+              <span style="color: var(--nt-primary); font-weight: 600;">🎯 CRM Segment</span>
+              <span style="font-size: 12px; color: var(--nt-text-muted);">({{ audience_recipient_count }} recipients)</span>
+            {% else %}
+              All registered users ({{ total_subscribers }})
+            {% endif %}
+          </td>
+        </tr>
         {% if campaign.status == 'sent' %}
         <tr>
           <td style="padding: 12px 0; color: var(--nt-text-muted);">Success Rate</td>
@@ -107,6 +118,56 @@
         {% endif %}
       </table>
     </div>
+
+    {% if audience %}
+    <!-- Audience Segment Details -->
+    <div class="card" style="margin-top: 24px;">
+      <div class="card-header">
+        <h2 class="card-title">🎯 Audience Segment</h2>
+        <span style="font-size: 13px; color: var(--nt-text-muted);">{{ audience_recipient_count }} matching recipients</span>
+      </div>
+      <table style="width: 100%;">
+        {% if audience.roles %}
+        <tr>
+          <td style="padding: 10px 0; color: var(--nt-text-muted); width: 140px;">Roles</td>
+          <td style="padding: 10px 0;">
+            {% for role in audience.roles %}
+            <span class="badge" style="background: var(--nt-primary-light); color: var(--nt-primary); margin-right: 4px;">{{ role }}</span>
+            {% endfor %}
+          </td>
+        </tr>
+        {% endif %}
+        {% if audience.tournament_filter %}
+        <tr>
+          <td style="padding: 10px 0; color: var(--nt-text-muted);">Tournament</td>
+          <td style="padding: 10px 0;">{{ audience.tournament_filter.name }}</td>
+        </tr>
+        {% endif %}
+        {% if audience.tag_filter.exists %}
+        <tr>
+          <td style="padding: 10px 0; color: var(--nt-text-muted);">Tags</td>
+          <td style="padding: 10px 0;">
+            {% for tag in audience.tag_filter.all %}
+            <span class="badge" style="background: {{ tag.color }}20; color: {{ tag.color }}; margin-right: 4px;">{{ tag.name }}</span>
+            {% endfor %}
+          </td>
+        </tr>
+        {% endif %}
+        {% if audience.active_since %}
+        <tr>
+          <td style="padding: 10px 0; color: var(--nt-text-muted);">Active Since</td>
+          <td style="padding: 10px 0;">{{ audience.active_since|date:"M d, Y" }}</td>
+        </tr>
+        {% endif %}
+        {% if audience.custom_emails %}
+        <tr>
+          <td style="padding: 10px 0; color: var(--nt-text-muted);">Custom Emails</td>
+          <td style="padding: 10px 0; font-size: 13px;">{{ audience.custom_emails|linebreaksbr }}</td>
+        </tr>
+        {% endif %}
+      </table>
+    </div>
+    {% endif %}
   </div>
   
   <!-- Right Column -->
@@ -135,12 +196,20 @@
       <div>
         <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">2. Launch Campaign</h4>
         <div class="alert alert-warning" style="margin-bottom: 16px;">
+          {% if audience %}
+          ⚠️ This will send to <strong>{{ audience_recipient_count }} CRM recipients</strong> matching your audience segment. This action cannot be undone.
+          {% else %}
           ⚠️ This will send the email to <strong>{{ total_subscribers }} subscribers</strong>. This action cannot be undone.
+          {% endif %}
         </div>
-        <form action="{% url 'campaigns:send' campaign.pk %}" method="post" onsubmit="return confirm('Are you sure you want to send this campaign to {{ total_subscribers }} subscribers? This cannot be undone.');">
+        <form action="{% url 'campaigns:send' campaign.pk %}" method="post" onsubmit="return confirm('Are you sure you want to send this campaign? This cannot be undone.');">
           {% csrf_token %}
           <button type="submit" class="btn btn-success btn-lg" style="width: 100%;">
+            {% if audience %}
+            🚀 Send to {{ audience_recipient_count }} CRM Recipients
+            {% else %}
             🚀 Send to {{ total_subscribers }} Subscribers
+            {% endif %}
           </button>
         </form>
       </div>

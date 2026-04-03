@@ -28,6 +28,22 @@
   .info-panel { background: var(--nt-primary-light); border-radius: var(--nt-radius); padding: 16px 20px; margin-bottom: 24px; }
   .info-panel h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--nt-primary); }
   .info-panel p { font-size: 13px; color: var(--nt-text-secondary); margin: 0; }
+
+  /* Audience segment panel */
+  .audience-panel { background: var(--nt-bg); border: 1px solid var(--nt-border); border-radius: var(--nt-radius); padding: 20px; margin-top: 16px; }
+  .audience-panel.collapsed .audience-fields { display: none; }
+  .audience-toggle { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+  .audience-toggle label { cursor: pointer; font-weight: 600; font-size: 14px; }
+  .audience-fields { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 900px) { .audience-fields { grid-template-columns: 1fr; } }
+  .audience-fields .full-width { grid-column: 1 / -1; }
+  .checkbox-group { display: flex; flex-wrap: wrap; gap: 12px; }
+  .checkbox-group label { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; cursor: pointer; padding: 6px 12px; border: 1px solid var(--nt-border); border-radius: 8px; transition: all 0.2s; }
+  .checkbox-group label:hover { border-color: var(--nt-primary); background: var(--nt-primary-light); }
+  .checkbox-group input:checked + span { color: var(--nt-primary); }
+  .checkbox-group label:has(input:checked) { border-color: var(--nt-primary); background: var(--nt-primary-light); }
+  .recipient-preview { background: var(--nt-primary-light); color: var(--nt-primary); padding: 12px 16px; border-radius: 10px; font-weight: 600; font-size: 14px; text-align: center; margin-top: 16px; }
+  .recipient-preview .count { font-size: 24px; font-weight: 800; display: block; }
 </style>
 {% endblock %}
 
@@ -43,8 +59,8 @@
 </div>
 
 <div class="info-panel">
-  <h4>📧 Campaign will be sent to {{ total_subscribers }} subscribers</h4>
-  <p>Your promotional email will be delivered to all users who have signed up with an email address.</p>
+  <h4>📧 Campaign recipients</h4>
+  <p>Send to all {{ total_subscribers }} registered users, or target {{ crm_subscribers }} CRM subscribers using audience segments below.</p>
 </div>
 
 <form method="post" id="campaign-form">
@@ -73,6 +89,72 @@
       <label class="form-label" for="id_preview_text">Preview Text</label>
       {{ form.preview_text }}
       <p class="form-hint">Short preview text that appears after the subject line in inbox (optional)</p>
+    </div>
+  </div>
+
+  <!-- Audience Segment Panel -->
+  <div class="card" style="margin-bottom: 24px;">
+    <div class="card-header">
+      <h2 class="card-title">🎯 Target Audience</h2>
+    </div>
+
+    <div class="form-check" style="margin-bottom: 12px;">
+      {{ audience_form.use_audience }}
+      <label for="id_use_audience" style="font-weight: 600; font-size: 14px; cursor: pointer;">
+        Target a specific audience segment from Participant CRM
+      </label>
+    </div>
+    <p class="form-hint" style="margin-bottom: 16px;">When unchecked, campaign sends to all {{ total_subscribers }} registered users (legacy behaviour).</p>
+
+    <div class="audience-panel {% if not audience_form.use_audience.value %}collapsed{% endif %}" id="audience-panel">
+      <div class="audience-fields">
+        <div class="form-group">
+          <label class="form-label">Roles</label>
+          <div class="checkbox-group">
+            {% for checkbox in audience_form.roles %}
+            <label>{{ checkbox.tag }}<span>{{ checkbox.choice_label }}</span></label>
+            {% endfor %}
+          </div>
+          <p class="form-hint">Leave empty to include all roles</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tournament Filter</label>
+          {{ audience_form.tournament_filter }}
+          <p class="form-hint">Only participants from this tournament</p>
+        </div>
+
+        {% if audience_form.tag_filter.field.queryset.exists %}
+        <div class="form-group">
+          <label class="form-label">Tags</label>
+          <div class="checkbox-group">
+            {% for checkbox in audience_form.tag_filter %}
+            <label>{{ checkbox.tag }}<span>{{ checkbox.choice_label }}</span></label>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+          <label class="form-label">Active Since</label>
+          {{ audience_form.active_since }}
+          <p class="form-hint">Only participants active after this date</p>
+        </div>
+
+        <div class="form-group full-width">
+          <label class="form-label">Additional Emails</label>
+          {{ audience_form.custom_emails }}
+          <p class="form-hint">Extra email addresses to include (one per line)</p>
+        </div>
+
+        <div class="full-width">
+          <div class="recipient-preview" id="recipient-preview">
+            <span class="count" id="recipient-count">—</span>
+            estimated recipients
+            <button type="button" class="btn btn-secondary btn-sm" style="margin-left: 12px;" onclick="previewRecipients()">Refresh Count</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   
@@ -319,6 +401,51 @@ function updatePreview() {
 // Initial preview
 document.addEventListener('DOMContentLoaded', function() {
   updatePreview();
+
+  // Audience panel toggle
+  const toggle = document.getElementById('id_use_audience');
+  const panel = document.getElementById('audience-panel');
+  if (toggle && panel) {
+    function syncPanel() {
+      if (toggle.checked) {
+        panel.classList.remove('collapsed');
+        previewRecipients();
+      } else {
+        panel.classList.add('collapsed');
+      }
+    }
+    toggle.addEventListener('change', syncPanel);
+    // Initial state
+    syncPanel();
+  }
 });
+
+function previewRecipients() {
+  const roles = [];
+  document.querySelectorAll('input[name="roles"]:checked').forEach(cb => roles.push(cb.value));
+  const tournament = document.querySelector('select[name="tournament_filter"]');
+  const activeSince = document.querySelector('input[name="active_since"]');
+
+  const params = new URLSearchParams();
+  roles.forEach(r => params.append('roles', r));
+  if (tournament && tournament.value) params.set('tournament', tournament.value);
+  if (activeSince && activeSince.value) params.set('active_since', activeSince.value);
+
+  const countEl = document.getElementById('recipient-count');
+  countEl.textContent = '...';
+
+  fetch('/analytics/participants/recipient-preview/?' + params.toString())
+    .then(r => r.json())
+    .then(data => {
+      let count = data.count || 0;
+      // Add custom emails count
+      const customEl = document.querySelector('textarea[name="custom_emails"]');
+      if (customEl && customEl.value.trim()) {
+        count += customEl.value.trim().split('\n').filter(l => l.trim()).length;
+      }
+      countEl.textContent = count;
+    })
+    .catch(() => { countEl.textContent = '?'; });
+}
 </script>
 {% endblock %}

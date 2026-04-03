@@ -19,8 +19,9 @@ from django.utils.html import strip_tags
 from django.utils.translation import gettext as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, View
 
-from .forms import EmailCampaignForm, TestEmailForm
+from .forms import EmailCampaignForm, TestEmailForm, CampaignAudienceForm
 from .models import EmailCampaign, CampaignRecipient
+from participant_crm.models import ParticipantProfile
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
@@ -71,13 +72,30 @@ class CampaignCreateView(SuperuserRequiredMixin, CreateView):
         context['total_subscribers'] = User.objects.filter(
             email__isnull=False
         ).exclude(email='').count()
+        context['crm_subscribers'] = ParticipantProfile.objects.filter(email_subscribed=True).count()
+        if 'audience_form' not in context:
+            context['audience_form'] = CampaignAudienceForm()
         return context
     
-    def form_valid(self, form):
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form = self.get_form()
+        audience_form = CampaignAudienceForm(request.POST)
+        if form.is_valid() and audience_form.is_valid():
+            return self.form_valid(form, audience_form)
+        return self.form_invalid(form, audience_form)
+
+    def form_valid(self, form, audience_form=None):
         form.instance.created_by = self.request.user
         form.instance.status = EmailCampaign.Status.DRAFT
+        response = super().form_valid(form)
+        if audience_form:
+            audience_form.save_audience(self.object)
         messages.success(self.request, _("Campaign created successfully! You can now preview and send it."))
-        return super().form_valid(form)
+        return response
+
+    def form_invalid(self, form, audience_form=None):
+        return self.render_to_response(self.get_context_data(form=form, audience_form=audience_form))
     
     def get_success_url(self):
         return reverse('campaigns:detail', kwargs={'pk': self.object.pk})
@@ -101,11 +119,28 @@ class CampaignUpdateView(SuperuserRequiredMixin, UpdateView):
         context['total_subscribers'] = User.objects.filter(
             email__isnull=False
         ).exclude(email='').count()
+        context['crm_subscribers'] = ParticipantProfile.objects.filter(email_subscribed=True).count()
+        if 'audience_form' not in context:
+            context['audience_form'] = CampaignAudienceForm.from_campaign(self.object)
         return context
-    
-    def form_valid(self, form):
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        audience_form = CampaignAudienceForm(request.POST)
+        if form.is_valid() and audience_form.is_valid():
+            return self.form_valid(form, audience_form)
+        return self.form_invalid(form, audience_form)
+
+    def form_valid(self, form, audience_form=None):
+        response = super().form_valid(form)
+        if audience_form:
+            audience_form.save_audience(self.object)
         messages.success(self.request, _("Campaign updated successfully!"))
-        return super().form_valid(form)
+        return response
+
+    def form_invalid(self, form, audience_form=None):
+        return self.render_to_response(self.get_context_data(form=form, audience_form=audience_form))
     
     def get_success_url(self):
         return reverse('campaigns:detail', kwargs={'pk': self.object.pk})
@@ -124,6 +159,15 @@ class CampaignDetailView(SuperuserRequiredMixin, DetailView):
             email__isnull=False
         ).exclude(email='').count()
         context['recent_recipients'] = self.object.recipients.all()[:50]
+        # Audience info
+        try:
+            audience = self.object.audience
+            context['audience'] = audience
+            context['audience_recipient_count'] = audience.recipient_count()
+        except Exception:
+            context['audience'] = None
+            context['audience_recipient_count'] = 0
+        context['crm_subscribers'] = ParticipantProfile.objects.filter(email_subscribed=True).count()
         return context
 
 
@@ -154,6 +198,21 @@ class CampaignDuplicateView(SuperuserRequiredMixin, View):
             status=EmailCampaign.Status.DRAFT,
             created_by=request.user,
         )
+
+        # Clone audience segment if present
+        try:
+            orig_audience = original.audience
+            from participant_crm.models import CampaignAudience
+            new_audience = CampaignAudience.objects.create(
+                campaign=new_campaign,
+                roles=orig_audience.roles,
+                tournament_filter=orig_audience.tournament_filter,
+                active_since=orig_audience.active_since,
+                custom_emails=orig_audience.custom_emails,
+            )
+            new_audience.tag_filter.set(orig_audience.tag_filter.all())
+        except Exception:
+            pass
         
         messages.success(request, _("Campaign duplicated successfully!"))
         return redirect('campaigns:edit', pk=new_campaign.pk)
@@ -212,7 +271,7 @@ class SendTestEmailView(SuperuserRequiredMixin, View):
 
 
 class SendCampaignView(SuperuserRequiredMixin, View):
-    """Send the campaign to all subscribers."""
+    """Send the campaign to all subscribers or a targeted audience segment."""
     
     def post(self, request, pk):
         campaign = get_object_or_404(EmailCampaign, pk=pk)
@@ -221,10 +280,8 @@ class SendCampaignView(SuperuserRequiredMixin, View):
             messages.error(request, _("This campaign has already been sent."))
             return redirect('campaigns:detail', pk=pk)
         
-        # Get all users with email addresses
-        recipients = User.objects.filter(
-            email__isnull=False
-        ).exclude(email='').values_list('id', 'email')
+        # Determine recipients: audience segment or legacy all-users
+        recipients = self._resolve_recipients(campaign)
         
         if not recipients:
             messages.error(request, _("No subscribers to send to!"))
@@ -242,7 +299,7 @@ class SendCampaignView(SuperuserRequiredMixin, View):
             recipient_objects.append(CampaignRecipient(
                 campaign=campaign,
                 email=email,
-                user_id=user_id,
+                user_id=user_id if user_id else None,
                 status=CampaignRecipient.Status.PENDING
             ))
         CampaignRecipient.objects.bulk_create(recipient_objects, ignore_conflicts=True)
@@ -254,6 +311,30 @@ class SendCampaignView(SuperuserRequiredMixin, View):
         
         messages.success(request, _(f"Campaign is being sent to {len(recipients)} recipients!"))
         return redirect('campaigns:detail', pk=pk)
+
+    def _resolve_recipients(self, campaign):
+        """Return list of (user_id_or_None, email) tuples for this campaign."""
+        try:
+            audience = campaign.audience
+        except Exception:
+            audience = None
+
+        if audience:
+            # Use CRM audience segment
+            profiles = audience.resolve_recipients()
+            result = list(profiles.values_list('user_id', 'email'))
+            # Add custom emails (no user_id)
+            if audience.custom_emails:
+                for line in audience.custom_emails.splitlines():
+                    email = line.strip()
+                    if email and '@' in email:
+                        result.append((None, email))
+            return result
+        else:
+            # Legacy: all users with email
+            return list(User.objects.filter(
+                email__isnull=False
+            ).exclude(email='').values_list('id', 'email'))
     
     def _send_campaign_emails(self, campaign_pk):
         """Background task to send all campaign emails."""
