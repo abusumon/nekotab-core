@@ -524,8 +524,18 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_LOGIN_METHODS = {'email', 'username'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'none'  # We handle verification in users.views
+ACCOUNT_EMAIL_REQUIRED = True
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
+
+# Google OAuth → existing account auto-connection
+# Google verifies emails before issuing OAuth tokens, so trusting Google's
+# email for account matching is safe. These settings allow a Google login to
+# automatically connect to an existing NekoTab account with the same email
+# instead of showing the social-account signup form.
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
+SOCIALACCOUNT_AUTO_CONNECT_BY_EMAIL = True
 
 # ==============================================================================
 # Subdomain routing (defaults; can be overridden in env-specific settings)
