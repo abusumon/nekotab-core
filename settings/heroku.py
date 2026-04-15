@@ -44,10 +44,15 @@ if 'DJANGO_SECRET_KEY' in environ and environ.get('DISABLE_HTTPS_REDIRECTS', '')
 # ==============================================================================
 
 # Parse database configuration from $DATABASE_URL
+try:
+    _db_conn_max_age = int(environ.get('DB_CONN_MAX_AGE', '0'))
+except ValueError:
+    _db_conn_max_age = 0
+
 DATABASES = {
     'default': dj_database_url.config(
         default='postgres://localhost',
-        conn_max_age=600,
+        conn_max_age=_db_conn_max_age,
     ),
 }
 
