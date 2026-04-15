@@ -299,15 +299,20 @@ class RegisterOrganizationView(LoginRequiredMixin, CreateView):
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        with transaction.atomic():
-            org = form.save(commit=False)
-            org.is_workspace_enabled = True
-            org.save()
-            OrganizationMembership.objects.create(
-                organization=org,
-                user=self.request.user,
-                role=OrganizationMembership.Role.OWNER,
-            )
+        try:
+            with transaction.atomic():
+                org = form.save(commit=False)
+                org.is_workspace_enabled = True
+                org.save()
+                OrganizationMembership.objects.create(
+                    organization=org,
+                    user=self.request.user,
+                    role=OrganizationMembership.Role.OWNER,
+                )
+        except Exception:
+            logger.exception("RegisterOrganizationView failed while creating workspace")
+            form.add_error(None, _("We couldn't create your organization workspace right now. Please try again."))
+            return self.form_invalid(form)
 
         base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
         return redirect(f"https://{org.slug}.{base}/tournaments/new/")

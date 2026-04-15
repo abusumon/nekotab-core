@@ -405,7 +405,12 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
                 )
             form.instance.organization = org
 
-        tournament = form.save()
+        try:
+            tournament = form.save()
+        except Exception:
+            logger.exception("CreateTournamentView failed while saving tournament")
+            form.add_error(None, _("We couldn't create your tournament right now. Please try again."))
+            return self.form_invalid(form)
 
         # Grant the creator all permissions on this tournament
         UserPermission.objects.bulk_create([
@@ -529,7 +534,12 @@ class CreateIETournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Crea
                 )
             form.instance.organization = org
 
-        tournament = form.save()
+        try:
+            tournament = form.save()
+        except Exception:
+            logger.exception("CreateIETournamentView failed while saving tournament")
+            form.add_error(None, _("We couldn't create your IE tournament right now. Please try again."))
+            return self.form_invalid(form)
 
         # Grant the creator all permissions on this tournament
         UserPermission.objects.bulk_create([
@@ -633,7 +643,12 @@ class CreateCongressTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin
                 )
             form.instance.organization = org
 
-        tournament = form.save()
+        try:
+            tournament = form.save()
+        except Exception:
+            logger.exception("CreateCongressTournamentView failed while saving tournament")
+            form.add_error(None, _("We couldn't create your Congress tournament right now. Please try again."))
+            return self.form_invalid(form)
 
         UserPermission.objects.bulk_create([
             UserPermission(user=self.request.user, permission=perm, tournament=tournament)
@@ -735,24 +750,29 @@ class RegisterTournamentView(LoginRequiredMixin, CreateView):
         from organizations.models import Organization, OrganizationMembership
         from .utils import auto_make_rounds
 
-        with transaction.atomic():
-            org = Organization.objects.create(
-                name=form.cleaned_data['name'],
-                slug=form.cleaned_data['slug'],
-                is_workspace_enabled=False,
-            )
-            OrganizationMembership.objects.create(
-                organization=org,
-                user=self.request.user,
-                role=OrganizationMembership.Role.OWNER,
-            )
-            tournament = form.save(commit=False)
-            tournament.organization = org
-            tournament.owner = self.request.user
-            tournament.save()
-            auto_make_rounds(tournament, form.cleaned_data['num_prelim_rounds'])
-            tournament.current_round = tournament.round_set.order_by('seq').first()
-            tournament.save()
+        try:
+            with transaction.atomic():
+                org = Organization.objects.create(
+                    name=form.cleaned_data['name'],
+                    slug=form.cleaned_data['slug'],
+                    is_workspace_enabled=False,
+                )
+                OrganizationMembership.objects.create(
+                    organization=org,
+                    user=self.request.user,
+                    role=OrganizationMembership.Role.OWNER,
+                )
+                tournament = form.save(commit=False)
+                tournament.organization = org
+                tournament.owner = self.request.user
+                tournament.save()
+                auto_make_rounds(tournament, form.cleaned_data['num_prelim_rounds'])
+                tournament.current_round = tournament.round_set.order_by('seq').first()
+                tournament.save()
+        except Exception:
+            logger.exception("RegisterTournamentView failed while creating organization/tournament")
+            form.add_error(None, _("We couldn't complete your registration right now. Please try again."))
+            return self.form_invalid(form)
 
         base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
         if getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False) and base:

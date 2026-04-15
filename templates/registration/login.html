@@ -5,7 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>{% trans "Log In" %} | NekoTab</title>
+  <title>{% trans "Log In" %} - NekoTab</title>
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo-16x16.png' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +52,7 @@
           </div>
           {% else %}
           <div class="auth-errors-box">
-            {% trans "Please log in to see this page." %}
+            {% trans "Please sign in or create a free account to continue." %}
           </div>
           {% endif %}
         {% endif %}

@@ -3,51 +3,48 @@
 
 {% cache 600 footer tournament LANGUAGE_CODE %}
 <div class="text-center py-2 small" style="border-bottom: 1px solid rgba(0,0,0,.08);">
-    Tabulated with
-    <a href="https://nekotab.app" target="_blank" rel="noopener" style="font-weight: 600;">NekoTab</a>
-    — free debate tabulation software.
-    <a href="https://nekotab.app/register/tournament/" target="_blank" rel="noopener" class="ml-2" style="font-weight: 600;">
-        Run your next tournament free →
-    </a>
+  Built with
+  <a href="https://nekotab.app" target="_blank" rel="noopener" style="font-weight: 600;">NekoTab</a>
+  - free debate tabulation software.
+  <a href="https://nekotab.app/register/tournament/" target="_blank" rel="noopener" class="ml-2" style="font-weight: 600;">
+    Create a tournament free ->
+  </a>
 </div>
 <div class="row mt-3">
 
   <div class="navbar navbar-light container-fluid small">
 
     <div class="row mt-3 mb-2">
-      <div class="col-lg-6 col-md-5">
+      <div class="col-lg-4 col-md-5">
         <h6 class="d-inline-block">
-          {% if tournament and tabbycat_codename %}
-            {% blocktrans trimmed %}{{ tournament }} runs on NekoTab  {% endblocktrans %}
-          {% else %}
-            {% blocktrans trimmed %}This site runs on NekoTab {% endblocktrans %}
-          {% endif %}
+          NekoTab
         </h6>
         <p class="text-muted">
           {% blocktrans trimmed %}
-            NekoTab is an open-source project developed by volunteers and is free to use.
-          {% endblocktrans %}
-        </p>
-      </div>
-
-      <div class="col-lg-4 col-md-4 mt-2 mt-md-0">
-        <h6 class="d-inline-block">{% trans "Need help?" %}</h6>
-        <p class="text-muted">
-          {% blocktrans trimmed %}
-            Visit our <a href="https://github.com/abusumon/nekotab-app/wiki">documentation</a> or
-            <a href="/contact/">contact us</a> if you need help setting up your tournament.
+            Open-source tournament tabulation, motion tools, and community platform for debate.
           {% endblocktrans %}
         </p>
       </div>
 
       <div class="col-lg-2 col-md-3 mt-2 mt-md-0">
-        <h6 class="d-inline-block">{% trans "Open Source" %}</h6>
-        <p class="text-muted">
-          {% blocktrans trimmed %}
-            NekoTab is <a href="https://github.com/abusumon/nekotab-app">open source on GitHub</a>.
-            Contributions and feedback are welcome.
-          {% endblocktrans %}
-        </p>
+        <h6 class="d-inline-block">Product</h6>
+        <p class="text-muted mb-1"><a href="/register/tournament/">Create Tournament</a></p>
+        <p class="text-muted mb-1"><a href="/register/organization/">Organization Workspace</a></p>
+        <p class="text-muted mb-0"><a href="/motions-bank/">Motion Bank</a></p>
+      </div>
+
+      <div class="col-lg-3 col-md-4 mt-2 mt-md-0">
+        <h6 class="d-inline-block">Company</h6>
+        <p class="text-muted mb-1"><a href="/about/">About</a></p>
+        <p class="text-muted mb-1"><a href="/contact/">Contact</a></p>
+        <p class="text-muted mb-0"><a href="/learn/">Learn</a></p>
+      </div>
+
+      <div class="col-lg-3 col-md-12 mt-2 mt-md-0">
+        <h6 class="d-inline-block">Legal</h6>
+        <p class="text-muted mb-1"><a href="/privacy/">Privacy Policy</a></p>
+        <p class="text-muted mb-1"><a href="/terms/">Terms of Service</a></p>
+        <p class="text-muted mb-0"><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></p>
       </div>
 
      <div class="w-100"></div>
@@ -62,44 +59,14 @@
             </a>
           </li>
           <li class="nav-item p-2">
-            <i data-feather="github" aria-hidden="true"></i>
-            <a class="nav-link p-0 d-inline-block" href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener noreferrer">
-              {% trans "GitHub" %}
-            </a>
-          </li>
-          <li class="nav-item p-2">
             <i data-feather="book" aria-hidden="true"></i>
             <a class="nav-link p-0 d-inline-block" href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener noreferrer">
-              {% trans "Documentation" %}
+              Documentation
             </a>
           </li>
           <li class="nav-item p-2">
             <i data-feather="help-circle" aria-hidden="true"></i>
-            <a class="nav-link p-0 d-inline-block" href="/contact/">
-              {% trans "Support" %}
-            </a>
-          </li>
-        </ul>
-
-        {# Trust / Legal links #}
-        <ul class="nav justify-content-center mt-2">
-          <li class="nav-item p-2">
-            <a class="nav-link p-0 d-inline-block text-muted small" href="/learn/">Learn</a>
-          </li>
-          <li class="nav-item p-2">
-            <a class="nav-link p-0 d-inline-block text-muted small" href="/about/">About</a>
-          </li>
-          <li class="nav-item p-2">
-            <a class="nav-link p-0 d-inline-block text-muted small" href="/contact/">Contact</a>
-          </li>
-          <li class="nav-item p-2">
-            <a class="nav-link p-0 d-inline-block text-muted small" href="/privacy/">Privacy Policy</a>
-          </li>
-          <li class="nav-item p-2">
-            <a class="nav-link p-0 d-inline-block text-muted small" href="/terms/">Terms of Service</a>
-          </li>
-          <li class="nav-item p-2">
-            <a class="nav-link p-0 d-inline-block text-muted small" href="/disclaimer/">Disclaimer</a>
+            <a class="nav-link p-0 d-inline-block" href="/contact/">Support</a>
           </li>
         </ul>
       </div>

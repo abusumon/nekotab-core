@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from utils.fields import ChoiceArrayField
 from utils.models import UniqueConstraint
 
-from .permissions import PERM_CACHE_KEY, Permission
+from .permissions import PERM_CACHE_KEY, Permission, _get_perm_cache_version
 
 
 class UserPermission(models.Model):
@@ -22,12 +22,27 @@ class UserPermission(models.Model):
     def __str__(self):
         return "%s: %s (%s)" % (self.user.username, self.permission, self.tournament.slug)
 
+    def _cache_key(self):
+        return PERM_CACHE_KEY % (
+            self.user_id,
+            self.tournament.slug,
+            str(self.permission),
+            _get_perm_cache_version(self.user_id),
+        )
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        cache.set(PERM_CACHE_KEY % (self.user_id, self.tournament.slug, str(self.permission)), True)
+        try:
+            cache.set(self._cache_key(), True)
+        except Exception:
+            # Cache errors should not block admin writes.
+            pass
 
     def delete(self, *args, **kwargs):
-        cache.delete(PERM_CACHE_KEY % (self.user_id, self.tournament.slug, str(self.permission)))
+        try:
+            cache.delete(self._cache_key())
+        except Exception:
+            pass
         return super().delete(*args, **kwargs)
 
 
@@ -58,8 +73,22 @@ class Membership(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        cache.set_many({PERM_CACHE_KEY % (self.user_id, self.group.tournament.slug, str(perm)): True for perm in self.group.permissions})
+        version = _get_perm_cache_version(self.user_id)
+        try:
+            cache.set_many({
+                PERM_CACHE_KEY % (self.user_id, self.group.tournament.slug, str(perm), version): True
+                for perm in self.group.permissions
+            })
+        except Exception:
+            pass
 
     def delete(self, *args, **kwargs):
-        cache.delete_many([PERM_CACHE_KEY % (self.user_id, self.group.tournament.slug, str(perm)) for perm in self.group.permissions])
+        version = _get_perm_cache_version(self.user_id)
+        try:
+            cache.delete_many([
+                PERM_CACHE_KEY % (self.user_id, self.group.tournament.slug, str(perm), version)
+                for perm in self.group.permissions
+            ])
+        except Exception:
+            pass
         return super().delete(*args, **kwargs)
