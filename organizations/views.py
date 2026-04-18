@@ -4,7 +4,9 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import FieldError
 from django.db import transaction
+from django.db.utils import OperationalError, ProgrammingError
 from django.http import Http404, HttpResponseForbidden, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
@@ -21,6 +23,29 @@ from .models import (
 
 logger = logging.getLogger(__name__)
 User = get_user_model()
+
+
+def _get_first_owned_org_slug(user):
+    """Return the first owned organization slug for a user.
+
+    During rolling deploys, code can reference newer columns before migrations
+    are applied on every database replica. If `organization.is_active` isn't
+    available yet, fall back to owner-only lookup instead of raising 500.
+    """
+    owner_memberships = OrganizationMembership.objects.filter(
+        user=user,
+        role=OrganizationMembership.Role.OWNER,
+    )
+    try:
+        return owner_memberships.filter(
+            organization__is_active=True,
+        ).values_list('organization__slug', flat=True).first()
+    except (FieldError, OperationalError, ProgrammingError):
+        logger.warning(
+            "Falling back to owner-only organization lookup because active-organization filter failed.",
+            exc_info=True,
+        )
+        return owner_memberships.values_list('organization__slug', flat=True).first()
 
 
 class OrgAccessMixin:
@@ -71,12 +96,14 @@ class OrganizationListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        owned = OrganizationMembership.objects.filter(
-            user=self.request.user,
-            role=OrganizationMembership.Role.OWNER,
-            organization__is_active=True,
-        ).select_related('organization').first()
-        ctx['user_owned_org'] = owned.organization if owned else None
+        owned_slug = _get_first_owned_org_slug(self.request.user)
+        ctx['user_owned_org'] = None
+        if owned_slug:
+            # Query only legacy-safe fields to avoid hard failures when newer
+            # org columns haven't been migrated yet.
+            ctx['user_owned_org'] = Organization.objects.only(
+                'id', 'name', 'slug',
+            ).filter(slug=owned_slug).first()
         return ctx
 
 
@@ -88,14 +115,10 @@ class OrganizationCreateView(LoginRequiredMixin, CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            existing = OrganizationMembership.objects.filter(
-                user=request.user,
-                role=OrganizationMembership.Role.OWNER,
-                organization__is_active=True,
-            ).select_related('organization').first()
-            if existing:
+            existing_slug = _get_first_owned_org_slug(request.user)
+            if existing_slug:
                 messages.info(request, _("You already own an organization workspace."))
-                return redirect('org-detail', org_slug=existing.organization.slug)
+                return redirect('org-detail', org_slug=existing_slug)
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -283,19 +306,15 @@ class RegisterOrganizationView(LoginRequiredMixin, CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            existing = OrganizationMembership.objects.filter(
-                user=request.user,
-                role=OrganizationMembership.Role.OWNER,
-                organization__is_active=True,
-            ).select_related('organization').first()
-            if existing:
+            existing_slug = _get_first_owned_org_slug(request.user)
+            if existing_slug:
                 base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
                 messages.info(
                     request,
                     _("You already have an organization workspace. "
                       "Each account is limited to one workspace."),
                 )
-                return redirect(f"https://{existing.organization.slug}.{base}/")
+                return redirect(f"https://{existing_slug}.{base}/")
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
