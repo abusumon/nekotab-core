@@ -291,6 +291,12 @@ class SubdomainTournamentMiddleware:
         '/summernote/', '/jet/', '/organizations/', '/archive/',
         '/forum/', '/motions-bank/', '/passport/',
         '/i18n/', '/jsi18n/',
+        '/register/', '/start/', '/create/', '/style/', '/load-demo/', '/claim/',
+        '/unsubscribe/', '/for-organizers/',
+        '/free-debate-tab-software/', '/bp-debate-tabulation/', '/tabroom-alternative/',
+        '/sitemap.xml', '/robots.txt', '/ads.txt',
+        '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
+        '/admin/',
     )
 
     def __init__(self, get_response):
@@ -433,6 +439,12 @@ class SubdomainTenantMiddleware:
         '/summernote/', '/jet/', '/organizations/', '/archive/',
         '/forum/', '/motions-bank/', '/passport/',
         '/i18n/', '/jsi18n/',
+        '/register/', '/start/', '/create/', '/style/', '/load-demo/', '/claim/',
+        '/unsubscribe/', '/for-organizers/',
+        '/free-debate-tab-software/', '/bp-debate-tabulation/', '/tabroom-alternative/',
+        '/sitemap.xml', '/robots.txt', '/ads.txt',
+        '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
+        '/admin/',
     )
 
     def __init__(self, get_response):

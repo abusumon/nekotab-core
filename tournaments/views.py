@@ -16,6 +16,7 @@ from django.utils.timezone import get_current_timezone_name
 
 from users.models import UserPermission
 from users.permissions import Permission
+from utils.middleware import is_slug_dns_safe
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, FormView, UpdateView
@@ -775,8 +776,8 @@ class RegisterTournamentView(LoginRequiredMixin, CreateView):
             return self.form_invalid(form)
 
         base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
-        if getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False) and base:
-            return redirect(f"https://{tournament.slug}.{base}/admin/")
+        if getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False) and base and is_slug_dns_safe(tournament.slug):
+            return redirect(f"https://{tournament.slug.lower()}.{base}/admin/")
         return redirect(f"/{tournament.slug}/admin/")
 
 

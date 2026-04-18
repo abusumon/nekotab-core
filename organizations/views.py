@@ -15,6 +15,7 @@ from django.views import View
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from .forms import OrganizationRegistrationForm
+from utils.middleware import is_slug_dns_safe
 
 from .models import (
     Organization, OrganizationMembership,
@@ -314,7 +315,9 @@ class RegisterOrganizationView(LoginRequiredMixin, CreateView):
                     _("You already have an organization workspace. "
                       "Each account is limited to one workspace."),
                 )
-                return redirect(f"https://{existing_slug}.{base}/")
+                if is_slug_dns_safe(existing_slug):
+                    return redirect(f"https://{existing_slug.lower()}.{base}/")
+                return redirect('tabbycat-index')
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -334,7 +337,9 @@ class RegisterOrganizationView(LoginRequiredMixin, CreateView):
             return self.form_invalid(form)
 
         base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
-        return redirect(f"https://{org.slug}.{base}/tournaments/new/")
+        if is_slug_dns_safe(org.slug):
+            return redirect(f"https://{org.slug.lower()}.{base}/tournaments/new/")
+        return redirect('tabbycat-index')
 
 
 class OrgSlugAvailabilityView(View):

@@ -239,11 +239,11 @@ class BaseCreateTeamFormView(LogActionMixin, PublicTournamentPageMixin, CustomQu
     def _numerical_reference(team, speakers=None):
         teams = team.tournament.team_set.filter(institution=team.institution, reference__regex=r"^\d+$").values_list('reference', flat=True)
         team_numbers = [int(t) for t in teams]
-        return str(max(team_numbers) + 1)
+        return str(max(team_numbers, default=0) + 1)
 
     @staticmethod
     def _initials_reference(team, speakers):
-        return "".join(s.instance.last_name[0] for s in speakers)
+        return "".join((s.instance.last_name[0] if s.instance.last_name else '?') for s in speakers)
 
     @staticmethod
     def _custom_reference(team, speakers=None):

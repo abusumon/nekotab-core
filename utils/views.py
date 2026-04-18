@@ -38,7 +38,10 @@ class PostOnlyRedirectView(View):
     not_post_message = _("Whoops! You're not meant to type that URL into your browser.")
 
     def get_redirect_url(self, *args, **kwargs):
-        return self.redirect_url % kwargs
+        try:
+            return self.redirect_url % kwargs
+        except (KeyError, TypeError, ValueError):
+            return str(self.redirect_url)
 
     def get(self, request, *args, **kwargs):
         logger.warning("Tried to access a POST-only view with a GET request")

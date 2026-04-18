@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.http.response import Http404
 from django.shortcuts import redirect
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.translation import gettext_lazy as _
@@ -132,7 +132,7 @@ class PublicSignupView(FormView):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = email_verification_token.make_token(user)
         verify_url = self.request.build_absolute_uri(
-            f'/accounts/verify/{uid}/{token}/'
+            reverse('activate-account', kwargs={'uidb64': uid, 'token': token})
         )
 
         # Send verification email

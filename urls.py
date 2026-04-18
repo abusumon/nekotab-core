@@ -131,7 +131,7 @@ urlpatterns = [
         include('organizations.urls')),
 
     # API
-    path('api',
+    path('api/',
         include('api.urls')),
 
     # Archive import/export
