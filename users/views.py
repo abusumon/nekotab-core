@@ -15,6 +15,8 @@ from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import FormView
 
+from allauth.account.models import EmailAddress
+
 from actionlog.mixins import LogActionMixin
 from actionlog.models import ActionLogEntry
 from tournaments.mixins import TournamentMixin
@@ -57,6 +59,12 @@ class BlankSiteStartView(FormView):
 
     def form_valid(self, form):
         user = form.save()
+        if user.email:
+            EmailAddress.objects.update_or_create(
+                user=user,
+                email__iexact=user.email,
+                defaults={'email': user.email, 'verified': True, 'primary': True},
+            )
         login(self.request, user)
         messages.info(self.request, _("Welcome! You've created an account for %s.") % user.username)
 
@@ -170,7 +178,16 @@ class ActivateAccountView(View):
         if user is not None and email_verification_token.check_token(user, token):
             user.is_active = True
             user.save(update_fields=['is_active'])
-            login(request, user)
+
+            # Register the verified email with allauth so that future Google
+            # sign-ins (email authentication) don't wipe the password.
+            EmailAddress.objects.update_or_create(
+                user=user,
+                email__iexact=user.email,
+                defaults={'email': user.email, 'verified': True, 'primary': True},
+            )
+
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             messages.success(request, _("Your email has been verified. Welcome to NekoTab!"))
             logger.info('User %s verified email and activated account.', user.username)
         else:
