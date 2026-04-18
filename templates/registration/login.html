@@ -39,9 +39,15 @@
       <form method="post" action="{% url 'login' %}" novalidate>
         {% csrf_token %}
 
-        {% if form.errors %}
+        {% if form.non_field_errors %}
         <div class="auth-errors-box">
-          {% trans "Your username and password didn't match. Please try again." %}
+          {% for error in form.non_field_errors %}
+            <div>{{ error }}</div>
+          {% endfor %}
+        </div>
+        {% elif form.errors %}
+        <div class="auth-errors-box">
+          {% trans "Please correct the highlighted fields and try again." %}
         </div>
         {% endif %}
 
@@ -58,13 +64,19 @@
         {% endif %}
 
         <div class="auth-field">
-          <label for="id_username" class="auth-label">{% trans "Username" %}</label>
-          <input type="text" name="username" id="id_username" class="auth-input{% if form.username.errors %} is-invalid{% endif %}" autocomplete="username" autofocus required placeholder="{% trans 'Enter your username' %}">
+          <label for="id_username" class="auth-label">{% trans "Username or email" %}</label>
+          <input type="text" name="username" id="id_username" class="auth-input{% if form.username.errors %} is-invalid{% endif %}" autocomplete="username" autofocus required placeholder="{% trans 'Enter your username or email' %}">
+          {% if form.username.errors %}
+            <div class="auth-error">{{ form.username.errors.0 }}</div>
+          {% endif %}
         </div>
 
         <div class="auth-field">
           <label for="id_password" class="auth-label">{% trans "Password" %}</label>
           <input type="password" name="password" id="id_password" class="auth-input{% if form.password.errors %} is-invalid{% endif %}" autocomplete="current-password" required placeholder="{% trans 'Enter your password' %}">
+          {% if form.password.errors %}
+            <div class="auth-error">{{ form.password.errors.0 }}</div>
+          {% endif %}
         </div>
 
         <a href="{% url 'password_reset' %}" class="auth-forgot">{% trans "Forgot password?" %}</a>

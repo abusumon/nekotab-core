@@ -1,6 +1,7 @@
 from django import forms
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm, UserCreationForm, UsernameField
+from django.contrib.auth import authenticate, get_user_model
+from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, SetPasswordForm, UserCreationForm, UsernameField
+from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 from .models import Membership
@@ -91,3 +92,42 @@ class PublicSignupForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class PublicLoginForm(AuthenticationForm):
+    """Allow username-or-email login and clearer inactive account feedback."""
+
+    username = UsernameField(label=_("Username or email"))
+    error_messages = {
+        **AuthenticationForm.error_messages,
+        'inactive': _("This account isn't activated yet. Please verify your email first."),
+    }
+
+    def clean(self):
+        username_input = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+
+        if not username_input or not password:
+            return self.cleaned_data
+
+        user_model = get_user_model()
+        candidate_qs = user_model._default_manager.filter(username__iexact=username_input).order_by('id')
+        auth_username = username_input
+
+        if '@' in username_input:
+            email_qs = user_model._default_manager.filter(email__iexact=username_input).order_by('id')
+            email_match = email_qs.first()
+            if email_match is not None:
+                auth_username = email_match.get_username()
+                candidate_qs = email_qs
+
+        self.user_cache = authenticate(self.request, username=auth_username, password=password)
+
+        if self.user_cache is None:
+            for candidate in candidate_qs.filter(is_active=False):
+                if candidate.check_password(password):
+                    raise ValidationError(self.error_messages['inactive'], code='inactive')
+            raise self.get_invalid_login_error()
+
+        self.confirm_login_allowed(self.user_cache)
+        return self.cleaned_data

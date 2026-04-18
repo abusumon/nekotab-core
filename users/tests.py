@@ -98,3 +98,35 @@ class TokenGeneratorTests(TestCase):
         user.is_active = True
         user.save()
         self.assertFalse(email_verification_token.check_token(user, token))
+
+
+class LoginBehaviorTests(TestCase):
+    """Test login behavior for inactive accounts and email-based login."""
+
+    def test_inactive_user_shows_activation_message(self):
+        User.objects.create_user(
+            username='inactiveuser',
+            email='inactive@example.com',
+            password='Str0ngP@ssw0rd!',
+            is_active=False,
+        )
+        response = self.client.post(reverse('login'), {
+            'username': 'inactiveuser',
+            'password': 'Str0ngP@ssw0rd!',
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "isn't activated yet")
+
+    def test_active_user_can_log_in_with_email(self):
+        User.objects.create_user(
+            username='emailuser',
+            email='emailuser@example.com',
+            password='Str0ngP@ssw0rd!',
+            is_active=True,
+        )
+        response = self.client.post(reverse('login'), {
+            'username': 'emailuser@example.com',
+            'password': 'Str0ngP@ssw0rd!',
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, '/')
