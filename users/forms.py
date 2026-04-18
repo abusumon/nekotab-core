@@ -94,6 +94,24 @@ class PublicSignupForm(UserCreationForm):
         return user
 
 
+class PublicPasswordResetForm(PasswordResetForm):
+    """Allow password reset emails to be sent to users with unusable passwords.
+
+    Django's default PasswordResetForm.get_users() silently skips users who
+    have no usable password (e.g. set_unusable_password was called).  This is
+    exactly the situation for users whose passwords were wiped by allauth's
+    email-authentication security measure.  For those users, Forgot Password
+    is the *only* way to regain access, so we must send the email.
+    """
+
+    def get_users(self, email):
+        User = get_user_model()
+        return User._default_manager.filter(
+            email__iexact=email,
+            is_active=True,
+        )
+
+
 class PublicLoginForm(AuthenticationForm):
     """Allow username-or-email login and clearer inactive account feedback."""
 
