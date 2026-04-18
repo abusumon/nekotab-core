@@ -9,6 +9,7 @@ user that is missing one.
 
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
+from django.db import IntegrityError
 
 from allauth.account.models import EmailAddress
 
@@ -31,17 +32,28 @@ class Command(BaseCommand):
         users = User.objects.filter(is_active=True).exclude(email="")
         created = 0
         updated = 0
+        skipped = 0
 
         for user in users.iterator():
             existing = EmailAddress.objects.filter(user=user, email__iexact=user.email).first()
             if existing is None:
                 if not dry_run:
-                    EmailAddress.objects.create(
-                        user=user,
-                        email=user.email,
-                        verified=True,
-                        primary=True,
-                    )
+                    try:
+                        EmailAddress.objects.create(
+                            user=user,
+                            email=user.email,
+                            verified=True,
+                            primary=True,
+                        )
+                    except IntegrityError:
+                        # Email already claimed by another user's EmailAddress record
+                        self.stdout.write(
+                            self.style.WARNING(
+                                f"  ! {user.username} <{user.email}> — skipped (email taken by another record)"
+                            )
+                        )
+                        skipped += 1
+                        continue
                 created += 1
                 self.stdout.write(f"  + {user.username} <{user.email}>")
             elif not existing.verified:
@@ -55,6 +67,7 @@ class Command(BaseCommand):
         self.stdout.write(
             self.style.SUCCESS(
                 f"\n{action} {created} EmailAddress record(s), "
-                f"verified {updated} existing record(s)."
+                f"verified {updated} existing record(s), "
+                f"skipped {skipped} duplicate email(s)."
             )
         )
