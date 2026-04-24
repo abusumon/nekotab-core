@@ -30,6 +30,11 @@ base_settings = [
 if _env_truthy('GITHUB_CI'):
     base_settings.append('github.py')
     root.info('SPLIT_SETTINGS: imported github.py')
+elif _env_truthy('ON_DIGITALOCEAN'):
+    # Must be checked before IN_DOCKER because the DO production image has
+    # IN_DOCKER=1 baked in (set by the Dockerfile ENV directive).
+    base_settings.append('digitalocean.py')
+    root.info('SPLIT_SETTINGS: imported digitalocean.py')
 elif _env_truthy('IN_DOCKER'):
     base_settings.append('docker.py')
     root.info('SPLIT_SETTINGS: imported docker.py')

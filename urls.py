@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import admin, messages
 from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import include, path
 from django.utils.translation import gettext as _
 from django.views.i18n import JavaScriptCatalog
@@ -25,8 +25,16 @@ from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
 
 urlpatterns = [
 
+    # Health check — used by the DO Load Balancer and docker-compose healthcheck.
+    # Returns 200 quickly; nginx also has its own /health/ for LB probes, but
+    # this endpoint confirms Django itself (+ DB via previous migrations) is up.
+    path('health/',
+        lambda request: HttpResponse('ok', content_type='text/plain'),
+        name='health-check'),
+
     # Indices
     path('',
+
         tournaments.views.PublicSiteIndexView.as_view(),
         name='tabbycat-index'),
     path('start/',
