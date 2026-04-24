@@ -25,7 +25,8 @@ if environ.get('DJANGO_SECRET_KEY', ''):
 
 # Allow all *.nekotab.app subdomains, localhost for health checks, and any
 # extra hosts passed via ALLOWED_HOSTS (e.g., the Droplet's raw IP during staging).
-_default_hosts = '.nekotab.app,localhost,127.0.0.1'
+# Note: 'localhost:8000' needed because docker healthcheck sends Host: localhost:8000
+_default_hosts = '.nekotab.app,localhost,localhost:8000,127.0.0.1,127.0.0.1:8000'
 ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', _default_hosts).split(',')
 
 # The DO Load Balancer terminates TLS and forwards HTTP to nginx on the Droplet.
