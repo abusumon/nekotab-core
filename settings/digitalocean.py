@@ -40,6 +40,11 @@ if environ.get('DISABLE_HTTPS_REDIRECTS', '') != 'disable':
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
+# Exempt the internal health check path from the HTTPS redirect so that:
+#  - docker-compose healthcheck (curl http://localhost:8000/health/) returns 200, not 301
+#  - The DO Load Balancer /health/ probe works without TLS
+SECURE_REDIRECT_EXEMPT = [r'^health/$']
+
 # ==============================================================================
 # Postgres (DigitalOcean Managed Database)
 # ==============================================================================
