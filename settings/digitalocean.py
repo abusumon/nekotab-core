@@ -23,11 +23,18 @@ if environ.get('TAB_DIRECTOR_EMAIL', ''):
 if environ.get('DJANGO_SECRET_KEY', ''):
     SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
-# Allow all *.nekotab.app subdomains, localhost for health checks, and any
-# extra hosts passed via ALLOWED_HOSTS (e.g., the Droplet's raw IP during staging).
-# Note: 'localhost:8000' needed because docker healthcheck sends Host: localhost:8000
-_default_hosts = '.nekotab.app,localhost,localhost:8000,127.0.0.1,127.0.0.1:8000'
-ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', _default_hosts).split(',')
+# Allow all *.nekotab.app subdomains and any extra hosts passed via
+# ALLOWED_HOSTS (e.g., the Droplet's raw IP during staging).
+# Always allow localhost/127.0.0.1 so internal docker health checks keep
+# working even when ALLOWED_HOSTS is explicitly set in .env.
+_default_hosts = '.nekotab.app,localhost,127.0.0.1'
+_configured_hosts = [
+    host.strip() for host in environ.get('ALLOWED_HOSTS', _default_hosts).split(',') if host.strip()
+]
+for _internal_host in ('localhost', '127.0.0.1'):
+    if _internal_host not in _configured_hosts:
+        _configured_hosts.append(_internal_host)
+ALLOWED_HOSTS = _configured_hosts
 
 # The DO Load Balancer terminates TLS and forwards HTTP to nginx on the Droplet.
 # It sets X-Forwarded-Proto: https so Django knows the original request was HTTPS.
