@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import (
     MotionEntry, MotionAnalysis, MotionStats,
     MotionRating, CaseOutline, CaseOutlineVote, PracticeSession,
-    MotionReport, MotionReportFeedback,
 )
 
 
@@ -165,32 +164,6 @@ class MotionRatingSerializer(serializers.ModelSerializer):
         stats.save()
 
         return rating
-
-
-class MotionDoctorInputSerializer(serializers.Serializer):
-    """Input for the Motion Doctor analysis tool."""
-    motion_text = serializers.CharField(max_length=2000)
-    format = serializers.ChoiceField(choices=MotionEntry.MotionFormat.choices, required=False)
-    info_slide = serializers.CharField(required=False, allow_blank=True, max_length=5000)
-    level = serializers.ChoiceField(
-        choices=[('novice', 'Novice'), ('intermediate', 'Intermediate'), ('open', 'Open')],
-        required=False, default='open',
-    )
-
-
-class MotionReportFeedbackSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MotionReportFeedback
-        fields = [
-            'id', 'report', 'rating', 'was_specific', 'was_fair',
-            'was_helpful', 'generic_section', 'free_text', 'created_at',
-        ]
-        read_only_fields = ['created_at']
-
-    def validate_rating(self, value):
-        if value < 1 or value > 5:
-            raise serializers.ValidationError("Rating must be between 1 and 5")
-        return value
 
 
 class PracticeSessionSerializer(serializers.ModelSerializer):

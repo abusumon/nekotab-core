@@ -127,7 +127,7 @@ class SubdomainMiddlewareTest(TestCase):
         factory = RequestFactory()
         excluded = [
             '/summernote/editor/x/', '/jet/dashboard/', '/organizations/',
-            '/archive/', '/forum/', '/motions-bank/', '/passport/',
+            '/archive/', '/forum/', '/motions-bank/',
             '/i18n/setlang/', '/jsi18n/',
         ]
         for path in excluded:

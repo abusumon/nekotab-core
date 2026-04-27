@@ -28,7 +28,7 @@ PROHIBITED_TOURNAMENT_SLUGS = [
     'tournament', 'notifications', 'archive', 'api', # Cross-Tournament app's view roots
     'favicon.ico', 'robots.txt',  # Files that must be at top level
     '__debug__', 'static', 'style', 'i18n', 'jsi18n',  # Misc
-    'forum', 'motions-bank', 'passport',  # Global apps
+    'forum', 'motions-bank',  # Global apps
     'analytics', 'campaigns',  # Admin apps
 ]
 

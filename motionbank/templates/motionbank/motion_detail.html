@@ -6,14 +6,14 @@
 
 {% block extra-head %}
 {% if motion %}
-<meta name="description" content="Analyze and discuss: {{ motion.text|truncatechars:160 }}. See AI analysis, community case outlines, and debates. {{ motion.tournament_name }} {{ motion.year }}." />
+<meta name="description" content="Analyze and discuss: {{ motion.text|truncatechars:160 }}. See motion insights, community case outlines, and debates. {{ motion.tournament_name }} {{ motion.year }}." />
 <meta name="keywords" content="{{ seo_keywords }}, debate motion, {{ motion.get_format_display }}" />
 <link rel="canonical" href="{{ canonical_url }}" />
 
 <!-- Open Graph for motion sharing -->
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{ motion.text|truncatechars:100 }}" />
-<meta property="og:description" content="AI-analyzed debate motion from {{ motion.tournament_name }} ({{ motion.year }}). Format: {{ motion.get_format_display }}. Difficulty: {{ motion.get_difficulty_display }}." />
+<meta property="og:description" content="Debate motion from {{ motion.tournament_name }} ({{ motion.year }}). Format: {{ motion.get_format_display }}. Difficulty: {{ motion.get_difficulty_display }}." />
 
 <!-- Structured Data: Motion Page -->
 <script type="application/ld+json">
@@ -109,7 +109,6 @@
     apiUrl: '{% url "motionbank:api-motionbank-detail" slug=motion.slug %}',
     rateUrl: '{% url "motionbank:api-motionbank-rate" %}',
     outlinesUrl: '{% url "motionbank:api-case-outlines" motion_id=motion.id %}',
-    doctorUrl: '{% url "motionbank:api-motion-doctor" %}',
     practiceUrl: '{% url "motionbank:api-practice-sessions" %}',
     forumUrl: '{% url "forum:api-forum-threads" %}?motion={{ motion.id }}',
     isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},

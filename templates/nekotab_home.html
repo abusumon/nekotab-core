@@ -83,7 +83,7 @@
     "@type": "WebSite",
     "name": "NekoTab",
     "url": "https://nekotab.app",
-    "description": "The complete debate platform — tournament tabulation, AI motion analysis, global motion bank, debate forum, and debater passports.",
+    "description": "The complete debate platform — tournament tabulation, global motion bank, and debate forum.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://nekotab.app/motions-bank/?q={search_term_string}",
@@ -119,9 +119,7 @@
       {"@type": "Question", "name": "Which formats does NekoTab support?", "acceptedAnswer": {"@type": "Answer", "text": "British Parliamentary (BP), Australs/3v3, WSDC-style, and other parliamentary formats. You can configure speaker counts, sides, and scoring to match your needs."}},
       {"@type": "Question", "name": "Can I import teams, judges, and venues?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — CSV imports are fully supported. You can also manage availability, conflicts, and institutional clashes from the admin panel."}},
       {"@type": "Question", "name": "Is it free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — NekoTab is completely free to use. No per-tournament fees, no hidden charges. Create an account and start tabbing immediately. You can also self-host for full data sovereignty."}},
-      {"@type": "Question", "name": "What is the Motion Doctor?", "acceptedAnswer": {"@type": "Answer", "text": "The Motion Doctor is an AI-powered analysis tool that takes any debate motion and produces a comprehensive coaching-grade report including clash maps, argument suggestions, POI ideas, extension strategies, and difficulty metrics."}},
       {"@type": "Question", "name": "How does the Motion Bank work?", "acceptedAnswer": {"@type": "Answer", "text": "The Motion Bank is a searchable database of thousands of real debate motions from tournaments worldwide, filterable by format, region, year, theme, and difficulty level."}},
-      {"@type": "Question", "name": "What is the Debate Passport?", "acceptedAnswer": {"@type": "Answer", "text": "The Debate Passport is your personal debate profile that tracks tournament participation, speaker scores, wins, and achievements across all tournaments hosted on NekoTab."}},
       {"@type": "Question", "name": "Can I use NekoTab for school-level tournaments?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. NekoTab supports all major school debating formats including WSDC-style and modified Australs."}}
     ]
   }
@@ -670,29 +668,11 @@
         </article>
 
         <article class="em-pillar">
-          <div class="em-pillar-icon em-pillar-icon--indigo">🩺</div>
-          <h3 class="em-pillar-title">AI Motion Intelligence</h3>
-          <p class="em-pillar-desc">Paste any motion, get a coaching-grade analysis: clash maps, argument strategies, POIs, extension ideas, and fairness metrics — in seconds.</p>
-          <a href="{% url 'motionbank:motion-doctor' %}" class="em-pillar-link">
-            Try Motion Doctor <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
-          </a>
-        </article>
-
-        <article class="em-pillar">
           <div class="em-pillar-icon em-pillar-icon--green">📋</div>
           <h3 class="em-pillar-title">Global Motion Bank</h3>
-          <p class="em-pillar-desc">Thousands of real motions from tournaments worldwide. Filter by format, region, year, theme, and difficulty. Community ratings and AI analysis included.</p>
+          <p class="em-pillar-desc">Thousands of real motions from tournaments worldwide. Filter by format, region, year, theme, and difficulty. Community ratings included.</p>
           <a href="{% url 'motionbank:motionbank-home' %}" class="em-pillar-link">
             Browse motions <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
-          </a>
-        </article>
-
-        <article class="em-pillar">
-          <div class="em-pillar-icon em-pillar-icon--red">🪪</div>
-          <h3 class="em-pillar-title">Debate Identity</h3>
-          <p class="em-pillar-desc">Your Debate Passport tracks tournament participation, speaker scores, wins, and achievements. Build a persistent debate profile that grows with your career.</p>
-          <a href="{% url 'passport:passport-dashboard' %}" class="em-pillar-link">
-            View Passport <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
           </a>
         </article>
 
@@ -791,11 +771,9 @@
           <div class="em-usecase-accent em-usecase-accent--amber"></div>
           <div class="em-usecase-icon">🎤</div>
           <h3 class="em-usecase-title">Debaters &amp; Speakers</h3>
-          <p class="em-usecase-desc">Prepare for tournaments with AI motion analysis, browse the global motion bank, and track your career.</p>
+          <p class="em-usecase-desc">Prepare for tournaments with the global motion bank and connect with the community.</p>
           <ul class="em-usecase-features">
-            <li>Motion Doctor for AI-powered prep assistance</li>
             <li>Global Motion Bank for practice and study</li>
-            <li>Debate Passport with career-long statistics</li>
             <li>Community forum for peer discussion</li>
           </ul>
         </article>
@@ -808,71 +786,10 @@
           <ul class="em-usecase-features">
             <li>Mobile-friendly ballot submission</li>
             <li>Structured feedback collection and scores</li>
-            <li>Adjudicator career tracking via Passport</li>
-            <li>Motion analysis for adjudication prep</li>
+            <li>Tournament-wide adjudicator records</li>
+            <li>Transparent adjudication workflows</li>
           </ul>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       MOTION DOCTOR SPOTLIGHT — Dark accent section
-       ======================================================== -->
-  <section class="em-section em-section--spotlight" aria-labelledby="doctor-spotlight-title">
-    <div class="em-container">
-      <div class="em-spotlight-header">
-        <div class="em-section-eyebrow">AI-Powered</div>
-        <h2 id="doctor-spotlight-title" class="em-spotlight-title">Motion Doctor: Coaching-grade analysis in seconds</h2>
-        <p class="em-spotlight-sub">Paste any motion. Our 4-stage AI pipeline produces specific, fair, and motion-aware insights — clash maps, argument strategies, POIs, extensions, and difficulty metrics.</p>
-      </div>
-
-      <div class="em-spotlight-grid">
-        <div class="em-spotlight-card">
-          <div class="em-spotlight-card-step">Stage 1</div>
-          <h4 class="em-spotlight-card-title">Profiler</h4>
-          <p class="em-spotlight-card-desc">Classifies motion type, domain, actor, ambiguity flags, and confidence level.</p>
-        </div>
-        <div class="em-spotlight-card">
-          <div class="em-spotlight-card-step">Stage 2</div>
-          <h4 class="em-spotlight-card-title">Planner</h4>
-          <p class="em-spotlight-card-desc">Retrieves matching archetypes and similar motions to plan the analysis outline.</p>
-        </div>
-        <div class="em-spotlight-card">
-          <div class="em-spotlight-card-step">Stage 3</div>
-          <h4 class="em-spotlight-card-title">Generator</h4>
-          <p class="em-spotlight-card-desc">Produces the full report: clashes, strategies, POIs, extensions, and metrics.</p>
-        </div>
-        <div class="em-spotlight-card">
-          <div class="em-spotlight-card-step">Stage 4</div>
-          <h4 class="em-spotlight-card-title">Validator</h4>
-          <p class="em-spotlight-card-desc">Checks for specificity, fairness, and hallucinations — auto-repairs weak sections.</p>
-        </div>
-      </div>
-
-      <div class="em-spotlight-stats">
-        <div class="em-spotlight-stat">
-          <div class="em-spotlight-stat-num">7</div>
-          <div class="em-spotlight-stat-label">Analysis Sections</div>
-        </div>
-        <div class="em-spotlight-stat">
-          <div class="em-spotlight-stat-num">3–6</div>
-          <div class="em-spotlight-stat-label">Clash Axes</div>
-        </div>
-        <div class="em-spotlight-stat">
-          <div class="em-spotlight-stat-num">5+</div>
-          <div class="em-spotlight-stat-label">Motion-specific POIs</div>
-        </div>
-        <div class="em-spotlight-stat">
-          <div class="em-spotlight-stat-num">4</div>
-          <div class="em-spotlight-stat-label">BP Positions</div>
-        </div>
-      </div>
-
-      <div class="em-spotlight-cta">
-        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--light em-btn--lg">
-          Try Motion Doctor Free →
-        </a>
       </div>
     </div>
   </section>
@@ -909,7 +826,7 @@
             <li>Built-in conflict and clash detection</li>
             <li>Digital ballots with real-time validation</li>
             <li>Public site with live results and notifications</li>
-            <li>Persistent profiles via Debate Passport</li>
+            <li>Persistent tournament archives and records</li>
           </ul>
         </div>
       </div>
@@ -1100,16 +1017,8 @@
           <p>Yes — you can enable public ballot submission or use private URLs sent to participants for secure, individual access.</p>
         </details>
         <details class="em-acc">
-          <summary>What is the Motion Doctor?</summary>
-          <p>The Motion Doctor is an AI-powered analysis tool that takes any debate motion and produces a comprehensive coaching-grade report. It includes clash maps, argument suggestions for all teams, Points of Information ideas, extension strategies for BP closing halves, and difficulty/fairness metrics. It uses a 4-stage pipeline (Profiler → Planner → Generator → Validator) to ensure high-quality, motion-specific output.</p>
-        </details>
-        <details class="em-acc">
           <summary>How does the Motion Bank work?</summary>
-          <p>The Motion Bank is a searchable database of thousands of real debate motions from tournaments worldwide. You can filter by format (BP, Australs, WSDC), region, year, theme, and difficulty level. Each motion includes metadata, community ratings, and the option to run it through the Motion Doctor for AI analysis.</p>
-        </details>
-        <details class="em-acc">
-          <summary>What is the Debate Passport?</summary>
-          <p>The Debate Passport is your personal debate profile that tracks your tournament participation, speaker scores, wins, and achievements across all tournaments hosted on NekoTab. It provides a career overview and connects you with the global debater directory.</p>
+          <p>The Motion Bank is a searchable database of thousands of real debate motions from tournaments worldwide. You can filter by format (BP, Australs, WSDC), region, year, theme, and difficulty level. Each motion includes metadata and community ratings.</p>
         </details>
         <details class="em-acc">
           <summary>Can I self-host NekoTab?</summary>
@@ -1136,7 +1045,6 @@
           Create a Tournament — Free
         </a>
         {% endif %}
-        <a href="{% url 'motionbank:motion-doctor' %}" class="em-btn em-btn--outline-light em-btn--lg">Try Motion Doctor</a>
         {% if not user.is_authenticated %}
         <a href="{% url 'signup' %}" class="em-btn em-btn--outline-light em-btn--lg">Sign Up Free</a>
         {% endif %}
@@ -1153,15 +1061,13 @@
         <a href="/" class="em-logo">
           <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img">
         </a>
-        <p class="em-foot-desc">The operating system for debate. Open-source tournament tabulation, AI motion analysis, and a global debate community.</p>
+        <p class="em-foot-desc">The operating system for debate. Open-source tournament tabulation, motion resources, and a global debate community.</p>
       </div>
       <div>
         <div class="em-foot-title">Product</div>
         <ul class="em-foot-links">
           <li><a href="#features">Tournament Engine</a></li>
-          <li><a href="{% url 'motionbank:motion-doctor' %}">Motion Doctor</a></li>
           <li><a href="{% url 'motionbank:motionbank-home' %}">Motion Bank</a></li>
-          <li><a href="{% url 'passport:passport-dashboard' %}">Debate Passport</a></li>
           <li><a href="#formats">Formats</a></li>
         </ul>
       </div>

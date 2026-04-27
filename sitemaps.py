@@ -10,10 +10,8 @@ class StaticViewSitemap(Sitemap):
 
     _priorities = {
         'tabbycat-index': 1.0,
-        'motionbank:motion-doctor': 0.9,
         'motionbank:motionbank-home': 0.9,
         'forum:forum-home': 0.7,
-        'passport:passport-directory': 0.6,
         'seo-free-tab': 0.9,
         'seo-bp-tab': 0.9,
         'seo-tabroom-alt': 0.9,
@@ -25,8 +23,6 @@ class StaticViewSitemap(Sitemap):
             'tabbycat-index',
             'forum:forum-home',
             'motionbank:motionbank-home',
-            'motionbank:motion-doctor',
-            'passport:passport-directory',
             'seo-free-tab',
             'seo-bp-tab',
             'seo-tabroom-alt',

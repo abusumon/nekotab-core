@@ -1,8 +1,7 @@
-import json
 import logging
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import F, Q
+from django.db.models import F
 from django.views.generic import TemplateView
 
 from rest_framework import generics, permissions, status, filters
@@ -11,16 +10,13 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import (
-    MotionEntry, MotionAnalysis, MotionStats,
-    MotionRating, CaseOutline, CaseOutlineVote, PracticeSession,
-    MotionReport, MotionReportFeedback, Archetype,
+    MotionEntry, MotionRating, CaseOutline, CaseOutlineVote, PracticeSession,
 )
 from .serializers import (
     MotionEntryListSerializer, MotionEntryDetailSerializer,
-    MotionEntryCreateSerializer, MotionAnalysisSerializer,
+    MotionEntryCreateSerializer,
     MotionRatingSerializer, CaseOutlineSerializer,
-    MotionDoctorInputSerializer, PracticeSessionSerializer,
-    MotionReportFeedbackSerializer,
+    PracticeSessionSerializer,
 )
 
 logger = logging.getLogger(__name__)
@@ -64,16 +60,6 @@ class MotionDetailView(TemplateView):
             context['seo_keywords'] = ', '.join(motion.theme_tags) if motion.theme_tags else 'debate motion'
         except MotionEntry.DoesNotExist:
             context['page_title'] = 'Motion Not Found'
-        return context
-
-
-class MotionDoctorView(TemplateView):
-    template_name = 'motionbank/motion_doctor.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Motion Doctor'
-        context['page_emoji'] = '🩺'
         return context
 
 
@@ -216,132 +202,6 @@ class CaseOutlineVoteAPI(APIView):
                 outline.save(update_fields=['upvotes'])
                 return Response(status=status.HTTP_204_NO_CONTENT)
         return Response({'detail': 'No vote to remove'}, status=status.HTTP_404_NOT_FOUND)
-
-
-class MotionDoctorAnalyzeAPI(APIView):
-    """AI-powered motion analysis endpoint — the Motion Doctor.
-
-    Pipeline: Profiler → Planner → Generator → Validator
-    """
-    permission_classes = [permissions.IsAuthenticated]
-
-    def post(self, request):
-        serializer = MotionDoctorInputSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        motion_text = serializer.validated_data['motion_text']
-        debate_format = serializer.validated_data.get('format', 'bp')
-        info_slide = serializer.validated_data.get('info_slide', '')
-        level = serializer.validated_data.get('level', 'open')
-
-        # Check for cached report (exact match including infoslide)
-        existing_report = MotionReport.objects.filter(
-            motion_text__iexact=motion_text,
-            format=debate_format,
-            info_slide=info_slide,
-        ).order_by('-created_at').first()
-
-        if existing_report and existing_report.report_json:
-            return Response({
-                'report_id': str(existing_report.id),
-                'motion_text': motion_text,
-                'report': existing_report.report_json,
-                'profile': existing_report.profile_json,
-                'plan': existing_report.plan_json,
-                'validation_log': existing_report.validation_log,
-                'model_version': existing_report.model_version,
-                'pipeline_stages': {},
-                'pipeline_duration_ms': existing_report.pipeline_duration_ms,
-                'cached': True,
-            })
-
-        # Run the 4-prompt pipeline
-        from .prompts import MotionDoctorPipeline
-
-        pipeline = MotionDoctorPipeline()
-
-        # Retrieve archetypes (simple keyword match for now; embeddings later)
-        archetypes = self._get_matching_archetypes(motion_text)
-        similar_motions = self._get_similar_motions(motion_text)
-
-        report, metadata = pipeline.run(
-            motion_text=motion_text,
-            debate_format=debate_format,
-            info_slide=info_slide,
-            archetypes=archetypes,
-            similar_motions=similar_motions,
-        )
-
-        # Persist the report
-        motion_entry = MotionEntry.objects.filter(text__iexact=motion_text).first()
-        saved_report = MotionReport.objects.create(
-            motion=motion_entry,
-            motion_text=motion_text,
-            info_slide=info_slide,
-            format=debate_format,
-            report_json=report,
-            profile_json=metadata.get('profile', {}),
-            plan_json=metadata.get('plan', {}),
-            validation_log=metadata.get('validation_issues', []),
-            model_version=metadata.get('model_version', 'fallback'),
-            pipeline_duration_ms=metadata.get('pipeline_duration_ms'),
-        )
-
-        return Response({
-            'report_id': str(saved_report.id),
-            'motion_text': motion_text,
-            'report': report,
-            'profile': metadata.get('profile', {}),
-            'plan': metadata.get('plan', {}),
-            'validation_log': metadata.get('validation_issues', []),
-            'model_version': metadata.get('model_version', 'fallback'),
-            'pipeline_stages': metadata.get('stages', {}),
-            'pipeline_duration_ms': metadata.get('pipeline_duration_ms'),
-            'cached': False,
-        })
-
-    def _get_matching_archetypes(self, motion_text):
-        """Retrieve matching archetypes via keyword overlap."""
-        text_lower = motion_text.lower()
-        results = []
-        for arch in Archetype.objects.all()[:50]:
-            triggers = arch.trigger_features
-            if isinstance(triggers, dict):
-                keywords = triggers.get('keywords', [])
-                if any(kw.lower() in text_lower for kw in keywords):
-                    results.append({
-                        'name': arch.name,
-                        'domain_tags': arch.domain_tags,
-                        'canonical_clashes': arch.canonical_clashes,
-                        'canonical_stakeholders': arch.canonical_stakeholders,
-                        'gov_playbook': arch.gov_playbook,
-                        'opp_playbook': arch.opp_playbook,
-                        'definition_traps': arch.definition_traps,
-                        'weighing_tools': arch.weighing_tools,
-                    })
-        return results[:5]
-
-    def _get_similar_motions(self, motion_text):
-        """Retrieve similar motion texts via simple text search."""
-        keywords = [w for w in motion_text.split() if len(w) > 4][:5]
-        if not keywords:
-            return []
-        q = Q()
-        for kw in keywords:
-            q |= Q(text__icontains=kw)
-        similar = MotionEntry.objects.filter(q, is_approved=True).exclude(
-            text__iexact=motion_text,
-        ).values_list('text', flat=True)[:10]
-        return list(similar)
-
-
-class MotionReportFeedbackAPI(generics.CreateAPIView):
-    """Submit feedback on a Motion Doctor report."""
-    serializer_class = MotionReportFeedbackSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
 
 
 class PracticeSessionAPI(generics.ListCreateAPIView):

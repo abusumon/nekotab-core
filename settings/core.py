@@ -186,7 +186,6 @@ TABBYCAT_APPS = (
     'registration',
     'forum',
     'motionbank',
-    'passport',
     'content',
     'speech_events',
     'congress_events',

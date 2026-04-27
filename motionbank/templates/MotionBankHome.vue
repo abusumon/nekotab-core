@@ -6,15 +6,10 @@
         <h2 class="mb-2">🌐 Global Motion Bank</h2>
         <p class="mb-3">Browse thousands of debate motions from tournaments worldwide</p>
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-12">
             <input v-model="searchQuery" type="text" class="form-control form-control-lg"
               placeholder="Search motions by text, theme, or tournament..."
               @input="debounceSearch" />
-          </div>
-          <div class="col-md-4 mt-2 mt-md-0">
-            <a href="/motions-bank/doctor/" class="btn btn-light btn-lg btn-block">
-              🩺 Motion Doctor
-            </a>
           </div>
         </div>
       </div>

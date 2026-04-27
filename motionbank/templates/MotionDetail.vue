@@ -49,7 +49,7 @@
       <!-- AI Analysis -->
       <div v-if="motion.analysis && motion.analysis.ai_analysis" class="card mb-4">
         <div class="card-header bg-primary text-white">
-          <strong>🩺 Motion Doctor Analysis</strong>
+          <strong>🧠 Motion Analysis</strong>
           <small class="float-right" v-if="motion.analysis.model_used">
             Model: {{ motion.analysis.model_used }}
           </small>

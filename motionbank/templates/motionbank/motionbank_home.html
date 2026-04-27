@@ -5,7 +5,7 @@
 {% block og-title %}Global Motion Bank — NekoTab{% endblock %}
 
 {% block extra-head %}
-<meta name="description" content="Browse thousands of debate motions from tournaments worldwide. Filter by format, year, region, difficulty, and theme. AI-powered motion analysis included." />
+<meta name="description" content="Browse thousands of debate motions from tournaments worldwide. Filter by format, year, region, difficulty, and theme." />
 <meta name="keywords" content="debate motions, BP motions, WSDC motions, debate topics, motion bank, debate practice" />
 <link rel="canonical" href="{{ request.build_absolute_uri }}" />
 
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "NekoTab Global Motion Bank",
-  "description": "Comprehensive database of debate motions from tournaments worldwide with AI-powered analysis",
+  "description": "Comprehensive database of debate motions from tournaments worldwide",
   "url": "{{ request.build_absolute_uri }}",
   "isPartOf": {
     "@type": "WebSite",
@@ -39,19 +39,9 @@
         <ul>
           <li>Filter by format: BP, WSDC, AP, Public Forum, Lincoln-Douglas, Policy</li>
           <li>Filter by year, region, tournament, theme, and difficulty</li>
-          <li>AI Motion Doctor — instant analysis of any motion</li>
           <li>Community case outlines with voting</li>
           <li>Linked discussion threads for each motion</li>
           <li>Practice tracking and rating system</li>
-        </ul>
-        <h3>Motion Doctor</h3>
-        <p>Paste any debate motion and get AI-powered analysis including:</p>
-        <ul>
-          <li>Hidden assumptions and definition traps</li>
-          <li>Clash areas and burden split</li>
-          <li>Gov and Opp structural approaches</li>
-          <li>10 suggested POIs</li>
-          <li>Weighing options and common framing mistakes</li>
         </ul>
       </div>
     </div>
@@ -64,7 +54,6 @@
   window.motionBankConfig = {
     apiBase: '{% url "motionbank:api-motionbank-list" %}',
     filtersUrl: '{% url "motionbank:api-motionbank-filters" %}',
-    doctorUrl: '{% url "motionbank:api-motion-doctor" %}',
     submitUrl: '{% url "motionbank:motionbank-submit" %}',
     motionDetailBase: '{% url "motionbank:motionbank-home" %}motion/',
     isAuthenticated: {{ user.is_authenticated|yesno:"true,false" }},

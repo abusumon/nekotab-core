@@ -356,7 +356,7 @@ class OrgSlugAvailabilityView(View):
         'organizations', 'tournaments', 'campaigns', 'analytics',
         'forum', 'motions', 'participants', 'adjudicators', 'teams',
         'checkins', 'results', 'draw', 'feedback', 'venues', 'breaks',
-        'notifications', 'passport', 'congress', 'speech',
+        'notifications', 'congress', 'speech',
     }
 
     def get(self, request, *args, **kwargs):

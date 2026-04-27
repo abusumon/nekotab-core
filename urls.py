@@ -154,10 +154,6 @@ urlpatterns = [
     path('motions-bank/',
         include('motionbank.urls')),
 
-    # Global Debate Passport
-    path('passport/',
-        include('passport.urls')),
-
     # Content: Learn hub + Trust/Legal pages
     path('', include('content.urls')),
 

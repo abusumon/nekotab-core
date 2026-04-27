@@ -100,11 +100,11 @@ class MotionEntry(models.Model):
 
 
 # =============================================================================
-# AI Motion Analysis (Motion Doctor)
+# AI Motion Analysis
 # =============================================================================
 
 class MotionAnalysis(models.Model):
-    """AI-generated analysis for a motion — the Motion Doctor output."""
+    """AI-generated analysis for a motion."""
 
     motion = models.OneToOneField(MotionEntry, on_delete=models.CASCADE,
         related_name='analysis', verbose_name=_("motion"))
@@ -270,7 +270,7 @@ class PracticeSession(models.Model):
 # =============================================================================
 
 class MotionProfile(models.Model):
-    """Structured classifier output for a motion — the 'brain' of Motion Doctor."""
+    """Structured classifier output for a motion."""
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     motion = models.OneToOneField(MotionEntry, on_delete=models.CASCADE,
@@ -375,11 +375,11 @@ class ArchetypeExample(models.Model):
 
 
 # =============================================================================
-# Motion Report (Full Doctor Output)
+# Motion Report (Full Analysis Output)
 # =============================================================================
 
 class MotionReport(models.Model):
-    """The full Motion Doctor report — generated JSON output."""
+    """The full generated motion analysis report as JSON output."""
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     motion = models.ForeignKey(MotionEntry, on_delete=models.CASCADE,
@@ -417,7 +417,7 @@ class MotionReport(models.Model):
 # =============================================================================
 
 class MotionReportFeedback(models.Model):
-    """User feedback on a Motion Doctor report — drives evaluation."""
+    """User feedback on a motion analysis report — drives evaluation."""
 
     report = models.ForeignKey(MotionReport, on_delete=models.CASCADE,
         related_name='feedback', verbose_name=_("report"))
