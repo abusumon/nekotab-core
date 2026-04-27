@@ -24,8 +24,8 @@ def download_archive(request, log_id):
     if not os.path.isfile(log.archive_path):
         return HttpResponseBadRequest(
             f"Archive file no longer exists on disk: {log.archive_path}\n\n"
-            "On ephemeral-disk platforms (like Heroku) archives are lost on "
-            "dyno restart.  Use --export-dir with a persistent volume or "
+            "On ephemeral-disk platforms archives can be lost on restart. "
+            "Use --export-dir with a persistent volume or "
             "download promptly after export."
         )
 

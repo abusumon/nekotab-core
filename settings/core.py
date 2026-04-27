@@ -16,18 +16,18 @@ BASE_DIR = os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ==============================================================================
-# Overwritten in local.py or heroku.py
+# Overwritten in environment-specific settings modules
 # ==============================================================================
 
 ADMINS = ('NekoTab', 'contact@nekotab.app'),
 MANAGERS = ADMINS
 DEBUG = _env_bool('DEBUG')
 ENABLE_DEBUG_TOOLBAR = False # Must default to false; overriden in Dev config
-DISABLE_SENTRY = True # Overriden in Heroku config
+DISABLE_SENTRY = True # Overriden in production config
 
 # SECRET_KEY must be provided via environment variable in all environments.
 # local.py generates a random key for development; production configs
-# (heroku.py, render.py) read DJANGO_SECRET_KEY from the environment.
+# (digitalocean.py, render.py) read DJANGO_SECRET_KEY from the environment.
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
 if not SECRET_KEY and not os.environ.get('LOCAL_SETTINGS', ''):
     from django.core.exceptions import ImproperlyConfigured
@@ -36,11 +36,11 @@ if not SECRET_KEY and not os.environ.get('LOCAL_SETTINGS', ''):
         "Set it in your environment or use local.py for development."
     )
 
-# nekospeech API URL (for the separate Heroku app).
+# nekospeech API URL.
 # Defaults to '/api/ie' for local / same-origin deployments.
 NEKOSPEECH_URL = os.environ.get('NEKOSPEECH_URL', '/api/ie')
 
-# IE API Key — must match NEKOSPEECH_IE_API_KEY on the nekospeech Heroku app
+# IE API Key — must match NEKOSPEECH_IE_API_KEY on the nekospeech service
 NEKOSPEECH_IE_API_KEY = os.environ.get('NEKOSPEECH_IE_API_KEY', '')
 
 # nekocongress frontend URL for Vue components.  Empty string means Vue
@@ -273,7 +273,7 @@ PUBLIC_FAST_CACHE_TIMEOUT = int(os.environ.get('PUBLIC_FAST_CACHE_TIMEOUT', 60 *
 PUBLIC_SLOW_CACHE_TIMEOUT = int(os.environ.get('PUBLIC_SLOW_CACHE_TIMEOUT', 60 * 3.5))
 TAB_PAGES_CACHE_TIMEOUT = int(os.environ.get('TAB_PAGES_CACHE_TIMEOUT', 60 * 120))
 
-# Default non-heroku cache is to use local memory
+# Default cache backend is local memory.
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -347,7 +347,7 @@ for app in TABBYCAT_APPS:
         'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
     }
 
-# 404 diagnostic logger — routes to console (visible in Heroku logs)
+# 404 diagnostic logger — routes to console output.
 LOGGING['loggers']['nekotab.404'] = {
     'handlers': ['console'],
     'level': 'WARNING',
@@ -542,7 +542,7 @@ SOCIALACCOUNT_AUTO_CONNECT_BY_EMAIL = True
 # Subdomain routing (defaults; can be overridden in env-specific settings)
 # ==============================================================================
 
-# Disabled by default; enable in environment settings (e.g., heroku.py)
+# Disabled by default; enable in environment settings (e.g., digitalocean.py)
 SUBDOMAIN_TOURNAMENTS_ENABLED = _env_bool('SUBDOMAIN_TOURNAMENTS_ENABLED')
 SUBDOMAIN_BASE_DOMAIN = os.environ.get('SUBDOMAIN_BASE_DOMAIN', '')
 RESERVED_SUBDOMAINS = os.environ.get(
@@ -556,7 +556,7 @@ ORGANIZATION_WORKSPACES_ENABLED = _env_bool('ORGANIZATION_WORKSPACES_ENABLED')
 # Cross-subdomain session/CSRF cookies: when a base domain is configured,
 # set the cookie domain to the parent domain so that a session created at
 # nekotab.app is also valid at orgslug.nekotab.app.
-# Production configs (heroku.py) may override these with stricter settings.
+# Production configs may override these with stricter settings.
 if SUBDOMAIN_BASE_DOMAIN:
     SESSION_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
     CSRF_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"

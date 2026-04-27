@@ -6,11 +6,11 @@ to verify that no tournaments have organization=NULL.
 
 Safe deployment strategy:
 1. Deploy code with this migration in the queue (but don't migrate yet).
-2. Run `heroku run python manage.py shell` and execute:
+2. Run `python manage.py shell` in production and execute:
        from tournaments.models import Tournament
        assert Tournament.objects.filter(organization__isnull=True).count() == 0
-3. Run `heroku run python manage.py migrate tournaments 0039`
-4. Verify: `heroku run python manage.py check --deploy`
+3. Run `python manage.py migrate tournaments 0039`
+4. Verify: `python manage.py check --deploy`
 """
 
 from django.db import migrations, models

@@ -119,7 +119,11 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
         # Listed / public showcase tournaments (always shown if any)
         kwargs['listed_tournaments'] = Tournament.objects.filter(
             is_listed=True, active=True,
-        )
+        ).annotate(
+            team_count=Count('team', distinct=True),
+            round_count=Count('round', distinct=True),
+            adj_count=Count('adjudicator', distinct=True),
+        ).order_by('-created_at')
 
         # Retain legacy keys (filtered) in case other templates/components expect them
         kwargs['tournaments'] = kwargs['my_tournaments_active']

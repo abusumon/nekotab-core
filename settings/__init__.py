@@ -38,9 +38,6 @@ elif _env_truthy('ON_DIGITALOCEAN'):
 elif _env_truthy('IN_DOCKER'):
     base_settings.append('docker.py')
     root.info('SPLIT_SETTINGS: imported docker.py')
-elif _env_truthy('ON_HEROKU'):
-    base_settings.append('heroku.py')
-    root.info('SPLIT_SETTINGS: imported heroku.py')
 elif _env_truthy('ON_RENDER'):
     base_settings.append('render.py')
     root.info('SPLIT_SETTINGS: imported render.py')

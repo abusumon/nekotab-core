@@ -68,7 +68,7 @@ class DebateMiddleware:
                 and request.method in ('GET', 'HEAD')
                 and is_slug_dns_safe(slug)):
             # Extra guard: only redirect if we are truly on the base domain.
-            # Behind a proxy the Host header is preserved (Heroku, Cloudflare).
+            # Behind a proxy the Host header should be preserved.
             try:
                 host = request.get_host().split(':')[0].lower()
             except Exception:

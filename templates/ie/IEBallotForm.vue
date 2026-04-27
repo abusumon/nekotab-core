@@ -130,7 +130,7 @@ export default {
         } catch (_) {
           if (response.status === 403) detail = 'Authentication failed — check NEKOSPEECH_IE_API_KEY'
           else if (response.status === 404) detail = 'Endpoint not found — check NEKOSPEECH_URL'
-          else if (response.status === 502) detail = 'IE service is down — check nekospeech on Heroku'
+          else if (response.status === 502) detail = 'IE service is down — check the nekospeech service logs'
           else detail = 'Server error ' + response.status
         }
         throw new Error(detail)

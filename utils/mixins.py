@@ -147,11 +147,9 @@ class SuperuserRequiredWebsocketMixin(AccessWebsocketMixin):
 class WarnAboutDatabaseUseMixin(ContextMixin):
     """Mixin for views that should stop people exceeding database counts.
 
-    If a user has hit 8000 rows they have received Heroku's shut down
-    notification. They are probably fine to finish current tournament even if it
-    exceeds these limits because of the one-week grace period. However, they
-    should not create new tournaments as this typically happens after the grace
-    period and is thus subject to major disruptions."""
+    If a user has hit 8000 rows, they are nearing common free-tier limits.
+    They are probably fine to finish the current tournament, but should avoid
+    creating new tournaments until database capacity is increased."""
 
     def get_database_row_count(self):
         cursor = connection.cursor()
@@ -171,8 +169,8 @@ class WarnAboutLegacySendgridConfigVarsMixin(ContextMixin):
     """Mixin for views that should warn about legacy SendGrid settings that were
     removed in version 2.6.0 (Ocicat).
 
-    When removing, also remove the relevant block in settings/heroku.py, and
-    templates/errors/legacy_sendgrid_warning.html (and references thereto).
+    When removing, also remove templates/errors/legacy_sendgrid_warning.html
+    (and references thereto).
     """
 
     def get_context_data(self, **kwargs):

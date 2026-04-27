@@ -2,14 +2,10 @@
 {% comment %}
 This template is paired with utils.mixins.WarnAboutLegacySendgridConfigVarsMixin
 and is intended for including in page-alerts blocks.
-
-When removing, also remove the relevant block in settings/heroku.py,
-utils.mixins.WarnAboutLegacySendgridConfigVarsMixin, and references to this
-template.
 {% endcomment %}
 {% if using_legacy_sendgrid_config_vars %}
   {% blocktrans trimmed asvar legacy_sendgrid_warning_message %}
-    It looks like you're using the old SendGrid config vars on Heroku,
+    It looks like you're using deprecated SendGrid config vars,
     <code>SENDGRID_USERNAME</code> and <code>SENDGRID_PASSWORD</code>.
     These are now deprecated (as of version 2.6), and will stop working in a
     future version of NekoTab. Please change your config vars to use

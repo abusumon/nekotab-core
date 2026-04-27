@@ -707,6 +707,71 @@ html.no-scroll { overflow: hidden; }
 .em-cred-title { font-size: 15px; font-weight: 700; margin: 0 0 6px; }
 .em-cred-desc { font-size: 13px; color: var(--nt-text-secondary); line-height: 1.6; margin: 0; }
 
+/* ======================== PUBLIC TOURNAMENT LISTING (tabroom-style) ======================== */
+.em-tourn-list {
+  border: 1px solid var(--nt-border);
+  border-radius: var(--nt-radius);
+  overflow: hidden;
+  background: var(--nt-bg);
+  box-shadow: var(--nt-shadow-sm);
+}
+.em-tourn-list__head {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--nt-bg-subtle);
+  border-bottom: 1px solid var(--nt-border);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nt-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.em-tourn-list__row {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--nt-border-light);
+  text-decoration: none;
+  color: inherit;
+  transition: background var(--nt-ease);
+  gap: 12px;
+}
+.em-tourn-list__row:last-child { border-bottom: none; }
+.em-tourn-list__row:hover { background: var(--nt-bg-blue); }
+.em-tourn-list__col--name { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.em-tourn-list__col--stat { width: 90px; text-align: center; flex-shrink: 0; }
+.em-tourn-list__col--action { width: 80px; text-align: right; flex-shrink: 0; }
+.em-tourn-list__name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--nt-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.em-tourn-list__row:hover .em-tourn-list__name { color: var(--nt-primary); }
+.em-tourn-list__stat-num { display: block; font-size: 17px; font-weight: 700; color: var(--nt-text); line-height: 1.2; }
+.em-tourn-list__stat-label { font-size: 11px; color: var(--nt-text-muted); }
+.em-tourn-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--nt-radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.em-tourn-badge--active { background: #dcfce7; color: #15803d; }
+@media (max-width: 640px) {
+  .em-tourn-list__head { display: none; }
+  .em-tourn-list__row { flex-wrap: wrap; }
+  .em-tourn-list__col--name { width: 100%; }
+  .em-tourn-list__col--stat { width: auto; flex: 1; text-align: center; }
+  .em-tourn-list__col--action { width: 100%; text-align: left; }
+}
+
 /* ======================== TOURNAMENTS (AUTH) ======================== */
 .em-tournament-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
 @media (min-width:600px) { .em-tournament-grid { grid-template-columns: repeat(2, 1fr); } }

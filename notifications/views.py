@@ -61,7 +61,7 @@ class TestEmailView(WarnAboutLegacySendgridConfigVarsMixin, AdministratorMixin, 
             if e.smtp_code == 550 and "Sender Identity" in smtp_error:
                 messages.warning(self.request, _("Hint: If the error is about sender identity verification in SendGrid, "
                     "and you've already completed the steps in SendGrid, it may be that you need to update "
-                    "the DEFAULT_FROM_EMAIL config var in Heroku to match your verified sender identity."))
+                    "the DEFAULT_FROM_EMAIL environment variable to match your verified sender identity."))
                 logger.warning("Suspected SendGrid sender identity verification error in test email", exc_info=True)
             else:
                 logger.warning("SMTP response exception in test email", exc_info=True)

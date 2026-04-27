@@ -34,7 +34,7 @@ import asgi # noqa: E402
 from daphne.endpoints import build_endpoint_description_strings # noqa: E402
 from daphne.server import Server # noqa: E402
 
-# Docker/Heroku environments use NGINX and must bind to a socket; others bind to address
+# Proxy-fronted environments use NGINX and must bind to a socket; others bind to address
 if 'USING_NGINX' in os.environ and bool(int(os.environ['USING_NGINX'])):
     root.info('TC_DEPLOY: Initialising Daphne with NGINX')
     Server(

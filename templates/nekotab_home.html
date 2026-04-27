@@ -498,6 +498,56 @@
   </section>
 
   <!-- ========================================================
+       PUBLIC TOURNAMENTS — Tabroom-style listing (visible to everyone)
+       ======================================================== -->
+  {% if listed_tournaments %}
+  <section class="em-section em-section--white" id="tournaments" aria-labelledby="pub-tourn-title">
+    <div class="em-container">
+      <div class="em-section-eyebrow">On NekoTab Now</div>
+      <div class="em-section-header" style="margin-bottom:24px;">
+        <div>
+          <h2 id="pub-tourn-title" class="em-section-title em-section-title--left" style="margin-bottom:8px;">Active Tournaments</h2>
+          <p class="em-section-subtitle" style="text-align:left;margin:0;">Browse tournaments currently running on NekoTab — view draws, results, and standings.</p>
+        </div>
+      </div>
+
+      <div class="em-tourn-list">
+        <div class="em-tourn-list__head">
+          <span class="em-tourn-list__col em-tourn-list__col--name">Tournament</span>
+          <span class="em-tourn-list__col em-tourn-list__col--stat">Teams</span>
+          <span class="em-tourn-list__col em-tourn-list__col--stat">Rounds</span>
+          <span class="em-tourn-list__col em-tourn-list__col--stat">Judges</span>
+          <span class="em-tourn-list__col em-tourn-list__col--action"></span>
+        </div>
+        {% for t in listed_tournaments %}
+        <a href="{{ t.view_url }}" class="em-tourn-list__row">
+          <span class="em-tourn-list__col em-tourn-list__col--name">
+            <span class="em-tourn-list__name">{{ t.name }}</span>
+            <span class="em-tourn-badge em-tourn-badge--active">Active</span>
+          </span>
+          <span class="em-tourn-list__col em-tourn-list__col--stat">
+            <span class="em-tourn-list__stat-num">{{ t.team_count }}</span>
+            <span class="em-tourn-list__stat-label">teams</span>
+          </span>
+          <span class="em-tourn-list__col em-tourn-list__col--stat">
+            <span class="em-tourn-list__stat-num">{{ t.round_count }}</span>
+            <span class="em-tourn-list__stat-label">rounds</span>
+          </span>
+          <span class="em-tourn-list__col em-tourn-list__col--stat">
+            <span class="em-tourn-list__stat-num">{{ t.adj_count }}</span>
+            <span class="em-tourn-list__stat-label">judges</span>
+          </span>
+          <span class="em-tourn-list__col em-tourn-list__col--action">
+            <span class="em-btn em-btn--primary em-btn--xs">View →</span>
+          </span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- ========================================================
        AUTH: MY TOURNAMENTS
        ======================================================== -->
   {% if user.is_authenticated %}
@@ -599,27 +649,6 @@
   </section>
   {% endif %}
 
-  <!-- PUBLIC SHOWCASE -->
-  {% if listed_tournaments %}
-  <section class="em-section em-section--white" aria-labelledby="public-title">
-    <div class="em-container">
-      <div class="em-section-header">
-        <h2 id="public-title" class="em-section-title em-section-title--left">Public Showcase</h2>
-      </div>
-      <div class="em-tournament-grid">
-        {% for t in listed_tournaments %}
-          <article class="em-tournament-card">
-            <div class="em-tournament-status"><span class="em-status-dot em-status-dot--active"></span> Public</div>
-            <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
-            <div class="em-tournament-actions">
-              <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">View</a>
-            </div>
-          </article>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-  {% endif %}
 
   <!-- ========================================================
        PRODUCT PILLARS — 5 core capabilities

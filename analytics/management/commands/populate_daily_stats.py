@@ -5,7 +5,7 @@ Usage:
     python manage.py populate_daily_stats --date 2025-01-15
     python manage.py populate_daily_stats --days 7     # last 7 days
 
-Designed to run nightly via cron / Heroku Scheduler / Render Cron.
+Designed to run nightly via cron or your hosting platform's scheduler.
 """
 
 import logging

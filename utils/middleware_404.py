@@ -19,7 +19,7 @@ class Log404Middleware:
     """Log every 404 response with diagnostic context.
 
     Output goes to the 'nekotab.404' logger so it can be routed to
-    a file, Sentry, or Heroku's log drain independently of other loggers.
+    a file, Sentry, or a platform log drain independently of other loggers.
     """
 
     # Known bot user-agent substrings (case-insensitive)
