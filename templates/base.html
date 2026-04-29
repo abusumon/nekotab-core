@@ -111,7 +111,7 @@
   {% endif %}
 
   <!-- GA4 + Cookie Consent: shared module -->
-  <script defer src="{% static 'js/cookie-consent.js' %}" onload="if(NekoConsent.getConsent()==='all')NekoConsent._loadGA4();"></script>
+  <script defer src="{% static 'js/cookie-consent.js' %}"></script>
 
   {% if LANGUAGE_CODE == 'tzl' %}
   <!-- In-context translations; use Talossan -->
@@ -270,8 +270,6 @@
       </div>
     </div>
   </div>
-  <script>NekoConsent.init();</script>
-
   <!-- 100% privacy-first analytics -->
   <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>

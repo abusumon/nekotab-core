@@ -353,8 +353,11 @@ LOGGING['loggers']['nekotab.404'] = {
     'propagate': False,
 }
 
-# Required by django.contrib.redirects
-SITE_ID = 1
+# Required by django.contrib.redirects and django.contrib.sites
+try:
+    SITE_ID = int(os.environ.get('SITE_ID', '1'))
+except ValueError:
+    SITE_ID = 1
 
 # ==============================================================================
 # Messages
@@ -519,6 +522,15 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {'access_type': 'online'},
     }
 }
+
+_google_client_id = os.environ.get('GOOGLE_OAUTH_CLIENT_ID') or os.environ.get('GOOGLE_CLIENT_ID', '')
+_google_client_secret = os.environ.get('GOOGLE_OAUTH_CLIENT_SECRET') or os.environ.get('GOOGLE_CLIENT_SECRET', '')
+if _google_client_id and _google_client_secret:
+    SOCIALACCOUNT_PROVIDERS['google']['APP'] = {
+        'client_id': _google_client_id,
+        'secret': _google_client_secret,
+        'key': '',
+    }
 
 # django-allauth configuration
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True

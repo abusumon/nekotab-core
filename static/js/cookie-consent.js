@@ -2,7 +2,7 @@
  * NekoTab Cookie Consent Module
  * Production-grade consent management with cookie + localStorage dual storage.
  *
- * - Checks consent BEFORE first paint (inline <script> calls NekoConsent.init())
+ * - Checks consent during initial page load without template inline scripts
  * - Sets a persistent cookie (180 days) with Path=/, SameSite=Lax, Secure
  * - Falls back to localStorage for quick synchronous reads
  * - Prevents FOUC / layout shift: banner starts display:none, shown only if needed
@@ -72,8 +72,7 @@
   var NekoConsent = {
 
     /**
-     * Call from an inline <script> immediately after the banner HTML.
-     * Shows banner only if no consent recorded. No flicker.
+     * Shows banner only if no consent recorded.
      */
     init: function () {
       var consent = readConsent();
@@ -149,5 +148,19 @@
   // Also expose legacy functions for backward compatibility
   root.acceptAllCookies = function () { NekoConsent.acceptAll(); };
   root.acceptEssentialOnly = function () { NekoConsent.acceptEssential(); };
+
+  // Initialize once DOM is ready so templates don't need inline init calls.
+  var _initialized = false;
+  function initOnce() {
+    if (_initialized) return;
+    _initialized = true;
+    NekoConsent.init();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initOnce);
+  } else {
+    initOnce();
+  }
 
 })(window);

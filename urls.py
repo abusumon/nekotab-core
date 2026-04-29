@@ -5,11 +5,12 @@ from django.contrib import admin, messages
 from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
 from django.http import HttpResponse, HttpResponseRedirect
+from django.templatetags.static import static
 from django.urls import include, path
 from django.utils.translation import gettext as _
 from django.views.i18n import JavaScriptCatalog
 from django.contrib.sitemaps.views import sitemap
-from django.views.generic import TemplateView
+from django.views.generic import RedirectView, TemplateView
 
 import tournaments.views
 from importer.views import LoadDemoView
@@ -79,6 +80,10 @@ urlpatterns = [
     path('google4a7d5456478d704b.html',
         TemplateView.as_view(template_name='verification/google4a7d5456478d704b.html')),
 
+    path('favicon.ico',
+        RedirectView.as_view(url=static('favicon.ico'), permanent=True),
+        name='favicon-redirect'),
+
     # SEO: Sitemap and robots
     path('sitemap.xml',
         sitemap,
@@ -117,6 +122,11 @@ urlpatterns = [
 
     # Social auth (Google OAuth etc.)
     path('accounts/', include('allauth.urls')),
+
+    # Explicit login shortcut so /login/ never falls through to tournament slug routes
+    path('login/',
+        RedirectView.as_view(pattern_name='login', permanent=False),
+        name='login-shortcut'),
 
     # Notifications
     path('notifications/',
