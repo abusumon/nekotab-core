@@ -1,6 +1,7 @@
 import logging
 from threading import Lock
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetView
@@ -16,6 +17,8 @@ from django.views import View
 from django.views.generic import FormView
 
 from allauth.account.models import EmailAddress
+from allauth.socialaccount.models import SocialApp
+from allauth.socialaccount.providers.google.views import oauth2_login
 
 from actionlog.mixins import LogActionMixin
 from actionlog.models import ActionLogEntry
@@ -28,6 +31,34 @@ from .tokens import email_verification_token
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
+
+
+class GoogleOAuthLoginGuardView(View):
+    """Safely dispatch Google OAuth login to avoid 500s when not configured."""
+
+    def get(self, request, *args, **kwargs):
+        provider_cfg = settings.SOCIALACCOUNT_PROVIDERS.get('google', {})
+        app_cfg = provider_cfg.get('APP', {}) if isinstance(provider_cfg, dict) else {}
+        has_settings_app = bool(app_cfg.get('client_id') and app_cfg.get('secret'))
+
+        has_db_app = False
+        if not has_settings_app:
+            try:
+                has_db_app = SocialApp.objects.filter(
+                    provider='google',
+                    sites__id=getattr(settings, 'SITE_ID', 1),
+                ).exists()
+            except Exception:
+                logger.warning("Couldn't determine Google SocialApp availability", exc_info=True)
+
+        if not (has_settings_app or has_db_app):
+            messages.error(
+                request,
+                _("Google sign-in isn't configured yet. Please sign in with username/password."),
+            )
+            return redirect('login')
+
+        return oauth2_login(request)
 
 
 class BlankSiteStartView(FormView):

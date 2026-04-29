@@ -16,7 +16,7 @@ import tournaments.views
 from importer.views import LoadDemoView
 from participant_crm.views import UnsubscribeView as CrmUnsubscribeView
 from organizations import views as organizations_views
-from users.views import BlankSiteStartView
+from users.views import BlankSiteStartView, GoogleOAuthLoginGuardView
 from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
 from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
 import motionbank.views as motionbank_views
@@ -121,6 +121,9 @@ urlpatterns = [
     path('accounts/', include('users.urls')),
 
     # Social auth (Google OAuth etc.)
+    path('accounts/google/login/',
+        GoogleOAuthLoginGuardView.as_view(),
+        name='google-login-guard'),
     path('accounts/', include('allauth.urls')),
 
     # Explicit login shortcut so /login/ never falls through to tournament slug routes
