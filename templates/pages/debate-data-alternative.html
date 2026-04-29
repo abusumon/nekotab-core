@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Debate Data Alternative{% endblock %}
+{% block head-title %}<span class="emoji">📋</span> Debate Data Alternative{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Looking for a Debate Data alternative? NekoTab combines a searchable debate motion bank with free tabulation software, tournament publishing, and learning resources in one platform.">
+<link rel="canonical" href="https://nekotab.app/debate-data-alternative/" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1>A Debate Data Alternative for Motion Research and Tournament Prep</h1>
+
+      <p class="lead">Debate Data is strongly positioned around motion discovery. NekoTab covers that same search intent with a large open motion bank, then extends it with free debate tabulation, public tournament pages, format-specific guides, and community infrastructure.</p>
+
+      <h2>What Debate Data Does Well</h2>
+      <ul>
+        <li>Strong motion-first discovery surface</li>
+        <li>Tournament-by-tournament motion browsing</li>
+        <li>Filter-driven motion research workflows</li>
+        <li>Premium upsells around motion-related tools</li>
+      </ul>
+
+      <h2>Why NekoTab Is Broader</h2>
+      <ul>
+        <li><strong>Search 36,000+ motions:</strong> use the <a href="{% url 'motions' %}">Motion Bank</a> for BP, World Schools, Public Forum, Lincoln-Douglas, Policy and more</li>
+        <li><strong>Free access:</strong> no paywall just to explore the archive</li>
+        <li><strong>Tournament context:</strong> motion entries include round, tournament, date and format signals</li>
+        <li><strong>Operational platform:</strong> NekoTab also runs draws, ballots, standings and public result pages</li>
+        <li><strong>Learning ecosystem:</strong> combine motion research with the learn hub and debate forum</li>
+      </ul>
+
+      <h2>Best Fit</h2>
+      <p>If you only need a motion-centric tool, Debate Data has a focused proposition. If you want one system for motion research, tournament operations, publishing, and debate education, NekoTab gives you more surface area without splitting your workflow.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'motions' %}" class="btn btn-primary btn-lg">Search Debate Motions</a>
+        <a href="{% url 'register-tournament' %}" class="btn btn-outline-secondary btn-lg ml-2">Create a Tournament Free</a>
+      </div>
+
+      <p class="small text-muted mt-4">Debate Data is a third-party brand referenced here for factual comparison only. NekoTab is not affiliated with Debate Data.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

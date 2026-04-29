@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Congress Debate Tabulation{% endblock %}
+{% block head-title %}<span class="emoji">🏛️</span> Congress Debate Tabulation{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Run congressional debate with NekoTab. Hosted Congress tabulation with chamber setup, legislation workflows, POs, speeches, scoring, publishing, and public access.">
+<link rel="canonical" href="https://nekotab.app/congress-debate-tabulation/" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1>Congress Debate Tabulation Software</h1>
+
+      <p class="lead">NekoTab includes a dedicated Congress creation flow for communities running congressional debate. Use one hosted platform for legislation workflows, POs, speeches, scoring, publishing and public access.</p>
+
+      <h2>Why Use NekoTab for Congress</h2>
+      <ul>
+        <li>Dedicated Congress tournament setup from the start</li>
+        <li>Hosted software with no server setup required</li>
+        <li>Public site publishing for schedules, rounds and results</li>
+        <li>Open-source platform with broader debate ecosystem tools</li>
+        <li>Useful alongside the <a href="{% url 'motions' %}">Motion Bank</a> and learn resources</li>
+      </ul>
+
+      <h2>Built for Debate Programs That Need More Than One Event</h2>
+      <p>Many schools and societies do not run only Congress. NekoTab is useful when your program also needs parliamentary tabbing, motion research, public archives and organization-level management in the same environment.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'congress-tournament-create' %}" class="btn btn-primary btn-lg">Create a Congress Tournament</a>
+        <a href="{% url 'register-organization' %}" class="btn btn-outline-secondary btn-lg ml-2">Create an Organization Workspace</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

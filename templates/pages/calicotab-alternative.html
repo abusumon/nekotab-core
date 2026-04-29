@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}CalicoTab Alternative{% endblock %}
+{% block head-title %}<span class="emoji">🆚</span> CalicoTab Alternative{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Looking for a CalicoTab alternative? NekoTab is free debate tabulation software with hosted setup, BP/WSDC/Australs/Congress support, a global motion bank, and open-source transparency.">
+<link rel="canonical" href="https://nekotab.app/calicotab-alternative/" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1>A Free CalicoTab Alternative for Debate Tournaments</h1>
+
+      <p class="lead">CalicoTab is known for hosted Tabbycat with instant setup and predictable per-tournament pricing. NekoTab takes a different approach: free hosted debate tabulation plus a searchable motion bank, learning content, community tooling, and organization workspaces.</p>
+
+      <h2>What CalicoTab Emphasizes</h2>
+      <ul>
+        <li>Instant hosted setup for tournaments</li>
+        <li>Built-in archiving and hosted infrastructure</li>
+        <li>Predictable per-tournament pricing</li>
+        <li>Automatic scaling without self-hosting work</li>
+      </ul>
+
+      <h2>Why Organizers Choose NekoTab Instead</h2>
+      <ul>
+        <li><strong>No per-tournament fee:</strong> NekoTab is free to use</li>
+        <li><strong>Broader product surface:</strong> motion bank, learn hub, forum, and organization workspaces</li>
+        <li><strong>International debate focus:</strong> BP, WSDC, Australs and Congress workflows</li>
+        <li><strong>Open source:</strong> transparent codebase with self-hosting optionality</li>
+        <li><strong>Motion research included:</strong> browse the <a href="{% url 'motions' %}">NekoTab Motion Bank</a> for prep and training</li>
+      </ul>
+
+      <h2>Best Fit</h2>
+      <p>If you want paid hosted Tabbycat with a simple pricing model, CalicoTab has a clear positioning. If you want to reduce cost while gaining motion discovery, public content, and open-source flexibility, NekoTab is the stronger long-term platform.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'register-tournament' %}" class="btn btn-primary btn-lg">Create a Tournament Free</a>
+        <a href="{% url 'motions' %}" class="btn btn-outline-secondary btn-lg ml-2">Explore Motion Bank</a>
+      </div>
+
+      <p class="small text-muted mt-4">CalicoTab is a third-party brand referenced here for factual comparison only. NekoTab is not affiliated with CalicoTab.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

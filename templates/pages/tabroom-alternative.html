@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block page-title %}Free Tabroom Alternative{% endblock %}
-{% block head-title %}<span class="emoji">🌐</span> Tabroom Alternative{% endblock %}
+{% block page-title %}Tabroom / NSDA Alternative{% endblock %}
+{% block head-title %}<span class="emoji">🌐</span> Tabroom / NSDA Alternative{% endblock %}
 
 {% block extra-head %}
-<meta name="description" content="Looking for a free Tabroom alternative? NekoTab supports BP, WSDC, Australs and international debate formats. No NSDA membership required.">
+<meta name="description" content="Looking for a Tabroom or NSDA alternative? NekoTab is free debate tabulation software for BP, WSDC, Australs and international formats, with no NSDA lock-in.">
 <link rel="canonical" href="https://nekotab.app/tabroom-alternative/" />
 {% endblock %}
 
@@ -13,7 +13,7 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col-lg-8 mx-auto">
-      <h1>A Free, International Alternative to Tabroom</h1>
+      <h1>A Free Tabroom / NSDA Alternative for International Debate</h1>
 
       <p class="lead">Tabroom is built for the US forensics ecosystem and
       requires NSDA membership. If you run international parliamentary debate
@@ -38,6 +38,9 @@
       <div class="mt-4">
         <a href="{% url 'register-tournament' %}" class="btn btn-primary btn-lg">
           Try NekoTab Free
+        </a>
+        <a href="{% url 'motions' %}" class="btn btn-outline-secondary btn-lg ml-2">
+          Browse Debate Motions
         </a>
       </div>
     </div>

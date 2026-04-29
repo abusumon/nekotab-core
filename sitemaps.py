@@ -10,11 +10,14 @@ class StaticViewSitemap(Sitemap):
 
     _priorities = {
         'tabbycat-index': 1.0,
-        'motionbank:motionbank-home': 0.9,
+        'motions': 0.9,
         'forum:forum-home': 0.7,
         'seo-free-tab': 0.9,
         'seo-bp-tab': 0.9,
         'seo-tabroom-alt': 0.9,
+        'seo-calicotab-alt': 0.9,
+        'seo-debatedata-alt': 0.9,
+        'seo-congress-tab': 0.9,
     }
 
     def items(self):
@@ -22,10 +25,13 @@ class StaticViewSitemap(Sitemap):
         return [
             'tabbycat-index',
             'forum:forum-home',
-            'motionbank:motionbank-home',
+            'motions',
             'seo-free-tab',
             'seo-bp-tab',
             'seo-tabroom-alt',
+            'seo-calicotab-alt',
+            'seo-debatedata-alt',
+            'seo-congress-tab',
         ]
 
     def location(self, item):

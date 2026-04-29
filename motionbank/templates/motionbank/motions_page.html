@@ -3,13 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Motion Bank — NekoTab</title>
-<meta name="description" content="Search and explore 36,000+ debate motions from tournaments worldwide. Filter by format, region, topic, year and more.">
+<title>Debate Motion Bank | BP, World Schools, Public Forum, Lincoln-Douglas &amp; Policy Motions | NekoTab</title>
+<meta name="description" content="Search 36,000+ debate motions from real tournaments worldwide. Explore British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs motions by topic, year, region and tournament.">
 <link rel="canonical" href="https://nekotab.app/motions/">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nekotab.app/motions/">
+<meta property="og:title" content="Debate Motion Bank | BP, World Schools, Public Forum, Lincoln-Douglas &amp; Policy Motions">
+<meta property="og:description" content="Search 36,000+ debate motions from real tournaments worldwide. Filter by format, topic, tournament, year and region.">
+<meta property="og:image" content="{% static 'logo.png' %}">
 <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
 <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo-16x16.png' %}">
 <link rel="apple-touch-icon" sizes="180x180" href="{% static 'logo.png' %}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "NekoTab Motion Bank",
+  "url": "https://nekotab.app/motions/",
+  "description": "Searchable debate motion bank with more than 36,000 real tournament motions across British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs formats.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "NekoTab",
+    "url": "https://nekotab.app/"
+  },
+  "about": [
+    "Debate motions",
+    "British Parliamentary debate",
+    "World Schools debate",
+    "Public Forum debate",
+    "Lincoln-Douglas debate",
+    "Policy debate",
+    "Congress debate"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What kinds of debate motions can I find on NekoTab?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NekoTab's Motion Bank includes British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs motions from real tournaments worldwide."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I search motions by topic, year, region and tournament?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can search the motion bank by keyword and filter by topic area, region, year range, debate format, level and motion type."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is NekoTab different from Debate Data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NekoTab combines a searchable motion bank with free debate tabulation, public tournament pages, learning resources and open-source tooling in one platform."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is NekoTab useful for BP, WSDC, Public Forum, Lincoln-Douglas and Congress prep?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. NekoTab is built to help debate communities research motions, study tournament trends and prepare cases across major parliamentary and school debate formats."
+      }
+    }
+  ]
+}
+</script>
 <style>
 /* ── Reset ─────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -114,6 +183,43 @@ input,select{font-family:inherit}
 
 /* ── Layout ─────────────────────────────────────────── */
 .layout{display:flex;max-width:1720px;margin:0 auto}
+
+.seo-hero{
+  border-bottom:1px solid var(--bd);
+  background:linear-gradient(180deg, rgba(24,24,37,.94), rgba(10,10,15,.98));
+}
+.seo-hero-inner{max-width:1720px;margin:0 auto;padding:24px 30px 22px}
+.seo-kicker{
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ac);margin-bottom:10px;
+}
+.seo-title{
+  max-width:1180px;font-size:clamp(28px,3.2vw,44px);line-height:1.08;
+  letter-spacing:-.03em;color:var(--tx);
+}
+.seo-copy{
+  max-width:980px;margin-top:14px;font-size:15px;line-height:1.7;color:var(--tx2);
+}
+.seo-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.seo-chip{
+  font-size:12px;font-weight:600;padding:7px 10px;border-radius:999px;
+  background:var(--bg3);border:1px solid var(--bd);color:var(--tx2);transition:all .15s;
+}
+.seo-chip:hover{color:var(--tx);border-color:var(--bd2);background:var(--bg2)}
+.seo-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;font-size:12px;color:var(--tx3)}
+.seo-meta strong{color:var(--tx)}
+
+.seo-bottom{padding:28px 24px 36px;border-top:1px solid var(--bd)}
+.seo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:1200px;margin:0 auto 24px}
+.seo-card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:18px}
+.seo-card h2{font-size:16px;margin-bottom:10px;color:var(--tx)}
+.seo-card p,.seo-card li{font-size:14px;line-height:1.7;color:var(--tx2)}
+.seo-card ul{padding-left:18px;margin:0}
+.seo-faq{max-width:1200px;margin:0 auto}
+.seo-faq h2{font-size:20px;margin-bottom:14px;color:var(--tx)}
+.faq-item{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.faq-item summary{cursor:pointer;font-size:15px;font-weight:600;color:var(--tx)}
+.faq-item p{font-size:14px;line-height:1.7;color:var(--tx2);margin-top:10px}
 
 /* ── Sidebar ────────────────────────────────────────── */
 .sbar{
@@ -394,6 +500,8 @@ input,select{font-family:inherit}
 /* ── Responsive ─────────────────────────────────────── */
 @media(max-width:940px){
   .mob-bar{display:flex}
+  .seo-hero-inner{padding:20px 24px}
+  .seo-grid{grid-template-columns:1fr}
   .sbar{
     position:static;height:auto;border-right:none;
     border-bottom:1px solid var(--bd);display:none;
@@ -452,6 +560,27 @@ input,select{font-family:inherit}
     <span class="fcount" id="fCount">0</span>
   </button>
 </div>
+
+<section class="seo-hero">
+  <div class="seo-hero-inner">
+    <p class="seo-kicker">Global debate motion research</p>
+    <h1 class="seo-title">Search 36,000+ debate motions across British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs.</h1>
+    <p class="seo-copy">NekoTab’s Motion Bank is built for debaters, coaches, adjudicators and tab teams who need real tournament motions with context. Research parliamentary debate motions, compare round trends, prepare cases, and discover motion sets by tournament, region, year and topic.</p>
+    <div class="seo-links">
+      <a href="/bp-debate-tabulation/" class="seo-chip">British Parliamentary tabulation</a>
+      <a href="/congress-debate-tabulation/" class="seo-chip">Congress debate tabulation</a>
+      <a href="/tabroom-alternative/" class="seo-chip">Tabroom / NSDA alternative</a>
+      <a href="/calicotab-alternative/" class="seo-chip">CalicoTab alternative</a>
+      <a href="/debate-data-alternative/" class="seo-chip">Debate Data alternative</a>
+      <a href="/learn/?category=formats" class="seo-chip">Debate format guides</a>
+    </div>
+    <div class="seo-meta">
+      <span><strong>36,000+</strong> real tournament motions</span>
+      <span><strong>BP, WSDC, PF, LD, Policy</strong> coverage</span>
+      <span><strong>Topic, region, year</strong> filters</span>
+    </div>
+  </div>
+</section>
 
 <!-- ─── Layout ──────────────────────────────────────── -->
 <div class="layout">
@@ -566,6 +695,48 @@ input,select{font-family:inherit}
 
     <!-- Pagination -->
     <div class="pgr-w" id="pgrW"><div id="pgr" class="pgr"></div></div>
+
+    <section class="seo-bottom">
+      <div class="seo-grid">
+        <article class="seo-card">
+          <h2>Search motions by real debate format</h2>
+          <p>NekoTab helps you research British Parliamentary motions, World Schools motions, Public Forum motions, Lincoln-Douglas motions, Policy motions and Asians/Australs rounds from real tournaments. That makes the page useful for both debate prep and long-tail search intent.</p>
+        </article>
+        <article class="seo-card">
+          <h2>Why this motion bank is useful for prep</h2>
+          <ul>
+            <li>Browse motion wording used in actual tournaments</li>
+            <li>Filter by topic area, region, year and debate level</li>
+            <li>Open entries to inspect infoslides, burdens and difficulty signals</li>
+            <li>Follow source tab links when tournament data is available</li>
+          </ul>
+        </article>
+        <article class="seo-card">
+          <h2>More than a motion list</h2>
+          <p>Debate Data focuses heavily on motion discovery, while CalicoTab focuses on hosted tabulation. NekoTab connects those intents: a large open motion bank, free tournament software, learn content, and comparison pages for communities deciding what to adopt.</p>
+        </article>
+      </div>
+
+      <div class="seo-faq">
+        <h2>Debate motion bank FAQ</h2>
+        <details class="faq-item" open>
+          <summary>What kinds of debate motions can I find on NekoTab?</summary>
+          <p>You can find real tournament motions across British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs styles, with topic tags, tournament names and round context.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I search motions by tournament, topic, region and year?</summary>
+          <p>Yes. The motion bank supports free-text search plus filters for motion type, format, level, region, topic area and year range so debaters can narrow the archive quickly.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is NekoTab useful for BP, WSDC, Public Forum, Lincoln-Douglas and Congress prep?</summary>
+          <p>Yes. NekoTab is designed to help debate communities research motion trends, compare tournament topics and prepare cases across major parliamentary and school debate ecosystems.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How is NekoTab different from Debate Data or CalicoTab?</summary>
+          <p>NekoTab combines a searchable motion bank with free debate tabulation, public tournament pages, learning resources and open-source tooling. That broader footprint helps schools, societies and circuits use one platform for both tournament operations and debate prep.</p>
+        </details>
+      </div>
+    </section>
 
   </main>
 </div>

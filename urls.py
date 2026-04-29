@@ -192,6 +192,15 @@ urlpatterns = [
     path('tabroom-alternative/',
         TemplateView.as_view(template_name='pages/tabroom-alternative.html'),
         name='seo-tabroom-alt'),
+    path('calicotab-alternative/',
+        TemplateView.as_view(template_name='pages/calicotab-alternative.html'),
+        name='seo-calicotab-alt'),
+    path('debate-data-alternative/',
+        TemplateView.as_view(template_name='pages/debate-data-alternative.html'),
+        name='seo-debatedata-alt'),
+    path('congress-debate-tabulation/',
+        TemplateView.as_view(template_name='pages/congress-debate-tabulation.html'),
+        name='seo-congress-tab'),
 
     # Tournament URLs
     path('<slug:tournament_slug>/',
