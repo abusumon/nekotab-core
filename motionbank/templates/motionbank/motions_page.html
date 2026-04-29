@@ -1,0 +1,811 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motion Bank — NekoTab</title>
+<meta name="description" content="Search and explore 36,000+ debate motions from tournaments worldwide. Filter by format, region, topic, year and more.">
+<link rel="canonical" href="https://nekotab.app/motions/">
+<style>
+/* ── Reset ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#111118;
+  --bg3:#181825;
+  --bd:#1e1e2e;
+  --bd2:#2a2a3d;
+  --tx:#e2e2f0;
+  --tx2:#9898b8;
+  --tx3:#525268;
+  --ac:#f0b429;
+  --ac-dim:rgba(240,180,41,.1);
+  --c-thw:#4a9eff;
+  --c-thbt:#3ecf8e;
+  --c-thp:#a78bfa;
+  --c-thr:#fb923c;
+  --c-ths:#2dd4bf;
+  --c-tho:#f472b6;
+  --c-def:#555568;
+  --fw:system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fm:"SF Mono","Fira Code","Cascadia Code",ui-monospace,monospace;
+  --hh:56px;
+  --sh:66px;
+  --sw:248px;
+  --r:6px;
+}
+html{font-family:var(--fw);background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased}
+body{min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select{font-family:inherit}
+
+/* ── Header ─────────────────────────────────────────── */
+.hd{
+  position:sticky;top:0;z-index:200;
+  height:var(--hh);
+  background:rgba(10,10,15,.9);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;
+  padding:0 24px;gap:12px;
+}
+.hd-mark{
+  width:30px;height:30px;border-radius:7px;
+  background:var(--ac);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:14px;color:#0a0a0f;
+  flex-shrink:0;
+}
+.hd-brand{font-size:13px;font-weight:600;color:var(--tx2);letter-spacing:.02em;display:flex;align-items:center;gap:8px;transition:color .15s}
+.hd-brand:hover{color:var(--tx)}
+.hd-slash{color:var(--bd2);font-size:18px;font-weight:200;user-select:none}
+.hd-title{font-size:15px;font-weight:600;color:var(--tx)}
+.hd-pill{
+  font-size:11px;font-weight:500;color:var(--tx3);
+  background:var(--bg3);border:1px solid var(--bd);
+  border-radius:20px;padding:2px 10px;transition:all .15s;
+}
+.hd-spacer{flex:1}
+.hd-nav{display:flex;align-items:center;gap:4px}
+.hd-nl{font-size:13px;color:var(--tx2);padding:5px 11px;border-radius:var(--r);transition:all .15s}
+.hd-nl:hover{color:var(--tx);background:var(--bg3)}
+
+/* ── Search bar ─────────────────────────────────────── */
+.sb{
+  position:sticky;top:var(--hh);z-index:100;
+  height:var(--sh);
+  background:var(--bg2);
+  border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;
+  padding:0 24px;
+}
+.sb-inner{position:relative;flex:1;max-width:720px}
+.sb-icon{
+  position:absolute;left:13px;top:50%;transform:translateY(-50%);
+  color:var(--tx3);font-size:15px;pointer-events:none;line-height:1;
+}
+.sb-input{
+  width:100%;height:40px;
+  background:var(--bg3);border:1px solid var(--bd2);border-radius:var(--r);
+  color:var(--tx);font-size:14px;
+  padding:0 72px 0 40px;outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.sb-input::placeholder{color:var(--tx3)}
+.sb-input:focus{border-color:var(--ac);box-shadow:0 0 0 3px var(--ac-dim)}
+.sb-clear{
+  position:absolute;right:44px;top:50%;transform:translateY(-50%);
+  width:20px;height:20px;border-radius:50%;
+  display:none;align-items:center;justify-content:center;
+  font-size:11px;color:var(--tx3);background:var(--bg2);border:1px solid var(--bd2);
+  transition:all .15s;cursor:pointer;
+}
+.sb-clear.visible{display:flex}
+.sb-clear:hover{color:var(--tx);border-color:var(--bd2)}
+.sb-kbd{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  font-size:10px;color:var(--tx3);background:var(--bg2);
+  border:1px solid var(--bd);border-radius:4px;padding:2px 6px;
+  font-family:var(--fm);pointer-events:none;
+}
+
+/* ── Layout ─────────────────────────────────────────── */
+.layout{display:flex;max-width:1480px;margin:0 auto}
+
+/* ── Sidebar ────────────────────────────────────────── */
+.sbar{
+  width:var(--sw);flex-shrink:0;
+  border-right:1px solid var(--bd);
+  position:sticky;top:calc(var(--hh) + var(--sh));
+  height:calc(100vh - var(--hh) - var(--sh));
+  overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--bd2) transparent;
+  padding:16px 0;
+}
+.sbar-hd{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px 14px;
+}
+.sbar-hd-lbl{
+  font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tx3);
+}
+.sbar-clear{
+  font-size:11px;color:var(--tx3);padding:3px 9px;border-radius:4px;
+  transition:all .15s;display:none;
+}
+.sbar-clear.vis{display:block}
+.sbar-clear:hover{color:var(--ac);background:var(--ac-dim)}
+
+.fsec{padding:12px 16px;border-top:1px solid var(--bd)}
+.fsec-lbl{
+  font-size:10px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--tx3);margin-bottom:9px;
+}
+
+/* Filter pills */
+.fpills{display:flex;flex-wrap:wrap;gap:5px}
+.fp{
+  height:25px;padding:0 10px;font-size:12px;font-weight:500;
+  color:var(--tx2);background:var(--bg3);border:1px solid var(--bd);
+  border-radius:20px;transition:all .15s;cursor:pointer;
+}
+.fp:hover{color:var(--tx);border-color:var(--bd2)}
+.fp.on{color:var(--ac);background:var(--ac-dim);border-color:rgba(240,180,41,.35)}
+/* per-type colours when active */
+.fp.t-thbt.on{color:var(--c-thbt);background:rgba(62,207,142,.1);border-color:rgba(62,207,142,.3)}
+.fp.t-thw.on {color:var(--c-thw);background:rgba(74,158,255,.1);border-color:rgba(74,158,255,.3)}
+.fp.t-thp.on {color:var(--c-thp);background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.3)}
+.fp.t-thr.on {color:var(--c-thr);background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3)}
+.fp.t-ths.on {color:var(--c-ths);background:rgba(45,212,191,.1);border-color:rgba(45,212,191,.3)}
+.fp.t-tho.on {color:var(--c-tho);background:rgba(244,114,182,.1);border-color:rgba(244,114,182,.3)}
+
+/* Category list */
+.clist{
+  display:flex;flex-direction:column;gap:1px;
+  max-height:200px;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--bd2) transparent;
+  margin:-2px;padding:2px;
+}
+.ci{
+  font-size:12px;color:var(--tx2);
+  padding:5px 8px;border-radius:4px;
+  cursor:pointer;transition:all .12s;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.ci:hover{color:var(--tx);background:var(--bg3)}
+.ci.on{color:var(--ac);background:var(--ac-dim)}
+.ci-arrow{font-size:9px;opacity:0;transition:opacity .12s;margin-left:4px}
+.ci:hover .ci-arrow,.ci.on .ci-arrow{opacity:1}
+
+/* Year inputs */
+.yi{display:flex;align-items:center;gap:7px}
+.y-inp{
+  width:68px;height:30px;background:var(--bg3);
+  border:1px solid var(--bd);border-radius:4px;
+  color:var(--tx);font-size:12px;padding:0 8px;outline:none;
+  transition:border-color .15s;
+}
+.y-inp::placeholder{color:var(--tx3)}
+.y-inp:focus{border-color:var(--ac)}
+.y-dash{font-size:13px;color:var(--tx3)}
+
+/* ── Main ───────────────────────────────────────────── */
+.main{flex:1;min-width:0}
+
+.tb{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 20px;
+  border-bottom:1px solid var(--bd);
+  position:sticky;top:calc(var(--hh) + var(--sh));z-index:50;
+  background:var(--bg);
+}
+.tb-count{font-size:13px;color:var(--tx2)}
+.tb-count strong{color:var(--tx);font-weight:600}
+.tb-r{display:flex;align-items:center;gap:8px}
+.tb-lbl{font-size:11px;color:var(--tx3)}
+.tb-sort{
+  height:29px;background:var(--bg3);border:1px solid var(--bd);
+  border-radius:4px;color:var(--tx);font-size:12px;
+  padding:0 26px 0 10px;outline:none;cursor:pointer;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5'%3E%3Cpath d='M1 1l3.5 3L8 1' stroke='%23525268' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;
+  transition:border-color .15s;
+}
+.tb-sort:focus{border-color:var(--ac)}
+
+/* ── Motion rows ────────────────────────────────────── */
+.mlist{}
+.mrow{
+  position:relative;
+  border-bottom:1px solid var(--bd);
+  cursor:pointer;
+  transition:background .1s;
+}
+.mrow:hover{background:var(--bg2)}
+.mrow.open{background:var(--bg2)}
+
+/* left type bar */
+.mrow::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+}
+.mrow.t-thw::before {background:var(--c-thw)}
+.mrow.t-thbt::before{background:var(--c-thbt)}
+.mrow.t-thp::before {background:var(--c-thp)}
+.mrow.t-thr::before {background:var(--c-thr)}
+.mrow.t-ths::before {background:var(--c-ths)}
+.mrow.t-tho::before {background:var(--c-tho)}
+.mrow.t-def::before {background:var(--c-def)}
+
+.mrow-top{display:flex;align-items:flex-start}
+.mrow-body{
+  flex:1;min-width:0;
+  padding:13px 16px 13px 20px;
+}
+.mrow-text{
+  font-size:14px;font-weight:500;line-height:1.55;
+  color:var(--tx);margin-bottom:5px;
+}
+.mrow-meta{
+  display:flex;flex-wrap:wrap;align-items:center;gap:4px;
+  font-size:11px;color:var(--tx3);margin-bottom:5px;
+}
+.m-tour{color:var(--tx2);font-weight:500}
+.m-dot{color:var(--bd2)}
+.mrow-tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{
+  font-size:10px;font-weight:600;letter-spacing:.03em;
+  padding:2px 7px;border-radius:3px;
+  background:var(--bg3);border:1px solid var(--bd);color:var(--tx3);
+}
+
+.mrow-aside{
+  flex-shrink:0;padding:13px 16px;
+  display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+  min-width:110px;
+}
+.mbadges{display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.tbadge{
+  font-family:var(--fm);font-size:10px;font-weight:700;
+  letter-spacing:.04em;padding:2px 7px;border-radius:3px;
+}
+.tbadge-thw {color:var(--c-thw);background:rgba(74,158,255,.12)}
+.tbadge-thbt{color:var(--c-thbt);background:rgba(62,207,142,.12)}
+.tbadge-thp {color:var(--c-thp);background:rgba(167,139,250,.12)}
+.tbadge-thr {color:var(--c-thr);background:rgba(251,146,60,.12)}
+.tbadge-ths {color:var(--c-ths);background:rgba(45,212,191,.12)}
+.tbadge-tho {color:var(--c-tho);background:rgba(244,114,182,.12)}
+.fbadge{
+  font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;
+  background:var(--bg3);border:1px solid var(--bd);color:var(--tx3);
+}
+.dbar{
+  width:46px;height:3px;border-radius:2px;
+  background:var(--bd2);overflow:hidden;
+}
+.dbar-fill{height:100%;border-radius:2px}
+.expand-ico{font-size:10px;color:var(--tx3);transition:transform .2s}
+.mrow.open .expand-ico{transform:rotate(180deg)}
+
+/* ── Motion detail ──────────────────────────────────── */
+.mdetail{
+  padding:0 20px 18px 20px;
+  border-top:1px solid var(--bd);
+}
+.dl{
+  font-size:10px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--tx3);
+  display:block;margin-bottom:7px;
+}
+.d-info{margin:14px 0}
+.d-info p{
+  font-size:13px;line-height:1.65;color:var(--tx2);
+  padding:11px 14px;
+  background:var(--bg3);border-left:3px solid var(--bd2);
+  border-radius:0 4px 4px 0;
+}
+.d-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:14px 0;
+}
+.srow{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.sl{font-size:11px;color:var(--tx3);width:86px;flex-shrink:0}
+.sbar-w{flex:1;height:4px;background:var(--bd2);border-radius:2px;overflow:hidden}
+.sbar-f{height:100%;background:var(--ac);border-radius:2px}
+.sv{font-size:10px;font-family:var(--fm);color:var(--tx2);width:16px;text-align:right}
+.d-bias{margin-bottom:12px}
+.brow{display:flex;align-items:center;gap:8px;margin-top:5px;font-size:11px;color:var(--tx3)}
+.brow span:first-child{width:24px;flex-shrink:0}
+.bbar{flex:1;height:4px;background:var(--bd2);border-radius:2px;overflow:hidden;position:relative}
+.bbar::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:calc(var(--v)*100%);background:var(--ac);border-radius:2px;
+}
+.brow span:last-child{font-family:var(--fm);font-size:10px;width:30px;text-align:right}
+.d-meta{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:12px}
+.dk{color:var(--tx3)}.dv{color:var(--tx2)}
+.d-foot{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  padding-top:12px;border-top:1px solid var(--bd);
+}
+.d-adj{font-size:11px;color:var(--tx3);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d-acts{display:flex;gap:7px;flex-shrink:0}
+.btn-tab{
+  font-size:12px;color:var(--ac);padding:5px 12px;border-radius:4px;
+  border:1px solid rgba(240,180,41,.3);transition:all .15s;
+}
+.btn-tab:hover{background:var(--ac-dim)}
+.btn-copy{
+  font-size:12px;color:var(--tx2);padding:5px 12px;border-radius:4px;
+  border:1px solid var(--bd2);background:transparent;transition:all .15s;
+}
+.btn-copy:hover{color:var(--tx);background:var(--bg3)}
+.btn-copy.ok{color:var(--c-thbt);border-color:rgba(62,207,142,.3)}
+
+/* ── States ─────────────────────────────────────────── */
+.st-load{padding:72px 24px;text-align:center}
+.spinner{
+  width:30px;height:30px;margin:0 auto 16px;
+  border:2px solid var(--bd2);border-top-color:var(--ac);
+  border-radius:50%;animation:spin .65s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.st-txt{font-size:13px;color:var(--tx3)}
+.st-empty{padding:72px 24px;text-align:center}
+.st-ico{font-size:28px;margin-bottom:12px;opacity:.5}
+.st-title{font-size:15px;font-weight:600;color:var(--tx);margin-bottom:6px}
+.st-sub{font-size:13px;color:var(--tx3)}
+
+/* ── Pagination ─────────────────────────────────────── */
+.pgr-w{padding:24px 20px;border-top:1px solid var(--bd);display:none}
+.pgr{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap}
+.pbtn{
+  min-width:32px;height:32px;padding:0 8px;border-radius:4px;
+  font-size:13px;color:var(--tx2);background:var(--bg3);border:1px solid var(--bd);
+  transition:all .15s;cursor:pointer;
+}
+.pbtn:hover{color:var(--tx);border-color:var(--bd2)}
+.pbtn.on{color:var(--ac);background:var(--ac-dim);border-color:rgba(240,180,41,.35)}
+.pellipsis{font-size:13px;color:var(--tx3);padding:0 3px}
+
+/* ── Mobile toggle ──────────────────────────────────── */
+.mob-bar{
+  display:none;
+  padding:10px 24px;background:var(--bg2);border-bottom:1px solid var(--bd);
+  align-items:center;gap:10px;
+  position:sticky;top:calc(var(--hh) + var(--sh));z-index:110;
+}
+.mob-btn{
+  height:33px;padding:0 13px;border-radius:4px;font-size:12px;color:var(--tx2);
+  background:var(--bg3);border:1px solid var(--bd);display:flex;align-items:center;gap:6px;
+  transition:all .15s;
+}
+.mob-btn:hover{color:var(--tx);border-color:var(--bd2)}
+.fcount{
+  display:none;min-width:18px;height:18px;
+  background:var(--ac);color:#0a0a0f;border-radius:9px;padding:0 5px;
+  font-size:10px;font-weight:700;align-items:center;justify-content:center;
+}
+.fcount.vis{display:flex}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media(max-width:940px){
+  .mob-bar{display:flex}
+  .sbar{
+    position:static;height:auto;border-right:none;
+    border-bottom:1px solid var(--bd);display:none;
+    max-height:460px;overflow-y:auto;
+  }
+  .sbar.open{display:block}
+  .tb{top:calc(var(--hh) + var(--sh) + 53px)}
+  .layout{flex-direction:column}
+}
+@media(max-width:600px){
+  .mrow-aside{display:none}
+  .hd-nav{display:none}
+  .tb{top:calc(var(--hh) + var(--sh) + 53px)}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── Header ──────────────────────────────────────── -->
+<header class="hd">
+  <a href="/" class="hd-brand">
+    <div class="hd-mark">N</div>
+    NekoTab
+  </a>
+  <span class="hd-slash">/</span>
+  <span class="hd-title">Motion Bank</span>
+  <span class="hd-pill" id="hdPill">—</span>
+  <div class="hd-spacer"></div>
+  <nav class="hd-nav">
+    <a href="/motions-bank/submit/" class="hd-nl">Submit Motion</a>
+    <a href="/learn/" class="hd-nl">Learn</a>
+    <a href="/" class="hd-nl">Home</a>
+  </nav>
+</header>
+
+<!-- ─── Search ──────────────────────────────────────── -->
+<div class="sb">
+  <div class="sb-inner">
+    <span class="sb-icon">⌕</span>
+    <input
+      id="searchInput"
+      class="sb-input"
+      type="search"
+      placeholder="Search motions, tournaments, topics…"
+      autocomplete="off"
+      spellcheck="false"
+    >
+    <button class="sb-clear" id="sbClear" aria-label="Clear search">✕</button>
+    <kbd class="sb-kbd">/ focus</kbd>
+  </div>
+</div>
+
+<!-- ─── Mobile filter toggle ────────────────────────── -->
+<div class="mob-bar" id="mobBar">
+  <button class="mob-btn" id="filterToggle">
+    ⊞ Filters
+    <span class="fcount" id="fCount">0</span>
+  </button>
+</div>
+
+<!-- ─── Layout ──────────────────────────────────────── -->
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sbar" id="sidebar">
+    <div class="sbar-hd">
+      <span class="sbar-hd-lbl">Filters</span>
+      <button class="sbar-clear" id="clearBtn">Clear all</button>
+    </div>
+
+    <!-- Motion Type -->
+    <div class="fsec">
+      <div class="fsec-lbl">Motion Type</div>
+      <div class="fpills" data-key="motion_type">
+        <button class="fp on" data-val="">All</button>
+        {% for mt in motion_types %}
+        <button class="fp t-{{ mt|lower }}" data-val="{{ mt }}">{{ mt }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Format -->
+    <div class="fsec">
+      <div class="fsec-lbl">Format</div>
+      <div class="fpills" data-key="style">
+        <button class="fp on" data-val="">All</button>
+        {% for s in styles %}
+        <button class="fp" data-val="{{ s }}">{{ s }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Level -->
+    <div class="fsec">
+      <div class="fsec-lbl">Level</div>
+      <div class="fpills" data-key="level">
+        <button class="fp on" data-val="">All</button>
+        {% for l in levels %}
+        <button class="fp" data-val="{{ l }}">{{ l }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Region -->
+    <div class="fsec">
+      <div class="fsec-lbl">Region</div>
+      <div class="fpills" data-key="region">
+        <button class="fp on" data-val="">All</button>
+        {% for r in regions %}
+        <button class="fp" data-val="{{ r }}">{{ r }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Topic Area -->
+    <div class="fsec">
+      <div class="fsec-lbl">Topic Area</div>
+      <div class="clist">
+        {% for cat in categories %}
+        <div class="ci" data-val="{{ cat }}">
+          <span>{{ cat }}</span>
+          <span class="ci-arrow">→</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Year -->
+    <div class="fsec">
+      <div class="fsec-lbl">Year Range</div>
+      <div class="yi">
+        <input id="yFrom" class="y-inp" type="number" placeholder="From" min="1981" max="2026">
+        <span class="y-dash">—</span>
+        <input id="yTo"   class="y-inp" type="number" placeholder="To"   min="1981" max="2026">
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <!-- Toolbar -->
+    <div class="tb">
+      <div class="tb-count" id="resCount">Loading…</div>
+      <div class="tb-r">
+        <span class="tb-lbl">Sort</span>
+        <select class="tb-sort" id="sortSel">
+          <option value="date_desc">Newest first</option>
+          <option value="date_asc">Oldest first</option>
+          <option value="difficulty_desc">Hardest first</option>
+          <option value="difficulty_asc">Easiest first</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="st-load" id="stLoad">
+      <div class="spinner"></div>
+      <div class="st-txt">Loading motions…</div>
+    </div>
+
+    <!-- Empty -->
+    <div class="st-empty" id="stEmpty" hidden>
+      <div class="st-ico">◇</div>
+      <div class="st-title">No motions found</div>
+      <div class="st-sub">Try adjusting your search or filters</div>
+    </div>
+
+    <!-- Results list -->
+    <div id="mlist" class="mlist"></div>
+
+    <!-- Pagination -->
+    <div class="pgr-w" id="pgrW"><div id="pgr" class="pgr"></div></div>
+
+  </main>
+</div>
+
+<noscript><p style="padding:40px;color:#888;text-align:center">JavaScript is required to use the Motion Bank.</p></noscript>
+
+<script>
+"use strict";
+const App = {
+  s: { q:'', motion_type:'', style:'', level:'', region:'', category:'', year_from:'', year_to:'', sort:'date_desc', page:1 },
+  _t: null,
+
+  init() {
+    this.$in  = document.getElementById('searchInput');
+    this.$cl  = document.getElementById('sbClear');
+    this.$ml  = document.getElementById('mlist');
+    this.$rc  = document.getElementById('resCount');
+    this.$hp  = document.getElementById('hdPill');
+    this.$pgr = document.getElementById('pgr');
+    this.$pgrW= document.getElementById('pgrW');
+    this.$ld  = document.getElementById('stLoad');
+    this.$emp = document.getElementById('stEmpty');
+    this.$cb  = document.getElementById('clearBtn');
+    this.$fc  = document.getElementById('fCount');
+    this.$ft  = document.getElementById('filterToggle');
+    this.$sb  = document.getElementById('sidebar');
+
+    // Search
+    this.$in.addEventListener('input', () => {
+      this.$cl.classList.toggle('visible', this.$in.value.length > 0);
+      clearTimeout(this._t);
+      this._t = setTimeout(() => { this.s.q = this.$in.value.trim(); this.s.page = 1; this.go(); }, 320);
+    });
+    this.$cl.addEventListener('click', () => { this.$in.value = ''; this.$cl.classList.remove('visible'); this.s.q = ''; this.s.page = 1; this.go(); });
+
+    // Sort
+    document.getElementById('sortSel').addEventListener('change', e => { this.s.sort = e.target.value; this.s.page = 1; this.go(); });
+
+    // Filter pill groups (event delegation)
+    document.querySelectorAll('[data-key]').forEach(g => {
+      g.addEventListener('click', e => {
+        const b = e.target.closest('.fp'); if (!b) return;
+        g.querySelectorAll('.fp').forEach(x => x.classList.remove('on'));
+        b.classList.add('on');
+        this.s[g.dataset.key] = b.dataset.val;
+        this.s.page = 1; this.sync(); this.go();
+      });
+    });
+
+    // Category list
+    document.querySelectorAll('.ci').forEach(ci => {
+      ci.addEventListener('click', () => {
+        const was = ci.classList.contains('on');
+        document.querySelectorAll('.ci').forEach(x => x.classList.remove('on'));
+        if (!was) { ci.classList.add('on'); this.s.category = ci.dataset.val; }
+        else { this.s.category = ''; }
+        this.s.page = 1; this.sync(); this.go();
+      });
+    });
+
+    // Year
+    document.getElementById('yFrom').addEventListener('change', e => { this.s.year_from = e.target.value; this.s.page = 1; this.sync(); this.go(); });
+    document.getElementById('yTo').addEventListener('change', e => { this.s.year_to = e.target.value; this.s.page = 1; this.sync(); this.go(); });
+
+    // Clear
+    this.$cb.addEventListener('click', () => this.clear());
+
+    // Mobile toggle
+    this.$ft.addEventListener('click', () => this.$sb.classList.toggle('open'));
+
+    // Keyboard
+    document.addEventListener('keydown', e => {
+      const tag = document.activeElement.tagName;
+      if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') { e.preventDefault(); this.$in.focus(); this.$in.select(); }
+      if (e.key === 'Escape') { this.$in.blur(); document.querySelectorAll('.mrow.open').forEach(r => { r.classList.remove('open'); r.querySelector('.mdetail').hidden = true; }); }
+    });
+
+    this.go();
+  },
+
+  sync() {
+    const s = this.s;
+    const n = [s.motion_type, s.style, s.level, s.region, s.category, s.year_from, s.year_to].filter(Boolean).length;
+    this.$fc.textContent = n;
+    this.$fc.classList.toggle('vis', n > 0);
+    this.$cb.classList.toggle('vis', n > 0);
+  },
+
+  clear() {
+    Object.assign(this.s, { motion_type:'', style:'', level:'', region:'', category:'', year_from:'', year_to:'', page:1 });
+    document.querySelectorAll('[data-key]').forEach(g => { g.querySelectorAll('.fp').forEach(b => b.classList.remove('on')); const a = g.querySelector('.fp[data-val=""]'); if (a) a.classList.add('on'); });
+    document.querySelectorAll('.ci').forEach(c => c.classList.remove('on'));
+    document.getElementById('yFrom').value = '';
+    document.getElementById('yTo').value = '';
+    this.sync(); this.go();
+  },
+
+  async go() {
+    const p = new URLSearchParams(), s = this.s;
+    if (s.q)           p.set('q', s.q);
+    if (s.motion_type) p.set('motion_type', s.motion_type);
+    if (s.style)       p.set('style', s.style);
+    if (s.level)       p.set('level', s.level);
+    if (s.region)      p.set('region', s.region);
+    if (s.category)    p.set('category', s.category);
+    if (s.year_from)   p.set('year_from', s.year_from);
+    if (s.year_to)     p.set('year_to', s.year_to);
+    p.set('sort', s.sort); p.set('page', s.page); p.set('page_size', 25);
+
+    this.$ld.hidden = false; this.$ml.innerHTML = ''; this.$emp.hidden = true; this.$pgrW.style.display = 'none';
+
+    try {
+      const r = await fetch('/motions/api/?' + p);
+      if (!r.ok) throw new Error(r.status);
+      this.draw(await r.json());
+    } catch {
+      this.$ld.hidden = true;
+      this.$ml.innerHTML = '<div style="padding:48px 24px;text-align:center;font-size:13px;color:var(--tx3)">Failed to load. Please refresh the page.</div>';
+    }
+  },
+
+  draw(data) {
+    this.$ld.hidden = true;
+    const t = data.total;
+    this.$rc.innerHTML = '<strong>' + t.toLocaleString() + '</strong> motion' + (t !== 1 ? 's' : '');
+    this.$hp.textContent = t.toLocaleString();
+    if (data.results.length === 0) { this.$emp.hidden = false; return; }
+    this.$ml.innerHTML = data.results.map(m => this.mHTML(m)).join('');
+    this.drawPgr(data);
+  },
+
+  mHTML(m) {
+    const tc = (m.motion_type || '').toLowerCase() || 'def';
+    const dy = (m.start_date || '').substring(0, 7).replace('-', '/');
+    const tags = (m.primary_types || []).slice(0, 3).map(t => '<span class="tag">' + this.e(t) + '</span>').join('');
+    const hasInfo = (m.infoslide || '').trim().length > 0;
+    const d = m.difficulty_complexity;
+    const dColor = d <= 3 ? '#3ecf8e' : d <= 6 ? '#f0b429' : '#ff6b6b';
+    return '<article class="mrow t-' + tc + '" onclick="App.tog(this)">' +
+      '<div class="mrow-top">' +
+        '<div class="mrow-body">' +
+          '<div class="mrow-text">' + this.e(m.motion) + '</div>' +
+          '<div class="mrow-meta">' +
+            (m.tournament_name ? '<span class="m-tour">' + this.e(m.tournament_name) + '</span>' : '') +
+            (m.round ? '<span class="m-dot">·</span><span>' + this.e(m.round) + '</span>' : '') +
+            (dy ? '<span class="m-dot">·</span><span>' + dy + '</span>' : '') +
+            (m.country ? '<span class="m-dot">·</span><span>' + this.e(m.country) + '</span>' : '') +
+          '</div>' +
+          (tags ? '<div class="mrow-tags">' + tags + '</div>' : '') +
+        '</div>' +
+        '<div class="mrow-aside">' +
+          '<div class="mbadges">' +
+            (m.motion_type ? '<span class="tbadge tbadge-' + tc + '">' + m.motion_type + '</span>' : '') +
+            (m.style ? '<span class="fbadge">' + this.e(m.style) + '</span>' : '') +
+          '</div>' +
+          (d != null ? '<div class="dbar" title="Difficulty ' + d + '/10"><div class="dbar-fill" style="width:' + (d * 10) + '%;background:' + dColor + '"></div></div>' : '') +
+          '<span class="expand-ico">▾</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="mdetail" hidden>' +
+        (hasInfo ? '<div class="d-info"><span class="dl">Info Slide</span><p>' + this.e(m.infoslide) + '</p></div>' : '') +
+        '<div class="d-grid">' +
+          '<div>' +
+            '<span class="dl">Difficulty</span>' +
+            this.sbar('Technical', m.difficulty_technical) +
+            this.sbar('Complexity', m.difficulty_complexity) +
+            this.sbar('Abstraction', m.difficulty_abstraction) +
+            this.sbar('Depth', m.difficulty_depth) +
+          '</div>' +
+          '<div>' +
+            (m.bias_burden_pro != null ?
+              '<div class="d-bias"><span class="dl">Burden</span>' +
+              '<div class="brow"><span>Pro</span><div class="bbar" style="--v:' + ((m.bias_burden_pro || 0) / 10) + '"></div><span>' + m.bias_burden_pro + '/10</span></div>' +
+              '<div class="brow"><span>Opp</span><div class="bbar" style="--v:' + ((m.bias_burden_opp || 0) / 10) + '"></div><span>' + m.bias_burden_opp + '/10</span></div></div>' : '') +
+            '<div class="d-meta">' +
+              (m.level  ? '<span class="dk">Level</span><span class="dv">'  + this.e(m.level)  + '</span>' : '') +
+              (m.region ? '<span class="dk">Region</span><span class="dv">' + this.e(m.region) + '</span>' : '') +
+              (m.city   ? '<span class="dk">City</span><span class="dv">'   + this.e(m.city)   + '</span>' : '') +
+              (m.style  ? '<span class="dk">Format</span><span class="dv">' + this.e(m.style)  + '</span>' : '') +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="d-foot">' +
+          '<span class="d-adj">' +
+            ((m.adjudicators || []).length
+              ? 'Adj: ' + m.adjudicators.slice(0, 4).map(a => this.e(a)).join(', ') + (m.adjudicators.length > 4 ? ' +' + (m.adjudicators.length - 4) + ' more' : '')
+              : '') +
+          '</span>' +
+          '<div class="d-acts">' +
+            (m.tab_url ? '<a href="' + this.e(m.tab_url) + '" target="_blank" rel="noopener noreferrer" class="btn-tab" onclick="event.stopPropagation()">View Tab ↗</a>' : '') +
+            '<button class="btn-copy" onclick="event.stopPropagation();App.copy(this)">Copy motion</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</article>';
+  },
+
+  sbar(label, val) {
+    if (val == null) return '';
+    return '<div class="srow"><span class="sl">' + label + '</span><div class="sbar-w"><div class="sbar-f" style="width:' + (val * 10) + '%"></div></div><span class="sv">' + val + '</span></div>';
+  },
+
+  drawPgr(data) {
+    if (data.pages <= 1) return;
+    this.$pgrW.style.display = 'block';
+    const p = data.page, tot = data.pages;
+    let h = '';
+    if (p > 1)   h += '<button class="pbtn" onclick="App.pg(' + (p-1) + ')">← Prev</button>';
+    const s = Math.max(1, p-2), e = Math.min(tot, p+2);
+    if (s > 1)   { h += '<button class="pbtn" onclick="App.pg(1)">1</button>'; if (s > 2) h += '<span class="pellipsis">…</span>'; }
+    for (let i = s; i <= e; i++) h += '<button class="pbtn' + (i === p ? ' on' : '') + '" onclick="App.pg(' + i + ')">' + i + '</button>';
+    if (e < tot) { if (e < tot-1) h += '<span class="pellipsis">…</span>'; h += '<button class="pbtn" onclick="App.pg(' + tot + ')">' + tot + '</button>'; }
+    if (p < tot) h += '<button class="pbtn" onclick="App.pg(' + (p+1) + ')">Next →</button>';
+    this.$pgr.innerHTML = h;
+  },
+
+  pg(n) { this.s.page = n; this.go(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+
+  tog(row) {
+    const d = row.querySelector('.mdetail');
+    const was = !d.hidden;
+    document.querySelectorAll('.mrow.open').forEach(r => { if (r !== row) { r.classList.remove('open'); r.querySelector('.mdetail').hidden = true; } });
+    d.hidden = was; row.classList.toggle('open', !was);
+    if (!was) row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  },
+
+  copy(btn) {
+    const text = btn.closest('.mrow').querySelector('.mrow-text').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent; btn.textContent = 'Copied ✓'; btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('ok'); }, 2000);
+    }).catch(() => {});
+  },
+
+  e(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
+  },
+};
+
+document.addEventListener('DOMContentLoaded', () => App.init());
+</script>
+</body>
+</html>

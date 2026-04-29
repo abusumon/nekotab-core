@@ -18,6 +18,7 @@ from organizations import views as organizations_views
 from users.views import BlankSiteStartView
 from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
 from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
+import motionbank.views as motionbank_views
 
 # ==============================================================================
 # Base Patterns
@@ -150,7 +151,15 @@ urlpatterns = [
     path('forum/',
         include('forum.urls')),
 
-    # Global Motion Bank
+    # Global Motion Bank — flat-file edition at /motions/
+    path('motions/',
+        motionbank_views.MotionsPageView.as_view(),
+        name='motions'),
+    path('motions/api/',
+        motionbank_views.MotionsAPIView.as_view(),
+        name='motions-api'),
+
+    # Global Motion Bank (legacy DB-backed) at /motions-bank/
     path('motions-bank/',
         include('motionbank.urls')),
 

@@ -1,7 +1,13 @@
+import json
 import logging
+import os
+import time
 
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
+from django.http import JsonResponse
+from django.views import View
 from django.views.generic import TemplateView
 
 from rest_framework import generics, permissions, status, filters
@@ -242,4 +248,201 @@ class MotionFiltersAPI(APIView):
             'difficulties': [{'value': c[0], 'label': c[1]} for c in MotionEntry.Difficulty.choices],
             'motion_types': [{'value': c[0], 'label': c[1]} for c in MotionEntry.MotionType.choices],
             'prep_types': [{'value': c[0], 'label': c[1]} for c in MotionEntry.PrepType.choices],
+        })
+
+
+# =============================================================================
+# /motions/ — Flat-file Motion Bank (served from Motion-Bank JSON)
+# =============================================================================
+
+_MOTIONS_CACHE = {'data': None}
+
+
+def _get_motions_data():
+    """Load and cache the Motion-Bank JSON. Thread-safe for read-only after first load."""
+    if _MOTIONS_CACHE['data'] is None:
+        path = os.path.join(
+            os.path.dirname(settings.BASE_DIR),
+            'Motion-Bank',
+            'motions-version-01.json',
+        )
+        with open(path, encoding='utf-8') as f:
+            _MOTIONS_CACHE['data'] = json.load(f)
+        logger.info("Motion-Bank JSON loaded: %d records", len(_MOTIONS_CACHE['data']))
+    return _MOTIONS_CACHE['data']
+
+
+class MotionsPageView(TemplateView):
+    """Renders the /motions/ shell page. Actual data is fetched by JS via MotionsAPIView."""
+    template_name = 'motionbank/motions_page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['motion_types'] = ['THBT', 'THO', 'THP', 'THR', 'THS', 'THW']
+        context['styles'] = [
+            'BP', 'World Schools', 'Asians/Australs', 'Public Forum',
+            'Lincoln-Douglas', 'Policy', 'CNDF', 'CP',
+        ]
+        context['levels'] = ['University', 'School', 'Mixed']
+        context['regions'] = [
+            'Africa', 'Asia', 'Europe', 'Latin America',
+            'Middle East', 'North America', 'Oceania', 'South America',
+        ]
+        context['categories'] = [
+            'Politics', 'Economics', 'Law', 'Social Justice', 'Culture',
+            'International Relations', 'Media', 'Science/Technology',
+            'Education/Academia', 'Criminal Justice', 'Medical', 'Military',
+            'Children', 'Religion', 'Philosophy', 'Feminism',
+            'Romance/Sexuality', 'Environment', 'Development',
+            'Minority Communities', 'Sports', 'LGBTQ+', 'Art',
+        ]
+        return context
+
+
+class MotionsAPIView(View):
+    """Paginated, filtered JSON API backed by the flat Motion-Bank JSON file."""
+
+    # Normalise messy style values → canonical display names
+    _STYLE_MAP = {
+        ' bp': 'BP', 'bp': 'BP',
+        'asians/australa': 'Asians/Australs',
+        'asians/australs': 'Asians/Australs',
+        'australs/asians': 'Asians/Australs',
+        'australs': 'Asians/Australs',
+        'world schools': 'World Schools',
+        'public forum': 'Public Forum',
+        'lincoln-douglas': 'Lincoln-Douglas',
+        'policy': 'Policy', 'cndf': 'CNDF', 'cp': 'CP',
+        'university': 'University',
+    }
+
+    # Normalise messy level values → canonical
+    _LEVEL_MAP = {
+        'university': 'University', 'unversity': 'University',
+        'bp': 'University', 'school': 'School', 'schools': 'School',
+        'mixed': 'Mixed',
+    }
+
+    # Normalise messy region values → canonical
+    _REGION_MAP = {
+        'asian': 'Asia',
+        'north american': 'North America',
+        'pakistan': 'Asia',
+    }
+
+    def _norm_style(self, raw):
+        return self._STYLE_MAP.get((raw or '').lower().strip(), (raw or '').strip())
+
+    def _norm_level(self, raw):
+        return self._LEVEL_MAP.get((raw or '').lower().strip(), (raw or '').strip())
+
+    def _norm_region(self, raw):
+        return self._REGION_MAP.get((raw or '').lower().strip(), (raw or '').strip())
+
+    def get(self, request):
+        data = _get_motions_data()
+
+        q            = (request.GET.get('q') or '').strip().lower()
+        style        = (request.GET.get('style') or '').strip()
+        level        = (request.GET.get('level') or '').strip()
+        region       = (request.GET.get('region') or '').strip()
+        motion_type  = (request.GET.get('motion_type') or '').strip()
+        category     = (request.GET.get('category') or '').strip()
+        year_from    = (request.GET.get('year_from') or '').strip()
+        year_to      = (request.GET.get('year_to') or '').strip()
+        sort         = (request.GET.get('sort') or 'date_desc').strip()
+
+        try:
+            page = max(1, int(request.GET.get('page') or 1))
+        except (ValueError, TypeError):
+            page = 1
+        try:
+            page_size = min(max(1, int(request.GET.get('page_size') or 25)), 100)
+        except (ValueError, TypeError):
+            page_size = 25
+
+        results = data
+
+        if q:
+            results = [
+                m for m in results
+                if q in (m.get('motion') or '').lower()
+                or q in (m.get('infoslide') or '').lower()
+                or q in (m.get('tournament_name') or '').lower()
+            ]
+
+        if style:
+            results = [m for m in results if self._norm_style(m.get('style')) == style]
+
+        if level:
+            results = [m for m in results if self._norm_level(m.get('level')) == level]
+
+        if region:
+            # Build the set of raw values that map to the requested canonical region
+            target_raws = {
+                raw for raw, canon in self._REGION_MAP.items() if canon == region
+            }
+            target_raws.add(region)
+            results = [m for m in results if (m.get('region') or '') in target_raws]
+
+        if motion_type:
+            results = [m for m in results if (m.get('motion_type') or '') == motion_type]
+
+        if category:
+            results = [
+                m for m in results
+                if category in (m.get('primary_types') or [])
+                or category in (m.get('secondary_types') or [])
+            ]
+
+        if year_from:
+            results = [m for m in results if (m.get('start_date') or '0000')[:4] >= year_from]
+        if year_to:
+            results = [m for m in results if (m.get('start_date') or '9999')[:4] <= year_to]
+
+        # Sorting
+        if sort == 'date_desc':
+            results = sorted(results, key=lambda m: m.get('start_date') or '', reverse=True)
+        elif sort == 'date_asc':
+            results = sorted(results, key=lambda m: m.get('start_date') or '')
+        elif sort == 'difficulty_desc':
+            results = sorted(results, key=lambda m: m.get('difficulty_complexity') or 0, reverse=True)
+        elif sort == 'difficulty_asc':
+            results = sorted(results, key=lambda m: m.get('difficulty_complexity') or 0)
+
+        total = len(results)
+        start = (page - 1) * page_size
+        page_results = results[start:start + page_size]
+
+        slim = [{
+            'id':                   m.get('id'),
+            'motion':               m.get('motion') or '',
+            'infoslide':            m.get('infoslide') or '',
+            'motion_type':          m.get('motion_type') or '',
+            'tournament_name':      m.get('tournament_name') or '',
+            'round':                m.get('round') or '',
+            'start_date':           (m.get('start_date') or '')[:10],
+            'region':               m.get('region') or '',
+            'country':              m.get('country') or '',
+            'city':                 m.get('city') or '',
+            'level':                m.get('level') or '',
+            'style':                m.get('style') or '',
+            'primary_types':        m.get('primary_types') or [],
+            'secondary_types':      m.get('secondary_types') or [],
+            'bias_burden_pro':      m.get('bias_burden_pro'),
+            'bias_burden_opp':      m.get('bias_burden_opp'),
+            'difficulty_technical': m.get('difficulty_technical'),
+            'difficulty_complexity':m.get('difficulty_complexity'),
+            'difficulty_abstraction':m.get('difficulty_abstraction'),
+            'difficulty_depth':     m.get('difficulty_depth'),
+            'tab_url':              m.get('tab_url') or '',
+            'adjudicators':         m.get('adjudicators') or [],
+        } for m in page_results]
+
+        return JsonResponse({
+            'results': slim,
+            'total':   total,
+            'page':    page,
+            'page_size': page_size,
+            'pages':   (total + page_size - 1) // page_size,
         })
