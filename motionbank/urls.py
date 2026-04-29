@@ -1,11 +1,12 @@
 from django.urls import path
+from django.views.generic import RedirectView
 from . import views
 
 app_name = 'motionbank'
 
 urlpatterns = [
     # SEO-friendly page views (server-rendered shells)
-    path('', views.MotionBankHomeView.as_view(), name='motionbank-home'),
+    path('', RedirectView.as_view(url='/motions/', permanent=False), name='motionbank-home'),
     path('submit/', views.MotionSubmitView.as_view(), name='motionbank-submit'),
     path('motion/<slug:slug>/', views.MotionDetailView.as_view(), name='motion-detail'),
 
