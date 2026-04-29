@@ -254,21 +254,36 @@
       <!-- Right side -->
       <div class="em-nav-end">
         {% if user.is_authenticated %}
-          <a href="{% url 'org-list' %}" class="em-nav-link" title="My Organizations">Orgs</a>
-          {% if user.is_superuser %}
-          <a href="{% url 'campaigns:list' %}" class="em-nav-link" title="Campaigns">📧</a>
-          {% endif %}
-          <form action="{% url 'logout' %}" method="post" style="display:inline-block;">
-            {% csrf_token %}
-            <button type="submit" class="em-btn--nav-signin" aria-label="Logout">Logout</button>
-          </form>
+          <!-- User account dropdown -->
+          <div class="em-nav-dropdown" id="em-user-dropdown">
+            <button class="em-user-trigger em-nav-dd-trigger" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </button>
+            <div class="em-dropdown-panel em-dropdown-panel--right" role="menu">
+              <a href="{% url 'org-list' %}" class="em-user-panel-item" role="menuitem">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                My Organizations
+              </a>
+              {% if user.is_superuser %}
+              <a href="{% url 'campaigns:list' %}" class="em-user-panel-item" role="menuitem">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                Campaigns
+              </a>
+              {% endif %}
+              <div class="em-user-panel-divider"></div>
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="em-user-panel-item em-user-panel-item--danger">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                  Sign out
+                </button>
+              </form>
+            </div>
+          </div>
+          <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Dashboard</a>
         {% else %}
           <a href="{% url 'login' %}" class="em-btn--nav-signin">Sign in</a>
-        {% endif %}
-        {% if user.is_authenticated %}
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Dashboard</a>
-        {% else %}
-        <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--sm">Get Started Free</a>
+          <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--sm">Get Started Free</a>
         {% endif %}
         <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
           <span></span><span></span><span></span>
@@ -276,58 +291,73 @@
       </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="em-mobile-menu" class="em-mobile-menu" hidden>
-      <div class="em-mobile-menu-section">
-        <div class="em-mobile-menu-label">Product</div>
-        <!-- Tab Room accordion -->
-        <button class="em-mobile-accordion-trigger" aria-expanded="false" type="button">
-          🎲 Tab Room
-          <svg class="em-mobile-accordion-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+    <!-- Mobile Backdrop -->
+    <div class="em-mobile-backdrop" id="em-mobile-backdrop" aria-hidden="true"></div>
+
+    <!-- Mobile Menu — right-slide drawer -->
+    <div id="em-mobile-menu" class="em-mobile-menu" hidden role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <!-- Drawer Header -->
+      <div class="em-mobile-menu-header">
+        <a href="/" class="em-logo" tabindex="-1" aria-hidden="true">
+          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-mobile-logo" width="96" height="25">
+        </a>
+        <button class="em-close-btn" id="em-menu-close" aria-label="Close menu">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
-        <div class="em-mobile-accordion-panel" hidden>
-          <a href="https://nekotab.app/register/organization/">
-            🏢 Organization Workspace
-            <span class="em-mobile-sub-desc">Manage multiple tournaments under one roof</span>
-          </a>
-          <a href="https://nekotab.app/register/tournament/">
-            🎯 Single Tournament
-            <span class="em-mobile-sub-desc">Set up and run one tournament</span>
-          </a>
-          <a href="{% url 'congress-tournament-create' %}">
-            🏛️ Congress
-            <span class="em-mobile-sub-desc">Congressional debate — legislation, POs &amp; scoring</span>
-          </a>
+      </div>
+
+      <!-- Drawer Body (scrollable) -->
+      <div class="em-mobile-menu-body">
+        <div class="em-mobile-menu-section">
+          <div class="em-mobile-menu-label">Product</div>
+          <!-- Tab Room accordion -->
+          <button class="em-mobile-accordion-trigger" aria-expanded="false" type="button">
+            🎲 Tab Room
+            <svg class="em-mobile-accordion-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
+          </button>
+          <div class="em-mobile-accordion-panel" hidden>
+            <a href="https://nekotab.app/register/organization/">
+              🏢 Organization Workspace
+              <span class="em-mobile-sub-desc">Manage multiple tournaments under one roof</span>
+            </a>
+            <a href="https://nekotab.app/register/tournament/">
+              🎯 Single Tournament
+              <span class="em-mobile-sub-desc">Set up and run one tournament</span>
+            </a>
+            <a href="{% url 'congress-tournament-create' %}">
+              🏛️ Congress
+              <span class="em-mobile-sub-desc">Congressional debate — legislation, POs &amp; scoring</span>
+            </a>
+          </div>
+          <a href="https://nekotab.app/create/ie/">🎤 IE Suite</a>
+          <a href="https://nekotab.app/motions-bank/">📋 Motion Bank</a>
+          <span class="em-mobile-menu-disabled">📝 Oratory Bank <span class="em-badge-soon">Coming Soon</span></span>
         </div>
-        <a href="https://nekotab.app/create/ie/">🎤 IE Suite</a>
-        <a href="https://nekotab.app/motions-bank/">📋 Motion Bank</a>
-        <span class="em-mobile-menu-disabled">📝 Oratory Bank <span class="em-badge-soon">Coming Soon</span></span>
+        <div class="em-mobile-menu-section">
+          <div class="em-mobile-menu-label">Solutions</div>
+          <a href="{% url 'register-organization' %}">🏢 Organization Workspace</a>
+          <a href="{% url 'tournament-create' %}">🎯 Single Tournament</a>
+        </div>
+        <div class="em-mobile-menu-section">
+          <div class="em-mobile-menu-label">Explore</div>
+          <a href="{% url 'forum:forum-home' %}">💬 Community</a>
+          <a href="/learn/">📚 Resources</a>
+          <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">📖 Docs</a>
+          <a href="#faq">❓ FAQ</a>
+        </div>
       </div>
-      <div class="em-mobile-menu-section">
-        <div class="em-mobile-menu-label">Solutions</div>
-        <a href="{% url 'register-organization' %}">🏢 Organization Workspace</a>
-        <a href="{% url 'tournament-create' %}">🎯 Single Tournament</a>
-      </div>
-      <div class="em-mobile-menu-section">
-        <div class="em-mobile-menu-label">Explore</div>
-        <a href="{% url 'forum:forum-home' %}">💬 Community</a>
-        <a href="/learn/">📚 Resources</a>
-        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">📖 Docs</a>
-        <a href="#faq">❓ FAQ</a>
-      </div>
-      <div style="margin-top: 16px;">
+
+      <!-- Drawer Footer (auth actions) -->
+      <div class="em-mobile-menu-footer">
         {% if user.is_authenticated %}
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Dashboard</a>
-        {% else %}
-        <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--block">Get Started Free</a>
-        {% endif %}
-        {% if user.is_authenticated %}
+          <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Dashboard</a>
           <a href="{% url 'org-list' %}" class="em-btn em-btn--ghost em-btn--block">🏢 My Organizations</a>
-          <form action="{% url 'logout' %}" method="post" style="margin-top:8px;">
+          <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit" class="em-btn em-btn--ghost em-btn--block" aria-label="Logout">Logout</button>
+            <button type="submit" class="em-btn em-btn--ghost em-btn--block">Sign out</button>
           </form>
         {% else %}
+          <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--block">Get Started Free</a>
           <a href="{% url 'login' %}" class="em-btn em-btn--ghost em-btn--block">Sign in</a>
           <a href="{% url 'signup' %}" class="em-btn em-btn--secondary em-btn--block">Create Account</a>
         {% endif %}

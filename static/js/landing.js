@@ -9,26 +9,43 @@
   // ==================== MOBILE MENU ====================
   var burger = document.getElementById('em-burger');
   var menu = document.getElementById('em-mobile-menu');
+  var backdrop = document.getElementById('em-mobile-backdrop');
+  var closeBtn = document.getElementById('em-menu-close');
+
+  function openMobileMenu() {
+    burger.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('no-scroll');
+    menu.removeAttribute('hidden');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        menu.classList.add('open');
+        if (backdrop) backdrop.classList.add('open');
+      });
+    });
+  }
+
+  function closeMobileMenu() {
+    burger.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('no-scroll');
+    menu.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
+    setTimeout(function() {
+      if (!menu.classList.contains('open')) { menu.setAttribute('hidden', ''); }
+    }, 340);
+  }
+
   if (burger && menu) {
     burger.addEventListener('click', function() {
-      var expanded = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', String(!expanded));
-      document.documentElement.classList.toggle('no-scroll', !expanded);
-      if (expanded) {
-        menu.classList.remove('open');
-        setTimeout(function(){ menu.hidden = true; }, 280);
+      if (burger.getAttribute('aria-expanded') === 'true') {
+        closeMobileMenu();
       } else {
-        menu.hidden = false;
-        requestAnimationFrame(function(){ menu.classList.add('open'); });
+        openMobileMenu();
       }
     });
+    if (backdrop) backdrop.addEventListener('click', closeMobileMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileMenu);
     menu.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        burger.setAttribute('aria-expanded', 'false');
-        document.documentElement.classList.remove('no-scroll');
-        menu.classList.remove('open');
-        setTimeout(function(){ menu.hidden = true; }, 280);
-      });
+      link.addEventListener('click', closeMobileMenu);
     });
   }
 
