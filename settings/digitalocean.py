@@ -1,5 +1,6 @@
 import logging
 from os import environ
+from urllib.parse import urlparse
 
 import dj_database_url
 import sentry_sdk
@@ -79,6 +80,18 @@ DATABASES = {
 # ==============================================================================
 
 _redis_url = environ.get('REDIS_URL', 'redis://localhost:6379')
+_redis_scheme = (urlparse(_redis_url).scheme or '').lower()
+_redis_uses_tls = _redis_scheme == 'rediss'
+
+_redis_pool_kwargs = {}
+if _redis_uses_tls:
+    _redis_pool_kwargs['ssl_cert_reqs'] = None
+
+_channels_host = {
+    'address': _redis_url,
+}
+if _redis_uses_tls:
+    _channels_host['ssl_cert_reqs'] = None
 
 CACHES = {
     "default": {
@@ -88,9 +101,7 @@ CACHES = {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "SOCKET_CONNECT_TIMEOUT": 5,
             "SOCKET_TIMEOUT": 60,
-            "CONNECTION_POOL_KWARGS": {
-                "ssl_cert_reqs": None,
-            },
+            "CONNECTION_POOL_KWARGS": _redis_pool_kwargs,
         },
     },
 }
@@ -99,10 +110,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [{
-                "address": _redis_url,
-                "ssl_cert_reqs": None,
-            }],
+            "hosts": [_channels_host],
             # Remove channels from groups after 3 hours
             "group_expiry": 10800,
         },
