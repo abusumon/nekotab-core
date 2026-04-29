@@ -54,13 +54,8 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
     template_name = 'nekotab_home.html'
 
     def get(self, request, *args, **kwargs):
-        # Always show the custom home page unless explicitly redirecting or starting fresh
-        tournaments = Tournament.objects.all()
-        if not tournaments.exists() and not User.objects.exists():
-            logger.debug('No users and no tournaments, redirecting to blank-site-start')
-            return redirect('blank-site-start')
-        else:
-            return super().get(request, *args, **kwargs)
+        # Always serve the landing page — blank-site-start is only for CLI/dev setup
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         # Multi-tenancy: each user sees ONLY their own + shared + listed tournaments
