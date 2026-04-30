@@ -47,6 +47,23 @@ class DebateMiddleware:
             return None
 
         slug = view_kwargs['tournament_slug']
+        base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
+
+        try:
+            host = request.get_host().split(':')[0].lower()
+        except Exception:
+            host = ''
+
+        # Safety net: if /motions/ is resolved by the tournament catch-all,
+        # serve the global Motion Bank page directly on the apex domain.
+        if (
+            slug.lower() == 'motions'
+            and request.path_info.rstrip('/') == '/motions'
+            and base_domain
+            and _is_base_domain(host, base_domain)
+        ):
+            from motionbank.views import MotionsPageView
+            return MotionsPageView.as_view()(request)
 
         # ------------------------------------------------------------------
         # Rule: Redirect path-based access → subdomain  (exactly ONE hop)
@@ -60,7 +77,6 @@ class DebateMiddleware:
         #      (i.e. we are not inside a rewritten subdomain request)
         # ------------------------------------------------------------------
         subdomain_on = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
-        base_domain = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '')
         already_subdomain = getattr(request, 'subdomain_tournament', None)
 
         if (subdomain_on and base_domain
@@ -69,11 +85,6 @@ class DebateMiddleware:
                 and is_slug_dns_safe(slug)):
             # Extra guard: only redirect if we are truly on the base domain.
             # Behind a proxy the Host header should be preserved.
-            try:
-                host = request.get_host().split(':')[0].lower()
-            except Exception:
-                host = ''
-
             if _is_base_domain(host, base_domain):
                 full_path = request.get_full_path()
                 slug_prefix = f'/{slug}/'
