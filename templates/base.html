@@ -22,14 +22,16 @@
 
   <title>{% if page_title %}{{ page_title }}{% elif tournament %}{{ tournament.short_name }}{% else %}{% block page-title %}{% trans "Home" %}{% endblock %}{% endif %} - NekoTab</title>
 
-  {% if tournament %}
-    {% blocktrans trimmed with tournament=tournament.short_name asvar meta_description %}
-      The tab for {{ tournament }} runs on NekoTab, powered by Tabbycat - a modern debate tournament tabulation system for parliamentary debating formats
-    {% endblocktrans %}
-  {% else %}
-    {% blocktrans trimmed asvar meta_description %}
-      NekoTab - Professional debate tournament tabulation system. Manage draws, ballots, team registration, and live results for British Parliamentary, Australs, and other debate formats.
-    {% endblocktrans %}
+  {% if not meta_description %}
+    {% if tournament %}
+      {% blocktrans trimmed with tournament=tournament.short_name asvar meta_description %}
+        The tab for {{ tournament }} runs on NekoTab, powered by Tabbycat - a modern debate tournament tabulation system for parliamentary debating formats
+      {% endblocktrans %}
+    {% else %}
+      {% blocktrans trimmed asvar meta_description %}
+        NekoTab - Professional debate tournament tabulation system. Manage draws, ballots, team registration, and live results for British Parliamentary, Australs, and other debate formats.
+      {% endblocktrans %}
+    {% endif %}
   {% endif %}
   <meta name="description" content="{{ meta_description }}" />
 

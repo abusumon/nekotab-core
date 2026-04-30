@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Debate Motions Database{% endblock %}
+{% block head-title %}<span class="emoji">📚</span> Debate Motions Database{% endblock %}
+{% block og-title %}Debate Motions Database | NekoTab{% endblock %}
+
+{% block extra-head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Debate Motions Database",
+  "description": "Search debate motions by format, year, region, topic and tournament.",
+  "url": "https://nekotab.app/debate-motions/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "NekoTab",
+    "url": "https://nekotab.app/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where can I find real debate motions from tournaments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NekoTab Motion Bank provides more than 36,000 real debate motions with tournament, round and date context."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I filter debate motions by format and topic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can search and filter by format, level, region, motion type, category and year range."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which formats are covered in this debate motions database?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NekoTab covers British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs motions."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+      <h1>Debate Motions Database for BP, WSDC, PF, LD and Policy</h1>
+
+      <p class="lead">NekoTab hosts a searchable debate motions database with over 36,000 real tournament motions. If you are preparing for British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy, or Asians/Australs rounds, this page helps you find relevant motion sets quickly.</p>
+
+      <h2>Why this debate motions page is useful</h2>
+      <ul>
+        <li>Search by keyword to find motions on any major topic area</li>
+        <li>Filter by style, level, year, region and motion type</li>
+        <li>Use real tournament context, not synthetic examples</li>
+        <li>Open sources when tab links are available</li>
+      </ul>
+
+      <h2>Best way to use the motion bank</h2>
+      <p>Start on the <a href="{% url 'motions' %}">Global Motion Bank</a>, choose your format, then narrow by topic and year. For preparation, collect 10 to 20 motions from similar tournament levels and build short case outlines for each side.</p>
+
+      <h2>Common search intents we cover</h2>
+      <ul>
+        <li>debate motions</li>
+        <li>BP motions</li>
+        <li>WSDC motions</li>
+        <li>Public Forum motions</li>
+        <li>Lincoln-Douglas motion ideas</li>
+        <li>debate topics for tournament prep</li>
+      </ul>
+
+      <h2>Related resources</h2>
+      <p>For format-specific operations and tabbing workflows, explore <a href="{% url 'seo-bp-tab' %}">BP tabulation</a> and <a href="{% url 'seo-congress-tab' %}">Congress tabulation</a>. For comparative research, see <a href="{% url 'seo-debatedata-alt' %}">Debate Data alternative</a>. For coaching resources, use the <a href="{% url 'content:learn-hub' %}">Learn hub</a>.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'motions' %}" class="btn btn-primary btn-lg">Search Debate Motions Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

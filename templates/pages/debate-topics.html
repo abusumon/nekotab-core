@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Debate Topics for Students and Teams{% endblock %}
+{% block head-title %}<span class="emoji">🧠</span> Debate Topics for Prep{% endblock %}
+{% block og-title %}Debate Topics for Students and Teams | NekoTab{% endblock %}
+
+{% block extra-head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Debate Topics for Students and Teams",
+  "description": "Find debate topics and convert them into tournament-ready cases using real motion data.",
+  "url": "https://nekotab.app/debate-topics/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to prepare debate topics using real tournament motions",
+  "step": [
+    {"@type": "HowToStep", "name": "Choose your format", "text": "Select BP, WSDC, Public Forum, Lincoln-Douglas, Policy, or Congress context."},
+    {"@type": "HowToStep", "name": "Search topic cluster", "text": "Use NekoTab Motion Bank filters to find motions from the same topic area and level."},
+    {"@type": "HowToStep", "name": "Build prep list", "text": "Create a weekly shortlist of motions and practice side-switching with timed speeches."}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+      <h1>Debate Topics for Students, Schools, and University Teams</h1>
+
+      <p class="lead">Strong debate prep starts with strong topic selection. NekoTab helps you discover debate topics from real tournaments and then train with motions that match your format and difficulty level.</p>
+
+      <h2>How to find useful debate topics</h2>
+      <ol>
+        <li>Pick your format and tournament level.</li>
+        <li>Search topic clusters such as economics, social justice, education, technology, and international relations.</li>
+        <li>Build practice sets from recent and historical motions.</li>
+        <li>Track repeated themes to predict likely motions.</li>
+      </ol>
+
+      <h2>Debate topic categories to practice every week</h2>
+      <ul>
+        <li>Politics and governance</li>
+        <li>Economics and development</li>
+        <li>Media and technology</li>
+        <li>Education and youth policy</li>
+        <li>Environment and climate</li>
+        <li>International relations and conflict</li>
+      </ul>
+
+      <h2>Turn debate topics into better rounds</h2>
+      <p>Use the <a href="{% url 'motions' %}">Global Motion Bank</a> to gather 5 to 10 motions per category, then practice opening and closing burden analysis, comparative weighing, and rebuttal structure. This gives your team sharper case mechanics under time pressure.</p>
+
+      <h2>Related pages</h2>
+      <p>For platform comparisons, see <a href="{% url 'seo-tabroom-alt' %}">Tabroom alternative</a> and <a href="{% url 'seo-calicotab-alt' %}">CalicoTab alternative</a>. For guides, visit <a href="{% url 'content:learn-hub' %}">Learn Debate</a>.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'motions' %}" class="btn btn-primary btn-lg">Browse Debate Topics in Motion Bank</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
