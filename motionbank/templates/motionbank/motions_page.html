@@ -124,7 +124,7 @@ input,select{font-family:inherit}
   padding:0 30px;gap:14px;
 }
 .hd-logo{
-  width:118px;
+  width:72px;
   height:auto;
   display:block;
 }
@@ -512,6 +512,7 @@ input,select{font-family:inherit}
   .layout{flex-direction:column}
 }
 @media(max-width:600px){
+  .hd-logo{width:68px}
   .mrow-aside{display:none}
   .hd-nav{display:none}
   .tb{top:calc(var(--hh) + var(--sh) + 53px)}
@@ -523,7 +524,7 @@ input,select{font-family:inherit}
 <!-- ─── Header ──────────────────────────────────────── -->
 <header class="hd">
   <a href="/" class="hd-brand" aria-label="NekoTab home">
-    <img src="{% static 'logo.png' %}" alt="NekoTab" class="hd-logo" width="120" height="32">
+    <img src="{% static 'logo.png' %}" alt="NekoTab" class="hd-logo" width="72" height="19">
   </a>
   <span class="hd-slash">/</span>
   <span class="hd-title">Motion Bank</span>
