@@ -4,6 +4,7 @@ from threading import Lock
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login
+from django.contrib.sites.models import Site
 from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetView
 from django.core.mail import send_mail
 from django.http.response import Http404
@@ -36,20 +37,44 @@ logger = logging.getLogger(__name__)
 class GoogleOAuthLoginGuardView(View):
     """Safely dispatch Google OAuth login to avoid 500s when not configured."""
 
-    def get(self, request, *args, **kwargs):
+    def _has_settings_app(self):
         provider_cfg = settings.SOCIALACCOUNT_PROVIDERS.get('google', {})
         app_cfg = provider_cfg.get('APP', {}) if isinstance(provider_cfg, dict) else {}
-        has_settings_app = bool(app_cfg.get('client_id') and app_cfg.get('secret'))
+        return bool(app_cfg.get('client_id') and app_cfg.get('secret'))
 
-        has_db_app = False
-        if not has_settings_app:
+    def _has_or_link_db_app_for_site(self):
+        site_id = getattr(settings, 'SITE_ID', 1)
+        try:
+            if SocialApp.objects.filter(provider='google', sites__id=site_id).exists():
+                return True
+
+            app = SocialApp.objects.filter(provider='google').order_by('id').first()
+            if app is None:
+                return False
+
             try:
-                has_db_app = SocialApp.objects.filter(
-                    provider='google',
-                    sites__id=getattr(settings, 'SITE_ID', 1),
-                ).exists()
-            except Exception:
-                logger.warning("Couldn't determine Google SocialApp availability", exc_info=True)
+                site = Site.objects.get(id=site_id)
+            except Site.DoesNotExist:
+                logger.warning(
+                    "Google SocialApp exists but SITE_ID=%s does not exist; cannot link app.",
+                    site_id,
+                )
+                return False
+
+            app.sites.add(site)
+            logger.warning(
+                "Linked Google SocialApp id=%s to Site id=%s via login guard fallback.",
+                app.id,
+                site_id,
+            )
+            return True
+        except Exception:
+            logger.warning("Couldn't determine/link Google SocialApp availability", exc_info=True)
+            return False
+
+    def get(self, request, *args, **kwargs):
+        has_settings_app = self._has_settings_app()
+        has_db_app = self._has_or_link_db_app_for_site() if not has_settings_app else False
 
         if not (has_settings_app or has_db_app):
             messages.error(
@@ -58,7 +83,15 @@ class GoogleOAuthLoginGuardView(View):
             )
             return redirect('login')
 
-        return oauth2_login(request)
+        try:
+            return oauth2_login(request)
+        except Exception:
+            logger.warning("Google OAuth login dispatch failed", exc_info=True)
+            messages.error(
+                request,
+                _("Google sign-in is temporarily unavailable. Please try username/password sign-in."),
+            )
+            return redirect('login')
 
 
 class BlankSiteStartView(FormView):

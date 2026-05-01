@@ -1,7 +1,12 @@
 """Tests for the users app — signup, email verification, and GDPR commands."""
 
+from unittest.mock import patch
+
+from allauth.socialaccount.models import SocialApp
 from django.contrib.auth import get_user_model
+from django.contrib.sites.models import Site
 from django.core import mail
+from django.http import HttpResponseRedirect
 from django.test import TestCase, override_settings
 from django.urls import reverse
 
@@ -130,3 +135,34 @@ class LoginBehaviorTests(TestCase):
         })
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, '/')
+
+
+@override_settings(SOCIALACCOUNT_PROVIDERS={'google': {}})
+class GoogleOAuthGuardTests(TestCase):
+
+    def test_unconfigured_google_shows_visible_error(self):
+        response = self.client.get(reverse('google-login-guard'), follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Google sign-in isn't configured yet")
+
+    @patch('users.views.oauth2_login')
+    def test_socialapp_without_site_gets_linked_and_dispatched(self, oauth2_login_mock):
+        oauth2_login_mock.return_value = HttpResponseRedirect('/oauth-started/')
+
+        app = SocialApp.objects.create(
+            provider='google',
+            name='Google OAuth',
+            client_id='cid',
+            secret='sec',
+            key='',
+        )
+        site = Site.objects.get(id=1)
+        self.assertFalse(app.sites.filter(id=site.id).exists())
+
+        response = self.client.get(reverse('google-login-guard'))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, '/oauth-started/')
+
+        app.refresh_from_db()
+        self.assertTrue(app.sites.filter(id=site.id).exists())
+        oauth2_login_mock.assert_called_once()
