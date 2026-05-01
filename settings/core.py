@@ -279,7 +279,9 @@ CACHES = {
     },
 }
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+# Use cached_db so authentication sessions survive cache misses/outages.
+# This preserves cache speed while keeping the DB as a durable fallback.
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # ==============================================================================
 # Static Files and Compilation

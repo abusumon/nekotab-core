@@ -35,12 +35,14 @@ elif _env_truthy('ON_DIGITALOCEAN'):
     # IN_DOCKER=1 baked in (set by the Dockerfile ENV directive).
     base_settings.append('digitalocean.py')
     root.info('SPLIT_SETTINGS: imported digitalocean.py')
+elif _env_truthy('ON_RENDER'):
+    # Render deployments can also set IN_DOCKER, so this must be checked
+    # before IN_DOCKER to avoid loading docker.py in production.
+    base_settings.append('render.py')
+    root.info('SPLIT_SETTINGS: imported render.py')
 elif _env_truthy('IN_DOCKER'):
     base_settings.append('docker.py')
     root.info('SPLIT_SETTINGS: imported docker.py')
-elif _env_truthy('ON_RENDER'):
-    base_settings.append('render.py')
-    root.info('SPLIT_SETTINGS: imported render.py')
 else:
     base_settings.append('local.py')
     os.environ['LOCAL_SETTINGS'] = '1'  # Tell core.py not to require DJANGO_SECRET_KEY

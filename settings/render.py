@@ -9,6 +9,8 @@ from sentry_sdk.integrations.redis import RedisIntegration
 
 from .core import TABBYCAT_VERSION
 
+logger = logging.getLogger(__name__)
+
 # ==============================================================================
 # Render per https://render.com/docs/deploy-django
 # ==============================================================================
@@ -39,8 +41,14 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Subdomain routing (production defaults)
 # ==============================================================================
 
-SUBDOMAIN_TOURNAMENTS_ENABLED = os.environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', 'true').lower() == 'true'
-SUBDOMAIN_BASE_DOMAIN = os.environ.get('SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
+SUBDOMAIN_BASE_DOMAIN = os.environ.get('SUBDOMAIN_BASE_DOMAIN', '').strip()
+_subdomain_tournaments_requested = os.environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', 'true').lower() == 'true'
+SUBDOMAIN_TOURNAMENTS_ENABLED = _subdomain_tournaments_requested and bool(SUBDOMAIN_BASE_DOMAIN)
+if _subdomain_tournaments_requested and not SUBDOMAIN_BASE_DOMAIN:
+    logger.warning(
+        'SUBDOMAIN_TOURNAMENTS_ENABLED is true but SUBDOMAIN_BASE_DOMAIN is empty; '
+        'subdomain routing is disabled.'
+    )
 RESERVED_SUBDOMAINS = os.environ.get('RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media').split(',')
 
 # Organization workspace routing; when False, SubdomainTenantMiddleware
@@ -85,30 +93,35 @@ DATABASES = {
 # Redis
 # ==============================================================================
 
-REDIS_HOST = os.environ.get('REDIS_HOST')
-REDIS_PORT = os.environ.get('REDIS_PORT')
+_redis_url = os.environ.get('REDIS_URL', '').strip()
+if not _redis_url:
+    _redis_host = os.environ.get('REDIS_HOST', '').strip()
+    _redis_port = os.environ.get('REDIS_PORT', '').strip()
+    if _redis_host and _redis_port:
+        _redis_url = f"redis://{_redis_host}:{_redis_port}"
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://" + REDIS_HOST + ":" + REDIS_PORT,
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "SOCKET_CONNECT_TIMEOUT": 5,
-            "SOCKET_TIMEOUT": 60,
-            "IGNORE_EXCEPTIONS": True, # Don't crash on say ConnectionError due to limits
+if _redis_url:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": _redis_url,
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                "SOCKET_CONNECT_TIMEOUT": 5,
+                "SOCKET_TIMEOUT": 60,
+                "IGNORE_EXCEPTIONS": True,  # Don't crash on cache connection issues.
+            },
         },
-    },
-}
+    }
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": ["redis://" + REDIS_HOST + ":" + REDIS_PORT],
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                "hosts": [_redis_url],
+            },
         },
-    },
-}
+    }
 
 # ==============================================================================
 # Sentry

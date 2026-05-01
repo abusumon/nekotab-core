@@ -10,6 +10,8 @@ from sentry_sdk.integrations.redis import RedisIntegration
 
 from .core import TABBYCAT_VERSION
 
+logger = logging.getLogger(__name__)
+
 # ==============================================================================
 # DigitalOcean production settings
 # Activated by ON_DIGITALOCEAN=1 in the container environment.
@@ -159,8 +161,14 @@ else:
 # Subdomain routing
 # ==============================================================================
 
-SUBDOMAIN_TOURNAMENTS_ENABLED = environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', 'true').lower() == 'true'
-SUBDOMAIN_BASE_DOMAIN = environ.get('SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
+SUBDOMAIN_BASE_DOMAIN = environ.get('SUBDOMAIN_BASE_DOMAIN', '').strip()
+_subdomain_tournaments_requested = environ.get('SUBDOMAIN_TOURNAMENTS_ENABLED', 'true').lower() == 'true'
+SUBDOMAIN_TOURNAMENTS_ENABLED = _subdomain_tournaments_requested and bool(SUBDOMAIN_BASE_DOMAIN)
+if _subdomain_tournaments_requested and not SUBDOMAIN_BASE_DOMAIN:
+    logger.warning(
+        'SUBDOMAIN_TOURNAMENTS_ENABLED is true but SUBDOMAIN_BASE_DOMAIN is empty; '
+        'subdomain routing is disabled.'
+    )
 RESERVED_SUBDOMAINS = environ.get('RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media').split(',')
 ORGANIZATION_WORKSPACES_ENABLED = environ.get('ORGANIZATION_WORKSPACES_ENABLED', 'false').lower() == 'true'
 
