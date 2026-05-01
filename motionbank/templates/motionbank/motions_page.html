@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Debate Motion Bank | BP, World Schools, Public Forum, Lincoln-Douglas &amp; Policy Motions | NekoTab</title>
-<meta name="description" content="Search 36,000+ debate motions from real tournaments worldwide. Explore British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs motions by topic, year, region and tournament.">
+<meta name="description" content="Search {{ motion_count_display }} debate motions from real tournaments worldwide. Explore British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs motions by topic, year, region and tournament.">
 <link rel="canonical" href="https://nekotab.app/motions/">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nekotab.app/motions/">
 <meta property="og:title" content="Debate Motion Bank | BP, World Schools, Public Forum, Lincoln-Douglas &amp; Policy Motions">
-<meta property="og:description" content="Search 36,000+ debate motions from real tournaments worldwide. Filter by format, topic, tournament, year and region.">
+<meta property="og:description" content="Search {{ motion_count_display }} debate motions from real tournaments worldwide. Filter by format, topic, tournament, year and region.">
 <meta property="og:image" content="{% static 'logo.png' %}">
 <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
@@ -22,7 +22,7 @@
   "@type": "CollectionPage",
   "name": "NekoTab Motion Bank",
   "url": "https://nekotab.app/motions/",
-  "description": "Searchable debate motion bank with more than 36,000 real tournament motions across British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs formats.",
+  "description": "Searchable debate motion bank with more than {{ motion_count_display }} real tournament motions across British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs formats.",
   "isPartOf": {
     "@type": "WebSite",
     "name": "NekoTab",
@@ -36,6 +36,32 @@
     "Lincoln-Douglas debate",
     "Policy debate",
     "Congress debate"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "NekoTab Motion Bank",
+  "url": "https://nekotab.app/motions/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://nekotab.app/motions/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Recent debate motions in NekoTab",
+  "numberOfItems": {{ sample_motions|length }},
+  "itemListElement": [
+    {% for item in sample_motions %}
+    {"@type": "ListItem", "position": {{ forloop.counter }}, "name": "{{ item.motion|escapejs }}"}{% if not forloop.last %},{% endif %}
+    {% endfor %}
   ]
 }
 </script>
@@ -565,7 +591,7 @@ input,select{font-family:inherit}
 <section class="seo-hero">
   <div class="seo-hero-inner">
     <p class="seo-kicker">Global debate motion research</p>
-    <h1 class="seo-title">Search 36,000+ debate motions across British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs.</h1>
+    <h1 class="seo-title">Search {{ motion_count_display }} debate motions across British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs.</h1>
     <p class="seo-copy">NekoTab’s Motion Bank is built for debaters, coaches, adjudicators and tab teams who need real tournament motions with context. Research parliamentary debate motions, compare round trends, prepare cases, and discover motion sets by tournament, region, year and topic.</p>
     <div class="seo-links">
       <a href="/bp-debate-tabulation/" class="seo-chip">British Parliamentary tabulation</a>
@@ -575,8 +601,13 @@ input,select{font-family:inherit}
       <a href="/debate-data-alternative/" class="seo-chip">Debate Data alternative</a>
       <a href="/learn/?category=formats" class="seo-chip">Debate format guides</a>
     </div>
+    <div class="seo-links" aria-label="Popular debate motion searches">
+      {% for link in seo_query_links %}
+      <a href="{{ link.url }}" class="seo-chip">{{ link.label }}</a>
+      {% endfor %}
+    </div>
     <div class="seo-meta">
-      <span><strong>36,000+</strong> real tournament motions</span>
+      <span><strong>{{ motion_count_display }}</strong> real tournament motions</span>
       <span><strong>BP, WSDC, PF, LD, Policy</strong> coverage</span>
       <span><strong>Topic, region, year</strong> filters</span>
     </div>
@@ -715,6 +746,14 @@ input,select{font-family:inherit}
         <article class="seo-card">
           <h2>More than a motion list</h2>
           <p>Debate Data focuses heavily on motion discovery, while CalicoTab focuses on hosted tabulation. NekoTab connects those intents: a large open motion bank, free tournament software, learn content, and comparison pages for communities deciding what to adopt.</p>
+        </article>
+        <article class="seo-card">
+          <h2>Recent real tournament motions</h2>
+          <ul>
+            {% for item in sample_motions %}
+            <li>{{ item.motion }}{% if item.tournament_name %} — {{ item.tournament_name }}{% endif %}{% if item.year %} ({{ item.year }}){% endif %}</li>
+            {% endfor %}
+          </ul>
         </article>
       </div>
 

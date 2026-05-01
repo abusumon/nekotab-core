@@ -6,11 +6,9 @@ from tournaments.models import Tournament
 
 
 class StaticViewSitemap(Sitemap):
-    changefreq = "weekly"
-
     _priorities = {
         'tabbycat-index': 1.0,
-        'motions': 0.9,
+        'motions': 1.0,
         'forum:forum-home': 0.7,
         'seo-free-tab': 0.9,
         'seo-bp-tab': 0.9,
@@ -18,8 +16,20 @@ class StaticViewSitemap(Sitemap):
         'seo-calicotab-alt': 0.9,
         'seo-debatedata-alt': 0.9,
         'seo-congress-tab': 0.9,
-        'seo-debate-motions': 0.95,
         'seo-debate-topics': 0.9,
+    }
+
+    _changefreqs = {
+        'tabbycat-index': 'daily',
+        'motions': 'daily',
+        'forum:forum-home': 'daily',
+        'seo-free-tab': 'weekly',
+        'seo-bp-tab': 'weekly',
+        'seo-tabroom-alt': 'weekly',
+        'seo-calicotab-alt': 'weekly',
+        'seo-debatedata-alt': 'weekly',
+        'seo-congress-tab': 'weekly',
+        'seo-debate-topics': 'weekly',
     }
 
     def items(self):
@@ -34,7 +44,6 @@ class StaticViewSitemap(Sitemap):
             'seo-calicotab-alt',
             'seo-debatedata-alt',
             'seo-congress-tab',
-            'seo-debate-motions',
             'seo-debate-topics',
         ]
 
@@ -43,6 +52,9 @@ class StaticViewSitemap(Sitemap):
 
     def priority(self, item):
         return self._priorities.get(item, 0.7)
+
+    def changefreq(self, item):
+        return self._changefreqs.get(item, 'weekly')
 
 
 class TournamentSitemap(Sitemap):

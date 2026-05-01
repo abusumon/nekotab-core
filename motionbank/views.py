@@ -256,6 +256,7 @@ class MotionFiltersAPI(APIView):
 # =============================================================================
 
 _MOTIONS_CACHE = {'data': None}
+_MOTIONS_SEO_CACHE = {'context': None}
 
 
 def _get_motions_data():
@@ -272,12 +273,73 @@ def _get_motions_data():
     return _MOTIONS_CACHE['data']
 
 
+def _get_motion_seo_context():
+    """Build SEO context for /motions/ once per process."""
+    if _MOTIONS_SEO_CACHE['context'] is not None:
+        return _MOTIONS_SEO_CACHE['context']
+
+    seo_query_links = [
+        {'label': 'Debate motions', 'url': '/motions/?q=debate+motions'},
+        {'label': 'BP motions', 'url': '/motions/?style=BP'},
+        {'label': 'WSDC motions', 'url': '/motions/?style=World+Schools'},
+        {'label': 'Public Forum motions', 'url': '/motions/?style=Public+Forum'},
+        {'label': 'Lincoln-Douglas motions', 'url': '/motions/?style=Lincoln-Douglas'},
+        {'label': 'Policy debate motions', 'url': '/motions/?style=Policy'},
+        {'label': 'Debate topics', 'url': '/motions/?q=debate+topics'},
+        {'label': 'Practice debate motions', 'url': '/motions/?q=practice+debate+motions'},
+    ]
+
+    try:
+        data = _get_motions_data()
+    except Exception:
+        logger.warning("Could not build motions SEO context from Motion-Bank JSON", exc_info=True)
+        _MOTIONS_SEO_CACHE['context'] = {
+            'motion_count': 0,
+            'motion_count_display': '36,000+',
+            'sample_motions': [],
+            'seo_query_links': seo_query_links,
+        }
+        return _MOTIONS_SEO_CACHE['context']
+
+    motion_count = len(data)
+    recent = sorted(
+        (m for m in data if (m.get('motion') or '').strip()),
+        key=lambda m: m.get('start_date') or '',
+        reverse=True,
+    )
+
+    sample_motions = []
+    seen = set()
+    for motion in recent:
+        text = (motion.get('motion') or '').strip()
+        if text in seen:
+            continue
+        seen.add(text)
+        sample_motions.append({
+            'motion': text,
+            'tournament_name': (motion.get('tournament_name') or '').strip(),
+            'style': (motion.get('style') or '').strip(),
+            'year': (motion.get('start_date') or '')[:4],
+        })
+        if len(sample_motions) >= 12:
+            break
+
+    _MOTIONS_SEO_CACHE['context'] = {
+        'motion_count': motion_count,
+        'motion_count_display': f"{motion_count:,}",
+        'sample_motions': sample_motions,
+        'seo_query_links': seo_query_links,
+    }
+    return _MOTIONS_SEO_CACHE['context']
+
+
 class MotionsPageView(TemplateView):
     """Renders the /motions/ shell page. Actual data is fetched by JS via MotionsAPIView."""
     template_name = 'motionbank/motions_page.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context.update(_get_motion_seo_context())
         context['motion_types'] = ['THBT', 'THO', 'THP', 'THR', 'THS', 'THW']
         context['styles'] = [
             'BP', 'World Schools', 'Asians/Australs', 'Public Forum',
