@@ -5,6 +5,7 @@ from unittest.mock import patch
 from allauth.socialaccount.models import SocialApp
 from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
+from django.core.management import call_command
 from django.core import mail
 from django.http import HttpResponseRedirect
 from django.test import TestCase, override_settings
@@ -166,3 +167,29 @@ class GoogleOAuthGuardTests(TestCase):
         app.refresh_from_db()
         self.assertTrue(app.sites.filter(id=site.id).exists())
         oauth2_login_mock.assert_called_once()
+
+
+@override_settings(SOCIALACCOUNT_PROVIDERS={
+    'google': {
+        'APP': {
+            'client_id': 'settings-client-id',
+            'secret': 'settings-secret',
+            'key': '',
+        }
+    }
+})
+class EnsureGoogleSocialAppCommandTests(TestCase):
+
+    def test_removes_db_google_app_when_settings_app_exists(self):
+        app = SocialApp.objects.create(
+            provider='google',
+            name='Google OAuth',
+            client_id='db-client-id',
+            secret='db-secret',
+            key='',
+        )
+        app.sites.add(Site.objects.get(id=1))
+
+        call_command('ensure_google_socialapp')
+
+        self.assertFalse(SocialApp.objects.filter(provider='google').exists())

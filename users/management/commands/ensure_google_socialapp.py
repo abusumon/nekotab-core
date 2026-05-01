@@ -6,7 +6,7 @@ This command is safe to run repeatedly during deploys.
 import os
 from urllib.parse import urlparse
 
-from allauth.socialaccount.models import SocialApp
+from allauth.socialaccount.models import SocialApp, SocialToken
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.management.base import BaseCommand, CommandError
@@ -15,6 +15,20 @@ from django.db import transaction
 
 class Command(BaseCommand):
     help = "Create/update the Google SocialApp and link it to the configured SITE_ID."
+
+    def _delete_google_apps(self, apps_qs, dry_run):
+        app_ids = list(apps_qs.values_list("id", flat=True))
+        if not app_ids:
+            return 0
+
+        if dry_run:
+            return len(app_ids)
+
+        # Delete dependents first to satisfy FK constraints.
+        SocialToken.objects.filter(app_id__in=app_ids).delete()
+        SocialApp.sites.through.objects.filter(socialapp_id__in=app_ids).delete()
+        apps_qs.delete()
+        return len(app_ids)
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -32,9 +46,38 @@ class Command(BaseCommand):
             action="store_true",
             help="Show what would be changed without writing to the database.",
         )
+        parser.add_argument(
+            "--force-db-sync",
+            action="store_true",
+            help="Sync DB SocialApp even when settings-based APP credentials are configured.",
+        )
 
     def handle(self, *args, **options):
         dry_run = options["dry_run"]
+        force_db_sync = options["force_db_sync"]
+
+        provider_cfg = settings.SOCIALACCOUNT_PROVIDERS.get("google", {})
+        app_cfg = provider_cfg.get("APP", {}) if isinstance(provider_cfg, dict) else {}
+        has_settings_app = bool(app_cfg.get("client_id") and app_cfg.get("secret"))
+
+        if has_settings_app and not force_db_sync:
+            existing_apps = SocialApp.objects.filter(provider="google").order_by("id")
+            db_app_count = existing_apps.count()
+            if db_app_count:
+                removed = self._delete_google_apps(existing_apps, dry_run=dry_run)
+                action = "Would remove" if dry_run else "Removed"
+                self.stdout.write(self.style.WARNING(
+                    "Google APP credentials are configured in settings; "
+                    "DB SocialApp rows would cause allauth MultipleObjectsReturned."
+                ))
+                self.stdout.write(self.style.SUCCESS(
+                    f"{action} {removed} DB Google SocialApp row(s) to keep a single app source."
+                ))
+            else:
+                self.stdout.write(
+                    "Google APP credentials are configured in settings; skipping DB SocialApp sync."
+                )
+            return
 
         site_id = getattr(settings, "SITE_ID", 1)
         try:
@@ -108,8 +151,13 @@ class Command(BaseCommand):
 
             if duplicates.exists():
                 duplicate_ids = ", ".join(str(a.id) for a in duplicates)
+                removed = self._delete_google_apps(duplicates, dry_run=dry_run)
+                action = "Would remove" if dry_run else "Removed"
                 self.stdout.write(self.style.WARNING(
                     f"Multiple Google SocialApp rows found. Keeping id={app.id}; extras: {duplicate_ids}."
+                ))
+                self.stdout.write(self.style.SUCCESS(
+                    f"{action} {removed} duplicate Google SocialApp row(s)."
                 ))
 
         if created:
