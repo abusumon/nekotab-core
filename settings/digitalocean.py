@@ -4,6 +4,7 @@ from urllib.parse import urlparse
 
 import dj_database_url
 import sentry_sdk
+from django.core.exceptions import ImproperlyConfigured
 from sentry_sdk.integrations.logging import LoggingIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.redis import RedisIntegration
@@ -121,41 +122,65 @@ CHANNEL_LAYERS = {
 
 # ==============================================================================
 # Email
-# DO blocks SMTP ports 25/465/587 on Droplets — use a third-party provider.
-# Supported: generic SMTP (EMAIL_HOST) or SendGrid API key (SENDGRID_API_KEY).
+# DigitalOcean Droplets block outbound SMTP on 25/465/587.
+# Prefer AWS SES over port 2587 (recommended) or a custom allowed relay port.
+# Priority:
+#   1) AWS_SES_SMTP_* (recommended)
+#   2) generic EMAIL_* (legacy compatibility)
+#   3) SENDGRID_API_KEY (legacy compatibility)
 # ==============================================================================
 
-if environ.get('EMAIL_HOST', ''):
-    _default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
-    DEFAULT_FROM_EMAIL = _default_from
-    SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
-    REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
+def _env_int(name, default):
+    try:
+        return int(environ.get(name, default))
+    except (TypeError, ValueError):
+        return int(default)
+
+
+_default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
+DEFAULT_FROM_EMAIL = _default_from
+SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
+REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
+EMAIL_TIMEOUT = _env_int('EMAIL_TIMEOUT', 10)
+
+_ses_smtp_user = (environ.get('AWS_SES_SMTP_USERNAME') or environ.get('SES_SMTP_USERNAME') or '').strip()
+_ses_smtp_password = (environ.get('AWS_SES_SMTP_PASSWORD') or environ.get('SES_SMTP_PASSWORD') or '').strip()
+_ses_smtp_host = (environ.get('AWS_SES_SMTP_HOST') or '').strip()
+
+if _ses_smtp_user and _ses_smtp_password:
+    EMAIL_HOST = _ses_smtp_host or environ.get('EMAIL_HOST', 'email-smtp.ap-southeast-2.amazonaws.com')
+    EMAIL_HOST_USER = _ses_smtp_user
+    EMAIL_HOST_PASSWORD = _ses_smtp_password
+    EMAIL_PORT = _env_int('AWS_SES_SMTP_PORT', 2587)
+    EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS', 'true').lower() == 'true'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+elif (
+    environ.get('EMAIL_HOST', '').strip()
+    and environ.get('EMAIL_HOST_USER', '').strip()
+    and environ.get('EMAIL_HOST_PASSWORD', '').strip()
+):
     EMAIL_HOST = environ['EMAIL_HOST']
     EMAIL_HOST_USER = environ['EMAIL_HOST_USER']
     EMAIL_HOST_PASSWORD = environ['EMAIL_HOST_PASSWORD']
-    EMAIL_PORT = int(environ.get('EMAIL_PORT', 587))
+    EMAIL_PORT = _env_int('EMAIL_PORT', 2587)
     EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS', 'true').lower() == 'true'
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_TIMEOUT = int(environ.get('EMAIL_TIMEOUT', 20))
 
-elif environ.get('SENDGRID_API_KEY', ''):
-    _default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
-    DEFAULT_FROM_EMAIL = _default_from
-    SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
-    REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
+elif environ.get('SENDGRID_API_KEY', '').strip():
     EMAIL_HOST = 'smtp.sendgrid.net'
     EMAIL_HOST_USER = 'apikey'
     EMAIL_HOST_PASSWORD = environ['SENDGRID_API_KEY']
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
+    EMAIL_PORT = _env_int('EMAIL_PORT', 2525)
+    EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS', 'true').lower() == 'true'
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_TIMEOUT = int(environ.get('EMAIL_TIMEOUT', 20))
 
 else:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
-    SERVER_EMAIL = environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
-    REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab.app>')
+    raise ImproperlyConfigured(
+        "DigitalOcean production requires SMTP credentials. "
+        "Set AWS_SES_SMTP_USERNAME/AWS_SES_SMTP_PASSWORD "
+        "(recommended), or EMAIL_HOST/EMAIL_HOST_USER/EMAIL_HOST_PASSWORD."
+    )
 
 # ==============================================================================
 # Subdomain routing

@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import EmailCampaign
+from .models import EmailCampaign, UploadedImage
 from participant_crm.models import CampaignAudience, ParticipantProfile, ParticipantTag
 from tournaments.models import Tournament
 
@@ -113,6 +113,24 @@ class CampaignAudienceForm(forms.Form):
             'active_since': aud.active_since,
             'custom_emails': aud.custom_emails,
         })
+
+
+class ImageUploadForm(forms.ModelForm):
+    """Form for uploading an image to the email image gallery."""
+
+    class Meta:
+        model = UploadedImage
+        fields = ['name', 'image']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'e.g., Newsletter header banner',
+            }),
+            'image': forms.ClearableFileInput(attrs={
+                'class': 'form-control',
+                'accept': 'image/*',
+            }),
+        }
 
 
 class TestEmailForm(forms.Form):

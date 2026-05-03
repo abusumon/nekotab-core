@@ -1,6 +1,7 @@
 import uuid
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
@@ -137,3 +138,51 @@ class EmailTemplate(models.Model):
     
     def __str__(self):
         return self.name
+
+
+def _email_image_upload_path(instance, filename):
+    """Store images in a UUID-named subfolder to avoid filename collisions."""
+    return f"email-images/{instance.pk}/{filename}"
+
+
+class UploadedImage(models.Model):
+    """Images uploaded for use in HTML promotional emails."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(
+        max_length=200,
+        help_text=_("A short label so you can recognise this image in the gallery"),
+    )
+    image = models.ImageField(
+        upload_to=_email_image_upload_path,
+        help_text=_("JPEG, PNG, GIF or WebP — recommended width ≤ 600 px for emails"),
+    )
+    original_filename = models.CharField(max_length=255, blank=True, editable=False)
+    file_size = models.PositiveIntegerField(default=0, editable=False)  # bytes
+    uploaded_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='uploaded_images',
+    )
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-uploaded_at']
+        verbose_name = _("Uploaded Image")
+        verbose_name_plural = _("Uploaded Images")
+
+    def __str__(self):
+        return self.name
+
+    def get_serve_url(self):
+        """Return the public serve URL path for this image (use in emails)."""
+        return reverse('image-serve', kwargs={'pk': self.pk})
+
+    @property
+    def file_size_display(self):
+        if self.file_size < 1024:
+            return f"{self.file_size} B"
+        if self.file_size < 1024 * 1024:
+            return f"{self.file_size / 1024:.1f} KB"
+        return f"{self.file_size / (1024 * 1024):.1f} MB"

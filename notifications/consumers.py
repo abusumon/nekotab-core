@@ -1,6 +1,6 @@
 import json
 from dataclasses import asdict
-from email.utils import formataddr
+from email.utils import formataddr, parseaddr
 from time import time
 from typing import Any, Dict, List, Optional, Tuple, Type, Union
 
@@ -53,7 +53,12 @@ class NotificationQueueConsumer(SyncConsumer):
 
     @staticmethod
     def _get_from_fields(t: Tournament) -> Tuple[str, Optional[List[str]]]:
-        from_email = formataddr((t.short_name, settings.DEFAULT_FROM_EMAIL))
+        # DEFAULT_FROM_EMAIL may already contain a display name. Parse it so we
+        # can safely replace only the display name with the tournament name.
+        default_name, default_addr = parseaddr(settings.DEFAULT_FROM_EMAIL)
+        sender_addr = default_addr or settings.DEFAULT_FROM_EMAIL
+        sender_name = (t.short_name or '').strip() or default_name or 'NekoTab'
+        from_email = formataddr((sender_name, sender_addr))
         if t.pref('reply_to_address'):
             return from_email, [formataddr((t.pref('reply_to_name').strip(), t.pref('reply_to_address')))]
         return from_email, None  # Shouldn't have array of None
@@ -107,12 +112,17 @@ class NotificationQueueConsumer(SyncConsumer):
             hook_id = str(bulk_notification.id) + "-" + str(recipient.id) + "-" + str(int(time()))[4:]
             context = Context(data)
             body = html_body.render(context)
+            headers = {
+                # Provider-neutral trace id
+                'X-NekoTab-Hook-ID': hook_id,
+            }
+            # Keep SendGrid compatibility for legacy webhook parsing.
+            if str(getattr(settings, 'EMAIL_HOST', '')).lower() == 'smtp.sendgrid.net':
+                headers['X-SMTPAPI'] = json.dumps({'unique_args': {'hook-id': hook_id}})
             email = mail.EmailMultiAlternatives(
                 subject=subject.render(context), body=html2text(body),
                 from_email=from_email, to=[formataddr((recipient.name.strip(), recipient.email))],
-                reply_to=reply_to, headers={
-                    'X-SMTPAPI': json.dumps({'unique_args': {'hook-id': hook_id}}),  # SendGrid-specific 'hook-id'
-                },
+                reply_to=reply_to, headers=headers,
             )
             email.attach_alternative(body, "text/html")
             messages.append(email)

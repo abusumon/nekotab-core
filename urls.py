@@ -20,6 +20,7 @@ from users.views import BlankSiteStartView, GoogleOAuthLoginGuardView
 from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
 from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
 import motionbank.views as motionbank_views
+from campaigns.views import serve_image
 
 # ==============================================================================
 # Base Patterns
@@ -234,11 +235,19 @@ urlpatterns = [
 
     # Tournament Chat Rooms
     path('<slug:tournament_slug>/chat/', include('chat.urls')),
+
+    # Public image serve URL — no auth required; used in HTML emails
+    path('uploads/<uuid:pk>/', serve_image, name='image-serve'),
 ]
 
 if settings.DEBUG and settings.ENABLE_DEBUG_TOOLBAR:  # Only serve debug toolbar when on DEBUG
     import debug_toolbar
     urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)))
+
+# Serve uploaded media files in local/Docker development
+if settings.DEBUG:
+    from django.conf.urls.static import static as static_files
+    urlpatterns += static_files(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # ==============================================================================

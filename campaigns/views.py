@@ -1,4 +1,5 @@
 import logging
+import mimetypes
 import re
 import time
 from html import unescape
@@ -11,7 +12,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.core.mail import EmailMultiAlternatives
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import FileResponse, Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
@@ -19,8 +20,8 @@ from django.utils.html import strip_tags
 from django.utils.translation import gettext as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, View
 
-from .forms import EmailCampaignForm, TestEmailForm, CampaignAudienceForm
-from .models import EmailCampaign, CampaignRecipient
+from .forms import EmailCampaignForm, TestEmailForm, CampaignAudienceForm, ImageUploadForm
+from .models import EmailCampaign, CampaignRecipient, UploadedImage
 from participant_crm.models import ParticipantProfile
 
 User = get_user_model()
@@ -494,3 +495,80 @@ class RetryFailedEmailsView(SuperuserRequiredMixin, View):
             
         except Exception as e:
             logger.error(f"Retry sending failed: {e}", exc_info=True)
+
+
+# ==============================================================================
+# Image Gallery (superuser only) + public serve view
+# ==============================================================================
+
+class ImageGalleryView(SuperuserRequiredMixin, ListView):
+    """Superuser-only gallery: list all uploaded images and show upload form."""
+    model = UploadedImage
+    template_name = 'campaigns/image_gallery.html'
+    context_object_name = 'images'
+    paginate_by = 24
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['upload_form'] = ImageUploadForm()
+        return context
+
+
+class ImageUploadView(SuperuserRequiredMixin, View):
+    """Handle image upload (POST only)."""
+
+    def post(self, request):
+        form = ImageUploadForm(request.POST, request.FILES)
+        if not form.is_valid():
+            messages.error(request, _('Upload failed: ') + str(form.errors.as_text()))
+            return redirect('campaigns:image-gallery')
+
+        img = form.save(commit=False)
+        img.uploaded_by = request.user
+        uploaded_file = request.FILES['image']
+        img.original_filename = uploaded_file.name
+        img.file_size = uploaded_file.size
+        img.save()
+
+        public_url = request.build_absolute_uri(
+            reverse('image-serve', kwargs={'pk': img.pk})
+        )
+        messages.success(
+            request,
+            _('Image uploaded! Copy this URL for your emails: ') + public_url,
+        )
+        return redirect('campaigns:image-gallery')
+
+
+class ImageDeleteView(SuperuserRequiredMixin, View):
+    """Delete an uploaded image (POST only)."""
+
+    def post(self, request, pk):
+        img = get_object_or_404(UploadedImage, pk=pk)
+        # Delete the underlying file from storage
+        img.image.delete(save=False)
+        img.delete()
+        messages.success(request, _('Image deleted.'))
+        return redirect('campaigns:image-gallery')
+
+
+def serve_image(request, pk):
+    """
+    Public view — anyone with the URL can view the image.
+    No authentication required (images are referenced in emails sent to the public).
+    """
+    img = get_object_or_404(UploadedImage, pk=pk)
+    img_url = img.image.url
+
+    # Cloud storage (Cloudinary, S3) returns an absolute https:// URL
+    if img_url.startswith('http://') or img_url.startswith('https://'):
+        return HttpResponseRedirect(img_url)
+
+    # Local / volume storage — serve the file directly
+    content_type, _ = mimetypes.guess_type(img.image.name)
+    if not content_type:
+        content_type = 'image/jpeg'
+    try:
+        return FileResponse(img.image.open('rb'), content_type=content_type)
+    except (FileNotFoundError, OSError):
+        raise Http404('Image file not found')

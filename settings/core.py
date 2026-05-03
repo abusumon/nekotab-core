@@ -14,6 +14,7 @@ def _env_bool(name, default=False):
 
 BASE_DIR = os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # ==============================================================================
 # Overwritten in environment-specific settings modules
@@ -308,6 +309,15 @@ STORAGES = {
         "BACKEND": 'whitenoise.storage.CompressedManifestStaticFilesStorage',
     },
 }
+
+# If CLOUDINARY_URL is set, use Cloudinary for uploaded media files
+# (email images, etc.) so they persist on ephemeral Heroku/Render filesystems.
+# Free tier at https://cloudinary.com — set CLOUDINARY_URL=cloudinary://key:secret@cloud
+if os.environ.get('CLOUDINARY_URL'):
+    INSTALLED_APPS = tuple(list(INSTALLED_APPS) + ['cloudinary_storage', 'cloudinary'])
+    STORAGES["default"] = {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    }
 
 # ==============================================================================
 # Logging

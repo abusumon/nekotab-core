@@ -15,4 +15,8 @@ urlpatterns = [
     path('<uuid:pk>/send/', views.SendCampaignView.as_view(), name='send'),
     path('<uuid:pk>/retry-failed/', views.RetryFailedEmailsView.as_view(), name='retry_failed'),
     path('<uuid:pk>/stats/', views.CampaignStatsAPIView.as_view(), name='stats'),
+    # Image gallery (superuser only)
+    path('images/', views.ImageGalleryView.as_view(), name='image-gallery'),
+    path('images/upload/', views.ImageUploadView.as_view(), name='image-upload'),
+    path('images/<uuid:pk>/delete/', views.ImageDeleteView.as_view(), name='image-delete'),
 ]
