@@ -1,8 +1,11 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-import tabbycat.campaigns.models
 import uuid
+
+
+def _email_image_upload_path(instance, filename):
+    return f"email-images/{instance.pk}/{filename}"
 
 
 class Migration(migrations.Migration):
@@ -23,7 +26,7 @@ class Migration(migrations.Migration):
                 )),
                 ('image', models.ImageField(
                     help_text='JPEG, PNG, GIF or WebP — recommended width ≤ 600 px for emails',
-                    upload_to=tabbycat.campaigns.models._email_image_upload_path,
+                    upload_to=_email_image_upload_path,
                 )),
                 ('original_filename', models.CharField(blank=True, editable=False, max_length=255)),
                 ('file_size', models.PositiveIntegerField(default=0, editable=False)),
