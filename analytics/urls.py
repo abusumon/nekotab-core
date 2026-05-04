@@ -18,4 +18,7 @@ urlpatterns = [
     # API endpoints
     path('api/live-visitors/', views.LiveVisitorsAPIView.as_view(), name='api_live_visitors'),
     path('api/traffic/', views.TrafficChartAPIView.as_view(), name='api_traffic'),
+
+    # Motion Bank bulk upload
+    path('motions/upload/', views.MotionBulkUploadView.as_view(), name='motion_bulk_upload'),
 ]

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{{ title }} — NekoTab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: #12121a;
+      border: 1px solid #2a2a3a;
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: calc(100% - 32px);
+      text-align: center;
+      animation: fadeUp 0.4s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .icon {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 24px;
+    }
+    .icon-success { background: rgba(16,185,129,.15); }
+    .icon-error   { background: rgba(239,68,68,.15); }
+    h1 {
+      font-size: 22px; font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    p.message {
+      font-size: 15px;
+      color: #8888aa;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .email-badge {
+      display: inline-block;
+      background: rgba(99,102,241,.15);
+      border: 1px solid rgba(99,102,241,.3);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: #818cf8;
+      margin-bottom: 32px;
+      word-break: break-all;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      color: #fff;
+      font-size: 14px; font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn:hover { opacity: .85; }
+    .footer {
+      margin-top: 28px;
+      font-size: 12px;
+      color: #55556a;
+    }
+    .footer a { color: #6366f1; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    {% if status == 'success' %}
+      <div class="icon icon-success">✅</div>
+      <h1>{{ title }}</h1>
+      {% if email %}
+        <div class="email-badge">{{ email }}</div>
+      {% endif %}
+      <p class="message">{{ message }}</p>
+      <p class="message" style="font-size:13px;">
+        You will no longer receive promotional emails from NekoTab.
+        Transactional emails (password resets, tournament invites) are not affected.
+      </p>
+      <a href="/" class="btn">Back to NekoTab</a>
+    {% else %}
+      <div class="icon icon-error">⚠️</div>
+      <h1>{{ title }}</h1>
+      <p class="message">{{ message }}</p>
+      <a href="/" class="btn">Back to NekoTab</a>
+    {% endif %}
+
+    <div class="footer">
+      <a href="/">nekotab.app</a> &bull; The global debate platform
+    </div>
+  </div>
+</body>
+</html>

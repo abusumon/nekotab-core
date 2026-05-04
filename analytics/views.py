@@ -1,8 +1,11 @@
+import csv
+import io
 import json
 import logging
 from datetime import timedelta
 
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.cache import cache
@@ -13,11 +16,13 @@ from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.utils import timezone
 from django.utils.decorators import method_decorator
+from django.utils.text import slugify
 from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView, ListView, View
 
 from tournaments.models import Tournament, Round
 from results.models import BallotSubmission
+from motionbank.models import MotionEntry
 from .models import PageView, DailyStats, ActiveSession
 
 User = get_user_model()
@@ -54,10 +59,11 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         last_7d = now - timedelta(days=7)
         last_30d = now - timedelta(days=30)
         
-        # === REAL-TIME STATS ===
+        # Real-time live visitors (exclude health-check paths)
         ActiveSession.cleanup_stale()
-        context['live_visitors'] = ActiveSession.objects.count()
-        context['active_sessions'] = ActiveSession.objects.all()[:10]
+        live_sessions = ActiveSession.objects.exclude(current_path='/health/')
+        context['live_visitors'] = live_sessions.count()
+        context['active_sessions'] = live_sessions[:10]
         
         # === TODAY'S STATS ===
         today_views = PageView.objects.filter(timestamp__date=today)
@@ -104,7 +110,9 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         context['active_tournaments'] = Tournament.objects.filter(active=True).count()
         
         # Recent tournaments (ordered by id desc since Tournament has no created timestamp)
-        context['recent_tournaments'] = Tournament.objects.select_related('owner').order_by('-id')[:10]
+        context['recent_tournaments'] = Tournament.objects.select_related('owner').annotate(
+            num_teams=Count('team', distinct=True),
+        ).order_by('-id')[:10]
         
         # === DEBATE STATS ===
         total_rounds = Round.objects.count()
@@ -168,7 +176,13 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
             count=Count('id')
         ).order_by('-count')[:10]
         context['referrer_stats'] = referrers
-        
+
+        # === MOTION BANK STATS ===
+        context['total_motions'] = MotionEntry.objects.count()
+        context['motions_by_format'] = list(
+            MotionEntry.objects.values('format').annotate(count=Count('id')).order_by('-count')[:6]
+        )
+
         return context
 
 
@@ -288,9 +302,9 @@ class LiveVisitorsAPIView(SuperuserRequiredMixin, View):
     
     def get(self, request):
         ActiveSession.cleanup_stale()
-        total_count = ActiveSession.objects.count()
-        sessions = ActiveSession.objects.select_related('user').all()[:20]
-        
+        sessions = ActiveSession.objects.exclude(current_path='/health/').select_related('user')
+        total_count = sessions.count()
+
         return JsonResponse({
             'count': total_count,
             'visitors': [
@@ -301,7 +315,7 @@ class LiveVisitorsAPIView(SuperuserRequiredMixin, View):
                     'user': s.user.username if s.user else None,
                     'duration': str(timezone.now() - s.started_at).split('.')[0],
                 }
-                for s in sessions
+                for s in sessions[:20]
             ]
         })
 
@@ -804,3 +818,109 @@ class DeleteUsersView(SuperuserRequiredMixin, View):
             'skipped_count': len(skipped),
             'failed_count': len(failed),
         })
+
+
+# ==============================================================================
+# Motion Bank — Bulk CSV Upload (superuser only)
+# ==============================================================================
+
+class MotionBulkUploadView(SuperuserRequiredMixin, View):
+    """Accept a CSV file and bulk-create MotionEntry records in the motion bank.
+
+    Expected CSV columns (header row required):
+      text, format, tournament_name, year, region, round_info, info_slide, difficulty
+
+    Only 'text' is strictly required. All others are optional and will use
+    sensible defaults if omitted or blank.
+    """
+
+    ALLOWED_FORMATS = {c.value for c in MotionEntry.MotionFormat}
+    FORMAT_DISPLAY = {c.value: c.label for c in MotionEntry.MotionFormat}
+
+    def post(self, request):
+        csv_file = request.FILES.get('csv_file')
+        if not csv_file:
+            messages.error(request, 'Please select a CSV file to upload.')
+            return redirect('analytics:dashboard')
+
+        if not csv_file.name.endswith('.csv'):
+            messages.error(request, 'Only .csv files are accepted.')
+            return redirect('analytics:dashboard')
+
+        try:
+            decoded = csv_file.read().decode('utf-8-sig')
+        except UnicodeDecodeError:
+            messages.error(request, 'CSV file must be UTF-8 encoded.')
+            return redirect('analytics:dashboard')
+
+        reader = csv.DictReader(io.StringIO(decoded))
+        if 'text' not in (reader.fieldnames or []):
+            messages.error(request, 'CSV must have a "text" column.')
+            return redirect('analytics:dashboard')
+
+        created = 0
+        skipped = 0
+        errors = []
+
+        for i, row in enumerate(reader, start=2):  # row 1 is header
+            text = row.get('text', '').strip()
+            if not text:
+                skipped += 1
+                continue
+
+            fmt = row.get('format', 'bp').strip().lower()
+            if fmt not in self.ALLOWED_FORMATS:
+                fmt = 'bp'
+
+            year_raw = row.get('year', '').strip()
+            try:
+                year = int(year_raw) if year_raw else None
+            except ValueError:
+                year = None
+
+            difficulty_raw = row.get('difficulty', '3').strip()
+            try:
+                difficulty = int(difficulty_raw)
+                if difficulty not in range(1, 6):
+                    difficulty = 3
+            except ValueError:
+                difficulty = 3
+
+            # Build a unique slug from the first 80 chars of text
+            base_slug = slugify(text[:80])
+            slug = base_slug
+            suffix = 1
+            while MotionEntry.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{suffix}"
+                suffix += 1
+
+            try:
+                MotionEntry.objects.create(
+                    text=text,
+                    slug=slug,
+                    format=fmt,
+                    tournament_name=row.get('tournament_name', '').strip()[:200],
+                    year=year,
+                    region=row.get('region', '').strip()[:100],
+                    round_info=row.get('round_info', '').strip()[:100],
+                    info_slide=row.get('info_slide', '').strip(),
+                    difficulty=difficulty,
+                )
+                created += 1
+            except Exception as exc:
+                errors.append(f"Row {i}: {exc}")
+
+        if errors:
+            messages.warning(
+                request,
+                f'Imported {created} motions, skipped {skipped} blank rows, '
+                f'{len(errors)} errors: ' + '; '.join(errors[:3]),
+            )
+        else:
+            messages.success(
+                request,
+                f'Successfully imported {created} motions to the Motion Bank'
+                + (f' ({skipped} blank rows skipped).' if skipped else '.'),
+            )
+
+        return redirect('analytics:dashboard')

@@ -868,8 +868,8 @@
                             <thead>
                                 <tr>
                                     <th>Tournament</th>
-                                    <th>Created By</th>
-                                    <th>Created</th>
+                                    <th>Owner</th>
+                                    <th>Teams</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -893,11 +893,7 @@
                                         </div>
                                     </td>
                                     <td style="color: var(--text-secondary);">
-                                        {% if tournament.created_at %}
-                                        {{ tournament.created_at|timesince }} ago
-                                        {% else %}
-                                        —
-                                        {% endif %}
+                                        {{ tournament.num_teams|default:"0" }}
                                     </td>
                                     <td>
                                         {% if tournament.active %}
@@ -936,7 +932,7 @@
                     </div>
                     {% endfor %}
                     
-                    <h4 style="font-size: 14px; margin: 24px 0 16px; color: var(--text-secondary);">Top Pages</h4>
+                    <h4 style="font-size: 14px; margin: 24px 0 16px; color: var(--text-secondary);">Top Pages (7 days)</h4>
                     {% for page in top_pages %}
                     <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border);">
                         <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px;">{{ page.path }}</span>
@@ -945,6 +941,83 @@
                     {% empty %}
                     <div style="color: var(--text-secondary); text-align: center; padding: 20px;">No page data yet</div>
                     {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Motion Bank Row -->
+        <div class="charts-row" style="margin-bottom: 32px;">
+            <!-- Motion Bank Stats -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>📋 Motion Bank</h3>
+                    <span style="font-size: 13px; color: var(--text-secondary);">{{ total_motions }} total motions</span>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
+                        {% for fmt in motions_by_format %}
+                        <div style="background: var(--bg-hover); border-radius: 10px; padding: 12px; text-align: center;">
+                            <div style="font-size: 20px; font-weight: 700; color: var(--accent-light);">{{ fmt.count }}</div>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase;">{{ fmt.format }}</div>
+                        </div>
+                        {% empty %}
+                        <div style="grid-column: 1/-1; color: var(--text-secondary); text-align: center; padding: 20px;">No motions yet</div>
+                        {% endfor %}
+                    </div>
+                    <a href="/motions/" class="btn btn-secondary" style="width: 100%; justify-content: center;">Browse Motion Bank →</a>
+                </div>
+            </div>
+
+            <!-- Motion Bulk Upload -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>⬆️ Upload Motions (CSV)</h3>
+                </div>
+                <div class="card-body">
+                    <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">
+                        Upload a CSV to bulk-add motions to the Motion Bank.<br>
+                        Required column: <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">text</code><br>
+                        Optional: <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">format</code>,
+                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">tournament_name</code>,
+                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">year</code>,
+                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">region</code>,
+                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">round_info</code>,
+                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">info_slide</code>,
+                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">difficulty</code> (1–5)
+                    </p>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 16px;">
+                        Valid formats: <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">bp</code>
+                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">wsdc</code>
+                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">ap</code>
+                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">pf</code>
+                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">ld</code>
+                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">policy</code>
+                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">cp</code>
+                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">other</code>
+                    </p>
+                    <form method="post" action="{% url 'analytics:motion_bulk_upload' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label style="display: block; margin-bottom: 8px; font-size: 13px; font-weight: 500;">Select CSV file</label>
+                        <input type="file" name="csv_file" accept=".csv"
+                               style="display: block; width: 100%; padding: 10px; background: var(--bg-hover);
+                                      border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary);
+                                      font-size: 13px; margin-bottom: 16px; cursor: pointer;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            Upload &amp; Import Motions
+                        </button>
+                    </form>
+
+                    {% if messages %}
+                    <div style="margin-top: 16px;">
+                        {% for message in messages %}
+                        <div style="padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 8px;
+                                    background: {% if message.tags == 'success' %}rgba(16,185,129,.15){% elif message.tags == 'error' %}rgba(239,68,68,.15){% else %}rgba(245,158,11,.15){% endif %};
+                                    color: {% if message.tags == 'success' %}var(--success){% elif message.tags == 'error' %}var(--danger){% else %}var(--warning){% endif %};">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

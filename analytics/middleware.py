@@ -32,6 +32,7 @@ class AnalyticsMiddleware:
         r'^/admin/jsi18n/',
         r'^/analytics/',
         r'^/database/',
+        r'^/health',
         r'\.ico$',
         r'\.js$',
         r'\.css$',

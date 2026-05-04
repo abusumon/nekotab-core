@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.core import signing
 from django.core.mail import EmailMultiAlternatives
 from django.db.models import Q
 from django.http import FileResponse, Http404, HttpResponseRedirect, JsonResponse
@@ -305,8 +306,11 @@ class SendCampaignView(SuperuserRequiredMixin, View):
             ))
         CampaignRecipient.objects.bulk_create(recipient_objects, ignore_conflicts=True)
         
+        # Capture site URL for unsubscribe links (unavailable in background thread)
+        site_url = request.build_absolute_uri('/').rstrip('/')
+
         # Start sending in background thread
-        thread = Thread(target=self._send_campaign_emails, args=(campaign.pk,))
+        thread = Thread(target=self._send_campaign_emails, args=(campaign.pk, site_url))
         thread.daemon = True
         thread.start()
         
@@ -337,62 +341,82 @@ class SendCampaignView(SuperuserRequiredMixin, View):
                 email__isnull=False
             ).exclude(email='').values_list('id', 'email'))
     
-    def _send_campaign_emails(self, campaign_pk):
+    def _send_campaign_emails(self, campaign_pk, site_url=''):
         """Background task to send all campaign emails."""
         try:
             campaign = EmailCampaign.objects.get(pk=campaign_pk)
             recipients = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING)
-            
-            plain_text = campaign.plain_text_content
-            if not plain_text:
-                plain_text = strip_tags(campaign.html_content)
-                plain_text = unescape(plain_text)
-                plain_text = re.sub(r'\n\s*\n', '\n\n', plain_text)
-            
+
+            plain_text_base = campaign.plain_text_content
+            if not plain_text_base:
+                plain_text_base = strip_tags(campaign.html_content)
+                plain_text_base = unescape(plain_text_base)
+                plain_text_base = re.sub(r'\n\s*\n', '\n\n', plain_text_base)
+
             successful = 0
             failed = 0
-            
+
             for recipient in recipients:
                 try:
+                    # Generate a per-recipient unsubscribe token
+                    token = signing.dumps({'email': recipient.email}, salt='crm-unsub')
+                    unsub_url = f"{site_url}/unsubscribe/?token={token}"
+
+                    # Append unsubscribe footer to HTML
+                    unsub_html = (
+                        '<div style="text-align:center;padding:24px 0 8px;'
+                        'font-family:sans-serif;font-size:12px;color:#888888;">'
+                        f'You received this email because you registered on NekoTab. '
+                        f'<a href="{unsub_url}" style="color:#6366f1;">Unsubscribe</a>'
+                        '</div>'
+                    )
+                    html_with_footer = campaign.html_content + unsub_html
+
+                    # Append unsubscribe footer to plain text
+                    plain_with_footer = (
+                        plain_text_base
+                        + f"\n\n---\nTo unsubscribe: {unsub_url}"
+                    )
+
                     email = EmailMultiAlternatives(
                         subject=campaign.subject,
-                        body=plain_text,
+                        body=plain_with_footer,
                         from_email=settings.DEFAULT_FROM_EMAIL,
                         to=[recipient.email],
                     )
-                    email.attach_alternative(campaign.html_content, "text/html")
+                    email.attach_alternative(html_with_footer, "text/html")
                     email.send(fail_silently=False)
-                    
+
                     recipient.status = CampaignRecipient.Status.SENT
                     recipient.sent_at = timezone.now()
                     successful += 1
-                    
+
                 except Exception as e:
                     recipient.status = CampaignRecipient.Status.FAILED
                     recipient.error_message = str(e)
                     failed += 1
                     logger.error(f"Failed to send to {recipient.email}: {e}")
-                
+
                 recipient.save()
-                
+
                 # Rate limiting: Resend free tier allows max 2 emails/second
                 # Wait 0.6 seconds between emails to stay under the limit
                 time.sleep(0.6)
-            
+
             # Update campaign stats
             campaign.successful_sends = successful
             campaign.failed_sends = failed
             campaign.status = EmailCampaign.Status.SENT
             campaign.sent_at = timezone.now()
             campaign.save()
-            
+
         except Exception as e:
             logger.error(f"Campaign sending failed: {e}", exc_info=True)
             try:
                 campaign = EmailCampaign.objects.get(pk=campaign_pk)
                 campaign.status = EmailCampaign.Status.FAILED
                 campaign.save()
-            except:
+            except Exception:
                 pass
 
 
@@ -437,62 +461,77 @@ class RetryFailedEmailsView(SuperuserRequiredMixin, View):
         campaign.status = EmailCampaign.Status.SENDING
         campaign.save()
         
+        # Capture site URL for unsubscribe links (unavailable in background thread)
+        site_url = request.build_absolute_uri('/').rstrip('/')
+
         # Start sending in background thread
-        thread = Thread(target=self._retry_failed_emails, args=(campaign.pk,))
+        thread = Thread(target=self._retry_failed_emails, args=(campaign.pk, site_url))
         thread.daemon = True
         thread.start()
         
         messages.success(request, _(f"Retrying {failed_count} failed emails..."))
         return redirect('campaigns:detail', pk=pk)
     
-    def _retry_failed_emails(self, campaign_pk):
+    def _retry_failed_emails(self, campaign_pk, site_url=''):
         """Background task to retry failed emails."""
         try:
             campaign = EmailCampaign.objects.get(pk=campaign_pk)
             recipients = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING)
-            
-            plain_text = campaign.plain_text_content
-            if not plain_text:
-                plain_text = strip_tags(campaign.html_content)
-                plain_text = unescape(plain_text)
-                plain_text = re.sub(r'\n\s*\n', '\n\n', plain_text)
-            
+
+            plain_text_base = campaign.plain_text_content
+            if not plain_text_base:
+                plain_text_base = strip_tags(campaign.html_content)
+                plain_text_base = unescape(plain_text_base)
+                plain_text_base = re.sub(r'\n\s*\n', '\n\n', plain_text_base)
+
             new_successful = 0
             new_failed = 0
-            
+
             for recipient in recipients:
                 try:
+                    token = signing.dumps({'email': recipient.email}, salt='crm-unsub')
+                    unsub_url = f"{site_url}/unsubscribe/?token={token}"
+                    unsub_html = (
+                        '<div style="text-align:center;padding:24px 0 8px;'
+                        'font-family:sans-serif;font-size:12px;color:#888888;">'
+                        f'You received this email because you registered on NekoTab. '
+                        f'<a href="{unsub_url}" style="color:#6366f1;">Unsubscribe</a>'
+                        '</div>'
+                    )
+                    html_with_footer = campaign.html_content + unsub_html
+                    plain_with_footer = plain_text_base + f"\n\n---\nTo unsubscribe: {unsub_url}"
+
                     email = EmailMultiAlternatives(
                         subject=campaign.subject,
-                        body=plain_text,
+                        body=plain_with_footer,
                         from_email=settings.DEFAULT_FROM_EMAIL,
                         to=[recipient.email],
                     )
-                    email.attach_alternative(campaign.html_content, "text/html")
+                    email.attach_alternative(html_with_footer, "text/html")
                     email.send(fail_silently=False)
-                    
+
                     recipient.status = CampaignRecipient.Status.SENT
                     recipient.sent_at = timezone.now()
                     recipient.error_message = ''
                     new_successful += 1
-                    
+
                 except Exception as e:
                     recipient.status = CampaignRecipient.Status.FAILED
                     recipient.error_message = str(e)
                     new_failed += 1
                     logger.error(f"Failed to send to {recipient.email}: {e}")
-                
+
                 recipient.save()
-                
+
                 # Rate limiting: Wait 0.6 seconds between emails
                 time.sleep(0.6)
-            
+
             # Update campaign stats
             campaign.successful_sends += new_successful
             campaign.failed_sends = new_failed
             campaign.status = EmailCampaign.Status.SENT
             campaign.save()
-            
+
         except Exception as e:
             logger.error(f"Retry sending failed: {e}", exc_info=True)
 

@@ -3,7 +3,7 @@ import csv
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.views.generic import ListView, View
 
@@ -217,28 +217,28 @@ class UnsubscribeView(View):
         data = ParticipantProfile.verify_unsubscribe_token(token)
 
         if not data:
-            return self._page('Invalid or Expired Link',
-                              'This unsubscribe link is no longer valid.')
+            return render(request, 'participant_crm/unsubscribe.html', {
+                'status': 'invalid',
+                'title': 'Invalid or Expired Link',
+                'message': 'This unsubscribe link is no longer valid. Links expire after one year.',
+            })
 
-        try:
-            profile = ParticipantProfile.objects.get(email=data['email'])
+        email = data.get('email', '')
+        profile, _ = ParticipantProfile.objects.get_or_create(
+            email=email,
+            defaults={
+                'name': email.split('@')[0],
+                'primary_role': 'debater',
+            }
+        )
+        if profile.email_subscribed:
             profile.email_subscribed = False
             profile.unsubscribed_at = timezone.now()
             profile.save(update_fields=['email_subscribed', 'unsubscribed_at'])
-            return self._page('Unsubscribed',
-                              'You have been removed from NekoTab email communications.',
-                              'You can close this page.')
-        except ParticipantProfile.DoesNotExist:
-            return self._page('Email Not Found',
-                              'We could not find this email in our records.')
 
-    @staticmethod
-    def _page(title, message, sub=''):
-        sub_html = f'<p style="color:#888;margin-top:20px;">{sub}</p>' if sub else ''
-        html = (
-            '<!doctype html><html><body style="font-family:Inter,sans-serif;'
-            'text-align:center;padding:60px;background:#0a0a0f;color:#fff;">'
-            f'<h2>{title}</h2><p style="color:#8888aa;">{message}</p>{sub_html}'
-            '</body></html>'
-        )
-        return HttpResponse(html, content_type='text/html')
+        return render(request, 'participant_crm/unsubscribe.html', {
+            'status': 'success',
+            'title': 'Successfully Unsubscribed',
+            'message': f'{email} has been removed from NekoTab email communications.',
+            'email': email,
+        })
