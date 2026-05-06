@@ -308,7 +308,10 @@ class SubdomainTournamentMiddleware:
         '/calicotab-alternative/', '/debate-data-alternative/', '/congress-debate-tabulation/',
         '/sitemap.xml', '/robots.txt', '/ads.txt',
         '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
-        '/admin/',
+        # NOTE: /admin/ is intentionally NOT listed here. On a tournament subdomain,
+        # /admin/... means the tournament admin section and must be rewritten.
+        # The bare-domain Django admin (nekotab.app/admin/) is never affected
+        # because BAD_PREFIXES is only checked after a tournament subdomain is confirmed.
     )
 
     def __init__(self, get_response):
@@ -457,7 +460,10 @@ class SubdomainTenantMiddleware:
         '/calicotab-alternative/', '/debate-data-alternative/', '/congress-debate-tabulation/',
         '/sitemap.xml', '/robots.txt', '/ads.txt',
         '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
-        '/admin/',
+        # NOTE: /admin/ is intentionally NOT listed here. On a tournament subdomain,
+        # /admin/... means the tournament admin section and must be rewritten.
+        # The bare-domain Django admin (nekotab.app/admin/) is never affected
+        # because BAD_PREFIXES is only checked after a tournament subdomain is confirmed.
     )
 
     def __init__(self, get_response):

@@ -2,10 +2,14 @@ import logging
 import zoneinfo
 from datetime import date, datetime, time
 
+from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
+from rest_framework.request import Request
 from rest_framework.test import APIClient, APITestCase
+from rest_framework.test import APIRequestFactory
 
+from api.serializers import BallotSerializer, FeedbackSerializer
 from adjallocation.models import DebateAdjudicator
 from adjfeedback.models import AdjudicatorFeedback, AdjudicatorFeedbackQuestion
 from draw.models import Debate, DebateTeam
@@ -13,6 +17,7 @@ from draw.types import DebateSide
 from motions.models import Motion, RoundMotion
 from options.presets import CanadianParliamentaryPreferences
 from participants.models import Adjudicator, Speaker, Team
+from results.models import Submission
 from tournaments.models import Round, Tournament
 from utils.misc import reverse_round, reverse_tournament
 from utils.tests import CompletedTournamentTestMixin
@@ -1051,6 +1056,63 @@ class FeedbackSerializerTests(APITestCase):
         self.tournament.delete()
         self.user.delete()
         logging.disable(logging.NOTSET)
+
+    def _request(self, *, user=None, auth=None):
+        raw_request = APIRequestFactory().post('/api/test')
+        request = Request(raw_request)
+        request.user = user if user is not None else AnonymousUser()
+        request.auth = auth
+        return request
+
+    def test_feedback_submitter_fields_private_url_submission(self):
+        serializer = FeedbackSerializer(context={
+            'request': self._request(auth=self.a1),
+            'participant_requester': self.t1,
+        })
+
+        fields = serializer.get_submitter_fields()
+
+        self.assertEqual(fields['participant_submitter'], self.a1)
+        self.assertIsNone(fields['submitter'])
+        self.assertEqual(fields['submitter_type'], Submission.Submitter.PUBLIC)
+
+    def test_feedback_submitter_fields_authenticated_tabroom_submission(self):
+        serializer = FeedbackSerializer(context={
+            'request': self._request(user=self.user),
+            'participant_requester': None,
+        })
+
+        fields = serializer.get_submitter_fields()
+
+        self.assertIsNone(fields['participant_submitter'])
+        self.assertEqual(fields['submitter'], self.user)
+        self.assertEqual(fields['submitter_type'], Submission.Submitter.TABROOM)
+
+    def test_ballot_submitter_fields_private_url_submission(self):
+        serializer = BallotSerializer(context={
+            'request': self._request(auth=self.a1),
+            'participant_requester': self.a1,
+            'debate': self.debate,
+        })
+
+        fields = serializer.get_submitter_fields()
+
+        self.assertEqual(fields['participant_submitter'], self.a1)
+        self.assertIsNone(fields['submitter'])
+        self.assertEqual(fields['submitter_type'], Submission.Submitter.PUBLIC)
+
+    def test_ballot_submitter_fields_unauthenticated_public_submission(self):
+        serializer = BallotSerializer(context={
+            'request': self._request(),
+            'participant_requester': None,
+            'debate': self.debate,
+        })
+
+        fields = serializer.get_submitter_fields()
+
+        self.assertIsNone(fields['participant_submitter'])
+        self.assertIsNone(fields['submitter'])
+        self.assertEqual(fields['submitter_type'], Submission.Submitter.PUBLIC)
 
     def test_team_missing_required_question(self):
         AdjudicatorFeedbackQuestion.objects.create(

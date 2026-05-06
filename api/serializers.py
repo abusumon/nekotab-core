@@ -64,6 +64,17 @@ def create_barcode(instance, barcode):
     checkin_model.objects.create(barcode=barcode, **{checkin_model.instance_attr: instance})
 
 
+def get_submission_actor_fields(request, participant_submitter=None):
+    submitter_user = request.user if getattr(request.user, 'is_authenticated', False) else None
+    is_public_submission = participant_submitter is not None or submitter_user is None
+    return {
+        'participant_submitter': participant_submitter,
+        'submitter': submitter_user,
+        'submitter_type': Submission.Submitter.PUBLIC if is_public_submission else Submission.Submitter.TABROOM,
+        'ip_address': get_ip_address(request),
+    }
+
+
 def handle_update_barcode(instance, validated_data):
     if barcode := validated_data.pop('checkin_identifier', {}).get('barcode', None):
         if ci := getattr(instance, 'checkin_identifier', None):
@@ -1269,12 +1280,10 @@ class FeedbackSerializer(serializers.ModelSerializer):
     def get_submitter_fields(self):
         participant = self.context['participant_requester']
         request = self.context['request']
-        return {
-            'participant_submitter': request.auth if participant else None,
-            'submitter': participant or request.user,
-            'submitter_type': Submission.Submitter.PUBLIC if participant else Submission.Submitter.TABROOM,
-            'ip_address': get_ip_address(request),
-        }
+        participant_submitter = request.auth if participant else None
+        if participant and not isinstance(participant_submitter, Person):
+            raise PermissionDenied('Participant authentication context is invalid')
+        return get_submission_actor_fields(request, participant_submitter=participant_submitter)
 
     def create(self, validated_data):
         answers = validated_data.pop('get_answers', [])
@@ -1505,12 +1514,7 @@ class BallotSerializer(serializers.ModelSerializer):
         request = self.context['request']
         if participant is not None and not self.context['debate'].debateadjudicator_set.filter(adjudicator_id=participant.id).exists():
             raise PermissionDenied('Authenticated adjudicator is not in debate')
-        return {
-            'participant_submitter': participant,
-            'submitter': participant or request.user,
-            'submitter_type': Submission.Submitter.PUBLIC if participant else Submission.Submitter.TABROOM,
-            'ip_address': get_ip_address(request),
-        }
+        return get_submission_actor_fields(request, participant_submitter=participant)
 
     def create(self, validated_data):
         result_data = validated_data.pop('result').pop('get_result_info')

@@ -1,11 +1,14 @@
 import json
 import logging
+from datetime import timedelta
 
 from channels.db import database_sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
+from django.conf import settings
 from django.utils import timezone
 
 logger = logging.getLogger(__name__)
+CHAT_SESSION_TTL_SECONDS = int(getattr(settings, 'CHAT_SESSION_TTL_SECONDS', 12 * 60 * 60))
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -114,7 +117,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
         from .models import RoomSession
         if not session_key:
             return False
-        return RoomSession.objects.filter(session_key=session_key, room=room).exists()
+        cutoff = timezone.now() - timedelta(seconds=CHAT_SESSION_TTL_SECONDS)
+        return RoomSession.objects.filter(session_key=session_key, room=room, unlocked_at__gte=cutoff).exists()
 
     @database_sync_to_async
     def get_recent_messages(self, room):
