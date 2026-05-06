@@ -228,21 +228,6 @@ vueComponents.MotionBankHome = () => import('../../motionbank/templates/MotionBa
 vueComponents.MotionDetail = () => import('../../motionbank/templates/MotionDetail.vue')
 vueComponents.MotionSubmit = () => import('../../motionbank/templates/MotionSubmit.vue')
 
-// Individual Events (Speech Events)
-// NOTE: Must use kebab-case keys because Vue 2's PascalCase resolution
-// converts "ie-" to "Ie" not "IE", so IESetupWizard would never match
-// <ie-setup-wizard> in DOM templates.
-vueComponents['ie-setup-wizard'] = () => import('../ie/IESetupWizard.vue')
-vueComponents['ie-dashboard'] = () => import('../ie/IEDashboard.vue')
-vueComponents['ie-room-draw'] = () => import('../ie/IERoomDraw.vue')
-vueComponents['ie-ballot-form'] = () => import('../ie/IEBallotForm.vue')
-vueComponents['ie-standings'] = () => import('../ie/IEStandings.vue')
-vueComponents['ie-entry-manager'] = () => import('../ie/IEEntryManager.vue')
-vueComponents['ie-judge-links'] = () => import('../ie/IEJudgeLinks.vue')
-vueComponents['ie-finalists'] = () => import('../ie/IEFinalists.vue')
-vueComponents['ie-public-landing'] = () => import('../ie/IEPublicLanding.vue')
-vueComponents['ie-tournament-prep'] = () => import('../ie/IETournamentPrep.vue')
-
 // Congressional Debate (nekocongress)
 vueComponents['congress-dashboard'] = () => import('../congress/CongressDashboard.vue')
 vueComponents['congress-setup-wizard'] = () => import('../congress/CongressSetupWizard.vue')
