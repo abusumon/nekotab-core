@@ -398,8 +398,9 @@ class PublicSpeaking(PreferencesPreset):
     # Draw Rules
     draw_rules__avoid_same_institution         = False
     draw_rules__avoid_team_history             = False
-    # Standings
-    standings__team_standings_precedence       = ['speaks_avg']
+    # Standings — rank by total points first, average as tiebreaker
+    # (standard for public speaking / individual speech tournaments)
+    standings__team_standings_precedence       = ['speaks_sum', 'speaks_avg']
 
 
 class PublicInformation(PreferencesPreset):

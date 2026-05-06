@@ -37,13 +37,6 @@ if not SECRET_KEY and not os.environ.get('LOCAL_SETTINGS', ''):
         "Set it in your environment or use local.py for development."
     )
 
-# nekospeech API URL.
-# Defaults to '/api/ie' for local / same-origin deployments.
-NEKOSPEECH_URL = os.environ.get('NEKOSPEECH_URL', '/api/ie')
-
-# IE API Key — must match NEKOSPEECH_IE_API_KEY on the nekospeech service
-NEKOSPEECH_IE_API_KEY = os.environ.get('NEKOSPEECH_IE_API_KEY', '')
-
 # nekocongress frontend URL for Vue components.  Empty string means Vue
 # uses same-origin relative paths through the nginx /api/congress/ proxy.
 # Only set this if you want Vue to call the congress API directly (cross-origin).
@@ -188,7 +181,6 @@ TABBYCAT_APPS = (
     'forum',
     'motionbank',
     'content',
-    'speech_events',
     'congress_events',
     'participant_crm',
     'chat',
