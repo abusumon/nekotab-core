@@ -481,6 +481,18 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
         from django.core.cache import cache
         cache.set(f'subdom_tour_exists_{tournament.slug.lower()}', True, 300)
 
+        preset_slug = (self.request.POST.get('preset') or '').strip().lower()
+        if preset_slug:
+            try:
+                from options.presets import get_preset_from_slug
+                get_preset_from_slug(preset_slug)
+            except ValueError:
+                preset_slug = ''
+
+        if preset_slug:
+            configure_url = reverse_tournament('tournament-configure', tournament=tournament)
+            return redirect(f"{configure_url}?preset={preset_slug}")
+
         return redirect_tournament('tournament-configure', tournament)
 
     def get_context_data(self, **kwargs):
@@ -492,6 +504,18 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
         kwargs['demo_datasets'] = demo_datasets
         demo_slugs = [slug for slug, _ in demo_datasets]
         kwargs['preexisting'] = Tournament.objects.filter(slug__in=demo_slugs).values_list('slug', flat=True)
+
+        preset_slug = (self.request.GET.get('preset') or '').strip().lower()
+        kwargs['preset_slug'] = ''
+        kwargs['preset_name'] = ''
+        if preset_slug:
+            try:
+                from options.presets import get_preset_from_slug
+                kwargs['preset_name'] = str(get_preset_from_slug(preset_slug).name)
+                kwargs['preset_slug'] = preset_slug
+            except ValueError:
+                pass
+
         return super().get_context_data(**kwargs)
 
     def get_success_url(self):
@@ -677,6 +701,24 @@ class ConfigureTournamentView(AdministratorMixin, TournamentMixin, UpdateView):
     template_name = "configure_tournament.html"
     slug_url_kwarg = 'tournament_slug'
     edit_permission = Permission.EDIT_SETTINGS
+
+    def get_initial(self):
+        initial = super().get_initial()
+        preset_slug = (self.request.GET.get('preset') or '').strip().lower()
+        if preset_slug and self.request.method == 'GET':
+            try:
+                from options.presets import get_preset_from_slug
+                preset_name = str(get_preset_from_slug(preset_slug).name)
+                initial['preset_rules'] = preset_name
+                messages.info(
+                    self.request,
+                    _("Preset \"%(preset)s\" has been preselected. Review and save to apply it.") % {
+                        'preset': preset_name,
+                    },
+                )
+            except ValueError:
+                pass
+        return initial
 
     def get_success_url(self):
         t = self.tournament

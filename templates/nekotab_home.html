@@ -194,11 +194,12 @@
               </div>
             </div>
             <!-- Public Speaking -->
-            <a href="https://nekotab.app/register/tournament/" class="em-dd-item" role="menuitem">
+            <a href="{% url 'tournament-create' %}?preset=public-speaking" class="em-dd-item" role="menuitem">
               <div class="em-dd-icon em-dd-icon--green">🎤</div>
               <div>
                 <div class="em-dd-label">Public Speaking</div>
                 <div class="em-dd-desc">Run individual speech events in one unified tournament setup</div>
+                <div class="em-dd-hint">Quick start with the Public Speaking preset preselected</div>
               </div>
             </a>
             <!-- Motion Bank -->
@@ -338,7 +339,10 @@
               <span class="em-mobile-sub-desc">Congressional debate — legislation, POs &amp; scoring</span>
             </a>
           </div>
-          <a href="https://nekotab.app/register/tournament/">🎤 Public Speaking</a>
+          <a href="{% url 'tournament-create' %}?preset=public-speaking">
+            🎤 Public Speaking
+            <span class="em-mobile-sub-desc">Quick start with preset preselected</span>
+          </a>
           <a href="https://nekotab.app/motions/">📋 Motion Bank</a>
           <span class="em-mobile-menu-disabled">📝 Oratory Bank <span class="em-badge-soon">Coming Soon</span></span>
         </div>

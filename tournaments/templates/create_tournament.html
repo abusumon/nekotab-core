@@ -61,6 +61,18 @@
     <form action="." method="POST">
       {% csrf_token %}
 
+      {% if preset_slug %}
+        <input type="hidden" name="preset" value="{{ preset_slug }}">
+      {% endif %}
+
+      {% if preset_name %}
+        <div class="alert alert-info mt-3 mb-0">
+          {% blocktrans trimmed with preset=preset_name %}
+            Quick start enabled: {{ preset }} will be preselected on the next step.
+          {% endblocktrans %}
+        </div>
+      {% endif %}
+
       {% include "components/form-main.html" %}
 
       {% trans "Create Tournament" as title %}
