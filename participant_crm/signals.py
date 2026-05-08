@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from django.utils import timezone
 
 from participants.models import Adjudicator, Speaker
+from tournaments.models import Tournament
 
 logger = logging.getLogger(__name__)
 
@@ -71,3 +72,36 @@ def sync_adjudicator_to_crm(sender, instance, **kwargs):
     if instance.email:
         _sync_to_crm(email=instance.email, name=instance.name,
                       is_adjudicator=True, tournament=instance.tournament)
+
+
+@receiver(post_save, sender=Tournament)
+def sync_tournament_owner_to_crm(sender, instance, **kwargs):
+    """When a tournament is created/saved, register the owner as a tab director."""
+    owner = instance.owner
+    if not owner or not owner.email:
+        return
+    from participant_crm.models import ParticipantProfile
+    email = owner.email.strip().lower()
+    name = owner.get_full_name() or owner.username
+    try:
+        profile = ParticipantProfile.objects.get(email=email)
+        # Promote to hybrid if they are also a debater/adj
+        if profile.primary_role not in (
+            ParticipantProfile.ROLE_TAB_DIRECTOR,
+            ParticipantProfile.ROLE_HYBRID,
+        ):
+            profile.primary_role = ParticipantProfile.ROLE_HYBRID
+        profile.user = owner
+        profile.last_active = timezone.now()
+        profile.save(update_fields=['primary_role', 'user', 'last_active'])
+        profile.tournaments_participated.add(instance)
+    except ParticipantProfile.DoesNotExist:
+        profile = ParticipantProfile.objects.create(
+            email=email,
+            name=name,
+            primary_role=ParticipantProfile.ROLE_TAB_DIRECTOR,
+            user=owner,
+            last_active=timezone.now(),
+            source_tournament=instance,
+        )
+        profile.tournaments_participated.add(instance)

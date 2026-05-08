@@ -23,6 +23,7 @@ from django.views.generic import TemplateView, ListView, View
 from tournaments.models import Tournament, Round
 from results.models import BallotSubmission
 from motionbank.models import MotionEntry
+from participant_crm.models import ParticipantProfile
 from .models import PageView, DailyStats, ActiveSession
 
 User = get_user_model()
@@ -182,6 +183,18 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         context['motions_by_format'] = list(
             MotionEntry.objects.values('format').annotate(count=Count('id')).order_by('-count')[:6]
         )
+
+        # === PARTICIPANT CRM STATS ===
+        crm = ParticipantProfile.objects
+        context['crm_total'] = crm.count()
+        context['crm_debaters'] = crm.filter(primary_role='debater').count()
+        context['crm_adjudicators'] = crm.filter(primary_role='adjudicator').count()
+        context['crm_tab_directors'] = crm.filter(primary_role='tab_director').count()
+        context['crm_hybrid'] = crm.filter(primary_role='hybrid').count()
+        context['crm_subscribed'] = crm.filter(email_subscribed=True).count()
+        context['crm_with_email'] = crm.exclude(email='').count()
+        context['crm_new_30d'] = crm.filter(first_seen__gte=last_30d).count()
+        context['crm_recent'] = crm.order_by('-first_seen')[:8]
 
         return context
 

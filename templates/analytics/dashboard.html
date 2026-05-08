@@ -945,6 +945,122 @@
             </div>
         </div>
 
+        <!-- Participants CRM Row -->
+        <div class="charts-row" style="margin-bottom: 32px;">
+            <!-- CRM Overview -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>👥 Participant CRM</h3>
+                    <a href="{% url 'analytics:participants_all' %}" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">View All →</a>
+                </div>
+                <div class="card-body">
+                    <!-- Role breakdown grid -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
+                        <a href="{% url 'analytics:participants_debaters' %}" style="text-decoration:none;">
+                            <div style="background: rgba(99,102,241,.12); border: 1px solid rgba(99,102,241,.25); border-radius: 10px; padding: 14px; text-align: center; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='rgba(99,102,241,.25)'">
+                                <div style="font-size: 22px; font-weight: 700; color: #818cf8;">{{ crm_debaters }}</div>
+                                <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px;">Debaters</div>
+                            </div>
+                        </a>
+                        <a href="{% url 'analytics:participants_adjudicators' %}" style="text-decoration:none;">
+                            <div style="background: rgba(16,185,129,.12); border: 1px solid rgba(16,185,129,.25); border-radius: 10px; padding: 14px; text-align: center; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='#10b981'" onmouseout="this.style.borderColor='rgba(16,185,129,.25)'">
+                                <div style="font-size: 22px; font-weight: 700; color: #10b981;">{{ crm_adjudicators }}</div>
+                                <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px;">Adjudicators</div>
+                            </div>
+                        </a>
+                        <a href="{% url 'analytics:participants_tab_directors' %}" style="text-decoration:none;">
+                            <div style="background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.25); border-radius: 10px; padding: 14px; text-align: center; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='#f59e0b'" onmouseout="this.style.borderColor='rgba(245,158,11,.25)'">
+                                <div style="font-size: 22px; font-weight: 700; color: #f59e0b;">{{ crm_tab_directors }}</div>
+                                <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px;">Tab Directors</div>
+                            </div>
+                        </a>
+                        <a href="{% url 'analytics:participants_all' %}" style="text-decoration:none;">
+                            <div style="background: rgba(236,72,153,.12); border: 1px solid rgba(236,72,153,.25); border-radius: 10px; padding: 14px; text-align: center; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='#ec4899'" onmouseout="this.style.borderColor='rgba(236,72,153,.25)'">
+                                <div style="font-size: 22px; font-weight: 700; color: #ec4899;">{{ crm_hybrid }}</div>
+                                <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px;">Hybrid</div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Summary stats -->
+                    <div style="border-top: 1px solid var(--border); padding-top: 16px; display: flex; flex-direction: column; gap: 10px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span style="color: var(--text-secondary);">Total profiles</span>
+                            <span style="font-weight: 600;">{{ crm_total }}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span style="color: var(--text-secondary);">Email subscribed</span>
+                            <span style="font-weight: 600; color: var(--success);">{{ crm_subscribed }}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span style="color: var(--text-secondary);">New (last 30 days)</span>
+                            <span style="font-weight: 600; color: var(--accent-light);">+{{ crm_new_30d }}</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <a href="{% url 'analytics:participants_export' %}" class="btn btn-secondary" style="flex: 1; justify-content: center; font-size: 12px; padding: 8px 12px;">Export CSV</a>
+                        <a href="{% url 'analytics:participants_all' %}" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 12px; padding: 8px 12px;">Manage →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recently Added Participants -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>🆕 Recently Added Participants</h3>
+                    <span style="font-size: 12px; color: var(--text-secondary);">Auto-synced from tournaments</span>
+                </div>
+                <div class="card-body" style="padding: 0;">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Added</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in crm_recent %}
+                                <tr>
+                                    <td>
+                                        <div class="user-info">
+                                            <div class="avatar" style="background: {% if p.primary_role == 'debater' %}rgba(99,102,241,.3){% elif p.primary_role == 'adjudicator' %}rgba(16,185,129,.3){% elif p.primary_role == 'tab_director' %}rgba(245,158,11,.3){% else %}rgba(236,72,153,.3){% endif %};">
+                                                {{ p.name.0|upper }}
+                                            </div>
+                                            <span class="user-name">{{ p.name|truncatechars:22 }}</span>
+                                        </div>
+                                    </td>
+                                    <td style="color: var(--text-secondary); font-size: 12px;">{{ p.email|truncatechars:28 }}</td>
+                                    <td>
+                                        {% if p.primary_role == 'debater' %}
+                                            <span class="badge badge-purple">Debater</span>
+                                        {% elif p.primary_role == 'adjudicator' %}
+                                            <span class="badge badge-success">Adj</span>
+                                        {% elif p.primary_role == 'tab_director' %}
+                                            <span class="badge badge-warning">Tab Dir</span>
+                                        {% else %}
+                                            <span class="badge badge-info">Hybrid</span>
+                                        {% endif %}
+                                    </td>
+                                    <td style="color: var(--text-secondary); font-size: 12px;">{{ p.first_seen|timesince }} ago</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" style="text-align: center; color: var(--text-secondary); padding: 32px;">
+                                        <div style="font-size: 32px; margin-bottom: 8px;">👤</div>
+                                        No participants yet.<br>
+                                        <small>They'll appear here as adjudicators &amp; speakers are added to tournaments.</small>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Motion Bank Row -->
         <div class="charts-row" style="margin-bottom: 32px;">
             <!-- Motion Bank Stats -->
