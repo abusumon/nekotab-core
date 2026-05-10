@@ -54,6 +54,13 @@
       position: relative;
       overflow: hidden;
     }
+    /* Compact variant — less padding, no stats strip needed */
+    .dn-hero--compact {
+      padding: 110px 0 56px;
+    }
+    .dn-hero--compact .dn-hero-title {
+      font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+    }
     .dn-hero::before {
       content: '';
       position: absolute; inset: 0;
@@ -271,6 +278,10 @@
       padding: 100px 0;
       background: var(--nt-bg-alt);
     }
+    /* Top-positioned variant — sits right under hero, tighter top padding */
+    .dn-tiers--top {
+      padding-top: 64px;
+    }
     .dn-tiers-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -290,10 +301,11 @@
     }
     .dn-tier-card--featured {
       border-color: var(--nt-primary);
-      box-shadow: 0 0 0 1px var(--nt-primary), var(--nt-shadow-md);
+      background: linear-gradient(160deg, #faf5ff 0%, #eff2ff 60%, #fff 100%);
+      box-shadow: 0 0 0 1px var(--nt-primary), 0 8px 32px rgba(99,102,241,.18), inset 0 1px 0 rgba(255,255,255,.8);
     }
     .dn-tier-card--featured:hover {
-      box-shadow: 0 0 0 1px var(--nt-primary), var(--nt-shadow-xl);
+      box-shadow: 0 0 0 1px var(--nt-primary), 0 16px 48px rgba(99,102,241,.28), inset 0 1px 0 rgba(255,255,255,.8);
     }
     .dn-tier-popular {
       position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
@@ -670,8 +682,8 @@
        ======================================================== -->
   <main id="main-content">
 
-    <!-- ── HERO ── -->
-    <section class="dn-hero" aria-labelledby="donate-hero-title">
+    <!-- ── HERO (compact) ── -->
+    <section class="dn-hero dn-hero--compact" aria-labelledby="donate-hero-title">
       <div class="em-container dn-hero-inner">
         <div class="dn-hero-badge">
           <span class="dn-hero-badge-dot"></span>
@@ -684,46 +696,93 @@
         </h1>
 
         <p class="dn-hero-sub">
-          NekoTab is free because we believe every debate community deserves world-class tools — regardless of budget. Your support keeps the servers running, features shipping, and the platform free for all.
+          NekoTab is free because we believe every debate community deserves world-class tools — regardless of budget. Choose a support level below and help us keep the lights on.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── DONATION TIERS (top — first thing after hero) ── -->
+    <section class="dn-tiers dn-tiers--top" id="tiers" aria-labelledby="tiers-title">
+      <div class="em-container">
+        <div style="text-align:center; margin-bottom:8px;">
+          <div class="dn-section-eyebrow">Support Options</div>
+        </div>
+        <h2 id="tiers-title" class="dn-section-title" style="text-align:center;">Choose your level of support</h2>
+        <p class="dn-section-sub" style="text-align:center; margin:0 auto;">
+          Every contribution — large or small — directly funds NekoTab's mission to keep great debate tools free. Minimum $2, no maximum.
         </p>
 
-        <div class="dn-cta-wrap">
-          <a
-            href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
-            class="dn-donate-btn lemonsqueezy-button"
-            aria-label="Support NekoTab — opens secure payment overlay"
-          >
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-            Support NekoTab
-          </a>
-          <a href="#tiers" class="dn-hero-ghost-btn">
-            View support options
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-          </a>
+        <div class="dn-tiers-grid">
+
+          <!-- Tier 1: Friend ($2 minimum) -->
+          <div class="dn-tier-card">
+            <span class="dn-tier-emoji" aria-hidden="true">🤝</span>
+            <div class="dn-tier-name">Friend</div>
+            <div class="dn-tier-amount">$2 <small>/ month</small></div>
+            <div class="dn-tier-cadence">or a one-time $2 · minimum amount</div>
+            <p class="dn-tier-desc">Even the smallest gesture adds up. $2 a month from the debate community keeps NekoTab alive and free for everyone. Every contribution counts.</p>
+            <ul class="dn-tier-perks" aria-label="What you get">
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Keeps NekoTab free for all communities</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> You're officially part of the story</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Heartfelt gratitude from the team</li>
+            </ul>
+            <a
+              href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
+              class="dn-tier-btn dn-tier-btn--outline lemonsqueezy-button"
+            >Become a Friend — $2</a>
+          </div>
+
+          <!-- Tier 2: Supporter ($5 standard — featured) -->
+          <div class="dn-tier-card dn-tier-card--featured">
+            <div class="dn-tier-popular" aria-label="Most popular option">Most Popular</div>
+            <span class="dn-tier-emoji" aria-hidden="true">⚡</span>
+            <div class="dn-tier-name">Supporter</div>
+            <div class="dn-tier-amount">$5 <small>/ month</small></div>
+            <div class="dn-tier-cadence">or a one-time $5 · standard amount</div>
+            <p class="dn-tier-desc">The sweet spot — the price of a coffee, but it directly funds hosting, AI motion analysis, and new features for the whole debate community.</p>
+            <ul class="dn-tier-perks" aria-label="What you get">
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Covers real hosting costs month-to-month</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Helps fund AI motion analysis API</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Enables faster feature development</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Heartfelt gratitude from the team</li>
+            </ul>
+            <a
+              href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
+              class="dn-tier-btn dn-tier-btn--primary lemonsqueezy-button"
+            >Support NekoTab — $5</a>
+          </div>
+
+          <!-- Tier 3: Champion ($20+) -->
+          <div class="dn-tier-card">
+            <span class="dn-tier-emoji" aria-hidden="true">🏆</span>
+            <div class="dn-tier-name">Champion</div>
+            <div class="dn-tier-amount">$20 <small>/ month</small></div>
+            <div class="dn-tier-cadence">or a one-time $20+ · for power users &amp; orgs</div>
+            <p class="dn-tier-desc">For debate organisations, institutions, and power users who rely on NekoTab every season. Your backing directly accelerates the roadmap and long-term stability.</p>
+            <ul class="dn-tier-perks" aria-label="What you get">
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Funds a full month of infrastructure</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Covers AI API costs for all users</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Priority feature request consideration</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Recognised as a NekoTab Champion</li>
+            </ul>
+            <a
+              href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
+              class="dn-tier-btn dn-tier-btn--outline lemonsqueezy-button"
+            >Become a Champion</a>
+          </div>
+
         </div>
 
-        <!-- Stats strip -->
-        <div class="dn-hero-stats" role="list" aria-label="Platform statistics">
-          <div class="dn-hero-stat" role="listitem">
-            <span class="dn-hero-stat-num">40+</span>
-            <span class="dn-hero-stat-label">Tournaments Hosted</span>
-          </div>
-          <div class="dn-hero-stat-sep" aria-hidden="true"></div>
-          <div class="dn-hero-stat" role="listitem">
-            <span class="dn-hero-stat-num">20+</span>
-            <span class="dn-hero-stat-label">Countries</span>
-          </div>
-          <div class="dn-hero-stat-sep" aria-hidden="true"></div>
-          <div class="dn-hero-stat" role="listitem">
-            <span class="dn-hero-stat-num">$0</span>
-            <span class="dn-hero-stat-label">Cost to Users</span>
-          </div>
-          <div class="dn-hero-stat-sep" aria-hidden="true"></div>
-          <div class="dn-hero-stat" role="listitem">
-            <span class="dn-hero-stat-num">100%</span>
-            <span class="dn-hero-stat-label">Open Source</span>
-          </div>
-        </div>
+        <!-- Custom amount note -->
+        <p style="text-align:center; margin-top:28px; font-size:14px; color:var(--nt-text-muted);">
+          Want to give a different amount? You can set any amount (min $2) inside the checkout.
+          <a
+            href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color:var(--nt-primary); text-decoration:underline;"
+          >Open checkout →</a>
+        </p>
       </div>
     </section>
 
@@ -803,91 +862,6 @@
           </a>
           <p class="dn-impact-cta-note">Secure payment via Lemon Squeezy · Cancel anytime</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ── DONATION TIERS ── -->
-    <section class="dn-tiers" id="tiers" aria-labelledby="tiers-title">
-      <div class="em-container">
-        <div style="text-align:center; margin-bottom:8px;">
-          <div class="dn-section-eyebrow">Support Options</div>
-        </div>
-        <h2 id="tiers-title" class="dn-section-title" style="text-align:center;">Choose your level of support</h2>
-        <p class="dn-section-sub" style="text-align:center; margin:0 auto;">
-          Every contribution — large or small — directly funds NekoTab's mission to keep great debate tools free. One checkout handles all amounts.
-        </p>
-
-        <div class="dn-tiers-grid">
-
-          <!-- Tier 1: Friend ($2 minimum) -->
-          <div class="dn-tier-card">
-            <span class="dn-tier-emoji" aria-hidden="true">🤝</span>
-            <div class="dn-tier-name">Friend</div>
-            <div class="dn-tier-amount">$2 <small>/ month</small></div>
-            <div class="dn-tier-cadence">or a one-time $2 · minimum amount</div>
-            <p class="dn-tier-desc">Even the smallest gesture adds up. $2 a month from the debate community keeps NekoTab alive and free for everyone. Every contribution counts.</p>
-            <ul class="dn-tier-perks" aria-label="What you get">
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Keeps NekoTab free for all communities</li>
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> You're officially part of the story</li>
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Heartfelt gratitude from the team</li>
-            </ul>
-            <a
-              href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
-              class="dn-tier-btn dn-tier-btn--outline lemonsqueezy-button"
-            >Become a Friend — $2</a>
-          </div>
-
-          <!-- Tier 2: Supporter ($5 standard — featured) -->
-          <div class="dn-tier-card dn-tier-card--featured">
-            <div class="dn-tier-popular" aria-label="Most popular option">Most Popular</div>
-            <span class="dn-tier-emoji" aria-hidden="true">⚡</span>
-            <div class="dn-tier-name">Supporter</div>
-            <div class="dn-tier-amount">$5 <small>/ month</small></div>
-            <div class="dn-tier-cadence">or a one-time $5 · standard amount</div>
-            <p class="dn-tier-desc">The sweet spot — the price of a coffee, but it directly funds hosting, AI motion analysis, and new features for the whole debate community.</p>
-            <ul class="dn-tier-perks" aria-label="What you get">
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Covers real hosting costs month-to-month</li>
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Helps fund AI motion analysis API</li>
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Enables faster feature development</li>
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Heartfelt gratitude from the team</li>
-            </ul>
-            <a
-              href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
-              class="dn-tier-btn dn-tier-btn--primary lemonsqueezy-button"
-            >Support NekoTab — $5</a>
-          </div>
-
-          <!-- Tier 3: Champion ($20+) -->
-          <div class="dn-tier-card">
-            <span class="dn-tier-emoji" aria-hidden="true">🏆</span>
-            <div class="dn-tier-name">Champion</div>
-            <div class="dn-tier-amount">$20 <small>/ month</small></div>
-            <div class="dn-tier-cadence">or a one-time $20+ · for power users &amp; orgs</div>
-            <p class="dn-tier-desc">For debate organisations, institutions, and power users who rely on NekoTab every season. Your backing directly accelerates the roadmap and long-term stability.</p>
-            <ul class="dn-tier-perks" aria-label="What you get">
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Funds a full month of infrastructure</li>
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Covers AI API costs for all users</li>
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Priority feature request consideration</li>
-              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Recognised as a NekoTab Champion</li>
-            </ul>
-            <a
-              href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
-              class="dn-tier-btn dn-tier-btn--outline lemonsqueezy-button"
-            >Become a Champion</a>
-          </div>
-
-        </div>
-
-        <!-- Custom amount note -->
-        <p style="text-align:center; margin-top:28px; font-size:14px; color:var(--nt-text-muted);">
-          Want to give a different amount? You can set any amount (min $2) inside the checkout.
-          <a
-            href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="color:var(--nt-primary); text-decoration:underline;"
-          >Open checkout →</a>
-        </p>
       </div>
     </section>
 
