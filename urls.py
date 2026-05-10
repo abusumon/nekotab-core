@@ -193,6 +193,11 @@ urlpatterns = [
         organizations_views.RegisterOrganizationView.as_view(),
         name='register-organization'),
 
+    # Donation / Support page
+    path('donate/',
+        TemplateView.as_view(template_name='pages/donate.html'),
+        name='donate'),
+
     # SEO landing pages
     path('free-debate-tab-software/',
         TemplateView.as_view(template_name='pages/free-debate-tab-software.html'),

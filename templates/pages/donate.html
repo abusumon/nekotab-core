@@ -1,0 +1,1142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support NekoTab — Keep Debate Free for Everyone</title>
+  <meta name="description" content="Support NekoTab with a donation. Help keep world-class debate tabulation software free for every tournament, school, and community worldwide. 100% of contributions go directly to hosting, development, and keeping NekoTab free.">
+  <link rel="canonical" href="https://nekotab.app/donate/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nekotab.app/donate/" />
+  <meta property="og:title" content="Support NekoTab — Keep Debate Free" />
+  <meta property="og:description" content="Help keep world-class debate tabulation free for every tournament worldwide." />
+  <meta property="og:image" content="{% static 'logo-social.png' %}" />
+  <meta property="og:site_name" content="NekoTab" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Support NekoTab — Keep Debate Free" />
+  <meta name="twitter:description" content="Help keep world-class debate tabulation free for every tournament worldwide." />
+  <meta name="twitter:image" content="{% static 'logo-social.png' %}" />
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'logo.png' %}">
+  <link rel="mask-icon" href="{% static 'safari-tab.svg' %}" color="#6366f1">
+  <meta name="theme-color" content="#6366f1">
+
+  <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+  <script defer src="{% static 'js/cookie-consent.js' %}"></script>
+
+  <!-- Lemon Squeezy checkout overlay -->
+  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+
+  <style>
+    /* ================================================================
+       DONATE PAGE — Standalone styles (extends landing.css design system)
+       ================================================================ */
+
+    /* ── Hero ── */
+    .dn-hero {
+      background: var(--nt-gradient-hero);
+      padding: 130px 0 88px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .dn-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(99,102,241,.28) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 80% 70%, rgba(139,92,246,.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .dn-hero-inner { position: relative; z-index: 1; }
+
+    .dn-hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.9); font-size: 13px; font-weight: 600;
+      padding: 6px 18px; border-radius: 9999px; margin-bottom: 32px;
+      letter-spacing: .01em;
+    }
+    .dn-hero-badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #a5b4fc; flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(165,180,252,.8);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .6; transform: scale(.8); }
+    }
+
+    .dn-hero-title {
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 800; color: #fff;
+      line-height: 1.1; letter-spacing: -.035em;
+      margin-bottom: 22px;
+    }
+    .dn-gradient-text {
+      background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 50%, #f9a8d4 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .dn-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,.72);
+      max-width: 600px; margin: 0 auto 44px; line-height: 1.75;
+    }
+
+    /* Hero CTA */
+    .dn-cta-wrap {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; flex-wrap: wrap;
+    }
+    .dn-donate-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: #fff; font-size: 16px; font-weight: 700;
+      padding: 16px 42px; border-radius: 14px;
+      text-decoration: none; border: none; cursor: pointer;
+      font-family: var(--nt-font); letter-spacing: -.01em;
+      box-shadow: 0 4px 28px rgba(99,102,241,.5), 0 1px 4px rgba(0,0,0,.22);
+      transition: transform .2s ease, box-shadow .2s ease;
+      position: relative; overflow: hidden;
+    }
+    .dn-donate-btn::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.12), transparent);
+      opacity: 0; transition: opacity .2s ease;
+    }
+    .dn-donate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(99,102,241,.6), 0 2px 8px rgba(0,0,0,.22); }
+    .dn-donate-btn:hover::after { opacity: 1; }
+    .dn-donate-btn:active { transform: translateY(0); }
+
+    .dn-hero-ghost-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500;
+      padding: 14px 26px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.22);
+      text-decoration: none; background: rgba(255,255,255,.06);
+      transition: all .2s ease;
+    }
+    .dn-hero-ghost-btn:hover { color: #fff; border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.12); }
+
+    /* Hero stats strip */
+    .dn-hero-stats {
+      display: flex; align-items: center; justify-content: center;
+      gap: 40px; flex-wrap: wrap;
+      margin-top: 60px; padding-top: 44px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .dn-hero-stat { text-align: center; }
+    .dn-hero-stat-num {
+      display: block; font-size: 2rem; font-weight: 800; color: #fff;
+      letter-spacing: -.04em; line-height: 1;
+    }
+    .dn-hero-stat-label {
+      display: block; font-size: 12px; color: rgba(255,255,255,.5);
+      margin-top: 6px; font-weight: 500; letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .dn-hero-stat-sep {
+      width: 1px; height: 44px; background: rgba(255,255,255,.12);
+      flex-shrink: 0;
+    }
+
+    /* ── Section Shared ── */
+    .dn-section-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--nt-primary);
+      margin-bottom: 10px;
+    }
+    .dn-section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800; color: var(--nt-text);
+      line-height: 1.15; letter-spacing: -.025em;
+      margin-bottom: 14px;
+    }
+    .dn-section-sub {
+      font-size: 1.05rem; color: var(--nt-text-secondary);
+      max-width: 560px; line-height: 1.7;
+    }
+
+    /* ── Why Section ── */
+    .dn-why {
+      padding: 100px 0;
+      background: #fff;
+    }
+    .dn-why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+    .dn-why-card {
+      background: var(--nt-bg-alt);
+      border: 1px solid var(--nt-border-light);
+      border-radius: var(--nt-radius-lg);
+      padding: 32px 28px;
+      transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
+    }
+    .dn-why-card:hover {
+      box-shadow: var(--nt-shadow-lg);
+      transform: translateY(-4px);
+      border-color: rgba(99,102,241,.25);
+    }
+    .dn-why-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin-bottom: 20px;
+    }
+    .dn-why-icon--indigo { background: var(--nt-primary-light); }
+    .dn-why-icon--violet { background: #faf5ff; }
+    .dn-why-icon--emerald { background: #ecfdf5; }
+    .dn-why-icon--amber { background: #fffbeb; }
+    .dn-why-card-title {
+      font-size: 1rem; font-weight: 700; color: var(--nt-text);
+      margin-bottom: 8px;
+    }
+    .dn-why-card-desc {
+      font-size: 14px; color: var(--nt-text-secondary); line-height: 1.7;
+    }
+
+    /* ── Impact Stats ── */
+    .dn-impact {
+      padding: 100px 0;
+      background: var(--nt-gradient-dark);
+      position: relative; overflow: hidden;
+    }
+    .dn-impact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 90% at 20% 50%, rgba(99,102,241,.18) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 90% at 80% 50%, rgba(139,92,246,.12) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .dn-impact-inner { position: relative; z-index: 1; }
+    .dn-impact .dn-section-eyebrow { color: #a5b4fc; }
+    .dn-impact .dn-section-title { color: #fff; }
+    .dn-impact .dn-section-sub { color: rgba(255,255,255,.62); max-width: 520px; }
+
+    .dn-impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 56px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--nt-radius-xl);
+      overflow: hidden;
+    }
+    .dn-impact-stat {
+      padding: 44px 28px; text-align: center;
+      background: rgba(255,255,255,.03);
+      border-right: 1px solid rgba(255,255,255,.07);
+      transition: background .2s ease;
+    }
+    .dn-impact-stat:last-child { border-right: none; }
+    .dn-impact-stat:hover { background: rgba(255,255,255,.06); }
+    .dn-impact-num {
+      font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800;
+      letter-spacing: -.04em; line-height: 1;
+      background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .dn-impact-label {
+      font-size: 13px; color: rgba(255,255,255,.5);
+      margin-top: 10px; font-weight: 500;
+    }
+    .dn-impact-cta-wrap {
+      margin-top: 52px; text-align: center;
+    }
+    .dn-impact-cta-note {
+      font-size: 13px; color: rgba(255,255,255,.42);
+      margin-top: 14px;
+    }
+
+    /* ── Donation Tiers ── */
+    .dn-tiers {
+      padding: 100px 0;
+      background: var(--nt-bg-alt);
+    }
+    .dn-tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 24px; margin-top: 56px; align-items: start;
+    }
+    .dn-tier-card {
+      background: #fff;
+      border: 1.5px solid var(--nt-border);
+      border-radius: var(--nt-radius-xl);
+      padding: 38px 32px;
+      transition: box-shadow .25s ease, transform .25s ease;
+      position: relative;
+    }
+    .dn-tier-card:hover {
+      box-shadow: var(--nt-shadow-xl);
+      transform: translateY(-5px);
+    }
+    .dn-tier-card--featured {
+      border-color: var(--nt-primary);
+      box-shadow: 0 0 0 1px var(--nt-primary), var(--nt-shadow-md);
+    }
+    .dn-tier-card--featured:hover {
+      box-shadow: 0 0 0 1px var(--nt-primary), var(--nt-shadow-xl);
+    }
+    .dn-tier-popular {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff; font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 4px 18px; border-radius: 9999px;
+      white-space: nowrap;
+    }
+    .dn-tier-emoji { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+    .dn-tier-name {
+      font-size: 1rem; font-weight: 700; color: var(--nt-text);
+      margin-bottom: 4px;
+    }
+    .dn-tier-amount {
+      font-size: 2.4rem; font-weight: 800; color: var(--nt-primary);
+      letter-spacing: -.04em; margin-bottom: 6px; line-height: 1.1;
+    }
+    .dn-tier-amount small {
+      font-size: 1rem; font-weight: 500; color: var(--nt-text-muted);
+      letter-spacing: 0;
+    }
+    .dn-tier-cadence {
+      font-size: 13px; color: var(--nt-text-muted); margin-bottom: 20px;
+    }
+    .dn-tier-desc {
+      font-size: 14px; color: var(--nt-text-secondary);
+      line-height: 1.7; margin-bottom: 24px;
+      padding-bottom: 24px; border-bottom: 1px solid var(--nt-border-light);
+    }
+    .dn-tier-perks {
+      list-style: none; padding: 0; margin: 0 0 28px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .dn-tier-perks li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: var(--nt-text-secondary); line-height: 1.5;
+    }
+    .dn-tier-check {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #ecfdf5; color: #10b981;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+    .dn-tier-btn {
+      display: block; width: 100%; text-align: center;
+      padding: 14px 24px; border-radius: 10px;
+      font-size: 15px; font-weight: 600;
+      transition: all .2s ease; cursor: pointer;
+      text-decoration: none; border: none;
+      font-family: var(--nt-font);
+    }
+    .dn-tier-btn--primary {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      box-shadow: 0 2px 14px rgba(99,102,241,.35);
+    }
+    .dn-tier-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 4px 22px rgba(99,102,241,.5); }
+    .dn-tier-btn--outline {
+      background: transparent; color: var(--nt-primary);
+      border: 1.5px solid var(--nt-primary);
+    }
+    .dn-tier-btn--outline:hover { background: var(--nt-primary-light); }
+
+    /* ── Open Source Banner ── */
+    .dn-oss {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .dn-oss-card {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 48px; flex-wrap: wrap;
+      background: linear-gradient(135deg, var(--nt-bg-alt) 0%, #f0f4ff 100%);
+      border: 1px solid var(--nt-border);
+      border-radius: var(--nt-radius-2xl);
+      padding: 52px 60px;
+    }
+    .dn-oss-text { flex: 1; min-width: 280px; }
+    .dn-oss-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--nt-primary);
+      margin-bottom: 10px;
+    }
+    .dn-oss-title {
+      font-size: 1.6rem; font-weight: 800; color: var(--nt-text);
+      margin-bottom: 14px; letter-spacing: -.025em; line-height: 1.25;
+    }
+    .dn-oss-desc {
+      font-size: 15px; color: var(--nt-text-secondary); line-height: 1.7;
+    }
+    .dn-oss-actions { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+    .dn-oss-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 10px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: all .2s ease;
+    }
+    .dn-oss-btn--primary {
+      background: var(--nt-text); color: #fff;
+    }
+    .dn-oss-btn--primary:hover { background: #1e293b; transform: translateY(-1px); }
+    .dn-oss-btn--outline {
+      border: 1.5px solid var(--nt-border); color: var(--nt-text-secondary);
+      background: #fff;
+    }
+    .dn-oss-btn--outline:hover { border-color: var(--nt-text-muted); color: var(--nt-text); }
+
+    /* ── FAQ ── */
+    .dn-faq {
+      padding: 100px 0;
+      background: var(--nt-bg-alt);
+    }
+    .dn-faq-list {
+      max-width: 720px; margin: 52px auto 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .dn-faq-item {
+      background: #fff; border: 1px solid var(--nt-border);
+      border-radius: var(--nt-radius-lg); overflow: hidden;
+      transition: box-shadow .2s ease;
+    }
+    .dn-faq-item.open { box-shadow: var(--nt-shadow-md); }
+    .dn-faq-q {
+      width: 100%; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+      padding: 20px 24px; border: none; background: none;
+      font-family: var(--nt-font); font-size: 15px; font-weight: 600;
+      color: var(--nt-text); cursor: pointer; text-align: left; line-height: 1.5;
+    }
+    .dn-faq-q:hover { background: var(--nt-bg-alt); }
+    .dn-faq-chevron {
+      width: 18px; height: 18px; flex-shrink: 0; color: var(--nt-text-muted);
+      transition: transform .2s ease;
+    }
+    .dn-faq-item.open .dn-faq-chevron { transform: rotate(180deg); color: var(--nt-primary); }
+    .dn-faq-a {
+      padding: 0 24px 20px;
+      font-size: 14px; color: var(--nt-text-secondary); line-height: 1.75;
+      display: none;
+    }
+    .dn-faq-item.open .dn-faq-a { display: block; }
+    .dn-faq-a a { color: var(--nt-primary); text-decoration: underline; }
+
+    /* ── Final CTA ── */
+    .dn-final-cta {
+      padding: 108px 0 80px;
+      background: var(--nt-gradient-hero);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .dn-final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(99,102,241,.32) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .dn-final-cta-inner { position: relative; z-index: 1; }
+    .dn-final-cta-title {
+      font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 800; color: #fff;
+      letter-spacing: -.03em; margin-bottom: 18px; line-height: 1.1;
+    }
+    .dn-final-cta-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,.68);
+      max-width: 500px; margin: 0 auto 44px; line-height: 1.7;
+    }
+    .dn-transparency-note {
+      margin-top: 32px;
+      font-size: 13px; color: rgba(255,255,255,.38);
+      max-width: 480px; margin: 40px auto 0;
+      line-height: 1.7;
+    }
+    .dn-transparency-note a { color: rgba(255,255,255,.6); text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .dn-impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .dn-impact-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .dn-impact-stat:nth-child(even) { background: rgba(255,255,255,.05); }
+      .dn-oss-card { padding: 36px 28px; }
+    }
+    @media (max-width: 640px) {
+      .dn-hero { padding: 108px 0 64px; }
+      .dn-hero-stats { gap: 24px; }
+      .dn-hero-stat-sep { display: none; }
+      .dn-impact-grid { grid-template-columns: 1fr 1fr; }
+      .dn-tiers-grid { grid-template-columns: 1fr; }
+      .dn-why-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 420px) {
+      .dn-impact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="em-body">
+  <!-- Skip to content -->
+  <a href="#main-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#6366f1;color:#fff;padding:8px 16px;z-index:10000;transition:top .3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
+
+  <!-- ========================================================
+       NAVBAR — same design as landing
+       ======================================================== -->
+  <header class="em-navbar em-navbar--dark" id="top">
+    <div class="em-container em-nav-inner">
+      <!-- Logo -->
+      <a class="em-logo" href="/">
+        <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="120" height="32" fetchpriority="high">
+      </a>
+
+      <!-- Center Navigation -->
+      <nav class="em-nav-center" aria-label="Primary">
+        <div class="em-nav-dropdown">
+          <button class="em-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">
+            Product
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l3 3 3-3"/></svg>
+          </button>
+          <div class="em-dropdown-panel" role="menu">
+            <div class="em-dd-nested">
+              <button class="em-dd-item em-dd-nested-trigger" role="menuitem" aria-expanded="false" type="button">
+                <div class="em-dd-icon">🎲</div>
+                <div class="em-dd-nested-label-wrap">
+                  <div class="em-dd-label">Tab Room</div>
+                  <div class="em-dd-desc">Tournament management platform</div>
+                </div>
+                <svg class="em-dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 2.5l3.5 3.5-3.5 3.5"/></svg>
+              </button>
+              <div class="em-dd-flyout" role="menu">
+                <a href="https://nekotab.app/register/organization/" class="em-dd-item" role="menuitem">
+                  <div class="em-dd-icon em-dd-icon--blue">🏢</div>
+                  <div>
+                    <div class="em-dd-label">Organization Workspace</div>
+                    <div class="em-dd-desc">Manage multiple tournaments under one roof</div>
+                  </div>
+                </a>
+                <a href="https://nekotab.app/register/tournament/" class="em-dd-item" role="menuitem">
+                  <div class="em-dd-icon em-dd-icon--amber">🎯</div>
+                  <div>
+                    <div class="em-dd-label">Single Tournament</div>
+                    <div class="em-dd-desc">Set up and run one tournament quickly</div>
+                  </div>
+                </a>
+                <a href="{% url 'congress-tournament-create' %}" class="em-dd-item" role="menuitem">
+                  <div class="em-dd-icon em-dd-icon--purple">🏛️</div>
+                  <div>
+                    <div class="em-dd-label">Congress</div>
+                    <div class="em-dd-desc">Congressional debate — legislation &amp; scoring</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <a href="{% url 'tournament-create' %}?preset=public-speaking" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--green">🎤</div>
+              <div>
+                <div class="em-dd-label">Public Speaking</div>
+                <div class="em-dd-desc">Run individual speech events</div>
+              </div>
+            </a>
+            <a href="https://nekotab.app/motions/" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--green">📋</div>
+              <div>
+                <div class="em-dd-label">Motion Bank</div>
+                <div class="em-dd-desc">Global database of debate motions</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="em-nav-dropdown">
+          <button class="em-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">
+            Solutions
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l3 3 3-3"/></svg>
+          </button>
+          <div class="em-dropdown-panel" role="menu">
+            <a href="{% url 'register-organization' %}" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--blue">🏢</div>
+              <div>
+                <div class="em-dd-label">Organization Workspace</div>
+                <div class="em-dd-desc">Best for clubs, institutions, and leagues</div>
+              </div>
+            </a>
+            <a href="{% url 'tournament-create' %}" class="em-dd-item" role="menuitem">
+              <div class="em-dd-icon em-dd-icon--amber">🎯</div>
+              <div>
+                <div class="em-dd-label">Single Tournament</div>
+                <div class="em-dd-desc">Best for independent tab teams</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="{% url 'forum:forum-home' %}" class="em-nav-link">Community</a>
+        <a href="/learn/" class="em-nav-link">Resources</a>
+        <a href="https://github.com/abusumon/nekotab-app/wiki" class="em-nav-link" target="_blank" rel="noopener">Docs</a>
+        <a href="/donate/" class="em-nav-link" style="color:#a5b4fc !important; font-weight:600;">♥ Support</a>
+      </nav>
+
+      <!-- Right side -->
+      <div class="em-nav-end">
+        {% if user.is_authenticated %}
+          <div class="em-nav-dropdown" id="em-user-dropdown">
+            <button class="em-user-trigger em-nav-dd-trigger" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </button>
+            <div class="em-dropdown-panel em-dropdown-panel--right" role="menu">
+              {% if user.is_superuser %}
+              <a href="{% url 'analytics:dashboard' %}" class="em-user-panel-item" role="menuitem">Analytics</a>
+              <a href="/admin/" class="em-user-panel-item" role="menuitem">Django Admin</a>
+              {% else %}
+              <a href="{% url 'org-list' %}" class="em-user-panel-item" role="menuitem">My Organizations</a>
+              {% endif %}
+              <div class="em-user-panel-divider"></div>
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="em-user-panel-item em-user-panel-item--danger">Sign out</button>
+              </form>
+            </div>
+          </div>
+          <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Dashboard</a>
+        {% else %}
+          <a href="{% url 'login' %}" class="em-btn--nav-signin">Sign in</a>
+          <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--sm">Get Started Free</a>
+        {% endif %}
+        <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Backdrop -->
+    <div class="em-mobile-backdrop" id="em-mobile-backdrop" aria-hidden="true"></div>
+
+    <!-- Mobile Menu -->
+    <div id="em-mobile-menu" class="em-mobile-menu" hidden role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <div class="em-mobile-menu-header">
+        <a href="/" class="em-logo" tabindex="-1" aria-hidden="true">
+          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-mobile-logo" width="96" height="25">
+        </a>
+        <button class="em-close-btn" id="em-menu-close" aria-label="Close menu">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="em-mobile-menu-body">
+        <div class="em-mobile-menu-section">
+          <div class="em-mobile-menu-label">Product</div>
+          <a href="https://nekotab.app/motions/">📋 Motion Bank</a>
+          <a href="{% url 'tournament-create' %}">🎯 Create Tournament</a>
+          <a href="{% url 'register-organization' %}">🏢 Organization Workspace</a>
+        </div>
+        <div class="em-mobile-menu-section">
+          <div class="em-mobile-menu-label">Explore</div>
+          <a href="{% url 'forum:forum-home' %}">💬 Community</a>
+          <a href="/learn/">📚 Resources</a>
+          <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">📖 Docs</a>
+        </div>
+        <div class="em-mobile-menu-section">
+          <a href="/donate/" style="color: var(--nt-primary); font-weight:600;">♥ Support NekoTab</a>
+        </div>
+      </div>
+      <div class="em-mobile-menu-footer">
+        {% if user.is_authenticated %}
+          <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Dashboard</a>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="em-btn em-btn--ghost em-btn--block">Sign out</button>
+          </form>
+        {% else %}
+          <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--block">Get Started Free</a>
+          <a href="{% url 'login' %}" class="em-btn em-btn--ghost em-btn--block">Sign in</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       MAIN CONTENT
+       ======================================================== -->
+  <main id="main-content">
+
+    <!-- ── HERO ── -->
+    <section class="dn-hero" aria-labelledby="donate-hero-title">
+      <div class="em-container dn-hero-inner">
+        <div class="dn-hero-badge">
+          <span class="dn-hero-badge-dot"></span>
+          100% Free Platform &middot; Community-Supported
+        </div>
+
+        <h1 id="donate-hero-title" class="dn-hero-title">
+          Keep debate free<br>
+          <span class="dn-gradient-text">for everyone, forever</span>
+        </h1>
+
+        <p class="dn-hero-sub">
+          NekoTab is free because we believe every debate community deserves world-class tools — regardless of budget. Your support keeps the servers running, features shipping, and the platform free for all.
+        </p>
+
+        <div class="dn-cta-wrap">
+          <a
+            href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
+            class="dn-donate-btn lemonsqueezy-button"
+            aria-label="Support NekoTab — opens secure payment overlay"
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            Support NekoTab
+          </a>
+          <a href="#tiers" class="dn-hero-ghost-btn">
+            View support options
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          </a>
+        </div>
+
+        <!-- Stats strip -->
+        <div class="dn-hero-stats" role="list" aria-label="Platform statistics">
+          <div class="dn-hero-stat" role="listitem">
+            <span class="dn-hero-stat-num">40+</span>
+            <span class="dn-hero-stat-label">Tournaments Hosted</span>
+          </div>
+          <div class="dn-hero-stat-sep" aria-hidden="true"></div>
+          <div class="dn-hero-stat" role="listitem">
+            <span class="dn-hero-stat-num">20+</span>
+            <span class="dn-hero-stat-label">Countries</span>
+          </div>
+          <div class="dn-hero-stat-sep" aria-hidden="true"></div>
+          <div class="dn-hero-stat" role="listitem">
+            <span class="dn-hero-stat-num">$0</span>
+            <span class="dn-hero-stat-label">Cost to Users</span>
+          </div>
+          <div class="dn-hero-stat-sep" aria-hidden="true"></div>
+          <div class="dn-hero-stat" role="listitem">
+            <span class="dn-hero-stat-num">100%</span>
+            <span class="dn-hero-stat-label">Open Source</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHY YOUR SUPPORT MATTERS ── -->
+    <section class="dn-why" aria-labelledby="why-title">
+      <div class="em-container">
+        <div style="text-align:center; margin-bottom:8px;">
+          <div class="dn-section-eyebrow">Where Your Money Goes</div>
+        </div>
+        <h2 id="why-title" class="dn-section-title" style="text-align:center;">What your support funds</h2>
+        <p class="dn-section-sub" style="text-align:center; margin: 0 auto;">
+          Every contribution goes directly into the four pillars that make NekoTab reliable, powerful, and free for the global debate community.
+        </p>
+
+        <div class="dn-why-grid">
+          <div class="dn-why-card">
+            <div class="dn-why-icon dn-why-icon--indigo" aria-hidden="true">🖥️</div>
+            <div class="dn-why-card-title">Server Infrastructure</div>
+            <p class="dn-why-card-desc">Production hosting, database costs, CDN, and storage — the backbone that keeps NekoTab fast and always online for tournaments around the world.</p>
+          </div>
+          <div class="dn-why-card">
+            <div class="dn-why-icon dn-why-icon--violet" aria-hidden="true">🤖</div>
+            <div class="dn-why-card-title">AI Motion Analysis</div>
+            <p class="dn-why-card-desc">Our AI-powered motion analysis helps debaters prep smarter. API costs aren't free — your support keeps this feature available to everyone at no charge.</p>
+          </div>
+          <div class="dn-why-card">
+            <div class="dn-why-icon dn-why-icon--emerald" aria-hidden="true">🚀</div>
+            <div class="dn-why-card-title">New Features</div>
+            <p class="dn-why-card-desc">From real-time draws to digital ballots and standings — features your community requests take real time to build. Supporters make the roadmap move faster.</p>
+          </div>
+          <div class="dn-why-card">
+            <div class="dn-why-icon dn-why-icon--amber" aria-hidden="true">🔒</div>
+            <div class="dn-why-card-title">Security &amp; Reliability</div>
+            <p class="dn-why-card-desc">SSL certificates, DDoS protection, uptime monitoring, and regular security audits — essential costs that keep tournament data safe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── IMPACT SECTION ── -->
+    <section class="dn-impact" aria-labelledby="impact-title">
+      <div class="em-container dn-impact-inner">
+        <div style="text-align:center;">
+          <div class="dn-section-eyebrow">Our Impact</div>
+          <h2 id="impact-title" class="dn-section-title">The debate community chooses NekoTab</h2>
+          <p class="dn-section-sub" style="margin: 0 auto;">
+            These numbers represent real tournaments, real debates, and real communities trusting NekoTab — for free. Your support keeps this growing.
+          </p>
+        </div>
+
+        <div class="dn-impact-grid" role="list" aria-label="Platform impact statistics">
+          <div class="dn-impact-stat" role="listitem">
+            <div class="dn-impact-num">40+</div>
+            <div class="dn-impact-label">Tournaments Hosted</div>
+          </div>
+          <div class="dn-impact-stat" role="listitem">
+            <div class="dn-impact-num">20+</div>
+            <div class="dn-impact-label">Countries Reached</div>
+          </div>
+          <div class="dn-impact-stat" role="listitem">
+            <div class="dn-impact-num">BP · WSDC · Australs</div>
+            <div class="dn-impact-label" style="margin-top:14px;">Formats Supported</div>
+          </div>
+          <div class="dn-impact-stat" role="listitem">
+            <div class="dn-impact-num">$0</div>
+            <div class="dn-impact-label">Cost to Every User</div>
+          </div>
+        </div>
+
+        <div class="dn-impact-cta-wrap">
+          <a
+            href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
+            class="dn-donate-btn lemonsqueezy-button"
+          >
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            Help Keep It Free
+          </a>
+          <p class="dn-impact-cta-note">Secure payment via Lemon Squeezy · Cancel anytime</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DONATION TIERS ── -->
+    <section class="dn-tiers" id="tiers" aria-labelledby="tiers-title">
+      <div class="em-container">
+        <div style="text-align:center; margin-bottom:8px;">
+          <div class="dn-section-eyebrow">Support Options</div>
+        </div>
+        <h2 id="tiers-title" class="dn-section-title" style="text-align:center;">Choose your level of support</h2>
+        <p class="dn-section-sub" style="text-align:center; margin:0 auto;">
+          Every contribution — large or small — directly funds NekoTab's mission to keep great debate tools free. One checkout handles all amounts.
+        </p>
+
+        <div class="dn-tiers-grid">
+
+          <!-- Tier 1: Friend ($2 minimum) -->
+          <div class="dn-tier-card">
+            <span class="dn-tier-emoji" aria-hidden="true">🤝</span>
+            <div class="dn-tier-name">Friend</div>
+            <div class="dn-tier-amount">$2 <small>/ month</small></div>
+            <div class="dn-tier-cadence">or a one-time $2 · minimum amount</div>
+            <p class="dn-tier-desc">Even the smallest gesture adds up. $2 a month from the debate community keeps NekoTab alive and free for everyone. Every contribution counts.</p>
+            <ul class="dn-tier-perks" aria-label="What you get">
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Keeps NekoTab free for all communities</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> You're officially part of the story</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Heartfelt gratitude from the team</li>
+            </ul>
+            <a
+              href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
+              class="dn-tier-btn dn-tier-btn--outline lemonsqueezy-button"
+            >Become a Friend — $2</a>
+          </div>
+
+          <!-- Tier 2: Supporter ($5 standard — featured) -->
+          <div class="dn-tier-card dn-tier-card--featured">
+            <div class="dn-tier-popular" aria-label="Most popular option">Most Popular</div>
+            <span class="dn-tier-emoji" aria-hidden="true">⚡</span>
+            <div class="dn-tier-name">Supporter</div>
+            <div class="dn-tier-amount">$5 <small>/ month</small></div>
+            <div class="dn-tier-cadence">or a one-time $5 · standard amount</div>
+            <p class="dn-tier-desc">The sweet spot — the price of a coffee, but it directly funds hosting, AI motion analysis, and new features for the whole debate community.</p>
+            <ul class="dn-tier-perks" aria-label="What you get">
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Covers real hosting costs month-to-month</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Helps fund AI motion analysis API</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Enables faster feature development</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Heartfelt gratitude from the team</li>
+            </ul>
+            <a
+              href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
+              class="dn-tier-btn dn-tier-btn--primary lemonsqueezy-button"
+            >Support NekoTab — $5</a>
+          </div>
+
+          <!-- Tier 3: Champion ($20+) -->
+          <div class="dn-tier-card">
+            <span class="dn-tier-emoji" aria-hidden="true">🏆</span>
+            <div class="dn-tier-name">Champion</div>
+            <div class="dn-tier-amount">$20 <small>/ month</small></div>
+            <div class="dn-tier-cadence">or a one-time $20+ · for power users &amp; orgs</div>
+            <p class="dn-tier-desc">For debate organisations, institutions, and power users who rely on NekoTab every season. Your backing directly accelerates the roadmap and long-term stability.</p>
+            <ul class="dn-tier-perks" aria-label="What you get">
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Funds a full month of infrastructure</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Covers AI API costs for all users</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Priority feature request consideration</li>
+              <li><span class="dn-tier-check" aria-hidden="true">✓</span> Recognised as a NekoTab Champion</li>
+            </ul>
+            <a
+              href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
+              class="dn-tier-btn dn-tier-btn--outline lemonsqueezy-button"
+            >Become a Champion</a>
+          </div>
+
+        </div>
+
+        <!-- Custom amount note -->
+        <p style="text-align:center; margin-top:28px; font-size:14px; color:var(--nt-text-muted);">
+          Want to give a different amount? You can set any amount (min $2) inside the checkout.
+          <a
+            href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color:var(--nt-primary); text-decoration:underline;"
+          >Open checkout →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ── OPEN SOURCE BANNER ── -->
+    <section class="dn-oss" aria-label="Open source information">
+      <div class="em-container">
+        <div class="dn-oss-card">
+          <div class="dn-oss-text">
+            <div class="dn-oss-eyebrow">Open Source</div>
+            <h2 class="dn-oss-title">Built in the open, for the community</h2>
+            <p class="dn-oss-desc">
+              NekoTab's source code is fully open on GitHub — anyone can inspect it, contribute to it, or self-host it. Your donations support the hosted version that makes this accessible to communities without technical resources. We believe radical transparency is the foundation of trust.
+            </p>
+          </div>
+          <div class="dn-oss-actions">
+            <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener noreferrer" class="dn-oss-btn dn-oss-btn--primary">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              View on GitHub
+            </a>
+            <a href="/contact/" class="dn-oss-btn dn-oss-btn--outline">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="dn-faq" aria-labelledby="faq-title">
+      <div class="em-container">
+        <div style="text-align:center; margin-bottom:8px;">
+          <div class="dn-section-eyebrow">FAQ</div>
+        </div>
+        <h2 id="faq-title" class="dn-section-title" style="text-align:center;">Common questions</h2>
+
+        <div class="dn-faq-list" role="list">
+
+          <div class="dn-faq-item" role="listitem">
+            <button class="dn-faq-q" aria-expanded="false">
+              Is NekoTab really free to use even if I don't donate?
+              <svg class="dn-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="dn-faq-a" role="region">
+              Yes — completely. NekoTab will always be free to use. There are no paywalls, no per-tournament fees, and no hidden charges. Donations are entirely voluntary and simply help us keep the platform running and improving.
+            </div>
+          </div>
+
+          <div class="dn-faq-item" role="listitem">
+            <button class="dn-faq-q" aria-expanded="false">
+              What payment methods are accepted?
+              <svg class="dn-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="dn-faq-a" role="region">
+              Payments are processed securely through <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer">Lemon Squeezy</a>, which accepts all major credit cards, debit cards, PayPal, and more — depending on your region. All transactions are encrypted and handled by Lemon Squeezy's payment infrastructure.
+            </div>
+          </div>
+
+          <div class="dn-faq-item" role="listitem">
+            <button class="dn-faq-q" aria-expanded="false">
+              Can I give a one-time donation instead of a monthly one?
+              <svg class="dn-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="dn-faq-a" role="region">
+              Absolutely. You can choose a one-time contribution of any amount in the checkout. The amounts shown are just suggestions — you're free to give more or less, and there's no obligation to set up a recurring plan.
+            </div>
+          </div>
+
+          <div class="dn-faq-item" role="listitem">
+            <button class="dn-faq-q" aria-expanded="false">
+              Can I cancel a recurring donation?
+              <svg class="dn-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="dn-faq-a" role="region">
+              Yes. You can cancel any recurring support at any time through the Lemon Squeezy customer portal — no questions asked. You'll receive a confirmation email after each charge with a direct link to manage your subscription.
+            </div>
+          </div>
+
+          <div class="dn-faq-item" role="listitem">
+            <button class="dn-faq-q" aria-expanded="false">
+              Where exactly does the money go?
+              <svg class="dn-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="dn-faq-a" role="region">
+              100% of contributions go toward NekoTab's operating costs: server hosting, database infrastructure, CDN, AI API fees for motion analysis, SSL certificates, and development time for new features. We don't take a salary from donations — this is a passion project built to serve the debate community.
+            </div>
+          </div>
+
+          <div class="dn-faq-item" role="listitem">
+            <button class="dn-faq-q" aria-expanded="false">
+              Can my organisation sponsor NekoTab?
+              <svg class="dn-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="dn-faq-a" role="region">
+              Yes! If your debate society, institution, or organisation would like to sponsor NekoTab — whether as a Patron contributor or through a custom arrangement — please <a href="/contact/">get in touch</a>. We'd love to acknowledge your support and discuss how we can best recognise your contribution.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FINAL CTA ── -->
+    <section class="dn-final-cta" aria-labelledby="final-cta-title">
+      <div class="em-container dn-final-cta-inner">
+        <h2 id="final-cta-title" class="dn-final-cta-title">
+          Debate should be free.<br>Help us keep it that way.
+        </h2>
+        <p class="dn-final-cta-sub">
+          NekoTab has served 40+ tournaments across 20+ countries — all at zero cost to users. Join our community of supporters and help us keep the lights on.
+        </p>
+
+        <div class="dn-cta-wrap">
+          <a
+            href="https://nekotab.lemonsqueezy.com/checkout/buy/b30209b6-9708-4f1c-bd4a-471939c8dc52?embed=1"
+            class="dn-donate-btn lemonsqueezy-button"
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            Support NekoTab Today
+          </a>
+          <a href="/" class="dn-hero-ghost-btn">
+            Back to NekoTab →
+          </a>
+        </div>
+
+        <p class="dn-transparency-note">
+          Payments processed securely by <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer">Lemon Squeezy</a>.
+          NekoTab is open-source — <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener noreferrer">view the code on GitHub</a>.
+          Donations are voluntary and do not unlock any features.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       FOOTER — same as landing
+       ======================================================== -->
+  <footer class="em-footer" role="contentinfo">
+    <div class="em-container em-footer-grid">
+      <div>
+        <a href="/" class="em-logo">
+          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img">
+        </a>
+        <p class="em-foot-desc">The operating system for debate. Open-source tournament tabulation, motion resources, and a global debate community.</p>
+      </div>
+      <div>
+        <div class="em-foot-title">Product</div>
+        <ul class="em-foot-links">
+          <li><a href="/">Tournament Engine</a></li>
+          <li><a href="{% url 'motions' %}">Motion Bank</a></li>
+          <li><a href="{% url 'register-tournament' %}">Create Tournament</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Community</div>
+        <ul class="em-foot-links">
+          <li><a href="{% url 'forum:forum-home' %}">Debate Forum</a></li>
+          <li><a href="/learn/">Learn Debate</a></li>
+          <li><a href="{% url 'org-list' %}">Organizations</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Resources</div>
+        <ul class="em-foot-links">
+          <li><a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Documentation</a></li>
+          <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="/register/tournament/">Create Tournament</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Company</div>
+        <ul class="em-foot-links">
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/donate/" style="color:var(--nt-primary); font-weight:600;">♥ Support Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Account</div>
+        <ul class="em-foot-links">
+          {% if user.is_authenticated %}
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/register/tournament/">New Tournament</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}">Sign in</a></li>
+            <li><a href="{% url 'signup' %}">Create Account</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <div class="em-foot-bottom">
+      <div class="em-container em-foot-bottom-inner">
+        <div class="em-copy">© <span id="em-year"></span> NekoTab. Open-source debate platform.</div>
+        <div class="em-foot-bottom-links">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/donate/" style="color:#a5b4fc;">♥ Support</a>
+          <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/landing.js' %}"></script>
+
+  <!-- Donate page: FAQ accordion + year -->
+  <script>
+    // Year
+    var yearEl = document.getElementById('em-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // FAQ accordion
+    document.querySelectorAll('.dn-faq-q').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.dn-faq-item');
+        var isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.dn-faq-item').forEach(function(el) {
+          el.classList.remove('open');
+          el.querySelector('.dn-faq-q').setAttribute('aria-expanded', 'false');
+        });
+        // Toggle current
+        if (!isOpen) {
+          item.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; color:#e0e0e0; padding:16px 24px; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,.3); font-size:14px;">
+    <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <p style="margin:0; flex:1; min-width:280px;">
+        We use cookies for authentication and analytics.
+        <a href="/privacy/" style="color:#a78bfa; text-decoration:underline;">Privacy Policy</a>
+      </p>
+      <div style="display:flex; gap:8px; flex-shrink:0;">
+        <button onclick="NekoConsent.acceptAll()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept All</button>
+        <button onclick="NekoConsent.acceptEssential()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">Essential Only</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button id="em-back-to-top" class="em-back-to-top" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+</body>
+</html>
