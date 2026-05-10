@@ -24,6 +24,7 @@ from tournaments.models import Tournament, Round
 from results.models import BallotSubmission
 from motionbank.models import MotionEntry
 from participant_crm.models import ParticipantProfile
+from participants.models import Speaker, Adjudicator
 from .models import PageView, DailyStats, ActiveSession
 
 User = get_user_model()
@@ -109,12 +110,21 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         # === TOURNAMENT STATS ===
         context['total_tournaments'] = Tournament.objects.count()
         context['active_tournaments'] = Tournament.objects.filter(active=True).count()
-        
-        # Recent tournaments (ordered by id desc since Tournament has no created timestamp)
+
+        # === PARTICIPANT STATS (real counts — not email-gated CRM) ===
+        context['total_speakers'] = Speaker.objects.count()
+        context['total_adjudicators'] = Adjudicator.objects.count()
+        context['speakers_7d'] = Speaker.objects.filter(
+            team__tournament__round__checkin_time__gte=last_7d
+        ).distinct().count()
+
+        # Recent tournaments with real participant counts
         context['recent_tournaments'] = Tournament.objects.select_related('owner').annotate(
             num_teams=Count('team', distinct=True),
+            num_speakers=Count('team__speaker', distinct=True),
+            num_adjudicators=Count('adjudicator', distinct=True),
         ).order_by('-id')[:10]
-        
+
         # === DEBATE STATS ===
         total_rounds = Round.objects.count()
         context['total_rounds'] = total_rounds
@@ -251,6 +261,8 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
             num_rounds=Count('round'),
             num_completed_rounds=Count('round', filter=Q(round__completed=True)),
             num_debates=Count('round__debate', distinct=True),
+            num_speakers=Count('team__speaker', distinct=True),
+            num_adjudicators=Count('adjudicator', distinct=True),
         ).order_by('-id')
         
         # Search

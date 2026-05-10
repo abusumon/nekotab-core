@@ -632,6 +632,8 @@
                         <th>Created</th>
                         <th>Rounds</th>
                         <th>Debates</th>
+                        <th>Debaters</th>
+                        <th>Adjudicators</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -677,6 +679,12 @@
                             <span style="color: var(--text-secondary);">{{ tournament.num_debates }}</span>
                         </td>
                         <td>
+                            <span class="badge badge-purple">{{ tournament.num_speakers|default:"0" }}</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-success">{{ tournament.num_adjudicators|default:"0" }}</span>
+                        </td>
+                        <td>
                             {% if tournament.active %}
                             <span class="badge badge-success">Active</span>
                             {% else %}
@@ -690,7 +698,7 @@
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="8">
+                        <td colspan="10">
                             <div class="empty-state">
                                 <div class="empty-state-icon">🏆</div>
                                 <p>No tournaments found</p>
