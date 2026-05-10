@@ -137,6 +137,10 @@ urlpatterns = [
     path('campaigns/',
         include('campaigns.urls')),
 
+    # Donations (Lemon Squeezy webhook)
+    path('donations/',
+        include('donations.urls')),
+
     # CRM unsubscribe (public)
     path('unsubscribe/',
         CrmUnsubscribeView.as_view(),

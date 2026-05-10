@@ -43,6 +43,11 @@ if not SECRET_KEY and not os.environ.get('LOCAL_SETTINGS', ''):
 NEKOCONGRESS_URL = os.environ.get('NEKOCONGRESS_URL', '')
 NEKOCONGRESS_API_KEY = os.environ.get('NEKOCONGRESS_API_KEY', '')
 
+# Lemon Squeezy donations integration
+LEMON_SQUEEZY_WEBHOOK_SECRET = os.environ.get('LEMON_SQUEEZY_WEBHOOK_SECRET', '')
+LEMON_SQUEEZY_API_KEY = os.environ.get('LEMON_SQUEEZY_API_KEY', '')
+LEMON_SQUEEZY_STORE_ID = os.environ.get('LEMON_SQUEEZY_STORE_ID', '')
+
 # ==============================================================================
 # Version
 # ==============================================================================
@@ -159,6 +164,7 @@ TABBYCAT_APPS = (
     'availability',
     'breakqual',
     'campaigns',
+    'donations',
     'checkins',
     'divisions', # obsolete
     'draw',
