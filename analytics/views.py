@@ -3,6 +3,7 @@ import io
 import json
 import logging
 from datetime import timedelta
+from decimal import Decimal
 
 from django.conf import settings
 from django.contrib import messages
@@ -10,8 +11,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.cache import cache
 from django.db import connection
-from django.db.models import Count, Max, Q, Sum
-from django.db.models.functions import TruncDate, TruncHour
+from django.db.models import Case, Count, DecimalField, F, Max, Q, Sum, Value, When
+from django.db.models.functions import Coalesce, TruncDate, TruncHour, TruncMonth
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.utils import timezone
@@ -25,6 +26,7 @@ from results.models import BallotSubmission
 from motionbank.models import MotionEntry
 from participant_crm.models import ParticipantProfile
 from participants.models import Speaker, Adjudicator
+from donations.models import DonationTransaction
 from .models import PageView, DailyStats, ActiveSession
 
 User = get_user_model()
@@ -203,6 +205,147 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         context['crm_new_30d'] = crm.filter(first_seen__gte=last_30d).count()
         context['crm_recent'] = crm.order_by('-first_seen')[:8]
 
+        return context
+
+
+@method_decorator(cache_page(60), name='dispatch')
+class DonationsAnalyticsView(SuperuserRequiredMixin, TemplateView):
+    """Donations-focused analytics dashboard sourced from Lemon webhook data."""
+    template_name = 'analytics/donations.html'
+
+    @staticmethod
+    def _refund_sum_expression():
+        return Sum(
+            Case(
+                When(refunded_amount__gt=0, then=F('refunded_amount')),
+                When(status=DonationTransaction.Status.REFUNDED, then=F('amount')),
+                default=Value(Decimal('0.00')),
+                output_field=DecimalField(max_digits=12, decimal_places=2),
+            )
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        now = timezone.now()
+
+        period = self.request.GET.get('period', '365').strip().lower()
+        transactions = DonationTransaction.objects.exclude(
+            status__in=[DonationTransaction.Status.FAILED, DonationTransaction.Status.CANCELLED]
+        )
+
+        if period != 'all' and period.isdigit():
+            since = now - timedelta(days=int(period))
+            transactions = transactions.filter(
+                Q(donated_at__gte=since)
+                | Q(donated_at__isnull=True, first_seen_at__gte=since)
+            )
+
+        paid_like = transactions.filter(
+            status__in=[DonationTransaction.Status.PAID, DonationTransaction.Status.REFUNDED]
+        )
+
+        totals = paid_like.aggregate(
+            gross_amount=Sum('amount'),
+            refunded_amount=self._refund_sum_expression(),
+            transaction_count=Count('id'),
+        )
+
+        gross_amount = totals['gross_amount'] or Decimal('0.00')
+        refunded_amount = totals['refunded_amount'] or Decimal('0.00')
+        net_amount = gross_amount - refunded_amount
+        if net_amount < Decimal('0.00'):
+            net_amount = Decimal('0.00')
+
+        refunded_tx_count = paid_like.filter(
+            Q(status=DonationTransaction.Status.REFUNDED)
+            | Q(refunded_amount__gt=0)
+        ).count()
+
+        transaction_count = totals['transaction_count'] or 0
+        refund_rate = round((refunded_tx_count / transaction_count) * 100, 2) if transaction_count else 0
+
+        unique_email_donors = paid_like.exclude(donor_email='').values('donor_email').distinct().count()
+        unique_name_only_donors = paid_like.filter(donor_email='').exclude(donor_name='').values('donor_name').distinct().count()
+        unique_donors = unique_email_donors + unique_name_only_donors
+
+        active_supporters = transactions.filter(
+            donation_type=DonationTransaction.DonationType.SUBSCRIPTION,
+            status=DonationTransaction.Status.PAID,
+        ).filter(
+            Q(donated_at__gte=now - timedelta(days=30))
+            | Q(donated_at__isnull=True, first_seen_at__gte=now - timedelta(days=30))
+        ).exclude(donor_email='').values('donor_email').distinct().count()
+
+        monthly_rows = paid_like.annotate(
+            month=TruncMonth(Coalesce('donated_at', 'first_seen_at'))
+        ).values('month').annotate(
+            gross_amount=Sum('amount'),
+            refunded_amount=self._refund_sum_expression(),
+            donation_count=Count('id'),
+        ).order_by('month')
+
+        monthly_chart = {
+            'labels': [],
+            'gross': [],
+            'net': [],
+            'refunded': [],
+        }
+        monthly_table = []
+
+        for row in monthly_rows:
+            month = row['month']
+            if month is None:
+                continue
+
+            month_label = month.strftime('%b %Y')
+            gross = row['gross_amount'] or Decimal('0.00')
+            refunded = row['refunded_amount'] or Decimal('0.00')
+            net = gross - refunded
+            if net < Decimal('0.00'):
+                net = Decimal('0.00')
+
+            monthly_chart['labels'].append(month_label)
+            monthly_chart['gross'].append(float(gross))
+            monthly_chart['net'].append(float(net))
+            monthly_chart['refunded'].append(float(refunded))
+
+            monthly_table.append({
+                'label': month_label,
+                'gross': gross,
+                'net': net,
+                'refunded': refunded,
+                'count': row['donation_count'],
+            })
+
+        top_donors = paid_like.exclude(donor_email='').values('donor_email').annotate(
+            donor_name=Max('donor_name'),
+            total_donated=Sum('amount'),
+            donation_count=Count('id'),
+            last_donated=Max('donated_at'),
+        ).order_by('-total_donated')[:10]
+
+        recent_donations = transactions.order_by('-donated_at', '-updated_at')[:25]
+
+        status_breakdown = list(
+            transactions.values('status').annotate(count=Count('id')).order_by('-count')
+        )
+
+        context.update({
+            'active_nav': 'donations',
+            'period': period,
+            'gross_amount': gross_amount,
+            'refunded_amount': refunded_amount,
+            'net_amount': net_amount,
+            'refund_rate': refund_rate,
+            'transaction_count': transaction_count,
+            'unique_donors': unique_donors,
+            'active_supporters': active_supporters,
+            'monthly_chart_data': json.dumps(monthly_chart),
+            'monthly_table': monthly_table,
+            'top_donors': top_donors,
+            'recent_donations': recent_donations,
+            'status_breakdown': status_breakdown,
+        })
         return context
 
 

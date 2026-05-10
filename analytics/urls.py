@@ -7,6 +7,7 @@ urlpatterns = [
     # Participant CRM (nested under /analytics/participants/)
     path('participants/', include('participant_crm.urls')),
     path('', views.DashboardView.as_view(), name='dashboard'),
+    path('donations/', views.DonationsAnalyticsView.as_view(), name='donations'),
     path('users/', views.UsersListView.as_view(), name='users'),
     path('users/delete/', views.DeleteUsersView.as_view(), name='delete_users'),
     path('users/export/', views.ExportUsersView.as_view(), name='export_users'),

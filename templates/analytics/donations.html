@@ -1,0 +1,375 @@
+{% extends "analytics/_base_crm.html" %}
+
+{% block title %}Donations Analytics{% endblock %}
+
+{% block extra_css %}
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+}
+.kpi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+}
+.kpi-label {
+    color: var(--text-secondary);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+}
+.kpi-value {
+    font-size: 28px;
+    font-weight: 700;
+}
+.kpi-note {
+    margin-top: 8px;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+.money-positive { color: var(--success); }
+.money-warning { color: var(--warning); }
+.period-filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.period-filters .btn {
+    padding: 8px 14px;
+    font-size: 12px;
+}
+.period-filters .btn-active {
+    background: linear-gradient(135deg, var(--accent), #ec4899);
+    color: #fff;
+    border: none;
+}
+.split-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.chart-wrap {
+    height: 280px;
+    margin-top: 8px;
+}
+.card-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.card-title-row h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.donor-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.donor-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+    font-size: 13px;
+}
+.donor-list li:last-child { border-bottom: none; }
+.donor-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.donor-email {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+.status-badge {
+    display: inline-flex;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.status-paid { background: rgba(16,185,129,.2); color: var(--success); }
+.status-refunded { background: rgba(245,158,11,.2); color: var(--warning); }
+.status-pending { background: rgba(59,130,246,.2); color: var(--info); }
+.status-failed { background: rgba(239,68,68,.2); color: var(--danger); }
+.status-cancelled { background: rgba(148,163,184,.2); color: #94a3b8; }
+.status-subscription {
+    background: rgba(124,58,237,.2);
+    color: #a78bfa;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+.status-one_time {
+    background: rgba(59,130,246,.2);
+    color: #93c5fd;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+.summary-mini {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 6px;
+}
+.summary-mini .mini {
+    background: var(--bg-hover);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+}
+.summary-mini .mini .value {
+    font-size: 16px;
+    font-weight: 700;
+}
+.summary-mini .mini .label {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+.text-right { text-align: right; }
+@media (max-width: 1100px) {
+    .split-grid { grid-template-columns: 1fr; }
+}
+{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h2>💖 Donations Analytics</h2>
+    <div class="header-stats">
+        <div class="header-stat">
+            <div class="header-stat-value">{{ transaction_count }}</div>
+            <div class="header-stat-label">Transactions</div>
+        </div>
+        <div class="header-stat">
+            <div class="header-stat-value">{{ unique_donors }}</div>
+            <div class="header-stat-label">Unique Donors</div>
+        </div>
+        <div class="header-stat">
+            <div class="header-stat-value">{{ active_supporters }}</div>
+            <div class="header-stat-label">Active Supporters (30d)</div>
+        </div>
+    </div>
+</div>
+
+<form method="get" class="period-filters">
+    <span style="color: var(--text-secondary); font-size: 13px;">Period:</span>
+    <button type="submit" name="period" value="30" class="btn {% if period == '30' %}btn-active{% else %}btn-secondary{% endif %}">30 Days</button>
+    <button type="submit" name="period" value="90" class="btn {% if period == '90' %}btn-active{% else %}btn-secondary{% endif %}">90 Days</button>
+    <button type="submit" name="period" value="365" class="btn {% if period == '365' %}btn-active{% else %}btn-secondary{% endif %}">365 Days</button>
+    <button type="submit" name="period" value="all" class="btn {% if period == 'all' %}btn-active{% else %}btn-secondary{% endif %}">All Time</button>
+</form>
+
+<div class="kpi-grid">
+    <div class="kpi-card">
+        <div class="kpi-label">Gross Donations</div>
+        <div class="kpi-value">${{ gross_amount|floatformat:2 }}</div>
+        <div class="kpi-note">Before refunds</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Refunded</div>
+        <div class="kpi-value money-warning">${{ refunded_amount|floatformat:2 }}</div>
+        <div class="kpi-note">Total refunded amount</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Net Donations</div>
+        <div class="kpi-value money-positive">${{ net_amount|floatformat:2 }}</div>
+        <div class="kpi-note">Gross minus refunds</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Refund Rate</div>
+        <div class="kpi-value">{{ refund_rate }}%</div>
+        <div class="kpi-note">By transaction count</div>
+    </div>
+</div>
+
+<div class="split-grid">
+    <div class="card" style="padding: 16px;">
+        <div class="card-title-row">
+            <h3>Monthly Donation Trend</h3>
+            <span style="color: var(--text-secondary); font-size: 12px;">Gross vs Net</span>
+        </div>
+        <div class="chart-wrap">
+            <canvas id="monthlyDonationsChart"></canvas>
+        </div>
+    </div>
+
+    <div class="card" style="padding: 16px;">
+        <div class="card-title-row">
+            <h3>Top Donors</h3>
+        </div>
+        <ul class="donor-list">
+            {% for donor in top_donors %}
+            <li>
+                <div>
+                    <div class="donor-name">{{ donor.donor_name|default:donor.donor_email }}</div>
+                    <div class="donor-email">{{ donor.donor_email }}</div>
+                </div>
+                <div style="text-align:right;">
+                    <div style="font-weight:700;">${{ donor.total_donated|floatformat:2 }}</div>
+                    <div style="color: var(--text-secondary); font-size: 11px;">{{ donor.donation_count }} tx</div>
+                </div>
+            </li>
+            {% empty %}
+            <li style="color: var(--text-secondary);">No donor data yet.</li>
+            {% endfor %}
+        </ul>
+
+        <div class="summary-mini">
+            {% for item in status_breakdown %}
+            <div class="mini">
+                <div class="value">{{ item.count }}</div>
+                <div class="label">{{ item.status|title }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="card" style="padding: 16px; margin-bottom: 16px;">
+    <div class="card-title-row">
+        <h3>Recent Donations</h3>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Donor</th>
+                    <th>Email</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th class="text-right">Amount</th>
+                    <th class="text-right">Refunded</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tx in recent_donations %}
+                <tr>
+                    <td>{{ tx.donated_at|default:tx.first_seen_at|date:"M d, Y H:i" }}</td>
+                    <td>{{ tx.donor_name|default:"—" }}</td>
+                    <td>{{ tx.donor_email|default:"—" }}</td>
+                    <td>
+                        <span class="status-{{ tx.donation_type }}">{{ tx.get_donation_type_display }}</span>
+                    </td>
+                    <td>
+                        <span class="status-badge status-{{ tx.status }}">{{ tx.get_status_display }}</span>
+                    </td>
+                    <td class="text-right">${{ tx.amount|floatformat:2 }} {{ tx.currency }}</td>
+                    <td class="text-right">${{ tx.refunded_amount|floatformat:2 }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="empty-state">
+                        <div class="empty-state-icon">💸</div>
+                        <h3>No donations tracked yet</h3>
+                        <p style="margin-top:8px;">Configure your Lemon webhook to start receiving transaction records.</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card" style="padding: 16px; margin-bottom: 16px;">
+    <div class="card-title-row">
+        <h3>Monthly Summary</h3>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th class="text-right">Gross</th>
+                    <th class="text-right">Refunded</th>
+                    <th class="text-right">Net</th>
+                    <th class="text-right">Transactions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in monthly_table %}
+                <tr>
+                    <td>{{ row.label }}</td>
+                    <td class="text-right">${{ row.gross|floatformat:2 }}</td>
+                    <td class="text-right">${{ row.refunded|floatformat:2 }}</td>
+                    <td class="text-right">${{ row.net|floatformat:2 }}</td>
+                    <td class="text-right">{{ row.count }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="empty-state">No monthly data yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block extra_js %}
+const monthlyChartData = {{ monthly_chart_data|safe }};
+const monthlyCanvas = document.getElementById('monthlyDonationsChart');
+
+if (monthlyCanvas && monthlyChartData?.labels?.length) {
+    const ctx = monthlyCanvas.getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: monthlyChartData.labels,
+            datasets: [
+                {
+                    label: 'Gross',
+                    data: monthlyChartData.gross,
+                    borderRadius: 6,
+                    backgroundColor: 'rgba(99, 102, 241, 0.55)',
+                    borderColor: 'rgba(99, 102, 241, 1)',
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Net',
+                    data: monthlyChartData.net,
+                    borderRadius: 6,
+                    backgroundColor: 'rgba(16, 185, 129, 0.5)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#cbd5e1',
+                    },
+                },
+            },
+            scales: {
+                x: {
+                    ticks: { color: '#94a3b8' },
+                    grid: { color: 'rgba(148, 163, 184, 0.15)' },
+                },
+                y: {
+                    ticks: { color: '#94a3b8' },
+                    grid: { color: 'rgba(148, 163, 184, 0.15)' },
+                },
+            },
+        },
+    });
+}
+{% endblock %}
