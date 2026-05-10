@@ -114,9 +114,6 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         # === PARTICIPANT STATS (real counts — not email-gated CRM) ===
         context['total_speakers'] = Speaker.objects.count()
         context['total_adjudicators'] = Adjudicator.objects.count()
-        context['speakers_7d'] = Speaker.objects.filter(
-            team__tournament__round__checkin_time__gte=last_7d
-        ).distinct().count()
 
         # Recent tournaments with real participant counts
         context['recent_tournaments'] = Tournament.objects.select_related('owner').annotate(
