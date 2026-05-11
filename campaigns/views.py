@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.core.cache import cache
 from django.core import signing
 from django.core.mail import EmailMultiAlternatives
 from django.db.models import Q
@@ -27,6 +28,118 @@ from participant_crm.models import ParticipantProfile
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
+
+SEND_LOCK_TTL_SECONDS = 120
+
+
+def _campaign_send_lock_key(campaign_pk):
+    return f"campaign-send-lock:{campaign_pk}"
+
+
+def _recalculate_campaign_stats(campaign):
+    successful = campaign.recipients.filter(status=CampaignRecipient.Status.SENT).count()
+    failed = campaign.recipients.filter(
+        status__in=[CampaignRecipient.Status.FAILED, CampaignRecipient.Status.BOUNCED]
+    ).count()
+    pending = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING).count()
+
+    campaign.successful_sends = successful
+    campaign.failed_sends = failed
+
+    update_fields = ['successful_sends', 'failed_sends']
+
+    if pending > 0:
+        campaign.status = EmailCampaign.Status.SENDING
+        update_fields.append('status')
+    else:
+        campaign.status = EmailCampaign.Status.SENT if successful > 0 else EmailCampaign.Status.FAILED
+        update_fields.append('status')
+        if campaign.sent_at is None:
+            campaign.sent_at = timezone.now()
+            update_fields.append('sent_at')
+
+    campaign.save(update_fields=update_fields)
+
+
+def _send_campaign_emails_worker(campaign_pk, site_url='', lock_key=''):
+    try:
+        campaign = EmailCampaign.objects.get(pk=campaign_pk)
+        recipients = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING)
+
+        plain_text_base = campaign.plain_text_content
+        if not plain_text_base:
+            plain_text_base = strip_tags(campaign.html_content)
+            plain_text_base = unescape(plain_text_base)
+            plain_text_base = re.sub(r'\n\s*\n', '\n\n', plain_text_base)
+
+        for recipient in recipients:
+            try:
+                token = signing.dumps({'email': recipient.email}, salt='crm-unsub')
+                unsub_url = f"{site_url}/unsubscribe/?token={token}"
+
+                unsub_html = (
+                    '<div style="text-align:center;padding:24px 0 8px;'
+                    'font-family:sans-serif;font-size:12px;color:#888888;">'
+                    f'You received this email because you registered on NekoTab. '
+                    f'<a href="{unsub_url}" style="color:#6366f1;">Unsubscribe</a>'
+                    '</div>'
+                )
+                html_with_footer = campaign.html_content + unsub_html
+                plain_with_footer = plain_text_base + f"\n\n---\nTo unsubscribe: {unsub_url}"
+
+                email = EmailMultiAlternatives(
+                    subject=campaign.subject,
+                    body=plain_with_footer,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    to=[recipient.email],
+                )
+                email.attach_alternative(html_with_footer, "text/html")
+                email.send(fail_silently=False)
+
+                recipient.status = CampaignRecipient.Status.SENT
+                recipient.sent_at = timezone.now()
+                recipient.error_message = ''
+                recipient.save(update_fields=['status', 'sent_at', 'error_message'])
+
+            except Exception as e:
+                recipient.status = CampaignRecipient.Status.FAILED
+                recipient.error_message = str(e)
+                recipient.save(update_fields=['status', 'error_message'])
+                logger.error(f"Failed to send to {recipient.email}: {e}")
+
+            if lock_key:
+                cache.set(lock_key, '1', SEND_LOCK_TTL_SECONDS)
+
+            # Rate limiting: Resend free tier allows max 2 emails/second.
+            time.sleep(0.6)
+
+        campaign.refresh_from_db()
+        _recalculate_campaign_stats(campaign)
+
+    except Exception as e:
+        logger.error(f"Campaign sending failed: {e}", exc_info=True)
+        try:
+            campaign = EmailCampaign.objects.get(pk=campaign_pk)
+            pending_exists = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING).exists()
+            campaign.status = EmailCampaign.Status.SENDING if pending_exists else EmailCampaign.Status.FAILED
+            campaign.save(update_fields=['status'])
+        except Exception:
+            pass
+    finally:
+        if lock_key:
+            cache.delete(lock_key)
+
+
+def _start_campaign_sender(campaign_pk, site_url=''):
+    lock_key = _campaign_send_lock_key(campaign_pk)
+
+    if not cache.add(lock_key, '1', SEND_LOCK_TTL_SECONDS):
+        return False
+
+    thread = Thread(target=_send_campaign_emails_worker, args=(campaign_pk, site_url, lock_key))
+    thread.daemon = True
+    thread.start()
+    return True
 
 
 class SuperuserRequiredMixin(UserPassesTestMixin):
@@ -156,11 +269,17 @@ class CampaignDetailView(SuperuserRequiredMixin, DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        lock_key = _campaign_send_lock_key(self.object.pk)
+
         context['test_form'] = TestEmailForm()
         context['total_subscribers'] = User.objects.filter(
             email__isnull=False
         ).exclude(email='').count()
         context['recent_recipients'] = self.object.recipients.all()[:50]
+        context['pending_recipients'] = self.object.recipients.filter(
+            status=CampaignRecipient.Status.PENDING
+        ).count()
+        context['sending_worker_running'] = bool(cache.get(lock_key))
         # Audience info
         try:
             audience = self.object.audience
@@ -277,7 +396,11 @@ class SendCampaignView(SuperuserRequiredMixin, View):
     
     def post(self, request, pk):
         campaign = get_object_or_404(EmailCampaign, pk=pk)
-        
+
+        if campaign.status == EmailCampaign.Status.SENDING:
+            messages.warning(request, _("This campaign is already in sending state. Use Resume Pending if progress is stuck."))
+            return redirect('campaigns:detail', pk=pk)
+
         if campaign.status not in [EmailCampaign.Status.DRAFT, EmailCampaign.Status.FAILED]:
             messages.error(request, _("This campaign has already been sent."))
             return redirect('campaigns:detail', pk=pk)
@@ -288,12 +411,15 @@ class SendCampaignView(SuperuserRequiredMixin, View):
         if not recipients:
             messages.error(request, _("No subscribers to send to!"))
             return redirect('campaigns:detail', pk=pk)
-        
+
         # Update campaign status
         campaign.status = EmailCampaign.Status.SENDING
         campaign.total_recipients = len(recipients)
-        campaign.save()
-        
+        campaign.successful_sends = 0
+        campaign.failed_sends = 0
+        campaign.sent_at = None
+        campaign.save(update_fields=['status', 'total_recipients', 'successful_sends', 'failed_sends', 'sent_at'])
+
         # Create recipient records
         CampaignRecipient.objects.filter(campaign=campaign).delete()
         recipient_objects = []
@@ -309,12 +435,12 @@ class SendCampaignView(SuperuserRequiredMixin, View):
         # Capture site URL for unsubscribe links (unavailable in background thread)
         site_url = request.build_absolute_uri('/').rstrip('/')
 
-        # Start sending in background thread
-        thread = Thread(target=self._send_campaign_emails, args=(campaign.pk, site_url))
-        thread.daemon = True
-        thread.start()
-        
-        messages.success(request, _(f"Campaign is being sent to {len(recipients)} recipients!"))
+        started = _start_campaign_sender(campaign.pk, site_url)
+        if started:
+            messages.success(request, _(f"Campaign is being sent to {len(recipients)} recipients!"))
+        else:
+            messages.info(request, _("Campaign sender is already running. Please wait a moment and refresh."))
+
         return redirect('campaigns:detail', pk=pk)
 
     def _resolve_recipients(self, campaign):
@@ -340,200 +466,104 @@ class SendCampaignView(SuperuserRequiredMixin, View):
             return list(User.objects.filter(
                 email__isnull=False
             ).exclude(email='').values_list('id', 'email'))
-    
-    def _send_campaign_emails(self, campaign_pk, site_url=''):
-        """Background task to send all campaign emails."""
-        try:
-            campaign = EmailCampaign.objects.get(pk=campaign_pk)
-            recipients = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING)
-
-            plain_text_base = campaign.plain_text_content
-            if not plain_text_base:
-                plain_text_base = strip_tags(campaign.html_content)
-                plain_text_base = unescape(plain_text_base)
-                plain_text_base = re.sub(r'\n\s*\n', '\n\n', plain_text_base)
-
-            successful = 0
-            failed = 0
-
-            for recipient in recipients:
-                try:
-                    # Generate a per-recipient unsubscribe token
-                    token = signing.dumps({'email': recipient.email}, salt='crm-unsub')
-                    unsub_url = f"{site_url}/unsubscribe/?token={token}"
-
-                    # Append unsubscribe footer to HTML
-                    unsub_html = (
-                        '<div style="text-align:center;padding:24px 0 8px;'
-                        'font-family:sans-serif;font-size:12px;color:#888888;">'
-                        f'You received this email because you registered on NekoTab. '
-                        f'<a href="{unsub_url}" style="color:#6366f1;">Unsubscribe</a>'
-                        '</div>'
-                    )
-                    html_with_footer = campaign.html_content + unsub_html
-
-                    # Append unsubscribe footer to plain text
-                    plain_with_footer = (
-                        plain_text_base
-                        + f"\n\n---\nTo unsubscribe: {unsub_url}"
-                    )
-
-                    email = EmailMultiAlternatives(
-                        subject=campaign.subject,
-                        body=plain_with_footer,
-                        from_email=settings.DEFAULT_FROM_EMAIL,
-                        to=[recipient.email],
-                    )
-                    email.attach_alternative(html_with_footer, "text/html")
-                    email.send(fail_silently=False)
-
-                    recipient.status = CampaignRecipient.Status.SENT
-                    recipient.sent_at = timezone.now()
-                    successful += 1
-
-                except Exception as e:
-                    recipient.status = CampaignRecipient.Status.FAILED
-                    recipient.error_message = str(e)
-                    failed += 1
-                    logger.error(f"Failed to send to {recipient.email}: {e}")
-
-                recipient.save()
-
-                # Rate limiting: Resend free tier allows max 2 emails/second
-                # Wait 0.6 seconds between emails to stay under the limit
-                time.sleep(0.6)
-
-            # Update campaign stats
-            campaign.successful_sends = successful
-            campaign.failed_sends = failed
-            campaign.status = EmailCampaign.Status.SENT
-            campaign.sent_at = timezone.now()
-            campaign.save()
-
-        except Exception as e:
-            logger.error(f"Campaign sending failed: {e}", exc_info=True)
-            try:
-                campaign = EmailCampaign.objects.get(pk=campaign_pk)
-                campaign.status = EmailCampaign.Status.FAILED
-                campaign.save()
-            except Exception:
-                pass
 
 
 class CampaignStatsAPIView(SuperuserRequiredMixin, View):
     """API endpoint for real-time campaign stats."""
-    
+
     def get(self, request, pk):
         campaign = get_object_or_404(EmailCampaign, pk=pk)
+        pending_count = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING).count()
+        lock_key = _campaign_send_lock_key(campaign.pk)
+        worker_running = bool(cache.get(lock_key))
+        auto_resumed = False
+
+        # Self-heal stuck sending campaigns when no sender worker is alive.
+        if campaign.status == EmailCampaign.Status.SENDING and pending_count > 0 and not worker_running:
+            site_url = request.build_absolute_uri('/').rstrip('/')
+            auto_resumed = _start_campaign_sender(campaign.pk, site_url)
+            worker_running = auto_resumed
+
+        # If there are no pending recipients, normalize campaign stats/status.
+        if campaign.status == EmailCampaign.Status.SENDING and pending_count == 0:
+            _recalculate_campaign_stats(campaign)
+            campaign.refresh_from_db()
+
         return JsonResponse({
             'status': campaign.status,
             'status_display': campaign.get_status_display(),
             'total_recipients': campaign.total_recipients,
             'successful_sends': campaign.successful_sends,
             'failed_sends': campaign.failed_sends,
+            'pending_recipients': pending_count,
+            'worker_running': worker_running,
+            'auto_resumed': auto_resumed,
             'success_rate': campaign.success_rate,
         })
 
 
 class RetryFailedEmailsView(SuperuserRequiredMixin, View):
     """Retry sending emails to recipients that previously failed."""
-    
+
     def post(self, request, pk):
         campaign = get_object_or_404(EmailCampaign, pk=pk)
-        
+
         # Get failed recipients
         failed_recipients = campaign.recipients.filter(
             status=CampaignRecipient.Status.FAILED
         )
-        
+
         failed_count = failed_recipients.count()
         if failed_count == 0:
             messages.info(request, _("No failed recipients to retry."))
             return redirect('campaigns:detail', pk=pk)
-        
+
         # Reset failed recipients to pending
         failed_recipients.update(
             status=CampaignRecipient.Status.PENDING,
             error_message=''
         )
-        
+
         # Update campaign status
         campaign.status = EmailCampaign.Status.SENDING
-        campaign.save()
-        
+        campaign.save(update_fields=['status'])
+
         # Capture site URL for unsubscribe links (unavailable in background thread)
         site_url = request.build_absolute_uri('/').rstrip('/')
 
-        # Start sending in background thread
-        thread = Thread(target=self._retry_failed_emails, args=(campaign.pk, site_url))
-        thread.daemon = True
-        thread.start()
-        
-        messages.success(request, _(f"Retrying {failed_count} failed emails..."))
+        started = _start_campaign_sender(campaign.pk, site_url)
+        if started:
+            messages.success(request, _(f"Retrying {failed_count} failed emails..."))
+        else:
+            messages.info(request, _("Campaign sender is already running. Please wait a moment and refresh."))
+
         return redirect('campaigns:detail', pk=pk)
-    
-    def _retry_failed_emails(self, campaign_pk, site_url=''):
-        """Background task to retry failed emails."""
-        try:
-            campaign = EmailCampaign.objects.get(pk=campaign_pk)
-            recipients = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING)
 
-            plain_text_base = campaign.plain_text_content
-            if not plain_text_base:
-                plain_text_base = strip_tags(campaign.html_content)
-                plain_text_base = unescape(plain_text_base)
-                plain_text_base = re.sub(r'\n\s*\n', '\n\n', plain_text_base)
 
-            new_successful = 0
-            new_failed = 0
+class ResumePendingEmailsView(SuperuserRequiredMixin, View):
+    """Resume campaigns that are stuck with pending recipients."""
 
-            for recipient in recipients:
-                try:
-                    token = signing.dumps({'email': recipient.email}, salt='crm-unsub')
-                    unsub_url = f"{site_url}/unsubscribe/?token={token}"
-                    unsub_html = (
-                        '<div style="text-align:center;padding:24px 0 8px;'
-                        'font-family:sans-serif;font-size:12px;color:#888888;">'
-                        f'You received this email because you registered on NekoTab. '
-                        f'<a href="{unsub_url}" style="color:#6366f1;">Unsubscribe</a>'
-                        '</div>'
-                    )
-                    html_with_footer = campaign.html_content + unsub_html
-                    plain_with_footer = plain_text_base + f"\n\n---\nTo unsubscribe: {unsub_url}"
+    def post(self, request, pk):
+        campaign = get_object_or_404(EmailCampaign, pk=pk)
+        pending_count = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING).count()
 
-                    email = EmailMultiAlternatives(
-                        subject=campaign.subject,
-                        body=plain_with_footer,
-                        from_email=settings.DEFAULT_FROM_EMAIL,
-                        to=[recipient.email],
-                    )
-                    email.attach_alternative(html_with_footer, "text/html")
-                    email.send(fail_silently=False)
+        if pending_count == 0:
+            messages.info(request, _("No pending recipients to resume."))
+            _recalculate_campaign_stats(campaign)
+            return redirect('campaigns:detail', pk=pk)
 
-                    recipient.status = CampaignRecipient.Status.SENT
-                    recipient.sent_at = timezone.now()
-                    recipient.error_message = ''
-                    new_successful += 1
+        campaign.status = EmailCampaign.Status.SENDING
+        campaign.save(update_fields=['status'])
 
-                except Exception as e:
-                    recipient.status = CampaignRecipient.Status.FAILED
-                    recipient.error_message = str(e)
-                    new_failed += 1
-                    logger.error(f"Failed to send to {recipient.email}: {e}")
+        site_url = request.build_absolute_uri('/').rstrip('/')
+        started = _start_campaign_sender(campaign.pk, site_url)
 
-                recipient.save()
+        if started:
+            messages.success(request, _(f"Resuming campaign send for {pending_count} pending recipients."))
+        else:
+            messages.info(request, _("Campaign sender is already running. Please wait a moment and refresh."))
 
-                # Rate limiting: Wait 0.6 seconds between emails
-                time.sleep(0.6)
-
-            # Update campaign stats
-            campaign.successful_sends += new_successful
-            campaign.failed_sends = new_failed
-            campaign.status = EmailCampaign.Status.SENT
-            campaign.save()
-
-        except Exception as e:
-            logger.error(f"Retry sending failed: {e}", exc_info=True)
+        return redirect('campaigns:detail', pk=pk)
 
 
 # ==============================================================================

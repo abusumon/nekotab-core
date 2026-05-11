@@ -47,7 +47,15 @@
 {% if campaign.status == 'sending' %}
 <div class="alert alert-info">
   <strong>⏳ Campaign is being sent...</strong>
-  <span>Progress: {{ campaign.successful_sends|add:campaign.failed_sends }}/{{ campaign.total_recipients }}</span>
+  <span>
+    Progress: {{ campaign.successful_sends|add:campaign.failed_sends }}/{{ campaign.total_recipients }}
+    · Pending: {{ pending_recipients }}
+    {% if sending_worker_running %}
+      · Worker: active
+    {% else %}
+      · Worker: not detected
+    {% endif %}
+  </span>
 </div>
 <div class="progress" style="margin-bottom: 24px;">
   <div class="progress-bar" style="width: {% widthratio campaign.successful_sends|add:campaign.failed_sends campaign.total_recipients 100 %}%;"></div>
@@ -172,6 +180,24 @@
   
   <!-- Right Column -->
   <div>
+    {% if pending_recipients > 0 and campaign.status != 'draft' %}
+    <div class="card" style="margin-bottom: 24px;">
+      <div class="card-header">
+        <h2 class="card-title">🛠️ Delivery Recovery</h2>
+      </div>
+      <div class="alert alert-warning" style="margin-bottom: 16px;">
+        {{ pending_recipients }} recipient(s) are still pending.
+        If this has been stuck for a while, resume the send worker.
+      </div>
+      <form action="{% url 'campaigns:resume_pending' campaign.pk %}" method="post" onsubmit="return confirm('Resume sending to pending recipients now?');">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;">
+          🔄 Resume {{ pending_recipients }} Pending Emails
+        </button>
+      </form>
+    </div>
+    {% endif %}
+
     <!-- Send Actions -->
     {% if campaign.is_editable %}
     <div class="card" style="margin-bottom: 24px;">

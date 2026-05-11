@@ -13,6 +13,7 @@ urlpatterns = [
     path('<uuid:pk>/preview/', views.CampaignPreviewView.as_view(), name='preview'),
     path('<uuid:pk>/send-test/', views.SendTestEmailView.as_view(), name='send_test'),
     path('<uuid:pk>/send/', views.SendCampaignView.as_view(), name='send'),
+    path('<uuid:pk>/resume-pending/', views.ResumePendingEmailsView.as_view(), name='resume_pending'),
     path('<uuid:pk>/retry-failed/', views.RetryFailedEmailsView.as_view(), name='retry_failed'),
     path('<uuid:pk>/stats/', views.CampaignStatsAPIView.as_view(), name='stats'),
     # Image gallery (superuser only)
