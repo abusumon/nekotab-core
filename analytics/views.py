@@ -1089,3 +1089,232 @@ class MotionBulkUploadView(SuperuserRequiredMixin, View):
             )
 
         return redirect('analytics:dashboard')
+
+
+# =============================================================================
+# Tournament Motion Harvest — push hosted-tournament motions to the motion bank
+# =============================================================================
+
+class TournamentMotionsView(SuperuserRequiredMixin, TemplateView):
+    """List all DB-backed tournament motions; show which are already in the bank."""
+    template_name = 'analytics/tournament_motions.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from motions.models import Motion
+        from django.db.models import Exists, OuterRef
+        import collections
+
+        already_banked = MotionEntry.objects.filter(internal_motion=OuterRef('pk'))
+        motions_qs = (
+            Motion.objects
+            .select_related('tournament')
+            .prefetch_related('rounds')
+            .annotate(in_bank=Exists(already_banked))
+            .order_by('-tournament__id', 'id')
+        )
+
+        grouped = collections.OrderedDict()
+        for m in motions_qs:
+            tid = m.tournament_id
+            if tid not in grouped:
+                grouped[tid] = {'tournament': m.tournament, 'motions': []}
+            year = None
+            round_names = []
+            for r in m.rounds.all():
+                round_names.append(r.name)
+                if year is None and getattr(r, 'starts_at', None):
+                    year = r.starts_at.year
+            grouped[tid]['motions'].append({
+                'id': m.id,
+                'text': m.text,
+                'info_slide': m.info_slide or '',
+                'reference': m.reference,
+                'rounds': round_names,
+                'in_bank': m.in_bank,
+                'year': year,
+            })
+
+        tournament_groups = list(grouped.values())
+        context['tournament_groups'] = tournament_groups
+        context['total_pending'] = sum(
+            sum(1 for m in g['motions'] if not m['in_bank']) for g in tournament_groups
+        )
+        context['total_banked'] = sum(
+            sum(1 for m in g['motions'] if m['in_bank']) for g in tournament_groups
+        )
+        return context
+
+
+class PushMotionToBankView(SuperuserRequiredMixin, View):
+    """POST {motion_ids: [int, ...]} — push tournament motions into the flat-file motion bank."""
+
+    _FORMAT_MAP = {
+        'bp':     ('bp', 'BP'),
+        'ap':     ('ap', 'Asians/Australs'),
+        'wsdc':   ('wsdc', 'World Schools'),
+        'pf':     ('pf', 'Public Forum'),
+        'ld':     ('ld', 'Lincoln-Douglas'),
+        'policy': ('policy', 'Policy'),
+        'cp':     ('cp', 'BP'),
+    }
+
+    @staticmethod
+    def _detect_motion_type(text):
+        t = text.strip().upper()
+        if t.startswith('THBT ') or t.startswith('THIS HOUSE BELIEVES THAT '):
+            return 'thbt'
+        if t.startswith('THW ') or t.startswith('THIS HOUSE WOULD '):
+            return 'thw'
+        if t.startswith('THR ') or t.startswith('THIS HOUSE REGRETS '):
+            return 'thr'
+        if t.startswith('THS ') or t.startswith('THIS HOUSE SUPPORTS '):
+            return 'ths'
+        if t.startswith('THB ') or t.startswith('THIS HOUSE BELIEVES '):
+            return 'thb'
+        if t.startswith('RESOLVED:') or t.startswith('RESOLVED '):
+            return 'policy'
+        return 'thbt'
+
+    def post(self, request):
+        import uuid as uuid_mod
+        import datetime as dt
+        from motions.models import Motion
+        from django.utils.text import slugify
+        from motionbank.views import _MOTIONS_CACHE, _MOTIONS_SEO_CACHE
+
+        try:
+            body = json.loads(request.body)
+        except (json.JSONDecodeError, ValueError):
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+
+        raw_ids = body.get('motion_ids', [])
+        if not raw_ids or not isinstance(raw_ids, list):
+            return JsonResponse({'error': 'motion_ids must be a non-empty list'}, status=400)
+        try:
+            motion_ids = [int(mid) for mid in raw_ids]
+        except (TypeError, ValueError):
+            return JsonResponse({'error': 'All motion_ids must be integers'}, status=400)
+
+        motions = (
+            Motion.objects
+            .select_related('tournament')
+            .prefetch_related('rounds')
+            .filter(id__in=motion_ids)
+        )
+        if not motions.exists():
+            return JsonResponse({'error': 'No matching motions found'}, status=404)
+
+        pushed = []
+        skipped = []
+        new_json_entries = []
+
+        for motion in motions:
+            if MotionEntry.objects.filter(internal_motion=motion).exists():
+                skipped.append({'id': motion.id, 'reason': 'Already in bank'})
+                continue
+
+            # Detect debate format from tournament preferences (fallback BP)
+            fmt_code, fmt_style = 'bp', 'BP'
+            try:
+                pref_rules = motion.tournament.preferences.get_by_name('debate_rules')
+                if pref_rules and pref_rules.value in self._FORMAT_MAP:
+                    fmt_code, fmt_style = self._FORMAT_MAP[pref_rules.value]
+            except Exception:
+                pass
+
+            motion_type = self._detect_motion_type(motion.text)
+
+            # Year and round names from associated rounds
+            year = None
+            round_names = []
+            for r in motion.rounds.all():
+                round_names.append(r.name)
+                if year is None and getattr(r, 'starts_at', None):
+                    year = r.starts_at.year
+
+            # Build unique slug
+            base_slug = slugify(motion.text[:80]) or slugify(motion.reference[:80]) or 'motion'
+            slug = base_slug
+            counter = 1
+            while MotionEntry.objects.filter(slug=slug).exists():
+                slug = f'{base_slug}-{counter}'
+                counter += 1
+
+            entry = MotionEntry.objects.create(
+                text=motion.text,
+                slug=slug,
+                info_slide=motion.info_slide or '',
+                format=fmt_code,
+                motion_type=motion_type,
+                tournament_name=motion.tournament.name,
+                year=year,
+                round_info=', '.join(round_names),
+                source=f'nekotab:{motion.tournament.slug}',
+                internal_motion=motion,
+                is_approved=True,
+                submitted_by=request.user,
+            )
+
+            # Build flat-file JSON entry (schema matches motions-version-01.json)
+            start_date = f'{year}-01-01T00:00:00+00:00' if year else ''
+            json_entry = {
+                'id': str(uuid_mod.uuid5(uuid_mod.NAMESPACE_URL, f'nekotab-motion:{motion.id}')),
+                'tournament_id': str(uuid_mod.uuid5(uuid_mod.NAMESPACE_URL, f'nekotab-tournament:{motion.tournament.id}')),
+                'tournament_name': motion.tournament.name,
+                'motion': motion.text,
+                'infoslide': motion.info_slide or '',
+                'untranslated_motion': '',
+                'untranslated_infoslide': '',
+                'round': ', '.join(round_names),
+                'round_type': '',
+                'motion_type': motion_type.upper(),
+                'types': [],
+                'primary_types': [],
+                'secondary_types': None,
+                'bias': 'neutral',
+                'bias_burden_pro': 5, 'bias_burden_opp': 5,
+                'bias_ground_pro': 5, 'bias_ground_opp': 5,
+                'difficulty_technical': 5, 'difficulty_complexity': 5,
+                'difficulty_abstraction': 5, 'difficulty_depth': 5,
+                'start_date': start_date,
+                'end_date': None,
+                'region': '',
+                'country': '',
+                'city': '',
+                'level': 'University',
+                'style': fmt_style,
+                'tab_url': f'/t/{motion.tournament.slug}/',
+                'video_urls': [],
+                'adjudicators': None,
+                'created_at': dt.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S+00:00'),
+            }
+            new_json_entries.append(json_entry)
+            pushed.append({'id': motion.id, 'text': motion.text[:80], 'entry_id': entry.id})
+
+        # Append to flat JSON file and bust in-process caches
+        if new_json_entries:
+            json_path = os.path.join(
+                os.path.dirname(settings.BASE_DIR),
+                'Motion-Bank',
+                'motions-version-01.json',
+            )
+            try:
+                with open(json_path, encoding='utf-8') as f:
+                    flat_data = json.load(f)
+                flat_data.extend(new_json_entries)
+                with open(json_path, 'w', encoding='utf-8') as f:
+                    json.dump(flat_data, f, ensure_ascii=False, separators=(',', ':'))
+                _MOTIONS_CACHE['data'] = None
+                _MOTIONS_SEO_CACHE['context'] = None
+                logger.info('Motion Harvest: appended %d entries to flat JSON', len(new_json_entries))
+            except Exception:
+                logger.exception('Motion Harvest: failed to update flat JSON file')
+                # DB entries are still created; don't fail the response
+
+        return JsonResponse({
+            'pushed': pushed,
+            'skipped': skipped,
+            'pushed_count': len(pushed),
+            'skipped_count': len(skipped),
+        })

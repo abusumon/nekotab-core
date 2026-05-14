@@ -22,4 +22,8 @@ urlpatterns = [
 
     # Motion Bank bulk upload
     path('motions/upload/', views.MotionBulkUploadView.as_view(), name='motion_bulk_upload'),
+
+    # Motion Harvest — push tournament motions to the motion bank
+    path('motions/harvest/', views.TournamentMotionsView.as_view(), name='tournament_motions'),
+    path('motions/harvest/push/', views.PushMotionToBankView.as_view(), name='push_motion_to_bank'),
 ]
