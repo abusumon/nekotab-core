@@ -3,15 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Debate Motion Bank | BP, World Schools, Public Forum, Lincoln-Douglas &amp; Policy Motions | NekoTab</title>
-<meta name="description" content="Search {{ motion_count_display }} debate motions from real tournaments worldwide. Explore British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs motions by topic, year, region and tournament.">
+<title>Debate Motions 2025-2026 | Search {{ motion_count_display }} BP, WSDC, PF, LD &amp; Policy Motions | NekoTab</title>
+<meta name="description" content="Search {{ motion_count_display }} debate motions — BP, World Schools, Resolved: Public Forum, Lincoln-Douglas, Policy and Asians/Australs — from real tournaments worldwide. Updated 2025-2026. Filter by format, topic, year and region.">
 <link rel="canonical" href="https://nekotab.app/motions/">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nekotab.app/motions/">
-<meta property="og:title" content="Debate Motion Bank | BP, World Schools, Public Forum, Lincoln-Douglas &amp; Policy Motions">
-<meta property="og:description" content="Search {{ motion_count_display }} debate motions from real tournaments worldwide. Filter by format, topic, tournament, year and region.">
-<meta property="og:image" content="{% static 'logo.png' %}">
+<meta property="og:title" content="Debate Motions 2025-2026 | {{ motion_count_display }} BP, WSDC, PF, LD &amp; Policy Motions">
+<meta property="og:description" content="Search {{ motion_count_display }} debate motions from real tournaments worldwide. BP, WSDC, Resolved: PF, LD, Policy. Filter by format, topic, year and region.">
+<meta property="og:image" content="https://nekotab.app/static/logo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nekotab">
+<meta name="twitter:title" content="Debate Motions 2025-2026 | {{ motion_count_display }} BP, WSDC, PF, LD &amp; Policy Motions">
+<meta name="twitter:description" content="Search {{ motion_count_display }} debate motions from real tournaments worldwide. Filter by format, topic, year and region.">
+<meta name="twitter:image" content="https://nekotab.app/static/logo.png">
 <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
 <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo-16x16.png' %}">
@@ -68,6 +75,28 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "NekoTab", "item": "https://nekotab.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Motion Bank", "item": "https://nekotab.app/motions/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "NekoTab Debate Motion Bank",
+  "description": "A searchable dataset of {{ motion_count_display }} real tournament debate motions across British Parliamentary, World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs formats.",
+  "url": "https://nekotab.app/motions/",
+  "keywords": ["debate motions", "BP motions", "WSDC motions", "Public Forum motions", "Lincoln-Douglas topics", "Policy debate resolutions", "debate topics"],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {"@type": "Organization", "name": "NekoTab", "url": "https://nekotab.app/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -100,6 +129,38 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. NekoTab is built to help debate communities research motions, study tournament trends and prepare cases across major parliamentary and school debate formats."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I find the latest debate topics and motions for 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NekoTab's Motion Bank is updated regularly with the latest tournament rounds. Filter by year 2025 to see the most recent BP, World Schools, Public Forum and Lincoln-Douglas motions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I browse debate motions by topic area such as economics, politics or environment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Use the Topic Area filter to browse motions by category including Politics, Economics, Law, Social Justice, International Relations, Environment, Science/Technology and more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there practice debate motions for school teams?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can filter the motion bank by Level: School to find motions used at school-level BP, World Schools and Public Forum competitions, ideal for practice drills and training sessions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the most common debate motion types?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most common motion types in parliamentary debate are THW (This House Would), THBT (This House Believes That), THP (This House Prefers), THS (This House Supports), THO (This House Opposes) and THR (This House Regrets). You can filter by motion type in the Motion Bank."
       }
     }
   ]
@@ -601,6 +662,34 @@ input,select{font-family:inherit}
       <a href="/debate-data-alternative/" class="seo-chip">Debate Data alternative</a>
       <a href="/learn/?category=formats" class="seo-chip">Debate format guides</a>
     </div>
+    <div class="seo-links" aria-label="Browse by debate format">
+      <a href="/motions/?style=BP" class="seo-chip">British Parliamentary motions</a>
+      <a href="/motions/?style=World+Schools" class="seo-chip">World Schools motions</a>
+      <a href="/motions/?style=Public+Forum" class="seo-chip">Public Forum topics</a>
+      <a href="/motions/?style=Lincoln-Douglas" class="seo-chip">Lincoln-Douglas topics</a>
+      <a href="/motions/?style=Policy" class="seo-chip">Policy debate resolutions</a>
+      <a href="/motions/?style=Asians%2FAustrals" class="seo-chip">Asians/Australs motions</a>
+    </div>
+    <div class="seo-links" aria-label="Browse by topic area">
+      <a href="/motions/?category=Politics" class="seo-chip">Politics debate topics</a>
+      <a href="/motions/?category=Economics" class="seo-chip">Economics debate motions</a>
+      <a href="/motions/?category=Social+Justice" class="seo-chip">Social justice motions</a>
+      <a href="/motions/?category=International+Relations" class="seo-chip">International relations</a>
+      <a href="/motions/?category=Environment" class="seo-chip">Environment topics</a>
+      <a href="/motions/?category=Law" class="seo-chip">Law &amp; justice motions</a>
+      <a href="/motions/?category=Science%2FTechnology" class="seo-chip">Science &amp; tech motions</a>
+    </div>
+    <div class="seo-links" aria-label="Popular tournaments in the database">
+      <a href="/motions/?q=EUDC" class="seo-chip">EUDC motions</a>
+      <a href="/motions/?q=WUDC" class="seo-chip">WUDC motions</a>
+      <a href="/motions/?q=Australs" class="seo-chip">Australs motions</a>
+      <a href="/motions/?q=Asian" class="seo-chip">Asian BP motions</a>
+      <a href="/motions/?q=WJDC" class="seo-chip">WJDC motions</a>
+      <a href="/motions/?q=FLSA" class="seo-chip">FLSA motions</a>
+      <a href="/motions/?q=USUDC" class="seo-chip">USUDC motions</a>
+      <a href="/motions/?q=Worlds" class="seo-chip">Worlds motions</a>
+      <a href="/motions/?q=IONA" class="seo-chip">IONA motions</a>
+    </div>
     <div class="seo-links" aria-label="Popular debate motion searches">
       {% for link in seo_query_links %}
       <a href="{{ link.url }}" class="seo-chip">{{ link.label }}</a>
@@ -608,8 +697,9 @@ input,select{font-family:inherit}
     </div>
     <div class="seo-meta">
       <span><strong>{{ motion_count_display }}</strong> real tournament motions</span>
-      <span><strong>BP, WSDC, PF, LD, Policy</strong> coverage</span>
+      {% for fc in format_counts %}<span><strong>{{ fc.style }}</strong> {{ fc.count }} motions</span>{% endfor %}
       <span><strong>Topic, region, year</strong> filters</span>
+      <span><strong>6 debate formats</strong> covered</span>
     </div>
   </div>
 </section>
@@ -731,30 +821,134 @@ input,select{font-family:inherit}
     <section class="seo-bottom">
       <div class="seo-grid">
         <article class="seo-card">
-          <h2>Search motions by real debate format</h2>
-          <p>NekoTab helps you research British Parliamentary motions, World Schools motions, Public Forum motions, Lincoln-Douglas motions, Policy motions and Asians/Australs rounds from real tournaments. That makes the page useful for both debate prep and long-tail search intent.</p>
+          <h2>BP, WSDC, PF, LD, Policy motions from real tournaments</h2>
+          <p>NekoTab helps you research British Parliamentary motions from EUDC, WUDC and Australs; World Schools (WSDC) motions from national championships; Resolved: Public Forum and Lincoln-Douglas topics from NSDA circuits; Policy debate resolutions; and Asians/Australs rounds — all in one searchable database updated through 2025-2026.</p>
         </article>
         <article class="seo-card">
-          <h2>Why this motion bank is useful for prep</h2>
+          <h2>How coaches and teams use this for prep</h2>
           <ul>
-            <li>Browse motion wording used in actual tournaments</li>
-            <li>Filter by topic area, region, year and debate level</li>
-            <li>Open entries to inspect infoslides, burdens and difficulty signals</li>
-            <li>Follow source tab links when tournament data is available</li>
+            <li>Filter by topic area (Politics, Economics, Social Justice, Environment) to study thematic trends</li>
+            <li>Browse by year range to compare how similar topics have been framed over time</li>
+            <li>Use the tournament filter to pull the full motion set from a specific competition</li>
+            <li>Open entries to inspect infoslides, difficulty signals and Gov/Opp burden analysis</li>
+            <li>Use round-type context to understand how finals motions differ from prelim rounds</li>
           </ul>
         </article>
         <article class="seo-card">
-          <h2>More than a motion list</h2>
-          <p>Debate Data focuses heavily on motion discovery, while CalicoTab focuses on hosted tabulation. NekoTab connects those intents: a large open motion bank, free tournament software, learn content, and comparison pages for communities deciding what to adopt.</p>
+          <h2>NekoTab vs Debate Data and other motion databases</h2>
+          <p>Debate Data is a respected BP motion archive, but it focuses on a single format and lacks tabulation tools. NekoTab covers BP, WSDC, Public Forum, Lincoln-Douglas, Policy and Asians/Australs, adds difficulty and bias data, and connects motions to a full free tournament management platform — making it the broader choice for coaches and circuit organisers.</p>
         </article>
         <article class="seo-card">
           <h2>Recent real tournament motions</h2>
           <ul>
-            {% for item in sample_motions %}
+            {% for item in sample_motions|slice:":20" %}
             <li>{{ item.motion }}{% if item.tournament_name %} — {{ item.tournament_name }}{% endif %}{% if item.year %} ({{ item.year }}){% endif %}</li>
             {% endfor %}
           </ul>
         </article>
+      </div>
+
+      {% if recent_by_year %}
+      <div class="seo-year-section" style="max-width:1200px;margin:28px auto 0">
+        <h2 style="font-size:20px;margin-bottom:18px;color:var(--tx)">Debate motions by year</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px">
+          {% for bucket in recent_by_year %}
+          <article style="background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px">
+            <h3 style="font-size:15px;font-weight:600;color:var(--tx);margin-bottom:10px">
+              <a href="/motions/?year_from={{ bucket.year }}&year_to={{ bucket.year }}" style="color:inherit">{{ bucket.year }} debate motions</a>
+            </h3>
+            <ul style="padding-left:16px;margin:0;list-style:disc">
+              {% for m in bucket.motions %}
+              <li style="font-size:13px;line-height:1.6;color:var(--tx2);margin-bottom:4px">
+                {{ m.motion }}{% if m.tournament_name %}<span style="color:var(--tx3)"> — {{ m.tournament_name }}</span>{% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+            <a href="/motions/?year_from={{ bucket.year }}&year_to={{ bucket.year }}" style="font-size:12px;color:var(--ac);margin-top:10px;display:inline-block">All {{ bucket.year }} motions →</a>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if by_format %}
+      <div class="seo-format-section" style="max-width:1200px;margin:28px auto 0">
+        <h2 style="font-size:20px;margin-bottom:18px;color:var(--tx)">Browse debate motions by format</h2>
+        {% for fmt in by_format %}
+        <article style="background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:18px;margin-bottom:14px">
+          <h3 style="font-size:16px;font-weight:600;color:var(--tx);margin-bottom:8px">
+            <a href="{{ fmt.url }}" style="color:inherit">{{ fmt.style }} motions</a>
+          </h3>
+          {% if fmt.style == 'BP' %}
+          <p style="font-size:13px;line-height:1.65;color:var(--tx2);margin-bottom:10px">British Parliamentary debate motions from university and school circuits worldwide. BP motions use the THW / THBT / THP format and are debated in four-team panels across Opening and Closing Government and Opposition benches.</p>
+          {% elif fmt.style == 'World Schools' %}
+          <p style="font-size:13px;line-height:1.65;color:var(--tx2);margin-bottom:10px">World Schools (WSDC) motions are used in school-level parliamentary debate, including prepared and impromptu rounds. These motions are debated at national championships and the World Schools Debating Championships.</p>
+          {% elif fmt.style == 'Public Forum' %}
+          <p style="font-size:13px;line-height:1.65;color:var(--tx2);margin-bottom:10px">Public Forum debate topics are monthly resolutions published by the NSDA and debated in two-person teams at high school competitions across the United States. Ideal for researching PF debate topics by semester or year.</p>
+          {% elif fmt.style == 'Lincoln-Douglas' %}
+          <p style="font-size:13px;line-height:1.65;color:var(--tx2);margin-bottom:10px">Lincoln-Douglas debate topics are bimonthly resolutions focused on ethical and philosophical questions. LD debate is a one-on-one format emphasising values argumentation, widely debated in US high school competition.</p>
+          {% elif fmt.style == 'Policy' %}
+          <p style="font-size:13px;line-height:1.65;color:var(--tx2);margin-bottom:10px">Policy debate resolutions are annual two-team propositions covering complex domestic or international policy. Policy debate (also called Cross-Examination Debate) is a year-long US high school and college format involving detailed evidence research.</p>
+          {% elif fmt.style == 'Asians/Australs' %}
+          <p style="font-size:13px;line-height:1.65;color:var(--tx2);margin-bottom:10px">Asians/Australs motions come from the Asian Debate Championships and Australasian Debating Championships, among the longest-running parliamentary debate circuits in the world. These competitions attract university teams from across Asia and the Pacific.</p>
+          {% endif %}
+          <ul style="padding-left:16px;margin:0 0 10px;list-style:disc">
+            {% for m in fmt.motions %}
+            <li style="font-size:13px;line-height:1.6;color:var(--tx2);margin-bottom:3px">
+              {{ m.motion }}{% if m.year %}<span style="color:var(--tx3)"> ({{ m.year }})</span>{% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+          <a href="{{ fmt.url }}" style="font-size:12px;color:var(--ac)">Browse all {{ fmt.style }} motions →</a>
+        </article>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div style="max-width:1200px;margin:0 auto 32px">
+        <h2 style="font-size:20px;margin-bottom:18px;color:var(--tx)">Parliamentary motion types explained</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px">
+          <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px 16px">
+            <h3 style="font-size:14px;font-weight:700;color:#4a9eff;margin-bottom:6px">THW — This House Would</h3>
+            <p style="font-size:13px;line-height:1.65;color:var(--tx2)">The most common BP motion type. Calls for a specific policy action or behaviour. <em>Example: THW ban single-use plastics.</em> Use the motion bank to browse thousands of THW motions by topic and year.</p>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px 16px">
+            <h3 style="font-size:14px;font-weight:700;color:#3ecf8e;margin-bottom:6px">THBT — This House Believes That</h3>
+            <p style="font-size:13px;line-height:1.65;color:var(--tx2)">Asserts a value judgement or empirical claim. <em>Example: THBT economic growth should be prioritised over environmental protection.</em> THBT motions dominate international circuit prelim rounds.</p>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px 16px">
+            <h3 style="font-size:14px;font-weight:700;color:#a78bfa;margin-bottom:6px">THP — This House Prefers</h3>
+            <p style="font-size:13px;line-height:1.65;color:var(--tx2)">Compares two worlds or systems rather than proposing a binary policy. <em>Example: THP a world with universal basic income over one without.</em> THP motions are common in BP break rounds.</p>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px 16px">
+            <h3 style="font-size:14px;font-weight:700;color:#fb923c;margin-bottom:6px">THR — This House Regrets</h3>
+            <p style="font-size:13px;line-height:1.65;color:var(--tx2)">Expresses regret about a historical event, trend or cultural norm. <em>Example: THR the rise of social media influencer culture.</em> THR motions frequently appear in World Schools and BP finals rounds.</p>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px 16px">
+            <h3 style="font-size:14px;font-weight:700;color:#2dd4bf;margin-bottom:6px">THS — This House Supports</h3>
+            <p style="font-size:13px;line-height:1.65;color:var(--tx2)">Expresses endorsement of a movement, trend or actor. <em>Example: THS the right of workers to strike.</em> THS motions are common in rights-based and labour debate rounds.</p>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:14px 16px">
+            <h3 style="font-size:14px;font-weight:700;color:#f472b6;margin-bottom:6px">THO — This House Opposes</h3>
+            <p style="font-size:13px;line-height:1.65;color:var(--tx2)">Expresses opposition to a trend or movement. <em>Example: THO the increasing privatisation of public services.</em> Less common than THW/THBT but useful for training teams on complex burden structures.</p>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--tx3);margin-top:14px">Filter by motion type above to browse the full archive of THW, THBT, THP, THR, THS and THO motions across all debate formats.</p>
+      </div>
+
+      <div style="max-width:1200px;margin:0 auto 32px">
+        <h2 style="font-size:20px;margin-bottom:14px;color:var(--tx)">Browse motions from major debate tournaments</h2>
+        <p style="font-size:14px;line-height:1.7;color:var(--tx2);margin-bottom:16px">NekoTab's database includes motion sets from hundreds of university, school and open circuit competitions worldwide. Here are some of the most searched tournament collections:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <a href="/motions/?q=EUDC" style="font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd);color:var(--tx2)">EUDC <span style="color:var(--tx3);font-weight:400">European University Debating Championships</span></a>
+          <a href="/motions/?q=WUDC" style="font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd);color:var(--tx2)">WUDC <span style="color:var(--tx3);font-weight:400">World Universities Debating Championship</span></a>
+          <a href="/motions/?q=Australs" style="font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd);color:var(--tx2)">Australs <span style="color:var(--tx3);font-weight:400">Australasian Debating Championships</span></a>
+          <a href="/motions/?q=WJDC" style="font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd);color:var(--tx2)">WJDC <span style="color:var(--tx3);font-weight:400">World Junior Debating Championships</span></a>
+          <a href="/motions/?q=WSDC" style="font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd);color:var(--tx2)">WSDC <span style="color:var(--tx3);font-weight:400">World Schools Debating Championships</span></a>
+          <a href="/motions/?q=Asian" style="font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd);color:var(--tx2)">Asian BP <span style="color:var(--tx3);font-weight:400">Asian British Parliamentary Championships</span></a>
+          <a href="/motions/?q=IONA" style="font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd);color:var(--tx2)">IONA <span style="color:var(--tx3);font-weight:400">Islands of the North Atlantic Championships</span></a>
+          <a href="/motions/?q=USUDC" style="font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;background:var(--bg2);border:1px solid var(--bd);color:var(--tx2)">USUDC <span style="color:var(--tx3);font-weight:400">US Universities Debating Championship</span></a>
+        </div>
       </div>
 
       <div class="seo-faq">
@@ -774,6 +968,42 @@ input,select{font-family:inherit}
         <details class="faq-item">
           <summary>How is NekoTab different from Debate Data or CalicoTab?</summary>
           <p>NekoTab combines a searchable motion bank with free debate tabulation, public tournament pages, learning resources and open-source tooling. That broader footprint helps schools, societies and circuits use one platform for both tournament operations and debate prep.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where can I find 2025 debate motions and topics?</summary>
+          <p>Filter the motion bank by year 2025 to see the latest debate motions used in recent tournaments across BP, World Schools, Public Forum, Lincoln-Douglas and Policy formats. The database is updated continuously as tournament data becomes available.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I browse BP motions by topic area such as politics, economics or social justice?</summary>
+          <p>Yes. Use the Topic Area sidebar filter to narrow results by category. NekoTab covers over 20 topic categories including Politics, Economics, Law, Social Justice, International Relations, Environment, Science/Technology, Criminal Justice, Medical, Feminism, LGBTQ+ and more.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What debate motion types are available — THW, THBT, THP, THS, THO, THR?</summary>
+          <p>All major parliamentary motion types are represented. You can filter by THW (This House Would), THBT (This House Believes That), THP (This House Prefers), THS (This House Supports), THO (This House Opposes) and THR (This House Regrets) to find motions matching the style your team is practising.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are there school-level (WSDC / World Schools) practice motions?</summary>
+          <p>Yes. Filter by Format: World Schools and Level: School to access practice motions used at school World Schools circuits and national championships. These include both prepared and impromptu-style motions suitable for coaching sessions and team prep.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I find Public Forum debate topics by year or semester?</summary>
+          <p>Yes. Use the format filter to select Public Forum and narrow the year range to find PF topics from specific seasons. This is useful for coaches reviewing past resolutions or debaters studying topic trends.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does NekoTab have EUDC, WUDC and Australs motions?</summary>
+          <p>Yes. NekoTab's motion database includes motion sets from EUDC (European University Debating Championships), WUDC (World Universities Debating Championship), Australs (Australasian Debating Championships), WJDC, WSDC, Asian BP Championships and hundreds of other national and open circuit tournaments. Use the search bar to pull the full motion set from any specific tournament.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is the difference between BP motions and WSDC / World Schools motions?</summary>
+          <p>British Parliamentary (BP) motions use a four-team format with Opening Government, Opening Opposition, Closing Government and Closing Opposition. World Schools (WSDC) motions use a three-person team format with one proposition and one opposition team. Both use THW/THBT-style phrasing, but WSDC often includes more value-based and rights-focused motions designed for school-level competition. NekoTab's motion bank includes both formats, filterable separately.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where can I find Resolved: topics for Public Forum and Lincoln-Douglas debate?</summary>
+          <p>NekoTab includes Public Forum and Lincoln-Douglas topics in "Resolved:" format as officially released by the NSDA and used in competitive circuits. Filter by Format: Public Forum or Format: Lincoln-Douglas to find current and historical Resolved: resolutions. For the official current season topics, the NSDA publishes them at speechanddebate.org.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is NekoTab an alternative to Debate Data for motion research?</summary>
+          <p>Yes. NekoTab covers all the same BP motions as Debate Data and adds World Schools, Public Forum, Lincoln-Douglas, Policy and Asians/Australs motions in one searchable interface. NekoTab also adds difficulty and bias analysis, topic categorisation, and integration with free tournament tabulation software — making it a broader tool for debate communities.</p>
         </details>
       </div>
     </section>

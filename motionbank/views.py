@@ -279,14 +279,37 @@ def _get_motion_seo_context():
         return _MOTIONS_SEO_CACHE['context']
 
     seo_query_links = [
-        {'label': 'Debate motions', 'url': '/motions/?q=debate+motions'},
+        # Format entry points
         {'label': 'BP motions', 'url': '/motions/?style=BP'},
-        {'label': 'WSDC motions', 'url': '/motions/?style=World+Schools'},
-        {'label': 'Public Forum motions', 'url': '/motions/?style=Public+Forum'},
-        {'label': 'Lincoln-Douglas motions', 'url': '/motions/?style=Lincoln-Douglas'},
-        {'label': 'Policy debate motions', 'url': '/motions/?style=Policy'},
-        {'label': 'Debate topics', 'url': '/motions/?q=debate+topics'},
-        {'label': 'Practice debate motions', 'url': '/motions/?q=practice+debate+motions'},
+        {'label': 'WSDC motions 2025', 'url': '/motions/?style=World+Schools&year_from=2024'},
+        {'label': 'Public Forum topics', 'url': '/motions/?style=Public+Forum'},
+        {'label': 'Lincoln-Douglas topics', 'url': '/motions/?style=Lincoln-Douglas'},
+        {'label': 'Policy debate topics', 'url': '/motions/?style=Policy'},
+        {'label': 'Asians/Australs motions', 'url': '/motions/?style=Asians%2FAustrals'},
+        # Year-specific
+        {'label': '2025-2026 debate motions', 'url': '/motions/?year_from=2025'},
+        {'label': '2024 debate motions', 'url': '/motions/?year_from=2024&year_to=2024'},
+        {'label': '2023 debate motions', 'url': '/motions/?year_from=2023&year_to=2023'},
+        # Tournament-specific (high-intent)
+        {'label': 'EUDC motions', 'url': '/motions/?q=EUDC'},
+        {'label': 'WUDC motions', 'url': '/motions/?q=WUDC'},
+        {'label': 'Australs motions', 'url': '/motions/?q=Australs'},
+        {'label': 'Asian BP motions', 'url': '/motions/?q=Asians&style=BP'},
+        {'label': 'WJDC motions', 'url': '/motions/?q=WJDC'},
+        # Motion-type specific
+        {'label': 'THW debate motions', 'url': '/motions/?motion_type=THW'},
+        {'label': 'THBT debate motions', 'url': '/motions/?motion_type=THBT'},
+        {'label': 'THP debate motions', 'url': '/motions/?motion_type=THP'},
+        # Topic area entry points
+        {'label': 'Economics debate motions', 'url': '/motions/?category=Economics'},
+        {'label': 'Politics debate motions', 'url': '/motions/?category=Politics'},
+        {'label': 'Social justice motions', 'url': '/motions/?category=Social+Justice'},
+        {'label': 'International relations motions', 'url': '/motions/?category=International+Relations'},
+        {'label': 'Environment debate topics', 'url': '/motions/?category=Environment'},
+        {'label': 'Law and justice motions', 'url': '/motions/?category=Law'},
+        # Level-specific
+        {'label': 'University debate motions', 'url': '/motions/?level=University'},
+        {'label': 'School debate motions', 'url': '/motions/?level=School'},
     ]
 
     try:
@@ -298,6 +321,9 @@ def _get_motion_seo_context():
             'motion_count_display': '36,000+',
             'sample_motions': [],
             'seo_query_links': seo_query_links,
+            'recent_by_year': [],
+            'by_format': [],
+            'format_counts': [],
         }
         return _MOTIONS_SEO_CACHE['context']
 
@@ -308,6 +334,7 @@ def _get_motion_seo_context():
         reverse=True,
     )
 
+    # Up to 50 sample motions for rich server-rendered content
     sample_motions = []
     seen = set()
     for motion in recent:
@@ -321,14 +348,83 @@ def _get_motion_seo_context():
             'style': (motion.get('style') or '').strip(),
             'year': (motion.get('start_date') or '')[:4],
         })
-        if len(sample_motions) >= 12:
+        if len(sample_motions) >= 50:
             break
+
+    # Group 6 sample motions per year for the most recent 5 years
+    import collections
+    year_buckets = collections.defaultdict(list)
+    year_seen = collections.defaultdict(set)
+    for motion in recent:
+        text = (motion.get('motion') or '').strip()
+        year = (motion.get('start_date') or '')[:4]
+        if not year or not text:
+            continue
+        if text in year_seen[year]:
+            continue
+        year_seen[year].add(text)
+        year_buckets[year].append({
+            'motion': text,
+            'tournament_name': (motion.get('tournament_name') or '').strip(),
+            'style': (motion.get('style') or '').strip(),
+        })
+    recent_by_year = [
+        {'year': yr, 'motions': year_buckets[yr][:6]}
+        for yr in sorted(year_buckets.keys(), reverse=True)[:5]
+        if year_buckets[yr]
+    ]
+
+    # Group 5 sample motions per major debate format
+    _STYLE_CANONICAL = {
+        'bp': 'BP', ' bp': 'BP',
+        'world schools': 'World Schools', 'wsdc': 'World Schools',
+        'asians/australs': 'Asians/Australs', 'australs': 'Asians/Australs',
+        'public forum': 'Public Forum',
+        'lincoln-douglas': 'Lincoln-Douglas',
+        'policy': 'Policy',
+    }
+    fmt_buckets = collections.defaultdict(list)
+    fmt_seen = collections.defaultdict(set)
+    for motion in recent:
+        text = (motion.get('motion') or '').strip()
+        raw_style = (motion.get('style') or '').lower().strip()
+        canon = _STYLE_CANONICAL.get(raw_style, raw_style.title())
+        if not canon or not text:
+            continue
+        if text in fmt_seen[canon]:
+            continue
+        fmt_seen[canon].add(text)
+        fmt_buckets[canon].append({
+            'motion': text,
+            'tournament_name': (motion.get('tournament_name') or '').strip(),
+            'year': (motion.get('start_date') or '')[:4],
+        })
+    fmt_order = ['BP', 'World Schools', 'Public Forum', 'Lincoln-Douglas', 'Policy', 'Asians/Australs']
+    by_format = [
+        {
+            'style': fmt,
+            'url': f'/motions/?style={fmt.replace("/", "%2F").replace(" ", "+")}',
+            'count': len(fmt_buckets.get(fmt, [])),
+            'motions': fmt_buckets.get(fmt, [])[:5],
+        }
+        for fmt in fmt_order
+        if fmt_buckets.get(fmt)
+    ]
+
+    # Format counts for hero stats
+    format_counts = [
+        {'style': b['style'], 'count': len(fmt_buckets.get(b['style'], []))}
+        for b in by_format
+    ]
 
     _MOTIONS_SEO_CACHE['context'] = {
         'motion_count': motion_count,
         'motion_count_display': f"{motion_count:,}",
         'sample_motions': sample_motions,
         'seo_query_links': seo_query_links,
+        'recent_by_year': recent_by_year,
+        'by_format': by_format,
+        'format_counts': format_counts,
     }
     return _MOTIONS_SEO_CACHE['context']
 
