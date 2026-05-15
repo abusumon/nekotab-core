@@ -2,7 +2,11 @@ import logging
 
 from django.test import TestCase
 
-from utils.tests import ConditionalTableViewTestsMixin, suppress_logs
+from utils.tests import AdminTournamentViewSimpleLoadTestMixin, ConditionalTableViewTestsMixin, suppress_logs
+
+
+class AdminBreakIndexViewTest(AdminTournamentViewSimpleLoadTestMixin, TestCase):
+    view_name = 'breakqual-index'
 
 
 class BreakingTeamsViewTestMixin(ConditionalTableViewTestsMixin):
