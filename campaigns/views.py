@@ -18,7 +18,7 @@ from django.http import FileResponse, Http404, HttpResponseRedirect, JsonRespons
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
-from django.utils.html import strip_tags
+from django.utils.html import escape, strip_tags
 from django.utils.translation import gettext as _
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, View
 
@@ -30,6 +30,31 @@ User = get_user_model()
 logger = logging.getLogger(__name__)
 
 SEND_LOCK_TTL_SECONDS = 120
+
+PERSONALIZATION_TOKENS = (
+    '[First Name]',
+    '[Participant Name]',
+    '[Primary Role]',
+    '[Rounds Debated]',
+    '[Rounds Adjudicated]',
+    '[Tournament Count]',
+    '[Tournament Recap List]',
+    '[Primary Tournament Name]',
+    '[Primary Tournament URL]',
+    '[Tournament Name]',
+    '[Date]',
+    '[slug]',
+)
+
+RECAP_PERSONALIZATION_TOKENS = (
+    '[Tournament Recap List]',
+    '[Tournament Count]',
+    '[Primary Tournament Name]',
+    '[Primary Tournament URL]',
+    '[Tournament Name]',
+    '[Date]',
+    '[slug]',
+)
 
 
 def _campaign_send_lock_key(campaign_pk):
@@ -61,13 +86,206 @@ def _recalculate_campaign_stats(campaign):
     campaign.save(update_fields=update_fields)
 
 
+def _campaign_contains_tokens(campaign, tokens=PERSONALIZATION_TOKENS):
+    content = '\n'.join([
+        campaign.subject or '',
+        campaign.html_content or '',
+        campaign.plain_text_content or '',
+    ])
+    return any(token in content for token in tokens)
+
+
+def _replace_tokens(content, replacements):
+    if not content:
+        return content
+
+    rendered = content
+    for token in sorted(replacements.keys(), key=len, reverse=True):
+        rendered = rendered.replace(token, replacements[token])
+    return rendered
+
+
+def _tournament_public_url(tournament, site_url=''):
+    if tournament is None:
+        return (site_url.rstrip('/') + '/') if site_url else 'https://nekotab.app/'
+
+    try:
+        subdomain_url = tournament.get_subdomain_url()
+    except Exception:
+        subdomain_url = None
+
+    if subdomain_url:
+        return subdomain_url
+
+    base_url = site_url.rstrip('/') if site_url else 'https://nekotab.app'
+    return f"{base_url}/{tournament.slug}/"
+
+
+def _build_tournament_recap_html(tournaments, site_url=''):
+    if not tournaments:
+        return (
+            '<p style="margin:0 0 12px;color:#64748b;font-size:14px;line-height:1.6;">'
+            'No previous tournaments were found for this account yet. '
+            f'<a href="{site_url.rstrip("/") if site_url else "https://nekotab.app"}/create/" '
+            'style="color:#6366f1;text-decoration:none;">Start your next tournament</a>.'
+            '</p>'
+        )
+
+    rows = []
+    for tournament in tournaments:
+        tournament_name = escape(tournament.short_name or tournament.name)
+        tournament_url = escape(_tournament_public_url(tournament, site_url))
+        date_label = ''
+        if tournament.created_at:
+            date_label = timezone.localtime(tournament.created_at).strftime('%b %Y')
+
+        rows.append(
+            '<tr>'
+            '<td style="padding:10px 12px;border-bottom:1px solid #e2e8f0;">'
+            f'<a href="{tournament_url}" style="color:#4338ca;text-decoration:none;font-weight:600;">{tournament_name}</a>'
+            f'<div style="color:#94a3b8;font-size:12px;margin-top:2px;">{date_label}</div>'
+            '</td>'
+            '</tr>'
+        )
+
+    return (
+        '<table role="presentation" style="width:100%;border-collapse:collapse;margin:14px 0 20px;">'
+        + ''.join(rows)
+        + '</table>'
+    )
+
+
+def _build_tournament_recap_text(tournaments, site_url=''):
+    if not tournaments:
+        base_url = site_url.rstrip('/') if site_url else 'https://nekotab.app'
+        return f"No previous tournaments were found. Start your next one: {base_url}/create/"
+
+    lines = []
+    for tournament in tournaments:
+        tournament_name = tournament.short_name or tournament.name
+        tournament_url = _tournament_public_url(tournament, site_url)
+        lines.append(f"- {tournament_name}: {tournament_url}")
+    return '\n'.join(lines)
+
+
+def _recipient_display_name(recipient, profile):
+    if profile and profile.name:
+        return profile.name.strip()
+
+    if recipient.user and recipient.user.get_full_name().strip():
+        return recipient.user.get_full_name().strip()
+
+    if recipient.email:
+        return recipient.email.split('@')[0].strip()
+
+    return ''
+
+
+def _build_personalization_replacements(recipient, profile, site_url=''):
+    display_name = _recipient_display_name(recipient, profile)
+    first_name = display_name.split()[0] if display_name else 'there'
+
+    if profile:
+        tournaments = list(profile.tournaments_participated.all().order_by('-created_at')[:5])
+        tournament_count = profile.tournaments_participated.count()
+        primary_role = profile.get_primary_role_display()
+        rounds_debated = profile.total_rounds_debated
+        rounds_adjudicated = profile.total_rounds_adjudicated
+    else:
+        tournaments = []
+        tournament_count = 0
+        primary_role = 'Participant'
+        rounds_debated = 0
+        rounds_adjudicated = 0
+
+    primary_tournament = tournaments[0] if tournaments else None
+    primary_tournament_name = (
+        (primary_tournament.short_name or primary_tournament.name)
+        if primary_tournament else 'your next tournament'
+    )
+    primary_tournament_url = _tournament_public_url(primary_tournament, site_url)
+    primary_tournament_slug = primary_tournament.slug if primary_tournament else ''
+    primary_tournament_date = (
+        timezone.localtime(primary_tournament.created_at).strftime('%d %b %Y')
+        if primary_tournament and primary_tournament.created_at
+        else timezone.localdate().strftime('%d %b %Y')
+    )
+
+    common_replacements = {
+        '[First Name]': first_name,
+        '[Participant Name]': display_name or first_name,
+        '[Primary Role]': str(primary_role),
+        '[Rounds Debated]': str(rounds_debated),
+        '[Rounds Adjudicated]': str(rounds_adjudicated),
+        '[Tournament Count]': str(tournament_count),
+        '[Primary Tournament Name]': str(primary_tournament_name),
+        '[Primary Tournament URL]': str(primary_tournament_url),
+        '[Tournament Name]': str(primary_tournament_name),
+        '[Date]': str(primary_tournament_date),
+        '[slug]': str(primary_tournament_slug),
+    }
+
+    html_replacements = dict(common_replacements)
+    html_replacements['[Tournament Recap List]'] = _build_tournament_recap_html(tournaments, site_url)
+
+    text_replacements = dict(common_replacements)
+    text_replacements['[Tournament Recap List]'] = _build_tournament_recap_text(tournaments, site_url)
+
+    return html_replacements, text_replacements
+
+
+def _load_participant_profiles(recipients):
+    user_ids = [recipient.user_id for recipient in recipients if recipient.user_id]
+    emails = [recipient.email for recipient in recipients if recipient.email]
+
+    if not user_ids and not emails:
+        return {}, {}
+
+    profile_filters = Q()
+    if user_ids:
+        profile_filters |= Q(user_id__in=user_ids)
+    if emails:
+        profile_filters |= Q(email__in=emails)
+
+    profiles = ParticipantProfile.objects.filter(profile_filters).distinct()
+    profiles_by_user = {}
+    profiles_by_email = {}
+
+    for profile in profiles:
+        if profile.user_id:
+            profiles_by_user[profile.user_id] = profile
+        if profile.email:
+            profiles_by_email[profile.email.lower()] = profile
+
+    return profiles_by_user, profiles_by_email
+
+
+def _profile_for_recipient(recipient, profiles_by_user, profiles_by_email):
+    if recipient.user_id and recipient.user_id in profiles_by_user:
+        return profiles_by_user[recipient.user_id]
+
+    if recipient.email:
+        return profiles_by_email.get(recipient.email.lower())
+
+    return None
+
+
 def _send_campaign_emails_worker(campaign_pk, site_url='', lock_key=''):
     try:
         campaign = EmailCampaign.objects.get(pk=campaign_pk)
-        recipients = campaign.recipients.filter(status=CampaignRecipient.Status.PENDING)
+        recipients = campaign.recipients.filter(
+            status=CampaignRecipient.Status.PENDING
+        ).select_related('user')
+
+        use_personalization = _campaign_contains_tokens(campaign)
+        profiles_by_user = {}
+        profiles_by_email = {}
+
+        if use_personalization:
+            profiles_by_user, profiles_by_email = _load_participant_profiles(recipients)
 
         plain_text_base = campaign.plain_text_content
-        if not plain_text_base:
+        if not plain_text_base and not use_personalization:
             plain_text_base = strip_tags(campaign.html_content)
             plain_text_base = unescape(plain_text_base)
             plain_text_base = re.sub(r'\n\s*\n', '\n\n', plain_text_base)
@@ -75,7 +293,27 @@ def _send_campaign_emails_worker(campaign_pk, site_url='', lock_key=''):
         for recipient in recipients:
             try:
                 token = signing.dumps({'email': recipient.email}, salt='crm-unsub')
-                unsub_url = f"{site_url}/unsubscribe/?token={token}"
+                base_url = site_url.rstrip('/') if site_url else 'https://nekotab.app'
+                unsub_url = f"{base_url}/unsubscribe/?token={token}"
+
+                subject = campaign.subject
+                html_body = campaign.html_content
+                plain_body = plain_text_base
+
+                if use_personalization:
+                    profile = _profile_for_recipient(recipient, profiles_by_user, profiles_by_email)
+                    html_replacements, text_replacements = _build_personalization_replacements(
+                        recipient, profile, site_url,
+                    )
+                    subject = _replace_tokens(subject, text_replacements)
+                    html_body = _replace_tokens(html_body, html_replacements)
+
+                    if campaign.plain_text_content:
+                        plain_body = _replace_tokens(campaign.plain_text_content, text_replacements)
+                    else:
+                        plain_body = strip_tags(html_body)
+                        plain_body = unescape(plain_body)
+                        plain_body = re.sub(r'\n\s*\n', '\n\n', plain_body)
 
                 unsub_html = (
                     '<div style="text-align:center;padding:24px 0 8px;'
@@ -84,11 +322,11 @@ def _send_campaign_emails_worker(campaign_pk, site_url='', lock_key=''):
                     f'<a href="{unsub_url}" style="color:#6366f1;">Unsubscribe</a>'
                     '</div>'
                 )
-                html_with_footer = campaign.html_content + unsub_html
-                plain_with_footer = plain_text_base + f"\n\n---\nTo unsubscribe: {unsub_url}"
+                html_with_footer = html_body + unsub_html
+                plain_with_footer = (plain_body or '') + f"\n\n---\nTo unsubscribe: {unsub_url}"
 
                 email = EmailMultiAlternatives(
-                    subject=campaign.subject,
+                    subject=subject,
                     body=plain_with_footer,
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     to=[recipient.email],
@@ -393,24 +631,60 @@ class SendTestEmailView(SuperuserRequiredMixin, View):
 
 class SendCampaignView(SuperuserRequiredMixin, View):
     """Send the campaign to all subscribers or a targeted audience segment."""
+
+    def _wants_json_response(self, request):
+        if request.GET.get('format') == 'json':
+            return True
+        accept_header = request.headers.get('Accept', '').lower()
+        return 'application/json' in accept_header
+
+    def _respond(self, request, campaign, message, level='info', status_code=200, extra=None):
+        if self._wants_json_response(request):
+            payload = {
+                'ok': level in ['success', 'info'],
+                'message': str(message),
+                'campaign_id': str(campaign.pk),
+                'campaign_status': campaign.status,
+            }
+            if extra:
+                payload.update(extra)
+            return JsonResponse(payload, status=status_code)
+
+        getattr(messages, level)(request, message)
+        return redirect('campaigns:detail', pk=campaign.pk)
     
     def post(self, request, pk):
         campaign = get_object_or_404(EmailCampaign, pk=pk)
 
         if campaign.status == EmailCampaign.Status.SENDING:
-            messages.warning(request, _("This campaign is already in sending state. Use Resume Pending if progress is stuck."))
-            return redirect('campaigns:detail', pk=pk)
+            return self._respond(
+                request,
+                campaign,
+                _("This campaign is already in sending state. Use Resume Pending if progress is stuck."),
+                level='warning',
+                status_code=409,
+            )
 
         if campaign.status not in [EmailCampaign.Status.DRAFT, EmailCampaign.Status.FAILED]:
-            messages.error(request, _("This campaign has already been sent."))
-            return redirect('campaigns:detail', pk=pk)
+            return self._respond(
+                request,
+                campaign,
+                _("This campaign has already been sent."),
+                level='error',
+                status_code=400,
+            )
         
         # Determine recipients: audience segment or legacy all-users
         recipients = self._resolve_recipients(campaign)
         
         if not recipients:
-            messages.error(request, _("No subscribers to send to!"))
-            return redirect('campaigns:detail', pk=pk)
+            return self._respond(
+                request,
+                campaign,
+                _("No subscribers to send to!"),
+                level='error',
+                status_code=400,
+            )
 
         # Update campaign status
         campaign.status = EmailCampaign.Status.SENDING
@@ -437,11 +711,23 @@ class SendCampaignView(SuperuserRequiredMixin, View):
 
         started = _start_campaign_sender(campaign.pk, site_url)
         if started:
-            messages.success(request, _(f"Campaign is being sent to {len(recipients)} recipients!"))
+            return self._respond(
+                request,
+                campaign,
+                _(f"Campaign is being sent to {len(recipients)} recipients!"),
+                level='success',
+                status_code=200,
+                extra={'recipient_count': len(recipients), 'started': True},
+            )
         else:
-            messages.info(request, _("Campaign sender is already running. Please wait a moment and refresh."))
-
-        return redirect('campaigns:detail', pk=pk)
+            return self._respond(
+                request,
+                campaign,
+                _("Campaign sender is already running. Please wait a moment and refresh."),
+                level='info',
+                status_code=200,
+                extra={'recipient_count': len(recipients), 'started': False},
+            )
 
     def _resolve_recipients(self, campaign):
         """Return list of (user_id_or_None, email) tuples for this campaign."""
@@ -461,6 +747,16 @@ class SendCampaignView(SuperuserRequiredMixin, View):
                     if email and '@' in email:
                         result.append((None, email))
             return result
+
+        if _campaign_contains_tokens(campaign, RECAP_PERSONALIZATION_TOKENS):
+            # Recap campaigns should target subscribed CRM participants so each
+            # recipient can be matched with their tournament history.
+            return list(
+                ParticipantProfile.objects.filter(email_subscribed=True)
+                .exclude(email='')
+                .values_list('user_id', 'email')
+            )
+
         else:
             # Legacy: all users with email
             return list(User.objects.filter(

@@ -173,6 +173,13 @@
         <button type="button" class="btn btn-primary btn-sm" onclick="insertTemplate('donation')" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">❤️ Support Us (Donation)</button>
       </div>
     </div>
+
+    <div style="margin: 0 24px 16px; padding: 12px 14px; border: 1px solid var(--nt-border); border-radius: 10px; background: #f8fafc;">
+      <strong style="display:block; font-size:13px; color: var(--nt-text-primary); margin-bottom: 6px;">Personalization tokens (auto-filled on send)</strong>
+      <p style="margin:0; font-size:12px; color: var(--nt-text-secondary); line-height:1.6;">
+        [First Name], [Participant Name], [Primary Role], [Rounds Debated], [Rounds Adjudicated], [Tournament Count], [Primary Tournament Name], [Primary Tournament URL], [Tournament Recap List]
+      </p>
+    </div>
     
     <div class="editor-container">
       <div>
@@ -688,7 +695,7 @@ const templates = {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>[Tournament Name] — Thank You!</title>
+<title>Your NekoTab Recap</title>
 <style>
   body{margin:0;padding:0;background:#f8fafc;font-family:'Segoe UI',Arial,sans-serif}
   .wrap{max-width:600px;margin:40px auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08)}
@@ -721,38 +728,38 @@ const templates = {
   <div class="header">
     <div class="trophy">🏆</div>
     <h1>That's a Wrap!</h1>
-    <p>[Tournament Name] · [Date]</p>
+    <p>Hello [First Name] · [Primary Tournament Name]</p>
   </div>
   <div class="body">
-    <h2>Thank you for an incredible tournament.</h2>
-    <p>On behalf of the organizing committee, we want to thank every team, judge, and volunteer who made <strong>[Tournament Name]</strong> possible. Here's a look back at how it went.</p>
+    <h2>Your debate journey with NekoTab</h2>
+    <p>Thank you for being part of our community. This recap is personalized to your account and highlights the tournaments you've joined on NekoTab.</p>
 
     <div class="winner-card">
-      <div class="crown">👑</div>
-      <h3>Champions: [Winning Team Name]</h3>
-      <p>Grand Final · [Motion Text]</p>
+      <div class="crown">✨</div>
+      <h3>You joined [Tournament Count] tournament(s)</h3>
+      <p>Primary role: [Primary Role]</p>
     </div>
 
-    <h2>By the Numbers</h2>
+    <h2>Your Activity Snapshot</h2>
     <table class="stat-table">
-      <tr><td>Total Teams</td><td>[X] teams from [X] institutions</td></tr>
-      <tr><td>Adjudicators</td><td>[X] judges · [X] nationalities</td></tr>
-      <tr><td>Rounds</td><td>[X] preliminary + [X] elimination</td></tr>
-      <tr><td>Ballots Submitted</td><td>[X] ballots via NekoTab</td></tr>
-      <tr><td>Best Speaker</td><td>[Name] — [Score] points</td></tr>
+      <tr><td>Tournaments Participated</td><td>[Tournament Count]</td></tr>
+      <tr><td>Rounds Debated</td><td>[Rounds Debated]</td></tr>
+      <tr><td>Rounds Adjudicated</td><td>[Rounds Adjudicated]</td></tr>
+      <tr><td>Most Recent Tournament</td><td><a href="[Primary Tournament URL]" style="color:#4338ca;text-decoration:none">[Primary Tournament Name]</a></td></tr>
     </table>
 
-    <div class="quote">
-      <p>"[A quote from a participant, judge, or organizer about the tournament experience.]"</p>
-      <cite>— [Name], [Role]</cite>
-    </div>
+    <h2>Your Tournament Recap</h2>
+    [Tournament Recap List]
 
-    <p>Results, draw archives, and speaker tabs are now permanently available on the tournament page for future reference.</p>
+    <div class="quote">
+      <p>"Debate improves through repetition. Keep the momentum going with your next tournament."</p>
+      <cite>— NekoTab Team</cite>
+    </div>
 
     <div class="cta">
-      <a href="https://nekotab.app/[slug]/" class="btn">View Full Results</a>
+      <a href="[Primary Tournament URL]" class="btn">Revisit [Primary Tournament Name]</a>
     </div>
-    <p style="font-size:13px;color:#94a3b8;text-align:center">See you at the next one. 🎤</p>
+    <p style="font-size:13px;color:#94a3b8;text-align:center">Ready for another tournament? Start one at https://nekotab.app/create/</p>
   </div>
   <div class="footer">
     <p>© 2026 NekoTab · <a href="https://nekotab.app">nekotab.app</a> · Results powered by NekoTab</p>
