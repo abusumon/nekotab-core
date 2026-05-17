@@ -16,6 +16,7 @@ class StaticViewSitemap(Sitemap):
         'seo-calicotab-alt': 0.9,
         'seo-debatedata-alt': 0.9,
         'seo-congress-tab': 0.9,
+        'seo-debate-motions': 0.9,
         'seo-debate-topics': 0.9,
     }
 
@@ -29,6 +30,7 @@ class StaticViewSitemap(Sitemap):
         'seo-calicotab-alt': 'weekly',
         'seo-debatedata-alt': 'weekly',
         'seo-congress-tab': 'weekly',
+        'seo-debate-motions': 'weekly',
         'seo-debate-topics': 'weekly',
     }
 
@@ -44,6 +46,7 @@ class StaticViewSitemap(Sitemap):
             'seo-calicotab-alt',
             'seo-debatedata-alt',
             'seo-congress-tab',
+            'seo-debate-motions',
             'seo-debate-topics',
         ]
 

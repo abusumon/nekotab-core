@@ -222,7 +222,14 @@ urlpatterns = [
         TemplateView.as_view(template_name='pages/congress-debate-tabulation.html'),
         name='seo-congress-tab'),
     path('debate-motions/',
-        RedirectView.as_view(pattern_name='motions', permanent=True),
+        TemplateView.as_view(
+            template_name='pages/debate-motions.html',
+            extra_context={
+                'meta_description': 'Search real debate motions across BP, WSDC, Public Forum, Lincoln-Douglas, Policy and Asians/Australs, then jump into the full Motion Bank.',
+                'seo_keywords': 'debate motions, motion bank, BP motions, WSDC motions, public forum motions, lincoln douglas topics, policy debate resolutions',
+                'canonical_url': 'https://nekotab.app/debate-motions/',
+            },
+        ),
         name='seo-debate-motions'),
     path('debate-topics/',
         TemplateView.as_view(
