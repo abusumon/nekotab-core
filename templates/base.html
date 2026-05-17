@@ -1,6 +1,6 @@
 {% load static statici18n i18n debate_tags %}<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="{{ LANGUAGE_CODE }}" data-country-code="{{ request_country_code|default:'' }}">
 <head>
 
   <meta charset="utf-8">

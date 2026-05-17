@@ -7,6 +7,14 @@ from tournaments.models import Tournament
 
 logger = logging.getLogger(__name__)
 
+COUNTRY_HEADER_KEYS = (
+    'HTTP_CF_IPCOUNTRY',
+    'HTTP_CLOUDFRONT_VIEWER_COUNTRY',
+    'HTTP_X_COUNTRY_CODE',
+    'HTTP_X_APPENGINE_COUNTRY',
+    'GEOIP_COUNTRY_CODE',
+)
+
 # ── Navbar tournament cache ──────────────────────────────────────────────
 #
 # Per-user key incorporates the permission-cache version so that org-
@@ -87,6 +95,21 @@ def _evaluate_nav_qs(user):
     ]
 
 
+def _get_request_country_code(request):
+    """Return a normalized ISO-3166 country code from trusted proxy headers."""
+    meta = getattr(request, 'META', {}) or {}
+
+    for header in COUNTRY_HEADER_KEYS:
+        value = meta.get(header)
+        if not value:
+            continue
+        code = str(value).strip().upper()
+        if len(code) == 2 and code.isalpha():
+            return code
+
+    return ''
+
+
 def debate_context(request):
 
     subdomain_enabled = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
@@ -116,6 +139,7 @@ def debate_context(request):
         'seo_site_name': 'NekoTab Debate Tabulation',
         'seo_keywords': 'debate tab, debate tabulation, parliamentary debating, BP motions, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, british parliamentary, debate results live',
         'seo_base_url': getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app'),
+        'request_country_code': _get_request_country_code(request),
     }
 
     # Canonical URL: use subdomain form when tournament is served via subdomain

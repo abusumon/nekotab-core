@@ -14,6 +14,18 @@
   var COOKIE_NAME  = 'nekotab_consent';
   var LS_KEY       = 'cookie_consent';      // backward-compatible with existing key
   var MAX_AGE_DAYS = 180;
+  var EUROPE_COUNTRY_CODES = {
+    AL: true, AD: true, AM: true, AT: true, AZ: true,
+    BY: true, BE: true, BA: true, BG: true, HR: true,
+    CY: true, CZ: true, DK: true, EE: true, FI: true,
+    FR: true, GE: true, DE: true, GR: true, HU: true,
+    IS: true, IE: true, IT: true, XK: true, LV: true,
+    LI: true, LT: true, LU: true, MT: true, MD: true,
+    MC: true, ME: true, NL: true, MK: true, NO: true,
+    PL: true, PT: true, RO: true, RU: true, SM: true,
+    RS: true, SK: true, SI: true, ES: true, SE: true,
+    CH: true, TR: true, UA: true, GB: true, VA: true
+  };
 
   // ── Helpers ──────────────────────────────────────────────────
 
@@ -39,6 +51,20 @@
 
   function removeCookie(name) {
     document.cookie = name + '=; path=/; max-age=0; samesite=lax';
+  }
+
+  function getRequestCountryCode() {
+    var html = document.documentElement;
+    if (!html) return '';
+
+    var code = html.getAttribute('data-country-code') || '';
+    code = String(code).trim().toUpperCase();
+
+    return /^[A-Z]{2}$/.test(code) ? code : '';
+  }
+
+  function shouldShowBannerForCountry(countryCode) {
+    return !!EUROPE_COUNTRY_CODES[countryCode];
   }
 
   // ── Read consent (cookie first, then localStorage fallback) ──
@@ -84,8 +110,17 @@
         banner.style.display = 'none';
         if (consent === 'all') this._loadGA4();
       } else {
-        // No consent — show banner
-        banner.style.display = 'block';
+        var countryCode = getRequestCountryCode();
+
+        if (shouldShowBannerForCountry(countryCode)) {
+          // Europe: require explicit consent choice.
+          banner.style.display = 'block';
+        } else {
+          // Non-Europe (or missing country header): auto-accept analytics.
+          persistConsent('all');
+          banner.style.display = 'none';
+          this._loadGA4();
+        }
       }
     },
 
