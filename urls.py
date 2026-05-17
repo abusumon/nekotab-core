@@ -11,6 +11,7 @@ from django.utils.translation import gettext as _
 from django.views.i18n import JavaScriptCatalog
 from django.contrib.sitemaps.views import sitemap
 from django.views.generic import RedirectView, TemplateView
+from django.views.decorators.cache import cache_page
 
 import tournaments.views
 from importer.views import LoadDemoView
@@ -222,13 +223,15 @@ urlpatterns = [
         TemplateView.as_view(template_name='pages/congress-debate-tabulation.html'),
         name='seo-congress-tab'),
     path('debate-motions/',
-        TemplateView.as_view(
-            template_name='pages/debate-motions.html',
-            extra_context={
-                'meta_description': 'Search real debate motions across BP, WSDC, Public Forum, Lincoln-Douglas, Policy and Asians/Australs, then jump into the full Motion Bank.',
-                'seo_keywords': 'debate motions, motion bank, BP motions, WSDC motions, public forum motions, lincoln douglas topics, policy debate resolutions',
-                'canonical_url': 'https://nekotab.app/debate-motions/',
-            },
+        cache_page(60)(
+            TemplateView.as_view(
+                template_name='pages/debate-motions.html',
+                extra_context={
+                    'meta_description': 'Search real debate motions across BP, WSDC, Public Forum, Lincoln-Douglas, Policy and Asians/Australs, then jump into the full Motion Bank.',
+                    'seo_keywords': 'debate motions, motion bank, BP motions, WSDC motions, public forum motions, lincoln douglas topics, policy debate resolutions',
+                    'canonical_url': 'https://nekotab.app/debate-motions/',
+                },
+            )
         ),
         name='seo-debate-motions'),
     path('debate-topics/',

@@ -7,6 +7,8 @@ from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F
 from django.http import JsonResponse
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from django.views import View
 from django.views.generic import TemplateView
 
@@ -429,6 +431,7 @@ def _get_motion_seo_context():
     return _MOTIONS_SEO_CACHE['context']
 
 
+@method_decorator(cache_page(60), name='dispatch')
 class MotionsPageView(TemplateView):
     """Renders the /motions/ shell page. Actual data is fetched by JS via MotionsAPIView."""
     template_name = 'motionbank/motions_page.html'

@@ -1,8 +1,10 @@
 from django.views.generic import ListView, DetailView, TemplateView, FormView
 from django.utils.html import escape
+from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
+from django.views.decorators.cache import cache_page
 from django import forms
 import logging
 import time
@@ -16,6 +18,7 @@ logger = logging.getLogger(__name__)
 # Learn Hub
 # ============================================================
 
+@method_decorator(cache_page(60), name='dispatch')
 class LearnHubView(ListView):
     """Content hub listing published articles by category."""
     model = Article

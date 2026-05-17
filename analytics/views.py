@@ -2,6 +2,7 @@ import csv
 import io
 import json
 import logging
+import os
 from datetime import timedelta
 from decimal import Decimal
 
@@ -31,6 +32,82 @@ from .models import PageView, DailyStats, ActiveSession
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
+
+MOTIONBANK_PUBLIC_STATS_CACHE_KEY = 'analytics_motionbank_public_stats_v1'
+MOTIONBANK_PUBLIC_STATS_CACHE_TTL = 60 * 15  # 15 minutes
+
+_STYLE_CANONICAL = {
+    ' bp': 'BP',
+    'bp': 'BP',
+    'world schools': 'World Schools',
+    'wsdc': 'World Schools',
+    'asians/australa': 'Asians/Australs',
+    'asians/australs': 'Asians/Australs',
+    'australs/asians': 'Asians/Australs',
+    'australs': 'Asians/Australs',
+    'public forum': 'Public Forum',
+    'lincoln-douglas': 'Lincoln-Douglas',
+    'policy': 'Policy',
+    'cndf': 'CNDF',
+    'cp': 'CP',
+}
+
+
+def _normalize_motion_style(raw_style):
+    style = (raw_style or '').strip()
+    if not style:
+        return 'Unknown'
+    return _STYLE_CANONICAL.get(style.lower(), style)
+
+
+def _get_public_motionbank_stats():
+    """Return motion totals/breakdown from the public /motions dataset (with DB fallback)."""
+    cached = cache.get(MOTIONBANK_PUBLIC_STATS_CACHE_KEY)
+    if cached is not None:
+        return cached
+
+    db_total = MotionEntry.objects.count()
+    db_by_format = list(
+        MotionEntry.objects.values('format').annotate(count=Count('id')).order_by('-count')[:6]
+    )
+
+    stats = {
+        'total_motions': db_total,
+        'motions_by_format': db_by_format,
+        'motion_stats_source': 'db',
+        'motions_db_entries': db_total,
+    }
+
+    try:
+        path = os.path.join(
+            os.path.dirname(settings.BASE_DIR),
+            'Motion-Bank',
+            'motions-version-01.json',
+        )
+        with open(path, encoding='utf-8') as f:
+            data = json.load(f)
+
+        style_counts = {}
+        for item in data:
+            style = _normalize_motion_style(item.get('style'))
+            style_counts[style] = style_counts.get(style, 0) + 1
+
+        motions_by_format = [
+            {'format': style, 'count': count}
+            for style, count in sorted(style_counts.items(), key=lambda kv: kv[1], reverse=True)[:6]
+        ]
+
+        stats = {
+            'total_motions': len(data),
+            'motions_by_format': motions_by_format,
+            'motion_stats_source': 'public-json',
+            'motions_db_entries': db_total,
+        }
+    except Exception:
+        logger.warning('Falling back to DB-backed motion stats on analytics dashboard', exc_info=True)
+
+    cache.set(MOTIONBANK_PUBLIC_STATS_CACHE_KEY, stats, MOTIONBANK_PUBLIC_STATS_CACHE_TTL)
+    return stats
 
 
 class SuperuserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
@@ -188,10 +265,11 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         context['referrer_stats'] = referrers
 
         # === MOTION BANK STATS ===
-        context['total_motions'] = MotionEntry.objects.count()
-        context['motions_by_format'] = list(
-            MotionEntry.objects.values('format').annotate(count=Count('id')).order_by('-count')[:6]
-        )
+        motion_stats = _get_public_motionbank_stats()
+        context['total_motions'] = motion_stats['total_motions']
+        context['motions_by_format'] = motion_stats['motions_by_format']
+        context['motion_stats_source'] = motion_stats['motion_stats_source']
+        context['motions_db_entries'] = motion_stats['motions_db_entries']
 
         # === PARTICIPANT CRM STATS ===
         crm = ParticipantProfile.objects

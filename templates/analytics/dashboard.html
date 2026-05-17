@@ -757,10 +757,10 @@
 
             <div class="stat-card">
                 <div class="stat-icon pink">📝</div>
-                <div class="stat-label">Motion Bank</div>
+                <div class="stat-label">Motion Bank (Public)</div>
                 <div class="stat-value">{{ total_motions }}</div>
                 <div class="stat-change">
-                    <span>total motions</span>
+                    <span>in /motions dataset</span>
                 </div>
             </div>
         </div>
@@ -1126,7 +1126,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3>📋 Motion Bank</h3>
+                    {% if motion_stats_source == 'public-json' %}
+                    <span style="font-size: 13px; color: var(--text-secondary);">{{ total_motions }} public motions</span>
+                    {% else %}
                     <span style="font-size: 13px; color: var(--text-secondary);">{{ total_motions }} total motions</span>
+                    {% endif %}
                 </div>
                 <div class="card-body">
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
@@ -1139,6 +1143,11 @@
                         <div style="grid-column: 1/-1; color: var(--text-secondary); text-align: center; padding: 20px;">No motions yet</div>
                         {% endfor %}
                     </div>
+                    {% if motion_stats_source == 'public-json' and motions_db_entries != total_motions %}
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">
+                        Dashboard shows public Motion Bank data. Legacy DB entries: {{ motions_db_entries }}.
+                    </div>
+                    {% endif %}
                     <a href="/motions/" class="btn btn-secondary" style="width: 100%; justify-content: center;">Browse Motion Bank →</a>
                 </div>
             </div>

@@ -1,8 +1,9 @@
+import hashlib
 import re
 import threading
 import time
 
-from django.utils import timezone
+from django.core.cache import cache
 from .models import PageView, ActiveSession
 
 
@@ -17,6 +18,14 @@ class AnalyticsMiddleware:
 
     BUFFER_SIZE = 50          # max records before forced flush
     FLUSH_INTERVAL = 10       # seconds between time-based flushes
+    ACTIVE_SESSION_PING_TTL = 15  # seconds
+
+    BOT_SIGNATURES = (
+        'bot', 'spider', 'crawler', 'crawl', 'slurp', 'fetcher',
+        'facebookexternalhit', 'whatsapp', 'telegrambot', 'discordbot',
+        'bingpreview', 'headless', 'python-requests', 'httpclient',
+        'uptime', 'healthcheck', 'monitor',
+    )
 
     _buffer: list = []
     _buffer_lock = threading.Lock()
@@ -112,6 +121,27 @@ class AnalyticsMiddleware:
             os = 'Other'
         
         return device, browser, os
+
+    def is_probable_bot(self, ua_string):
+        """Best-effort bot detection for human-centric analytics."""
+        ua = (ua_string or '').lower()
+        if not ua:
+            return False
+        return any(sig in ua for sig in self.BOT_SIGNATURES)
+
+    def get_visitor_key(self, request, ip_address, user_agent, user):
+        """Return a stable visitor key without forcing Django session creation."""
+        if user and getattr(user, 'is_authenticated', False):
+            return f'user:{user.pk}'
+
+        existing_session = getattr(request.session, 'session_key', None)
+        if existing_session:
+            return f'sess:{existing_session}'
+
+        # Anonymous fallback for clients that block cookies.
+        source = f"{ip_address or '-'}|{(user_agent or '')[:160]}"
+        digest = hashlib.sha256(source.encode('utf-8', errors='ignore')).hexdigest()[:32]
+        return f'anon:{digest}'
     
     def track_request(self, request):
         """Track the page view and update active session."""
@@ -131,18 +161,18 @@ class AnalyticsMiddleware:
             return
         
         try:
-            # Get or create session key
-            if not request.session.session_key:
-                request.session.save()
-            session_key = request.session.session_key or 'anonymous'
-            
             ip_address = self.get_client_ip(request)
             user_agent = request.META.get('HTTP_USER_AGENT', '')
             referer = request.META.get('HTTP_REFERER', '')
+            user = request.user if request.user.is_authenticated else None
+
+            # Keep dashboard traffic metrics human-centric.
+            if self.is_probable_bot(user_agent):
+                return
+
+            session_key = self.get_visitor_key(request, ip_address, user_agent, user)
             
             device, browser, os = self.parse_user_agent(user_agent)
-            
-            user = request.user if request.user.is_authenticated else None
 
             # Build the canonical full URL (subdomain-aware)
             if subdomain_slug:
@@ -167,17 +197,18 @@ class AnalyticsMiddleware:
                 os=os,
             )
             self._enqueue(pv)
-            
-            # Update active session
-            ActiveSession.objects.update_or_create(
-                session_key=session_key,
-                defaults={
-                    'user': user,
-                    'ip_address': ip_address,
-                    'current_path': display_path,
-                    'last_activity': timezone.now(),
-                }
-            )
+
+            # Avoid DB write amplification by only touching active sessions every N seconds.
+            active_ping_key = f'analytics:active:{session_key}'
+            if cache.add(active_ping_key, 1, timeout=self.ACTIVE_SESSION_PING_TTL):
+                ActiveSession.objects.update_or_create(
+                    session_key=session_key,
+                    defaults={
+                        'user': user,
+                        'ip_address': ip_address,
+                        'current_path': display_path,
+                    }
+                )
             
             # Periodically clean up stale sessions (1% of requests)
             import random
