@@ -3,7 +3,6 @@ import re
 import threading
 import time
 
-from django.core.cache import cache
 from .models import PageView, ActiveSession
 
 
@@ -30,6 +29,8 @@ class AnalyticsMiddleware:
     _buffer: list = []
     _buffer_lock = threading.Lock()
     _last_flush: float = 0.0  # monotonic timestamp of last flush
+    _active_ping: dict = {}
+    _active_ping_lock = threading.Lock()
     
     # Paths to exclude from tracking
     EXCLUDED_PATTERNS = [
@@ -142,6 +143,25 @@ class AnalyticsMiddleware:
         source = f"{ip_address or '-'}|{(user_agent or '')[:160]}"
         digest = hashlib.sha256(source.encode('utf-8', errors='ignore')).hexdigest()[:32]
         return f'anon:{digest}'
+
+    @classmethod
+    def _should_touch_active_session(cls, session_key):
+        """In-process throttle for ActiveSession writes."""
+        now = time.monotonic()
+        with cls._active_ping_lock:
+            last = cls._active_ping.get(session_key)
+            if last is not None and (now - last) < cls.ACTIVE_SESSION_PING_TTL:
+                return False
+            cls._active_ping[session_key] = now
+
+            # Opportunistic cleanup to prevent unbounded memory growth.
+            if len(cls._active_ping) > 5000:
+                cutoff = now - (cls.ACTIVE_SESSION_PING_TTL * 2)
+                cls._active_ping = {
+                    key: ts for key, ts in cls._active_ping.items()
+                    if ts >= cutoff
+                }
+            return True
     
     def track_request(self, request):
         """Track the page view and update active session."""
@@ -199,8 +219,7 @@ class AnalyticsMiddleware:
             self._enqueue(pv)
 
             # Avoid DB write amplification by only touching active sessions every N seconds.
-            active_ping_key = f'analytics:active:{session_key}'
-            if cache.add(active_ping_key, 1, timeout=self.ACTIVE_SESSION_PING_TTL):
+            if self._should_touch_active_session(session_key):
                 ActiveSession.objects.update_or_create(
                     session_key=session_key,
                     defaults={

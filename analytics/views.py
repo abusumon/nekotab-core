@@ -12,7 +12,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.cache import cache
 from django.db import connection
-from django.db.models import Case, Count, DecimalField, F, Max, Q, Sum, Value, When
+from django.db.models import Case, Count, DecimalField, F, IntegerField, Max, OuterRef, Q, Subquery, Sum, Value, When
 from django.db.models.functions import Coalesce, TruncDate, TruncHour, TruncMonth
 from django.http import JsonResponse
 from django.shortcuts import redirect
@@ -475,12 +475,51 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
     paginate_by = 50
     
     def get_queryset(self):
+        from draw.models import Debate
+        from participants.models import Speaker, Adjudicator
+
+        rounds_subq = (
+            Round.objects
+            .filter(tournament_id=OuterRef('pk'))
+            .values('tournament_id')
+            .annotate(c=Count('id'))
+            .values('c')[:1]
+        )
+        completed_rounds_subq = (
+            Round.objects
+            .filter(tournament_id=OuterRef('pk'), completed=True)
+            .values('tournament_id')
+            .annotate(c=Count('id'))
+            .values('c')[:1]
+        )
+        debates_subq = (
+            Debate.objects
+            .filter(round__tournament_id=OuterRef('pk'))
+            .values('round__tournament_id')
+            .annotate(c=Count('id'))
+            .values('c')[:1]
+        )
+        speakers_subq = (
+            Speaker.objects
+            .filter(team__tournament_id=OuterRef('pk'))
+            .values('team__tournament_id')
+            .annotate(c=Count('id'))
+            .values('c')[:1]
+        )
+        adjudicators_subq = (
+            Adjudicator.objects
+            .filter(tournament_id=OuterRef('pk'))
+            .values('tournament_id')
+            .annotate(c=Count('id'))
+            .values('c')[:1]
+        )
+
         queryset = Tournament.objects.select_related('owner').annotate(
-            num_rounds=Count('round'),
-            num_completed_rounds=Count('round', filter=Q(round__completed=True)),
-            num_debates=Count('round__debate', distinct=True),
-            num_speakers=Count('team__speaker', distinct=True),
-            num_adjudicators=Count('adjudicator', distinct=True),
+            num_rounds=Coalesce(Subquery(rounds_subq, output_field=IntegerField()), Value(0)),
+            num_completed_rounds=Coalesce(Subquery(completed_rounds_subq, output_field=IntegerField()), Value(0)),
+            num_debates=Coalesce(Subquery(debates_subq, output_field=IntegerField()), Value(0)),
+            num_speakers=Coalesce(Subquery(speakers_subq, output_field=IntegerField()), Value(0)),
+            num_adjudicators=Coalesce(Subquery(adjudicators_subq, output_field=IntegerField()), Value(0)),
         ).order_by('-id')
         
         # Search
