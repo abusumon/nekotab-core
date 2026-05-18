@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n debate_tags %}
+
+{% block head-title %}{% trans "Submission Received" %}{% endblock %}
+
+{% block extra-css %}
+<style>
+  .success-hero {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+  }
+  .success-icon { font-size: 4rem; margin-bottom: 1rem; }
+  .success-hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: .75rem; }
+  .success-hero p { opacity: .85; font-size: 1rem; max-width: 480px; margin: 0 auto; }
+  .back-link { color: #c7d2fe; text-decoration: underline; font-size: .9rem; margin-top: 1.5rem; display: inline-block; }
+  .back-link:hover { color: #fff; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="success-hero">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="success-icon">✅</div>
+        <h1>{% trans "We've received your submission!" %}</h1>
+        <p>
+          {% blocktrans with name=tournament.name %}
+            Thank you for pre-registering for {{ name }}.
+            The organising committee will review your submission and reach out via email.
+          {% endblocktrans %}
+        </p>
+        <a href="{% tournament_url 'tournament-public-index' %}" class="back-link">
+          ← {% trans "Back to tournament page" %}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

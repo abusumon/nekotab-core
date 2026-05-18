@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load i18n debate_tags %}
+
+{% block head-title %}Adjudicator Registrations{% endblock %}
+
+{% block extra-css %}
+<style>
+  .prereg-page { padding: 1.5rem 0 3rem; }
+  .page-header h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: .25rem; }
+  .page-header .sub { color: #6b7280; font-size: .88rem; }
+  .prereg-tabs { display: flex; gap: .5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .prereg-tab { padding: .5rem 1.25rem; border-radius: .5rem; font-weight: 600; font-size: .88rem; border: 2px solid transparent; background: #f3f4f6; color: #374151; text-decoration: none; }
+  .prereg-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+  .prereg-tab:hover:not(.active) { border-color: #6366f1; color: #6366f1; }
+  .admin-card { background: #fff; border-radius: .75rem; border: 1px solid #e5e7eb; margin-bottom: 1.25rem; overflow: hidden; }
+  .admin-card-header { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.25rem; background: #f9fafb; border-bottom: 1px solid #e5e7eb; cursor: pointer; }
+  .admin-card-header h5 { font-size: .95rem; font-weight: 700; margin: 0; }
+  .admin-card-body { padding: 1.25rem; }
+  .form-label-sm { font-size: .82rem; font-weight: 600; color: #4b5563; margin-bottom: .2rem; }
+  .btn-indigo { background: #6366f1; color: #fff; border: none; border-radius: .4rem; padding: .35rem .8rem; font-size: .82rem; }
+  .btn-indigo:hover { background: #4338ca; color: #fff; }
+  .btn-danger-sm { background: transparent; color: #dc2626; border: 1px solid #fca5a5; border-radius: .4rem; padding: .3rem .65rem; font-size: .78rem; }
+  .btn-danger-sm:hover { background: #fee2e2; }
+  .field-row { display: flex; align-items: center; gap: .75rem; padding: .65rem .9rem; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: .5rem; margin-bottom: .5rem; font-size: .88rem; }
+  .field-name { flex: 1; font-weight: 600; }
+  .tag { display: inline-block; padding: .15rem .45rem; border-radius: .3rem; font-size: .73rem; font-weight: 600; }
+  .tag-type { background: #ede9fe; color: #5b21b6; }
+  .tag-req { background: #fee2e2; color: #991b1b; }
+  .resp-table { width: 100%; border-collapse: collapse; font-size: .83rem; }
+  .resp-table th { background: #f9fafb; padding: .6rem .75rem; text-align: left; font-size: .75rem; font-weight: 700; text-transform: uppercase; color: #6b7280; border-bottom: 2px solid #e5e7eb; white-space: nowrap; }
+  .resp-table td { padding: .65rem .75rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+  .resp-table tr:hover td { background: #fafafa; }
+  @media (max-width: 768px) { .resp-table { font-size: .75rem; } }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container prereg-page">
+
+  <div class="page-header mb-3">
+    <h2>⚖️ Independent Adjudicator Registrations</h2>
+    <div class="sub">{{ tournament.name }}</div>
+  </div>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show mb-3" role="alert">
+        {{ message }}<button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <div class="prereg-tabs">
+    <a href="{% tournament_url 'prereg-admin-dashboard' %}" class="prereg-tab">👥 Team Pre-Reg</a>
+    <a href="{% tournament_url 'prereg-admin-adj' %}" class="prereg-tab active">⚖️ Adjudicators</a>
+    <a href="{% tournament_url 'prereg-adj-form' %}" target="_blank" class="prereg-tab" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0;">🔗 Public Adj Form ↗</a>
+  </div>
+
+  {# ——— FORM SETTINGS ——— #}
+  <div class="admin-card">
+    <div class="admin-card-header" onclick="document.getElementById('adj-settings').style.display = document.getElementById('adj-settings').style.display === 'none' ? 'block' : 'none'">
+      <h5>⚙️ Adjudicator Form Settings</h5>
+      <span style="font-size:.8rem; color:#6b7280;">▾</span>
+    </div>
+    <div id="adj-settings" class="admin-card-body" style="display:none;">
+      <form method="post" action="{% tournament_url 'prereg-adj-form-settings' %}">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-8">
+            <div class="mb-3"><label class="form-label-sm">Title</label>
+              <input type="text" name="title" class="form-control form-control-sm" value="{{ adj_form.title }}" required></div>
+          </div>
+        </div>
+        <div class="mb-3"><label class="form-label-sm">Description</label>
+          <textarea name="description" class="form-control form-control-sm" rows="2">{{ adj_form.description }}</textarea>
+        </div>
+        <div class="form-check mb-3">
+          <input type="checkbox" name="is_open" id="adj_is_open" class="form-check-input" {% if adj_form.is_open %}checked{% endif %}>
+          <label for="adj_is_open" class="form-check-label" style="font-size:.88rem;"><strong>Open for submissions</strong></label>
+        </div>
+        <button type="submit" class="btn btn-sm btn-indigo">💾 Save Settings</button>
+      </form>
+    </div>
+  </div>
+
+  {# ——— FORM BUILDER ——— #}
+  <div class="admin-card">
+    <div class="admin-card-header" onclick="document.getElementById('adj-builder').style.display = document.getElementById('adj-builder').style.display === 'none' ? 'block' : 'none'">
+      <h5>🏗️ Form Builder — {{ form_fields|length }} field(s)</h5>
+      <span style="font-size:.8rem; color:#6b7280;">▾</span>
+    </div>
+    <div id="adj-builder" class="admin-card-body" style="display:none;">
+      {% for field in form_fields %}
+      <div class="field-row">
+        <span style="color:#9ca3af;font-size:.75rem;min-width:18px;">{{ forloop.counter }}</span>
+        <span class="field-name">{{ field.label }}</span>
+        <span class="tag tag-type">{{ field.get_field_type_display }}</span>
+        {% if field.required %}<span class="tag tag-req">Required</span>{% endif %}
+        {% if field.options %}<small class="text-muted">{{ field.options|join:", "|truncatechars:35 }}</small>{% endif %}
+        <form method="post" action="{% tournament_url 'prereg-adj-field-delete' field.pk %}" style="margin-left:auto;" onsubmit="return confirm('Delete this field?')">
+          {% csrf_token %}
+          <button type="submit" class="btn-danger-sm">✕ Delete</button>
+        </form>
+      </div>
+      {% empty %}
+        <p class="text-muted mb-3" style="font-size:.88rem;">No fields yet.</p>
+      {% endfor %}
+      <hr class="my-3">
+      <strong style="font-size:.88rem;">+ Add New Field</strong>
+      <form method="post" action="{% tournament_url 'prereg-adj-field-add' %}" class="mt-2">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-4 mb-2">
+            <label class="form-label-sm">Label *</label>
+            <input type="text" name="label" class="form-control form-control-sm" required>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label-sm">Field Type</label>
+            <select name="field_type" class="form-control form-control-sm">
+              {% for value, display in field_type_choices %}<option value="{{ value }}">{{ display }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label-sm">Options (one per line)</label>
+            <textarea name="options_text" class="form-control form-control-sm" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap mb-2" style="gap:.9rem;font-size:.83rem;">
+          <label style="display:flex;align-items:center;gap:.3rem;"><input type="checkbox" name="required"> Required</label>
+          <label style="display:flex;align-items:center;gap:.3rem;"><input type="checkbox" name="is_email_field"> Use as respondent email</label>
+          <label style="display:flex;align-items:center;gap:.3rem;"><input type="checkbox" name="is_name_field"> Use as name</label>
+        </div>
+        <button type="submit" class="btn btn-sm btn-indigo">+ Add Field</button>
+      </form>
+    </div>
+  </div>
+
+  {# ——— RESPONSES TABLE ——— #}
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h5>📨 Submissions <small class="text-muted" style="font-weight:400;">— {{ submissions|length }} total</small></h5>
+    </div>
+
+    {% if not submissions %}
+      <div class="admin-card-body text-center py-4">
+        <div style="font-size:2.5rem;margin-bottom:.75rem;">📭</div>
+        <p class="text-muted">No submissions yet.</p>
+        <a href="{% tournament_url 'prereg-adj-form' %}" target="_blank" class="btn btn-sm btn-indigo">View Public Adj Form ↗</a>
+      </div>
+    {% else %}
+    <div class="table-responsive">
+      <table class="resp-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Submitted</th>
+            {% for field in form_fields %}<th>{{ field.label|truncatechars:20 }}</th>{% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for sub, field_values in submissions_with_data %}
+          <tr>
+            <td style="color:#9ca3af;font-size:.78rem;">{{ forloop.counter }}</td>
+            <td><strong>{{ sub.respondent_name|default:"—" }}</strong></td>
+            <td style="font-size:.78rem;word-break:break-all;">{{ sub.respondent_email|default:"—" }}</td>
+            <td style="font-size:.78rem;white-space:nowrap;">{{ sub.submitted_at|date:"M d, Y H:i" }}</td>
+            {% for label, value in field_values %}
+            <td style="font-size:.78rem;">{{ value|default:"—" }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div style="padding:.75rem 1.25rem; background:#f9fafb; border-top:1px solid #e5e7eb; font-size:.82rem; color:#6b7280;">
+      {{ submissions|length }} total submission(s).
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

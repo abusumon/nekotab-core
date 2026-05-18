@@ -1,0 +1,508 @@
+{% extends "base.html" %}
+{% load i18n debate_tags %}
+
+{% block head-title %}Pre-Registration Manager{% endblock %}
+
+{% block extra-css %}
+<style>
+  .prereg-page { padding: 1.5rem 0 3rem; }
+  .page-header { margin-bottom: 1.5rem; }
+  .page-header h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: .25rem; }
+  .page-header .sub { color: #6b7280; font-size: .88rem; }
+
+  /* Tab nav */
+  .prereg-tabs { display: flex; gap: .5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .prereg-tab {
+    padding: .5rem 1.25rem;
+    border-radius: .5rem;
+    font-weight: 600;
+    font-size: .88rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    background: #f3f4f6;
+    color: #374151;
+    text-decoration: none;
+  }
+  .prereg-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+  .prereg-tab:hover:not(.active) { border-color: #6366f1; color: #6366f1; }
+
+  /* Cards */
+  .admin-card {
+    background: #fff;
+    border-radius: .75rem;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+  }
+  .admin-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .9rem 1.25rem;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    cursor: pointer;
+    user-select: none;
+  }
+  .admin-card-header h5 { font-size: .95rem; font-weight: 700; margin: 0; }
+  .admin-card-body { padding: 1.25rem; }
+  .toggle-icon { transition: transform .2s; font-size: .8rem; }
+  .collapsed .toggle-icon { transform: rotate(-90deg); }
+
+  /* Form fields */
+  .form-label-sm { font-size: .82rem; font-weight: 600; color: #4b5563; margin-bottom: .2rem; }
+  .form-control-sm { font-size: .85rem; padding: .35rem .65rem; }
+  .btn-sm { font-size: .82rem; padding: .35rem .8rem; }
+  .btn-indigo { background: #6366f1; color: #fff; border: none; border-radius: .4rem; }
+  .btn-indigo:hover { background: #4338ca; color: #fff; }
+  .btn-danger-outline { background: transparent; color: #dc2626; border: 1px solid #fca5a5; border-radius: .4rem; }
+  .btn-danger-outline:hover { background: #fee2e2; }
+  .btn-success { background: #059669; color: #fff; border: none; border-radius: .4rem; }
+  .btn-success:hover { background: #047857; }
+  .btn-warning { background: #d97706; color: #fff; border: none; border-radius: .4rem; }
+
+  /* Fields list */
+  .field-row {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .65rem .9rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: .5rem;
+    margin-bottom: .5rem;
+    font-size: .88rem;
+  }
+  .field-row .field-label { flex: 1; font-weight: 600; }
+  .field-row .field-type-tag {
+    background: #ede9fe;
+    color: #5b21b6;
+    border-radius: .3rem;
+    padding: .15rem .45rem;
+    font-size: .75rem;
+    font-weight: 600;
+  }
+  .field-required-tag {
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: .3rem;
+    padding: .15rem .45rem;
+    font-size: .72rem;
+    font-weight: 600;
+  }
+
+  /* Stats row */
+  .stats-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .stat-chip {
+    background: #f3f4f6;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    font-size: .82rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  .stat-chip span { font-size: 1.2rem; font-weight: 800; margin-right: .3rem; }
+  .stat-chip.offered span { color: #d97706; }
+  .stat-chip.confirmed span { color: #059669; }
+  .stat-chip.rejected span { color: #dc2626; }
+
+  /* Response table */
+  .resp-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+  .resp-table th { background: #f9fafb; padding: .65rem .8rem; text-align: left; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #6b7280; border-bottom: 2px solid #e5e7eb; white-space: nowrap; }
+  .resp-table td { padding: .7rem .8rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+  .resp-table tr:hover td { background: #fafafa; }
+  .resp-table tr.status-offered td { border-left: 3px solid #f59e0b; }
+  .resp-table tr.status-confirmed td { border-left: 3px solid #10b981; }
+  .resp-table tr.status-rejected td { background: #fef2f2; color: #9ca3af; }
+
+  .badge { display: inline-block; padding: .2rem .55rem; border-radius: 999px; font-size: .72rem; font-weight: 700; }
+  .badge-pending { background: #f3f4f6; color: #374151; }
+  .badge-offered { background: #fef3c7; color: #92400e; }
+  .badge-confirmed { background: #d1fae5; color: #065f46; }
+  .badge-rejected { background: #fee2e2; color: #991b1b; }
+
+  .email-indicator { font-size: .72rem; }
+  .email-sent { color: #059669; }
+  .email-not-sent { color: #9ca3af; }
+
+  /* Slot input */
+  .slot-input { width: 60px; text-align: center; font-weight: 700; }
+
+  /* Action bar */
+  .action-bar {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    flex-wrap: wrap;
+    padding: .75rem 1.25rem;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    border-radius: 0 0 .75rem .75rem;
+  }
+
+  /* Publish section */
+  .publish-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .75rem 1.25rem;
+    background: {% if prereg_form.allocations_published %}#d1fae5{% else %}#f9fafb{% endif %};
+    border-radius: .5rem;
+    border: 1px solid {% if prereg_form.allocations_published %}#6ee7b7{% else %}#e5e7eb{% endif %};
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .publish-status { font-weight: 600; font-size: .88rem; }
+  .publish-status.published { color: #065f46; }
+  .publish-status.unpublished { color: #4b5563; }
+
+  .select-all-wrap { display: flex; align-items: center; gap: .5rem; font-size: .82rem; color: #6b7280; margin-bottom: .75rem; }
+
+  @media (max-width: 768px) {
+    .resp-table { font-size: .78rem; }
+    .resp-table th, .resp-table td { padding: .5rem .4rem; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container prereg-page">
+
+  <div class="page-header">
+    <h2>🎯 Pre-Registration Manager</h2>
+    <div class="sub">{{ tournament.name }} — manage team pre-registration and slot allocation</div>
+  </div>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <!-- Tab navigation -->
+  <div class="prereg-tabs">
+    <a href="{% tournament_url 'prereg-admin-dashboard' %}" class="prereg-tab active">👥 Team Pre-Registration</a>
+    <a href="{% tournament_url 'prereg-admin-adj' %}" class="prereg-tab">⚖️ Independent Adjudicators</a>
+    <a href="{% tournament_url 'prereg-team-form' %}" target="_blank" class="prereg-tab">🔗 Public Team Form</a>
+    <a href="{% tournament_url 'prereg-public-slots' %}" target="_blank" class="prereg-tab">📋 Public Slots Page</a>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1: FORM SETTINGS                                      -->
+  <!-- ============================================================ -->
+  <div class="admin-card">
+    <div class="admin-card-header" onclick="toggleSection('settings')">
+      <h5>⚙️ Form Settings</h5>
+      <span class="toggle-icon" id="settings-icon">▾</span>
+    </div>
+    <div class="admin-card-body" id="settings-body">
+      <form method="post" action="{% tournament_url 'prereg-form-settings' %}">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label class="form-label-sm">Form Title</label>
+              <input type="text" name="title" class="form-control form-control-sm" value="{{ prereg_form.title }}">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label class="form-label-sm">Final Registration URL</label>
+              <input type="url" name="final_reg_url" class="form-control form-control-sm" value="{{ prereg_form.final_reg_url }}" placeholder="https://kuddt.nekotab.app/">
+              <small class="text-muted">Sent to teams after payment confirmation.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label class="form-label-sm">Description (shown on public form)</label>
+          <textarea name="description" class="form-control form-control-sm" rows="2">{{ prereg_form.description }}</textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label class="form-label-sm">Payment Instructions (included in slot offer email)</label>
+          <textarea name="payment_instructions" class="form-control form-control-sm" rows="4" placeholder="e.g. Bkash: 01749054820 (Personal), Nagad: 01749054820&#10;Send payment and keep the transaction ID ready.">{{ prereg_form.payment_instructions }}</textarea>
+        </div>
+        <div class="form-check mb-3">
+          <input type="checkbox" name="is_open" id="is_open" class="form-check-input" {% if prereg_form.is_open %}checked{% endif %}>
+          <label for="is_open" class="form-check-label" style="font-size:.88rem;">
+            <strong>Form is open</strong> — accepting new submissions
+          </label>
+        </div>
+        <button type="submit" class="btn btn-sm btn-indigo">Save Settings</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2: FORM BUILDER                                       -->
+  <!-- ============================================================ -->
+  <div class="admin-card">
+    <div class="admin-card-header" onclick="toggleSection('builder')">
+      <h5>🏗️ Form Builder — <small class="text-muted" style="font-weight:400;">{{ form_fields|length }} field(s)</small></h5>
+      <span class="toggle-icon" id="builder-icon">▾</span>
+    </div>
+    <div class="admin-card-body" id="builder-body">
+
+      {% if form_fields %}
+        {% for field in form_fields %}
+        <div class="field-row">
+          <span class="text-muted" style="font-size:.78rem; min-width:20px;">{{ forloop.counter }}</span>
+          <span class="field-label">{{ field.label }}</span>
+          <span class="field-type-tag">{{ field.get_field_type_display }}</span>
+          {% if field.required %}<span class="field-required-tag">Required</span>{% endif %}
+          {% if field.is_email_field %}<span class="field-type-tag" style="background:#dbeafe;color:#1e40af;">Email</span>{% endif %}
+          {% if field.is_name_field %}<span class="field-type-tag" style="background:#dcfce7;color:#166534;">Name</span>{% endif %}
+          {% if field.options %}<span class="text-muted" style="font-size:.75rem;">{{ field.options|join:", "|truncatechars:40 }}</span>{% endif %}
+          <form method="post" action="{% tournament_url 'prereg-field-delete' field.pk %}" style="margin-left:auto;" onsubmit="return confirm('Delete this field?')">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-danger-outline">✕ Delete</button>
+          </form>
+        </div>
+        {% endfor %}
+        <hr>
+      {% else %}
+        <p class="text-muted mb-3" style="font-size:.88rem;">No fields yet. Add fields below.</p>
+      {% endif %}
+
+      <form method="post" action="{% tournament_url 'prereg-field-add' %}" class="mt-2">
+        {% csrf_token %}
+        <strong style="font-size:.88rem;">+ Add New Field</strong>
+        <div class="row mt-2">
+          <div class="col-md-4 mb-2">
+            <label class="form-label-sm">Label <span style="color:#ef4444">*</span></label>
+            <input type="text" name="label" class="form-control form-control-sm" placeholder="e.g. Team Name" required>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label-sm">Field Type</label>
+            <select name="field_type" class="form-control form-control-sm">
+              {% for value, display in field_type_choices %}
+                <option value="{{ value }}">{{ display }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-3 mb-2">
+            <label class="form-label-sm">Options (one per line)</label>
+            <textarea name="options_text" class="form-control form-control-sm" rows="2" placeholder="Option A&#10;Option B"></textarea>
+          </div>
+          <div class="col-md-2 mb-2">
+            <label class="form-label-sm">Placeholder</label>
+            <input type="text" name="placeholder" class="form-control form-control-sm">
+          </div>
+        </div>
+        <div class="d-flex gap-3 mb-2 flex-wrap" style="gap:.75rem; font-size:.82rem;">
+          <label style="display:flex;align-items:center;gap:.35rem;">
+            <input type="checkbox" name="required"> Required
+          </label>
+          <label style="display:flex;align-items:center;gap:.35rem;">
+            <input type="checkbox" name="is_email_field"> Use as email (for notifications)
+          </label>
+          <label style="display:flex;align-items:center;gap:.35rem;">
+            <input type="checkbox" name="is_name_field"> Use as name/team name
+          </label>
+        </div>
+        <button type="submit" class="btn btn-sm btn-indigo">+ Add Field</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3: PUBLISH STATUS                                     -->
+  <!-- ============================================================ -->
+  <div class="publish-bar">
+    <div>
+      <div class="publish-status {% if prereg_form.allocations_published %}published{% else %}unpublished{% endif %}">
+        {% if prereg_form.allocations_published %}
+          ✅ Slot allocations are <strong>PUBLISHED</strong> — the public page is live.
+        {% else %}
+          🔒 Slot allocations are <strong>NOT published</strong> — public page is hidden.
+        {% endif %}
+      </div>
+      {% if prereg_form.allocations_published %}
+        <small class="text-muted">
+          Public URL:
+          <a href="{% tournament_url 'prereg-public-slots' %}" target="_blank">{% tournament_url 'prereg-public-slots' %}</a>
+        </small>
+      {% endif %}
+    </div>
+    <form method="post" action="{% tournament_url 'prereg-publish' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-sm {% if prereg_form.allocations_published %}btn-warning{% else %}btn-success{% endif %}">
+        {% if prereg_form.allocations_published %}⬇ Unpublish{% else %}🚀 Publish Allocations{% endif %}
+      </button>
+    </form>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 4: RESPONSES + SLOT ALLOCATION                        -->
+  <!-- ============================================================ -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h5>📨 Responses &amp; Slot Allocation</h5>
+      <div class="stats-row mb-0">
+        {% with total=submissions|length %}
+          <span class="stat-chip"><span>{{ total }}</span> Total</span>
+        {% endwith %}
+        <span class="stat-chip offered" title="Offered"><span>{{ submissions|length }}</span> Total</span>
+      </div>
+    </div>
+
+    {% if not submissions %}
+      <div class="admin-card-body">
+        <div class="text-center py-4 text-muted">
+          <div style="font-size:2.5rem; margin-bottom:.75rem;">📭</div>
+          <p>No submissions yet.</p>
+          <a href="{% tournament_url 'prereg-team-form' %}" target="_blank" class="btn btn-sm btn-indigo">View Public Form</a>
+        </div>
+      </div>
+    {% else %}
+
+    <!-- Send offers form wraps the entire table -->
+    <form method="post" action="{% tournament_url 'prereg-send-offers' %}" id="offers-form">
+      {% csrf_token %}
+      <div class="table-responsive">
+        <table class="resp-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="select-all" title="Select all"></th>
+              <th>#</th>
+              <th>Name / Team</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Slots Granted</th>
+              <th>Incl. Public</th>
+              <th>Offer Email</th>
+              <th>Payment</th>
+              <th>Final Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for sub in submissions %}
+            <tr class="status-{{ sub.status }}">
+              <td><input type="checkbox" name="offer_ids" value="{{ sub.pk }}" class="row-check"></td>
+              <td class="text-muted">{{ forloop.counter }}</td>
+              <td>
+                <strong>{{ sub.respondent_name|default:"—" }}</strong>
+                {% if sub.respondent_email %}<br><small class="text-muted">{{ sub.respondent_email }}</small>{% endif %}
+              </td>
+              <td style="max-width:160px; word-break:break-all; font-size:.78rem;">
+                {{ sub.respondent_email|default:"—" }}
+              </td>
+              <td>
+                <span class="badge badge-{{ sub.status }}">
+                  {{ sub.get_status_display }}
+                </span>
+              </td>
+              <td>
+                <input type="number" name="slots_{{ sub.pk }}" class="form-control form-control-sm slot-input"
+                  value="{{ sub.slot.slots_granted|default:0 }}"
+                  min="0" max="10" form="allocations-form">
+              </td>
+              <td>
+                <input type="checkbox" name="public_{{ sub.pk }}" form="allocations-form"
+                  {% if sub.slot.include_in_public %}checked{% endif %}>
+              </td>
+              <td>
+                {% if sub.slot.offer_email_sent %}
+                  <span style="background:#d1fae5;color:#065f46;padding:.15rem .45rem;border-radius:.3rem;font-size:.75rem;">✓ Sent</span>
+                  {% if sub.slot.offer_email_sent_at %}<br><small style="color:#9ca3af;font-size:.7rem;">{{ sub.slot.offer_email_sent_at|date:"M d, H:i" }}</small>{% endif %}
+                {% else %}
+                  <span style="background:#f3f4f6;color:#9ca3af;padding:.15rem .45rem;border-radius:.3rem;font-size:.75rem;">Not sent</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if sub.slot.payment_confirmed %}
+                  <span style="background:#d1fae5;color:#065f46;padding:.15rem .45rem;border-radius:.3rem;font-size:.75rem;">✓ Confirmed</span>
+                {% elif sub.status == 'offered' or sub.status == 'confirmed' %}
+                  <form method="post" action="{% tournament_url 'prereg-confirm-payment' sub.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-success" style="font-size:.75rem;padding:.25rem .5rem;" title="Mark payment received">✓ Confirm</button>
+                  </form>
+                {% else %}
+                  <span style="color:#d1d5db;">—</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if sub.slot.final_reg_email_sent %}
+                  <span style="background:#d1fae5;color:#065f46;padding:.15rem .45rem;border-radius:.3rem;font-size:.75rem;">✓ Sent</span>
+                {% elif sub.status == 'confirmed' %}
+                  <form method="post" action="{% tournament_url 'prereg-send-final' sub.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-indigo" style="font-size:.75rem;padding:.25rem .5rem;">📧 Send</button>
+                  </form>
+                {% else %}
+                  <span style="color:#d1d5db;">—</span>
+                {% endif %}
+              </td>
+              <td>
+                <div style="display:flex; flex-direction:column; gap:.35rem;">
+                  {% if sub.status != 'rejected' %}
+                    <form method="post" action="{% tournament_url 'prereg-reject' sub.pk %}" onsubmit="return confirm('Mark as not selected?')">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-sm btn-danger-outline">✗ Reject</button>
+                    </form>
+                  {% else %}
+                    <span style="color:#d1d5db;font-size:.75rem;">Rejected</span>
+                  {% endif %}
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="action-bar">
+        <button type="submit" class="btn btn-sm btn-indigo">
+          📧 Send Offer Emails to Selected
+        </button>
+        <small class="text-muted">Check boxes in the first column, then click.</small>
+      </div>
+    </form>
+
+    <form method="post" action="{% tournament_url 'prereg-save-allocations' %}" id="allocations-form">
+      {% csrf_token %}
+    </form>
+    <div class="action-bar" style="border-top: 2px solid #6366f1;">
+      <button type="submit" form="allocations-form" class="btn btn-sm btn-success">
+        💾 Save Slot Allocations
+      </button>
+      <small class="text-muted">Updates the Slots Granted and Include in Public columns.</small>
+    </div>
+
+    {% endif %}
+  </div><!-- end admin-card -->
+
+</div><!-- end container -->
+
+{% block extra-js %}
+<script>
+// Toggle collapsible sections
+function toggleSection(id) {
+  var body = document.getElementById(id + '-body');
+  var icon = document.getElementById(id + '-icon');
+  if (body.style.display === 'none') {
+    body.style.display = '';
+    if (icon) icon.style.transform = '';
+  } else {
+    body.style.display = 'none';
+    if (icon) icon.style.transform = 'rotate(-90deg)';
+  }
+}
+
+// Select-all checkbox
+var selectAll = document.getElementById('select-all');
+if (selectAll) {
+  selectAll.addEventListener('change', function() {
+    document.querySelectorAll('.row-check').forEach(function(cb) {
+      cb.checked = selectAll.checked;
+    });
+  });
+}
+</script>
+{% endblock %}
+
+{% endblock %}

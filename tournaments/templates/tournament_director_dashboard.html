@@ -719,6 +719,17 @@ span.td-nav-item[style*="opacity"] {
         </a>
       </div>
 
+      {# ── Pre-Registration Group ── #}
+      <div class="td-nav-group">
+        <div class="td-nav-group-label">{% trans "Pre-Registration" %}</div>
+        <a class="td-nav-item" href="{% tournamenturl 'prereg-admin-dashboard' %}">
+          <span class="td-nav-icon">📋</span> {% trans "Team Pre-Reg" %}
+        </a>
+        <a class="td-nav-item" href="{% tournamenturl 'prereg-admin-adj' %}">
+          <span class="td-nav-icon">🧑‍⚖️</span> {% trans "Adj Pre-Reg" %}
+        </a>
+      </div>
+
       {# ── Setup Group ── #}
       <div class="td-nav-group">
         <div class="td-nav-group-label">{% trans "Setup" %}</div>

@@ -285,3 +285,11 @@ def prep_time():
 def haspermission(context, permission):
     # If returned directly from the object it will have to lookup tournament
     return has_permission(context['user'], permission, context['tournament'])
+
+
+@register.filter(name='get_item')
+def get_item(dictionary, key):
+    """Look up a value in a dict by key. Tries both the raw key and str(key)."""
+    if not isinstance(dictionary, dict):
+        return None
+    return dictionary.get(key, dictionary.get(str(key), None))

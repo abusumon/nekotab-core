@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if tournament %}{{ tournament.name }} — {% endif %}Slot Allocations</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: #0f0f23; color: #e2e8f0; min-height: 100vh; }
+
+    /* ---- Hero ---- */
+    .hero {
+      background: linear-gradient(135deg, #0f0e17 0%, #1e1b4b 35%, #312e81 70%, #4338ca 100%);
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(99,102,241,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(99,102,241,.25);
+      border: 1px solid rgba(99,102,241,.5);
+      color: #a5b4fc;
+      padding: .3rem .9rem;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 30%, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      margin-bottom: .75rem;
+    }
+    .hero p { color: #94a3b8; font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: #a5b4fc; }
+    .stat-label { font-size: .78rem; color: #64748b; text-transform: uppercase; letter-spacing: .06em; margin-top: .15rem; }
+
+    /* ---- Main content ---- */
+    .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+    /* ---- Not published state ---- */
+    .not-published {
+      text-align: center;
+      padding: 5rem 1.5rem;
+      background: #0f0f23;
+    }
+    .not-published .icon { font-size: 3.5rem; margin-bottom: 1rem; }
+    .not-published h2 { color: #e2e8f0; font-size: 1.5rem; font-weight: 700; margin-bottom: .5rem; }
+    .not-published p { color: #64748b; }
+
+    /* ---- Table ---- */
+    .table-wrap {
+      background: #1e1b3a;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid #312e81;
+    }
+    .table-header {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr 1fr;
+      background: #312e81;
+      padding: .75rem 1.25rem;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #a5b4fc;
+    }
+    .table-row {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr 1fr;
+      padding: .9rem 1.25rem;
+      border-bottom: 1px solid rgba(99,102,241,.12);
+      align-items: center;
+      transition: background .15s;
+    }
+    .table-row:last-child { border-bottom: none; }
+    .table-row:hover { background: rgba(99,102,241,.08); }
+    .row-rank {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(99,102,241,.2);
+      color: #a5b4fc;
+      font-size: .78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .team-cell { display: flex; align-items: center; gap: .75rem; }
+    .team-name { font-weight: 600; color: #e2e8f0; font-size: .95rem; }
+    .inst-name { color: #64748b; font-size: .82rem; margin-top: .1rem; }
+    .slots-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: .45rem;
+      background: linear-gradient(135deg, #4338ca, #6366f1);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .status-confirmed {
+      display: inline-block;
+      background: rgba(16,185,129,.15);
+      color: #34d399;
+      border: 1px solid rgba(52,211,153,.2);
+      padding: .2rem .65rem;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+    .status-offered {
+      background: rgba(251,191,36,.15);
+      color: #fbbf24;
+      border: 1px solid rgba(251,191,36,.2);
+    }
+
+    /* ---- Mobile ---- */
+    @media (max-width: 600px) {
+      .table-header { grid-template-columns: 1fr; display: none; }
+      .table-row { grid-template-columns: 1fr 1fr; gap: .5rem; padding: 1rem; }
+      .table-row > *:nth-child(3), .table-row > *:nth-child(4) { margin-top: .25rem; }
+    }
+
+    /* ---- Footer ---- */
+    .page-footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: #334155;
+      font-size: .82rem;
+    }
+    .page-footer a { color: #6366f1; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">{% if tournament %}{{ tournament.short_name }}{% endif %} — Official Announcement</div>
+  <h1>Slot Allocations</h1>
+  <p>The following teams have been selected for participation in <strong>{{ tournament.name }}</strong>.</p>
+
+  {% if not not_published %}
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">{{ allocations|length }}</div>
+      <div class="stat-label">Teams Selected</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">{% with total=0 %}{% for a in allocations %}{% endfor %}{{ allocations|length }}{% endwith %}</div>
+      <div class="stat-label">Published</div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% if not_published %}
+<div class="not-published">
+  <div class="icon">⏳</div>
+  <h2>Results not yet published</h2>
+  <p>The organising committee is still reviewing pre-registrations.<br>Check back soon!</p>
+</div>
+
+{% elif not allocations %}
+<div class="not-published">
+  <div class="icon">📋</div>
+  <h2>No allocations to display yet</h2>
+  <p>The organising committee hasn't published any slot allocations yet.</p>
+</div>
+
+{% else %}
+<div class="container">
+  <div class="table-wrap">
+    <div class="table-header">
+      <div>Team / Participant</div>
+      <div>Institution</div>
+      <div>Slots</div>
+      <div>Status</div>
+    </div>
+
+    {% for allocation in allocations %}
+    <div class="table-row">
+      <div class="team-cell">
+        <div class="row-rank">{{ forloop.counter }}</div>
+        <div>
+          <div class="team-name">{{ allocation.submission.respondent_name }}</div>
+        </div>
+      </div>
+      <div>
+        <div class="inst-name">
+          {% with sub=allocation.submission %}
+            {% for field_id, value in sub.data.items %}
+              {% if forloop.first and not forloop.last %}{{ value }}{% endif %}
+            {% endfor %}
+          {% endwith %}
+          &nbsp;
+        </div>
+      </div>
+      <div>
+        <span class="slots-badge">{{ allocation.slots_granted }}</span>
+      </div>
+      <div>
+        {% if allocation.submission.status == 'confirmed' %}
+          <span class="status-confirmed">Confirmed</span>
+        {% else %}
+          <span class="status-confirmed status-offered">Offered</span>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <p style="text-align:center; color:#475569; font-size:.85rem; margin-top:1.5rem;">
+    Selected teams will receive an email with payment instructions and next steps.
+    <br>After payment confirmation, a final registration link will be sent.
+  </p>
+</div>
+{% endif %}
+
+<div class="page-footer">
+  Powered by <a href="https://nekotab.app" target="_blank">NekoTab</a>
+</div>
+
+</body>
+</html>
