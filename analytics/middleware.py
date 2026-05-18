@@ -32,7 +32,11 @@ class AnalyticsMiddleware:
     _active_ping: dict = {}
     _active_ping_lock = threading.Lock()
     
-    # Paths to exclude from tracking
+    # Paths to exclude from tracking.
+    # NOTE: AJAX / JSON API paths are excluded separately via the
+    # Accept-header check in track_request() below, so most /api/ paths
+    # do not need to be listed here.  We only list known HTML-shell paths
+    # that should NOT pollute user-visible page-view counts.
     EXCLUDED_PATTERNS = [
         r'^/static/',
         r'^/media/',
@@ -43,6 +47,14 @@ class AnalyticsMiddleware:
         r'^/analytics/',
         r'^/database/',
         r'^/health',
+        r'^/api/',
+        r'/api/',          # any /t/<slug>/api/ sub-paths
+        r'^/notifications/',
+        r'^/campaigns/',
+        r'^/unsubscribe/',
+        r'^/ads\.txt',
+        r'^/robots\.txt',
+        r'^/sitemap',
         r'\.ico$',
         r'\.js$',
         r'\.css$',
@@ -52,19 +64,50 @@ class AnalyticsMiddleware:
         r'\.svg$',
         r'\.woff',
         r'\.ttf$',
+        r'\.json$',
+        r'\.xml$',
+        r'\.txt$',
     ]
     
     def __init__(self, get_response):
         self.get_response = get_response
         self.excluded_re = [re.compile(p) for p in self.EXCLUDED_PATTERNS]
     
+    @staticmethod
+    def _is_html_request(request):
+        """Return True only for browser requests that are navigating to an HTML page.
+
+        Browsers send 'Accept: text/html,...' for full-page navigations.
+        AJAX (fetch/XHR), JSON API calls, WebSocket upgrades, and other
+        background requests do NOT include 'text/html' in the Accept header.
+        Matching this is the most reliable way to mirror what Google Analytics
+        counts as a "page view".
+        """
+        accept = request.META.get('HTTP_ACCEPT', '')
+        # Must explicitly want HTML; empty Accept (curl-style) is excluded too.
+        if 'text/html' not in accept:
+            return False
+        # Skip XHR/fetch even when Accept header leaks through (some frameworks
+        # do send text/html in fetch calls).
+        x_requested = request.META.get('HTTP_X_REQUESTED_WITH', '').lower()
+        if x_requested == 'xmlhttprequest':
+            return False
+        # Skip turbo/htmx frame requests that aren't full navigations.
+        if request.META.get('HTTP_TURBO_FRAME') or request.META.get('HTTP_HX_REQUEST'):
+            return False
+        return True
+
     def __call__(self, request):
         response = self.get_response(request)
-        
-        # Track successful page loads AND 404s (for broken link diagnosis)
-        if response.status_code in (200, 404):
+
+        # Only count real browser page navigations (status 200).
+        # Exclude AJAX, API, and background requests via the Accept-header
+        # guard inside track_request(); 404s are intentionally excluded from
+        # the public-facing page-view count so the number stays comparable
+        # with what Google Analytics reports.
+        if response.status_code == 200 and self._is_html_request(request):
             self.track_request(request)
-        
+
         return response
     
     def should_track(self, path):
