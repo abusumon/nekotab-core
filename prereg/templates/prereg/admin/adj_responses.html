@@ -51,9 +51,9 @@
   {% endif %}
 
   <div class="prereg-tabs">
-    <a href="{% tournament_url 'prereg-admin-dashboard' %}" class="prereg-tab">👥 Team Pre-Reg</a>
-    <a href="{% tournament_url 'prereg-admin-adj' %}" class="prereg-tab active">⚖️ Adjudicators</a>
-    <a href="{% tournament_url 'prereg-adj-form' %}" target="_blank" class="prereg-tab" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0;">🔗 Public Adj Form ↗</a>
+    <a href="{% tournamenturl 'prereg-admin-dashboard' %}" class="prereg-tab">👥 Team Pre-Reg</a>
+    <a href="{% tournamenturl 'prereg-admin-adj' %}" class="prereg-tab active">⚖️ Adjudicators</a>
+    <a href="{% tournamenturl 'prereg-adj-form' %}" target="_blank" class="prereg-tab" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0;">🔗 Public Adj Form ↗</a>
   </div>
 
   {# ——— FORM SETTINGS ——— #}
@@ -63,7 +63,7 @@
       <span style="font-size:.8rem; color:#6b7280;">▾</span>
     </div>
     <div id="adj-settings" class="admin-card-body" style="display:none;">
-      <form method="post" action="{% tournament_url 'prereg-adj-form-settings' %}">
+      <form method="post" action="{% tournamenturl 'prereg-adj-form-settings' %}">
         {% csrf_token %}
         <div class="row">
           <div class="col-md-8">
@@ -97,7 +97,7 @@
         <span class="tag tag-type">{{ field.get_field_type_display }}</span>
         {% if field.required %}<span class="tag tag-req">Required</span>{% endif %}
         {% if field.options %}<small class="text-muted">{{ field.options|join:", "|truncatechars:35 }}</small>{% endif %}
-        <form method="post" action="{% tournament_url 'prereg-adj-field-delete' field.pk %}" style="margin-left:auto;" onsubmit="return confirm('Delete this field?')">
+        <form method="post" action="{% tournamenturl 'prereg-adj-field-delete' field.pk %}" style="margin-left:auto;" onsubmit="return confirm('Delete this field?')">
           {% csrf_token %}
           <button type="submit" class="btn-danger-sm">✕ Delete</button>
         </form>
@@ -107,7 +107,7 @@
       {% endfor %}
       <hr class="my-3">
       <strong style="font-size:.88rem;">+ Add New Field</strong>
-      <form method="post" action="{% tournament_url 'prereg-adj-field-add' %}" class="mt-2">
+      <form method="post" action="{% tournamenturl 'prereg-adj-field-add' %}" class="mt-2">
         {% csrf_token %}
         <div class="row">
           <div class="col-md-4 mb-2">
@@ -145,7 +145,7 @@
       <div class="admin-card-body text-center py-4">
         <div style="font-size:2.5rem;margin-bottom:.75rem;">📭</div>
         <p class="text-muted">No submissions yet.</p>
-        <a href="{% tournament_url 'prereg-adj-form' %}" target="_blank" class="btn btn-sm btn-indigo">View Public Adj Form ↗</a>
+        <a href="{% tournamenturl 'prereg-adj-form' %}" target="_blank" class="btn btn-sm btn-indigo">View Public Adj Form ↗</a>
       </div>
     {% else %}
     <div class="table-responsive">

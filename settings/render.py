@@ -22,8 +22,16 @@ if os.environ.get('TAB_DIRECTOR_EMAIL', ''):
 if os.environ.get('DJANGO_SECRET_KEY', ''):
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
+# Explicitly disable debug mode in production.
+# Only enable via env var in exceptional circumstances (never on live).
+DEBUG = os.environ.get('DEBUG', 'false').lower() in ('1', 'true', 'yes')
+
 # https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '.nekotab.app').split(',')
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get('ALLOWED_HOSTS', '.nekotab.app').split(',')
+    if host.strip()
+]
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -35,7 +43,7 @@ CSRF_COOKIE_SECURE = True
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME.strip())
 
 # ==============================================================================
 # Subdomain routing (production defaults)

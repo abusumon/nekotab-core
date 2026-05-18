@@ -33,6 +33,12 @@ class SubmissionStatus(models.TextChoices):
     REJECTED = 'rejected', _('Not Selected')
 
 
+class ResponsesVisibility(models.TextChoices):
+    PUBLIC = 'public', _('Public — anyone can view the slots page')
+    PRIVATE_LINK = 'private_link', _('Private link — only people with the secret link')
+    ADMIN_ONLY = 'admin_only', _('Admin only — slots page hidden from public')
+
+
 def _default_team_fields():
     return [
         {'order': 1, 'label': 'Team Name', 'field_type': 'text', 'required': True, 'is_name_field': True},
@@ -115,6 +121,13 @@ class PreRegForm(models.Model):
     allocations_published = models.BooleanField(
         default=False,
         verbose_name=_('allocations published'),
+    )
+    responses_visibility = models.CharField(
+        max_length=20,
+        choices=ResponsesVisibility.choices,
+        default=ResponsesVisibility.PUBLIC,
+        verbose_name=_('results visibility'),
+        help_text=_('Controls who can view the public slot allocation results page.'),
     )
     public_slug = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)

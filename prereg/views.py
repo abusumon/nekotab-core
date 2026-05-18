@@ -16,7 +16,7 @@ from tournaments.mixins import PublicTournamentPageMixin, TournamentMixin
 from utils.mixins import AdministratorMixin
 
 from .models import (
-    FormType, SubmissionStatus, FieldType,
+    FormType, SubmissionStatus, FieldType, ResponsesVisibility,
     PreRegForm, PreRegFormField, PreRegSubmission, SlotAllocation,
     seed_default_fields,
 )
@@ -146,11 +146,32 @@ class PublicSlotsView(PublicTournamentPageMixin, TemplateView):
             tournament=self.tournament,
             form_type=FormType.TEAM_PREREG,
         )
+
+        # Visibility enforcement
+        vis = prereg_form.responses_visibility
+        if vis == ResponsesVisibility.ADMIN_ONLY:
+            return self.render_to_response(self.get_context_data(
+                prereg_form=prereg_form,
+                allocations=[],
+                not_published=True,
+                visibility_blocked=True,
+            ))
+        if vis == ResponsesVisibility.PRIVATE_LINK:
+            supplied_key = request.GET.get('key', '').strip()
+            if str(prereg_form.public_slug) != supplied_key:
+                return self.render_to_response(self.get_context_data(
+                    prereg_form=prereg_form,
+                    allocations=[],
+                    not_published=True,
+                    visibility_blocked=True,
+                ))
+
         if not prereg_form.allocations_published:
             return self.render_to_response(self.get_context_data(
                 prereg_form=prereg_form,
                 allocations=[],
                 not_published=True,
+                visibility_blocked=False,
             ))
 
         allocations = (
@@ -167,6 +188,7 @@ class PublicSlotsView(PublicTournamentPageMixin, TemplateView):
             prereg_form=prereg_form,
             allocations=allocations,
             not_published=False,
+            visibility_blocked=False,
         ))
 
 
@@ -200,6 +222,7 @@ class PreRegAdminDashboardView(AdministratorMixin, TournamentMixin, TemplateView
             extra_fields=extra_fields,
             status_choices=SubmissionStatus.choices,
             field_type_choices=FieldType.choices,
+            visibility_choices=ResponsesVisibility.choices,
         ))
 
 
@@ -215,6 +238,9 @@ class PreRegFormSettingsView(AdministratorMixin, TournamentMixin, View):
         prereg_form.is_open = 'is_open' in request.POST
         prereg_form.payment_instructions = request.POST.get('payment_instructions', '').strip()
         prereg_form.final_reg_url = request.POST.get('final_reg_url', '').strip()
+        vis = request.POST.get('responses_visibility', ResponsesVisibility.PUBLIC)
+        if vis in dict(ResponsesVisibility.choices):
+            prereg_form.responses_visibility = vis
         prereg_form.save()
         messages.success(request, _("Form settings saved."))
         return redirect('prereg-admin-dashboard', tournament_slug=t.slug)
