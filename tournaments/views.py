@@ -233,8 +233,9 @@ class BaseTournamentDashboardHomeView(TournamentMixin, WarnAboutDatabaseUseMixin
     def get_context_data(self, **kwargs):
         t = self.tournament
         updates = 10 # Number of items to fetch
+        current_round = t.current_round
 
-        kwargs["round"] = t.current_round
+        kwargs["round"] = current_round
         kwargs["tournament_slug"] = t.slug
         kwargs["readthedocs_version"] = settings.READTHEDOCS_VERSION
         kwargs["blank"] = not (t.team_set.exists() or t.adjudicator_set.exists() or t.venue_set.exists())
@@ -248,8 +249,8 @@ class BaseTournamentDashboardHomeView(TournamentMixin, WarnAboutDatabaseUseMixin
             kwargs["initialActions"] = json.dumps([])
 
         results_perm = has_permission(self.request.user, 'view.ballotsubmission', self.tournament)
-        if results_perm:
-            debates = t.current_round.debate_set.filter(
+        if results_perm and current_round is not None:
+            debates = current_round.debate_set.filter(
                 ballotsubmission__confirmed=True,
             ).order_by('-ballotsubmission__timestamp')[:updates]
             populate_confirmed_ballots(debates, results=True)
@@ -258,12 +259,12 @@ class BaseTournamentDashboardHomeView(TournamentMixin, WarnAboutDatabaseUseMixin
         else:
             kwargs["initialBallots"] = json.dumps([])
 
-        status = t.current_round.draw_status
-        kwargs["total_debates"] = t.current_round.debate_set.count()
+        status = current_round.draw_status if current_round is not None else None
+        kwargs["total_debates"] = current_round.debate_set.count() if current_round is not None else 0
         graph_perm = has_permission(self.request.user, 'view.ballotsubmission.graph', self.tournament)
-        if (status == Round.Status.CONFIRMED or status == Round.Status.RELEASED) and graph_perm:
+        if current_round is not None and (status == Round.Status.CONFIRMED or status == Round.Status.RELEASED) and graph_perm:
             ballots = BallotSubmission.objects.filter(
-                debate__round=t.current_round, discarded=False).select_related(
+                debate__round=current_round, discarded=False).select_related(
                 'submitter', 'debate')
             stats = [{'ballot': bs.serialize(t)} for bs in ballots]
             kwargs["initial_graph_data"] = json.dumps(stats)
