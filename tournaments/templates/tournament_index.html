@@ -36,7 +36,7 @@
       {% include "components/item-action.html" with to_complete=True %}
     </div>
 
-  {% elif round.draw_status == round.Status.NONE and availability_perm %}
+  {% elif round and round.draw_status == round.Status.NONE and availability_perm %}
 
     <div class="list-group">
       {% roundurl 'availability-index' round as url %}
@@ -46,7 +46,7 @@
       {% include "components/item-action.html" with to_complete=True %}
     </div>
 
-  {% elif round.draw_status == round.Status.CONFIRMED and allocation_perm %}
+  {% elif round and round.draw_status == round.Status.CONFIRMED and allocation_perm %}
 
     <div class="list-group">
       {% roundurl 'draw' round as url %}
@@ -56,7 +56,7 @@
       {% include "components/item-action.html" with to_complete=True %}
     </div>
 
-  {% elif round.draw_status == round.Status.RELEASED and results_perm %}
+  {% elif round and round.draw_status == round.Status.RELEASED and results_perm %}
 
     <div class="list-group">
       {% roundurl 'results-round-list' round as url %}

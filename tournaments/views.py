@@ -232,44 +232,101 @@ class BaseTournamentDashboardHomeView(TournamentMixin, WarnAboutDatabaseUseMixin
 
     def get_context_data(self, **kwargs):
         t = self.tournament
-        updates = 10 # Number of items to fetch
-        current_round = t.current_round
+        updates = 10  # Number of items to fetch
+
+        try:
+            current_round = t.current_round
+        except Exception:
+            logger.exception("Failed resolving current round for tournament %s", t.slug)
+            current_round = None
 
         kwargs["round"] = current_round
         kwargs["tournament_slug"] = t.slug
-        kwargs["readthedocs_version"] = settings.READTHEDOCS_VERSION
-        kwargs["blank"] = not (t.team_set.exists() or t.adjudicator_set.exists() or t.venue_set.exists())
+        kwargs["readthedocs_version"] = getattr(settings, "READTHEDOCS_VERSION", "")
 
-        action_perm = has_permission(self.request.user, 'view.actionlogentry', self.tournament)
+        try:
+            kwargs["blank"] = not (t.team_set.exists() or t.adjudicator_set.exists() or t.venue_set.exists())
+        except Exception:
+            logger.exception("Failed computing blank dashboard state for tournament %s", t.slug)
+            kwargs["blank"] = False
+
+        try:
+            action_perm = has_permission(self.request.user, 'view.actionlogentry', self.tournament)
+        except Exception:
+            logger.exception("Failed checking action log permission for tournament %s", t.slug)
+            action_perm = False
+
+        kwargs["initialActions"] = json.dumps([])
         if action_perm:
-            actions = ActionLogEntry.objects.filter(tournament=t).prefetch_related(
-                        'content_object', 'user').order_by('-timestamp')[:updates]
-            kwargs["initialActions"] = json.dumps([a.serialize for a in actions])
-        else:
-            kwargs["initialActions"] = json.dumps([])
+            try:
+                # Avoid prefetching generic relations so stale content types can't break the dashboard.
+                actions = ActionLogEntry.objects.filter(tournament=t).select_related('user').order_by('-timestamp')[:updates]
+                serialized_actions = []
+                for action in actions:
+                    try:
+                        serialized_actions.append(action.serialize)
+                    except Exception:
+                        logger.exception("Failed serializing action log entry %s for tournament %s", action.pk, t.slug)
+                kwargs["initialActions"] = json.dumps(serialized_actions)
+            except Exception:
+                logger.exception("Failed loading action log feed for tournament %s", t.slug)
 
-        results_perm = has_permission(self.request.user, 'view.ballotsubmission', self.tournament)
+        try:
+            results_perm = has_permission(self.request.user, 'view.ballotsubmission', self.tournament)
+        except Exception:
+            logger.exception("Failed checking ballot permission for tournament %s", t.slug)
+            results_perm = False
+
+        kwargs["initialBallots"] = json.dumps([])
         if results_perm and current_round is not None:
-            debates = current_round.debate_set.filter(
-                ballotsubmission__confirmed=True,
-            ).order_by('-ballotsubmission__timestamp')[:updates]
-            populate_confirmed_ballots(debates, results=True)
-            subs = [d._confirmed_ballot.serialize_like_actionlog for d in debates]
-            kwargs["initialBallots"] = json.dumps(subs)
-        else:
-            kwargs["initialBallots"] = json.dumps([])
+            try:
+                debates = current_round.debate_set.filter(
+                    ballotsubmission__confirmed=True,
+                ).order_by('-ballotsubmission__timestamp')[:updates]
+                populate_confirmed_ballots(debates, results=True)
+                subs = []
+                for debate in debates:
+                    ballot = getattr(debate, '_confirmed_ballot', None)
+                    if ballot is None:
+                        continue
+                    try:
+                        subs.append(ballot.serialize_like_actionlog)
+                    except Exception:
+                        logger.exception("Failed serializing confirmed ballot %s for tournament %s", ballot.pk, t.slug)
+                kwargs["initialBallots"] = json.dumps(subs)
+            except Exception:
+                logger.exception("Failed loading confirmed ballot feed for tournament %s", t.slug)
 
-        status = current_round.draw_status if current_round is not None else None
-        kwargs["total_debates"] = current_round.debate_set.count() if current_round is not None else 0
-        graph_perm = has_permission(self.request.user, 'view.ballotsubmission.graph', self.tournament)
+        status = None
+        kwargs["total_debates"] = 0
+        if current_round is not None:
+            try:
+                status = current_round.draw_status
+                kwargs["total_debates"] = current_round.debate_set.count()
+            except Exception:
+                logger.exception("Failed loading round summary for tournament %s", t.slug)
+
+        try:
+            graph_perm = has_permission(self.request.user, 'view.ballotsubmission.graph', self.tournament)
+        except Exception:
+            logger.exception("Failed checking graph permission for tournament %s", t.slug)
+            graph_perm = False
+
+        kwargs["initial_graph_data"] = json.dumps([])
         if current_round is not None and (status == Round.Status.CONFIRMED or status == Round.Status.RELEASED) and graph_perm:
-            ballots = BallotSubmission.objects.filter(
-                debate__round=current_round, discarded=False).select_related(
-                'submitter', 'debate')
-            stats = [{'ballot': bs.serialize(t)} for bs in ballots]
-            kwargs["initial_graph_data"] = json.dumps(stats)
-        else:
-            kwargs["initial_graph_data"] = json.dumps([])
+            try:
+                ballots = BallotSubmission.objects.filter(
+                    debate__round=current_round, discarded=False).select_related(
+                    'submitter', 'debate')
+                stats = []
+                for ballotsub in ballots:
+                    try:
+                        stats.append({'ballot': ballotsub.serialize(t)})
+                    except Exception:
+                        logger.exception("Failed serializing graph ballot %s for tournament %s", ballotsub.pk, t.slug)
+                kwargs["initial_graph_data"] = json.dumps(stats)
+            except Exception:
+                logger.exception("Failed loading graph ballot data for tournament %s", t.slug)
 
         kwargs["overview_permissions"] = json.dumps({
             "graph": graph_perm,
