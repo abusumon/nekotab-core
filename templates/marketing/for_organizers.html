@@ -61,7 +61,7 @@
       <nav class="em-nav-center" aria-label="Primary">
         <a href="/" class="em-nav-link">Home</a>
         <a href="{% url 'motions' %}" class="em-nav-link">Motion Bank</a>
-        <a href="{% url 'forum:forum-home' %}" class="em-nav-link">Community</a>
+        <a href="{% url 'contact-forum' %}" class="em-nav-link">Community</a>
         <a href="/learn/" class="em-nav-link">Resources</a>
       </nav>
       <div class="em-nav-end">
@@ -85,7 +85,7 @@
       <div class="em-mobile-menu-section">
         <a href="/">Home</a>
         <a href="{% url 'motions' %}">Motion Bank</a>
-        <a href="{% url 'forum:forum-home' %}">Community</a>
+        <a href="{% url 'contact-forum' %}">Community</a>
         <a href="/learn/">Resources</a>
       </div>
       <div class="em-mobile-menu-section" style="margin-top:16px;">
@@ -415,7 +415,7 @@
       <div>
         <div class="em-foot-title">Community</div>
         <ul class="em-foot-links">
-          <li><a href="{% url 'forum:forum-home' %}">Debate Forum</a></li>
+          <li><a href="{% url 'contact-forum' %}">Contact</a></li>
           <li><a href="/learn/">Learn Debate</a></li>
           <li><a href="{% url 'org-list' %}">Organizations</a></li>
         </ul>

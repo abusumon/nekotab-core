@@ -9,7 +9,7 @@ class StaticViewSitemap(Sitemap):
     _priorities = {
         'tabbycat-index': 1.0,
         'motions': 1.0,
-        'forum:forum-home': 0.7,
+        'contact-forum': 0.7,
         'seo-free-tab': 0.9,
         'seo-bp-tab': 0.9,
         'seo-tabroom-alt': 0.9,
@@ -23,7 +23,7 @@ class StaticViewSitemap(Sitemap):
     _changefreqs = {
         'tabbycat-index': 'daily',
         'motions': 'daily',
-        'forum:forum-home': 'daily',
+        'contact-forum': 'daily',
         'seo-free-tab': 'weekly',
         'seo-bp-tab': 'weekly',
         'seo-tabroom-alt': 'weekly',
@@ -38,7 +38,7 @@ class StaticViewSitemap(Sitemap):
         # Only include pages with meaningful content — exclude utility/auth pages
         return [
             'tabbycat-index',
-            'forum:forum-home',
+            'contact-forum',
             'motions',
             'seo-free-tab',
             'seo-bp-tab',
