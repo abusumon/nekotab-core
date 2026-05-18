@@ -709,19 +709,19 @@
 
             <div class="stat-card">
                 <div class="stat-icon green">🎤</div>
-                <div class="stat-label">Total Debaters</div>
+                <div class="stat-label">Speaker Records</div>
                 <div class="stat-value">{{ total_speakers }}</div>
                 <div class="stat-change">
-                    <span>across all tournaments</span>
+                    <span>{{ crm_debaters }}</span> CRM debaters{% if crm_hybrid %} (+{{ crm_hybrid }} hybrid){% endif %}
                 </div>
             </div>
 
             <div class="stat-card">
                 <div class="stat-icon orange">⚖️</div>
-                <div class="stat-label">Total Adjudicators</div>
+                <div class="stat-label">Adjudicator Records</div>
                 <div class="stat-value">{{ total_adjudicators }}</div>
                 <div class="stat-change">
-                    <span>across all tournaments</span>
+                    <span>{{ crm_adjudicators }}</span> CRM adjudicators{% if crm_hybrid %} (+{{ crm_hybrid }} hybrid){% endif %}
                 </div>
             </div>
         </div>
