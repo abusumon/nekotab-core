@@ -1,0 +1,453 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-country-code="{{ request_country_code|default:'' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Contact Us – NekoTab</title>
+  <meta name="description" content="Reach out to the NekoTab team for support, feedback, bug reports, or partnership enquiries. We're happy to help.">
+  <link rel="canonical" href="https://nekotab.app/forum/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #07070e;
+      --surface: #0f0f1a;
+      --card: #13131f;
+      --border: #232336;
+      --text: #ffffff;
+      --muted: #7878a0;
+      --accent: #6366f1;
+      --accent2: #ec4899;
+      --success: #10b981;
+      --danger: #ef4444;
+      --radius: 16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Nav ─────────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(7,7,14,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 20px; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      color: var(--muted); font-size: 14px; font-weight: 500;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a.active { color: var(--accent); }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+    .hero {
+      text-align: center;
+      padding: 72px 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99,102,241,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px; font-weight: 500; color: #a5b4fc;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p {
+      font-size: 18px; color: var(--muted); max-width: 520px;
+      margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ── Success Banner ───────────────────────────────────────── */
+    .success-banner {
+      max-width: 640px; margin: 0 auto 24px;
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.35);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+      animation: slideIn 0.4s ease both;
+    }
+    .success-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(16,185,129,0.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 18px;
+    }
+    .success-banner h3 { font-size: 16px; font-weight: 600; color: var(--success); margin-bottom: 4px; }
+    .success-banner p { font-size: 14px; color: var(--muted); }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Main Grid ────────────────────────────────────────────── */
+    .main {
+      flex: 1;
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 24px 80px;
+      width: 100%;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* ── Info Panel ───────────────────────────────────────────── */
+    .info-panel {
+      position: sticky; top: 80px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 0.25s;
+    }
+    .info-card:hover { border-color: rgba(99,102,241,0.4); }
+    .info-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(236,72,153,0.1));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 14px;
+    }
+    .info-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .info-card p  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .info-card a  { color: #a5b4fc; text-decoration: none; font-weight: 500; }
+    .info-card a:hover { text-decoration: underline; }
+
+    .response-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    .response-table td {
+      padding: 8px 0; font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    .response-table tr:last-child td { border-bottom: none; }
+    .response-table td:last-child { text-align: right; color: var(--muted); }
+
+    /* ── Form Card ────────────────────────────────────────────── */
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+    .form-card h2 {
+      font-size: 22px; font-weight: 700; margin-bottom: 6px;
+    }
+    .form-card .subtitle {
+      font-size: 14px; color: var(--muted); margin-bottom: 32px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .field {
+      margin-bottom: 20px;
+    }
+    .field label {
+      display: block;
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em; text-transform: uppercase;
+    }
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: vertical;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: #404060; }
+    .field input:focus, .field textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+    }
+    .field input.error, .field textarea.error {
+      border-color: var(--danger);
+    }
+    .field input.error:focus, .field textarea.error:focus {
+      box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+    }
+    .field-error {
+      font-size: 12px; color: var(--danger);
+      margin-top: 6px;
+    }
+    .field textarea { min-height: 140px; }
+
+    .submit-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .submit-note { font-size: 13px; color: var(--muted); }
+
+    .btn-send {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      border: none; border-radius: 10px;
+      padding: 14px 32px;
+      font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.3);
+    }
+    .btn-send:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(99,102,241,0.4); }
+    .btn-send:active { transform: translateY(0); }
+    .btn-send svg { flex-shrink: 0; }
+
+    /* ── Quick Links Strip ────────────────────────────────────── */
+    .quick-links {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 40px; padding: 0 24px;
+      max-width: 1100px; margin-left: auto; margin-right: auto;
+    }
+    .quick-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 18px;
+      color: var(--muted); font-size: 13px; font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .quick-link:hover { border-color: var(--accent); color: var(--text); background: var(--surface); }
+    .quick-link .ql-icon { font-size: 15px; }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 13px; color: var(--muted);
+    }
+    footer a { color: #a5b4fc; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .info-panel { position: static; }
+      .form-card { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .nav-links { display: none; }
+      .submit-row { flex-direction: column-reverse; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a class="nav-logo" href="/">🐱 NekoTab</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/motions/">Motion Bank</a>
+      <a href="/learn/">Learn</a>
+      <a href="/forum/" class="active">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      Get in touch
+    </div>
+    <h1>We'd love to <span>hear from you</span></h1>
+    <p>Questions about NekoTab, bug reports, feedback, or partnership ideas — we read every message.</p>
+  </section>
+
+  <!-- Success Banner -->
+  {% if message_sent %}
+  <div class="main" style="padding-bottom: 0;">
+    <div class="success-banner">
+      <div class="success-icon">✓</div>
+      <div>
+        <h3>Message received!</h3>
+        <p>Thank you for reaching out. We'll get back to you at <strong>{{ sent_email }}</strong> within 1–3 business days.</p>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Quick Links -->
+  <div class="quick-links">
+    <a class="quick-link" href="/motions/"><span class="ql-icon">📝</span> Motion Bank</a>
+    <a class="quick-link" href="/learn/"><span class="ql-icon">📚</span> Learn Debate</a>
+    <a class="quick-link" href="/create/"><span class="ql-icon">🏆</span> Start a Tournament</a>
+    <a class="quick-link" href="mailto:support@nekotab.app"><span class="ql-icon">✉️</span> support@nekotab.app</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="grid">
+
+      <!-- Info Panel -->
+      <aside class="info-panel">
+        <div class="info-card">
+          <div class="info-icon">⏱️</div>
+          <h3>Response Times</h3>
+          <table class="response-table">
+            <tr><td>General enquiries</td><td>2–3 days</td></tr>
+            <tr><td>Technical support</td><td>1–2 days</td></tr>
+            <tr><td>Bug reports</td><td>Within 24 hours</td></tr>
+            <tr><td>Partnerships</td><td>3–5 days</td></tr>
+          </table>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📝</div>
+          <h3>NekoTab Motion Bank</h3>
+          <p>Browse 36,000+ curated debate motions from international tournaments. Searchable, filterable, and free.</p>
+          <p style="margin-top: 10px;"><a href="/motions/">Explore the Motion Bank →</a></p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📧</div>
+          <h3>Direct Email</h3>
+          <p>Prefer email directly?<br>
+            <a href="mailto:support@nekotab.app">support@nekotab.app</a>
+          </p>
+        </div>
+      </aside>
+
+      <!-- Form Card -->
+      <div class="form-card">
+        <h2>Send us a message</h2>
+        <p class="subtitle">Fill in the form below and we'll respond as soon as possible.</p>
+
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {# Honeypot — invisible to humans #}
+          <div style="position:absolute;left:-9999px;" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="form_loaded_at" value="{{ form.form_loaded_at.value }}">
+
+          <div class="form-row">
+            <div class="field">
+              <label for="id_name">Your Name *</label>
+              <input type="text" id="id_name" name="name"
+                     value="{{ form.name.value|default:'' }}"
+                     placeholder="e.g. Alex Johnson"
+                     class="{% if form.name.errors %}error{% endif %}"
+                     required maxlength="100" autocomplete="name">
+              {% if form.name.errors %}<p class="field-error">{{ form.name.errors.0 }}</p>{% endif %}
+            </div>
+
+            <div class="field">
+              <label for="id_email">Email Address *</label>
+              <input type="email" id="id_email" name="email"
+                     value="{{ form.email.value|default:'' }}"
+                     placeholder="you@example.com"
+                     class="{% if form.email.errors %}error{% endif %}"
+                     required autocomplete="email">
+              {% if form.email.errors %}<p class="field-error">{{ form.email.errors.0 }}</p>{% endif %}
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="id_subject">Subject *</label>
+            <input type="text" id="id_subject" name="subject"
+                   value="{{ form.subject.value|default:'' }}"
+                   placeholder="What's this about?"
+                   class="{% if form.subject.errors %}error{% endif %}"
+                   required maxlength="200">
+            {% if form.subject.errors %}<p class="field-error">{{ form.subject.errors.0 }}</p>{% endif %}
+          </div>
+
+          <div class="field">
+            <label for="id_message">Message *</label>
+            <textarea id="id_message" name="message"
+                      placeholder="Describe your question, issue, or feedback in detail…"
+                      class="{% if form.message.errors %}error{% endif %}"
+                      required maxlength="5000">{{ form.message.value|default:'' }}</textarea>
+            {% if form.message.errors %}<p class="field-error">{{ form.message.errors.0 }}</p>{% endif %}
+          </div>
+
+          {% if form.non_field_errors %}
+          <div class="field">
+            {% for error in form.non_field_errors %}
+            <p class="field-error">{{ error }}</p>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="submit-row">
+            <p class="submit-note">We typically reply within 1–3 business days.</p>
+            <button type="submit" class="btn-send">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+              </svg>
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      &copy; {% now "Y" %} NekoTab &nbsp;·&nbsp;
+      <a href="/privacy/">Privacy</a> &nbsp;·&nbsp;
+      <a href="/terms/">Terms</a> &nbsp;·&nbsp;
+      <a href="/motions/">Motion Bank</a> &nbsp;·&nbsp;
+      <a href="mailto:support@nekotab.app">support@nekotab.app</a>
+    </p>
+  </footer>
+
+</body>
+</html>

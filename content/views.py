@@ -3,6 +3,7 @@ from django.utils.html import escape
 from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from django.core.mail import send_mail
+from django.shortcuts import redirect
 from django.conf import settings
 from django.views.decorators.cache import cache_page
 from django import forms
@@ -176,3 +177,43 @@ class DisclaimerView(TemplateView):
         ctx['page_title'] = 'Disclaimer'
         ctx['canonical_url'] = f"{getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app')}/disclaimer/"
         return ctx
+
+
+class ContactForumView(FormView):
+    """Beautiful contact page at /forum/ — replaces the old forum UI."""
+    template_name = 'pages/contact_us_page.html'
+    form_class = ContactForm
+    success_url = '/forum/?sent=1'
+
+    def get_initial(self):
+        self.request.session['contact_forum_loaded_at'] = time.time()
+        return {}
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['page_title'] = 'Contact Us'
+        ctx['canonical_url'] = f"{getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app')}/forum/"
+        ctx['message_sent'] = self.request.GET.get('sent') == '1'
+        ctx['sent_email'] = self.request.GET.get('e', '')
+        return ctx
+
+    def form_valid(self, form):
+        d = form.cleaned_data
+        # Server-side timing check (tamper-proof, session-backed)
+        loaded_at = self.request.session.pop('contact_forum_loaded_at', 0)
+        if time.time() - loaded_at < 3:
+            form.add_error(None, "Submission too fast. Please try again.")
+            return self.form_invalid(form)
+        try:
+            send_mail(
+                subject=f"[NekoTab Contact] {d['subject']}",
+                message=f"From: {d['name']} <{d['email']}>\n\n{d['message']}",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=['support@nekotab.app'],
+                fail_silently=True,
+            )
+        except Exception:
+            logger.exception("ContactForumView: failed to send contact email")
+        from urllib.parse import urlencode
+        params = urlencode({'sent': '1', 'e': d['email']})
+        return redirect(f'/forum/?{params}')

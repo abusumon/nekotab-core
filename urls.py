@@ -22,6 +22,7 @@ from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
 from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
 import motionbank.views as motionbank_views
 from campaigns.views import serve_image
+from content.views import ContactForumView
 
 # ==============================================================================
 # Base Patterns
@@ -163,9 +164,10 @@ urlpatterns = [
     path('archive/',
         include('importer.urls_archive')),
 
-    # Global Debate Forum
+    # Contact Us page (replaces forum UI at /forum/)
     path('forum/',
-        include('forum.urls')),
+        ContactForumView.as_view(),
+        name='contact-forum'),
 
     # Global Motion Bank — flat-file edition at /motions/
     path('motions/',
