@@ -15,6 +15,17 @@ from .models import Article, ArticleCategory
 logger = logging.getLogger(__name__)
 
 
+def _send_contact_message(cleaned_data):
+    """Send a contact email and return the SMTP backend's send count."""
+    return send_mail(
+        subject=f"[NekoTab Contact] {cleaned_data['subject']}",
+        message=f"From: {cleaned_data['name']} <{cleaned_data['email']}>\n\n{cleaned_data['message']}",
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=['support@nekotab.app'],
+        fail_silently=False,
+    )
+
+
 # ============================================================
 # Learn Hub
 # ============================================================
@@ -125,8 +136,9 @@ class ContactView(FormView):
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx['page_title'] = 'Contact Us'
-        ctx['canonical_url'] = f"{getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app')}/contact/"
+        ctx['canonical_url'] = f"{getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app')}/forum/"
         ctx['message_sent'] = self.request.GET.get('sent') == '1'
+        ctx['noindex'] = True
         return ctx
 
     def form_valid(self, form):
@@ -137,15 +149,14 @@ class ContactView(FormView):
             form.add_error(None, "Submission too fast.")
             return self.form_invalid(form)
         try:
-            send_mail(
-                subject=f"[NekoTab Contact] {d['subject']}",
-                message=f"From: {d['name']} <{d['email']}>\n\n{d['message']}",
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=['support@nekotab.app'],
-                fail_silently=True,
-            )
+            sent_count = _send_contact_message(d)
         except Exception:
             logger.exception("Failed to send contact form email")
+            form.add_error(None, "We couldn't send your message right now. Please try again in a few minutes.")
+            return self.form_invalid(form)
+        if sent_count != 1:
+            form.add_error(None, "We couldn't confirm delivery. Please try again in a few minutes.")
+            return self.form_invalid(form)
         return super().form_valid(form)
 
 
@@ -194,7 +205,6 @@ class ContactForumView(FormView):
         ctx['page_title'] = 'Contact Us'
         ctx['canonical_url'] = f"{getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app')}/forum/"
         ctx['message_sent'] = self.request.GET.get('sent') == '1'
-        ctx['sent_email'] = self.request.GET.get('e', '')
         return ctx
 
     def form_valid(self, form):
@@ -205,15 +215,12 @@ class ContactForumView(FormView):
             form.add_error(None, "Submission too fast. Please try again.")
             return self.form_invalid(form)
         try:
-            send_mail(
-                subject=f"[NekoTab Contact] {d['subject']}",
-                message=f"From: {d['name']} <{d['email']}>\n\n{d['message']}",
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=['support@nekotab.app'],
-                fail_silently=True,
-            )
+            sent_count = _send_contact_message(d)
         except Exception:
             logger.exception("ContactForumView: failed to send contact email")
-        from urllib.parse import urlencode
-        params = urlencode({'sent': '1', 'e': d['email']})
-        return redirect(f'/forum/?{params}')
+            form.add_error(None, "We couldn't send your message right now. Please try again in a few minutes.")
+            return self.form_invalid(form)
+        if sent_count != 1:
+            form.add_error(None, "We couldn't confirm delivery. Please try again in a few minutes.")
+            return self.form_invalid(form)
+        return super().form_valid(form)

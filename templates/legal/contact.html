@@ -4,6 +4,10 @@
 {% block page-title %}Contact Us{% endblock %}
 {% block og-title %}Contact Us{% endblock %}
 
+{% block noindex %}
+<meta name="robots" content="noindex, follow">
+{% endblock %}
+
 {% block extra-head %}
 <script type="application/ld+json">
 {
@@ -88,6 +92,14 @@
       <div class="invalid-feedback">{{ form.message.errors.0 }}</div>
       {% endif %}
     </div>
+
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+      {% for error in form.non_field_errors %}
+      <div>{{ error }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
 
     <button type="submit" class="btn btn-primary">Send Message</button>
   </form>

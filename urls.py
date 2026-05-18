@@ -115,7 +115,8 @@ urlpatterns = [
     path('database/',
         admin.site.urls),
     path('admin/',
-        admin.site.urls),
+        RedirectView.as_view(url='/database/', permanent=False),
+        name='admin-shortcut'),
 
     # Accounts
     path('accounts/', include('users.urls')),

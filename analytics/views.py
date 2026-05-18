@@ -133,7 +133,7 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         now = timezone.now()
-        today = now.date()
+        today_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
         
         # Time ranges
         last_24h = now - timedelta(hours=24)
@@ -146,30 +146,27 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         context['live_visitors'] = live_sessions.count()
         context['active_sessions'] = live_sessions[:10]
         
-        # === TODAY'S STATS ===
-        today_views = PageView.objects.filter(timestamp__date=today)
-        context['today_views'] = today_views.count()
-        context['today_unique'] = today_views.values('session_key').distinct().count()
-        context['today_signups'] = User.objects.filter(date_joined__date=today).count()
-        
         # === TRAFFIC STATS ===
-        context['views_24h'] = PageView.objects.filter(timestamp__gte=last_24h).count()
-        context['views_7d'] = PageView.objects.filter(timestamp__gte=last_7d).count()
-        context['views_30d'] = PageView.objects.filter(timestamp__gte=last_30d).count()
-        
-        # Unique visitors
-        context['unique_24h'] = PageView.objects.filter(
-            timestamp__gte=last_24h
-        ).values('session_key').distinct().count()
-        context['unique_7d'] = PageView.objects.filter(
-            timestamp__gte=last_7d
-        ).values('session_key').distinct().count()
+        traffic_stats = PageView.objects.aggregate(
+            today_views=Count('id', filter=Q(timestamp__gte=today_start)),
+            today_unique=Count('session_key', filter=Q(timestamp__gte=today_start), distinct=True),
+            views_24h=Count('id', filter=Q(timestamp__gte=last_24h)),
+            views_7d=Count('id', filter=Q(timestamp__gte=last_7d)),
+            views_30d=Count('id', filter=Q(timestamp__gte=last_30d)),
+            unique_24h=Count('session_key', filter=Q(timestamp__gte=last_24h), distinct=True),
+            unique_7d=Count('session_key', filter=Q(timestamp__gte=last_7d), distinct=True),
+        )
+        context.update(traffic_stats)
         
         # === USER STATS ===
-        context['total_users'] = User.objects.count()
-        context['users_with_email'] = User.objects.exclude(email='').exclude(email__isnull=True).count()
-        context['superusers'] = User.objects.filter(is_superuser=True).count()
-        context['staff_users'] = User.objects.filter(is_staff=True).count()
+        user_stats = User.objects.aggregate(
+            total_users=Count('id'),
+            users_with_email=Count('id', filter=Q(email__isnull=False) & ~Q(email='')),
+            superusers=Count('id', filter=Q(is_superuser=True)),
+            staff_users=Count('id', filter=Q(is_staff=True)),
+            today_signups=Count('id', filter=Q(date_joined__gte=today_start)),
+        )
+        context.update(user_stats)
         
         # Recent signups
         context['recent_signups'] = User.objects.order_by('-date_joined')[:10]
@@ -187,8 +184,11 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         ])
         
         # === TOURNAMENT STATS ===
-        context['total_tournaments'] = Tournament.objects.count()
-        context['active_tournaments'] = Tournament.objects.filter(active=True).count()
+        tournament_stats = Tournament.objects.aggregate(
+            total_tournaments=Count('id'),
+            active_tournaments=Count('id', filter=Q(active=True)),
+        )
+        context.update(tournament_stats)
 
         # === PARTICIPANT STATS (real counts — not email-gated CRM) ===
         context['total_speakers'] = Speaker.objects.count()
@@ -206,9 +206,12 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         context['total_rounds'] = total_rounds
         
         # Ballots
-        context['total_ballots'] = BallotSubmission.objects.count()
-        context['ballots_today'] = BallotSubmission.objects.filter(timestamp__date=today).count()
-        context['ballots_7d'] = BallotSubmission.objects.filter(timestamp__gte=last_7d).count()
+        ballot_stats = BallotSubmission.objects.aggregate(
+            total_ballots=Count('id'),
+            ballots_today=Count('id', filter=Q(timestamp__gte=today_start)),
+            ballots_7d=Count('id', filter=Q(timestamp__gte=last_7d)),
+        )
+        context.update(ballot_stats)
         
         # === TRAFFIC BY HOUR (last 24h) ===
         hourly_traffic = PageView.objects.filter(
@@ -273,14 +276,17 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
 
         # === PARTICIPANT CRM STATS ===
         crm = ParticipantProfile.objects
-        context['crm_total'] = crm.count()
-        context['crm_debaters'] = crm.filter(primary_role='debater').count()
-        context['crm_adjudicators'] = crm.filter(primary_role='adjudicator').count()
-        context['crm_tab_directors'] = crm.filter(primary_role='tab_director').count()
-        context['crm_hybrid'] = crm.filter(primary_role='hybrid').count()
-        context['crm_subscribed'] = crm.filter(email_subscribed=True).count()
-        context['crm_with_email'] = crm.exclude(email='').count()
-        context['crm_new_30d'] = crm.filter(first_seen__gte=last_30d).count()
+        crm_stats = crm.aggregate(
+            crm_total=Count('id'),
+            crm_debaters=Count('id', filter=Q(primary_role='debater')),
+            crm_adjudicators=Count('id', filter=Q(primary_role='adjudicator')),
+            crm_tab_directors=Count('id', filter=Q(primary_role='tab_director')),
+            crm_hybrid=Count('id', filter=Q(primary_role='hybrid')),
+            crm_subscribed=Count('id', filter=Q(email_subscribed=True)),
+            crm_with_email=Count('id', filter=Q(email__isnull=False) & ~Q(email='')),
+            crm_new_30d=Count('id', filter=Q(first_seen__gte=last_30d)),
+        )
+        context.update(crm_stats)
         context['crm_recent'] = crm.order_by('-first_seen')[:8]
 
         return context

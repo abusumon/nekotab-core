@@ -135,3 +135,12 @@ class NotificationQueueConsumer(SyncConsumer):
                             hook_id=hook_id, notification=bulk_notification))
 
         self._send(messages, records)
+
+    def campaign_send(self, event: Dict[str, Any]) -> None:
+        from campaigns.views import _send_campaign_emails_worker
+
+        _send_campaign_emails_worker(
+            campaign_pk=event['campaign_pk'],
+            site_url=event.get('site_url', ''),
+            lock_key=event.get('lock_key', ''),
+        )

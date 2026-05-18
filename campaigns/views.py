@@ -4,8 +4,9 @@ import re
 import time
 from html import unescape
 from smtplib import SMTPException
-from threading import Thread
 
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
@@ -374,9 +375,24 @@ def _start_campaign_sender(campaign_pk, site_url=''):
     if not cache.add(lock_key, '1', SEND_LOCK_TTL_SECONDS):
         return False
 
-    thread = Thread(target=_send_campaign_emails_worker, args=(campaign_pk, site_url, lock_key))
-    thread.daemon = True
-    thread.start()
+    channel_layer = get_channel_layer()
+    if channel_layer is None:
+        cache.delete(lock_key)
+        logger.error("Campaign sender unavailable: channel layer is not configured")
+        return False
+
+    try:
+        async_to_sync(channel_layer.send)('notifications', {
+            'type': 'campaign_send',
+            'campaign_pk': str(campaign_pk),
+            'site_url': site_url,
+            'lock_key': lock_key,
+        })
+    except Exception:
+        cache.delete(lock_key)
+        logger.exception("Failed to enqueue campaign send for %s", campaign_pk)
+        return False
+
     return True
 
 
