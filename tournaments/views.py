@@ -5,7 +5,8 @@ from collections import OrderedDict
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.db import models
+from django.core.exceptions import FieldError
+from django.db import DatabaseError, models
 from django.db.models import Count, Q
 from django.shortcuts import redirect, resolve_url, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -61,48 +62,57 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
         # Multi-tenancy: each user sees ONLY their own + shared + listed tournaments
         user = self.request.user
         if user.is_authenticated:
-            visible = Tournament.objects.visible_to(user)
-            kwargs['my_tournaments_active'] = visible.filter(
-                models.Q(owner=user)
-            ).filter(active=True)
-            kwargs['my_tournaments_inactive'] = visible.filter(
-                models.Q(owner=user)
-            ).filter(active=False)
+            try:
+                visible = Tournament.objects.visible_to(user)
+                kwargs['my_tournaments_active'] = visible.filter(
+                    models.Q(owner=user)
+                ).filter(active=True)
+                kwargs['my_tournaments_inactive'] = visible.filter(
+                    models.Q(owner=user)
+                ).filter(active=False)
 
-            # "Shared with me" = visible but not owned by me and not just listed
-            from organizations.models import OrganizationMembership
-            user_org_ids = list(
-                OrganizationMembership.objects.filter(user=user)
-                .values_list('organization_id', flat=True)
-            )
-            kwargs['shared_tournaments'] = visible.filter(active=True).exclude(
-                owner=user,
-            ).exclude(
-                # Exclude purely-listed tournaments (ones where user has no role)
-                models.Q(is_listed=True)
-                & ~models.Q(owner=user)
-                & ~models.Q(id__in=self._get_permission_ids(user))
-                & ~models.Q(id__in=self._get_membership_ids(user))
-                & ~models.Q(organization_id__in=user_org_ids)
-            )
+                # "Shared with me" = visible but not owned by me and not just listed
+                from organizations.models import OrganizationMembership
+                user_org_ids = list(
+                    OrganizationMembership.objects.filter(user=user)
+                    .values_list('organization_id', flat=True)
+                )
+                kwargs['shared_tournaments'] = visible.filter(active=True).exclude(
+                    owner=user,
+                ).exclude(
+                    # Exclude purely-listed tournaments (ones where user has no role)
+                    models.Q(is_listed=True)
+                    & ~models.Q(owner=user)
+                    & ~models.Q(id__in=self._get_permission_ids(user))
+                    & ~models.Q(id__in=self._get_membership_ids(user))
+                    & ~models.Q(organization_id__in=user_org_ids)
+                )
 
-            # Organization context: group user's tournaments by org
-            from organizations.models import get_user_organizations
-            kwargs['user_organizations'] = get_user_organizations(user).prefetch_related(
-                models.Prefetch(
-                    'tournaments',
-                    queryset=Tournament.objects.filter(active=True),
-                    to_attr='active_tournaments',
-                ),
-            )
+                # Organization context: group user's tournaments by org
+                from organizations.models import get_user_organizations
+                kwargs['user_organizations'] = get_user_organizations(user).prefetch_related(
+                    models.Prefetch(
+                        'tournaments',
+                        queryset=Tournament.objects.filter(active=True),
+                        to_attr='active_tournaments',
+                    ),
+                )
 
-            # Superusers can also see unassigned tournaments
-            if user.is_superuser:
-                kwargs['unassigned_active'] = Tournament.objects.filter(owner__isnull=True, active=True)
-                kwargs['unassigned_inactive'] = Tournament.objects.filter(owner__isnull=True, active=False)
-            else:
+                # Superusers can also see unassigned tournaments
+                if user.is_superuser:
+                    kwargs['unassigned_active'] = Tournament.objects.filter(owner__isnull=True, active=True)
+                    kwargs['unassigned_inactive'] = Tournament.objects.filter(owner__isnull=True, active=False)
+                else:
+                    kwargs['unassigned_active'] = Tournament.objects.none()
+                    kwargs['unassigned_inactive'] = Tournament.objects.none()
+            except (FieldError, DatabaseError):
+                logger.exception("Failed loading authenticated homepage tournament context; falling back to empty sets.")
+                kwargs['my_tournaments_active'] = Tournament.objects.none()
+                kwargs['my_tournaments_inactive'] = Tournament.objects.none()
+                kwargs['shared_tournaments'] = Tournament.objects.none()
                 kwargs['unassigned_active'] = Tournament.objects.none()
                 kwargs['unassigned_inactive'] = Tournament.objects.none()
+                kwargs['user_organizations'] = []
         else:
             kwargs['my_tournaments_active'] = Tournament.objects.none()
             kwargs['my_tournaments_inactive'] = Tournament.objects.none()
@@ -112,13 +122,17 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
             kwargs['user_organizations'] = []
 
         # Listed / public showcase tournaments (always shown if any)
-        kwargs['listed_tournaments'] = Tournament.objects.filter(
-            is_listed=True, active=True,
-        ).annotate(
-            team_count=Count('team', distinct=True),
-            round_count=Count('round', distinct=True),
-            adj_count=Count('adjudicator', distinct=True),
-        ).order_by('-created_at')
+        try:
+            kwargs['listed_tournaments'] = Tournament.objects.filter(
+                is_listed=True, active=True,
+            ).annotate(
+                team_count=Count('team', distinct=True),
+                round_count=Count('round', distinct=True),
+                adj_count=Count('adjudicator', distinct=True),
+            ).order_by('-created_at')
+        except (FieldError, DatabaseError):
+            logger.exception("Failed loading listed tournaments for homepage; using empty queryset.")
+            kwargs['listed_tournaments'] = Tournament.objects.none()
 
         # Retain legacy keys (filtered) in case other templates/components expect them
         kwargs['tournaments'] = kwargs['my_tournaments_active']

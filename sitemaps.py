@@ -1,8 +1,15 @@
+import logging
+
+from django.core.exceptions import FieldError
+from django.db import DatabaseError
 from django.conf import settings
 from django.contrib.sitemaps import Sitemap
-from django.urls import reverse
+from django.urls import NoReverseMatch, reverse
 
 from tournaments.models import Tournament
+
+
+logger = logging.getLogger(__name__)
 
 
 class StaticViewSitemap(Sitemap):
@@ -36,7 +43,7 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         # Only include pages with meaningful content — exclude utility/auth pages
-        return [
+        items = [
             'tabbycat-index',
             'contact-forum',
             'motions',
@@ -50,8 +57,23 @@ class StaticViewSitemap(Sitemap):
             'seo-debate-topics',
         ]
 
+        valid_items = []
+        for name in items:
+            try:
+                reverse(name)
+            except NoReverseMatch:
+                logger.warning("Skipping sitemap item with missing route: %s", name)
+                continue
+            valid_items.append(name)
+
+        return valid_items
+
     def location(self, item):
-        return reverse(item)
+        try:
+            return reverse(item)
+        except NoReverseMatch:
+            logger.warning("Sitemap location resolution failed for item: %s", item)
+            return '/'
 
     def priority(self, item):
         return self._priorities.get(item, 0.7)
@@ -65,7 +87,11 @@ class TournamentSitemap(Sitemap):
     priority = 0.8
 
     def items(self):
-        return Tournament.objects.filter(active=True, is_listed=True)
+        try:
+            return Tournament.objects.filter(active=True, is_listed=True)
+        except (FieldError, DatabaseError):
+            logger.exception("Failed to build tournament sitemap queryset; returning empty list.")
+            return []
 
     def location(self, obj):
         # When subdomain routing is enabled, sitemaps should still use
@@ -84,8 +110,12 @@ class MotionBankSitemap(Sitemap):
     priority = 0.9
 
     def items(self):
-        from motionbank.models import MotionEntry
-        return MotionEntry.objects.filter(is_approved=True).order_by('-created_at')
+        try:
+            from motionbank.models import MotionEntry
+            return MotionEntry.objects.filter(is_approved=True).order_by('-created_at')
+        except (FieldError, DatabaseError):
+            logger.exception("Failed to build motionbank sitemap queryset; returning empty list.")
+            return []
 
     def location(self, obj):
         return f"/motions-bank/motion/{obj.slug}/"
