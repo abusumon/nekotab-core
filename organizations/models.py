@@ -163,6 +163,56 @@ class OrganizationMembership(models.Model):
         return self.has_role_at_least(self.Role.ADMIN)
 
 
+class ClubMember(models.Model):
+    """A debate participant profile for an organization.
+
+    This is intentionally separate from OrganizationMembership so club staff
+    and debate members can evolve independently.
+    """
+
+    organization = models.ForeignKey(
+        Organization,
+        on_delete=models.CASCADE,
+        related_name='club_members',
+        verbose_name=_("organization"),
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='club_memberships',
+        verbose_name=_("user"),
+        help_text=_("Optional linked platform account for this club member."),
+    )
+    full_name = models.CharField(max_length=200, verbose_name=_("full name"))
+    email = models.EmailField(blank=True, default='', verbose_name=_("email"))
+    department = models.CharField(max_length=100, blank=True, default='', verbose_name=_("department"))
+    batch = models.CharField(max_length=50, blank=True, default='', verbose_name=_("batch / session"))
+    designation = models.CharField(max_length=100, blank=True, default='', verbose_name=_("designation"))
+    speaker_rating = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        verbose_name=_("speaker rating"),
+    )
+    is_active = models.BooleanField(default=True, db_index=True, verbose_name=_("active"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("updated at"))
+
+    class Meta:
+        verbose_name = _("club member")
+        verbose_name_plural = _("club members")
+        ordering = ['organization_id', 'full_name']
+        constraints = [
+            UniqueConstraint(fields=['organization', 'user']),
+        ]
+
+    def __str__(self):
+        return f"{self.full_name} ({self.organization})"
+
+
 # ---------------------------------------------------------------------------
 # Helper functions (importable from anywhere)
 # ---------------------------------------------------------------------------

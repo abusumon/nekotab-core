@@ -1,0 +1,95 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Tournament Staff" %}{% endblock %}
+{% block header-title %}{% trans "Tournament Staff" %}{% endblock %}
+
+{% block content %}
+<div class="ws-card">
+  <div class="ws-card-header">
+    <div>
+      <h2 class="ws-card-title">{{ tournament.name }}</h2>
+      <div style="font-size:12px;color:var(--ws-text-muted);">{{ tournament.slug }}</div>
+    </div>
+    <a href="/tournaments/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Back" %}</a>
+  </div>
+
+  <h3 style="font-size:15px;font-weight:700;margin:4px 0 12px;">{% trans "Invite Staff" %}</h3>
+  <form method="post" action="/tournaments/{{ tournament.slug }}/staff/invite/" style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;">
+    {% csrf_token %}
+    <div style="min-width:260px;">
+      <label style="font-size:12px;font-weight:500;">{{ invite_form.email.label }}</label>
+      {{ invite_form.email }}
+    </div>
+    <div style="min-width:200px;">
+      <label style="font-size:12px;font-weight:500;">{{ invite_form.role.label }}</label>
+      {{ invite_form.role }}
+    </div>
+    <button type="submit" class="ws-btn ws-btn-primary ws-btn-sm">{% trans "Send Invitation" %}</button>
+  </form>
+</div>
+
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Current Staff" %}</h2>
+  </div>
+  {% if staff_memberships %}
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th>{% trans "User" %}</th>
+          <th>{% trans "Role" %}</th>
+          <th>{% trans "Accepted" %}</th>
+          <th>{% trans "Invited By" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for staff in staff_memberships %}
+          <tr>
+            <td style="font-weight:500;">{{ staff.user.get_full_name|default:staff.user.username }}</td>
+            <td><span class="ws-badge ws-badge-member">{{ staff.get_role_display }}</span></td>
+            <td style="font-size:13px;color:var(--ws-text-muted);">{{ staff.accepted_at|date:"N j, Y g:i A"|default:"-" }}</td>
+            <td style="font-size:13px;color:var(--ws-text-muted);">{{ staff.invited_by.get_full_name|default:staff.invited_by.username|default:"-" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="ws-empty">
+      <p>{% trans "No staff members yet." %}</p>
+    </div>
+  {% endif %}
+</div>
+
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Pending Invitations" %}</h2>
+  </div>
+  {% if pending_staff_invitations %}
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th>{% trans "Email" %}</th>
+          <th>{% trans "Role" %}</th>
+          <th>{% trans "Expires" %}</th>
+          <th>{% trans "Invited By" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for invite in pending_staff_invitations %}
+          <tr>
+            <td style="font-weight:500;">{{ invite.email }}</td>
+            <td><span class="ws-badge ws-badge-member">{{ invite.get_role_display }}</span></td>
+            <td style="font-size:13px;color:var(--ws-text-muted);">{{ invite.expires_at|date:"N j, Y g:i A" }}</td>
+            <td style="font-size:13px;color:var(--ws-text-muted);">{{ invite.invited_by.get_full_name|default:invite.invited_by.username|default:"-" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="ws-empty">
+      <p>{% trans "No pending invitations." %}</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

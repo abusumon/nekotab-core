@@ -1,0 +1,46 @@
+{% load i18n static %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% trans "Tournament Staff Invitation" %} - NekoTab</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <style>
+    body { background: #f5f6fa; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .invite-card { background: #fff; border-radius: 14px; border: 1px solid #e5e7eb; padding: 32px; width: 100%; max-width: 520px; margin: 16px; }
+    .subtle { color: #6b7280; font-size: 14px; }
+    .btn-primary-lite { width: 100%; background: #6366f1; color: #fff; border: none; border-radius: 10px; padding: 12px; font-weight: 600; }
+    .chip { display: inline-block; background: #e0e7ff; color: #3730a3; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 600; }
+    .warn { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="invite-card">
+    <h1 style="font-size:22px;font-weight:700;">{% trans "Tournament Staff Invitation" %}</h1>
+    <p class="subtle" style="margin-bottom:20px;">
+      {{ invitation.tournament.name }}
+    </p>
+
+    {% if already_accepted %}
+      <div class="warn">{% trans "This invitation has already been accepted." %}</div>
+      <a href="/" class="btn btn-outline-secondary btn-block">{% trans "Go Home" %}</a>
+    {% elif expired %}
+      <div class="warn">{% trans "This invitation has expired. Please ask for a new invitation." %}</div>
+      <a href="/" class="btn btn-outline-secondary btn-block">{% trans "Go Home" %}</a>
+    {% else %}
+      <p class="subtle">{% trans "You were invited to join this tournament as:" %}</p>
+      <p><span class="chip">{{ invitation.get_role_display }}</span></p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-primary-lite">{% trans "Accept Invitation" %}</button>
+      </form>
+      <p class="subtle" style="margin-top:14px;">
+        {% trans "Logged in as" %} <strong>{{ request.user.email|default:request.user.username }}</strong>.
+        {% trans "If this is not you," %}
+        <a href="{% url 'logout' %}?next={{ request.get_full_path|urlencode }}">{% trans "log out first" %}</a>.
+      </p>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -3,7 +3,15 @@ from django.contrib import admin
 from utils.admin import ModelAdmin
 from utils.admin_tenant import TournamentScopedAdminMixin, get_admin_tournaments_for_user
 
-from .models import Round, ScheduleEvent, Tournament
+from .models import (
+    Round,
+    ScheduleEvent,
+    Tournament,
+    TournamentAuditLog,
+    TournamentMetadata,
+    TournamentStaffInvitation,
+    TournamentStaffMembership,
+)
 
 
 # ==============================================================================
@@ -94,3 +102,38 @@ class ScheduleEventAdmin(TournamentScopedAdminMixin, ModelAdmin):
     list_filter = ('tournament', 'type')
     search_fields = ('title',)
     ordering = ('tournament', 'start_time')
+
+
+@admin.register(TournamentMetadata)
+class TournamentMetadataAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
+    list_display = (
+        'tournament', 'status', 'visibility', 'registration_type',
+        'event_start_date', 'event_end_date',
+    )
+    list_filter = ('status', 'visibility', 'registration_type')
+    search_fields = ('tournament__name', 'tournament__slug', 'event_format', 'venue')
+
+
+@admin.register(TournamentStaffMembership)
+class TournamentStaffMembershipAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
+    list_display = ('tournament', 'user', 'role', 'invited_by', 'accepted_at', 'created_at')
+    list_filter = ('role', 'accepted_at')
+    search_fields = ('tournament__name', 'tournament__slug', 'user__username', 'user__email')
+
+
+@admin.register(TournamentStaffInvitation)
+class TournamentStaffInvitationAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
+    list_display = ('tournament', 'email', 'role', 'invited_by', 'expires_at', 'accepted_at')
+    list_filter = ('role', 'accepted_at')
+    search_fields = ('tournament__name', 'tournament__slug', 'email')
+
+
+@admin.register(TournamentAuditLog)
+class TournamentAuditLogAdmin(TournamentScopedAdminMixin, ModelAdmin):
+    tournament_lookup = 'tournament'
+    list_display = ('tournament', 'actor', 'action', 'entity_type', 'entity_id', 'created_at')
+    list_filter = ('entity_type',)
+    search_fields = ('tournament__name', 'tournament__slug', 'action', 'entity_type', 'entity_id')

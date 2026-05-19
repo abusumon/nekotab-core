@@ -13,13 +13,34 @@
     {% endif %}
   </div>
 
+  <form method="get" class="mb-3" style="display:flex;gap:10px;flex-wrap:wrap;">
+    <input
+      type="text"
+      name="q"
+      value="{{ query }}"
+      class="form-control"
+      style="max-width:280px;"
+      placeholder="{% trans 'Search by name or slug' %}">
+    <select name="status" class="form-control" style="max-width:220px;">
+      <option value="">{% trans "All statuses" %}</option>
+      {% for value, label in status_choices %}
+        <option value="{{ value }}" {% if status == value %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Filter" %}</button>
+    {% if query or status %}
+      <a href="/tournaments/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Clear" %}</a>
+    {% endif %}
+  </form>
+
   {% if tournaments %}
     <table class="ws-table">
       <thead>
         <tr>
-          <th>{% trans "Name" %}</th>
-          <th>{% trans "Slug" %}</th>
+          <th>{% trans "Tournament" %}</th>
+          <th>{% trans "Date" %}</th>
           <th>{% trans "Status" %}</th>
+          <th>{% trans "Participants" %}</th>
           <th>{% trans "Created" %}</th>
           <th></th>
         </tr>
@@ -27,18 +48,40 @@
       <tbody>
         {% for t in tournaments %}
           <tr>
-            <td><a href="/tournaments/{{ t.slug }}/" style="color:var(--ws-accent);font-weight:500;text-decoration:none;">{{ t.short_name }}</a></td>
-            <td><code style="font-size:13px;">{{ t.slug }}</code></td>
             <td>
-              {% if t.active %}
+              <a href="/tournaments/{{ t.slug }}/" style="color:var(--ws-accent);font-weight:500;text-decoration:none;">
+                {{ t.short_name|default:t.name }}
+              </a>
+              <div style="font-size:12px;color:var(--ws-text-muted);">{{ t.slug }}</div>
+            </td>
+            <td style="font-size:13px;">
+              {% if t.metadata and t.metadata.event_start_date %}
+                {{ t.metadata.event_start_date|date:"M j, Y" }}
+                {% if t.metadata.event_end_date and t.metadata.event_end_date != t.metadata.event_start_date %}
+                  - {{ t.metadata.event_end_date|date:"M j, Y" }}
+                {% endif %}
+              {% else %}
+                <span style="color:var(--ws-text-muted);">-</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if t.metadata %}
+                <span class="ws-badge ws-badge-member">{{ t.metadata.get_status_display }}</span>
+              {% elif t.active %}
                 <span class="ws-badge ws-badge-active">{% trans "Active" %}</span>
               {% else %}
                 <span class="ws-badge ws-badge-inactive">{% trans "Archived" %}</span>
               {% endif %}
             </td>
+            <td style="font-size:13px;">{{ t.participant_count|default:"0" }}</td>
             <td style="color:var(--ws-text-muted);font-size:13px;">{{ t.created_at|date:"N j, Y"|default:"—" }}</td>
             <td>
-              <a href="/tournaments/{{ t.slug }}/admin/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Admin" %}</a>
+              <div style="display:flex;gap:8px;justify-content:flex-end;">
+                <a href="/tournaments/{{ t.slug }}/admin/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Admin" %}</a>
+                {% if membership and membership.is_admin_or_above %}
+                  <a href="/tournaments/{{ t.slug }}/staff/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Staff" %}</a>
+                {% endif %}
+              </div>
             </td>
           </tr>
         {% endfor %}

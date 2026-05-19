@@ -19,20 +19,54 @@
       </div>
     {% endif %}
 
+    <h3 style="font-size:15px;font-weight:700;margin:4px 0 14px;">{% trans "Core Tabbycat Fields" %}</h3>
+    <p style="font-size:13px;color:var(--ws-text-muted);margin-bottom:16px;">
+      {% trans "These are the original tournament creation fields from Tabbycat." %}
+    </p>
+
     {% for field in form %}
-      <div class="form-group mb-3">
-        <label for="{{ field.id_for_label }}" style="font-weight:500;font-size:14px;">{{ field.label }}</label>
-        {{ field }}
-        {% if field.help_text %}
-          <small class="form-text text-muted">{{ field.help_text }}</small>
-        {% endif %}
-        {% if field.errors %}
-          {% for error in field.errors %}
-            <div class="invalid-feedback d-block">{{ error }}</div>
-          {% endfor %}
-        {% endif %}
-      </div>
+      {% if field.name == 'name' or field.name == 'short_name' or field.name == 'slug' or field.name == 'num_prelim_rounds' or field.name == 'break_size' %}
+        <div class="form-group mb-3">
+          <label for="{{ field.id_for_label }}" style="font-weight:500;font-size:14px;">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+          {% endif %}
+          {% if field.errors %}
+            {% for error in field.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      {% endif %}
     {% endfor %}
+
+    <hr style="margin:24px 0;">
+    <h3 style="font-size:15px;font-weight:700;margin:0 0 14px;">{% trans "Additional Event Metadata" %}</h3>
+    <p style="font-size:13px;color:var(--ws-text-muted);margin-bottom:16px;">
+      {% trans "Optional business and scheduling fields layered on top of the original form." %}
+    </p>
+
+    <div class="row">
+      {% for field in form %}
+        {% if field.name != 'name' and field.name != 'short_name' and field.name != 'slug' and field.name != 'num_prelim_rounds' and field.name != 'break_size' %}
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="{{ field.id_for_label }}" style="font-weight:500;font-size:14px;">{{ field.label }}</label>
+              {{ field }}
+              {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+              {% endif %}
+              {% if field.errors %}
+                {% for error in field.errors %}
+                  <div class="invalid-feedback d-block">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
 
     <div class="mt-4">
       <button type="submit" class="ws-btn ws-btn-primary">{% trans "Create Tournament" %}</button>

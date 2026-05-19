@@ -1,5 +1,7 @@
+import datetime
 import logging
 import re
+import uuid
 from typing import Union
 
 from django.conf import settings
@@ -8,6 +10,7 @@ from django.db import models
 from django.db.models import Count, F, Prefetch, Q
 from django.urls import reverse
 from django.utils.functional import cached_property
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from draw.types import DebateSide
@@ -884,3 +887,229 @@ class ScheduleEvent(models.Model):
         verbose_name = _('schedule event')
         verbose_name_plural = _('schedule events')
         ordering = ['tournament', 'start_time']
+
+
+class TournamentMetadata(models.Model):
+    """Optional business metadata for tournament lifecycle and scheduling.
+
+    This augments core Tabbycat tournament fields without replacing them.
+    """
+
+    class Visibility(models.TextChoices):
+        PRIVATE = 'private', _("Private")
+        ORGANIZATION = 'organization', _("Organization")
+        PUBLIC = 'public', _("Public")
+
+    class RegistrationType(models.TextChoices):
+        OPEN = 'open', _("Open")
+        INVITE_ONLY = 'invite_only', _("Invite-only")
+        APPROVAL = 'approval', _("Approval required")
+
+    class Status(models.TextChoices):
+        DRAFT = 'draft', _("Draft")
+        REGISTRATION_OPEN = 'registration_open', _("Registration Open")
+        REGISTRATION_CLOSED = 'registration_closed', _("Registration Closed")
+        IN_PROGRESS = 'in_progress', _("In Progress")
+        COMPLETED = 'completed', _("Completed")
+        ARCHIVED = 'archived', _("Archived")
+
+    tournament = models.OneToOneField(
+        Tournament,
+        on_delete=models.CASCADE,
+        related_name='metadata',
+        verbose_name=_("tournament"),
+    )
+    event_start_date = models.DateField(null=True, blank=True, verbose_name=_("event start date"))
+    event_end_date = models.DateField(null=True, blank=True, verbose_name=_("event end date"))
+    registration_open = models.DateTimeField(null=True, blank=True, verbose_name=_("registration open"))
+    registration_close = models.DateTimeField(null=True, blank=True, verbose_name=_("registration close"))
+    event_format = models.CharField(max_length=100, blank=True, default='', verbose_name=_("format"))
+    venue = models.CharField(max_length=200, blank=True, default='', verbose_name=_("venue"))
+    visibility = models.CharField(
+        max_length=20,
+        choices=Visibility.choices,
+        default=Visibility.ORGANIZATION,
+        verbose_name=_("visibility"),
+    )
+    registration_type = models.CharField(
+        max_length=20,
+        choices=RegistrationType.choices,
+        default=RegistrationType.OPEN,
+        verbose_name=_("registration type"),
+    )
+    status = models.CharField(
+        max_length=30,
+        choices=Status.choices,
+        default=Status.DRAFT,
+        verbose_name=_("status"),
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
+    updated_at = models.DateTimeField(auto_now=True, verbose_name=_("updated at"))
+
+    class Meta:
+        verbose_name = _("tournament metadata")
+        verbose_name_plural = _("tournament metadata")
+
+    def clean(self):
+        super().clean()
+        if self.event_start_date and self.event_end_date and self.event_end_date < self.event_start_date:
+            raise ValidationError({
+                'event_end_date': _("Event end date must be on or after event start date."),
+            })
+        if self.registration_open and self.registration_close and self.registration_close < self.registration_open:
+            raise ValidationError({
+                'registration_close': _("Registration close must be after registration open."),
+            })
+
+    def __str__(self):
+        return f"Metadata({self.tournament.slug})"
+
+
+class TournamentStaffMembership(models.Model):
+    """Tournament-scoped staff assignment with explicit role."""
+
+    class Role(models.TextChoices):
+        TAB_DIRECTOR = 'tab_director', _("Tab Director")
+        ASSISTANT_TAB = 'assistant_tab', _("Assistant Tab")
+        EQUITY = 'equity', _("Equity")
+        CONVENOR = 'convenor', _("Convenor")
+        OBSERVER = 'observer', _("Observer")
+
+    tournament = models.ForeignKey(
+        Tournament,
+        on_delete=models.CASCADE,
+        related_name='staff_memberships',
+        verbose_name=_("tournament"),
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='tournament_staff_memberships',
+        verbose_name=_("user"),
+    )
+    role = models.CharField(max_length=30, choices=Role.choices, verbose_name=_("role"))
+    invited_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='sent_tournament_staff_memberships',
+        verbose_name=_("invited by"),
+    )
+    accepted_at = models.DateTimeField(null=True, blank=True, verbose_name=_("accepted at"))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
+
+    class Meta:
+        verbose_name = _("tournament staff membership")
+        verbose_name_plural = _("tournament staff memberships")
+        constraints = [
+            UniqueConstraint(fields=['tournament', 'user', 'role']),
+        ]
+        indexes = [
+            models.Index(fields=['tournament', 'role']),
+        ]
+
+    def __str__(self):
+        return f"{self.user} @ {self.tournament} ({self.get_role_display()})"
+
+
+class TournamentStaffInvitation(models.Model):
+    """Single-use invitation for tournament staff access."""
+
+    tournament = models.ForeignKey(
+        Tournament,
+        on_delete=models.CASCADE,
+        related_name='staff_invitations',
+        verbose_name=_("tournament"),
+    )
+    email = models.EmailField(verbose_name=_("email"))
+    role = models.CharField(
+        max_length=30,
+        choices=TournamentStaffMembership.Role.choices,
+        verbose_name=_("role"),
+    )
+    token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False, verbose_name=_("token"))
+    invited_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='sent_tournament_staff_invitations',
+        verbose_name=_("invited by"),
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
+    expires_at = models.DateTimeField(verbose_name=_("expires at"))
+    accepted_at = models.DateTimeField(null=True, blank=True, verbose_name=_("accepted at"))
+    accepted_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='accepted_tournament_staff_invitations',
+        verbose_name=_("accepted by"),
+    )
+
+    class Meta:
+        verbose_name = _("tournament staff invitation")
+        verbose_name_plural = _("tournament staff invitations")
+        indexes = [
+            models.Index(fields=['tournament', 'accepted_at']),
+            models.Index(fields=['email', 'tournament']),
+        ]
+
+    def save(self, *args, **kwargs):
+        if not self.pk and not self.expires_at:
+            self.expires_at = timezone.now() + datetime.timedelta(days=7)
+        super().save(*args, **kwargs)
+
+    @property
+    def is_expired(self):
+        return timezone.now() > self.expires_at
+
+    @property
+    def is_accepted(self):
+        return self.accepted_at is not None
+
+    @property
+    def is_valid(self):
+        return not self.is_expired and not self.is_accepted
+
+    def __str__(self):
+        return f"Invite {self.email} -> {self.tournament} ({self.get_role_display()})"
+
+
+class TournamentAuditLog(models.Model):
+    """Audit trail for tournament-level operational changes."""
+
+    tournament = models.ForeignKey(
+        Tournament,
+        on_delete=models.CASCADE,
+        related_name='audit_logs',
+        verbose_name=_("tournament"),
+    )
+    actor = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='tournament_audit_logs',
+        verbose_name=_("actor"),
+    )
+    action = models.CharField(max_length=120, verbose_name=_("action"))
+    entity_type = models.CharField(max_length=120, verbose_name=_("entity type"))
+    entity_id = models.CharField(max_length=120, blank=True, default='', verbose_name=_("entity id"))
+    old_value = models.JSONField(blank=True, default=dict, verbose_name=_("old value"))
+    new_value = models.JSONField(blank=True, default=dict, verbose_name=_("new value"))
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_("created at"))
+
+    class Meta:
+        verbose_name = _("tournament audit log")
+        verbose_name_plural = _("tournament audit logs")
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['tournament', 'created_at']),
+            models.Index(fields=['entity_type', 'entity_id']),
+        ]
+
+    def __str__(self):
+        return f"{self.tournament.slug}: {self.action}"

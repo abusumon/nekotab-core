@@ -1,0 +1,14 @@
+Hi,
+
+{{ inviter.get_full_name|default:inviter.username }} invited you to join the tournament "{{ tournament.name }}" on NekoTab.
+
+Assigned role: {{ invitation.get_role_display }}
+
+Accept invitation:
+{{ accept_url }}
+
+This link expires in 7 days and can be used once.
+
+If you were not expecting this invitation, you can ignore this email.
+
+- NekoTab Team

@@ -5,7 +5,7 @@ from django.core.cache import cache
 from django.core.mail import send_mail
 from django.db.models import Avg, Count, Q
 from django.http import Http404, HttpResponseNotFound
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.template import loader
 from django.template.loader import render_to_string
 from django.utils import timezone
@@ -15,9 +15,71 @@ from django.views.generic.edit import CreateView
 
 from users.permissions import Permission
 
-from .forms import InviteMemberForm, WorkspaceTournamentCreateForm
+from tournaments.models import (
+    Tournament,
+    TournamentAuditLog,
+    TournamentMetadata,
+    TournamentStaffInvitation,
+    TournamentStaffMembership,
+)
+
+from .forms import InviteMemberForm, TournamentStaffInviteForm, WorkspaceTournamentCreateForm
 from .models import ClubMemberProfile, OrganizationInvitation, OrganizationMembership
 from .workspace_mixins import WorkspaceAccessMixin, WorkspaceAdminMixin
+
+
+def _permissions_for_staff_role(role):
+    all_permissions = set(Permission.values)
+
+    if role == TournamentStaffMembership.Role.TAB_DIRECTOR:
+        return all_permissions
+
+    if role == TournamentStaffMembership.Role.ASSISTANT_TAB:
+        critical_permissions = {
+            Permission.EDIT_SETTINGS,
+            Permission.DELETE_ROUND,
+            Permission.RELEASE_DRAW,
+            Permission.RELEASE_MOTION,
+            Permission.UNRELEASE_DRAW,
+            Permission.UNRELEASE_MOTION,
+        }
+        return all_permissions - critical_permissions
+
+    if role == TournamentStaffMembership.Role.EQUITY:
+        return {
+            Permission.VIEW_FEEDBACK,
+            Permission.VIEW_FEEDBACK_OVERVIEW,
+            Permission.ADD_FEEDBACK,
+            Permission.EDIT_FEEDBACK_CONFIRM,
+            Permission.VIEW_ADJ_BREAK,
+            Permission.EDIT_ADJ_BREAK,
+            Permission.VIEW_RESULTS,
+            Permission.VIEW_BREAK,
+            Permission.VIEW_BREAK_OVERVIEW,
+        }
+
+    if role == TournamentStaffMembership.Role.CONVENOR:
+        return {
+            Permission.VIEW_TEAMS,
+            Permission.ADD_TEAMS,
+            Permission.VIEW_ADJUDICATORS,
+            Permission.ADD_ADJUDICATORS,
+            Permission.VIEW_ROOMS,
+            Permission.ADD_ROOMS,
+            Permission.VIEW_PARTICIPANTS,
+            Permission.VIEW_REGISTRATION,
+            Permission.SEND_EMAILS,
+            Permission.VIEW_CHECKIN,
+            Permission.EDIT_PARTICIPANT_CHECKIN,
+        }
+
+    return {
+        Permission.VIEW_TEAMS,
+        Permission.VIEW_ADJUDICATORS,
+        Permission.VIEW_ROOMS,
+        Permission.VIEW_DEBATE,
+        Permission.VIEW_RESULTS,
+    }
 
 
 def workspace_page_not_found(request, exception):
@@ -54,7 +116,31 @@ class TournamentListView(WorkspaceAccessMixin, TemplateView):
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx['active_tab'] = 'tournaments'
-        ctx['tournaments'] = self.organization.tournaments.all().order_by('-created_at')
+
+        query = (self.request.GET.get('q') or '').strip()
+        status = (self.request.GET.get('status') or '').strip()
+
+        tournaments = (
+            self.organization.tournaments
+            .select_related('metadata')
+            .annotate(participant_count=Count('team', distinct=True))
+            .order_by('-created_at')
+        )
+
+        if query:
+            tournaments = tournaments.filter(
+                Q(name__icontains=query)
+                | Q(short_name__icontains=query)
+                | Q(slug__icontains=query)
+            )
+
+        if status:
+            tournaments = tournaments.filter(metadata__status=status)
+
+        ctx['tournaments'] = tournaments
+        ctx['query'] = query
+        ctx['status'] = status
+        ctx['status_choices'] = TournamentMetadata.Status.choices
         return ctx
 
 
@@ -84,6 +170,38 @@ class TournamentCreateView(WorkspaceAdminMixin, CreateView):
         tournament.owner = self.request.user
         tournament.active = True
         tournament.save()
+
+        visibility = form.cleaned_data.get('visibility', TournamentMetadata.Visibility.ORGANIZATION)
+        should_list_publicly = visibility == TournamentMetadata.Visibility.PUBLIC
+        if tournament.is_listed != should_list_publicly:
+            tournament.is_listed = should_list_publicly
+            tournament.save(update_fields=['is_listed'])
+
+        metadata = TournamentMetadata.objects.create(
+            tournament=tournament,
+            event_start_date=form.cleaned_data.get('event_start_date'),
+            event_end_date=form.cleaned_data.get('event_end_date'),
+            registration_open=form.cleaned_data.get('registration_open'),
+            registration_close=form.cleaned_data.get('registration_close'),
+            event_format=form.cleaned_data.get('event_format', ''),
+            venue=form.cleaned_data.get('venue', ''),
+            visibility=visibility,
+            registration_type=form.cleaned_data.get('registration_type', TournamentMetadata.RegistrationType.OPEN),
+            status=form.cleaned_data.get('lifecycle_status', TournamentMetadata.Status.DRAFT),
+        )
+
+        TournamentAuditLog.objects.create(
+            tournament=tournament,
+            actor=self.request.user,
+            action='tournament.created',
+            entity_type='tournament',
+            entity_id=str(tournament.pk),
+            new_value={
+                'name': tournament.name,
+                'slug': tournament.slug,
+                'metadata_id': metadata.pk,
+            },
+        )
 
         # Create initial preliminary rounds
         auto_make_rounds(tournament, form.cleaned_data['num_prelim_rounds'])
@@ -126,6 +244,181 @@ class TournamentCreateView(WorkspaceAdminMixin, CreateView):
         cache.set(f'subdom_tour_exists_{tournament.slug.lower()}', True, 300)
 
         return redirect('/tournaments/')
+
+
+class TournamentStaffView(WorkspaceAdminMixin, TemplateView):
+    template_name = 'organizations/workspace/tournament_staff.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.tournament = get_object_or_404(
+            Tournament,
+            slug=kwargs['tournament_slug'],
+            organization=self.organization,
+        )
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['active_tab'] = 'tournaments'
+        ctx['tournament'] = self.tournament
+        ctx['staff_memberships'] = (
+            self.tournament.staff_memberships
+            .select_related('user', 'invited_by')
+            .order_by('role', 'user__username')
+        )
+        ctx['pending_staff_invitations'] = (
+            self.tournament.staff_invitations
+            .filter(accepted_at__isnull=True, expires_at__gt=timezone.now())
+            .order_by('-created_at')
+        )
+        ctx['invite_form'] = TournamentStaffInviteForm(tournament=self.tournament)
+        return ctx
+
+
+class TournamentStaffInviteView(WorkspaceAdminMixin, View):
+
+    def post(self, request, tournament_slug):
+        tournament = get_object_or_404(
+            Tournament,
+            slug=tournament_slug,
+            organization=self.organization,
+        )
+        form = TournamentStaffInviteForm(request.POST, tournament=tournament)
+        if not form.is_valid():
+            messages.error(request, _("Couldn't send invitation. Please fix the form and try again."))
+            return redirect(f'/tournaments/{tournament.slug}/staff/')
+
+        invitation = TournamentStaffInvitation.objects.create(
+            tournament=tournament,
+            email=form.cleaned_data['email'],
+            role=form.cleaned_data['role'],
+            invited_by=request.user,
+        )
+
+        self._send_invitation_email(invitation)
+
+        TournamentAuditLog.objects.create(
+            tournament=tournament,
+            actor=request.user,
+            action='tournament.staff.invited',
+            entity_type='tournament_staff_invitation',
+            entity_id=str(invitation.pk),
+            new_value={
+                'email': invitation.email,
+                'role': invitation.role,
+            },
+        )
+
+        messages.success(request, _("Invitation sent to %(email)s.") % {'email': invitation.email})
+        return redirect(f'/tournaments/{tournament.slug}/staff/')
+
+    def _send_invitation_email(self, invitation):
+        accept_url = self.request.build_absolute_uri(
+            f"/tournaments/staff-invitations/{invitation.token}/",
+        )
+        subject = _("You're invited as %(role)s for %(tournament)s") % {
+            'role': invitation.get_role_display(),
+            'tournament': invitation.tournament.name,
+        }
+        body = render_to_string('emails/tournament_staff_invitation.txt', {
+            'invitation': invitation,
+            'tournament': invitation.tournament,
+            'accept_url': accept_url,
+            'inviter': self.request.user,
+        })
+        try:
+            send_mail(
+                subject=str(subject),
+                message=body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[invitation.email],
+                fail_silently=False,
+            )
+        except Exception:
+            pass
+
+
+class TournamentStaffAcceptInvitationView(LoginRequiredMixin, View):
+    template_name = 'organizations/workspace/accept_tournament_staff_invitation.html'
+
+    def _get_invitation(self, token):
+        return get_object_or_404(TournamentStaffInvitation, token=token)
+
+    def get(self, request, token):
+        invitation = self._get_invitation(token)
+        context = {
+            'invitation': invitation,
+            'tournament': invitation.tournament,
+            'already_accepted': invitation.is_accepted,
+            'expired': invitation.is_expired,
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, token):
+        from users.models import UserPermission
+
+        invitation = self._get_invitation(token)
+        if invitation.is_accepted:
+            messages.info(request, _("This invitation has already been accepted."))
+            return redirect('/')
+
+        if invitation.is_expired:
+            messages.error(request, _("This invitation has expired. Please ask for a new one."))
+            return redirect('/')
+
+        membership, created = TournamentStaffMembership.objects.get_or_create(
+            tournament=invitation.tournament,
+            user=request.user,
+            role=invitation.role,
+            defaults={
+                'invited_by': invitation.invited_by,
+                'accepted_at': timezone.now(),
+            },
+        )
+        if not created and membership.accepted_at is None:
+            membership.accepted_at = timezone.now()
+            membership.save(update_fields=['accepted_at'])
+
+        role_permissions = _permissions_for_staff_role(invitation.role)
+        existing = set(
+            UserPermission.objects.filter(
+                user=request.user,
+                tournament=invitation.tournament,
+            ).values_list('permission', flat=True),
+        )
+        UserPermission.objects.bulk_create([
+            UserPermission(
+                user=request.user,
+                permission=permission,
+                tournament=invitation.tournament,
+            )
+            for permission in role_permissions - existing
+        ], ignore_conflicts=True)
+
+        invitation.accepted_at = timezone.now()
+        invitation.accepted_by = request.user
+        invitation.save(update_fields=['accepted_at', 'accepted_by'])
+
+        TournamentAuditLog.objects.create(
+            tournament=invitation.tournament,
+            actor=request.user,
+            action='tournament.staff.accepted_invite',
+            entity_type='tournament_staff_invitation',
+            entity_id=str(invitation.pk),
+            new_value={
+                'role': invitation.role,
+                'user_id': request.user.pk,
+            },
+        )
+
+        messages.success(
+            request,
+            _("You're now added as %(role)s for %(tournament)s.") % {
+                'role': invitation.get_role_display(),
+                'tournament': invitation.tournament.name,
+            },
+        )
+        return redirect(f'/tournaments/{invitation.tournament.slug}/')
 
 
 class MembersView(WorkspaceAccessMixin, TemplateView):
