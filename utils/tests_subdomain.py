@@ -5,7 +5,7 @@ from unittest.mock import patch
 from django.test import TestCase, RequestFactory, override_settings
 from django.contrib.auth import get_user_model
 
-from organizations.models import Organization
+from organizations.models import Organization, OrganizationMembership
 from tournaments.models import Tournament
 from utils.middleware import (
     SubdomainTournamentMiddleware, SubdomainTenantMiddleware,
@@ -495,6 +495,15 @@ class PublicAccessRegressionTest(TestCase):
         cls.regular_user = User.objects.create_user(
             'pub-regular', 'pub-regular@test.com', 'password',
         )
+        cls.org_editor = User.objects.create_user(
+            'org-editor', 'org-editor@test.com', 'password',
+        )
+        cls.org_tabmaster = User.objects.create_user(
+            'org-tabmaster', 'org-tabmaster@test.com', 'password',
+        )
+        cls.org_viewer = User.objects.create_user(
+            'org-viewer', 'org-viewer@test.com', 'password',
+        )
         cls.org = Organization.objects.create(name='Pub Org', slug='pub-org')
         # Listed tournament
         cls.listed = Tournament.objects.create(
@@ -507,6 +516,21 @@ class PublicAccessRegressionTest(TestCase):
             name='Unlisted Tournament', short_name='Unlisted',
             slug='unlisted-pub', seq=2, active=True, is_listed=False,
             owner=cls.superuser, organization=cls.org,
+        )
+        OrganizationMembership.objects.create(
+            organization=cls.org,
+            user=cls.org_editor,
+            role=OrganizationMembership.Role.EDITOR,
+        )
+        OrganizationMembership.objects.create(
+            organization=cls.org,
+            user=cls.org_tabmaster,
+            role=OrganizationMembership.Role.TABMASTER,
+        )
+        OrganizationMembership.objects.create(
+            organization=cls.org,
+            user=cls.org_viewer,
+            role=OrganizationMembership.Role.VIEWER,
         )
 
     def setUp(self):
@@ -596,6 +620,24 @@ class PublicAccessRegressionTest(TestCase):
         self.client.force_login(self.superuser)
         response = self.client.get('/admin/', HTTP_HOST='listed-pub.nekotab.app')
         self.assertIn(response.status_code, [200, 302])
+
+    def test_org_editor_admin_subdomain_200(self):
+        """Organization editor should access tournament admin routes."""
+        self.client.force_login(self.org_editor)
+        response = self.client.get('/admin/participants/list/', HTTP_HOST='listed-pub.nekotab.app')
+        self.assertIn(response.status_code, [200, 302])
+
+    def test_org_tabmaster_admin_subdomain_200(self):
+        """Organization tabmaster should access tournament admin routes."""
+        self.client.force_login(self.org_tabmaster)
+        response = self.client.get('/admin/participants/list/', HTTP_HOST='listed-pub.nekotab.app')
+        self.assertIn(response.status_code, [200, 302])
+
+    def test_org_viewer_admin_subdomain_404(self):
+        """Organization viewer should remain blocked from tournament admin routes."""
+        self.client.force_login(self.org_viewer)
+        response = self.client.get('/admin/participants/list/', HTTP_HOST='listed-pub.nekotab.app')
+        self.assertEqual(response.status_code, 404)
 
     # ---- is_listed isolation in global lists ----
 

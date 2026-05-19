@@ -207,6 +207,8 @@ class DebateMiddleware:
                 role__in=[
                     OrganizationMembership.Role.OWNER,
                     OrganizationMembership.Role.ADMIN,
+                    OrganizationMembership.Role.TABMASTER,
+                    OrganizationMembership.Role.EDITOR,
                     OrganizationMembership.Role.MEMBER,
                 ],
             ).exists():
