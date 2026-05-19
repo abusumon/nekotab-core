@@ -1,0 +1,153 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{{ session.title }}{% endblock %}
+{% block header-title %}{{ session.title }}{% endblock %}
+
+{% block content %}
+<!-- Session header info -->
+<div class="ws-card">
+  <div class="ws-card-header">
+    <div>
+      <span style="font-size:13px;color:var(--ws-text-muted);">{{ session.date|date:"l, N j, Y" }}{% if session.start_time %} · {{ session.start_time|time:"g:i A" }}{% endif %}</span>
+      <div style="display:flex;gap:8px;margin-top:6px;">
+        <span class="ws-badge" style="background:#ede9fe;color:#5b21b6;">{{ session.get_format_display }}</span>
+        {% if session.venue %}<span class="ws-badge ws-badge-member">{{ session.venue }}</span>{% endif %}
+        {% if session.status == 'completed' %}
+          <span class="ws-badge ws-badge-active">{% trans "Completed" %}</span>
+        {% elif session.status == 'in_progress' %}
+          <span class="ws-badge" style="background:#fef3c7;color:#92400e;">{% trans "In Progress" %}</span>
+        {% elif session.status == 'cancelled' %}
+          <span class="ws-badge ws-badge-inactive">{% trans "Cancelled" %}</span>
+        {% else %}
+          <span class="ws-badge" style="background:#dbeafe;color:#1e40af;">{% trans "Scheduled" %}</span>
+        {% endif %}
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;">
+      {% if membership and membership.is_admin_or_above %}
+        <a href="/practice/{{ session.pk }}/score/" class="ws-btn ws-btn-primary ws-btn-sm">{% trans "Enter Scores" %}</a>
+      {% endif %}
+      <a href="/practice/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "← Sessions" %}</a>
+    </div>
+  </div>
+  {% if session.notes %}
+    <p style="font-size:13px;color:var(--ws-text-muted);margin:0;">{{ session.notes }}</p>
+  {% endif %}
+</div>
+
+<!-- Rooms -->
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Rooms" %}</h2>
+    {% if membership and membership.is_admin_or_above %}
+      <form action="/practice/{{ session.pk }}/add-room/" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "+ Add Room" %}</button>
+      </form>
+    {% endif %}
+  </div>
+
+  {% if rooms %}
+    {% for room in rooms %}
+      <div class="ws-room-block">
+        <div class="ws-room-header">
+          <strong>{{ room.name }}</strong>
+          {% if room.motion %}<span style="font-size:13px;color:var(--ws-text-muted);margin-left:12px;">{{ room.motion }}</span>{% endif %}
+        </div>
+        {% if room.participants.all %}
+          <table class="ws-table" style="margin-top:8px;">
+            <thead>
+              <tr>
+                <th>{% trans "Member" %}</th>
+                <th>{% trans "Role" %}</th>
+                <th>{% trans "Team" %}</th>
+                <th>{% trans "Score" %}</th>
+                <th>{% trans "W/L" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in room.participants.all %}
+                <tr>
+                  <td>
+                    <div class="ws-member-cell">
+                      <div class="ws-avatar">{{ p.membership.user.get_full_name|default:p.membership.user.username|truncatechars:1 }}</div>
+                      <span>{{ p.membership.user.get_full_name|default:p.membership.user.username }}</span>
+                    </div>
+                  </td>
+                  <td><span class="ws-badge ws-badge-member">{{ p.get_role_display }}</span></td>
+                  <td style="font-size:13px;">{{ p.team_name|default:"—" }}</td>
+                  <td style="font-size:13px;font-weight:600;">
+                    {% if p.score %}{{ p.score.score|default:"—" }}{% else %}—{% endif %}
+                  </td>
+                  <td>
+                    {% if p.score and p.score.won is not None %}
+                      {% if p.score.won %}
+                        <span class="ws-badge ws-badge-active">W</span>
+                      {% else %}
+                        <span class="ws-badge" style="background:#fee2e2;color:#991b1b;">L</span>
+                      {% endif %}
+                    {% else %}—{% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p style="font-size:13px;color:var(--ws-text-muted);padding:8px 0 0;">{% trans "No participants assigned to this room." %}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="ws-empty">
+      <p>{% trans "No rooms yet." %}</p>
+      {% if membership and membership.is_admin_or_above %}
+        <form action="/practice/{{ session.pk }}/add-room/" method="post">
+          {% csrf_token %}
+          <button type="submit" class="ws-btn ws-btn-primary">{% trans "Add First Room" %}</button>
+        </form>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+<!-- Add Participant (admin) -->
+{% if membership and membership.is_admin_or_above %}
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Add Participant" %}</h2>
+  </div>
+  <form action="/practice/{{ session.pk }}/add-participant/" method="post" class="ws-inline-form">
+    {% csrf_token %}
+    <select name="membership_id" class="form-control form-control-sm" style="width:220px;">
+      {% for m in all_members %}
+        {% if m.pk not in participant_ids %}
+          <option value="{{ m.pk }}">{{ m.user.get_full_name|default:m.user.username }}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+    <select name="role" class="form-control form-control-sm" style="width:140px;">
+      <option value="debater">{% trans "Debater" %}</option>
+      <option value="adjudicator">{% trans "Adjudicator" %}</option>
+    </select>
+    {% if session.rooms.all %}
+      <select name="room_id" class="form-control form-control-sm" style="width:140px;">
+        <option value="">{% trans "No room" %}</option>
+        {% for r in session.rooms.all %}
+          <option value="{{ r.pk }}">{{ r.name }}</option>
+        {% endfor %}
+      </select>
+    {% endif %}
+    <button type="submit" class="ws-btn ws-btn-primary ws-btn-sm">{% trans "Add" %}</button>
+  </form>
+</div>
+{% endif %}
+
+{% block extra-css %}
+<style>
+.ws-room-block { border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+.ws-room-header { font-size: 14px; font-weight: 600; }
+.ws-inline-form { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+</style>
+{% endblock %}
+{% endblock %}

@@ -466,3 +466,238 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* -- Rankings ------------------------------------------------ */
+.ws-ranking-filters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ws-filter-label {
+    font-size: 12px;
+    color: var(--ws-text-muted);
+    margin-right: 4px;
+}
+
+.ws-filter-btn {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ws-text-muted);
+    cursor: pointer;
+    transition: all .15s ease;
+}
+
+.ws-filter-btn:hover,
+.ws-filter-btn.ws-filter-active {
+    background: var(--ws-accent);
+    border-color: var(--ws-accent);
+    color: #fff;
+}
+
+.ws-rank-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    background: #f3f4f6;
+    color: var(--ws-text-muted);
+}
+
+.ws-rank-gold   { background: #fef3c7; color: #92400e; }
+.ws-rank-silver { background: #f1f5f9; color: #475569; }
+.ws-rank-bronze { background: #fef0e6; color: #9a3412; }
+
+.ws-member-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ws-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--ws-sidebar-active-bg);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.ws-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.ws-trend-up      { background: #d1fae5; color: #065f46; }
+.ws-trend-down    { background: #fee2e2; color: #991b1b; }
+.ws-trend-neutral { background: #f3f4f6; color: #6b7280; }
+
+.ws-text-muted { color: var(--ws-text-muted); }
+
+.ws-ranking-table .ws-text-muted {
+    font-size: 13px;
+}
+
+/* -- Analytics layout --------------------------------------- */
+.ws-analytics-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 0;
+}
+
+.ws-analytics-row .ws-card {
+    flex: 1;
+    min-width: 0;
+}
+
+.ws-analytics-wide  { flex: 2 !important; }
+.ws-analytics-narrow { flex: 1 !important; }
+
+.ws-chart-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    color: var(--ws-text-muted);
+    text-align: center;
+}
+
+.ws-chart-placeholder svg {
+    width: 40px;
+    height: 40px;
+    opacity: .3;
+    margin-bottom: 10px;
+}
+
+.ws-chart-placeholder p {
+    font-size: 13px;
+    margin: 0;
+}
+
+.ws-chart-placeholder-sm {
+    padding: 24px;
+}
+
+@media (max-width: 900px) {
+    .ws-analytics-row {
+        flex-direction: column;
+    }
+    .ws-analytics-wide,
+    .ws-analytics-narrow {
+        flex: unset !important;
+    }
+}
+
+/* -- Coming-soon card --------------------------------------- */
+.ws-coming-soon-card {
+    border: 1px dashed #d1d5db;
+    background: #fafafa;
+}
+
+.ws-badge-coming-soon {
+    background: #ede9fe;
+    color: #5b21b6;
+}
+
+/* -- Feature grid ------------------------------------------ */
+.ws-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 4px;
+}
+
+.ws-feature-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.ws-feature-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #ede9fe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ws-feature-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: #6366f1;
+}
+
+.ws-feature-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ws-text);
+    margin-bottom: 2px;
+}
+
+.ws-feature-desc {
+    font-size: 12px;
+    color: var(--ws-text-muted);
+    line-height: 1.5;
+}
+
+/* -- Quick links ------------------------------------------- */
+.ws-quick-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.ws-quick-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    color: var(--ws-text);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all .15s ease;
+}
+
+.ws-quick-link:hover {
+    background: #ede9fe;
+    border-color: var(--ws-accent);
+    color: var(--ws-accent);
+    text-decoration: none;
+}
+
+.ws-quick-link svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    opacity: .7;
+}
+
+.ws-quick-link:hover svg {
+    opacity: 1;
+}

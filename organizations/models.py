@@ -1,7 +1,10 @@
+import datetime
 import logging
+import uuid
 
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from utils.models import UniqueConstraint
@@ -216,3 +219,123 @@ def get_user_organizations(user):
     return Organization.objects.filter(
         memberships__user=user,
     ).distinct()
+
+
+# ---------------------------------------------------------------------------
+# ClubMemberProfile — extended per-org member info
+# ---------------------------------------------------------------------------
+
+class ClubMemberProfile(models.Model):
+    """Extended profile for a club member within an organization.
+
+    Supplements OrganizationMembership with club-specific fields like phone,
+    department, batch/session, and designation. One profile per membership.
+    """
+    membership = models.OneToOneField(
+        OrganizationMembership,
+        on_delete=models.CASCADE,
+        related_name='profile',
+        verbose_name=_("membership"),
+    )
+    phone = models.CharField(max_length=30, blank=True, default='', verbose_name=_("phone"))
+    department = models.CharField(max_length=100, blank=True, default='', verbose_name=_("department"))
+    batch = models.CharField(
+        max_length=50, blank=True, default='',
+        verbose_name=_("batch / session"),
+        help_text=_("e.g. '2023–2024' or 'Spring 2024'"),
+    )
+    designation = models.CharField(
+        max_length=100, blank=True, default='',
+        verbose_name=_("designation"),
+        help_text=_("e.g. 'Best Speaker finalist', 'Club President', 'Coach'"),
+    )
+    bio = models.TextField(blank=True, default='', verbose_name=_("bio"))
+
+    class Meta:
+        verbose_name = _("club member profile")
+        verbose_name_plural = _("club member profiles")
+
+    def __str__(self):
+        return f"Profile({self.membership})"
+
+
+# ---------------------------------------------------------------------------
+# OrganizationInvitation — token-based member onboarding
+# ---------------------------------------------------------------------------
+
+class OrganizationInvitation(models.Model):
+    """A pending invitation to join an organization.
+
+    Admins create invitations; the recipient gets an email with a UUID link.
+    On acceptance, an OrganizationMembership + ClubMemberProfile are created.
+    Invitations expire after 7 days and can only be accepted once.
+    """
+    token = models.UUIDField(
+        default=uuid.uuid4, unique=True, editable=False,
+        verbose_name=_("token"),
+    )
+    organization = models.ForeignKey(
+        Organization,
+        on_delete=models.CASCADE,
+        related_name='invitations',
+        verbose_name=_("organization"),
+    )
+    email = models.EmailField(verbose_name=_("email"))
+    name = models.CharField(max_length=200, verbose_name=_("name"))
+    role = models.CharField(
+        max_length=20,
+        choices=OrganizationMembership.Role.choices,
+        default=OrganizationMembership.Role.VIEWER,
+        verbose_name=_("role"),
+    )
+    phone = models.CharField(max_length=30, blank=True, default='', verbose_name=_("phone"))
+    department = models.CharField(max_length=100, blank=True, default='', verbose_name=_("department"))
+    batch = models.CharField(max_length=50, blank=True, default='', verbose_name=_("batch"))
+    designation = models.CharField(max_length=100, blank=True, default='', verbose_name=_("designation"))
+
+    invited_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='sent_org_invitations',
+        verbose_name=_("invited by"),
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("created at"))
+    expires_at = models.DateTimeField(verbose_name=_("expires at"))
+    accepted_at = models.DateTimeField(null=True, blank=True, verbose_name=_("accepted at"))
+    accepted_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='accepted_org_invitations',
+        verbose_name=_("accepted by"),
+    )
+
+    class Meta:
+        verbose_name = _("organization invitation")
+        verbose_name_plural = _("organization invitations")
+        indexes = [
+            models.Index(fields=['organization', 'accepted_at']),
+            models.Index(fields=['email', 'organization']),
+        ]
+
+    def __str__(self):
+        return f"Invite {self.email} → {self.organization} ({self.get_role_display()})"
+
+    def save(self, *args, **kwargs):
+        if not self.pk and not self.expires_at:
+            self.expires_at = timezone.now() + datetime.timedelta(days=7)
+        super().save(*args, **kwargs)
+
+    @property
+    def is_expired(self):
+        return timezone.now() > self.expires_at
+
+    @property
+    def is_accepted(self):
+        return self.accepted_at is not None
+
+    @property
+    def is_valid(self):
+        return not self.is_expired and not self.is_accepted
+

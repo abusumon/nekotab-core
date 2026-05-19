@@ -172,6 +172,7 @@ TABBYCAT_APPS = (
     'options',
     'organizations',
     'participants',
+    'practice',
     'printing',
     'privateurls',
     'results',

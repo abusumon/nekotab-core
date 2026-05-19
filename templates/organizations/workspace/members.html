@@ -8,14 +8,22 @@
 <div class="ws-card">
   <div class="ws-card-header">
     <h2 class="ws-card-title">{% trans "Organization Members" %}</h2>
+    {% if membership and membership.is_admin_or_above %}
+      <a href="/members/invite/" class="ws-btn ws-btn-primary ws-btn-sm">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        {% trans "Invite Member" %}
+      </a>
+    {% endif %}
   </div>
 
   {% if members %}
     <table class="ws-table">
       <thead>
         <tr>
-          <th>{% trans "User" %}</th>
+          <th>{% trans "Member" %}</th>
           <th>{% trans "Email" %}</th>
+          <th>{% trans "Department" %}</th>
+          <th>{% trans "Batch" %}</th>
           <th>{% trans "Role" %}</th>
           <th>{% trans "Joined" %}</th>
         </tr>
@@ -23,8 +31,18 @@
       <tbody>
         {% for m in members %}
           <tr>
-            <td style="font-weight:500;">{{ m.user.get_full_name|default:m.user.username }}</td>
+            <td>
+              <div class="ws-member-cell">
+                <div class="ws-avatar">{{ m.user.get_full_name|default:m.user.username|truncatechars:1 }}</div>
+                <div>
+                  <div style="font-weight:500;">{{ m.user.get_full_name|default:m.user.username }}</div>
+                  {% if m.profile.designation %}<div style="font-size:12px;color:var(--ws-text-muted);">{{ m.profile.designation }}</div>{% endif %}
+                </div>
+              </div>
+            </td>
             <td style="color:var(--ws-text-muted);font-size:13px;">{{ m.user.email|default:"—" }}</td>
+            <td style="font-size:13px;">{{ m.profile.department|default:"—" }}</td>
+            <td style="font-size:13px;">{{ m.profile.batch|default:"—" }}</td>
             <td>
               {% if m.role == 'owner' %}
                 <span class="ws-badge ws-badge-owner">{% trans "Owner" %}</span>
@@ -47,4 +65,34 @@
     </div>
   {% endif %}
 </div>
+
+{% if pending_invitations %}
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Pending Invitations" %}</h2>
+  </div>
+  <table class="ws-table">
+    <thead>
+      <tr>
+        <th>{% trans "Name" %}</th>
+        <th>{% trans "Email" %}</th>
+        <th>{% trans "Role" %}</th>
+        <th>{% trans "Invited By" %}</th>
+        <th>{% trans "Expires" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for inv in pending_invitations %}
+        <tr>
+          <td style="font-weight:500;">{{ inv.name }}</td>
+          <td style="color:var(--ws-text-muted);font-size:13px;">{{ inv.email }}</td>
+          <td><span class="ws-badge ws-badge-member">{{ inv.get_role_display }}</span></td>
+          <td style="font-size:13px;">{{ inv.invited_by.get_full_name|default:inv.invited_by.username|default:"—" }}</td>
+          <td style="font-size:13px;color:var(--ws-text-muted);">{{ inv.expires_at|date:"N j, Y" }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
 {% endblock %}

@@ -1,0 +1,98 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Analytics" %}{% endblock %}
+{% block header-title %}{% trans "Club Analytics" %}{% endblock %}
+
+{% block content %}
+<div class="ws-stats">
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Total Members" %}</div>
+    <div class="ws-stat-value">{{ member_count }}</div>
+  </div>
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Practice Sessions" %}</div>
+    <div class="ws-stat-value">{{ session_count }}</div>
+  </div>
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Completed" %}</div>
+    <div class="ws-stat-value">{{ completed_session_count }}</div>
+  </div>
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Avg. Speaker Score" %}</div>
+    <div class="ws-stat-value">{% if global_avg_score %}{{ global_avg_score|floatformat:1 }}{% else %}—{% endif %}</div>
+  </div>
+</div>
+
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Top Performers" %}</h2>
+    <span style="font-size:12px;color:var(--ws-text-muted);">{% trans "by avg. speaker score" %}</span>
+  </div>
+  {% if top_members %}
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>{% trans "Member" %}</th>
+          <th>{% trans "Sessions" %}</th>
+          <th>{% trans "Avg. Score" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in top_members %}
+          <tr>
+            <td><span class="ws-rank-num {% if forloop.counter == 1 %}ws-rank-gold{% elif forloop.counter == 2 %}ws-rank-silver{% elif forloop.counter == 3 %}ws-rank-bronze{% endif %}">{{ forloop.counter }}</span></td>
+            <td>
+              <div class="ws-member-cell">
+                <div class="ws-avatar">{{ m.user.get_full_name|default:m.user.username|truncatechars:1 }}</div>
+                <span>{{ m.user.get_full_name|default:m.user.username }}</span>
+              </div>
+            </td>
+            <td>{{ m.sessions_attended }}</td>
+            <td style="font-weight:600;">{{ m.avg_score|floatformat:2 }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="ws-empty">
+      <p>{% trans "Score data will appear here after practice sessions are scored." %}</p>
+    </div>
+  {% endif %}
+</div>
+
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Sessions Per Month (Last 6 Months)" %}</h2>
+  </div>
+  {% if recent_sessions %}
+    <table class="ws-table">
+      <thead>
+        <tr>
+          <th>{% trans "Month" %}</th>
+          <th>{% trans "Sessions" %}</th>
+          <th style="width:200px;">{% trans "Activity" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in recent_sessions %}
+          <tr>
+            <td style="font-size:13px;">{{ row.month }}</td>
+            <td style="font-weight:600;">{{ row.count }}</td>
+            <td>
+              <div style="background:#e5e7eb;border-radius:4px;height:8px;overflow:hidden;">
+                <div style="background:var(--ws-accent);height:100%;width:{{ row.count|floatformat:0 }}0%;max-width:100%;border-radius:4px;"></div>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="ws-empty">
+      <p>{% trans "No sessions in the last 6 months." %}</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

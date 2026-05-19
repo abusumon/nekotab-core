@@ -1,0 +1,17 @@
+Hi {{ invitation.name }},
+
+{{ inviter.get_full_name|default:inviter.username }} has invited you to join {{ organization.name }} on NekoTab.
+
+Your role will be: {{ invitation.get_role_display }}
+
+Click the link below to accept your invitation and join the club:
+
+  {{ accept_url }}
+
+This invitation will expire in 7 days.
+
+If you don't have a NekoTab account yet, you can create one after clicking the link.
+
+If you weren't expecting this invitation, you can safely ignore this email.
+
+— The NekoTab Team

@@ -1,0 +1,33 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "New Practice Session" %}{% endblock %}
+{% block header-title %}{% trans "New Practice Session" %}{% endblock %}
+
+{% block content %}
+<div class="ws-card" style="max-width:640px;">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{% trans "Schedule a Session" %}</h2>
+    <a href="/practice/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "← Back" %}</a>
+  </div>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group mb-3">
+        <label class="ws-form-label" for="{{ field.id_for_label }}">
+          {{ field.label }}{% if field.field.required %} <span style="color:var(--ws-danger);">*</span>{% endif %}
+        </label>
+        {{ field }}
+        {% if field.errors %}
+          {% for error in field.errors %}<div class="invalid-feedback d-block" style="font-size:12px;color:var(--ws-danger);margin-top:4px;">{{ error }}</div>{% endfor %}
+        {% endif %}
+      </div>
+    {% endfor %}
+    <div style="display:flex;gap:12px;margin-top:8px;">
+      <button type="submit" class="ws-btn ws-btn-primary">{% trans "Create Session" %}</button>
+      <a href="/practice/" class="ws-btn ws-btn-secondary">{% trans "Cancel" %}</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

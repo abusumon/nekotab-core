@@ -13,6 +13,11 @@ urlpatterns = [
     path('tournaments/', workspace_views.TournamentListView.as_view(), name='tournament-list'),
     path('tournaments/new/', workspace_views.TournamentCreateView.as_view(), name='tournament-create'),
     path('members/', workspace_views.MembersView.as_view(), name='members'),
+    path('members/invite/', workspace_views.InviteMemberView.as_view(), name='invite-member'),
+    path('accept-invitation/<uuid:token>/', workspace_views.AcceptInvitationView.as_view(), name='accept-invitation'),
+    path('practice/', include('practice.urls')),
+    path('rankings/', workspace_views.RankingsView.as_view(), name='rankings'),
+    path('analytics/', workspace_views.AnalyticsView.as_view(), name='analytics'),
     path('settings/', workspace_views.SettingsView.as_view(), name='settings'),
     path('archive/', workspace_views.ArchiveView.as_view(), name='archive'),
 

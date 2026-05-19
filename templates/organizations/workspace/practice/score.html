@@ -1,0 +1,65 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Enter Scores" %} — {{ session.title }}{% endblock %}
+{% block header-title %}{% trans "Score Entry" %} — {{ session.title }}{% endblock %}
+
+{% block content %}
+<div class="ws-card">
+  <div class="ws-card-header">
+    <h2 class="ws-card-title">{{ session.title }} · {{ session.date|date:"N j, Y" }}</h2>
+    <a href="/practice/{{ session.pk }}/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "← Back" %}</a>
+  </div>
+
+  {% if score_forms %}
+    <form method="post" id="score-form">
+      {% csrf_token %}
+      <table class="ws-table">
+        <thead>
+          <tr>
+            <th>{% trans "Member" %}</th>
+            <th>{% trans "Room" %}</th>
+            <th>{% trans "Speaker Score" %}</th>
+            <th>{% trans "Reply Score" %}</th>
+            <th>{% trans "W/L" %}</th>
+            <th>{% trans "Notes" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for participant, form in score_forms %}
+            <tr>
+              <td style="font-weight:500;">{{ participant.membership.user.get_full_name|default:participant.membership.user.username }}</td>
+              <td style="font-size:13px;color:var(--ws-text-muted);">{{ participant.room.name|default:"—" }}</td>
+              <td>{{ form.score }}</td>
+              <td>{{ form.reply_score }}</td>
+              <td>{{ form.won }}</td>
+              <td>{{ form.notes }}</td>
+              {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div style="margin-top:16px;display:flex;gap:12px;">
+        <button type="submit" class="ws-btn ws-btn-primary">{% trans "Save All Scores" %}</button>
+        <a href="/practice/{{ session.pk }}/" class="ws-btn ws-btn-secondary">{% trans "Cancel" %}</a>
+      </div>
+    </form>
+  {% else %}
+    <div class="ws-empty">
+      <p>{% trans "No debaters have been added to this session yet." %}</p>
+      <a href="/practice/{{ session.pk }}/" class="ws-btn ws-btn-primary">{% trans "Add Participants First" %}</a>
+    </div>
+  {% endif %}
+</div>
+
+{% block extra-js %}
+<script>
+// Autosave on blur
+document.querySelectorAll('.score-input').forEach(function(el) {
+  el.addEventListener('change', function() {
+    this.style.background = '#f0fdf4';
+  });
+});
+</script>
+{% endblock %}
+{% endblock %}
