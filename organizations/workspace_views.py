@@ -853,10 +853,9 @@ class FormResponseListView(WorkspaceAccessMixin, View):
         elif status_filter == 'confirmed':
             qs = qs.filter(status=OrgFormResponse.Status.CONFIRMED)
 
-        responses = list(qs)  # evaluate once for both context and JSON serialization
+        responses = list(qs)
         field_defs = form_obj.fields or []
-        resp_data_json = json.dumps({str(r.pk): r.data for r in responses})
-        field_defs_json = json.dumps(field_defs)
+        resp_data = {str(r.pk): r.data for r in responses}
 
         return render(request, self.template_name, {
             'organization': self.organization,
@@ -866,8 +865,7 @@ class FormResponseListView(WorkspaceAccessMixin, View):
             'responses': responses,
             'status_filter': status_filter,
             'field_defs': field_defs,
-            'resp_data_json': resp_data_json,
-            'field_defs_json': field_defs_json,
+            'resp_data': resp_data,
             'pending_count': form_obj.responses.filter(status=OrgFormResponse.Status.PENDING).count(),
             'confirmed_count': form_obj.responses.filter(status=OrgFormResponse.Status.CONFIRMED).count(),
             'total_count': form_obj.responses.count(),

@@ -230,10 +230,12 @@
 {% endblock %}
 
 {% block extra-js %}
+{{ resp_data|json_script:"resp-data-json" }}
+{{ field_defs|json_script:"field-defs-json" }}
 <script>
 (function () {
-  var respData = {{ resp_data_json|safe }};
-  var fieldDefs = {{ field_defs_json|safe }};
+  var respData = JSON.parse(document.getElementById('resp-data-json').textContent || '{}');
+  var fieldDefs = JSON.parse(document.getElementById('field-defs-json').textContent || '[]');
 
   document.querySelectorAll('.field-val').forEach(function (el) {
     var respPk = el.dataset.resp;
