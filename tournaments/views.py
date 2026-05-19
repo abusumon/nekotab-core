@@ -61,6 +61,7 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
     def get_context_data(self, **kwargs):
         # Multi-tenancy: each user sees ONLY their own + shared + listed tournaments
         user = self.request.user
+        kwargs['primary_workspace_url'] = None
         if user.is_authenticated:
             try:
                 visible = Tournament.objects.visible_to(user)
@@ -98,6 +99,30 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
                     ),
                 )
 
+                # Direct workspace URL for home navbar/actions
+                base_domain = (getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '') or '').strip()
+                if base_domain:
+                    owned_workspace_slug = (
+                        OrganizationMembership.objects.filter(
+                            user=user,
+                            role=OrganizationMembership.Role.OWNER,
+                            organization__is_workspace_enabled=True,
+                        )
+                        .values_list('organization__slug', flat=True)
+                        .first()
+                    )
+                    if not owned_workspace_slug:
+                        owned_workspace_slug = (
+                            OrganizationMembership.objects.filter(
+                                user=user,
+                                organization__is_workspace_enabled=True,
+                            )
+                            .values_list('organization__slug', flat=True)
+                            .first()
+                        )
+                    if owned_workspace_slug:
+                        kwargs['primary_workspace_url'] = f"https://{owned_workspace_slug}.{base_domain}/"
+
                 # Superusers can also see unassigned tournaments
                 if user.is_superuser:
                     kwargs['unassigned_active'] = Tournament.objects.filter(owner__isnull=True, active=True)
@@ -113,6 +138,7 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
                 kwargs['unassigned_active'] = Tournament.objects.none()
                 kwargs['unassigned_inactive'] = Tournament.objects.none()
                 kwargs['user_organizations'] = []
+                kwargs['primary_workspace_url'] = None
         else:
             kwargs['my_tournaments_active'] = Tournament.objects.none()
             kwargs['my_tournaments_inactive'] = Tournament.objects.none()
@@ -120,6 +146,7 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
             kwargs['unassigned_active'] = Tournament.objects.none()
             kwargs['unassigned_inactive'] = Tournament.objects.none()
             kwargs['user_organizations'] = []
+            kwargs['primary_workspace_url'] = None
 
         # Listed / public showcase tournaments (always shown if any)
         try:

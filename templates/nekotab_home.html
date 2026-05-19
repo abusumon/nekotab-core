@@ -147,7 +147,7 @@
     <div class="em-container em-nav-inner">
       <!-- Logo -->
       <a class="em-logo" href="/">
-        <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="120" height="32" fetchpriority="high">
+        <img src="{% static 'logo-social.png' %}" alt="NekoTab" class="em-logo-img" width="120" height="32" fetchpriority="high">
       </a>
 
       <!-- Center Navigation -->
@@ -276,9 +276,9 @@
                 Django Admin
               </a>
               {% else %}
-              <a href="{% url 'org-list' %}" class="em-user-panel-item" role="menuitem">
+              <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="em-user-panel-item" role="menuitem">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-                My Organizations
+                Workspace
               </a>
               {% endif %}
               <div class="em-user-panel-divider"></div>
@@ -291,7 +291,7 @@
               </form>
             </div>
           </div>
-          <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Dashboard</a>
+          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="em-btn em-btn--primary em-btn--sm">Workspace</a>
         {% else %}
           <a href="{% url 'login' %}" class="em-btn--nav-signin">Sign in</a>
           <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--sm">Get Started Free</a>
@@ -310,7 +310,7 @@
       <!-- Drawer Header -->
       <div class="em-mobile-menu-header">
         <a href="/" class="em-logo" tabindex="-1" aria-hidden="true">
-          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-mobile-logo" width="96" height="25">
+          <img src="{% static 'logo-social.png' %}" alt="NekoTab" class="em-mobile-logo" width="96" height="25">
         </a>
         <button class="em-close-btn" id="em-menu-close" aria-label="Close menu">
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -364,8 +364,7 @@
       <!-- Drawer Footer (auth actions) -->
       <div class="em-mobile-menu-footer">
         {% if user.is_authenticated %}
-          <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--block">Dashboard</a>
-          <a href="{% url 'org-list' %}" class="em-btn em-btn--ghost em-btn--block">🏢 My Organizations</a>
+          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="em-btn em-btn--primary em-btn--block">Workspace</a>
           <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit" class="em-btn em-btn--ghost em-btn--block">Sign out</button>

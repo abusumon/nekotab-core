@@ -90,6 +90,18 @@ class OrganizationListView(LoginRequiredMixin, ListView):
     template_name = 'organizations/list.html'
     context_object_name = 'organizations'
 
+    def get(self, request, *args, **kwargs):
+        owned_slug = _get_first_owned_org_slug(request.user)
+        base_domain = (getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '') or '').strip()
+        if owned_slug and base_domain:
+            has_enabled_workspace = Organization.objects.filter(
+                slug=owned_slug,
+                is_workspace_enabled=True,
+            ).exists()
+            if has_enabled_workspace:
+                return redirect(f"https://{owned_slug}.{base_domain}/")
+        return super().get(request, *args, **kwargs)
+
     def get_queryset(self):
         return get_user_organizations(self.request.user).prefetch_related(
             'memberships', 'tournaments',
