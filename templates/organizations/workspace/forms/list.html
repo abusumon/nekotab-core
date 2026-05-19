@@ -1,0 +1,74 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Forms" %}{% endblock %}
+{% block header-title %}{% trans "Forms" %}{% endblock %}
+
+{% block content %}
+<div class="ws-card-header mb-3" style="display:flex;align-items:center;justify-content:space-between;">
+  <div>
+    <h2 style="font-size:20px;font-weight:700;margin:0 0 4px;">{% trans "Forms" %}</h2>
+    <p style="font-size:13px;color:var(--ws-text-muted);margin:0;">{% trans "Build and manage data-collection forms for your organization." %}</p>
+  </div>
+  {% if membership and membership.is_admin_or_above %}
+  <a href="/forms/new/" class="ws-btn ws-btn-primary">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+    {% trans "New Form" %}
+  </a>
+  {% endif %}
+</div>
+
+{% if forms %}
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
+    {% for form in forms %}
+    <div class="ws-card" style="margin-bottom:0;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px;">
+        <div>
+          <h3 style="font-size:15px;font-weight:600;margin:0 0 6px;">{{ form.name }}</h3>
+          <span class="ws-badge ws-badge-member">{{ form.get_category_display }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end;">
+          {% if form.is_accepting %}
+            <span class="ws-badge ws-badge-active">{% trans "Open" %}</span>
+          {% else %}
+            <span class="ws-badge ws-badge-inactive">{% trans "Closed" %}</span>
+          {% endif %}
+          {% if form.is_confirmation_public %}
+            <span class="ws-badge" style="background:#dbeafe;color:#1e40af;">{% trans "Board Live" %}</span>
+          {% endif %}
+        </div>
+      </div>
+
+      <div style="font-size:13px;color:var(--ws-text-muted);margin-bottom:16px;display:flex;gap:16px;">
+        <span>{{ form.responses.count }} {% trans "response" %}{{ form.responses.count|pluralize }}</span>
+        <span>{{ form.fields|length }} {% trans "field" %}{{ form.fields|length|pluralize }}</span>
+        {% if form.confirmed_count %}
+          <span style="color:var(--ws-success);font-weight:500;">{{ form.confirmed_count }} {% trans "confirmed" %}</span>
+        {% endif %}
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="/forms/{{ form.slug }}/responses/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Responses" %}</a>
+        {% if membership and membership.is_admin_or_above %}
+          <a href="/forms/{{ form.slug }}/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Builder" %}</a>
+        {% endif %}
+        <a href="/forms/{{ form.slug }}/submit/" target="_blank" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Submit URL" %}</a>
+        <a href="/forms/{{ form.slug }}/confirmed/" target="_blank" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Public Board" %}</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="ws-card">
+    <div class="ws-empty">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+      </svg>
+      <p>{% trans "No forms yet. Create a pre-reg form, volunteer sign-up, or any custom data collection form." %}</p>
+      {% if membership and membership.is_admin_or_above %}
+        <a href="/forms/new/" class="ws-btn ws-btn-primary">{% trans "Create your first form" %}</a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,192 @@
+{% load i18n static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ form_obj.name }} — {{ organization.name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f5f6fa; color: #1e1e2d; min-height: 100vh;
+    }
+    .page-wrap { max-width: 620px; margin: 0 auto; padding: 48px 20px; }
+
+    .org-tag {
+      font-size: 13px; color: #6b7280; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .form-header { margin-bottom: 32px; }
+    .form-title { font-size: 26px; font-weight: 700; color: #1e1e2d; margin-bottom: 10px; line-height: 1.25; }
+    .category-badge {
+      display: inline-block; padding: 3px 12px; border-radius: 999px;
+      font-size: 12px; font-weight: 500;
+      background: #ede9fe; color: #5b21b6;
+    }
+
+    .form-card {
+      background: #fff; border-radius: 16px; border: 1px solid #e5e7eb;
+      padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    }
+
+    .field-group { margin-bottom: 22px; }
+    .field-label {
+      display: block; font-size: 14px; font-weight: 500; color: #1e1e2d; margin-bottom: 7px;
+    }
+    .field-label .req { color: #ef4444; margin-left: 3px; }
+    .field-control {
+      width: 100%; padding: 10px 14px; border: 1px solid #d1d5db;
+      border-radius: 9px; font-size: 14px; color: #1e1e2d;
+      font-family: inherit; outline: none; transition: border-color .15s;
+      background: #fff;
+    }
+    .field-control:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.1); }
+    textarea.field-control { resize: vertical; min-height: 100px; }
+    select.field-control { cursor: pointer; }
+
+    .checkbox-wrap {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 9px;
+      cursor: pointer; transition: border-color .15s;
+    }
+    .checkbox-wrap:hover { border-color: #6366f1; }
+    .checkbox-wrap input { width: 17px; height: 17px; cursor: pointer; accent-color: #6366f1; }
+    .checkbox-wrap span { font-size: 14px; color: #374151; }
+
+    .multi-option-list { display: flex; flex-direction: column; gap: 8px; }
+    .multi-option-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 14px; border: 1px solid #e5e7eb; border-radius: 8px;
+      cursor: pointer; transition: border-color .15s;
+    }
+    .multi-option-item:hover { border-color: #6366f1; }
+    .multi-option-item input { width: 16px; height: 16px; cursor: pointer; accent-color: #6366f1; }
+    .multi-option-item span { font-size: 14px; color: #374151; }
+
+    .submit-btn {
+      display: block; width: 100%; padding: 13px;
+      background: #6366f1; color: #fff;
+      border: none; border-radius: 10px;
+      font-size: 15px; font-weight: 600; cursor: pointer;
+      font-family: inherit; transition: background .15s;
+      margin-top: 10px;
+    }
+    .submit-btn:hover { background: #818cf8; }
+    .submit-btn:active { background: #4f46e5; }
+
+    /* States */
+    .state-box {
+      text-align: center; padding: 60px 20px;
+      background: #fff; border-radius: 16px; border: 1px solid #e5e7eb;
+    }
+    .state-icon { font-size: 48px; margin-bottom: 16px; }
+    .state-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .state-msg { font-size: 14px; color: #6b7280; }
+    .state-success .state-title { color: #065f46; }
+    .state-closed .state-title { color: #92400e; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="org-tag">
+    <svg width="14" height="14" fill="none" stroke="#6b7280" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    {{ organization.name }}
+  </div>
+
+  <div class="form-header">
+    <h1 class="form-title">{{ form_obj.name }}</h1>
+    <span class="category-badge">{{ form_obj.get_category_display }}</span>
+  </div>
+
+  {% if submitted %}
+  <div class="state-box state-success">
+    <div class="state-icon">✅</div>
+    <div class="state-title">{% trans "Submitted!" %}</div>
+    <p class="state-msg">{% trans "Your response has been recorded. Thank you!" %}</p>
+  </div>
+
+  {% elif not form_obj.is_accepting or not_accepting %}
+  <div class="state-box state-closed">
+    <div class="state-icon">🔒</div>
+    <div class="state-title">{% trans "Not Accepting Submissions" %}</div>
+    <p class="state-msg">{% trans "This form is currently closed. Please check back later." %}</p>
+  </div>
+
+  {% elif not form_obj.fields %}
+  <div class="state-box">
+    <div class="state-icon">📋</div>
+    <div class="state-title">{% trans "Form Not Ready" %}</div>
+    <p class="state-msg">{% trans "This form has no fields configured yet." %}</p>
+  </div>
+
+  {% else %}
+  <div class="form-card">
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form_obj.fields %}
+      <div class="field-group">
+        <label class="field-label" for="field_{{ field.id }}">
+          {{ field.label }}{% if field.required %}<span class="req">*</span>{% endif %}
+        </label>
+
+        {% if field.type == 'textarea' %}
+          <textarea id="field_{{ field.id }}" name="field_{{ field.id }}"
+                    class="field-control"
+                    {% if field.required %}required{% endif %}></textarea>
+
+        {% elif field.type == 'email' %}
+          <input type="email" id="field_{{ field.id }}" name="field_{{ field.id }}"
+                 class="field-control"
+                 {% if field.required %}required{% endif %}>
+
+        {% elif field.type == 'number' %}
+          <input type="number" id="field_{{ field.id }}" name="field_{{ field.id }}"
+                 class="field-control"
+                 {% if field.required %}required{% endif %}>
+
+        {% elif field.type == 'select' %}
+          <select id="field_{{ field.id }}" name="field_{{ field.id }}"
+                  class="field-control"
+                  {% if field.required %}required{% endif %}>
+            <option value="">— {% trans "Select an option" %} —</option>
+            {% for opt in field.options %}
+              <option value="{{ opt }}">{{ opt }}</option>
+            {% endfor %}
+          </select>
+
+        {% elif field.type == 'multiselect' %}
+          <div class="multi-option-list">
+            {% for opt in field.options %}
+            <label class="multi-option-item">
+              <input type="checkbox" name="field_{{ field.id }}" value="{{ opt }}">
+              <span>{{ opt }}</span>
+            </label>
+            {% endfor %}
+          </div>
+
+        {% elif field.type == 'checkbox' %}
+          <label class="checkbox-wrap">
+            <input type="checkbox" id="field_{{ field.id }}" name="field_{{ field.id }}">
+            <span>{% trans "Yes" %}</span>
+          </label>
+
+        {% else %}
+          {# default: text #}
+          <input type="text" id="field_{{ field.id }}" name="field_{{ field.id }}"
+                 class="field-control"
+                 {% if field.required %}required{% endif %}>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <button type="submit" class="submit-btn">{% trans "Submit" %}</button>
+    </form>
+  </div>
+  {% endif %}
+
+</div>
+</body>
+</html>

@@ -24,6 +24,19 @@ urlpatterns = [
     path('settings/', workspace_views.SettingsView.as_view(), name='settings'),
     path('archive/', workspace_views.ArchiveView.as_view(), name='archive'),
 
+    # Form builder
+    path('forms/', workspace_views.FormListView.as_view(), name='form-list'),
+    path('forms/new/', workspace_views.FormCreateView.as_view(), name='form-create'),
+    path('forms/<slug:form_slug>/', workspace_views.FormBuilderView.as_view(), name='form-builder'),
+    path('forms/<slug:form_slug>/responses/', workspace_views.FormResponseListView.as_view(), name='form-responses'),
+    path('forms/<slug:form_slug>/confirm/<int:response_id>/', workspace_views.FormConfirmView.as_view(), name='form-confirm'),
+    path('forms/<slug:form_slug>/unconfirm/<int:response_id>/', workspace_views.FormUnconfirmView.as_view(), name='form-unconfirm'),
+    path('forms/<slug:form_slug>/delete-response/<int:response_id>/', workspace_views.FormDeleteResponseView.as_view(), name='form-delete-response'),
+    path('forms/<slug:form_slug>/delete/', workspace_views.FormDeleteView.as_view(), name='form-delete'),
+    path('forms/<slug:form_slug>/toggle/', workspace_views.FormToggleView.as_view(), name='form-toggle'),
+    path('forms/<slug:form_slug>/submit/', workspace_views.PublicFormSubmissionView.as_view(), name='form-submit'),
+    path('forms/<slug:form_slug>/confirmed/', workspace_views.PublicFormConfirmationBoardView.as_view(), name='form-confirmed'),
+
     # Nested tournament access — delegates to existing tournament URL patterns
     path('tournaments/<slug:tournament_slug>/', include('tournaments.urls')),
 

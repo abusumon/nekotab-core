@@ -1,0 +1,255 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{{ form_obj.name }} — {% trans "Responses" %}{% endblock %}
+{% block header-title %}{{ form_obj.name }}{% endblock %}
+
+{% block extra-css %}
+<style>
+.filter-tabs { display:flex; gap:4px; margin-bottom:20px; }
+.filter-tab {
+  padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  text-decoration: none; color: var(--ws-text-muted); background: #f3f4f6;
+  border: 1px solid transparent; transition: all .15s;
+}
+.filter-tab:hover { background: #e5e7eb; color: var(--ws-text); text-decoration: none; }
+.filter-tab.active { background: var(--ws-accent); color: #fff; }
+
+.resp-table { width: 100%; border-collapse: collapse; }
+.resp-table thead th {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--ws-text-muted);
+  padding: 10px 14px; border-bottom: 1px solid #e5e7eb; text-align: left;
+  white-space: nowrap;
+}
+.resp-table tbody td {
+  padding: 12px 14px; border-bottom: 1px solid #f3f4f6;
+  font-size: 13px; color: var(--ws-text); vertical-align: middle;
+}
+.resp-table tbody tr:hover { background: #fafafa; }
+.resp-table tbody tr:last-child td { border-bottom: none; }
+.td-value { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.slots-form { display: inline-flex; align-items: center; gap: 6px; }
+.slots-input {
+  width: 56px; padding: 5px 8px; border: 1px solid #d1d5db;
+  border-radius: 6px; font-size: 13px; text-align: center;
+}
+.slots-input:focus { outline: none; border-color: var(--ws-accent); }
+
+.confirmed-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #d1fae5; color: #065f46;
+  border-radius: 999px; padding: 4px 12px;
+  font-size: 12px; font-weight: 600;
+}
+
+.action-row { display: flex; gap: 6px; align-items: center; }
+
+/* Quick-toggle buttons on the response header */
+.toggle-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px; border-radius: 8px; font-size: 13px;
+  font-weight: 500; border: none; cursor: pointer; transition: all .15s;
+}
+.toggle-on  { background: #d1fae5; color: #065f46; }
+.toggle-off { background: #f3f4f6; color: #6b7280; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Header row -->
+<div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+  <div>
+    <div style="margin-bottom:6px;">
+      <a href="/forms/" style="font-size:13px;color:var(--ws-text-muted);text-decoration:none;">← {% trans "Forms" %}</a>
+    </div>
+    <h2 style="font-size:20px;font-weight:700;margin:0 0 6px;">{{ form_obj.name }}</h2>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <span class="ws-badge ws-badge-member">{{ form_obj.get_category_display }}</span>
+      {% if form_obj.is_accepting %}
+        <span class="ws-badge ws-badge-active">{% trans "Open" %}</span>
+      {% else %}
+        <span class="ws-badge ws-badge-inactive">{% trans "Closed" %}</span>
+      {% endif %}
+      {% if form_obj.is_confirmation_public %}
+        <span class="ws-badge" style="background:#dbeafe;color:#1e40af;">{% trans "Board Live" %}</span>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if membership and membership.is_admin_or_above %}
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <!-- Quick toggle: accepting -->
+    <form method="post" action="/forms/{{ form_obj.slug }}/toggle/" style="margin:0;">
+      {% csrf_token %}
+      <input type="hidden" name="field" value="accepting">
+      <button type="submit" class="toggle-chip {% if form_obj.is_accepting %}toggle-on{% else %}toggle-off{% endif %}">
+        {% if form_obj.is_accepting %}
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          {% trans "Close Form" %}
+        {% else %}
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          {% trans "Open Form" %}
+        {% endif %}
+      </button>
+    </form>
+    <!-- Quick toggle: confirmation board -->
+    <form method="post" action="/forms/{{ form_obj.slug }}/toggle/" style="margin:0;">
+      {% csrf_token %}
+      <input type="hidden" name="field" value="confirmation_public">
+      <button type="submit" class="toggle-chip {% if form_obj.is_confirmation_public %}toggle-on{% else %}toggle-off{% endif %}">
+        {% if form_obj.is_confirmation_public %}
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          {% trans "Hide Board" %}
+        {% else %}
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          {% trans "Publish Board" %}
+        {% endif %}
+      </button>
+    </form>
+    <a href="/forms/{{ form_obj.slug }}/" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Edit Builder" %}</a>
+    <a href="/forms/{{ form_obj.slug }}/submit/" target="_blank" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Submit URL ↗" %}</a>
+    <a href="/forms/{{ form_obj.slug }}/confirmed/" target="_blank" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Public Board ↗" %}</a>
+  </div>
+  {% endif %}
+</div>
+
+<!-- Stats row -->
+<div class="ws-stats" style="margin-bottom:20px;">
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Total Responses" %}</div>
+    <div class="ws-stat-value">{{ total_count }}</div>
+  </div>
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Pending" %}</div>
+    <div class="ws-stat-value" style="color:var(--ws-warning);">{{ pending_count }}</div>
+  </div>
+  <div class="ws-stat-card">
+    <div class="ws-stat-label">{% trans "Confirmed" %}</div>
+    <div class="ws-stat-value" style="color:var(--ws-success);">{{ confirmed_count }}</div>
+  </div>
+</div>
+
+<!-- Filter tabs -->
+<div class="filter-tabs">
+  <a href="?status=all" class="filter-tab {% if status_filter == 'all' %}active{% endif %}">
+    {% trans "All" %} <span style="opacity:.7;">({{ total_count }})</span>
+  </a>
+  <a href="?status=pending" class="filter-tab {% if status_filter == 'pending' %}active{% endif %}">
+    {% trans "Pending" %} <span style="opacity:.7;">({{ pending_count }})</span>
+  </a>
+  <a href="?status=confirmed" class="filter-tab {% if status_filter == 'confirmed' %}active{% endif %}">
+    {% trans "Confirmed" %} <span style="opacity:.7;">({{ confirmed_count }})</span>
+  </a>
+</div>
+
+<!-- Response table -->
+<div class="ws-card" style="padding:0;overflow:hidden;">
+  {% if responses %}
+  <div style="overflow-x:auto;">
+  <table class="resp-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        {% for field in field_defs %}
+          <th>{{ field.label }}</th>
+        {% empty %}
+          <th>{% trans "Data" %}</th>
+        {% endfor %}
+        <th>{% trans "Submitted" %}</th>
+        <th>{% trans "Status / Slots" %}</th>
+        {% if membership and membership.is_admin_or_above %}<th>{% trans "Actions" %}</th>{% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for resp in responses %}
+      <tr>
+        <td style="color:var(--ws-text-muted);font-size:12px;">{{ resp.pk }}</td>
+
+        {% for field in field_defs %}
+        <td class="td-value">
+          <span class="field-val" data-resp="{{ resp.pk }}" data-field="{{ field.id }}"></span>
+        </td>
+        {% empty %}
+          <td style="font-size:12px;color:var(--ws-text-muted);">{{ resp.data }}</td>
+        {% endfor %}
+
+        <td style="white-space:nowrap;color:var(--ws-text-muted);">{{ resp.submitted_at|date:"M j, Y H:i" }}</td>
+
+        <td>
+          {% if resp.status == 'confirmed' %}
+            <span class="confirmed-chip">
+              ✓ {{ resp.confirmed_slots }} {% trans "slot" %}{{ resp.confirmed_slots|pluralize }}
+            </span>
+          {% else %}
+            <span class="ws-badge ws-badge-inactive">{% trans "Pending" %}</span>
+          {% endif %}
+        </td>
+
+        {% if membership and membership.is_admin_or_above %}
+        <td>
+          <div class="action-row">
+            {% if resp.status == 'pending' %}
+              <form method="post" action="/forms/{{ form_obj.slug }}/confirm/{{ resp.pk }}/" class="slots-form" style="margin:0;">
+                {% csrf_token %}
+                <input type="number" name="slots" class="slots-input" value="1" min="1" max="99" title="Slots to confirm">
+                <button type="submit" class="ws-btn ws-btn-primary ws-btn-sm">{% trans "Confirm" %}</button>
+              </form>
+            {% else %}
+              <form method="post" action="/forms/{{ form_obj.slug }}/unconfirm/{{ resp.pk }}/" style="margin:0;">
+                {% csrf_token %}
+                <button type="submit" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Undo" %}</button>
+              </form>
+            {% endif %}
+            <form method="post" action="/forms/{{ form_obj.slug }}/delete-response/{{ resp.pk }}/"
+                  style="margin:0;" onsubmit="return confirm('Delete this response?');">
+              {% csrf_token %}
+              <button type="submit" class="ws-btn ws-btn-danger ws-btn-sm">{% trans "Del" %}</button>
+            </form>
+          </div>
+        </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <div class="ws-empty">
+    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="width:48px;height:48px;opacity:.3;margin-bottom:12px;">
+      <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>
+    </svg>
+    <p>{% trans "No responses yet." %}
+      {% if status_filter != 'all' %}<a href="?status=all">{% trans "View all" %}</a>{% endif %}
+    </p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block extra-js %}
+<script>
+(function () {
+  var respData = {{ resp_data_json|safe }};
+  var fieldDefs = {{ field_defs_json|safe }};
+
+  document.querySelectorAll('.field-val').forEach(function (el) {
+    var respPk = el.dataset.resp;
+    var fieldId = el.dataset.field;
+    var data = respData[respPk] || {};
+    var val = data[fieldId];
+    if (val === undefined || val === null) { el.textContent = '—'; return; }
+    if (Array.isArray(val)) { el.textContent = val.join(', ') || '—'; return; }
+    if (val === true)  { el.textContent = 'Yes'; return; }
+    if (val === false) { el.textContent = 'No';  return; }
+    var s = String(val).trim();
+    el.textContent = s || '—';
+    // Bold the display field column
+    var def = fieldDefs.find(function(f){ return f.id === fieldId; });
+    if (def && def.is_display_field) { el.style.fontWeight = '600'; }
+  });
+}());
+</script>
+{% endblock %}

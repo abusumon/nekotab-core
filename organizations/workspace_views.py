@@ -1,3 +1,5 @@
+import json
+
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -24,7 +26,7 @@ from tournaments.models import (
 )
 
 from .forms import InviteMemberForm, TournamentStaffInviteForm, WorkspaceTournamentCreateForm
-from .models import ClubMemberProfile, OrganizationInvitation, OrganizationMembership
+from .models import ClubMemberProfile, OrganizationInvitation, OrganizationMembership, OrgForm, OrgFormResponse
 from .workspace_mixins import WorkspaceAccessMixin, WorkspaceAdminMixin
 
 
@@ -692,3 +694,301 @@ class AnalyticsView(WorkspaceAccessMixin, TemplateView):
         ]
 
         return ctx
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Form system
+# ─────────────────────────────────────────────────────────────────────────────
+
+class FormListView(WorkspaceAccessMixin, TemplateView):
+    template_name = 'organizations/workspace/forms/list.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['active_tab'] = 'forms'
+        ctx['forms'] = OrgForm.objects.filter(organization=self.organization)
+        return ctx
+
+
+class FormCreateView(WorkspaceAdminMixin, View):
+    template_name = 'organizations/workspace/forms/create.html'
+
+    def _ctx(self, **extra):
+        return {
+            'organization': self.organization,
+            'membership': self.membership,
+            'active_tab': 'forms',
+            'categories': OrgForm.Category.choices,
+            'action': 'create',
+            **extra,
+        }
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, self._ctx(
+            form_obj=None,
+            form_fields_json='[]',
+        ))
+
+    def post(self, request, *args, **kwargs):
+        name = request.POST.get('name', '').strip()
+        slug_val = request.POST.get('slug', '').strip()
+        category = request.POST.get('category', OrgForm.Category.OTHER)
+        is_accepting = request.POST.get('is_accepting') == '1'
+        is_confirmation_public = request.POST.get('is_confirmation_public') == '1'
+        fields_json = request.POST.get('fields_json', '[]').strip()
+
+        errors = {}
+        if not name:
+            errors['name'] = 'Name is required.'
+        if not slug_val:
+            errors['slug'] = 'Slug is required.'
+        elif OrgForm.objects.filter(organization=self.organization, slug=slug_val).exists():
+            errors['slug'] = 'A form with this slug already exists in this organization.'
+
+        try:
+            fields_data = json.loads(fields_json)
+            if not isinstance(fields_data, list):
+                raise ValueError()
+        except (json.JSONDecodeError, ValueError):
+            fields_data = []
+            errors['fields'] = 'Invalid field data.'
+
+        if errors:
+            return render(request, self.template_name, self._ctx(
+                form_obj=None,
+                errors=errors,
+                form_fields_json=fields_json,
+                post_name=name,
+                post_slug=slug_val,
+                post_category=category,
+            ))
+
+        form_obj = OrgForm.objects.create(
+            organization=self.organization,
+            name=name,
+            slug=slug_val,
+            category=category,
+            fields=fields_data,
+            is_accepting=is_accepting,
+            is_confirmation_public=is_confirmation_public,
+        )
+        messages.success(request, f'Form "{form_obj.name}" created.')
+        return redirect(f'/forms/{form_obj.slug}/responses/')
+
+
+class FormBuilderView(WorkspaceAdminMixin, View):
+    template_name = 'organizations/workspace/forms/create.html'
+
+    def _ctx(self, form_obj, **extra):
+        return {
+            'organization': self.organization,
+            'membership': self.membership,
+            'active_tab': 'forms',
+            'categories': OrgForm.Category.choices,
+            'action': 'edit',
+            'form_obj': form_obj,
+            **extra,
+        }
+
+    def get(self, request, form_slug, *args, **kwargs):
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        return render(request, self.template_name, self._ctx(
+            form_obj=form_obj,
+            form_fields_json=json.dumps(form_obj.fields or []),
+        ))
+
+    def post(self, request, form_slug, *args, **kwargs):
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        name = request.POST.get('name', '').strip()
+        new_slug = request.POST.get('slug', '').strip()
+        category = request.POST.get('category', form_obj.category)
+        is_accepting = request.POST.get('is_accepting') == '1'
+        is_confirmation_public = request.POST.get('is_confirmation_public') == '1'
+        fields_json = request.POST.get('fields_json', '[]').strip()
+
+        errors = {}
+        if not name:
+            errors['name'] = 'Name is required.'
+        if not new_slug:
+            errors['slug'] = 'Slug is required.'
+        elif (new_slug != form_obj.slug and
+              OrgForm.objects.filter(organization=self.organization, slug=new_slug).exists()):
+            errors['slug'] = 'A form with this slug already exists in this organization.'
+
+        try:
+            fields_data = json.loads(fields_json)
+            if not isinstance(fields_data, list):
+                raise ValueError()
+        except (json.JSONDecodeError, ValueError):
+            fields_data = form_obj.fields
+            errors['fields'] = 'Invalid field data.'
+
+        if errors:
+            return render(request, self.template_name, self._ctx(
+                form_obj=form_obj,
+                errors=errors,
+                form_fields_json=fields_json,
+            ))
+
+        form_obj.name = name
+        form_obj.slug = new_slug
+        form_obj.category = category
+        form_obj.fields = fields_data
+        form_obj.is_accepting = is_accepting
+        form_obj.is_confirmation_public = is_confirmation_public
+        form_obj.save()
+        messages.success(request, f'Form "{form_obj.name}" updated.')
+        return redirect(f'/forms/{form_obj.slug}/responses/')
+
+
+class FormResponseListView(WorkspaceAccessMixin, View):
+    template_name = 'organizations/workspace/forms/responses.html'
+
+    def get(self, request, form_slug, *args, **kwargs):
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        status_filter = request.GET.get('status', 'all')
+        qs = form_obj.responses.all()
+        if status_filter == 'pending':
+            qs = qs.filter(status=OrgFormResponse.Status.PENDING)
+        elif status_filter == 'confirmed':
+            qs = qs.filter(status=OrgFormResponse.Status.CONFIRMED)
+
+        responses = list(qs)  # evaluate once for both context and JSON serialization
+        field_defs = form_obj.fields or []
+        resp_data_json = json.dumps({str(r.pk): r.data for r in responses})
+        field_defs_json = json.dumps(field_defs)
+
+        return render(request, self.template_name, {
+            'organization': self.organization,
+            'membership': self.membership,
+            'active_tab': 'forms',
+            'form_obj': form_obj,
+            'responses': responses,
+            'status_filter': status_filter,
+            'field_defs': field_defs,
+            'resp_data_json': resp_data_json,
+            'field_defs_json': field_defs_json,
+            'pending_count': form_obj.responses.filter(status=OrgFormResponse.Status.PENDING).count(),
+            'confirmed_count': form_obj.responses.filter(status=OrgFormResponse.Status.CONFIRMED).count(),
+            'total_count': form_obj.responses.count(),
+        })
+
+
+class FormConfirmView(WorkspaceAdminMixin, View):
+    def post(self, request, form_slug, response_id, *args, **kwargs):
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        resp = get_object_or_404(OrgFormResponse, form=form_obj, pk=response_id)
+        try:
+            slots = max(1, int(request.POST.get('slots', 1)))
+        except (ValueError, TypeError):
+            slots = 1
+        resp.status = OrgFormResponse.Status.CONFIRMED
+        resp.confirmed_slots = slots
+        resp.confirmed_at = timezone.now()
+        resp.save()
+        return redirect(f'/forms/{form_slug}/responses/?status=pending')
+
+
+class FormUnconfirmView(WorkspaceAdminMixin, View):
+    def post(self, request, form_slug, response_id, *args, **kwargs):
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        resp = get_object_or_404(OrgFormResponse, form=form_obj, pk=response_id)
+        resp.status = OrgFormResponse.Status.PENDING
+        resp.confirmed_slots = None
+        resp.confirmed_at = None
+        resp.save()
+        return redirect(f'/forms/{form_slug}/responses/?status=confirmed')
+
+
+class FormDeleteResponseView(WorkspaceAdminMixin, View):
+    def post(self, request, form_slug, response_id, *args, **kwargs):
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        resp = get_object_or_404(OrgFormResponse, form=form_obj, pk=response_id)
+        resp.delete()
+        messages.success(request, 'Response deleted.')
+        return redirect(f'/forms/{form_slug}/responses/')
+
+
+class FormDeleteView(WorkspaceAdminMixin, View):
+    def post(self, request, form_slug, *args, **kwargs):
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        name = form_obj.name
+        form_obj.delete()
+        messages.success(request, f'Form "{name}" deleted.')
+        return redirect('/forms/')
+
+
+class FormToggleView(WorkspaceAdminMixin, View):
+    """Toggle is_accepting or is_confirmation_public without a full page save."""
+
+    def post(self, request, form_slug, *args, **kwargs):
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        field = request.POST.get('field')
+        if field == 'accepting':
+            form_obj.is_accepting = not form_obj.is_accepting
+            form_obj.save(update_fields=['is_accepting', 'updated_at'])
+        elif field == 'confirmation_public':
+            form_obj.is_confirmation_public = not form_obj.is_confirmation_public
+            form_obj.save(update_fields=['is_confirmation_public', 'updated_at'])
+        return redirect(f'/forms/{form_slug}/responses/')
+
+
+# ---- Public views (no authentication required) ----
+
+class PublicFormSubmissionView(View):
+    """Public form submission page — accessible without login."""
+
+    template_name = 'organizations/workspace/forms/public_submit.html'
+
+    def _resolve(self, request, form_slug):
+        org = getattr(request, 'tenant_organization', None)
+        if not org:
+            raise Http404
+        return org, get_object_or_404(OrgForm, organization=org, slug=form_slug)
+
+    def get(self, request, form_slug, *args, **kwargs):
+        org, form_obj = self._resolve(request, form_slug)
+        return render(request, self.template_name, {'organization': org, 'form_obj': form_obj})
+
+    def post(self, request, form_slug, *args, **kwargs):
+        org, form_obj = self._resolve(request, form_slug)
+        if not form_obj.is_accepting:
+            return render(request, self.template_name, {
+                'organization': org, 'form_obj': form_obj, 'not_accepting': True,
+            })
+
+        data = {}
+        for field in (form_obj.fields or []):
+            fid = field.get('id', '')
+            ftype = field.get('type', 'text')
+            if ftype == 'multiselect':
+                data[fid] = request.POST.getlist(f'field_{fid}')
+            elif ftype == 'checkbox':
+                data[fid] = f'field_{fid}' in request.POST
+            else:
+                data[fid] = request.POST.get(f'field_{fid}', '').strip()
+
+        OrgFormResponse.objects.create(form=form_obj, data=data)
+        return render(request, self.template_name, {
+            'organization': org, 'form_obj': form_obj, 'submitted': True,
+        })
+
+
+class PublicFormConfirmationBoardView(View):
+    """Public read-only confirmed-slots board."""
+
+    template_name = 'organizations/workspace/forms/public_confirmed.html'
+
+    def get(self, request, form_slug, *args, **kwargs):
+        org = getattr(request, 'tenant_organization', None)
+        if not org:
+            raise Http404
+        form_obj = get_object_or_404(OrgForm, organization=org, slug=form_slug)
+        confirmed = form_obj.responses.filter(
+            status=OrgFormResponse.Status.CONFIRMED,
+        ).order_by('confirmed_at')
+        return render(request, self.template_name, {
+            'organization': org,
+            'form_obj': form_obj,
+            'confirmed_responses': confirmed,
+        })

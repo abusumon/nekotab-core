@@ -389,3 +389,124 @@ class OrganizationInvitation(models.Model):
     def is_valid(self):
         return not self.is_expired and not self.is_accepted
 
+
+# ---------------------------------------------------------------------------
+# OrgForm — organization-owned data-collection forms
+# ---------------------------------------------------------------------------
+
+class OrgForm(models.Model):
+    """A configurable data-collection form owned by an organization.
+
+    Category is metadata only (no predefined fields). The org builds the
+    form completely from scratch using the form builder.
+    """
+
+    class Category(models.TextChoices):
+        PRE_REGISTRATION   = 'pre_reg',      _("Pre-Registration")
+        REGISTRATION       = 'registration', _("Registration")
+        VOLUNTEER          = 'volunteer',     _("Volunteer")
+        INDEPENDENT_ADJ    = 'indep_adj',    _("Independent Adjudicator")
+        MEMBER_RECRUITMENT = 'recruitment',  _("Member Recruitment")
+        OTHER              = 'other',        _("Other")
+
+    organization = models.ForeignKey(
+        Organization,
+        on_delete=models.CASCADE,
+        related_name='forms',
+        verbose_name=_("organization"),
+    )
+    name = models.CharField(max_length=200, verbose_name=_("name"))
+    slug = models.SlugField(max_length=80, verbose_name=_("slug"))
+    category = models.CharField(
+        max_length=20,
+        choices=Category.choices,
+        default=Category.OTHER,
+        verbose_name=_("category"),
+    )
+    # Ordered list of field definitions. Each entry is a dict with keys:
+    #   id (str), type (str), label (str), required (bool),
+    #   options (list[str], for select/multiselect), is_display_field (bool)
+    fields = models.JSONField(default=list, blank=True, verbose_name=_("fields"))
+    is_accepting = models.BooleanField(
+        default=False,
+        verbose_name=_("accepting submissions"),
+        help_text=_("When on, the public submission URL is active."),
+    )
+    is_confirmation_public = models.BooleanField(
+        default=False,
+        verbose_name=_("confirmation board public"),
+        help_text=_("When on, the public confirmation board is visible."),
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = _("organization form")
+        verbose_name_plural = _("organization forms")
+        constraints = [
+            UniqueConstraint(fields=['organization', 'slug']),
+        ]
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.name} ({self.organization})"
+
+    @property
+    def display_field_id(self):
+        """Return the id of the field marked as display field, or None."""
+        for f in (self.fields or []):
+            if f.get('is_display_field'):
+                return f['id']
+        return None
+
+    @property
+    def response_count(self):
+        return self.responses.count()
+
+    @property
+    def confirmed_count(self):
+        return self.responses.filter(status='confirmed').count()
+
+
+class OrgFormResponse(models.Model):
+    """A single submission to an OrgForm."""
+
+    class Status(models.TextChoices):
+        PENDING   = 'pending',   _("Pending")
+        CONFIRMED = 'confirmed', _("Confirmed")
+
+    form = models.ForeignKey(
+        OrgForm,
+        on_delete=models.CASCADE,
+        related_name='responses',
+        verbose_name=_("form"),
+    )
+    data = models.JSONField(default=dict, verbose_name=_("submitted data"))
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.PENDING,
+        verbose_name=_("status"),
+    )
+    confirmed_slots = models.PositiveIntegerField(
+        null=True, blank=True,
+        verbose_name=_("confirmed slots"),
+    )
+    confirmed_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("form response")
+        verbose_name_plural = _("form responses")
+        ordering = ['-submitted_at']
+
+    def __str__(self):
+        return f"Response #{self.pk} → {self.form}"
+
+    def get_display_value(self):
+        """Return the value of the display field, or a generic label."""
+        display_id = self.form.display_field_id
+        if display_id and display_id in self.data:
+            val = self.data[display_id]
+            return val if isinstance(val, str) else str(val)
+        return f"Response #{self.pk}"

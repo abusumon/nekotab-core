@@ -1,0 +1,211 @@
+{% load i18n %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ form_obj.name }} — {% trans "Confirmed Participants" %} — {{ organization.name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f0f1a; color: #e5e7eb; min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .page-header {
+      background: linear-gradient(135deg, #1e1e2d 0%, #1a1a3e 100%);
+      border-bottom: 1px solid #2d2d4e;
+      padding: 40px 32px 36px;
+      text-align: center;
+    }
+    .org-name {
+      font-size: 13px; font-weight: 500; color: #818cf8;
+      text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px;
+    }
+    .form-title {
+      font-size: 28px; font-weight: 800; color: #fff;
+      margin-bottom: 10px; line-height: 1.2;
+    }
+    .form-subtitle {
+      font-size: 14px; color: #9ca3af; margin-bottom: 16px;
+    }
+    .category-badge {
+      display: inline-block; padding: 4px 14px; border-radius: 999px;
+      font-size: 12px; font-weight: 500;
+      background: rgba(99,102,241,.2); color: #a5b4fc;
+      border: 1px solid rgba(99,102,241,.3);
+    }
+
+    /* ── Main ── */
+    .page-body { max-width: 760px; margin: 0 auto; padding: 40px 20px 60px; }
+
+    .summary-row {
+      display: flex; gap: 16px; justify-content: center;
+      margin-bottom: 36px; flex-wrap: wrap;
+    }
+    .summary-chip {
+      background: #1e1e2d; border: 1px solid #2d2d4e;
+      border-radius: 12px; padding: 14px 24px; text-align: center;
+      min-width: 120px;
+    }
+    .summary-chip-val { font-size: 28px; font-weight: 800; color: #818cf8; }
+    .summary-chip-label { font-size: 12px; color: #6b7280; margin-top: 4px; }
+
+    /* ── Table ── */
+    .conf-table-wrap {
+      background: #1e1e2d; border: 1px solid #2d2d4e;
+      border-radius: 16px; overflow: hidden;
+    }
+    .conf-table { width: 100%; border-collapse: collapse; }
+    .conf-table thead tr {
+      background: #161625; border-bottom: 1px solid #2d2d4e;
+    }
+    .conf-table thead th {
+      padding: 14px 20px;
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: #6b7280; text-align: left;
+    }
+    .conf-table tbody tr {
+      border-bottom: 1px solid #2d2d4e;
+      transition: background .12s;
+    }
+    .conf-table tbody tr:last-child { border-bottom: none; }
+    .conf-table tbody tr:hover { background: #252540; }
+    .conf-table tbody td { padding: 18px 20px; vertical-align: middle; }
+
+    .rank-cell {
+      font-size: 13px; font-weight: 700; color: #4b5563; width: 48px;
+    }
+    .rank-1 { color: #f59e0b; }
+    .rank-2 { color: #9ca3af; }
+    .rank-3 { color: #b45309; }
+
+    .name-cell {
+      font-size: 15px; font-weight: 600; color: #f3f4f6;
+    }
+
+    .slots-cell {
+      text-align: right; white-space: nowrap;
+    }
+    .slots-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(16,185,129,.12); color: #34d399;
+      border: 1px solid rgba(16,185,129,.25);
+      border-radius: 999px; padding: 5px 14px;
+      font-size: 13px; font-weight: 600;
+    }
+
+    /* ── Empty / Private ── */
+    .state-box {
+      text-align: center; padding: 60px 20px;
+      background: #1e1e2d; border: 1px solid #2d2d4e;
+      border-radius: 16px;
+    }
+    .state-icon { font-size: 44px; margin-bottom: 14px; }
+    .state-title { font-size: 20px; font-weight: 700; color: #e5e7eb; margin-bottom: 8px; }
+    .state-msg { font-size: 14px; color: #6b7280; }
+
+    /* ── Footer ── */
+    .page-footer {
+      text-align: center; padding: 24px;
+      font-size: 12px; color: #374151;
+    }
+    .page-footer a { color: #6366f1; text-decoration: none; }
+    .page-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="org-name">{{ organization.name }}</div>
+  <h1 class="form-title">{{ form_obj.name }}</h1>
+  <p class="form-subtitle">{% trans "Confirmed Participants" %}</p>
+  <span class="category-badge">{{ form_obj.get_category_display }}</span>
+</div>
+
+<div class="page-body">
+
+  {% if not form_obj.is_confirmation_public %}
+  <div class="state-box">
+    <div class="state-icon">🔒</div>
+    <div class="state-title">{% trans "Not Public Yet" %}</div>
+    <p class="state-msg">{% trans "The confirmation board for this form has not been published yet." %}</p>
+  </div>
+
+  {% elif confirmed_responses %}
+    {% with total_slots=0 %}
+    <div class="summary-row">
+      <div class="summary-chip">
+        <div class="summary-chip-val">{{ confirmed_responses.count }}</div>
+        <div class="summary-chip-label">{% trans "Confirmed" %}</div>
+      </div>
+      <div class="summary-chip">
+        <div class="summary-chip-val" id="total-slots-val">—</div>
+        <div class="summary-chip-label">{% trans "Total Slots" %}</div>
+      </div>
+    </div>
+    {% endwith %}
+
+    <div class="conf-table-wrap">
+      <table class="conf-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>{% if form_obj.display_field_id %}{% trans "Institution / Team" %}{% else %}{% trans "Entry" %}{% endif %}</th>
+            <th style="text-align:right;">{% trans "Confirmed Slots" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for resp in confirmed_responses %}
+          <tr>
+            <td class="rank-cell {% if forloop.counter == 1 %}rank-1{% elif forloop.counter == 2 %}rank-2{% elif forloop.counter == 3 %}rank-3{% endif %}">
+              {{ forloop.counter }}
+            </td>
+            <td class="name-cell">{{ resp.get_display_value }}</td>
+            <td class="slots-cell">
+              <span class="slots-pill">
+                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                {{ resp.confirmed_slots }} {% trans "slot" %}{{ resp.confirmed_slots|pluralize }}
+              </span>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  {% else %}
+  <div class="state-box">
+    <div class="state-icon">⏳</div>
+    <div class="state-title">{% trans "No Confirmations Yet" %}</div>
+    <p class="state-msg">{% trans "Slot confirmations will appear here once the organizers review submissions." %}</p>
+  </div>
+  {% endif %}
+
+</div>
+
+<div class="page-footer">
+  Powered by <a href="https://nekotab.app" target="_blank">NekoTab</a>
+</div>
+
+<script>
+// Sum up slots for the total chip
+(function () {
+  var rows = document.querySelectorAll('.conf-table tbody tr');
+  var total = 0;
+  rows.forEach(function (row) {
+    var pill = row.querySelector('.slots-pill');
+    if (!pill) return;
+    var m = pill.textContent.match(/(\d+)/);
+    if (m) total += parseInt(m[1], 10);
+  });
+  var el = document.getElementById('total-slots-val');
+  if (el) el.textContent = total;
+}());
+</script>
+
+</body>
+</html>

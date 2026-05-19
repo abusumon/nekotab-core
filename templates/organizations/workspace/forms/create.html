@@ -1,0 +1,431 @@
+{% extends "organizations/workspace/base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% if action == 'edit' %}{% trans "Edit Form" %}{% else %}{% trans "New Form" %}{% endif %}{% endblock %}
+{% block header-title %}{% if action == 'edit' %}{% trans "Edit Form" %}{% else %}{% trans "New Form" %}{% endif %}{% endblock %}
+
+{% block extra-css %}
+<style>
+.builder-section {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.builder-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ws-text-muted);
+  margin-bottom: 18px;
+}
+.ws-form-group { margin-bottom: 16px; }
+.ws-form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ws-text);
+  margin-bottom: 6px;
+  display: block;
+}
+.ws-form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--ws-text);
+  outline: none;
+  background: #fff;
+  transition: border-color .15s;
+  box-sizing: border-box;
+}
+.ws-form-control:focus { border-color: var(--ws-accent); box-shadow: 0 0 0 3px rgba(99,102,241,.08); }
+.ws-toggle-wrap { display: flex; align-items: center; gap: 10px; }
+.ws-toggle { position: relative; width: 44px; height: 24px; cursor: pointer; display: inline-block; flex-shrink: 0; }
+.ws-toggle input { opacity: 0; width: 0; height: 0; }
+.ws-toggle-slider {
+  position: absolute; inset: 0;
+  background: #d1d5db; border-radius: 24px; transition: .2s;
+}
+.ws-toggle-slider::before {
+  content: ''; position: absolute;
+  width: 18px; height: 18px;
+  left: 3px; top: 3px;
+  background: #fff; border-radius: 50%; transition: .2s;
+}
+.ws-toggle input:checked + .ws-toggle-slider { background: var(--ws-accent); }
+.ws-toggle input:checked + .ws-toggle-slider::before { transform: translateX(20px); }
+
+/* Field builder */
+#field-list { display: flex; flex-direction: column; gap: 10px; min-height: 20px; margin-bottom: 16px; }
+.field-row {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.field-row:hover { border-color: #c7d2fe; }
+.field-num { font-size: 12px; font-weight: 600; color: var(--ws-text-muted); min-width: 20px; }
+.field-type-select {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #fff;
+  color: var(--ws-text);
+  cursor: pointer;
+}
+.field-label-input {
+  flex: 1;
+  min-width: 140px;
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--ws-text);
+  background: #fff;
+}
+.field-label-input:focus, .field-type-select:focus { outline: none; border-color: var(--ws-accent); }
+.field-options-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.field-options-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #fff;
+  color: var(--ws-text);
+}
+.field-options-input:focus { outline: none; border-color: var(--ws-accent); }
+.field-check-wrap {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; color: var(--ws-text-muted); white-space: nowrap; cursor: pointer;
+}
+.field-check-wrap input { cursor: pointer; }
+.field-display-wrap {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; color: var(--ws-accent);
+  white-space: nowrap; cursor: pointer;
+  font-weight: 500;
+}
+.delete-field-btn {
+  background: none; border: none;
+  color: #9ca3af; cursor: pointer;
+  padding: 4px 6px; border-radius: 5px;
+  font-size: 15px; line-height: 1;
+  margin-left: auto;
+}
+.delete-field-btn:hover { color: var(--ws-danger); background: #fef2f2; }
+.field-empty-msg { font-size: 13px; color: var(--ws-text-muted); padding: 12px 4px; }
+.error-banner {
+  background: #fef2f2; border: 1px solid #fecaca;
+  border-radius: 8px; padding: 12px 16px;
+  margin-bottom: 20px; font-size: 14px; color: #b91c1c;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div style="max-width:860px;">
+
+{% if errors %}
+<div class="error-banner">
+  {% for key, msg in errors.items %}{{ msg }}{% if not forloop.last %} · {% endif %}{% endfor %}
+</div>
+{% endif %}
+
+<!-- Back link -->
+<div style="margin-bottom:20px;">
+  {% if action == 'edit' and form_obj %}
+    <a href="/forms/{{ form_obj.slug }}/responses/" style="font-size:13px;color:var(--ws-text-muted);text-decoration:none;">
+      ← {% trans "Back to Responses" %}
+    </a>
+  {% else %}
+    <a href="/forms/" style="font-size:13px;color:var(--ws-text-muted);text-decoration:none;">
+      ← {% trans "Back to Forms" %}
+    </a>
+  {% endif %}
+</div>
+
+<form method="post" id="builder-form">
+{% csrf_token %}
+<input type="hidden" name="fields_json" id="fields-json-input" value="{{ form_fields_json }}">
+
+<!-- Section 1: Form Details -->
+<div class="builder-section">
+  <div class="builder-section-title">{% trans "Form Details" %}</div>
+  <div class="row">
+    <div class="col-md-7">
+      <div class="ws-form-group">
+        <label class="ws-form-label" for="id_name">{% trans "Form Name" %}</label>
+        <input type="text" id="id_name" name="name" class="ws-form-control"
+               value="{% if form_obj %}{{ form_obj.name }}{% else %}{{ post_name }}{% endif %}"
+               placeholder="e.g. Pre-Registration 2026" autocomplete="off" required>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="ws-form-group">
+        <label class="ws-form-label" for="id_slug">
+          {% trans "Slug" %}
+          <span style="font-weight:400;color:var(--ws-text-muted);font-size:12px;"> — used in URL</span>
+        </label>
+        <input type="text" id="id_slug" name="slug" class="ws-form-control"
+               value="{% if form_obj %}{{ form_obj.slug }}{% else %}{{ post_slug }}{% endif %}"
+               placeholder="e.g. pre-reg-2026" autocomplete="off" required>
+      </div>
+    </div>
+  </div>
+  <div class="ws-form-group" style="max-width:320px;">
+    <label class="ws-form-label" for="id_category">{% trans "Category" %}</label>
+    <select id="id_category" name="category" class="ws-form-control">
+      {% for val, label in categories %}
+        <option value="{{ val }}"
+          {% if form_obj and form_obj.category == val %}selected
+          {% elif post_category == val %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="ws-form-group">
+        <label class="ws-form-label">{% trans "Accepting Submissions" %}</label>
+        <div class="ws-toggle-wrap">
+          <label class="ws-toggle">
+            <input type="checkbox" id="id_accepting"
+              {% if form_obj and form_obj.is_accepting %}checked{% endif %}>
+            <span class="ws-toggle-slider"></span>
+          </label>
+          <input type="hidden" name="is_accepting" id="h_is_accepting"
+                 value="{% if form_obj and form_obj.is_accepting %}1{% else %}0{% endif %}">
+          <span id="accepting-label" style="font-size:14px;color:var(--ws-text-muted);">
+            {% if form_obj and form_obj.is_accepting %}{% trans "Open — public can submit" %}{% else %}{% trans "Closed — no new submissions" %}{% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="ws-form-group">
+        <label class="ws-form-label">{% trans "Public Confirmation Board" %}</label>
+        <div class="ws-toggle-wrap">
+          <label class="ws-toggle">
+            <input type="checkbox" id="id_confirm_public"
+              {% if form_obj and form_obj.is_confirmation_public %}checked{% endif %}>
+            <span class="ws-toggle-slider"></span>
+          </label>
+          <input type="hidden" name="is_confirmation_public" id="h_is_confirmation_public"
+                 value="{% if form_obj and form_obj.is_confirmation_public %}1{% else %}0{% endif %}">
+          <span id="confirm-public-label" style="font-size:14px;color:var(--ws-text-muted);">
+            {% if form_obj and form_obj.is_confirmation_public %}{% trans "Public — anyone can see confirmed slots" %}{% else %}{% trans "Private" %}{% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2: Field Builder -->
+<div class="builder-section">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+    <div class="builder-section-title" style="margin-bottom:0;">{% trans "Form Fields" %}</div>
+    <button type="button" id="add-field-btn" class="ws-btn ws-btn-secondary ws-btn-sm">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      {% trans "Add Field" %}
+    </button>
+  </div>
+
+  <div id="field-list"></div>
+
+  <p style="font-size:12px;color:var(--ws-text-muted);margin-top:12px;margin-bottom:0;line-height:1.6;">
+    ⭐ <strong>Display Field</strong> — mark one field as the display field. Its value will be used as the row identifier in the response table and as the institution/team name on the public confirmation board.
+  </p>
+</div>
+
+<!-- Section 3: Actions -->
+<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+  <button type="submit" class="ws-btn ws-btn-primary">
+    {% if action == 'edit' %}{% trans "Save Changes" %}{% else %}{% trans "Create Form" %}{% endif %}
+  </button>
+  <a href="/forms/" class="ws-btn ws-btn-secondary">{% trans "Cancel" %}</a>
+
+  {% if action == 'edit' and form_obj %}
+  <div style="margin-left:auto;">
+    <form method="post" action="/forms/{{ form_obj.slug }}/delete/" style="display:inline;"
+          onsubmit="return confirm('{% trans "Delete this form and all its responses? This cannot be undone." %}');">
+      {% csrf_token %}
+      <button type="submit" class="ws-btn ws-btn-danger">{% trans "Delete Form" %}</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+
+</form>
+</div>
+{% endblock %}
+
+{% block extra-js %}
+<script>
+(function () {
+  'use strict';
+
+  const FIELD_TYPES = [
+    { value: 'text',        label: 'Short Text' },
+    { value: 'textarea',    label: 'Long Text' },
+    { value: 'email',       label: 'Email' },
+    { value: 'number',      label: 'Number' },
+    { value: 'select',      label: 'Dropdown' },
+    { value: 'multiselect', label: 'Multi-Select' },
+    { value: 'checkbox',    label: 'Yes / No' },
+  ];
+  const HAS_OPTIONS = new Set(['select', 'multiselect']);
+
+  let fields = [];
+  try {
+    const raw = document.getElementById('fields-json-input').value;
+    const parsed = JSON.parse(raw || '[]');
+    fields = Array.isArray(parsed) ? parsed : [];
+  } catch (e) { fields = []; }
+
+  function uid() {
+    return 'f' + Math.random().toString(36).slice(2, 10);
+  }
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderFields() {
+    const list = document.getElementById('field-list');
+    list.innerHTML = '';
+    if (fields.length === 0) {
+      list.innerHTML = '<p class="field-empty-msg">No fields yet. Click "Add Field" to start building your form.</p>';
+      return;
+    }
+
+    fields.forEach(function (f, idx) {
+      const hasOpts = HAS_OPTIONS.has(f.type);
+
+      const typeOpts = FIELD_TYPES.map(function (t) {
+        return '<option value="' + t.value + '"' + (f.type === t.value ? ' selected' : '') + '>' + t.label + '</option>';
+      }).join('');
+
+      const row = document.createElement('div');
+      row.className = 'field-row';
+      row.dataset.idx = idx;
+
+      row.innerHTML =
+        '<span class="field-num">' + (idx + 1) + '</span>' +
+        '<select class="field-type-select" data-idx="' + idx + '">' + typeOpts + '</select>' +
+        '<input type="text" class="field-label-input" data-idx="' + idx + '"' +
+          ' placeholder="Field label" value="' + esc(f.label || '') + '">' +
+        '<label class="field-check-wrap">' +
+          '<input type="checkbox" data-idx="' + idx + '" data-key="required"' + (f.required ? ' checked' : '') + '>' +
+          ' Required</label>' +
+        '<label class="field-display-wrap" title="Mark as the display field">' +
+          '<input type="radio" name="display_field" value="' + f.id + '"' + (f.is_display_field ? ' checked' : '') + ' data-idx="' + idx + '">' +
+          ' ⭐ Display</label>' +
+        '<button type="button" class="delete-field-btn" data-idx="' + idx + '" title="Remove field">✕</button>' +
+        (hasOpts
+          ? '<div class="field-options-row">' +
+              '<span style="font-size:12px;color:var(--ws-text-muted);white-space:nowrap;">Options:</span>' +
+              '<input type="text" class="field-options-input" data-idx="' + idx + '"' +
+                ' placeholder="Option A, Option B, Option C"' +
+                ' value="' + esc((f.options || []).join(', ')) + '">' +
+            '</div>'
+          : '');
+
+      list.appendChild(row);
+    });
+
+    // Bind events after rendering
+    list.querySelectorAll('.field-type-select').forEach(function (sel) {
+      sel.addEventListener('change', function () {
+        var i = parseInt(this.dataset.idx, 10);
+        fields[i].type = this.value;
+        if (!HAS_OPTIONS.has(this.value)) delete fields[i].options;
+        renderFields();
+      });
+    });
+    list.querySelectorAll('.field-label-input').forEach(function (inp) {
+      inp.addEventListener('input', function () {
+        fields[parseInt(this.dataset.idx, 10)].label = this.value;
+      });
+    });
+    list.querySelectorAll('input[data-key="required"]').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        fields[parseInt(this.dataset.idx, 10)].required = this.checked;
+      });
+    });
+    list.querySelectorAll('input[name="display_field"]').forEach(function (rb) {
+      rb.addEventListener('change', function () {
+        var i = parseInt(this.dataset.idx, 10);
+        fields.forEach(function (f, fi) { f.is_display_field = (fi === i); });
+      });
+    });
+    list.querySelectorAll('.field-options-input').forEach(function (inp) {
+      inp.addEventListener('input', function () {
+        fields[parseInt(this.dataset.idx, 10)].options = this.value.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      });
+    });
+    list.querySelectorAll('.delete-field-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        fields.splice(parseInt(this.dataset.idx, 10), 1);
+        renderFields();
+      });
+    });
+  }
+
+  document.getElementById('add-field-btn').addEventListener('click', function () {
+    fields.push({ id: uid(), type: 'text', label: '', required: false, is_display_field: false });
+    renderFields();
+    var inputs = document.querySelectorAll('.field-label-input');
+    if (inputs.length) inputs[inputs.length - 1].focus();
+  });
+
+  // Toggles
+  function setupToggle(cbId, hiddenId, labelId, onText, offText) {
+    var cb = document.getElementById(cbId);
+    var hidden = document.getElementById(hiddenId);
+    var lbl = document.getElementById(labelId);
+    if (!cb) return;
+    cb.addEventListener('change', function () {
+      hidden.value = cb.checked ? '1' : '0';
+      lbl.textContent = cb.checked ? onText : offText;
+    });
+  }
+  setupToggle('id_accepting', 'h_is_accepting', 'accepting-label', 'Open — public can submit', 'Closed — no new submissions');
+  setupToggle('id_confirm_public', 'h_is_confirmation_public', 'confirm-public-label', 'Public — anyone can see confirmed slots', 'Private');
+
+  // Auto-slug from name (only when slug is empty)
+  var nameInput = document.getElementById('id_name');
+  var slugInput = document.getElementById('id_slug');
+  var slugEdited = slugInput.value.length > 0;
+  nameInput.addEventListener('input', function () {
+    if (!slugEdited) {
+      slugInput.value = nameInput.value.toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+  });
+  slugInput.addEventListener('input', function () { slugEdited = true; });
+
+  // Serialize on submit
+  document.getElementById('builder-form').addEventListener('submit', function () {
+    document.getElementById('fields-json-input').value = JSON.stringify(fields);
+  });
+
+  renderFields();
+}());
+</script>
+{% endblock %}
