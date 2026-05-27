@@ -133,7 +133,7 @@ class OrganizationRegistrationForm(forms.ModelForm):
             field.widget.attrs.setdefault('class', 'form-control')
 
     def clean_slug(self):
-        slug = self.cleaned_data['slug'].lower()
+        slug = self.cleaned_data['slug'].lower().replace('_', '-')
         validate_dns_safe_slug(slug)
         if Organization.objects.filter(slug__iexact=slug).exists():
             raise forms.ValidationError(_("This slug is already taken."))

@@ -3,6 +3,7 @@ from django.urls import include, path
 from django.views.i18n import JavaScriptCatalog
 
 from . import workspace_views
+from users.views import GoogleOAuthLoginGuardView
 
 app_name = 'workspace'
 handler404 = workspace_views.workspace_page_not_found
@@ -42,6 +43,7 @@ urlpatterns = [
 
     # System routes that must work on org subdomains
     path('accounts/', include('users.urls')),
+    path('accounts/google/login/', GoogleOAuthLoginGuardView.as_view(), name='google-login-guard'),
     path('i18n/', include('django.conf.urls.i18n')),
     path('jsi18n/', JavaScriptCatalog.as_view(domain="djangojs"), name='javascript-catalog'),
     path('api/', include('api.urls')),
