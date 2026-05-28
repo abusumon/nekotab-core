@@ -160,6 +160,7 @@
             <th>#</th>
             <th>{% if form_obj.display_field_id %}{% trans "Institution / Team" %}{% else %}{% trans "Entry" %}{% endif %}</th>
             <th style="text-align:right;">{% trans "Confirmed Slots" %}</th>
+            <th style="text-align:right;">{% trans "Registration" %}</th>
           </tr>
         </thead>
         <tbody>
@@ -174,6 +175,16 @@
                 <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                 {{ resp.confirmed_slots }} {% trans "slot" %}{{ resp.confirmed_slots|pluralize }}
               </span>
+            </td>
+            <td class="slots-cell">
+              {% if resp.registration_submitted %}
+                <span style="color:#10b981;font-size:13px;font-weight:600;">✓ {% trans "Registered" %}</span>
+              {% else %}
+                <a href="/forms/{{ form_obj.slug }}/register/?ref={{ resp.pk }}"
+                   style="display:inline-block;padding:5px 14px;background:#6366f1;color:#fff;border-radius:999px;font-size:12px;font-weight:600;text-decoration:none;">
+                  {% trans "Complete Registration →" %}
+                </a>
+              {% endif %}
             </td>
           </tr>
           {% endfor %}

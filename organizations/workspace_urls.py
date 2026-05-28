@@ -37,6 +37,10 @@ urlpatterns = [
     path('forms/<slug:form_slug>/toggle/', workspace_views.FormToggleView.as_view(), name='form-toggle'),
     path('forms/<slug:form_slug>/submit/', workspace_views.PublicFormSubmissionView.as_view(), name='form-submit'),
     path('forms/<slug:form_slug>/confirmed/', workspace_views.PublicFormConfirmationBoardView.as_view(), name='form-confirmed'),
+    path('forms/<slug:form_slug>/register/', workspace_views.PublicRegistrationFormView.as_view(), name='form-register'),
+    path('forms/<slug:form_slug>/registrations/', workspace_views.RegistrationListView.as_view(), name='form-registrations'),
+    path('forms/<slug:form_slug>/registrations/<int:registration_id>/confirm/', workspace_views.RegistrationConfirmView.as_view(), name='registration-confirm'),
+    path('forms/<slug:form_slug>/registrations/<int:registration_id>/reject/', workspace_views.RegistrationRejectView.as_view(), name='registration-reject'),
 
     # Nested tournament access — delegates to existing tournament URL patterns
     path('tournaments/<slug:tournament_slug>/', include('tournaments.urls')),

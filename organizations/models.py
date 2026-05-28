@@ -427,6 +427,7 @@ class OrgForm(models.Model):
     #   id (str), type (str), label (str), required (bool),
     #   options (list[str], for select/multiselect), is_display_field (bool)
     description = models.TextField(blank=True, default="", verbose_name=_("description"))
+    registration_fields = models.JSONField(default=list, blank=True, verbose_name=_("registration fields"))
     fields = models.JSONField(default=list, blank=True, verbose_name=_("fields"))
     is_accepting = models.BooleanField(
         default=False,
@@ -512,3 +513,34 @@ class OrgFormResponse(models.Model):
             val = self.data[display_id]
             return val if isinstance(val, str) else str(val)
         return f"Response #{self.pk}"
+
+class OrgRegistration(models.Model):
+    """A registration submission linked to a confirmed pre-reg response."""
+    class Status(models.TextChoices):
+        PENDING   = 'pending',   _("Pending Review")
+        CONFIRMED = 'confirmed', _("Confirmed")
+        REJECTED  = 'rejected',  _("Rejected")
+
+    pre_reg_response = models.OneToOneField(
+        OrgFormResponse,
+        on_delete=models.CASCADE,
+        related_name='registration',
+        verbose_name=_("pre-registration response"),
+    )
+    data = models.JSONField(default=dict, verbose_name=_("registration data"))
+    status = models.CharField(
+        max_length=20,
+        choices=Status.choices,
+        default=Status.PENDING,
+        verbose_name=_("status"),
+    )
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    confirmed_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("registration")
+        verbose_name_plural = _("registrations")
+        ordering = ['-submitted_at']
+
+    def __str__(self):
+        return f"Registration #{self.pk} → {self.pre_reg_response}"

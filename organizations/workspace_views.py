@@ -1002,9 +1002,16 @@ class PublicFormConfirmationBoardView(View):
         if not org:
             raise Http404
         form_obj = get_object_or_404(OrgForm, organization=org, slug=form_slug)
-        confirmed = form_obj.responses.filter(
+        confirmed_qs = form_obj.responses.filter(
             status=OrgFormResponse.Status.CONFIRMED,
         ).order_by('confirmed_at')
+        from organizations.models import OrgRegistration
+        reg_ids = set(OrgRegistration.objects.filter(
+            pre_reg_response__in=confirmed_qs
+        ).values_list('pre_reg_response_id', flat=True))
+        confirmed = list(confirmed_qs)
+        for r in confirmed:
+            r.registration_submitted = r.pk in reg_ids
         pending = form_obj.responses.filter(
             status=OrgFormResponse.Status.WAITING,
         ).order_by('submitted_at')
@@ -1014,3 +1021,160 @@ class PublicFormConfirmationBoardView(View):
             'confirmed_responses': confirmed,
             'pending_responses': pending,
         })
+
+# =============================================================================
+# Registration Views
+# =============================================================================
+
+DEFAULT_REGISTRATION_FIELDS = [
+    {'id': 'reg_name',        'label': 'Full Name',           'type': 'text',     'required': True,  'locked': False},
+    {'id': 'reg_email',       'label': 'Email',               'type': 'email',    'required': True,  'locked': False},
+    {'id': 'reg_phone',       'label': 'Phone',               'type': 'text',     'required': True,  'locked': False},
+    {'id': 'reg_institution', 'label': 'Institution',         'type': 'text',     'required': True,  'locked': True},
+    {'id': 'reg_club',        'label': 'Club / Society Name', 'type': 'text',     'required': False, 'locked': False},
+    {'id': 'reg_payment',     'label': 'Payment Method',      'type': 'select',   'required': True,  'locked': False,
+     'options': ['bKash', 'Nagad', 'Bank Transfer', 'Other']},
+    {'id': 'reg_txn_id',      'label': 'Transaction ID',      'type': 'text',     'required': True,  'locked': False},
+    {'id': 'reg_slots_paid',  'label': 'Slots Paid For',      'type': 'number',   'required': True,  'locked': False},
+    {'id': 'reg_accommodation','label': 'Accommodation Needed','type': 'checkbox', 'required': False, 'locked': False},
+    {'id': 'reg_notes',       'label': 'Additional Notes',    'type': 'textarea', 'required': False, 'locked': False},
+]
+
+
+class PublicRegistrationFormView(View):
+    """Public registration form linked to a confirmed pre-reg response."""
+    template_name = 'organizations/workspace/forms/public_register.html'
+
+    def _resolve(self, request, form_slug, ref):
+        org = getattr(request, 'tenant_organization', None)
+        if not org:
+            raise Http404
+        form_obj = get_object_or_404(OrgForm, organization=org, slug=form_slug)
+        try:
+            response = OrgFormResponse.objects.get(
+                pk=int(ref), form=form_obj,
+                status=OrgFormResponse.Status.CONFIRMED,
+            )
+        except (OrgFormResponse.DoesNotExist, ValueError, TypeError):
+            return org, form_obj, None
+        return org, form_obj, response
+
+    def _get_fields(self, form_obj):
+        """Return registration fields — custom if set, else defaults."""
+        return form_obj.registration_fields or DEFAULT_REGISTRATION_FIELDS
+
+    def get(self, request, form_slug, *args, **kwargs):
+        ref = request.GET.get('ref', '')
+        org, form_obj, pre_reg = self._resolve(request, form_slug, ref)
+        already = None
+        if pre_reg:
+            try:
+                already = pre_reg.registration
+            except Exception:
+                already = None
+        return render(request, self.template_name, {
+            'organization': org,
+            'form_obj': form_obj,
+            'pre_reg': pre_reg,
+            'ref': ref,
+            'fields': self._get_fields(form_obj),
+            'already_submitted': already is not None,
+        })
+
+    def post(self, request, form_slug, *args, **kwargs):
+        from organizations.models import OrgRegistration
+        ref = request.POST.get('ref', '')
+        org, form_obj, pre_reg = self._resolve(request, form_slug, ref)
+        if not pre_reg:
+            raise Http404
+        # Prevent duplicate registration
+        try:
+            existing = pre_reg.registration
+            return render(request, self.template_name, {
+                'organization': org, 'form_obj': form_obj,
+                'pre_reg': pre_reg, 'ref': ref,
+                'fields': self._get_fields(form_obj),
+                'already_submitted': True,
+            })
+        except Exception:
+            pass
+        # Collect data
+        fields = self._get_fields(form_obj)
+        data = {}
+        errors = {}
+        for f in fields:
+            fid = f['id']
+            ftype = f.get('type', 'text')
+            val = request.POST.get(fid, '').strip()
+            # Pre-filled locked fields
+            if fid == 'reg_institution':
+                val = pre_reg.get_display_value()
+            if f.get('required') and not val and ftype != 'checkbox':
+                errors[fid] = f'{f["label"]} is required.'
+            data[fid] = val if ftype != 'checkbox' else (fid in request.POST)
+        if errors:
+            return render(request, self.template_name, {
+                'organization': org, 'form_obj': form_obj,
+                'pre_reg': pre_reg, 'ref': ref,
+                'fields': fields, 'errors': errors, 'post_data': data,
+            })
+        OrgRegistration.objects.create(pre_reg_response=pre_reg, data=data)
+        return render(request, self.template_name, {
+            'organization': org, 'form_obj': form_obj,
+            'pre_reg': pre_reg, 'ref': ref,
+            'fields': fields, 'submitted': True,
+        })
+
+
+class RegistrationListView(WorkspaceAdminMixin, View):
+    """Admin view listing all registrations for a form."""
+    template_name = 'organizations/workspace/forms/registrations.html'
+
+    def get(self, request, form_slug, *args, **kwargs):
+        from organizations.models import OrgRegistration
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        status_filter = request.GET.get('status', 'pending')
+        qs = OrgRegistration.objects.filter(
+            pre_reg_response__form=form_obj,
+        ).select_related('pre_reg_response')
+        if status_filter == 'confirmed':
+            qs = qs.filter(status=OrgRegistration.Status.CONFIRMED)
+        elif status_filter == 'rejected':
+            qs = qs.filter(status=OrgRegistration.Status.REJECTED)
+        else:
+            qs = qs.filter(status=OrgRegistration.Status.PENDING)
+        return render(request, self.template_name, {
+            'organization': self.organization,
+            'membership': self.membership,
+            'active_tab': 'forms',
+            'form_obj': form_obj,
+            'registrations': qs,
+            'status_filter': status_filter,
+            'pending_count': OrgRegistration.objects.filter(pre_reg_response__form=form_obj, status=OrgRegistration.Status.PENDING).count(),
+            'confirmed_count': OrgRegistration.objects.filter(pre_reg_response__form=form_obj, status=OrgRegistration.Status.CONFIRMED).count(),
+            'rejected_count': OrgRegistration.objects.filter(pre_reg_response__form=form_obj, status=OrgRegistration.Status.REJECTED).count(),
+        })
+
+
+class RegistrationConfirmView(WorkspaceAdminMixin, View):
+    """Confirm a registration."""
+    def post(self, request, form_slug, registration_id, *args, **kwargs):
+        from organizations.models import OrgRegistration
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        reg = get_object_or_404(OrgRegistration, pk=registration_id, pre_reg_response__form=form_obj)
+        reg.status = OrgRegistration.Status.CONFIRMED
+        reg.confirmed_at = timezone.now()
+        reg.save()
+        return redirect(f'/forms/{form_slug}/registrations/?status=pending')
+
+
+class RegistrationRejectView(WorkspaceAdminMixin, View):
+    """Reject a registration."""
+    def post(self, request, form_slug, registration_id, *args, **kwargs):
+        from organizations.models import OrgRegistration
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        reg = get_object_or_404(OrgRegistration, pk=registration_id, pre_reg_response__form=form_obj)
+        reg.status = OrgRegistration.Status.REJECTED
+        reg.confirmed_at = None
+        reg.save()
+        return redirect(f'/forms/{form_slug}/registrations/?status=pending')
