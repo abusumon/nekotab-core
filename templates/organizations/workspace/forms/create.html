@@ -196,6 +196,11 @@
       {% endfor %}
     </select>
   </div>
+  <div class="ws-form-group">
+    <label class="ws-form-label" for="id_description">{% trans "Form Description" %} <span style="font-size:11px;color:var(--ws-text-muted);font-weight:400;">{% trans "Shown at the top of the public form" %}</span></label>
+    <textarea id="id_description" name="description" class="ws-form-control" rows="4"
+              placeholder="Describe your form — event details, instructions, deadlines, payment info, etc."              style="resize:vertical;">{% if form_obj %}{{ form_obj.description }}{% endif %}</textarea>
+  </div>
   <div class="row">
     <div class="col-md-6">
       <div class="ws-form-group">

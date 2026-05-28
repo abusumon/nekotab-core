@@ -426,6 +426,7 @@ class OrgForm(models.Model):
     # Ordered list of field definitions. Each entry is a dict with keys:
     #   id (str), type (str), label (str), required (bool),
     #   options (list[str], for select/multiselect), is_display_field (bool)
+    description = models.TextField(blank=True, default="", verbose_name=_("description"))
     fields = models.JSONField(default=list, blank=True, verbose_name=_("fields"))
     is_accepting = models.BooleanField(
         default=False,

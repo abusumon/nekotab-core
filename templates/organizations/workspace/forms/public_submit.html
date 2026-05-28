@@ -123,6 +123,15 @@
   </div>
 
   {% else %}
+  {% if form_obj.description %}
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:4px solid #6366f1;border-radius:12px;padding:24px 28px;margin-bottom:24px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <span style="font-size:18px;">📋</span>
+      <span style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#6366f1;">{% trans "About This Form" %}</span>
+    </div>
+    <div style="font-size:14px;color:#374151;line-height:1.75;white-space:pre-wrap;">{{ form_obj.description }}</div>
+  </div>
+  {% endif %}
   <div class="form-card">
     <form method="post">
       {% csrf_token %}

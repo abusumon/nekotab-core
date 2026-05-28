@@ -735,6 +735,8 @@ class FormCreateView(WorkspaceAdminMixin, View):
         category = request.POST.get('category', OrgForm.Category.OTHER)
         is_accepting = request.POST.get('is_accepting') == '1'
         is_confirmation_public = request.POST.get('is_confirmation_public') == '1'
+        description = request.POST.get('description', '').strip()
+        description = request.POST.get('description', '').strip()
         fields_json = request.POST.get('fields_json', '[]').strip()
 
         errors = {}
@@ -804,6 +806,8 @@ class FormBuilderView(WorkspaceAdminMixin, View):
         category = request.POST.get('category', form_obj.category)
         is_accepting = request.POST.get('is_accepting') == '1'
         is_confirmation_public = request.POST.get('is_confirmation_public') == '1'
+        description = request.POST.get('description', '').strip()
+        description = request.POST.get('description', '').strip()
         fields_json = request.POST.get('fields_json', '[]').strip()
 
         errors = {}
@@ -833,6 +837,7 @@ class FormBuilderView(WorkspaceAdminMixin, View):
         form_obj.name = name
         form_obj.slug = new_slug
         form_obj.category = category
+        form_obj.description = description
         form_obj.fields = fields_data
         form_obj.is_accepting = is_accepting
         form_obj.is_confirmation_public = is_confirmation_public
