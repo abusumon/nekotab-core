@@ -143,6 +143,9 @@
   <a href="?status=confirmed" class="filter-tab {% if status_filter == 'confirmed' %}active{% endif %}">
     {% trans "Confirmed" %} <span style="opacity:.7;">({{ confirmed_count }})</span>
   </a>
+  <a href="?status=waiting" class="filter-tab {% if status_filter == 'waiting' %}active{% endif %}">
+    {% trans "Waiting" %} <span style="opacity:.7;">({{ waiting_count }})</span>
+  </a>
 </div>
 
 <!-- Response table -->
@@ -183,6 +186,8 @@
             <span class="confirmed-chip">
               ✓ {{ resp.confirmed_slots }} {% trans "slot" %}{{ resp.confirmed_slots|pluralize }}
             </span>
+          {% elif resp.status == 'waiting' %}
+            <span class="ws-badge" style="background:rgba(245,158,11,.15);color:#f59e0b;border:1px solid rgba(245,158,11,.3);">⏳ {% trans "Waiting" %}</span>
           {% else %}
             <span class="ws-badge ws-badge-inactive">{% trans "Pending" %}</span>
           {% endif %}
@@ -196,6 +201,15 @@
                 {% csrf_token %}
                 <input type="number" name="slots" class="slots-input" value="1" min="1" max="99" title="Slots to confirm">
                 <button type="submit" class="ws-btn ws-btn-primary ws-btn-sm">{% trans "Confirm" %}</button>
+              </form>
+              <form method="post" action="/forms/{{ form_obj.slug }}/waiting/{{ resp.pk }}/" style="margin:0;">
+                {% csrf_token %}
+                <button type="submit" class="ws-btn ws-btn-secondary ws-btn-sm" style="background:#92400e;border-color:#92400e;color:#fde68a;">{% trans "Waiting" %}</button>
+              </form>
+            {% elif resp.status == 'waiting' %}
+              <form method="post" action="/forms/{{ form_obj.slug }}/unconfirm/{{ resp.pk }}/" style="margin:0;">
+                {% csrf_token %}
+                <button type="submit" class="ws-btn ws-btn-secondary ws-btn-sm">{% trans "Undo" %}</button>
               </form>
             {% else %}
               <form method="post" action="/forms/{{ form_obj.slug }}/unconfirm/{{ resp.pk }}/" style="margin:0;">

@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ form_obj.name }} — {% trans "Confirmed Participants" %} — {{ organization.name }}</title>
+  <link rel="icon" type="image/png" href="/static/img/favicon.png">
+  <link rel="shortcut icon" href="/static/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -12,8 +14,6 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #0f0f1a; color: #e5e7eb; min-height: 100vh;
     }
-
-    /* ── Header ── */
     .page-header {
       background: linear-gradient(135deg, #1e1e2d 0%, #1a1a3e 100%);
       border-bottom: 1px solid #2d2d4e;
@@ -37,10 +37,7 @@
       background: rgba(99,102,241,.2); color: #a5b4fc;
       border: 1px solid rgba(99,102,241,.3);
     }
-
-    /* ── Main ── */
     .page-body { max-width: 760px; margin: 0 auto; padding: 40px 20px 60px; }
-
     .summary-row {
       display: flex; gap: 16px; justify-content: center;
       margin-bottom: 36px; flex-wrap: wrap;
@@ -51,12 +48,18 @@
       min-width: 120px;
     }
     .summary-chip-val { font-size: 28px; font-weight: 800; color: #818cf8; }
+    .summary-chip-val.pending-val { color: #f59e0b; }
     .summary-chip-label { font-size: 12px; color: #6b7280; margin-top: 4px; }
-
-    /* ── Table ── */
+    .section-heading {
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; margin-bottom: 12px; margin-top: 32px;
+      padding-left: 4px;
+    }
+    .section-heading.confirmed { color: #34d399; }
+    .section-heading.waiting { color: #f59e0b; }
     .conf-table-wrap {
       background: #1e1e2d; border: 1px solid #2d2d4e;
-      border-radius: 16px; overflow: hidden;
+      border-radius: 16px; overflow: hidden; margin-bottom: 8px;
     }
     .conf-table { width: 100%; border-collapse: collapse; }
     .conf-table thead tr {
@@ -75,21 +78,14 @@
     .conf-table tbody tr:last-child { border-bottom: none; }
     .conf-table tbody tr:hover { background: #252540; }
     .conf-table tbody td { padding: 18px 20px; vertical-align: middle; }
-
     .rank-cell {
       font-size: 13px; font-weight: 700; color: #4b5563; width: 48px;
     }
     .rank-1 { color: #f59e0b; }
     .rank-2 { color: #9ca3af; }
     .rank-3 { color: #b45309; }
-
-    .name-cell {
-      font-size: 15px; font-weight: 600; color: #f3f4f6;
-    }
-
-    .slots-cell {
-      text-align: right; white-space: nowrap;
-    }
+    .name-cell { font-size: 15px; font-weight: 600; color: #f3f4f6; }
+    .slots-cell { text-align: right; white-space: nowrap; }
     .slots-pill {
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(16,185,129,.12); color: #34d399;
@@ -97,8 +93,13 @@
       border-radius: 999px; padding: 5px 14px;
       font-size: 13px; font-weight: 600;
     }
-
-    /* ── Empty / Private ── */
+    .waiting-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(245,158,11,.12); color: #f59e0b;
+      border: 1px solid rgba(245,158,11,.25);
+      border-radius: 999px; padding: 5px 14px;
+      font-size: 13px; font-weight: 600;
+    }
     .state-box {
       text-align: center; padding: 60px 20px;
       background: #1e1e2d; border: 1px solid #2d2d4e;
@@ -107,8 +108,6 @@
     .state-icon { font-size: 44px; margin-bottom: 14px; }
     .state-title { font-size: 20px; font-weight: 700; color: #e5e7eb; margin-bottom: 8px; }
     .state-msg { font-size: 14px; color: #6b7280; }
-
-    /* ── Footer ── */
     .page-footer {
       text-align: center; padding: 24px;
       font-size: 12px; color: #374151;
@@ -122,7 +121,7 @@
 <div class="page-header">
   <div class="org-name">{{ organization.name }}</div>
   <h1 class="form-title">{{ form_obj.name }}</h1>
-  <p class="form-subtitle">{% trans "Confirmed Participants" %}</p>
+  <p class="form-subtitle">{% trans "Participants" %}</p>
   <span class="category-badge">{{ form_obj.get_category_display }}</span>
 </div>
 
@@ -135,8 +134,8 @@
     <p class="state-msg">{% trans "The confirmation board for this form has not been published yet." %}</p>
   </div>
 
-  {% elif confirmed_responses %}
-    {% with total_slots=0 %}
+  {% else %}
+
     <div class="summary-row">
       <div class="summary-chip">
         <div class="summary-chip-val">{{ confirmed_responses.count }}</div>
@@ -146,9 +145,14 @@
         <div class="summary-chip-val" id="total-slots-val">—</div>
         <div class="summary-chip-label">{% trans "Total Slots" %}</div>
       </div>
+      <div class="summary-chip">
+        <div class="summary-chip-val pending-val">{{ pending_responses.count }}</div>
+        <div class="summary-chip-label">{% trans "Waiting" %}</div>
+      </div>
     </div>
-    {% endwith %}
 
+    {% if confirmed_responses %}
+    <div class="section-heading confirmed">✓ {% trans "Confirmed" %}</div>
     <div class="conf-table-wrap">
       <table class="conf-table">
         <thead>
@@ -176,13 +180,44 @@
         </tbody>
       </table>
     </div>
+    {% else %}
+    <div class="section-heading confirmed">✓ {% trans "Confirmed" %}</div>
+    <div class="state-box">
+      <div class="state-icon">⏳</div>
+      <div class="state-title">{% trans "No Confirmations Yet" %}</div>
+      <p class="state-msg">{% trans "Slot confirmations will appear here once the organizers review submissions." %}</p>
+    </div>
+    {% endif %}
 
-  {% else %}
-  <div class="state-box">
-    <div class="state-icon">⏳</div>
-    <div class="state-title">{% trans "No Confirmations Yet" %}</div>
-    <p class="state-msg">{% trans "Slot confirmations will appear here once the organizers review submissions." %}</p>
-  </div>
+    {% if pending_responses %}
+    <div class="section-heading waiting">⏳ {% trans "Waiting List" %}</div>
+    <div class="conf-table-wrap">
+      <table class="conf-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>{% if form_obj.display_field_id %}{% trans "Institution / Team" %}{% else %}{% trans "Entry" %}{% endif %}</th>
+            <th style="text-align:right;">{% trans "Requested Slots" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for resp in pending_responses %}
+          <tr>
+            <td class="rank-cell">{{ forloop.counter }}</td>
+            <td class="name-cell">{{ resp.get_display_value }}</td>
+            <td class="slots-cell">
+              <span class="waiting-pill">
+                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                {{ resp.confirmed_slots }} {% trans "slot" %}{{ resp.confirmed_slots|pluralize }}
+              </span>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
   {% endif %}
 
 </div>
@@ -192,9 +227,8 @@
 </div>
 
 <script>
-// Sum up slots for the total chip
 (function () {
-  var rows = document.querySelectorAll('.conf-table tbody tr');
+  var rows = document.querySelectorAll('.conf-table-wrap:first-of-type .conf-table tbody tr');
   var total = 0;
   rows.forEach(function (row) {
     var pill = row.querySelector('.slots-pill');
@@ -203,7 +237,7 @@
     if (m) total += parseInt(m[1], 10);
   });
   var el = document.getElementById('total-slots-val');
-  if (el) el.textContent = total;
+  if (el) el.textContent = total || '0';
 }());
 </script>
 

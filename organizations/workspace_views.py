@@ -852,6 +852,8 @@ class FormResponseListView(WorkspaceAccessMixin, View):
             qs = qs.filter(status=OrgFormResponse.Status.PENDING)
         elif status_filter == 'confirmed':
             qs = qs.filter(status=OrgFormResponse.Status.CONFIRMED)
+        elif status_filter == 'waiting':
+            qs = qs.filter(status=OrgFormResponse.Status.WAITING)
 
         responses = list(qs)
         field_defs = form_obj.fields or []
@@ -868,6 +870,7 @@ class FormResponseListView(WorkspaceAccessMixin, View):
             'resp_data': resp_data,
             'pending_count': form_obj.responses.filter(status=OrgFormResponse.Status.PENDING).count(),
             'confirmed_count': form_obj.responses.filter(status=OrgFormResponse.Status.CONFIRMED).count(),
+            'waiting_count': form_obj.responses.filter(status=OrgFormResponse.Status.WAITING).count(),
             'total_count': form_obj.responses.count(),
         })
 
@@ -897,6 +900,16 @@ class FormUnconfirmView(WorkspaceAdminMixin, View):
         resp.save()
         return redirect(f'/forms/{form_slug}/responses/?status=confirmed')
 
+
+class FormWaitingView(WorkspaceAdminMixin, View):
+    def post(self, request, form_slug, response_id, *args, **kwargs):
+        form_obj = get_object_or_404(OrgForm, organization=self.organization, slug=form_slug)
+        resp = get_object_or_404(OrgFormResponse, form=form_obj, pk=response_id)
+        resp.status = OrgFormResponse.Status.WAITING
+        resp.confirmed_slots = 0
+        resp.confirmed_at = None
+        resp.save()
+        return redirect(f'/forms/{form_slug}/responses/?status=pending')
 
 class FormDeleteResponseView(WorkspaceAdminMixin, View):
     def post(self, request, form_slug, response_id, *args, **kwargs):
@@ -959,6 +972,8 @@ class PublicFormSubmissionView(View):
         for field in (form_obj.fields or []):
             fid = field.get('id', '')
             ftype = field.get('type', 'text')
+            if ftype == 'description':
+                continue
             if ftype == 'multiselect':
                 data[fid] = request.POST.getlist(f'field_{fid}')
             elif ftype == 'checkbox':
@@ -985,8 +1000,12 @@ class PublicFormConfirmationBoardView(View):
         confirmed = form_obj.responses.filter(
             status=OrgFormResponse.Status.CONFIRMED,
         ).order_by('confirmed_at')
+        pending = form_obj.responses.filter(
+            status=OrgFormResponse.Status.WAITING,
+        ).order_by('submitted_at')
         return render(request, self.template_name, {
             'organization': org,
             'form_obj': form_obj,
             'confirmed_responses': confirmed,
+            'pending_responses': pending,
         })

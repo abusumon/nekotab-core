@@ -474,6 +474,7 @@ class OrgFormResponse(models.Model):
     class Status(models.TextChoices):
         PENDING   = 'pending',   _("Pending")
         CONFIRMED = 'confirmed', _("Confirmed")
+        WAITING   = 'waiting',   _("Waiting")
 
     form = models.ForeignKey(
         OrgForm,
