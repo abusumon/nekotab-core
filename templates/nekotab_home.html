@@ -1203,5 +1203,119 @@
   <button id="em-back-to-top" class="em-back-to-top" aria-label="Back to top" title="Back to top">
     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
+
+
+<!-- CALICOTAB IMPORT BAR + MODAL -->
+<div id="calico-import-bar">
+  <div class="calico-bar-inner">
+    <div class="calico-bar-text">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+      <span>Switching from CalICOTab? Import your tournaments instantly.</span>
+    </div>
+    <button class="calico-bar-btn" onclick="openCalicoModal()">Import &rarr;</button>
+  </div>
+</div>
+<div id="calico-modal-overlay" onclick="closeCalicoModal()"></div>
+<div id="calico-modal" role="dialog" aria-modal="true">
+  <button class="calico-modal-close" onclick="closeCalicoModal()">&#x2715;</button>
+  <div class="calico-modal-icon">
+    <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+  </div>
+  <h2>Import from CalICOTab</h2>
+  <p class="calico-modal-sub">Upload your tournament&#39;s <strong>.xml</strong> export. Teams, adjudicators, venues, ballots and motions all come across.</p>
+  <form id="calico-import-form" method="post" action="/archive/import-from-calicotab/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label class="calico-file-label" for="calico-file-input">
+      <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414A1 1 0 0119 9.414V19a2 2 0 01-2 2z"/></svg>
+      <span id="calico-file-name">Tap to choose .xml file</span>
+      <input type="file" id="calico-file-input" name="xml_file" accept=".xml" required onchange="document.getElementById('calico-file-name').textContent=this.files[0]?this.files[0].name:'Tap to choose .xml file'">
+    </label>
+    <div class="calico-slug-wrap">
+      <label class="calico-slug-label" for="calico-slug-input">
+        Custom slug <span class="calico-slug-hint">(optional &mdash; leave blank to use tournament name)</span>
+      </label>
+      <div class="calico-slug-row">
+        <span class="calico-slug-prefix">nekotab.app/</span>
+        <input type="text" id="calico-slug-input" name="slug_override"
+          placeholder="my-tournament-2026"
+          pattern="[a-zA-Z0-9-]+" title="Letters, numbers and hyphens only"
+          autocomplete="off" spellcheck="false">
+      </div>
+      <p class="calico-slug-note">Only needed if you get a &ldquo;slug already exists&rdquo; error.</p>
+    </div>
+    <ul class="calico-checklist">
+      <li>&#10003; Teams &amp; speakers</li>
+      <li>&#10003; Adjudicators &amp; panels</li>
+      <li>&#10003; Venues &amp; rounds</li>
+      <li>&#10003; Ballots &amp; scores</li>
+      <li>&#10003; Motions</li>
+    </ul>
+    <button type="submit" class="calico-submit-btn" id="calico-submit-btn">Import Tournament</button>
+    <p class="calico-note">You&#39;ll be taken to your tournament dashboard after import.</p>
+  </form>
+</div>
+<style>
+/* ── Bar ── */
+#calico-import-bar{position:fixed;bottom:0;left:0;right:0;background:#1e1b4b;border-top:1px solid #3730a3;z-index:900;padding:12px 16px}
+.calico-bar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.calico-bar-text{display:flex;align-items:center;gap:8px;color:#c7d2fe;font-family:'Inter',sans-serif;font-size:13px;flex:1;min-width:0}
+.calico-bar-text span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.calico-bar-text svg{flex-shrink:0;color:#818cf8}
+.calico-bar-btn{background:#6366f1;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s;flex-shrink:0}
+.calico-bar-btn:hover{background:#4f46e5}
+/* ── Overlay ── */
+#calico-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000}
+/* ── Modal ── */
+#calico-modal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:16px;padding:32px 28px 24px;width:92%;max-width:480px;max-height:90vh;overflow-y:auto;z-index:1001;box-shadow:0 24px 60px rgba(0,0,0,.25);font-family:'Inter',sans-serif}
+.calico-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:18px;color:#9ca3af;cursor:pointer;line-height:1;padding:4px}
+.calico-modal-close:hover{color:#374151}
+.calico-modal-icon{width:48px;height:48px;background:#eef2ff;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+#calico-modal h2{margin:0 0 6px;font-size:18px;font-weight:700;color:#111827}
+.calico-modal-sub{color:#6b7280;font-size:13px;line-height:1.6;margin:0 0 20px}
+/* ── File drop ── */
+.calico-file-label{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px dashed #c7d2fe;border-radius:10px;padding:20px 12px;cursor:pointer;transition:border-color .15s,background .15s;color:#6366f1;margin-bottom:16px;text-align:center}
+.calico-file-label:hover,.calico-file-label:focus-within{border-color:#6366f1;background:#f5f3ff}
+.calico-file-label input{display:none}
+#calico-file-name{font-size:12px;color:#6b7280;font-weight:500}
+/* ── Slug field ── */
+.calico-slug-wrap{margin-bottom:18px}
+.calico-slug-label{display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:6px}
+.calico-slug-hint{font-weight:400;color:#9ca3af}
+.calico-slug-row{display:flex;align-items:center;border:1px solid #d1d5db;border-radius:8px;overflow:hidden;background:#f9fafb}
+.calico-slug-prefix{padding:8px 10px;font-size:12px;color:#9ca3af;background:#f3f4f6;border-right:1px solid #d1d5db;white-space:nowrap;font-family:'Inter',sans-serif}
+.calico-slug-row input{flex:1;border:none;background:transparent;padding:8px 10px;font-size:13px;font-family:'Inter',sans-serif;color:#111827;outline:none;min-width:0}
+.calico-slug-note{font-size:11px;color:#9ca3af;margin:4px 0 0}
+/* ── Checklist ── */
+.calico-checklist{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:5px 12px}
+.calico-checklist li{font-size:12px;color:#374151;font-weight:500}
+/* ── Submit ── */
+.calico-submit-btn{width:100%;background:#6366f1;color:#fff;border:none;border-radius:10px;padding:12px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .15s;margin-bottom:8px}
+.calico-submit-btn:hover{background:#4f46e5}
+.calico-submit-btn:disabled{background:#a5b4fc;cursor:not-allowed}
+.calico-note{text-align:center;font-size:11px;color:#9ca3af;margin:0}
+/* ── Mobile overrides ── */
+@media(max-width:600px){
+  #calico-modal{top:auto;bottom:0;left:0;right:0;transform:none;width:100%;max-width:100%;border-radius:16px 16px 0 0;padding:24px 20px 32px;max-height:85vh}
+  .calico-bar-text span{font-size:12px}
+  .calico-slug-prefix{font-size:11px;padding:8px 7px}
+}
+</style>
+<script>
+function openCalicoModal(){
+  var m=document.getElementById('calico-modal'),o=document.getElementById('calico-modal-overlay');
+  m.style.display='block';o.style.display='block';document.body.style.overflow='hidden';
+}
+function closeCalicoModal(){
+  document.getElementById('calico-modal').style.display='none';
+  document.getElementById('calico-modal-overlay').style.display='none';
+  document.body.style.overflow='';
+}
+document.getElementById('calico-import-form').addEventListener('submit',function(){
+  var b=document.getElementById('calico-submit-btn');
+  b.disabled=true;b.textContent='Importing… please wait';
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCalicoModal();});
+</script>
+
 </body>
 </html>

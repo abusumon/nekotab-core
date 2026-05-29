@@ -3,6 +3,7 @@ from xml.etree import ElementTree
 
 from defusedxml.ElementTree import fromstring
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core import management
 from django.forms import modelformset_factory
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
@@ -291,3 +292,62 @@ class ExportArchiveAllView(AdministratorMixin, TournamentMixin, View):
 
     def get_xml(self):
         return ElementTree.tostring(Exporter(self.tournament).create_all())
+
+
+
+class HomeImportCalICOTabView(LoginRequiredMixin, View):
+    """XML file upload from the homepage CalICOTab import box.
+    Supports optional slug override and pre-checks for slug conflicts."""
+
+    def post(self, request, *args, **kwargs):
+        from django.template.defaultfilters import slugify as django_slugify
+        xml_file = request.FILES.get('xml_file')
+        slug_override = request.POST.get('slug_override', '').strip()
+
+        if not xml_file:
+            messages.error(request, _("No file uploaded. Please select an XML file."))
+            return redirect('tabbycat-index')
+        if not xml_file.name.endswith('.xml'):
+            messages.error(request, _("Invalid file type. Please upload a .xml file."))
+            return redirect('tabbycat-index')
+
+        try:
+            xml_bytes = xml_file.read()
+            root = fromstring(xml_bytes)
+        except Exception as e:
+            messages.error(request, _("Could not parse XML file: %s") % str(e))
+            return redirect('tabbycat-index')
+
+        # Determine intended slug
+        tournament_name = root.get('name', 'imported-tournament')
+        if slug_override:
+            intended_slug = django_slugify(slug_override)
+            if not intended_slug:
+                messages.error(request, _("Invalid slug. Use letters, numbers and hyphens only."))
+                return redirect('tabbycat-index')
+        else:
+            intended_slug = django_slugify(tournament_name)
+
+        # Pre-check slug conflict
+        if Tournament.objects.filter(slug=intended_slug).exists():
+            messages.error(request, _(
+                "A tournament with slug \"%(slug)s\" already exists. "
+                "Please choose a different slug in the import form."
+            ) % {'slug': intended_slug})
+            return redirect('tabbycat-index')
+
+        try:
+            importer = Importer(root)
+            importer.import_tournament()
+        except Exception as e:
+            messages.error(request, _("Import failed: %s") % str(e))
+            logger.exception("CalICOTab XML import error")
+            return redirect('tabbycat-index')
+
+        # Apply slug override after creation
+        if slug_override and importer.tournament.slug != intended_slug:
+            importer.tournament.slug = intended_slug
+            importer.tournament.save(update_fields=['slug'])
+
+        messages.success(request, _("Tournament imported successfully! Welcome to NekoTab."))
+        return redirect_tournament('tournament-admin-home', importer.tournament)

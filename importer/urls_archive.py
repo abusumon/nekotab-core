@@ -8,4 +8,9 @@ urlpatterns = [
         views.TournamentImportArchiveView.as_view(),
         name='importer-archive'),
 
+
+    path('import-from-calicotab/',
+        views.HomeImportCalICOTabView.as_view(),
+        name='home-import-calicotab'),
+
 ]
