@@ -1,3 +1,4 @@
+from .core import *
 import logging
 from os import environ
 from urllib.parse import urlparse
