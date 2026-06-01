@@ -31,16 +31,36 @@ class InviteUserForm(PasswordResetForm):
         self.fields['role'] = forms.ModelChoiceField(queryset=tournament.group_set.all())
 
     def get_users(self, email):
-        user, created = get_user_model().objects.get_or_create(
-            email=email,
-            defaults={
-                'username': email.split("@")[0],
-            },
-        )
+        import uuid as _uuid
+        User = get_user_model()
+
+        # Case-insensitive lookup so pre-existing users are always found.
+        user = User.objects.filter(email__iexact=email).first()
+        if user is None:
+            # Generate a unique username to avoid IntegrityError collisions.
+            base = email.split("@")[0]
+            username = base
+            if User.objects.filter(username__iexact=username).exists():
+                username = "%s_%s" % (base, str(_uuid.uuid4())[:8])
+            user = User.objects.create_user(
+                username=username,
+                email=email,
+                password=None,          # unusable password — must use invite link
+                is_active=False,        # activated when they accept the invite
+            )
+
         Membership.objects.get_or_create(
             user=user,
             group=self.cleaned_data['role'],
         )
+
+        # For already-active users the password-reset token becomes stale the
+        # moment they next log in, so the AcceptInvitation link would 404.
+        # Return an empty list to skip the token email; the form_valid() caller
+        # will show a success message instead and the user already has access.
+        if user.is_active and user.has_usable_password():
+            self._invited_existing_user = user
+            return []
 
         return [user]
 

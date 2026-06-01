@@ -58,7 +58,8 @@ def _user_can_admin_any_tournament(user):
 
     from django.db.models import Q
     from organizations.models import OrganizationMembership
-    from tournaments.models import Tournament
+    from tournaments.models import Tournament, TournamentStaffMembership
+    from users.models import Membership
 
     org_admin_ids = OrganizationMembership.objects.filter(
         user=user,
@@ -69,6 +70,13 @@ def _user_can_admin_any_tournament(user):
     result = Tournament.objects.filter(
         Q(owner=user) | Q(organization_id__in=org_admin_ids),
     ).exists()
+
+    # Also allow users with a tournament staff membership (tab director etc.)
+    # or any group membership (old permission system).
+    if not result:
+        result = TournamentStaffMembership.objects.filter(user=user).exists()
+    if not result:
+        result = Membership.objects.filter(user=user).exists()
 
     # Cache on user object (lives only for the current request)
     user._nekotab_can_admin_any = result

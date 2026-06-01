@@ -149,6 +149,36 @@ class InviteUserView(LogActionMixin, AdministratorMixin, TournamentMixin, Passwo
     subject_template_name = 'account_invitation_subject.txt'
     email_template_name = 'account_invitation_email.html'
 
+    def test_func(self):
+        user = self.request.user
+        if not user.is_authenticated:
+            return False
+        if user.is_superuser:
+            return True
+        # Tournament owner
+        if hasattr(self.tournament, 'owner_id') and self.tournament.owner_id == user.pk:
+            return True
+        # Org OWNER/ADMIN
+        from organizations.models import OrganizationMembership
+        if hasattr(self.tournament, 'organization_id') and self.tournament.organization_id:
+            if OrganizationMembership.objects.filter(
+                user=user,
+                organization_id=self.tournament.organization_id,
+                role__in=[OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
+            ).exists():
+                return True
+        # Tab director (new staff membership system)
+        from tournaments.models import TournamentStaffMembership
+        if TournamentStaffMembership.objects.filter(
+            tournament=self.tournament,
+            user=user,
+            role=TournamentStaffMembership.Role.TAB_DIRECTOR,
+        ).exists():
+            return True
+        # Tab director (old group/membership system) — any group membership for this tournament
+        from users.models import Membership
+        return Membership.objects.filter(user=user, group__tournament=self.tournament).exists()
+
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['tournament'] = self.tournament
@@ -163,7 +193,15 @@ class InviteUserView(LogActionMixin, AdministratorMixin, TournamentMixin, Passwo
             use_https=self.request.is_secure(),
             request=self.request,
         )
-        messages.success(self.request, _("Successfully invited user to create an account for the tournament."))
+        existing = getattr(form, '_invited_existing_user', None)
+        if existing:
+            messages.success(
+                self.request,
+                _("%(user)s already has an account — they have been granted access and can log in directly.")
+                % {'user': existing.email},
+            )
+        else:
+            messages.success(self.request, _("Successfully invited user to create an account for the tournament."))
 
         return super().form_valid(form)
 
