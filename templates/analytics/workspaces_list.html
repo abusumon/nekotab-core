@@ -1,0 +1,158 @@
+{% extends "analytics/_base_crm.html" %}
+{% block title %}Workspaces{% endblock %}
+
+{% block extra_css %}
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 28px; }
+.summary-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; text-align: center; }
+.summary-card .val { font-size: 32px; font-weight: 700; color: var(--accent-light); }
+.summary-card .lbl { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+.summary-card.success .val { color: var(--success); }
+.summary-card.danger  .val { color: var(--danger); }
+.summary-card.warning .val { color: var(--warning); }
+.btn-enable { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.2s; background: rgba(16,185,129,0.15); color: var(--success); border: 1px solid rgba(16,185,129,0.3); }
+.btn-enable:hover { background: rgba(16,185,129,0.3); }
+.btn-enable:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-enable.done { background: rgba(16,185,129,0.08); color: var(--text-secondary); border-color: var(--border); cursor: default; }
+.ws-on { color: var(--success); font-weight: 600; }
+.ws-off { color: var(--danger); }
+.active-yes { color: var(--success); }
+.active-no  { color: var(--danger); }
+.meta-small { font-size: 11px; color: var(--text-secondary); }
+.org-slug { font-family: monospace; font-size: 12px; color: var(--accent-light); }
+.workspace-url { font-size: 11px; color: var(--text-secondary); text-decoration: none; }
+.workspace-url:hover { color: var(--accent-light); }
+.toast { position: fixed; bottom: 24px; right: 24px; z-index: 9999; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; font-size: 14px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); display: none; max-width: 320px; }
+.toast.show { display: block; animation: fadeInUp 0.3s ease; }
+.toast.ok  { border-color: rgba(16,185,129,0.4); color: var(--success); }
+.toast.err { border-color: rgba(239,68,68,0.4);  color: var(--danger); }
+.deact-reason { font-size: 11px; color: var(--warning); margin-top: 2px; max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+{% endblock %}
+
+{% block content %}
+<div class="header">
+    <div>
+        <h2>🏢 Workspaces</h2>
+        <p style="color:var(--text-secondary);font-size:14px;margin-top:4px;">Organization workspace management — enable subdomains, inspect metadata</p>
+    </div>
+</div>
+
+<div class="summary-grid">
+    <div class="summary-card"><div class="val">{{ total_orgs }}</div><div class="lbl">Total Orgs</div></div>
+    <div class="summary-card success"><div class="val">{{ workspace_enabled_count }}</div><div class="lbl">Workspace On</div></div>
+    <div class="summary-card warning"><div class="val">{{ workspace_disabled_count }}</div><div class="lbl">Active, WS Off</div></div>
+    <div class="summary-card danger"><div class="val">{{ inactive_count }}</div><div class="lbl">Inactive Orgs</div></div>
+    <div class="summary-card"><div class="val">{{ active_count }}</div><div class="lbl">Active Orgs</div></div>
+</div>
+
+<div class="filters" style="margin-bottom:20px;">
+    <form method="get" style="display:contents;">
+        <div class="search-box">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" name="search" placeholder="Search name or slug…" value="{{ search }}">
+        </div>
+        <select name="status" onchange="this.form.submit()">
+            <option value="">All Orgs</option>
+            <option value="workspace_on"  {% if status == 'workspace_on'  %}selected{% endif %}>Workspace ON</option>
+            <option value="workspace_off" {% if status == 'workspace_off' %}selected{% endif %}>Workspace OFF</option>
+            <option value="active"        {% if status == 'active'        %}selected{% endif %}>Active</option>
+            <option value="inactive"      {% if status == 'inactive'      %}selected{% endif %}>Inactive</option>
+        </select>
+        <button type="submit" class="btn btn-primary btn-sm">Search</button>
+        {% if search or status %}<a href="{% url 'analytics:workspaces' %}" class="btn btn-secondary btn-sm">Clear</a>{% endif %}
+    </form>
+</div>
+
+<div class="card">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th><th>Org / Slug</th><th>Active</th><th>Workspace</th>
+                    <th>Members</th><th>Tournaments</th><th>Club Members</th><th>Forms</th>
+                    <th>Created</th><th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for org in orgs %}
+                <tr id="org-row-{{ org.id }}">
+                    <td class="meta-small">{{ org.id }}</td>
+                    <td>
+                        <div style="font-weight:500;">{{ org.name }}</div>
+                        <div class="org-slug">{{ org.slug }}</div>
+                        {% if org.is_workspace_enabled %}
+                            <a class="workspace-url" href="https://{{ org.slug }}.nekotab.app/" target="_blank">🔗 {{ org.slug }}.nekotab.app</a>
+                        {% endif %}
+                        {% if org.deactivation_reason %}
+                            <div class="deact-reason" title="{{ org.deactivation_reason }}">⚠ {{ org.deactivation_reason }}</div>
+                        {% endif %}
+                        {% if org.description %}
+                            <div class="meta-small" style="margin-top:2px;">{{ org.description|truncatechars:60 }}</div>
+                        {% endif %}
+                    </td>
+                    <td>{% if org.is_active %}<span class="active-yes">✓ Yes</span>{% else %}<span class="active-no">✗ No</span>{% endif %}</td>
+                    <td>{% if org.is_workspace_enabled %}<span class="ws-on" id="ws-status-{{ org.id }}">✓ Enabled</span>{% else %}<span class="ws-off" id="ws-status-{{ org.id }}">✗ Disabled</span>{% endif %}</td>
+                    <td>{{ org.member_count }}</td>
+                    <td>{{ org.tournament_count }}</td>
+                    <td>{{ org.club_member_count }}</td>
+                    <td>{{ org.form_count }}</td>
+                    <td class="meta-small">{{ org.created_at|date:"Y-m-d" }}</td>
+                    <td>
+                        {% if org.is_workspace_enabled and org.is_active %}
+                            <button class="btn-enable done" disabled>✓ Active</button>
+                        {% else %}
+                            <button class="btn-enable" id="btn-enable-{{ org.id }}" onclick="enableWorkspace({{ org.id }}, this)">⚡ Enable</button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="10"><div class="empty-state"><div class="empty-state-icon">🏢</div><p>No organizations found{% if search %} matching "{{ search }}"{% endif %}.</p></div></td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}{% if search %}&search={{ search }}{% endif %}{% if status %}&status={{ status }}{% endif %}">← Prev</a>{% endif %}
+        <span class="current">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}{% if search %}&search={{ search }}{% endif %}{% if status %}&status={{ status }}{% endif %}">Next →</a>{% endif %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="toast" id="toast"></div>
+{% endblock %}
+
+{% block extra_js %}
+function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show ' + type;
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.classList.remove('show'), 4000);
+}
+function enableWorkspace(orgId, btn) {
+    btn.disabled = true;
+    btn.textContent = '⏳ Enabling…';
+    fetch('/analytics/workspaces/' + orgId + '/enable/', {
+        method: 'POST',
+        headers: { 'X-CSRFToken': '{{ csrf_token }}', 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.ok) {
+            btn.className = 'btn-enable done';
+            btn.disabled = true;
+            btn.textContent = '✓ Active';
+            const s = document.getElementById('ws-status-' + orgId);
+            if (s) { s.className = 'ws-on'; s.textContent = '✓ Enabled'; }
+            showToast('✓ ' + data.name + ' → ' + data.slug + '.nekotab.app', 'ok');
+        } else {
+            btn.disabled = false;
+            btn.textContent = '⚡ Enable';
+            showToast('Error: ' + (data.error || 'Unknown error'), 'err');
+        }
+    })
+    .catch(err => { btn.disabled = false; btn.textContent = '⚡ Enable'; showToast('Request failed: ' + err, 'err'); });
+}
+{% endblock %}

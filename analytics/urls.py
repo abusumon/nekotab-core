@@ -26,4 +26,7 @@ urlpatterns = [
     # Motion Harvest — push tournament motions to the motion bank
     path('motions/harvest/', views.TournamentMotionsView.as_view(), name='tournament_motions'),
     path('motions/harvest/push/', views.PushMotionToBankView.as_view(), name='push_motion_to_bank'),
+    path('workspaces/', views.WorkspacesListView.as_view(), name='workspaces'),
+    path('workspaces/<int:org_id>/enable/', views.EnableWorkspaceView.as_view(), name='enable_workspace'),
+    path('workspaces/ensure/', views.EnsureWorkspaceView.as_view(), name='ensure_workspace'),
 ]

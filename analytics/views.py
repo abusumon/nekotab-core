@@ -1441,3 +1441,114 @@ class PushMotionToBankView(SuperuserRequiredMixin, View):
             'pushed_count': len(pushed),
             'skipped_count': len(skipped),
         })
+
+
+# ==============================================================================
+# Workspace / Organization Analytics
+# ==============================================================================
+
+class WorkspacesListView(SuperuserRequiredMixin, ListView):
+    template_name = 'analytics/workspaces_list.html'
+    context_object_name = 'orgs'
+    paginate_by = 50
+
+    def get_queryset(self):
+        from organizations.models import Organization
+        from django.db.models import Count
+        qs = Organization.objects.annotate(
+            member_count=Count('memberships', distinct=True),
+            tournament_count=Count('tournaments', distinct=True),
+            club_member_count=Count('club_members', distinct=True),
+            form_count=Count('forms', distinct=True),
+        ).order_by('-id')
+        search = self.request.GET.get('search', '').strip()
+        if search:
+            qs = qs.filter(Q(name__icontains=search) | Q(slug__icontains=search))
+        status = self.request.GET.get('status', '')
+        if status == 'workspace_on':
+            qs = qs.filter(is_workspace_enabled=True)
+        elif status == 'workspace_off':
+            qs = qs.filter(is_workspace_enabled=False)
+        elif status == 'inactive':
+            qs = qs.filter(is_active=False)
+        elif status == 'active':
+            qs = qs.filter(is_active=True)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        from organizations.models import Organization
+        context = super().get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('search', '')
+        context['status'] = self.request.GET.get('status', '')
+        context['total_orgs'] = Organization.objects.count()
+        context['workspace_enabled_count'] = Organization.objects.filter(is_workspace_enabled=True).count()
+        context['active_count'] = Organization.objects.filter(is_active=True).count()
+        context['inactive_count'] = Organization.objects.filter(is_active=False).count()
+        context['workspace_disabled_count'] = Organization.objects.filter(is_active=True, is_workspace_enabled=False).count()
+        return context
+
+
+class EnableWorkspaceView(SuperuserRequiredMixin, View):
+    def post(self, request, org_id):
+        from organizations.models import Organization
+        try:
+            org = Organization.objects.get(id=org_id)
+        except Organization.DoesNotExist:
+            return JsonResponse({'error': 'Organization not found.'}, status=404)
+        org.is_active = True
+        org.is_workspace_enabled = True
+        org.deactivation_reason = ''
+        org.save(update_fields=['is_active', 'is_workspace_enabled', 'deactivation_reason'])
+        logger.info("Workspace enabled: org=%s (id=%d) by superuser=%s", org.slug, org.id, request.user.username)
+        return JsonResponse({'ok': True, 'org_id': org.id, 'slug': org.slug, 'name': org.name,
+                             'is_active': org.is_active, 'is_workspace_enabled': org.is_workspace_enabled})
+
+
+class EnsureWorkspaceView(SuperuserRequiredMixin, View):
+    def post(self, request):
+        from organizations.models import Organization, OrganizationMembership
+        try:
+            body = json.loads(request.body)
+        except (json.JSONDecodeError, ValueError):
+            return JsonResponse({'error': 'Invalid JSON body.'}, status=400)
+        email = body.get('email', '').strip()
+        if not email:
+            return JsonResponse({'error': 'email is required.'}, status=400)
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return JsonResponse({'error': f'No user with email {email}.'}, status=404)
+        membership = OrganizationMembership.objects.filter(
+            user=user, role=OrganizationMembership.Role.OWNER,
+        ).select_related('organization').first()
+        if not membership:
+            membership = OrganizationMembership.objects.filter(user=user).select_related('organization').first()
+        if membership:
+            org = membership.organization
+            created = False
+        else:
+            from django.utils.text import slugify as dj_slugify
+            base_slug = dj_slugify(user.username or email.split('@')[0])[:60]
+            slug = base_slug
+            counter = 1
+            while Organization.objects.filter(slug=slug).exists():
+                slug = f'{base_slug}-{counter}'
+                counter += 1
+            org = Organization.objects.create(
+                name=f"{user.get_full_name() or user.username}'s Organization",
+                slug=slug, is_active=True, is_workspace_enabled=True,
+            )
+            OrganizationMembership.objects.create(
+                organization=org, user=user, role=OrganizationMembership.Role.OWNER,
+            )
+            created = True
+        if not org.is_active or not org.is_workspace_enabled:
+            org.is_active = True
+            org.is_workspace_enabled = True
+            org.deactivation_reason = ''
+            org.save(update_fields=['is_active', 'is_workspace_enabled', 'deactivation_reason'])
+        logger.info("EnsureWorkspace: org=%s (id=%d) created=%s by superuser=%s", org.slug, org.id, created, request.user.username)
+        return JsonResponse({'ok': True, 'created': created, 'org_id': org.id, 'slug': org.slug,
+                             'name': org.name, 'is_active': org.is_active,
+                             'is_workspace_enabled': org.is_workspace_enabled,
+                             'workspace_url': f'https://{org.slug}.nekotab.app/'})
