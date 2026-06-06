@@ -544,3 +544,43 @@ class OrgRegistration(models.Model):
 
     def __str__(self):
         return f"Registration #{self.pk} → {self.pre_reg_response}"
+
+
+class OrgFormGroupingConfig(models.Model):
+    """Per-form configuration for the grouped confirmation board.
+
+    Lets an organization choose which form field to group responses by and
+    which fields to surface in each grouped card. One config per OrgForm.
+    """
+    form = models.OneToOneField(
+        OrgForm,
+        on_delete=models.CASCADE,
+        related_name='grouping_config',
+        verbose_name=_("form"),
+    )
+    group_by_field_id = models.CharField(
+        max_length=100, blank=True, default='',
+        verbose_name=_("group-by field id"),
+        help_text=_("Id of the form field whose value responses are grouped by."),
+    )
+    display_field_ids = models.JSONField(
+        default=list, blank=True,
+        verbose_name=_("display field ids"),
+        help_text=_("Ordered list of field ids shown for each grouped response."),
+    )
+    display_title = models.CharField(
+        max_length=200, blank=True, default='',
+        verbose_name=_("display title"),
+    )
+    only_confirmed = models.BooleanField(
+        default=True,
+        verbose_name=_("only confirmed"),
+        help_text=_("When on, only confirmed responses appear on the grouped board."),
+    )
+
+    class Meta:
+        verbose_name = _("form grouping config")
+        verbose_name_plural = _("form grouping configs")
+
+    def __str__(self):
+        return f"Grouping config → {self.form}"
