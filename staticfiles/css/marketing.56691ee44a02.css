@@ -1,0 +1,359 @@
+/* ==========================================================================
+   Marketing Page — /for-organizers/
+   Extends landing.css (em-* classes). Marketing-specific: mk-* prefix.
+   ========================================================================== */
+
+/* ---------- Hero override ---------- */
+.mk-hero {
+  padding-bottom: 80px;
+}
+.mk-hero-inner {
+  max-width: 720px;
+  text-align: center;
+}
+
+/* ---------- Section header pattern ---------- */
+.mk-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.mk-section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+.mk-section-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.65);
+  margin: 0;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+/* ---------- Decision Cards ---------- */
+.mk-decision {
+  background: #0d0d1a;
+}
+.mk-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 840px;
+  margin: 0 auto;
+}
+.mk-decision-card {
+  position: relative;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 40px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .2s, box-shadow .2s;
+}
+.mk-decision-card:hover {
+  border-color: rgba(99,102,241,.4);
+  box-shadow: 0 0 40px rgba(99,102,241,.08);
+}
+.mk-decision-card--featured {
+  background: linear-gradient(135deg, rgba(99,102,241,.12), rgba(139,92,246,.08));
+  border-color: rgba(99,102,241,.3);
+}
+.mk-card-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 4px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.mk-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+.mk-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px;
+}
+.mk-card-desc {
+  font-size: .95rem;
+  color: rgba(255,255,255,.6);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+.mk-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  flex: 1;
+}
+.mk-card-features li {
+  position: relative;
+  padding-left: 24px;
+  font-size: .9rem;
+  color: rgba(255,255,255,.7);
+  line-height: 1.8;
+}
+.mk-card-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #34d399;
+  font-weight: 700;
+}
+.mk-card-features code {
+  background: rgba(255,255,255,.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: .82rem;
+  color: #a78bfa;
+}
+.mk-card-cta {
+  margin-top: auto;
+}
+.mk-card-note {
+  text-align: center;
+  font-size: .8rem;
+  color: rgba(255,255,255,.4);
+  margin: 10px 0 0;
+}
+
+/* ---------- Comparison Table ---------- */
+.mk-compare {
+  background: #111127;
+}
+.mk-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.mk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .95rem;
+  min-width: 540px;
+}
+.mk-table thead {
+  background: rgba(255,255,255,.04);
+}
+.mk-table th {
+  font-weight: 700;
+  color: #fff;
+  text-align: left;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.mk-table th:not(:first-child) {
+  text-align: center;
+}
+.mk-table td {
+  padding: 14px 20px;
+  color: rgba(255,255,255,.7);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.mk-table td:not(:first-child) {
+  text-align: center;
+}
+.mk-table tbody tr:hover {
+  background: rgba(255,255,255,.02);
+}
+.mk-check {
+  color: #34d399;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.mk-cross {
+  color: rgba(255,255,255,.25);
+}
+
+/* ---------- Walkthrough Steps ---------- */
+.mk-walkthrough {
+  background: #0d0d1a;
+}
+.mk-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.mk-step {
+  flex: 0 1 160px;
+  text-align: center;
+  padding: 0 8px;
+}
+.mk-step-number {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mk-step-title {
+  font-size: .95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+}
+.mk-step-desc {
+  font-size: .82rem;
+  color: rgba(255,255,255,.55);
+  line-height: 1.55;
+  margin: 0;
+}
+.mk-step-connector {
+  flex: 0 0 32px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(99,102,241,.4), rgba(139,92,246,.4));
+  align-self: 22px;
+  margin-top: 22px;
+  border-radius: 2px;
+}
+
+/* ---------- Use Cases ---------- */
+.mk-usecases {
+  background: #111127;
+}
+.mk-uc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.mk-uc-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: border-color .2s, transform .2s;
+}
+.mk-uc-card:hover {
+  border-color: rgba(99,102,241,.3);
+  transform: translateY(-3px);
+}
+.mk-uc-icon {
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+.mk-uc-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+}
+.mk-uc-desc {
+  font-size: .85rem;
+  color: rgba(255,255,255,.55);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---------- Flow Diagram ---------- */
+.mk-flow {
+  background: #0d0d1a;
+}
+.mk-flow-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.mk-flow-item {
+  flex: 0 1 170px;
+  text-align: center;
+}
+.mk-flow-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.mk-flow-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.mk-flow-desc {
+  font-size: .82rem;
+  color: rgba(255,255,255,.5);
+  line-height: 1.5;
+  margin: 0;
+}
+.mk-flow-arrow {
+  flex: 0 0 auto;
+  color: rgba(99,102,241,.5);
+  margin-top: 12px;
+}
+
+/* ---------- Final CTA ---------- */
+.mk-final-cta .em-final-inner {
+  text-align: center;
+}
+.mk-final-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .mk-cards-row {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+  .mk-uc-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .mk-step-connector {
+    display: none;
+  }
+  .mk-steps {
+    gap: 32px;
+  }
+  .mk-step {
+    flex: 0 1 100%;
+    max-width: 300px;
+  }
+  .mk-flow-arrow {
+    display: none;
+  }
+  .mk-flow-row {
+    gap: 32px;
+  }
+  .mk-flow-item {
+    flex: 0 1 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mk-uc-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+}

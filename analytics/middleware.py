@@ -261,21 +261,22 @@ class AnalyticsMiddleware:
             )
             self._enqueue(pv)
 
-            # Avoid DB write amplification by only touching active sessions every N seconds.
+            # Offload ActiveSession writes to Celery so the HTTP thread
+            # never waits on a DB round-trip for analytics.
             if self._should_touch_active_session(session_key):
-                ActiveSession.objects.update_or_create(
+                from .tasks import touch_active_session
+                touch_active_session.delay(
                     session_key=session_key,
-                    defaults={
-                        'user': user,
-                        'ip_address': ip_address,
-                        'current_path': display_path,
-                    }
+                    user_id=user.pk if user else None,
+                    ip_address=ip_address,
+                    current_path=display_path,
                 )
             
             # Periodically clean up stale sessions (1% of requests)
             import random
             if random.random() < 0.01:
-                ActiveSession.cleanup_stale()
+                from .tasks import cleanup_stale_sessions
+                cleanup_stale_sessions.delay()
                 
         except Exception:
             # Don't break the site for analytics — but log so we can debug

@@ -91,7 +91,7 @@ _redis_pool_kwargs = {}
 if _redis_uses_tls:
     _redis_pool_kwargs['ssl_cert_reqs'] = None
 
-_channels_host = {
+_channels_host: dict = {
     'address': _redis_url,
 }
 if _redis_uses_tls:
@@ -131,11 +131,16 @@ CHANNEL_LAYERS = {
 #   3) SENDGRID_API_KEY (legacy compatibility)
 # ==============================================================================
 
-def _env_int(name, default):
+def _env_int(name, default=None):
+    raw = environ.get(name, default)
+    if raw is None:
+        raise ValueError(f"Environment variable {name} is required but not set.")
+    if raw == "":
+        raise ValueError(f"Environment variable {name} is set to an empty string.")
     try:
-        return int(environ.get(name, default))
-    except (TypeError, ValueError):
-        return int(default)
+        return int(raw)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"{name} must be an integer, got {raw!r}") from exc
 
 
 _default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')

@@ -3,7 +3,7 @@ import re
 
 from django.conf import settings
 from django.core.cache import cache
-from django.core.exceptions import DisallowedHost
+from django.core.exceptions import DisallowedHost, PermissionDenied
 from django.http import Http404, HttpResponseNotFound, HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
@@ -118,7 +118,8 @@ class DebateMiddleware:
         # the tournament must belong to that organization.
         # ------------------------------------------------------------------
         tenant_org = getattr(request, 'tenant_organization', None)
-        if tenant_org and request.tournament.organization_id != tenant_org.pk:
+        tournament_org_id = getattr(request.tournament, 'organization_id', None)
+        if tenant_org and tournament_org_id is not None and tournament_org_id != tenant_org.pk:
             return self._tournament_not_found_response(slug, request)
 
         # ------------------------------------------------------------------
@@ -589,7 +590,20 @@ class SubdomainTenantMiddleware:
         if not label:
             return self.get_response(request)
 
-        tenant_type, value = self._resolve_tenant(label)
+        # Org/tournament resolution touches the DB; never let a transient DB
+        # error (connection drop, etc.) bubble up as an unhandled 500. On any
+        # exception, treat the request as having no tenant and continue.
+        try:
+            tenant_type, value = self._resolve_tenant(label)
+        except Exception:
+            logger.exception(
+                "SubdomainTenantMiddleware: tenant resolution failed for "
+                "subdomain=%s, path=%s", label, request.path,
+            )
+            request.tenant_type = None
+            request.tenant_organization = None
+            request.subdomain_tournament = None
+            return self.get_response(request)
 
         if tenant_type == 'tournament':
             return self._handle_tournament(request, label)
@@ -639,6 +653,18 @@ class SubdomainTenantMiddleware:
         """
         request.tenant_type = 'organization'
         request.tenant_organization = org
+
+        # Cross-tenant membership check: authenticated users must be a member
+        # of this organization to access its workspace.
+        if request.user.is_authenticated:
+            from organizations.models import OrganizationMembership
+            if not OrganizationMembership.objects.filter(
+                user=request.user, organization=org,
+            ).exists():
+                raise PermissionDenied(
+                    "You are not a member of this organization."
+                )
+
         request.urlconf = 'organizations.workspace_urls'
         return self.get_response(request)
 

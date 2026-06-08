@@ -4,7 +4,7 @@ from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from django.conf import settings
 from django.contrib import messages
-from django.core.exceptions import ValidationError
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import ProgrammingError
 from django.db.models import Count, Max, Q, Window
 from django.db.models.functions import Coalesce, Rank
@@ -380,6 +380,13 @@ class BaseBallotSetView(LogActionMixin, TournamentMixin, FormView):
         error_response = self.populate_objects(prefill=False)
         if error_response:
             return error_response
+
+        # Prevent ballot submissions on completed rounds.
+        if hasattr(self, 'debate') and self.debate.round.completed:
+            raise PermissionDenied(
+                _("This round is closed. Ballots can no longer be submitted.")
+            )
+
         return super().post(request, *args, **kwargs)
 
 

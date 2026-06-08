@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NekoTab — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────
+   TOKENS — one source of truth
+───────────────────────────────────────── */
+:root {
+  /* surfaces */
+  --bg:        #F0F2F8;
+  --surface:   #FFFFFF;
+  --surface-2: #F7F8FC;
+  --surface-3: #EEF0F8;
+  --border:    #E4E7F2;
+  --border-2:  #D8DCF0;
+
+  /* brand */
+  --v:      #6450E6;
+  --v-soft: rgba(100,80,230,.09);
+  --v-mid:  rgba(100,80,230,.18);
+  --v-text: #5240C8;
+
+  /* neutrals */
+  --ink:    #0F1020;
+  --ink-2:  #2A2D48;
+  --ink-3:  #5A5E80;
+  --muted:  #9498BC;
+  --ghost:  #C8CCE4;
+
+  /* status */
+  --green:      #16A36A;
+  --green-soft: rgba(22,163,106,.09);
+  --amber:      #C98A00;
+  --amber-soft: rgba(201,138,0,.09);
+  --red:        #D63B5A;
+  --red-soft:   rgba(214,59,90,.09);
+
+  /* type */
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+  --mono:  'JetBrains Mono', monospace;
+
+  /* geometry */
+  --r-xs: 5px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+
+  /* elevation */
+  --sh-0: none;
+  --sh-1: 0 1px 3px rgba(15,16,32,.05), 0 1px 2px rgba(15,16,32,.04);
+  --sh-2: 0 3px 12px rgba(15,16,32,.07), 0 1px 4px rgba(15,16,32,.05);
+  --sh-v: 0 4px 18px rgba(100,80,230,.22), 0 1px 4px rgba(100,80,230,.14);
+}
+
+/* ─────────────────────────────────────────
+   RESET
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; }
+body {
+  height: 100%;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────
+   APP CHROME WRAPPER
+───────────────────────────────────────── */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─────────────────────────────────────────
+   TOP HEADER
+───────────────────────────────────────── */
+.header {
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px 0 0;
+  gap: 0;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--sh-1);
+}
+
+/* logo area — same width as sidebar */
+.header-logo {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-right: 1px solid var(--border);
+  height: 100%;
+}
+.logo-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--v);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.logo-text {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  color: var(--ink);
+  letter-spacing: -.015em;
+}
+
+/* top nav tabs */
+.header-nav {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 2px;
+  height: 100%;
+}
+.header-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 13px;
+  height: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .15s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.header-tab:hover { color: var(--ink-2); }
+.header-tab.active {
+  color: var(--v-text);
+  border-bottom-color: var(--v);
+  font-weight: 600;
+}
+
+.header-spacer { flex: 1; }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  border: none;
+  transition: all .15s;
+  white-space: nowrap;
+  font-family: var(--sans);
+}
+.hbtn-ghost {
+  background: transparent;
+  color: var(--muted);
+}
+.hbtn-ghost:hover { background: var(--surface-3); color: var(--ink-2); }
+
+.hbtn-round {
+  background: var(--v-soft);
+  color: var(--v-text);
+  border: 1px solid var(--v-mid);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  gap: 7px;
+}
+.round-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--v);
+  animation: pip 1.8s ease-in-out infinite;
+}
+@keyframes pip { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+.hbtn-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+.hbtn-icon:hover { background: var(--surface-3); }
+
+/* ─────────────────────────────────────────
+   BODY AREA (sidebar + main)
+───────────────────────────────────────── */
+.body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────
+   SIDEBAR
+───────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* tournament context chip */
+.sidebar-context {
+  margin: 12px 10px 4px;
+  padding: 10px 12px;
+  background: var(--v-soft);
+  border: 1px solid var(--v-mid);
+  border-radius: var(--r-md);
+}
+.sc-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.sc-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sc-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* nav groups */
+.nav-group { padding: 6px 8px; }
+.nav-group-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ghost);
+  padding: 10px 10px 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-3);
+  cursor: pointer;
+  position: relative;
+  transition: all .14s;
+  text-decoration: none;
+}
+.nav-item:hover {
+  background: var(--surface-2);
+  color: var(--ink-2);
+}
+.nav-item.active {
+  background: var(--v-soft);
+  color: var(--v-text);
+  font-weight: 600;
+}
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  bottom: 7px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--v);
+}
+.nav-icon {
+  font-size: 15px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  opacity: .7;
+}
+.nav-item.active .nav-icon { opacity: 1; }
+.nav-badge {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--v-mid);
+  color: var(--v-text);
+  padding: 1px 7px;
+  border-radius: 99px;
+}
+
+/* sidebar footer */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 10px;
+  border-top: 1px solid var(--border);
+}
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 9px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background .14s;
+}
+.user-chip:hover { background: var(--surface-2); }
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--v);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+.user-name  { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+.user-role  { font-size: 10.5px; color: var(--muted); font-family: var(--mono); }
+
+/* ─────────────────────────────────────────
+   MAIN CONTENT
+───────────────────────────────────────── */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+/* page header strip */
+.page-head {
+  padding: 22px 28px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.page-head-left {}
+.page-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.page-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-style: italic;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.15;
+}
+.page-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+/* content grid */
+.content {
+  padding: 20px 28px 40px;
+}
+
+/* ─────────────────────────────────────────
+   STAT CARDS ROW
+───────────────────────────────────────── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 18px 20px;
+  box-shadow: var(--sh-1);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .18s;
+}
+.stat-card:hover { box-shadow: var(--sh-2); }
+.stat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20px; right: 20px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--border);
+  opacity: 0;
+  transition: opacity .18s;
+}
+.stat-card:hover::after { opacity: 1; }
+
+.stat-card.current {
+  background: var(--v);
+  border-color: var(--v);
+  box-shadow: var(--sh-v);
+}
+.stat-card.current::after { background: rgba(255,255,255,.3); opacity: 1; }
+
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.stat-card.current .stat-label { color: rgba(255,255,255,.65); }
+
+.stat-value {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+}
+.stat-card.current .stat-value { color: white; }
+
+.stat-sub {
+  font-size: 11px;
+  color: var(--ghost);
+  margin-top: 5px;
+  font-family: var(--mono);
+}
+.stat-card.current .stat-sub { color: rgba(255,255,255,.5); }
+
+/* ─────────────────────────────────────────
+   CONTENT ROW (table + aside)
+───────────────────────────────────────── */
+.content-row {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 16px;
+  align-items: start;
+}
+
+/* ─────────────────────────────────────────
+   PANEL (card wrapper)
+───────────────────────────────────────── */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-1);
+  margin-bottom: 14px;
+}
+.panel:last-child { margin-bottom: 0; }
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.panel-title-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--v);
+  animation: pip 1.8s ease-in-out infinite;
+}
+.panel-actions { display: flex; gap: 7px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: var(--r-sm);
+  border: none;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.btn-ghost {
+  background: var(--surface-2);
+  color: var(--ink-3);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { background: var(--surface-3); color: var(--ink-2); border-color: var(--border-2); }
+.btn-primary {
+  background: var(--v);
+  color: white;
+  box-shadow: var(--sh-v);
+}
+.btn-primary:hover { background: #7060F0; transform: translateY(-1px); }
+
+/* ─────────────────────────────────────────
+   ROUND PROGRESS TRACKER
+───────────────────────────────────────── */
+.round-tracker {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+  overflow-x: auto;
+}
+.rt-step {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  min-width: 0;
+}
+.rt-step:last-child { flex: none; }
+.rt-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.rt-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  border: 2px solid var(--border-2);
+  background: var(--surface);
+  color: var(--ghost);
+  transition: all .2s;
+}
+.rt-circle.done {
+  background: var(--v);
+  border-color: var(--v);
+  color: white;
+  box-shadow: 0 2px 8px rgba(100,80,230,.3);
+}
+.rt-circle.active {
+  background: white;
+  border-color: var(--v);
+  color: var(--v-text);
+  font-weight: 700;
+  box-shadow: 0 0 0 4px var(--v-soft);
+}
+.rt-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--ghost);
+  text-align: center;
+  text-transform: uppercase;
+}
+.rt-circle.done + .rt-lbl { color: var(--v-text); }
+.rt-circle.active + .rt-lbl { color: var(--v-text); font-weight: 700; }
+
+.rt-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  border-radius: 99px;
+  margin: 0 4px;
+  margin-bottom: 16px;
+  transition: background .3s;
+}
+.rt-line.done { background: var(--v); }
+
+/* ─────────────────────────────────────────
+   MOTION STRIP
+───────────────────────────────────────── */
+.motion-strip {
+  padding: 12px 20px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.motion-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.motion-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+.motion-dr-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--red-soft);
+  color: var(--red);
+  border: 1px solid rgba(214,59,90,.15);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all .15s;
+}
+.motion-dr-btn:hover { background: var(--red); color: white; }
+
+/* ─────────────────────────────────────────
+   DATA TABLE
+───────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+thead th {
+  padding: 9px 14px;
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+tbody tr {
+  border-bottom: 1px solid var(--surface-3);
+  transition: background .1s;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--surface-2); }
+tbody td {
+  padding: 13px 14px;
+  color: var(--ink-2);
+  vertical-align: middle;
+}
+
+/* Room number badge */
+.room-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; height: 24px;
+  border-radius: var(--r-xs);
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-3);
+  flex-shrink: 0;
+}
+
+/* Team cell */
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.team-pip {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pip-og { background: #7060F4; }
+.pip-oo { background: #3B9BFF; }
+.pip-cg { background: #00A87A; }
+.pip-co { background: #E09500; }
+
+/* Position tag (OG / OO / CG / CO) */
+.pos-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.pos-og { background: rgba(112,96,244,.10); color: #5240C0; }
+.pos-oo { background: rgba(59,155,255,.10);  color: #1A6ECC; }
+.pos-cg { background: rgba(0,168,122,.10);   color: #007A58; }
+.pos-co { background: rgba(224,149,0,.10);   color: #9A6800; }
+
+/* Status chip */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.sc-done    { background: var(--green-soft); color: var(--green); }
+.sc-pending { background: var(--amber-soft); color: var(--amber); }
+.sc-missing { background: var(--red-soft);   color: var(--red); }
+
+.status-icon { font-size: 12px; }
+
+/* ─────────────────────────────────────────
+   ASIDE PANELS
+───────────────────────────────────────── */
+.aside-col {}
+
+/* completion widget */
+.completion-ring-wrap {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.ring-svg { flex-shrink: 0; }
+.ring-bg { fill: none; stroke: var(--surface-3); stroke-width: 7; }
+.ring-fill {
+  fill: none;
+  stroke: var(--v);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 157;
+  stroke-dashoffset: 52; /* 157 * (1 - .67) = ~52 */
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset .6s ease;
+}
+.ring-text-val {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  fill: var(--ink);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.ring-sub-text {
+  font-family: var(--mono);
+  font-size: 8px;
+  fill: var(--muted);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.ring-info {}
+.ri-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.ri-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: var(--ink-3);
+}
+.ri-row-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* quick actions */
+.quick-list { padding: 8px; }
+.quick-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 11px;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: background .14s;
+}
+.quick-item:hover { background: var(--surface-2); }
+.qi-icon {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  display: grid; place-items: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.qi-v   { background: var(--v-soft); }
+.qi-g   { background: var(--green-soft); }
+.qi-a   { background: var(--amber-soft); }
+.qi-title { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.qi-sub   { font-size: 11px; color: var(--muted); }
+.qi-arrow { margin-left: auto; color: var(--ghost); font-size: 16px; transition: transform .14s, color .14s; }
+.quick-item:hover .qi-arrow { transform: translateX(2px); color: var(--muted); }
+
+/* check-in widget */
+.checkin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--surface-3);
+  gap: 10px;
+}
+.checkin-row:last-child { border-bottom: none; }
+.ci-label { font-size: 12.5px; color: var(--ink-2); }
+.ci-bar-wrap { flex: 1; max-width: 72px; height: 5px; background: var(--surface-3); border-radius: 99px; overflow: hidden; }
+.ci-bar { height: 100%; border-radius: 99px; }
+.ci-count { font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+.ci-count strong { color: var(--ink-2); }
+
+/* ─────────────────────────────────────────
+   SECTION DIVIDER
+───────────────────────────────────────── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0 14px;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.sd-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ghost);
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-1 { animation: fadeUp .35s ease-out .05s both; }
+.fade-2 { animation: fadeUp .35s ease-out .12s both; }
+.fade-3 { animation: fadeUp .35s ease-out .20s both; }
+.fade-4 { animation: fadeUp .35s ease-out .28s both; }
+.fade-5 { animation: fadeUp .35s ease-out .36s both; }
+
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ══════════════════════════════════
+       HEADER
+  ══════════════════════════════════ -->
+  <header class="header">
+    <div class="header-logo">
+      <div class="logo-mark">🐱</div>
+      <div class="logo-text">NekoTab</div>
+    </div>
+
+    <nav class="header-nav">
+      <a class="header-tab active">Dashboard</a>
+      <a class="header-tab">Draws</a>
+      <a class="header-tab">Ballots</a>
+      <a class="header-tab">Results</a>
+    </nav>
+
+    <div class="header-spacer"></div>
+
+    <div class="header-actions">
+      <div class="hbtn-round header-btn">
+        <span class="round-pip"></span>
+        Round 3 · Active
+      </div>
+      <div class="hbtn-icon">🔔</div>
+      <div class="hbtn-icon">⚙️</div>
+      <button class="header-btn hbtn-ghost">Log out</button>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════
+       BODY
+  ══════════════════════════════════ -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-context">
+        <div class="sc-label">Tournament</div>
+        <div class="sc-name">EUDC 2025</div>
+        <div class="sc-meta">BP · 5 Rounds</div>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Tabulation</div>
+        <a class="nav-item active">
+          <span class="nav-icon">📊</span>
+          Overview
+        </a>
+        <a class="nav-item">
+          <span class="nav-icon">🎲</span>
+          Draws
+        </a>
+        <a class="nav-item">
+          <span class="nav-icon">⚖️</span>
+          Allocations
+        </a>
+        <a class="nav-item">
+          <span class="nav-icon">📝</span>
+          Ballots
+          <span class="nav-badge">2</span>
+        </a>
+        <a class="nav-item">
+          <span class="nav-icon">📈</span>
+          Standings
+        </a>
+        <a class="nav-item">
+          <span class="nav-icon">✅</span>
+          Breaks
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Setup</div>
+        <a class="nav-item">
+          <span class="nav-icon">👥</span>
+          Teams
+        </a>
+        <a class="nav-item">
+          <span class="nav-icon">🧑‍⚖️</span>
+          Judges
+        </a>
+        <a class="nav-item">
+          <span class="nav-icon">🏛️</span>
+          Venues
+        </a>
+        <a class="nav-item">
+          <span class="nav-icon">⚙️</span>
+          Settings
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="user-avatar">JD</div>
+          <div>
+            <div class="user-name">John Director</div>
+            <div class="user-role">Chief Admin</div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- Page head -->
+      <div class="page-head fade-1">
+        <div class="page-head-left">
+          <div class="page-eyebrow">EUDC 2025 · British Parliamentary</div>
+          <h1 class="page-title">Overview</h1>
+        </div>
+        <div class="page-head-actions">
+          <button class="btn btn-ghost">🔗 Share</button>
+          <button class="btn btn-primary">🎲 Generate Round 4</button>
+        </div>
+      </div>
+
+      <div class="content">
+
+        <!-- STAT CARDS -->
+        <div class="stats-row fade-2">
+          <div class="stat-card">
+            <div class="stat-label">Teams</div>
+            <div class="stat-value">24</div>
+            <div class="stat-sub">6 institutions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Judges</div>
+            <div class="stat-value">16</div>
+            <div class="stat-sub">12 checked in</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Rounds</div>
+            <div class="stat-value">5</div>
+            <div class="stat-sub">3 completed</div>
+          </div>
+          <div class="stat-card current">
+            <div class="stat-label">Current</div>
+            <div class="stat-value">R3</div>
+            <div class="stat-sub">In progress</div>
+          </div>
+        </div>
+
+        <!-- CONTENT ROW -->
+        <div class="content-row">
+
+          <!-- LEFT: DRAW TABLE -->
+          <div>
+
+            <!-- DRAW PANEL -->
+            <div class="panel fade-3">
+
+              <div class="panel-header">
+                <div class="panel-title">
+                  <span class="panel-title-dot"></span>
+                  Round 3 — Current Draw
+                </div>
+                <div class="panel-actions">
+                  <button class="btn btn-ghost">Export</button>
+                  <button class="btn btn-primary">+ Enter Ballot</button>
+                </div>
+              </div>
+
+              <!-- ROUND PROGRESS TRACKER -->
+              <div class="round-tracker">
+                <div class="rt-step">
+                  <div class="rt-node">
+                    <div class="rt-circle done">✓</div>
+                    <div class="rt-lbl">R1</div>
+                  </div>
+                  <div class="rt-line done"></div>
+                </div>
+                <div class="rt-step">
+                  <div class="rt-node">
+                    <div class="rt-circle done">✓</div>
+                    <div class="rt-lbl">R2</div>
+                  </div>
+                  <div class="rt-line done"></div>
+                </div>
+                <div class="rt-step">
+                  <div class="rt-node">
+                    <div class="rt-circle active">3</div>
+                    <div class="rt-lbl">R3</div>
+                  </div>
+                  <div class="rt-line"></div>
+                </div>
+                <div class="rt-step">
+                  <div class="rt-node">
+                    <div class="rt-circle">4</div>
+                    <div class="rt-lbl">R4</div>
+                  </div>
+                  <div class="rt-line"></div>
+                </div>
+                <div class="rt-node">
+                  <div class="rt-circle">5</div>
+                  <div class="rt-lbl">R5</div>
+                </div>
+              </div>
+
+              <!-- MOTION STRIP -->
+              <div class="motion-strip">
+                <div class="motion-label">Motion</div>
+                <div class="motion-text">THW require social media platforms to allow users to disable algorithmic feeds by default</div>
+                <div class="motion-dr-btn">🩺 Analyze</div>
+              </div>
+
+              <!-- TABLE -->
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:40px;">#</th>
+                    <th>Room</th>
+                    <th>
+                      <span class="pos-tag pos-og">OG</span>
+                      Opening Gov
+                    </th>
+                    <th>
+                      <span class="pos-tag pos-oo">OO</span>
+                      Opening Opp
+                    </th>
+                    <th>
+                      <span class="pos-tag pos-cg">CG</span>
+                      Closing Gov
+                    </th>
+                    <th>
+                      <span class="pos-tag pos-co">CO</span>
+                      Closing Opp
+                    </th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><div class="room-badge">1</div></td>
+                    <td style="font-weight:600;color:var(--ink);">Room 1</td>
+                    <td><div class="team-cell"><span class="team-pip pip-og"></span>Oxford A</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-oo"></span>Cambridge B</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-cg"></span>Yale C</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-co"></span>Harvard D</div></td>
+                    <td><span class="status-chip sc-done"><span class="status-icon">✓</span>Done</span></td>
+                  </tr>
+                  <tr>
+                    <td><div class="room-badge">2</div></td>
+                    <td style="font-weight:600;color:var(--ink);">Room 2</td>
+                    <td><div class="team-cell"><span class="team-pip pip-og"></span>UNSW A</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-oo"></span>Monash B</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-cg"></span>NUS C</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-co"></span>UQ D</div></td>
+                    <td><span class="status-chip sc-pending"><span class="status-icon">⏳</span>Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td><div class="room-badge">3</div></td>
+                    <td style="font-weight:600;color:var(--ink);">Room 3</td>
+                    <td><div class="team-cell"><span class="team-pip pip-og"></span>KCL A</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-oo"></span>LSE B</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-cg"></span>UCL C</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-co"></span>Durham D</div></td>
+                    <td><span class="status-chip sc-done"><span class="status-icon">✓</span>Done</span></td>
+                  </tr>
+                  <tr>
+                    <td><div class="room-badge">4</div></td>
+                    <td style="font-weight:600;color:var(--ink);">Room 4</td>
+                    <td><div class="team-cell"><span class="team-pip pip-og"></span>Princeton A</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-oo"></span>Warwick B</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-cg"></span>Sydney C</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-co"></span>Melbourne D</div></td>
+                    <td><span class="status-chip sc-missing"><span class="status-icon">✗</span>Missing</span></td>
+                  </tr>
+                  <tr>
+                    <td><div class="room-badge">5</div></td>
+                    <td style="font-weight:600;color:var(--ink);">Room 5</td>
+                    <td><div class="team-cell"><span class="team-pip pip-og"></span>Toronto A</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-oo"></span>McGill B</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-cg"></span>Edinburgh C</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-co"></span>Glasgow D</div></td>
+                    <td><span class="status-chip sc-pending"><span class="status-icon">⏳</span>Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td><div class="room-badge">6</div></td>
+                    <td style="font-weight:600;color:var(--ink);">Room 6</td>
+                    <td><div class="team-cell"><span class="team-pip pip-og"></span>Otago A</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-oo"></span>ANU B</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-cg"></span>Cape Town C</div></td>
+                    <td><div class="team-cell"><span class="team-pip pip-co"></span>Stellenbosch D</div></td>
+                    <td><span class="status-chip sc-done"><span class="status-icon">✓</span>Done</span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- TABLE FOOTER -->
+              <div style="padding:10px 18px;border-top:1px solid var(--surface-3);display:flex;align-items:center;justify-content:space-between;">
+                <div style="font-family:var(--mono);font-size:10.5px;color:var(--muted);">
+                  4 of 6 ballots submitted
+                </div>
+                <div style="display:flex;gap:6px;align-items:center;">
+                  <div style="width:120px;height:5px;background:var(--surface-3);border-radius:99px;overflow:hidden;">
+                    <div style="width:67%;height:100%;background:var(--v);border-radius:99px;"></div>
+                  </div>
+                  <span style="font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--v-text);">67%</span>
+                </div>
+              </div>
+
+            </div>
+            <!-- END DRAW PANEL -->
+
+          </div>
+          <!-- END LEFT COL -->
+
+          <!-- RIGHT ASIDE -->
+          <div class="aside-col">
+
+            <!-- COMPLETION WIDGET -->
+            <div class="panel fade-4">
+              <div class="panel-header">
+                <div class="panel-title">R3 Completion</div>
+              </div>
+              <div class="completion-ring-wrap">
+                <svg class="ring-svg" width="72" height="72" viewBox="0 0 72 72">
+                  <circle class="ring-bg" cx="36" cy="36" r="25"/>
+                  <circle class="ring-fill" cx="36" cy="36" r="25"/>
+                  <text class="ring-text-val" x="36" y="34">4/6</text>
+                  <text class="ring-sub-text" x="36" y="44">ballots</text>
+                </svg>
+                <div class="ring-info">
+                  <div class="ri-title">Ballot Status</div>
+                  <div class="ri-row">
+                    <div class="ri-row-dot" style="background:var(--green)"></div>
+                    <span>4 submitted</span>
+                  </div>
+                  <div class="ri-row">
+                    <div class="ri-row-dot" style="background:var(--amber)"></div>
+                    <span>1 pending</span>
+                  </div>
+                  <div class="ri-row">
+                    <div class="ri-row-dot" style="background:var(--red)"></div>
+                    <span>1 missing</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- QUICK ACTIONS -->
+            <div class="panel fade-4">
+              <div class="panel-header">
+                <div class="panel-title">Quick Actions</div>
+              </div>
+              <div class="quick-list">
+                <div class="quick-item">
+                  <div class="qi-icon qi-v">🎲</div>
+                  <div>
+                    <div class="qi-title">Generate R4 Draw</div>
+                    <div class="qi-sub">Power-pair next round</div>
+                  </div>
+                  <div class="qi-arrow">›</div>
+                </div>
+                <div class="quick-item">
+                  <div class="qi-icon qi-a">⚖️</div>
+                  <div>
+                    <div class="qi-title">Auto-Allocate Judges</div>
+                    <div class="qi-sub">R3 panels pending</div>
+                  </div>
+                  <div class="qi-arrow">›</div>
+                </div>
+                <div class="quick-item">
+                  <div class="qi-icon qi-g">🌐</div>
+                  <div>
+                    <div class="qi-title">Publish Public Site</div>
+                    <div class="qi-sub">Share draw with teams</div>
+                  </div>
+                  <div class="qi-arrow">›</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CHECK-IN WIDGET -->
+            <div class="panel fade-5">
+              <div class="panel-header">
+                <div class="panel-title">Check-in Status</div>
+                <div class="panel-actions">
+                  <button class="btn btn-ghost" style="font-size:11px;padding:4px 10px;">Manage</button>
+                </div>
+              </div>
+              <div style="padding:4px 0;">
+                <div class="checkin-row">
+                  <div class="ci-label">Teams</div>
+                  <div class="ci-bar-wrap">
+                    <div class="ci-bar" style="width:100%;background:var(--v);"></div>
+                  </div>
+                  <div class="ci-count"><strong>24</strong> / 24</div>
+                </div>
+                <div class="checkin-row">
+                  <div class="ci-label">Judges</div>
+                  <div class="ci-bar-wrap">
+                    <div class="ci-bar" style="width:75%;background:var(--green);"></div>
+                  </div>
+                  <div class="ci-count"><strong>12</strong> / 16</div>
+                </div>
+                <div class="checkin-row">
+                  <div class="ci-label">Venues</div>
+                  <div class="ci-bar-wrap">
+                    <div class="ci-bar" style="width:100%;background:var(--green);"></div>
+                  </div>
+                  <div class="ci-count"><strong>6</strong> / 6</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- END RIGHT ASIDE -->
+
+        </div>
+        <!-- END CONTENT ROW -->
+
+      </div>
+      <!-- END CONTENT -->
+
+    </main>
+    <!-- END MAIN -->
+
+  </div>
+  <!-- END BODY -->
+
+</div>
+<!-- END APP -->
+
+</body>
+</html>

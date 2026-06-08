@@ -31,6 +31,7 @@ class Organization(models.Model):
     )
     slug = models.SlugField(
         unique=True,
+        db_index=True,
         max_length=80,
         verbose_name=_("slug"),
         help_text=_("URL-safe identifier for the organization."),
@@ -132,6 +133,9 @@ class OrganizationMembership(models.Model):
         verbose_name_plural = _("organization memberships")
         constraints = [
             UniqueConstraint(fields=['organization', 'user']),
+        ]
+        indexes = [
+            models.Index(fields=['user', 'organization', 'role']),
         ]
 
     def __str__(self):
@@ -513,6 +517,7 @@ class OrgFormResponse(models.Model):
             val = self.data[display_id]
             return val if isinstance(val, str) else str(val)
         return f"Response #{self.pk}"
+
 
 class OrgRegistration(models.Model):
     """A registration submission linked to a confirmed pre-reg response."""

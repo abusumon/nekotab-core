@@ -1,0 +1,16 @@
+# robots.txt for NekoTab
+User-agent: *
+Allow: /
+Allow: /static/
+Disallow: /admin/
+Disallow: /database/
+Disallow: /accounts/
+Disallow: /*/admin/
+Disallow: /*/assistant/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://nekotab.app/sitemap.xml
+
+# Crawl delay to be respectful
+Crawl-delay: 1

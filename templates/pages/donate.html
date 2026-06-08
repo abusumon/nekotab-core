@@ -1,26 +1,26 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" data-country-code="{{ request_country_code|default:'' }}">
+<html lang="en" data-country-code="{{ request_country_code|default:'unknown' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Support NekoTab — Keep Debate Free for Everyone</title>
   <meta name="description" content="Support NekoTab with a donation. Help keep world-class debate tabulation software free for every tournament, school, and community worldwide. 100% of contributions go directly to hosting, development, and keeping NekoTab free.">
-  <link rel="canonical" href="https://nekotab.app/donate/" />
+  <link rel="canonical" href="{{ request.build_absolute_uri }}" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nekotab.app/donate/" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
   <meta property="og:title" content="Support NekoTab — Keep Debate Free" />
   <meta property="og:description" content="Help keep world-class debate tabulation free for every tournament worldwide." />
-  <meta property="og:image" content="{% static 'logo-social.png' %}" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'logo-social.png' %}" />
   <meta property="og:site_name" content="NekoTab" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Support NekoTab — Keep Debate Free" />
   <meta name="twitter:description" content="Help keep world-class debate tabulation free for every tournament worldwide." />
-  <meta name="twitter:image" content="{% static 'logo-social.png' %}" />
+  <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'logo-social.png' %}" />
 
   <!-- Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
