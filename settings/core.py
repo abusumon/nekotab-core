@@ -1,3 +1,4 @@
+import datetime
 import os
 
 from django.contrib.messages import constants as messages
@@ -224,6 +225,7 @@ INSTALLED_APPS = (
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'drf_spectacular',
     'django_better_admin_arrayfield',
 )
@@ -293,6 +295,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static', 'frontend'),  # Vite React SPA build output
     os.path.join(BASE_DIR, 'locale'),  # django-statici18n jsi18n compiled JS
 )
 
@@ -309,6 +312,9 @@ STORAGES = {
         "BACKEND": 'whitenoise.storage.CompressedManifestStaticFilesStorage',
     },
 }
+
+# Ensure uploaded files are readable by the web server.
+FILE_UPLOAD_PERMISSIONS = 0o644
 
 # If CLOUDINARY_URL is set, use Cloudinary for uploaded media files
 # (email images, etc.) so they persist on ephemeral Heroku/Render filesystems.
@@ -442,7 +448,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_THROTTLE_CLASSES': [
@@ -475,6 +481,15 @@ SPECTACULAR_SETTINGS = {
             "altText": "NekoTab logo",
         },
     }
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'TOKEN_OBTAIN_SERIALIZER': 'organizations.api.serializers.OrgTokenObtainPairSerializer',
 }
 
 # ----------------------------------------
@@ -589,7 +604,7 @@ if SUBDOMAIN_BASE_DOMAIN:
 # ==============================================================================
 
 # Default from email for outbound messages; include display name for branding
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@nekotab.app')
 
 # Server email for error emails; default to from email
 SERVER_EMAIL = os.environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)

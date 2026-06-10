@@ -284,5 +284,8 @@ urlpatterns = [
                 views.UserViewSet.as_view(detail_methods),
                 name='api-user-detail'),
         ])),
+
+        # Organization-scoped REST API
+        path('', include('organizations.api.urls')),
     ])),
 ]

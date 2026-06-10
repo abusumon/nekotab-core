@@ -12,6 +12,11 @@ from django.views.i18n import JavaScriptCatalog
 from django.contrib.sitemaps.views import sitemap
 from django.views.generic import RedirectView, TemplateView
 from django.views.decorators.cache import cache_page
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenBlacklistView,
+)
 
 import tournaments.views
 from importer.views import LoadDemoView
@@ -157,9 +162,20 @@ urlpatterns = [
     path('organizations/',
         include('organizations.urls')),
 
-    # API
+        # API
     path('api/',
         include('api.urls')),
+
+    # JWT Authentication endpoints
+    path('api/v1/auth/token/',
+        TokenObtainPairView.as_view(),
+        name='token_obtain_pair'),
+    path('api/v1/auth/token/refresh/',
+        TokenRefreshView.as_view(),
+        name='token_refresh'),
+    path('api/v1/auth/logout/',
+        TokenBlacklistView.as_view(),
+        name='token_blacklist'),
 
     # Archive import/export
     path('archive/',
@@ -181,6 +197,10 @@ urlpatterns = [
     # Global Motion Bank (legacy DB-backed) at /motions-bank/
     path('motions-bank/',
         include('motionbank.urls')),
+
+        # Workspace React SPA — served via Django template
+    path('workspace/', TemplateView.as_view(template_name='frontend/index.html'), name='workspace-index'),
+    path('workspace/<path:path>', TemplateView.as_view(template_name='frontend/index.html'), name='workspace-catchall'),
 
     # Content: Learn hub + Trust/Legal pages
     path('', include('content.urls')),

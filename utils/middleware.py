@@ -206,9 +206,9 @@ class DebateMiddleware:
                 organization_id=tournament.organization_id,
                 user=user,
                 role__in=[
-                    OrganizationMembership.Role.OWNER,
+                    OrganizationMembership.Role.CREATOR,
                     OrganizationMembership.Role.ADMIN,
-                    OrganizationMembership.Role.TABMASTER,
+                    OrganizationMembership.Role.MODERATOR,
                     OrganizationMembership.Role.EDITOR,
                     OrganizationMembership.Role.MEMBER,
                 ],
@@ -656,11 +656,20 @@ class SubdomainTenantMiddleware:
 
         # Cross-tenant membership check: authenticated users must be a member
         # of this organization to access its workspace.
+        #
+        # Cache the result per (user_id, org_id) for 300 seconds so repeated
+        # workspace page hits don't hammer the DB.  Membership changes trigger
+        # cache invalidation in organizations.signals.
         if request.user.is_authenticated:
-            from organizations.models import OrganizationMembership
-            if not OrganizationMembership.objects.filter(
-                user=request.user, organization=org,
-            ).exists():
+            member_key = f"org:member:{request.user.pk}:{org.pk}"
+            is_member = cache.get(member_key)
+            if is_member is None:
+                from organizations.models import OrganizationMembership
+                is_member = OrganizationMembership.objects.filter(
+                    user=request.user, organization=org,
+                ).exists()
+                cache.set(member_key, is_member, 300)
+            if not is_member:
                 raise PermissionDenied(
                     "You are not a member of this organization."
                 )
