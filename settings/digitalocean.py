@@ -209,6 +209,10 @@ if _subdomain_tournaments_requested and not SUBDOMAIN_BASE_DOMAIN:
 RESERVED_SUBDOMAINS = environ.get('RESERVED_SUBDOMAINS', 'www,admin,api,jet,database,static,media').split(',')
 ORGANIZATION_WORKSPACES_ENABLED = environ.get('ORGANIZATION_WORKSPACES_ENABLED', 'false').lower() == 'true'
 
+# django_celery_beat must be in INSTALLED_APPS so its migrations create the
+# periodic-task tables used by CELERY_BEAT_SCHEDULER = DatabaseScheduler.
+INSTALLED_APPS = tuple(INSTALLED_APPS) + ('django_celery_beat',)
+
 if SUBDOMAIN_BASE_DOMAIN:
     SESSION_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
     SESSION_COOKIE_NAME = 'nekotab_sessionid'
