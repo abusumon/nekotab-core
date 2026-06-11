@@ -1,9 +1,18 @@
 import hashlib
+import json
 import re
 import threading
 import time
 
-from .models import PageView, ActiveSession
+from django.utils import timezone
+
+from .models import PageView
+
+REDIS_LIST_KEY = 'analytics:raw'
+BUFFER_FLUSH_SIZE = 50    # trigger Celery flush when Redis queue reaches this length
+REDIS_LIST_MAX = 10_000   # hard cap — LTRIM drops oldest entries beyond this
+REDIS_SAMPLE_THRESHOLD = 8_000  # start reservoir sampling above this depth
+REDIS_SAMPLE_RATE = 5     # keep 1 in N beacons under high load
 
 
 class AnalyticsMiddleware:
@@ -26,9 +35,6 @@ class AnalyticsMiddleware:
         'uptime', 'healthcheck', 'monitor',
     )
 
-    _buffer: list = []
-    _buffer_lock = threading.Lock()
-    _last_flush: float = 0.0  # monotonic timestamp of last flush
     _active_ping: dict = {}
     _active_ping_lock = threading.Lock()
     
@@ -284,36 +290,52 @@ class AnalyticsMiddleware:
             logging.getLogger(__name__).warning('Analytics tracking failed', exc_info=True)
 
     # ------------------------------------------------------------------
-    # Write-behind buffer helpers
+    # Redis write-behind
     # ------------------------------------------------------------------
 
     @classmethod
     def _enqueue(cls, page_view):
-        """Add a PageView to the buffer and flush if thresholds are met."""
-        with cls._buffer_lock:
-            cls._buffer.append(page_view)
-            now = time.monotonic()
-            should_flush = (
-                len(cls._buffer) >= cls.BUFFER_SIZE
-                or (now - cls._last_flush) >= cls.FLUSH_INTERVAL
-            )
-        if should_flush:
-            cls._flush()
+        """Serialize a PageView to JSON and push it onto the Redis analytics queue.
 
-    @classmethod
-    def _flush(cls):
-        """Bulk-write buffered PageView records to the database."""
-        with cls._buffer_lock:
-            if not cls._buffer:
-                return
-            batch = cls._buffer[:]
-            cls._buffer = []
-            cls._last_flush = time.monotonic()
+        Applies reservoir sampling when the queue depth exceeds REDIS_SAMPLE_THRESHOLD
+        (keep 1 in REDIS_SAMPLE_RATE beacons) and hard-caps the list at REDIS_LIST_MAX
+        entries via LTRIM so a traffic spike cannot exhaust Redis memory.
+
+        Triggers the Celery flush task once the queue reaches BUFFER_FLUSH_SIZE.
+        """
         try:
-            PageView.objects.bulk_create(batch, ignore_conflicts=True)
+            import random
+            from django_redis import get_redis_connection
+            r = get_redis_connection('default')
+
+            queue_len = r.llen(REDIS_LIST_KEY)
+
+            # Reservoir sampling: drop most beacons under high load
+            if queue_len >= REDIS_SAMPLE_THRESHOLD and random.randint(1, REDIS_SAMPLE_RATE) != 1:
+                return
+
+            payload = json.dumps({
+                'path': page_view.path,
+                'full_url': page_view.full_url or '',
+                'session_key': page_view.session_key or '',
+                'user_id': page_view.user_id,
+                'ip_address': page_view.ip_address,
+                'user_agent': page_view.user_agent or '',
+                'referer': page_view.referer or '',
+                'device_type': page_view.device_type or '',
+                'browser': page_view.browser or '',
+                'os': page_view.os or '',
+                'timestamp': timezone.now().isoformat(),
+            })
+            queue_len = r.rpush(REDIS_LIST_KEY, payload)
+
+            # Hard cap: trim the list to REDIS_LIST_MAX, dropping oldest entries
+            if queue_len > REDIS_LIST_MAX:
+                r.ltrim(REDIS_LIST_KEY, -REDIS_LIST_MAX, -1)
+
+            if queue_len >= BUFFER_FLUSH_SIZE:
+                from .tasks import flush_analytics_buffer
+                flush_analytics_buffer.delay()  # type: ignore[attr-defined]
         except Exception:
             import logging
-            logging.getLogger(__name__).warning(
-                'Analytics bulk flush failed for %d records', len(batch),
-                exc_info=True,
-            )
+            logging.getLogger(__name__).warning('Analytics enqueue to Redis failed', exc_info=True)

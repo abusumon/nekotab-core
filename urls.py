@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import admin, messages
 from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.templatetags.static import static
 from django.urls import include, path
 from django.utils.translation import gettext as _
@@ -13,10 +13,10 @@ from django.contrib.sitemaps.views import sitemap
 from django.views.generic import RedirectView, TemplateView
 from django.views.decorators.cache import cache_page
 from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
     TokenRefreshView,
     TokenBlacklistView,
 )
+from organizations.api.views import OrgTokenObtainPairView
 
 import tournaments.views
 from importer.views import LoadDemoView
@@ -28,6 +28,12 @@ from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
 import motionbank.views as motionbank_views
 from campaigns.views import serve_image
 from content.views import ContactForumView
+
+def _ready_view(request):
+    from django.db import connection
+    connection.ensure_connection()
+    return JsonResponse({'status': 'ready', 'db': 'ok'})
+
 
 # ==============================================================================
 # Base Patterns
@@ -41,6 +47,9 @@ urlpatterns = [
     path('health/',
         lambda request: HttpResponse('ok', content_type='text/plain'),
         name='health-check'),
+
+    # Readiness probe — verifies DB connectivity before accepting traffic.
+    path('ready/', _ready_view, name='ready-check'),
 
     # Indices
     path('',
@@ -166,9 +175,9 @@ urlpatterns = [
     path('api/',
         include('api.urls')),
 
-    # JWT Authentication endpoints
+    # JWT Authentication endpoints — uses OrgTokenObtainPairView to inject org claims
     path('api/v1/auth/token/',
-        TokenObtainPairView.as_view(),
+        OrgTokenObtainPairView.as_view(),
         name='token_obtain_pair'),
     path('api/v1/auth/token/refresh/',
         TokenRefreshView.as_view(),

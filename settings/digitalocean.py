@@ -55,7 +55,7 @@ if environ.get('DISABLE_HTTPS_REDIRECTS', '') != 'disable':
 # Exempt the internal health check path from the HTTPS redirect so that:
 #  - docker-compose healthcheck (curl http://localhost:8000/health/) returns 200, not 301
 #  - The DO Load Balancer /health/ probe works without TLS
-SECURE_REDIRECT_EXEMPT = [r'^/health/$']
+SECURE_REDIRECT_EXEMPT = [r'^/health/$', r'^/ready/$']
 
 # ==============================================================================
 # Postgres (DigitalOcean Managed Database)
@@ -75,6 +75,12 @@ DATABASES = {
         # ?sslmode=require and set ssl_require=True here.
         ssl_require=False,
     ),
+}
+# Kill any query running longer than 30 s. Prevents slow queries from
+# exhausting the connection pool and taking the whole app down.
+DATABASES['default']['OPTIONS'] = {
+    'options': '-c statement_timeout=30000',  # 30 000 ms = 30 seconds
+    'connect_timeout': 10,
 }
 
 # ==============================================================================

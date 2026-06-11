@@ -645,6 +645,14 @@ class SubdomainTenantMiddleware:
 
     # -- organization workspace path -------------------------------------------
 
+    # Two-tier access model:
+    #   Public paths  — accessible to anyone (unauthenticated or authenticated
+    #                   non-members). These serve the public-facing org website,
+    #                   event pages, forms, and schedules.
+    #   Workspace paths — /workspace/ and /api/ require an active org membership.
+    #                     Everything else defaults to public.
+    _WORKSPACE_PATH_PREFIXES = ('/workspace/', '/api/')
+
     def _handle_organization(self, request, org):
         """Set request attributes for an organization workspace.
 
@@ -654,13 +662,13 @@ class SubdomainTenantMiddleware:
         request.tenant_type = 'organization'
         request.tenant_organization = org
 
-        # Cross-tenant membership check: authenticated users must be a member
-        # of this organization to access its workspace.
-        #
-        # Cache the result per (user_id, org_id) for 300 seconds so repeated
-        # workspace page hits don't hammer the DB.  Membership changes trigger
-        # cache invalidation in organizations.signals.
-        if request.user.is_authenticated:
+        # Only enforce membership on workspace/API paths. Public pages
+        # (org website, event listings, forms, schedules, etc.) are open
+        # to any visitor — including authenticated users who are not members.
+        is_workspace_path = request.path.startswith(self._WORKSPACE_PATH_PREFIXES)
+
+        if is_workspace_path and request.user.is_authenticated:
+            # Cache per (user_id, org_id) for 300 s; invalidated by org signals.
             member_key = f"org:member:{request.user.pk}:{org.pk}"
             is_member = cache.get(member_key)
             if is_member is None:

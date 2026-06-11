@@ -36,14 +36,21 @@ class PageView(models.Model):
     browser = models.CharField(max_length=50, blank=True)
     os = models.CharField(max_length=50, blank=True)
     
+    # Org-specific tracking (set for beacon events from public org pages)
+    org_slug = models.CharField(max_length=80, blank=True, default='', db_index=False)
+
     # Timing
     timestamp = models.DateTimeField(auto_now_add=True, db_index=True)
-    
+
     class Meta:
         ordering = ['-timestamp']
         indexes = [
             models.Index(fields=['timestamp', 'path']),
             models.Index(fields=['session_key', 'timestamp']),
+            # Composite index for per-org time-range queries (beacon analytics)
+            models.Index(fields=['org_slug', 'timestamp'], name='analytics_pv_org_slug_ts_idx'),
+            # Standalone timestamp index for global time-range aggregations
+            models.Index(fields=['timestamp'], name='analytics_pv_ts_idx'),
         ]
     
     def __str__(self):
@@ -83,6 +90,42 @@ class DailyStats(models.Model):
     
     def __str__(self):
         return f"Stats for {self.date}"
+
+
+class OrgAnalyticsSummary(models.Model):
+    """Hourly pre-aggregated page-view counts per organisation.
+
+    Written by the `aggregate_analytics_hourly` Celery task every hour.
+    The (org_slug, date, hour) triplet is the idempotent upsert key.
+    Reading from this table instead of raw PageView rows keeps the analytics
+    dashboard fast even when PageView has millions of rows.
+    """
+
+    org_slug = models.CharField(max_length=80, db_index=True, verbose_name=_("org slug"))
+    date = models.DateField(db_index=True, verbose_name=_("date"))
+    # 0-23 hour in UTC
+    hour = models.SmallIntegerField(verbose_name=_("hour (UTC)"))
+    page_views = models.PositiveIntegerField(default=0, verbose_name=_("page views"))
+    # JSON list of unique path strings seen during this hour
+    unique_paths = models.JSONField(default=list, blank=True, verbose_name=_("unique paths"))
+    last_updated = models.DateTimeField(auto_now=True, verbose_name=_("last updated"))
+
+    class Meta:
+        verbose_name = _("org analytics summary")
+        verbose_name_plural = _("org analytics summaries")
+        constraints = [
+            models.UniqueConstraint(
+                fields=['org_slug', 'date', 'hour'],
+                name='analytics_orgsum_org_date_hour_uniq',
+            ),
+        ]
+        indexes = [
+            models.Index(fields=['org_slug', 'date'], name='analytics_orgsum_slug_date_idx'),
+        ]
+        ordering = ['-date', '-hour']
+
+    def __str__(self):
+        return f"{self.org_slug} {self.date} h{self.hour:02d}: {self.page_views} views"
 
 
 class ActiveSession(models.Model):

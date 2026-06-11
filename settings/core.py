@@ -128,6 +128,8 @@ FORMAT_MODULE_PATH = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # Returns a clean 503 for DB statement timeouts; re-raises all other OperationalErrors.
+    'tabbycat.middleware.db_timeout.QueryTimeoutMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -316,10 +318,42 @@ STORAGES = {
 # Ensure uploaded files are readable by the web server.
 FILE_UPLOAD_PERMISSIONS = 0o644
 
-# If CLOUDINARY_URL is set, use Cloudinary for uploaded media files
-# (email images, etc.) so they persist on ephemeral Heroku/Render filesystems.
-# Free tier at https://cloudinary.com — set CLOUDINARY_URL=cloudinary://key:secret@cloud
-if os.environ.get('CLOUDINARY_URL'):
+# ── DigitalOcean Spaces (primary cloud storage) ──────────────────────────────
+# Set DO_SPACES_KEY + DO_SPACES_SECRET + DO_SPACES_BUCKET in env.
+# Optionally set DO_SPACES_REGION (default: sgp1) and DO_SPACES_CDN_ENDPOINT.
+#
+# Example .env:
+#   DO_SPACES_KEY=your_access_key
+#   DO_SPACES_SECRET=your_secret_key
+#   DO_SPACES_BUCKET=nekotab
+#   DO_SPACES_REGION=sgp1
+#   DO_SPACES_CDN_ENDPOINT=https://nekotab.sgp1.cdn.digitaloceanspaces.com
+if os.environ.get('DO_SPACES_KEY'):
+    _do_region = os.environ.get('DO_SPACES_REGION', 'sgp1')
+    _do_bucket = os.environ.get('DO_SPACES_BUCKET', 'nekotab')
+    STORAGES["default"] = {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    }
+    AWS_ACCESS_KEY_ID       = os.environ['DO_SPACES_KEY']
+    AWS_SECRET_ACCESS_KEY   = os.environ['DO_SPACES_SECRET']
+    AWS_STORAGE_BUCKET_NAME = _do_bucket
+    AWS_S3_ENDPOINT_URL     = f"https://{_do_region}.digitaloceanspaces.com"
+    # CDN endpoint — if a custom CDN domain is set, use it; otherwise fall back
+    # to the direct Spaces URL so cdn_url is always an absolute HTTPS URL.
+    # No CDN custom domain — org media is served through Django's
+    # /api/v1/orgs/<slug>/media/<id>/serve/ endpoint which enforces org
+    # membership before generating a short-lived boto3 presigned URL.
+    # AWS_QUERYSTRING_AUTH defaults to True in django-storages (presigned URLs
+    # required for private files). Do NOT set it to False here.
+    AWS_S3_CUSTOM_DOMAIN    = ''
+    AWS_DEFAULT_ACL         = None  # private; no public ACL
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    AWS_LOCATION            = 'media'
+    MEDIA_URL               = '/media/'  # org media accessed via serve endpoint
+
+# ── Cloudinary fallback (legacy / Heroku) ────────────────────────────────────
+# Only used when DO Spaces is NOT configured. Set CLOUDINARY_URL=cloudinary://...
+elif os.environ.get('CLOUDINARY_URL'):
     INSTALLED_APPS = tuple(list(INSTALLED_APPS) + ['cloudinary_storage', 'cloudinary'])
     STORAGES["default"] = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -414,6 +448,10 @@ DATABASES = {
     },
 }
 
+# Silently reconnect persistent connections that have gone stale (e.g. after
+# a Postgres restart) rather than raising an error on the first request.
+CONN_HEALTH_CHECKS = True
+
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # ==============================================================================
@@ -503,6 +541,92 @@ CORS_ALLOWED_ORIGINS = [
     if o.strip()
 ]
 CORS_URLS_REGEX = r'^/api(/.*)?$'
+
+# ==============================================================================
+# Celery
+# ==============================================================================
+
+CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/1')
+CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://localhost:6379/1')
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+CELERY_TASK_TRACK_STARTED = True
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+# ---------------------------------------------------------------------------
+# Celery queues — separate workers can consume individual queues to isolate
+# analytics throughput from user-facing email/media tasks.
+#
+# Start workers:
+#   celery -A tabbycat.celery worker -Q analytics --concurrency=2
+#   celery -A tabbycat.celery worker -Q media     --concurrency=2
+#   celery -A tabbycat.celery worker -Q email     --concurrency=4
+#   celery -A tabbycat.celery worker -Q lifecycle --concurrency=1
+#   celery -A tabbycat.celery worker -Q default   --concurrency=4
+# ---------------------------------------------------------------------------
+from kombu import Queue  # noqa: E402
+
+CELERY_TASK_QUEUES = (
+    Queue('default'),
+    Queue('analytics'),
+    Queue('media'),
+    Queue('notifications'),  # renamed from 'email' — covers email + push notifications
+    Queue('lifecycle'),
+)
+CELERY_TASK_DEFAULT_QUEUE = 'default'
+
+CELERY_TASK_ROUTES = {
+    # Analytics pipeline
+    'analytics.tasks.flush_analytics_buffer':         {'queue': 'analytics'},
+    'analytics.tasks.aggregate_analytics_hourly':     {'queue': 'analytics'},
+    'analytics.tasks.populate_daily_stats':           {'queue': 'analytics'},
+    'analytics.tasks.touch_active_session':           {'queue': 'analytics'},
+    'analytics.tasks.cleanup_stale_sessions':         {'queue': 'analytics'},
+    # Media processing (thumbnail generation, S3 upload)
+    'organizations.tasks.process_media_asset':        {'queue': 'media'},
+    # Lifecycle (heavy, runs infrequently — isolated to avoid blocking others)
+    'organizations.run_leadership_transition':         {'queue': 'lifecycle'},
+    # Notifications (email delivery, push) — high-priority, separate from analytics
+    'notifications.*':                                {'queue': 'notifications'},
+    # Default queue catches everything else
+}
+
+# Periodic tasks — analytics pipeline
+from celery.schedules import crontab  # noqa: E402
+
+CELERY_BEAT_SCHEDULE = {
+    # Drain the Redis analytics queue every 30 s so events reach the DB promptly
+    'flush-analytics-buffer': {
+        'task': 'analytics.tasks.flush_analytics_buffer',
+        'schedule': 30.0,
+        'options': {'queue': 'analytics'},
+    },
+    # Hourly per-org aggregation — keeps the analytics dashboard fresh without
+    # waiting until midnight. Runs at the top of every hour.
+    'aggregate-analytics-hourly': {
+        'task': 'analytics.tasks.aggregate_analytics_hourly',
+        'schedule': crontab(minute=0),
+        'options': {'queue': 'analytics'},
+    },
+    # Full-day reconciliation pass at 00:05 UTC — keeps DailyStats consistent.
+    # Do NOT remove; this is the authoritative daily roll-up.
+    'populate-daily-stats': {
+        'task': 'analytics.tasks.populate_daily_stats',
+        'schedule': crontab(hour=0, minute=5),
+        'kwargs': {'days': 1},
+        'options': {'queue': 'analytics'},
+    },
+}
+
+# ==============================================================================
+# Encryption
+# ==============================================================================
+
+# Fernet key for symmetric encryption of stored secrets (SMTP passwords, etc.)
+# Generate with: from cryptography.fernet import Fernet; Fernet.generate_key()
+FERNET_KEY = os.environ.get('FERNET_KEY', '')
 
 # ==============================================================================
 # Security headers
