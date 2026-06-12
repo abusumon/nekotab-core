@@ -171,6 +171,12 @@ urlpatterns = [
     path('organizations/',
         include('organizations.urls')),
 
+    # Event Ticketing — public-facing (hub.nekotab.app/tickets/...)
+    path('tickets/', include('tickets.urls_public', namespace='tickets')),
+
+    # Event Ticketing API
+    path('api/tickets/', include('tickets.urls_api')),
+
         # API
     path('api/',
         include('api.urls')),

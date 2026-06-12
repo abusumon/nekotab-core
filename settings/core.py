@@ -195,6 +195,7 @@ TABBYCAT_APPS = (
     'participant_crm',
     'chat',
     'prereg',
+    'tickets',
 )
 
 INSTALLED_APPS = (
