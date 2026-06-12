@@ -1490,6 +1490,7 @@ class WorkspacesListView(SuperuserRequiredMixin, ListView):
 
 class EnableWorkspaceView(SuperuserRequiredMixin, View):
     def post(self, request, org_id):
+        from django.core.cache import cache
         from organizations.models import Organization
         try:
             org = Organization.objects.get(id=org_id)
@@ -1499,6 +1500,11 @@ class EnableWorkspaceView(SuperuserRequiredMixin, View):
         org.is_workspace_enabled = True
         org.deactivation_reason = ''
         org.save(update_fields=['is_active', 'is_workspace_enabled', 'deactivation_reason'])
+        # Bust SubdomainTenantMiddleware caches so the subdomain resolves immediately
+        cache.delete(f"org_obj_{org.slug}")
+        cache.delete(f"org_obj_{org.slug.lower()}")
+        cache.delete(f"tenant_type_{org.slug}")
+        cache.delete(f"tenant_type_{org.slug.lower()}")
         logger.info("Workspace enabled: org=%s (id=%d) by superuser=%s", org.slug, org.id, request.user.username)
         return JsonResponse({'ok': True, 'org_id': org.id, 'slug': org.slug, 'name': org.name,
                              'is_active': org.is_active, 'is_workspace_enabled': org.is_workspace_enabled})
@@ -1547,6 +1553,11 @@ class EnsureWorkspaceView(SuperuserRequiredMixin, View):
             org.is_workspace_enabled = True
             org.deactivation_reason = ''
             org.save(update_fields=['is_active', 'is_workspace_enabled', 'deactivation_reason'])
+        from django.core.cache import cache
+        cache.delete(f"org_obj_{org.slug}")
+        cache.delete(f"org_obj_{org.slug.lower()}")
+        cache.delete(f"tenant_type_{org.slug}")
+        cache.delete(f"tenant_type_{org.slug.lower()}")
         logger.info("EnsureWorkspace: org=%s (id=%d) created=%s by superuser=%s", org.slug, org.id, created, request.user.username)
         return JsonResponse({'ok': True, 'created': created, 'org_id': org.id, 'slug': org.slug,
                              'name': org.name, 'is_active': org.is_active,
