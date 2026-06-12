@@ -836,20 +836,178 @@ body.ws-body {
 .ws-autosave--unsaved { color: var(--color-warning); }
 
 /* ==========================================================================
-   Responsive
+   Dashboard widgets (tournament grid, quick links, analytics row)
    ========================================================================== */
 
+.ws-tournament-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.ws-tournament-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  transition: box-shadow .15s, border-color .15s;
+}
+.ws-tournament-card:hover { box-shadow: var(--shadow-hover); border-color: var(--color-accent); }
+.ws-tournament-card h4 { margin: 0 0 var(--space-1); font-size: var(--text-base); font-weight: var(--fw-semibold); }
+.ws-tournament-card h4 a { color: var(--color-text-primary); text-decoration: none; }
+.ws-tournament-card h4 a:hover { color: var(--color-accent); }
+.ws-tournament-card .meta { font-size: var(--text-xs); color: var(--color-text-secondary); line-height: 1.5; }
+
+.ws-quick-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+.ws-quick-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background .12s, border-color .12s;
+}
+.ws-quick-link:hover { background: var(--color-accent-surface); border-color: var(--color-accent); color: var(--color-accent); }
+.ws-quick-link svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--color-accent); }
+
+.ws-analytics-row {
+  display: flex;
+  gap: var(--space-4);
+  align-items: stretch;
+  margin-top: var(--space-4);
+}
+
+/* ==========================================================================
+   Forms (create/invite pages) + toggles
+   ========================================================================== */
+
+.ws-form-label {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+.ws-form-control {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color .12s, box-shadow .12s;
+}
+.ws-form-control:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-surface); }
+.ws-inline-form { display: inline; }
+
+.ws-toggle-wrap { display: inline-flex; align-items: center; gap: var(--space-2); cursor: pointer; }
+.ws-toggle { position: relative; display: inline-block; width: 36px; height: 20px; flex-shrink: 0; }
+.ws-toggle input { opacity: 0; width: 0; height: 0; }
+.ws-toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--color-border);
+  border-radius: 20px;
+  transition: background .15s;
+}
+.ws-toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  left: 2px; top: 2px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  transition: transform .15s;
+}
+.ws-toggle input:checked + .ws-toggle-slider { background: var(--color-accent); }
+.ws-toggle input:checked + .ws-toggle-slider::before { transform: translateX(16px); }
+
+/* ==========================================================================
+   Rankings, registrations, rooms, misc page helpers
+   ========================================================================== */
+
+.ws-ranking-filters { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); }
+.ws-filter-label { font-size: var(--text-xs); font-weight: var(--fw-semibold); color: var(--color-text-secondary); }
+.ws-ranking-table { width: 100%; border-collapse: collapse; }
+.ws-trend { font-size: var(--text-xs); font-weight: var(--fw-semibold); }
+
+.ws-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  margin-bottom: var(--space-3);
+}
+.ws-back-link:hover { color: var(--color-accent); }
+.ws-empty-msg { color: var(--color-text-secondary); font-size: var(--text-sm); text-align: center; padding: var(--space-8) var(--space-4); }
+.ws-stat-row { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-4); }
+.ws-empty-state__icon { color: var(--color-text-disabled); margin-bottom: var(--space-3); }
+.ws-empty-state__icon svg { width: 40px; height: 40px; }
+
+.ws-room-block { border: 1px solid var(--color-border); border-radius: var(--radius-md); margin-bottom: var(--space-3); overflow: hidden; }
+.ws-room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+}
+
+/* Safety net: SVGs inside cards/links never explode without explicit size */
+.ws-card a svg:not([width]), .ws-quick-link svg:not([width]) { width: 18px; height: 18px; }
+
+/* ==========================================================================
+   Responsive — complements the off-canvas sidebar wired up in base.html
+   (at <768px the sidebar is position:fixed and slides in; content goes
+   full-width instead of collapsing the sidebar to icon rail)
+   ========================================================================== */
+
+.ws-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+@media (max-width: 1024px) {
+  .ws-content { padding: var(--space-4); }
+  .ws-analytics-row { flex-direction: column; }
+}
+
 @media (max-width: 768px) {
-  .ws-sidebar {
-    width: var(--sidebar-collapsed-width);
-  }
-  .ws-sidebar__item span,
-  .ws-sidebar__section-label { display: none; }
-  .ws-content { margin-left: var(--sidebar-collapsed-width); padding: var(--space-4); }
+  .ws-sidebar { width: var(--sidebar-width); }
+  .ws-content { margin-left: 0; padding: var(--space-4) var(--space-3); }
   .ws-kpi-grid { grid-template-columns: 1fr 1fr; }
+  .ws-stats { grid-template-columns: 1fr 1fr; }
+  .ws-quick-links { grid-template-columns: 1fr; }
+  .ws-tournament-grid { grid-template-columns: 1fr; }
+  .ws-page-header { flex-wrap: wrap; gap: var(--space-2); }
+  .ws-topbar__org-switcher span { max-width: 90px; }
+  /* Tables: allow horizontal pan rather than squashing columns */
+  .ws-card { overflow-x: auto; }
+  .ws-table { min-width: 560px; }
 }
 
 @media (max-width: 480px) {
   .ws-kpi-grid { grid-template-columns: 1fr; }
+  .ws-stats { grid-template-columns: 1fr; }
   .ws-page-header__row { flex-direction: column; align-items: flex-start; }
+  .ws-topbar { padding-left: var(--space-2); padding-right: var(--space-2); }
+  .ws-btn { padding: var(--space-2) var(--space-3); }
 }
