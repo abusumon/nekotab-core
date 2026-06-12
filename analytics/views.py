@@ -1456,7 +1456,7 @@ class WorkspacesListView(SuperuserRequiredMixin, ListView):
         from organizations.models import Organization
         from django.db.models import Count
         qs = Organization.objects.annotate(
-            member_count=Count('memberships', distinct=True),
+            membership_count=Count('memberships', distinct=True),
             tournament_count=Count('tournaments', distinct=True),
             club_member_count=Count('club_members', distinct=True),
             form_count=Count('forms', distinct=True),

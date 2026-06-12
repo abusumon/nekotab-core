@@ -91,7 +91,7 @@
                     </td>
                     <td>{% if org.is_active %}<span class="active-yes">✓ Yes</span>{% else %}<span class="active-no">✗ No</span>{% endif %}</td>
                     <td>{% if org.is_workspace_enabled %}<span class="ws-on" id="ws-status-{{ org.id }}">✓ Enabled</span>{% else %}<span class="ws-off" id="ws-status-{{ org.id }}">✗ Disabled</span>{% endif %}</td>
-                    <td>{{ org.member_count }}</td>
+                    <td>{{ org.membership_count }}</td>
                     <td>{{ org.tournament_count }}</td>
                     <td>{{ org.club_member_count }}</td>
                     <td>{{ org.form_count }}</td>
