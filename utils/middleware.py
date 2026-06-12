@@ -669,14 +669,28 @@ class SubdomainTenantMiddleware:
 
         if is_workspace_path and request.user.is_authenticated:
             # Cache per (user_id, org_id) for 300 s; invalidated by org signals.
+            # IMPORTANT: this key is shared with organizations.workspace_mixins
+            # ._resolve_membership, which stores a (role, pk) tuple for members
+            # and False for non-members. We MUST use the same value format here,
+            # otherwise the two writers poison each other's reads (a bool stored
+            # here would make the mixin's `role, pk = cached` unpack raise).
             member_key = f"org:member:{request.user.pk}:{org.pk}"
-            is_member = cache.get(member_key)
-            if is_member is None:
+            cached = cache.get(member_key)
+            if isinstance(cached, (tuple, list)) and len(cached) == 2:
+                is_member = True
+            elif cached is False:
+                is_member = False
+            else:
                 from organizations.models import OrganizationMembership
-                is_member = OrganizationMembership.objects.filter(
+                membership = OrganizationMembership.objects.filter(
                     user=request.user, organization=org,
-                ).exists()
-                cache.set(member_key, is_member, 300)
+                ).first()
+                cache.set(
+                    member_key,
+                    (membership.role, membership.pk) if membership else False,
+                    300,
+                )
+                is_member = membership is not None
             if not is_member:
                 raise PermissionDenied(
                     "You are not a member of this organization."
