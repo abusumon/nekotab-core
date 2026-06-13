@@ -6,42 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% if adsense_enabled %}
   <meta name="google-adsense-account" content="{{ adsense_publisher_id }}">
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}"
-      crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}" crossorigin="anonymous"></script>
   {% endif %}
-  <title>NekoTab — Free Debate Tabulation Software | BP, WSDC, Australs</title>
-  <meta name="description" content="Free debate tabulation software for BP, WSDC, Australs and more. Automated draws, digital ballots, live standings, AI motion analysis. Trusted by 40+ tournaments worldwide.">
-  <meta name="keywords" content="debate tournament software, debate tabulation, british parliamentary debate, BP debate tab, australs debate, WSDC debate, motion analysis AI, debate motions, tournament management, debate platform, open source debate, tabbycat alternative">
+  <title>NekoTab — Tabbycat Debate Tabulation as a Service</title>
+  <meta name="description" content="Tabbycat debate tabulation as a service. Free, hosted tournament management for BP, WSDC, Australs and more. Website builder, ticketing, events, and schedule planner for your debate organization.">
+  <meta name="keywords" content="debate tournament software, debate tabulation, british parliamentary debate, BP debate tab, australs debate, WSDC debate, tournament management, debate platform, open source debate, tabbycat hosting">
   <link rel="canonical" href="https://nekotab.app/" />
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nekotab.app/" />
-  <meta property="og:title" content="NekoTab — The Complete Debate Platform" />
-  <meta property="og:description" content="Free debate tabulation software for BP, WSDC, Australs and more. Automated draws, digital ballots, live standings, AI motion analysis." />
+  <meta property="og:title" content="NekoTab — Tabbycat Debate Tabulation as a Service" />
+  <meta property="og:description" content="Free hosted debate tournament management. BP, WSDC, Australs and more. Website builder, ticketing, events, and schedule planner included." />
   <meta property="og:image" content="{% static 'logo-social.png' %}" />
   <meta property="og:site_name" content="NekoTab" />
-  <meta property="og:locale" content="en_US" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://nekotab.app/" />
-  <meta name="twitter:title" content="NekoTab — The Complete Debate Platform" />
-  <meta name="twitter:description" content="Run debate tournaments with automated draws, AI motion analysis, and real-time results. Free & open-source." />
+  <meta name="twitter:title" content="NekoTab — Tabbycat Debate Tabulation as a Service" />
+  <meta name="twitter:description" content="Free hosted Tabbycat for BP, WSDC, Australs and more." />
   <meta name="twitter:image" content="{% static 'logo-social.png' %}" />
 
-  <!-- Performance: Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
-  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Preload critical assets -->
   <link rel="preload" href="{% static 'logo.png' %}" as="image" fetchpriority="high">
 
-  <!-- Favicons -->
   <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
   <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
@@ -52,339 +40,378 @@
 
   <link rel="stylesheet" href="{% static 'css/landing.css' %}">
 
-  <!-- GA4 + Cookie Consent -->
+  <style>
+    /* ── Simple Navbar ── */
+    .nk-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 15, 30, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nk-nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .nk-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nk-nav-logo img { height: 28px; width: auto; }
+    .nk-nav-logo-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+    .nk-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 32px;
+      flex: 1;
+    }
+    .nk-nav-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nk-nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nk-nav-links .nk-nav-icon { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+    .nk-nav-links .nk-nav-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.12); margin: 0 6px; }
+    .nk-nav-end {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .nk-nav-signin {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nk-nav-signin:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nk-nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      background: #6366f1;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .nk-nav-cta:hover { background: #4f46e5; transform: translateY(-1px); }
+
+    /* Mobile nav */
+    .nk-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      margin-left: auto;
+    }
+    .nk-burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .nk-mobile-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      pointer-events: none;
+    }
+    .nk-mobile-drawer-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .nk-mobile-drawer-panel {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 280px;
+      max-width: 85vw;
+      background: #0d1221;
+      border-left: 1px solid rgba(255,255,255,0.08);
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .nk-mobile-drawer.is-open { pointer-events: all; }
+    .nk-mobile-drawer.is-open .nk-mobile-drawer-backdrop { opacity: 1; }
+    .nk-mobile-drawer.is-open .nk-mobile-drawer-panel { transform: translateX(0); }
+    .nk-mobile-drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nk-mobile-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nk-mobile-drawer-body { padding: 16px 20px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .nk-mobile-drawer-body a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 4px;
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nk-mobile-drawer-body a:hover { color: #fff; }
+    .nk-mobile-drawer-footer {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .nk-mobile-drawer-footer a {
+      display: block;
+      padding: 12px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .nk-mob-cta { background: #6366f1; color: #fff; }
+    .nk-mob-secondary { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); }
+
+    @media (max-width: 768px) {
+      .nk-nav-links, .nk-nav-end { display: none; }
+      .nk-burger { display: flex; }
+    }
+
+    /* ── Workspace Features Section ── */
+    .nk-features {
+      background: #f0f4ff;
+      padding: 80px 24px;
+    }
+    .nk-features-container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .nk-features-eyebrow {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6366f1;
+      margin-bottom: 12px;
+    }
+    .nk-features-heading {
+      text-align: center;
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 48px;
+      line-height: 1.2;
+    }
+    .nk-features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .nk-feature-card {
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .nk-feature-card:hover {
+      box-shadow: 0 8px 24px rgba(99,102,241,0.12);
+      transform: translateY(-2px);
+    }
+    .nk-feature-card-bar {
+      height: 6px;
+      background: #6366f1;
+    }
+    .nk-feature-card-body {
+      padding: 36px 40px 40px;
+    }
+    .nk-feature-card h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .nk-feature-card p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #475569;
+      text-align: center;
+      margin: 0;
+    }
+    @media (max-width: 640px) {
+      .nk-features-grid { grid-template-columns: 1fr; }
+      .nk-feature-card-body { padding: 28px 24px 32px; }
+      .nk-features { padding: 60px 16px; }
+    }
+
+    /* ── Footer tweak: add community links ── */
+    .nk-foot-community {
+      display: flex;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .nk-foot-community a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nk-foot-community a:hover { color: #a78bfa; }
+    .nk-foot-community svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+  </style>
+
   {% if adsense_enabled %}
-  <script>
-  window.adsbygoogle = window.adsbygoogle || [];
-  window.adsbygoogle.requestNonPersonalizedAds = 1;
-  </script>
+  <script>window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.requestNonPersonalizedAds = 1;</script>
   {% endif %}
   <script defer src="{% static 'js/cookie-consent.js' %}"></script>
 
-  <!-- Structured Data: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "NekoTab",
-    "url": "{{ seo_base_url }}",
-    "logo": "{{ seo_base_url }}/static/logo.png",
-    "description": "Open-source debate tournament tabulation and community platform",
-    "sameAs": [
-      "https://github.com/abusumon/nekotab-app"
-    ]
-  }
-  </script>
-
-  <!-- Structured Data: WebSite with search -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "NekoTab",
-    "url": "https://nekotab.app",
-    "description": "The complete debate platform — tournament tabulation, global motion bank, and debate forum.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://nekotab.app/motions/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <!-- Structured Data: SoftwareApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "NekoTab Debate Tabulation",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Any",
-    "description": "Modern debate tournament tabulation software for parliamentary formats (BP, Australs, WSDC). Manage motions, draws, allocations, ballots, and live results.",
-    "url": "https://nekotab.app",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  }
-  </script>
-
-  <!-- Structured Data: FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type": "Question", "name": "Which formats does NekoTab support?", "acceptedAnswer": {"@type": "Answer", "text": "British Parliamentary (BP), Australs/3v3, WSDC-style, and other parliamentary formats. You can configure speaker counts, sides, and scoring to match your needs."}},
-      {"@type": "Question", "name": "Can I import teams, judges, and venues?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — CSV imports are fully supported. You can also manage availability, conflicts, and institutional clashes from the admin panel."}},
-      {"@type": "Question", "name": "Is it free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — NekoTab is completely free to use. No per-tournament fees, no hidden charges. Create an account and start tabbing immediately. You can also self-host for full data sovereignty."}},
-      {"@type": "Question", "name": "How does the Motion Bank work?", "acceptedAnswer": {"@type": "Answer", "text": "The Motion Bank is a searchable database of thousands of real debate motions from tournaments worldwide, filterable by format, region, year, theme, and difficulty level."}},
-      {"@type": "Question", "name": "Can I use NekoTab for school-level tournaments?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. NekoTab supports all major school debating formats including WSDC-style and modified Australs."}}
-    ]
-  }
-  </script>
-
-  <!-- Structured Data: BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nekotab.app/"}
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"NekoTab","url":"{{ seo_base_url }}","logo":"{{ seo_base_url }}/static/logo.png","description":"Tabbycat debate tabulation as a service","sameAs":["https://github.com/abusumon/nekotab-app","https://www.facebook.com/project.nekotab/"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"NekoTab","url":"https://nekotab.app","potentialAction":{"@type":"SearchAction","target":"https://nekotab.app/motions/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 </head>
 <body class="em-body">
-  <!-- Skip to content -->
   <a href="#main-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#6366f1;color:#fff;padding:8px 16px;z-index:10000;transition:top .3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
 
-  <!-- ========================================================
-       NAVBAR — Linear-inspired, conversion-oriented
-       ======================================================== -->
-  <header class="em-navbar em-navbar--dark" id="top">
-    <div class="em-container em-nav-inner">
+  <!-- ════════════════════════════════════════════
+       NAVBAR — Simple, clean
+       ════════════════════════════════════════════ -->
+  <header class="nk-nav" id="top">
+    <div class="nk-nav-inner">
       <!-- Logo -->
-      <a class="em-logo" href="/">
-        <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="120" height="32" fetchpriority="high">
+      <a href="/" class="nk-nav-logo" aria-label="NekoTab home">
+        <img src="{% static 'logo.png' %}" alt="" width="28" height="28">
+        <span class="nk-nav-logo-text">NekoTab</span>
       </a>
 
-      <!-- Center Navigation -->
-      <nav class="em-nav-center" aria-label="Primary">
-        <!-- Product dropdown -->
-        <div class="em-nav-dropdown">
-          <button class="em-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">
-            Product
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l3 3 3-3"/></svg>
-          </button>
-          <div class="em-dropdown-panel" role="menu">
-            <!-- Tab Room with nested flyout -->
-            <div class="em-dd-nested">
-              <button class="em-dd-item em-dd-nested-trigger" role="menuitem" aria-expanded="false" type="button">
-                <div class="em-dd-icon">🎲</div>
-                <div class="em-dd-nested-label-wrap">
-                  <div class="em-dd-label">Tab Room</div>
-                  <div class="em-dd-desc">Tournament management platform</div>
-                </div>
-                <svg class="em-dd-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 2.5l3.5 3.5-3.5 3.5"/></svg>
-              </button>
-              <div class="em-dd-flyout" role="menu">
-                <a href="https://nekotab.app/register/organization/" class="em-dd-item" role="menuitem">
-                  <div class="em-dd-icon em-dd-icon--blue">🏢</div>
-                  <div>
-                    <div class="em-dd-label">Organization Workspace</div>
-                    <div class="em-dd-desc">A branded workspace to manage multiple tournaments under one roof</div>
-                  </div>
-                </a>
-                <a href="https://nekotab.app/register/tournament/" class="em-dd-item" role="menuitem">
-                  <div class="em-dd-icon em-dd-icon--amber">🎯</div>
-                  <div>
-                    <div class="em-dd-label">Single Tournament</div>
-                    <div class="em-dd-desc">Set up and run one tournament — no organization workspace needed</div>
-                  </div>
-                </a>
-                <a href="{% url 'congress-tournament-create' %}" class="em-dd-item" role="menuitem">
-                  <div class="em-dd-icon em-dd-icon--purple">🏛️</div>
-                  <div>
-                    <div class="em-dd-label">Congress</div>
-                    <div class="em-dd-desc">Congressional debate — legislation, POs, speeches &amp; scoring</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <!-- Motion Bank -->
-            <a href="https://nekotab.app/motions/" class="em-dd-item" role="menuitem">
-              <div class="em-dd-icon em-dd-icon--green">📋</div>
-              <div>
-                <div class="em-dd-label">Motion Bank</div>
-                <div class="em-dd-desc">Global database of debate motions</div>
-              </div>
-            </a>
-            <!-- Importer -->
-            <a href="/tools/import/" class="em-dd-item" role="menuitem">
-              <div class="em-dd-icon em-dd-icon--amber">📥</div>
-              <div>
-                <div class="em-dd-label">Importer</div>
-                <div class="em-dd-desc">Import tournament data from CSV — or switch from CalICOTab</div>
-                <div class="em-dd-hint">Powered by CSV-Importers · direct REST API upload</div>
-              </div>
-            </a>
-            <!-- Analyzer -->
-            <a href="/tools/analyze/" class="em-dd-item" role="menuitem">
-              <div class="em-dd-icon em-dd-icon--blue">📊</div>
-              <div>
-                <div class="em-dd-label">Analyzer</div>
-                <div class="em-dd-desc">Upload any Tabbycat XML export for instant tournament analysis</div>
-                <div class="em-dd-hint">Powered by DebateXML · team, speaker &amp; adjudicator breakdowns</div>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- Solutions dropdown -->
-        <div class="em-nav-dropdown">
-          <button class="em-nav-dd-trigger" aria-expanded="false" aria-haspopup="true">
-            Solutions
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l3 3 3-3"/></svg>
-          </button>
-          <div class="em-dropdown-panel" role="menu">
-            <a href="{% url 'register-organization' %}" class="em-dd-item" role="menuitem">
-              <div class="em-dd-icon em-dd-icon--blue">🏢</div>
-              <div>
-                <div class="em-dd-label">Organization Workspace</div>
-                <div class="em-dd-desc">A branded workspace to manage multiple tournaments under one roof</div>
-                <div class="em-dd-hint">Best for clubs, institutions, and leagues</div>
-              </div>
-            </a>
-            <a href="{% url 'tournament-create' %}" class="em-dd-item" role="menuitem">
-              <div class="em-dd-icon em-dd-icon--amber">🎯</div>
-              <div>
-                <div class="em-dd-label">Single Tournament</div>
-                <div class="em-dd-desc">Set up and run one tournament — no organization workspace needed</div>
-                <div class="em-dd-hint">Best for independent tab teams and one-time events</div>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <a href="{% url 'contact-forum' %}" class="em-nav-link">Community</a>
-        <a href="/learn/" class="em-nav-link">Resources</a>
-        <a href="https://github.com/abusumon/nekotab-app/wiki" class="em-nav-link" target="_blank" rel="noopener">Docs</a>
-        <a href="/donate/" class="em-nav-link" style="color:#a5b4fc !important; font-weight:600;">♥ Support</a>
+      <!-- Desktop links -->
+      <nav class="nk-nav-links" aria-label="Primary">
+        <div class="nk-nav-divider"></div>
+        <a href="https://www.facebook.com/project.nekotab/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg class="nk-nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener" aria-label="Discord">
+          <svg class="nk-nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          Discord
+        </a>
+        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
+        <a href="{% url 'motions' %}">Motion Bank</a>
       </nav>
 
-      <!-- Right side -->
-      <div class="em-nav-end">
+      <!-- Auth -->
+      <div class="nk-nav-end">
         {% if user.is_authenticated %}
-          <!-- User account dropdown -->
-          <div class="em-nav-dropdown" id="em-user-dropdown">
-            <button class="em-user-trigger em-nav-dd-trigger" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            </button>
-            <div class="em-dropdown-panel em-dropdown-panel--right" role="menu">
-              {% if user.is_superuser %}
-              <a href="{% url 'analytics:dashboard' %}" class="em-user-panel-item" role="menuitem">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-                Analytics Dashboard
-              </a>
-              <a href="{% url 'campaigns:list' %}" class="em-user-panel-item" role="menuitem">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                Campaigns
-              </a>
-              <a href="/admin/" class="em-user-panel-item" role="menuitem">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                Django Admin
-              </a>
-              {% else %}
-              <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="em-user-panel-item" role="menuitem">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-                Workspace
-              </a>
-              {% endif %}
-              <div class="em-user-panel-divider"></div>
-              <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="em-user-panel-item em-user-panel-item--danger">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
-                  Sign out
-                </button>
-              </form>
-            </div>
-          </div>
-          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="em-btn em-btn--primary em-btn--sm">Workspace</a>
+          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="nk-nav-cta">Workspace</a>
         {% else %}
-          <a href="{% url 'login' %}" class="em-btn--nav-signin">Sign in</a>
-          <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--sm">Get Started Free</a>
-        {% endif %}
-        <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Backdrop -->
-    <div class="em-mobile-backdrop" id="em-mobile-backdrop" aria-hidden="true"></div>
-
-    <!-- Mobile Menu — right-slide drawer -->
-    <div id="em-mobile-menu" class="em-mobile-menu" hidden role="dialog" aria-modal="true" aria-label="Navigation menu">
-      <!-- Drawer Header -->
-      <div class="em-mobile-menu-header">
-        <a href="/" class="em-logo" tabindex="-1" aria-hidden="true">
-          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-mobile-logo" width="96" height="25">
-        </a>
-        <button class="em-close-btn" id="em-menu-close" aria-label="Close menu">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-
-      <!-- Drawer Body (scrollable) -->
-      <div class="em-mobile-menu-body">
-        <div class="em-mobile-menu-section">
-          <div class="em-mobile-menu-label">Product</div>
-          <!-- Tab Room accordion -->
-          <button class="em-mobile-accordion-trigger" aria-expanded="false" type="button">
-            🎲 Tab Room
-            <svg class="em-mobile-accordion-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4.5l3 3 3-3"/></svg>
-          </button>
-          <div class="em-mobile-accordion-panel" hidden>
-            <a href="https://nekotab.app/register/organization/">
-              🏢 Organization Workspace
-              <span class="em-mobile-sub-desc">Manage multiple tournaments under one roof</span>
-            </a>
-            <a href="https://nekotab.app/register/tournament/">
-              🎯 Single Tournament
-              <span class="em-mobile-sub-desc">Set up and run one tournament</span>
-            </a>
-            <a href="{% url 'congress-tournament-create' %}">
-              🏛️ Congress
-              <span class="em-mobile-sub-desc">Congressional debate — legislation, POs &amp; scoring</span>
-            </a>
-          </div>
-          <a href="https://nekotab.app/motions/">📋 NekoTab Motion Bank</a>
-          <a href="/tools/import/">
-            📥 Importer
-            <span class="em-mobile-sub-desc">Import CSV data or switch from CalICOTab</span>
-          </a>
-          <a href="/tools/analyze/">
-            📊 Analyzer
-            <span class="em-mobile-sub-desc">Upload tournament XML for instant analysis</span>
-          </a>
-        </div>
-        <div class="em-mobile-menu-section">
-          <div class="em-mobile-menu-label">Solutions</div>
-          <a href="{% url 'register-organization' %}">🏢 Organization Workspace</a>
-          <a href="{% url 'tournament-create' %}">🎯 Single Tournament</a>
-        </div>
-        <div class="em-mobile-menu-section">
-          <div class="em-mobile-menu-label">Explore</div>
-          <a href="{% url 'contact-forum' %}">💬 Community</a>
-          <a href="/learn/">📚 Resources</a>
-          <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">📖 Docs</a>
-          <a href="#faq">❓ FAQ</a>
-        </div>
-      </div>
-
-      <!-- Drawer Footer (auth actions) -->
-      <div class="em-mobile-menu-footer">
-        {% if user.is_authenticated %}
-          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="em-btn em-btn--primary em-btn--block">Workspace</a>
-          <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="em-btn em-btn--ghost em-btn--block">Sign out</button>
-          </form>
-        {% else %}
-          <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--block">Get Started Free</a>
-          <a href="{% url 'login' %}" class="em-btn em-btn--ghost em-btn--block">Sign in</a>
-          <a href="{% url 'signup' %}" class="em-btn em-btn--secondary em-btn--block">Create Account</a>
+          <a href="{% url 'login' %}" class="nk-nav-signin">Sign in</a>
+          <a href="{% url 'register-organization' %}" class="nk-nav-cta">Create Workspace</a>
         {% endif %}
       </div>
+
+      <!-- Mobile hamburger -->
+      <button class="nk-burger" id="nk-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nk-drawer">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- ========================================================
-       HERO — Dark gradient, international SaaS feel
-       ======================================================== -->
+  <!-- Mobile drawer -->
+  <div class="nk-mobile-drawer" id="nk-drawer" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="nk-mobile-drawer-backdrop" id="nk-drawer-backdrop"></div>
+    <div class="nk-mobile-drawer-panel">
+      <div class="nk-mobile-drawer-head">
+        <a href="/" class="nk-nav-logo" aria-hidden="true" tabindex="-1">
+          <img src="{% static 'logo.png' %}" alt="NekoTab" width="24" height="24">
+          <span class="nk-nav-logo-text">NekoTab</span>
+        </a>
+        <button class="nk-mobile-close" id="nk-drawer-close" aria-label="Close menu">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="nk-mobile-drawer-body">
+        <a href="https://www.facebook.com/project.nekotab/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          Discord Community
+        </a>
+        <a href="{% url 'motions' %}">Motion Bank</a>
+        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
+      </div>
+      <div class="nk-mobile-drawer-footer">
+        {% if user.is_authenticated %}
+          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="nk-mob-cta">Workspace</a>
+        {% else %}
+          <a href="{% url 'register-organization' %}" class="nk-mob-cta">Create Workspace</a>
+          <a href="{% url 'register-tournament' %}" class="nk-mob-secondary">Single Tournament</a>
+          <a href="{% url 'login' %}" class="nk-mob-secondary">Sign in</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       HERO — Dark gradient, updated headline
+       ════════════════════════════════════════════ -->
   <section class="em-hero" id="main-content" aria-labelledby="hero-title">
     <div class="em-container em-hero-inner">
       <div class="em-badge" aria-label="Open source">
@@ -393,50 +420,31 @@
       </div>
 
       <h1 id="hero-title" class="em-hero-title">
-        Free debate tabulation<br><span class="em-gradient-text">for every format</span>
+        Tabbycat debate tabulation<br><span class="em-gradient-text">as a service</span>
       </h1>
 
       <p class="em-hero-sub">
-        Run tournaments, analyze motions with AI, and connect the global debate community — all from a single platform built for every format.
+        Hosted tournament management for every format — BP, WSDC, Australs, and more.
+        Draw, ballot, allocate, and publish results without touching a server.
       </p>
 
       <div class="em-hero-ctas">
         <a href="{% url 'register-organization' %}" class="em-btn em-btn--white em-btn--lg">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          Create Organization Workspace
+          Create Workspace
         </a>
         <a href="{% if user.is_authenticated %}{% url 'tournament-create' %}{% else %}{% url 'register-tournament' %}{% endif %}" class="em-btn em-btn--outline-light em-btn--lg">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-          {% if user.is_authenticated %}Create Single Tournament{% else %}Create Free Tournament{% endif %}
+          Single Tournament
         </a>
       </div>
 
       {% if not user.is_authenticated %}
       <p class="em-hero-login-hint">
         Already have an account?
-        <a href="{% url 'login' %}" style="color: rgba(255,255,255,0.9); text-decoration: underline;">Sign in</a>
+        <a href="{% url 'login' %}" style="color:rgba(255,255,255,0.9);text-decoration:underline;">Sign in</a>
       </p>
       {% endif %}
-
-      <!-- Trust metrics inside hero -->
-      <div class="em-hero-trust">
-        <div class="em-hero-trust-item">
-          <span class="em-hero-trust-icon">🏛️</span>
-          University Societies
-        </div>
-        <div class="em-hero-trust-item">
-          <span class="em-hero-trust-icon">🌍</span>
-          National Circuits
-        </div>
-        <div class="em-hero-trust-item">
-          <span class="em-hero-trust-icon">🏆</span>
-          International Tournaments
-        </div>
-        <div class="em-hero-trust-item">
-          <span class="em-hero-trust-icon">📚</span>
-          School Leagues
-        </div>
-      </div>
 
       <!-- Dashboard Preview -->
       <div class="em-hero-visual">
@@ -486,645 +494,92 @@
     </div>
   </section>
 
-  <!-- ========================================================
-       TRUST BAR — Social proof strip
-       ======================================================== -->
-  <section class="em-trust-bar" aria-label="Trusted by debate communities">
-    <div class="em-container">
-      <p class="em-trust-label">Trusted by debate communities worldwide</p>
-      <div class="em-trust-logos">
-        <div class="em-trust-item"><span>🏛️</span> University Societies</div>
-        <div class="em-trust-item"><span>🌍</span> National Circuits</div>
-        <div class="em-trust-item"><span>🏆</span> International Tournaments</div>
-        <div class="em-trust-item"><span>📚</span> School Leagues</div>
-      </div>
-    </div>
-  </section>
+  <!-- ════════════════════════════════════════════
+       WORKSPACE FEATURES — Calicotab-style 4-box
+       ════════════════════════════════════════════ -->
+  <section class="nk-features" aria-labelledby="features-heading">
+    <div class="nk-features-container">
+      <p class="nk-features-eyebrow">Workspace Features</p>
+      <h2 id="features-heading" class="nk-features-heading">Everything your organization needs</h2>
 
-  <!-- ========================================================
-       SOCIAL PROOF — Key stats
-       ======================================================== -->
-  <section class="em-section em-social-proof" aria-label="Platform statistics">
-    <div class="em-container">
-      <div class="em-proof-grid">
-        <div class="em-proof-stat">
-          <span class="em-proof-number">40+</span>
-          <span class="em-proof-label">Tournaments tabulated</span>
-        </div>
-        <div class="em-proof-stat">
-          <span class="em-proof-number">20+</span>
-          <span class="em-proof-label">Countries</span>
-        </div>
-        <div class="em-proof-stat">
-          <span class="em-proof-number">$0</span>
-          <span class="em-proof-label">Cost, forever</span>
-        </div>
-        <div class="em-proof-stat">
-          <span class="em-proof-number">BP · WSDC · Australs</span>
-          <span class="em-proof-label">All major formats</span>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="nk-features-grid">
 
-  <!-- ========================================================
-       COMPETITOR COMPARISON
-       ======================================================== -->
-  <section class="em-section em-comparison" aria-label="How NekoTab compares">
-    <div class="em-container" style="text-align: center;">
-      <p class="em-comparison-label">How NekoTab compares</p>
-      <div class="em-comparison-pills">
-        <span class="em-pill">✓ Free forever <small>(vs Calico $40/tournament)</small></span>
-        <span class="em-pill">✓ No NSDA lock-in <small>(vs Tabroom)</small></span>
-        <span class="em-pill">✓ No server setup <small>(vs self-hosted Tabbycat)</small></span>
-        <span class="em-pill">✓ BP + WSDC + Australs</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       PUBLIC TOURNAMENTS — Tabroom-style listing (visible to everyone)
-       ======================================================== -->
-  {% if listed_tournaments %}
-  <section class="em-section em-section--white" id="tournaments" aria-labelledby="pub-tourn-title">
-    <div class="em-container">
-      <div class="em-section-eyebrow">On NekoTab Now</div>
-      <div class="em-section-header" style="margin-bottom:24px;">
-        <div>
-          <h2 id="pub-tourn-title" class="em-section-title em-section-title--left" style="margin-bottom:8px;">Active Tournaments</h2>
-          <p class="em-section-subtitle" style="text-align:left;margin:0;">Browse tournaments currently running on NekoTab — view draws, results, and standings.</p>
-        </div>
-      </div>
-
-      <div class="em-tourn-list">
-        <div class="em-tourn-list__head">
-          <span class="em-tourn-list__col em-tourn-list__col--name">Tournament</span>
-          <span class="em-tourn-list__col em-tourn-list__col--stat">Teams</span>
-          <span class="em-tourn-list__col em-tourn-list__col--stat">Rounds</span>
-          <span class="em-tourn-list__col em-tourn-list__col--stat">Judges</span>
-          <span class="em-tourn-list__col em-tourn-list__col--action"></span>
-        </div>
-        {% for t in listed_tournaments %}
-        <a href="{{ t.view_url }}" class="em-tourn-list__row">
-          <span class="em-tourn-list__col em-tourn-list__col--name">
-            <span class="em-tourn-list__name">{{ t.name }}</span>
-            <span class="em-tourn-badge em-tourn-badge--active">Active</span>
-          </span>
-          <span class="em-tourn-list__col em-tourn-list__col--stat">
-            <span class="em-tourn-list__stat-num">{{ t.team_count }}</span>
-            <span class="em-tourn-list__stat-label">teams</span>
-          </span>
-          <span class="em-tourn-list__col em-tourn-list__col--stat">
-            <span class="em-tourn-list__stat-num">{{ t.round_count }}</span>
-            <span class="em-tourn-list__stat-label">rounds</span>
-          </span>
-          <span class="em-tourn-list__col em-tourn-list__col--stat">
-            <span class="em-tourn-list__stat-num">{{ t.adj_count }}</span>
-            <span class="em-tourn-list__stat-label">judges</span>
-          </span>
-          <span class="em-tourn-list__col em-tourn-list__col--action">
-            <span class="em-btn em-btn--primary em-btn--xs">View →</span>
-          </span>
-        </a>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
-  <!-- ========================================================
-       AUTH: MY TOURNAMENTS
-       ======================================================== -->
-  {% if user.is_authenticated %}
-  <section class="em-section em-section--alt" aria-labelledby="my-tournaments-title">
-    <div class="em-container">
-      <div class="em-section-header">
-        <h2 id="my-tournaments-title" class="em-section-title em-section-title--left">My Tournaments</h2>
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">+ New Tournament</a>
-      </div>
-      {% if my_tournaments_active or my_tournaments_inactive %}
-        <div class="em-tournament-grid">
-          {% for t in my_tournaments_active %}
-            <article class="em-tournament-card em-tournament-card--active">
-              <div class="em-tournament-status"><span class="em-status-dot em-status-dot--active"></span> Active</div>
-              <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
-              <div class="em-tournament-actions">
-                <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public Site</a>
-                <a href="/{{ t.slug }}/admin/" class="em-btn em-btn--primary em-btn--xs">Admin Panel</a>
-              </div>
-            </article>
-          {% endfor %}
-          {% for t in my_tournaments_inactive %}
-            <article class="em-tournament-card em-tournament-card--inactive">
-              <div class="em-tournament-status"><span class="em-status-dot em-status-dot--inactive"></span> Inactive</div>
-              <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
-              <div class="em-tournament-actions">
-                <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public Site</a>
-                <a href="/{{ t.slug }}/admin/" class="em-btn em-btn--ghost em-btn--xs">Admin Panel</a>
-              </div>
-            </article>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="em-empty-state">
-          <div class="em-empty-icon">📋</div>
-          <p>You haven't created any tournaments yet.</p>
-          <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">Create your first tournament</a>
-        </div>
-      {% endif %}
-
-      {% if user.is_superuser %}
-        {% if unassigned_active or unassigned_inactive %}
-          <h3 class="em-subsection-title">Unassigned Tournaments (Admin)</h3>
-          <div class="em-tournament-grid">
-            {% for t in unassigned_active %}
-              <article class="em-tournament-card em-tournament-card--unassigned">
-                <div class="em-tournament-status"><span class="em-status-dot em-status-dot--active"></span> Active · No Owner</div>
-                <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
-                <div class="em-tournament-actions">
-                  <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public</a>
-                  <a href="/{{ t.slug }}/admin/" class="em-btn em-btn--ghost em-btn--xs">Admin</a>
-                  <form action="{% url 'tournament-claim' slug=t.slug %}" method="post" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="em-btn em-btn--secondary em-btn--xs">Claim</button>
-                  </form>
-                </div>
-              </article>
-            {% endfor %}
-            {% for t in unassigned_inactive %}
-              <article class="em-tournament-card em-tournament-card--unassigned">
-                <div class="em-tournament-status"><span class="em-status-dot em-status-dot--inactive"></span> Inactive · No Owner</div>
-                <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
-                <div class="em-tournament-actions">
-                  <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public</a>
-                  <form action="{% url 'tournament-claim' slug=t.slug %}" method="post" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="em-btn em-btn--secondary em-btn--xs">Claim</button>
-                  </form>
-                </div>
-              </article>
-            {% endfor %}
-          </div>
-        {% endif %}
-      {% endif %}
-    </div>
-  </section>
-  {% endif %}
-
-  <!-- AUTH: SHARED WITH ME -->
-  {% if user.is_authenticated and shared_tournaments %}
-  <section class="em-section em-section--white" aria-labelledby="shared-title">
-    <div class="em-container">
-      <div class="em-section-header">
-        <h2 id="shared-title" class="em-section-title em-section-title--left">Shared with Me</h2>
-      </div>
-      <div class="em-tournament-grid">
-        {% for t in shared_tournaments %}
-          <article class="em-tournament-card">
-            <div class="em-tournament-status"><span class="em-status-dot em-status-dot--active"></span> Shared</div>
-            <h3 class="em-tournament-name">{{ t.short_name|default:t.name }}</h3>
-            <div class="em-tournament-actions">
-              <a href="/{{ t.slug }}/" class="em-btn em-btn--ghost em-btn--xs">Public Site</a>
-              <a href="/{{ t.slug }}/admin/" class="em-btn em-btn--primary em-btn--xs">Admin Panel</a>
-            </div>
-          </article>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
-
-  <!-- ========================================================
-       PRODUCT PILLARS — 5 core capabilities
-       ======================================================== -->
-  <section class="em-section em-section--white" aria-labelledby="pillars-title">
-    <div class="em-container">
-      <div class="em-section-eyebrow">Platform</div>
-      <h2 id="pillars-title" class="em-section-title">One platform, every capability</h2>
-      <p class="em-section-subtitle">NekoTab brings together everything the debate ecosystem needs — from running tournaments to building careers.</p>
-
-      <div class="em-pillars-grid">
-        <article class="em-pillar">
-          <div class="em-pillar-icon em-pillar-icon--indigo">🎲</div>
-          <h3 class="em-pillar-title">Tournament Engine</h3>
-          <p class="em-pillar-desc">Automated draws, smart judge allocation, digital ballots, real-time standings, and break calculations — for BP, Australs, WSDC and more.</p>
-          <a href="#features" class="em-pillar-link">
-            Explore features <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
-          </a>
-        </article>
-
-        <article class="em-pillar">
-          <div class="em-pillar-icon em-pillar-icon--green">📋</div>
-          <h3 class="em-pillar-title">Global Motion Bank</h3>
-          <p class="em-pillar-desc">Thousands of real motions from tournaments worldwide. Filter by format, region, year, theme, and difficulty. Community ratings included.</p>
-          <a href="{% url 'motions' %}" class="em-pillar-link">
-            Browse NekoTab Motion Bank <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
-          </a>
-        </article>
-
-        <article class="em-pillar">
-          <div class="em-pillar-icon em-pillar-icon--amber">💬</div>
-          <h3 class="em-pillar-title">Community Hub</h3>
-          <p class="em-pillar-desc">Structured discussions with argument trees, verified badges, and topic categories. Share strategies, analyze motions, and learn from debaters worldwide.</p>
-          <a href="{% url 'contact-forum' %}" class="em-pillar-link">
-            Join the forum <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
-          </a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       FEATURES GRID — Tournament capabilities detail
-       ======================================================== -->
-  <section id="features" class="em-section em-section--alt" aria-labelledby="features-title">
-    <div class="em-container">
-      <div class="em-section-eyebrow">Tournament Engine</div>
-      <h2 id="features-title" class="em-section-title">Everything you need to run a tournament</h2>
-      <p class="em-section-subtitle">From registration to break announcements — NekoTab handles it all.</p>
-      <div class="em-features-grid">
-        <article class="em-feature-card">
-          <div class="em-feature-icon">🎲</div>
-          <h3 class="em-feature-title">Draws &amp; Power-Pairing</h3>
-          <p class="em-feature-desc">Fair draws with side balancing, pull-ups, and constraints for BP and all formats.</p>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-icon">⚖️</div>
-          <h3 class="em-feature-title">Judge Allocation</h3>
-          <p class="em-feature-desc">Smart panel assignments considering conflicts, feedback scores, and institutional clashes.</p>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-icon">📝</div>
-          <h3 class="em-feature-title">Ballots &amp; Feedback</h3>
-          <p class="em-feature-desc">Digital ballot entry with validation, plus structured adjudicator feedback collection.</p>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-icon">📊</div>
-          <h3 class="em-feature-title">Standings &amp; Breaks</h3>
-          <p class="em-feature-desc">Real-time standings with configurable tie-breaking rules and break categories.</p>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-icon">✅</div>
-          <h3 class="em-feature-title">Registration &amp; Check-ins</h3>
-          <p class="em-feature-desc">Manage teams, speakers, and judges. Track availability and attendance with QR codes.</p>
-        </article>
-        <article class="em-feature-card">
-          <div class="em-feature-icon">🌐</div>
-          <h3 class="em-feature-title">Public Site</h3>
-          <p class="em-feature-desc">Share draws, results, motions, and notifications. Private URLs for participants.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       USE-CASE SEGMENTATION — Four audience pillars
-       ======================================================== -->
-  <section id="use-cases" class="em-section em-section--white" aria-labelledby="usecase-title">
-    <div class="em-container">
-      <div class="em-section-eyebrow">Built for everyone</div>
-      <h2 id="usecase-title" class="em-section-title">Find your place in the debate ecosystem</h2>
-      <p class="em-section-subtitle">Whether you organize, compete, adjudicate, or manage — NekoTab is built for you.</p>
-
-      <div class="em-usecase-grid">
-        <article class="em-usecase">
-          <div class="em-usecase-accent em-usecase-accent--indigo"></div>
-          <div class="em-usecase-icon">🏛️</div>
-          <h3 class="em-usecase-title">Tournament Organizers &amp; Tabmasters</h3>
-          <p class="em-usecase-desc">Run every aspect of your tournament from a single admin panel — draws, allocations, ballots, and live results.</p>
-          <ul class="em-usecase-features">
-            <li>Automated draw generation with power-pairing</li>
-            <li>Smart adjudicator allocation with conflict detection</li>
-            <li>Digital ballots with real-time validation</li>
-            <li>Public site with live draw and result publishing</li>
-          </ul>
-        </article>
-
-        <article class="em-usecase">
-          <div class="em-usecase-accent em-usecase-accent--green"></div>
-          <div class="em-usecase-icon">🎓</div>
-          <h3 class="em-usecase-title">Debate Societies &amp; Institutions</h3>
-          <p class="em-usecase-desc">Manage your society's tournaments, track debater progress, and build your community on one platform.</p>
-          <ul class="em-usecase-features">
-            <li>Organization accounts with multi-user management</li>
-            <li>Season-long debater performance tracking</li>
-            <li>Training resources via the Learn hub</li>
-            <li>Self-hosting available for data sovereignty</li>
-          </ul>
-        </article>
-
-        <article class="em-usecase">
-          <div class="em-usecase-accent em-usecase-accent--amber"></div>
-          <div class="em-usecase-icon">🎤</div>
-          <h3 class="em-usecase-title">Debaters &amp; Speakers</h3>
-          <p class="em-usecase-desc">Prepare for tournaments with the global motion bank and connect with the community.</p>
-          <ul class="em-usecase-features">
-            <li>Global Motion Bank for practice and study</li>
-            <li>Community forum for peer discussion</li>
-          </ul>
-        </article>
-
-        <article class="em-usecase">
-          <div class="em-usecase-accent em-usecase-accent--blue"></div>
-          <div class="em-usecase-icon">⚖️</div>
-          <h3 class="em-usecase-title">Judges &amp; Adjudicators</h3>
-          <p class="em-usecase-desc">Access draws, submit ballots digitally, and track your adjudication record and feedback scores.</p>
-          <ul class="em-usecase-features">
-            <li>Mobile-friendly ballot submission</li>
-            <li>Structured feedback collection and scores</li>
-            <li>Tournament-wide adjudicator records</li>
-            <li>Transparent adjudication workflows</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       COMPARISON — Before/After
-       ======================================================== -->
-  <section class="em-section em-section--alt" aria-labelledby="compare-title">
-    <div class="em-container">
-      <div class="em-section-eyebrow">Why NekoTab</div>
-      <h2 id="compare-title" class="em-section-title">Your tabbing challenges, solved</h2>
-      <p class="em-section-subtitle">Stop battling spreadsheets. Start running tournaments with confidence.</p>
-      <div class="em-compare-grid">
-        <div class="em-compare-card em-compare-card--danger">
-          <div class="em-compare-header">
-            <span class="em-compare-emoji">😰</span>
-            <h3>Spreadsheets &amp; Stress</h3>
-          </div>
-          <ul>
-            <li>Manual power-pairing and rooming</li>
-            <li>Judge and venue conflicts missed</li>
-            <li>Slow result entry and human errors</li>
-            <li>No public draw release</li>
-            <li>No persistent data between tournaments</li>
-          </ul>
-        </div>
-        <div class="em-compare-card em-compare-card--success">
-          <div class="em-compare-header">
-            <span class="em-compare-emoji">✨</span>
-            <h3>NekoTab</h3>
-          </div>
-          <ul>
-            <li>Automated draws and smart allocations</li>
-            <li>Built-in conflict and clash detection</li>
-            <li>Digital ballots with real-time validation</li>
-            <li>Public site with live results and notifications</li>
-            <li>Persistent tournament archives and records</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       HOW IT WORKS — 3 steps
-       ======================================================== -->
-  <section id="how-it-works" class="em-section em-section--white">
-    <div class="em-container">
-      <div class="em-section-eyebrow">How It Works</div>
-      <h2 class="em-section-title">Getting started takes 3 minutes</h2>
-      <p class="em-section-subtitle">No verification. No approval. Just create and go.</p>
-      <div class="em-steps-grid">
-        <div class="em-step">
-          <div class="em-step-num">1</div>
-          <div>
-            <h3>Create an Account</h3>
-            <p>Sign up with just a username and password. Instant access.</p>
+        <div class="nk-feature-card">
+          <div class="nk-feature-card-bar"></div>
+          <div class="nk-feature-card-body">
+            <h2>Website Builder</h2>
+            <p>Build a professional public website for your debate organization. Showcase your events, share results, and attract participants — no coding required.</p>
           </div>
         </div>
-        <div class="em-step-connector"></div>
-        <div class="em-step">
-          <div class="em-step-num">2</div>
-          <div>
-            <h3>Set Up Your Tournament</h3>
-            <p>Name it, pick a format, and import your teams, judges, and venues.</p>
+
+        <div class="nk-feature-card">
+          <div class="nk-feature-card-bar"></div>
+          <div class="nk-feature-card-body">
+            <h2>Ticketing System for Events</h2>
+            <p>Sell and manage tickets for your tournaments and events. Handle online registration, payments, and automated confirmations all in one place.</p>
           </div>
         </div>
-        <div class="em-step-connector"></div>
-        <div class="em-step">
-          <div class="em-step-num">3</div>
-          <div>
-            <h3>Run &amp; Publish</h3>
-            <p>Generate draws, enter ballots, and share results — all automated.</p>
+
+        <div class="nk-feature-card">
+          <div class="nk-feature-card-bar"></div>
+          <div class="nk-feature-card-body">
+            <h2>Schedule Planner</h2>
+            <p>Plan your tournament schedule from first round to finals. Organize rounds, breaks, and sessions with an intuitive planner built for the debate format.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ========================================================
-       FORMATS — Supported debate formats
-       ======================================================== -->
-  <section class="em-section em-section--alt" id="formats">
-    <div class="em-container">
-      <div class="em-section-eyebrow">Formats</div>
-      <h2 class="em-section-title">Built for every debate style</h2>
-      <p class="em-section-subtitle">First-class support for the world's major parliamentary debate formats.</p>
-      <div class="em-formats-grid">
-        <div class="em-format-card em-format-card--bp">
-          <div class="em-format-overlay"></div>
-          <div class="em-format-content">
-            <div class="em-format-icon">🇬🇧</div>
-            <div class="em-format-title">British Parliamentary (BP)</div>
-            <p class="em-format-desc">4-team format with opening and closing halves</p>
+        <div class="nk-feature-card">
+          <div class="nk-feature-card-bar"></div>
+          <div class="nk-feature-card-body">
+            <h2>Events System</h2>
+            <p>Create and manage events of every scale — from local meetups to international championships — with full participant management and live updates.</p>
           </div>
         </div>
-        <div class="em-format-card em-format-card--australs">
-          <div class="em-format-overlay"></div>
-          <div class="em-format-content">
-            <div class="em-format-icon">🇦🇺</div>
-            <div class="em-format-title">Australs / 3v3</div>
-            <p class="em-format-desc">Two-team format with 3 speakers per side</p>
-          </div>
-        </div>
-        <div class="em-format-card em-format-card--wsdc">
-          <div class="em-format-overlay"></div>
-          <div class="em-format-content">
-            <div class="em-format-icon">🌏</div>
-            <div class="em-format-title">WSDC-style</div>
-            <p class="em-format-desc">World Schools format with reply speeches</p>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ========================================================
-       ENTERPRISE / CREDIBILITY — Trust & technical confidence
-       ======================================================== -->
-  <section class="em-section em-section--white" aria-labelledby="credibility-title">
-    <div class="em-container">
-      <div class="em-section-eyebrow">Trust &amp; Security</div>
-      <h2 id="credibility-title" class="em-section-title">Built for reliability at any scale</h2>
-      <p class="em-section-subtitle">Open-source foundations with enterprise-grade practices — designed for institutions worldwide.</p>
-
-      <div class="em-cred-grid">
-        <div class="em-cred-card">
-          <div class="em-cred-icon">🔓</div>
-          <h3 class="em-cred-title">Open Source</h3>
-          <p class="em-cred-desc">Full source code on GitHub. Audit, contribute, and verify every line.</p>
-        </div>
-        <div class="em-cred-card">
-          <div class="em-cred-icon">🏠</div>
-          <h3 class="em-cred-title">Self-Hosting</h3>
-          <p class="em-cred-desc">Deploy on your own infrastructure. Full data sovereignty for your organization.</p>
-        </div>
-        <div class="em-cred-card">
-          <div class="em-cred-icon">🛡️</div>
-          <h3 class="em-cred-title">Secure by Design</h3>
-          <p class="em-cred-desc">CSRF protection, session security, and input validation as standard.</p>
-        </div>
-        <div class="em-cred-card">
-          <div class="em-cred-icon">⚡</div>
-          <h3 class="em-cred-title">Production-Ready</h3>
-          <p class="em-cred-desc">Docker-based deployment. Built to handle tournaments of any size reliably.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       STATS STRIP — Key metrics / principles
-       ======================================================== -->
-  <section class="em-section em-section--gradient" aria-label="Key principles">
-    <div class="em-container em-stats-inner">
-      <div class="em-stat">
-        <div class="em-stat-icon">🔓</div>
-        <div class="em-stat-value">100%</div>
-        <div class="em-stat-label">Open-source</div>
-      </div>
-      <div class="em-stat">
-        <div class="em-stat-icon">⚡</div>
-        <div class="em-stat-value">3min</div>
-        <div class="em-stat-label">Setup time</div>
-      </div>
-      <div class="em-stat">
-        <div class="em-stat-icon">🌍</div>
-        <div class="em-stat-value">3+</div>
-        <div class="em-stat-label">Debate formats</div>
-      </div>
-      <div class="em-stat">
-        <div class="em-stat-icon">🎯</div>
-        <div class="em-stat-value">4-stage</div>
-        <div class="em-stat-label">AI pipeline</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       LEARN PROMO — Resources & Education
-       ======================================================== -->
-  <section class="em-section em-section--green">
-    <div class="em-container em-learn-promo-inner">
-      <div class="em-section-eyebrow">Resources</div>
-      <h2 class="em-section-title">Learn Debate</h2>
-      <p class="em-section-subtitle">Free guides on debate formats, judging, speaker training, and tournament hosting. Whether you're starting out or sharpening advanced skills.</p>
-      <div class="em-learn-promo-cats">
-        <a href="/learn/?category=formats" class="em-btn em-btn--sm em-btn--outline-green">🏛️ Formats</a>
-        <a href="/learn/?category=judging" class="em-btn em-btn--sm em-btn--outline-green">⚖️ Judging</a>
-        <a href="/learn/?category=training" class="em-btn em-btn--sm em-btn--outline-green">🎤 Training</a>
-        <a href="/learn/?category=hosting" class="em-btn em-btn--sm em-btn--outline-green">📋 Hosting</a>
-      </div>
-      <div style="margin-top: 24px;">
-        <a href="/learn/" class="em-btn em-btn--primary em-btn--lg">Browse All Guides →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       FAQ — Frequently asked questions
-       ======================================================== -->
-  <section id="faq" class="em-section em-section--white">
-    <div class="em-container em-faq-container">
-      <div class="em-section-eyebrow">FAQ</div>
-      <h2 class="em-section-title">Frequently asked questions</h2>
-      <div class="em-faq-list">
-        <details class="em-acc">
-          <summary>Which formats does NekoTab support?</summary>
-          <p>British Parliamentary (BP), Australs/3v3, WSDC-style, and other parliamentary formats. You can configure speaker counts, sides, and scoring to match your needs.</p>
-        </details>
-        <details class="em-acc">
-          <summary>Can I import teams, judges, and venues?</summary>
-          <p>Yes — CSV imports are fully supported. You can also manage availability, conflicts, and institutional clashes from the admin panel.</p>
-        </details>
-        <details class="em-acc">
-          <summary>Is it free to use?</summary>
-          <p>Yes — NekoTab is completely free to use. No per-tournament fees, no hidden charges. Create an account and start tabbing immediately. You can also self-host for full data sovereignty.</p>
-        </details>
-        <details class="em-acc">
-          <summary>How do I create a tournament?</summary>
-          <p>Just sign up, click "Create Tournament", fill in a name and number of rounds, and you're ready to go. No approval or verification needed.</p>
-        </details>
-        <details class="em-acc">
-          <summary>Can participants submit their own ballots?</summary>
-          <p>Yes — you can enable public ballot submission or use private URLs sent to participants for secure, individual access.</p>
-        </details>
-        <details class="em-acc">
-          <summary>How does the Motion Bank work?</summary>
-          <p>The Motion Bank is a searchable database of thousands of real debate motions from tournaments worldwide. You can filter by format (BP, Australs, WSDC), region, year, theme, and difficulty level. Each motion includes metadata and community ratings.</p>
-        </details>
-        <details class="em-acc">
-          <summary>Can I self-host NekoTab?</summary>
-          <p>Yes. NekoTab is fully open-source and can be deployed on your own infrastructure using Docker. Self-hosting gives you complete data sovereignty and customization options.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       FINAL CTA — Conversion close
-       ======================================================== -->
-  <section class="em-section em-final">
-    <div class="em-container em-final-inner">
-      <h2 class="em-final-title">Ready to run your next tournament?</h2>
-      <p class="em-final-sub">Join debate communities worldwide using NekoTab to organize, compete, and grow.</p>
-      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
-        {% if user.is_authenticated %}
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--white em-btn--lg">
-          Create a Tournament
-        </a>
-        {% else %}
-        <a href="{% url 'register-tournament' %}" class="em-btn em-btn--white em-btn--lg">
-          Create a Tournament — Free
-        </a>
-        {% endif %}
-        {% if not user.is_authenticated %}
-        <a href="{% url 'signup' %}" class="em-btn em-btn--outline-light em-btn--lg">Sign Up Free</a>
-        {% endif %}
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       FOOTER — Premium SaaS footer with 6 columns
-       ======================================================== -->
+  <!-- ════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════ -->
   <footer class="em-footer" role="contentinfo">
     <div class="em-container em-footer-grid">
       <div>
         <a href="/" class="em-logo">
           <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img">
         </a>
-        <p class="em-foot-desc">The operating system for debate. Open-source tournament tabulation, motion resources, and a global debate community.</p>
+        <p class="em-foot-desc">Tabbycat debate tabulation as a service. Free, open-source tournament management for every parliamentary format.</p>
+        <div class="nk-foot-community">
+          <a href="https://www.facebook.com/project.nekotab/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            Discord
+          </a>
+          <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
       </div>
       <div>
         <div class="em-foot-title">Product</div>
         <ul class="em-foot-links">
-          <li><a href="#features">Tournament Engine</a></li>
-          <li><a href="{% url 'motions' %}">NekoTab Motion Bank</a></li>
-          <li><a href="#formats">Formats</a></li>
+          <li><a href="{% url 'register-organization' %}">Create Workspace</a></li>
+          <li><a href="{% url 'tournament-create' %}">Single Tournament</a></li>
+          <li><a href="{% url 'motions' %}">Motion Bank</a></li>
         </ul>
       </div>
       <div>
         <div class="em-foot-title">Community</div>
         <ul class="em-foot-links">
+          <li><a href="https://www.facebook.com/project.nekotab/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener">Discord</a></li>
           <li><a href="{% url 'contact-forum' %}">Contact</a></li>
           <li><a href="/learn/">Learn Debate</a></li>
-          <li><a href="{% url 'org-list' %}">Organizations</a></li>
-          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
       <div>
@@ -1132,31 +587,28 @@
         <ul class="em-foot-links">
           <li><a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Documentation</a></li>
           <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Documentation</a></li>
-          <li><a href="/register/tournament/">Create Tournament</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="em-foot-title">Company</div>
-        <ul class="em-foot-links">
-          <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/privacy/">Privacy Policy</a></li>
-          <li><a href="/terms/">Terms of Service</a></li>
-          <li><a href="/disclaimer/">Disclaimer</a></li>
-          <li><a href="/donate/" style="color:var(--nt-primary); font-weight:600;">♥ Support Us</a></li>
+          <li><a href="{% url 'org-list' %}">Organizations</a></li>
         </ul>
       </div>
       <div>
         <div class="em-foot-title">Account</div>
         <ul class="em-foot-links">
           {% if user.is_authenticated %}
-            <li><a href="/">Dashboard</a></li>
-            <li><a href="/register/tournament/">New Tournament</a></li>
+            <li><a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}">Workspace</a></li>
+            <li><a href="{% url 'tournament-create' %}">New Tournament</a></li>
           {% else %}
             <li><a href="{% url 'login' %}">Sign in</a></li>
-            <li><a href="{% url 'signup' %}">Create Account</a></li>
+            <li><a href="{% url 'register-organization' %}">Create Account</a></li>
           {% endif %}
+        </ul>
+      </div>
+      <div>
+        <div class="em-foot-title">Legal</div>
+        <ul class="em-foot-links">
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+          <li><a href="/disclaimer/">Disclaimer</a></li>
+          <li><a href="/donate/" style="color:var(--nt-primary);font-weight:600;">♥ Support Us</a></li>
         </ul>
       </div>
     </div>
@@ -1173,8 +625,6 @@
     </div>
   </footer>
 
-  <script src="{% static 'js/landing.js' %}"></script>
-
   <!-- Mobile Fixed CTA -->
   <div class="em-mobile-cta-bar">
     {% if user.is_authenticated %}
@@ -1183,143 +633,57 @@
       Create a Tournament
     </a>
     {% else %}
-    <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right:6px;flex-shrink:0;"><path d="M12 5v14M5 12h14"/></svg>
-      Get Started Free
+    <a href="{% url 'register-organization' %}" class="em-btn em-btn--primary">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right:6px;flex-shrink:0;"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      Create Workspace
     </a>
     {% endif %}
   </div>
 
   <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; color:#e0e0e0; padding:16px 24px; z-index:9999; box-shadow:0 -2px 10px rgba(0,0,0,.3); font-size:14px;">
-    <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-      <p style="margin:0; flex:1; min-width:280px;">
-        We use cookies for authentication. We show ads (non-personalized by default). With your consent, we enable analytics.
-        <a href="/privacy/" style="color:#a78bfa; text-decoration:underline;">Privacy Policy</a>
-      </p>
-      <div style="display:flex; gap:8px; flex-shrink:0;">
-        <button onclick="NekoConsent.acceptAll()" style="background:#6366f1; color:#fff; border:none; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px; font-weight:600;">Accept All</button>
-        <button onclick="NekoConsent.acceptEssential()" style="background:transparent; color:#a78bfa; border:1px solid #a78bfa; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:14px;">Essential Only</button>
+  <div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#e0e0e0;padding:16px 24px;z-index:9999;box-shadow:0 -2px 10px rgba(0,0,0,.3);font-size:14px;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <p style="margin:0;flex:1;min-width:280px;">We use cookies for authentication and, with your consent, analytics. <a href="/privacy/" style="color:#a78bfa;text-decoration:underline;">Privacy Policy</a></p>
+      <div style="display:flex;gap:8px;flex-shrink:0;">
+        <button onclick="NekoConsent.acceptAll()" style="background:#6366f1;color:#fff;border:none;padding:8px 20px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;">Accept Analytics</button>
+        <button onclick="NekoConsent.acceptEssential()" style="background:transparent;color:#a78bfa;border:1px solid #a78bfa;padding:8px 20px;border-radius:6px;cursor:pointer;font-size:14px;">No Thanks</button>
       </div>
     </div>
   </div>
-  <!-- Back to Top Button -->
+
+  <!-- Back to Top -->
   <button id="em-back-to-top" class="em-back-to-top" aria-label="Back to top" title="Back to top">
     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
 
+  <script src="{% static 'js/landing.js' %}"></script>
+  <script>
+    (function () {
+      var burger = document.getElementById('nk-burger');
+      var drawer = document.getElementById('nk-drawer');
+      var backdrop = document.getElementById('nk-drawer-backdrop');
+      var closeBtn = document.getElementById('nk-drawer-close');
+      if (!burger) return;
 
-<!-- CALICOTAB IMPORT BAR + MODAL -->
-<div id="calico-import-bar">
-  <div class="calico-bar-inner">
-    <div class="calico-bar-text">
-      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-      <span>Switching from CalICOTab? Import your tournaments instantly.</span>
-    </div>
-    <button class="calico-bar-btn" onclick="openCalicoModal()">Import &rarr;</button>
-  </div>
-</div>
-<div id="calico-modal-overlay" onclick="closeCalicoModal()"></div>
-<div id="calico-modal" role="dialog" aria-modal="true">
-  <button class="calico-modal-close" onclick="closeCalicoModal()">&#x2715;</button>
-  <div class="calico-modal-icon">
-    <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-  </div>
-  <h2>Import from CalICOTab</h2>
-  <p class="calico-modal-sub">Upload your tournament&#39;s <strong>.xml</strong> export. Teams, adjudicators, venues, ballots and motions all come across.</p>
-  <form id="calico-import-form" method="post" action="/archive/import-from-calicotab/" enctype="multipart/form-data">
-    {% csrf_token %}
-    <label class="calico-file-label" for="calico-file-input">
-      <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414A1 1 0 0119 9.414V19a2 2 0 01-2 2z"/></svg>
-      <span id="calico-file-name">Tap to choose .xml file</span>
-      <input type="file" id="calico-file-input" name="xml_file" accept=".xml" required onchange="document.getElementById('calico-file-name').textContent=this.files[0]?this.files[0].name:'Tap to choose .xml file'">
-    </label>
-    <div class="calico-slug-wrap">
-      <label class="calico-slug-label" for="calico-slug-input">
-        Custom slug <span class="calico-slug-hint">(optional &mdash; leave blank to use tournament name)</span>
-      </label>
-      <div class="calico-slug-row">
-        <span class="calico-slug-prefix">nekotab.app/</span>
-        <input type="text" id="calico-slug-input" name="slug_override"
-          placeholder="my-tournament-2026"
-          pattern="[a-zA-Z0-9-]+" title="Letters, numbers and hyphens only"
-          autocomplete="off" spellcheck="false">
-      </div>
-      <p class="calico-slug-note">Only needed if you get a &ldquo;slug already exists&rdquo; error.</p>
-    </div>
-    <ul class="calico-checklist">
-      <li>&#10003; Teams &amp; speakers</li>
-      <li>&#10003; Adjudicators &amp; panels</li>
-      <li>&#10003; Venues &amp; rounds</li>
-      <li>&#10003; Ballots &amp; scores</li>
-      <li>&#10003; Motions</li>
-    </ul>
-    <button type="submit" class="calico-submit-btn" id="calico-submit-btn">Import Tournament</button>
-    <p class="calico-note">You&#39;ll be taken to your tournament dashboard after import.</p>
-  </form>
-</div>
-<style>
-/* ── Bar ── */
-#calico-import-bar{position:fixed;bottom:0;left:0;right:0;background:#1e1b4b;border-top:1px solid #3730a3;z-index:900;padding:12px 16px}
-.calico-bar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.calico-bar-text{display:flex;align-items:center;gap:8px;color:#c7d2fe;font-family:'Inter',sans-serif;font-size:13px;flex:1;min-width:0}
-.calico-bar-text span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.calico-bar-text svg{flex-shrink:0;color:#818cf8}
-.calico-bar-btn{background:#6366f1;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s;flex-shrink:0}
-.calico-bar-btn:hover{background:#4f46e5}
-/* ── Overlay ── */
-#calico-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000}
-/* ── Modal ── */
-#calico-modal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:16px;padding:32px 28px 24px;width:92%;max-width:480px;max-height:90vh;overflow-y:auto;z-index:1001;box-shadow:0 24px 60px rgba(0,0,0,.25);font-family:'Inter',sans-serif}
-.calico-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:18px;color:#9ca3af;cursor:pointer;line-height:1;padding:4px}
-.calico-modal-close:hover{color:#374151}
-.calico-modal-icon{width:48px;height:48px;background:#eef2ff;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-#calico-modal h2{margin:0 0 6px;font-size:18px;font-weight:700;color:#111827}
-.calico-modal-sub{color:#6b7280;font-size:13px;line-height:1.6;margin:0 0 20px}
-/* ── File drop ── */
-.calico-file-label{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px dashed #c7d2fe;border-radius:10px;padding:20px 12px;cursor:pointer;transition:border-color .15s,background .15s;color:#6366f1;margin-bottom:16px;text-align:center}
-.calico-file-label:hover,.calico-file-label:focus-within{border-color:#6366f1;background:#f5f3ff}
-.calico-file-label input{display:none}
-#calico-file-name{font-size:12px;color:#6b7280;font-weight:500}
-/* ── Slug field ── */
-.calico-slug-wrap{margin-bottom:18px}
-.calico-slug-label{display:block;font-size:12px;font-weight:600;color:#374151;margin-bottom:6px}
-.calico-slug-hint{font-weight:400;color:#9ca3af}
-.calico-slug-row{display:flex;align-items:center;border:1px solid #d1d5db;border-radius:8px;overflow:hidden;background:#f9fafb}
-.calico-slug-prefix{padding:8px 10px;font-size:12px;color:#9ca3af;background:#f3f4f6;border-right:1px solid #d1d5db;white-space:nowrap;font-family:'Inter',sans-serif}
-.calico-slug-row input{flex:1;border:none;background:transparent;padding:8px 10px;font-size:13px;font-family:'Inter',sans-serif;color:#111827;outline:none;min-width:0}
-.calico-slug-note{font-size:11px;color:#9ca3af;margin:4px 0 0}
-/* ── Checklist ── */
-.calico-checklist{list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:5px 12px}
-.calico-checklist li{font-size:12px;color:#374151;font-weight:500}
-/* ── Submit ── */
-.calico-submit-btn{width:100%;background:#6366f1;color:#fff;border:none;border-radius:10px;padding:12px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .15s;margin-bottom:8px}
-.calico-submit-btn:hover{background:#4f46e5}
-.calico-submit-btn:disabled{background:#a5b4fc;cursor:not-allowed}
-.calico-note{text-align:center;font-size:11px;color:#9ca3af;margin:0}
-/* ── Mobile overrides ── */
-@media(max-width:600px){
-  #calico-modal{top:auto;bottom:0;left:0;right:0;transform:none;width:100%;max-width:100%;border-radius:16px 16px 0 0;padding:24px 20px 32px;max-height:85vh}
-  .calico-bar-text span{font-size:12px}
-  .calico-slug-prefix{font-size:11px;padding:8px 7px}
-}
-</style>
-<script>
-function openCalicoModal(){
-  var m=document.getElementById('calico-modal'),o=document.getElementById('calico-modal-overlay');
-  m.style.display='block';o.style.display='block';document.body.style.overflow='hidden';
-}
-function closeCalicoModal(){
-  document.getElementById('calico-modal').style.display='none';
-  document.getElementById('calico-modal-overlay').style.display='none';
-  document.body.style.overflow='';
-}
-document.getElementById('calico-import-form').addEventListener('submit',function(){
-  var b=document.getElementById('calico-submit-btn');
-  b.disabled=true;b.textContent='Importing… please wait';
-});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCalicoModal();});
-</script>
+      function openDrawer() {
+        drawer.classList.add('is-open');
+        burger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDrawer() {
+        drawer.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
 
+      burger.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+    })();
+  </script>
+  <!-- 100% privacy-first analytics -->
+  <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
 </body>
 </html>
