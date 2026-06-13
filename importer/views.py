@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core import management
 from django.forms import modelformset_factory
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _, ngettext
@@ -298,6 +298,9 @@ class ExportArchiveAllView(AdministratorMixin, TournamentMixin, View):
 class HomeImportCalICOTabView(LoginRequiredMixin, View):
     """XML file upload from the homepage CalICOTab import box.
     Supports optional slug override and pre-checks for slug conflicts."""
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'calicotab_import.html')
 
     def post(self, request, *args, **kwargs):
         from django.template.defaultfilters import slugify as django_slugify

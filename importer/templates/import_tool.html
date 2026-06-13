@@ -311,7 +311,7 @@ let importTournament=async(data)=>{
   let get=await fetch(base+data.get('slug'),{method:'GET',headers:{'Content-Type':'application/json','Authorization':'Token '+data.get('api-token')}});
   if(get.ok){log('Tournament exists — using it.','ok');return(await get.json()).url;}
   log('Creating tournament…','info');
-  let create=await fetch(url.protocol+'//'+url.host+'/api/v1/tournaments',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Token '+data.get('api-token')},body:JSON.stringify({name:data.get('tournament'),slug:data.get('slug'),active:true})});
+  let create=await fetch(url.protocol+'//'+url.host+'/api/v1/tournaments/',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Token '+data.get('api-token')},body:JSON.stringify({name:data.get('tournament'),slug:data.get('slug'),active:true})});
   let t=await create.json();
   if(!t.url){log('✗ Could not create tournament: '+JSON.stringify(t),'err');return null;}
   log('✓ Tournament created.','ok');

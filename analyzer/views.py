@@ -2,7 +2,7 @@ import logging
 
 from defusedxml.ElementTree import fromstring
 from django.http import HttpResponseBadRequest
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import TemplateView
 
@@ -27,7 +27,7 @@ class AnalyzeView(TemplateView):
 
 class AnalyzeResultsView(View):
     def get(self, request):
-        return render(request, 'analyzer/analyze.html')
+        return redirect('analyze-home')
 
     def post(self, request):
         xml_file = request.FILES.get('xml_file')

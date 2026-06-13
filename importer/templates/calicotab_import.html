@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block head-title %}Import from CalICOTab{% endblock %}
+{% block page-title %}Import from CalICOTab{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+
+    <!-- Hero -->
+    <div class="card mb-4" style="background:linear-gradient(135deg,#1e1b4b 0%,#4338ca 100%);border:0;color:#fff;">
+      <div class="card-body px-4 py-4">
+        <div class="d-flex align-items-center gap-3 mb-2">
+          <span style="font-size:2rem;">🔀</span>
+          <div>
+            <h4 class="mb-0 fw-bold">Import from CalICOTab</h4>
+            <div style="opacity:.85;font-size:.9rem;">Upload your CalICOTab XML export to create a new tournament</div>
+          </div>
+        </div>
+        <p class="mb-0" style="opacity:.9;font-size:.93rem;">
+          NekoTab imports teams, adjudicators, venues, ballots, motions, and draw structure all at once from a CalICOTab <code>.xml</code> export.
+        </p>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-header fw-semibold py-2 px-3">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:6px;vertical-align:-2px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+        Upload CalICOTab XML
+      </div>
+      <div class="card-body px-4 py-4">
+        <form method="POST" action="" enctype="multipart/form-data" id="calico-form">
+          {% csrf_token %}
+
+          <!-- Drop zone -->
+          <div id="drop-zone" class="border rounded-3 d-flex flex-column align-items-center justify-content-center py-5 px-3 mb-4 text-center"
+               style="border-style:dashed !important;border-color:#a5b4fc !important;background:#f8f7ff;cursor:pointer;transition:background .15s;position:relative;">
+            <svg width="40" height="40" fill="none" stroke="#6366f1" stroke-width="1.5" viewBox="0 0 24 24" class="mb-2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="18"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            <div class="fw-semibold mb-1" style="color:#4f46e5;" id="drop-label">Drop your .xml file here</div>
+            <div class="text-muted small mb-3">or click to browse</div>
+            <input type="file" name="xml_file" id="xml-file-input" accept=".xml" required
+                   style="position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;top:0;left:0;">
+            <span class="badge" style="background:#ede9fe;color:#4f46e5;padding:6px 14px;border-radius:100px;font-size:.8rem;" id="file-badge">No file selected</span>
+          </div>
+
+          <!-- Optional slug override -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold small" for="slug-override">
+              Tournament slug <span class="text-muted fw-normal">(optional — leave blank to auto-generate from tournament name)</span>
+            </label>
+            <input type="text" name="slug_override" id="slug-override" class="form-control"
+                   placeholder="my-open-2025" pattern="[a-zA-Z0-9\-]+"
+                   title="Letters, numbers and hyphens only">
+            <div class="form-text">Used in the tournament URL, e.g. <code>nekotab.app/<strong>my-open-2025</strong>/</code>. Must be unique.</div>
+          </div>
+
+          <div class="d-flex gap-3 align-items-center">
+            <button type="submit" class="btn btn-primary px-4" id="import-btn">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:6px;vertical-align:-2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              Import Tournament
+            </button>
+            <a href="{% url 'import-tool' %}" class="btn btn-outline-secondary">Back to Import Tool</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- What gets imported -->
+    <div class="card mb-4">
+      <div class="card-header fw-semibold py-2 px-3 small">What gets imported</div>
+      <div class="card-body px-4 py-3">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;" class="small">
+          <div class="d-flex align-items-center gap-2"><svg width="13" height="13" fill="none" stroke="#10b981" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Teams &amp; speakers</div>
+          <div class="d-flex align-items-center gap-2"><svg width="13" height="13" fill="none" stroke="#10b981" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Adjudicators &amp; panels</div>
+          <div class="d-flex align-items-center gap-2"><svg width="13" height="13" fill="none" stroke="#10b981" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Venues &amp; rounds</div>
+          <div class="d-flex align-items-center gap-2"><svg width="13" height="13" fill="none" stroke="#10b981" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ballots &amp; scores</div>
+          <div class="d-flex align-items-center gap-2"><svg width="13" height="13" fill="none" stroke="#10b981" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Motions</div>
+          <div class="d-flex align-items-center gap-2"><svg width="13" height="13" fill="none" stroke="#10b981" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Draw structure</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to export from CalICOTab -->
+    <div class="card">
+      <div class="card-header fw-semibold py-2 px-3 small">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:5px;vertical-align:-2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        How to export from CalICOTab
+      </div>
+      <div class="card-body px-4 py-3 small text-muted">
+        <ol class="ps-3 mb-0" style="line-height:2.2;">
+          <li>Open your tournament in CalICOTab</li>
+          <li>Go to <strong>File → Export → Export as XML</strong></li>
+          <li>Save the <code>.xml</code> file to your computer</li>
+          <li>Upload it above — import is instant</li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+{{ block.super }}
+<script>
+(function () {
+  var dropZone  = document.getElementById('drop-zone');
+  var fileInput = document.getElementById('xml-file-input');
+  var fileBadge = document.getElementById('file-badge');
+  var dropLabel = document.getElementById('drop-label');
+  var form      = document.getElementById('calico-form');
+  var btn       = document.getElementById('import-btn');
+
+  function setFile(name) {
+    fileBadge.textContent = name;
+    fileBadge.style.background = '#d1fae5';
+    fileBadge.style.color = '#065f46';
+    dropLabel.textContent = 'File ready';
+    dropZone.style.background = '#f0fdf4';
+  }
+
+  fileInput.addEventListener('change', function () {
+    if (this.files[0]) setFile(this.files[0].name);
+  });
+
+  dropZone.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    this.style.background = '#ede9fe';
+  });
+  dropZone.addEventListener('dragleave', function () {
+    this.style.background = '#f8f7ff';
+  });
+  dropZone.addEventListener('drop', function (e) {
+    e.preventDefault();
+    this.style.background = '#f8f7ff';
+    var dt = e.dataTransfer;
+    if (dt.files[0]) {
+      fileInput.files = dt.files;
+      setFile(dt.files[0].name);
+    }
+  });
+
+  form.addEventListener('submit', function () {
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Importing…';
+  });
+})();
+</script>
+{% endblock js %}
