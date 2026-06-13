@@ -16,7 +16,8 @@ class StaticViewSitemap(Sitemap):
     _priorities = {
         'tabbycat-index': 1.0,
         'motions': 1.0,
-        'contact-forum': 0.7,
+        'seo-motion-bank': 0.95,
+        'tickets:index': 0.9,
         'seo-free-tab': 0.9,
         'seo-bp-tab': 0.9,
         'seo-tabroom-alt': 0.9,
@@ -25,12 +26,19 @@ class StaticViewSitemap(Sitemap):
         'seo-congress-tab': 0.9,
         'seo-debate-motions': 0.9,
         'seo-debate-topics': 0.9,
+        'seo-schedule-planner': 0.85,
+        'seo-debate-forms': 0.85,
+        'seo-website-builder': 0.85,
+        'seo-debate-ticketing': 0.85,
+        'for-organizers': 0.8,
+        'contact-forum': 0.7,
+        'donate': 0.5,
     }
 
     _changefreqs = {
         'tabbycat-index': 'daily',
         'motions': 'daily',
-        'contact-forum': 'daily',
+        'tickets:index': 'daily',
         'seo-free-tab': 'weekly',
         'seo-bp-tab': 'weekly',
         'seo-tabroom-alt': 'weekly',
@@ -39,14 +47,23 @@ class StaticViewSitemap(Sitemap):
         'seo-congress-tab': 'weekly',
         'seo-debate-motions': 'weekly',
         'seo-debate-topics': 'weekly',
+        'seo-motion-bank': 'weekly',
+        'seo-schedule-planner': 'monthly',
+        'seo-debate-forms': 'monthly',
+        'seo-website-builder': 'monthly',
+        'seo-debate-ticketing': 'monthly',
+        'for-organizers': 'monthly',
+        'contact-forum': 'monthly',
+        'donate': 'monthly',
     }
 
     def items(self):
         # Only include pages with meaningful content — exclude utility/auth pages
         items = [
             'tabbycat-index',
-            'contact-forum',
             'motions',
+            'tickets:index',
+            'seo-motion-bank',
             'seo-free-tab',
             'seo-bp-tab',
             'seo-tabroom-alt',
@@ -55,6 +72,13 @@ class StaticViewSitemap(Sitemap):
             'seo-congress-tab',
             'seo-debate-motions',
             'seo-debate-topics',
+            'seo-schedule-planner',
+            'seo-debate-forms',
+            'seo-website-builder',
+            'seo-debate-ticketing',
+            'for-organizers',
+            'contact-forum',
+            'donate',
         ]
 
         valid_items = []
@@ -122,3 +146,23 @@ class MotionBankSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.updated_at
+
+
+class TicketEventSitemap(Sitemap):
+    """Sitemap for public ticket event pages."""
+    changefreq = "daily"
+    priority = 0.8
+
+    def items(self):
+        try:
+            from tickets.models import TicketEvent
+            return TicketEvent.objects.filter(is_published=True, is_active=True).select_related('organization')
+        except (FieldError, DatabaseError, Exception):
+            logger.exception("Failed to build ticket event sitemap queryset; returning empty list.")
+            return []
+
+    def location(self, obj):
+        return f"/tickets/{obj.organization.slug}/{obj.slug}/"
+
+    def lastmod(self, obj):
+        return getattr(obj, 'updated_at', None)

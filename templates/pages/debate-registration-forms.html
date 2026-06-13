@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Debate Tournament Registration Forms — Free Online Builder{% endblock %}
+{% block og-title %}Debate Registration Forms Builder | NekoTab{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Create custom debate tournament registration forms for team sign-ups, judge registrations, and participant surveys. NekoTab's free forms builder collects submissions directly in your workspace dashboard.">
+<meta name="keywords" content="debate registration form, debate tournament registration, debate team sign-up form, judge registration form, debate participant registration, debate sign-up form builder, online debate registration, debate workshop registration">
+<link rel="canonical" href="https://nekotab.app/debate-registration-forms/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "NekoTab", "item": "https://nekotab.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Debate Registration Forms", "item": "https://nekotab.app/debate-registration-forms/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I create a debate registration form on NekoTab?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Create a free NekoTab workspace, navigate to the Forms section in your workspace sidebar, click Create Form, add your fields (name, institution, email, team details, dietary requirements, etc.), and publish the form. Share the public form URL with participants to collect registrations."}
+    },
+    {
+      "@type": "Question",
+      "name": "What types of debate registration forms can I create?",
+      "acceptedAnswer": {"@type": "Answer", "text": "You can create team registration forms, individual speaker registration forms, judge/adjudicator registration forms, observer registration forms, workshop sign-up forms, and general participant survey forms."}
+    },
+    {
+      "@type": "Question",
+      "name": "Is NekoTab's forms builder free?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. The forms builder is included free in every NekoTab workspace. Create unlimited forms, collect unlimited submissions, and export responses — all at no cost."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I export form submissions from NekoTab?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Form submissions are collected in your workspace dashboard and can be exported. This makes it easy to import registrant data into your tournament tab system or spreadsheets."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does NekoTab integrate registration forms with the tournament tab?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab registration forms are part of the same workspace as the tournament tab system. Participant data collected through forms can be used to register teams and judges in the tabulation system without re-entering data."}
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block noindex %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="font-size:13px;">
+          <li class="breadcrumb-item"><a href="/">NekoTab</a></li>
+          <li class="breadcrumb-item active">Debate Registration Forms</li>
+        </ol>
+      </nav>
+
+      <h1>Debate Tournament Registration Forms</h1>
+
+      <p class="lead mt-2 mb-4">Build custom registration forms for your debate tournaments and events. Collect team sign-ups, judge registrations, dietary requirements, emergency contacts, and any other information you need — all managed in your NekoTab workspace. Free, no coding required.</p>
+
+      <div class="text-center mb-4">
+        <a href="{% url 'register-organization' %}" class="btn btn-primary btn-lg">Create Free Workspace →</a>
+      </div>
+
+      <h2>Why Use NekoTab for Debate Registration?</h2>
+      <p>Debate tournaments involve complex registration logistics: teams of 2–4 speakers, independent adjudicators, observers, and sometimes coaches and support staff. Collecting this data cleanly and managing it through to the tab system is where most tournament organizers lose hours.</p>
+      <p>NekoTab's integrated registration forms solve this by keeping everything in one place — from the registration form that participants fill in, to the submissions dashboard where the tab team reviews them, to the tournament tab where participants are assigned to draws.</p>
+
+      <h2>What You Can Build</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">👥 Team Registration Forms</h3>
+              <p class="card-text">Collect team names, speaker names, institutions, email contacts, years of experience, dietary requirements, accommodation needs, and any tournament-specific fields. Supports BP (4-speaker teams), Australs (3-speaker teams), and other formats.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">⚖️ Judge Registration Forms</h3>
+              <p class="card-text">Collect adjudicator names, institutions, clash declarations, availability by round, CA experience, wing judging preferences, panel chairing history, and payment details. All in a clean, shareable form URL.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📝 Custom Fields</h3>
+              <p class="card-text">Add any field type: short text, long text, multiple choice, checkboxes, dropdowns, date pickers, and file uploads. Build the exact form your tournament needs, not a one-size-fits-all template.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📊 Submissions Dashboard</h3>
+              <p class="card-text">All form submissions appear in your workspace dashboard in real-time. Review registrations, search by institution or name, mark entries as confirmed, and export data to CSV for use in the tab system.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>How It Works</h2>
+      <ol>
+        <li><strong>Create a free workspace</strong> at <a href="{% url 'register-organization' %}">nekotab.app</a></li>
+        <li><strong>Go to Forms</strong> in your workspace sidebar and click "Create Form"</li>
+        <li><strong>Add your fields</strong> — name, institution, team members, judge details, dietary needs, etc.</li>
+        <li><strong>Publish the form</strong> and share the public URL with participants</li>
+        <li><strong>Review submissions</strong> in your workspace dashboard as they come in</li>
+        <li><strong>Export or import</strong> registrant data into the tournament tab system</li>
+      </ol>
+
+      <h2>Works With All NekoTab Features</h2>
+      <p>Registration forms are part of the NekoTab workspace, which also includes:</p>
+      <ul>
+        <li><a href="/debate-motion-bank/">Global Motion Bank</a> — 10,000+ real debate motions for preparation</li>
+        <li><a href="/debate-ticketing/">Event Ticketing</a> — Sell and manage tickets alongside registration</li>
+        <li><a href="/debate-schedule-planner/">Schedule Planner</a> — Share the tournament timeline with participants</li>
+        <li><a href="/debate-website-builder/">Website Builder</a> — Link the registration form from your organization website</li>
+        <li><a href="/free-debate-tab-software/">Tournament Tabulation</a> — Full Tabbycat tab system included free</li>
+      </ul>
+
+      <div class="mt-4 mb-4 p-4 bg-light rounded">
+        <h2 class="h4">Start Collecting Registrations</h2>
+        <p>Create a free NekoTab workspace and build your first registration form in minutes.</p>
+        <a href="{% url 'register-organization' %}" class="btn btn-primary btn-lg">Create Free Workspace →</a>
+      </div>
+
+      <h2>FAQ: Debate Registration Forms</h2>
+      <div class="accordion">
+        <div class="card">
+          <div class="card-header"><strong>Is the forms builder free?</strong></div>
+          <div class="card-body">Yes. The NekoTab forms builder is included free in every workspace. Create unlimited forms and collect unlimited submissions at no cost.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>What types of forms can I create?</strong></div>
+          <div class="card-body">Team registration, individual speaker registration, judge registration, observer forms, workshop sign-ups, participant surveys, feedback forms, and any other custom form your tournament needs.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Can I export registrations?</strong></div>
+          <div class="card-body">Yes. Submissions are viewable in your workspace dashboard and can be exported to CSV for use in the tab system or your own spreadsheets.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Do participants need a NekoTab account to fill in a form?</strong></div>
+          <div class="card-body">No. Public registration forms can be filled in without a NekoTab account. Participants just open the form URL and submit — no sign-in required.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

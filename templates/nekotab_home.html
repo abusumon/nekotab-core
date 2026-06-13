@@ -8,22 +8,25 @@
   <meta name="google-adsense-account" content="{{ adsense_publisher_id }}">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}" crossorigin="anonymous"></script>
   {% endif %}
-  <title>NekoTab — Tabbycat Debate Tabulation as a Service</title>
-  <meta name="description" content="Tabbycat debate tabulation as a service. Free, hosted tournament management for BP, WSDC, Australs and more. Website builder, ticketing, events, and schedule planner for your debate organization.">
-  <meta name="keywords" content="debate tournament software, debate tabulation, british parliamentary debate, BP debate tab, australs debate, WSDC debate, tournament management, debate platform, open source debate, tabbycat hosting">
+  <title>NekoTab — Free Debate Tab Software | Motion Bank, Ticketing &amp; Events</title>
+  <meta name="description" content="NekoTab: free hosted Tabbycat debate tabulation for BP, WSDC, Australs and more. Includes a global Motion Bank with thousands of real debate motions, event ticketing, organization website builder, schedule planner, and registration forms — all free, no setup needed.">
+  <meta name="keywords" content="debate tournament software, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, australs debate, debate ticketing, debate schedule planner, debate registration forms, debate website builder, tabbycat hosting, open source debate software, free debate tab, nekotab">
   <link rel="canonical" href="https://nekotab.app/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nekotab.app/" />
-  <meta property="og:title" content="NekoTab — Tabbycat Debate Tabulation as a Service" />
-  <meta property="og:description" content="Free hosted debate tournament management. BP, WSDC, Australs and more. Website builder, ticketing, events, and schedule planner included." />
-  <meta property="og:image" content="{% static 'logo-social.png' %}" />
+  <meta property="og:title" content="NekoTab — Free Debate Tab Software | Motion Bank, Ticketing &amp; Events" />
+  <meta property="og:description" content="Free hosted Tabbycat for BP, WSDC, Australs. Global Motion Bank, event ticketing, website builder, schedule planner, and registration forms — all in one free debate platform." />
+  <meta property="og:image" content="https://nekotab.app/static/logo-social.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="NekoTab" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NekoTab — Tabbycat Debate Tabulation as a Service" />
-  <meta name="twitter:description" content="Free hosted Tabbycat for BP, WSDC, Australs and more." />
-  <meta name="twitter:image" content="{% static 'logo-social.png' %}" />
+  <meta name="twitter:title" content="NekoTab — Free Debate Tab Software | Motion Bank, Ticketing &amp; Events" />
+  <meta name="twitter:description" content="Free hosted Tabbycat plus Motion Bank, event ticketing, website builder, schedule planner, and forms — all free, no setup needed." />
+  <meta name="twitter:image" content="https://nekotab.app/static/logo-social.png" />
+  <meta name="twitter:site" content="@NekoTab" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -331,6 +334,55 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
+    .nk-feature-card--featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+      border-color: #c7d2fe;
+    }
+    .nk-feature-card--featured .nk-feature-card-body {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      text-align: left;
+    }
+    .nk-feature-card--featured .nk-feature-card-icon {
+      margin: 0;
+      flex-shrink: 0;
+      background: #6366f1;
+      width: 56px;
+      height: 56px;
+      font-size: 24px;
+    }
+    .nk-feature-card--featured h2 {
+      text-align: left;
+      font-size: clamp(20px, 2.6vw, 26px);
+    }
+    .nk-feature-card--featured p { text-align: left; }
+    .nk-feature-badge {
+      display: inline-block;
+      background: #6366f1;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .nk-feature-cta-link {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 8px 18px;
+      background: #6366f1;
+      color: #fff;
+      border-radius: 7px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .nk-feature-cta-link:hover { background: #4f46e5; color: #fff; }
     .nk-feature-card {
       background: #fff;
       border: 1px solid #e2e8f0;
@@ -371,6 +423,7 @@
       .nk-feature-card-body { padding: 24px 22px 28px; }
       .nk-features { padding: 56px 16px; }
       .nk-features-heading { margin-bottom: 28px; }
+      .nk-feature-card--featured .nk-feature-card-body { flex-direction: column; gap: 16px; }
     }
 
     /* ── Footer tweak: add community links ── */
@@ -397,8 +450,105 @@
   {% endif %}
   <script defer src="{% static 'js/cookie-consent.js' %}"></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"NekoTab","url":"{{ seo_base_url }}","logo":"{{ seo_base_url }}/static/logo.png","description":"Tabbycat debate tabulation as a service","sameAs":["https://github.com/abusumon/nekotab-app","https://www.facebook.com/project.nekotab/"]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"NekoTab","url":"https://nekotab.app","potentialAction":{"@type":"SearchAction","target":"https://nekotab.app/motions/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nekotab.app/#organization",
+        "name": "NekoTab",
+        "url": "https://nekotab.app",
+        "logo": {"@type": "ImageObject", "url": "https://nekotab.app/static/logo.png", "width": 512, "height": 512},
+        "description": "Free open-source debate tournament platform with tabulation (BP, WSDC, Australs), a global Motion Bank, event ticketing, organization website builder, schedule planner, and registration forms.",
+        "sameAs": ["https://github.com/abusumon/nekotab-app", "https://www.facebook.com/project.nekotab/"],
+        "knowsAbout": ["Debate Tabulation", "British Parliamentary Debate", "Debate Motion Bank", "Tournament Management"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nekotab.app/#website",
+        "name": "NekoTab",
+        "url": "https://nekotab.app",
+        "publisher": {"@id": "https://nekotab.app/#organization"},
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {"@type": "EntryPoint", "urlTemplate": "https://nekotab.app/motions/?q={search_term_string}"},
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://nekotab.app/#software",
+        "name": "NekoTab Debate Platform",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Sports Management Software",
+        "operatingSystem": "Any",
+        "description": "NekoTab is a comprehensive free debate platform: Tabbycat tournament tabulation for BP, WSDC, Australs and more; a global Motion Bank with thousands of real tournament motions; event ticketing; organization website builder; schedule planner; and registration forms.",
+        "url": "https://nekotab.app",
+        "image": "https://nekotab.app/static/logo-social.png",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "featureList": [
+          "Tabbycat debate tournament tabulation",
+          "Global debate motion bank",
+          "AI-powered motion analysis and difficulty ratings",
+          "Event ticketing and online registration",
+          "Organization website builder with multiple themes",
+          "Schedule planner for tournaments and events",
+          "Custom registration forms builder",
+          "Adjudicator allocation with conflict detection",
+          "Live public standings and automated draws",
+          "British Parliamentary, WSDC, Australs, AP format support"
+        ],
+        "creator": {"@id": "https://nekotab.app/#organization"}
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is NekoTab?",
+            "acceptedAnswer": {"@type": "Answer", "text": "NekoTab is a free, hosted debate tournament platform built on Tabbycat. It provides tournament tabulation for BP, WSDC, Australs, and other parliamentary debate formats, plus a global Motion Bank, event ticketing, organization website builder, schedule planner, and registration forms — all free with no setup required."}
+          },
+          {
+            "@type": "Question",
+            "name": "What is the NekoTab Motion Bank?",
+            "acceptedAnswer": {"@type": "Answer", "text": "The NekoTab Motion Bank at nekotab.app/motions/ is a searchable database of thousands of real debate motions from tournaments worldwide. Filter by format (BP, WSDC, AP, PF, LD, Policy), year, region, difficulty, and topic. Each motion includes AI-powered analysis, difficulty ratings, and community case outlines — all free."}
+          },
+          {
+            "@type": "Question",
+            "name": "Is NekoTab completely free to use?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab is completely free with no tournament fees, no subscription charges, and no setup costs. You can create tournaments, manage an organization workspace, use the Motion Bank, sell event tickets, build a website, and access all features at no charge. NekoTab is an open-source project."}
+          },
+          {
+            "@type": "Question",
+            "name": "What debate formats does NekoTab support?",
+            "acceptedAnswer": {"@type": "Answer", "text": "NekoTab supports British Parliamentary (BP), WSDC, Australasian (Australs), Asian Parliamentary (AP), and other parliamentary debate formats. Configure speaker counts, sides, scoring, and break structures to match your exact tournament requirements."}
+          },
+          {
+            "@type": "Question",
+            "name": "Can I sell tickets for debate events on NekoTab?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab has a built-in debate event ticketing system. Set up multiple ticket tiers, handle online registration and payments, and manage attendees — all from your NekoTab workspace at nekotab.app/tickets/."}
+          },
+          {
+            "@type": "Question",
+            "name": "Does NekoTab have a website builder for debate organizations?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every NekoTab workspace includes a public website builder for debate organizations and debate societies. Build a professional website to showcase events, share results, and attract participants — no coding required."}
+          },
+          {
+            "@type": "Question",
+            "name": "What is NekoTab and how does it relate to Tabbycat?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Tabbycat is a popular open-source debate tournament tabulation system. NekoTab is a hosted service that runs Tabbycat for you — all of Tabbycat's tabulation features without needing to set up or manage a server. NekoTab also adds a Motion Bank, ticketing, website builder, schedule planner, and forms that are not part of core Tabbycat."}
+          },
+          {
+            "@type": "Question",
+            "name": "Can I create registration forms for debate tournaments on NekoTab?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab's forms system lets you create custom registration forms for tournaments, team sign-ups, judge registrations, and participant surveys. Submissions are collected in your workspace dashboard and can be exported."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="em-body">
   <a href="#main-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#6366f1;color:#fff;padding:8px 16px;z-index:10000;transition:top .3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
@@ -537,8 +687,8 @@
       </h1>
 
       <p class="em-hero-sub">
-        Hosted tournament management for every format — BP, WSDC, Australs, and more.
-        Draw, ballot, allocate, and publish results without touching a server.
+        Hosted tournament management for BP, WSDC, Australs, and more. Draw, ballot, allocate, and publish live results.
+        Plus a global <a href="/motions/" style="color:rgba(255,255,255,0.9);text-decoration:underline;font-weight:600;">Motion Bank</a>, event ticketing, website builder, and schedule planner — all free.
       </p>
 
       <div class="em-hero-ctas">
@@ -617,19 +767,32 @@
 
       <div class="nk-features-grid">
 
+        <!-- Motion Bank: full-width featured card -->
+        <div class="nk-feature-card nk-feature-card--featured">
+          <div class="nk-feature-card-body">
+            <div class="nk-feature-card-icon" aria-hidden="true">📚</div>
+            <div>
+              <span class="nk-feature-badge">Motion Bank</span>
+              <h2>Global Debate Motion Bank</h2>
+              <p>The world's largest searchable database of competitive debate motions — thousands of real motions from BP, WSDC, Asian Parliamentary, Public Forum, Lincoln-Douglas, and Policy tournaments worldwide. Filter by format, year, region, difficulty, and topic area. Get AI-powered motion analysis, community case outlines, difficulty ratings, and practice tracking — all completely free.</p>
+              <a href="/motions/" class="nk-feature-cta-link">Explore Motion Bank →</a>
+            </div>
+          </div>
+        </div>
+
         <div class="nk-feature-card">
           <div class="nk-feature-card-body">
             <div class="nk-feature-card-icon">🌐</div>
             <h2>Website Builder</h2>
-            <p>Build a professional public website for your debate organization. Showcase your events, share results, and attract participants — no coding required.</p>
+            <p>Build a professional public website for your debate organization. Showcase your events, share results, and attract participants — no coding required, multiple themes included.</p>
           </div>
         </div>
 
         <div class="nk-feature-card">
           <div class="nk-feature-card-body">
             <div class="nk-feature-card-icon">🎟</div>
-            <h2>Ticketing System</h2>
-            <p>Sell and manage tickets for your tournaments and events. Handle online registration, payments, and automated confirmations all in one place.</p>
+            <h2>Event Ticketing</h2>
+            <p>Sell and manage tickets for your debate tournaments and events. Handle online registration, multiple ticket tiers, and payments — all in one place.</p>
           </div>
         </div>
 
@@ -637,15 +800,15 @@
           <div class="nk-feature-card-body">
             <div class="nk-feature-card-icon">📅</div>
             <h2>Schedule Planner</h2>
-            <p>Plan your tournament schedule from first round to finals. Organize rounds, breaks, and sessions with an intuitive planner built for the debate format.</p>
+            <p>Plan your tournament schedule from first round to finals. Organize rounds, breaks, and sessions with an intuitive planner built for parliamentary debate formats.</p>
           </div>
         </div>
 
         <div class="nk-feature-card">
           <div class="nk-feature-card-body">
-            <div class="nk-feature-card-icon">🗂</div>
-            <h2>Events System</h2>
-            <p>Create and manage events of every scale — from local meetups to international championships — with full participant management and live updates.</p>
+            <div class="nk-feature-card-icon">📝</div>
+            <h2>Registration Forms</h2>
+            <p>Create custom registration forms for team sign-ups, judge registrations, and participant surveys. Collect and manage submissions directly in your workspace dashboard.</p>
           </div>
         </div>
 

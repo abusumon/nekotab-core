@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Debate Event Ticketing — Sell Tickets for Debate Tournaments{% endblock %}
+{% block og-title %}Debate Event Ticketing System — Free for Debate Organizations | NekoTab{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Sell and manage tickets for debate tournaments and events on NekoTab. Set up multiple ticket tiers, handle online registration, and manage attendees — all free for debate organizations. Integrated with the full debate management platform.">
+<meta name="keywords" content="debate event ticketing, debate tournament tickets, debate event registration, buy debate tickets, debate competition tickets, sell tickets debate tournament, online debate registration, debate event management, debate ticketing system">
+<link rel="canonical" href="https://nekotab.app/debate-ticketing/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "NekoTab", "item": "https://nekotab.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Debate Event Ticketing", "item": "https://nekotab.app/debate-ticketing/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I sell tickets for debate tournaments on NekoTab?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab has a built-in debate event ticketing system. Create an event in your workspace, add ticket tiers with prices and quantities, and share the public event page for participants to purchase tickets or register."}
+    },
+    {
+      "@type": "Question",
+      "name": "Is NekoTab's debate ticketing system free?",
+      "acceptedAnswer": {"@type": "Answer", "text": "The NekoTab ticketing platform is free for debate organizations to use. You can create events, manage ticket sales, and process registrations without a platform fee from NekoTab. Payment processing fees may apply depending on your payment method."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I offer free tickets for debate events?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. You can create free ticket tiers for debate events — useful for free tournaments, society meetups, workshops, or observer passes. NekoTab supports both free and paid ticket tiers in the same event."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I set capacity limits for debate event tickets?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each ticket tier has a configurable quantity limit. Once the quantity is reached, the tier is automatically marked as sold out. You can also set availability windows (on-sale start and end dates) for each tier."}
+    },
+    {
+      "@type": "Question",
+      "name": "Where can participants find and buy tickets for debate events on NekoTab?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Participants can browse all upcoming debate events at nekotab.app/tickets/ or visit your organization's specific event page at nekotab.app/tickets/yourorg/event-name/. Links can also be shared on social media, WhatsApp, or embedded on your organization website."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I manage attendees and check-in participants at the debate event?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab provides an attendee management dashboard in your workspace where you can view registrations, verify ticket purchases, and check in participants at the event venue using the built-in check-in tools."}
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block noindex %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="font-size:13px;">
+          <li class="breadcrumb-item"><a href="/">NekoTab</a></li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'tickets:index' %}">Events &amp; Tickets</a>
+          </li>
+          <li class="breadcrumb-item active">Debate Event Ticketing</li>
+        </ol>
+      </nav>
+
+      <h1>Debate Event Ticketing — Sell Tickets for Tournaments &amp; Events</h1>
+
+      <p class="lead mt-2 mb-4">NekoTab's debate event ticketing system lets organizations sell and manage tickets for debate tournaments, workshops, and events. Set up ticket tiers, handle online registration, and manage attendees — all integrated with your debate organization workspace. Free to get started.</p>
+
+      <div class="text-center mb-4">
+        <a href="{% url 'tickets:index' %}" class="btn btn-outline-primary btn-lg mr-2">Browse Events →</a>
+        <a href="{% url 'register-organization' %}" class="btn btn-primary btn-lg">Create Free Workspace →</a>
+      </div>
+
+      <h2>Sell Tickets for Any Debate Event</h2>
+      <p>NekoTab's ticketing system is built for the kinds of events debate communities run: university society tournaments, open circuit competitions, workshops, training camps, charity debates, and social events. Whether you're expecting 30 participants or 300, NekoTab handles registration and ticketing at any scale.</p>
+
+      <h2>Ticketing Features</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🎟 Multiple Ticket Tiers</h3>
+              <p class="card-text">Create multiple ticket tiers for the same event — Speaker, Judge, Observer, VIP, Early Bird, and more. Set individual prices, descriptions, and quantity limits for each tier.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🆓 Free &amp; Paid Tickets</h3>
+              <p class="card-text">Offer free registration for society members or free-entry events alongside paid tiers for guests and external participants — all in a single event setup.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📅 Event Management</h3>
+              <p class="card-text">Add event details: name, date, venue, cover image, and description. Each event gets a public page at <em>nekotab.app/tickets/yourorg/event-name/</em> that you can share with participants.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">✅ Attendee Check-In</h3>
+              <p class="card-text">Manage your attendee list in the workspace dashboard and use the check-in tool at the event to verify ticket holders quickly at the registration desk.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🌐 Public Event Listing</h3>
+              <p class="card-text">Your events appear in the NekoTab global events directory at <a href="{% url 'tickets:index' %}">nekotab.app/tickets/</a> — giving your tournament visibility to the broader debate community beyond your own social media reach.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📊 Registration Tracking</h3>
+              <p class="card-text">See real-time registration counts, remaining ticket quantities per tier, and total revenue from your workspace dashboard. Know exactly how many participants have registered before the event starts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>How to Start Selling Tickets for Your Debate Event</h2>
+      <ol>
+        <li><strong>Create a free workspace</strong> at <a href="{% url 'register-organization' %}">nekotab.app</a></li>
+        <li><strong>Go to Events</strong> in your workspace sidebar and click "Create Event"</li>
+        <li><strong>Add event details</strong> — name, date, venue, cover image, description</li>
+        <li><strong>Add ticket tiers</strong> — set prices, quantities, and descriptions for each tier</li>
+        <li><strong>Publish the event</strong> — your event page goes live immediately</li>
+        <li><strong>Share the event URL</strong> with participants via social media, email, or WhatsApp</li>
+        <li><strong>Manage attendees</strong> from your workspace dashboard on event day</li>
+      </ol>
+
+      <h2>Who Uses NekoTab Ticketing?</h2>
+      <ul>
+        <li><strong>University debate societies</strong> selling tickets for inter-university tournaments</li>
+        <li><strong>National debate bodies</strong> managing registration for national championships</li>
+        <li><strong>Debate coaches</strong> organizing training workshops and coaching camps</li>
+        <li><strong>Charity debate organizers</strong> selling tickets for public debate events and fundraisers</li>
+        <li><strong>School debate coordinators</strong> managing team registrations for interschool competitions</li>
+      </ul>
+
+      <h2>Integrated With the Full NekoTab Platform</h2>
+      <p>Event ticketing works alongside every other NekoTab feature in a single workspace:</p>
+      <ul>
+        <li>🏆 <a href="/free-debate-tab-software/">Tournament Tabulation</a> — Run the full tab alongside ticket management</li>
+        <li>🌐 <a href="/debate-website-builder/">Website Builder</a> — Feature your ticketed events on your organization website</li>
+        <li>📝 <a href="/debate-registration-forms/">Registration Forms</a> — Collect additional details from ticket purchasers</li>
+        <li>📅 <a href="/debate-schedule-planner/">Schedule Planner</a> — Share the event timeline with ticket holders</li>
+        <li>📚 <a href="/debate-motion-bank/">Motion Bank</a> — Share motion prep resources with registered participants</li>
+      </ul>
+
+      <div class="mt-4 mb-4 p-4 bg-light rounded">
+        <h2 class="h4">Start Selling Debate Event Tickets</h2>
+        <p>Create a free NekoTab workspace and set up your first event with ticketing in minutes.</p>
+        <a href="{% url 'register-organization' %}" class="btn btn-primary btn-lg">Create Free Workspace →</a>
+        <a href="{% url 'tickets:index' %}" class="btn btn-outline-primary btn-lg ml-2">Browse Events →</a>
+      </div>
+
+      <h2>FAQ: Debate Event Ticketing</h2>
+      <div class="accordion">
+        <div class="card">
+          <div class="card-header"><strong>Can I sell tickets for debate tournaments on NekoTab?</strong></div>
+          <div class="card-body">Yes. Create an event in your workspace, add ticket tiers with prices and quantities, and share the public event URL for participants to purchase tickets or register.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Is it free to use NekoTab ticketing?</strong></div>
+          <div class="card-body">The NekoTab ticketing platform is free for debate organizations. You can create events and manage registrations without a platform fee from NekoTab.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Can I offer free tickets alongside paid ones?</strong></div>
+          <div class="card-body">Yes. NekoTab supports both free and paid ticket tiers within the same event — useful for giving free access to society members while charging external participants.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Where do participants find debate events on NekoTab?</strong></div>
+          <div class="card-body">Participants can browse all events at <a href="{% url 'tickets:index' %}">nekotab.app/tickets/</a> or go directly to your organization's event page. You can also share the event URL directly.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

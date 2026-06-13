@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Debate Motion Bank — Search BP, WSDC, PF, LD &amp; Policy Motions{% endblock %}
+{% block og-title %}Debate Motion Bank — Thousands of Real Tournament Motions | NekoTab{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="NekoTab's Debate Motion Bank: search thousands of real BP, WSDC, Asian Parliamentary, Public Forum, Lincoln-Douglas, and Policy debate motions from major tournaments worldwide. Free AI analysis, community case outlines, and practice tracking.">
+<meta name="keywords" content="debate motion bank, BP motion bank, debate motions database, WSDC motions, BP motions, Asian parliamentary motions, PF debate topics, Lincoln-Douglas topics, policy debate resolutions, debate prep, debate practice motions, EUDC motions, WUDC motions, Australs motions">
+<link rel="canonical" href="https://nekotab.app/debate-motion-bank/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "NekoTab", "item": "https://nekotab.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Debate Motion Bank", "item": "https://nekotab.app/debate-motion-bank/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a debate motion bank?",
+      "acceptedAnswer": {"@type": "Answer", "text": "A debate motion bank is a searchable database of competitive debate motions (topics/resolutions) from real tournaments. NekoTab's Motion Bank lets you search, filter, and analyze thousands of BP, WSDC, Public Forum, Lincoln-Douglas, Policy, and Asian Parliamentary motions from international competitions worldwide."}
+    },
+    {
+      "@type": "Question",
+      "name": "How many motions are in NekoTab's Motion Bank?",
+      "acceptedAnswer": {"@type": "Answer", "text": "NekoTab's Motion Bank contains thousands of debate motions from hundreds of tournaments worldwide, covering British Parliamentary, WSDC, Asian Parliamentary, Public Forum, Lincoln-Douglas, Policy, and Asians/Australs formats. The database is updated continuously as new tournament data becomes available."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I filter motions by debate format, year, region, and topic?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab's Motion Bank has powerful filters: debate format (BP, WSDC, AP, PF, LD, Policy), year range, region, topic area (Politics, Economics, Law, Social Justice, Environment, etc.), motion type (THW, THBT, THP, THS, THO, THR), level (university, school, open), and difficulty. You can also search by keyword or tournament name."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does NekoTab have AI-powered motion analysis?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Individual motion pages on NekoTab include AI-powered analysis covering difficulty ratings, burden analysis (Pro/Gov vs Opp burden scores), abstraction level, and technical complexity. This helps debaters and coaches quickly understand which motions are more proposition-favoured or opposition-favoured."}
+    },
+    {
+      "@type": "Question",
+      "name": "Is NekoTab's Motion Bank free?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes, NekoTab's Motion Bank is completely free to use. You can search, filter, browse, and analyse debate motions without creating an account. No subscription, no paywall — all motion data is freely accessible at nekotab.app/motions/."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does NekoTab have EUDC, WUDC, Australs, and WSDC motions?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. The NekoTab Motion Bank includes motion sets from EUDC (European Universities Debating Championship), WUDC (World Universities Debating Championship), Australs (Australasian Debating Championships), WSDC (World Schools Debating Championships), WJDC, Asian BP Championships, and hundreds of other national and open circuit tournaments."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I find Public Forum and Lincoln-Douglas topics on NekoTab?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab includes Public Forum (Resolved: format) and Lincoln-Douglas topics from NSDA-sanctioned competitions. Use the format filter to select Public Forum or Lincoln-Douglas and the year range filter to find topics from specific seasons."}
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block noindex %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="font-size:13px;">
+          <li class="breadcrumb-item"><a href="/">NekoTab</a></li>
+          <li class="breadcrumb-item active">Debate Motion Bank</li>
+        </ol>
+      </nav>
+
+      <h1>Debate Motion Bank — Search Real Tournament Motions</h1>
+
+      <p class="lead mt-2 mb-4">NekoTab's Debate Motion Bank is the world's largest searchable database of real competitive debate motions from BP, WSDC, Asian Parliamentary, Public Forum, Lincoln-Douglas, and Policy tournaments worldwide — all free, no account required.</p>
+
+      <div class="text-center mb-4">
+        <a href="/motions/" class="btn btn-primary btn-lg mr-2">Open Motion Bank →</a>
+        <a href="/motions-bank/submit/" class="btn btn-outline-secondary btn-lg">Submit a Motion</a>
+      </div>
+
+      <h2>What Is the NekoTab Debate Motion Bank?</h2>
+      <p>The NekoTab Motion Bank is a continuously updated database of competitive debate motions collected from tournaments worldwide. Whether you compete in British Parliamentary, World Schools (WSDC), Asian Parliamentary, Public Forum, Lincoln-Douglas, or Policy debate, you'll find motions from your circuit — organized, filtered, and ready to use for preparation, coaching, and research.</p>
+
+      <p>Unlike static PDFs or spreadsheets, the NekoTab Motion Bank is a fully interactive search engine. Filter by any combination of format, year, region, topic area, motion type, and difficulty to find exactly what you need in seconds.</p>
+
+      <h2>Debate Formats Covered</h2>
+      <div class="row mt-3 mb-4">
+        <div class="col-md-6">
+          <ul class="list-unstyled">
+            <li class="mb-2"><strong>🏛 British Parliamentary (BP)</strong> — THW, THBT, THP, THS, THO, THR motions from university and school circuits including EUDC, WUDC, Australs, Asian BP, IONA, and hundreds of national opens.</li>
+            <li class="mb-2"><strong>🌏 WSDC / World Schools</strong> — Prepared and impromptu motions from the World Schools Debating Championships and national school circuits.</li>
+            <li class="mb-2"><strong>🗣 Asian Parliamentary</strong> — Motions from Asian Debating Championships and regional BP circuits across South and Southeast Asia.</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul class="list-unstyled">
+            <li class="mb-2"><strong>📋 Public Forum</strong> — Resolved: topics from NSDA-sanctioned US high school competitions by semester and year.</li>
+            <li class="mb-2"><strong>⚖️ Lincoln-Douglas</strong> — Bimonthly LD topics focused on ethics, values, and philosophy from US high school competition.</li>
+            <li class="mb-2"><strong>📑 Policy Debate</strong> — Annual policy resolutions from US high school and college cross-examination debate.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Key Features of the Motion Bank</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🔍 Powerful Search &amp; Filtering</h3>
+              <p class="card-text">Search by keyword, tournament name, or motion text. Filter by format, year range, region, topic area (Politics, Economics, Law, Environment, Social Justice, and 20+ more), motion type (THW/THBT/THP/THS/THO/THR), level, and difficulty.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🤖 AI-Powered Motion Analysis</h3>
+              <p class="card-text">Every motion page includes AI-generated difficulty scores (technical, complexity, abstraction, depth), burden analysis showing Gov/Prop vs Opp advantage, and hidden assumptions — helping coaches and debaters assess motion balance at a glance.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📝 Community Case Outlines</h3>
+              <p class="card-text">Each motion page hosts community-contributed case outlines for Government/Proposition and Opposition sides. Vote on the best outlines to surface the strongest arguments, and use them as starting points for your own case preparation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📊 Motions by Year, Tournament &amp; Region</h3>
+              <p class="card-text">Browse dedicated year-by-year collections (2020, 2021, 2022, 2023, 2024, 2025) and tournament-specific collections (EUDC, WUDC, Australs, WSDC, Asian BP, IONA, USUDC, and more).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>How Debaters Use the Motion Bank</h2>
+      <ul>
+        <li><strong>Pre-tournament preparation:</strong> Search for motions similar to your upcoming round and study how they've been debated at past tournaments.</li>
+        <li><strong>Coaching and training:</strong> Filter by topic area to design training sessions around economic policy, human rights, or environmental debate.</li>
+        <li><strong>Motion trend analysis:</strong> Use the year range filter to see how debate motions in a topic area have evolved over the past decade.</li>
+        <li><strong>Adjudicator reference:</strong> Look up a motion text to find the original info slide and round context from the source tournament.</li>
+        <li><strong>Circuit research:</strong> Compare motion difficulty and focus areas between different circuits (university vs school, regional vs international).</li>
+      </ul>
+
+      <h2>NekoTab vs Other Debate Motion Databases</h2>
+      <p>NekoTab's Motion Bank is the broadest freely available debate motion database:</p>
+      <ul>
+        <li><strong>vs Debate Data:</strong> Debate Data is a respected BP archive but covers only British Parliamentary format. NekoTab adds WSDC, AP, PF, LD, and Policy, plus AI analysis and difficulty ratings.</li>
+        <li><strong>vs CalicoTab / Tabroom:</strong> Tabroom focuses on tournament management for US formats; NekoTab covers all major international circuits and provides a standalone motion research tool.</li>
+        <li><strong>vs spreadsheets and PDFs:</strong> Static documents can't be searched, filtered, or annotated. NekoTab is a live, searchable, community-annotated database.</li>
+      </ul>
+
+      <div class="mt-4 mb-4 p-4 bg-light rounded">
+        <h2 class="h4">Start Exploring the Motion Bank</h2>
+        <p>The NekoTab Motion Bank is free, requires no account, and works on any device. Search thousands of real tournament motions now.</p>
+        <a href="/motions/" class="btn btn-primary btn-lg">Open Motion Bank →</a>
+      </div>
+
+      <h2>FAQ: Debate Motion Bank</h2>
+
+      <div class="accordion" id="faqAccordion">
+        <div class="card">
+          <div class="card-header"><strong>What is a debate motion bank?</strong></div>
+          <div class="card-body">A debate motion bank is a searchable database of competitive debate motions (topics/resolutions) from real tournaments. NekoTab's Motion Bank lets you filter thousands of BP, WSDC, PF, LD, Policy, and AP motions from international competitions worldwide.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Is the NekoTab Motion Bank free?</strong></div>
+          <div class="card-body">Yes, completely free. You can search, filter, and analyse debate motions without creating an account. No subscription, no paywall — all data is freely accessible at <a href="/motions/">nekotab.app/motions/</a>.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Does NekoTab have AI motion analysis?</strong></div>
+          <div class="card-body">Yes. Each individual motion page includes AI-powered difficulty ratings (technical, complexity, abstraction, depth) and burden scores showing which side has the stronger structural advantage. Open any motion from the bank to see its analysis.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Can I find EUDC, WUDC, Australs, and WSDC motions?</strong></div>
+          <div class="card-body">Yes. The Motion Bank includes motion sets from EUDC, WUDC, Australs, WSDC, WJDC, Asian BP Championships, and hundreds of other national and open competitions. Search by tournament name to pull the full motion set from any specific event.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Can I submit a motion to the NekoTab Motion Bank?</strong></div>
+          <div class="card-body">Yes. Visit <a href="/motions-bank/submit/">nekotab.app/motions-bank/submit/</a> to submit a motion. Submissions are reviewed before being added to the public database.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Debate Organization Website Builder — Free for Debate Societies{% endblock %}
+{% block og-title %}Free Website Builder for Debate Organizations &amp; Societies | NekoTab{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Build a professional public website for your debate organization, debate society, or debating club — free. NekoTab's website builder lets you publish event listings, tournament results, team profiles, and news with no coding required.">
+<meta name="keywords" content="debate organization website, debate society website, debate club website, website builder for debate, debate website template, debating society website, parliamentary debate website, debate organization online presence, debate website builder free">
+<link rel="canonical" href="https://nekotab.app/debate-website-builder/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "NekoTab", "item": "https://nekotab.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Debate Website Builder", "item": "https://nekotab.app/debate-website-builder/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is NekoTab's website builder free for debate organizations?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. The NekoTab website builder is completely free for all debate organizations and debate societies. Create a workspace, set up your public website, and publish it — no subscription, no fees, no coding required."}
+    },
+    {
+      "@type": "Question",
+      "name": "What website themes does NekoTab offer for debate organizations?",
+      "acceptedAnswer": {"@type": "Answer", "text": "NekoTab offers multiple website themes for debate organizations including Academic, Bold, Magazine, and Minimal. Each theme is mobile-responsive and can be customized with your organization's colors, logo, and branding."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I list debate events on my organization website?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your NekoTab website can display upcoming events from your organization, with links to ticket purchase pages. This creates a seamless flow from your website to event registration — all within the NekoTab platform."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add a custom domain to my NekoTab debate organization website?",
+      "acceptedAnswer": {"@type": "Answer", "text": "NekoTab organization websites are served on your organization's subdomain (yourorg.nekotab.app) by default. Your custom domain configuration options depend on your workspace plan — contact support for details."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does the website builder work on mobile?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. All NekoTab website themes are fully mobile-responsive. Your debate organization website will look great on phones, tablets, and desktop computers without any extra configuration."}
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block noindex %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="font-size:13px;">
+          <li class="breadcrumb-item"><a href="/">NekoTab</a></li>
+          <li class="breadcrumb-item active">Debate Website Builder</li>
+        </ol>
+      </nav>
+
+      <h1>Website Builder for Debate Organizations</h1>
+
+      <p class="lead mt-2 mb-4">Give your debate organization, debating society, or debate club a professional online presence. NekoTab's free website builder lets you create and publish a public website — no coding, no hosting costs, no technical setup required.</p>
+
+      <div class="text-center mb-4">
+        <a href="{% url 'register-organization' %}" class="btn btn-primary btn-lg">Create Free Workspace →</a>
+      </div>
+
+      <h2>Why Debate Organizations Need a Website</h2>
+      <p>A professional website is the foundation of your debate organization's online presence. It tells new members where to find you, shows your tournament history and achievements, lists upcoming events, and builds credibility with sponsors and partner institutions.</p>
+      <p>Without a website, debate organizations rely on social media alone — which limits discoverability, makes it hard to share structured information, and means losing everything if a platform changes its algorithm. A NekoTab website gives your organization a permanent, searchable home on the web.</p>
+
+      <h2>What You Can Build</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🏠 Organization Homepage</h3>
+              <p class="card-text">Create a hero section with your organization's name, tagline, logo, and a brief description. Showcase your mission, history, and achievements to attract new members and partners.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🗓 Events Listing</h3>
+              <p class="card-text">Display upcoming tournaments, workshops, and events directly on your website. Participants can click through to buy tickets or register — powered by NekoTab's integrated ticketing system.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🎨 Multiple Themes</h3>
+              <p class="card-text">Choose from multiple professionally designed website themes — Academic, Bold, Magazine, and Minimal. Each is fully mobile-responsive and customizable with your organization's brand colors and logo.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📊 Tournament Results</h3>
+              <p class="card-text">Link to public tournament pages on NekoTab to showcase results, standings, and break announcements from your competitions. Build a searchable archive of past tournaments hosted by your organization.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📍 Contact &amp; Social Links</h3>
+              <p class="card-text">Add your contact email, location, Facebook, Instagram, Twitter/X, Discord, and WhatsApp links. Make it easy for prospective members, sponsors, and debate circuit organizers to reach you.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🔍 Google Analytics</h3>
+              <p class="card-text">Connect your own Google Analytics 4 property to track visitors, event page views, and engagement on your organization website — separate from NekoTab's own analytics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>How to Build Your Debate Organization Website</h2>
+      <ol>
+        <li><strong>Create a free workspace</strong> at <a href="{% url 'register-organization' %}">nekotab.app/register/organization/</a></li>
+        <li><strong>Go to Website</strong> in your workspace sidebar</li>
+        <li><strong>Choose a theme</strong> — Academic, Bold, Magazine, or Minimal</li>
+        <li><strong>Add your content</strong> — hero text, about section, logo, colors, events, and social links</li>
+        <li><strong>Publish</strong> — your website is live at <em>yourorg.nekotab.app</em></li>
+        <li><strong>Share the URL</strong> with members, on social media, and to your institution</li>
+      </ol>
+
+      <h2>Part of a Complete Debate Platform</h2>
+      <p>Your debate organization website integrates seamlessly with every other NekoTab feature:</p>
+      <ul>
+        <li>🎟 <a href="/debate-ticketing/">Event Ticketing</a> — Sell tickets directly from your website's event listings</li>
+        <li>📅 <a href="/debate-schedule-planner/">Schedule Planner</a> — Embed or link to your tournament schedule</li>
+        <li>📝 <a href="/debate-registration-forms/">Registration Forms</a> — Link sign-up forms from your events page</li>
+        <li>📚 <a href="/debate-motion-bank/">Motion Bank</a> — Cross-link to relevant motions from your tournament pages</li>
+        <li>🏆 <a href="/free-debate-tab-software/">Tournament Tab</a> — Your public tab results are automatically linkable from the website</li>
+      </ul>
+
+      <div class="mt-4 mb-4 p-4 bg-light rounded">
+        <h2 class="h4">Build Your Debate Organization Website Free</h2>
+        <p>Create a free NekoTab workspace and launch your debate organization website in minutes. No coding, no hosting fees.</p>
+        <a href="{% url 'register-organization' %}" class="btn btn-primary btn-lg">Create Free Workspace →</a>
+      </div>
+
+      <h2>FAQ: Debate Website Builder</h2>
+      <div class="accordion">
+        <div class="card">
+          <div class="card-header"><strong>Is the website builder free for debate organizations?</strong></div>
+          <div class="card-body">Yes. NekoTab's website builder is completely free for all debate organizations. No subscription, no hosting costs, no coding required.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>What themes are available?</strong></div>
+          <div class="card-body">NekoTab offers Academic, Bold, Magazine, and Minimal themes for debate organization websites. All themes are fully mobile-responsive and customizable with your brand colors and logo.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Can I list events and sell tickets from my website?</strong></div>
+          <div class="card-body">Yes. Your website can display events from your NekoTab workspace with direct links to the ticketing and registration pages — all within the same platform.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Where is my website hosted?</strong></div>
+          <div class="card-body">NekoTab hosts your organization website for free. It is served at yourorg.nekotab.app. You can also link to it from your own custom domain.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

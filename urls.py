@@ -23,7 +23,7 @@ from importer.views import LoadDemoView
 from participant_crm.views import UnsubscribeView as CrmUnsubscribeView
 from organizations import views as organizations_views
 from users.views import BlankSiteStartView, GoogleOAuthLoginGuardView, UserDashboardView
-from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
+from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap, TicketEventSitemap
 from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
 import motionbank.views as motionbank_views
 from campaigns.views import serve_image
@@ -108,6 +108,7 @@ urlpatterns = [
             'static': StaticViewSitemap,
             'tournaments': TournamentSitemap,
             'motions': MotionBankSitemap,
+            'events': TicketEventSitemap,
             'articles': LearnArticleSitemap,
             'trust': TrustPagesSitemap,
         }},
@@ -291,6 +292,23 @@ urlpatterns = [
             },
         ),
         name='seo-debate-topics'),
+
+    # Feature-specific SEO landing pages
+    path('debate-motion-bank/',
+        TemplateView.as_view(template_name='pages/debate-motion-bank.html'),
+        name='seo-motion-bank'),
+    path('debate-schedule-planner/',
+        TemplateView.as_view(template_name='pages/debate-schedule-planner.html'),
+        name='seo-schedule-planner'),
+    path('debate-registration-forms/',
+        TemplateView.as_view(template_name='pages/debate-registration-forms.html'),
+        name='seo-debate-forms'),
+    path('debate-website-builder/',
+        TemplateView.as_view(template_name='pages/debate-website-builder.html'),
+        name='seo-website-builder'),
+    path('debate-ticketing/',
+        TemplateView.as_view(template_name='pages/debate-ticketing.html'),
+        name='seo-debate-ticketing'),
 
     # Tournament URLs
     path('<slug:tournament_slug>/',

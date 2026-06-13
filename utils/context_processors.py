@@ -137,7 +137,7 @@ def debate_context(request):
         'adsense_slot_table': getattr(settings, 'ADSENSE_SLOT_TABLE', ''),
         # SEO defaults
         'seo_site_name': 'NekoTab Debate Tabulation',
-        'seo_keywords': 'debate tab, debate tabulation, parliamentary debating, BP motions, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, british parliamentary, debate results live',
+        'seo_keywords': 'debate tab, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, parliamentary debating, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, debate results live, debate ticketing, debate schedule planner, debate registration forms, debate website builder, nekotab, free debate tab software',
         'seo_base_url': getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app'),
         'request_country_code': _get_request_country_code(request),
     }

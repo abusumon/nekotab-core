@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Debate Tournament Schedule Planner — Free Online Tool{% endblock %}
+{% block og-title %}Debate Schedule Planner for Tournaments &amp; Events | NekoTab{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="NekoTab's debate tournament schedule planner lets you organize rounds, breaks, sessions, and side events for any debate competition. Free, built for BP, WSDC, Australs, and all parliamentary formats.">
+<meta name="keywords" content="debate schedule planner, debate tournament schedule, debate timetable, debate tournament organizer, BP schedule, parliamentary debate schedule, debate event planner, tournament rounds schedule, debate schedule builder">
+<link rel="canonical" href="https://nekotab.app/debate-schedule-planner/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "NekoTab", "item": "https://nekotab.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Debate Schedule Planner", "item": "https://nekotab.app/debate-schedule-planner/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a debate tournament schedule planner?",
+      "acceptedAnswer": {"@type": "Answer", "text": "A debate tournament schedule planner is a tool that lets organizers plan and manage the full timeline of a debate competition — including preliminary rounds, break announcements, elimination rounds, social events, and awards. NekoTab's schedule planner is designed specifically for parliamentary debate formats like BP, WSDC, and Australs."}
+    },
+    {
+      "@type": "Question",
+      "name": "Is NekoTab's schedule planner free?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. The NekoTab schedule planner is included free in every organization workspace. Create a free workspace at nekotab.app to access the schedule builder and all other debate management tools."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I share the tournament schedule publicly with participants?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab generates a public schedule page that participants can view without logging in. The public schedule URL can be shared via email, WhatsApp, or embedded on your organization's website."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does the schedule planner work for multi-day tournaments?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab's schedule planner supports multi-day tournament schedules. You can add sessions across multiple days, organize them by date, and publish the full schedule for participants to access throughout the tournament."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can I plan both the tournament schedule and social events together?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab's schedule builder lets you create schedule entries for any type of session — debate rounds, break announcements, social dinners, registration, accommodation check-in, awards ceremonies, and any other events you want to include in the full tournament programme."}
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block noindex %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="font-size:13px;">
+          <li class="breadcrumb-item"><a href="/">NekoTab</a></li>
+          <li class="breadcrumb-item active">Debate Schedule Planner</li>
+        </ol>
+      </nav>
+
+      <h1>Debate Tournament Schedule Planner</h1>
+
+      <p class="lead mt-2 mb-4">Plan the complete schedule for your debate tournament — from registration and opening ceremonies to preliminary rounds, break announcements, elimination rounds, and awards. NekoTab's schedule planner is free and built for parliamentary debate formats.</p>
+
+      <div class="text-center mb-4">
+        <a href="{% url 'register-organization' %}" class="btn btn-primary btn-lg">Create Free Workspace →</a>
+      </div>
+
+      <h2>What Is NekoTab's Debate Schedule Planner?</h2>
+      <p>The NekoTab Schedule Planner is a purpose-built tool for debate tournament organizers. Create a structured, shareable schedule for your tournament that covers every session — debate rounds, breaks, social events, meals, and ceremonies — all in one clean timeline that participants can access on any device.</p>
+
+      <p>Whether you're running a small society tournament or a large international competition, the schedule planner helps you communicate the programme clearly and update it in real-time as the event unfolds.</p>
+
+      <h2>Schedule Planner Features</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📅 Multi-Day Schedule Builder</h3>
+              <p class="card-text">Add schedule entries across multiple days. Organize sessions by date, set start and end times, and add descriptions for each item in the programme — from Day 1 registration to Day 3 finals.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🌐 Public Schedule Page</h3>
+              <p class="card-text">Every NekoTab schedule automatically generates a public, shareable page. Participants can view the tournament programme without logging in — just share the URL and they're set.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">⚡ Live Updates</h3>
+              <p class="card-text">Update the schedule in real-time during the tournament. If a round is delayed or a session time changes, update it in your workspace and participants immediately see the latest version.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🗂 All Session Types</h3>
+              <p class="card-text">Plan any type of session: preliminary rounds, break announcements, elimination rounds, keynote speeches, social events, meals, transport, accommodation check-in, and awards ceremonies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Why Debate Tournaments Need a Schedule Planner</h2>
+      <p>Poor schedule communication is one of the most common sources of confusion at debate tournaments. Participants arrive late, miss rounds, or don't know where to be. A clear, accessible schedule solves this:</p>
+      <ul>
+        <li><strong>Reduces "what's next?" questions</strong> to the tab team and organizers</li>
+        <li><strong>Keeps participants informed</strong> across different time zones and venues</li>
+        <li><strong>Helps judges plan travel</strong> by showing session start and end times</li>
+        <li><strong>Documents the full programme</strong> for participants to share and reference</li>
+        <li><strong>Works on mobile</strong> — participants check it on their phones between rounds</li>
+      </ul>
+
+      <h2>Works With All Parliamentary Formats</h2>
+      <p>NekoTab's schedule planner works alongside the full tournament tabulation system, which supports:</p>
+      <ul>
+        <li>British Parliamentary (BP)</li>
+        <li>World Schools / WSDC</li>
+        <li>Australasian (Australs)</li>
+        <li>Asian Parliamentary (AP)</li>
+        <li>Congress Debate</li>
+        <li>Other parliamentary formats</li>
+      </ul>
+
+      <div class="mt-4 mb-4 p-4 bg-light rounded">
+        <h2 class="h4">Get Started Free</h2>
+        <p>Create a free NekoTab workspace to access the schedule planner, tab system, ticketing, website builder, and registration forms — all in one place.</p>
+        <a href="{% url 'register-organization' %}" class="btn btn-primary btn-lg">Create Free Workspace →</a>
+      </div>
+
+      <h2>FAQ: Debate Schedule Planner</h2>
+      <div class="accordion">
+        <div class="card">
+          <div class="card-header"><strong>Is the debate schedule planner free?</strong></div>
+          <div class="card-body">Yes. The schedule planner is included free in every NekoTab organization workspace. No subscription or payment required.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Can I share the schedule publicly with participants?</strong></div>
+          <div class="card-body">Yes. Each tournament schedule generates a public URL that participants can view without logging in. Share it via email, social media, or embed it on your organization website.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Does the schedule planner work for multi-day tournaments?</strong></div>
+          <div class="card-body">Yes. Add sessions across multiple days, set dates and times, and publish the full multi-day programme as a single public schedule page.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Can I update the schedule during the tournament?</strong></div>
+          <div class="card-body">Yes. Make changes in your workspace and they appear immediately on the public schedule page. No need to send updated PDF files to participants.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

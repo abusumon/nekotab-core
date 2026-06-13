@@ -1,50 +1,228 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block page-title %}Free Debate Tabulation Software{% endblock %}
-{% block head-title %}<span class="emoji">🎯</span> Free Debate Tab Software{% endblock %}
+{% block page-title %}Free Debate Tabulation Software — NekoTab | BP, WSDC, Australs{% endblock %}
+{% block og-title %}Free Debate Tab Software for Every Format | NekoTab{% endblock %}
 
 {% block extra-head %}
-<meta name="description" content="NekoTab is free debate tabulation software supporting BP, WSDC, Australs and more. Automated draws, digital ballots, live standings. No fees, no setup.">
+<meta name="description" content="NekoTab is free debate tabulation software for BP, WSDC, Australs, AP, PF, LD, and Policy. Automated draws, digital ballots, live standings, motion bank, ticketing, and website builder — all free, no setup required.">
+<meta name="keywords" content="free debate tabulation software, debate tab software, debate tournament software, BP tabulation, WSDC tabulation, Australs tab, parliamentary debate software, free debate management, online debate tab, debate draw software, debate ballot software, nekotab">
 <link rel="canonical" href="https://nekotab.app/free-debate-tab-software/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "NekoTab", "item": "https://nekotab.app/"},
+    {"@type": "ListItem", "position": 2, "name": "Free Debate Tab Software", "item": "https://nekotab.app/free-debate-tab-software/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is NekoTab really free debate tabulation software?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab is completely free for tournament directors. There are no per-tournament fees, no subscription costs, and no technical setup required. Create an account and start tabbing in under 3 minutes. NekoTab is open-source and community supported."}
+    },
+    {
+      "@type": "Question",
+      "name": "What debate formats does NekoTab support?",
+      "acceptedAnswer": {"@type": "Answer", "text": "NekoTab supports British Parliamentary (BP), World Schools Debate (WSDC), Australs/3v3, Asian Parliamentary (AP), Public Forum (PF), Lincoln-Douglas (LD), Policy Debate, and Congress Debate. Speaker counts, sides, scoring, and draw rules are all configurable per tournament."}
+    },
+    {
+      "@type": "Question",
+      "name": "How does NekoTab compare to Tabroom.com?",
+      "acceptedAnswer": {"@type": "Answer", "text": "NekoTab and Tabroom.com are both free debate management tools. NekoTab is designed specifically for parliamentary debate formats (BP, WSDC, Australs) with better automated draw algorithms and adjudicator conflict detection. NekoTab also includes a global Motion Bank, event ticketing, schedule planner, registration forms, and a website builder for debate organizations — all in one platform. Tabroom.com is stronger for US-based formats like Policy, LD, and PF at the school/regional level."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does NekoTab work for large tournaments with 100+ teams?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab is used by national and international championship tournaments with hundreds of teams, dozens of adjudicators, and multiple rounds running simultaneously. The platform handles power-pairing, adjudicator allocation, and break calculations at any scale."}
+    },
+    {
+      "@type": "Question",
+      "name": "Can participants see live results and standings during the tournament?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab has a public-facing live results page that shows standings, speaker scores, and break announcements in real time. Tournament directors control what is visible at each stage of the competition."}
+    },
+    {
+      "@type": "Question",
+      "name": "Does NekoTab support digital ballot entry?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Adjudicators enter ballots digitally using their phones or laptops. NekoTab validates ballot entries in real time and flags conflicts or incomplete submissions before the tab director releases draws for the next round."}
+    },
+    {
+      "@type": "Question",
+      "name": "What else does NekoTab offer besides tabulation?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Beyond tabulation, NekoTab includes: a global Motion Bank with thousands of debate motions from real tournaments; event ticketing to sell and manage tournament registrations; a schedule planner for publishing the tournament timetable; registration forms to collect team and delegate information; and a website builder for debate organizations to publish a public website. All features are integrated in a single free platform."}
+    }
+  ]
+}
+</script>
 {% endblock %}
 
+{% block noindex %}{% endblock %}
+
 {% block content %}
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
   <div class="row">
-    <div class="col-lg-8 mx-auto">
+    <div class="col-lg-9 mx-auto">
+
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="font-size:13px;">
+          <li class="breadcrumb-item"><a href="/">NekoTab</a></li>
+          <li class="breadcrumb-item active">Free Debate Tab Software</li>
+        </ol>
+      </nav>
+
       <h1>Free Debate Tabulation Software for Every Format</h1>
 
-      <p class="lead">NekoTab is a completely free, open-source debate tournament
-      management platform. Run BP, WSDC, Australs, and other parliamentary debate
-      tournaments with automated draws, digital ballot entry, real-time standings,
-      and break calculations — all from your browser.</p>
+      <p class="lead mt-2 mb-4">NekoTab is completely free debate tournament management software. Run BP, WSDC, Australs, AP, PF, LD, Policy, and Congress tournaments with automated draws, digital ballots, live standings, and break calculations — all from your browser. No fees, no installation, no technical setup.</p>
 
-      <h2>Why NekoTab Is Free</h2>
-      <p>Unlike other solutions that charge per tournament or require technical
-      setup and ongoing hosting costs, NekoTab is hosted for you at no charge.
-      Create an account, set up your tournament, and start tabbing in under
-      3 minutes.</p>
+      <div class="text-center mb-4">
+        <a href="{% url 'register-tournament' %}" class="btn btn-primary btn-lg">Create Your First Tournament — Free →</a>
+      </div>
 
-      <h2>Key Features</h2>
+      <h2>Why NekoTab is Free</h2>
+      <p>NekoTab is built on <a href="https://github.com/TabbyCat/tabbycat" rel="noopener noreferrer" target="_blank">Tabbycat</a>, the open-source debate tabulation engine used by hundreds of tournaments worldwide. NekoTab hosts it for you — no server setup, no Docker, no command line — so tournament directors can focus on running their tournament rather than managing infrastructure.</p>
+
+      <h2>Debate Formats Supported</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <ul>
+            <li><strong>British Parliamentary (BP)</strong> — four-team draws, side balancing, iron person handling</li>
+            <li><strong>World Schools (WSDC)</strong> — three-member teams, WSDC-style speaker scoring</li>
+            <li><strong>Australs / 3v3</strong> — three-team parliamentary, Australs power-pairing rules</li>
+            <li><strong>Asian Parliamentary (AP)</strong> — three-member team format</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><strong>Public Forum (PF)</strong> — two-person team format</li>
+            <li><strong>Lincoln-Douglas (LD)</strong> — one-on-one individual format</li>
+            <li><strong>Policy Debate</strong> — two-person team, cross-examination format</li>
+            <li><strong>Congress Debate</strong> — legislative format with speaker scoring</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Key Tabulation Features</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🔀 Automated Draws</h3>
+              <p class="card-text">Power-pairing, side balancing, pull-up handling, and room allocation — all automated. Override any pairing manually with drag-and-drop controls.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">⚖️ Adjudicator Allocation</h3>
+              <p class="card-text">Smart adjudicator assignment with automatic conflict detection (institution, personal, history). Set clash priorities and ranking scores per judge.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📱 Digital Ballots</h3>
+              <p class="card-text">Adjudicators submit scores from their phones. NekoTab validates entries in real time and prevents ballot confirmation until all required fields are complete.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📊 Live Public Results</h3>
+              <p class="card-text">Participants and coaches can follow live standings, speaker scores, and break announcements on the public results page — accessible from any device without logging in.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">🏆 Break Calculations</h3>
+              <p class="card-text">Automatic break calculations for any bracket size, with tie-breaking rules configurable per tournament. Publish team and speaker breaks when you're ready.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="h5 card-title">📤 Data Export</h3>
+              <p class="card-text">Export draws, results, and speaker sheets to spreadsheet format. Import participant lists from CSV or Google Sheets to save data entry time at registration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>More Than Just Tabulation</h2>
+      <p>NekoTab is a complete debate organization platform, not just a tabulator:</p>
       <ul>
-        <li>Automated draws with power-pairing, side balancing, and pull-ups</li>
-        <li>Smart adjudicator allocation with conflict detection</li>
-        <li>Digital ballot entry with real-time validation</li>
-        <li>Live public standings and break announcements</li>
-        <li>Global Motion Bank with thousands of real debate motions</li>
+        <li>📚 <a href="/debate-motion-bank/">Global Motion Bank</a> — thousands of real motions from BP, WSDC, AP, PF, LD, and Policy tournaments</li>
+        <li>🎟 <a href="/debate-ticketing/">Event Ticketing</a> — sell and manage tickets for your tournaments and events</li>
+        <li>📅 <a href="/debate-schedule-planner/">Schedule Planner</a> — publish your tournament timetable for participants</li>
+        <li>📝 <a href="/debate-registration-forms/">Registration Forms</a> — collect team and delegate information before the event</li>
+        <li>🌐 <a href="/debate-website-builder/">Website Builder</a> — give your debate organization a professional public website</li>
       </ul>
 
-      <h2>Supported Formats</h2>
-      <p>NekoTab supports British Parliamentary (BP), Australs/3v3, WSDC-style,
-      and other parliamentary formats. Configure speaker counts, sides, and
-      scoring to match your exact tournament needs.</p>
-
-      <div class="mt-4">
-        <a href="{% url 'register-tournament' %}" class="btn btn-primary btn-lg">
-          Create Your First Tournament — Free
-        </a>
+      <h2>NekoTab vs Other Debate Tab Software</h2>
+      <div class="table-responsive mb-4">
+        <table class="table table-bordered table-sm" style="font-size:14px;">
+          <thead class="thead-light">
+            <tr>
+              <th>Feature</th>
+              <th>NekoTab</th>
+              <th>Tabroom.com</th>
+              <th>CalicoTab</th>
+              <th>Debate Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>BP / WSDC / Australs</td><td>✅</td><td>Partial</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Digital Ballots</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Live Public Results</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Global Motion Bank</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+            <tr><td>Event Ticketing</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+            <tr><td>Org Website Builder</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+            <tr><td>Schedule Planner</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+            <tr><td>Registration Forms</td><td>✅</td><td>✅</td><td>Partial</td><td>❌</td></tr>
+            <tr><td>Free to Use</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td>No Installation</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+          </tbody>
+        </table>
       </div>
+
+      <div class="mt-4 mb-4 p-4 bg-light rounded">
+        <h2 class="h4">Start Tabbing Your Debate Tournament — Free</h2>
+        <p>Create a free NekoTab account and run your first tournament today. Setup takes under 3 minutes.</p>
+        <a href="{% url 'register-tournament' %}" class="btn btn-primary btn-lg">Create Free Tournament →</a>
+      </div>
+
+      <h2>FAQ: Free Debate Tab Software</h2>
+      <div class="accordion">
+        <div class="card">
+          <div class="card-header"><strong>Is NekoTab really free?</strong></div>
+          <div class="card-body">Yes. No per-tournament fees, no subscription, no setup costs. NekoTab is free for all debate tournament directors.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>What formats does NekoTab support?</strong></div>
+          <div class="card-body">BP, WSDC, Australs, AP, PF, LD, Policy, and Congress. All formats are configurable for speaker counts, sides, and scoring rules.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>How does NekoTab compare to Tabroom.com?</strong></div>
+          <div class="card-body">NekoTab is stronger for parliamentary formats (BP, WSDC, Australs) and includes a motion bank, ticketing, website builder, and schedule planner that Tabroom.com doesn't have. Tabroom.com has stronger support for US-based formats at the school circuit level.</div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header"><strong>Can NekoTab handle large tournaments?</strong></div>
+          <div class="card-body">Yes. NekoTab is used by national and international championships with 100+ teams and hundreds of adjudicators.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

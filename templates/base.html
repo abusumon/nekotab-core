@@ -39,7 +39,9 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="{% if tournament %}{{ tournament.short_name }}{% else %}NekoTab{% endif %} | {% if page_title %}{{ page_title }}{% else %}{% block og-title %}Debate Tournament Tabulation{% endblock %}{% endif %}" />
   <meta property="og:description" content="{{ meta_description }}" />
-  <meta property="og:image" content="{% static 'logo-social.png' %}" />
+  <meta property="og:image" content="{{ seo_base_url }}/static/logo-social.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="{% if canonical_url %}{{ canonical_url }}{% elif request %}{{ request.build_absolute_uri }}{% endif %}" />
   <meta property="og:site_name" content="{{ seo_site_name }}" />
 
@@ -47,7 +49,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{% if tournament %}{{ tournament.short_name }}{% else %}NekoTab{% endif %}" />
   <meta name="twitter:description" content="{{ meta_description }}" />
-  <meta name="twitter:image" content="{% static 'logo-social.png' %}" />
+  <meta name="twitter:image" content="{{ seo_base_url }}/static/logo-social.png" />
   <meta name="twitter:site" content="@NekoTab" />
   <meta name="twitter:creator" content="@NekoTab" />
 
