@@ -6,12 +6,12 @@
 {% block page-title %}{% trans 'Add Teams' context 'page title' %}{% endblock %}
 
 {% block content %}
+{% tournamenturl 'importer-simple-institutions' as import_institutions_url %}
 
 {% if wizard.form.fields|length == 0 %}
 
   <div class="alert alert-warning" role="alert">
     <i data-feather="alert-circle"></i>
-    {% tournamenturl 'importer-simple-institutions' as import_institutions_url %}
     {% blocktrans trimmed %}
       You need to
       <a href="{{ import_institutions_url }}" class="alert-link">add institutions</a>
@@ -21,16 +21,6 @@
 
 {% else %}
 
-  <div class="alert alert-info d-flex align-items-start gap-2" role="alert">
-    <i data-feather="info" style="flex-shrink:0;margin-top:2px;"></i>
-    <div>
-      {% blocktrans trimmed %}
-        Search for your institution, then enter the number of teams to add.
-        Leave blank or 0 to skip. You'll set team and speaker names in the next step.
-      {% endblocktrans %}
-    </div>
-  </div>
-
   <form method="POST" id="teams-numbers-form">
     {% csrf_token %}
     {{ wizard.management_form }}
@@ -39,116 +29,91 @@
       {% include "components/form-errors.html" with errors=wizard.form.non_field_errors %}
     {% endif %}
 
-    <!-- Search + summary bar -->
+    <!-- All institution inputs hidden in the DOM — required for form submission -->
+    <div style="display:none;" aria-hidden="true" id="hidden-fields">
+      {% for field in wizard.form %}
+        <input type="number"
+               id="{{ field.id_for_label }}"
+               name="{{ field.html_name }}"
+               value="{{ field.value|default_if_none:'' }}"
+               min="0"
+               data-label="{{ field.label|lower }}"
+               data-display="{{ field.label }}"
+               data-initial="{{ field.label|first|upper }}"
+               class="hidden-institution-input">
+      {% endfor %}
+    </div>
+
+    <!-- Search card -->
     <div class="card mb-3">
-      <div class="card-body py-2 px-3">
-        <div class="row align-items-center gy-2">
-          <div class="col-md-7">
-            <div class="input-group">
-              <span class="input-group-text" style="background:transparent;border-right:0;">
-                <i data-feather="search" style="width:14px;height:14px;color:#adb5bd;"></i>
-              </span>
-              <input type="text"
-                     id="institution-search"
-                     class="form-control"
-                     placeholder="{% trans 'Search institution name or code…' %}"
-                     autocomplete="off"
-                     style="border-left:0;box-shadow:none;">
-              <button type="button" class="btn btn-outline-secondary" id="clear-search" style="display:none;" title="{% trans 'Clear' %}">
-                <i data-feather="x" style="width:13px;height:13px;"></i>
-              </button>
-            </div>
-          </div>
-          <div class="col-md-5 d-flex align-items-center justify-content-md-end gap-3">
-            <small class="text-muted" id="filter-status"></small>
-            <span class="badge rounded-pill fs-6 px-3 py-2" id="total-badge" style="background:#6366f1;">
-              <i data-feather="users" style="width:13px;height:13px;margin-right:3px;vertical-align:-2px;"></i>
-              <span id="total-teams">0</span>&thinsp;{% trans "teams" %}
-            </span>
-          </div>
+      <div class="card-body px-3 py-3">
+        <div class="input-group input-group-lg">
+          <span class="input-group-text" style="background:transparent;border-right:0;">
+            <i data-feather="search" style="width:18px;height:18px;color:#adb5bd;"></i>
+          </span>
+          <input type="text"
+                 id="institution-search"
+                 class="form-control"
+                 placeholder="{% trans 'Search your institution by name or code…' %}"
+                 autocomplete="off"
+                 style="border-left:0;box-shadow:none;font-size:1rem;">
+          <button type="button" id="clear-btn" class="btn btn-outline-secondary" style="display:none;" title="{% trans 'Clear' %}">
+            <i data-feather="x" style="width:15px;height:15px;"></i>
+          </button>
         </div>
+
+        <!-- Queued institutions (teams > 0) shown as chips below search -->
+        <div id="queued-chips" class="mt-2 d-flex flex-wrap gap-2" style="display:none !important;"></div>
       </div>
     </div>
 
-    <!-- Institution table -->
-    <div class="card">
+    <!-- Search results (empty until user types) -->
+    <div id="results-card" class="card" style="display:none;">
 
-      <!-- Column headers -->
-      <div class="px-3 py-2 border-bottom d-none d-sm-flex" style="background:#f8f9fa;">
-        <div class="flex-grow-1 small text-muted fw-semibold text-uppercase" style="letter-spacing:.05em;">
-          {% trans "Institution" %}
-        </div>
-        <div class="small text-muted fw-semibold text-uppercase text-center" style="width:130px;letter-spacing:.05em;">
-          {% trans "Teams to add" %}
-        </div>
+      <!-- Empty-search state: nothing typed yet -->
+      <div id="state-idle" class="text-center text-muted py-5">
+        <i data-feather="search" style="width:36px;height:36px;opacity:.25;"></i>
+        <p class="mt-2 mb-0">{% trans "Start typing to find your institution" %}</p>
       </div>
 
-      <ul class="list-group list-group-flush" id="institution-list">
-        {% for field in wizard.form %}
-        <li class="list-group-item institution-row px-3 py-2"
-            data-label="{{ field.label|lower }}">
-          <div class="d-flex align-items-center gap-3">
+      <!-- Results list -->
+      <ul class="list-group list-group-flush" id="results-list" style="display:none;"></ul>
 
-            <!-- Avatar initial -->
-            <div class="institution-avatar rounded-circle d-none d-sm-flex align-items-center justify-content-center flex-shrink-0"
-                 style="width:34px;height:34px;background:rgba(99,102,241,.1);color:#6366f1;font-size:13px;font-weight:700;letter-spacing:0;">
-              {{ field.label|first|upper }}
-            </div>
-
-            <!-- Label -->
-            <label for="{{ field.id_for_label }}"
-                   class="mb-0 flex-grow-1 institution-label"
-                   style="cursor:pointer;font-size:.92rem;line-height:1.3;">
-              {{ field.label }}
-            </label>
-
-            <!-- ─ / number / + -->
-            <div class="d-flex align-items-center flex-shrink-0" style="gap:0;">
-              <button type="button"
-                      class="btn btn-sm btn-outline-secondary decrement-btn"
-                      tabindex="-1"
-                      style="border-radius:6px 0 0 6px;padding:4px 9px;font-size:15px;line-height:1;">−</button>
-              <input type="number"
-                     id="{{ field.id_for_label }}"
-                     name="{{ field.html_name }}"
-                     value="{{ field.value|default_if_none:'' }}"
-                     min="0"
-                     placeholder="0"
-                     class="form-control form-control-sm teams-input text-center"
-                     style="width:58px;border-radius:0;border-left:0;border-right:0;box-shadow:none;">
-              <button type="button"
-                      class="btn btn-sm btn-outline-secondary increment-btn"
-                      tabindex="-1"
-                      style="border-radius:0 6px 6px 0;padding:4px 9px;font-size:15px;line-height:1;">+</button>
-            </div>
-
+      <!-- No match -->
+      <div id="state-no-match" class="py-4 px-3" style="display:none;">
+        <div class="d-flex align-items-start gap-3">
+          <i data-feather="alert-circle" style="width:22px;height:22px;color:#f59e0b;flex-shrink:0;margin-top:2px;"></i>
+          <div>
+            <div class="fw-semibold mb-1">{% trans "Institution not found" %}</div>
+            <p class="text-muted small mb-2">
+              {% blocktrans trimmed %}
+                This institution isn't in the system yet. You need to add it before you can register teams for it.
+              {% endblocktrans %}
+            </p>
+            <a href="{{ import_institutions_url }}" class="btn btn-warning btn-sm">
+              <i data-feather="plus" style="width:13px;height:13px;vertical-align:-1px;margin-right:3px;"></i>
+              {% trans "Add Institution First" %}
+            </a>
+            <button type="button" class="btn btn-link btn-sm text-muted" onclick="clearSearch()">
+              {% trans "Search again" %}
+            </button>
           </div>
-          {% if field.errors %}
-          <div class="mt-1 ms-5">{{ field.errors }}</div>
-          {% endif %}
-        </li>
-        {% endfor %}
-      </ul>
-
-      <!-- No results -->
-      <div id="no-results" class="text-center text-muted py-5" style="display:none;">
-        <i data-feather="search" style="width:32px;height:32px;opacity:.3;"></i>
-        <p class="mt-2 mb-0 small">{% trans "No institutions match your search." %}</p>
-        <button type="button" class="btn btn-link btn-sm mt-1" onclick="document.getElementById('institution-search').value=''; filterRows('');">{% trans "Clear search" %}</button>
+        </div>
       </div>
 
     </div>
 
-    <!-- Submit row -->
+    <!-- Summary + submit -->
     <div class="card mt-3">
       <div class="list-group-item d-flex align-items-center justify-content-between flex-wrap gap-2 py-3">
-        <p class="mb-0 text-muted small">
-          <i data-feather="alert-circle" style="width:13px;height:13px;vertical-align:-1px;"></i>
-          {% blocktrans trimmed %}
-            Max 141 teams per import. Split larger sets into chunks.
-          {% endblocktrans %}
-        </p>
-        <button type="submit" class="btn btn-success">
+        <div class="d-flex align-items-center gap-3">
+          <span class="badge rounded-pill px-3 py-2 fs-6" id="total-badge" style="background:#6c757d;">
+            <i data-feather="users" style="width:13px;height:13px;margin-right:3px;vertical-align:-2px;"></i>
+            <span id="total-teams">0</span> {% trans "teams queued" %}
+          </span>
+          <small class="text-muted">{% trans "Max 141 per import." %}</small>
+        </div>
+        <button type="submit" class="btn btn-success" id="next-btn">
           {% trans "Next Step" context "button" %}
           <i data-feather="arrow-right" style="width:15px;height:15px;margin-left:4px;vertical-align:-2px;"></i>
         </button>
@@ -165,108 +130,223 @@
 {% block js %}
 {{ block.super }}
 <style>
-  .teams-input { -moz-appearance: textfield; }
-  .teams-input::-webkit-outer-spin-button,
-  .teams-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-  .institution-row { transition: background .12s; }
-  .institution-row:hover { background: rgba(99,102,241,.03); }
-  .institution-row.has-teams { background: rgba(99,102,241,.06); }
-  .institution-row.has-teams .institution-avatar {
-    background: rgba(99,102,241,.2);
-    color: #4f46e5;
-  }
   #institution-search:focus { box-shadow: none; border-color: #86b7fe; }
+  .result-row { transition: background .1s; cursor: default; }
+  .result-row:hover { background: rgba(99,102,241,.04); }
+  .result-row.has-teams { background: rgba(99,102,241,.07); }
+  .result-row.has-teams .ri-avatar { background: rgba(99,102,241,.25); color: #4f46e5; }
+  .ri-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(99,102,241,.1); color: #6366f1;
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .ri-stepper { display: flex; align-items: center; gap: 0; flex-shrink: 0; }
+  .ri-stepper button {
+    border: 1px solid #dee2e6;
+    background: #fff;
+    padding: 5px 11px;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .1s;
+  }
+  .ri-stepper button:hover { background: #f8f9fa; }
+  .ri-stepper button:first-child { border-radius: 6px 0 0 6px; border-right: 0; }
+  .ri-stepper button:last-child  { border-radius: 0 6px 6px 0; border-left: 0; }
+  .ri-count {
+    width: 52px; text-align: center;
+    border: 1px solid #dee2e6; border-left: 0; border-right: 0;
+    padding: 5px 0; font-size: .95rem; font-weight: 600;
+    background: #fff; color: #212529;
+    -moz-appearance: textfield;
+  }
+  .ri-count::-webkit-outer-spin-button,
+  .ri-count::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .queued-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.25);
+    color: #4f46e5; border-radius: 100px;
+    padding: 4px 12px 4px 10px; font-size: 13px; font-weight: 500;
+  }
+  .queued-chip button {
+    background: none; border: none; padding: 0; cursor: pointer;
+    color: #6366f1; font-size: 15px; line-height: 1;
+    display: flex; align-items: center;
+  }
 </style>
 <script>
 (function () {
   'use strict';
 
-  var searchEl    = document.getElementById('institution-search');
-  var clearBtn    = document.getElementById('clear-search');
-  var rows        = Array.from(document.querySelectorAll('.institution-row'));
-  var noResultsEl = document.getElementById('no-results');
-  var totalTeams  = document.getElementById('total-teams');
-  var totalBadge  = document.getElementById('total-badge');
-  var filterStatus = document.getElementById('filter-status');
+  /* ── Data: read all hidden institution inputs ───────────────── */
+  var allFields = Array.from(document.querySelectorAll('.hidden-institution-input'));
 
-  /* ── +/− buttons ──────────────────────────────────────────── */
-  rows.forEach(function (row) {
-    var input   = row.querySelector('.teams-input');
-    var decBtn  = row.querySelector('.decrement-btn');
-    var incBtn  = row.querySelector('.increment-btn');
+  var searchEl  = document.getElementById('institution-search');
+  var clearBtn  = document.getElementById('clear-btn');
+  var resultCard = document.getElementById('results-card');
+  var stateIdle  = document.getElementById('state-idle');
+  var stateNoMatch = document.getElementById('state-no-match');
+  var resultsList  = document.getElementById('results-list');
+  var chipsEl      = document.getElementById('queued-chips');
+  var totalEl      = document.getElementById('total-teams');
+  var totalBadge   = document.getElementById('total-badge');
+
+  /* ── Rendered result rows (built once, reused) ──────────────── */
+  var renderedRows = {}; // field.id → <li> element
+
+  function buildRow(field) {
+    var li = document.createElement('li');
+    li.className = 'list-group-item result-row px-3 py-2';
+    li.innerHTML =
+      '<div class="d-flex align-items-center gap-3">' +
+        '<div class="ri-avatar">' + escHtml(field.dataset.initial) + '</div>' +
+        '<div class="flex-grow-1 fw-medium" style="font-size:.93rem;">' + escHtml(field.dataset.display) + '</div>' +
+        '<div class="ri-stepper">' +
+          '<button type="button" class="dec-btn" tabindex="-1">−</button>' +
+          '<input type="number" class="ri-count" value="' + (parseInt(field.value,10)||0) + '" min="0" placeholder="0">' +
+          '<button type="button" class="inc-btn" tabindex="-1">+</button>' +
+        '</div>' +
+      '</div>';
+
+    var countInput = li.querySelector('.ri-count');
+    var decBtn = li.querySelector('.dec-btn');
+    var incBtn = li.querySelector('.inc-btn');
+
+    function sync() {
+      var v = parseInt(countInput.value, 10) || 0;
+      countInput.value = v;
+      field.value = v > 0 ? v : '';
+      li.classList.toggle('has-teams', v > 0);
+      updateTotal();
+      renderChips();
+    }
 
     decBtn.addEventListener('click', function () {
-      var v = parseInt(input.value, 10) || 0;
-      input.value = Math.max(0, v - 1);
-      onInputChange(row, input);
+      var v = parseInt(countInput.value, 10) || 0;
+      countInput.value = Math.max(0, v - 1);
+      sync();
     });
     incBtn.addEventListener('click', function () {
-      var v = parseInt(input.value, 10) || 0;
-      input.value = v + 1;
-      onInputChange(row, input);
+      var v = parseInt(countInput.value, 10) || 0;
+      countInput.value = v + 1;
+      sync();
     });
-    input.addEventListener('input', function () {
-      onInputChange(row, input);
+    countInput.addEventListener('input', sync);
+
+    // Init
+    var init = parseInt(field.value, 10) || 0;
+    li.classList.toggle('has-teams', init > 0);
+
+    renderedRows[field.id] = li;
+    return li;
+  }
+
+  function escHtml(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Search ─────────────────────────────────────────────────── */
+  function doSearch(q) {
+    q = (q || '').trim().toLowerCase();
+    clearBtn.style.display = q ? '' : 'none';
+
+    if (!q) {
+      resultCard.style.display = 'none';
+      return;
+    }
+
+    resultCard.style.display = '';
+
+    var matches = allFields.filter(function (f) {
+      return (f.dataset.label || '').indexOf(q) !== -1;
     });
 
-    // Initial state
-    onInputChange(row, input);
-  });
+    if (matches.length === 0) {
+      stateIdle.style.display    = 'none';
+      resultsList.style.display  = 'none';
+      stateNoMatch.style.display = '';
+      return;
+    }
 
-  function onInputChange(row, input) {
-    var v = parseInt(input.value, 10) || 0;
-    if (v > 0) {
-      row.classList.add('has-teams');
-    } else {
+    stateIdle.style.display    = 'none';
+    stateNoMatch.style.display = 'none';
+    resultsList.style.display  = '';
+
+    // Rebuild results list
+    resultsList.innerHTML = '';
+    matches.slice(0, 20).forEach(function (field) {
+      var row = renderedRows[field.id] || buildRow(field);
+      // Sync display value from hidden input (in case it changed via chip)
+      var v = parseInt(field.value, 10) || 0;
+      row.querySelector('.ri-count').value = v;
+      row.classList.toggle('has-teams', v > 0);
+      resultsList.appendChild(row);
+    });
+
+    if (matches.length > 20) {
+      var more = document.createElement('li');
+      more.className = 'list-group-item text-center text-muted small py-2';
+      more.textContent = '…and ' + (matches.length - 20) + ' more — refine your search';
+      resultsList.appendChild(more);
+    }
+  }
+
+  searchEl.addEventListener('input', function () { doSearch(this.value); });
+
+  function clearSearch() {
+    searchEl.value = '';
+    clearBtn.style.display = 'none';
+    resultCard.style.display = 'none';
+    searchEl.focus();
+  }
+  window.clearSearch = clearSearch;
+  clearBtn.addEventListener('click', clearSearch);
+
+  /* ── Queued chips (institutions with teams > 0) ─────────────── */
+  function renderChips() {
+    chipsEl.innerHTML = '';
+    var hasAny = false;
+    allFields.forEach(function (field) {
+      var v = parseInt(field.value, 10) || 0;
+      if (!v) return;
+      hasAny = true;
+      var chip = document.createElement('div');
+      chip.className = 'queued-chip';
+      chip.innerHTML =
+        '<span>' + escHtml(field.dataset.display) + '</span>' +
+        '<strong style="color:#4f46e5;margin-left:2px;">×' + v + '</strong>' +
+        '<button type="button" title="Remove" onclick="removeField(\'' + field.id + '\')">×</button>';
+      chipsEl.appendChild(chip);
+    });
+    chipsEl.style.display = hasAny ? '' : 'none';
+  }
+
+  window.removeField = function (fieldId) {
+    var field = document.getElementById(fieldId);
+    if (!field) return;
+    field.value = '';
+    var row = renderedRows[fieldId];
+    if (row) {
+      row.querySelector('.ri-count').value = 0;
       row.classList.remove('has-teams');
     }
     updateTotal();
-  }
-
-  /* ── Running total ────────────────────────────────────────── */
-  function updateTotal() {
-    var sum = 0;
-    document.querySelectorAll('.teams-input').forEach(function (inp) {
-      sum += parseInt(inp.value, 10) || 0;
-    });
-    totalTeams.textContent = sum;
-    totalBadge.style.background = sum > 0 ? '#198754' : '#6366f1';
-  }
-
-  /* ── Search / filter ──────────────────────────────────────── */
-  window.filterRows = function (query) {
-    query = (query || '').toLowerCase().trim();
-    var visible = 0;
-    rows.forEach(function (row) {
-      var match = !query || (row.dataset.label || '').indexOf(query) !== -1;
-      row.style.display = match ? '' : 'none';
-      if (match) visible++;
-    });
-
-    var hasQuery = query.length > 0;
-    noResultsEl.style.display = (visible === 0 && hasQuery) ? '' : 'none';
-    clearBtn.style.display = hasQuery ? '' : 'none';
-
-    if (hasQuery) {
-      filterStatus.textContent = visible + ' / ' + rows.length + ' {% trans "shown" %}';
-    } else {
-      filterStatus.textContent = '';
-    }
+    renderChips();
   };
 
-  searchEl.addEventListener('input', function () {
-    filterRows(this.value);
-  });
+  /* ── Total counter ──────────────────────────────────────────── */
+  function updateTotal() {
+    var sum = 0;
+    allFields.forEach(function (f) { sum += parseInt(f.value, 10) || 0; });
+    totalEl.textContent = sum;
+    totalBadge.style.background = sum > 0 ? '#198754' : '#6c757d';
+  }
 
-  clearBtn.addEventListener('click', function () {
-    searchEl.value = '';
-    filterRows('');
-    searchEl.focus();
-  });
-
-  /* ── On load: auto-focus search ───────────────────────────── */
+  /* ── Init ───────────────────────────────────────────────────── */
   updateTotal();
-  filterRows('');
+  renderChips();
   searchEl.focus();
 
 })();
