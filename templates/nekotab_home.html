@@ -41,112 +41,149 @@
   <link rel="stylesheet" href="{% static 'css/landing.css' %}">
 
   <style>
-    /* ── Simple Navbar ── */
+    /* ── Navbar ── */
     .nk-nav {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(10, 15, 30, 0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(8, 12, 26, 0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.04);
     }
     .nk-nav-inner {
-      max-width: 1120px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: 0 24px;
-      height: 60px;
+      height: 58px;
       display: flex;
       align-items: center;
-      gap: 0;
     }
     .nk-nav-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       text-decoration: none;
       flex-shrink: 0;
     }
-    .nk-nav-logo img { height: 28px; width: auto; }
+    .nk-nav-logo img { height: 26px; width: auto; }
     .nk-nav-logo-text {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       color: #fff;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
+    }
+    /* Thin vertical rule between logo and links */
+    .nk-nav-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,0.14);
+      margin: 0 20px;
+      flex-shrink: 0;
     }
     .nk-nav-links {
       display: flex;
       align-items: center;
-      gap: 4px;
-      margin-left: 32px;
+      gap: 2px;
       flex: 1;
     }
     .nk-nav-links a {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      font-size: 14px;
+      gap: 5px;
+      padding: 6px 11px;
+      font-size: 13.5px;
       font-weight: 500;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.65);
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 7px;
+      letter-spacing: -0.01em;
       transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
     }
     .nk-nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
-    .nk-nav-links .nk-nav-icon { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
-    .nk-nav-links .nk-nav-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.12); margin: 0 6px; }
+    /* Ticket link — subtle accent */
+    .nk-nav-links a.nk-nav-ticket {
+      color: #a5b4fc;
+    }
+    .nk-nav-links a.nk-nav-ticket:hover { color: #c4b5fd; background: rgba(165,180,252,0.1); }
+    /* Icon-only link (Discord) */
+    .nk-nav-icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.15s, background 0.15s;
+    }
+    .nk-nav-icon-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nk-nav-icon-btn svg { width: 15px; height: 15px; fill: currentColor; display: block; }
     .nk-nav-end {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       flex-shrink: 0;
     }
     .nk-nav-signin {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 500;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.65);
       text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 8px;
+      padding: 6px 11px;
+      border-radius: 7px;
+      letter-spacing: -0.01em;
       transition: color 0.15s, background 0.15s;
     }
     .nk-nav-signin:hover { color: #fff; background: rgba(255,255,255,0.08); }
     .nk-nav-cta {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 7px 16px;
+      gap: 5px;
+      padding: 6px 14px;
       background: #6366f1;
       color: #fff;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
-      border-radius: 8px;
+      border-radius: 7px;
       text-decoration: none;
-      transition: background 0.15s, transform 0.1s;
+      letter-spacing: -0.01em;
+      transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
       white-space: nowrap;
+      box-shadow: 0 0 0 1px rgba(99,102,241,0.5), 0 1px 3px rgba(99,102,241,0.3);
     }
-    .nk-nav-cta:hover { background: #4f46e5; transform: translateY(-1px); }
+    .nk-nav-cta:hover { background: #4f46e5; box-shadow: 0 0 0 1px rgba(79,70,229,0.6), 0 4px 12px rgba(99,102,241,0.35); transform: translateY(-1px); }
 
-    /* Mobile nav */
+    /* Mobile burger */
     .nk-burger {
       display: none;
       flex-direction: column;
-      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 8px;
+      padding: 9px;
       margin-left: auto;
+      border-radius: 7px;
+      min-width: 40px;
+      min-height: 40px;
+      transition: background 0.15s;
     }
+    .nk-burger:hover { background: rgba(255,255,255,0.07); }
     .nk-burger span {
       display: block;
-      width: 22px;
-      height: 2px;
-      background: rgba(255,255,255,0.85);
+      width: 20px;
+      height: 1.5px;
+      background: rgba(255,255,255,0.8);
       border-radius: 2px;
-      transition: transform 0.2s, opacity 0.2s;
+      transition: transform 0.22s, opacity 0.22s;
     }
+
+    /* Mobile drawer */
     .nk-mobile-drawer {
       position: fixed;
       inset: 0;
@@ -156,74 +193,109 @@
     .nk-mobile-drawer-backdrop {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,10,0.6);
       opacity: 0;
-      transition: opacity 0.25s;
+      transition: opacity 0.28s;
+      backdrop-filter: blur(2px);
     }
     .nk-mobile-drawer-panel {
       position: absolute;
       top: 0; right: 0; bottom: 0;
-      width: 280px;
-      max-width: 85vw;
-      background: #0d1221;
-      border-left: 1px solid rgba(255,255,255,0.08);
+      width: 288px;
+      max-width: 88vw;
+      background: #0c1122;
+      border-left: 1px solid rgba(255,255,255,0.07);
       transform: translateX(100%);
-      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
       display: flex;
       flex-direction: column;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .nk-mobile-drawer.is-open { pointer-events: all; }
     .nk-mobile-drawer.is-open .nk-mobile-drawer-backdrop { opacity: 1; }
     .nk-mobile-drawer.is-open .nk-mobile-drawer-panel { transform: translateX(0); }
+
     .nk-mobile-drawer-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      flex-shrink: 0;
     }
     .nk-mobile-close {
-      background: none;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.07);
       border: none;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.7);
       cursor: pointer;
-      padding: 4px;
+      padding: 0;
+      width: 32px; height: 32px;
+      border-radius: 7px;
+      transition: background 0.15s, color 0.15s;
     }
-    .nk-mobile-drawer-body { padding: 16px 20px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .nk-mobile-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+    .nk-mobile-drawer-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      padding: 14px 0 6px;
+    }
+    .nk-mobile-drawer-body { padding: 8px 20px; flex: 1; }
     .nk-mobile-drawer-body a {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 4px;
+      gap: 12px;
+      padding: 13px 0;
       font-size: 15px;
       font-weight: 500;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.72);
       text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      min-height: 48px;
+      transition: color 0.15s;
     }
+    .nk-mobile-drawer-body a:last-child { border-bottom: none; }
     .nk-mobile-drawer-body a:hover { color: #fff; }
+    .nk-mob-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+      background: rgba(255,255,255,0.06);
+    }
+    .nk-mob-icon--ticket { background: rgba(165,180,252,0.12); }
+    .nk-mob-label-group { display: flex; flex-direction: column; }
+    .nk-mob-label-sub { font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; margin-top: 1px; }
+
     .nk-mobile-drawer-footer {
-      padding: 16px 20px;
+      padding: 16px 20px calc(16px + env(safe-area-inset-bottom, 0px));
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      gap: 8px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      flex-shrink: 0;
     }
     .nk-mobile-drawer-footer a {
-      display: block;
-      padding: 12px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 13px;
       text-align: center;
       font-size: 15px;
       font-weight: 600;
-      border-radius: 8px;
+      border-radius: 9px;
       text-decoration: none;
+      min-height: 48px;
     }
-    .nk-mob-cta { background: #6366f1; color: #fff; }
-    .nk-mob-secondary { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); }
+    .nk-mob-cta { background: #6366f1; color: #fff; box-shadow: 0 1px 3px rgba(99,102,241,0.35); }
+    .nk-mob-cta:hover { background: #4f46e5; }
+    .nk-mob-secondary { border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.7); }
+    .nk-mob-secondary:hover { border-color: rgba(255,255,255,0.28); color: #fff; }
 
     @media (max-width: 768px) {
-      .nk-nav-links, .nk-nav-end { display: none; }
+      .nk-nav-links, .nk-nav-end, .nk-nav-sep { display: none; }
       .nk-burger { display: flex; }
     }
 
@@ -238,56 +310,67 @@
     }
     .nk-features-eyebrow {
       text-align: center;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #6366f1;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .nk-features-heading {
       text-align: center;
-      font-size: clamp(26px, 4vw, 38px);
+      font-size: clamp(24px, 4vw, 36px);
       font-weight: 800;
       color: #0f172a;
       letter-spacing: -0.5px;
-      margin-bottom: 48px;
-      line-height: 1.2;
+      margin-bottom: 44px;
+      line-height: 1.15;
     }
     .nk-features-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 20px;
     }
     .nk-feature-card {
       background: #fff;
       border: 1px solid #e2e8f0;
-      border-radius: 6px;
+      border-radius: 12px;
       overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
+    .nk-feature-card:hover { box-shadow: 0 8px 24px rgba(99,102,241,0.1); transform: translateY(-2px); }
     .nk-feature-card-body {
-      padding: 36px 40px 40px;
+      padding: 32px 36px 36px;
+    }
+    .nk-feature-card-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: #eef2ff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin: 0 auto 18px;
     }
     .nk-feature-card h2 {
-      font-size: clamp(22px, 3vw, 30px);
+      font-size: clamp(18px, 2.4vw, 24px);
       font-weight: 700;
       color: #0f172a;
       letter-spacing: -0.3px;
-      margin-bottom: 16px;
-      line-height: 1.2;
+      margin-bottom: 12px;
+      line-height: 1.25;
       text-align: center;
     }
     .nk-feature-card p {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.65;
       color: #475569;
       text-align: center;
       margin: 0;
     }
     @media (max-width: 640px) {
-      .nk-features-grid { grid-template-columns: 1fr; }
-      .nk-feature-card-body { padding: 28px 24px 32px; }
-      .nk-features { padding: 60px 16px; }
+      .nk-features-grid { grid-template-columns: 1fr; gap: 14px; }
+      .nk-feature-card-body { padding: 24px 22px 28px; }
+      .nk-features { padding: 56px 16px; }
+      .nk-features-heading { margin-bottom: 28px; }
     }
 
     /* ── Footer tweak: add community links ── */
@@ -327,23 +410,24 @@
     <div class="nk-nav-inner">
       <!-- Logo -->
       <a href="/" class="nk-nav-logo" aria-label="NekoTab home">
-        <img src="{% static 'logo.png' %}" alt="" width="28" height="28">
+        <img src="{% static 'logo.png' %}" alt="" width="26" height="26">
         <span class="nk-nav-logo-text">NekoTab</span>
       </a>
 
+      <!-- Separator -->
+      <div class="nk-nav-sep" aria-hidden="true"></div>
+
       <!-- Desktop links -->
       <nav class="nk-nav-links" aria-label="Primary">
-        <div class="nk-nav-divider"></div>
         <a href="{% url 'tickets:index' %}">Events</a>
-        <a href="{% url 'tickets:index' %}" style="color:#a5b4fc;">🎟 Buy Tickets</a>
-        <a href="/tools/import/">📥 Importer</a>
-        <a href="/tools/analyze/">📊 Analyzer</a>
-        <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener" aria-label="Discord">
-          <svg class="nk-nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          Discord
-        </a>
-        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
+        <a href="{% url 'tickets:index' %}" class="nk-nav-ticket">Buy Tickets</a>
+        <a href="/tools/import/">Importer</a>
+        <a href="/tools/analyze/">Analyzer</a>
         <a href="{% url 'motions' %}">Motion Bank</a>
+        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
+        <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener" class="nk-nav-icon-btn" aria-label="Discord community">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
       </nav>
 
       <!-- Auth -->
@@ -373,24 +457,62 @@
           <span class="nk-nav-logo-text">NekoTab</span>
         </a>
         <button class="nk-mobile-close" id="nk-drawer-close" aria-label="Close menu">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>
       <div class="nk-mobile-drawer-body">
-        <a href="{% url 'tickets:index' %}">🗓 Events</a>
-        <a href="{% url 'tickets:index' %}">🎟 Buy Tickets</a>
-        <a href="/tools/import/">📥 Importer</a>
-        <a href="/tools/analyze/">📊 Analyzer</a>
-        <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          Discord Community
+        <div class="nk-mobile-drawer-section-label">Events &amp; Tickets</div>
+        <a href="{% url 'tickets:index' %}">
+          <span class="nk-mob-icon">🗓</span>
+          <span class="nk-mob-label-group">
+            <span>Events</span>
+            <span class="nk-mob-label-sub">Upcoming debate events</span>
+          </span>
         </a>
-        <a href="{% url 'motions' %}">Motion Bank</a>
-        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
+        <a href="{% url 'tickets:index' %}">
+          <span class="nk-mob-icon nk-mob-icon--ticket">🎟</span>
+          <span class="nk-mob-label-group">
+            <span>Buy Tickets</span>
+            <span class="nk-mob-label-sub">Register &amp; purchase event tickets</span>
+          </span>
+        </a>
+        <div class="nk-mobile-drawer-section-label">Tools</div>
+        <a href="/tools/import/">
+          <span class="nk-mob-icon">📥</span>
+          <span class="nk-mob-label-group">
+            <span>Importer</span>
+            <span class="nk-mob-label-sub">Import teams &amp; participants</span>
+          </span>
+        </a>
+        <a href="/tools/analyze/">
+          <span class="nk-mob-icon">📊</span>
+          <span class="nk-mob-label-group">
+            <span>Analyzer</span>
+            <span class="nk-mob-label-sub">Analyze tournament results</span>
+          </span>
+        </a>
+        <a href="{% url 'motions' %}">
+          <span class="nk-mob-icon">📚</span>
+          <span class="nk-mob-label-group">
+            <span>Motion Bank</span>
+            <span class="nk-mob-label-sub">Global debate motion database</span>
+          </span>
+        </a>
+        <div class="nk-mobile-drawer-section-label">Resources</div>
+        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">
+          <span class="nk-mob-icon">📖</span>
+          <span>Docs</span>
+        </a>
+        <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener">
+          <span class="nk-mob-icon">
+            <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:rgba(255,255,255,0.6)"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </span>
+          <span>Discord Community</span>
+        </a>
       </div>
       <div class="nk-mobile-drawer-footer">
         {% if user.is_authenticated %}
-          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="nk-mob-cta">Workspace</a>
+          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="nk-mob-cta">Go to Workspace</a>
         {% else %}
           <a href="{% url 'register-organization' %}" class="nk-mob-cta">Create Workspace</a>
           <a href="{% url 'register-tournament' %}" class="nk-mob-secondary">Single Tournament</a>
@@ -497,6 +619,7 @@
 
         <div class="nk-feature-card">
           <div class="nk-feature-card-body">
+            <div class="nk-feature-card-icon">🌐</div>
             <h2>Website Builder</h2>
             <p>Build a professional public website for your debate organization. Showcase your events, share results, and attract participants — no coding required.</p>
           </div>
@@ -504,13 +627,15 @@
 
         <div class="nk-feature-card">
           <div class="nk-feature-card-body">
-            <h2>Ticketing System for Events</h2>
+            <div class="nk-feature-card-icon">🎟</div>
+            <h2>Ticketing System</h2>
             <p>Sell and manage tickets for your tournaments and events. Handle online registration, payments, and automated confirmations all in one place.</p>
           </div>
         </div>
 
         <div class="nk-feature-card">
           <div class="nk-feature-card-body">
+            <div class="nk-feature-card-icon">📅</div>
             <h2>Schedule Planner</h2>
             <p>Plan your tournament schedule from first round to finals. Organize rounds, breaks, and sessions with an intuitive planner built for the debate format.</p>
           </div>
@@ -518,6 +643,7 @@
 
         <div class="nk-feature-card">
           <div class="nk-feature-card-body">
+            <div class="nk-feature-card-icon">🗂</div>
             <h2>Events System</h2>
             <p>Create and manage events of every scale — from local meetups to international championships — with full participant management and live updates.</p>
           </div>

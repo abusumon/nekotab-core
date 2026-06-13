@@ -1153,13 +1153,13 @@ html.no-scroll { overflow: hidden; }
 
 /* ======================== RESPONSIVE ======================== */
 @media (max-width:767px) {
-  .em-hero { padding: 120px 0 48px; }
-  .em-hero-title { font-size: clamp(30px, 8vw, 44px); line-height: 1.08; }
-  .em-hero-sub { font-size: 15px; margin-bottom: 28px; }
+  .em-hero { padding: 52px 0 40px; }
+  .em-hero-title { font-size: clamp(28px, 7.5vw, 40px); line-height: 1.1; }
+  .em-hero-sub { font-size: 15px; margin-bottom: 24px; }
   .em-hero-ctas { flex-direction: column; align-items: stretch; gap: 10px; }
   .em-hero-ctas .em-btn { width: 100%; justify-content: center; }
   .em-hero-trust { flex-direction: column; align-items: center; gap: 12px; margin-top: 32px; padding-top: 24px; }
-  .em-hero-visual { margin-top: 32px; }
+  .em-hero-visual { margin-top: 28px; }
   .em-browser-frame { border-radius: var(--nt-radius); }
 
   .em-section { padding: 56px 0; }
@@ -1168,9 +1168,10 @@ html.no-scroll { overflow: hidden; }
 
   .em-dash-sidebar { display: none; }
   .em-dash-stats-row { grid-template-columns: repeat(2, 1fr); }
-  .em-dash-table-head, .em-dash-table-row { grid-template-columns: 1fr 1fr 0.5fr; }
-  .em-dash-table-head span:nth-child(3), .em-dash-table-head span:nth-child(4),
-  .em-dash-table-row span:nth-child(3), .em-dash-table-row span:nth-child(4) { display: none; }
+  /* Keep Room (1), OG (2), Status (6) — hide OO (3), CG (4), CO (5) */
+  .em-dash-table-head, .em-dash-table-row { grid-template-columns: 1fr 1.1fr 0.5fr; }
+  .em-dash-table-head span:nth-child(3), .em-dash-table-head span:nth-child(4), .em-dash-table-head span:nth-child(5),
+  .em-dash-table-row span:nth-child(3), .em-dash-table-row span:nth-child(4), .em-dash-table-row span:nth-child(5) { display: none; }
 
   body.em-body { padding-bottom: 88px; }
   .em-back-to-top { bottom: 108px; z-index: 9990; }
@@ -1179,11 +1180,26 @@ html.no-scroll { overflow: hidden; }
   .em-btn--xs { min-height: 36px; }
   .em-burger { min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
   .em-mobile-menu a { min-height: 44px; display: flex; align-items: center; }
+
+  /* Badge wraps cleanly on narrow screens */
+  .em-badge { font-size: 12px; padding: 7px 14px; text-align: center; }
+
+  /* Browser mockup: prevent inner content overflow from escaping the card */
+  .em-browser-content { overflow: hidden; }
+  .em-browser-frame { margin: 0 -4px; } /* bleed slightly to use full width */
+
+  /* Dashboard header nav: hide extra items on mobile */
+  .em-dash-nav { overflow: hidden; }
+  .em-dash-nav-item { display: none; }
+  .em-dash-nav-item--active { display: inline; }
 }
 
 @media (max-width:599px) {
-  .em-dash-table-head, .em-dash-table-row { grid-template-columns: 1fr 1fr 0.5fr; }
   .em-format-card { height: 160px; }
+  /* Hero: tighter spacing on very small phones */
+  .em-hero { padding: 40px 0 36px; }
+  .em-badge { font-size: 11px; padding: 6px 12px; }
+  .em-hero-title { margin-bottom: 16px; }
 }
 
 /* Cookie consent: don't block content permanently */
