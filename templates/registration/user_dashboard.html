@@ -1,0 +1,275 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard — NekoTab</title>
+    <link rel="icon" type="image/png" href="{% static 'logo-32x32.png' %}" sizes="32x32">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f9fafb;
+            color: #1a1a1a;
+            min-height: 100vh;
+        }
+
+        /* ── Navbar ── */
+        .navbar {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar-inner {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #111827;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .nav-right { display: flex; align-items: center; gap: 0.5rem; }
+        .nav-user { font-size: 0.875rem; color: #6b7280; font-weight: 500; }
+        .nav-btn {
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.15s;
+        }
+        .nav-btn-outline { background: #fff; color: #374151; border: 1px solid #d1d5db; }
+        .nav-btn-outline:hover { background: #f3f4f6; }
+        .nav-btn-primary { background: #2563eb; color: #fff; }
+        .nav-btn-primary:hover { background: #1d4ed8; color: #fff; }
+
+        /* ── Main layout ── */
+        .main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem; }
+
+        /* ── Page header ── */
+        .page-header { margin-bottom: 2rem; }
+        .page-header h1 { font-size: 1.6rem; font-weight: 800; color: #111827; letter-spacing: -0.4px; }
+        .page-header p { color: #6b7280; font-size: 0.9rem; margin-top: 0.25rem; }
+
+        /* ── Stats row ── */
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+        .stat-value { font-size: 2rem; font-weight: 800; color: #111827; line-height: 1; }
+        .stat-label { font-size: 0.8rem; color: #9ca3af; margin-top: 0.35rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+
+        /* ── Cards ── */
+        .section-title { font-size: 1rem; font-weight: 700; color: #374151; margin-bottom: 0.85rem; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+        .t-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+        .t-card h3 { font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 0.25rem; }
+        .t-card p { color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem; }
+        .t-card-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .t-btn {
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.825rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+        .t-btn-primary { background: #2563eb; color: #fff; }
+        .t-btn-primary:hover { background: #1d4ed8; }
+        .t-btn-secondary { background: #f3f4f6; color: #374151; }
+        .t-btn-secondary:hover { background: #e5e7eb; }
+
+        /* ── Workspace card ── */
+        .workspace-card {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .workspace-card h3 { font-size: 1rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.2rem; }
+        .workspace-card p { font-size: 0.875rem; color: #3b82f6; }
+
+        /* ── Empty state ── */
+        .empty {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        .empty p { margin-bottom: 1.25rem; }
+
+        /* ── Quick actions ── */
+        .quick-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .qa-btn {
+            padding: 0.55rem 1.15rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            color: #374151;
+            transition: all 0.15s;
+        }
+        .qa-btn:hover { background: #f9fafb; border-color: #d1d5db; color: #111827; }
+        .qa-btn-primary { background: #2563eb; color: #fff; border-color: #2563eb; }
+        .qa-btn-primary:hover { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .main { padding: 1.5rem 1rem; }
+            .navbar { padding: 0 1rem; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="logo">🐱 NekoTab</a>
+            <div class="nav-right">
+                <span class="nav-user">{{ user.username }}</span>
+                <a href="{% url 'tickets:index' %}" class="nav-btn nav-btn-outline">🎟 Events</a>
+                <a href="{% url 'tournament-create' %}" class="nav-btn nav-btn-primary">+ Tournament</a>
+                <form method="post" action="{% url 'logout' %}" style="display:inline;margin:0;">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-btn nav-btn-outline">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <!-- Page header -->
+        <div class="page-header">
+            <h1>Welcome back, {{ user.username }}</h1>
+            <p>Here's what's happening with your tournaments.</p>
+        </div>
+
+        <!-- Workspace link (if they have one) -->
+        {% if primary_workspace_url %}
+        <div class="workspace-card">
+            <div>
+                <h3>Your Organization Workspace</h3>
+                <p>Manage members, events, and your public website from your workspace.</p>
+            </div>
+            <a href="{{ primary_workspace_url }}" class="t-btn t-btn-primary" style="white-space:nowrap;">Go to Workspace →</a>
+        </div>
+        {% endif %}
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">{{ total_tournament_count }}</div>
+                <div class="stat-label">Tournaments</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ active_tournaments|length }}</div>
+                <div class="stat-label">Active</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ inactive_tournaments|length }}</div>
+                <div class="stat-label">Archived</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ total_debate_count }}</div>
+                <div class="stat-label">Debates run</div>
+            </div>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="quick-actions">
+            <a href="{% url 'tournament-create' %}" class="qa-btn qa-btn-primary">🏆 New Tournament</a>
+            <a href="{% url 'tickets:index' %}" class="qa-btn">🎟 Browse Events</a>
+            <a href="/tools/import/" class="qa-btn">📥 Import Data</a>
+            <a href="/tools/analyze/" class="qa-btn">📊 Analyze</a>
+            {% if user.is_superuser %}
+            <a href="{% url 'admin:index' %}" class="qa-btn">⚙️ Admin</a>
+            {% endif %}
+        </div>
+
+        <!-- Active Tournaments -->
+        <div class="section-title">Active Tournaments</div>
+        {% if active_tournaments %}
+            <div class="card-grid" style="margin-bottom:2rem;">
+                {% for t in active_tournaments %}
+                <div class="t-card">
+                    <h3>{{ t.name }}</h3>
+                    <p>{{ t.short_name }}</p>
+                    <div class="t-card-actions">
+                        <a href="/{{ t.slug }}/admin/" class="t-btn t-btn-primary">Manage</a>
+                        <a href="/{{ t.slug }}/" class="t-btn t-btn-secondary">Public</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty" style="margin-bottom:2rem;">
+                <p>No active tournaments yet.</p>
+                <a href="{% url 'tournament-create' %}" class="t-btn t-btn-primary">Create your first tournament</a>
+            </div>
+        {% endif %}
+
+        <!-- Archived Tournaments -->
+        {% if inactive_tournaments %}
+        <div class="section-title">Archived Tournaments</div>
+        <div class="card-grid">
+            {% for t in inactive_tournaments %}
+            <div class="t-card">
+                <h3>{{ t.name }}</h3>
+                <p>{{ t.short_name }}</p>
+                <div class="t-card-actions">
+                    <a href="/{{ t.slug }}/admin/" class="t-btn t-btn-secondary">Manage</a>
+                    <a href="/{{ t.slug }}/" class="t-btn t-btn-secondary">Public</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>

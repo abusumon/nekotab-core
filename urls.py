@@ -22,7 +22,7 @@ import tournaments.views
 from importer.views import LoadDemoView
 from participant_crm.views import UnsubscribeView as CrmUnsubscribeView
 from organizations import views as organizations_views
-from users.views import BlankSiteStartView, GoogleOAuthLoginGuardView
+from users.views import BlankSiteStartView, GoogleOAuthLoginGuardView, UserDashboardView
 from sitemaps import StaticViewSitemap, TournamentSitemap, MotionBankSitemap
 from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
 import motionbank.views as motionbank_views
@@ -56,6 +56,9 @@ urlpatterns = [
 
         tournaments.views.PublicSiteIndexView.as_view(),
         name='tabbycat-index'),
+    path('me/',
+        UserDashboardView.as_view(),
+        name='user-dashboard'),
     path('start/',
         BlankSiteStartView.as_view(),
         name='blank-site-start'),

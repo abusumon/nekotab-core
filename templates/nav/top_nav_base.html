@@ -117,6 +117,11 @@
     </ul>
 
     <ul class="navbar-nav navbar-my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/tickets/" title="{% trans 'Event Tickets' %}">
+          🎟 {% trans "Buy Tickets" %}
+        </a>
+      </li>
       {% if user.is_superuser %}
       {% url 'analytics:dashboard' as analytics_url %}
       {% url 'campaigns:list' as campaigns_url %}
@@ -124,6 +129,11 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ analytics_url }}" title="{% trans 'Admin Dashboard' %}">
           📊
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/donations/payment-config/" title="{% trans 'Payment Gateway Setup' %}">
+          💳
         </a>
       </li>
       {% endif %}

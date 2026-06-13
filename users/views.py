@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login
 from django.contrib.sites.models import Site
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetView
 from django.core.mail import send_mail
 from django.http.response import Http404
@@ -15,7 +16,7 @@ from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.translation import gettext_lazy as _
 from django.views import View
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 
 from allauth.account.models import EmailAddress
 from allauth.socialaccount.models import SocialApp
@@ -297,5 +298,44 @@ class ActivateAccountView(View):
                 "The verification link is invalid or has expired. "
                 "Please register again to get a new verification email."
             ))
+
+
+class UserDashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'registration/user_dashboard.html'
+    login_url = '/accounts/login/'
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        user = self.request.user
+
+        from tournaments.models import Tournament
+        from organizations.models import OrganizationMembership, get_user_organizations
+        from draw.models import Debate
+
+        my_tournaments = Tournament.objects.filter(owner=user).order_by('-pk')
+        ctx['active_tournaments'] = my_tournaments.filter(active=True)
+        ctx['inactive_tournaments'] = my_tournaments.filter(active=False)
+        ctx['total_tournament_count'] = my_tournaments.count()
+        ctx['total_debate_count'] = Debate.objects.filter(
+            round__tournament__owner=user
+        ).count()
+
+        ctx['user_organizations'] = get_user_organizations(user)
+
+        base_domain = (getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '') or '').strip()
+        ctx['primary_workspace_url'] = None
+        if base_domain:
+            slug = (
+                OrganizationMembership.objects.filter(
+                    user=user,
+                    organization__is_workspace_enabled=True,
+                )
+                .values_list('organization__slug', flat=True)
+                .first()
+            )
+            if slug:
+                ctx['primary_workspace_url'] = f"https://{slug}.{base_domain}/"
+
+        return ctx
 
         return redirect('tabbycat-index')

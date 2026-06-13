@@ -55,7 +55,8 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
     template_name = 'nekotab_home.html'
 
     def get(self, request, *args, **kwargs):
-        # Always serve the landing page — blank-site-start is only for CLI/dev setup
+        if request.user.is_authenticated:
+            return redirect('user-dashboard')
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
