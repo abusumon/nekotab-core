@@ -7,38 +7,94 @@
 
 {% block content %}
 
-<form method="POST">
+<form method="POST" id="teams-details-form">
 
   {% csrf_token %}
   {{ wizard.management_form }}
   {{ wizard.form.management_form }}
 
-  <div class="mb-3">
-    <button type="submit" class="btn btn-outline-primary" name="wizard_goto_step" value="{{ wizard.steps.prev }}"><i data-feather="chevron-left"></i>{% trans "Previous Step" %}</button>
+  <!-- ── Top action bar ────────────────────────────────────────── -->
+  <div class="d-flex align-items-center flex-wrap gap-2 mb-3">
+    <button type="submit" class="btn btn-outline-secondary btn-sm" name="wizard_goto_step" value="{{ wizard.steps.prev }}">
+      <i data-feather="chevron-left" style="width:14px;height:14px;vertical-align:-2px;"></i>
+      {% trans "Previous Step" %}
+    </button>
+    <button type="submit" class="btn btn-success btn-sm ms-auto">
+      <i data-feather="check" style="width:14px;height:14px;vertical-align:-2px;"></i>
+      {% trans "Save All Teams" %}
+    </button>
   </div>
 
+  <!-- ── Errors ────────────────────────────────────────────────── -->
   {% if wizard.form.errors %}
     {% include "components/form-errors.html" with errors=wizard.form.non_form_errors %}
   {% endif %}
 
+  <!-- ── Jump nav + search ─────────────────────────────────────── -->
   {% regroup wizard.form.forms by institution_for_display as forms_by_institution %}
 
+  {% if forms_by_institution|length > 1 %}
+  <div class="card mb-3 sticky-top" style="z-index:50;top:56px;">
+    <div class="card-body py-2 px-3">
+      <div class="row align-items-center gy-2">
+        <div class="col-md-5">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text" style="background:transparent;border-right:0;">
+              <i data-feather="search" style="width:13px;height:13px;color:#adb5bd;"></i>
+            </span>
+            <input type="text"
+                   id="institution-jump-search"
+                   class="form-control"
+                   placeholder="{% trans 'Jump to institution…' %}"
+                   autocomplete="off"
+                   style="border-left:0;box-shadow:none;">
+          </div>
+        </div>
+        <div class="col-md-7 d-flex align-items-center gap-2 flex-wrap" id="institution-nav-pills">
+          {% for forms in forms_by_institution %}
+          <a href="#institution-{{ forloop.counter }}"
+             class="badge rounded-pill institution-pill text-decoration-none"
+             data-target="{{ forloop.counter }}"
+             style="background:rgba(99,102,241,.12);color:#4f46e5;font-size:.8rem;padding:5px 12px;border:1px solid rgba(99,102,241,.25);">
+            {% if forms.grouper.name %}{{ forms.grouper.name }}{% else %}{% trans "Unaffiliated" %}{% endif %}
+            <span class="ms-1 opacity-75">({{ forms.list|length }})</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- ── Institution groups ─────────────────────────────────────── -->
   {% for forms in forms_by_institution %}
 
-    <div class="card mt-3">
+    <div class="card mt-3 institution-group" id="institution-{{ forloop.counter }}"
+         data-institution-name="{% if forms.grouper.name %}{{ forms.grouper.name|lower }}{% else %}unaffiliated{% endif %}">
 
-      <div class="list-group-item card-title pb-1">
-        <h4>
-        {% if forms.grouper.name %}
-          {% blocktrans trimmed with institution=forms.grouper.name %}
-            Teams for {{ institution }}
-          {% endblocktrans %}
-        {% else %}
-          {% trans "Unaffiliated Teams" %}
-        {% endif %}
-        </h4>
+      <!-- Group header -->
+      <div class="card-header d-flex align-items-center justify-content-between py-2">
+        <h5 class="mb-0 d-flex align-items-center gap-2">
+          <span class="institution-avatar rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
+                style="width:30px;height:30px;background:rgba(99,102,241,.15);color:#6366f1;font-size:12px;font-weight:700;">
+            {% if forms.grouper.name %}{{ forms.grouper.name|first|upper }}{% else %}—{% endif %}
+          </span>
+          {% if forms.grouper.name %}
+            {{ forms.grouper.name }}
+            {% if forms.grouper.code %}
+              <small class="text-muted fw-normal" style="font-size:.8rem;">({{ forms.grouper.code }})</small>
+            {% endif %}
+          {% else %}
+            {% trans "Unaffiliated Teams" %}
+          {% endif %}
+        </h5>
+        <span class="badge bg-secondary rounded-pill">
+          {{ forms.list|length }}
+          {% if forms.list|length == 1 %}{% trans "team" %}{% else %}{% trans "teams" %}{% endif %}
+        </span>
       </div>
 
+      <!-- Team forms -->
       {% for form in forms.list %}
         {% include "components/form-main.html" with double=True %}
       {% endfor %}
@@ -47,11 +103,100 @@
 
   {% endfor %}
 
+  <!-- ── Bottom submit ─────────────────────────────────────────── -->
   <div class="card mt-3">
-    {% trans "Save All Teams" as title %}
-    {% include "components/form-submit.html" %}
+    <div class="list-group-item d-flex align-items-center justify-content-between flex-wrap gap-2 py-3">
+      <button type="submit" class="btn btn-outline-secondary" name="wizard_goto_step" value="{{ wizard.steps.prev }}">
+        <i data-feather="chevron-left" style="width:14px;height:14px;vertical-align:-2px;"></i>
+        {% trans "Previous Step" %}
+      </button>
+      <button type="submit" class="btn btn-success">
+        <i data-feather="check" style="width:14px;height:14px;vertical-align:-2px;"></i>
+        {% trans "Save All Teams" %}
+      </button>
+    </div>
   </div>
 
 </form>
 
 {% endblock content %}
+
+
+{% block js %}
+{{ block.super }}
+<style>
+  .institution-group { scroll-margin-top: 110px; }
+  .institution-pill { transition: all .12s; cursor: pointer; }
+  .institution-pill:hover, .institution-pill.active {
+    background: #6366f1 !important;
+    color: #fff !important;
+    border-color: #6366f1 !important;
+  }
+  .institution-group.dim { opacity: 0.35; transition: opacity .2s; }
+  #institution-jump-search:focus { box-shadow: none; border-color: #86b7fe; }
+</style>
+<script>
+(function () {
+  'use strict';
+
+  var jumpSearch  = document.getElementById('institution-jump-search');
+  var pills       = Array.from(document.querySelectorAll('.institution-pill'));
+  var groups      = Array.from(document.querySelectorAll('.institution-group'));
+
+  if (!jumpSearch) return; // single institution — nav not rendered
+
+  /* ── Jump-search: filter pills + dim non-matching groups ───── */
+  jumpSearch.addEventListener('input', function () {
+    var q = this.value.toLowerCase().trim();
+    var matchCount = 0;
+
+    pills.forEach(function (pill) {
+      var name = pill.textContent.toLowerCase();
+      var match = !q || name.indexOf(q) !== -1;
+      pill.style.display = match ? '' : 'none';
+      if (match) matchCount++;
+    });
+
+    groups.forEach(function (grp) {
+      var name = (grp.dataset.institutionName || '').toLowerCase();
+      var match = !q || name.indexOf(q) !== -1;
+      grp.classList.toggle('dim', !match);
+    });
+
+    // Auto-scroll to first match
+    if (q) {
+      var firstMatch = groups.find(function (g) {
+        return (g.dataset.institutionName || '').toLowerCase().indexOf(q) !== -1;
+      });
+      if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+
+  /* ── Highlight active section on scroll ─────────────────────── */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        pills.forEach(function (pill) {
+          pill.classList.toggle('active', pill.dataset.target === id.replace('institution-', ''));
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  groups.forEach(function (g) { io.observe(g); });
+
+  /* ── Smooth scroll on pill click ────────────────────────────── */
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function (e) {
+      e.preventDefault();
+      var target = document.getElementById('institution-' + pill.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+})();
+</script>
+{% endblock js %}
