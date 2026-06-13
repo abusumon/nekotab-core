@@ -1,28 +1,29 @@
 """Custom Django AdminSite, AdminConfig, and auth backend for NekoTab SaaS.
 
-The default Django admin requires ``is_staff=True`` to access any admin page.
-In NekoTab, tournament owners and org OWNER/ADMIN users should also be able
-to use the database editor (``/database/``), even if they are not flagged as
-staff in the ``auth_user`` table.
+Access tiers
+------------
+1. **Platform Owner** (``is_superuser=True``) — highest authority.  Sees and
+   edits every tournament on the platform.  Only the platform operator should
+   hold this flag.
+
+2. **Tournament admin** (owner, org OWNER/ADMIN, tab director, group member)
+   — accesses ``/database/`` without needing ``is_staff=True``.  Scoped to
+   their own tournaments by every ``ModelAdmin`` that uses
+   ``TournamentScopedAdminMixin`` and by the scoped ``UserAdmin``.
+
+3. **Legacy staff** (``is_staff=True``, no superuser) — still admitted for
+   backwards-compatibility but treated as a scoped tournament admin.
 
 This module provides:
 
-1. **NekoTabAdminConfig** — a Django ``AdminConfig`` subclass that sets
-   ``default_site`` so our custom admin site is created *before*
-   ``autodiscover()`` runs and all ``@admin.register()`` decorators attach
-   models to it.
+1. **NekoTabAdminConfig** — sets ``default_site`` so our custom admin site is
+   created *before* ``autodiscover()`` runs.
 
 2. **NekoTabAdminSite** — overrides ``has_permission()`` to admit qualifying
-   users (superuser, staff, tournament owner, org OWNER/ADMIN).
+   users without ``is_staff``.
 
-3. **TournamentAdminBackend** — a Django authentication backend that grants
-   Django model-level permissions (``has_perm``, ``has_module_perms``) to the
-   same set of qualifying users so that they can browse and edit models inside
-   the admin.
-
-Security note: this backend grants broad admin permissions.  Fine-grained
-queryset filtering per-organization should be added to each ``ModelAdmin``
-as a future hardening step.
+3. **TournamentAdminBackend** — grants Django model-level permissions to
+   qualifying users so they can browse models in the admin.
 """
 
 import logging
