@@ -111,13 +111,20 @@ body {
   color: var(--c-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  /* break-word (not anywhere) so long words/URLs wrap WITHOUT collapsing the
+     min-content width of table cells — `anywhere` was shrinking data tables to
+     one character per column on mobile instead of letting them scroll. */
+  overflow-wrap: break-word;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Tables must size to their content and scroll, never break mid-word. */
+.table, .table th, .table td {
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 /* ── 3. LAYOUT PRIMITIVES ─────────────────────────────────── */
@@ -469,5 +476,164 @@ h1, h2, h3, h4, h5, h6 {
   .navbar .btn.nav-link,
   .navbar .btn-link.nav-link {
     min-height: 44px; display: flex; align-items: center;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   12. ADMIN LAYOUT — MOBILE (≤ md / 767.98px)
+   ───────────────────────────────────────────────────────────────
+   Tabbycat's admin pages put an always-on left sidebar that, on
+   phones, is squashed into a ~32px `col-1` icon rail with 12px
+   icons and no labels. Below we turn it into a proper off-canvas
+   DRAWER opened by a hamburger in a slim sticky topbar, and give
+   the page content the full viewport width.
+   Markup added in base.html: `.nk-admin-topbar` (+ `.nk-hamburger`,
+   `.nk-topbar-title`) and `.nk-drawer-backdrop`. Toggle adds the
+   `nk-drawer-open` class to <body>.
+   ═══════════════════════════════════════════════════════════════ */
+
+.nk-admin-topbar   { display: none; }
+.nk-drawer-backdrop { display: none; }
+
+@media (max-width: 767.98px) {
+
+  /* ── Sticky topbar with hamburger ── */
+  .nk-admin-topbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    margin: 0 -15px 6px;                       /* span container-fluid padding */
+    padding: 6px 8px;
+    padding-top: calc(6px + var(--sai-top));
+    min-height: 52px;
+    background: #333c47;                        /* $sidebar-bg */
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+  .nk-hamburger {
+    flex: 0 0 auto;
+    width: 44px; height: 44px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: none; background: transparent; color: #fff;
+    border-radius: 8px; cursor: pointer;
+  }
+  .nk-hamburger:active { background: rgba(255,255,255,.14); }
+  .nk-hamburger svg { width: 24px; height: 24px; }
+  .nk-topbar-title {
+    flex: 1 1 auto; min-width: 0;
+    font-weight: 600; font-size: 16px; line-height: 1.2;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  /* ── Hide the desktop sidebar spacer ── */
+  .fake-sidebar { display: none !important; }
+
+  /* ── Page content takes the full width ── */
+  .main {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    float: none !important;
+  }
+
+  /* ── Sidebar becomes an off-canvas drawer ── */
+  .admin-sidebar {
+    position: fixed !important;
+    top: 0; left: 0; bottom: 0;
+    width: 286px !important;
+    max-width: 86vw !important;
+    margin: 0 !important;
+    padding: 0 0 calc(24px + var(--sai-bottom)) !important;
+    z-index: 1050;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #333c47;                        /* $sidebar-bg */
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    box-shadow: 2px 0 18px rgba(0,0,0,.28);
+  }
+  body.nk-drawer-open .admin-sidebar { transform: translateX(0); }
+
+  /* layout the inner nav as a normal full-width, left-aligned list */
+  .admin-sidebar .list-group,
+  .admin-sidebar nav.list-group { width: 100%; }
+  .admin-sidebar .text-center { text-align: left !important; }
+  .admin-sidebar > .list-group > .list-group-item,
+  .admin-sidebar .list-group-item {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  /* reveal labels + give comfortable 48px tap targets */
+  .admin-sidebar .list-group-item a,
+  .admin-sidebar .list-group-item form > button {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 48px;
+    font-size: 15px !important;
+    padding: 0.7rem 1rem !important;
+    text-align: left;
+  }
+  .admin-sidebar .list-group-item a .feather,
+  .admin-sidebar .list-group-item button .feather {
+    width: 18px !important; height: 18px !important;
+    flex: 0 0 auto; margin: 0 !important; padding: 0 !important;
+  }
+  /* un-hide the labels / tournament name / chevrons that are d-none on phones */
+  .admin-sidebar .d-none { display: inline-block !important; }
+  .admin-sidebar .tournament-title .mx-auto {
+    margin-left: 0 !important; margin-right: 4px !important;
+  }
+  .admin-sidebar .sidebar-expand { margin-left: auto !important; }
+  /* expanded sub-menus: full width (override the 150px overlay) + indent */
+  .admin-sidebar .list-group .collapse,
+  .admin-sidebar .list-group .collapse.show,
+  .admin-sidebar .list-group .collapsing {
+    width: 100% !important;
+    text-align: left !important;
+  }
+  .admin-sidebar .collapse .list-group-item a,
+  .admin-sidebar .collapsing .list-group-item a { padding-left: 1.6rem !important; }
+  .admin-sidebar .tournament-areas-title { padding-left: 1rem !important; }
+
+  /* ── Dim backdrop behind the open drawer ── */
+  .nk-drawer-backdrop {
+    display: block;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 1040;
+    opacity: 0; visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+  }
+  body.nk-drawer-open .nk-drawer-backdrop { opacity: 1; visibility: visible; }
+  body.nk-drawer-open { overflow: hidden; }     /* lock background scroll */
+
+  /* ═══ Shared content tweaks (admin + public) ═══ */
+
+  /* Page title: reclaim the wasted 100px min-height + huge margins */
+  #pageTitle .col-md { margin: 0.5rem 0 !important; }
+  #pageTitle [style*="min-height"] { min-height: 0 !important; }
+  #pageTitle.h2, #pageTitle .h2 { font-size: 1.5rem !important; }
+  #pageTitle .emoji { font-size: 1.4rem; }
+
+  /* Sub-nav action rows: stack instead of overflowing off-screen */
+  .page-navs .col > .d-lg-flex { display: block; }
+  .page-navs .btn-group { display: flex; flex-wrap: wrap; }
+  .page-navs .btn-group + .btn-group { margin-top: 0.5rem; }
+  .page-navs .btn-group > .btn { flex: 1 1 auto; }
+
+  /* Every responsive table wrapper scrolls horizontally on phones */
+  .table-responsive,
+  .table-responsive-sm,
+  .table-responsive-md,
+  .table-responsive-lg,
+  .table-responsive-xl {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
