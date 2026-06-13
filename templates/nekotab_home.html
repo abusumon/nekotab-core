@@ -261,18 +261,9 @@
     }
     .nk-feature-card {
       background: #fff;
-      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .nk-feature-card:hover {
-      box-shadow: 0 8px 24px rgba(99,102,241,0.12);
-      transform: translateY(-2px);
-    }
-    .nk-feature-card-bar {
-      height: 6px;
-      background: #6366f1;
     }
     .nk-feature-card-body {
       padding: 36px 40px 40px;
@@ -343,10 +334,8 @@
       <!-- Desktop links -->
       <nav class="nk-nav-links" aria-label="Primary">
         <div class="nk-nav-divider"></div>
-        <a href="https://www.facebook.com/project.nekotab/" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg class="nk-nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-          Facebook
-        </a>
+        <a href="{% url 'tickets:index' %}">Events</a>
+        <a href="{% url 'tickets:index' %}" style="color:#a5b4fc;">🎟 Buy Tickets</a>
         <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener" aria-label="Discord">
           <svg class="nk-nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
           Discord
@@ -386,10 +375,8 @@
         </button>
       </div>
       <div class="nk-mobile-drawer-body">
-        <a href="https://www.facebook.com/project.nekotab/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-          Facebook
-        </a>
+        <a href="{% url 'tickets:index' %}">🗓 Events</a>
+        <a href="{% url 'tickets:index' %}">🎟 Buy Tickets</a>
         <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
           Discord Community
@@ -505,7 +492,6 @@
       <div class="nk-features-grid">
 
         <div class="nk-feature-card">
-          <div class="nk-feature-card-bar"></div>
           <div class="nk-feature-card-body">
             <h2>Website Builder</h2>
             <p>Build a professional public website for your debate organization. Showcase your events, share results, and attract participants — no coding required.</p>
@@ -513,7 +499,6 @@
         </div>
 
         <div class="nk-feature-card">
-          <div class="nk-feature-card-bar"></div>
           <div class="nk-feature-card-body">
             <h2>Ticketing System for Events</h2>
             <p>Sell and manage tickets for your tournaments and events. Handle online registration, payments, and automated confirmations all in one place.</p>
@@ -521,7 +506,6 @@
         </div>
 
         <div class="nk-feature-card">
-          <div class="nk-feature-card-bar"></div>
           <div class="nk-feature-card-body">
             <h2>Schedule Planner</h2>
             <p>Plan your tournament schedule from first round to finals. Organize rounds, breaks, and sessions with an intuitive planner built for the debate format.</p>
@@ -529,7 +513,6 @@
         </div>
 
         <div class="nk-feature-card">
-          <div class="nk-feature-card-bar"></div>
           <div class="nk-feature-card-body">
             <h2>Events System</h2>
             <p>Create and manage events of every scale — from local meetups to international championships — with full participant management and live updates.</p>
@@ -540,90 +523,6 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════════
-       FOOTER
-       ════════════════════════════════════════════ -->
-  <footer class="em-footer" role="contentinfo">
-    <div class="em-container em-footer-grid">
-      <div>
-        <a href="/" class="em-logo">
-          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img">
-        </a>
-        <p class="em-foot-desc">Tabbycat debate tabulation as a service. Free, open-source tournament management for every parliamentary format.</p>
-        <div class="nk-foot-community">
-          <a href="https://www.facebook.com/project.nekotab/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-            Facebook
-          </a>
-          <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-            Discord
-          </a>
-          <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            GitHub
-          </a>
-        </div>
-      </div>
-      <div>
-        <div class="em-foot-title">Product</div>
-        <ul class="em-foot-links">
-          <li><a href="{% url 'register-organization' %}">Create Workspace</a></li>
-          <li><a href="{% url 'tournament-create' %}">Single Tournament</a></li>
-          <li><a href="{% url 'motions' %}">Motion Bank</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="em-foot-title">Community</div>
-        <ul class="em-foot-links">
-          <li><a href="https://www.facebook.com/project.nekotab/" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener">Discord</a></li>
-          <li><a href="{% url 'contact-forum' %}">Contact</a></li>
-          <li><a href="/learn/">Learn Debate</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="em-foot-title">Resources</div>
-        <ul class="em-foot-links">
-          <li><a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Documentation</a></li>
-          <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="{% url 'org-list' %}">Organizations</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="em-foot-title">Account</div>
-        <ul class="em-foot-links">
-          {% if user.is_authenticated %}
-            <li><a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}">Workspace</a></li>
-            <li><a href="{% url 'tournament-create' %}">New Tournament</a></li>
-          {% else %}
-            <li><a href="{% url 'login' %}">Sign in</a></li>
-            <li><a href="{% url 'register-organization' %}">Create Account</a></li>
-          {% endif %}
-        </ul>
-      </div>
-      <div>
-        <div class="em-foot-title">Legal</div>
-        <ul class="em-foot-links">
-          <li><a href="/privacy/">Privacy Policy</a></li>
-          <li><a href="/terms/">Terms of Service</a></li>
-          <li><a href="/disclaimer/">Disclaimer</a></li>
-          <li><a href="/donate/" style="color:var(--nt-primary);font-weight:600;">♥ Support Us</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="em-foot-bottom">
-      <div class="em-container em-foot-bottom-inner">
-        <div class="em-copy">© <span id="em-year"></span> NekoTab. Open-source debate platform.</div>
-        <div class="em-foot-bottom-links">
-          <a href="/privacy/">Privacy</a>
-          <a href="/terms/">Terms</a>
-          <a href="/donate/" style="color:#a5b4fc;">♥ Support</a>
-          <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <!-- Mobile Fixed CTA -->
   <div class="em-mobile-cta-bar">
