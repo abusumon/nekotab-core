@@ -136,6 +136,14 @@
   <div class="container-fluid">
 
     {% if user_role == "admin" and not full_width_layout %}
+      {# Mobile-only top bar with hamburger that opens the admin sidebar as a drawer #}
+      <div class="nk-admin-topbar d-md-none">
+        <button class="nk-hamburger" type="button" data-toggle="admin-drawer"
+                aria-label="{% trans 'Open menu' %}" aria-controls="sidebar" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span class="nk-topbar-title">{% if tournament %}{{ tournament.short_name }}{% elif page_title %}{{ page_title }}{% else %}NekoTab{% endif %}</span>
+      </div>
       <div class="row">
         <div class="col-md-2 col-1 float-left pl-0 pr-lg-3 pr-md-3 pr-0 d-none d-sm-block width fake-sidebar">
           <div class="list-group-item"></div>
@@ -227,6 +235,11 @@
     </footer>
   {% endif %}
 
+  {% if user_role == "admin" and not full_width_layout %}
+    {# Dim backdrop shown behind the mobile admin sidebar drawer #}
+    <div class="nk-drawer-backdrop" hidden></div>
+  {% endif %}
+
   {% block modals %}
     <div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-hidden="true" aria-label="{% trans 'Alert' %}">
       <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -256,6 +269,31 @@
       </script>
     {% else %}
       <script type="text/javascript" src="{% static 'vue/js/app.js' %}"></script>
+    {% endif %}
+
+    {% if user_role == "admin" and not full_width_layout %}
+    {# Mobile admin sidebar drawer toggle (vanilla JS, no framework dependency) #}
+    <script>
+      (function () {
+        var body = document.body;
+        var ham = document.querySelector('.nk-hamburger');
+        var backdrop = document.querySelector('.nk-drawer-backdrop');
+        if (!ham) return;
+        if (backdrop) backdrop.removeAttribute('hidden');
+        function close() { body.classList.remove('nk-drawer-open'); ham.setAttribute('aria-expanded', 'false'); }
+        function toggle() {
+          var open = body.classList.toggle('nk-drawer-open');
+          ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        ham.addEventListener('click', toggle);
+        if (backdrop) backdrop.addEventListener('click', close);
+        // Close after tapping a real navigation link (not a section expand toggle)
+        document.querySelectorAll('.admin-sidebar a[href]:not([data-toggle="collapse"])').forEach(function (a) {
+          a.addEventListener('click', close);
+        });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      })();
+    </script>
     {% endif %}
   {% endblock js %}
 
