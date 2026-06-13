@@ -351,3 +351,40 @@ class HomeImportCalICOTabView(LoginRequiredMixin, View):
 
         messages.success(request, _("Tournament imported successfully! Welcome to NekoTab."))
         return redirect_tournament('tournament-admin-home', importer.tournament)
+
+
+class ImportToolView(TemplateView):
+    """Public CSV importer tool — wraps the CSV-Importers frontend with a
+    NekoTab UI. No tournament context required; communicates with the API directly."""
+    template_name = 'import_tool.html'
+
+    CSV_TYPES = [
+        ('Institutions', '🏫', 'institutions.csv'),
+        ('Teams', '👥', 'teams.csv'),
+        ('Speakers', '🎤', 'speakers.csv'),
+        ('Adjudicators', '⚖️', 'adjudicators.csv'),
+        ('Venues', '🏛️', 'venues.csv'),
+        ('Rounds', '🔄', 'rounds.csv'),
+        ('Motions', '📋', 'motions.csv'),
+        ('Break Categories', '🏆', 'break_categories.csv'),
+        ('Venue Categories', '📍', 'venue_categories.csv'),
+        ('Adj Scores', '🎯', 'scores.csv'),
+        ('Speaker Categories', '🏷️', 'speaker_categories.csv'),
+        ('Adj Conflicts', '⚔️', 'adjudicator_conflicts.csv'),
+        ('Team Conflicts', '⚡', 'team_conflicts.csv'),
+        ('Adj Venue Constraints', '📐', 'adj_venue_constraints.csv'),
+        ('Team Venue Constraints', '📐', 'team_venue_constraints.csv'),
+        ('Feedback Questions', '💬', 'adj_feedback_questions.csv'),
+    ]
+
+    CALICO_FEATURES = [
+        'Teams & speakers', 'Adjudicators & panels',
+        'Venues & rounds', 'Ballots & scores',
+        'Motions', 'Draw structure',
+    ]
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['csv_types'] = self.CSV_TYPES
+        ctx['calico_features'] = self.CALICO_FEATURES
+        return ctx

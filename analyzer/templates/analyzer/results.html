@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+{% load static i18n humanize %}
+
+{% block head-title %}{{ data.name }} — Analysis{% endblock %}
+{% block page-title %}{{ data.name }} <small class="text-muted fw-normal" style="font-size:.6em;">Analysis Report</small>{% endblock %}
+
+{% block content %}
+<style>
+  .stat-card { border-radius:12px; border:1px solid #e5e7eb; padding:20px 24px; background:#fff; }
+  .stat-num { font-size:2rem; font-weight:800; color:#4f46e5; line-height:1; }
+  .stat-label { font-size:.78rem; color:#6b7280; font-weight:500; margin-top:4px; text-transform:uppercase; letter-spacing:.05em; }
+  .rank-badge { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; font-size:.78rem; font-weight:700; flex-shrink:0; }
+  .rank-1 { background:#fef3c7; color:#92400e; }
+  .rank-2 { background:#f3f4f6; color:#374151; }
+  .rank-3 { background:#fde8d8; color:#9a3412; }
+  .rank-n { background:#f3f4f6; color:#9ca3af; }
+  .result-win  { color:#059669; font-weight:700; }
+  .result-loss { color:#dc2626; font-weight:700; }
+  .result-draw { color:#d97706; font-weight:700; }
+  .section-tabs .nav-link { color:#6b7280; font-weight:500; }
+  .section-tabs .nav-link.active { color:#4f46e5; border-bottom-color:#4f46e5; font-weight:700; }
+  .gender-M { color:#3b82f6; }
+  .gender-F { color:#ec4899; }
+  .gender-O { color:#8b5cf6; }
+  .adj-chip { display:inline-flex; align-items:center; gap:5px; background:#ede9fe; color:#4f46e5; border-radius:100px; padding:3px 10px; font-size:.78rem; font-weight:600; }
+  .adj-chip.indep { background:#fef3c7; color:#92400e; }
+  .progress-bar-custom { height:6px; border-radius:3px; background:#e5e7eb; overflow:hidden; }
+  .progress-bar-custom-inner { height:100%; background:linear-gradient(90deg,#6366f1,#8b5cf6); border-radius:3px; transition:width .4s; }
+</style>
+
+<!-- Back + export -->
+<div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+  <a href="{% url 'analyze-home' %}" class="btn btn-outline-secondary btn-sm">
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align:-1px;margin-right:4px;"><polyline points="15 18 9 12 15 6"/></svg>
+    Back
+  </a>
+  <div class="d-flex align-items-center gap-2">
+    <span class="badge" style="background:#ede9fe;color:#4f46e5;padding:6px 14px;border-radius:100px;">
+      {{ data.style }}
+    </span>
+    <button onclick="window.print()" class="btn btn-outline-secondary btn-sm">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align:-1px;margin-right:4px;"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print / Save PDF
+    </button>
+  </div>
+</div>
+
+<!-- Summary stats row -->
+<div class="row g-3 mb-4">
+  {% with s=data.stats %}
+  <div class="col-6 col-md-4 col-lg-2"><div class="stat-card"><div class="stat-num">{{ s.total_teams }}</div><div class="stat-label">Teams</div></div></div>
+  <div class="col-6 col-md-4 col-lg-2"><div class="stat-card"><div class="stat-num">{{ s.total_speakers }}</div><div class="stat-label">Speakers</div></div></div>
+  <div class="col-6 col-md-4 col-lg-2"><div class="stat-card"><div class="stat-num">{{ s.total_adjudicators }}</div><div class="stat-label">Adjudicators</div></div></div>
+  <div class="col-6 col-md-4 col-lg-2"><div class="stat-card"><div class="stat-num">{{ s.total_rounds }}</div><div class="stat-label">Rounds</div></div></div>
+  <div class="col-6 col-md-4 col-lg-2"><div class="stat-card"><div class="stat-num">{{ s.total_debates }}</div><div class="stat-label">Debates</div></div></div>
+  <div class="col-6 col-md-4 col-lg-2"><div class="stat-card"><div class="stat-num">{{ s.total_institutions }}</div><div class="stat-label">Institutions</div></div></div>
+  {% endwith %}
+</div>
+
+<!-- Tabbed sections -->
+<ul class="nav nav-tabs section-tabs mb-3" role="tablist">
+  <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-teams" type="button">Teams</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-speakers" type="button">Speakers</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-adjs" type="button">Adjudicators</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-rounds" type="button">Rounds</button></li>
+</ul>
+
+<div class="tab-content">
+
+  <!-- ── TEAMS ─────────────────────────────────────────────────────────── -->
+  <div class="tab-pane fade show active" id="tab-teams">
+    <div class="card">
+      <div class="card-header py-2 px-3 d-flex align-items-center justify-content-between">
+        <span class="fw-semibold small">Team Rankings</span>
+        <span class="text-muted small">{{ data.team_rankings|length }} teams</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0 small">
+          <thead class="table-light">
+            <tr>
+              <th style="width:40px;">#</th>
+              <th>Team</th>
+              <th>Institution</th>
+              <th class="text-center">Rounds</th>
+              <th class="text-center result-win">W</th>
+              <th class="text-center result-loss">L</th>
+              <th class="text-center result-draw">D</th>
+              <th style="width:120px;">Win rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for t in data.team_rankings %}
+            <tr>
+              <td>
+                <span class="rank-badge {% if forloop.counter == 1 %}rank-1{% elif forloop.counter == 2 %}rank-2{% elif forloop.counter == 3 %}rank-3{% else %}rank-n{% endif %}">
+                  {{ forloop.counter }}
+                </span>
+              </td>
+              <td class="fw-semibold">
+                {{ t.name }}
+                {% if t.code and t.code != t.name %}<span class="text-muted fw-normal ms-1">({{ t.code }})</span>{% endif %}
+              </td>
+              <td class="text-muted">{{ t.institution|default:"—" }}</td>
+              <td class="text-center">{{ t.rounds }}</td>
+              <td class="text-center fw-bold result-win">{{ t.wins }}</td>
+              <td class="text-center fw-bold result-loss">{{ t.losses }}</td>
+              <td class="text-center fw-bold result-draw">{{ t.draws }}</td>
+              <td>
+                {% if t.rounds %}
+                  {% widthratio t.wins t.rounds 100 as pct %}
+                  <div class="progress-bar-custom">
+                    <div class="progress-bar-custom-inner" style="width:{{ pct }}%;"></div>
+                  </div>
+                  <div class="text-muted mt-1" style="font-size:.72rem;">{{ pct }}%</div>
+                {% else %}—{% endif %}
+              </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="8" class="text-center text-muted py-4">No team data found in this file.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SPEAKERS ───────────────────────────────────────────────────────── -->
+  <div class="tab-pane fade" id="tab-speakers">
+    <div class="card">
+      <div class="card-header py-2 px-3 d-flex align-items-center justify-content-between">
+        <span class="fw-semibold small">Speaker Rankings</span>
+        <span class="text-muted small">{{ data.speaker_rankings|length }} speakers</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0 small">
+          <thead class="table-light">
+            <tr>
+              <th style="width:40px;">#</th>
+              <th>Speaker</th>
+              <th>Team</th>
+              <th class="text-center">Rounds</th>
+              <th class="text-center">Total</th>
+              <th class="text-center">Average</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for s in data.speaker_rankings %}
+            <tr>
+              <td>
+                <span class="rank-badge {% if forloop.counter == 1 %}rank-1{% elif forloop.counter == 2 %}rank-2{% elif forloop.counter == 3 %}rank-3{% else %}rank-n{% endif %}">
+                  {{ forloop.counter }}
+                </span>
+              </td>
+              <td class="fw-semibold">
+                {{ s.name }}
+                {% if s.gender %}<span class="gender-{{ s.gender }} ms-1" style="font-size:.7rem;font-weight:700;">{{ s.gender }}</span>{% endif %}
+              </td>
+              <td class="text-muted">{{ s.team|default:"—" }}</td>
+              <td class="text-center">{{ s.rounds }}</td>
+              <td class="text-center fw-bold" style="color:#4f46e5;">{{ s.total }}</td>
+              <td class="text-center text-muted">{{ s.average }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6" class="text-center text-muted py-4">No speaker score data in this file.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ADJUDICATORS ───────────────────────────────────────────────────── -->
+  <div class="tab-pane fade" id="tab-adjs">
+    <div class="card">
+      <div class="card-header py-2 px-3 d-flex align-items-center justify-content-between">
+        <span class="fw-semibold small">Adjudicator Usage</span>
+        <span class="text-muted small">{{ data.adj_rankings|length }} adjudicators with rounds</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0 small">
+          <thead class="table-light">
+            <tr>
+              <th>Adjudicator</th>
+              <th class="text-center">Base score</th>
+              <th class="text-center">Rounds</th>
+              <th class="text-center">Chaired</th>
+              <th class="text-center">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for a in data.adj_rankings %}
+            <tr>
+              <td class="fw-semibold">{{ a.name }}</td>
+              <td class="text-center" style="color:#4f46e5;font-weight:700;">{{ a.base_score|floatformat:1 }}</td>
+              <td class="text-center">{{ a.rounds_judged }}</td>
+              <td class="text-center">{{ a.rounds_chaired }}</td>
+              <td class="text-center">
+                {% if a.independent %}
+                  <span class="adj-chip indep">Independent</span>
+                {% else %}
+                  <span class="adj-chip">Institutional</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="text-center text-muted py-4">No adjudicator data found.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ROUNDS ─────────────────────────────────────────────────────────── -->
+  <div class="tab-pane fade" id="tab-rounds">
+    {% for round in data.rounds %}
+    <div class="card mb-3">
+      <div class="card-header py-2 px-3 d-flex align-items-center gap-3">
+        <span class="fw-bold">{{ round.name }}</span>
+        {% if round.elimination %}
+          <span class="badge" style="background:#fee2e2;color:#991b1b;border-radius:100px;padding:3px 10px;font-size:.75rem;">Elimination</span>
+        {% else %}
+          <span class="badge" style="background:#ede9fe;color:#4f46e5;border-radius:100px;padding:3px 10px;font-size:.75rem;">Preliminary</span>
+        {% endif %}
+        <span class="text-muted small ms-auto">{{ round.debate_count }} debate{{ round.debate_count|pluralize }}</span>
+      </div>
+      {% if round.debates %}
+      <div class="table-responsive">
+        <table class="table table-sm mb-0 small">
+          <thead class="table-light">
+            <tr>
+              <th>Debate</th>
+              <th>Motion (excerpt)</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for debate in round.debates %}
+            <tr>
+              <td class="text-muted fw-mono" style="font-size:.75rem;">{{ debate.id }}</td>
+              <td class="text-muted" style="max-width:320px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                {{ debate.motion|default:"—"|truncatechars:80 }}
+              </td>
+              <td>
+                {% for side in debate.sides %}
+                  <div>
+                    <span class="{% if side.result == 'win' %}result-win{% elif side.result == 'loss' or side.result == 'lose' %}result-loss{% else %}result-draw{% endif %}">
+                      {{ side.team_name|default:side.team_id }}
+                      {% if side.result == 'win' %}▲{% elif side.result == 'loss' or side.result == 'lose' %}▼{% else %}–{% endif %}
+                    </span>
+                  </div>
+                {% endfor %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="card-body text-muted small py-3">No debate data for this round.</div>
+      {% endif %}
+    </div>
+    {% empty %}
+    <div class="card"><div class="card-body text-center text-muted py-4">No round data found in this file.</div></div>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock content %}

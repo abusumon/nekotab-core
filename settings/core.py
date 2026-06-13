@@ -187,6 +187,7 @@ TABBYCAT_APPS = (
     'standings',
     'notifications',
     'importer',
+    'analyzer',
     'registration',
     'forum',
     'motionbank',

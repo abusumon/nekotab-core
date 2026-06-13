@@ -196,6 +196,12 @@ urlpatterns = [
     path('archive/',
         include('importer.urls_archive')),
 
+    # Public tool pages (no tournament context required)
+    path('tools/import/',
+        include('importer.urls_tool')),
+    path('tools/analyze/',
+        include('analyzer.urls')),
+
     # Contact Us page (replaces forum UI at /forum/)
     path('forum/',
         ContactForumView.as_view(),
