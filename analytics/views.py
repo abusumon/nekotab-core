@@ -267,6 +267,40 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         ).order_by('-count')[:10]
         context['referrer_stats'] = referrers
 
+        # === USER SIGNUP COUNTRIES (inferred from first pageview per user) ===
+        from django.db.models import Min
+        user_countries = (
+            PageView.objects
+            .exclude(country='')
+            .filter(user__isnull=False)
+            .values('user')
+            .annotate(first_ts=Min('timestamp'))
+            .values('user', 'first_ts', 'country')
+        )
+        # Aggregate per country
+        user_country_map = {}
+        for row in PageView.objects.filter(
+            user__isnull=False
+        ).exclude(country='').values('user', 'country').distinct():
+            user_country_map[row['user']] = row['country']
+        from collections import Counter
+        country_counter = Counter(user_country_map.values())
+        context['user_country_stats'] = [
+            {'country': c, 'count': n}
+            for c, n in country_counter.most_common(10)
+        ]
+
+        # === TOURNAMENT-ORIGIN COUNTRIES (visitors of /t/ paths, last 30d) ===
+        tournament_countries = (
+            PageView.objects
+            .filter(timestamp__gte=last_30d, path__startswith='/t/')
+            .exclude(country='')
+            .values('country')
+            .annotate(count=Count('id'))
+            .order_by('-count')[:10]
+        )
+        context['tournament_country_stats'] = list(tournament_countries)
+
         # === MOTION BANK STATS ===
         motion_stats = _get_public_motionbank_stats()
         context['total_motions'] = motion_stats['total_motions']
@@ -288,6 +322,147 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         )
         context.update(crm_stats)
         context['crm_recent'] = crm.order_by('-first_seen')[:8]
+
+        return context
+
+
+class OwnerDashboardView(SuperuserRequiredMixin, TemplateView):
+    """Personal owner command-centre — business health at a glance."""
+    template_name = 'analytics/owner_dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        from organizations.models import Organization, OrganizationMembership
+        from collections import Counter
+        context = super().get_context_data(**kwargs)
+        context['active_nav'] = 'owner'
+        now = timezone.now()
+        today_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        last_7d  = now - timedelta(days=7)
+        last_30d = now - timedelta(days=30)
+        last_90d = now - timedelta(days=90)
+        this_month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        last_month_start = (this_month_start - timedelta(days=1)).replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+        # === PLATFORM GROWTH ===
+        context['total_users'] = User.objects.count()
+        context['users_7d']    = User.objects.filter(date_joined__gte=last_7d).count()
+        context['users_30d']   = User.objects.filter(date_joined__gte=last_30d).count()
+        context['users_this_month'] = User.objects.filter(date_joined__gte=this_month_start).count()
+        context['users_last_month'] = User.objects.filter(
+            date_joined__gte=last_month_start, date_joined__lt=this_month_start
+        ).count()
+
+        # Growth sparkline — daily signups for last 30 days
+        signups_daily = (
+            User.objects.filter(date_joined__gte=last_30d)
+            .annotate(day=TruncDate('date_joined'))
+            .values('day').annotate(count=Count('id')).order_by('day')
+        )
+        context['signups_sparkline'] = json.dumps([
+            {'date': str(r['day']), 'count': r['count']} for r in signups_daily
+        ])
+
+        # === WORKSPACE HEALTH ===
+        context['total_orgs'] = Organization.objects.count()
+        context['active_workspaces'] = Organization.objects.filter(is_workspace_enabled=True, is_active=True).count()
+        context['orgs_with_tournaments'] = Organization.objects.filter(
+            tournaments__isnull=False
+        ).distinct().count()
+
+        # Top 10 most active workspaces (by tournament count)
+        top_orgs = Organization.objects.filter(
+            is_workspace_enabled=True
+        ).annotate(
+            t_count=Count('tournaments', distinct=True),
+            m_count=Count('memberships', distinct=True),
+        ).order_by('-t_count')[:10]
+        context['top_orgs'] = top_orgs
+
+        # === TOURNAMENT PLATFORM ===
+        context['total_tournaments'] = Tournament.objects.count()
+        context['active_tournaments'] = Tournament.objects.filter(active=True).count()
+        context['total_rounds'] = Round.objects.count()
+        context['total_ballots'] = BallotSubmission.objects.count()
+        context['ballots_30d']   = BallotSubmission.objects.filter(timestamp__gte=last_30d).count()
+
+        recent_tournaments = Tournament.objects.select_related('owner').annotate(
+            t_members=Count('team', distinct=True),
+            t_speakers=Count('team__speaker', distinct=True),
+            t_adjudicators=Count('adjudicator', distinct=True),
+        ).order_by('-id')[:8]
+        context['recent_tournaments'] = recent_tournaments
+
+        # === REVENUE / DONATIONS ===
+        revenue = DonationTransaction.objects.exclude(
+            status__in=[DonationTransaction.Status.FAILED, DonationTransaction.Status.CANCELLED]
+        )
+        rev_total = revenue.aggregate(total=Sum('amount'))['total'] or Decimal('0.00')
+        rev_30d   = revenue.filter(donated_at__gte=last_30d).aggregate(total=Sum('amount'))['total'] or Decimal('0.00')
+        rev_this_month = revenue.filter(donated_at__gte=this_month_start).aggregate(total=Sum('amount'))['total'] or Decimal('0.00')
+        rev_last_month = revenue.filter(
+            donated_at__gte=last_month_start, donated_at__lt=this_month_start
+        ).aggregate(total=Sum('amount'))['total'] or Decimal('0.00')
+        context['rev_total']      = rev_total
+        context['rev_30d']        = rev_30d
+        context['rev_this_month'] = rev_this_month
+        context['rev_last_month'] = rev_last_month
+        context['rev_growth_pct'] = (
+            round(float((rev_this_month - rev_last_month) / rev_last_month * 100), 1)
+            if rev_last_month else None
+        )
+        # Monthly revenue trend (last 6 months)
+        rev_monthly = (
+            revenue.filter(donated_at__gte=now - timedelta(days=180))
+            .annotate(month=TruncMonth('donated_at'))
+            .values('month').annotate(total=Sum('amount')).order_by('month')
+        )
+        context['rev_monthly_chart'] = json.dumps([
+            {'month': r['month'].strftime('%b %Y'), 'total': float(r['total'] or 0)}
+            for r in rev_monthly
+        ])
+        context['donor_count'] = revenue.values('donor_email').distinct().count()
+        context['donors_30d']  = revenue.filter(donated_at__gte=last_30d).values('donor_email').distinct().count()
+
+        # === TRAFFIC KPIs ===
+        ActiveSession.cleanup_stale()
+        context['live_visitors'] = ActiveSession.objects.exclude(current_path='/health/').count()
+        traffic = PageView.objects.aggregate(
+            views_today=Count('id', filter=Q(timestamp__gte=today_start)),
+            views_7d=Count('id', filter=Q(timestamp__gte=last_7d)),
+            views_30d=Count('id', filter=Q(timestamp__gte=last_30d)),
+            unique_7d=Count('session_key', filter=Q(timestamp__gte=last_7d), distinct=True),
+        )
+        context.update(traffic)
+
+        # Top visitor countries (30d)
+        visitor_countries = (
+            PageView.objects.filter(timestamp__gte=last_30d)
+            .exclude(country='')
+            .values('country').annotate(count=Count('id')).order_by('-count')[:8]
+        )
+        context['visitor_countries'] = list(visitor_countries)
+
+        # === ENGAGEMENT ===
+        context['total_speakers']    = Speaker.objects.count()
+        context['total_adjudicators'] = Adjudicator.objects.count()
+
+        # Recent sign-ups (last 10)
+        context['recent_users'] = User.objects.select_related().order_by('-date_joined')[:10]
+
+        # === SYSTEM HEALTH ===
+        try:
+            cache.set('_health_check', 1, 5)
+            context['redis_ok'] = cache.get('_health_check') == 1
+        except Exception:
+            context['redis_ok'] = False
+
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute("SELECT pg_database_size(current_database())")
+                db_bytes = cursor.fetchone()[0]
+                context['db_size_mb'] = round(db_bytes / 1024 / 1024, 1)
+            except Exception:
+                context['db_size_mb'] = None
 
         return context
 
@@ -1485,6 +1660,7 @@ class WorkspacesListView(SuperuserRequiredMixin, ListView):
         context['active_count'] = Organization.objects.filter(is_active=True).count()
         context['inactive_count'] = Organization.objects.filter(is_active=False).count()
         context['workspace_disabled_count'] = Organization.objects.filter(is_active=True, is_workspace_enabled=False).count()
+        context['active_nav'] = 'workspaces'
         return context
 
 

@@ -221,6 +221,10 @@
 
         <nav class="nav-section">
             <div class="nav-label">Analytics</div>
+            <a href="{% url 'analytics:owner_dashboard' %}" class="nav-link{% if active_nav == 'owner' %} active{% endif %}" style="background:{% if active_nav == 'owner' %}unset{% else %}linear-gradient(135deg,rgba(99,102,241,.08),rgba(236,72,153,.05)){% endif %};">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z"/></svg>
+                Owner Dashboard
+            </a>
             <a href="{% url 'analytics:dashboard' %}" class="nav-link{% if active_nav == 'dashboard' %} active{% endif %}">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
                 Dashboard
@@ -269,6 +273,10 @@
 
         <nav class="nav-section">
             <div class="nav-label">Manage</div>
+            <a href="{% url 'analytics:workspaces' %}" class="nav-link{% if active_nav == 'workspaces' %} active{% endif %}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                Workspaces
+            </a>
             <a href="{% url 'campaigns:list' %}" class="nav-link">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 Email Campaigns
@@ -306,5 +314,14 @@
     }
     {% block extra_js %}{% endblock %}
     </script>
+
+  <!-- GA4 for admin analytics pages -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KH41L8LQL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7KH41L8LQL');
+  </script>
 </body>
 </html>

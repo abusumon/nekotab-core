@@ -1005,6 +1005,57 @@
             </div>
         </div>
 
+        <!-- User & Tournament Countries Row -->
+        <div class="charts-row" style="margin-bottom: 32px;">
+            <!-- User Signup Countries -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>🧑‍💻 User Countries</h3>
+                    <span style="font-size:12px;color:var(--text-secondary);">Where your users signed up from</span>
+                </div>
+                <div class="card-body">
+                    {% for row in user_country_stats %}
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);">
+                        <span style="display:flex;align-items:center;gap:8px;">
+                            <span style="font-size:18px;">{% if row.country == 'BD' %}🇧🇩{% elif row.country == 'US' %}🇺🇸{% elif row.country == 'GB' %}🇬🇧{% elif row.country == 'IN' %}🇮🇳{% elif row.country == 'AU' %}🇦🇺{% elif row.country == 'CA' %}🇨🇦{% elif row.country == 'NG' %}🇳🇬{% elif row.country == 'PK' %}🇵🇰{% elif row.country == 'SG' %}🇸🇬{% elif row.country == 'PH' %}🇵🇭{% else %}🌐{% endif %}</span>
+                            {{ row.country }}
+                        </span>
+                        <span class="badge badge-purple">{{ row.count }} users</span>
+                    </div>
+                    {% empty %}
+                    <div style="color:var(--text-secondary);text-align:center;padding:40px;">
+                        <div style="font-size:40px;margin-bottom:12px;">🌐</div>
+                        No user location data yet
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Tournament-Origin Countries -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>🏆 Tournament Visitor Countries</h3>
+                    <span style="font-size:12px;color:var(--text-secondary);">Countries visiting /t/ pages — last 30 days</span>
+                </div>
+                <div class="card-body">
+                    {% for row in tournament_country_stats %}
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);">
+                        <span style="display:flex;align-items:center;gap:8px;">
+                            <span style="font-size:18px;">{% if row.country == 'BD' %}🇧🇩{% elif row.country == 'US' %}🇺🇸{% elif row.country == 'GB' %}🇬🇧{% elif row.country == 'IN' %}🇮🇳{% elif row.country == 'AU' %}🇦🇺{% elif row.country == 'CA' %}🇨🇦{% elif row.country == 'NG' %}🇳🇬{% elif row.country == 'PK' %}🇵🇰{% elif row.country == 'SG' %}🇸🇬{% elif row.country == 'PH' %}🇵🇭{% else %}🌐{% endif %}</span>
+                            {{ row.country }}
+                        </span>
+                        <span class="badge badge-info">{{ row.count }} visits</span>
+                    </div>
+                    {% empty %}
+                    <div style="color:var(--text-secondary);text-align:center;padding:40px;">
+                        <div style="font-size:40px;margin-bottom:12px;">🏆</div>
+                        No tournament visit data yet
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
         <!-- Participants CRM Row -->
         <div class="charts-row" style="margin-bottom: 32px;">
             <!-- CRM Overview -->
@@ -1365,5 +1416,14 @@
             }
         })();
     </script>
+
+  <!-- GA4 for admin dashboard -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KH41L8LQL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7KH41L8LQL');
+  </script>
 </body>
 </html>

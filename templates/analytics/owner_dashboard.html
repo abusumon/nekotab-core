@@ -1,0 +1,484 @@
+{% extends "analytics/_base_crm.html" %}
+{% block title %}Owner Dashboard{% endblock %}
+
+{% block extra_css %}
+/* ── Owner Dashboard Styles ── */
+.owner-hero {
+  background: linear-gradient(135deg, rgba(99,102,241,.15) 0%, rgba(236,72,153,.08) 100%);
+  border: 1px solid rgba(99,102,241,.2);
+  border-radius: 18px; padding: 28px 32px; margin-bottom: 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.owner-hero-title { font-size: 26px; font-weight: 700; }
+.owner-hero-sub { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+.live-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(16,185,129,.12); border: 1px solid rgba(16,185,129,.3);
+  border-radius: 40px; padding: 8px 18px; font-size: 14px; font-weight: 600; color: #10b981;
+}
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+
+/* KPI Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 28px;
+}
+.kpi-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 22px 20px;
+  transition: border-color .2s, transform .15s;
+  position: relative; overflow: hidden;
+}
+.kpi-card:hover { border-color: rgba(99,102,241,.4); transform: translateY(-1px); }
+.kpi-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.kpi-card--revenue::before { background: linear-gradient(90deg, #10b981, #34d399); }
+.kpi-card--users::before   { background: linear-gradient(90deg, #6366f1, #818cf8); }
+.kpi-card--traffic::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+.kpi-card--health::before  { background: linear-gradient(90deg, #f59e0b, #fcd34d); }
+.kpi-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-secondary); margin-bottom: 10px; }
+.kpi-value { font-size: 32px; font-weight: 700; line-height: 1; }
+.kpi-sub { font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+.kpi-delta {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; font-weight: 600; margin-top: 4px;
+  padding: 2px 8px; border-radius: 20px;
+}
+.kpi-delta--up   { background: rgba(16,185,129,.12); color: #10b981; }
+.kpi-delta--down { background: rgba(239,68,68,.12);  color: #ef4444; }
+.kpi-delta--flat { background: rgba(107,114,128,.12); color: #9ca3af; }
+.kpi-icon { position: absolute; top: 18px; right: 18px; font-size: 28px; opacity: .15; }
+
+/* Section row */
+.dash-row {
+  display: grid; gap: 20px; margin-bottom: 28px;
+}
+.dash-row--2 { grid-template-columns: repeat(2, 1fr); }
+.dash-row--3 { grid-template-columns: repeat(3, 1fr); }
+.dash-row--hero { grid-template-columns: 2fr 1fr; }
+
+/* Panel */
+.panel {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+}
+.panel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px; border-bottom: 1px solid var(--border);
+}
+.panel-title { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.panel-body { padding: 20px 22px; }
+
+/* Table rows */
+.data-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 0; border-bottom: 1px solid var(--border); gap: 12px;
+}
+.data-row:last-child { border-bottom: none; }
+.data-row-label { font-size: 14px; display: flex; align-items: center; gap: 10px; }
+.data-row-value { font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+/* Sparkline canvas */
+.sparkline-wrap { height: 60px; margin-top: 12px; }
+
+/* Activity feed */
+.activity-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 11px 0; border-bottom: 1px solid var(--border);
+}
+.activity-item:last-child { border-bottom: none; }
+.activity-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 6px;
+}
+.activity-dot--user { background: #6366f1; }
+.activity-dot--revenue { background: #10b981; }
+.activity-dot--tournament { background: #f59e0b; }
+.activity-meta { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+
+/* Health indicator */
+.health-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.health-row:last-child { border-bottom: none; }
+.health-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.health-dot--ok  { background: #10b981; }
+.health-dot--err { background: #ef4444; }
+
+/* Org table */
+.org-rank { font-size: 20px; font-weight: 700; color: rgba(255,255,255,.15); width: 28px; text-align: right; flex-shrink: 0; }
+.org-name { font-weight: 500; font-size: 14px; }
+.org-slug { font-size: 12px; color: var(--text-secondary); font-family: monospace; }
+.badge-rev { background: rgba(16,185,129,.12); color: #10b981; border: 1px solid rgba(16,185,129,.25); padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.badge-count { background: var(--bg-hover); color: var(--text-secondary); padding: 3px 10px; border-radius: 20px; font-size: 12px; }
+
+/* Chart wrapper */
+.chart-wrap { height: 200px; position: relative; }
+
+/* Flag emoji helper */
+.flag { font-size: 18px; }
+
+/* Country bar */
+.country-bar-row { padding: 8px 0; }
+.country-bar-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+.country-bar-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.country-bar-fill  { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--accent), #818cf8); }
+
+@media (max-width: 900px) {
+  .dash-row--2, .dash-row--3, .dash-row--hero { grid-template-columns: 1fr; }
+}
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero bar -->
+<div class="owner-hero">
+  <div>
+    <div class="owner-hero-title">Command Centre</div>
+    <div class="owner-hero-sub">Platform health, growth & revenue — as of {% now "N j, Y, g:i a" %}</div>
+  </div>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+    <div class="live-pill">
+      <span class="live-dot"></span>
+      {{ live_visitors }} live visitor{{ live_visitors|pluralize }}
+    </div>
+    <a href="{% url 'analytics:dashboard' %}" class="btn btn-secondary btn-sm">Analytics →</a>
+    <a href="{% url 'analytics:donations' %}" class="btn btn-secondary btn-sm">Revenue →</a>
+  </div>
+</div>
+
+<!-- KPI Row 1 — Revenue -->
+<div class="kpi-grid" style="margin-bottom:12px;">
+  <div class="kpi-card kpi-card--revenue">
+    <span class="kpi-icon">💰</span>
+    <div class="kpi-label">All-time Revenue</div>
+    <div class="kpi-value" style="color:#10b981;">${{ rev_total|floatformat:2 }}</div>
+    <div class="kpi-sub">{{ donor_count }} donor{{ donor_count|pluralize }}</div>
+  </div>
+  <div class="kpi-card kpi-card--revenue">
+    <span class="kpi-icon">📅</span>
+    <div class="kpi-label">This Month</div>
+    <div class="kpi-value" style="color:#10b981;">${{ rev_this_month|floatformat:2 }}</div>
+    {% if rev_growth_pct is not None %}
+    <div class="kpi-delta {% if rev_growth_pct >= 0 %}kpi-delta--up{% else %}kpi-delta--down{% endif %}">
+      {% if rev_growth_pct >= 0 %}↑{% else %}↓{% endif %} {{ rev_growth_pct|floatformat:1 }}% vs last month
+    </div>
+    {% endif %}
+  </div>
+  <div class="kpi-card kpi-card--revenue">
+    <span class="kpi-icon">🗓️</span>
+    <div class="kpi-label">Last 30 Days</div>
+    <div class="kpi-value" style="color:#34d399;">${{ rev_30d|floatformat:2 }}</div>
+    <div class="kpi-sub">{{ donors_30d }} donor{{ donors_30d|pluralize }}</div>
+  </div>
+  <div class="kpi-card kpi-card--users">
+    <span class="kpi-icon">👤</span>
+    <div class="kpi-label">Total Users</div>
+    <div class="kpi-value" style="color:#818cf8;">{{ total_users }}</div>
+    <div class="kpi-delta kpi-delta--up">+{{ users_30d }} this month</div>
+  </div>
+  <div class="kpi-card kpi-card--users">
+    <span class="kpi-icon">🏢</span>
+    <div class="kpi-label">Active Workspaces</div>
+    <div class="kpi-value" style="color:#818cf8;">{{ active_workspaces }}</div>
+    <div class="kpi-sub">{{ total_orgs }} total orgs</div>
+  </div>
+  <div class="kpi-card kpi-card--traffic">
+    <span class="kpi-icon">🏆</span>
+    <div class="kpi-label">Tournaments</div>
+    <div class="kpi-value" style="color:#60a5fa;">{{ total_tournaments }}</div>
+    <div class="kpi-sub">{{ active_tournaments }} active · {{ total_rounds }} rounds</div>
+  </div>
+  <div class="kpi-card kpi-card--traffic">
+    <span class="kpi-icon">📊</span>
+    <div class="kpi-label">Ballots (30d)</div>
+    <div class="kpi-value" style="color:#60a5fa;">{{ ballots_30d }}</div>
+    <div class="kpi-sub">{{ total_ballots }} all-time</div>
+  </div>
+  <div class="kpi-card kpi-card--health">
+    <span class="kpi-icon">📈</span>
+    <div class="kpi-label">Page Views (7d)</div>
+    <div class="kpi-value" style="color:#fcd34d;">{{ views_7d }}</div>
+    <div class="kpi-sub">{{ unique_7d }} unique · {{ views_30d }} this month</div>
+  </div>
+</div>
+
+<!-- Row 2: Revenue Chart + User Growth -->
+<div class="dash-row dash-row--hero" style="margin-bottom:28px;">
+  <!-- Revenue Monthly Chart -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">💳 Monthly Revenue (last 6 months)</span>
+    </div>
+    <div class="panel-body">
+      <div class="chart-wrap">
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Growth Sparkline + Stats -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">📈 User Growth</span>
+    </div>
+    <div class="panel-body">
+      <div class="data-row">
+        <span class="data-row-label">Today</span>
+        <span class="data-row-value" style="color:#818cf8;">+{{ users_7d|default:0 }}</span>
+      </div>
+      <div class="data-row">
+        <span class="data-row-label">This month</span>
+        <span class="data-row-value" style="color:#818cf8;">+{{ users_this_month }}</span>
+      </div>
+      <div class="data-row">
+        <span class="data-row-label">Last month</span>
+        <span class="data-row-value" style="color:var(--text-secondary);">+{{ users_last_month }}</span>
+      </div>
+      <div class="data-row">
+        <span class="data-row-label">Total</span>
+        <span class="data-row-value">{{ total_users }}</span>
+      </div>
+      <div class="sparkline-wrap">
+        <canvas id="usersSparkline" height="60"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 3: Top Workspaces + Traffic Countries -->
+<div class="dash-row dash-row--2" style="margin-bottom:28px;">
+  <!-- Top Orgs -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">🏢 Top Workspaces</span>
+      <a href="{% url 'analytics:workspaces' %}" style="font-size:12px;color:var(--text-secondary);text-decoration:none;">View all →</a>
+    </div>
+    <div class="panel-body" style="padding:0 22px;">
+      {% for org in top_orgs %}
+      <div class="data-row">
+        <span class="data-row-label">
+          <span class="org-rank">{{ forloop.counter }}</span>
+          <span>
+            <div class="org-name">{{ org.name }}</div>
+            <div class="org-slug">{{ org.slug }}.nekotab.app</div>
+          </span>
+        </span>
+        <span style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+          <span class="badge-count">{{ org.t_count }} tourn</span>
+          <span class="badge-count">{{ org.m_count }} members</span>
+        </span>
+      </div>
+      {% empty %}
+      <div style="text-align:center;padding:40px;color:var(--text-secondary);">No workspaces yet</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Visitor Countries -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">🌍 Visitor Countries (30d)</span>
+    </div>
+    <div class="panel-body">
+      {% if visitor_countries %}
+      {% with max_count=visitor_countries.0.count %}
+      {% for row in visitor_countries %}
+      <div class="country-bar-row">
+        <div class="country-bar-label">
+          <span>{% if row.country == 'BD' %}🇧🇩{% elif row.country == 'US' %}🇺🇸{% elif row.country == 'GB' %}🇬🇧{% elif row.country == 'IN' %}🇮🇳{% elif row.country == 'AU' %}🇦🇺{% elif row.country == 'CA' %}🇨🇦{% elif row.country == 'NG' %}🇳🇬{% elif row.country == 'PK' %}🇵🇰{% elif row.country == 'SG' %}🇸🇬{% elif row.country == 'PH' %}🇵🇭{% elif row.country == 'ZA' %}🇿🇦{% elif row.country == 'KE' %}🇰🇪{% elif row.country == 'MY' %}🇲🇾{% else %}🌐{% endif %} {{ row.country }}</span>
+          <span style="color:var(--text-secondary);">{{ row.count }}</span>
+        </div>
+        <div class="country-bar-track">
+          <div class="country-bar-fill" style="width:{% widthratio row.count max_count 100 %}%"></div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endwith %}
+      {% else %}
+      <div style="text-align:center;padding:40px;color:var(--text-secondary);">No location data yet</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- Row 4: Recent Activity + System Health -->
+<div class="dash-row dash-row--2" style="margin-bottom:28px;">
+  <!-- Recent Tournaments -->
+  <div class="panel">
+    <div class="panel-header">
+      <span class="panel-title">🏆 Recent Tournaments</span>
+      <a href="{% url 'analytics:tournaments' %}" style="font-size:12px;color:var(--text-secondary);text-decoration:none;">View all →</a>
+    </div>
+    <div class="panel-body" style="padding:0 22px;">
+      {% for t in recent_tournaments %}
+      <div class="data-row">
+        <span class="data-row-label">
+          <span>
+            <div style="font-size:14px;font-weight:500;">{{ t.name }}</div>
+            <div style="font-size:11px;color:var(--text-secondary);">{{ t.t_members }} teams · {{ t.t_speakers }} spk · {{ t.t_adjudicators }} adj</div>
+          </span>
+        </span>
+        <span>
+          {% if t.active %}
+            <span style="font-size:11px;background:rgba(16,185,129,.12);color:#10b981;padding:3px 8px;border-radius:10px;">Live</span>
+          {% else %}
+            <span style="font-size:11px;background:var(--bg-hover);color:var(--text-secondary);padding:3px 8px;border-radius:10px;">Done</span>
+          {% endif %}
+        </span>
+      </div>
+      {% empty %}
+      <div style="text-align:center;padding:40px;color:var(--text-secondary);">No tournaments yet</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- System Health + Recent Users -->
+  <div style="display:flex;flex-direction:column;gap:20px;">
+    <!-- System Health -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">⚙️ System Health</span>
+      </div>
+      <div class="panel-body" style="padding:0 22px;">
+        <div class="health-row">
+          <span class="health-dot health-dot--ok"></span>
+          <span style="flex:1;">Django App</span>
+          <span style="font-size:12px;color:#10b981;">Operational</span>
+        </div>
+        <div class="health-row">
+          <span class="health-dot {% if redis_ok %}health-dot--ok{% else %}health-dot--err{% endif %}"></span>
+          <span style="flex:1;">Redis Cache</span>
+          <span style="font-size:12px;color:{% if redis_ok %}#10b981{% else %}#ef4444{% endif %};">
+            {% if redis_ok %}Connected{% else %}Unreachable{% endif %}
+          </span>
+        </div>
+        <div class="health-row">
+          <span class="health-dot health-dot--ok"></span>
+          <span style="flex:1;">PostgreSQL</span>
+          {% if db_size_mb %}<span style="font-size:12px;color:#10b981;">{{ db_size_mb }} MB</span>{% else %}<span style="font-size:12px;color:var(--text-secondary);">—</span>{% endif %}
+        </div>
+        <div class="health-row">
+          <span class="health-dot health-dot--ok"></span>
+          <span style="flex:1;">Active Sessions</span>
+          <span style="font-size:12px;color:#10b981;">{{ live_visitors }} live</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">🔗 Quick Links</span>
+      </div>
+      <div class="panel-body" style="padding:12px 22px;display:flex;flex-direction:column;gap:8px;">
+        <a href="{% url 'analytics:users' %}" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">👥 All Users ({{ total_users }})</a>
+        <a href="{% url 'analytics:workspaces' %}" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">🏢 Workspaces ({{ active_workspaces }})</a>
+        <a href="{% url 'analytics:donations' %}" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">💰 Revenue Details</a>
+        <a href="{% url 'analytics:tournaments' %}" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">🏆 All Tournaments</a>
+        <a href="/admin/" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">⚙️ Django Admin</a>
+        <a href="{% url 'analytics:db_usage' %}" class="btn btn-secondary btn-sm" style="justify-content:flex-start;">🗄️ DB Usage</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 5: Recent Users feed -->
+<div class="panel" style="margin-bottom:32px;">
+  <div class="panel-header">
+    <span class="panel-title">🆕 Recent Sign-ups</span>
+    <a href="{% url 'analytics:users' %}" style="font-size:12px;color:var(--text-secondary);text-decoration:none;">View all →</a>
+  </div>
+  <div class="panel-body" style="padding:0 22px;">
+    {% for u in recent_users %}
+    <div class="data-row">
+      <span class="data-row-label">
+        <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#ec4899);display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;">{{ u.username|make_list|first|upper }}</span>
+        <span>
+          <div style="font-size:14px;font-weight:500;">{{ u.get_full_name|default:u.username }}</div>
+          <div style="font-size:12px;color:var(--text-secondary);">{{ u.email }} · {{ u.date_joined|date:"N j, Y" }}</div>
+        </span>
+      </span>
+      <span>
+        {% if u.is_superuser %}
+          <span style="font-size:11px;background:rgba(239,68,68,.12);color:#ef4444;padding:3px 8px;border-radius:10px;">Superuser</span>
+        {% elif u.is_staff %}
+          <span style="font-size:11px;background:rgba(245,158,11,.12);color:#f59e0b;padding:3px 8px;border-radius:10px;">Staff</span>
+        {% else %}
+          <span style="font-size:11px;background:var(--bg-hover);color:var(--text-secondary);padding:3px 8px;border-radius:10px;">User</span>
+        {% endif %}
+      </span>
+    </div>
+    {% empty %}
+    <div style="text-align:center;padding:40px;color:var(--text-secondary);">No recent users</div>
+    {% endfor %}
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  var ACCENT = '#6366f1';
+  var SUCCESS = '#10b981';
+  var BORDER = '#2a2a3a';
+  var TEXT_SEC = '#8888aa';
+
+  // Revenue Chart
+  var revData = {{ rev_monthly_chart|safe }};
+  if (revData.length) {
+    new Chart(document.getElementById('revenueChart'), {
+      type: 'bar',
+      data: {
+        labels: revData.map(function(d) { return d.month; }),
+        datasets: [{
+          label: 'Revenue ($)',
+          data: revData.map(function(d) { return d.total; }),
+          backgroundColor: 'rgba(16,185,129,.25)',
+          borderColor: SUCCESS,
+          borderWidth: 2,
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: BORDER }, ticks: { color: TEXT_SEC, font: { size: 11 } } },
+          y: { grid: { color: BORDER }, ticks: { color: TEXT_SEC, font: { size: 11 },
+            callback: function(v) { return '$' + v.toFixed(0); }
+          }}
+        }
+      }
+    });
+  }
+
+  // Users Sparkline
+  var sparkData = {{ signups_sparkline|safe }};
+  if (sparkData.length) {
+    new Chart(document.getElementById('usersSparkline'), {
+      type: 'line',
+      data: {
+        labels: sparkData.map(function(d) { return d.date.slice(5); }),
+        datasets: [{
+          data: sparkData.map(function(d) { return d.count; }),
+          borderColor: ACCENT,
+          backgroundColor: 'rgba(99,102,241,.12)',
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: true,
+          tension: .4,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        }
+      }
+    });
+  }
+})();
+</script>
+{% endblock %}
