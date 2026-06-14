@@ -207,8 +207,10 @@ class DebateMiddleware:
                 user=user,
                 role__in=[
                     OrganizationMembership.Role.CREATOR,
+                    OrganizationMembership.Role.OWNER,      # legacy alias for creator
                     OrganizationMembership.Role.ADMIN,
                     OrganizationMembership.Role.MODERATOR,
+                    OrganizationMembership.Role.TABMASTER,  # legacy alias for moderator
                     OrganizationMembership.Role.EDITOR,
                     OrganizationMembership.Role.MEMBER,
                 ],
