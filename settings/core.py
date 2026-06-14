@@ -686,6 +686,7 @@ if _google_client_id and _google_client_secret:
     }
 
 # django-allauth configuration
+ACCOUNT_ADAPTER = 'users.adapter.NekotabAccountAdapter'
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_LOGIN_METHODS = {'email', 'username'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
