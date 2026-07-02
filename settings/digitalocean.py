@@ -58,6 +58,13 @@ if environ.get('DISABLE_HTTPS_REDIRECTS', '') != 'disable':
 SECURE_REDIRECT_EXEMPT = [r'^/health/$', r'^/ready/$']
 
 # ==============================================================================
+# Request limits
+# Simple bulk-import forms (adjudicators/teams/etc.) submit one field group
+# per row, so large imports can exceed Django's default field cap (1000).
+# ==============================================================================
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
+
+# ==============================================================================
 # Postgres (DigitalOcean Managed Database)
 # ==============================================================================
 
