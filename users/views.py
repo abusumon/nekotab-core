@@ -298,6 +298,8 @@ class ActivateAccountView(View):
                 "The verification link is invalid or has expired. "
                 "Please register again to get a new verification email."
             ))
+            
+        return redirect('user-dashboard')
 
 
 class UserDashboardView(LoginRequiredMixin, TemplateView):
