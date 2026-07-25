@@ -1,0 +1,66 @@
+{% comment %}
+  Prominent ad-removal offer for the tournament admin overview.
+
+  The admin area serves no ads, so a director never sees one and never has
+  a reason to go looking for the option. This puts the offer directly in
+  their path the moment they open the tournament, rather than relying on
+  them finding the sidebar link.
+
+  Renders only when `ad_free_purchase_url` is set, i.e. the tournament has
+  not already been paid for.
+{% endcomment %}
+{% load i18n %}
+{% if ad_free_purchase_url %}
+<div class="nk-adfree-card" id="nkAdfreeCard" data-tournament="{{ tournament.pk }}" hidden>
+  <span class="nk-adfree-card__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+  </span>
+
+  <div class="nk-adfree-card__body">
+    <h3 class="nk-adfree-card__title">
+      {% blocktrans trimmed with name=tournament.short_name %}
+        Remove ads from {{ name }}
+      {% endblocktrans %}
+    </h3>
+    <p class="nk-adfree-card__text">
+      {% blocktrans trimmed with price=ads_price_label %}
+        One {{ price }} payment and every page of this tournament loads
+        ad-free — for your participants, your judges and the public tab.
+        No subscription, no renewal.
+      {% endblocktrans %}
+    </p>
+  </div>
+
+  <a class="nk-adfree-card__cta" href="{{ ad_free_purchase_url }}">
+    {% blocktrans trimmed with price=ads_price_label %}
+      Remove ads · {{ price }}
+    {% endblocktrans %}
+  </a>
+
+  <button type="button" class="nk-adfree-card__x" id="nkAdfreeDismiss"
+          aria-label="{% trans 'Dismiss for now' %}">&times;</button>
+</div>
+<script>
+(function () {
+  var card = document.getElementById('nkAdfreeCard');
+  if (!card) return;
+  var key = 'nkAdfreeHidden:' + (card.dataset.tournament || '0');
+  var HIDE_MS = 7 * 24 * 60 * 60 * 1000;
+
+  try {
+    if (Date.now() < parseInt(localStorage.getItem(key) || '0', 10)) return;
+  } catch (e) { /* storage blocked — just show it */ }
+
+  card.removeAttribute('hidden');
+
+  var x = document.getElementById('nkAdfreeDismiss');
+  if (x) {
+    x.addEventListener('click', function () {
+      card.setAttribute('hidden', '');
+      try { localStorage.setItem(key, String(Date.now() + HIDE_MS)); } catch (e) {}
+    });
+  }
+})();
+</script>
+{% endif %}
