@@ -1,0 +1,60 @@
+{% comment %}
+  Hide ad containers that AdSense declined to fill.
+
+  Each unit carries a small "Remove ads — $5" link underneath. When the unit
+  fills, that reads as a caption. When AdSense returns no ad the <ins>
+  collapses to zero height and the link is left floating in white space with
+  nothing above it, which just looks broken — and the sticky anchor becomes
+  an empty bar pinned to the viewport.
+
+  Google marks a declined unit with data-ad-status="unfilled", so watch for
+  that and hide the whole container, link included. A height fallback covers
+  the case where the attribute never arrives.
+
+  Include once per document, after the units.
+{% endcomment %}
+{% if ads_enabled %}
+<script>
+(function () {
+  function box(ins) {
+    return ins.closest('.nekotab-anchor') || ins.closest('.nekotab-ad');
+  }
+
+  function hide(el) {
+    if (!el || el.hasAttribute('hidden')) return;
+    el.setAttribute('hidden', '');
+    if (el.classList.contains('nekotab-anchor')) {
+      document.body.style.paddingBottom = '';
+    }
+    // A unit injected into a table row leaves the empty row behind.
+    var row = el.closest('tr.nekotab-ad-row');
+    if (row && row.parentNode) row.parentNode.removeChild(row);
+  }
+
+  function sweep() {
+    document.querySelectorAll('ins.adsbygoogle').forEach(function (ins) {
+      if (ins.getAttribute('data-ad-status') === 'unfilled') hide(box(ins));
+    });
+  }
+
+  function sweepFinal() {
+    document.querySelectorAll('ins.adsbygoogle').forEach(function (ins) {
+      var b = box(ins);
+      if (!b || b.hasAttribute('hidden')) return;
+      if (ins.getAttribute('data-ad-status') === 'unfilled' || ins.offsetHeight < 10) {
+        hide(b);
+      }
+    });
+  }
+
+  // data-ad-status is set asynchronously once the ad request resolves.
+  var obs = new MutationObserver(sweep);
+  document.querySelectorAll('ins.adsbygoogle').forEach(function (ins) {
+    obs.observe(ins, { attributes: true, attributeFilter: ['data-ad-status'] });
+  });
+
+  window.setTimeout(sweep, 2500);
+  window.setTimeout(function () { sweepFinal(); obs.disconnect(); }, 7000);
+})();
+</script>
+{% endif %}
