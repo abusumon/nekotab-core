@@ -54,6 +54,12 @@
 
   card.removeAttribute('hidden');
 
+  // This page now makes the offer properly, so drop the small caption links
+  // under each ad unit — four asks on one screen is nagging, not selling.
+  // They stay everywhere else, where they are the only conversion path.
+  document.querySelectorAll('.nekotab-ad__remove, .nekotab-anchor__remove')
+    .forEach(function (el) { el.style.display = 'none'; });
+
   var x = document.getElementById('nkAdfreeDismiss');
   if (x) {
     x.addEventListener('click', function () {
