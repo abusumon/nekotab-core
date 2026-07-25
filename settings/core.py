@@ -769,6 +769,16 @@ ADSENSE_SLOT_ANCHOR = os.environ.get('ADSENSE_SLOT_ANCHOR') or '5099123868'
 # invite accidental clicks (an AdSense policy risk) and these are the screens
 # where disruption costs a live tournament real time.
 ADS_ANCHOR_ONLY_PATHS = (
+    # Tab-director data entry. These are monetised — the anchor still runs —
+    # but no in-content units, because a unit beside a form field invites
+    # accidental clicks, which is the fastest route to an AdSense strike.
+    r'/admin/import/',
+    r'/admin/results/',
+    r'/admin/availability/',
+    r'/admin/options/',
+    r'/admin/preformedpanels/',
+    r'/admin/allocat',
+    # Public / participant-facing forms.
     r'/ballot',
     r'/checkins?/',
     r'/privateurls/',
@@ -781,13 +791,13 @@ ADS_ANCHOR_ONLY_PATHS = (
 
 # Paths with no ads at all — not even the loader script.
 #
-# `/admin/` covers the whole tab-director workspace, both path-served
-# (/admin/...) and subdomain-served (/<slug>/admin/...) tournaments. Nothing
-# renders there: no <ins> units, no adsbygoogle.js.
+# The tab-director workspace under /admin/ is deliberately NOT here: the
+# director is the person who can pay, so they have to see what they are
+# paying to remove. Their data-entry screens are in ADS_ANCHOR_ONLY_PATHS
+# above, which keeps the anchor but drops in-content units.
 #
-# The rest: auth, payment, machine endpoints, and our own ad-removal page.
+# What remains: auth, payment, machine endpoints, and our own ad-removal page.
 ADS_DISABLED_PATHS = (
-    r'/admin(/|$)',
     r'^/accounts/',
     r'^/api/',
     r'^/jet',

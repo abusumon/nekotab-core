@@ -1,0 +1,79 @@
+{% comment %}
+  Ad-block detection notice.
+
+  Brave and uBlock block pagead2.googlesyndication.com at the network layer;
+  no amount of markup makes an AdSense unit render through that, and
+  circumventing a blocker (proxying the ad script through our own domain,
+  obfuscating requests) breaches AdSense policy and risks the account. So
+  this does not fight the blocker — it detects it and offers the paid
+  alternative, which is the outcome we actually want.
+
+  Deliberately does NOT gate the page. People read draws and results during
+  live rounds; blocking that to argue about ads would cost far more than it
+  earns.
+
+  Note the class names avoid "ad"/"banner"/"sponsor" substrings — filter
+  lists hide elements by those names, which would hide this notice too.
+{% endcomment %}
+{% load i18n %}
+{% if ads_enabled %}
+<div class="nk-support-note" id="nkSupportNote" hidden>
+  <span class="nk-support-note__text">
+    {% if ads_removal_url %}
+      {% blocktrans trimmed with price=ads_price_label %}
+        Your browser is blocking ads. NekoTab is free to run tournaments on —
+        ads are what keep it that way. You can remove them properly for
+        {{ price }}.
+      {% endblocktrans %}
+    {% else %}
+      {% blocktrans trimmed %}
+        Your browser is blocking ads. NekoTab is free to run tournaments on —
+        ads are what keep it that way. Allowing them here helps a lot.
+      {% endblocktrans %}
+    {% endif %}
+  </span>
+  {% if ads_removal_url %}
+    <a class="nk-support-note__cta" href="{{ ads_removal_url }}">
+      {% blocktrans trimmed with price=ads_price_label %}Remove ads · {{ price }}{% endblocktrans %}
+    </a>
+  {% endif %}
+  <button type="button" class="nk-support-note__x" id="nkSupportNoteX"
+          aria-label="{% trans 'Dismiss' %}">&times;</button>
+</div>
+<script>
+(function () {
+  var note = document.getElementById('nkSupportNote');
+  if (!note) return;
+  var KEY = 'nkSupportNoteHidden';
+  var HIDE_MS = 3 * 24 * 60 * 60 * 1000;
+
+  try {
+    if (Date.now() < parseInt(sessionStorage.getItem(KEY) || '0', 10)) return;
+  } catch (e) {}
+
+  // Bait element: filter lists hide anything matching these class names.
+  var bait = document.createElement('div');
+  bait.className = 'adsbox ad-banner ad-placement pub_300x250 text-ad';
+  bait.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px';
+  bait.innerHTML = '&nbsp;';
+  document.body.appendChild(bait);
+
+  window.setTimeout(function () {
+    var cs = window.getComputedStyle(bait);
+    var blocked = bait.offsetParent === null || bait.offsetHeight === 0 ||
+                  cs.display === 'none' || cs.visibility === 'hidden';
+    if (bait.parentNode) bait.parentNode.removeChild(bait);
+    if (!blocked) return;
+
+    note.removeAttribute('hidden');
+    var x = document.getElementById('nkSupportNoteX');
+    if (x) {
+      x.addEventListener('click', function () {
+        note.setAttribute('hidden', '');
+        try { sessionStorage.setItem(KEY, String(Date.now() + HIDE_MS)); } catch (e) {}
+      });
+    }
+  }, 2000);  // generous, so a slow ad load is not mistaken for a blocker
+})();
+</script>
+{% endif %}

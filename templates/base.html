@@ -219,6 +219,8 @@
       import and check-in paths — those get the sticky anchor only, because
       units beside form fields invite accidental clicks.
     {% endcomment %}
+    {% include "ads/adblock_notice.html" %}
+
     {% if not ads_anchor_only %}
       {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="top" %}
     {% endif %}
