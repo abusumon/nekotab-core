@@ -822,9 +822,11 @@
 
   {% include "ads/ad_unit.html" with slot=adsense_slot_footer placement="home" %}
 
-  {# No sticky anchor here on purpose: .em-mobile-cta-bar already owns the
-     bottom of the viewport on mobile, and stacking two fixed bars would
-     bury the primary call to action. #}
+  {% comment %}
+    No sticky anchor here on purpose: .em-mobile-cta-bar already owns the
+    bottom of the viewport on mobile, and stacking two fixed bars would
+    bury the primary call to action.
+  {% endcomment %}
 
   <!-- Mobile Fixed CTA -->
   <div class="em-mobile-cta-bar">

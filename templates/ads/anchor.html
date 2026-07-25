@@ -13,8 +13,10 @@
      aria-label="{% trans 'Advertisement' %}" hidden>
   <button type="button" class="nekotab-anchor__close" id="nekotabAnchorClose"
           aria-label="{% trans 'Close advertisement' %}">&times;</button>
-  {# height is pinned deliberately: an unbounded responsive unit in a fixed
-     bottom bar can grow tall enough to swallow the viewport. #}
+  {% comment %}
+    Height is pinned deliberately: an unbounded responsive unit in a fixed
+    bottom bar can grow tall enough to swallow the viewport.
+  {% endcomment %}
   <ins class="adsbygoogle"
        style="display:block;height:90px"
        data-ad-client="{{ adsense_publisher_id }}"

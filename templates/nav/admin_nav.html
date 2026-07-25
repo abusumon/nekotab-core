@@ -302,9 +302,11 @@
   {% endfor %}
 
   {% if ad_free_purchase_url %}
-    {# The admin area itself carries no ads, so this is the only place the
-       person who can actually pay ever sees the offer. Plain link, not an
-       ad unit — nothing from AdSense renders under /admin/. #}
+    {% comment %}
+      The admin area itself carries no ads, so this is the only place the
+      person who can actually pay ever sees the offer. Plain link, not an
+      ad unit — nothing from AdSense renders under /admin/.
+    {% endcomment %}
     <a class="list-group-item nk-adfree-promo" href="{{ ad_free_purchase_url }}">
       <i data-feather="zap"></i>
       <span>{% blocktrans trimmed with price=ads_price_label %}

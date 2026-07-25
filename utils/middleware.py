@@ -306,6 +306,11 @@ class SubdomainTournamentMiddleware:
         '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
         '/summernote/', '/jet/', '/organizations/', '/archive/',
         '/forum/', '/motions-bank/',
+        # Global, not tournament-scoped: the ad-removal purchase page and the
+        # Lemon Squeezy webhook. Without this the "Remove ads" link 404s on
+        # every subdomain-served tournament, because /donations/ad-free/<pk>/
+        # is rewritten to /<slug>/donations/ad-free/<pk>/.
+        '/donations/',
         '/i18n/', '/jsi18n/',
         '/register/', '/start/', '/create/', '/style/', '/load-demo/', '/claim/',
         '/unsubscribe/', '/for-organizers/',
@@ -458,6 +463,11 @@ class SubdomainTenantMiddleware:
         '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
         '/summernote/', '/jet/', '/organizations/', '/archive/',
         '/forum/', '/motions-bank/',
+        # Global, not tournament-scoped: the ad-removal purchase page and the
+        # Lemon Squeezy webhook. Without this the "Remove ads" link 404s on
+        # every subdomain-served tournament, because /donations/ad-free/<pk>/
+        # is rewritten to /<slug>/donations/ad-free/<pk>/.
+        '/donations/',
         '/i18n/', '/jsi18n/',
         '/register/', '/start/', '/create/', '/style/', '/load-demo/', '/claim/',
         '/unsubscribe/', '/for-organizers/',
