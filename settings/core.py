@@ -748,7 +748,7 @@ REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab
 # ==============================================================================
 
 ADSENSE_ENABLED = _env_bool('ADSENSE_ENABLED', default=True)
-ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID', 'ca-pub-4135779137186219')
+ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID') or 'ca-pub-4135779137186219'
 
 # Turn Auto ads OFF in the AdSense dashboard (Ads -> your site -> Auto ads).
 # The loader script still has to load: the manual units need it. It is
@@ -756,10 +756,13 @@ ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID', 'ca-pub-4135779137
 #
 # One AdSense display unit per placement, so reporting shows which position
 # actually earns.
-ADSENSE_SLOT_CONTENT = os.environ.get('ADSENSE_SLOT_CONTENT', '1295610228')
-ADSENSE_SLOT_FOOTER = os.environ.get('ADSENSE_SLOT_FOOTER', '6356365218')
-ADSENSE_SLOT_TABLE = os.environ.get('ADSENSE_SLOT_TABLE', '1290640712')
-ADSENSE_SLOT_ANCHOR = os.environ.get('ADSENSE_SLOT_ANCHOR', '5099123868')
+# `or` rather than a get() default: docker-compose passes unset variables
+# through as empty strings, which would otherwise blank these and silently
+# break every ad unit.
+ADSENSE_SLOT_CONTENT = os.environ.get('ADSENSE_SLOT_CONTENT') or '1295610228'
+ADSENSE_SLOT_FOOTER = os.environ.get('ADSENSE_SLOT_FOOTER') or '6356365218'
+ADSENSE_SLOT_TABLE = os.environ.get('ADSENSE_SLOT_TABLE') or '1290640712'
+ADSENSE_SLOT_ANCHOR = os.environ.get('ADSENSE_SLOT_ANCHOR') or '5099123868'
 
 # Paths that get the sticky anchor but no in-content units: ballot and
 # feedback submission, registration, check-in. Inline units beside form fields
@@ -798,11 +801,10 @@ ADS_DISABLED_PATHS = (
 )
 
 # The $5 one-time "remove ads from this tournament" product.
-ADS_REMOVAL_CHECKOUT_URL = os.environ.get(
-    'ADS_REMOVAL_CHECKOUT_URL',
-    'https://nekotab.lemonsqueezy.com/checkout/buy/982ee49b-d32f-48a3-b399-dd6134838cf5',
+ADS_REMOVAL_CHECKOUT_URL = os.environ.get('ADS_REMOVAL_CHECKOUT_URL') or (
+    'https://nekotab.lemonsqueezy.com/checkout/buy/982ee49b-d32f-48a3-b399-dd6134838cf5'
 )
-ADS_REMOVAL_PRICE_LABEL = os.environ.get('ADS_REMOVAL_PRICE_LABEL', '$5')
+ADS_REMOVAL_PRICE_LABEL = os.environ.get('ADS_REMOVAL_PRICE_LABEL') or '$5'
 
 # ==============================================================================
 # SEO / Canonical
