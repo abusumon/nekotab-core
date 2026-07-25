@@ -749,9 +749,60 @@ REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab
 
 ADSENSE_ENABLED = _env_bool('ADSENSE_ENABLED', default=True)
 ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID', 'ca-pub-4135779137186219')
-ADSENSE_SLOT_CONTENT = os.environ.get('ADSENSE_SLOT_CONTENT', '7630939625')
-ADSENSE_SLOT_FOOTER = os.environ.get('ADSENSE_SLOT_FOOTER', '7630939625')
-ADSENSE_SLOT_TABLE = os.environ.get('ADSENSE_SLOT_TABLE', '7630939625')
+
+# Turn Auto ads OFF in the AdSense dashboard (Ads -> your site -> Auto ads).
+# The loader script still has to load: the manual units need it. It is
+# included once in base.html; templates carry only the <ins> blocks.
+#
+# One AdSense display unit per placement, so reporting shows which position
+# actually earns.
+ADSENSE_SLOT_CONTENT = os.environ.get('ADSENSE_SLOT_CONTENT', '1295610228')
+ADSENSE_SLOT_FOOTER = os.environ.get('ADSENSE_SLOT_FOOTER', '6356365218')
+ADSENSE_SLOT_TABLE = os.environ.get('ADSENSE_SLOT_TABLE', '1290640712')
+ADSENSE_SLOT_ANCHOR = os.environ.get('ADSENSE_SLOT_ANCHOR', '5099123868')
+
+# Paths that get the sticky anchor but no in-content units: ballot and
+# feedback submission, registration, check-in. Inline units beside form fields
+# invite accidental clicks (an AdSense policy risk) and these are the screens
+# where disruption costs a live tournament real time.
+ADS_ANCHOR_ONLY_PATHS = (
+    r'/ballot',
+    r'/checkins?/',
+    r'/privateurls/',
+    r'/registration/',
+    r'/feedback/add',
+    r'/add/feedback',
+    r'/edit/',
+    r'/create/',
+)
+
+# Paths with no ads at all — not even the loader script.
+#
+# `/admin/` covers the whole tab-director workspace, both path-served
+# (/admin/...) and subdomain-served (/<slug>/admin/...) tournaments. Nothing
+# renders there: no <ins> units, no adsbygoogle.js.
+#
+# The rest: auth, payment, machine endpoints, and our own ad-removal page.
+ADS_DISABLED_PATHS = (
+    r'/admin(/|$)',
+    r'^/accounts/',
+    r'^/api/',
+    r'^/jet',
+    r'^/django-admin/',
+    r'^/donations/',
+    r'^/donate',
+    r'/tickets/.*/buy',
+    r'/password',
+    r'/login',
+    r'/logout',
+)
+
+# The $5 one-time "remove ads from this tournament" product.
+ADS_REMOVAL_CHECKOUT_URL = os.environ.get(
+    'ADS_REMOVAL_CHECKOUT_URL',
+    'https://nekotab.lemonsqueezy.com/checkout/buy/982ee49b-d32f-48a3-b399-dd6134838cf5',
+)
+ADS_REMOVAL_PRICE_LABEL = os.environ.get('ADS_REMOVAL_PRICE_LABEL', '$5')
 
 # ==============================================================================
 # SEO / Canonical

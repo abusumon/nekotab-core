@@ -1,11 +1,34 @@
-{% if show %}
-<div class="nekotab-ad{% if layout %} nekotab-ad--{{ layout }}{% endif %}" role="complementary" aria-label="Advertisement">
+{% comment %}
+  A single manual AdSense display unit.
+
+  Usage:
+    {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="top" %}
+
+  Params:
+    slot       — AdSense slot id (required)
+    placement  — "top" | "incontent" | "footer", drives spacing/label only
+    ad_format  — defaults to "auto" (responsive)
+
+  Renders nothing unless `ads_enabled` is true, so callers never need to
+  wrap the include in their own {% if %}.
+{% endcomment %}
+{% load i18n %}
+{% if ads_enabled and slot %}
+<div class="nekotab-ad nekotab-ad--{{ placement|default:'incontent' }}" role="complementary"
+     aria-label="{% trans 'Advertisement' %}">
   <ins class="adsbygoogle"
        style="display:block"
-       data-ad-client="{{ publisher_id }}"
-       data-ad-slot="{{ slot_id }}"
-       data-ad-format="{{ ad_format }}"
+       data-ad-client="{{ adsense_publisher_id }}"
+       data-ad-slot="{{ slot }}"
+       data-ad-format="{{ ad_format|default:'auto' }}"
        data-full-width-responsive="true"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  {% if ads_removal_url %}
+    <a class="nekotab-ad__remove lemonsqueezy-button" href="{{ ads_removal_url }}">
+      {% blocktrans trimmed with price=ads_price_label %}
+        Remove ads from this tournament — {{ price }}
+      {% endblocktrans %}
+    </a>
+  {% endif %}
 </div>
 {% endif %}

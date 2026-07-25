@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% if adsense_enabled %}
+  {% if ads_enabled %}
   <meta name="google-adsense-account" content="{{ adsense_publisher_id }}">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}" crossorigin="anonymous"></script>
+  {% include "ads/styles.html" %}
   {% endif %}
   <title>NekoTab — Free Debate Tab Software | Motion Bank, Ticketing &amp; Events</title>
   <meta name="description" content="NekoTab: free hosted Tabbycat debate tabulation for BP, WSDC, Australs and more. Includes a global Motion Bank with thousands of real debate motions, event ticketing, organization website builder, schedule planner, and registration forms — all free, no setup needed.">
@@ -445,7 +446,7 @@
     .nk-foot-community svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
   </style>
 
-  {% if adsense_enabled %}
+  {% if ads_enabled %}
   <script>window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.requestNonPersonalizedAds = 1;</script>
   {% endif %}
   <script defer src="{% static 'js/cookie-consent.js' %}"></script>
@@ -757,6 +758,8 @@
     </div>
   </section>
 
+  {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="home" %}
+
   <!-- ════════════════════════════════════════════
        WORKSPACE FEATURES — Calicotab-style 4-box
        ════════════════════════════════════════════ -->
@@ -816,6 +819,12 @@
     </div>
   </section>
 
+
+  {% include "ads/ad_unit.html" with slot=adsense_slot_footer placement="home" %}
+
+  {# No sticky anchor here on purpose: .em-mobile-cta-bar already owns the
+     bottom of the viewport on mobile, and stacking two fixed bars would
+     bury the primary call to action. #}
 
   <!-- Mobile Fixed CTA -->
   <div class="em-mobile-cta-bar">

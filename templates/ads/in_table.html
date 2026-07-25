@@ -1,0 +1,80 @@
+{% comment %}
+  Mid-table unit. Draw, standings, tab and results pages hold readers for
+  90–200s of scrolling through one long table; a unit above the fold and one
+  below it only ever collect a single viewable impression. This drops a third
+  unit into the table itself, after row N.
+
+  Tabbycat renders most tables through Vue, so the DOM isn't ready at parse
+  time — hence the observer with a hard timeout. If no table big enough shows
+  up, nothing renders at all.
+{% endcomment %}
+{% load i18n %}
+{% if ads_enabled and adsense_slot_table %}
+<div id="nekotabInTableAd" class="nekotab-ad nekotab-ad--incontent" role="complementary"
+     aria-label="{% trans 'Advertisement' %}" hidden>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="{{ adsense_publisher_id }}"
+       data-ad-slot="{{ adsense_slot_table }}"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  {% if ads_removal_url %}
+    <a class="nekotab-ad__remove lemonsqueezy-button" href="{{ ads_removal_url }}">
+      {% blocktrans trimmed with price=ads_price_label %}
+        Remove ads from this tournament — {{ price }}
+      {% endblocktrans %}
+    </a>
+  {% endif %}
+</div>
+<script>
+(function () {
+  var AFTER_ROW = 8;      // insert below this many data rows
+  var MIN_ROWS = 12;      // ...only if the table is at least this long
+  var GIVE_UP_MS = 5000;
+
+  var ad = document.getElementById('nekotabInTableAd');
+  if (!ad) return;
+  var done = false;
+
+  function findTable() {
+    var tables = document.querySelectorAll('main table');
+    for (var i = 0; i < tables.length; i++) {
+      var body = tables[i].tBodies[0];
+      if (body && body.rows.length >= MIN_ROWS) return { table: tables[i], body: body };
+    }
+    return null;
+  }
+
+  function columnCount(table) {
+    var probe = (table.tHead && table.tHead.rows[0]) || table.tBodies[0].rows[0];
+    return probe ? probe.cells.length : 1;
+  }
+
+  function inject() {
+    if (done) return true;
+    var found = findTable();
+    if (!found) return false;
+
+    done = true;
+    var row = found.body.insertRow(Math.min(AFTER_ROW, found.body.rows.length));
+    var cell = row.insertCell(0);
+    cell.colSpan = columnCount(found.table);
+    cell.style.padding = '0';
+    row.className = 'nekotab-ad-row';
+
+    ad.removeAttribute('hidden');
+    cell.appendChild(ad);
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    return true;
+  }
+
+  if (inject()) return;
+
+  var observer = new MutationObserver(function () {
+    if (inject()) observer.disconnect();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+  window.setTimeout(function () { observer.disconnect(); }, GIVE_UP_MS);
+})();
+</script>
+{% endif %}

@@ -1,0 +1,87 @@
+{% comment %}
+  Sticky bottom anchor unit — the highest-RPM format and the only one that
+  runs on every page type, including data-entry screens where in-content
+  units are not allowed.
+
+  Behaves itself: reserves its own height as body padding so it never covers
+  the footer, steps aside while the cookie-consent banner is up, is
+  dismissible for 30 minutes, and is hidden in print.
+{% endcomment %}
+{% load i18n %}
+{% if ads_enabled and adsense_slot_anchor %}
+<div class="nekotab-anchor" id="nekotabAnchor" role="complementary"
+     aria-label="{% trans 'Advertisement' %}" hidden>
+  <button type="button" class="nekotab-anchor__close" id="nekotabAnchorClose"
+          aria-label="{% trans 'Close advertisement' %}">&times;</button>
+  {# height is pinned deliberately: an unbounded responsive unit in a fixed
+     bottom bar can grow tall enough to swallow the viewport. #}
+  <ins class="adsbygoogle"
+       style="display:block;height:90px"
+       data-ad-client="{{ adsense_publisher_id }}"
+       data-ad-slot="{{ adsense_slot_anchor }}"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  {% if ads_removal_url %}
+    <a class="nekotab-anchor__remove lemonsqueezy-button" href="{{ ads_removal_url }}">
+      {% blocktrans trimmed with price=ads_price_label %}
+        Remove ads — {{ price }}
+      {% endblocktrans %}
+    </a>
+  {% endif %}
+</div>
+<script>
+(function () {
+  var DISMISS_KEY = 'nekotabAnchorDismissedUntil';
+  var DISMISS_MS = 30 * 60 * 1000;
+  var anchor = document.getElementById('nekotabAnchor');
+  if (!anchor) return;
+
+  function dismissedUntil() {
+    try { return parseInt(sessionStorage.getItem(DISMISS_KEY) || '0', 10); }
+    catch (e) { return 0; }
+  }
+  if (Date.now() < dismissedUntil()) return;
+
+  anchor.removeAttribute('hidden');
+  (adsbygoogle = window.adsbygoogle || []).push({});
+
+  function reserveSpace() {
+    document.body.style.paddingBottom =
+      anchor.hasAttribute('hidden') ? '' : anchor.offsetHeight + 'px';
+  }
+  reserveSpace();
+  window.addEventListener('resize', reserveSpace);
+  window.setTimeout(reserveSpace, 1500);  // after the ad paints
+
+  // Sit above the cookie banner rather than hiding behind it. ~14% of
+  // sessions arrive from Facebook/Messenger in-app browsers as first-time
+  // visitors, so the banner is up for exactly the traffic where the anchor
+  // is the only format that performs — hiding it there costs real
+  // impressions.
+  var consent = document.getElementById('cookie-consent');
+  if (consent) {
+    var sync = function () {
+      var up = window.getComputedStyle(consent).display !== 'none';
+      anchor.style.bottom = up ? consent.offsetHeight + 'px' : '0px';
+      document.body.style.paddingBottom =
+        (anchor.offsetHeight + (up ? consent.offsetHeight : 0)) + 'px';
+    };
+    sync();
+    new MutationObserver(sync).observe(consent, {
+      attributes: true, attributeFilter: ['style', 'class'],
+    });
+    window.addEventListener('resize', sync);
+  }
+
+  var close = document.getElementById('nekotabAnchorClose');
+  if (close) {
+    close.addEventListener('click', function () {
+      anchor.setAttribute('hidden', '');
+      document.body.style.paddingBottom = '';
+      try { sessionStorage.setItem(DISMISS_KEY, String(Date.now() + DISMISS_MS)); }
+      catch (e) { /* private mode — just hide for this page */ }
+    });
+  }
+})();
+</script>
+{% endif %}

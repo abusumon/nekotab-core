@@ -8,12 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#6366f1">
 
-  <!-- AdSense: only load on public pages when enabled -->
-  {% if adsense_enabled and user_role != "admin" and user_role != "assistant" %}
+  {% comment %}
+    AdSense loader — included once, here, for the whole site. Templates carry
+    only the <ins> units (see templates/ads/).
+
+    `ads_enabled` is false, so nothing below renders, when the path is on
+    ADS_DISABLED_PATHS (all of /admin/*, auth, API, payment) or the
+    tournament has a paid ad-free grant. See utils/context_processors.py.
+
+    Auto ads are switched off in the AdSense dashboard; this script is here
+    purely to serve the manual units.
+  {% endcomment %}
+  {% if ads_enabled %}
   <meta name="google-adsense-account" content="{{ adsense_publisher_id }}">
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}"
     crossorigin="anonymous"></script>
+  {% if ads_removal_url %}
+  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+  {% endif %}
   {% endif %}
 
   {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}" />{% endif %}
@@ -104,9 +117,7 @@
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/mobile-first.css' %}" />
-  {% if adsense_enabled %}
-  <style>.nekotab-ad{margin:1rem 0;overflow:hidden;text-align:center;min-height:50px}.nekotab-ad--sidebar{margin:12px 0}</style>
-  {% endif %}
+  {% if ads_enabled or ad_free_purchase_url %}{% include "ads/styles.html" %}{% endif %}
   {% block extra-css %}{% endblock %}
   {% block extra-head %}{% endblock %}
 
@@ -203,11 +214,25 @@
       </div>
     {% endblock subheader %}
 
+    {% comment %}
+      In-content units. `ads_anchor_only` is set for data-entry, ballot,
+      import and check-in paths — those get the sticky anchor only, because
+      units beside form fields invite accidental clicks.
+    {% endcomment %}
+    {% if not ads_anchor_only %}
+      {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="top" %}
+    {% endif %}
+
     <div class="row">
       <div class="col">
         {% block content %}{% endblock content %}
       </div>
     </div>
+
+    {% if not ads_anchor_only %}
+      {% include "ads/in_table.html" %}
+      {% include "ads/ad_unit.html" with slot=adsense_slot_footer placement="footer" %}
+    {% endif %}
 
     {% if user_role == "admin" and not full_width_layout %}
         </main>
@@ -312,6 +337,8 @@
       </div>
     </div>
   </div>
+  {% include "ads/anchor.html" %}
+
   <!-- 100% privacy-first analytics -->
   <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>

@@ -1,4 +1,5 @@
 import logging
+import re
 
 from django.conf import settings
 from django.core.cache import cache
@@ -6,6 +7,87 @@ from django.core.cache import cache
 from tournaments.models import Tournament
 
 logger = logging.getLogger(__name__)
+
+
+# ── Ad placement path rules ──────────────────────────────────────────────
+#
+# Compiled once at import. ``_ANCHOR_ONLY_RE`` marks pages that get the
+# sticky anchor but no in-content units; ``_ADS_OFF_RE`` marks pages with no
+# ads at all. Both are matched with ``search`` against ``request.path`` so
+# subdomain-served tournaments (internally prefixed with ``/<slug>/``) hit the
+# same rules as path-served ones.
+
+def _compile_path_rules(setting_name):
+    patterns = getattr(settings, setting_name, ()) or ()
+    if not patterns:
+        return None
+    return re.compile('|'.join('(?:%s)' % p for p in patterns))
+
+
+_ANCHOR_ONLY_RE = _compile_path_rules('ADS_ANCHOR_ONLY_PATHS')
+_ADS_OFF_RE = _compile_path_rules('ADS_DISABLED_PATHS')
+
+
+def _ad_free_state(tournament_pk):
+    """Return ``(is_ad_free, purchase_page_url)`` for a tournament.
+
+    Deliberately independent of whether ads render on *this* path: the tab
+    director's own workspace is ad-free, so without this the one person
+    holding the credit card would never see the offer at all.
+    """
+    if not tournament_pk:
+        return False, ''
+    try:
+        from donations.ads import tournament_is_ad_free
+    except ImportError:
+        # `donations` is a NekoTab-only app; upstream Tabbycat runs without it.
+        return False, ''
+    try:
+        return tournament_is_ad_free(tournament_pk), '/donations/ad-free/%d/' % tournament_pk
+    except Exception:
+        # Never let the monetisation layer take a page down.
+        logger.exception('Ad-free lookup failed; falling back to showing ads')
+        return False, ''
+
+
+def _ad_context(request, tournament):
+    """Decide whether — and how heavily — to show ads on this request.
+
+    Ads are on for everyone, including tab directors and assistants, unless
+    the tournament has a paid ad-free grant or the path is excluded.
+    """
+    tournament_pk = getattr(tournament, 'pk', None)
+    is_ad_free, purchase_url = _ad_free_state(tournament_pk)
+
+    # Always available, even on pages that show no ads — this is what drives
+    # the offer in the admin sidebar.
+    base = {
+        'tournament_is_ad_free': is_ad_free,
+        'ad_free_purchase_url': '' if is_ad_free else purchase_url,
+    }
+    off = dict(base, ads_enabled=False, ads_anchor_only=False, ads_removal_url='')
+
+    if not getattr(settings, 'ADSENSE_ENABLED', False) or is_ad_free:
+        return off
+
+    path = getattr(request, 'path', '') or '/'
+    if _ADS_OFF_RE is not None and _ADS_OFF_RE.search(path):
+        return off
+
+    removal_url = ''
+    if tournament_pk:
+        try:
+            from donations.ads import build_ad_free_checkout_url
+            removal_url = build_ad_free_checkout_url(tournament_pk)
+        except Exception:
+            logger.exception('Could not build ad-removal checkout URL')
+
+    return dict(
+        base,
+        ads_enabled=True,
+        ads_anchor_only=bool(_ANCHOR_ONLY_RE is not None and _ANCHOR_ONLY_RE.search(path)),
+        ads_removal_url=removal_url,
+    )
 
 COUNTRY_HEADER_KEYS = (
     'HTTP_CF_IPCOUNTRY',
@@ -129,12 +211,15 @@ def debate_context(request):
         'hmr': getattr(settings, 'USE_WEBPACK_SERVER', False),
         'subdomain_enabled': subdomain_enabled,
         'subdomain_base_domain': base_domain,
-        # AdSense
+        # AdSense — `ads_enabled` (computed below) is the flag templates should
+        # gate on; `adsense_enabled` is the raw site-wide switch.
         'adsense_enabled': getattr(settings, 'ADSENSE_ENABLED', False),
         'adsense_publisher_id': getattr(settings, 'ADSENSE_PUBLISHER_ID', ''),
         'adsense_slot_content': getattr(settings, 'ADSENSE_SLOT_CONTENT', ''),
         'adsense_slot_footer': getattr(settings, 'ADSENSE_SLOT_FOOTER', ''),
         'adsense_slot_table': getattr(settings, 'ADSENSE_SLOT_TABLE', ''),
+        'adsense_slot_anchor': getattr(settings, 'ADSENSE_SLOT_ANCHOR', ''),
+        'ads_price_label': getattr(settings, 'ADS_REMOVAL_PRICE_LABEL', '$5'),
         # SEO defaults
         'seo_site_name': 'NekoTab Debate Tabulation',
         'seo_keywords': 'debate tab, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, parliamentary debating, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, debate results live, debate ticketing, debate schedule planner, debate registration forms, debate website builder, nekotab, free debate tab software',
@@ -177,5 +262,9 @@ def debate_context(request):
     if tenant_org:
         context['workspace_org'] = tenant_org
         context['workspace_url'] = f"https://{tenant_org.slug}.{base_domain}/"
+
+    # Must run after `tournament` is resolved above — the ad-free grant is
+    # per-tournament.
+    context.update(_ad_context(request, context.get('tournament')))
 
     return context

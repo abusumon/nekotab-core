@@ -1,0 +1,31 @@
+{% comment %}
+  Ad styling, shared by base.html and the standalone landing template
+  (nekotab_home.html has its own <head>, so it can't inherit base.html's).
+
+  Include inside <head>, guarded by the caller's {% if ads_enabled %}.
+{% endcomment %}
+<style>
+  .nekotab-ad{margin:1rem 0;overflow:hidden;text-align:center;min-height:50px}
+  .nekotab-ad--top{margin:.5rem 0 1.25rem}
+  .nekotab-ad--footer{margin:1.5rem 0 .5rem}
+  .nekotab-ad--sidebar{margin:12px 0}
+  /* Full-bleed landing sections need the unit reined in and centred. */
+  .nekotab-ad--home{max-width:970px;margin-left:auto;margin-right:auto;padding:0 16px}
+  .nekotab-ad__remove,.nekotab-anchor__remove{display:inline-block;margin-top:4px;
+    font-size:11px;line-height:1.4;color:#6b7280;text-decoration:underline;opacity:.85}
+  .nekotab-ad__remove:hover,.nekotab-anchor__remove:hover{color:#6366f1}
+  .nekotab-anchor{position:fixed;left:0;right:0;bottom:0;z-index:9990;
+    background:rgba(255,255,255,.97);border-top:1px solid #e5e7eb;
+    box-shadow:0 -1px 6px rgba(0,0,0,.08);text-align:center;padding:2px 0 4px;
+    max-height:130px;overflow:hidden}
+  .nekotab-anchor[hidden]{display:none}
+  .nekotab-anchor__close{position:absolute;top:-11px;right:8px;width:22px;height:22px;
+    padding:0;line-height:20px;font-size:16px;border:1px solid #e5e7eb;border-radius:50%;
+    background:#fff;color:#6b7280;cursor:pointer;z-index:1}
+  /* Ad-free offer in the admin sidebar. Not an ad — /admin/ serves none. */
+  .nk-adfree-promo{border-left:3px solid #6366f1 !important;background:#eef2ff !important}
+  .nk-adfree-promo span{font-weight:600}
+  .nk-adfree-promo small{font-size:11px;line-height:1.3;margin-top:2px}
+  .nk-adfree-promo:hover{background:#e0e7ff !important}
+  @media print{.nekotab-ad,.nekotab-anchor,.nk-adfree-promo{display:none !important}}
+</style>

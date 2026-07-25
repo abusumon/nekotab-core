@@ -301,6 +301,21 @@
     {% include 'nav/round_panel.html' %}
   {% endfor %}
 
+  {% if ad_free_purchase_url %}
+    {# The admin area itself carries no ads, so this is the only place the
+       person who can actually pay ever sees the offer. Plain link, not an
+       ad unit — nothing from AdSense renders under /admin/. #}
+    <a class="list-group-item nk-adfree-promo" href="{{ ad_free_purchase_url }}">
+      <i data-feather="zap"></i>
+      <span>{% blocktrans trimmed with price=ads_price_label %}
+        Remove ads · {{ price }}
+      {% endblocktrans %}</span>
+      <small class="d-none d-md-block text-muted">
+        {% trans "One payment, whole tournament, everyone" %}
+      </small>
+    </a>
+  {% endif %}
+
   <div class="list-group-item d-inline-block">
     <form id="logout-form" action="{% url 'logout' %}" data-parent="#sidebar" method="post" class="collapsed">
       {% csrf_token %}
