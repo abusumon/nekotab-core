@@ -188,14 +188,19 @@
       background: none;
       border: none;
       cursor: pointer;
+      /* 44px, not 40. This is the only way into the nav on mobile, so it is
+         the one control on the page that must not be a near-miss. The bars
+         inside stay 20px wide — the extra 4px is hit area, not a bigger icon.
+         Fits the 58px nav row with 7px of clearance either side. */
       padding: 9px;
       margin-left: auto;
       border-radius: 7px;
-      min-width: 40px;
-      min-height: 40px;
+      min-width: 44px;
+      min-height: 44px;
       transition: background 0.15s;
     }
     .nk-burger:hover { background: rgba(255,255,255,0.07); }
+    .nk-burger:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 2px; }
     .nk-burger span {
       display: block;
       width: 20px;
@@ -253,11 +258,18 @@
       color: rgba(255,255,255,0.7);
       cursor: pointer;
       padding: 0;
-      width: 32px; height: 32px;
-      border-radius: 7px;
+      /* 44px, up from 32. The 16px glyph is unchanged; only the hit area and
+         its tinted square grew. The drawer header is a two-item
+         space-between row, so the extra 12px is absorbed by the gap — the
+         logo does not move and the header grows from 60px to 72px, which the
+         drawer flexes to accommodate. */
+      width: 44px; height: 44px;
+      flex-shrink: 0;
+      border-radius: 9px;
       transition: background 0.15s, color 0.15s;
     }
     .nk-mobile-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .nk-mobile-close:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 2px; }
 
     .nk-mobile-drawer-section-label {
       font-size: 10px;
@@ -416,6 +428,56 @@
     }
     @media (min-width: 900px) {
       .nk-showcase-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    /* ── Showcase: cap the list on mobile ──
+       Twelve single-column cards is ~900px of solid scrolling between the
+       features and the footer. Below the nav breakpoint we show four and put
+       the rest behind a disclosure.
+
+       Gated on @supports selector(:has(*)) on purpose. The reveal needs :has()
+       to reach back up from the open <details> to its earlier siblings, and
+       where :has() is missing — older Android WebViews, which is a real slice
+       of this audience — the hide must not apply either, or the disclosure
+       would be a button that does nothing. Both branches end up showing
+       everything; only the supported one shows four. */
+    .nk-showcase-more { display: none; }
+
+    @media (max-width: 767.98px) {
+      @supports selector(:has(*)) {
+        .nk-showcase-grid > .nk-showcase-card:nth-child(n + 5) { display: none; }
+        .nk-showcase-inner:has(.nk-showcase-more[open])
+          .nk-showcase-grid > .nk-showcase-card:nth-child(n + 5) { display: block; }
+
+        .nk-showcase-more { display: block; margin-top: 14px; }
+        .nk-showcase-more > summary {
+          /* A real tap target: 48px, full width, centred. */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 48px;
+          padding: 0 18px;
+          background: #fff;
+          border: 1px solid #c7d2fe;
+          border-radius: 12px;
+          color: #4f46e5;
+          font-size: 14.5px;
+          font-weight: 600;
+          cursor: pointer;
+          list-style: none;          /* hide the default triangle */
+          -webkit-tap-highlight-color: transparent;
+        }
+        /* Safari/older Chrome use a shadow pseudo-element for the marker. */
+        .nk-showcase-more > summary::-webkit-details-marker { display: none; }
+        .nk-showcase-more > summary::marker { content: ''; }
+        .nk-showcase-more > summary:focus-visible {
+          outline: 2px solid #4f46e5;
+          outline-offset: 2px;
+        }
+        /* Swap the label without JS. */
+        .nk-showcase-more[open] > summary .nk-showcase-more__shut,
+        .nk-showcase-more:not([open]) > summary .nk-showcase-more__open { display: none; }
+      }
     }
 
     /* ── Footer ── */
@@ -869,7 +931,8 @@
       <p class="em-hero-sub">
         Hosted tournament management for BP, WSDC, Australs, and more. Draw, ballot, allocate, and publish live results.
         Plus a global <a href="/motions/" style="color:rgba(255,255,255,0.9);text-decoration:underline;font-weight:600;">Motion Bank</a>, event ticketing, website builder, and schedule planner.
-        {{ premium_price_label|default:"$5" }} once per tournament — <a href="{% url 'pricing' %}" style="color:rgba(255,255,255,0.9);text-decoration:underline;font-weight:600;">and here's why</a>.
+        {# Price deliberately not repeated here: the badge above already states #}
+        {# it and the pricing band states it again a screen later. #}
       </p>
 
       <div class="em-hero-ctas">
@@ -966,6 +1029,51 @@
     </div>
   </section>
 
+  {% if showcase_tournaments %}
+  <!-- ════════════════════════════════════════════
+       PUBLIC SHOWCASE — featured tournaments
+       Server-side capped (SHOWCASE_MAX) and cached; never an unbounded list.
+       ════════════════════════════════════════════ -->
+  <section class="nk-showcase" aria-labelledby="showcase-heading">
+    <div class="nk-showcase-inner">
+      <p class="nk-showcase-eyebrow">Live on NekoTab</p>
+      <h2 id="showcase-heading" class="nk-showcase-heading">Tournaments running right now</h2>
+      <p class="nk-showcase-sub">
+        A few of the competitions being tabbed on NekoTab. Draws, tabs and
+        results are free for anyone to read.
+      </p>
+      {% comment %}
+        Every card is always in the DOM. On mobile, CSS hides all but the first
+        four and the <details> below reveals them — so if the stylesheet fails
+        to load, all of them are visible rather than all but four being
+        unreachable. Wrapping the overflow inside <details> would collapse it
+        natively, with no CSS involved, and fail *hidden*.
+      {% endcomment %}
+      <ul class="nk-showcase-grid">
+        {% for t in showcase_tournaments %}
+          <li class="nk-showcase-card">
+            <a href="{{ t.url }}">
+              <span class="nk-showcase-card__name">{{ t.name }}</span>
+              {% if t.organization %}
+                <span class="nk-showcase-card__org">{{ t.organization }}</span>
+              {% endif %}
+              <span class="nk-showcase-card__go">View results &rarr;</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      {% if showcase_tournaments|length > 4 %}
+        <details class="nk-showcase-more">
+          <summary>
+            <span class="nk-showcase-more__shut">Show all {{ showcase_tournaments|length }} tournaments</span>
+            <span class="nk-showcase-more__open">Show fewer</span>
+          </summary>
+        </details>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
   <!-- ════════════════════════════════════════════
        WORKSPACE FEATURES — Calicotab-style 4-box
        ════════════════════════════════════════════ -->
@@ -1028,35 +1136,6 @@
 
   {% include "ads/ad_unit.html" with slot=adsense_slot_footer placement="home" %}
 
-  {% if showcase_tournaments %}
-  <!-- ════════════════════════════════════════════
-       PUBLIC SHOWCASE — featured tournaments
-       Server-side capped (SHOWCASE_MAX) and cached; never an unbounded list.
-       ════════════════════════════════════════════ -->
-  <section class="nk-showcase" aria-labelledby="showcase-heading">
-    <div class="nk-showcase-inner">
-      <p class="nk-showcase-eyebrow">Live on NekoTab</p>
-      <h2 id="showcase-heading" class="nk-showcase-heading">Tournaments running right now</h2>
-      <p class="nk-showcase-sub">
-        A few of the competitions being tabbed on NekoTab. Draws, tabs and
-        results are free for anyone to read.
-      </p>
-      <ul class="nk-showcase-grid">
-        {% for t in showcase_tournaments %}
-          <li class="nk-showcase-card">
-            <a href="{{ t.url }}">
-              <span class="nk-showcase-card__name">{{ t.name }}</span>
-              {% if t.organization %}
-                <span class="nk-showcase-card__org">{{ t.organization }}</span>
-              {% endif %}
-              <span class="nk-showcase-card__go">View results &rarr;</span>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
-  {% endif %}
 
   <!-- ════════════════════════════════════════════
        FOOTER
