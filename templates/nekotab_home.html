@@ -9,22 +9,22 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}" crossorigin="anonymous"></script>
   {% include "ads/styles.html" %}
   {% endif %}
-  <title>NekoTab — Free Debate Tab Software | Motion Bank, Ticketing &amp; Events</title>
+  <title>NekoTab — Debate Tab Software, $5 a Tournament | Motion Bank &amp; Events</title>
   <meta name="description" content="NekoTab: hosted Tabbycat debate tabulation for BP, WSDC, Australs and more. $5 per tournament, paid once, with no ads and no subscription. Includes a free global Motion Bank with thousands of real debate motions, plus event ticketing, website builder, schedule planner and registration forms.">
-  <meta name="keywords" content="debate tournament software, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, australs debate, debate ticketing, debate schedule planner, debate registration forms, debate website builder, tabbycat hosting, open source debate software, free debate tab, nekotab">
+  <meta name="keywords" content="debate tournament software, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, australs debate, debate ticketing, debate schedule planner, debate registration forms, debate website builder, tabbycat hosting, open source debate software, cheap debate tab software, nekotab">
   <link rel="canonical" href="https://nekotab.app/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nekotab.app/" />
-  <meta property="og:title" content="NekoTab — Free Debate Tab Software | Motion Bank, Ticketing &amp; Events" />
-  <meta property="og:description" content="Free hosted Tabbycat for BP, WSDC, Australs. Global Motion Bank, event ticketing, website builder, schedule planner, and registration forms — all in one free debate platform." />
+  <meta property="og:title" content="NekoTab — Debate Tab Software, $5 a Tournament | Motion Bank &amp; Events" />
+  <meta property="og:description" content="Hosted Tabbycat for BP, WSDC, Australs. $5 per tournament, paid once — no ads, no subscription. Plus a free global Motion Bank, event ticketing, website builder and schedule planner." />
   <meta property="og:image" content="https://nekotab.app/static/logo-social.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="NekoTab" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NekoTab — Free Debate Tab Software | Motion Bank, Ticketing &amp; Events" />
+  <meta name="twitter:title" content="NekoTab — Debate Tab Software, $5 a Tournament | Motion Bank &amp; Events" />
   <meta name="twitter:description" content="Hosted Tabbycat plus a free Motion Bank, event ticketing, website builder, schedule planner and forms. $5 per tournament, once — no ads, no subscription." />
   <meta name="twitter:image" content="https://nekotab.app/static/logo-social.png" />
   <meta name="twitter:site" content="@NekoTab" />
@@ -112,6 +112,10 @@
       color: #a5b4fc;
     }
     .nk-nav-links a.nk-nav-ticket:hover { color: #c4b5fd; background: rgba(165,180,252,0.1); }
+    /* bKash pink, so the option is findable at a glance by the people who
+       need it — most of our users pay this way, not by card. */
+    .nk-nav-links a.nk-nav-bkash { color: #f9a8d4; font-weight: 600; }
+    .nk-nav-links a.nk-nav-bkash:hover { color: #fbcfe8; background: rgba(226,19,110,0.14); }
     /* Icon-only link (Discord) */
     .nk-nav-icon-btn {
       display: inline-flex;
@@ -142,6 +146,20 @@
       transition: color 0.15s, background 0.15s;
     }
     .nk-nav-signin:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    /* Dashboard: same weight as Sign in, deliberately quieter than the
+       Workspace CTA next to it so the primary action still reads as primary. */
+    .nk-nav-dash {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      padding: 6px 11px;
+      border-radius: 7px;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nk-nav-dash:hover, .nk-nav-dash:focus { color: #fff; background: rgba(255,255,255,0.08); }
     .nk-nav-cta {
       display: inline-flex;
       align-items: center;
@@ -335,6 +353,11 @@
     .nk-pricing-cta:hover, .nk-pricing-cta:focus { background: #4f46e5; }
     .nk-pricing-link {
       font-size: 14px; font-weight: 600; color: #a5b4fc; text-decoration: none;
+      /* Measured at 22px tall before this — half the 44px minimum, and it sits
+         next to a full-size button where the size difference reads as a
+         mistake. Padding rather than height so it still centres on the button. */
+      display: inline-flex; align-items: center;
+      min-height: 44px; padding: 0 8px;
     }
     .nk-pricing-link:hover, .nk-pricing-link:focus { color: #c7d2fe; }
     .nk-pricing-note {
@@ -345,6 +368,54 @@
       .nk-pricing { padding: 52px 16px; }
       .nk-pricing-actions { flex-direction: column; gap: 12px; }
       .nk-pricing-cta { width: 100%; }
+    }
+
+    /* ── Public showcase ── */
+    /* Mobile first: one column, whole card is the tap target. */
+    .nk-showcase {
+      background: #f0f4ff;
+      padding: 56px 16px;
+      border-top: 1px solid rgba(15,23,42,0.06);
+    }
+    .nk-showcase-inner { max-width: 960px; margin: 0 auto; }
+    .nk-showcase-eyebrow {
+      text-align: center; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #6366f1; margin-bottom: 10px;
+    }
+    .nk-showcase-heading {
+      text-align: center; font-size: clamp(22px, 4vw, 32px); font-weight: 800;
+      color: #0f172a; letter-spacing: -0.5px; line-height: 1.18; margin-bottom: 10px;
+    }
+    .nk-showcase-sub {
+      text-align: center; font-size: 14.5px; line-height: 1.6; color: #475569;
+      max-width: 52ch; margin: 0 auto 28px;
+    }
+    .nk-showcase-grid {
+      list-style: none; display: grid; grid-template-columns: 1fr; gap: 12px;
+    }
+    .nk-showcase-card {
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+    }
+    .nk-showcase-card a {
+      display: flex; flex-direction: column; gap: 4px;
+      padding: 16px 18px; text-decoration: none; min-height: 44px;
+    }
+    .nk-showcase-card:hover { border-color: #a5b4fc; }
+    .nk-showcase-card__name {
+      font-size: 15px; font-weight: 700; color: #0f172a; line-height: 1.35;
+      overflow-wrap: anywhere;   /* long tournament names must not overflow */
+    }
+    .nk-showcase-card__org { font-size: 13px; color: #64748b; }
+    .nk-showcase-card__go {
+      font-size: 13px; font-weight: 600; color: #6366f1; margin-top: 4px;
+    }
+    @media (min-width: 560px) {
+      .nk-showcase { padding: 72px 24px; }
+      .nk-showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 900px) {
+      .nk-showcase-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
 
     /* ── Footer ── */
@@ -360,7 +431,12 @@
     }
     .nk-foot-links a {
       font-size: 14px; color: rgba(255,255,255,0.62);
-      text-decoration: none; padding: 4px 0;
+      text-decoration: none;
+      /* Measured at 30px tall before this. Footer links are the most likely
+         thing on the page to be tapped one-handed while scrolling, and eight
+         of them 30px tall in a wrapped row is a mis-tap generator. */
+      display: inline-flex; align-items: center;
+      min-height: 44px; padding: 0 2px;
     }
     .nk-foot-links a:hover, .nk-foot-links a:focus { color: #a78bfa; }
     .nk-foot-help {
@@ -535,7 +611,7 @@
         "name": "NekoTab",
         "url": "https://nekotab.app",
         "logo": {"@type": "ImageObject", "url": "https://nekotab.app/static/logo.png", "width": 512, "height": 512},
-        "description": "Free open-source debate tournament platform with tabulation (BP, WSDC, Australs), a global Motion Bank, event ticketing, organization website builder, schedule planner, and registration forms.",
+        "description": "Debate tournament platform with tabulation (BP, WSDC, Australs), a global Motion Bank, event ticketing, organization website builder, schedule planner, and registration forms. $5 per tournament; the Motion Bank and public results pages are free.",
         "sameAs": ["https://github.com/abusumon/nekotab-app", "https://www.facebook.com/project.nekotab/"],
         "knowsAbout": ["Debate Tabulation", "British Parliamentary Debate", "Debate Motion Bank", "Tournament Management"]
       },
@@ -558,10 +634,11 @@
         "applicationCategory": "BusinessApplication",
         "applicationSubCategory": "Sports Management Software",
         "operatingSystem": "Any",
-        "description": "NekoTab is a comprehensive free debate platform: Tabbycat tournament tabulation for BP, WSDC, Australs and more; a global Motion Bank with thousands of real tournament motions; event ticketing; organization website builder; schedule planner; and registration forms.",
+        "description": "NekoTab is a comprehensive debate platform: Tabbycat tournament tabulation for BP, WSDC, Australs and more; a global Motion Bank with thousands of real tournament motions; event ticketing; organization website builder; schedule planner; and registration forms. Running a tournament costs a one-off $5.",
         "url": "https://nekotab.app",
         "image": "https://nekotab.app/static/logo-social.png",
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "offers": {"@type": "Offer", "price": "5", "priceCurrency": "USD",
+          "description": "One-off payment per tournament"},
         "featureList": [
           "Tabbycat debate tournament tabulation",
           "Global debate motion bank",
@@ -650,6 +727,7 @@
         <a href="/tools/analyze/">Analyzer</a>
         <a href="{% url 'motions' %}">Motion Bank</a>
         <a href="{% url 'pricing' %}">Pricing</a>
+        <a href="{% url 'bkash' %}" class="nk-nav-bkash">Pay via bKash</a>
         <a href="{% url 'contact' %}">Contact</a>
         <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
         <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener" class="nk-nav-icon-btn" aria-label="Discord community">
@@ -660,6 +738,9 @@
       <!-- Auth -->
       <div class="nk-nav-end">
         {% if user.is_authenticated %}
+          {# Logged-in only. The home page no longer bounces to /me, so this is #}
+          {# the way back to it. #}
+          <a href="{% url 'user-dashboard' %}" class="nk-nav-dash">Dashboard</a>
           <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="nk-nav-cta">Workspace</a>
         {% else %}
           <a href="{% url 'login' %}" class="nk-nav-signin">Sign in</a>
@@ -733,6 +814,13 @@
             <span class="nk-mob-label-sub">{{ premium_price_label|default:"$5" }} per tournament, once</span>
           </span>
         </a>
+        <a href="{% url 'bkash' %}">
+          <span class="nk-mob-icon">📱</span>
+          <span class="nk-mob-label-group">
+            <span>Pay via bKash</span>
+            <span class="nk-mob-label-sub">No card needed — send ৳510 by bKash</span>
+          </span>
+        </a>
         <a href="{% url 'contact' %}">
           <span class="nk-mob-icon">✉️</span>
           <span class="nk-mob-label-group">
@@ -753,7 +841,8 @@
       </div>
       <div class="nk-mobile-drawer-footer">
         {% if user.is_authenticated %}
-          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="nk-mob-cta">Go to Workspace</a>
+          <a href="{% url 'user-dashboard' %}" class="nk-mob-cta">Dashboard</a>
+          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="nk-mob-secondary">Go to Workspace</a>
         {% else %}
           <a href="{% url 'register-organization' %}" class="nk-mob-cta">Create Workspace</a>
           <a href="{% url 'register-tournament' %}" class="nk-mob-secondary">Single Tournament</a>
@@ -938,6 +1027,36 @@
 
 
   {% include "ads/ad_unit.html" with slot=adsense_slot_footer placement="home" %}
+
+  {% if showcase_tournaments %}
+  <!-- ════════════════════════════════════════════
+       PUBLIC SHOWCASE — featured tournaments
+       Server-side capped (SHOWCASE_MAX) and cached; never an unbounded list.
+       ════════════════════════════════════════════ -->
+  <section class="nk-showcase" aria-labelledby="showcase-heading">
+    <div class="nk-showcase-inner">
+      <p class="nk-showcase-eyebrow">Live on NekoTab</p>
+      <h2 id="showcase-heading" class="nk-showcase-heading">Tournaments running right now</h2>
+      <p class="nk-showcase-sub">
+        A few of the competitions being tabbed on NekoTab. Draws, tabs and
+        results are free for anyone to read.
+      </p>
+      <ul class="nk-showcase-grid">
+        {% for t in showcase_tournaments %}
+          <li class="nk-showcase-card">
+            <a href="{{ t.url }}">
+              <span class="nk-showcase-card__name">{{ t.name }}</span>
+              {% if t.organization %}
+                <span class="nk-showcase-card__org">{{ t.organization }}</span>
+              {% endif %}
+              <span class="nk-showcase-card__go">View results &rarr;</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endif %}
 
   <!-- ════════════════════════════════════════════
        FOOTER

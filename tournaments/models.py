@@ -101,6 +101,57 @@ def validate_dns_safe_slug(value):
 class TournamentQuerySet(models.QuerySet):
     """Custom queryset that adds tenant-isolation helpers."""
 
+    def public(self):
+        """Tournaments fit to show the world: listed, active, not throwaway.
+
+        Use this for the homepage showcase, the sitemap, and anything else
+        that advertises tournaments to people who have no relationship with
+        them. Demo tournaments are excluded because they are deleted within
+        hours — listing them means publishing URLs that 404 by the afternoon,
+        and filling the showcase with other people's scratch work.
+        """
+        return self.filter(active=True, is_listed=True, is_demo=False)
+
+    def showcase(self):
+        """Tournaments to feature on the home page.
+
+        ``is_demo=False`` is not negotiable and is not merely a default: demos
+        are deleted within hours, so featuring one publishes a link that 404s
+        by the afternoon. It stays in the WHERE clause rather than relying on
+        the flag never being set on a demo.
+        """
+        return self.filter(
+            active=True,
+            is_publicly_listed=True,
+            is_demo=False,
+        )
+
+    def expired_demos(self, now=None):
+        """Demo tournaments whose lifetime has run out."""
+        from django.utils import timezone as _tz
+        return self.filter(
+            is_demo=True,
+            expires_at__isnull=False,
+            expires_at__lt=now or _tz.now(),
+        )
+
+    def live_demos_for(self, user, now=None):
+        """A user's demo tournaments that have not yet expired.
+
+        Informational only — the lifetime allowance is counted from
+        :class:`DemoTournamentLog`, not from this. Demos are deleted a few
+        hours after creation, so a count of surviving tournaments would reset
+        itself and could never enforce a lifetime limit.
+        """
+        from django.utils import timezone as _tz
+        if user is None or not getattr(user, 'is_authenticated', False):
+            return self.none()
+        return self.filter(
+            owner=user,
+            is_demo=True,
+            expires_at__gt=now or _tz.now(),
+        )
+
     def visible_to(self, user):
         """Return tournaments *user* is allowed to see.
 
@@ -119,7 +170,11 @@ class TournamentQuerySet(models.QuerySet):
         qs = self.filter(active=True)
 
         if user is None or not user.is_authenticated:
-            return qs.filter(is_listed=True)
+            # Demos are excluded here as well as being is_listed=False by
+            # construction: this is the query that decides what a stranger can
+            # enumerate, and it should not depend on a demo never having had
+            # its listed flag flipped.
+            return qs.filter(is_listed=True, is_demo=False)
 
         if user.is_superuser:
             return qs
@@ -232,6 +287,56 @@ class TournamentManager(models.Manager.from_queryset(TournamentQuerySet)):
     pass
 
 
+#: Cache for the home-page showcase. The home page is the single most-visited
+#: page on the site, so this query must not run per request.
+SHOWCASE_CACHE_KEY = 'homepage:showcase:v1'
+SHOWCASE_CACHE_TTL = 300  # seconds
+#: Hard ceiling on how many tournaments the showcase will ever render, so the
+#: section cannot grow into an unbounded list as more get featured.
+SHOWCASE_MAX = 12
+
+
+def get_showcase_tournaments(limit=SHOWCASE_MAX):
+    """Return lightweight dicts for the home-page showcase, cached.
+
+    Dicts rather than model instances: this is cached, and pickling ORM objects
+    into the cache is how you end up serving a stale object that is missing a
+    field added by a later migration.
+    """
+    from django.core.cache import cache
+
+    limit = max(0, min(int(limit or 0), SHOWCASE_MAX))
+    if not limit:
+        return []
+
+    cached = cache.get(SHOWCASE_CACHE_KEY)
+    if cached is not None:
+        return cached[:limit]
+
+    rows = []
+    try:
+        qs = (Tournament.objects.showcase()
+              .select_related('organization')
+              .order_by('-created_at', '-id')[:SHOWCASE_MAX])
+        for t in qs:
+            rows.append({
+                'name': t.name,
+                'short_name': t.short_name or t.name,
+                'slug': t.slug,
+                # view_url is subdomain-aware and already falls back to the
+                # path form for DNS-unsafe slugs.
+                'url': t.view_url,
+                'organization': getattr(t.organization, 'name', ''),
+                'created_at': t.created_at,
+            })
+    except Exception:
+        logger.exception('Could not build the home-page showcase; rendering none')
+        return []
+
+    cache.set(SHOWCASE_CACHE_KEY, rows, SHOWCASE_CACHE_TTL)
+    return rows[:limit]
+
+
 class Tournament(models.Model):
     name = models.CharField(max_length=100,
         verbose_name=_("name"),
@@ -259,6 +364,42 @@ class Tournament(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True,
         verbose_name=_("created at"),
         help_text=_("When this tournament was created"))
+
+    # ── Demo tournaments ────────────────────────────────────────────────
+    is_demo = models.BooleanField(default=False, db_index=True,
+        verbose_name=_("demo tournament"),
+        help_text=_("A throwaway tournament for trying NekoTab out. Never "
+                    "paywalled, never publicly listed, and deleted "
+                    "automatically once expires_at passes."))
+    expires_at = models.DateTimeField(null=True, blank=True, db_index=True,
+        verbose_name=_("expires at"),
+        help_text=_("When this tournament is automatically deleted. Only set "
+                    "on demo tournaments."))
+
+    # ── Monetisation ────────────────────────────────────────────────────
+    grandfathered = models.BooleanField(default=False,
+        verbose_name=_("grandfathered (free forever)"),
+        help_text=_("Set on every tournament that already existed when NekoTab "
+                    "Premium launched. These are free forever and are never "
+                    "paywalled. Set once by a data migration — do not set it by "
+                    "hand to give away access; record a payment instead."))
+
+    # ── Public showcase ─────────────────────────────────────────────────
+    #
+    # Distinct from `is_listed` below, which is an *access* flag: it decides
+    # whether a stranger may read this tournament's pages at all. This one is a
+    # *promotion* flag: whether we advertise it on the home page. A tournament
+    # can be publicly readable without being something we choose to feature,
+    # and the two are toggled by different people for different reasons —
+    # is_listed by the director, this one by us.
+    #
+    # Showcasing a tournament that is not also `is_listed` would publish a link
+    # anonymous visitors cannot open, so the admin toggle sets both together.
+    is_publicly_listed = models.BooleanField(default=False, db_index=True,
+        verbose_name=_("featured on the home page"),
+        help_text=_("If enabled, this tournament appears in the public showcase "
+                    "on the NekoTab home page. Demo tournaments are never "
+                    "shown, whatever this says."))
 
     # ── Isolation / visibility ──────────────────────────────────────────
     is_listed = models.BooleanField(default=False,
@@ -318,6 +459,34 @@ class Tournament(models.Model):
         except KeyError:
             self._prefs[name] = self.preferences.get_by_name(name)
             return self._prefs[name]
+
+    @property
+    def demo_seconds_remaining(self):
+        """Seconds until this demo is deleted, or None if it is not a demo.
+
+        Clamped at zero rather than going negative: between expiry and the
+        next cleanup run the tournament still exists, and a banner counting
+        upwards from "-14 minutes" reads like a bug.
+        """
+        if not self.is_demo or self.expires_at is None:
+            return None
+        from django.utils import timezone as _tz
+        return max(0, int((self.expires_at - _tz.now()).total_seconds()))
+
+    @property
+    def demo_expiry_label(self):
+        """Human phrasing of the time left, e.g. "2 hours 41 minutes"."""
+        remaining = self.demo_seconds_remaining
+        if remaining is None:
+            return ''
+        if remaining <= 0:
+            return _("any moment now")
+        hours, minutes = divmod(remaining // 60, 60)
+        if hours and minutes:
+            return _("%(h)d hours %(m)d minutes") % {'h': hours, 'm': minutes}
+        if hours:
+            return _("%(h)d hours") % {'h': hours}
+        return _("%(m)d minutes") % {'m': max(1, minutes)}
 
     @property
     def sides(self) -> Union[list[DebateSide], list[int]]:
@@ -1113,3 +1282,62 @@ class TournamentAuditLog(models.Model):
 
     def __str__(self):
         return f"{self.tournament.slug}: {self.action}"
+
+
+class DemoTournamentLog(models.Model):
+    """One row per demo tournament a user has ever created.
+
+    The lifetime demo allowance is counted from this table rather than from
+    ``Tournament``, because demo tournaments delete themselves within hours. A
+    count of surviving demos resets every afternoon and could never enforce a
+    limit that is supposed to last forever — the whole point of this table is
+    that the row outlives the thing it records.
+
+    ``tournament`` is nulled out when the demo is reaped, so a row here is a
+    permanent record of an allowance being spent, not a foreign key that has to
+    stay valid.
+
+    To grant somebody more demos (support, a genuine mistake, a workshop),
+    delete their rows here. That is the intended and only mechanism.
+    """
+
+    user = models.ForeignKey(
+        'auth.User', on_delete=models.CASCADE,
+        related_name='demo_tournament_logs',
+        verbose_name=_("user"),
+    )
+    tournament = models.ForeignKey(
+        'tournaments.Tournament', null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='demo_log_entries',
+        verbose_name=_("tournament"),
+        help_text=_("Cleared when the demo is deleted; the row itself remains."),
+    )
+    slug = models.CharField(max_length=100, blank=True, default='',
+        verbose_name=_("slug"),
+        help_text=_("The demo's slug, kept after the tournament is deleted."))
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True,
+        verbose_name=_("created at"))
+
+    class Meta:
+        verbose_name = _("demo tournament log")
+        verbose_name_plural = _("demo tournament logs")
+        ordering = ['-created_at']
+        indexes = [
+            # The allowance check is a `count()` by user on every demo creation.
+            # Named explicitly so the migration and the model agree — an
+            # auto-generated name embeds a hash and drifts against a
+            # hand-written migration.
+            models.Index(fields=['user', 'created_at'],
+                         name='tournaments_demolog_user_idx'),
+        ]
+
+    def __str__(self):
+        return f"{self.user_id}: {self.slug or '(deleted)'}"
+
+    @classmethod
+    def lifetime_count(cls, user):
+        """How many demos this user has ever created."""
+        if user is None or not getattr(user, 'is_authenticated', False):
+            return 0
+        return cls.objects.filter(user=user).count()

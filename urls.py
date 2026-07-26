@@ -71,6 +71,11 @@ urlpatterns = [
     path('tournaments/new/',
         RedirectView.as_view(pattern_name='tournament-create', permanent=False),
         name='tournament-new'),
+    # POST only — a GET here would be fired by prefetchers and crawlers, and
+    # each one would create a tournament.
+    path('create/demo/',
+        tournaments.views.CreateDemoTournamentView.as_view(),
+        name='tournament-create-demo'),
     path('create/congress/',
         tournaments.views.CreateCongressTournamentView.as_view(),
         name='congress-tournament-create'),
@@ -180,6 +185,14 @@ urlpatterns = [
     path('premium/<int:tournament_id>/status/',
         donations_views.PremiumStatusView.as_view(),
         name='premium-status'),
+    path('premium/<int:tournament_id>/redeem/',
+        donations_views.RedeemPromoCodeView.as_view(),
+        name='premium-redeem'),
+    # Manual bKash flow. Top-level and memorable because it is linked from the
+    # home page nav and read out in support replies.
+    path('bkash/',
+        donations_views.BkashPaymentRequestView.as_view(),
+        name='bkash'),
     path('pricing/',
         tournaments.views.PricingView.as_view(),
         name='pricing'),

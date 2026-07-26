@@ -312,7 +312,7 @@ class SubdomainTournamentMiddleware:
         # rewritten to /<slug>/premium/<pk>/ — and since that page is also the
         # paywall's redirect target, omitting it 404s exactly the people who
         # are trying to pay.
-        '/donations/', '/premium/', '/pricing/', '/tournaments/',
+        '/donations/', '/premium/', '/pricing/', '/tournaments/', '/bkash/',
         '/i18n/', '/jsi18n/',
         '/register/', '/start/', '/create/', '/style/', '/load-demo/', '/claim/',
         '/unsubscribe/', '/for-organizers/',
@@ -471,7 +471,7 @@ class SubdomainTenantMiddleware:
         # rewritten to /<slug>/premium/<pk>/ — and since that page is also the
         # paywall's redirect target, omitting it 404s exactly the people who
         # are trying to pay.
-        '/donations/', '/premium/', '/pricing/', '/tournaments/',
+        '/donations/', '/premium/', '/pricing/', '/tournaments/', '/bkash/',
         '/i18n/', '/jsi18n/',
         '/register/', '/start/', '/create/', '/style/', '/load-demo/', '/claim/',
         '/unsubscribe/', '/for-organizers/',

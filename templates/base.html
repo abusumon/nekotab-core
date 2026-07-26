@@ -204,6 +204,7 @@
 
       <div class="row d-print-none">
         <div class="col" id="messages-container">
+          {% include "tournaments/demo_banner.html" %}
           {% if messages %}
             {% for message in messages %}
               {% include "components/alert.html" with type=message.tags message=message %}

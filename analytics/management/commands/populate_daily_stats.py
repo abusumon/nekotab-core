@@ -97,12 +97,20 @@ class Command(BaseCommand):
         active_tournaments = 0
         try:
             from tournaments.models import Tournament
-            tournaments_created = Tournament.objects.filter(
-                Q(created__gte=start) & Q(created__lt=end)
+            # `created_at`, not `created` — the latter does not exist, so this
+            # raised FieldError into the bare `except` below and reported 0
+            # tournaments created every single day since it was written.
+            #
+            # Demos are excluded: they are throwaway, self-deleting, and
+            # unlimited, so counting them would make this metric track how many
+            # people clicked "try it" rather than how many tournaments exist.
+            real = Tournament.objects.filter(is_demo=False)
+            tournaments_created = real.filter(
+                Q(created_at__gte=start) & Q(created_at__lt=end)
             ).count()
-            active_tournaments = Tournament.objects.filter(active=True).count()
+            active_tournaments = real.filter(active=True).count()
         except Exception:
-            pass  # tournaments app may not be installed
+            logger.exception("Could not compute tournament counts for daily stats")
 
         # Debates & ballots
         debates_created = 0

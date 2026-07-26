@@ -47,6 +47,52 @@
     {% include "components/explainer-card.html" with type="primary" p1=donation %}
   {% endif %}
 
+  {% if demo_enabled %}
+    <div class="card border-success mt-3">
+      <div class="card-body">
+        <h5 class="card-title mb-2">{% trans "Want to try it first? Start a free demo." %}</h5>
+        <p class="mb-3">
+          {% blocktrans trimmed with hours=demo_lifetime_hours %}
+            A demo tournament costs nothing and needs no payment details. It has
+            every feature the paid version has — it just deletes itself
+            automatically after {{ hours }} hours.
+          {% endblocktrans %}
+          {% if demo_limit %}
+            {% blocktrans trimmed with limit=demo_limit %}
+              Each account gets {{ limit }} demos in total — the allowance is
+              one-off and doesn't reset when they expire.
+            {% endblocktrans %}
+          {% endif %}
+        </p>
+        {% if demo_exhausted %}
+          <p class="mb-0 text-muted small">
+            {% blocktrans trimmed with limit=demo_limit %}
+              You've used all {{ limit }} of your demo tournaments.
+            {% endblocktrans %}
+            <a href="{% url 'contact' %}">{% trans "Get in touch" %}</a>
+            {% trans "if you need another for a good reason." %}
+          </p>
+        {% else %}
+          {# POST, not a link: this creates a tournament, and a GET would be #}
+          {# fired by prefetchers and crawlers. #}
+          <form action="{% url 'tournament-create-demo' %}" method="POST" class="mb-0">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">
+              {% trans "Create Demo Tournament" %}
+            </button>
+            {% if demo_limit %}
+              <span class="text-muted small ml-2">
+                {% blocktrans trimmed with remaining=demo_remaining limit=demo_limit %}
+                  {{ remaining }} of {{ limit }} left
+                {% endblocktrans %}
+              </span>
+            {% endif %}
+          </form>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
   <div class="card border-info text-info mt-3">
     <div class="card-body">
 

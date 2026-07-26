@@ -65,7 +65,7 @@ def _premium_context(request, tournament):
         # Present during a trial as well as when locked: the whole point of a
         # trial is that the director can pay before it runs out.
         'premium_purchase_url': (
-            '' if state['reason'] in ('paid', 'grandfathered', 'disabled')
+            '' if state['reason'] in ('paid', 'grandfathered', 'disabled', 'demo')
             else premium_page_url(tournament_pk)),
         'premium_trial_days_left': state['trial_days_left'],
     }

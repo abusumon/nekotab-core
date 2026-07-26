@@ -299,6 +299,13 @@ class ActivateAccountView(View):
                 "Please register again to get a new verification email."
             ))
             
+        # /me, deliberately — unchanged from before the premium branch.
+        #
+        # This is not the post-login landing that Phase 5 moved to '/'. Somebody
+        # arriving here has just clicked a link in their email to finish signing
+        # up, and the useful next screen is their own dashboard, not the
+        # marketing home page. The two are different moments and want different
+        # destinations.
         return redirect('user-dashboard')
 
 

@@ -593,6 +593,9 @@ CELERY_TASK_ROUTES = {
     'organizations.tasks.process_media_asset':        {'queue': 'media'},
     # Lifecycle (heavy, runs infrequently — isolated to avoid blocking others)
     'organizations.run_leadership_transition':         {'queue': 'lifecycle'},
+    # Cascade-deletes whole tournaments; belongs with the other heavy,
+    # infrequent work rather than in front of anything latency-sensitive.
+    'tournaments.tasks.cleanup_expired_demos':         {'queue': 'lifecycle'},
     # Notifications (email delivery, push) — high-priority, separate from analytics
     'notifications.*':                                {'queue': 'notifications'},
     # Default queue catches everything else
@@ -622,6 +625,15 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': crontab(hour=0, minute=5),
         'kwargs': {'days': 1},
         'options': {'queue': 'analytics'},
+    },
+    # Reap expired demo tournaments. Every 15 minutes, so a demo outlives its
+    # nominal DEMO_TOURNAMENT_LIFETIME_HOURS by at most a quarter of an hour —
+    # close enough that the banner does not lie, and infrequent enough that the
+    # cascade deletes never queue up behind each other.
+    'cleanup-expired-demos': {
+        'task': 'tournaments.tasks.cleanup_expired_demos',
+        'schedule': crontab(minute='*/15'),
+        'options': {'queue': 'lifecycle'},
     },
 }
 
@@ -776,11 +788,54 @@ PREMIUM_CHECKOUT_URL = os.environ.get('PREMIUM_CHECKOUT_URL') or (
     'https://nekotab.lemonsqueezy.com/checkout/buy/f3bd0a62-6291-44fb-98cb-e085f6be1afe'
 )
 
-# Every tournament created before this instant is free forever. This is the
-# safety rail on the whole launch: without it, 550+ existing tournaments — many
-# of them mid-competition — would paywall themselves the moment this deploys.
-# Only ever move this backwards in time, never forwards.
-PREMIUM_LAUNCH_AT = os.environ.get('PREMIUM_LAUNCH_AT') or '2026-07-26T00:00:00Z'
+# NOTE: there is deliberately no PREMIUM_LAUNCH_AT setting any more.
+#
+# Grandfathering used to be a date comparison against that value, which made a
+# single environment variable the only thing standing between 550+ existing
+# tournaments and a paywall — and a wrong value failed silently until somebody
+# was locked out mid-competition. It is now the `Tournament.grandfathered`
+# column, snapshotted once by migration tournaments.0041. Nothing in the
+# environment can move that set. Do not reintroduce a date here.
+
+# ------------------------------------------------------------------------------
+# Manual bKash payments
+# ------------------------------------------------------------------------------
+#
+# Most NekoTab users are in Bangladesh, where cards are the exception and bKash
+# is the default. A personal bKash account has no callback and no trustworthy
+# API, so this flow is deliberately manual: the payer submits their TrxID, a
+# human checks it against the bKash app, and approval mints a single-use promo
+# code. Nothing is granted automatically at any point.
+BKASH_MANUAL_ENABLED = _env_bool('BKASH_MANUAL_ENABLED', default=True)
+BKASH_PERSONAL_NUMBER = os.environ.get('BKASH_PERSONAL_NUMBER') or '01324202591'
+# Above the $5 equivalent to absorb the bKash send-money fee, so the amount
+# that actually lands is not short.
+BKASH_AMOUNT_BDT = int(os.environ.get('BKASH_AMOUNT_BDT') or 510)
+
+# ------------------------------------------------------------------------------
+# Demo tournaments
+# ------------------------------------------------------------------------------
+#
+# A throwaway tournament anyone can spin up to see what NekoTab does before
+# paying for it. Never paywalled — a trial you have to pay for is not a trial —
+# and deleted automatically, which is what keeps "unlimited" affordable.
+DEMO_TOURNAMENT_ENABLED = _env_bool('DEMO_TOURNAMENT_ENABLED', default=True)
+DEMO_TOURNAMENT_LIFETIME_HOURS = int(os.environ.get('DEMO_TOURNAMENT_LIFETIME_HOURS') or 3)
+# How many demos an account may create **in total, ever**. Not a concurrency
+# limit: once these are used they do not come back when the demos expire.
+#
+# Counted from tournaments.DemoTournamentLog, which keeps a row per demo
+# created and survives the tournament's deletion — counting live tournaments
+# would reset the tally every few hours and enforce nothing.
+#
+# To grant somebody more (support, a workshop, a genuine mistake), delete their
+# rows in that table. Set to 0 to remove the limit entirely.
+DEMO_TOURNAMENT_LIFETIME_LIMIT = int(os.environ.get('DEMO_TOURNAMENT_LIFETIME_LIMIT') or 3)
+DEMO_TOURNAMENT_NAME = os.environ.get('DEMO_TOURNAMENT_NAME') or 'Demo Tournament'
+DEMO_TOURNAMENT_SLUG_PREFIX = os.environ.get('DEMO_TOURNAMENT_SLUG_PREFIX') or 'demo'
+# Enough rounds to see a draw, a tab and a break without waiting for setup.
+DEMO_TOURNAMENT_PRELIM_ROUNDS = int(os.environ.get('DEMO_TOURNAMENT_PRELIM_ROUNDS') or 3)
+DEMO_TOURNAMENT_BREAK_SIZE = int(os.environ.get('DEMO_TOURNAMENT_BREAK_SIZE') or 4)
 
 # Days a newly created tournament stays unlocked before payment is required.
 # Ships at 0 — pay to run, as intended. It exists as a one-env-var lever to

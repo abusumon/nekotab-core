@@ -1,24 +1,27 @@
 import json
 import logging
 from collections import OrderedDict
+from datetime import timedelta
 
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.core.exceptions import FieldError
-from django.db import DatabaseError, models
+from django.db import DatabaseError, models, transaction
 from django.db.models import Count, Q
 from django.shortcuts import redirect, resolve_url, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.utils.html import format_html_join
+from django.utils import timezone
 from django.utils.timezone import get_current_timezone_name
 
 from users.models import UserPermission
 from users.permissions import Permission
 from utils.middleware import is_slug_dns_safe
 from django.utils.translation import gettext_lazy as _
+from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, FormView, UpdateView
 from django.forms import IntegerField
@@ -43,7 +46,7 @@ from .forms import (CongressTournamentStartForm, RoundWeightForm, ScheduleEventF
                     SetCurrentRoundSingleBreakCategoryForm, TournamentConfigureForm,
                     TournamentStartForm)
 from .mixins import PublicTournamentPageMixin, RoundMixin, TournamentMixin
-from .models import ScheduleEvent, Tournament
+from .models import DemoTournamentLog, ScheduleEvent, Tournament
 
 from .utils import get_side_name
 
@@ -71,15 +74,27 @@ class PricingView(TemplateView):
 class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConfigVarsMixin, TemplateView):
     template_name = 'nekotab_home.html'
 
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return redirect('user-dashboard')
-        return super().get(request, *args, **kwargs)
+    # NOTE: no redirect for authenticated users.
+    #
+    # This used to bounce anyone logged in straight to /me, on every single
+    # visit to `/` — not just after login. The effect was that a signed-in user
+    # could never reach the home page at all: not the pricing band, not the
+    # motion bank links, not the showcase, not the footer. They had to log out
+    # to read their own marketing.
+    #
+    # Signed-in users now get the home page like everybody else, and reach their
+    # dashboard through the Dashboard button in the nav. LOGIN_REDIRECT_URL is
+    # already '/', so nothing else had to change for the post-login landing.
 
     def get_context_data(self, **kwargs):
         # Multi-tenancy: each user sees ONLY their own + shared + listed tournaments
         user = self.request.user
         kwargs['primary_workspace_url'] = None
+        # Featured tournaments for the public showcase. Cached and hard-capped
+        # inside the helper, so this stays a constant-cost addition to the
+        # busiest page on the site however many get featured.
+        from .models import get_showcase_tournaments
+        kwargs['showcase_tournaments'] = get_showcase_tournaments()
         if user.is_authenticated:
             try:
                 visible = Tournament.objects.visible_to(user)
@@ -652,6 +667,16 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
         kwargs['premium_enabled'] = getattr(settings, 'PREMIUM_ENABLED', False)
         kwargs['price_label'] = getattr(settings, 'PREMIUM_PRICE_LABEL', '$5')
         kwargs['trial_days'] = getattr(settings, 'PREMIUM_TRIAL_DAYS', 0)
+        kwargs['demo_enabled'] = getattr(settings, 'DEMO_TOURNAMENT_ENABLED', True)
+        kwargs['demo_lifetime_hours'] = getattr(settings, 'DEMO_TOURNAMENT_LIFETIME_HOURS', 3)
+        # Shown on the button so somebody who has spent their allowance learns
+        # it before clicking, rather than from an error afterwards.
+        demo_limit = int(getattr(settings, 'DEMO_TOURNAMENT_LIFETIME_LIMIT', 3) or 0)
+        used = DemoTournamentLog.lifetime_count(self.request.user) if demo_limit else 0
+        kwargs['demo_limit'] = demo_limit
+        kwargs['demo_used'] = used
+        kwargs['demo_remaining'] = max(0, demo_limit - used) if demo_limit else None
+        kwargs['demo_exhausted'] = bool(demo_limit and used >= demo_limit)
 
         preset_slug = (self.request.GET.get('preset') or '').strip().lower()
         kwargs['preset_slug'] = ''
@@ -669,6 +694,222 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
     def get_success_url(self):
         return reverse_lazy('tournament-create')
 
+
+
+class CreateDemoTournamentView(LoginRequiredMixin, View):
+    """Spin up a throwaway tournament that deletes itself in a few hours.
+
+    POST only. A GET that creates a tournament would be fired by link
+    prefetchers, crawlers and every "open in new tab" — the browser is entitled
+    to assume GET is safe, and this is emphatically not.
+
+    Login is required because a Tournament needs an owner and a non-null
+    organization, because an anonymous creation endpoint is a free-for-all, and
+    because a lifetime allowance is meaningless without an account to charge it
+    to.
+
+    Demos are never paywalled and never counted in any metric, but each account
+    only ever gets DEMO_TOURNAMENT_LIFETIME_LIMIT of them. The allowance is
+    counted from DemoTournamentLog rows, which outlive the tournaments — see
+    that model for why.
+    """
+    http_method_names = ['post']
+
+    #: Give up rather than loop forever if the random space is somehow exhausted.
+    MAX_SLUG_ATTEMPTS = 10
+
+    def post(self, request, *args, **kwargs):
+        if not getattr(settings, 'DEMO_TOURNAMENT_ENABLED', True):
+            messages.error(request, _("Demo tournaments are currently disabled."))
+            return redirect('tournament-create')
+
+        cap_error = self._cap_error(request.user)
+        if cap_error:
+            messages.warning(request, cap_error)
+            return redirect('tournament-create')
+
+        slug = self._unique_slug()
+        if slug is None:
+            logger.error("Could not find a free demo slug after %d attempts",
+                         self.MAX_SLUG_ATTEMPTS)
+            messages.error(request, _("We couldn't start a demo right now. "
+                                      "Please try again in a moment."))
+            return redirect('tournament-create')
+
+        organization = _personal_organization_for(request.user)
+        lifetime = int(getattr(settings, 'DEMO_TOURNAMENT_LIFETIME_HOURS', 3))
+
+        form = TournamentStartForm(data={
+            'name': getattr(settings, 'DEMO_TOURNAMENT_NAME', 'Demo Tournament'),
+            'short_name': _("Demo"),
+            'slug': slug,
+            'num_prelim_rounds': getattr(settings, 'DEMO_TOURNAMENT_PRELIM_ROUNDS', 3),
+            'break_size': getattr(settings, 'DEMO_TOURNAMENT_BREAK_SIZE', 4),
+        })
+        if not form.is_valid():
+            # Nothing here comes from the user, so an invalid form means the
+            # generated slug collided with a validator or the form changed
+            # under us — either way it is our bug, not theirs.
+            logger.error("Demo tournament form rejected generated data: %s", form.errors)
+            messages.error(request, _("We couldn't start a demo right now. "
+                                      "Please try again in a moment."))
+            return redirect('tournament-create')
+
+        form.instance.owner = request.user
+        form.instance.organization = organization
+        form.instance.is_demo = True
+        form.instance.expires_at = timezone.now() + timedelta(hours=lifetime)
+        # A demo is never free-forever in the grandfathered sense.
+        #
+        # `is_listed` is deliberately NOT written here — it belongs to the
+        # visibility feature, and its model default is already False. Every
+        # query that could expose a demo publicly (`showcase()`, `public()`,
+        # anonymous `visible_to()`) filters on `is_demo=False` directly, so the
+        # exclusion does not depend on this flag at all.
+        form.instance.grandfathered = False
+
+        try:
+            # One transaction for the whole thing. TournamentStartForm.save()
+            # creates rounds, break categories and feedback questions after
+            # inserting the tournament; if any of those fail without a
+            # transaction, the tournament row survives as debris — no rounds,
+            # so every page redirects away with a warning, and nothing ever
+            # cleans it up because it is not expired yet.
+            with transaction.atomic():
+                # Serialise this user's demo creation before re-counting.
+                # Without the lock, two simultaneous POSTs both read a count
+                # below the cap and both insert — the check is only meaningful
+                # if concurrent attempts queue behind each other.
+                self._lock_user(request.user)
+
+                cap_error = self._cap_error(request.user)
+                if cap_error:
+                    messages.warning(request, cap_error)
+                    return redirect('tournament-create')
+
+                tournament = form.save()
+
+                # Same transaction as the tournament, deliberately. If creation
+                # rolls back, the allowance must roll back with it — charging
+                # somebody a lifetime demo for a tournament they never got is
+                # not a mistake that can be undone from their side.
+                DemoTournamentLog.objects.create(
+                    user=request.user, tournament=tournament, slug=tournament.slug)
+
+                UserPermission.objects.bulk_create([
+                    UserPermission(user=request.user, permission=perm, tournament=tournament)
+                    for perm in Permission
+                ], ignore_conflicts=True)
+        except Exception:
+            logger.exception("CreateDemoTournamentView failed while saving")
+            messages.error(request, _("We couldn't start a demo right now. "
+                                      "Please try again in a moment."))
+            return redirect('tournament-create')
+
+        # Cache warming only — deliberately outside the transaction.
+        if not hasattr(request.user, '_permissions'):
+            request.user._permissions = {}
+        request.user._permissions[tournament.slug] = set(Permission)
+
+        from django.core.cache import cache
+        cache.set(f'subdom_tour_exists_{tournament.slug.lower()}', True, 300)
+
+        messages.success(request, _(
+            "Your demo tournament is ready. It will be deleted automatically "
+            "in %(hours)d hours — create a real tournament when you're ready "
+            "to keep one.") % {'hours': lifetime})
+
+        logger.info("Demo tournament %s created by %s, expires %s",
+                    tournament.slug, request.user, tournament.expires_at)
+
+        # No premium redirect: demos bypass the paywall entirely.
+        return redirect(reverse_tournament('tournament-configure', tournament=tournament))
+
+    @staticmethod
+    def _cap_error(user):
+        """Return a message if *user* has spent their lifetime allowance, else ''.
+
+        Checked twice: once before doing any work, for a cheap rejection, and
+        again inside the transaction under a lock, which is the authoritative
+        one. The first check is an optimisation; deleting it would not change
+        what is enforced.
+        """
+        limit = int(getattr(settings, 'DEMO_TOURNAMENT_LIFETIME_LIMIT', 3) or 0)
+        if limit <= 0:
+            return ''
+
+        used = DemoTournamentLog.lifetime_count(user)
+        if used < limit:
+            return ''
+
+        # No "try again later": this allowance does not refill, so saying when
+        # the current demos expire would be actively misleading. Point at the
+        # two things that actually help instead.
+        return _("You've used all %(limit)d of your demo tournaments. The demo "
+                 "allowance is once per account and doesn't reset. You can "
+                 "create a real tournament any time — or get in touch if you "
+                 "need another demo for a good reason.") % {'limit': limit}
+
+    @staticmethod
+    def _lock_user(user):
+        """Take a row lock on *user* so demo creation serialises per account.
+
+        Feature-gated because SQLite has no SELECT ... FOR UPDATE and Django
+        raises NotSupportedError rather than ignoring it. Production is
+        Postgres, where the lock is real; on SQLite the surrounding
+        transaction is serialised at the database level anyway.
+        """
+        from django.db import connection
+
+        users = get_user_model().objects.filter(pk=user.pk)
+        if connection.features.has_select_for_update:
+            users = users.select_for_update()
+        list(users)  # force evaluation — the lock is taken on execution
+
+    def _unique_slug(self):
+        """Return an unused ``demo-xxxxxxxx`` slug, or None if we can't find one.
+
+        Random rather than sequential so demo URLs are not guessable and
+        cannot be enumerated — a demo is scratch space, but it is still
+        somebody's scratch space.
+        """
+        import secrets
+        import string
+
+        prefix = getattr(settings, 'DEMO_TOURNAMENT_SLUG_PREFIX', 'demo')
+        alphabet = string.ascii_lowercase + string.digits
+        for _attempt in range(self.MAX_SLUG_ATTEMPTS):
+            candidate = '%s-%s' % (prefix, ''.join(secrets.choice(alphabet) for _ in range(8)))
+            if not Tournament.objects.filter(slug__iexact=candidate).exists():
+                return candidate
+        return None
+
+
+def _personal_organization_for(user):
+    """Return the user's org, creating a personal one if they have none.
+
+    Same rule as CreateTournamentView — a Tournament's organization is
+    NOT NULL, so every creation path needs this.
+    """
+    from organizations.models import Organization, OrganizationMembership
+
+    membership = OrganizationMembership.objects.filter(
+        user=user,
+        role__in=[OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
+    ).select_related('organization').first()
+    if membership:
+        return membership.organization
+
+    org, created = Organization.objects.get_or_create(
+        slug=f"org-{user.username}"[:80],
+        defaults={'name': f"{user.username}'s Organization"},
+    )
+    if created:
+        OrganizationMembership.objects.create(
+            organization=org, user=user,
+            role=OrganizationMembership.Role.OWNER,
+        )
+    return org
 
 
 class CreateCongressTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, CreateView):

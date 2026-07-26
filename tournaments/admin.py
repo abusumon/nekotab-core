@@ -4,6 +4,7 @@ from utils.admin import ModelAdmin
 from utils.admin_tenant import TournamentScopedAdminMixin, get_admin_tournaments_for_user
 
 from .models import (
+    DemoTournamentLog,
     Round,
     ScheduleEvent,
     Tournament,
@@ -137,3 +138,28 @@ class TournamentAuditLogAdmin(TournamentScopedAdminMixin, ModelAdmin):
     list_display = ('tournament', 'actor', 'action', 'entity_type', 'entity_id', 'created_at')
     list_filter = ('entity_type',)
     search_fields = ('tournament__name', 'tournament__slug', 'action', 'entity_type', 'entity_id')
+
+
+@admin.register(DemoTournamentLog)
+class DemoTournamentLogAdmin(ModelAdmin):
+    """Read-only record of demo tournaments created, per user.
+
+    Deleting rows here is the supported way to give somebody more demos —
+    the lifetime allowance is a count of these rows. Adding and editing are
+    disabled so the log stays a record of what happened rather than a lever;
+    if somebody needs another demo, take a row away, don't invent one.
+
+    Not tournament-scoped: rows outlive their tournament by design, and the
+    FK is null for every demo that has already been reaped.
+    """
+    list_display = ('user', 'slug', 'tournament', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('user__username', 'user__email', 'slug')
+    readonly_fields = ('user', 'tournament', 'slug', 'created_at')
+    date_hierarchy = 'created_at'
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False

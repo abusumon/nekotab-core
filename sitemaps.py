@@ -115,7 +115,9 @@ class TournamentSitemap(Sitemap):
 
     def items(self):
         try:
-            return Tournament.objects.filter(active=True, is_listed=True)
+            # .public() excludes demos — submitting URLs that delete themselves
+            # within hours is a steady drip of 404s at the search engines.
+            return Tournament.objects.public()
         except (FieldError, DatabaseError):
             logger.exception("Failed to build tournament sitemap queryset; returning empty list.")
             return []

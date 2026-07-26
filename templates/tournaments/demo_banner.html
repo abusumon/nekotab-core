@@ -1,0 +1,79 @@
+{% comment %}
+  Persistent banner on every page of a demo tournament.
+
+  Not a one-time popup on creation. Somebody who spends forty minutes entering
+  teams into a tournament that evaporates at 4pm needs to be told at minute
+  forty, not only at minute zero — a dismissed-and-forgotten toast is how you
+  turn a demo into a support complaint about lost data.
+
+  Not dismissible for the same reason. It is one line on mobile.
+
+  `demo_expiry_label` is computed server-side per request, so it stays roughly
+  accurate as the page is revisited without needing a countdown script.
+{% endcomment %}
+{% load i18n %}
+{% if tournament.is_demo %}
+<div class="nk-demo-banner d-print-none" role="status">
+  <div class="nk-demo-banner__inner">
+    <span class="nk-demo-banner__badge">{% trans "Demo" %}</span>
+    <span class="nk-demo-banner__text">
+      {% blocktrans trimmed with left=tournament.demo_expiry_label %}
+        This is a demo tournament — it will be deleted automatically in {{ left }}.
+      {% endblocktrans %}
+      <a class="nk-demo-banner__link" href="{% url 'tournament-create' %}">
+        {% trans "Create a real one" %}
+      </a>
+    </span>
+  </div>
+</div>
+<style>
+  /* Mobile first: single column, comfortable tap target on the link, and no
+     horizontal padding fights with the surrounding Bootstrap grid. */
+  .nk-demo-banner {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    margin: 0 0 12px;
+    padding: 10px 12px;
+  }
+  .nk-demo-banner__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .nk-demo-banner__badge {
+    flex: none;
+    background: #92400e;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+  .nk-demo-banner__text {
+    flex: 1 1 220px;
+    min-width: 0;           /* lets long text wrap instead of forcing overflow */
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #92400e;
+  }
+  .nk-demo-banner__link {
+    color: #92400e;
+    font-weight: 600;
+    text-decoration: underline;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 2px 0;         /* taller hit area without shifting the line box */
+  }
+  .nk-demo-banner__link:hover,
+  .nk-demo-banner__link:focus { color: #78350f; }
+
+  @media (min-width: 576px) {
+    .nk-demo-banner { padding: 11px 16px; }
+    .nk-demo-banner__text { font-size: 14px; }
+  }
+</style>
+{% endif %}
