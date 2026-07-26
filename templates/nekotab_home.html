@@ -403,31 +403,116 @@
       text-align: center; font-size: 14.5px; line-height: 1.6; color: #475569;
       max-width: 52ch; margin: 0 auto 28px;
     }
-    .nk-showcase-grid {
-      list-style: none; display: grid; grid-template-columns: 1fr; gap: 12px;
+    /* Mobile first: the table collapses to one card per row, each cell
+       labelled by its ::before. Becomes a real table at 768px. */
+    .nk-sr {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
     }
-    .nk-showcase-card {
-      background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+    .nk-showcase-table { width: 100%; border-collapse: collapse; }
+    .nk-showcase-table thead { display: none; }
+    .nk-showcase-table tr {
+      /* Flex column so the tournament name can be pulled to the top with
+         `order` — on a card the name is the title, not a labelled field. */
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
     }
-    .nk-showcase-card a {
-      display: flex; flex-direction: column; gap: 4px;
-      padding: 16px 18px; text-decoration: none; min-height: 44px;
+    .nk-showcase-table td {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      padding: 3px 0;
+      font-size: 14px;
+      color: #334155;
+      min-width: 0;
     }
-    .nk-showcase-card:hover { border-color: #a5b4fc; }
-    .nk-showcase-card__name {
-      font-size: 15px; font-weight: 700; color: #0f172a; line-height: 1.35;
-      overflow-wrap: anywhere;   /* long tournament names must not overflow */
+    .nk-showcase-table td::before {
+      content: attr(data-label);
+      flex: 0 0 68px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #94a3b8;
     }
-    .nk-showcase-card__org { font-size: 13px; color: #64748b; }
-    .nk-showcase-card__go {
-      font-size: 13px; font-weight: 600; color: #6366f1; margin-top: 4px;
+    /* The name is the card's heading: no label, first in the card, full width.
+       Left as a labelled flex row it stranded the "TOURNAMENT" label on its own
+       line whenever the name wrapped, and pushed the organisation into the
+       label gutter where it read as an orphan. */
+    /* Qualified with the table class on purpose: the generic
+       `.nk-showcase-table td` / `td::before` rules above are more specific than
+       a bare `.nk-showcase-name`, so an unqualified override silently loses and
+       the label keeps rendering. */
+    .nk-showcase-table td.nk-showcase-name {
+      display: block;
+      order: -1;
+      margin-bottom: 8px;
+      padding-top: 0;
     }
-    @media (min-width: 560px) {
-      .nk-showcase { padding: 72px 24px; }
-      .nk-showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .nk-showcase-table td.nk-showcase-name::before { content: none; }
+    .nk-showcase-name a {
+      font-size: 15.5px; font-weight: 700; color: #0f172a;
+      text-decoration: none; overflow-wrap: anywhere; line-height: 1.35;
     }
-    @media (min-width: 900px) {
-      .nk-showcase-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .nk-showcase-name a:hover, .nk-showcase-name a:focus { color: #4f46e5; }
+    .nk-showcase-org {
+      display: block;
+      margin-top: 3px;
+      font-size: 12.5px; color: #64748b;
+    }
+    .nk-showcase-dates { font-variant-numeric: tabular-nums; }
+    .nk-showcase-year { color: #94a3b8; }
+    .nk-showcase-venue { overflow-wrap: anywhere; }
+    .nk-showcase-tbc { color: #94a3b8; }
+    .nk-showcase-tab a {
+      display: inline-flex; align-items: center;
+      min-height: 44px;                 /* real tap target on mobile */
+      font-size: 14px; font-weight: 600; color: #4f46e5; text-decoration: none;
+    }
+    .nk-showcase-tab a:hover, .nk-showcase-tab a:focus { color: #4338ca; }
+
+    @media (min-width: 768px) {
+      .nk-showcase-table thead { display: table-header-group; }
+      .nk-showcase-table tr {
+        display: table-row;
+        background: none;
+        border: 0;
+        border-bottom: 1px solid #e2e8f0;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+      }
+      .nk-showcase-table thead tr { border-bottom: 2px solid #cbd5e1; }
+      .nk-showcase-table tbody tr:hover { background: rgba(99,102,241,0.04); }
+      .nk-showcase-table th {
+        text-align: left;
+        padding: 10px 14px;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #64748b;
+        white-space: nowrap;
+      }
+      .nk-showcase-table td {
+        display: table-cell;
+        padding: 14px;
+        vertical-align: top;
+      }
+      .nk-showcase-table td::before { content: none; }
+      .nk-showcase-table td.nk-showcase-name { display: table-cell; order: 0; margin-bottom: 0; }
+      .nk-showcase-org { display: block; margin-top: 3px; }
+      .nk-showcase-dates { white-space: nowrap; }
+      /* Dates and the tab link stay as narrow as their content so the
+         tournament name gets the remaining width. */
+      .nk-showcase-table th:first-child, .nk-showcase-dates { width: 1%; }
+      .nk-showcase-table th:last-child, .nk-showcase-tab { width: 1%; white-space: nowrap; }
+      .nk-showcase-tab a { min-height: 0; }
     }
 
     /* ── Showcase: cap the list on mobile ──
@@ -445,9 +530,9 @@
 
     @media (max-width: 767.98px) {
       @supports selector(:has(*)) {
-        .nk-showcase-grid > .nk-showcase-card:nth-child(n + 5) { display: none; }
+        .nk-showcase-table tbody tr:nth-child(n + 5) { display: none; }
         .nk-showcase-inner:has(.nk-showcase-more[open])
-          .nk-showcase-grid > .nk-showcase-card:nth-child(n + 5) { display: block; }
+          .nk-showcase-table tbody tr:nth-child(n + 5) { display: flex; }
 
         .nk-showcase-more { display: block; margin-top: 14px; }
         .nk-showcase-more > summary {
@@ -1037,31 +1122,60 @@
   <section class="nk-showcase" aria-labelledby="showcase-heading">
     <div class="nk-showcase-inner">
       <p class="nk-showcase-eyebrow">Live on NekoTab</p>
-      <h2 id="showcase-heading" class="nk-showcase-heading">Tournaments running right now</h2>
+      <h2 id="showcase-heading" class="nk-showcase-heading">Tournaments on NekoTab</h2>
       <p class="nk-showcase-sub">
-        A few of the competitions being tabbed on NekoTab. Draws, tabs and
-        results are free for anyone to read.
+        Competitions being tabbed on NekoTab. Draws, tabs and results are free
+        for anyone to read.
       </p>
       {% comment %}
-        Every card is always in the DOM. On mobile, CSS hides all but the first
-        four and the <details> below reveals them — so if the stylesheet fails
-        to load, all of them are visible rather than all but four being
-        unreachable. Wrapping the overflow inside <details> would collapse it
+        One table, two presentations: a real table from 768px up, and stacked
+        cards below that, where each cell carries its own label via
+        ::before. A four-column table does not survive a 360px screen, and
+        making it scroll sideways hides the tab link — the one thing anybody
+        came here to click.
+
+        Every row is always in the DOM. On mobile, CSS hides all but the first
+        four and the <details> below reveals them, so a stylesheet that fails
+        to load shows all of them rather than hiding eight with no way to
+        reach them. Wrapping the overflow inside <details> would collapse it
         natively, with no CSS involved, and fail *hidden*.
       {% endcomment %}
-      <ul class="nk-showcase-grid">
-        {% for t in showcase_tournaments %}
-          <li class="nk-showcase-card">
-            <a href="{{ t.url }}">
-              <span class="nk-showcase-card__name">{{ t.name }}</span>
-              {% if t.organization %}
-                <span class="nk-showcase-card__org">{{ t.organization }}</span>
-              {% endif %}
-              <span class="nk-showcase-card__go">View results &rarr;</span>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
+      <table class="nk-showcase-table">
+        <thead>
+          <tr>
+            <th scope="col">Dates</th>
+            <th scope="col">Tournament</th>
+            <th scope="col">Venue</th>
+            <th scope="col"><span class="nk-sr">Tab</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in showcase_tournaments %}
+            <tr>
+              <td data-label="Dates" class="nk-showcase-dates">
+                {% if t.start_date %}
+                  {{ t.start_date|date:"j M" }}{% if t.end_date and t.end_date != t.start_date %} &ndash; {{ t.end_date|date:"j M" }}{% endif %}
+                  <span class="nk-showcase-year">{{ t.start_date|date:"Y" }}</span>
+                {% else %}
+                  <span class="nk-showcase-tbc">Date TBC</span>
+                {% endif %}
+              </td>
+              <td data-label="Tournament" class="nk-showcase-name">
+                <a href="{{ t.url }}">{{ t.name }}</a>
+                {% if t.organization %}
+                  <span class="nk-showcase-org">{{ t.organization }}</span>
+                {% endif %}
+              </td>
+              <td data-label="Venue" class="nk-showcase-venue">
+                {% if t.venue %}{{ t.venue }}{% else %}<span class="nk-showcase-tbc">&mdash;</span>{% endif %}
+              </td>
+              <td data-label="Tab" class="nk-showcase-tab">
+                <a href="{{ t.url }}">View tab &rarr;</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
       {% if showcase_tournaments|length > 4 %}
         <details class="nk-showcase-more">
           <summary>

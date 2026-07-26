@@ -745,6 +745,12 @@ class CreateDemoTournamentView(LoginRequiredMixin, View):
             'slug': slug,
             'num_prelim_rounds': getattr(settings, 'DEMO_TOURNAMENT_PRELIM_ROUNDS', 3),
             'break_size': getattr(settings, 'DEMO_TOURNAMENT_BREAK_SIZE', 4),
+            # Date and venue are required on the form now. A demo has no real
+            # ones, so fill them in rather than making the user supply details
+            # for a tournament that deletes itself this afternoon. Demos never
+            # reach the public list, so these values are never shown to anyone.
+            'event_start_date': timezone.localdate(),
+            'venue': _("Demo"),
         })
         if not form.is_valid():
             # Nothing here comes from the user, so an invalid form means the

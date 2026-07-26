@@ -1,6 +1,6 @@
 from django.contrib.contenttypes.models import ContentType
 from django.core.cache import cache
-from django.forms import CharField, ChoiceField, DateTimeInput, Form, HiddenInput, ModelChoiceField, ModelForm
+from django.forms import CharField, ChoiceField, DateField, DateInput, DateTimeInput, Form, HiddenInput, ModelChoiceField, ModelForm
 from django.forms.fields import IntegerField, NumberInput
 from django.forms.models import ModelChoiceIterator
 from django.utils.html import escape
@@ -36,6 +36,38 @@ class TournamentStartForm(ModelForm):
         required=False,
         label=_("Number of teams in the open break"),
         help_text=_("Leave blank if there are no break rounds."))
+
+    # Stored on TournamentMetadata, not Tournament — that model already owns
+    # event dates and venue, and the workspace creation flow already writes
+    # them there. Duplicating them onto Tournament would give two sources of
+    # truth for the same fact.
+    event_start_date = DateField(
+        required=True,
+        widget=DateInput(attrs={'type': 'date'}),
+        label=_("Tournament date"),
+        help_text=_("The day the tournament starts. Shown on the public "
+                    "tournament list."))
+
+    event_end_date = DateField(
+        required=False,
+        widget=DateInput(attrs={'type': 'date'}),
+        label=_("End date"),
+        help_text=_("Leave blank for a one-day tournament."))
+
+    venue = CharField(
+        max_length=200,
+        required=True,
+        label=_("Venue"),
+        help_text=_("Where it is being held, e.g. \"Dhaka University\" or "
+                    "\"Online\"."))
+
+    def clean(self):
+        cleaned = super().clean()
+        start, end = cleaned.get('event_start_date'), cleaned.get('event_end_date')
+        if start and end and end < start:
+            self.add_error('event_end_date',
+                           _("The end date can't be before the start date."))
+        return cleaned
 
     def clean_slug(self):
         """Auto-normalise the slug to be DNS-safe and provide a helpful
@@ -92,6 +124,20 @@ class TournamentStartForm(ModelForm):
 
         self.add_default_permission_groups(tournament)
         self.add_default_feedback_questions(tournament)
+
+        # update_or_create rather than create: the workspace flow also writes
+        # metadata, and a tournament arriving here with a row already present
+        # should be updated rather than raise on the OneToOne.
+        from .models import TournamentMetadata
+        TournamentMetadata.objects.update_or_create(
+            tournament=tournament,
+            defaults={
+                'event_start_date': self.cleaned_data.get('event_start_date'),
+                'event_end_date': self.cleaned_data.get('event_end_date'),
+                'venue': self.cleaned_data.get('venue', '') or '',
+            },
+        )
+
         tournament.current_round = tournament.round_set.order_by('seq').first()
         tournament.save()
 

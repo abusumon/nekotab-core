@@ -315,10 +315,17 @@ def get_showcase_tournaments(limit=SHOWCASE_MAX):
 
     rows = []
     try:
+        # Soonest event first, and tournaments with no date set last rather
+        # than first — an unset date sorts as NULL, which Postgres would
+        # otherwise put at the top and fill the list with undated entries.
+        # Ordered by date, not creation, because this is a tournament listing:
+        # what a reader wants is "what is on next".
         qs = (Tournament.objects.showcase()
-              .select_related('organization')
-              .order_by('-created_at', '-id')[:SHOWCASE_MAX])
+              .select_related('organization', 'metadata')
+              .order_by(F('metadata__event_start_date').asc(nulls_last=True),
+                        '-created_at', '-id')[:SHOWCASE_MAX])
         for t in qs:
+            meta = getattr(t, 'metadata', None)
             rows.append({
                 'name': t.name,
                 'short_name': t.short_name or t.name,
@@ -328,6 +335,9 @@ def get_showcase_tournaments(limit=SHOWCASE_MAX):
                 'url': t.view_url,
                 'organization': getattr(t.organization, 'name', ''),
                 'created_at': t.created_at,
+                'start_date': getattr(meta, 'event_start_date', None),
+                'end_date': getattr(meta, 'event_end_date', None),
+                'venue': getattr(meta, 'venue', '') or '',
             })
     except Exception:
         logger.exception('Could not build the home-page showcase; rendering none')
