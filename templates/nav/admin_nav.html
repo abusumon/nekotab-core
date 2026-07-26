@@ -301,19 +301,30 @@
     {% include 'nav/round_panel.html' %}
   {% endfor %}
 
-  {% if ad_free_purchase_url %}
+  {% if premium_purchase_url %}
     {% comment %}
-      The admin area itself carries no ads, so this is the only place the
-      person who can actually pay ever sees the offer. Plain link, not an
-      ad unit — nothing from AdSense renders under /admin/.
+      Shown only while this tournament is on a trial and still unpaid — a
+      tournament that is paid for, grandfathered, or has premium switched off
+      gets an empty `premium_purchase_url` and no prompt. A director who has
+      already paid must never be nagged.
+
+      Once the trial expires the paywall takes over and redirects to the same
+      page, so this is the gentle version of that: the chance to pay before
+      being made to.
     {% endcomment %}
-    <a class="list-group-item nk-adfree-promo" href="{{ ad_free_purchase_url }}">
+    <a class="list-group-item nk-adfree-promo" href="{{ premium_purchase_url }}">
       <i data-feather="zap"></i>
-      <span>{% blocktrans trimmed with price=ads_price_label %}
-        Remove ads · {{ price }}
+      <span>{% blocktrans trimmed with price=premium_price_label %}
+        Unlock this tournament · {{ price }}
       {% endblocktrans %}</span>
       <small class="d-none d-md-block text-muted">
-        {% trans "One payment, whole tournament, everyone" %}
+        {% if premium_trial_days_left %}
+          {% blocktrans trimmed with days=premium_trial_days_left %}
+            {{ days }} day(s) left on your trial
+          {% endblocktrans %}
+        {% else %}
+          {% trans "One payment, whole tournament, forever" %}
+        {% endif %}
       </small>
     </a>
   {% endif %}

@@ -12,10 +12,40 @@
 
 {% block content %}
 
-  {% blocktrans trimmed asvar donation %}
-    NekoTab is free and open-source. <a href="https://github.com/abusumon/nekotab-app">Star us on GitHub</a> if you find it useful!
-  {% endblocktrans %}
-  {% include "components/explainer-card.html" with type="primary" p1=donation %}
+  {% if premium_enabled %}
+    {# The charge is stated before the form, not after it. Finding out about #}
+    {# a price only once you have filled in eight fields is how you lose      #}
+    {# someone's trust as well as their tournament.                           #}
+    <div class="card border-primary mt-3">
+      <div class="card-body">
+        <h5 class="card-title mb-2">
+          {% blocktrans trimmed with price=price_label %}
+            NekoTab Premium — {{ price }} for this tournament
+          {% endblocktrans %}
+        </h5>
+        <p class="mb-2">
+          {% blocktrans trimmed with price=price_label %}
+            Setting up a tournament costs {{ price }}, paid once. No subscription, no
+            per-team fee, and no adverts anywhere. Fill in the details below and
+            you'll be taken to checkout.
+          {% endblocktrans %}
+        </p>
+        <p class="mb-2 text-muted small">
+          {% blocktrans trimmed %}
+            Your debaters, judges and audience never pay: public draw, tab and
+            results pages are free for everyone. Tournaments created before Premium
+            launched stay free forever.
+          {% endblocktrans %}
+        </p>
+        <a href="{% url 'pricing' %}" class="small">{% trans "Why we charge, and what it covers" %}</a>
+      </div>
+    </div>
+  {% else %}
+    {% blocktrans trimmed asvar donation %}
+      NekoTab is free and open-source. <a href="https://github.com/abusumon/nekotab-app">Star us on GitHub</a> if you find it useful!
+    {% endblocktrans %}
+    {% include "components/explainer-card.html" with type="primary" p1=donation %}
+  {% endif %}
 
   <div class="card border-info text-info mt-3">
     <div class="card-body">
@@ -76,9 +106,17 @@
       {% include "components/form-main.html" %}
 
       {% trans "Create Tournament" as title %}
-      {% blocktrans trimmed asvar subtitle %}
-        Fill in the details above and click "Create Tournament" to get started. Your tournament will be ready instantly.
-      {% endblocktrans %}
+      {% if premium_enabled %}
+        {% blocktrans trimmed asvar subtitle with price=price_label %}
+          Fill in the details above and click "Create Tournament". You'll go
+          straight to checkout to pay {{ price }}, once, and your tournament is
+          ready immediately after.
+        {% endblocktrans %}
+      {% else %}
+        {% blocktrans trimmed asvar subtitle %}
+          Fill in the details above and click "Create Tournament" to get started. Your tournament will be ready instantly.
+        {% endblocktrans %}
+      {% endif %}
       {% url 'tabbycat-index' as suburl %}
       {% include "components/form-submit.html" %}
 

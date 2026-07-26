@@ -149,6 +149,9 @@ MIDDLEWARE = [
     # Rewrite subdomain requests to slug-based paths (feature gated)
     'utils.middleware.SubdomainTenantMiddleware',
     'utils.middleware.DebateMiddleware',
+    # Paywalls the tab-director workspace of unpaid tournaments. Must follow
+    # DebateMiddleware, which is what puts the tournament slug in scope.
+    'donations.middleware.PremiumGateMiddleware',
     # 404 diagnostic logging
     'utils.middleware_404.Log404Middleware',
     # Redirect fallback: serves django.contrib.redirects entries
@@ -744,10 +747,69 @@ ADMIN_NOTIFICATION_EMAILS = [e.strip() for e in _admin_emails.split(',') if e.st
 REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab.app>')
 
 # ==============================================================================
-# AdSense / Monetization
+# Monetisation
 # ==============================================================================
+#
+# NekoTab ran free and ad-supported for its first six months: 550+ tournaments,
+# and effectively no revenue. Ninety days of AdSense data put the impression RPM
+# at ~$0.199 against Bangladesh/Uganda/Malaysia-weighted traffic, which is a
+# structural ceiling, not a tuning problem — a single $5 tournament out-earned
+# the lifetime ad revenue of all but about three of the 451 tournaments in that
+# window.
+#
+# So the ads are gone and the site is premium: one $5 payment per tournament,
+# no advertising anywhere. Everything below the AdSense heading is kept, off,
+# because reversing this decision should be an env-var change rather than a
+# code archaeology exercise.
 
-ADSENSE_ENABLED = _env_bool('ADSENSE_ENABLED', default=True)
+# ------------------------------------------------------------------------------
+# NekoTab Premium
+# ------------------------------------------------------------------------------
+
+PREMIUM_ENABLED = _env_bool('PREMIUM_ENABLED', default=True)
+PREMIUM_PRICE_LABEL = os.environ.get('PREMIUM_PRICE_LABEL') or '$5'
+PREMIUM_PRICE_AMOUNT = os.environ.get('PREMIUM_PRICE_AMOUNT') or '5.00'
+PREMIUM_CURRENCY = os.environ.get('PREMIUM_CURRENCY') or 'USD'
+
+# The "NekoTab Premium — one tournament" Lemon Squeezy product.
+PREMIUM_CHECKOUT_URL = os.environ.get('PREMIUM_CHECKOUT_URL') or (
+    'https://nekotab.lemonsqueezy.com/checkout/buy/f3bd0a62-6291-44fb-98cb-e085f6be1afe'
+)
+
+# Every tournament created before this instant is free forever. This is the
+# safety rail on the whole launch: without it, 550+ existing tournaments — many
+# of them mid-competition — would paywall themselves the moment this deploys.
+# Only ever move this backwards in time, never forwards.
+PREMIUM_LAUNCH_AT = os.environ.get('PREMIUM_LAUNCH_AT') or '2026-07-26T00:00:00Z'
+
+# Days a newly created tournament stays unlocked before payment is required.
+# Ships at 0 — pay to run, as intended. It exists as a one-env-var lever to
+# soften the launch if new-tournament creation falls off a cliff.
+PREMIUM_TRIAL_DAYS = int(os.environ.get('PREMIUM_TRIAL_DAYS') or 0)
+
+# Paths under a tournament that stay free forever, even unpaid. Payment buys
+# the director's workspace; it does not buy the audience's right to read the
+# draw. Participants must never be locked out of a tournament, and these public
+# pages are most of the site's traffic and all of its SEO.
+PREMIUM_ALWAYS_FREE_PATTERNS = (
+    r'^/premium/',
+    r'^/donations/',
+    r'^/accounts/',
+    r'^/api/',
+    r'^/static/',
+    r'^/media/',
+    r'^/django-admin/',
+    r'^/jet',
+)
+
+# ------------------------------------------------------------------------------
+# AdSense — switched off at the premium launch (2026-07-26).
+# ------------------------------------------------------------------------------
+#
+# Left wired up but disabled. Every ad template is gated on the `ads_enabled`
+# context flag, which this switch drives, so flipping ADSENSE_ENABLED=1 in the
+# environment brings the whole placement system back with no code change.
+ADSENSE_ENABLED = _env_bool('ADSENSE_ENABLED', default=False)
 ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID') or 'ca-pub-4135779137186219'
 
 # Turn Auto ads OFF in the AdSense dashboard (Ads -> your site -> Auto ads).

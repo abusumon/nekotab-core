@@ -1,0 +1,195 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <title>{% trans "Pricing" %} — NekoTab</title>
+  <meta name="description" content="NekoTab costs {{ price_label }} per tournament, once. No subscription, no per-team fee, no ads. Public draw and results pages are always free.">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {# System fonts, no webfont request: this page is a conversion step and #}
+  {# most of its traffic is on mobile networks in South and Southeast Asia. #}
+  <style>
+    :root{
+      --primary:#6366f1;--primary-dark:#4f46e5;
+      --text:#18181f;--text-sec:#62626e;
+      --bg:#f7f7fb;--surface:#fff;--border:#e5e7eb;
+      --ok:#059669;--radius:16px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      color:var(--text);background:var(--bg);line-height:1.55;-webkit-text-size-adjust:100%;
+    }
+    a{color:var(--primary);}
+    .topbar{background:#fff;border-bottom:1px solid var(--border);padding:14px 20px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .topbar-logo{font-weight:800;font-size:1.05rem;color:var(--primary);text-decoration:none;}
+    .topbar nav{display:flex;gap:16px;}
+    .topbar nav a{font-size:13.5px;color:var(--text-sec);text-decoration:none;}
+    .topbar nav a:hover{color:var(--primary);}
+    .wrap{max-width:760px;margin:0 auto;padding:44px 20px 72px;}
+    .hero{text-align:center;margin-bottom:34px;}
+    h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:12px;}
+    .lede{font-size:16px;color:var(--text-sec);max-width:52ch;margin:0 auto;}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+      padding:30px 26px;}
+    .card + .card{margin-top:18px;}
+    .plan{text-align:center;border:2px solid var(--primary);}
+    .plan .price{font-size:3rem;font-weight:800;letter-spacing:-.03em;line-height:1;}
+    .plan .per{font-size:14px;color:var(--text-sec);margin-top:8px;}
+    .btn{display:inline-block;margin-top:22px;padding:14px 30px;border-radius:10px;
+      background:var(--primary);color:#fff;font-size:15px;font-weight:600;
+      text-decoration:none;}
+    .btn:hover,.btn:focus{background:var(--primary-dark);}
+    ul{list-style:none;text-align:left;max-width:420px;margin:26px auto 0;}
+    ul li{font-size:14.5px;padding:10px 0 10px 27px;position:relative;
+      border-bottom:1px solid var(--border);}
+    ul li:last-child{border-bottom:0;}
+    ul li::before{content:"\2713";position:absolute;left:0;color:var(--ok);font-weight:700;}
+    h2{font-size:1.15rem;font-weight:700;margin-bottom:12px;letter-spacing:-.01em;}
+    .card p{font-size:14.5px;color:var(--text-sec);}
+    .card p + p{margin-top:12px;}
+    .free{background:#ecfdf5;border-color:#a7f3d0;}
+    .free h2{color:#065f46;}
+    .free p{color:#047857;}
+    dl{margin-top:6px;}
+    dt{font-size:14.5px;font-weight:600;margin-top:18px;}
+    dd{font-size:14.5px;color:var(--text-sec);margin-top:5px;}
+    footer{text-align:center;font-size:13px;color:var(--text-sec);margin-top:34px;}
+    @media (max-width:520px){
+      .wrap{padding:28px 14px 56px;}
+      .card{padding:24px 18px;}
+      h1{font-size:1.6rem;}
+      .plan .price{font-size:2.5rem;}
+      .topbar nav{gap:12px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="topbar-logo" href="/">NekoTab</a>
+    <nav>
+      <a href="/motions/">{% trans "Motions" %}</a>
+      <a href="/contact/">{% trans "Contact" %}</a>
+      <a href="/create/">{% trans "Create" %}</a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+
+    <div class="hero">
+      <h1>{% trans "One price. One tournament. Paid once." %}</h1>
+      <p class="lede">
+        {% blocktrans trimmed %}
+          No subscription, no per-team fee, and no adverts anywhere on the site.
+        {% endblocktrans %}
+      </p>
+    </div>
+
+    <div class="card plan">
+      <div class="price">{{ price_label }}</div>
+      <div class="per">{% trans "per tournament, one time" %}</div>
+      <a class="btn" href="/create/">{% trans "Create a tournament" %}</a>
+      <ul>
+        <li>{% trans "Unlimited teams, adjudicators, rounds and rooms" %}</li>
+        <li>{% trans "Draws, tabs, ballots, feedback, check-ins, break rounds" %}</li>
+        <li>{% trans "British Parliamentary, Asian, Australs, WSDC, Congress and more" %}</li>
+        <li>{% trans "Your own tournament subdomain and public results pages" %}</li>
+        <li>{% trans "Motion bank, registration forms and ticketing included" %}</li>
+        <li>{% trans "No advertising, for you or your audience" %}</li>
+        <li>{% trans "Export your data whenever you like" %}</li>
+      </ul>
+    </div>
+
+    <div class="card free">
+      <h2>{% trans "What stays free" %}</h2>
+      <p>
+        {% blocktrans trimmed %}
+          Every public page of every tournament — the draw, the tab, results,
+          team and adjudicator pages — is free to read for anyone with the link,
+          whether or not the tournament has been paid for. Debaters and audiences
+          never hit a paywall.
+        {% endblocktrans %}
+      </p>
+      <p>
+        {% blocktrans trimmed %}
+          The motion bank is free. Every tournament created before Premium launched
+          stays free, forever.
+        {% endblocktrans %}
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>{% trans "Why we started charging" %}</h2>
+      <p>
+        {% blocktrans trimmed %}
+          NekoTab was free for its first six months. In that time more than 550
+          tournaments ran on it, and it made no money at all. We tried advertising;
+          it earned a rounding error and made the site worse to use.
+        {% endblocktrans %}
+      </p>
+      <p>
+        {% blocktrans trimmed with price=price_label %}
+          The choice was to let NekoTab rot, or to ask for something. {{ price }} per
+          tournament is what it takes to keep the servers running, the backups
+          honest, and someone available when a draw breaks an hour before round one.
+        {% endblocktrans %}
+      </p>
+      <p>
+        {% blocktrans trimmed %}
+          We have set it deliberately low — well under what comparable tab software
+          charges. It is a one-off, not a subscription, and it is per tournament,
+          not per team.
+        {% endblocktrans %}
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>{% trans "Questions" %}</h2>
+      <dl>
+        <dt>{% trans "Is this a subscription?" %}</dt>
+        <dd>{% trans "No. You pay once for a tournament and that tournament is unlocked for good." %}</dd>
+
+        <dt>{% trans "I already run a tournament on NekoTab. Do I have to pay now?" %}</dt>
+        <dd>{% trans "No. Everything created before Premium launched stays free forever, including tournaments that are mid-competition." %}</dd>
+
+        <dt>{% trans "Do my debaters and judges have to pay?" %}</dt>
+        <dd>{% trans "Never. Only the person setting up the tournament pays, once. Participants and the public use it free." %}</dd>
+
+        <dt>{% trans "What if I run several tournaments a year?" %}</dt>
+        <dd>{% trans "Each one is a separate payment. If you are running a circuit or a series, write to us — we would rather find an arrangement than lose you." %}</dd>
+
+        <dt>{% trans "We are a school society and genuinely cannot pay." %}</dt>
+        <dd>
+          {% blocktrans trimmed %}
+            Then get in touch and tell us about it. We would rather your tournament
+            ran than not.
+          {% endblocktrans %}
+          <a href="/contact/">{% trans "Contact us" %}</a>.
+        </dd>
+
+        <dt>{% trans "How do I pay?" %}</dt>
+        <dd>{% trans "Card or PayPal, through Lemon Squeezy. We never see or store your card details." %}</dd>
+
+        <dt>{% trans "Something went wrong with my payment." %}</dt>
+        <dd>
+          {% blocktrans trimmed %}
+            Email support@nekotab.app with your order number and we will unlock it
+            by hand, quickly.
+          {% endblocktrans %}
+        </dd>
+      </dl>
+    </div>
+
+    <footer>
+      <a href="/create/">{% trans "Create a tournament" %}</a> ·
+      <a href="/contact/">{% trans "Contact" %}</a> ·
+      <a href="/terms/">{% trans "Terms" %}</a> ·
+      <a href="/privacy/">{% trans "Privacy" %}</a>
+    </footer>
+
+  </div>
+</body>
+</html>

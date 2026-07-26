@@ -306,11 +306,13 @@ class SubdomainTournamentMiddleware:
         '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
         '/summernote/', '/jet/', '/organizations/', '/archive/',
         '/forum/', '/motions-bank/',
-        # Global, not tournament-scoped: the ad-removal purchase page and the
-        # Lemon Squeezy webhook. Without this the "Remove ads" link 404s on
-        # every subdomain-served tournament, because /donations/ad-free/<pk>/
-        # is rewritten to /<slug>/donations/ad-free/<pk>/.
-        '/donations/',
+        # Global, not tournament-scoped: the premium purchase page and the
+        # Lemon Squeezy webhook. Without this the "Unlock" link 404s on every
+        # subdomain-served tournament, because /premium/<pk>/ would be
+        # rewritten to /<slug>/premium/<pk>/ — and since that page is also the
+        # paywall's redirect target, omitting it 404s exactly the people who
+        # are trying to pay.
+        '/donations/', '/premium/', '/pricing/', '/tournaments/',
         '/i18n/', '/jsi18n/',
         '/register/', '/start/', '/create/', '/style/', '/load-demo/', '/claim/',
         '/unsubscribe/', '/for-organizers/',
@@ -463,11 +465,13 @@ class SubdomainTenantMiddleware:
         '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
         '/summernote/', '/jet/', '/organizations/', '/archive/',
         '/forum/', '/motions-bank/',
-        # Global, not tournament-scoped: the ad-removal purchase page and the
-        # Lemon Squeezy webhook. Without this the "Remove ads" link 404s on
-        # every subdomain-served tournament, because /donations/ad-free/<pk>/
-        # is rewritten to /<slug>/donations/ad-free/<pk>/.
-        '/donations/',
+        # Global, not tournament-scoped: the premium purchase page and the
+        # Lemon Squeezy webhook. Without this the "Unlock" link 404s on every
+        # subdomain-served tournament, because /premium/<pk>/ would be
+        # rewritten to /<slug>/premium/<pk>/ — and since that page is also the
+        # paywall's redirect target, omitting it 404s exactly the people who
+        # are trying to pay.
+        '/donations/', '/premium/', '/pricing/', '/tournaments/',
         '/i18n/', '/jsi18n/',
         '/register/', '/start/', '/create/', '/style/', '/load-demo/', '/claim/',
         '/unsubscribe/', '/for-organizers/',

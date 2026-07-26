@@ -28,65 +28,75 @@ _ANCHOR_ONLY_RE = _compile_path_rules('ADS_ANCHOR_ONLY_PATHS')
 _ADS_OFF_RE = _compile_path_rules('ADS_DISABLED_PATHS')
 
 
-def _ad_free_state(tournament_pk):
-    """Return ``(is_ad_free, purchase_page_url)`` for a tournament.
+def _premium_context(request, tournament):
+    """Premium status of the tournament this request is about.
 
-    Deliberately independent of whether ads render on *this* path: the tab
-    director's own workspace is ad-free, so without this the one person
-    holding the credit card would never see the offer at all.
+    Drives the upgrade prompts in the admin chrome. Returns the unlocked shape
+    on any failure — a broken monetisation lookup must never take a page down,
+    and showing no prompt is a much cheaper mistake than nagging a director who
+    has already paid.
     """
+    unlocked = {
+        'tournament_is_premium': True,
+        'premium_reason': 'disabled',
+        'premium_purchase_url': '',
+        'premium_trial_days_left': None,
+    }
+
+    tournament_pk = getattr(tournament, 'pk', None)
     if not tournament_pk:
-        return False, ''
+        return unlocked
+
     try:
-        from donations.ads import tournament_is_ad_free
+        from donations.premium import premium_page_url, premium_state
     except ImportError:
         # `donations` is a NekoTab-only app; upstream Tabbycat runs without it.
-        return False, ''
+        return unlocked
+
     try:
-        return tournament_is_ad_free(tournament_pk), '/donations/ad-free/%d/' % tournament_pk
+        state = premium_state(tournament)
     except Exception:
-        # Never let the monetisation layer take a page down.
-        logger.exception('Ad-free lookup failed; falling back to showing ads')
-        return False, ''
+        logger.exception('Premium lookup failed; treating the tournament as unlocked')
+        return unlocked
+
+    return {
+        'tournament_is_premium': state['is_premium'],
+        'premium_reason': state['reason'],
+        # Present during a trial as well as when locked: the whole point of a
+        # trial is that the director can pay before it runs out.
+        'premium_purchase_url': (
+            '' if state['reason'] in ('paid', 'grandfathered', 'disabled')
+            else premium_page_url(tournament_pk)),
+        'premium_trial_days_left': state['trial_days_left'],
+    }
 
 
 def _ad_context(request, tournament):
-    """Decide whether — and how heavily — to show ads on this request.
+    """Ad placement flags for this request.
 
-    Ads are on for everyone, including tab directors and assistants, unless
-    the tournament has a paid ad-free grant or the path is excluded.
+    Ads were switched off site-wide at the premium launch, so in normal
+    operation this returns the all-off shape on the first branch. The path
+    rules below still work and still matter if ``ADSENSE_ENABLED`` is ever
+    turned back on.
     """
-    tournament_pk = getattr(tournament, 'pk', None)
-    is_ad_free, purchase_url = _ad_free_state(tournament_pk)
+    off = {'ads_enabled': False, 'ads_anchor_only': False, 'ads_removal_url': ''}
 
-    # Always available, even on pages that show no ads — this is what drives
-    # the offer in the admin sidebar.
-    base = {
-        'tournament_is_ad_free': is_ad_free,
-        'ad_free_purchase_url': '' if is_ad_free else purchase_url,
-    }
-    off = dict(base, ads_enabled=False, ads_anchor_only=False, ads_removal_url='')
+    if not getattr(settings, 'ADSENSE_ENABLED', False):
+        return off
 
-    if not getattr(settings, 'ADSENSE_ENABLED', False) or is_ad_free:
+    # A tournament that has been paid for never shows ads, whatever the
+    # site-wide switch says.
+    if _premium_context(request, tournament)['premium_reason'] == 'paid':
         return off
 
     path = getattr(request, 'path', '') or '/'
     if _ADS_OFF_RE is not None and _ADS_OFF_RE.search(path):
         return off
 
-    removal_url = ''
-    if tournament_pk:
-        try:
-            from donations.ads import build_ad_free_checkout_url
-            removal_url = build_ad_free_checkout_url(tournament_pk)
-        except Exception:
-            logger.exception('Could not build ad-removal checkout URL')
-
     return dict(
-        base,
+        off,
         ads_enabled=True,
         ads_anchor_only=bool(_ANCHOR_ONLY_RE is not None and _ANCHOR_ONLY_RE.search(path)),
-        ads_removal_url=removal_url,
     )
 
 COUNTRY_HEADER_KEYS = (
@@ -219,7 +229,9 @@ def debate_context(request):
         'adsense_slot_footer': getattr(settings, 'ADSENSE_SLOT_FOOTER', ''),
         'adsense_slot_table': getattr(settings, 'ADSENSE_SLOT_TABLE', ''),
         'adsense_slot_anchor': getattr(settings, 'ADSENSE_SLOT_ANCHOR', ''),
-        'ads_price_label': getattr(settings, 'ADS_REMOVAL_PRICE_LABEL', '$5'),
+        'ads_price_label': getattr(settings, 'PREMIUM_PRICE_LABEL', '$5'),
+        'premium_price_label': getattr(settings, 'PREMIUM_PRICE_LABEL', '$5'),
+        'premium_enabled': getattr(settings, 'PREMIUM_ENABLED', False),
         # SEO defaults
         'seo_site_name': 'NekoTab Debate Tabulation',
         'seo_keywords': 'debate tab, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, parliamentary debating, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, debate results live, debate ticketing, debate schedule planner, debate registration forms, debate website builder, nekotab, free debate tab software',
@@ -263,8 +275,9 @@ def debate_context(request):
         context['workspace_org'] = tenant_org
         context['workspace_url'] = f"https://{tenant_org.slug}.{base_domain}/"
 
-    # Must run after `tournament` is resolved above — the ad-free grant is
+    # Both must run after `tournament` is resolved above — premium is granted
     # per-tournament.
+    context.update(_premium_context(request, context.get('tournament')))
     context.update(_ad_context(request, context.get('tournament')))
 
     return context

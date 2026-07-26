@@ -47,7 +47,7 @@
 
 <section class="mb-5">
   <h2>Send a Message</h2>
-  <form method="post" action="{% url 'content:contact' %}" class="mt-3" novalidate>
+  <form method="post" action="{% url 'contact' %}" class="mt-3" novalidate>
     {% csrf_token %}
 
     {# Honeypot — hidden from humans, visible to bots #}

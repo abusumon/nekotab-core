@@ -12,7 +12,12 @@ import ModalErrorMixin from '../errors/ModalErrorMixin.vue'
 export default {
   mixins: [ModalErrorMixin],
   data: function () {
-    return { bridges: {}, lostConnections: 0, componentId: Math.floor(Math.random() * 10000) }
+    return {
+      bridges: {},
+      lostConnections: 0,
+      componentId: Math.floor(Math.random() * 10000),
+      lostConnectionTimer: null,
+    }
   },
   created: function () {
     // Check if this is being run over HTTP(S); match the WS(S) protocol
@@ -30,10 +35,18 @@ export default {
 
       // Open the connection
       const webSocketBridge = new WebSocketBridge()
+      // Reconnect fast and keep retrying often.
+      //
+      // The old settings waited 5s before the first retry and backed off to a
+      // 4-minute ceiling. During a live round that is the difference between a
+      // blip nobody notices and a tab table sitting in front of a "Connection
+      // Lost" banner, unable to trust the screen, for minutes at a time. A
+      // deploy or a worker restart is over in seconds, so retrying quickly
+      // costs one or two extra attempts and recovers almost immediately.
       webSocketBridge.connect(socketPath, undefined, {
-        minReconnectionDelay: 5 * 1000, // Wait 5s inbetween attempts
-        maxReconnectionDelay: 240 * 1000, // Cap waits at 4m inbetween attempts
-        reconnectionDelayGrowFactor: 1.5, // Wait extra 7.5s inbetween
+        minReconnectionDelay: 1 * 1000, // First retry after ~1s
+        maxReconnectionDelay: 20 * 1000, // Never wait more than 20s to retry
+        reconnectionDelayGrowFactor: 1.3,
         connectionTimeout: 10 * 1000,
       })
 
@@ -95,16 +108,39 @@ export default {
       payload.component_id = this.componentId // Pass on originating Vue instance
       this.bridges[socketLabel].send(payload)
     },
+    // Warn only if the connection is still down after a grace period.
+    //
+    // Reconnection now takes about a second, so alerting the instant a socket
+    // closes means flashing an alarming red modal for a hiccup that has already
+    // fixed itself. That is what made the banner feel constant: most sightings
+    // were of a connection that was fine again before the user finished
+    // reading. Waiting a few seconds means the warning appears only when
+    // something is genuinely wrong — which is the only time it is useful.
     showLostConnectionAlert: function () {
-      if (this.lostConnections > 1) {
+      if (this.lostConnections <= 1) {
+        return
+      }
+      if (this.lostConnectionTimer !== null) {
+        return // Already counting down from an earlier close
+      }
+      this.lostConnectionTimer = window.setTimeout(() => {
+        this.lostConnectionTimer = null
         const explanation = `This page maintains a live connection to the server. That connection has
                            been lost. This page will attempt to reconnect and will update this message
                            if it succeeds. You can dismiss this warning if needed, just be aware that
                            you should not change data on this page until the connection resumes.`
         this.showErrorAlert(explanation, null, 'Connection Lost', 'text-danger', true, true)
-      }
+      }, 5000)
     },
     dismissLostConnectionAlert: function () {
+      // Reconnected inside the grace period: cancel the pending warning and
+      // say nothing at all. The user never knew, and telling them now would
+      // only invent a problem.
+      if (this.lostConnectionTimer !== null) {
+        window.clearTimeout(this.lostConnectionTimer)
+        this.lostConnectionTimer = null
+        return
+      }
       if (this.lostConnections > 1) { // Only show modal when a connection is re-opened not opened
         const explanation = `This page lost its connection to the server but has successfully reopened
                            it. Changes made to data on this page will now be saved. However, you may

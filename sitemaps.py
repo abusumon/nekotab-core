@@ -31,7 +31,8 @@ class StaticViewSitemap(Sitemap):
         'seo-website-builder': 0.85,
         'seo-debate-ticketing': 0.85,
         'for-organizers': 0.8,
-        'contact-forum': 0.7,
+        'contact': 0.7,
+        'pricing': 0.8,
         'donate': 0.5,
     }
 
@@ -53,7 +54,8 @@ class StaticViewSitemap(Sitemap):
         'seo-website-builder': 'monthly',
         'seo-debate-ticketing': 'monthly',
         'for-organizers': 'monthly',
-        'contact-forum': 'monthly',
+        'contact': 'monthly',
+        'pricing': 'monthly',
         'donate': 'monthly',
     }
 
@@ -77,7 +79,8 @@ class StaticViewSitemap(Sitemap):
             'seo-website-builder',
             'seo-debate-ticketing',
             'for-organizers',
-            'contact-forum',
+            'contact',
+            'pricing',
             'donate',
         ]
 

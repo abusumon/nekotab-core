@@ -51,6 +51,23 @@ User = get_user_model()
 logger = logging.getLogger(__name__)
 
 
+class PricingView(TemplateView):
+    """Standalone /pricing/ page explaining NekoTab Premium.
+
+    Public and indexable: it is the page people are sent to when they ask
+    "wait, NekoTab costs money now?", so it has to answer that without a login.
+    """
+    template_name = 'pages/pricing.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['price_label'] = getattr(settings, 'PREMIUM_PRICE_LABEL', '$5')
+        kwargs['premium_enabled'] = getattr(settings, 'PREMIUM_ENABLED', False)
+        kwargs['trial_days'] = getattr(settings, 'PREMIUM_TRIAL_DAYS', 0)
+        kwargs['canonical_url'] = '%s/pricing/' % getattr(
+            settings, 'SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
+        return super().get_context_data(**kwargs)
+
+
 class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConfigVarsMixin, TemplateView):
     template_name = 'nekotab_home.html'
 
@@ -591,9 +608,36 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
 
         if preset_slug:
             configure_url = reverse_tournament('tournament-configure', tournament=tournament)
-            return redirect(f"{configure_url}?preset={preset_slug}")
+            next_url = f"{configure_url}?preset={preset_slug}"
+        else:
+            next_url = reverse_tournament('tournament-configure', tournament=tournament)
 
-        return redirect_tournament('tournament-configure', tournament)
+        # Send an unpaid tournament to the purchase page rather than letting
+        # the paywall middleware bounce it there. Same destination, but the
+        # director arrives at a page that explains the charge instead of
+        # getting redirected out of a workspace they just watched load.
+        premium_url = self._premium_redirect_url(tournament, next_url)
+        if premium_url:
+            return redirect(premium_url)
+
+        return redirect(next_url)
+
+    @staticmethod
+    def _premium_redirect_url(tournament, next_url):
+        """Purchase-page URL if this tournament needs paying for, else ''."""
+        try:
+            from donations.premium import premium_page_url, tournament_is_premium
+        except ImportError:
+            return ''  # `donations` is NekoTab-only; upstream Tabbycat runs without it.
+        try:
+            if tournament_is_premium(tournament):
+                return ''
+            from urllib.parse import quote
+            return '%s?next=%s' % (premium_page_url(tournament.pk), quote(next_url, safe=''))
+        except Exception:
+            logger.exception("Premium check failed after tournament creation; "
+                             "sending the director to their tournament as normal")
+            return ''
 
     def get_context_data(self, **kwargs):
         demo_datasets = [
@@ -604,6 +648,10 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
         kwargs['demo_datasets'] = demo_datasets
         demo_slugs = [slug for slug, _ in demo_datasets]
         kwargs['preexisting'] = Tournament.objects.filter(slug__in=demo_slugs).values_list('slug', flat=True)
+
+        kwargs['premium_enabled'] = getattr(settings, 'PREMIUM_ENABLED', False)
+        kwargs['price_label'] = getattr(settings, 'PREMIUM_PRICE_LABEL', '$5')
+        kwargs['trial_days'] = getattr(settings, 'PREMIUM_TRIAL_DAYS', 0)
 
         preset_slug = (self.request.GET.get('preset') or '').strip().lower()
         kwargs['preset_slug'] = ''
@@ -723,7 +771,12 @@ class CreateCongressTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin
         from django.core.cache import cache
         cache.set(f'subdom_tour_exists_{tournament.slug.lower()}', True, 300)
 
-        return redirect_tournament('congress-admin-setup', tournament)
+        setup_url = reverse_tournament('congress-admin-setup', tournament=tournament)
+        premium_url = CreateTournamentView._premium_redirect_url(tournament, setup_url)
+        if premium_url:
+            return redirect(premium_url)
+
+        return redirect(setup_url)
 
     def get_success_url(self):
         return reverse_lazy('congress-tournament-create')

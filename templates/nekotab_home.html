@@ -10,7 +10,7 @@
   {% include "ads/styles.html" %}
   {% endif %}
   <title>NekoTab — Free Debate Tab Software | Motion Bank, Ticketing &amp; Events</title>
-  <meta name="description" content="NekoTab: free hosted Tabbycat debate tabulation for BP, WSDC, Australs and more. Includes a global Motion Bank with thousands of real debate motions, event ticketing, organization website builder, schedule planner, and registration forms — all free, no setup needed.">
+  <meta name="description" content="NekoTab: hosted Tabbycat debate tabulation for BP, WSDC, Australs and more. $5 per tournament, paid once, with no ads and no subscription. Includes a free global Motion Bank with thousands of real debate motions, plus event ticketing, website builder, schedule planner and registration forms.">
   <meta name="keywords" content="debate tournament software, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, australs debate, debate ticketing, debate schedule planner, debate registration forms, debate website builder, tabbycat hosting, open source debate software, free debate tab, nekotab">
   <link rel="canonical" href="https://nekotab.app/" />
 
@@ -25,7 +25,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="NekoTab — Free Debate Tab Software | Motion Bank, Ticketing &amp; Events" />
-  <meta name="twitter:description" content="Free hosted Tabbycat plus Motion Bank, event ticketing, website builder, schedule planner, and forms — all free, no setup needed." />
+  <meta name="twitter:description" content="Hosted Tabbycat plus a free Motion Bank, event ticketing, website builder, schedule planner and forms. $5 per tournament, once — no ads, no subscription." />
   <meta name="twitter:image" content="https://nekotab.app/static/logo-social.png" />
   <meta name="twitter:site" content="@NekoTab" />
 
@@ -303,6 +303,80 @@
       .nk-burger { display: flex; }
     }
 
+    /* ── Pricing band ── */
+    .nk-pricing {
+      background: #0b0b14;
+      padding: 72px 24px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nk-pricing-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+    .nk-pricing-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #a5b4fc; margin-bottom: 10px;
+    }
+    .nk-pricing-heading {
+      font-size: clamp(26px, 5vw, 40px); font-weight: 800; color: #fff;
+      letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 14px;
+    }
+    .nk-pricing-sub {
+      font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.66);
+      max-width: 52ch; margin: 0 auto 26px;
+    }
+    .nk-pricing-actions {
+      display: flex; gap: 14px; justify-content: center;
+      align-items: center; flex-wrap: wrap;
+    }
+    .nk-pricing-cta {
+      display: inline-block; padding: 13px 28px; border-radius: 10px;
+      background: #6366f1; color: #fff; font-size: 15px; font-weight: 600;
+      text-decoration: none;
+    }
+    .nk-pricing-cta:hover, .nk-pricing-cta:focus { background: #4f46e5; }
+    .nk-pricing-link {
+      font-size: 14px; font-weight: 600; color: #a5b4fc; text-decoration: none;
+    }
+    .nk-pricing-link:hover, .nk-pricing-link:focus { color: #c7d2fe; }
+    .nk-pricing-note {
+      font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.42);
+      max-width: 56ch; margin: 26px auto 0;
+    }
+    @media (max-width: 640px) {
+      .nk-pricing { padding: 52px 16px; }
+      .nk-pricing-actions { flex-direction: column; gap: 12px; }
+      .nk-pricing-cta { width: 100%; }
+    }
+
+    /* ── Footer ── */
+    .nk-foot {
+      background: #07070e;
+      padding: 44px 24px 96px; /* bottom clearance for .em-mobile-cta-bar */
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .nk-foot-inner { max-width: 960px; margin: 0 auto; text-align: center; }
+    .nk-foot-links {
+      display: flex; flex-wrap: wrap; gap: 10px 24px;
+      justify-content: center; margin-bottom: 22px;
+    }
+    .nk-foot-links a {
+      font-size: 14px; color: rgba(255,255,255,0.62);
+      text-decoration: none; padding: 4px 0;
+    }
+    .nk-foot-links a:hover, .nk-foot-links a:focus { color: #a78bfa; }
+    .nk-foot-help {
+      font-size: 14px; color: rgba(255,255,255,0.52);
+      line-height: 1.6; margin-bottom: 12px;
+    }
+    .nk-foot-help a { color: #a5b4fc; }
+    .nk-foot-legal {
+      font-size: 12.5px; color: rgba(255,255,255,0.34); line-height: 1.6;
+    }
+    .nk-foot-legal a { color: rgba(255,255,255,0.5); }
+    @media (max-width: 640px) {
+      .nk-foot { padding: 36px 16px 96px; }
+      .nk-foot-links { gap: 8px 18px; }
+    }
+
     /* ── Workspace Features Section ── */
     .nk-features {
       background: #f0f4ff;
@@ -508,7 +582,7 @@
           {
             "@type": "Question",
             "name": "What is NekoTab?",
-            "acceptedAnswer": {"@type": "Answer", "text": "NekoTab is a free, hosted debate tournament platform built on Tabbycat. It provides tournament tabulation for BP, WSDC, Australs, and other parliamentary debate formats, plus a global Motion Bank, event ticketing, organization website builder, schedule planner, and registration forms — all free with no setup required."}
+            "acceptedAnswer": {"@type": "Answer", "text": "NekoTab is a hosted debate tournament platform built on Tabbycat. It provides tournament tabulation for BP, WSDC, Australs, and other parliamentary debate formats, plus a global Motion Bank, event ticketing, organization website builder, schedule planner, and registration forms. Running a tournament costs a one-off $5; the Motion Bank and all public tournament pages are free."}
           },
           {
             "@type": "Question",
@@ -517,8 +591,8 @@
           },
           {
             "@type": "Question",
-            "name": "Is NekoTab completely free to use?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab is completely free with no tournament fees, no subscription charges, and no setup costs. You can create tournaments, manage an organization workspace, use the Motion Bank, sell event tickets, build a website, and access all features at no charge. NekoTab is an open-source project."}
+            "name": "How much does NekoTab cost?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Running a tournament on NekoTab costs $5, paid once, with no subscription and no per-team fee. Debaters, judges and the public never pay: every public tournament page — draw, tab, results and participants — is free to read. The Motion Bank is free, and tournaments created before NekoTab Premium launched remain free permanently. NekoTab carries no advertising."}
           },
           {
             "@type": "Question",
@@ -575,6 +649,8 @@
         <a href="/tools/import/">Importer</a>
         <a href="/tools/analyze/">Analyzer</a>
         <a href="{% url 'motions' %}">Motion Bank</a>
+        <a href="{% url 'pricing' %}">Pricing</a>
+        <a href="{% url 'contact' %}">Contact</a>
         <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
         <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener" class="nk-nav-icon-btn" aria-label="Discord community">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
@@ -650,6 +726,20 @@
           </span>
         </a>
         <div class="nk-mobile-drawer-section-label">Resources</div>
+        <a href="{% url 'pricing' %}">
+          <span class="nk-mob-icon">💜</span>
+          <span class="nk-mob-label-group">
+            <span>Pricing</span>
+            <span class="nk-mob-label-sub">{{ premium_price_label|default:"$5" }} per tournament, once</span>
+          </span>
+        </a>
+        <a href="{% url 'contact' %}">
+          <span class="nk-mob-icon">✉️</span>
+          <span class="nk-mob-label-group">
+            <span>Contact Us</span>
+            <span class="nk-mob-label-sub">Questions, problems, anything</span>
+          </span>
+        </a>
         <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">
           <span class="nk-mob-icon">📖</span>
           <span>Docs</span>
@@ -678,9 +768,9 @@
        ════════════════════════════════════════════ -->
   <section class="em-hero" id="main-content" aria-labelledby="hero-title">
     <div class="em-container em-hero-inner">
-      <div class="em-badge" aria-label="Open source">
+      <div class="em-badge" aria-label="Pricing">
         <span class="em-badge-dot"></span>
-        100% Free &middot; Open-source &middot; No setup required
+        {{ premium_price_label|default:"$5" }} per tournament &middot; No ads &middot; No subscription
       </div>
 
       <h1 id="hero-title" class="em-hero-title">
@@ -689,7 +779,8 @@
 
       <p class="em-hero-sub">
         Hosted tournament management for BP, WSDC, Australs, and more. Draw, ballot, allocate, and publish live results.
-        Plus a global <a href="/motions/" style="color:rgba(255,255,255,0.9);text-decoration:underline;font-weight:600;">Motion Bank</a>, event ticketing, website builder, and schedule planner — all free.
+        Plus a global <a href="/motions/" style="color:rgba(255,255,255,0.9);text-decoration:underline;font-weight:600;">Motion Bank</a>, event ticketing, website builder, and schedule planner.
+        {{ premium_price_label|default:"$5" }} once per tournament — <a href="{% url 'pricing' %}" style="color:rgba(255,255,255,0.9);text-decoration:underline;font-weight:600;">and here's why</a>.
       </p>
 
       <div class="em-hero-ctas">
@@ -762,6 +853,31 @@
   {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="home" %}
 
   <!-- ════════════════════════════════════════════
+       PRICING — replaced the home ad slot
+       ════════════════════════════════════════════ -->
+  <section class="nk-pricing" aria-labelledby="pricing-heading">
+    <div class="nk-pricing-inner">
+      <p class="nk-pricing-eyebrow">Pricing</p>
+      <h2 id="pricing-heading" class="nk-pricing-heading">
+        {{ premium_price_label|default:"$5" }} per tournament. Paid once.
+      </h2>
+      <p class="nk-pricing-sub">
+        No subscription, no per-team fee, and not a single advert anywhere on the site.
+        Your debaters, judges and audience never pay — every public draw, tab and results
+        page is free to read.
+      </p>
+      <div class="nk-pricing-actions">
+        <a href="{% url 'tournament-create' %}" class="nk-pricing-cta">Create a tournament</a>
+        <a href="{% url 'pricing' %}" class="nk-pricing-link">See what's included &rarr;</a>
+      </div>
+      <p class="nk-pricing-note">
+        NekoTab ran free for six months and more than 550 tournaments, and earned nothing.
+        This is what keeps it running. Tournaments created before the change stay free forever.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
        WORKSPACE FEATURES — Calicotab-style 4-box
        ════════════════════════════════════════════ -->
   <section class="nk-features" aria-labelledby="features-heading">
@@ -822,6 +938,31 @@
 
 
   {% include "ads/ad_unit.html" with slot=adsense_slot_footer placement="home" %}
+
+  <!-- ════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════ -->
+  <footer class="nk-foot">
+    <div class="nk-foot-inner">
+      <nav class="nk-foot-links" aria-label="Footer">
+        <a href="{% url 'pricing' %}">Pricing</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="{% url 'motions' %}">Motion Bank</a>
+        <a href="{% url 'tickets:index' %}">Events</a>
+        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
+        <a href="/about/">About</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+      <p class="nk-foot-help">
+        Something broken, or a question about billing?
+        <a href="{% url 'contact' %}">Tell us</a> — a real person reads every message.
+      </p>
+      <p class="nk-foot-legal">
+        NekoTab is built on <a href="https://github.com/TabbycatDebate/tabbycat" target="_blank" rel="noopener">Tabbycat</a>, which is open source under the AGPL.
+      </p>
+    </div>
+  </footer>
 
   {% comment %}
     No sticky anchor here on purpose: .em-mobile-cta-bar already owns the
