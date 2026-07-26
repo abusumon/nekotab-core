@@ -206,10 +206,15 @@ urlpatterns = [
     path('analytics/',
         include('analytics.urls')),
 
-    # Public event discovery
-    path('events/',
-        organizations_views.PublicEventDiscoverView.as_view(),
-        name='org-event-discover'),
+    # NOTE: the public event-discovery route (`events/` ->
+    # organizations.views.PublicEventDiscoverView, name 'org-event-discover')
+    # is deliberately not here yet.
+    #
+    # This URLconf lives in the public submodule; that view lives in the private
+    # parent repo, and it is still in progress there. Landing the route without
+    # the view made Django's system check fail at container start — which meant
+    # `migrate` never ran and the deploy died on 2026-07-26. Add this back in the
+    # same change that lands PublicEventDiscoverView, not before.
 
     # Organizations (multi-tenant)
     path('organizations/',
