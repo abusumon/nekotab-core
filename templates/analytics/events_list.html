@@ -1,0 +1,105 @@
+{% extends 'analytics/_base_crm.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Events' %}{% endblock %}
+{% block content %}
+<div class="header">
+  <h2>📣 {% trans 'Events Review' %}</h2>
+  <div class="header-stats">
+    <div class="header-stat">
+      <div class="header-stat-value" style="color: var(--danger);">{{ pending_event_count }}</div>
+      <div class="header-stat-label">{% trans 'Pending' %}</div>
+    </div>
+  </div>
+</div>
+
+<form method="get" class="filters">
+  <input type="text" name="q" value="{{ request.GET.q }}" placeholder="{% trans 'Search title or institute' %}">
+  <select name="status">
+    <option value="">{% trans 'All statuses' %}</option>
+    <option value="pending" {% if status == 'pending' %}selected{% endif %}>{% trans 'Pending' %}</option>
+    <option value="approved" {% if status == 'approved' %}selected{% endif %}>{% trans 'Approved' %}</option>
+    <option value="rejected" {% if status == 'rejected' %}selected{% endif %}>{% trans 'Rejected' %}</option>
+  </select>
+  <select name="category">
+    <option value="">{% trans 'All categories' %}</option>
+    {% for value, label in category_choices %}
+      <option value="{{ value }}" {% if category == value %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+  </select>
+  <select name="origin">
+    <option value="">{% trans 'Org or individual' %}</option>
+    <option value="org" {% if origin == 'org' %}selected{% endif %}>{% trans 'Organization' %}</option>
+    <option value="individual" {% if origin == 'individual' %}selected{% endif %}>{% trans 'Individual' %}</option>
+  </select>
+  <button type="submit" class="btn btn-primary">{% trans 'Filter' %}</button>
+</form>
+
+<div class="card">
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>{% trans 'Thumb' %}</th>
+          <th>{% trans 'Event' %}</th>
+          <th>{% trans 'Category' %}</th>
+          <th>{% trans 'Organizer' %}</th>
+          <th>{% trans 'Submitted' %}</th>
+          <th>{% trans 'Status' %}</th>
+          <th>{% trans 'Actions' %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for event in events %}
+        <tr>
+          <td>
+            <div style="width:56px;height:40px;border-radius:10px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(148,163,184,.18);">
+              {% if event.cover_image %}
+                <img src="{{ event.cover_image.url }}" alt="{{ event.title }}" style="width:100%;height:100%;object-fit:cover;display:block;">
+              {% else %}
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:18px;">{{ event.get_category_display|slice:":1" }}</div>
+              {% endif %}
+            </div>
+          </td>
+          <td>
+            <div style="font-weight:700;">{{ event.title }}</div>
+            <div style="font-size:12px;color:var(--text-secondary);">{{ event.institute|default:event.organization.name|default:_('Individual') }}</div>
+          </td>
+          <td><span class="badge badge-tag">{{ event.get_category_display }}</span></td>
+          <td>
+            {% if event.organization %}
+              {{ event.organization.name }}
+            {% elif event.created_by %}
+              {{ event.created_by.username }}
+            {% else %}
+              —
+            {% endif %}
+          </td>
+          <td style="color:var(--text-secondary);">{{ event.created_at|date:'M j, Y' }}</td>
+          <td>
+            {% if event.review_status == 'pending' %}
+              <span class="badge badge-warning">{% trans 'Pending' %}</span>
+            {% elif event.review_status == 'approved' %}
+              <span class="badge badge-success">{% trans 'Approved' %}</span>
+            {% else %}
+              <span class="badge badge-danger">{% trans 'Rejected' %}</span>
+            {% endif %}
+          </td>
+          <td style="min-width:240px;">
+            <form method="post" style="display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              {% csrf_token %}
+              <input type="hidden" name="event_id" value="{{ event.pk }}">
+              <button class="btn btn-primary btn-sm" type="submit" name="action" value="approve">{% trans 'Approve' %}</button>
+              <input type="text" name="rejection_reason" placeholder="{% trans 'Reason for reject' %}" style="min-width:120px;max-width:170px;">
+              <button class="btn btn-secondary btn-sm" type="submit" name="action" value="reject">{% trans 'Reject' %}</button>
+            </form>
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7"><div class="empty-state"><div class="empty-state-icon">📭</div><p>{% trans 'No events found.' %}</p></div></td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

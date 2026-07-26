@@ -28,6 +28,7 @@ from content.sitemaps import LearnArticleSitemap, TrustPagesSitemap
 import motionbank.views as motionbank_views
 from campaigns.views import serve_image
 from content.views import ContactForumView
+from donations import views as donations_views
 
 def _ready_view(request):
     from django.db import connection
@@ -65,6 +66,16 @@ urlpatterns = [
     path('create/',
         tournaments.views.CreateTournamentView.as_view(),
         name='tournament-create'),
+    # Alias matching the URL other tab platforms use, so a link shared as
+    # "nekotab.app/tournaments/new/" lands somewhere real.
+    path('tournaments/new/',
+        RedirectView.as_view(pattern_name='tournament-create', permanent=False),
+        name='tournament-new'),
+    # POST only — a GET here would be fired by prefetchers and crawlers, and
+    # each one would create a tournament.
+    path('create/demo/',
+        tournaments.views.CreateDemoTournamentView.as_view(),
+        name='tournament-create-demo'),
     path('create/congress/',
         tournaments.views.CreateCongressTournamentView.as_view(),
         name='congress-tournament-create'),
@@ -162,6 +173,30 @@ urlpatterns = [
     path('donations/',
         include('donations.urls')),
 
+    # NekoTab Premium — the $5 per-tournament unlock.
+    #
+    # Top-level rather than under /donations/ because it is the page the
+    # paywall sends people to and the URL a director reads off an email; it
+    # also has to sit outside every tournament-scoped route so subdomain
+    # rewriting leaves it alone (see SubdomainTenantMiddleware.BAD_PREFIXES).
+    path('premium/<int:tournament_id>/',
+        donations_views.TournamentPremiumView.as_view(),
+        name='premium-purchase'),
+    path('premium/<int:tournament_id>/status/',
+        donations_views.PremiumStatusView.as_view(),
+        name='premium-status'),
+    path('premium/<int:tournament_id>/redeem/',
+        donations_views.RedeemPromoCodeView.as_view(),
+        name='premium-redeem'),
+    # Manual bKash flow. Top-level and memorable because it is linked from the
+    # home page nav and read out in support replies.
+    path('bkash/',
+        donations_views.BkashPaymentRequestView.as_view(),
+        name='bkash'),
+    path('pricing/',
+        tournaments.views.PricingView.as_view(),
+        name='pricing'),
+
     # CRM unsubscribe (public)
     path('unsubscribe/',
         CrmUnsubscribeView.as_view(),
@@ -170,6 +205,11 @@ urlpatterns = [
     # Admin Analytics Dashboard (superuser only)
     path('analytics/',
         include('analytics.urls')),
+
+    # Public event discovery
+    path('events/',
+        organizations_views.PublicEventDiscoverView.as_view(),
+        name='org-event-discover'),
 
     # Organizations (multi-tenant)
     path('organizations/',
@@ -206,9 +246,14 @@ urlpatterns = [
     path('tools/analyze/',
         include('analyzer.urls')),
 
-    # Contact Us page (replaces forum UI at /forum/)
-    path('forum/',
+    # Contact Us. Lives at /contact/ — the URL people guess and the one the
+    # home page and footer link to. /forum/ is the original path and stays as
+    # a permanent redirect so older links and search results still work.
+    path('contact/',
         ContactForumView.as_view(),
+        name='contact'),
+    path('forum/',
+        RedirectView.as_view(pattern_name='contact', permanent=True),
         name='contact-forum'),
 
     # Global Motion Bank — flat-file edition at /motions/

@@ -318,10 +318,17 @@ def populate_daily_stats(days=1):
         active_tournaments  = 0
         try:
             from tournaments.models import Tournament
-            tournaments_created = Tournament.objects.filter(created__gte=start, created__lt=end).count()
-            active_tournaments  = Tournament.objects.filter(active=True).count()
+            # `created_at`, not `created` — the latter does not exist, so this
+            # raised FieldError into the bare `except` below and reported 0
+            # tournaments created for every period since it was written.
+            #
+            # Demos are excluded: throwaway, self-deleting and unlimited, so
+            # counting them would measure clicks on "try it", not tournaments.
+            real = Tournament.objects.filter(is_demo=False)
+            tournaments_created = real.filter(created_at__gte=start, created_at__lt=end).count()
+            active_tournaments  = real.filter(active=True).count()
         except Exception:
-            pass
+            logger.exception("Could not compute tournament counts for daily stats")
 
         debates_created = 0
         ballots_entered = 0

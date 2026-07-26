@@ -31,7 +31,8 @@ class StaticViewSitemap(Sitemap):
         'seo-website-builder': 0.85,
         'seo-debate-ticketing': 0.85,
         'for-organizers': 0.8,
-        'contact-forum': 0.7,
+        'contact': 0.7,
+        'pricing': 0.8,
         'donate': 0.5,
     }
 
@@ -53,7 +54,8 @@ class StaticViewSitemap(Sitemap):
         'seo-website-builder': 'monthly',
         'seo-debate-ticketing': 'monthly',
         'for-organizers': 'monthly',
-        'contact-forum': 'monthly',
+        'contact': 'monthly',
+        'pricing': 'monthly',
         'donate': 'monthly',
     }
 
@@ -77,7 +79,8 @@ class StaticViewSitemap(Sitemap):
             'seo-website-builder',
             'seo-debate-ticketing',
             'for-organizers',
-            'contact-forum',
+            'contact',
+            'pricing',
             'donate',
         ]
 
@@ -112,7 +115,9 @@ class TournamentSitemap(Sitemap):
 
     def items(self):
         try:
-            return Tournament.objects.filter(active=True, is_listed=True)
+            # .public() excludes demos — submitting URLs that delete themselves
+            # within hours is a steady drip of 404s at the search engines.
+            return Tournament.objects.public()
         except (FieldError, DatabaseError):
             logger.exception("Failed to build tournament sitemap queryset; returning empty list.")
             return []

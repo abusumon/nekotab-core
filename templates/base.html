@@ -117,7 +117,7 @@
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/mobile-first.css' %}" />
-  {% if ads_enabled or ad_free_purchase_url %}{% include "ads/styles.html" %}{% endif %}
+  {% if ads_enabled or premium_purchase_url %}{% include "ads/styles.html" %}{% endif %}
   {% block extra-css %}{% endblock %}
   {% block extra-head %}{% endblock %}
 
@@ -204,6 +204,7 @@
 
       <div class="row d-print-none">
         <div class="col" id="messages-container">
+          {% include "tournaments/demo_banner.html" %}
           {% if messages %}
             {% for message in messages %}
               {% include "components/alert.html" with type=message.tags message=message %}

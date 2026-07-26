@@ -354,6 +354,25 @@
             font-size: 12px; cursor: pointer; transition: all .2s;
         }
         .btn-delete-row:hover { background: rgba(239,68,68,.15); }
+        /* Showcase toggle. States are labelled, not just coloured, so the
+           current state survives being read on a bad screen or by anyone who
+           does not distinguish the two greens. */
+        .btn-showcase {
+            background: none; border: 1px solid var(--border);
+            color: var(--text-secondary); padding: 6px 14px; border-radius: 6px;
+            font-size: 12px; font-weight: 600; font-family: inherit;
+            cursor: pointer; transition: all .2s; min-width: 74px;
+        }
+        .btn-showcase:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .btn-showcase--on {
+            border-color: rgba(16,185,129,.45); color: var(--success);
+            background: rgba(16,185,129,.12);
+        }
+        .btn-showcase--on:hover { background: rgba(16,185,129,.2); color: var(--success); }
+        .showcase-warn {
+            display: inline-block; margin-top: 6px; font-size: 11px;
+            font-weight: 600; color: var(--warning); white-space: nowrap;
+        }
         /* Modal */
         .modal-overlay {
             display: none; position: fixed; inset: 0;
@@ -592,6 +611,22 @@
 
     <!-- Main Content -->
     <main class="main-content">
+        {% comment %}
+          This template carries its own <head> and does not extend a base with
+          the message framework in it, so it has to render messages itself —
+          otherwise the showcase toggle redirects back and looks like it did
+          nothing.
+        {% endcomment %}
+        {% if messages %}
+          {% for message in messages %}
+            <div style="margin-bottom:16px;padding:12px 16px;border-radius:8px;font-size:14px;
+                        {% if 'error' in message.tags %}background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#fca5a5;
+                        {% else %}background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.35);color:#6ee7b7;{% endif %}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
         <div class="header">
             <h2>🏆 All Tournaments</h2>
             <div class="header-stats">
@@ -647,6 +682,7 @@
                         <th>Debaters</th>
                         <th>Adjudicators</th>
                         <th>Status</th>
+                        <th>Home page</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -703,6 +739,34 @@
                             <span class="badge badge-warning">Inactive</span>
                             {% endif %}
                         </td>
+                        <td>
+                            {% if tournament.is_demo %}
+                              {# Demos are deleted within hours; featuring one #}
+                              {# would publish a link that 404s the same day.  #}
+                              <span class="badge badge-warning" title="Demo tournaments are never featured">Demo</span>
+                            {% else %}
+                              <form method="POST" action="{% url 'analytics:toggle_showcase' %}" style="margin:0;">
+                                {% csrf_token %}
+                                <input type="hidden" name="tournament_id" value="{{ tournament.id }}">
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                <input type="hidden" name="show" value="{% if tournament.is_publicly_listed %}0{% else %}1{% endif %}">
+                                <button type="submit" class="btn-showcase{% if tournament.is_publicly_listed %} btn-showcase--on{% endif %}"
+                                        title="{% if tournament.is_publicly_listed %}Featured on the home page — click to hide{% else %}Not featured — click to show on the home page{% endif %}">
+                                  {% if tournament.is_publicly_listed %}Shown{% else %}Hidden{% endif %}
+                                </button>
+                                {% if tournament.is_publicly_listed and not tournament.is_listed %}
+                                  {# Featured but not publicly readable: the #}
+                                  {# home-page link will not open for visitors. #}
+                                  {# Not auto-fixed — is_listed is owned by the #}
+                                  {# visibility feature, not by this toggle.    #}
+                                  <span class="showcase-warn"
+                                        title="Featured, but not publicly viewable (is_listed is off) — visitors cannot open this from the home page. Turn on public visibility separately.">
+                                    ⚠ not public
+                                  </span>
+                                {% endif %}
+                              </form>
+                            {% endif %}
+                        </td>
                         <td style="display:flex;gap:8px;align-items:center;">
                             <a href="{{ tournament.view_url }}" class="tournament-link" target="_blank">View →</a>
                             <button class="btn-delete-row" data-tid="{{ tournament.id }}" data-tname="{{ tournament.name }}">Delete</button>
@@ -710,7 +774,7 @@
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="10">
+                        <td colspan="11">
                             <div class="empty-state">
                                 <div class="empty-state-icon">🏆</div>
                                 <p>No tournaments found</p>

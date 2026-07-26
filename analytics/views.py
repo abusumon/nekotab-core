@@ -10,8 +10,9 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.mail import send_mail
 from django.core.cache import cache
-from django.db import connection
+from django.db import connection, transaction as db_transaction
 from django.db.models import Case, Count, DecimalField, F, IntegerField, Max, OuterRef, Q, Subquery, Sum, Value, When
 from django.db.models.functions import Coalesce, TruncDate, TruncHour, TruncMonth
 from django.http import JsonResponse
@@ -22,12 +23,13 @@ from django.utils.text import slugify
 from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView, ListView, View
 
-from tournaments.models import Tournament, Round
+from tournaments.models import SHOWCASE_CACHE_KEY, Tournament, Round
 from results.models import BallotSubmission
 from motionbank.models import MotionEntry
 from participant_crm.models import ParticipantProfile
 from participants.models import Speaker, Adjudicator
 from donations.models import DonationTransaction
+from organizations.models import OrgEvent
 from .models import PageView, DailyStats, ActiveSession
 
 User = get_user_model()
@@ -758,6 +760,338 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
             Q(slug='')
         ).count()
         return context
+
+
+class EventsModerationView(SuperuserRequiredMixin, TemplateView):
+    template_name = 'analytics/events_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['active_nav'] = 'events'
+        query = (self.request.GET.get('q') or '').strip()
+        status = (self.request.GET.get('status') or 'pending').strip()
+        category = (self.request.GET.get('category') or '').strip()
+        origin = (self.request.GET.get('origin') or '').strip()
+
+        events = OrgEvent.objects.select_related('organization', 'created_by').order_by('-created_at')
+        if query:
+            events = events.filter(Q(title__icontains=query) | Q(institute__icontains=query))
+        if status:
+            events = events.filter(review_status=status)
+        if category:
+            events = events.filter(category=category)
+        if origin == 'org':
+            events = events.filter(organization__isnull=False)
+        elif origin == 'individual':
+            events = events.filter(organization__isnull=True)
+
+        context['events'] = events[:200]
+        context['query'] = query
+        context['status'] = status
+        context['category'] = category
+        context['origin'] = origin
+        context['pending_event_count'] = OrgEvent.objects.filter(review_status='pending').count()
+        context['category_choices'] = OrgEvent.Category.choices
+        return context
+
+    def post(self, request, *args, **kwargs):
+        event_id = request.POST.get('event_id')
+        action = request.POST.get('action')
+        reason = (request.POST.get('rejection_reason') or '').strip()
+        event = OrgEvent.objects.select_related('organization', 'created_by').filter(pk=event_id).first()
+        if not event:
+            messages.error(request, 'Event not found.')
+            return redirect('/analytics/events/')
+
+        recipient = ''
+        if event.created_by and event.created_by.email:
+            recipient = event.created_by.email
+        elif event.organization and event.organization.contact_email:
+            recipient = event.organization.contact_email
+
+        if action == 'approve':
+            event.review_status = 'approved'
+            event.rejection_reason = ''
+            event.reviewed_by = request.user
+            event.reviewed_at = timezone.now()
+            event.save(update_fields=['review_status', 'rejection_reason', 'reviewed_by', 'reviewed_at'])
+            if recipient:
+                try:
+                    send_mail(
+                        subject=f'Your NekoTab event "{event.title}" was approved',
+                        message=f'Your event "{event.title}" is now approved and visible on the public discover page.',
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        recipient_list=[recipient],
+                        fail_silently=False,
+                    )
+                except Exception:
+                    pass
+        elif action == 'reject':
+            event.review_status = 'rejected'
+            event.rejection_reason = reason
+            event.reviewed_by = request.user
+            event.reviewed_at = timezone.now()
+            event.save(update_fields=['review_status', 'rejection_reason', 'reviewed_by', 'reviewed_at'])
+            if recipient:
+                try:
+                    send_mail(
+                        subject=f'Your NekoTab event "{event.title}" was rejected',
+                        message=f'Your event "{event.title}" was rejected. Reason: {reason or "No reason provided."}',
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        recipient_list=[recipient],
+                        fail_silently=False,
+                    )
+                except Exception:
+                    pass
+
+        return redirect('/analytics/events/')
+
+
+class ToggleTournamentShowcaseView(SuperuserRequiredMixin, View):
+    """Flip whether one tournament is featured on the home page.
+
+    POST only, so it is CSRF-protected and cannot be triggered by a crawler
+    following a link.
+
+    Writes ``is_publicly_listed`` and nothing else. ``is_listed`` — which
+    decides whether a stranger may *read* the tournament — is governed by the
+    existing visibility feature and is deliberately not touched here, in either
+    direction. One button, one flag.
+
+    That does mean a tournament can be featured while still being unreadable by
+    anonymous visitors, which is a broken link on the front page. Rather than
+    quietly fixing that by writing a flag this view does not own, it is surfaced
+    as a warning on save and flagged in the list, so whoever featured it can
+    decide.
+    """
+    http_method_names = ['post']
+
+    def post(self, request, *args, **kwargs):
+        tournament = Tournament.objects.filter(pk=request.POST.get('tournament_id')).first()
+        if tournament is None:
+            messages.error(request, 'Tournament not found.')
+            return redirect(request.POST.get('next') or '/analytics/tournaments/')
+
+        if tournament.is_demo:
+            messages.error(
+                request,
+                f'"{tournament.name}" is a demo tournament and cannot be '
+                f'featured — it will be deleted within hours.')
+            return redirect(request.POST.get('next') or '/analytics/tournaments/')
+
+        show = request.POST.get('show') == '1'
+        tournament.is_publicly_listed = show
+        # Only this field. is_listed belongs to the visibility feature.
+        tournament.save(update_fields=['is_publicly_listed'])
+
+        # The showcase query and the navbar both cache; without this the change
+        # does not appear for up to two minutes and looks like it failed.
+        cache.delete(f'{tournament.slug}_object')
+        cache.delete(SHOWCASE_CACHE_KEY)
+
+        logger.info('Tournament %s showcase set to %s by %s',
+                    tournament.slug, show, request.user)
+        if show:
+            messages.success(request, f'"{tournament.name}" is now featured on the home page.')
+            if not tournament.is_listed:
+                # Not fixed automatically: is_listed is not this view's to write.
+                messages.warning(
+                    request,
+                    f'Note: "{tournament.name}" is not publicly viewable '
+                    f'(is_listed is off), so visitors following the home-page '
+                    f'link will not be able to open it. Turn on public '
+                    f'visibility for the tournament separately.')
+        else:
+            messages.success(request, f'"{tournament.name}" is no longer featured.')
+
+        return redirect(request.POST.get('next') or '/analytics/tournaments/')
+
+
+class BkashRequestsView(SuperuserRequiredMixin, TemplateView):
+    """Review queue for manual bKash payment claims.
+
+    Approving mints a single-use promo code and emails it to the address on the
+    request. This is the only thing in the system that creates a promo code, so
+    every code traces back to a payment a human said they had verified.
+    """
+    template_name = 'analytics/bkash_requests.html'
+
+    def get_context_data(self, **kwargs):
+        from donations.models import BkashPaymentRequest
+
+        context = super().get_context_data(**kwargs)
+        context['active_nav'] = 'bkash'
+
+        status = (self.request.GET.get('status') or 'pending').strip()
+        query = (self.request.GET.get('q') or '').strip()
+
+        requests_qs = (BkashPaymentRequest.objects
+                       .select_related('reviewed_by')
+                       .prefetch_related('promo_codes')
+                       .order_by('-submitted_at'))
+        if status in dict(BkashPaymentRequest.Status.choices):
+            requests_qs = requests_qs.filter(status=status)
+        if query:
+            requests_qs = requests_qs.filter(
+                Q(email__icontains=query)
+                | Q(name__icontains=query)
+                | Q(phone__icontains=query)
+                | Q(transaction_id__icontains=query))
+
+        context['requests'] = requests_qs[:200]
+        context['status'] = status
+        context['query'] = query
+        context['status_choices'] = BkashPaymentRequest.Status.choices
+        context['pending_count'] = BkashPaymentRequest.objects.filter(
+            status=BkashPaymentRequest.Status.PENDING).count()
+        context['bkash_number'] = getattr(settings, 'BKASH_PERSONAL_NUMBER', '')
+        context['amount_bdt'] = getattr(settings, 'BKASH_AMOUNT_BDT', 510)
+        return context
+
+    def post(self, request, *args, **kwargs):
+        from donations.models import BkashPaymentRequest
+
+        request_id = request.POST.get('request_id')
+        action = request.POST.get('action')
+        note = (request.POST.get('review_note') or '').strip()
+
+        bkash_request = BkashPaymentRequest.objects.filter(pk=request_id).first()
+        if bkash_request is None:
+            messages.error(request, 'Request not found.')
+            return redirect('/analytics/bkash/')
+
+        if not bkash_request.is_pending:
+            # Guards the double-click and the stale tab: approving twice would
+            # mint a second code against one payment.
+            messages.warning(
+                request,
+                f'Request {bkash_request.transaction_id} was already '
+                f'{bkash_request.status}; nothing changed.')
+            return redirect('/analytics/bkash/')
+
+        if action == 'approve':
+            self._approve(request, bkash_request, note)
+        elif action == 'reject':
+            self._reject(request, bkash_request, note)
+        else:
+            messages.error(request, 'Unknown action.')
+
+        return redirect('/analytics/bkash/')
+
+    @staticmethod
+    def _approve(request, bkash_request, note):
+        from donations.models import BkashPaymentRequest, PromoCode
+
+        code = PromoCode.generate_code()
+        if code is None:
+            logger.error('Could not generate a unique promo code for bKash request #%s',
+                         bkash_request.pk)
+            messages.error(request, 'Could not generate a promo code. Try again.')
+            return
+
+        # One transaction: a code that exists while the request still reads
+        # "pending" invites a second approval and a second code for one payment.
+        with db_transaction.atomic():
+            promo = PromoCode.objects.create(
+                code=code,
+                request=bkash_request,
+                issued_to_email=bkash_request.email,
+            )
+            bkash_request.status = BkashPaymentRequest.Status.APPROVED
+            bkash_request.review_note = note
+            bkash_request.reviewed_by = request.user
+            bkash_request.reviewed_at = timezone.now()
+            bkash_request.save(update_fields=[
+                'status', 'review_note', 'reviewed_by', 'reviewed_at'])
+
+        sent = _email_promo_code(promo, bkash_request)
+        logger.info('bKash request #%s approved by %s; promo %s issued to %s (emailed=%s)',
+                    bkash_request.pk, request.user, promo.code, promo.issued_to_email, sent)
+
+        if sent:
+            messages.success(
+                request, f'Approved. Promo code {promo.code} emailed to '
+                         f'{bkash_request.email}.')
+        else:
+            # The code exists and works either way — say so, with the code, so
+            # it can be passed on by hand rather than silently lost.
+            messages.warning(
+                request, f'Approved and promo code {promo.code} created, but the '
+                         f'email to {bkash_request.email} failed. Send it manually.')
+
+    @staticmethod
+    def _reject(request, bkash_request, note):
+        from donations.models import BkashPaymentRequest
+
+        bkash_request.status = BkashPaymentRequest.Status.REJECTED
+        bkash_request.review_note = note
+        bkash_request.reviewed_by = request.user
+        bkash_request.reviewed_at = timezone.now()
+        bkash_request.save(update_fields=[
+            'status', 'review_note', 'reviewed_by', 'reviewed_at'])
+        logger.info('bKash request #%s rejected by %s (%s)',
+                    bkash_request.pk, request.user, note or 'no reason given')
+
+        if bkash_request.email:
+            try:
+                send_mail(
+                    subject='About your NekoTab bKash payment',
+                    message=(
+                        f"Hi {bkash_request.name},\n\n"
+                        f"We couldn't verify the bKash payment with transaction ID "
+                        f"{bkash_request.transaction_id}.\n\n"
+                        + (f"Note from our team: {note}\n\n" if note else "")
+                        + "If you believe this is a mistake, reply to this email with "
+                          "a screenshot of the bKash confirmation and we'll take "
+                          "another look.\n\nThe NekoTab Team\n"
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[bkash_request.email],
+                    fail_silently=True,
+                )
+            except Exception:
+                logger.exception('Could not send bKash rejection email for #%s',
+                                 bkash_request.pk)
+
+        messages.success(request, f'Rejected {bkash_request.transaction_id}.')
+
+
+def _email_promo_code(promo, bkash_request):
+    """Email a promo code to the payer. Returns True if it was accepted.
+
+    The return value matters: the code has already been created and the
+    request already marked approved, so a mail failure must be reported to the
+    reviewer rather than swallowed — otherwise somebody has paid, the system
+    thinks they were served, and they never receive anything.
+    """
+    try:
+        from django.core.mail import EmailMultiAlternatives
+        from django.template.loader import render_to_string
+
+        base = getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
+        context = {
+            'promo': promo,
+            'code': promo.code,
+            'name': bkash_request.name,
+            'site_base_url': base,
+            'create_url': f'{base}/create/',
+            'amount': bkash_request.amount,
+            'currency': bkash_request.currency,
+            'transaction_id': bkash_request.transaction_id,
+        }
+        message = EmailMultiAlternatives(
+            subject='Your NekoTab promo code',
+            body=render_to_string('donations/email/promo_code.txt', context),
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[bkash_request.email],
+        )
+        message.attach_alternative(
+            render_to_string('donations/email/promo_code.html', context), 'text/html')
+        return bool(message.send(fail_silently=False))
+    except Exception:
+        logger.exception('Could not email promo code %s to %s',
+                         promo.code, bkash_request.email)
+        return False
 
 
 class LiveVisitorsAPIView(SuperuserRequiredMixin, View):
