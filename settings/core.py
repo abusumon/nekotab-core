@@ -798,6 +798,20 @@ PREMIUM_CHECKOUT_URL = os.environ.get('PREMIUM_CHECKOUT_URL') or (
 # environment can move that set. Do not reintroduce a date here.
 
 # ------------------------------------------------------------------------------
+# Home-page tournament list
+# ------------------------------------------------------------------------------
+#
+# About half of everything ever created on NekoTab is an abandoned setup with no
+# teams and no debates. Listing those makes the front page look dead, so the
+# list is drawn from tournaments that actually ran. Set SHOWCASE_AUTO_REAL=0 to
+# go back to showing only what an admin has explicitly featured.
+SHOWCASE_AUTO_REAL = _env_bool('SHOWCASE_AUTO_REAL', default=True)
+SHOWCASE_MIN_TEAMS = int(os.environ.get('SHOWCASE_MIN_TEAMS') or 4)
+# At least one debate. Teams alone is not evidence a tournament ran — the two
+# biggest by team count have hundreds of teams between them and zero debates.
+SHOWCASE_MIN_DEBATES = int(os.environ.get('SHOWCASE_MIN_DEBATES') or 1)
+
+# ------------------------------------------------------------------------------
 # Manual bKash payments
 # ------------------------------------------------------------------------------
 #

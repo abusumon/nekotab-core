@@ -112,19 +112,52 @@ class TournamentQuerySet(models.QuerySet):
         """
         return self.filter(active=True, is_listed=True, is_demo=False)
 
+    def real(self):
+        """Tournaments that actually ran, as opposed to empty shells.
+
+        Roughly half of everything ever created on NekoTab is an abandoned
+        setup: at the time of writing, 267 of 570 have no teams at all and 336
+        have no debates. Listing those makes the site look like a graveyard.
+
+        The bar is teams *and* at least one debate. Teams alone is not enough —
+        the two largest tournaments by team count are a 131-team entry named
+        "Hi" and a 150-team one with 110 rounds, neither of which ever ran a
+        single debate. A debate existing is the cheapest reliable evidence that
+        somebody used the thing for its purpose.
+        """
+        from django.conf import settings as _settings
+        min_teams = int(getattr(_settings, 'SHOWCASE_MIN_TEAMS', 4) or 0)
+        min_debates = int(getattr(_settings, 'SHOWCASE_MIN_DEBATES', 1) or 0)
+        return (self.filter(active=True, is_demo=False)
+                .annotate(_n_teams=Count('team', distinct=True),
+                          _n_debates=Count('round__debate', distinct=True))
+                .filter(_n_teams__gte=min_teams, _n_debates__gte=min_debates))
+
     def showcase(self):
-        """Tournaments to feature on the home page.
+        """Tournaments to list on the home page.
+
+        Manually featured ones (``is_publicly_listed``) plus, when
+        ``SHOWCASE_AUTO_REAL`` is on, every tournament that actually ran. The
+        manual flag is kept as a pin rather than replaced, so a tournament can
+        be featured deliberately even if it does not clear the bar — a brand new
+        one with no debates yet, for instance.
 
         ``is_demo=False`` is not negotiable and is not merely a default: demos
-        are deleted within hours, so featuring one publishes a link that 404s
-        by the afternoon. It stays in the WHERE clause rather than relying on
-        the flag never being set on a demo.
+        are deleted within hours, so listing one publishes a link that 404s by
+        the afternoon. It stays in the WHERE clause rather than relying on the
+        flag never being set on a demo.
         """
-        return self.filter(
-            active=True,
-            is_publicly_listed=True,
-            is_demo=False,
-        )
+        from django.conf import settings as _settings
+        base = self.filter(active=True, is_demo=False)
+        if not getattr(_settings, 'SHOWCASE_AUTO_REAL', True):
+            return base.filter(is_publicly_listed=True)
+        min_teams = int(getattr(_settings, 'SHOWCASE_MIN_TEAMS', 4) or 0)
+        min_debates = int(getattr(_settings, 'SHOWCASE_MIN_DEBATES', 1) or 0)
+        return (base
+                .annotate(_n_teams=Count('team', distinct=True),
+                          _n_debates=Count('round__debate', distinct=True))
+                .filter(Q(is_publicly_listed=True)
+                        | Q(_n_teams__gte=min_teams, _n_debates__gte=min_debates)))
 
     def expired_demos(self, now=None):
         """Demo tournaments whose lifetime has run out."""
@@ -320,9 +353,13 @@ def get_showcase_tournaments(limit=SHOWCASE_MAX):
         # otherwise put at the top and fill the list with undated entries.
         # Ordered by date, not creation, because this is a tournament listing:
         # what a reader wants is "what is on next".
+        # Manually featured first, then soonest event, then newest. Almost
+        # nothing has a date yet, so `-created_at` is doing most of the work
+        # and keeps the list looking current rather than frozen.
         qs = (Tournament.objects.showcase()
               .select_related('organization', 'metadata')
-              .order_by(F('metadata__event_start_date').asc(nulls_last=True),
+              .order_by('-is_publicly_listed',
+                        F('metadata__event_start_date').asc(nulls_last=True),
                         '-created_at', '-id')[:SHOWCASE_MAX])
         for t in qs:
             meta = getattr(t, 'metadata', None)
@@ -345,6 +382,45 @@ def get_showcase_tournaments(limit=SHOWCASE_MAX):
 
     cache.set(SHOWCASE_CACHE_KEY, rows, SHOWCASE_CACHE_TTL)
     return rows[:limit]
+
+
+#: Home-page counters. Cached for the same reason the showcase is: this runs on
+#: the single most-visited page on the site.
+STATS_CACHE_KEY = 'homepage:stats:v1'
+STATS_CACHE_TTL = 600  # seconds
+
+
+def get_homepage_stats():
+    """Return counts for the home-page stat strip.
+
+    ``tournaments`` counts everything ever created except demos — the honest
+    answer to "how many tournaments have been run on this", including the ones
+    that were set up and abandoned, because they were still created by a real
+    person deciding to try it.
+
+    ``tournaments_run`` is the narrower figure: the ones that actually held a
+    debate. Kept separate rather than blended, so neither number is quietly
+    doing the other's job.
+
+    Returns zeros on any failure — a broken counter must not take down the
+    home page, and a missing number is better than a wrong one.
+    """
+    from django.core.cache import cache
+
+    cached = cache.get(STATS_CACHE_KEY)
+    if cached is not None:
+        return cached
+
+    stats = {'tournaments': 0, 'tournaments_run': 0}
+    try:
+        stats['tournaments'] = Tournament.objects.filter(is_demo=False).count()
+        stats['tournaments_run'] = Tournament.objects.real().count()
+    except Exception:
+        logger.exception('Could not compute home-page stats; showing none')
+        return {'tournaments': 0, 'tournaments_run': 0}
+
+    cache.set(STATS_CACHE_KEY, stats, STATS_CACHE_TTL)
+    return stats
 
 
 class Tournament(models.Model):

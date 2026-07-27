@@ -93,8 +93,9 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
         # Featured tournaments for the public showcase. Cached and hard-capped
         # inside the helper, so this stays a constant-cost addition to the
         # busiest page on the site however many get featured.
-        from .models import get_showcase_tournaments
+        from .models import get_homepage_stats, get_showcase_tournaments
         kwargs['showcase_tournaments'] = get_showcase_tournaments()
+        kwargs['homepage_stats'] = get_homepage_stats()
         if user.is_authenticated:
             try:
                 visible = Tournament.objects.visible_to(user)

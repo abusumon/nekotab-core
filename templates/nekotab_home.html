@@ -403,6 +403,45 @@
       text-align: center; font-size: 14.5px; line-height: 1.6; color: #475569;
       max-width: 52ch; margin: 0 auto 28px;
     }
+    /* ── Home-page counter ──
+       Sits between the heading and the list so the number introduces the
+       table rather than floating on its own. Tabular figures so the digits
+       line up, and a hairline rule under it to tie it to the section. */
+    .nk-stat {
+      text-align: center;
+      margin: 0 auto 22px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(15,23,42,0.08);
+      max-width: 30ch;
+    }
+    .nk-stat__num {
+      display: block;
+      font-size: clamp(40px, 11vw, 60px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #6366f1;              /* fallback where background-clip is unsupported */
+    }
+    .nk-stat__label {
+      display: block;
+      margin-top: 8px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #334155;
+    }
+    .nk-stat__sub {
+      display: block;
+      margin-top: 4px;
+      font-size: 13px;
+      color: #64748b;
+      font-variant-numeric: tabular-nums;
+    }
+
     /* Mobile first: the table collapses to one card per row, each cell
        labelled by its ::before. Becomes a real table at 768px. */
     .nk-sr {
@@ -1123,6 +1162,17 @@
     <div class="nk-showcase-inner">
       <p class="nk-showcase-eyebrow">Live on NekoTab</p>
       <h2 id="showcase-heading" class="nk-showcase-heading">Tournaments on NekoTab</h2>
+
+      {% if homepage_stats.tournaments %}
+        <div class="nk-stat">
+          <span class="nk-stat__num">{{ homepage_stats.tournaments }}</span>
+          <span class="nk-stat__label">tournaments created on NekoTab</span>
+          {% if homepage_stats.tournaments_run %}
+            <span class="nk-stat__sub">{{ homepage_stats.tournaments_run }} of them have run debates</span>
+          {% endif %}
+        </div>
+      {% endif %}
+
       <p class="nk-showcase-sub">
         Competitions being tabbed on NekoTab. Draws, tabs and results are free
         for anyone to read.
