@@ -19,8 +19,12 @@
     Auto ads are switched off in the AdSense dashboard; this script is here
     purely to serve the manual units.
   {% endcomment %}
-  {% if ads_enabled %}
+  {# Site-ownership tag for AdSense. Deliberately outside the ads_enabled
+     gate: AdSense will not verify a site whose pages carry no proof of
+     ownership, and with ads switched off nothing else on the page would
+     carry it. The tag is inert — it loads no script and renders no ad. #}
   <meta name="google-adsense-account" content="{{ adsense_publisher_id }}">
+  {% if ads_enabled %}
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}"
     crossorigin="anonymous"></script>
