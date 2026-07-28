@@ -6,6 +6,12 @@
   Behaves itself: reserves its own height as body padding so it never covers
   the footer, steps aside while the cookie-consent banner is up, is
   dismissible for 30 minutes, and is hidden in print.
+
+  Pass ``anchor_desktop_only=1`` on pages that already own the bottom of the
+  viewport on mobile (the home page's .em-mobile-cta-bar). That suppresses
+  the unit below 768px *before* it is pushed rather than hiding it with CSS:
+  requesting an ad into a display:none container is an AdSense policy breach
+  and would poison the unit's fill rate.
 {% endcomment %}
 {% load i18n %}
 {% if ads_enabled and adsense_slot_anchor %}
@@ -37,6 +43,14 @@
   var DISMISS_MS = 30 * 60 * 1000;
   var anchor = document.getElementById('nekotabAnchor');
   if (!anchor) return;
+
+  // Suppressed on mobile where the page has its own fixed bottom bar.
+  {% if anchor_desktop_only %}
+  if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) {
+    anchor.parentNode && anchor.parentNode.removeChild(anchor);
+    return;
+  }
+  {% endif %}
 
   function dismissedUntil() {
     try { return parseInt(sessionStorage.getItem(DISMISS_KEY) || '0', 10); }

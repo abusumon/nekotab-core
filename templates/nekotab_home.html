@@ -1155,6 +1155,8 @@
     </div>
   </section>
 
+  {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="home" %}
+
   {% if showcase_tournaments %}
   <!-- ════════════════════════════════════════════
        PUBLIC SHOWCASE — featured tournaments
@@ -1239,6 +1241,8 @@
     </div>
   </section>
   {% endif %}
+
+  {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="home" %}
 
   <!-- ════════════════════════════════════════════
        WORKSPACE FEATURES — Calicotab-style 4-box
@@ -1329,10 +1333,14 @@
   </footer>
 
   {% comment %}
-    No sticky anchor here on purpose: .em-mobile-cta-bar already owns the
-    bottom of the viewport on mobile, and stacking two fixed bars would
-    bury the primary call to action.
+    Sticky anchor, desktop only. This used to be omitted entirely because
+    .em-mobile-cta-bar owns the bottom of the viewport and stacking two fixed
+    bars buries the primary call to action — but that bar is display:none
+    above 767px (landing.css), so the clash is mobile-only. The anchor runs
+    where there is no clash and is suppressed, before it is ever pushed,
+    where there is.
   {% endcomment %}
+  {% include "ads/anchor.html" with anchor_desktop_only=1 %}
 
   <!-- Mobile Fixed CTA -->
   <div class="em-mobile-cta-bar">

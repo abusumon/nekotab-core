@@ -1,77 +1,123 @@
 {% comment %}
-  Mid-table unit. Draw, standings, tab and results pages hold readers for
-  90–200s of scrolling through one long table; a unit above the fold and one
-  below it only ever collect a single viewable impression. This drops a third
-  unit into the table itself, after row N.
+  Mid-table units. Draw, standings, tab and results pages hold readers for
+  90–200s of scrolling through one long table; a single unit above the fold
+  only ever collects one viewable impression however long they stay. This
+  injects units *into* the table body and repeats them down its length, so
+  scrolling keeps bringing fresh inventory into view.
 
-  Tabbycat renders most tables through Vue, so the DOM isn't ready at parse
-  time — hence the observer with a hard timeout. If no table big enough shows
-  up, nothing renders at all.
+  Tabbycat renders most tables through Vue, so the DOM is not ready at parse
+  time — hence the observer with a hard timeout. If no table long enough
+  turns up, nothing renders at all.
+
+  The same ad unit id is reused for every insertion. AdSense permits one unit
+  to appear many times on a page; reporting aggregates them, which is why the
+  four slots are split by *position* rather than by count.
+
+  Markup lives in a <script type="text/template"> rather than a hidden div so
+  that no un-pushed <ins> element ever sits in the live DOM.
 {% endcomment %}
 {% load i18n %}
 {% if ads_enabled and adsense_slot_table %}
-<div id="nekotabInTableAd" class="nekotab-ad nekotab-ad--incontent" role="complementary"
-     aria-label="{% trans 'Advertisement' %}" hidden>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="{{ adsense_publisher_id }}"
-       data-ad-slot="{{ adsense_slot_table }}"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  {% if ads_removal_url %}
-    <a class="nekotab-ad__remove lemonsqueezy-button" href="{{ ads_removal_url }}">
-      {% blocktrans trimmed with price=ads_price_label %}
-        Remove ads from this tournament — {{ price }}
-      {% endblocktrans %}
-    </a>
-  {% endif %}
-</div>
+<script type="text/template" id="nekotabInTableAdTpl">
+  <div class="nekotab-ad nekotab-ad--incontent" role="complementary"
+       aria-label="{% trans 'Advertisement' %}">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="{{ adsense_publisher_id }}"
+         data-ad-slot="{{ adsense_slot_table }}"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+</script>
+{% if ads_removal_url %}
+<script type="text/template" id="nekotabInTableCtaTpl">
+  <a class="nekotab-ad__remove lemonsqueezy-button" href="{{ ads_removal_url }}">
+    {% blocktrans trimmed with price=ads_price_label %}
+      Remove ads from this tournament — {{ price }}
+    {% endblocktrans %}
+  </a>
+</script>
+{% endif %}
 <script>
 (function () {
-  var AFTER_ROW = 8;      // insert below this many data rows
-  var MIN_ROWS = 12;      // ...only if the table is at least this long
-  var GIVE_UP_MS = 5000;
+  var FIRST_AFTER = 4;    // first unit this many data rows down
+  var EVERY       = 8;    // then one every this many rows after that
+  var MIN_ROWS    = 6;    // ...only in tables at least this long
+  var MAX_UNITS   = 12;   // hard cap across the whole page
+  var GIVE_UP_MS  = 5000;
 
-  var ad = document.getElementById('nekotabInTableAd');
-  if (!ad) return;
-  var done = false;
+  var tpl = document.getElementById('nekotabInTableAdTpl');
+  var ctaTpl = document.getElementById('nekotabInTableCtaTpl');
+  if (!tpl) return;
 
-  function findTable() {
-    var tables = document.querySelectorAll('main table');
-    for (var i = 0; i < tables.length; i++) {
-      var body = tables[i].tBodies[0];
-      if (body && body.rows.length >= MIN_ROWS) return { table: tables[i], body: body };
+  var placed = 0;
+  var seen = [];          // tables already injected into
+
+  function build(withCta) {
+    var host = document.createElement('div');
+    host.innerHTML = tpl.innerHTML.trim();
+    var node = host.firstElementChild;
+    if (node && withCta && ctaTpl) {
+      var cta = document.createElement('div');
+      cta.innerHTML = ctaTpl.innerHTML.trim();
+      if (cta.firstElementChild) node.appendChild(cta.firstElementChild);
     }
-    return null;
+    return node;
   }
 
   function columnCount(table) {
-    var probe = (table.tHead && table.tHead.rows[0]) || table.tBodies[0].rows[0];
+    var probe = (table.tHead && table.tHead.rows[0]) ||
+                (table.tBodies[0] && table.tBodies[0].rows[0]);
     return probe ? probe.cells.length : 1;
   }
 
-  function inject() {
-    if (done) return true;
-    var found = findTable();
-    if (!found) return false;
+  // Insert bottom-up so that earlier insertions do not shift the indices of
+  // the rows we have yet to target.
+  function injectInto(table) {
+    var body = table.tBodies[0];
+    if (!body || body.rows.length < MIN_ROWS) return false;
 
-    done = true;
-    var row = found.body.insertRow(Math.min(AFTER_ROW, found.body.rows.length));
-    var cell = row.insertCell(0);
-    cell.colSpan = columnCount(found.table);
-    cell.style.padding = '0';
-    row.className = 'nekotab-ad-row';
+    var targets = [];
+    for (var r = FIRST_AFTER; r < body.rows.length; r += EVERY) targets.push(r);
+    if (!targets.length) return false;
 
-    ad.removeAttribute('hidden');
-    cell.appendChild(ad);
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    var cols = columnCount(table);
+    for (var i = targets.length - 1; i >= 0; i--) {
+      if (placed >= MAX_UNITS) break;
+      var node = build(placed === 0);
+      if (!node) break;
+
+      var row = body.insertRow(targets[i]);
+      row.className = 'nekotab-ad-row';
+      var cell = row.insertCell(0);
+      cell.colSpan = cols;
+      cell.style.padding = '0';
+      cell.appendChild(node);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      placed++;
+    }
     return true;
   }
 
-  if (inject()) return;
+  function sweep() {
+    if (placed >= MAX_UNITS) return true;
+    var tables = document.querySelectorAll('main table');
+    for (var i = 0; i < tables.length; i++) {
+      if (seen.indexOf(tables[i]) !== -1) continue;
+      seen.push(tables[i]);
+      injectInto(tables[i]);
+      if (placed >= MAX_UNITS) return true;
+    }
+    return placed > 0;
+  }
 
+  sweep();
+
+  // Keep watching: Vue may swap in a longer table, or a second one, after the
+  // first pass. Disconnected on the timeout so the observer is not left
+  // running for the life of the page.
   var observer = new MutationObserver(function () {
-    if (inject()) observer.disconnect();
+    if (sweep() && placed >= MAX_UNITS) observer.disconnect();
   });
   observer.observe(document.body, { childList: true, subtree: true });
   window.setTimeout(function () { observer.disconnect(); }, GIVE_UP_MS);

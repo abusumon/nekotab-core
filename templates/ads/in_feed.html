@@ -1,0 +1,101 @@
+{% comment %}
+  In-feed units for a client-rendered list.
+
+  Usage:
+    {% include "ads/in_feed.html" with feed_selector="#mlist" item_selector=".mrow" %}
+
+  Params:
+    feed_selector  — CSS selector for the list container (required)
+    item_selector  — CSS selector for one item within it (required)
+    feed_slot      — slot id; defaults to adsense_slot_content
+    first_after    — items before the first unit (default 3)
+    every          — items between subsequent units (default 6)
+
+  The container is re-rendered wholesale on every search/filter/page change,
+  which wipes the injected units, so an observer re-injects after each
+  redraw. That is also the hazard: a reader flicking through filters would
+  otherwise fire a fresh batch of ad requests per keystroke, which is
+  precisely the pattern AdSense treats as invalid traffic. PAGE_BUDGET caps
+  total requests for the life of the page view, and a short debounce keeps a
+  burst of DOM churn from counting more than once.
+{% endcomment %}
+{% load i18n %}
+{% firstof feed_slot adsense_slot_content as resolved_feed_slot %}
+{% if ads_enabled and resolved_feed_slot and feed_selector and item_selector %}
+<script type="text/template" id="nekotabInFeedTpl">
+  <div class="nekotab-ad nekotab-ad--incontent nekotab-ad--feed" role="complementary"
+       aria-label="{% trans 'Advertisement' %}">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="{{ adsense_publisher_id }}"
+         data-ad-slot="{{ resolved_feed_slot }}"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+</script>
+<script>
+(function () {
+  var FEED_SEL    = "{{ feed_selector|escapejs }}";
+  var ITEM_SEL    = "{{ item_selector|escapejs }}";
+  var FIRST_AFTER = {{ first_after|default:3 }};
+  var EVERY       = {{ every|default:6 }};
+  var PAGE_BUDGET = 20;   // total ad requests allowed for this page view
+  var DEBOUNCE_MS = 250;
+
+  var tpl = document.getElementById('nekotabInFeedTpl');
+  var feed = document.querySelector(FEED_SEL);
+  if (!tpl || !feed) return;
+
+  var spent = 0;
+  var timer = null;
+  var observer = null;
+
+  function build() {
+    var host = document.createElement('div');
+    host.innerHTML = tpl.innerHTML.trim();
+    return host.firstElementChild;
+  }
+
+  function inject() {
+    if (spent >= PAGE_BUDGET) {
+      if (observer) observer.disconnect();
+      return;
+    }
+
+    var items = feed.querySelectorAll(':scope > ' + ITEM_SEL);
+    if (!items.length) return;
+
+    // Bottom-up, so each insertion leaves the not-yet-visited items in place.
+    var targets = [];
+    for (var i = FIRST_AFTER; i < items.length; i += EVERY) targets.push(i);
+
+    for (var t = targets.length - 1; t >= 0; t--) {
+      if (spent >= PAGE_BUDGET) break;
+      var node = build();
+      if (!node) break;
+      var ref = items[targets[t]];
+      if (!ref || !ref.parentNode) continue;
+      ref.parentNode.insertBefore(node, ref);
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      spent++;
+    }
+  }
+
+  function schedule() {
+    if (timer) window.clearTimeout(timer);
+    timer = window.setTimeout(function () {
+      // Guard against the observer reacting to our own insertions.
+      observer.disconnect();
+      inject();
+      if (spent < PAGE_BUDGET) {
+        observer.observe(feed, { childList: true });
+      }
+    }, DEBOUNCE_MS);
+  }
+
+  observer = new MutationObserver(schedule);
+  observer.observe(feed, { childList: true });
+  schedule();
+})();
+</script>
+{% endif %}

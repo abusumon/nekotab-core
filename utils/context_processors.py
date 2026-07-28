@@ -71,6 +71,69 @@ def _premium_context(request, tournament):
     }
 
 
+def _tournament_holds_ad_free_grant(tournament):
+    """True when this tournament has been paid for.
+
+    Reads the grant directly instead of going through ``_premium_context``.
+    ``premium_state()`` short-circuits to reason ``'disabled'`` the moment
+    ``PREMIUM_ENABLED`` is off, so a caller asking "has this been paid for?"
+    via the premium reason gets ``'disabled'`` — not ``'paid'`` — for a
+    tournament that genuinely has paid. In "watch ads or pay" mode, where the
+    paywall is off and ads are on, that would serve ads to precisely the
+    people who paid to remove them.
+
+    Fails *closed* (reports paid, so ads stay off) when the lookup itself
+    breaks: a short ad outage is recoverable and is logged loudly, whereas
+    showing ads to someone who paid to remove them costs a refund and the
+    customer.
+    """
+    pk = getattr(tournament, 'pk', None)
+    if not pk:
+        return False
+
+    try:
+        from donations.premium import tournament_has_paid
+    except ImportError:
+        # `donations` is a NekoTab-only app; upstream Tabbycat runs without it.
+        return False
+
+    try:
+        return tournament_has_paid(pk)
+    except Exception:
+        logger.exception(
+            'Ad-free grant lookup failed for tournament %r; suppressing ads so '
+            'that a paid tournament cannot be shown them', pk)
+        return True
+
+
+def _ad_removal_url(request, tournament):
+    """Lemon Squeezy checkout for removing ads from this tournament, or ''.
+
+    Without this the "Remove ads" button on every unit renders empty and the
+    "watch ads or pay" offer is only half there: readers get the ads with no
+    way to buy their way out. Returns '' off-tournament (the site pages have
+    nothing to remove ads *from*) and on any failure, which just hides the
+    button.
+    """
+    pk = getattr(tournament, 'pk', None)
+    if not pk:
+        return ''
+
+    try:
+        from donations.ads import build_ad_free_checkout_url
+    except ImportError:
+        # `donations` is a NekoTab-only app; upstream Tabbycat runs without it.
+        return ''
+
+    try:
+        user = getattr(request, 'user', None)
+        email = (getattr(user, 'email', '') or '') if getattr(user, 'is_authenticated', False) else ''
+        return build_ad_free_checkout_url(pk, email=email)
+    except Exception:
+        logger.exception('Ad-removal checkout URL failed to build for tournament %r', pk)
+        return ''
+
+
 def _ad_context(request, tournament):
     """Ad placement flags for this request.
 
@@ -86,7 +149,7 @@ def _ad_context(request, tournament):
 
     # A tournament that has been paid for never shows ads, whatever the
     # site-wide switch says.
-    if _premium_context(request, tournament)['premium_reason'] == 'paid':
+    if _tournament_holds_ad_free_grant(tournament):
         return off
 
     path = getattr(request, 'path', '') or '/'
@@ -97,6 +160,7 @@ def _ad_context(request, tournament):
         off,
         ads_enabled=True,
         ads_anchor_only=bool(_ANCHOR_ONLY_RE is not None and _ANCHOR_ONLY_RE.search(path)),
+        ads_removal_url=_ad_removal_url(request, tournament),
     )
 
 COUNTRY_HEADER_KEYS = (

@@ -250,7 +250,16 @@
   </div>
 
   {% if user_role != "admin" or full_width_layout %}
-    {% block ad_above_footer %}{% endblock ad_above_footer %}
+    {% comment %}
+      Last unit before the footer. Only reached on public/participant pages
+      (the admin branch below skips it), and overridden by templates that
+      want a different slot here — see tables/base_vue_table.html.
+    {% endcomment %}
+    {% block ad_above_footer %}
+      {% if not ads_anchor_only %}
+        {% include "ads/ad_unit.html" with slot=adsense_slot_footer placement="footer" %}
+      {% endif %}
+    {% endblock ad_above_footer %}
     <footer class="footer">
       <div class="container-fluid">
         {% block footer %}{% include "footer.html" %}{% endblock footer %}
