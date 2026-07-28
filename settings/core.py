@@ -890,10 +890,10 @@ ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID') or 'ca-pub-3087866
 # `or` rather than a get() default: docker-compose passes unset variables
 # through as empty strings, which would otherwise blank these and silently
 # break every ad unit.
-ADSENSE_SLOT_CONTENT = os.environ.get('ADSENSE_SLOT_CONTENT') or '1295610228'
-ADSENSE_SLOT_FOOTER = os.environ.get('ADSENSE_SLOT_FOOTER') or '6356365218'
-ADSENSE_SLOT_TABLE = os.environ.get('ADSENSE_SLOT_TABLE') or '1290640712'
-ADSENSE_SLOT_ANCHOR = os.environ.get('ADSENSE_SLOT_ANCHOR') or '5099123868'
+ADSENSE_SLOT_CONTENT = os.environ.get('ADSENSE_SLOT_CONTENT') or '1572534718'
+ADSENSE_SLOT_FOOTER = os.environ.get('ADSENSE_SLOT_FOOTER') or '5611163716'
+ADSENSE_SLOT_TABLE = os.environ.get('ADSENSE_SLOT_TABLE') or '7786469134'
+ADSENSE_SLOT_ANCHOR = os.environ.get('ADSENSE_SLOT_ANCHOR') or '2989558169'
 
 # Paths that get the sticky anchor but no in-content units: ballot and
 # feedback submission, registration, check-in. Inline units beside form fields
