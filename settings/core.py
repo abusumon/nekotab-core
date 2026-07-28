@@ -879,7 +879,7 @@ PREMIUM_ALWAYS_FREE_PATTERNS = (
 # context flag, which this switch drives, so flipping ADSENSE_ENABLED=1 in the
 # environment brings the whole placement system back with no code change.
 ADSENSE_ENABLED = _env_bool('ADSENSE_ENABLED', default=False)
-ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID') or 'ca-pub-4135779137186219'
+ADSENSE_PUBLISHER_ID = os.environ.get('ADSENSE_PUBLISHER_ID') or 'ca-pub-3087866699649469'
 
 # Turn Auto ads OFF in the AdSense dashboard (Ads -> your site -> Auto ads).
 # The loader script still has to load: the manual units need it. It is
