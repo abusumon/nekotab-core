@@ -273,8 +273,9 @@
         <header><h2>Revenue</h2><a href="{% url 'analytics:donations' %}">Details</a></header>
         {% if available %}
           <div class="line"><span class="muted">Paid tournaments</span><span class="v">{{ paid_total }}</span></div>
-          {# Never summed across currencies: card is USD, bKash is BDT, and one
-             combined figure would add taka to dollars. #}
+          {% comment %}Never summed across currencies: card is USD, bKash is BDT, and one
+             combined figure would add taka to dollars.
+          {% endcomment %}
           {% for c in revenue_by_currency %}
             <div class="line"><span class="muted">Received, all time ({{ c.currency }})</span>
               <span class="v">{{ c.amount|floatformat:2 }} <span class="muted">· {{ c.count }}</span></span></div>

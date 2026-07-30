@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {# Inert AdSense site-ownership tag; see base.html. Outside the gate so
-     verification works while ads are off. #}
+  {% comment %}Inert AdSense site-ownership tag; see base.html. Outside the gate so
+     verification works while ads are off.
+  {% endcomment %}
   <meta name="google-adsense-account" content="{{ adsense_publisher_id }}">
   {% if ads_enabled %}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}" crossorigin="anonymous"></script>

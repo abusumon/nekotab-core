@@ -589,12 +589,19 @@
                 <option value="inactive" {% if status == 'inactive' %}selected{% endif %}>Inactive</option>
             </select>
             <button type="submit" class="btn btn-primary">Filter</button>
-            <a href="{% url 'analytics:export_users' %}" class="btn btn-secondary">
+            <button type="submit" form="export-users-form" class="btn btn-secondary">
                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                 </svg>
                 Export CSV
-            </a>
+            </button>
+        </form>
+
+        {% comment %}ExportUsersView is POST-only for CSRF protection, so the button above
+           submits this form rather than following a link (a GET returns 405).
+        {% endcomment %}
+        <form id="export-users-form" method="post" action="{% url 'analytics:export_users' %}">
+            {% csrf_token %}
         </form>
 
         <!-- Delete Toolbar (appears when users are selected) -->
