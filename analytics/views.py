@@ -198,13 +198,19 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         return out
 
     def _revenue(self, now):
-        """Paid-grant counts and money in. Never raises.
+        """Paid-grant counts and money in, split by currency. Never raises.
 
-        Wrapped because `donations` is the newest app here and a reporting
-        query must not be able to take the whole dashboard down.
+        Amounts are grouped by currency and never summed across them. Card
+        payments are recorded in USD and bKash claims in BDT, so a single total
+        would be adding dollars to taka — 510 BDT is about five dollars, not
+        five hundred, and a combined figure overstates revenue by roughly
+        two orders of magnitude on every bKash payment.
+
+        Wrapped because a reporting query must not be able to take the whole
+        dashboard down.
         """
-        blank = {'paid_total': 0, 'paid_30d': 0, 'revenue_total': Decimal('0.00'),
-                 'revenue_30d': Decimal('0.00'), 'promo_unused': 0, 'available': False}
+        blank = {'paid_total': 0, 'paid_30d': 0, 'revenue_by_currency': [],
+                 'revenue_30d_by_currency': [], 'promo_unused': 0, 'available': False}
         try:
             from donations.models import PromoCode, TournamentAdFree
         except ImportError:
@@ -212,19 +218,23 @@ class DashboardView(SuperuserRequiredMixin, TemplateView):
         try:
             last_30d = now - timedelta(days=30)
             grants = TournamentAdFree.objects.filter(active=True)
-            agg = grants.aggregate(
-                total=Count('id'),
-                amount=Coalesce(Sum('amount'), Value(Decimal('0.00')),
-                                output_field=DecimalField()),
-            )
-            agg30 = grants.filter(purchased_at__gte=last_30d).aggregate(
-                total=Count('id'),
-                amount=Coalesce(Sum('amount'), Value(Decimal('0.00')),
-                                output_field=DecimalField()),
-            )
+
+            def by_currency(qs):
+                return [
+                    {'currency': r['currency'] or '—', 'amount': r['amount'], 'count': r['n']}
+                    for r in qs.values('currency').annotate(
+                        amount=Coalesce(Sum('amount'), Value(Decimal('0.00')),
+                                        output_field=DecimalField()),
+                        n=Count('id'),
+                    ).order_by('-amount')
+                ]
+
             return {
-                'paid_total': agg['total'], 'revenue_total': agg['amount'],
-                'paid_30d': agg30['total'], 'revenue_30d': agg30['amount'],
+                'paid_total': grants.count(),
+                'paid_30d': grants.filter(purchased_at__gte=last_30d).count(),
+                'revenue_by_currency': by_currency(grants),
+                'revenue_30d_by_currency': by_currency(
+                    grants.filter(purchased_at__gte=last_30d)),
                 'promo_unused': PromoCode.objects.filter(used=False).count(),
                 'available': True,
             }

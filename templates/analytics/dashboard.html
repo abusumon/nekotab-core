@@ -273,9 +273,19 @@
         <header><h2>Revenue</h2><a href="{% url 'analytics:donations' %}">Details</a></header>
         {% if available %}
           <div class="line"><span class="muted">Paid tournaments</span><span class="v">{{ paid_total }}</span></div>
-          <div class="line"><span class="muted">Received, all time</span><span class="v">{{ revenue_total|floatformat:2 }}</span></div>
+          {# Never summed across currencies: card is USD, bKash is BDT, and one
+             combined figure would add taka to dollars. #}
+          {% for c in revenue_by_currency %}
+            <div class="line"><span class="muted">Received, all time ({{ c.currency }})</span>
+              <span class="v">{{ c.amount|floatformat:2 }} <span class="muted">· {{ c.count }}</span></span></div>
+          {% empty %}
+            <div class="line"><span class="muted">Received, all time</span><span class="v">0.00</span></div>
+          {% endfor %}
           <div class="line"><span class="muted">Paid, last 30d</span><span class="v">{{ paid_30d }}</span></div>
-          <div class="line"><span class="muted">Received, last 30d</span><span class="v">{{ revenue_30d|floatformat:2 }}</span></div>
+          {% for c in revenue_30d_by_currency %}
+            <div class="line"><span class="muted">Last 30d ({{ c.currency }})</span>
+              <span class="v">{{ c.amount|floatformat:2 }}</span></div>
+          {% endfor %}
           <div class="line"><span class="muted">Unused promo codes</span>
             <a href="{% url 'analytics:promo_codes' %}" class="v">{{ promo_unused }}</a></div>
         {% else %}<p class="empty">Payment data unavailable.</p>{% endif %}
