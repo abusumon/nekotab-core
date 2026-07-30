@@ -1,0 +1,214 @@
+{% comment %}
+  Monetisation switchboard.
+
+  Self-contained page in the analytics dark style. Like the other analytics
+  templates it owns its own <head> and does not extend a base with the message
+  framework, so it renders messages itself — otherwise saving redirects back
+  and looks like it did nothing.
+{% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monetization - NekoTab Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f; --bg-card: #12121a; --bg-hover: #1a1a25;
+            --border: #2a2a3a; --text-primary: #ffffff; --text-secondary: #8888aa;
+            --accent: #6366f1; --success: #10b981; --warning: #f59e0b; --danger: #ef4444;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif; background: var(--bg-dark);
+            color: var(--text-primary); min-height: 100vh; padding: 24px;
+        }
+        .wrap { max-width: 860px; margin: 0 auto; }
+        a { color: var(--accent); }
+        .back { display: inline-block; margin-bottom: 20px; font-size: 14px; text-decoration: none; }
+        .back:hover { text-decoration: underline; }
+        h1 { font-size: 24px; margin-bottom: 6px; }
+        .sub { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px; margin-bottom: 20px;
+        }
+        .card h2 { font-size: 16px; margin-bottom: 4px; }
+        .card .hint { color: var(--text-secondary); font-size: 13px; margin-bottom: 16px; line-height: 1.5; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+        th { color: var(--text-secondary); font-weight: 500; font-size: 12px; text-transform: uppercase; }
+        tr:last-child td { border-bottom: 0; }
+        .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+        .pill-on { background: rgba(16,185,129,.18); color: var(--success); }
+        .pill-off { background: rgba(136,136,170,.18); color: var(--text-secondary); }
+        .src { font-size: 12px; color: var(--text-secondary); }
+        .src-db { color: var(--warning); }
+        .choices { display: flex; gap: 6px; flex-wrap: wrap; }
+        .choices label {
+            display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px;
+            border: 1px solid var(--border); border-radius: 7px; font-size: 13px;
+            cursor: pointer; background: var(--bg-dark);
+        }
+        .choices label:hover { background: var(--bg-hover); }
+        .choices input { accent-color: var(--accent); cursor: pointer; }
+        .btn {
+            display: inline-block; padding: 10px 18px; border-radius: 8px; border: 0;
+            font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: #4f52d8; }
+        .btn-secondary { background: var(--bg-dark); color: var(--text-primary); border: 1px solid var(--border); }
+        .btn-secondary:hover { background: var(--bg-hover); }
+        .presets { display: flex; gap: 10px; flex-wrap: wrap; }
+        .msg { margin-bottom: 16px; padding: 12px 16px; border-radius: 8px; font-size: 14px; }
+        .note { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-top: 14px; }
+        @media (max-width: 640px) {
+            body { padding: 16px; }
+            th:nth-child(3), td:nth-child(3) { display: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <a class="back" href="/analytics/">&larr; Back to dashboard</a>
+    <h1>💰 Monetization</h1>
+    <p class="sub">
+        Ads, the access paywall, and the email charge. Changes take effect on the
+        next request — no deploy, no restart.
+    </p>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="msg" style="{% if 'error' in message.tags %}background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#fca5a5;{% else %}background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.35);color:#6ee7b7;{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% if not available %}
+      <div class="card">
+        <h2>Unavailable</h2>
+        <p class="hint">
+          The monetization settings table could not be read. If this is a fresh
+          deploy, run <code>migrate</code> and reload. Until then every switch
+          falls back to its environment default, so the site keeps working.
+        </p>
+      </div>
+    {% else %}
+
+      <div class="card">
+        <h2>Live state</h2>
+        <p class="hint">
+          <strong>environment</strong> means no override is set and the value comes
+          from <code>.env</code>. <strong>database</strong> means it was set here
+          and wins over <code>.env</code>.
+        </p>
+        <table>
+          <tr><th>Switch</th><th>Now</th><th>Source</th></tr>
+          <tr>
+            <td>Show ads</td>
+            <td><span class="pill {% if flags.ads_enabled.value %}pill-on{% else %}pill-off{% endif %}">{% if flags.ads_enabled.value %}ON{% else %}OFF{% endif %}</span></td>
+            <td class="src {% if flags.ads_enabled.source == 'database' %}src-db{% endif %}">{{ flags.ads_enabled.source }}</td>
+          </tr>
+          <tr>
+            <td>Paywall tournaments (charge to use)</td>
+            <td><span class="pill {% if flags.premium_gate_enabled.value %}pill-on{% else %}pill-off{% endif %}">{% if flags.premium_gate_enabled.value %}ON{% else %}OFF{% endif %}</span></td>
+            <td class="src {% if flags.premium_gate_enabled.source == 'database' %}src-db{% endif %}">{{ flags.premium_gate_enabled.source }}</td>
+          </tr>
+          <tr>
+            <td>Charge for the email service</td>
+            <td><span class="pill {% if flags.email_unlock_enabled.value %}pill-on{% else %}pill-off{% endif %}">{% if flags.email_unlock_enabled.value %}ON{% else %}OFF{% endif %}</span></td>
+            <td class="src {% if flags.email_unlock_enabled.source == 'database' %}src-db{% endif %}">{{ flags.email_unlock_enabled.source }}</td>
+          </tr>
+        </table>
+        {% if row.updated_at %}
+          <p class="note">
+            Last changed {{ row.updated_at }}{% if row.updated_by %} by {{ row.updated_by }}{% endif %}.
+          </p>
+        {% endif %}
+      </div>
+
+      <div class="card">
+        <h2>One-click presets</h2>
+        <p class="hint">
+          Each button sets all three switches at once, so returning to a known
+          configuration takes one click instead of three correct guesses.
+        </p>
+        <div class="presets">
+          {% for key, spec in presets.items %}
+            <form method="post" action="{% url 'analytics:monetization' %}">
+              {% csrf_token %}
+              <input type="hidden" name="preset" value="{{ key }}">
+              <button type="submit" class="btn btn-secondary">{{ spec.label }}</button>
+            </form>
+          {% endfor %}
+        </div>
+      </div>
+
+      <form method="post" action="{% url 'analytics:monetization' %}">
+        {% csrf_token %}
+        <div class="card">
+          <h2>Set each switch</h2>
+          <p class="hint">
+            <strong>Default</strong> clears the override and hands the switch back
+            to <code>.env</code>.
+          </p>
+          <table>
+            <tr>
+              <td style="width:52%">
+                Show ads
+                <div class="src">env default: {% if flags.ads_enabled.env_default %}on{% else %}off{% endif %}</div>
+              </td>
+              <td>
+                <div class="choices">
+                  <label><input type="radio" name="ads_enabled" value="on" {% if flags.ads_enabled.source == 'database' and flags.ads_enabled.value %}checked{% endif %}> On</label>
+                  <label><input type="radio" name="ads_enabled" value="off" {% if flags.ads_enabled.source == 'database' and not flags.ads_enabled.value %}checked{% endif %}> Off</label>
+                  <label><input type="radio" name="ads_enabled" value="default" {% if flags.ads_enabled.source != 'database' %}checked{% endif %}> Default</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Paywall tournaments (charge to use)
+                <div class="src">env default: {% if flags.premium_gate_enabled.env_default %}on{% else %}off{% endif %}</div>
+              </td>
+              <td>
+                <div class="choices">
+                  <label><input type="radio" name="premium_gate_enabled" value="on" {% if flags.premium_gate_enabled.source == 'database' and flags.premium_gate_enabled.value %}checked{% endif %}> On</label>
+                  <label><input type="radio" name="premium_gate_enabled" value="off" {% if flags.premium_gate_enabled.source == 'database' and not flags.premium_gate_enabled.value %}checked{% endif %}> Off</label>
+                  <label><input type="radio" name="premium_gate_enabled" value="default" {% if flags.premium_gate_enabled.source != 'database' %}checked{% endif %}> Default</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Charge for the email service
+                <div class="src">env default: {% if flags.email_unlock_enabled.env_default %}on{% else %}off{% endif %}</div>
+              </td>
+              <td>
+                <div class="choices">
+                  <label><input type="radio" name="email_unlock_enabled" value="on" {% if flags.email_unlock_enabled.source == 'database' and flags.email_unlock_enabled.value %}checked{% endif %}> On</label>
+                  <label><input type="radio" name="email_unlock_enabled" value="off" {% if flags.email_unlock_enabled.source == 'database' and not flags.email_unlock_enabled.value %}checked{% endif %}> Off</label>
+                  <label><input type="radio" name="email_unlock_enabled" value="default" {% if flags.email_unlock_enabled.source != 'database' %}checked{% endif %}> Default</label>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <p class="note">
+            Paying customers are never affected by these switches: a tournament
+            that has paid the $5 keeps its ads off and its email on regardless,
+            and one that has paid the $2 keeps email on.
+          </p>
+          <p style="margin-top:18px">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </p>
+        </div>
+      </form>
+
+    {% endif %}
+</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+{% comment %}
+  "Unlock the email service" offer for the tournament admin overview.
+
+  NekoTab is free to run a tournament on. Participant email is the one feature
+  with a real per-send cost, so it is the one behind a payment. The offer lives
+  here, on the first screen a director sees after opening their tournament,
+  rather than at creation time — asking for money before somebody has even
+  seen the software is how you lose them.
+
+  Renders only when `email_unlock_required` is set, which is false whenever
+  email is already available: the charge is off, the $2 was paid, or the $5
+  ad-free grant covers it. So there is no logic to duplicate here.
+
+  Dismissible for 7 days, matching ads/adfree_promo.html.
+{% endcomment %}
+{% load i18n %}
+{% if email_unlock_required and email_unlock_url %}
+{% comment %}
+  Styles inline rather than in ads/styles.html: that file is only pulled in
+  when ads are on or a premium offer is live, and this banner has to render
+  when both are off.
+{% endcomment %}
+<style>
+  .nk-emailunlock-card{
+    position:relative;display:flex;gap:14px;align-items:flex-start;
+    padding:16px 44px 16px 16px;margin-bottom:1rem;border-radius:8px;
+    border:1px solid #b6d4fe;background:#eff6ff;color:#0b3a6f;
+  }
+  .nk-emailunlock-card[hidden]{display:none}
+  .nk-emailunlock-card__icon{flex:0 0 auto;width:24px;height:24px;color:#1d6fd0}
+  .nk-emailunlock-card__icon svg{width:100%;height:100%}
+  .nk-emailunlock-card__body{flex:1 1 auto;min-width:0}
+  .nk-emailunlock-card__title{margin:0 0 4px;font-size:1rem;font-weight:600}
+  .nk-emailunlock-card__text{margin:0;font-size:.875rem;line-height:1.45}
+  .nk-emailunlock-card__note{margin:6px 0 0;font-size:.8125rem;opacity:.75}
+  .nk-emailunlock-card__cta{
+    flex:0 0 auto;align-self:center;display:inline-block;padding:9px 16px;
+    border-radius:6px;background:#1d6fd0;color:#fff;font-size:.875rem;
+    font-weight:600;text-decoration:none;white-space:nowrap;
+  }
+  .nk-emailunlock-card__cta:hover,.nk-emailunlock-card__cta:focus{background:#175aa8;color:#fff}
+  .nk-emailunlock-card__x{
+    position:absolute;top:6px;right:10px;border:0;background:none;
+    font-size:1.35rem;line-height:1;color:inherit;opacity:.5;cursor:pointer;
+  }
+  .nk-emailunlock-card__x:hover{opacity:1}
+  @media (max-width:600px){
+    .nk-emailunlock-card{flex-wrap:wrap}
+    .nk-emailunlock-card__cta{width:100%;text-align:center}
+  }
+  @media (prefers-color-scheme:dark){
+    .nk-emailunlock-card{border-color:#1d4a7a;background:#0f2436;color:#d6e6f7}
+  }
+  @media print{.nk-emailunlock-card{display:none}}
+</style>
+<div class="nk-emailunlock-card" id="nkEmailUnlockCard"
+     data-tournament="{{ tournament.pk }}" hidden>
+  <span class="nk-emailunlock-card__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/>
+    </svg>
+  </span>
+
+  <div class="nk-emailunlock-card__body">
+    <h3 class="nk-emailunlock-card__title">
+      {% blocktrans trimmed with price=email_unlock_price_label %}
+        Enable the email service — {{ price }}
+      {% endblocktrans %}
+    </h3>
+    <p class="nk-emailunlock-card__text">
+      {% blocktrans trimmed with price=email_unlock_price_label %}
+        Everything else in NekoTab is free, for as long as you use it. Sending
+        email to your participants — private ballot URLs, draw releases, ballot
+        receipts, team registration — needs a one-off {{ price }} for this
+        tournament. No subscription, no renewal.
+      {% endblocktrans %}
+    </p>
+    <p class="nk-emailunlock-card__note">
+      {% blocktrans trimmed with premium=premium_price_label|default:"$5" %}
+        Already paying {{ premium }} to remove ads? Email is included — you do
+        not need this.
+      {% endblocktrans %}
+    </p>
+  </div>
+
+  <a class="nk-emailunlock-card__cta lemonsqueezy-button" href="{{ email_unlock_url }}">
+    {% blocktrans trimmed with price=email_unlock_price_label %}
+      Unlock email · {{ price }}
+    {% endblocktrans %}
+  </a>
+
+  <button type="button" class="nk-emailunlock-card__x" id="nkEmailUnlockDismiss"
+          aria-label="{% trans 'Dismiss for now' %}">&times;</button>
+</div>
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script>
+(function () {
+  var card = document.getElementById('nkEmailUnlockCard');
+  if (!card) return;
+  var key = 'nkEmailUnlockHidden:' + (card.dataset.tournament || '0');
+  var HIDE_MS = 7 * 24 * 60 * 60 * 1000;
+
+  try {
+    if (Date.now() < parseInt(localStorage.getItem(key) || '0', 10)) return;
+  } catch (e) { /* storage blocked — just show it */ }
+
+  card.removeAttribute('hidden');
+
+  var x = document.getElementById('nkEmailUnlockDismiss');
+  if (x) {
+    x.addEventListener('click', function () {
+      card.setAttribute('hidden', '');
+      try { localStorage.setItem(key, String(Date.now() + HIDE_MS)); } catch (e) {}
+    });
+  }
+})();
+</script>
+{% endif %}

@@ -106,6 +106,87 @@ def _tournament_holds_ad_free_grant(tournament):
         return True
 
 
+def _email_unlock_context(request, tournament):
+    """Email-service unlock state for this tournament.
+
+    Drives the banner on the tournament admin overview. Returns the
+    "nothing to sell" shape whenever email is already available — because the
+    charge is switched off, because the $2 was paid, or because the $5 grant
+    covers it — so the template needs no logic of its own.
+    """
+    # Deliberately does not carry email_unlock_price_label: this dict is
+    # applied *over* the base context, so setting it here would blank the
+    # default that every other template reads.
+    nothing = {
+        'email_unlock_required': False,
+        'email_unlock_url': '',
+    }
+
+    pk = getattr(tournament, 'pk', None)
+    if not pk:
+        return nothing
+
+    try:
+        from donations.email_unlock import (
+            build_email_unlock_checkout_url, email_unlock_enabled,
+            email_unlock_price_label, tournament_can_send_email)
+    except ImportError:
+        # `donations` is a NekoTab-only app; upstream Tabbycat runs without it.
+        return nothing
+
+    try:
+        if not email_unlock_enabled():
+            return nothing
+        if tournament_can_send_email(tournament):
+            return nothing
+
+        user = getattr(request, 'user', None)
+        email = (getattr(user, 'email', '') or '') if getattr(user, 'is_authenticated', False) else ''
+        return {
+            'email_unlock_required': True,
+            'email_unlock_url': build_email_unlock_checkout_url(pk, email=email),
+            'email_unlock_price_label': email_unlock_price_label(),
+        }
+    except Exception:
+        # Never let a monetisation lookup take the admin overview down.
+        logger.exception('Email-unlock context failed for tournament %r', pk)
+        return nothing
+
+
+def _premium_gate_switch_on():
+    """The live access-paywall switch: database override if set, else PREMIUM_ENABLED.
+
+    Templates gate their pricing copy on the `premium_enabled` context flag
+    this feeds, so switching it off from the dashboard is what makes the site
+    stop asking for money.
+    """
+    try:
+        from donations.flags import premium_gate_enabled
+        return premium_gate_enabled()
+    except ImportError:
+        pass
+    except Exception:
+        logger.exception('Premium flag lookup failed; using the settings default')
+    return bool(getattr(settings, 'PREMIUM_ENABLED', False))
+
+
+def _ads_switch_on():
+    """The live ads switch: database override if set, else ADSENSE_ENABLED.
+
+    Routed through donations.flags so the analytics dashboard can turn ads on
+    and off without a deploy. Falls back to the setting when `donations` is
+    absent (upstream Tabbycat) or the lookup fails.
+    """
+    try:
+        from donations.flags import ads_enabled
+        return ads_enabled()
+    except ImportError:
+        pass
+    except Exception:
+        logger.exception('Ads flag lookup failed; using the settings default')
+    return bool(getattr(settings, 'ADSENSE_ENABLED', False))
+
+
 def _ad_removal_url(request, tournament):
     """Lemon Squeezy checkout for removing ads from this tournament, or ''.
 
@@ -144,7 +225,7 @@ def _ad_context(request, tournament):
     """
     off = {'ads_enabled': False, 'ads_anchor_only': False, 'ads_removal_url': ''}
 
-    if not getattr(settings, 'ADSENSE_ENABLED', False):
+    if not _ads_switch_on():
         return off
 
     # A tournament that has been paid for never shows ads, whatever the
@@ -287,7 +368,7 @@ def debate_context(request):
         'subdomain_base_domain': base_domain,
         # AdSense — `ads_enabled` (computed below) is the flag templates should
         # gate on; `adsense_enabled` is the raw site-wide switch.
-        'adsense_enabled': getattr(settings, 'ADSENSE_ENABLED', False),
+        'adsense_enabled': _ads_switch_on(),
         'adsense_publisher_id': getattr(settings, 'ADSENSE_PUBLISHER_ID', ''),
         'adsense_slot_content': getattr(settings, 'ADSENSE_SLOT_CONTENT', ''),
         'adsense_slot_footer': getattr(settings, 'ADSENSE_SLOT_FOOTER', ''),
@@ -295,7 +376,8 @@ def debate_context(request):
         'adsense_slot_anchor': getattr(settings, 'ADSENSE_SLOT_ANCHOR', ''),
         'ads_price_label': getattr(settings, 'PREMIUM_PRICE_LABEL', '$5'),
         'premium_price_label': getattr(settings, 'PREMIUM_PRICE_LABEL', '$5'),
-        'premium_enabled': getattr(settings, 'PREMIUM_ENABLED', False),
+        'premium_enabled': _premium_gate_switch_on(),
+        'email_unlock_price_label': getattr(settings, 'EMAIL_UNLOCK_PRICE_LABEL', '$2'),
         # SEO defaults
         'seo_site_name': 'NekoTab Debate Tabulation',
         'seo_keywords': 'debate tab, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, parliamentary debating, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, debate results live, debate ticketing, debate schedule planner, debate registration forms, debate website builder, nekotab, free debate tab software',
@@ -343,5 +425,6 @@ def debate_context(request):
     # per-tournament.
     context.update(_premium_context(request, context.get('tournament')))
     context.update(_ad_context(request, context.get('tournament')))
+    context.update(_email_unlock_context(request, context.get('tournament')))
 
     return context

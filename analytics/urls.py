@@ -18,6 +18,7 @@ urlpatterns = [
     path('tournaments/showcase-toggle/',
          views.ToggleTournamentShowcaseView.as_view(), name='toggle_showcase'),
     path('tournaments/delete/', views.DeleteTournamentsView.as_view(), name='delete_tournaments'),
+    path('monetization/', views.MonetizationSettingsView.as_view(), name='monetization'),
     path('db-usage/', views.DbUsageView.as_view(), name='db_usage'),
     path('db-usage/refresh/', views.RefreshDbUsageCacheView.as_view(), name='db_usage_refresh'),
     

@@ -54,6 +54,25 @@ User = get_user_model()
 logger = logging.getLogger(__name__)
 
 
+def _premium_gate_on():
+    """Whether the access paywall is enforcing right now.
+
+    Read through donations.flags so the analytics dashboard can switch the
+    paywall off without a deploy — the templates gate all their pricing copy on
+    this, so flipping it is what makes tournament creation stop asking for
+    money. Falls back to the setting when `donations` is absent (upstream
+    Tabbycat) or the lookup fails.
+    """
+    try:
+        from donations.flags import premium_gate_enabled
+        return premium_gate_enabled()
+    except ImportError:
+        pass
+    except Exception:
+        logger.exception('Premium flag lookup failed; using the settings default')
+    return bool(getattr(settings, 'PREMIUM_ENABLED', False))
+
+
 class PricingView(TemplateView):
     """Standalone /pricing/ page explaining NekoTab Premium.
 
@@ -64,7 +83,7 @@ class PricingView(TemplateView):
 
     def get_context_data(self, **kwargs):
         kwargs['price_label'] = getattr(settings, 'PREMIUM_PRICE_LABEL', '$5')
-        kwargs['premium_enabled'] = getattr(settings, 'PREMIUM_ENABLED', False)
+        kwargs['premium_enabled'] = _premium_gate_on()
         kwargs['trial_days'] = getattr(settings, 'PREMIUM_TRIAL_DAYS', 0)
         kwargs['canonical_url'] = '%s/pricing/' % getattr(
             settings, 'SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
@@ -665,7 +684,7 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
         demo_slugs = [slug for slug, _ in demo_datasets]
         kwargs['preexisting'] = Tournament.objects.filter(slug__in=demo_slugs).values_list('slug', flat=True)
 
-        kwargs['premium_enabled'] = getattr(settings, 'PREMIUM_ENABLED', False)
+        kwargs['premium_enabled'] = _premium_gate_on()
         kwargs['price_label'] = getattr(settings, 'PREMIUM_PRICE_LABEL', '$5')
         kwargs['trial_days'] = getattr(settings, 'PREMIUM_TRIAL_DAYS', 0)
         kwargs['demo_enabled'] = getattr(settings, 'DEMO_TOURNAMENT_ENABLED', True)

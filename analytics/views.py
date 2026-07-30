@@ -847,6 +847,92 @@ class EventsModerationView(SuperuserRequiredMixin, TemplateView):
         return redirect('/analytics/events/')
 
 
+class MonetizationSettingsView(SuperuserRequiredMixin, TemplateView):
+    """The monetisation switchboard: ads, the access paywall, the email charge.
+
+    Deliberately not cached — it shows live switch state, and a 60-second cache
+    would have you looking at the previous setting right after changing it.
+
+    Each switch is tri-state: on, off, or "use the environment default". The
+    third is what every flag starts as, so this page changes nothing until you
+    actually pick something. Saving writes the singleton and busts the flag
+    cache, so a change is live on the next request rather than after the TTL.
+    """
+    template_name = 'analytics/monetization.html'
+
+    #: One-click presets. Each maps a name to the full flag set it applies, so
+    #: returning to a known configuration is a single button rather than three
+    #: correct guesses.
+    PRESETS = {
+        'free_email_paid': {
+            'label': 'Free forever, charge for email',
+            'ads_enabled': True,
+            'premium_gate_enabled': False,
+            'email_unlock_enabled': True,
+        },
+        'premium_paywall': {
+            'label': 'Paywall tournaments, no ads',
+            'ads_enabled': False,
+            'premium_gate_enabled': True,
+            'email_unlock_enabled': False,
+        },
+        'all_free': {
+            'label': 'Everything free, no ads',
+            'ads_enabled': False,
+            'premium_gate_enabled': False,
+            'email_unlock_enabled': False,
+        },
+    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            from donations.flags import FLAG_DEFAULTS, all_flags
+            from donations.models import MonetizationSettings
+            row = MonetizationSettings.get()
+            context['flags'] = all_flags()
+            context['flag_names'] = list(FLAG_DEFAULTS)
+            context['row'] = row
+            context['presets'] = self.PRESETS
+            context['available'] = True
+        except Exception:
+            logger.exception('Monetization settings page could not load the flags')
+            context['available'] = False
+        return context
+
+    def post(self, request, *args, **kwargs):
+        from donations.models import MonetizationSettings
+
+        row = MonetizationSettings.get()
+        preset = request.POST.get('preset') or ''
+
+        if preset:
+            spec = self.PRESETS.get(preset)
+            if not spec:
+                messages.error(request, 'Unknown preset.')
+                return redirect('analytics:monetization')
+            for name in ('ads_enabled', 'premium_gate_enabled', 'email_unlock_enabled'):
+                setattr(row, name, spec[name])
+            row.updated_by = request.user
+            row.save()
+            messages.success(request, 'Applied preset: %s.' % spec['label'])
+            return redirect('analytics:monetization')
+
+        # Manual form: each switch posts 'on', 'off', or 'default'.
+        for name in ('ads_enabled', 'premium_gate_enabled', 'email_unlock_enabled'):
+            choice = request.POST.get(name, 'default')
+            if choice == 'on':
+                setattr(row, name, True)
+            elif choice == 'off':
+                setattr(row, name, False)
+            else:
+                setattr(row, name, None)  # defer to the environment
+        row.updated_by = request.user
+        row.save()
+        messages.success(request, 'Monetization settings saved.')
+        return redirect('analytics:monetization')
+
+
 class ToggleTournamentShowcaseView(SuperuserRequiredMixin, View):
     """Flip whether one tournament is featured on the home page.
 
