@@ -128,14 +128,177 @@ class SuperuserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
 
 
 @method_decorator(cache_page(60), name='dispatch')
+def _rate(numerator, denominator):
+    """'12.3% of previous stage', or an em dash when the stage above is empty."""
+    if not denominator:
+        return '—'
+    return '%.1f%% of previous' % (numerator * 100.0 / denominator)
+
+
+def _pct_delta(current, previous):
+    """Percent change, or None when there is no baseline to compare against.
+
+    Returns None rather than 0 or 100 when `previous` is zero: "up 100%" from a
+    base of nothing is noise, and showing it next to a real percentage invites
+    the reader to compare two things that are not comparable. The template
+    renders None as a dash.
+    """
+    if not previous:
+        return None
+    return round((current - previous) * 100.0 / previous, 1)
+
+
 class DashboardView(SuperuserRequiredMixin, TemplateView):
-    """Main analytics dashboard with overview stats."""
+    """Main analytics dashboard.
+
+    Every headline number carries a same-length prior-period comparison. A bare
+    total answers "how many" but not "is that good", which is the question an
+    operator actually opens this page with — so the delta is part of the metric,
+    not a decoration.
+    """
     template_name = 'analytics/dashboard.html'
-    
+
+    def _period_metrics(self, now):
+        """Headline counters for the last 24h/7d/30d, each against its own
+        immediately-preceding window of the same length."""
+        windows = {'24h': timedelta(hours=24), '7d': timedelta(days=7), '30d': timedelta(days=30)}
+        out = {}
+        for label, span in windows.items():
+            cur_from, prev_from = now - span, now - (span * 2)
+
+            views_cur = PageView.objects.filter(timestamp__gte=cur_from).count()
+            views_prev = PageView.objects.filter(
+                timestamp__gte=prev_from, timestamp__lt=cur_from).count()
+
+            uniq_cur = PageView.objects.filter(
+                timestamp__gte=cur_from).values('session_key').distinct().count()
+            uniq_prev = PageView.objects.filter(
+                timestamp__gte=prev_from, timestamp__lt=cur_from
+            ).values('session_key').distinct().count()
+
+            signups_cur = User.objects.filter(date_joined__gte=cur_from).count()
+            signups_prev = User.objects.filter(
+                date_joined__gte=prev_from, date_joined__lt=cur_from).count()
+
+            ballots_cur = BallotSubmission.objects.filter(timestamp__gte=cur_from).count()
+            ballots_prev = BallotSubmission.objects.filter(
+                timestamp__gte=prev_from, timestamp__lt=cur_from).count()
+
+            tourn_cur = Tournament.objects.filter(created_at__gte=cur_from).count()
+            tourn_prev = Tournament.objects.filter(
+                created_at__gte=prev_from, created_at__lt=cur_from).count()
+
+            out[label] = {
+                'views': views_cur, 'views_delta': _pct_delta(views_cur, views_prev),
+                'uniques': uniq_cur, 'uniques_delta': _pct_delta(uniq_cur, uniq_prev),
+                'signups': signups_cur, 'signups_delta': _pct_delta(signups_cur, signups_prev),
+                'ballots': ballots_cur, 'ballots_delta': _pct_delta(ballots_cur, ballots_prev),
+                'tournaments': tourn_cur, 'tournaments_delta': _pct_delta(tourn_cur, tourn_prev),
+            }
+        return out
+
+    def _revenue(self, now):
+        """Paid-grant counts and money in. Never raises.
+
+        Wrapped because `donations` is the newest app here and a reporting
+        query must not be able to take the whole dashboard down.
+        """
+        blank = {'paid_total': 0, 'paid_30d': 0, 'revenue_total': Decimal('0.00'),
+                 'revenue_30d': Decimal('0.00'), 'promo_unused': 0, 'available': False}
+        try:
+            from donations.models import PromoCode, TournamentAdFree
+        except ImportError:
+            return blank
+        try:
+            last_30d = now - timedelta(days=30)
+            grants = TournamentAdFree.objects.filter(active=True)
+            agg = grants.aggregate(
+                total=Count('id'),
+                amount=Coalesce(Sum('amount'), Value(Decimal('0.00')),
+                                output_field=DecimalField()),
+            )
+            agg30 = grants.filter(purchased_at__gte=last_30d).aggregate(
+                total=Count('id'),
+                amount=Coalesce(Sum('amount'), Value(Decimal('0.00')),
+                                output_field=DecimalField()),
+            )
+            return {
+                'paid_total': agg['total'], 'revenue_total': agg['amount'],
+                'paid_30d': agg30['total'], 'revenue_30d': agg30['amount'],
+                'promo_unused': PromoCode.objects.filter(used=False).count(),
+                'available': True,
+            }
+        except Exception:
+            logger.exception('Dashboard revenue lookup failed')
+            return blank
+
+    def _health(self):
+        """Operational vitals: database size and how far back analytics reach.
+
+        Cheap enough to run inline — pg_database_size is a catalogue read, not a
+        scan. Returns partial data rather than failing the page.
+        """
+        health = {'db_size': None, 'db_bytes': 0, 'oldest_pageview': None, 'pageview_rows': 0}
+        try:
+            with connection.cursor() as cur:
+                cur.execute("SELECT pg_size_pretty(pg_database_size(current_database())), "
+                            "pg_database_size(current_database())")
+                row = cur.fetchone()
+                health['db_size'], health['db_bytes'] = row[0], row[1]
+        except Exception:
+            logger.warning('Dashboard could not read database size', exc_info=True)
+        try:
+            health['pageview_rows'] = PageView.objects.count()
+            oldest = PageView.objects.order_by('timestamp').values_list('timestamp', flat=True).first()
+            health['oldest_pageview'] = oldest
+        except Exception:
+            logger.warning('Dashboard could not read pageview range', exc_info=True)
+        return health
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         now = timezone.now()
         today_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
+
+        # --- Comparisons, money, and vitals (the additions) ---
+        periods = self._period_metrics(now)
+        context['periods'] = periods
+        context['period_json'] = json.dumps({
+            k: {kk: (float(vv) if vv is not None else None) for kk, vv in v.items()}
+            for k, v in periods.items()
+        })
+        context.update(self._revenue(now))
+        context.update(self._health())
+
+        # Conversion funnel over 30 days. Absolute counts, not just rates: a
+        # rate alone hides whether the stage moved at all.
+        last30 = now - timedelta(days=30)
+        f_visitors = PageView.objects.filter(
+            timestamp__gte=last30).values('session_key').distinct().count()
+        f_signups = User.objects.filter(date_joined__gte=last30).count()
+        f_tournaments = Tournament.objects.filter(created_at__gte=last30).count()
+        f_paid = 0
+        try:
+            from donations.models import TournamentAdFree
+            f_paid = TournamentAdFree.objects.filter(
+                active=True, purchased_at__gte=last30).count()
+        except Exception:
+            pass
+        context['funnel'] = [
+            {'label': 'Visitors', 'value': f_visitors, 'note': 'unique sessions'},
+            {'label': 'Signed up', 'value': f_signups,
+             'note': _rate(f_signups, f_visitors)},
+            {'label': 'Created a tournament', 'value': f_tournaments,
+             'note': _rate(f_tournaments, f_signups)},
+            {'label': 'Paid', 'value': f_paid, 'note': _rate(f_paid, f_tournaments)},
+        ]
+        context['funnel_max'] = max(f_visitors, 1)
+
+        # Tournaments with activity in the last 24h — "live right now" in the
+        # only sense that matters operationally.
+        context['tournaments_active_now'] = Tournament.objects.filter(
+            round__debate__ballotsubmission__timestamp__gte=now - timedelta(hours=24),
+        ).distinct().count()
         
         # Time ranges
         last_24h = now - timedelta(hours=24)

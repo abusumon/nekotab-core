@@ -1,1437 +1,648 @@
+{% comment %}
+  Admin overview.
+
+  Design rules this page follows, each fixing a specific failure of the
+  version it replaces:
+
+  * Every headline number carries a prior-period comparison of equal length.
+    A bare total answers "how many" but not "is that good", which is the
+    question you open an admin dashboard with.
+  * Deltas pair an arrow glyph with the sign — never colour alone, which is
+    invisible to a meaningful share of readers and dies in print.
+  * One accent hue. Traffic and signups are each a single series, so they need
+    no legend and no palette; colour here carries state, not identity. Ranked
+    lists encode magnitude as bar *length* at constant colour, rather than
+    shading bars darker-where-bigger (that would double-encode length as hue
+    and spend the only free channel on information already shown).
+  * Table figures use tabular numerals so columns align; large standalone
+    figures use proportional ones, where equal-width digits read loose.
+  * Gridlines are solid hairlines, never dashed — dashing reads as "threshold"
+    when it is just a grid.
+  * Both charts ship a crosshair tooltip *and* a table view, so no value is
+    reachable only by hovering.
+  * No emoji, no gradient text, no drop shadows on data. Spacing and hairlines
+    do the separating.
+
+  Surfaces validated with the skill's checker against #141414:
+  all six checks pass (band, chroma, CVD, normal-vision, contrast).
+
+  Self-contained like its sibling analytics pages: owns its <head> and renders
+  its own messages, since it extends no base carrying the message framework.
+
+  NOTE: export/upload endpoints are POST-only for CSRF protection — a GET link
+  returns 405. They must stay as <form method="post">.
+{% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Admin Dashboard - NekoTab</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-    <style>
-        :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --bg-hover: #1a1a25;
-            --border: #2a2a3a;
-            --text-primary: #ffffff;
-            --text-secondary: #8888aa;
-            --accent: #6366f1;
-            --accent-light: #818cf8;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --info: #3b82f6;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            min-height: 100vh;
-        }
-        
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 260px;
-            height: 100vh;
-            background: var(--bg-card);
-            border-right: 1px solid var(--border);
-            padding: 20px 0;
-            z-index: 100;
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-        }
-        
-        .logo {
-            padding: 0 24px 24px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 24px;
-        }
-        
-        .logo h1 {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .logo span {
-            font-size: 12px;
-            color: var(--text-secondary);
-            display: block;
-            margin-top: 4px;
-        }
-        
-        .nav-section {
-            padding: 0 12px;
-            margin-bottom: 24px;
-        }
-        
-        .nav-label {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            padding: 0 12px;
-            margin-bottom: 8px;
-        }
-        
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 12px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.2s;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            background: var(--bg-hover);
-            color: var(--text-primary);
-        }
-        
-        .nav-link.active {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.1));
-            color: var(--accent-light);
-        }
-        
-        .nav-link svg {
-            width: 20px;
-            height: 20px;
-        }
-        
-        /* Main Content */
-        .main-content {
-            margin-left: 260px;
-            padding: 32px;
-            min-height: 100vh;
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
-        }
-        
-        .header h2 {
-            font-size: 28px;
-            font-weight: 700;
-        }
-        
-        .header-actions {
-            display: flex;
-            gap: 12px;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #ec4899);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-        
-        .btn-secondary {
-            background: var(--bg-card);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--bg-hover);
-        }
-        
-        /* Live Counter */
-        .live-counter {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-        }
-        
-        .live-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--success);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.1); }
-        }
-        
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 32px;
-        }
-        
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.2);
-        }
-        
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            font-size: 24px;
-        }
-        
-        .stat-icon.purple { background: rgba(124, 58, 237, 0.2); }
-        .stat-icon.blue { background: rgba(59, 130, 246, 0.2); }
-        .stat-icon.green { background: rgba(16, 185, 129, 0.2); }
-        .stat-icon.orange { background: rgba(245, 158, 11, 0.2); }
-        .stat-icon.pink { background: rgba(236, 72, 153, 0.2); }
-        
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-        
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-        }
-        
-        .stat-change {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 13px;
-            margin-top: 8px;
-            color: var(--text-secondary);
-        }
-        
-        .stat-change.up { color: var(--success); }
-        .stat-change.down { color: var(--danger); }
-        
-        /* Charts Section */
-        .charts-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-        
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .card-header h3 {
-            font-size: 16px;
-            font-weight: 600;
-        }
-        
-        .card-body {
-            padding: 24px;
-        }
-        
-        /* Tables */
-        .table-container {
-            overflow-x: auto;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        th, td {
-            text-align: left;
-            padding: 14px 16px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        th {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
-            background: var(--bg-hover);
-        }
-        
-        td {
-            font-size: 14px;
-        }
-        
-        tr:hover td {
-            background: var(--bg-hover);
-        }
-        
-        /* Badges */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .badge-success {
-            background: rgba(16, 185, 129, 0.2);
-            color: var(--success);
-        }
-        
-        .badge-warning {
-            background: rgba(245, 158, 11, 0.2);
-            color: var(--warning);
-        }
-        
-        .badge-info {
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--info);
-        }
-        
-        .badge-purple {
-            background: rgba(124, 58, 237, 0.2);
-            color: var(--accent-light);
-        }
-        
-        /* Avatar */
-        .avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #ec4899);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 600;
-            color: white;
-        }
-        
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .user-name {
-            font-weight: 500;
-        }
-        
-        .user-email {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-        
-        /* Progress bar */
-        .progress-bar {
-            height: 8px;
-            background: var(--bg-hover);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-        
-        .progress-fill.purple { background: linear-gradient(90deg, var(--accent), #ec4899); }
-        .progress-fill.blue { background: var(--info); }
-        .progress-fill.green { background: var(--success); }
-        
-        /* Live Visitors List */
-        .visitor-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            border-radius: 8px;
-            background: var(--bg-hover);
-            margin-bottom: 8px;
-        }
-        
-        .visitor-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .visitor-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--success);
-        }
-        
-        .visitor-path {
-            flex: 1;
-            font-size: 13px;
-            color: var(--text-primary);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        
-        .visitor-location {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-        
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .charts-row {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-header { display: flex; }
-            .sidebar-overlay.visible { display: block; }
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            .sidebar.open {
-                transform: translateX(0);
-                box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
-            }
-            .main-content {
-                margin-left: 0;
-                padding: 72px 16px 16px;
-            }
-            .header { flex-direction: column; align-items: flex-start; }
-            .header-actions { flex-wrap: wrap; }
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            .charts-row { grid-template-columns: 1fr; }
-        }
-        
-        /* Period Selector */
-        .period-selector {
-            display: flex;
-            gap: 4px;
-            background: var(--bg-hover);
-            padding: 4px;
-            border-radius: 8px;
-        }
-        
-        .period-btn {
-            padding: 6px 12px;
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            font-size: 12px;
-            font-weight: 500;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .period-btn:hover {
-            color: var(--text-primary);
-        }
-        
-        .period-btn.active {
-            background: var(--accent);
-            color: white;
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Overview · NekoTab Admin</title>
+<style>
+  :root{
+    --plane:#0b0b0b; --surface:#141414; --raised:#1c1c1c; --hover:#232323;
+    --line:#282828; --line-soft:#1f1f1f;
+    --ink:#f2f2f0; --ink-2:#a3a29c; --ink-3:#6f6e69;
+    --accent:#3987e5;
+    --good:#0ca30c; --warn:#fab219; --crit:#d03b3b;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:var(--plane);color:var(--ink);font-size:14px;line-height:1.5;
+    -webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
 
-        /* Mobile Header */
-        .mobile-header {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            height: 56px;
-            background: var(--bg-card);
-            border-bottom: 1px solid var(--border);
-            z-index: 99;
-            align-items: center;
-            padding: 0 16px;
-            gap: 12px;
-        }
-        .hamburger {
-            background: none; border: none;
-            color: var(--text-primary); cursor: pointer;
-            padding: 8px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .hamburger:hover { background: var(--bg-hover); }
-        .hamburger svg { width: 24px; height: 24px; }
-        .mobile-header .mobile-title {
-            font-size: 16px; font-weight: 600;
-            background: linear-gradient(135deg, var(--accent), #ec4899);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .sidebar-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0, 0, 0, 0.5); z-index: 99;
-        }
+  .shell{display:flex;min-height:100vh}
+  .side{width:220px;flex:0 0 220px;background:var(--surface);border-right:1px solid var(--line);
+    padding:20px 0;position:sticky;top:0;height:100vh;overflow-y:auto}
+  .brand{padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .brand b{display:block;font-size:15px;font-weight:650;letter-spacing:-.01em}
+  .brand span{display:block;font-size:11.5px;color:var(--ink-3);margin-top:2px}
+  .navgrp{padding:0 12px;margin-bottom:18px}
+  .navgrp h3{font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--ink-3);padding:0 8px;margin-bottom:6px}
+  .navgrp a{display:block;padding:7px 8px;border-radius:6px;font-size:13.5px;color:var(--ink-2)}
+  .navgrp a:hover{background:var(--hover);color:var(--ink)}
+  .navgrp a.on{background:var(--raised);color:var(--ink);font-weight:550;
+    box-shadow:inset 2px 0 0 var(--accent)}
+  .main{flex:1;min-width:0;padding:24px 28px 60px}
 
-        /* Fade-in animation */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .stat-card, .card { animation: fadeInUp 0.4s ease both; }
-        .stat-card:nth-child(2), .card:nth-child(2) { animation-delay: 0.05s; }
-        .stat-card:nth-child(3) { animation-delay: 0.1s; }
-        .stat-card:nth-child(4) { animation-delay: 0.15s; }
-    </style>
+  .head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+    flex-wrap:wrap;margin-bottom:20px}
+  h1{font-size:21px;font-weight:650;letter-spacing:-.02em}
+  .head p{font-size:12.5px;color:var(--ink-3);margin-top:3px}
+  .head-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .live{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;background:var(--surface);
+    border:1px solid var(--line);border-radius:999px;font-size:13px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--good);flex:0 0 auto}
+  @media (prefers-reduced-motion:no-preference){
+    .dot{animation:pulse 2.4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  }
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:7px;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+    font:inherit;font-size:13px;cursor:pointer}
+  .btn:hover{background:var(--hover);color:var(--ink)}
+  .btn-p{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn-p:hover{background:#2f74c9;color:#fff}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+  .seg button{padding:6px 13px;border:0;background:var(--surface);color:var(--ink-2);
+    font:inherit;font-size:13px;cursor:pointer}
+  .seg button+button{border-left:1px solid var(--line)}
+  .seg button[aria-pressed=true]{background:var(--raised);color:var(--ink);font-weight:550}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:17px}
+  .card>header{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+    margin-bottom:13px}
+  .card h2{font-size:13.5px;font-weight:600;letter-spacing:-.005em}
+  .card header a,.card header .meta{font-size:12px;color:var(--ink-3)}
+  .card header a:hover{color:var(--accent)}
+
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:11px;margin-bottom:11px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 15px}
+  .kpi .k{font-size:11px;font-weight:550;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}
+  .kpi .v{font-size:26px;font-weight:640;letter-spacing:-.025em;margin:6px 0 4px;line-height:1.05}
+  .kpi .d{font-size:12.5px;display:flex;align-items:center;gap:5px}
+  .kpi .d b{font-weight:600;font-variant-numeric:tabular-nums}
+  .up{color:var(--good)}.down{color:var(--crit)}.flat{color:var(--ink-3)}
+
+  .row{display:grid;gap:11px;margin-bottom:11px}
+  .r-2{grid-template-columns:1.55fr 1fr}
+  .r-3{grid-template-columns:repeat(3,1fr)}
+  .r-2e{grid-template-columns:1fr 1fr}
+  @media(max-width:1100px){.r-2,.r-3,.r-2e{grid-template-columns:1fr}}
+
+  .chartwrap{position:relative}
+  .chart{width:100%;height:210px;display:block;overflow:visible}
+  .grid line{stroke:var(--line-soft);stroke-width:1}
+  .axis text{fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums}
+  .series{fill:none;stroke:var(--accent);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+  .cursor{stroke:var(--ink-3);stroke-width:1}
+  .hot{fill:transparent;cursor:crosshair}
+  .tip{position:absolute;pointer-events:none;opacity:0;transition:opacity .1s;background:var(--raised);
+    border:1px solid var(--line);border-radius:7px;padding:7px 10px;font-size:12.5px;
+    white-space:nowrap;z-index:20}
+  .tip b{font-variant-numeric:tabular-nums}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover td{background:var(--raised)}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .path{font-family:var(--mono);font-size:12px;color:var(--ink-2);max-width:270px;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .muted{color:var(--ink-3)}
+  .empty{color:var(--ink-3);font-size:13px;padding:12px 0}
+  .meterbg{background:var(--line-soft);border-radius:2px;height:3px;width:100%;margin-top:5px}
+  .meter{height:3px;border-radius:2px;background:var(--accent);opacity:.8;min-width:2px}
+
+  .fstep{padding:9px 0;border-bottom:1px solid var(--line-soft)}
+  .fstep:last-child{border-bottom:0}
+  .fstep .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .fstep .val{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+  .fstep .note{font-size:11.5px;color:var(--ink-3)}
+  .fbar{height:5px;border-radius:3px;background:var(--accent);margin-top:6px;min-width:3px}
+
+  .line{display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:8px 0;border-bottom:1px solid var(--line-soft);font-size:13px}
+  .line:last-child{border-bottom:0}
+  .line .v{font-weight:600;font-variant-numeric:tabular-nums}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;
+    padding:2px 8px;border-radius:999px}
+  .b-good{background:rgba(12,163,12,.14);color:#4ade4a}
+  .b-warn{background:rgba(250,178,25,.14);color:var(--warn)}
+  .b-crit{background:rgba(208,59,59,.16);color:#f08a8a}
+
+  details.tv{margin-top:11px;border-top:1px solid var(--line-soft);padding-top:9px}
+  details.tv summary{font-size:12px;color:var(--ink-3);cursor:pointer}
+  details.tv summary:hover{color:var(--ink-2)}
+  .scroll{max-height:230px;overflow:auto}
+  input[type=file]{font:inherit;font-size:12.5px;color:var(--ink-2);width:100%}
+
+  .burger{display:none}
+  @media(max-width:900px){
+    .side{position:fixed;left:0;top:0;z-index:50;transform:translateX(-100%);transition:transform .2s}
+    .side.open{transform:none}
+    .burger{display:inline-flex;margin-bottom:10px}
+    .main{padding:16px 14px 48px}
+  }
+</style>
 </head>
 <body>
-    <!-- Mobile Header -->
-    <header class="mobile-header">
-        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-        </button>
-        <span class="mobile-title">🐱 NekoTab</span>
-    </header>
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="shell">
 
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <div class="logo">
-            <h1>🐱 NekoTab</h1>
-            <span>Admin Dashboard</span>
+  <aside class="side" id="side">
+    <div class="brand"><b>NekoTab</b><span>Admin</span></div>
+    <nav class="navgrp">
+      <h3>Analytics</h3>
+      <a href="{% url 'analytics:dashboard' %}" class="on">Overview</a>
+      <a href="{% url 'analytics:owner_dashboard' %}">Owner dashboard</a>
+      <a href="{% url 'analytics:tournaments' %}">Tournaments</a>
+      <a href="{% url 'analytics:users' %}">Users</a>
+      <a href="{% url 'analytics:db_usage' %}">Database</a>
+      <a href="{% url 'analytics:tournament_motions' %}">Motion harvest</a>
+    </nav>
+    <nav class="navgrp">
+      <h3>Revenue</h3>
+      <a href="{% url 'analytics:donations' %}">Donations</a>
+      <a href="{% url 'analytics:bkash_requests' %}">bKash requests</a>
+      <a href="{% url 'analytics:promo_codes' %}">Promo codes</a>
+      <a href="{% url 'analytics:monetization' %}">Monetization</a>
+    </nav>
+    <nav class="navgrp">
+      <h3>Participants</h3>
+      <a href="{% url 'analytics:participants_all' %}">All participants</a>
+      <a href="{% url 'analytics:participants_debaters' %}">Debaters</a>
+      <a href="{% url 'analytics:participants_adjudicators' %}">Adjudicators</a>
+      <a href="{% url 'analytics:participants_tab_directors' %}">Tab directors</a>
+    </nav>
+    <nav class="navgrp">
+      <h3>Manage</h3>
+      <a href="{% url 'analytics:workspaces' %}">Workspaces</a>
+      <a href="{% url 'analytics:events' %}">Events</a>
+      <a href="{% url 'campaigns:list' %}">Email campaigns</a>
+      <a href="/database/">Django admin</a>
+      <a href="/">Back to site</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <button class="btn burger" id="burger" aria-label="Toggle menu">Menu</button>
+
+    <div class="head">
+      <div>
+        <h1>Overview</h1>
+        <p>Updated {% now "H:i" %} · each figure compares with the preceding period of equal length</p>
+      </div>
+      <div class="head-actions">
+        <div class="seg" role="group" aria-label="Comparison period">
+          <button type="button" data-p="24h" aria-pressed="true">24h</button>
+          <button type="button" data-p="7d" aria-pressed="false">7d</button>
+          <button type="button" data-p="30d" aria-pressed="false">30d</button>
         </div>
-        
-        <nav class="nav-section">
-            <div class="nav-label">Analytics</div>
-            <a href="{% url 'analytics:owner_dashboard' %}" class="nav-link" style="background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(236,72,153,.05));margin-bottom:4px;">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                Owner Dashboard
-            </a>
-            <a href="{% url 'analytics:dashboard' %}" class="nav-link active">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-                </svg>
-                Dashboard
-            </a>
-            <a href="{% url 'analytics:users' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                </svg>
-                All Users
-            </a>
-            <a href="{% url 'analytics:tournaments' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                </svg>
-                Tournaments
-            </a>
-            <a href="{% url 'analytics:db_usage' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
-                </svg>
-                DB Usage
-            </a>
-            <a href="{% url 'analytics:donations' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 .895-4 2s1.79 2 4 2 4 .895 4 2-1.79 2-4 2m0-10v12m0 0a9 9 0 100-18 9 9 0 000 18z"/>
-                </svg>
-                Donations
-            </a>
-            <a href="{% url 'analytics:tournament_motions' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                </svg>
-                Motion Harvest
-            </a>
-        </nav>
+        <span class="live"><span class="dot"></span>{{ live_visitors }} online</span>
+        {# POST-only endpoint: a GET link returns 405. #}
+        <form method="post" action="{% url 'analytics:export_users' %}">
+          {% csrf_token %}<button type="submit" class="btn btn-p">Export users</button>
+        </form>
+      </div>
+    </div>
 
-        <nav class="nav-section">
-            <div class="nav-label">Participant CRM</div>
-            <a href="{% url 'analytics:participants_all' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                All Participants
-            </a>
-            <a href="{% url 'analytics:participants_debaters' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                Debaters
-            </a>
-            <a href="{% url 'analytics:participants_adjudicators' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
-                Adjudicators
-            </a>
-            <a href="{% url 'analytics:participants_tab_directors' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                Tab Directors
-            </a>
-        </nav>
-        
-        <nav class="nav-section">
-            <div class="nav-label">Manage</div>
-            <a href="{% url 'analytics:workspaces' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                Workspaces
-            </a>
-            <a href="{% url 'campaigns:list' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-                Email Campaigns
-            </a>
-            <a href="/admin/" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                Django Admin
-            </a>
-            <a href="/" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                </svg>
-                Back to Site
-            </a>
-        </nav>
-    </aside>
+    {% if messages %}{% for message in messages %}
+      <div class="card" style="margin-bottom:11px">{{ message }}</div>
+    {% endfor %}{% endif %}
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="header">
-            <h2>📊 Dashboard Overview</h2>
-            <div class="header-actions">
-                <div class="live-counter">
-                    <div class="live-dot"></div>
-                    <span id="live-count">{{ live_visitors }}</span> Live Visitors
-                </div>
-                <a href="{% url 'analytics:export_users' %}" class="btn btn-secondary">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
-                    Export Users
-                </a>
-            </div>
+    <div class="kpis">
+      <div class="kpi"><div class="k">Page views</div><div class="v" data-v="views">—</div><div class="d" data-d="views"></div></div>
+      <div class="kpi"><div class="k">Unique visitors</div><div class="v" data-v="uniques">—</div><div class="d" data-d="uniques"></div></div>
+      <div class="kpi"><div class="k">New signups</div><div class="v" data-v="signups">—</div><div class="d" data-d="signups"></div></div>
+      <div class="kpi"><div class="k">Tournaments created</div><div class="v" data-v="tournaments">—</div><div class="d" data-d="tournaments"></div></div>
+      <div class="kpi"><div class="k">Ballots</div><div class="v" data-v="ballots">—</div><div class="d" data-d="ballots"></div></div>
+    </div>
+
+    <div class="row r-2">
+      <section class="card">
+        <header><h2>Traffic</h2><span class="meta">page views, hourly, last 24h</span></header>
+        <div class="chartwrap">
+          <svg class="chart" id="traffic" role="img" aria-label="Page views by hour over the last 24 hours"></svg>
+          <div class="tip" id="trafficTip"></div>
         </div>
+        <details class="tv"><summary>View as table</summary>
+          <div class="scroll"><table id="trafficTable">
+            <thead><tr><th>Hour</th><th class="n">Views</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      </section>
 
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon purple">👥</div>
-                <div class="stat-label">Total Users</div>
-                <div class="stat-value">{{ total_users }}</div>
-                <div class="stat-change {% if today_signups %}up{% endif %}">
-                    {% if today_signups %}<span>+{{ today_signups }}</span> today{% else %}<span>0</span> new today{% endif %}
-                </div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-icon blue">🏆</div>
-                <div class="stat-label">Tournaments</div>
-                <div class="stat-value">{{ total_tournaments }}</div>
-                <div class="stat-change">
-                    <span>{{ active_tournaments }}</span> active
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon green">🎤</div>
-                <div class="stat-label">Speaker Records</div>
-                <div class="stat-value">{{ total_speakers }}</div>
-                <div class="stat-change">
-                    <span>{{ crm_debaters }}</span> CRM debaters{% if crm_hybrid %} (+{{ crm_hybrid }} hybrid){% endif %}
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon orange">⚖️</div>
-                <div class="stat-label">Adjudicator Records</div>
-                <div class="stat-value">{{ total_adjudicators }}</div>
-                <div class="stat-change">
-                    <span>{{ crm_adjudicators }}</span> CRM adjudicators{% if crm_hybrid %} (+{{ crm_hybrid }} hybrid){% endif %}
-                </div>
-            </div>
+      <section class="card">
+        <header><h2>Conversion</h2><span class="meta">last 30 days</span></header>
+        {% for s in funnel %}
+        <div class="fstep">
+          <div class="top"><span>{{ s.label }}</span><span class="val">{{ s.value }}</span></div>
+          <div class="note">{{ s.note }}</div>
+          <div class="fbar" style="width:{% widthratio s.value funnel_max 100 %}%"></div>
         </div>
+        {% endfor %}
+      </section>
+    </div>
 
-        <!-- Secondary Stats -->
-        <div class="stats-grid" style="margin-top: -8px;">
-            <div class="stat-card">
-                <div class="stat-icon green">📊</div>
-                <div class="stat-label">Page Views (24h)</div>
-                <div class="stat-value">{{ views_24h }}</div>
-                <div class="stat-change">
-                    <span>{{ unique_24h }}</span> unique sessions
-                    <span title="Counts only real browser HTML page loads, not AJAX/API calls. GA may differ due to ad-blockers or consent." style="cursor:help;margin-left:4px;opacity:.6;">ⓘ</span>
-                </div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-icon orange">🗳️</div>
-                <div class="stat-label">Ballots Submitted</div>
-                <div class="stat-value">{{ total_ballots }}</div>
-                <div class="stat-change {% if ballots_today %}up{% endif %}">
-                    {% if ballots_today %}<span>+{{ ballots_today }}</span> today{% else %}<span>0</span> today{% endif %}
-                </div>
-            </div>
+    <div class="row r-3">
+      <section class="card">
+        <header><h2>Revenue</h2><a href="{% url 'analytics:donations' %}">Details</a></header>
+        {% if available %}
+          <div class="line"><span class="muted">Paid tournaments</span><span class="v">{{ paid_total }}</span></div>
+          <div class="line"><span class="muted">Received, all time</span><span class="v">{{ revenue_total|floatformat:2 }}</span></div>
+          <div class="line"><span class="muted">Paid, last 30d</span><span class="v">{{ paid_30d }}</span></div>
+          <div class="line"><span class="muted">Received, last 30d</span><span class="v">{{ revenue_30d|floatformat:2 }}</span></div>
+          <div class="line"><span class="muted">Unused promo codes</span>
+            <a href="{% url 'analytics:promo_codes' %}" class="v">{{ promo_unused }}</a></div>
+        {% else %}<p class="empty">Payment data unavailable.</p>{% endif %}
+      </section>
 
-            <div class="stat-card">
-                <div class="stat-icon blue">🔄</div>
-                <div class="stat-label">Total Rounds</div>
-                <div class="stat-value">{{ total_rounds }}</div>
-                <div class="stat-change">
-                    <span>across all tournaments</span>
-                </div>
-            </div>
+      <section class="card">
+        <header><h2>Activity</h2><span class="meta">platform</span></header>
+        <div class="line"><span class="muted">Tournaments with ballots (24h)</span><span class="v">{{ tournaments_active_now }}</span></div>
+        <div class="line"><span class="muted">Tournaments (active / total)</span><span class="v">{{ active_tournaments }} / {{ total_tournaments }}</span></div>
+        <div class="line"><span class="muted">Rounds, all time</span><span class="v">{{ total_rounds }}</span></div>
+        <div class="line"><span class="muted">Ballots, all time</span><span class="v">{{ total_ballots }}</span></div>
+        <div class="line"><span class="muted">Speakers / adjudicators</span><span class="v">{{ total_speakers }} / {{ total_adjudicators }}</span></div>
+      </section>
 
-            <div class="stat-card">
-                <div class="stat-icon pink">📝</div>
-                <div class="stat-label">Motion Bank (Public)</div>
-                <div class="stat-value">{{ total_motions }}</div>
-                <div class="stat-change">
-                    <span>in /motions dataset</span>
-                </div>
-            </div>
+      <section class="card">
+        <header><h2>System</h2><a href="{% url 'analytics:db_usage' %}">Database</a></header>
+        <div class="line"><span class="muted">Database size</span>
+          <span>{% if db_bytes > 8000000000 %}<span class="badge b-crit">High · {{ db_size }}</span>
+          {% elif db_bytes > 4000000000 %}<span class="badge b-warn">Watch · {{ db_size }}</span>
+          {% else %}<span class="badge b-good">OK · {{ db_size|default:"n/a" }}</span>{% endif %}</span></div>
+        <div class="line"><span class="muted">Pageview rows</span><span class="v">{{ pageview_rows }}</span></div>
+        <div class="line"><span class="muted">Analytics since</span><span class="v">{{ oldest_pageview|date:"Y-m-d"|default:"—" }}</span></div>
+        <div class="line"><span class="muted">Users (staff / super)</span><span class="v">{{ total_users }} <span class="muted">({{ staff_users }}/{{ superusers }})</span></span></div>
+        <div class="line"><span class="muted">Motion bank</span><span class="v">{{ total_motions }}</span></div>
+      </section>
+    </div>
+
+    <div class="row r-2">
+      <section class="card">
+        <header><h2>Signups</h2><span class="meta">daily, last 30 days</span></header>
+        <div class="chartwrap">
+          <svg class="chart" id="signups" role="img" aria-label="Daily signups over the last 30 days"></svg>
+          <div class="tip" id="signupsTip"></div>
         </div>
+        <details class="tv"><summary>View as table</summary>
+          <div class="scroll"><table id="signupsTable">
+            <thead><tr><th>Date</th><th class="n">Signups</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      </section>
 
-        <!-- Charts Row -->
-        <div class="charts-row">
-            <div class="card">
-                <div class="card-header">
-                    <h3>📈 Traffic Overview</h3>
-                    <div class="period-selector">
-                        <button class="period-btn active" data-period="24h">24h</button>
-                        <button class="period-btn" data-period="7d">7 Days</button>
-                        <button class="period-btn" data-period="30d">30 Days</button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <canvas id="trafficChart" height="120"></canvas>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <h3>🌍 Live Visitors</h3>
-                </div>
-                <div class="card-body" id="live-visitors-list">
-                    {% for session in active_sessions %}
-                    <div class="visitor-item">
-                        <div class="visitor-dot"></div>
-                        <div class="visitor-path">{{ session.current_path }}</div>
-                        <div class="visitor-location">
-                            {% if session.country %}{{ session.country }}{% endif %}
-                        </div>
-                    </div>
-                    {% empty %}
-                    <div class="visitor-item">
-                        <div class="visitor-dot" style="background: var(--text-secondary);"></div>
-                        <div class="visitor-path" style="color: var(--text-secondary);">No active visitors</div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+      <section class="card">
+        <header><h2>Live sessions</h2><span class="meta">{{ live_visitors }} online</span></header>
+        {% if active_sessions %}
+          <div class="scroll"><table><tbody>
+            {% for session in active_sessions %}
+            <tr><td class="path" title="{{ session.current_path }}">{{ session.current_path }}</td>
+                <td class="n muted">{{ session.country|default:"—" }}</td></tr>
+            {% endfor %}
+          </tbody></table></div>
+        {% else %}<p class="empty">No active sessions.</p>{% endif %}
+      </section>
+    </div>
 
-        <!-- Second Row -->
-        <div class="charts-row">
-            <!-- Recent Signups -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>🆕 Recent Signups</h3>
-                    <a href="{% url 'analytics:users' %}" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">View All</a>
-                </div>
-                <div class="card-body" style="padding: 0;">
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>User</th>
-                                    <th>Email</th>
-                                    <th>Joined</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for user in recent_signups %}
-                                <tr>
-                                    <td>
-                                        <div class="user-info">
-                                            <div class="avatar">{{ user.username.0|upper }}</div>
-                                            <span class="user-name">{{ user.username }}</span>
-                                        </div>
-                                    </td>
-                                    <td style="color: var(--text-secondary);">{{ user.email|default:"—" }}</td>
-                                    <td style="color: var(--text-secondary);">{{ user.date_joined|timesince }} ago</td>
-                                    <td>
-                                        {% if user.is_superuser %}
-                                        <span class="badge badge-purple">Superuser</span>
-                                        {% elif user.is_staff %}
-                                        <span class="badge badge-warning">Staff</span>
-                                        {% else %}
-                                        <span class="badge badge-success">User</span>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                                {% empty %}
-                                <tr>
-                                    <td colspan="4" style="text-align: center; color: var(--text-secondary);">No users yet</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+    <div class="row r-3">
+      <section class="card">
+        <header><h2>Top pages</h2><span class="meta">7 days</span></header>
+        <table><tbody>
+          {% for page in top_pages %}
+          <tr><td><div class="path" title="{{ page.path }}">{{ page.path }}</div>
+              <div class="meterbg"><div class="meter" style="width:{% widthratio page.count top_pages.0.count 100 %}%"></div></div></td>
+            <td class="n">{{ page.count }}</td></tr>
+          {% empty %}<tr><td class="empty">No data.</td></tr>{% endfor %}
+        </tbody></table>
+      </section>
 
-            <!-- Device Stats -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>📱 Device Breakdown</h3>
-                </div>
-                <div class="card-body">
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span>Desktop</span>
-                            <span style="color: var(--text-secondary);">{{ device_stats.Desktop|default:0 }}</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill purple" style="width: {% widthratio device_stats.Desktop|default:0 device_total 100 %}%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span>Mobile</span>
-                            <span style="color: var(--text-secondary);">{{ device_stats.Mobile|default:0 }}</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill blue" style="width: {% widthratio device_stats.Mobile|default:0 device_total 100 %}%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                            <span>Tablet</span>
-                            <span style="color: var(--text-secondary);">{{ device_stats.Tablet|default:0 }}</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill green" style="width: {% widthratio device_stats.Tablet|default:0 device_total 100 %}%;"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Browser Stats -->
-                    <h4 style="font-size: 14px; margin: 24px 0 16px; color: var(--text-secondary);">Top Browsers</h4>
-                    {% for browser in browser_stats %}
-                    <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border);">
-                        <span>{{ browser.browser|default:"Unknown" }}</span>
-                        <span class="badge badge-info">{{ browser.count }}</span>
-                    </div>
-                    {% empty %}
-                    <div style="color: var(--text-secondary); text-align: center; padding: 20px;">No data yet</div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+      <section class="card">
+        <header><h2>Visitor countries</h2><span class="meta">7 days</span></header>
+        <table><tbody>
+          {% for country in country_stats %}
+          <tr><td>{{ country.country }}
+              <div class="meterbg"><div class="meter" style="width:{% widthratio country.count country_stats.0.count 100 %}%"></div></div></td>
+            <td class="n">{{ country.count }}</td></tr>
+          {% empty %}<tr><td class="empty">No data.</td></tr>{% endfor %}
+        </tbody></table>
+      </section>
 
-        <!-- Third Row -->
-        <div class="charts-row">
-            <!-- Recent Tournaments -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>🏆 Recent Tournaments</h3>
-                    <a href="{% url 'analytics:tournaments' %}" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">View All</a>
-                </div>
-                <div class="card-body" style="padding: 0;">
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Tournament</th>
-                                    <th>Owner</th>
-                                    <th>Teams</th>
-                                    <th>Debaters</th>
-                                    <th>Adjudicators</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for tournament in recent_tournaments %}
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <div style="font-weight: 500;">{{ tournament.name }}</div>
-                                            <div style="font-size: 12px; color: var(--text-secondary);">{{ tournament.short_name }}</div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="user-info">
-                                            {% if tournament.owner %}
-                                            <div class="avatar">{{ tournament.owner.username.0|upper }}</div>
-                                            <span class="user-name">{{ tournament.owner.username }}</span>
-                                            {% else %}
-                                            <span style="color: var(--text-secondary);">—</span>
-                                            {% endif %}
-                                        </div>
-                                    </td>
-                                    <td style="color: var(--text-secondary);">
-                                        {{ tournament.num_teams|default:"0" }}
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-purple">{{ tournament.num_speakers|default:"0" }}</span>
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-success">{{ tournament.num_adjudicators|default:"0" }}</span>
-                                    </td>
-                                    <td>
-                                        {% if tournament.active %}
-                                        <span class="badge badge-success">Active</span>
-                                        {% else %}
-                                        <span class="badge badge-warning">Inactive</span>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                                {% empty %}
-                                <tr>
-                                    <td colspan="6" style="text-align: center; color: var(--text-secondary);">No tournaments yet</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+      <section class="card">
+        <header><h2>Referrers</h2><span class="meta">7 days</span></header>
+        <table><tbody>
+          {% for r in referrer_stats %}
+          <tr><td class="path" title="{{ r.referer }}">{{ r.referer }}</td><td class="n">{{ r.count }}</td></tr>
+          {% empty %}<tr><td class="empty">Direct traffic only.</td></tr>{% endfor %}
+        </tbody></table>
+      </section>
+    </div>
 
-            <!-- Top Pages & Countries -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>🌍 Top Countries</h3>
-                </div>
-                <div class="card-body">
-                    {% for country in country_stats %}
-                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border);">
-                        <span>{{ country.country }}</span>
-                        <span class="badge badge-purple">{{ country.count }}</span>
-                    </div>
-                    {% empty %}
-                    <div style="color: var(--text-secondary); text-align: center; padding: 40px;">
-                        <div style="font-size: 40px; margin-bottom: 12px;">🌐</div>
-                        No location data yet
-                    </div>
-                    {% endfor %}
-                    
-                    <h4 style="font-size: 14px; margin: 24px 0 16px; color: var(--text-secondary);">Top Pages (7 days)</h4>
-                    {% for page in top_pages %}
-                    <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border);">
-                        <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px;">{{ page.path }}</span>
-                        <span class="badge badge-info">{{ page.count }}</span>
-                    </div>
-                    {% empty %}
-                    <div style="color: var(--text-secondary); text-align: center; padding: 20px;">No page data yet</div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+    <div class="row r-3">
+      <section class="card">
+        <header><h2>Registered-user countries</h2><span class="meta">inferred</span></header>
+        <table><tbody>
+          {% for row in user_country_stats %}
+          <tr><td>{{ row.country }}</td><td class="n">{{ row.count }}</td></tr>
+          {% empty %}<tr><td class="empty">No data.</td></tr>{% endfor %}
+        </tbody></table>
+      </section>
 
-        <!-- User & Tournament Countries Row -->
-        <div class="charts-row" style="margin-bottom: 32px;">
-            <!-- User Signup Countries -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>🧑‍💻 User Countries</h3>
-                    <span style="font-size:12px;color:var(--text-secondary);">Where your users signed up from</span>
-                </div>
-                <div class="card-body">
-                    {% for row in user_country_stats %}
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);">
-                        <span style="display:flex;align-items:center;gap:8px;">
-                            <span style="font-size:18px;">{% if row.country == 'BD' %}🇧🇩{% elif row.country == 'US' %}🇺🇸{% elif row.country == 'GB' %}🇬🇧{% elif row.country == 'IN' %}🇮🇳{% elif row.country == 'AU' %}🇦🇺{% elif row.country == 'CA' %}🇨🇦{% elif row.country == 'NG' %}🇳🇬{% elif row.country == 'PK' %}🇵🇰{% elif row.country == 'SG' %}🇸🇬{% elif row.country == 'PH' %}🇵🇭{% else %}🌐{% endif %}</span>
-                            {{ row.country }}
-                        </span>
-                        <span class="badge badge-purple">{{ row.count }} users</span>
-                    </div>
-                    {% empty %}
-                    <div style="color:var(--text-secondary);text-align:center;padding:40px;">
-                        <div style="font-size:40px;margin-bottom:12px;">🌐</div>
-                        No user location data yet
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
+      <section class="card">
+        <header><h2>Tournament-visitor countries</h2><span class="meta">30 days</span></header>
+        <table><tbody>
+          {% for row in tournament_country_stats %}
+          <tr><td>{{ row.country }}</td><td class="n">{{ row.count }}</td></tr>
+          {% empty %}<tr><td class="empty">No data.</td></tr>{% endfor %}
+        </tbody></table>
+      </section>
 
-            <!-- Tournament-Origin Countries -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>🏆 Tournament Visitor Countries</h3>
-                    <span style="font-size:12px;color:var(--text-secondary);">Countries visiting /t/ pages — last 30 days</span>
-                </div>
-                <div class="card-body">
-                    {% for row in tournament_country_stats %}
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);">
-                        <span style="display:flex;align-items:center;gap:8px;">
-                            <span style="font-size:18px;">{% if row.country == 'BD' %}🇧🇩{% elif row.country == 'US' %}🇺🇸{% elif row.country == 'GB' %}🇬🇧{% elif row.country == 'IN' %}🇮🇳{% elif row.country == 'AU' %}🇦🇺{% elif row.country == 'CA' %}🇨🇦{% elif row.country == 'NG' %}🇳🇬{% elif row.country == 'PK' %}🇵🇰{% elif row.country == 'SG' %}🇸🇬{% elif row.country == 'PH' %}🇵🇭{% else %}🌐{% endif %}</span>
-                            {{ row.country }}
-                        </span>
-                        <span class="badge badge-info">{{ row.count }} visits</span>
-                    </div>
-                    {% empty %}
-                    <div style="color:var(--text-secondary);text-align:center;padding:40px;">
-                        <div style="font-size:40px;margin-bottom:12px;">🏆</div>
-                        No tournament visit data yet
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+      <section class="card">
+        <header><h2>Devices &amp; browsers</h2><span class="meta">7 days</span></header>
+        <table><tbody>
+          {% for k, v in device_stats.items %}
+          <tr><td>{{ k|default:"unknown"|capfirst }}
+              <div class="meterbg"><div class="meter" style="width:{% widthratio v device_total 100 %}%"></div></div></td>
+            <td class="n">{% widthratio v device_total 100 %}%</td></tr>
+          {% empty %}<tr><td class="empty">No data.</td></tr>{% endfor %}
+          {% for browser in browser_stats %}
+          <tr><td class="muted">{{ browser.browser|default:"unknown" }}</td><td class="n muted">{{ browser.count }}</td></tr>
+          {% endfor %}
+        </tbody></table>
+      </section>
+    </div>
 
-        <!-- Participants CRM Row -->
-        <div class="charts-row" style="margin-bottom: 32px;">
-            <!-- CRM Overview -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>👥 Participant CRM</h3>
-                    <a href="{% url 'analytics:participants_all' %}" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">View All →</a>
-                </div>
-                <div class="card-body">
-                    <!-- Role breakdown grid -->
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
-                        <a href="{% url 'analytics:participants_debaters' %}" style="text-decoration:none;">
-                            <div style="background: rgba(99,102,241,.12); border: 1px solid rgba(99,102,241,.25); border-radius: 10px; padding: 14px; text-align: center; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='rgba(99,102,241,.25)'">
-                                <div style="font-size: 22px; font-weight: 700; color: #818cf8;">{{ crm_debaters }}</div>
-                                <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px;">Debaters</div>
-                            </div>
-                        </a>
-                        <a href="{% url 'analytics:participants_adjudicators' %}" style="text-decoration:none;">
-                            <div style="background: rgba(16,185,129,.12); border: 1px solid rgba(16,185,129,.25); border-radius: 10px; padding: 14px; text-align: center; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='#10b981'" onmouseout="this.style.borderColor='rgba(16,185,129,.25)'">
-                                <div style="font-size: 22px; font-weight: 700; color: #10b981;">{{ crm_adjudicators }}</div>
-                                <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px;">Adjudicators</div>
-                            </div>
-                        </a>
-                        <a href="{% url 'analytics:participants_tab_directors' %}" style="text-decoration:none;">
-                            <div style="background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.25); border-radius: 10px; padding: 14px; text-align: center; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='#f59e0b'" onmouseout="this.style.borderColor='rgba(245,158,11,.25)'">
-                                <div style="font-size: 22px; font-weight: 700; color: #f59e0b;">{{ crm_tab_directors }}</div>
-                                <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px;">Tab Directors</div>
-                            </div>
-                        </a>
-                        <a href="{% url 'analytics:participants_all' %}" style="text-decoration:none;">
-                            <div style="background: rgba(236,72,153,.12); border: 1px solid rgba(236,72,153,.25); border-radius: 10px; padding: 14px; text-align: center; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='#ec4899'" onmouseout="this.style.borderColor='rgba(236,72,153,.25)'">
-                                <div style="font-size: 22px; font-weight: 700; color: #ec4899;">{{ crm_hybrid }}</div>
-                                <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase; letter-spacing: .5px;">Hybrid</div>
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Summary stats -->
-                    <div style="border-top: 1px solid var(--border); padding-top: 16px; display: flex; flex-direction: column; gap: 10px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
-                            <span style="color: var(--text-secondary);">Total profiles</span>
-                            <span style="font-weight: 600;">{{ crm_total }}</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
-                            <span style="color: var(--text-secondary);">Email subscribed</span>
-                            <span style="font-weight: 600; color: var(--success);">{{ crm_subscribed }}</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; font-size: 13px;">
-                            <span style="color: var(--text-secondary);">New (last 30 days)</span>
-                            <span style="font-weight: 600; color: var(--accent-light);">+{{ crm_new_30d }}</span>
-                        </div>
-                    </div>
-                    <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
-                        <a href="{% url 'analytics:participants_export' %}" class="btn btn-secondary" style="flex: 1; justify-content: center; font-size: 12px; padding: 8px 12px;">Export CSV</a>
-                        <a href="{% url 'analytics:participants_all' %}" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 12px; padding: 8px 12px;">Manage →</a>
-                    </div>
-                </div>
-            </div>
+    <div class="row r-2e">
+      <section class="card">
+        <header><h2>Recent tournaments</h2><a href="{% url 'analytics:tournaments' %}">All</a></header>
+        <div style="overflow-x:auto"><table>
+          <thead><tr><th>Tournament</th><th class="n">Teams</th><th class="n">Spk</th><th class="n">Adj</th><th>Owner</th></tr></thead>
+          <tbody>
+            {% for tournament in recent_tournaments %}
+            <tr><td>{{ tournament.short_name|default:tournament.name|truncatechars:30 }}</td>
+              <td class="n">{{ tournament.num_teams }}</td>
+              <td class="n">{{ tournament.num_speakers }}</td>
+              <td class="n">{{ tournament.num_adjudicators }}</td>
+              <td class="muted">{{ tournament.owner.username|default:"—"|truncatechars:14 }}</td></tr>
+            {% empty %}<tr><td class="empty" colspan="5">No tournaments.</td></tr>{% endfor %}
+          </tbody></table></div>
+      </section>
 
-            <!-- Recently Added Participants -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>🆕 Recently Added Participants</h3>
-                    <span style="font-size: 12px; color: var(--text-secondary);">Auto-synced from tournaments</span>
-                </div>
-                <div class="card-body" style="padding: 0;">
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Added</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for p in crm_recent %}
-                                <tr>
-                                    <td>
-                                        <div class="user-info">
-                                            <div class="avatar" style="background: {% if p.primary_role == 'debater' %}rgba(99,102,241,.3){% elif p.primary_role == 'adjudicator' %}rgba(16,185,129,.3){% elif p.primary_role == 'tab_director' %}rgba(245,158,11,.3){% else %}rgba(236,72,153,.3){% endif %};">
-                                                {{ p.name.0|upper }}
-                                            </div>
-                                            <span class="user-name">{{ p.name|truncatechars:22 }}</span>
-                                        </div>
-                                    </td>
-                                    <td style="color: var(--text-secondary); font-size: 12px;">{{ p.email|truncatechars:28 }}</td>
-                                    <td>
-                                        {% if p.primary_role == 'debater' %}
-                                            <span class="badge badge-purple">Debater</span>
-                                        {% elif p.primary_role == 'adjudicator' %}
-                                            <span class="badge badge-success">Adj</span>
-                                        {% elif p.primary_role == 'tab_director' %}
-                                            <span class="badge badge-warning">Tab Dir</span>
-                                        {% else %}
-                                            <span class="badge badge-info">Hybrid</span>
-                                        {% endif %}
-                                    </td>
-                                    <td style="color: var(--text-secondary); font-size: 12px;">{{ p.first_seen|timesince }} ago</td>
-                                </tr>
-                                {% empty %}
-                                <tr>
-                                    <td colspan="4" style="text-align: center; color: var(--text-secondary); padding: 32px;">
-                                        <div style="font-size: 32px; margin-bottom: 8px;">👤</div>
-                                        No participants yet.<br>
-                                        <small>They'll appear here as adjudicators &amp; speakers are added to tournaments.</small>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <section class="card">
+        <header><h2>Recent signups</h2><a href="{% url 'analytics:users' %}">All</a></header>
+        <div style="overflow-x:auto"><table>
+          <thead><tr><th>User</th><th>Email</th><th class="n">Joined</th></tr></thead>
+          <tbody>
+            {% for user in recent_signups %}
+            <tr><td>{{ user.username|truncatechars:18 }}</td>
+              <td class="muted">{{ user.email|default:"—"|truncatechars:26 }}</td>
+              <td class="n muted">{{ user.date_joined|date:"M j" }}</td></tr>
+            {% empty %}<tr><td class="empty" colspan="3">No signups.</td></tr>{% endfor %}
+          </tbody></table></div>
+      </section>
+    </div>
 
-        <!-- Motion Bank Row -->
-        <div class="charts-row" style="margin-bottom: 32px;">
-            <!-- Motion Bank Stats -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>📋 Motion Bank</h3>
-                    {% if motion_stats_source == 'public-json' %}
-                    <span style="font-size: 13px; color: var(--text-secondary);">{{ total_motions }} public motions</span>
-                    {% else %}
-                    <span style="font-size: 13px; color: var(--text-secondary);">{{ total_motions }} total motions</span>
-                    {% endif %}
-                </div>
-                <div class="card-body">
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
-                        {% for fmt in motions_by_format %}
-                        <div style="background: var(--bg-hover); border-radius: 10px; padding: 12px; text-align: center;">
-                            <div style="font-size: 20px; font-weight: 700; color: var(--accent-light);">{{ fmt.count }}</div>
-                            <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px; text-transform: uppercase;">{{ fmt.format }}</div>
-                        </div>
-                        {% empty %}
-                        <div style="grid-column: 1/-1; color: var(--text-secondary); text-align: center; padding: 20px;">No motions yet</div>
-                        {% endfor %}
-                    </div>
-                    {% if motion_stats_source == 'public-json' and motions_db_entries != total_motions %}
-                    <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">
-                        Dashboard shows public Motion Bank data. Legacy DB entries: {{ motions_db_entries }}.
-                    </div>
-                    {% endif %}
-                    <a href="/motions/" class="btn btn-secondary" style="width: 100%; justify-content: center;">Browse Motion Bank →</a>
-                </div>
-            </div>
+    <div class="row r-2e">
+      <section class="card">
+        <header><h2>Participant CRM</h2><a href="{% url 'analytics:participants_all' %}">Manage</a></header>
+        <div class="line"><span class="muted">Total profiles</span><span class="v">{{ crm_total }}</span></div>
+        <div class="line"><span class="muted">Debaters / adjudicators</span><span class="v">{{ crm_debaters }} / {{ crm_adjudicators }}</span></div>
+        <div class="line"><span class="muted">Tab directors</span><span class="v">{{ crm_tab_directors }}</span></div>
+        <div class="line"><span class="muted">Subscribed</span><span class="v">{{ crm_subscribed }}</span></div>
+        <div class="line"><span class="muted">Added in last 30d</span><span class="v">{{ crm_new_30d }}</span></div>
+        {% if crm_recent %}
+        <details class="tv"><summary>Recently added</summary>
+          <div class="scroll"><table><tbody>
+            {% for p in crm_recent %}
+            <tr><td>{{ p.name|truncatechars:22 }}</td>
+                <td class="muted">{{ p.email|default:"—"|truncatechars:24 }}</td>
+                <td class="n muted">{{ p.first_seen|date:"M j" }}</td></tr>
+            {% endfor %}
+          </tbody></table></div>
+        </details>
+        {% endif %}
+        <form method="post" action="{% url 'analytics:participants_export' %}" style="margin-top:11px">
+          {% csrf_token %}<button type="submit" class="btn">Export participants (CSV)</button>
+        </form>
+      </section>
 
-            <!-- Motion Bulk Upload -->
-            <div class="card">
-                <div class="card-header">
-                    <h3>⬆️ Upload Motions (CSV)</h3>
-                </div>
-                <div class="card-body">
-                    <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">
-                        Upload a CSV to bulk-add motions to the Motion Bank.<br>
-                        Required column: <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">text</code><br>
-                        Optional: <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">format</code>,
-                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">tournament_name</code>,
-                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">year</code>,
-                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">region</code>,
-                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">round_info</code>,
-                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">info_slide</code>,
-                        <code style="background:var(--bg-hover);padding:2px 6px;border-radius:4px;">difficulty</code> (1–5)
-                    </p>
-                    <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 16px;">
-                        Valid formats: <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">bp</code>
-                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">wsdc</code>
-                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">ap</code>
-                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">pf</code>
-                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">ld</code>
-                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">policy</code>
-                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">cp</code>
-                        <code style="background:var(--bg-hover);padding:2px 4px;border-radius:3px;">other</code>
-                    </p>
-                    <form method="post" action="{% url 'analytics:motion_bulk_upload' %}" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <label style="display: block; margin-bottom: 8px; font-size: 13px; font-weight: 500;">Select CSV file</label>
-                        <input type="file" name="csv_file" accept=".csv"
-                               style="display: block; width: 100%; padding: 10px; background: var(--bg-hover);
-                                      border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary);
-                                      font-size: 13px; margin-bottom: 16px; cursor: pointer;">
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                            Upload &amp; Import Motions
-                        </button>
-                    </form>
+      <section class="card">
+        <header><h2>Motion bank</h2><a href="/motions/">Browse</a></header>
+        <div class="line"><span class="muted">Public entries</span><span class="v">{{ total_motions }}</span></div>
+        <div class="line"><span class="muted">Rows in database</span><span class="v">{{ motions_db_entries }}</span></div>
+        {% if motions_by_format %}
+        <div class="scroll" style="margin-top:6px"><table><tbody>
+          {% for fmt in motions_by_format %}
+          <tr><td>{{ fmt.format|default:"unspecified" }}</td><td class="n">{{ fmt.count }}</td></tr>
+          {% endfor %}
+        </tbody></table></div>
+        {% endif %}
+        <form method="post" action="{% url 'analytics:motion_bulk_upload' %}"
+              enctype="multipart/form-data" style="margin-top:12px;border-top:1px solid var(--line-soft);padding-top:12px">
+          {% csrf_token %}
+          <label class="muted" style="font-size:12px;display:block;margin-bottom:6px">Bulk upload motions (CSV)</label>
+          <input type="file" name="file" accept=".csv" required>
+          <button type="submit" class="btn" style="margin-top:9px">Upload</button>
+        </form>
+      </section>
+    </div>
 
-                    {% if messages %}
-                    <div style="margin-top: 16px;">
-                        {% for message in messages %}
-                        <div style="padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 8px;
-                                    background: {% if message.tags == 'success' %}rgba(16,185,129,.15){% elif message.tags == 'error' %}rgba(239,68,68,.15){% else %}rgba(245,158,11,.15){% endif %};
-                                    color: {% if message.tags == 'success' %}var(--success){% elif message.tags == 'error' %}var(--danger){% else %}var(--warning){% endif %};">
-                            {{ message }}
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </main>
+  </main>
+</div>
 
-    <script>
-        // Traffic Chart
-        const trafficCanvas = document.getElementById('trafficChart');
-        if (!trafficCanvas) { console.warn('trafficChart canvas not found'); }
-        const ctx = trafficCanvas ? trafficCanvas.getContext('2d') : null;
-        let trafficChart = ctx ? new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Page Views',
-                    data: [],
-                    borderColor: '#6366f1',
-                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 0,
-                    pointHoverRadius: 6,
-                    pointBackgroundColor: '#6366f1',
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.05)'
-                        },
-                        ticks: {
-                            color: '#8888aa'
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.05)'
-                        },
-                        ticks: {
-                            color: '#8888aa'
-                        }
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index'
-                }
-            }
-        }) : null;
+{{ period_json|json_script:"periodsData" }}
+{{ hourly_chart_data|json_script:"hourlyData" }}
+{{ signups_chart_data|json_script:"signupsData" }}
 
-        // Load traffic data
-        function loadTrafficData(period) {
-            if (!trafficChart) return;
-            fetch(`{% url 'analytics:api_traffic' %}?period=${period}`)
-                .then(r => {
-                    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-                    return r.json();
-                })
-                .then(data => {
-                    trafficChart.data.labels = data.labels || [];
-                    trafficChart.data.datasets[0].data = data.data || [];
-                    trafficChart.update();
-                })
-                .catch(err => console.warn('Failed to load traffic data:', err));
-        }
+<script>
+(function () {
+  "use strict";
+  var nf = new Intl.NumberFormat();
 
-        // Period selector
-        document.querySelectorAll('.period-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                loadTrafficData(this.dataset.period);
-            });
-        });
+  // json_script gives us a JSON string; the view already json.dumps()'d some of
+  // these, so unwrap a second time when we land on a string.
+  function parse(id) {
+    var node = document.getElementById(id);
+    if (!node) return null;
+    var v = JSON.parse(node.textContent);
+    return typeof v === 'string' ? JSON.parse(v) : v;
+  }
 
-        // Initial load
-        loadTrafficData('24h');
+  var periods = parse('periodsData') || {};
+  var KEYS = ['views', 'uniques', 'signups', 'tournaments', 'ballots'];
 
-        // Update live visitor count every 10 seconds
-        function updateLiveVisitors() {
-            fetch('{% url "analytics:api_live_visitors" %}')
-                .then(r => {
-                    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-                    return r.json();
-                })
-                .then(data => {
-                    const liveCountEl = document.getElementById('live-count');
-                    if (liveCountEl) liveCountEl.textContent = data.count || 0;
-                    
-                    // Update visitors list
-                    const container = document.getElementById('live-visitors-list');
-                    if (!container) return;
-                    if (data.visitors && data.visitors.length > 0) {
-                        container.innerHTML = '';
-                        data.visitors.forEach(v => {
-                            const item = document.createElement('div');
-                            item.className = 'visitor-item';
-                            const dot = document.createElement('div');
-                            dot.className = 'visitor-dot';
-                            const pathEl = document.createElement('div');
-                            pathEl.className = 'visitor-path';
-                            pathEl.textContent = v.path;
-                            const locEl = document.createElement('div');
-                            locEl.className = 'visitor-location';
-                            locEl.textContent = v.country || '';
-                            item.appendChild(dot);
-                            item.appendChild(pathEl);
-                            item.appendChild(locEl);
-                            container.appendChild(item);
-                        });
-                    } else {
-                        container.innerHTML = `
-                            <div class="visitor-item">
-                                <div class="visitor-dot" style="background: var(--text-secondary);"></div>
-                                <div class="visitor-path" style="color: var(--text-secondary);">No active visitors</div>
-                            </div>
-                        `;
-                    }
-                })
-                .catch(err => console.warn('Failed to update live visitors:', err));
-        }
+  // The arrow carries the direction so meaning never rests on colour alone.
+  function renderKPIs(p) {
+    var d = periods[p] || {};
+    KEYS.forEach(function (key) {
+      var v = document.querySelector('[data-v="' + key + '"]');
+      var el = document.querySelector('[data-d="' + key + '"]');
+      if (!v || !el) return;
+      v.textContent = nf.format(d[key] == null ? 0 : d[key]);
+      var delta = d[key + '_delta'];
+      if (delta === null || delta === undefined) {
+        el.className = 'd flat';
+        el.textContent = '— no prior period';
+        return;
+      }
+      var flat = delta === 0, up = delta > 0;
+      el.className = 'd ' + (flat ? 'flat' : up ? 'up' : 'down');
+      el.innerHTML = (flat ? '→' : up ? '↑' : '↓') + ' <b>' + Math.abs(delta).toFixed(1) +
+        '%</b> <span class="flat">vs prior ' + p + '</span>';
+    });
+  }
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.seg button').forEach(function (o) {
+        o.setAttribute('aria-pressed', String(o === b));
+      });
+      renderKPIs(b.dataset.p);
+    });
+  });
+  renderKPIs('24h');
 
-        let liveInterval = setInterval(updateLiveVisitors, 10000);
-        // Pause polling when tab is hidden to save resources
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                clearInterval(liveInterval);
-            } else {
-                updateLiveVisitors();
-                liveInterval = setInterval(updateLiveVisitors, 10000);
-            }
-        });
+  var NS = 'http://www.w3.org/2000/svg';
+  function mk(n, a) {
+    var e = document.createElementNS(NS, n);
+    for (var k in a) e.setAttribute(k, a[k]);
+    return e;
+  }
 
-        // Mobile sidebar toggle
-        (function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            const toggle = document.getElementById('menuToggle');
-            function closeSidebar() {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('visible');
-            }
-            if (toggle && sidebar && overlay) {
-                toggle.addEventListener('click', function() {
-                    sidebar.classList.toggle('open');
-                    overlay.classList.toggle('visible');
-                });
-                overlay.addEventListener('click', closeSidebar);
-            }
-        })();
-    </script>
+  function draw(svgId, tipId, tableId, data, xKey, unit) {
+    var svg = document.getElementById(svgId), tip = document.getElementById(tipId);
+    if (!svg) return;
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var tbody = document.querySelector('#' + tableId + ' tbody');
+    if (tbody) tbody.innerHTML = '';
 
-  <!-- GA4 for admin dashboard -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KH41L8LQL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7KH41L8LQL');
-  </script>
+    var W = svg.clientWidth || 560, H = 210;
+    // Bottom padding reserves the x-axis band, so labels are never clipped and
+    // the card never grows a nested scrollbar.
+    var P = { t: 12, r: 10, b: 26, l: 42 };
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+
+    if (!data || !data.length) {
+      var t = mk('text', { x: W / 2, y: H / 2, 'text-anchor': 'middle',
+                           fill: '#6f6e69', 'font-size': 12 });
+      t.textContent = 'No data yet';
+      svg.appendChild(t);
+      return;
+    }
+
+    var max = Math.max.apply(null, data.map(function (d) { return d.count; })) || 1;
+    var iw = W - P.l - P.r, ih = H - P.t - P.b;
+    var X = function (i) { return P.l + (data.length === 1 ? iw / 2 : i * iw / (data.length - 1)); };
+    var Y = function (v) { return P.t + ih - (v / max) * ih; };
+
+    var g = mk('g', { class: 'grid' });
+    [0, .25, .5, .75, 1].forEach(function (f) {
+      g.appendChild(mk('line', { x1: P.l, y1: P.t + ih * f, x2: W - P.r, y2: P.t + ih * f }));
+    });
+    svg.appendChild(g);
+
+    var ax = mk('g', { class: 'axis' });
+    [0, .5, 1].forEach(function (f) {
+      var t = mk('text', { x: P.l - 8, y: P.t + ih * f + 3.5, 'text-anchor': 'end' });
+      t.textContent = nf.format(Math.round(max * (1 - f)));
+      ax.appendChild(t);
+    });
+    var step = Math.max(1, Math.ceil(data.length / 6));
+    data.forEach(function (d, i) {
+      if (i % step && i !== data.length - 1) return;
+      var t = mk('text', { x: X(i), y: H - 8, 'text-anchor': 'middle' });
+      t.textContent = String(d[xKey]).slice(-5);
+      ax.appendChild(t);
+    });
+    svg.appendChild(ax);
+
+    var path = data.map(function (d, i) {
+      return (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(d.count).toFixed(1);
+    }).join(' ');
+
+    var gid = svgId + 'Fade';
+    var defs = mk('defs');
+    var grad = mk('linearGradient', { id: gid, x1: 0, y1: 0, x2: 0, y2: 1 });
+    grad.appendChild(mk('stop', { offset: '0%', 'stop-color': '#3987e5', 'stop-opacity': .20 }));
+    grad.appendChild(mk('stop', { offset: '100%', 'stop-color': '#3987e5', 'stop-opacity': 0 }));
+    defs.appendChild(grad); svg.appendChild(defs);
+    svg.appendChild(mk('path', { fill: 'url(#' + gid + ')',
+      d: path + ' L' + X(data.length - 1) + ' ' + (P.t + ih) + ' L' + X(0) + ' ' + (P.t + ih) + ' Z' }));
+    svg.appendChild(mk('path', { class: 'series', d: path }));
+
+    var cur = mk('line', { class: 'cursor', y1: P.t, y2: P.t + ih, opacity: 0 });
+    var dot = mk('circle', { r: 4, fill: '#3987e5', stroke: '#141414', 'stroke-width': 2, opacity: 0 });
+    svg.appendChild(cur); svg.appendChild(dot);
+
+    var hot = mk('rect', { class: 'hot', x: P.l, y: P.t, width: iw, height: ih });
+    svg.appendChild(hot);
+
+    hot.addEventListener('mousemove', function (ev) {
+      var r = svg.getBoundingClientRect();
+      var px = (ev.clientX - r.left) * (W / r.width);
+      var i = Math.max(0, Math.min(data.length - 1,
+        Math.round((px - P.l) / (iw / Math.max(1, data.length - 1)))));
+      var d = data[i];
+      cur.setAttribute('x1', X(i)); cur.setAttribute('x2', X(i)); cur.setAttribute('opacity', 1);
+      dot.setAttribute('cx', X(i)); dot.setAttribute('cy', Y(d.count)); dot.setAttribute('opacity', 1);
+      tip.style.opacity = 1;
+      tip.innerHTML = '<b>' + nf.format(d.count) + '</b> ' + unit +
+        '<br><span style="color:#6f6e69">' + d[xKey] + '</span>';
+      var wrap = svg.parentElement.getBoundingClientRect();
+      var left = (X(i) / W) * wrap.width - tip.offsetWidth / 2;
+      tip.style.left = Math.min(Math.max(left, 0), Math.max(0, wrap.width - tip.offsetWidth)) + 'px';
+      tip.style.top = Math.max((Y(d.count) / H) * wrap.height - tip.offsetHeight - 10, 0) + 'px';
+    });
+    hot.addEventListener('mouseleave', function () {
+      tip.style.opacity = 0; cur.setAttribute('opacity', 0); dot.setAttribute('opacity', 0);
+    });
+
+    if (tbody) {
+      data.forEach(function (d) {
+        var tr = document.createElement('tr');
+        var a = document.createElement('td'); a.textContent = d[xKey];
+        var b = document.createElement('td'); b.className = 'n'; b.textContent = nf.format(d.count);
+        tr.appendChild(a); tr.appendChild(b); tbody.appendChild(tr);
+      });
+    }
+  }
+
+  function drawAll() {
+    draw('traffic', 'trafficTip', 'trafficTable', parse('hourlyData'), 'hour', 'views');
+    draw('signups', 'signupsTip', 'signupsTable', parse('signupsData'), 'date', 'signups');
+  }
+  drawAll();
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(drawAll, 160); });
+
+  var burger = document.getElementById('burger');
+  if (burger) burger.addEventListener('click', function () {
+    document.getElementById('side').classList.toggle('open');
+  });
+})();
+</script>
 </body>
 </html>
