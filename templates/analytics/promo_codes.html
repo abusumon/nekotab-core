@@ -1,0 +1,208 @@
+{% comment %}
+  Promo code minting and review.
+
+  Self-contained in the analytics dark style, and renders its own messages —
+  like the sibling analytics pages it owns its <head> and does not extend a
+  base that carries the message framework, so without this a redirect back
+  from a POST would look like nothing happened.
+
+  Freshly generated codes are shown once, in a copyable block. They are held in
+  the session between the POST and this render rather than the querystring,
+  because a promo code in a URL ends up in server logs and browser history.
+{% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo Codes - NekoTab Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark:#0a0a0f; --bg-card:#12121a; --bg-hover:#1a1a25;
+            --border:#2a2a3a; --text-primary:#fff; --text-secondary:#8888aa;
+            --accent:#6366f1; --success:#10b981; --warning:#f59e0b; --danger:#ef4444;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--bg-dark);color:var(--text-primary);
+             min-height:100vh;padding:24px}
+        .wrap{max-width:1000px;margin:0 auto}
+        a{color:var(--accent)}
+        .back{display:inline-block;margin-bottom:20px;font-size:14px;text-decoration:none}
+        .back:hover{text-decoration:underline}
+        h1{font-size:24px;margin-bottom:6px}
+        .sub{color:var(--text-secondary);font-size:14px;margin-bottom:24px;line-height:1.5}
+        .card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
+              padding:20px;margin-bottom:20px}
+        .card h2{font-size:16px;margin-bottom:4px}
+        .card .hint{color:var(--text-secondary);font-size:13px;margin-bottom:16px;line-height:1.5}
+        .stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+        .stat{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;
+              padding:12px 18px;min-width:110px}
+        .stat-v{font-size:22px;font-weight:700}
+        .stat-l{font-size:12px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em}
+        label{display:block;font-size:13px;color:var(--text-secondary);margin-bottom:5px}
+        input[type=number],input[type=email]{
+            background:var(--bg-dark);border:1px solid var(--border);border-radius:8px;
+            color:var(--text-primary);padding:10px 12px;font-family:inherit;font-size:14px;width:100%}
+        input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+        .row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+        .row > div{flex:1 1 190px}
+        .btn{display:inline-block;padding:10px 18px;border-radius:8px;border:0;font-family:inherit;
+             font-size:14px;font-weight:600;cursor:pointer;text-decoration:none}
+        .btn-primary{background:var(--accent);color:#fff}
+        .btn-primary:hover{background:#4f52d8}
+        .btn-danger{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.35)}
+        .btn-danger:hover{background:rgba(239,68,68,.25)}
+        .btn-ghost{background:var(--bg-dark);color:var(--text-primary);border:1px solid var(--border)}
+        .btn-ghost:hover{background:var(--bg-hover)}
+        table{width:100%;border-collapse:collapse;font-size:13.5px}
+        th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border)}
+        th{color:var(--text-secondary);font-weight:500;font-size:12px;text-transform:uppercase}
+        tr:last-child td{border-bottom:0}
+        code{font-family:Consolas,Menlo,monospace;letter-spacing:.04em}
+        .pill{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:600}
+        .pill-unused{background:rgba(16,185,129,.18);color:var(--success)}
+        .pill-used{background:rgba(136,136,170,.18);color:var(--text-secondary)}
+        .pill-gift{background:rgba(245,158,11,.18);color:var(--warning)}
+        .pill-paid{background:rgba(99,102,241,.18);color:#a5b4fc}
+        .msg{margin-bottom:16px;padding:12px 16px;border-radius:8px;font-size:14px}
+        .fresh{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.35);
+               border-radius:10px;padding:16px;margin-bottom:20px}
+        .fresh h2{font-size:15px;margin-bottom:10px;color:var(--success)}
+        .fresh textarea{width:100%;background:var(--bg-dark);border:1px solid var(--border);
+            border-radius:8px;color:var(--text-primary);font-family:Consolas,Menlo,monospace;
+            font-size:14px;padding:12px;letter-spacing:.05em;resize:vertical}
+        .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+        .filters a{padding:5px 12px;border:1px solid var(--border);border-radius:7px;
+                   font-size:13px;text-decoration:none;color:var(--text-secondary)}
+        .filters a.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+        .muted{color:var(--text-secondary)}
+        @media (max-width:720px){
+            body{padding:16px}
+            th:nth-child(5),td:nth-child(5),th:nth-child(6),td:nth-child(6){display:none}
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <a class="back" href="/analytics/">&larr; Back to dashboard</a>
+    <h1>🎟️ Promo Codes</h1>
+    <p class="sub">
+        Each code unlocks <strong>one tournament</strong>, once, with no payment —
+        the 100%-off route. Codes minted here are marked <em>Gifted</em>; codes
+        from an approved bKash payment are marked <em>Paid</em>, so giveaways
+        never get counted as revenue.
+    </p>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="msg" style="{% if 'error' in message.tags %}background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#fca5a5;{% else %}background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.35);color:#6ee7b7;{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% if just_created %}
+      <div class="fresh">
+        <h2>{{ just_created|length }} new code{{ just_created|pluralize }} — copy them now</h2>
+        <textarea rows="{{ just_created|length|add:1 }}" readonly onclick="this.select()">{% for c in just_created %}{{ c }}
+{% endfor %}</textarea>
+        <p class="hint" style="margin:10px 0 0">
+          Click to select all. They stay in the table below, but this box appears
+          only once.
+        </p>
+      </div>
+    {% endif %}
+
+    <div class="stats">
+      <div class="stat"><div class="stat-v">{{ total }}</div><div class="stat-l">Total</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--success)">{{ unused }}</div><div class="stat-l">Unused</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--text-secondary)">{{ used_count }}</div><div class="stat-l">Redeemed</div></div>
+      <div class="stat"><div class="stat-v" style="color:var(--warning)">{{ gifted }}</div><div class="stat-l">Gifted</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Create codes</h2>
+      <p class="hint">
+        Generate as many as you like. Codes avoid characters that are misread when
+        retyped off a phone (0/O, 1/I/L, 5/S, 8/B, 2/Z), because these get typed
+        by hand far more often than pasted.
+      </p>
+      <form method="post" action="{% url 'analytics:promo_codes' %}">
+        {% csrf_token %}
+        <div class="row">
+          <div>
+            <label for="count">How many (1–{{ max_batch }})</label>
+            <input type="number" id="count" name="count" value="1" min="1" max="{{ max_batch }}" required>
+          </div>
+          <div>
+            <label for="issued_to_email">Issue to (optional — for your own records)</label>
+            <input type="email" id="issued_to_email" name="issued_to_email" placeholder="school@example.org">
+          </div>
+          <div style="flex:0 0 auto">
+            <button type="submit" class="btn btn-primary">Generate</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>All codes</h2>
+      <div class="filters">
+        <a href="?show=all" class="{% if show == 'all' %}on{% endif %}">All</a>
+        <a href="?show=unused" class="{% if show == 'unused' %}on{% endif %}">Unused</a>
+        <a href="?show=used" class="{% if show == 'used' %}on{% endif %}">Redeemed</a>
+        <a href="?show=gifted" class="{% if show == 'gifted' %}on{% endif %}">Gifted</a>
+      </div>
+
+      {% if codes %}
+      <form method="post" action="{% url 'analytics:delete_promo_codes' %}"
+            onsubmit="return confirm('Revoke the selected unused codes? This cannot be undone.');">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <th style="width:26px"></th>
+            <th>Code</th><th>Status</th><th>Source</th>
+            <th>Issued to</th><th>Used for</th><th>Created</th>
+          </tr>
+          {% for c in codes %}
+          <tr>
+            <td>{% if not c.used %}<input type="checkbox" name="codes" value="{{ c.code }}">{% endif %}</td>
+            <td><code>{{ c.code }}</code></td>
+            <td>
+              {% if c.used %}<span class="pill pill-used">Redeemed</span>
+              {% else %}<span class="pill pill-unused">Unused</span>{% endif %}
+            </td>
+            <td>
+              {% if c.request_id %}<span class="pill pill-paid">Paid</span>
+              {% else %}<span class="pill pill-gift">Gifted</span>{% endif %}
+            </td>
+            <td class="muted">{{ c.issued_to_email|default:"—" }}</td>
+            <td class="muted">{{ c.used_for_tournament|default:"—" }}</td>
+            <td class="muted">{{ c.created_at|date:"Y-m-d H:i" }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <p style="margin-top:16px">
+          <button type="submit" class="btn btn-danger">Revoke selected</button>
+          <span class="hint" style="margin-left:10px">Only unused codes can be revoked.</span>
+        </p>
+      </form>
+      {% else %}
+        <p class="hint" style="margin:0">No codes yet. Generate some above.</p>
+      {% endif %}
+    </div>
+
+    <div class="card">
+      <h2>How someone redeems one</h2>
+      <p class="hint" style="margin:0">
+        They open their tournament, land on the unlock page (or go to
+        <code>/premium/&lt;id&gt;/</code>), and enter the code under
+        <em>&ldquo;Have a promo code?&rdquo;</em>. The tournament unlocks
+        immediately — no card, no Lemon Squeezy, nothing to pay.
+      </p>
+    </div>
+</div>
+</body>
+</html>

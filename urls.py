@@ -188,14 +188,6 @@ urlpatterns = [
     path('premium/<int:tournament_id>/redeem/',
         donations_views.RedeemPromoCodeView.as_view(),
         name='premium-redeem'),
-    # The $2 email unlock. Sits under /premium/ so it inherits the same
-    # exemption from subdomain rewriting and the premium always-free patterns.
-    path('premium/<int:tournament_id>/email/',
-        donations_views.TournamentEmailUnlockPageView.as_view(),
-        name='email-unlock'),
-    path('premium/<int:tournament_id>/email/redeem/',
-        donations_views.RedeemEmailPromoCodeView.as_view(),
-        name='email-unlock-redeem'),
     # Manual bKash flow. Top-level and memorable because it is linked from the
     # home page nav and read out in support replies.
     path('bkash/',

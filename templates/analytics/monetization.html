@@ -76,8 +76,8 @@
     <a class="back" href="/analytics/">&larr; Back to dashboard</a>
     <h1>💰 Monetization</h1>
     <p class="sub">
-        Ads, the access paywall, and the email charge. Changes take effect on the
-        next request — no deploy, no restart.
+        Ads and the access paywall. Changes take effect on the next request —
+        no deploy, no restart.
     </p>
 
     {% if messages %}
@@ -118,11 +118,6 @@
             <td><span class="pill {% if flags.premium_gate_enabled.value %}pill-on{% else %}pill-off{% endif %}">{% if flags.premium_gate_enabled.value %}ON{% else %}OFF{% endif %}</span></td>
             <td class="src {% if flags.premium_gate_enabled.source == 'database' %}src-db{% endif %}">{{ flags.premium_gate_enabled.source }}</td>
           </tr>
-          <tr>
-            <td>Charge for the email service</td>
-            <td><span class="pill {% if flags.email_unlock_enabled.value %}pill-on{% else %}pill-off{% endif %}">{% if flags.email_unlock_enabled.value %}ON{% else %}OFF{% endif %}</span></td>
-            <td class="src {% if flags.email_unlock_enabled.source == 'database' %}src-db{% endif %}">{{ flags.email_unlock_enabled.source }}</td>
-          </tr>
         </table>
         {% if row.updated_at %}
           <p class="note">
@@ -134,8 +129,8 @@
       <div class="card">
         <h2>One-click presets</h2>
         <p class="hint">
-          Each button sets all three switches at once, so returning to a known
-          configuration takes one click instead of three correct guesses.
+          Each button sets both switches at once, so returning to a known
+          configuration is one click rather than two correct guesses.
         </p>
         <div class="presets">
           {% for key, spec in presets.items %}
@@ -183,24 +178,10 @@
                 </div>
               </td>
             </tr>
-            <tr>
-              <td>
-                Charge for the email service
-                <div class="src">env default: {% if flags.email_unlock_enabled.env_default %}on{% else %}off{% endif %}</div>
-              </td>
-              <td>
-                <div class="choices">
-                  <label><input type="radio" name="email_unlock_enabled" value="on" {% if flags.email_unlock_enabled.source == 'database' and flags.email_unlock_enabled.value %}checked{% endif %}> On</label>
-                  <label><input type="radio" name="email_unlock_enabled" value="off" {% if flags.email_unlock_enabled.source == 'database' and not flags.email_unlock_enabled.value %}checked{% endif %}> Off</label>
-                  <label><input type="radio" name="email_unlock_enabled" value="default" {% if flags.email_unlock_enabled.source != 'database' %}checked{% endif %}> Default</label>
-                </div>
-              </td>
-            </tr>
           </table>
           <p class="note">
             Paying customers are never affected by these switches: a tournament
-            that has paid the $5 keeps its ads off and its email on regardless,
-            and one that has paid the $2 keeps email on.
+            that has paid keeps its ads off regardless of what is set here.
           </p>
           <p style="margin-top:18px">
             <button type="submit" class="btn btn-primary">Save</button>

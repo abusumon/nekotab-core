@@ -825,9 +825,6 @@ BKASH_PERSONAL_NUMBER = os.environ.get('BKASH_PERSONAL_NUMBER') or '01324202591'
 # Above the $5 equivalent to absorb the bKash send-money fee, so the amount
 # that actually lands is not short.
 BKASH_AMOUNT_BDT = int(os.environ.get('BKASH_AMOUNT_BDT') or 510)
-# Same idea for the $2 email unlock: a little above the straight conversion so
-# the send-money fee does not come out of the payment.
-BKASH_EMAIL_AMOUNT_BDT = int(os.environ.get('BKASH_EMAIL_AMOUNT_BDT') or 260)
 
 # ------------------------------------------------------------------------------
 # Demo tournaments
@@ -953,24 +950,6 @@ ADS_REMOVAL_CHECKOUT_URL = os.environ.get('ADS_REMOVAL_CHECKOUT_URL') or (
     'https://nekotab.lemonsqueezy.com/checkout/buy/982ee49b-d32f-48a3-b399-dd6134838cf5'
 )
 ADS_REMOVAL_PRICE_LABEL = os.environ.get('ADS_REMOVAL_PRICE_LABEL') or '$5'
-
-# ------------------------------------------------------------------------------
-# The $2 "unlock the email service" product.
-# ------------------------------------------------------------------------------
-#
-# NekoTab is free to run a tournament on. Participant email is the one feature
-# with a real per-use cost to us, so it is the one feature behind a payment.
-# The $5 ad-removal grant includes it as a superset -- that rule lives in
-# donations/email_unlock.py, not here.
-#
-# These are the *environment defaults*. The live values are resolved through
-# donations/flags.py, which lets the analytics dashboard override them in the
-# database with no deploy. Unset in the database means "use what is here".
-EMAIL_UNLOCK_ENABLED = _env_bool('EMAIL_UNLOCK_ENABLED', default=False)
-EMAIL_UNLOCK_CHECKOUT_URL = os.environ.get('EMAIL_UNLOCK_CHECKOUT_URL') or (
-    'https://nekotab.lemonsqueezy.com/checkout/buy/519cf49e-4667-4b1a-b639-17651c1d6b0d'
-)
-EMAIL_UNLOCK_PRICE_LABEL = os.environ.get('EMAIL_UNLOCK_PRICE_LABEL') or '$2'
 
 # ==============================================================================
 # SEO / Canonical

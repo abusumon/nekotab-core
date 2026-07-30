@@ -23,30 +23,6 @@ from .utils import (AdjudicatorAssignmentEmailGenerator, BallotsEmailGenerator, 
 logger = logging.getLogger(__name__)
 
 
-def _tournament_can_send_email(tournament):
-    """Whether this tournament has the email service unlocked.
-
-    Participant email is the one NekoTab feature with a real per-send cost, so
-    it is the one behind a payment: a $2 email unlock, or the $5 grant which
-    includes it. Everything else is free.
-
-    Fails **open** in every failure mode, including `donations` being absent
-    (upstream Tabbycat runs without it). Wrongly blocking email mid-round means
-    judges never get their ballots and the round stalls; wrongly allowing a
-    send costs a fraction of a cent.
-    """
-    try:
-        from donations.email_unlock import tournament_can_send_email
-    except ImportError:
-        return True
-
-    try:
-        return tournament_can_send_email(tournament)
-    except Exception:
-        logger.exception('Email-unlock check failed; allowing the send')
-        return True
-
-
 class NotificationQueueConsumer(SyncConsumer):
 
     NOTIFICATION_GENERATORS: Dict[BulkNotification.EventType, Type[NotificationContextGenerator]] = {
@@ -105,12 +81,6 @@ class NotificationQueueConsumer(SyncConsumer):
             round = None
             t = Tournament.objects.get(pk=event['extra'].pop('tournament_id'))
             event['extra']['tournament'] = t
-
-        if not _tournament_can_send_email(t):
-            logger.info(
-                'Skipping %s email for tournament #%s: the email service is not '
-                'unlocked for it.', event['message'], t.pk)
-            return
 
         from_email, reply_to = self._get_from_fields(t)
         notification_type = event['message']

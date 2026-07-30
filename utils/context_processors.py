@@ -106,55 +106,6 @@ def _tournament_holds_ad_free_grant(tournament):
         return True
 
 
-def _email_unlock_context(request, tournament):
-    """Email-service unlock state for this tournament.
-
-    Drives the banner on the tournament admin overview. Returns the
-    "nothing to sell" shape whenever email is already available — because the
-    charge is switched off, because the $2 was paid, or because the $5 grant
-    covers it — so the template needs no logic of its own.
-    """
-    # Deliberately does not carry email_unlock_price_label: this dict is
-    # applied *over* the base context, so setting it here would blank the
-    # default that every other template reads.
-    nothing = {
-        'email_unlock_required': False,
-        'email_unlock_url': '',
-    }
-
-    pk = getattr(tournament, 'pk', None)
-    if not pk:
-        return nothing
-
-    try:
-        from donations.email_unlock import (
-            email_unlock_enabled, email_unlock_price_label,
-            tournament_can_send_email)
-    except ImportError:
-        # `donations` is a NekoTab-only app; upstream Tabbycat runs without it.
-        return nothing
-
-    try:
-        if not email_unlock_enabled():
-            return nothing
-        if tournament_can_send_email(tournament):
-            return nothing
-
-        return {
-            'email_unlock_required': True,
-            # The unlock *page*, not the card checkout: it offers the promo code
-            # and bKash routes too, and for a lot of this user base those are
-            # the only ones that work. Linking straight to Lemon Squeezy would
-            # hide them.
-            'email_unlock_url': '/premium/%s/email/' % pk,
-            'email_unlock_price_label': email_unlock_price_label(),
-        }
-    except Exception:
-        # Never let a monetisation lookup take the admin overview down.
-        logger.exception('Email-unlock context failed for tournament %r', pk)
-        return nothing
-
-
 def _premium_gate_switch_on():
     """The live access-paywall switch: database override if set, else PREMIUM_ENABLED.
 
@@ -379,7 +330,6 @@ def debate_context(request):
         'ads_price_label': getattr(settings, 'PREMIUM_PRICE_LABEL', '$5'),
         'premium_price_label': getattr(settings, 'PREMIUM_PRICE_LABEL', '$5'),
         'premium_enabled': _premium_gate_switch_on(),
-        'email_unlock_price_label': getattr(settings, 'EMAIL_UNLOCK_PRICE_LABEL', '$2'),
         # SEO defaults
         'seo_site_name': 'NekoTab Debate Tabulation',
         'seo_keywords': 'debate tab, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, parliamentary debating, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, debate results live, debate ticketing, debate schedule planner, debate registration forms, debate website builder, nekotab, free debate tab software',
@@ -427,6 +377,5 @@ def debate_context(request):
     # per-tournament.
     context.update(_premium_context(request, context.get('tournament')))
     context.update(_ad_context(request, context.get('tournament')))
-    context.update(_email_unlock_context(request, context.get('tournament')))
 
     return context
