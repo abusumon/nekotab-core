@@ -12,14 +12,14 @@
   {% include "ads/styles.html" %}
   {% endif %}
   <title>NekoTab — Debate Tab Software, $5 a Tournament | Motion Bank &amp; Events</title>
-  <meta name="description" content="NekoTab: hosted Tabbycat debate tabulation for BP, WSDC, Australs and more. $5 per tournament, paid once, with no ads and no subscription. Includes a free global Motion Bank with thousands of real debate motions, plus event ticketing, website builder, schedule planner and registration forms.">
+  <meta name="description" content="NekoTab: hosted Tabbycat debate tabulation for BP, WSDC, Australs and more. {% if premium_enabled %}$5 per tournament, paid once, with no ads and no subscription.{% else %}Free to run a tournament of any size, with no subscription; $2 unlocks participant email and $5 removes ads.{% endif %} Includes a free global Motion Bank with thousands of real debate motions, plus event ticketing, website builder, schedule planner and registration forms.">
   <meta name="keywords" content="debate tournament software, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, australs debate, debate ticketing, debate schedule planner, debate registration forms, debate website builder, tabbycat hosting, open source debate software, cheap debate tab software, nekotab">
   <link rel="canonical" href="https://nekotab.app/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nekotab.app/" />
   <meta property="og:title" content="NekoTab — Debate Tab Software, $5 a Tournament | Motion Bank &amp; Events" />
-  <meta property="og:description" content="Hosted Tabbycat for BP, WSDC, Australs. $5 per tournament, paid once — no ads, no subscription. Plus a free global Motion Bank, event ticketing, website builder and schedule planner." />
+  <meta property="og:description" content="Hosted Tabbycat for BP, WSDC, Australs. {% if premium_enabled %}$5 per tournament, paid once — no ads, no subscription.{% else %}Free to run a tournament, no subscription — $2 unlocks email, $5 removes ads.{% endif %} Plus a free global Motion Bank, event ticketing, website builder and schedule planner." />
   <meta property="og:image" content="https://nekotab.app/static/logo-social.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -27,7 +27,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="NekoTab — Debate Tab Software, $5 a Tournament | Motion Bank &amp; Events" />
-  <meta name="twitter:description" content="Hosted Tabbycat plus a free Motion Bank, event ticketing, website builder, schedule planner and forms. $5 per tournament, once — no ads, no subscription." />
+  <meta name="twitter:description" content="Hosted Tabbycat plus a free Motion Bank, event ticketing, website builder, schedule planner and forms. {% if premium_enabled %}$5 per tournament, once — no ads, no subscription.{% else %}Free to run a tournament — $2 unlocks email, $5 removes ads.{% endif %}" />
   <meta name="twitter:image" content="https://nekotab.app/static/logo-social.png" />
   <meta name="twitter:site" content="@NekoTab" />
 
@@ -825,8 +825,13 @@
         "description": "NekoTab is a comprehensive debate platform: Tabbycat tournament tabulation for BP, WSDC, Australs and more; a global Motion Bank with thousands of real tournament motions; event ticketing; organization website builder; schedule planner; and registration forms. Running a tournament costs a one-off $5.",
         "url": "https://nekotab.app",
         "image": "https://nekotab.app/static/logo-social.png",
+        {% if premium_enabled %}
         "offers": {"@type": "Offer", "price": "5", "priceCurrency": "USD",
           "description": "One-off payment per tournament"},
+        {% else %}
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD",
+          "description": "Free to run a tournament. Optional one-off extras: $2 unlocks the email service, $5 removes ads and includes email."},
+        {% endif %}
         "featureList": [
           "Tabbycat debate tournament tabulation",
           "Global debate motion bank",
@@ -857,7 +862,7 @@
           {
             "@type": "Question",
             "name": "How much does NekoTab cost?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Running a tournament on NekoTab costs $5, paid once, with no subscription and no per-team fee. Debaters, judges and the public never pay: every public tournament page — draw, tab, results and participants — is free to read. The Motion Bank is free, and tournaments created before NekoTab Premium launched remain free permanently. NekoTab carries no advertising."}
+            "acceptedAnswer": {"@type": "Answer", "text": "{% if premium_enabled %}Running a tournament on NekoTab costs $5, paid once, with no subscription and no per-team fee. Debaters, judges and the public never pay: every public tournament page — draw, tab, results and participants — is free to read. The Motion Bank is free, and tournaments created before NekoTab Premium launched remain free permanently. NekoTab carries no advertising.{% else %}Running a tournament on NekoTab is free, at any size, with no subscription and no per-team fee. Two optional extras are paid, both one-off and per tournament: $2 unlocks the email service for participants, and $5 removes all advertising from your tournament and includes the email service. Debaters, judges and the public never pay: every public tournament page — draw, tab, results and participants — is free to read, and the Motion Bank is free.{% endif %}"}
           },
           {
             "@type": "Question",
@@ -999,7 +1004,7 @@
           <span class="nk-mob-icon">💜</span>
           <span class="nk-mob-label-group">
             <span>Pricing</span>
-            <span class="nk-mob-label-sub">{{ premium_price_label|default:"$5" }} per tournament, once</span>
+            <span class="nk-mob-label-sub">{% if premium_enabled %}{{ premium_price_label|default:"$5" }} per tournament, once{% else %}Free to run a tournament{% endif %}</span>
           </span>
         </a>
         <a href="{% url 'bkash' %}">
@@ -1047,7 +1052,8 @@
     <div class="em-container em-hero-inner">
       <div class="em-badge" aria-label="Pricing">
         <span class="em-badge-dot"></span>
-        {{ premium_price_label|default:"$5" }} per tournament &middot; No ads &middot; No subscription
+        {% if premium_enabled %}{{ premium_price_label|default:"$5" }} per tournament &middot; No ads &middot; No subscription
+        {% else %}Free to run a tournament &middot; No subscription{% endif %}
       </div>
 
       <h1 id="hero-title" class="em-hero-title">
@@ -1136,6 +1142,7 @@
   <section class="nk-pricing" aria-labelledby="pricing-heading">
     <div class="nk-pricing-inner">
       <p class="nk-pricing-eyebrow">Pricing</p>
+      {% if premium_enabled %}
       <h2 id="pricing-heading" class="nk-pricing-heading">
         {{ premium_price_label|default:"$5" }} per tournament. Paid once.
       </h2>
@@ -1144,6 +1151,18 @@
         Your debaters, judges and audience never pay — every public draw, tab and results
         page is free to read.
       </p>
+      {% else %}
+      <h2 id="pricing-heading" class="nk-pricing-heading">
+        Free to run a tournament. Any size.
+      </h2>
+      <p class="nk-pricing-sub">
+        No subscription and no per-team fee. Two optional extras are paid:
+        {{ email_unlock_price_label|default:"$2" }} unlocks participant email, and
+        {{ premium_price_label|default:"$5" }} removes every ad from your tournament
+        and includes email. Your debaters, judges and audience never pay — every
+        public draw, tab and results page is free to read.
+      </p>
+      {% endif %}
       <div class="nk-pricing-actions">
         <a href="{% url 'tournament-create' %}" class="nk-pricing-cta">Create a tournament</a>
         <a href="{% url 'pricing' %}" class="nk-pricing-link">See what's included &rarr;</a>

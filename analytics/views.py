@@ -1082,6 +1082,10 @@ class BkashRequestsView(SuperuserRequiredMixin, TemplateView):
                 code=code,
                 request=bkash_request,
                 issued_to_email=bkash_request.email,
+                # Mint the code for whatever this claim was actually paying
+                # for. Without this every code would be a premium one, so a
+                # $2 email payment would mint a $5 tournament unlock.
+                kind=bkash_request.kind,
             )
             bkash_request.status = BkashPaymentRequest.Status.APPROVED
             bkash_request.review_note = note
@@ -1154,7 +1158,10 @@ def _email_promo_code(promo, bkash_request):
         from django.core.mail import EmailMultiAlternatives
         from django.template.loader import render_to_string
 
+        from donations.models import GrantKind
+
         base = getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
+        is_email_unlock = promo.kind == GrantKind.EMAIL
         context = {
             'promo': promo,
             'code': promo.code,
@@ -1164,9 +1171,14 @@ def _email_promo_code(promo, bkash_request):
             'amount': bkash_request.amount,
             'currency': bkash_request.currency,
             'transaction_id': bkash_request.transaction_id,
+            # The two kinds are redeemed in different places, so the
+            # instructions have to differ or half the recipients are sent to a
+            # page where their code will be refused.
+            'is_email_unlock': is_email_unlock,
         }
         message = EmailMultiAlternatives(
-            subject='Your NekoTab promo code',
+            subject=('Your NekoTab email-service code' if is_email_unlock
+                     else 'Your NekoTab promo code'),
             body=render_to_string('donations/email/promo_code.txt', context),
             from_email=settings.DEFAULT_FROM_EMAIL,
             to=[bkash_request.email],

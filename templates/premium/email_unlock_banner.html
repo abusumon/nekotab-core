@@ -84,7 +84,9 @@
     </p>
   </div>
 
-  <a class="nk-emailunlock-card__cta lemonsqueezy-button" href="{{ email_unlock_url }}">
+  {# Links to the unlock page, which offers card, promo code and bKash — not
+     straight to Lemon Squeezy, which would hide the other two. #}
+  <a class="nk-emailunlock-card__cta" href="{{ email_unlock_url }}">
     {% blocktrans trimmed with price=email_unlock_price_label %}
       Unlock email · {{ price }}
     {% endblocktrans %}
@@ -93,7 +95,6 @@
   <button type="button" class="nk-emailunlock-card__x" id="nkEmailUnlockDismiss"
           aria-label="{% trans 'Dismiss for now' %}">&times;</button>
 </div>
-<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 <script>
 (function () {
   var card = document.getElementById('nkEmailUnlockCard');

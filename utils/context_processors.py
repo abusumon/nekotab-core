@@ -128,8 +128,8 @@ def _email_unlock_context(request, tournament):
 
     try:
         from donations.email_unlock import (
-            build_email_unlock_checkout_url, email_unlock_enabled,
-            email_unlock_price_label, tournament_can_send_email)
+            email_unlock_enabled, email_unlock_price_label,
+            tournament_can_send_email)
     except ImportError:
         # `donations` is a NekoTab-only app; upstream Tabbycat runs without it.
         return nothing
@@ -140,11 +140,13 @@ def _email_unlock_context(request, tournament):
         if tournament_can_send_email(tournament):
             return nothing
 
-        user = getattr(request, 'user', None)
-        email = (getattr(user, 'email', '') or '') if getattr(user, 'is_authenticated', False) else ''
         return {
             'email_unlock_required': True,
-            'email_unlock_url': build_email_unlock_checkout_url(pk, email=email),
+            # The unlock *page*, not the card checkout: it offers the promo code
+            # and bKash routes too, and for a lot of this user base those are
+            # the only ones that work. Linking straight to Lemon Squeezy would
+            # hide them.
+            'email_unlock_url': '/premium/%s/email/' % pk,
             'email_unlock_price_label': email_unlock_price_label(),
         }
     except Exception:

@@ -825,6 +825,9 @@ BKASH_PERSONAL_NUMBER = os.environ.get('BKASH_PERSONAL_NUMBER') or '01324202591'
 # Above the $5 equivalent to absorb the bKash send-money fee, so the amount
 # that actually lands is not short.
 BKASH_AMOUNT_BDT = int(os.environ.get('BKASH_AMOUNT_BDT') or 510)
+# Same idea for the $2 email unlock: a little above the straight conversion so
+# the send-money fee does not come out of the payment.
+BKASH_EMAIL_AMOUNT_BDT = int(os.environ.get('BKASH_EMAIL_AMOUNT_BDT') or 260)
 
 # ------------------------------------------------------------------------------
 # Demo tournaments
@@ -935,6 +938,10 @@ ADS_DISABLED_PATHS = (
     r'^/django-admin/',
     r'^/donations/',
     r'^/donate',
+    # Purchase pages, both products. Serving an ad on the page where somebody
+    # is entering card details competes with the sale and looks cheap.
+    r'^/premium/',
+    r'^/bkash',
     r'/tickets/.*/buy',
     r'/password',
     r'/login',

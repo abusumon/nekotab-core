@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index, follow">
   <title>{% trans "Pricing" %} — NekoTab</title>
-  <meta name="description" content="NekoTab costs {{ price_label }} per tournament, once. No subscription, no per-team fee, no ads. Public draw and results pages are always free.">
+  <meta name="description" content="{% if premium_enabled %}NekoTab costs {{ price_label }} per tournament, once. No subscription, no per-team fee, no ads. Public draw and results pages are always free.{% else %}NekoTab is free to run a debate tournament on, any size. Two optional extras: {{ email_unlock_price_label|default:"$2" }} unlocks the email service, {{ price_label }} removes ads and includes email. No subscription, no per-team fee.{% endif %}">
   <link rel="canonical" href="{{ canonical_url }}">
   {# System fonts, no webfont request: this page is a conversion step and #}
   {# most of its traffic is on mobile networks in South and Southeast Asia. #}
@@ -79,29 +79,93 @@
 
   <div class="wrap">
 
-    <div class="hero">
-      <h1>{% trans "One price. One tournament. Paid once." %}</h1>
-      <p class="lede">
-        {% blocktrans trimmed %}
-          No subscription, no per-team fee, and no adverts anywhere on the site.
-        {% endblocktrans %}
-      </p>
-    </div>
+    {% comment %}
+      Two models, and which one is live is a switch (see
+      /analytics/monetization/). The copy has to follow the switch or the page
+      makes claims the software does not honour — "no adverts anywhere" was
+      false the moment ads came back on.
+    {% endcomment %}
+    {% if premium_enabled %}
 
-    <div class="card plan">
-      <div class="price">{{ price_label }}</div>
-      <div class="per">{% trans "per tournament, one time" %}</div>
-      <a class="btn" href="/create/">{% trans "Create a tournament" %}</a>
-      <ul>
-        <li>{% trans "Unlimited teams, adjudicators, rounds and rooms" %}</li>
-        <li>{% trans "Draws, tabs, ballots, feedback, check-ins, break rounds" %}</li>
-        <li>{% trans "British Parliamentary, Asian, Australs, WSDC, Congress and more" %}</li>
-        <li>{% trans "Your own tournament subdomain and public results pages" %}</li>
-        <li>{% trans "Motion bank, registration forms and ticketing included" %}</li>
-        <li>{% trans "No advertising, for you or your audience" %}</li>
-        <li>{% trans "Export your data whenever you like" %}</li>
-      </ul>
-    </div>
+      <div class="hero">
+        <h1>{% trans "One price. One tournament. Paid once." %}</h1>
+        <p class="lede">
+          {% blocktrans trimmed %}
+            No subscription, no per-team fee, and no adverts anywhere on the site.
+          {% endblocktrans %}
+        </p>
+      </div>
+
+      <div class="card plan">
+        <div class="price">{{ price_label }}</div>
+        <div class="per">{% trans "per tournament, one time" %}</div>
+        <a class="btn" href="/create/">{% trans "Create a tournament" %}</a>
+        <ul>
+          <li>{% trans "Unlimited teams, adjudicators, rounds and rooms" %}</li>
+          <li>{% trans "Draws, tabs, ballots, feedback, check-ins, break rounds" %}</li>
+          <li>{% trans "British Parliamentary, Asian, Australs, WSDC, Congress and more" %}</li>
+          <li>{% trans "Your own tournament subdomain and public results pages" %}</li>
+          <li>{% trans "Motion bank, registration forms and ticketing included" %}</li>
+          <li>{% trans "No advertising, for you or your audience" %}</li>
+          <li>{% trans "Export your data whenever you like" %}</li>
+        </ul>
+      </div>
+
+    {% else %}
+
+      <div class="hero">
+        <h1>{% trans "Free to run a tournament. Really." %}</h1>
+        <p class="lede">
+          {% blocktrans trimmed %}
+            No subscription, no per-team fee, and no charge to run a tournament of
+            any size. Two optional extras are paid, and nothing else is.
+          {% endblocktrans %}
+        </p>
+      </div>
+
+      <div class="card plan">
+        <div class="price">{% trans "Free" %}</div>
+        <div class="per">{% trans "every tournament, any size" %}</div>
+        <a class="btn" href="/create/">{% trans "Create a tournament" %}</a>
+        <ul>
+          <li>{% trans "Unlimited teams, adjudicators, rounds and rooms" %}</li>
+          <li>{% trans "Draws, tabs, ballots, feedback, check-ins, break rounds" %}</li>
+          <li>{% trans "British Parliamentary, Asian, Australs, WSDC, Congress and more" %}</li>
+          <li>{% trans "Your own tournament subdomain and public results pages" %}</li>
+          <li>{% trans "Motion bank, registration forms and ticketing included" %}</li>
+          <li>{% trans "Export your data whenever you like" %}</li>
+        </ul>
+      </div>
+
+      <div class="card plan">
+        <h2>{% trans "The two paid extras" %}</h2>
+        <p>
+          {% blocktrans trimmed with price=email_unlock_price_label|default:"$2" %}
+            <strong>Email service — {{ price }} per tournament.</strong> Sending
+            email to your participants: private ballot URLs, draw and motion
+            releases, ballot receipts, team registration. It is the one feature
+            that costs us money every time it runs, which is why it is the one
+            feature we charge for.
+          {% endblocktrans %}
+        </p>
+        <p>
+          {% blocktrans trimmed with price=price_label %}
+            <strong>Remove ads — {{ price }} per tournament.</strong> NekoTab is
+            paid for by advertising on the free tier. One {{ price }} payment
+            removes every ad from your tournament, for you and your audience, and
+            includes the email service — so if you buy this you do not need the
+            other one.
+          {% endblocktrans %}
+        </p>
+        <p>
+          {% blocktrans trimmed %}
+            Both are one-off, per tournament, and neither is a subscription. Card
+            or bKash, and we can issue a code if the price is a genuine barrier.
+          {% endblocktrans %}
+        </p>
+      </div>
+
+    {% endif %}
 
     <div class="card free">
       <h2>{% trans "What stays free" %}</h2>
