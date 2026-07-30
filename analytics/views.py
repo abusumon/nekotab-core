@@ -127,7 +127,6 @@ class SuperuserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
         return super().handle_no_permission()
 
 
-@method_decorator(cache_page(60), name='dispatch')
 def _rate(numerator, denominator):
     """'12.3% of previous stage', or an em dash when the stage above is empty."""
     if not denominator:
@@ -148,6 +147,7 @@ def _pct_delta(current, previous):
     return round((current - previous) * 100.0 / previous, 1)
 
 
+@method_decorator(cache_page(60), name='dispatch')
 class DashboardView(SuperuserRequiredMixin, TemplateView):
     """Main analytics dashboard.
 
