@@ -317,13 +317,33 @@ class UserDashboardView(LoginRequiredMixin, TemplateView):
         ctx = super().get_context_data(**kwargs)
         user = self.request.user
 
-        from tournaments.models import Tournament
+        from tournaments.models import Tournament, TournamentMetadata
         from organizations.models import OrganizationMembership, get_user_organizations
         from draw.models import Debate
 
-        my_tournaments = Tournament.objects.filter(owner=user).order_by('-pk')
-        ctx['active_tournaments'] = my_tournaments.filter(active=True)
-        ctx['inactive_tournaments'] = my_tournaments.filter(active=False)
+        my_tournaments = Tournament.objects.filter(owner=user).select_related('metadata').order_by('-created_at')
+
+        # Group by lifecycle status (TournamentMetadata.status when present, else the
+        # coarser `active` flag) so the dashboard reads as a history, not just two piles.
+        upcoming, in_progress, past = [], [], []
+        Status = TournamentMetadata.Status
+        for t in my_tournaments:
+            metadata = getattr(t, 'metadata', None)
+            status = metadata.status if metadata else None
+            if status == Status.IN_PROGRESS:
+                in_progress.append(t)
+            elif status in (Status.COMPLETED, Status.ARCHIVED):
+                past.append(t)
+            elif status in (Status.DRAFT, Status.REGISTRATION_OPEN, Status.REGISTRATION_CLOSED):
+                upcoming.append(t)
+            elif t.active:
+                upcoming.append(t)
+            else:
+                past.append(t)
+
+        ctx['upcoming_tournaments'] = upcoming
+        ctx['in_progress_tournaments'] = in_progress
+        ctx['past_tournaments'] = past
         ctx['total_tournament_count'] = my_tournaments.count()
         ctx['total_debate_count'] = Debate.objects.filter(
             round__tournament__owner=user

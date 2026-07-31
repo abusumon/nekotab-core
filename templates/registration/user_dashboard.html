@@ -20,10 +20,10 @@
         .navbar {
             background: #fff;
             border-bottom: 1px solid #e5e7eb;
-            height: 60px;
+            min-height: 56px;
             display: flex;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -35,22 +35,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.75rem;
+            padding: 0.5rem 0;
         }
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #111827;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.35rem;
+            gap: 0.45rem;
         }
-        .nav-right { display: flex; align-items: center; gap: 0.5rem; }
-        .nav-user { font-size: 0.875rem; color: #6b7280; font-weight: 500; }
+        .logo img { width: 26px; height: 26px; border-radius: 6px; display: block; }
+        .nav-right { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+        .nav-user {
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-weight: 500;
+            max-width: 8rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
         .nav-btn {
-            padding: 0.4rem 0.9rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 6px;
-            font-size: 0.875rem;
+            font-size: 0.825rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
@@ -59,6 +71,7 @@
             cursor: pointer;
             border: none;
             transition: all 0.15s;
+            white-space: nowrap;
         }
         .nav-btn-outline { background: #fff; color: #374151; border: 1px solid #d1d5db; }
         .nav-btn-outline:hover { background: #f3f4f6; }
@@ -66,40 +79,65 @@
         .nav-btn-primary:hover { background: #1d4ed8; color: #fff; }
 
         /* ── Main layout ── */
-        .main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem; }
+        .main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
 
         /* ── Page header ── */
-        .page-header { margin-bottom: 2rem; }
-        .page-header h1 { font-size: 1.6rem; font-weight: 800; color: #111827; letter-spacing: -0.4px; }
-        .page-header p { color: #6b7280; font-size: 0.9rem; margin-top: 0.25rem; }
+        .page-header { margin-bottom: 1.5rem; }
+        .page-header h1 { font-size: 1.4rem; font-weight: 800; color: #111827; letter-spacing: -0.4px; word-break: break-word; }
+        .page-header p { color: #6b7280; font-size: 0.875rem; margin-top: 0.25rem; }
 
-        /* ── Stats row ── */
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        /* ── Stats row (mobile-first: 2 cols by default, 4 from tablet up) ── */
+        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1.75rem; }
+        @media (min-width: 640px) {
+            .stats { grid-template-columns: repeat(4, 1fr); }
+        }
         .stat-card {
             background: #fff;
             border: 1px solid #e5e7eb;
             border-radius: 10px;
-            padding: 1.25rem 1.5rem;
+            padding: 1rem;
         }
-        .stat-value { font-size: 2rem; font-weight: 800; color: #111827; line-height: 1; }
-        .stat-label { font-size: 0.8rem; color: #9ca3af; margin-top: 0.35rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+        .stat-value { font-size: 1.5rem; font-weight: 800; color: #111827; line-height: 1; }
+        .stat-label { font-size: 0.7rem; color: #9ca3af; margin-top: 0.35rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.03em; }
 
         /* ── Cards ── */
-        .section-title { font-size: 1rem; font-weight: 700; color: #374151; margin-bottom: 0.85rem; }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+        .section-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section-count {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #6b7280;
+            background: #f3f4f6;
+            border-radius: 999px;
+            padding: 0.1rem 0.55rem;
+        }
+        .card-grid { display: grid; grid-template-columns: 1fr; gap: 0.85rem; }
+        @media (min-width: 640px) {
+            .card-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 900px) {
+            .card-grid { grid-template-columns: repeat(3, 1fr); }
+        }
         .t-card {
             background: #fff;
             border: 1px solid #e5e7eb;
             border-radius: 10px;
-            padding: 1.25rem 1.5rem;
+            padding: 1.1rem 1.25rem;
         }
-        .t-card h3 { font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 0.25rem; }
-        .t-card p { color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem; }
+        .t-card h3 { font-size: 0.95rem; font-weight: 700; color: #111827; margin-bottom: 0.2rem; word-break: break-word; }
+        .t-card p { color: #6b7280; font-size: 0.825rem; margin-bottom: 0.9rem; }
         .t-card-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .t-btn {
-            padding: 0.35rem 0.85rem;
+            padding: 0.4rem 0.85rem;
             border-radius: 6px;
-            font-size: 0.825rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-block;
@@ -115,34 +153,35 @@
             background: #eff6ff;
             border: 1px solid #bfdbfe;
             border-radius: 10px;
-            padding: 1.25rem 1.5rem;
+            padding: 1.1rem 1.25rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.75rem;
         }
-        .workspace-card h3 { font-size: 1rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.2rem; }
-        .workspace-card p { font-size: 0.875rem; color: #3b82f6; }
+        .workspace-card h3 { font-size: 0.95rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.2rem; }
+        .workspace-card p { font-size: 0.825rem; color: #3b82f6; }
 
         /* ── Empty state ── */
         .empty {
             background: #fff;
             border: 1px solid #e5e7eb;
             border-radius: 10px;
-            padding: 2.5rem 1.5rem;
+            padding: 2rem 1.25rem;
             text-align: center;
             color: #9ca3af;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
         }
-        .empty p { margin-bottom: 1.25rem; }
+        .empty p { margin-bottom: 1.1rem; }
 
         /* ── Quick actions ── */
-        .quick-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .quick-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
         .qa-btn {
-            padding: 0.55rem 1.15rem;
+            padding: 0.5rem 1rem;
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
@@ -156,13 +195,22 @@
         .qa-btn:hover { background: #f9fafb; border-color: #d1d5db; color: #111827; }
         .qa-btn-primary { background: #2563eb; color: #fff; border-color: #2563eb; }
         .qa-btn-primary:hover { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+        .qa-btn img { width: 16px; height: 16px; display: block; }
 
-        /* ── Responsive ── */
-        @media (max-width: 640px) {
-            .main { padding: 1.5rem 1rem; }
-            .navbar { padding: 0 1rem; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
-            .card-grid { grid-template-columns: 1fr; }
+        .section { margin-bottom: 1.75rem; }
+
+        /* ── Mobile-first base: nav-user hidden on the narrowest screens ── */
+        .nav-user { display: none; }
+
+        /* ── Larger screens: roomier layout ── */
+        @media (min-width: 480px) {
+            .nav-user { display: inline; }
+        }
+        @media (min-width: 640px) {
+            .navbar { padding: 0 2rem; }
+            .main { padding: 2.5rem 2rem; }
+            .page-header h1 { font-size: 1.6rem; }
+            .nav-user { max-width: none; }
         }
     </style>
 </head>
@@ -170,10 +218,10 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-inner">
-            <a href="/" class="logo">🐱 NekoTab</a>
+            <a href="/" class="logo">{% include 'nav/logo.html' with alt='NekoTab' width=26 %} NekoTab</a>
             <div class="nav-right">
                 <span class="nav-user">{{ user.username }}</span>
-                <a href="{% url 'tickets:index' %}" class="nav-btn nav-btn-outline">🎟 Events</a>
+                <a href="{% url 'tickets:index' %}" class="nav-btn nav-btn-outline">Events</a>
                 <a href="{% url 'tournament-create' %}" class="nav-btn nav-btn-primary">+ Tournament</a>
                 <form method="post" action="{% url 'logout' %}" style="display:inline;margin:0;">
                     {% csrf_token %}
@@ -208,12 +256,12 @@
                 <div class="stat-label">Tournaments</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">{{ active_tournaments|length }}</div>
-                <div class="stat-label">Active</div>
+                <div class="stat-value">{{ in_progress_tournaments|length }}</div>
+                <div class="stat-label">In progress</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">{{ inactive_tournaments|length }}</div>
-                <div class="stat-label">Archived</div>
+                <div class="stat-value">{{ upcoming_tournaments|length }}</div>
+                <div class="stat-label">Upcoming</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value">{{ total_debate_count }}</div>
@@ -223,20 +271,28 @@
 
         <!-- Quick actions -->
         <div class="quick-actions">
-            <a href="{% url 'tournament-create' %}" class="qa-btn qa-btn-primary">🏆 New Tournament</a>
-            <a href="{% url 'tickets:index' %}" class="qa-btn">🎟 Browse Events</a>
-            <a href="/tools/import/" class="qa-btn">📥 Import Data</a>
-            <a href="/tools/analyze/" class="qa-btn">📊 Analyze</a>
+            <a href="{% url 'tournament-create' %}" class="qa-btn qa-btn-primary">New Tournament</a>
+            <a href="{% url 'tickets:index' %}" class="qa-btn">Browse Events</a>
+            <a href="/tools/import/" class="qa-btn">Import Data</a>
+            <a href="/tools/analyze/" class="qa-btn">Analyze</a>
             {% if user.is_superuser %}
-            <a href="{% url 'admin:index' %}" class="qa-btn">⚙️ Admin</a>
+            <a href="{% url 'admin:index' %}" class="qa-btn">Admin</a>
             {% endif %}
         </div>
 
-        <!-- Active Tournaments -->
-        <div class="section-title">Active Tournaments</div>
-        {% if active_tournaments %}
-            <div class="card-grid" style="margin-bottom:2rem;">
-                {% for t in active_tournaments %}
+        {% if not total_tournament_count %}
+            <div class="empty">
+                <p>No tournaments yet.</p>
+                <a href="{% url 'tournament-create' %}" class="t-btn t-btn-primary">Create your first tournament</a>
+            </div>
+        {% endif %}
+
+        <!-- In Progress -->
+        {% if in_progress_tournaments %}
+        <div class="section">
+            <div class="section-title">In Progress <span class="section-count">{{ in_progress_tournaments|length }}</span></div>
+            <div class="card-grid">
+                {% for t in in_progress_tournaments %}
                 <div class="t-card">
                     <h3>{{ t.name }}</h3>
                     <p>{{ t.short_name }}</p>
@@ -247,27 +303,44 @@
                 </div>
                 {% endfor %}
             </div>
-        {% else %}
-            <div class="empty" style="margin-bottom:2rem;">
-                <p>No active tournaments yet.</p>
-                <a href="{% url 'tournament-create' %}" class="t-btn t-btn-primary">Create your first tournament</a>
-            </div>
+        </div>
         {% endif %}
 
-        <!-- Archived Tournaments -->
-        {% if inactive_tournaments %}
-        <div class="section-title">Archived Tournaments</div>
-        <div class="card-grid">
-            {% for t in inactive_tournaments %}
-            <div class="t-card">
-                <h3>{{ t.name }}</h3>
-                <p>{{ t.short_name }}</p>
-                <div class="t-card-actions">
-                    <a href="/{{ t.slug }}/admin/" class="t-btn t-btn-secondary">Manage</a>
-                    <a href="/{{ t.slug }}/" class="t-btn t-btn-secondary">Public</a>
+        <!-- Upcoming -->
+        {% if upcoming_tournaments %}
+        <div class="section">
+            <div class="section-title">Upcoming <span class="section-count">{{ upcoming_tournaments|length }}</span></div>
+            <div class="card-grid">
+                {% for t in upcoming_tournaments %}
+                <div class="t-card">
+                    <h3>{{ t.name }}</h3>
+                    <p>{{ t.short_name }}</p>
+                    <div class="t-card-actions">
+                        <a href="/{{ t.slug }}/admin/" class="t-btn t-btn-primary">Manage</a>
+                        <a href="/{{ t.slug }}/" class="t-btn t-btn-secondary">Public</a>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Past -->
+        {% if past_tournaments %}
+        <div class="section">
+            <div class="section-title">Past Tournaments <span class="section-count">{{ past_tournaments|length }}</span></div>
+            <div class="card-grid">
+                {% for t in past_tournaments %}
+                <div class="t-card">
+                    <h3>{{ t.name }}</h3>
+                    <p>{{ t.short_name }}</p>
+                    <div class="t-card-actions">
+                        <a href="/{{ t.slug }}/admin/" class="t-btn t-btn-secondary">Manage</a>
+                        <a href="/{{ t.slug }}/" class="t-btn t-btn-secondary">Public</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
         {% endif %}
     </main>

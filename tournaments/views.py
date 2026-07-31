@@ -564,6 +564,9 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
             form.add_error(None, _("We couldn't create your tournament right now. Please try again."))
             return self.form_invalid(form)
 
+        if self.request.user.email:
+            tournament.preferences['email__reply_to_address'] = self.request.user.email
+
         # Grant the creator all permissions on this tournament
         UserPermission.objects.bulk_create([
             UserPermission(user=self.request.user, permission=perm, tournament=tournament)
@@ -980,6 +983,9 @@ class CreateCongressTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin
             form.add_error(None, _("We couldn't create your Congress tournament right now. Please try again."))
             return self.form_invalid(form)
 
+        if self.request.user.email:
+            tournament.preferences['email__reply_to_address'] = self.request.user.email
+
         UserPermission.objects.bulk_create([
             UserPermission(user=self.request.user, permission=perm, tournament=tournament)
             for perm in Permission
@@ -1101,6 +1107,8 @@ class RegisterTournamentView(LoginRequiredMixin, CreateView):
                 tournament.organization = org
                 tournament.owner = self.request.user
                 tournament.save()
+                if self.request.user.email:
+                    tournament.preferences['email__reply_to_address'] = self.request.user.email
                 auto_make_rounds(tournament, form.cleaned_data['num_prelim_rounds'])
                 tournament.current_round = tournament.round_set.order_by('seq').first()
                 tournament.save()

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -349,7 +350,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
         </button>
-        <span class="mobile-title">🐱 NekoTab</span>
+        <span class="mobile-title"><img src="{% static 'logo-32x32.png' %}" alt="" style="width:18px;height:18px;vertical-align:-3px;border-radius:4px;"> NekoTab</span>
     </header>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="toast-container" id="toastContainer"></div>
@@ -357,7 +358,7 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="logo">
-            <h1>🐱 NekoTab</h1>
+            <h1><img src="{% static 'logo-32x32.png' %}" alt="" style="width:18px;height:18px;vertical-align:-3px;border-radius:4px;"> NekoTab</h1>
             <span>Admin Dashboard</span>
         </div>
 
