@@ -20,6 +20,7 @@ urlpatterns = [
     path('tournaments/delete/', views.DeleteTournamentsView.as_view(), name='delete_tournaments'),
     path('monetization/', views.MonetizationSettingsView.as_view(), name='monetization'),
     path('ads/', views.PromoAdSettingsView.as_view(), name='promo_ad'),
+    path('paid-users/', views.PaidUsersView.as_view(), name='paid_users'),
     path('promo-codes/', views.PromoCodesView.as_view(), name='promo_codes'),
     path('promo-codes/delete/', views.DeletePromoCodesView.as_view(), name='delete_promo_codes'),
     path('db-usage/', views.DbUsageView.as_view(), name='db_usage'),

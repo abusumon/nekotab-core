@@ -1,0 +1,155 @@
+{% comment %}
+  Paying customers, one row per account rather than per payment.
+
+  Self-contained in the analytics dark style like its siblings — owns its
+  <head>, does not extend a base.
+
+  Money is deliberately shown per currency and never added up across them:
+  510 BDT is about five dollars, not five hundred, so a combined total would
+  overstate revenue by roughly two orders of magnitude on every bKash payment.
+{% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paid Users - NekoTab Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark:#0a0a0f; --bg-card:#12121a; --bg-hover:#1a1a25;
+            --border:#2a2a3a; --text-primary:#fff; --text-secondary:#8888aa;
+            --accent:#6366f1; --success:#10b981; --warning:#f59e0b;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--bg-dark);color:var(--text-primary);
+             min-height:100vh;padding:24px}
+        .wrap{max-width:1100px;margin:0 auto}
+        a{color:var(--accent)}
+        .back{display:inline-block;margin-bottom:20px;font-size:14px;text-decoration:none}
+        .back:hover{text-decoration:underline}
+        h1{font-size:24px;margin-bottom:6px}
+        .sub{color:var(--text-secondary);font-size:14px;margin-bottom:24px;line-height:1.5}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:22px}
+        .card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+        .card .label{font-size:11px;color:var(--text-secondary);text-transform:uppercase;
+                     letter-spacing:.06em;margin-bottom:6px}
+        .card .value{font-size:26px;font-weight:700}
+        .card .value small{font-size:13px;color:var(--text-secondary);font-weight:500}
+        .money{font-size:18px;font-weight:700;line-height:1.5}
+        .panel{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
+               padding:20px;margin-bottom:20px}
+        .panel h2{font-size:16px;margin-bottom:4px}
+        .panel .hint{color:var(--text-secondary);font-size:13px;margin-bottom:14px;line-height:1.55}
+        .scroll{overflow-x:auto}
+        table{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
+        th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+        th{color:var(--text-secondary);font-weight:500;font-size:11.5px;text-transform:uppercase;
+           letter-spacing:.05em}
+        tr:last-child td{border-bottom:0}
+        tbody tr:hover{background:var(--bg-hover)}
+        .name{font-weight:600}
+        .email{font-size:12.5px;color:var(--text-secondary);word-break:break-all}
+        .pill{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:600}
+        .pill-gift{background:rgba(16,185,129,.16);color:var(--success)}
+        .pill-wait{background:rgba(136,136,170,.16);color:var(--text-secondary)}
+        .tlist{font-size:12.5px;color:var(--text-secondary);line-height:1.6}
+        .empty{text-align:center;color:var(--text-secondary);padding:34px 12px}
+        .nowrap{white-space:nowrap}
+        @media (max-width:640px){body{padding:16px}}
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <a class="back" href="/analytics/">&larr; Back to dashboard</a>
+    <h1>💳 Paid Users</h1>
+    <p class="sub">
+        Everyone who has actually paid, grouped by customer rather than by payment.
+        Promo-code unlocks worth nothing are excluded, so gifted tournaments never
+        show up here as revenue.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <div class="label">Paying customers</div>
+            <div class="value">{{ customer_count }}</div>
+        </div>
+        <div class="card">
+            <div class="label">Payments</div>
+            <div class="value">{{ payment_count }}</div>
+        </div>
+        <div class="card">
+            <div class="label">Revenue</div>
+            {% if totals_by_currency %}
+                {% for t in totals_by_currency %}
+                    <div class="money">{{ t.amount|floatformat:2 }} <small>{{ t.currency }}</small></div>
+                {% endfor %}
+            {% else %}
+                <div class="value">—</div>
+            {% endif %}
+        </div>
+        <div class="card">
+            <div class="label">Gift codes sent</div>
+            <div class="value">{{ gifts_sent }} <small>/ {{ gift_cap }}</small></div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Customers</h2>
+        <p class="hint">
+            Oldest payment first. Names come from the payment itself rather than the
+            account, because checkout captures one and these accounts often don't have
+            one set. Amounts are listed per currency and never added together.
+        </p>
+
+        {% if customers %}
+        <div class="scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th class="nowrap">First paid</th>
+                    <th>Payments</th>
+                    <th>Paid</th>
+                    <th>Tournaments</th>
+                    <th>Gift</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for c in customers %}
+                <tr>
+                    <td>
+                        <div class="name">{{ c.name|default:"(no name)" }}</div>
+                        <div class="email">{{ c.email|default:"—" }}</div>
+                    </td>
+                    <td class="nowrap">{{ c.first_paid|date:"j M Y"|default:"—" }}</td>
+                    <td>{{ c.payments }}</td>
+                    <td class="nowrap">
+                        {% for t in c.totals %}
+                            <div>{{ t.amount|floatformat:2 }} {{ t.currency }}</div>
+                        {% endfor %}
+                    </td>
+                    <td class="tlist">
+                        {% for t in c.tournaments %}
+                            <div>{{ t.short_name|default:t.name }}</div>
+                        {% empty %}—{% endfor %}
+                    </td>
+                    <td>
+                        {% if c.gifted %}
+                            <span class="pill pill-gift">Sent</span>
+                        {% else %}
+                            <span class="pill pill-wait">Pending</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        {% else %}
+            <div class="empty">No paid customers yet.</div>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

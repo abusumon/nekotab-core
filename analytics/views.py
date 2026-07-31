@@ -1214,6 +1214,115 @@ class MonetizationSettingsView(SuperuserRequiredMixin, TemplateView):
         return redirect('analytics:monetization')
 
 
+class PaidUsersView(SuperuserRequiredMixin, TemplateView):
+    """Everyone who has actually paid, one row per customer.
+
+    Grouped by the paying *account*, not by payment: the same person buying
+    two tournaments is one customer with two grants, which is the unit that
+    matters for "the first N paying customers" campaigns.
+
+    Only counts grants with ``amount > 0``. Redeeming a promo code writes a
+    grant exactly like a real payment does, so without that filter every
+    gifted unlock would show up here as revenue.
+
+    Names come off the payment, not the account: checkout always captures a
+    name while these accounts frequently have none, and the account that paid
+    twice carries two different purchaser names and an empty account name.
+
+    Money is never summed across currencies — see the revenue card for why.
+    """
+    template_name = 'analytics/paid_users.html'
+
+    def get_context_data(self, **kwargs):
+        from donations.models import (BkashPaymentRequest, DonationTransaction,
+                                      PremiumGiftSent, TournamentAdFree)
+
+        context = super().get_context_data(**kwargs)
+        context['active_nav'] = 'paid_users'
+
+        grants = (TournamentAdFree.objects
+                  .filter(active=True, amount__gt=0)
+                  .select_related('tournament', 'tournament__owner', 'transaction')
+                  .order_by('purchased_at', 'created_at'))
+
+        gifted_ids = set(PremiumGiftSent.objects.values_list('user_id', flat=True))
+
+        customers = {}
+        for grant in grants:
+            owner = grant.tournament.owner if grant.tournament else None
+            # Key on the account when there is one, otherwise the address on
+            # the receipt, so a guest checkout still resolves to one customer.
+            key = f'u{owner.id}' if owner else f'e{(grant.purchaser_email or "").lower()}'
+            if not key.strip('ue'):
+                continue
+
+            row = customers.get(key)
+            if row is None:
+                row = customers[key] = {
+                    'user': owner,
+                    'email': (owner.email if owner else '') or grant.purchaser_email or '',
+                    'name': '',
+                    'first_paid': grant.purchased_at or grant.created_at,
+                    'last_paid': grant.purchased_at or grant.created_at,
+                    'payments': 0,
+                    'by_currency': {},
+                    'tournaments': [],
+                    'gifted': bool(owner and owner.id in gifted_ids),
+                }
+
+            row['payments'] += 1
+            row['last_paid'] = grant.purchased_at or grant.created_at
+            cur = grant.currency or '—'
+            row['by_currency'][cur] = row['by_currency'].get(cur, Decimal('0.00')) + (grant.amount or Decimal('0.00'))
+            if grant.tournament:
+                row['tournaments'].append(grant.tournament)
+            if not row['name']:
+                txn = grant.transaction
+                if txn and (txn.donor_name or '').strip():
+                    row['name'] = txn.donor_name.strip()
+
+        # Fill any name still missing, cheaply and only for the rows that need it.
+        for row in customers.values():
+            if row['name']:
+                continue
+            email = (row['email'] or '').strip()
+            if email:
+                txn = (DonationTransaction.objects
+                       .filter(donor_email__iexact=email, status=DonationTransaction.Status.PAID)
+                       .exclude(donor_name='').order_by('-donated_at').first())
+                if txn:
+                    row['name'] = txn.donor_name.strip()
+                    continue
+                bkash = (BkashPaymentRequest.objects
+                         .filter(email__iexact=email).exclude(name='')
+                         .order_by('-submitted_at').first())
+                if bkash:
+                    row['name'] = bkash.name.strip()
+                    continue
+            user = row['user']
+            row['name'] = ((user.get_full_name() or '').strip() or (user.username if user else '')) if user else ''
+
+        rows = sorted(customers.values(), key=lambda r: (r['first_paid'] is None, r['first_paid']))
+        for row in rows:
+            row['totals'] = [{'currency': c, 'amount': a} for c, a in sorted(row['by_currency'].items())]
+
+        totals_by_currency = {}
+        for row in rows:
+            for cur, amt in row['by_currency'].items():
+                totals_by_currency[cur] = totals_by_currency.get(cur, Decimal('0.00')) + amt
+
+        context['customers'] = rows
+        context['customer_count'] = len(rows)
+        context['payment_count'] = sum(r['payments'] for r in rows)
+        context['gifted_count'] = sum(1 for r in rows if r['gifted'])
+        context['totals_by_currency'] = [
+            {'currency': c, 'amount': a} for c, a in sorted(totals_by_currency.items())
+        ]
+        context['gift_cap'] = 97
+        context['gifts_sent'] = PremiumGiftSent.objects.count()
+        return context
+
+
 class PromoAdSettingsView(SuperuserRequiredMixin, TemplateView):
     """Lets a superuser replace the floating promo ad's HTML/CSS/JS from the
     browser, no deploy required. See analytics.PromoAd and the

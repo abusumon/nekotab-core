@@ -600,6 +600,7 @@ CELERY_TASK_ROUTES = {
     # Notifications (email delivery, push) — high-priority, separate from analytics
     'notifications.*':                                {'queue': 'notifications'},
     'donations.tasks.send_payment_reminders':          {'queue': 'notifications'},
+    'donations.tasks.send_premium_gifts':              {'queue': 'notifications'},
     # Default queue catches everything else
 }
 
@@ -644,6 +645,13 @@ CELERY_BEAT_SCHEDULE = {
     'send-payment-reminders': {
         'task': 'donations.tasks.send_payment_reminders',
         'schedule': crontab(minute='*/15'),
+        'options': {'queue': 'notifications'},
+    },
+    # Early-adopter gift codes. Capped and idempotent per customer, so once
+    # the campaign is exhausted every tick is a cheap no-op.
+    'send-premium-gifts': {
+        'task': 'donations.tasks.send_premium_gifts',
+        'schedule': crontab(minute='*/20'),
         'options': {'queue': 'notifications'},
     },
 }
