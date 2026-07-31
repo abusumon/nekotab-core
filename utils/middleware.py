@@ -66,6 +66,31 @@ class DebateMiddleware:
             return MotionsPageView.as_view()(request)
 
         # ------------------------------------------------------------------
+        # Resolve and cache the tournament object
+        #
+        # This MUST happen before the subdomain redirect below. Any top-level
+        # path that matches no real route falls through to the tournament
+        # catch-all, so `slug` here is frequently not a tournament at all —
+        # /tools/, /docs/, /dashboard/, /profile/ and friends all land here.
+        # Redirecting those to <slug>.nekotab.app sends visitors to a
+        # subdomain that does not exist, and because the hop is a *permanent*
+        # redirect their browser caches the dead destination indefinitely.
+        # Resolve first; only a tournament that genuinely exists earns a
+        # redirect. Everything else falls through to the branded 404 below.
+        # ------------------------------------------------------------------
+        cached_key = "%s_%s" % (slug, 'object')
+        cached_tournament = cache.get(cached_key)
+
+        if cached_tournament:
+            request.tournament = cached_tournament
+        else:
+            tournament = self._resolve_tournament(slug, request)
+            if tournament is None:
+                return self._tournament_not_found_response(slug, request)
+            request.tournament = tournament
+            cache.set(cached_key, tournament, 3600)
+
+        # ------------------------------------------------------------------
         # Rule: Redirect path-based access → subdomain  (exactly ONE hop)
         #
         # Conditions that MUST ALL be true:
@@ -75,6 +100,7 @@ class DebateMiddleware:
         #   4. The client issued a safe method (GET / HEAD)
         #   5. SubdomainTournamentMiddleware did NOT already tag this request
         #      (i.e. we are not inside a rewritten subdomain request)
+        #   6. The slug resolved to a real tournament (guaranteed above)
         # ------------------------------------------------------------------
         subdomain_on = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
         already_subdomain = getattr(request, 'subdomain_tournament', None)
@@ -97,21 +123,6 @@ class DebateMiddleware:
                 target = f'https://{slug.lower()}.{base_domain}{clean_path}'
                 logger.debug("DebateMiddleware: redirecting %s → %s", request.path, target)
                 return HttpResponsePermanentRedirect(target)
-
-        # ------------------------------------------------------------------
-        # Resolve and cache the tournament object
-        # ------------------------------------------------------------------
-        cached_key = "%s_%s" % (slug, 'object')
-        cached_tournament = cache.get(cached_key)
-
-        if cached_tournament:
-            request.tournament = cached_tournament
-        else:
-            tournament = self._resolve_tournament(slug, request)
-            if tournament is None:
-                return self._tournament_not_found_response(slug, request)
-            request.tournament = tournament
-            cache.set(cached_key, tournament, 3600)
 
         # ------------------------------------------------------------------
         # Cross-tenant isolation: if this request is on an org subdomain,
