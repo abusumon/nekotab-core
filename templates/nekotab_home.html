@@ -1410,5 +1410,9 @@
   <!-- 100% privacy-first analytics -->
   <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
+
+  {% if premium_enabled %}
+    {% include 'components/limited_offer_ad.html' %}
+  {% endif %}
 </body>
 </html>

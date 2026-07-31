@@ -1,0 +1,137 @@
+{% comment %}
+Floating promo ad: 100% off next tournament, first 100 users.
+Include on pages that should show it. Dismiss state is per-tab
+(sessionStorage) so it doesn't nag again during the same visit but
+resurfaces next time.
+{% endcomment %}
+<div id="nk-offer-ad" class="nk-offer-ad" role="complementary" aria-label="Limited time offer">
+  <button type="button" class="nk-offer-close" id="nk-offer-close" aria-label="Close">&times;</button>
+  <div class="nk-offer-badge">⏳ Limited time</div>
+  <div class="nk-offer-headline">100% OFF your next tournament</div>
+  <div class="nk-offer-body">Buy a tournament now and your <strong>next one is completely free</strong> — no catch.</div>
+  <a href="/contact/" class="nk-offer-cta">Claim this offer →</a>
+  <div class="nk-offer-fineprint">*First 100 users only</div>
+</div>
+
+<style>
+  .nk-offer-ad {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9500;
+    width: 300px;
+    max-width: calc(100vw - 40px);
+    background: linear-gradient(135deg, #f97316 0%, #ef4444 55%, #db2777 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 1.1rem 1.2rem 1rem;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    transform: translateY(24px) scale(0.96);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+  }
+  .nk-offer-ad.nk-offer-visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nk-offer-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: rgba(255,255,255,0.18);
+    border: none;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .nk-offer-close:hover { background: rgba(255,255,255,0.32); }
+  .nk-offer-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(255,255,255,0.22);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.55rem;
+  }
+  .nk-offer-headline {
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 0.45rem;
+  }
+  .nk-offer-body {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 0.85rem;
+  }
+  .nk-offer-cta {
+    display: inline-block;
+    background: #fff;
+    color: #c2410c;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .nk-offer-cta:hover { background: #fff7ed; color: #9a3412; }
+  .nk-offer-fineprint {
+    text-align: right;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.75);
+    margin-top: 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    .nk-offer-ad {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 100%;
+      border-radius: 14px 14px 0 0;
+      transform: translateY(100%);
+    }
+    .nk-offer-ad.nk-offer-visible { transform: translateY(0); }
+  }
+</style>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'nk_offer_ad_dismissed_v1';
+  try {
+    if (sessionStorage.getItem(STORAGE_KEY)) return;
+  } catch (e) { /* storage unavailable — just show it */ }
+
+  var ad = document.getElementById('nk-offer-ad');
+  var closeBtn = document.getElementById('nk-offer-close');
+  if (!ad || !closeBtn) return;
+
+  closeBtn.addEventListener('click', function () {
+    ad.classList.remove('nk-offer-visible');
+    try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+  });
+
+  setTimeout(function () {
+    // Clear the existing cookie-consent banner (base.html, full-width,
+    // z-index 9999) if it's showing, so the two don't stack on top of
+    // each other in the bottom-right corner.
+    var cookieBanner = document.getElementById('cookie-consent');
+    if (cookieBanner && getComputedStyle(cookieBanner).display !== 'none') {
+      ad.style.bottom = (cookieBanner.offsetHeight + 16) + 'px';
+    }
+    ad.classList.add('nk-offer-visible');
+  }, 1800);
+})();
+</script>

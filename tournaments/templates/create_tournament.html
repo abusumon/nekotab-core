@@ -187,4 +187,8 @@ document.querySelectorAll('form').forEach(function(form) {
 });
 </script>
 
+{% if premium_enabled %}
+  {% include 'components/limited_offer_ad.html' %}
+{% endif %}
+
 {% endblock %}

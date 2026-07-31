@@ -115,6 +115,7 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
         from .models import get_homepage_stats, get_showcase_tournaments
         kwargs['showcase_tournaments'] = get_showcase_tournaments()
         kwargs['homepage_stats'] = get_homepage_stats()
+        kwargs['premium_enabled'] = _premium_gate_on()
         if user.is_authenticated:
             try:
                 visible = Tournament.objects.visible_to(user)

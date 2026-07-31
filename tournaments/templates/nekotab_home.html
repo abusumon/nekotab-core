@@ -350,5 +350,9 @@
         <p>Join debate organizers worldwide who run their tournaments on NekoTab — free, open-source, and powerful.</p>
         <a href="{% url 'signup' %}" class="btn btn-outline">Create a Free Account</a>
     </section>
+
+    {% if premium_enabled %}
+        {% include 'components/limited_offer_ad.html' %}
+    {% endif %}
 </body>
 </html>
