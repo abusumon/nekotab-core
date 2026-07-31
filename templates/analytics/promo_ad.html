@@ -1,0 +1,121 @@
+{% comment %}
+  Promo ad editor. Same self-contained dark-admin style as monetization.html
+  — owns its own <head>, renders messages itself.
+{% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo Ad - NekoTab Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f; --bg-card: #12121a; --bg-hover: #1a1a25;
+            --border: #2a2a3a; --text-primary: #ffffff; --text-secondary: #8888aa;
+            --accent: #6366f1; --success: #10b981; --warning: #f59e0b; --danger: #ef4444;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif; background: var(--bg-dark);
+            color: var(--text-primary); min-height: 100vh; padding: 24px;
+        }
+        .wrap { max-width: 980px; margin: 0 auto; }
+        a { color: var(--accent); }
+        .back { display: inline-block; margin-bottom: 20px; font-size: 14px; text-decoration: none; }
+        .back:hover { text-decoration: underline; }
+        h1 { font-size: 24px; margin-bottom: 6px; }
+        .sub { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px; margin-bottom: 20px;
+        }
+        .card h2 { font-size: 16px; margin-bottom: 4px; }
+        .card .hint { color: var(--text-secondary); font-size: 13px; margin-bottom: 16px; line-height: 1.5; }
+        textarea {
+            width: 100%; min-height: 320px; background: var(--bg-dark); color: var(--text-primary);
+            border: 1px solid var(--border); border-radius: 8px; padding: 12px;
+            font-family: 'SFMono-Regular', Consolas, monospace; font-size: 13px; line-height: 1.5;
+            resize: vertical;
+        }
+        .toggle-row { display: flex; align-items: center; gap: 10px; margin: 14px 0; }
+        .toggle-row label { font-size: 14px; cursor: pointer; }
+        .toggle-row input { accent-color: var(--accent); width: 18px; height: 18px; cursor: pointer; }
+        .btn {
+            display: inline-block; padding: 10px 18px; border-radius: 8px; border: 0;
+            font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+        }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: #4f52d8; }
+        .btn-secondary { background: var(--bg-dark); color: var(--text-primary); border: 1px solid var(--border); cursor: pointer; }
+        .msg { margin-bottom: 16px; padding: 12px 16px; border-radius: 8px; font-size: 14px; }
+        .note { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-top: 14px; }
+        iframe#preview-frame {
+            width: 100%; height: 420px; border: 1px solid var(--border); border-radius: 8px;
+            background: #1e2230;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <a class="back" href="/analytics/">&larr; Back to dashboard</a>
+    <h1>📣 Promo Ad</h1>
+    <p class="sub">
+        Overrides the floating "100% off" ad on the homepage and tournament-creation
+        page. Paste full HTML/CSS/JS below — it's rendered as-is, no deploy needed.
+        Turn the toggle off (or leave the box empty) to fall back to the built-in default ad.
+    </p>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="msg" style="{% if 'error' in message.tags %}background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#fca5a5;{% elif 'warning' in message.tags %}background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.35);color:#fcd34d;{% else %}background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.35);color:#6ee7b7;{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="post" action="{% url 'analytics:promo_ad' %}" id="ad-form">
+      {% csrf_token %}
+      <div class="card">
+        <h2>Custom ad HTML</h2>
+        <p class="hint">
+          This whole block is inserted directly into every page that shows the promo ad.
+          Include your own dismiss/close logic if you want one — the built-in ad's close
+          button and backdrop are not reused here.
+        </p>
+        <div class="toggle-row">
+          <input type="checkbox" id="is_active" name="is_active" {% if ad.is_active %}checked{% endif %}>
+          <label for="is_active">Use this custom ad instead of the default</label>
+        </div>
+        <textarea name="html_content" id="html_content" placeholder="&lt;div&gt;...&lt;/div&gt;">{{ ad.html_content }}</textarea>
+        {% if ad.updated_at %}
+          <p class="note">Last changed {{ ad.updated_at }}{% if ad.updated_by %} by {{ ad.updated_by }}{% endif %}.</p>
+        {% endif %}
+        <p style="margin-top:18px">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" id="preview-btn">Preview</button>
+        </p>
+      </div>
+    </form>
+
+    <div class="card" id="preview-card" style="display:none;">
+      <h2>Preview</h2>
+      <p class="hint">Rendered in an isolated frame — background approximates the site.</p>
+      <iframe id="preview-frame"></iframe>
+    </div>
+</div>
+<script>
+  document.getElementById('preview-btn').addEventListener('click', function () {
+    var html = document.getElementById('html_content').value;
+    var card = document.getElementById('preview-card');
+    var frame = document.getElementById('preview-frame');
+    card.style.display = 'block';
+    var doc = frame.contentDocument || frame.contentWindow.document;
+    doc.open();
+    doc.write('<!doctype html><html><body style="margin:0;background:#1e2230;">' + html + '</body></html>');
+    doc.close();
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+</body>
+</html>
