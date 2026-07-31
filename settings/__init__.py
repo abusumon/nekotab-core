@@ -22,11 +22,11 @@ base_settings = [
 if _env_truthy('GITHUB_CI'):
     base_settings.append('github.py')
     logger.info('SPLIT_SETTINGS: imported github.py')
-elif _env_truthy('ON_DIGITALOCEAN'):
-    # Must be checked before IN_DOCKER because the DO production image has
+elif _env_truthy('ON_PRODUCTION'):
+    # Must be checked before IN_DOCKER because the production image has
     # IN_DOCKER=1 baked in (set by the Dockerfile ENV directive).
-    base_settings.append('digitalocean.py')
-    logger.info('SPLIT_SETTINGS: imported digitalocean.py')
+    base_settings.append('production.py')
+    logger.info('SPLIT_SETTINGS: imported production.py')
 elif _env_truthy('ON_RENDER'):
     # Render deployments can also set IN_DOCKER, so this must be checked
     # before IN_DOCKER to avoid loading docker.py in production.

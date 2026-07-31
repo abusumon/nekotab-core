@@ -29,7 +29,7 @@ DISABLE_SENTRY = True # Overriden in production config
 
 # SECRET_KEY must be provided via environment variable in all environments.
 # local.py generates a random key for development; production configs
-# (digitalocean.py, render.py) read DJANGO_SECRET_KEY from the environment.
+# (production.py, render.py) read DJANGO_SECRET_KEY from the environment.
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
 if not SECRET_KEY and not os.environ.get('LOCAL_SETTINGS', ''):
     from django.core.exceptions import ImproperlyConfigured
@@ -722,7 +722,7 @@ SOCIALACCOUNT_AUTO_CONNECT_BY_EMAIL = True
 # Subdomain routing (defaults; can be overridden in env-specific settings)
 # ==============================================================================
 
-# Disabled by default; enable in environment settings (e.g., digitalocean.py)
+# Disabled by default; enable in environment settings (e.g., production.py)
 SUBDOMAIN_TOURNAMENTS_ENABLED = _env_bool('SUBDOMAIN_TOURNAMENTS_ENABLED')
 SUBDOMAIN_BASE_DOMAIN = os.environ.get('SUBDOMAIN_BASE_DOMAIN', '')
 RESERVED_SUBDOMAINS = os.environ.get(

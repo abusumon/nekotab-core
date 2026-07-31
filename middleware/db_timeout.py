@@ -1,6 +1,6 @@
 """Middleware that converts Postgres statement_timeout errors into clean 503 responses.
 
-When a query exceeds the 30-second statement_timeout set in digitalocean.py,
+When a query exceeds the 30-second statement_timeout set in production.py,
 Postgres raises an OperationalError with 'statement timeout' in the message.
 Without this middleware the error surfaces as a 500 and Django's debug page
 (or Sentry) would capture it as an unexpected crash. This handler:

@@ -15,11 +15,12 @@ from .core import TABBYCAT_VERSION
 logger = logging.getLogger(__name__)
 
 # ==============================================================================
-# DigitalOcean production settings
-# Activated by ON_DIGITALOCEAN=1 in the container environment.
-# PostgreSQL  → self-hosted in Docker on the Droplet (no SSL required)
-# Redis       → self-hosted in Docker on the Droplet (no TLS required)
-# HTTPS       → Terminated at the DO Load Balancer; nginx proxies HTTP internally.
+# Production settings (self-hosted single-box deploy, e.g. Oracle Cloud A1)
+# Activated by ON_PRODUCTION=1 in the container environment.
+# PostgreSQL  → self-hosted in Docker on the box (no SSL required)
+# Redis       → self-hosted in Docker on the box (no TLS required)
+# HTTPS       → Terminated directly by nginx (Let's Encrypt), which proxies
+#               HTTP to Django internally over the Docker network.
 # ==============================================================================
 
 if environ.get('TAB_DIRECTOR_EMAIL', ''):
@@ -29,7 +30,7 @@ if environ.get('DJANGO_SECRET_KEY', ''):
     SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
 # Allow all *.nekotab.app subdomains and any extra hosts passed via
-# ALLOWED_HOSTS (e.g., the Droplet's raw IP during staging).
+# ALLOWED_HOSTS (e.g., the box's raw IP during staging).
 # Always allow localhost/127.0.0.1 so internal docker health checks keep
 # working even when ALLOWED_HOSTS is explicitly set in .env.
 _default_hosts = '.nekotab.app,localhost,127.0.0.1'
@@ -41,12 +42,13 @@ for _internal_host in ('localhost', '127.0.0.1'):
         _configured_hosts.append(_internal_host)
 ALLOWED_HOSTS = _configured_hosts
 
-# The DO Load Balancer terminates TLS and forwards HTTP to nginx on the Droplet.
-# It sets X-Forwarded-Proto: https so Django knows the original request was HTTPS.
+# nginx terminates TLS and proxies HTTP to Django over the internal Docker
+# network. It sets X-Forwarded-Proto: https so Django knows the original
+# request was HTTPS.
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Enforce HTTPS in production.
-# Set DISABLE_HTTPS_REDIRECTS=disable for initial staging smoke-tests without LB.
+# Set DISABLE_HTTPS_REDIRECTS=disable for initial staging smoke-tests without TLS.
 if environ.get('DISABLE_HTTPS_REDIRECTS', '') != 'disable':
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
@@ -54,7 +56,7 @@ if environ.get('DISABLE_HTTPS_REDIRECTS', '') != 'disable':
 
 # Exempt the internal health check path from the HTTPS redirect so that:
 #  - docker-compose healthcheck (curl http://localhost:8000/health/) returns 200, not 301
-#  - The DO Load Balancer /health/ probe works without TLS
+#  - nginx's own /health/ probe works without TLS
 SECURE_REDIRECT_EXEMPT = [r'^/health/$', r'^/ready/$']
 
 # ==============================================================================
@@ -65,7 +67,7 @@ SECURE_REDIRECT_EXEMPT = [r'^/health/$', r'^/ready/$']
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
 
 # ==============================================================================
-# Postgres (DigitalOcean Managed Database)
+# Postgres (self-hosted in Docker)
 # ==============================================================================
 
 try:
@@ -91,9 +93,8 @@ DATABASES['default']['OPTIONS'] = {
 }
 
 # ==============================================================================
-# Redis / Valkey  (DigitalOcean Managed Cache)
-# DO Managed Valkey provides a rediss:// (TLS) connection string.
-# ssl_cert_reqs=None allows DO's self-signed cluster cert.
+# Redis (self-hosted in Docker; also handles a managed rediss:// TLS URL
+# with a self-signed cert, in case REDIS_URL ever points at a managed cache)
 # ==============================================================================
 
 _redis_url = environ.get('REDIS_URL', 'redis://localhost:6379')
@@ -136,7 +137,7 @@ CHANNEL_LAYERS = {
 
 # ==============================================================================
 # Email
-# DigitalOcean Droplets block outbound SMTP on 25/465/587.
+# Many cloud providers block outbound SMTP on 25/465/587.
 # Prefer AWS SES over port 2587 (recommended) or a custom allowed relay port.
 # Priority:
 #   1) AWS_SES_SMTP_* (recommended)
@@ -196,7 +197,7 @@ elif environ.get('SENDGRID_API_KEY', '').strip():
 
 else:
     raise ImproperlyConfigured(
-        "DigitalOcean production requires SMTP credentials. "
+        "Production requires SMTP credentials. "
         "Set AWS_SES_SMTP_USERNAME/AWS_SES_SMTP_PASSWORD "
         "(recommended), or EMAIL_HOST/EMAIL_HOST_USER/EMAIL_HOST_PASSWORD."
     )
