@@ -55,6 +55,27 @@ class NotificationQueueConsumer(SyncConsumer):
         EmailStatus.objects.bulk_create(failed_events)
 
     @staticmethod
+    def _help_footer_html(t: Tournament) -> str:
+        """A fixed 'need help?' block appended to every notification email,
+        outside the director-editable body template. Participants who hit
+        reply on these emails used to land in the site owner's personal
+        inbox (From defaults to support@nekotab.app when a tournament has no
+        reply_to_address set) — this gives them a real, routed alternative
+        instead."""
+        base = settings.SITE_BASE_URL
+        director_url = f'{base}/support/contact/?category=director&tournament={t.pk}'
+        support_url = f'{base}/support/contact/?category=support'
+        return (
+            '<div style="margin-top:28px;padding-top:16px;border-top:1px solid #e5e7eb;'
+            'font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,Arial,sans-serif;'
+            'font-size:12px;color:#9ca3af;">'
+            'Need help? '
+            f'<a href="{director_url}" style="color:#6366f1;">Contact the tab director</a> · '
+            f'<a href="{support_url}" style="color:#6366f1;">Contact NekoTab support</a>'
+            '</div>'
+        )
+
+    @staticmethod
     def _get_from_fields(t: Tournament) -> Tuple[str, Optional[List[str]]]:
         # DEFAULT_FROM_EMAIL may already contain a display name. Parse it so we
         # can safely replace only the display name with the tournament name.
@@ -83,6 +104,7 @@ class NotificationQueueConsumer(SyncConsumer):
             event['extra']['tournament'] = t
 
         from_email, reply_to = self._get_from_fields(t)
+        help_footer = self._help_footer_html(t)
         notification_type = event['message']
 
         subject = Template(event['subject'])
@@ -114,7 +136,7 @@ class NotificationQueueConsumer(SyncConsumer):
 
             hook_id = str(bulk_notification.id) + "-" + str(recipient.id) + "-" + str(int(time()))[4:]
             context = Context(data)
-            body = html_body.render(context)
+            body = html_body.render(context) + help_footer
             headers = {
                 # Provider-neutral trace id
                 'X-NekoTab-Hook-ID': hook_id,

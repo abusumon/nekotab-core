@@ -1214,6 +1214,39 @@ class MonetizationSettingsView(SuperuserRequiredMixin, TemplateView):
         return redirect('analytics:monetization')
 
 
+class PromoAdSettingsView(SuperuserRequiredMixin, TemplateView):
+    """Lets a superuser replace the floating promo ad's HTML/CSS/JS from the
+    browser, no deploy required. See analytics.PromoAd and the
+    get_custom_promo_ad template tag that components/limited_offer_ad.html
+    calls to decide between this and the hardcoded default ad."""
+    template_name = 'analytics/promo_ad.html'
+
+    def get_context_data(self, **kwargs):
+        from .models import PromoAd
+        context = super().get_context_data(**kwargs)
+        context['ad'] = PromoAd.get()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        from .models import PromoAd
+        from .templatetags.ads_tags import PROMO_AD_CACHE_KEY
+
+        ad = PromoAd.get()
+        ad.html_content = request.POST.get('html_content', '')
+        ad.is_active = request.POST.get('is_active') == 'on'
+        ad.updated_by = request.user
+        ad.save()
+        cache.delete(PROMO_AD_CACHE_KEY)
+
+        if ad.is_active and not ad.html_content.strip():
+            messages.warning(request, '"Use custom ad" is on but the HTML box is empty, so the '
+                                       'site will keep showing the built-in default ad until you '
+                                       'add HTML here.')
+        else:
+            messages.success(request, 'Promo ad settings saved.')
+        return redirect('analytics:promo_ad')
+
+
 class ToggleTournamentShowcaseView(SuperuserRequiredMixin, View):
     """Flip whether one tournament is featured on the home page.
 

@@ -158,3 +158,34 @@ class ActiveSession(models.Model):
         """Remove sessions inactive for more than 5 minutes."""
         cutoff = timezone.now() - timedelta(minutes=5)
         cls.objects.filter(last_activity__lt=cutoff).delete()
+
+
+class PromoAd(models.Model):
+    """Singleton: lets a superuser override the floating promo ad's markup
+    from /analytics/ads/ without a deploy. Empty/inactive falls back to the
+    hardcoded default ad in components/limited_offer_ad.html."""
+
+    is_active = models.BooleanField(default=False, verbose_name=_("use custom ad"))
+    html_content = models.TextField(
+        blank=True, default='',
+        verbose_name=_("ad HTML"),
+        help_text=_("Full HTML/CSS/JS for the floating ad. Rendered as-is (mark_safe) "
+                    "on every page that shows the promo ad. Leave inactive to use the "
+                    "built-in default."),
+    )
+    updated_at = models.DateTimeField(auto_now=True)
+    updated_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True,
+    )
+
+    class Meta:
+        verbose_name = _("promo ad")
+        verbose_name_plural = _("promo ad")
+
+    def __str__(self):
+        return "Custom promo ad (active)" if self.is_active else "Custom promo ad (inactive)"
+
+    @classmethod
+    def get(cls):
+        obj, _created = cls.objects.get_or_create(pk=1)
+        return obj

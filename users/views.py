@@ -349,11 +349,16 @@ class UserDashboardView(LoginRequiredMixin, TemplateView):
             round__tournament__owner=user
         ).count()
 
+        from django.db.models import Q as _Q
+
         from support.models import SupportTicket
         if user.is_staff or user.is_superuser:
             ctx['open_ticket_count'] = SupportTicket.objects.filter(status=SupportTicket.Status.OPEN).count()
         else:
-            ctx['open_ticket_count'] = SupportTicket.objects.filter(user=user, status=SupportTicket.Status.OPEN).count()
+            # Own tickets, plus anything routed to a tournament this user directs.
+            ctx['open_ticket_count'] = SupportTicket.objects.filter(
+                _Q(user=user) | _Q(tournament__owner=user), status=SupportTicket.Status.OPEN,
+            ).distinct().count()
 
         ctx['user_organizations'] = get_user_organizations(user)
 
