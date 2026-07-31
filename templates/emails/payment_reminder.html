@@ -79,7 +79,7 @@
                 Hi {{ owner_name }},
               </p>
               <p style="font-family: 'Inter', Arial, sans-serif; font-size: 15px; color: #d0d0f0; margin: 12px 0 0; line-height: 1.7;">
-                A couple of hours ago you created <strong style="color:#ffffff;">{{ tournament.name }}</strong> on NekoTab. Everything's built and waiting — draws, ballots, motions, the works — it just needs the one-time <strong style="color:#ffffff;">{{ premium_price_label }}</strong> payment to unlock your tab director workspace.
+                {% if is_backfill %}You created{% else %}A couple of hours ago you created{% endif %} <strong style="color:#ffffff;">{{ tournament.name }}</strong> on NekoTab. Everything's built and waiting — draws, ballots, motions, the works — it just needs the one-time <strong style="color:#ffffff;">{{ premium_price_label }}</strong> payment to unlock your tab director workspace.
               </p>
             </td>
           </tr>
