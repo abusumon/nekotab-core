@@ -66,6 +66,10 @@ urlpatterns = [
     path('create/',
         tournaments.views.CreateTournamentView.as_view(),
         name='tournament-create'),
+    path('tournament/<int:pk>/delete/',
+        tournaments.views.TournamentDeleteConfirmView.as_view(),
+        name='tournament-delete-confirm'),
+    path('support/', include('support.urls', namespace='support')),
     # Alias matching the URL other tab platforms use, so a link shared as
     # "nekotab.app/tournaments/new/" lands somewhere real.
     path('tournaments/new/',

@@ -275,6 +275,7 @@
             <a href="{% url 'tickets:index' %}" class="qa-btn">Browse Events</a>
             <a href="/tools/import/" class="qa-btn">Import Data</a>
             <a href="/tools/analyze/" class="qa-btn">Analyze</a>
+            <a href="{% url 'support:list' %}" class="qa-btn">Support{% if open_ticket_count %} ({{ open_ticket_count }}){% endif %}</a>
             {% if user.is_superuser %}
             <a href="{% url 'admin:index' %}" class="qa-btn">Admin</a>
             {% endif %}

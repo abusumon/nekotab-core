@@ -1,0 +1,86 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete {{ tournament.name }} — NekoTab</title>
+    <link rel="icon" type="image/png" href="{% static 'logo-32x32.png' %}" sizes="32x32">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f9fafb;
+            color: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 2rem 1.5rem;
+            max-width: 420px;
+            width: 100%;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-weight: 700;
+            color: #111827;
+            text-decoration: none;
+            margin-bottom: 1.5rem;
+        }
+        .logo img { width: 24px; height: 24px; border-radius: 6px; }
+        .warn-icon {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: #fef2f2;
+            color: #dc2626;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        h1 { font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 0.6rem; }
+        p { color: #6b7280; font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.75rem; }
+        .t-name { color: #111827; font-weight: 700; }
+        .actions { display: flex; gap: 0.6rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-danger { background: #dc2626; color: #fff; }
+        .btn-danger:hover { background: #b91c1c; }
+        .btn-secondary { background: #f3f4f6; color: #374151; }
+        .btn-secondary:hover { background: #e5e7eb; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <a href="/" class="logo"><img src="{% static 'logo-32x32.png' %}" alt="NekoTab"> NekoTab</a>
+        <div class="warn-icon">!</div>
+        <h1>Delete this tournament?</h1>
+        <p>You're about to permanently delete <span class="t-name">{{ tournament.name }}</span>. This removes every round, draw, ballot, and result — there is no undo.</p>
+        <p>If you'd rather keep it and just haven't paid yet, close this page and use the "Pay & Unlock" button in the reminder email instead.</p>
+        <div class="actions">
+            <a href="{% url 'user-dashboard' %}" class="btn btn-secondary">Cancel</a>
+            <form method="post" style="flex:1;min-width:140px;margin:0;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger" style="width:100%;">Yes, delete it</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

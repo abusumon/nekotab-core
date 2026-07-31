@@ -349,6 +349,12 @@ class UserDashboardView(LoginRequiredMixin, TemplateView):
             round__tournament__owner=user
         ).count()
 
+        from support.models import SupportTicket
+        if user.is_staff or user.is_superuser:
+            ctx['open_ticket_count'] = SupportTicket.objects.filter(status=SupportTicket.Status.OPEN).count()
+        else:
+            ctx['open_ticket_count'] = SupportTicket.objects.filter(user=user, status=SupportTicket.Status.OPEN).count()
+
         ctx['user_organizations'] = get_user_organizations(user)
 
         base_domain = (getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', '') or '').strip()

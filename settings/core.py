@@ -200,6 +200,7 @@ TABBYCAT_APPS = (
     'chat',
     'prereg',
     'tickets',
+    'support',
 )
 
 INSTALLED_APPS = (
@@ -598,6 +599,7 @@ CELERY_TASK_ROUTES = {
     'tournaments.tasks.cleanup_expired_demos':         {'queue': 'lifecycle'},
     # Notifications (email delivery, push) — high-priority, separate from analytics
     'notifications.*':                                {'queue': 'notifications'},
+    'donations.tasks.send_payment_reminders':          {'queue': 'notifications'},
     # Default queue catches everything else
 }
 
@@ -634,6 +636,15 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'tournaments.tasks.cleanup_expired_demos',
         'schedule': crontab(minute='*/15'),
         'options': {'queue': 'lifecycle'},
+    },
+    # Remind directors who created a tournament but haven't paid. The command
+    # targets a 2-3 hour-old window, so a 15-minute tick means no tournament
+    # sits in that window for more than 15 minutes before being considered —
+    # same tolerance as cleanup-expired-demos above.
+    'send-payment-reminders': {
+        'task': 'donations.tasks.send_payment_reminders',
+        'schedule': crontab(minute='*/15'),
+        'options': {'queue': 'notifications'},
     },
 }
 

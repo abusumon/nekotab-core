@@ -1123,6 +1123,46 @@ class RegisterTournamentView(LoginRequiredMixin, CreateView):
         return redirect(f"/{tournament.slug}/admin/")
 
 
+class TournamentDeleteConfirmView(LoginRequiredMixin, TemplateView):
+    """Confirmation + deletion for a tab director removing their own tournament.
+
+    GET is side-effect-free (renders a warning + confirm button) so that email
+    link-scanners (Outlook Safe Links, corporate spam filters that pre-fetch
+    every URL in an email) can't trigger a real deletion just by visiting the
+    link from the payment-reminder email. Only the POST actually deletes.
+    """
+    template_name = 'delete_tournament_confirm.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.tournament = get_object_or_404(Tournament, pk=self.kwargs['pk'])
+        if not (request.user.is_superuser or self.tournament.owner_id == request.user.id):
+            messages.error(request, _("You don't have permission to delete this tournament."))
+            return redirect('user-dashboard')
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['tournament'] = self.tournament
+        return ctx
+
+    def post(self, request, *args, **kwargs):
+        from retention.engine import _clear_caches, _clear_protect_refs
+
+        name = self.tournament.name
+        try:
+            with transaction.atomic():
+                _clear_protect_refs(self.tournament)
+                _clear_caches(self.tournament)
+                self.tournament.delete()
+        except Exception:
+            logger.exception("Failed to delete tournament #%s via owner request", self.tournament.pk)
+            messages.error(request, _("We couldn't delete that tournament. Please contact support."))
+            return redirect('user-dashboard')
+
+        messages.success(request, _('"%(name)s" has been deleted.') % {'name': name})
+        return redirect('user-dashboard')
+
+
 class ConfigureTournamentView(AdministratorMixin, TournamentMixin, UpdateView):
     model = Tournament
     form_class = TournamentConfigureForm
