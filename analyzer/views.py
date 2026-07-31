@@ -94,11 +94,27 @@ def _parse_tournament_xml(root):
         if not tid:
             continue
         name = team_el.get('name', (team_el.text or '').strip())
+
+        # Institution is optional, and the two supported formats disagree on
+        # where it lives: DebateXML puts `institutions` on <team>, while
+        # Tabbycat's own archive export never sets it on <team> at all and
+        # writes it onto each <speaker> instead. Read the team's own value,
+        # then fall back to the first speaker that carries one. Both may be
+        # absent entirely (independent/composite teams, or tournaments that
+        # don't track institutions), so this must degrade to '' rather than
+        # indexing an empty list.
+        inst_ids = (team_el.get('institutions', '') or '').split()
+        if not inst_ids:
+            for sp_el in team_el.findall('speaker'):
+                inst_ids = (sp_el.get('institutions', '') or '').split()
+                if inst_ids:
+                    break
+
         data['teams'][tid] = {
             'id': tid,
             'name': name,
             'code': team_el.get('code', ''),
-            'institution_id': (team_el.get('institutions', '') or '').split()[0],
+            'institution_id': inst_ids[0] if inst_ids else '',
             'wins': 0, 'losses': 0, 'draws': 0,
             'rounds_competed': 0,
             'speaker_ids': [],
