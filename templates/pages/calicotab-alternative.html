@@ -27,19 +27,32 @@
 
       <h2>Why Organizers Choose NekoTab Instead</h2>
       <ul>
-        <li><strong>No per-tournament fee:</strong> NekoTab is free to use</li>
+        <li><strong>One-off per-tournament cost, no subscription:</strong> see <a href="{% url 'pricing' %}">pricing</a>. Public draws, tabs and results pages are always free to read, and there are no adverts.</li>
         <li><strong>Broader product surface:</strong> motion bank, learn hub, forum, and organization workspaces</li>
         <li><strong>International debate focus:</strong> BP, WSDC, Australs and Congress workflows</li>
         <li><strong>Open source:</strong> transparent codebase with self-hosting optionality</li>
         <li><strong>Motion research included:</strong> browse the <a href="{% url 'motions' %}">NekoTab Motion Bank</a> for prep and training</li>
       </ul>
 
+      <h2>Moving Your Tournaments Across</h2>
+      <p>Both platforms run Tabbycat, so a tournament&rsquo;s full history moves between them
+      as a standard Tabbycat XML archive. Export it from CalicoTab, upload it to NekoTab,
+      and the teams, speakers, adjudicators, venues, motions, draw and every ballot and
+      speaker score come with it. Migration is free and unlimited.</p>
+      <p>Two things worth knowing before you move: tournament <em>settings</em> are
+      re-derived from the file rather than copied, so check your configuration afterwards;
+      and participant private URLs are reissued here, since those are specific to the site
+      that generated them.</p>
+      <p>You do the export yourself, signed in as an administrator of your own tournament,
+      using CalicoTab&rsquo;s own export feature. NekoTab never connects to CalicoTab and
+      never asks for your credentials there.</p>
+
       <h2>Best Fit</h2>
-      <p>If you want paid hosted Tabbycat with a simple pricing model, CalicoTab has a clear positioning. If you want to reduce cost while gaining motion discovery, public content, and open-source flexibility, NekoTab is the stronger long-term platform.</p>
+      <p>If you want paid hosted Tabbycat with a simple pricing model, CalicoTab has a clear positioning. If you want motion discovery, public content, and open-source flexibility alongside your tabulation, NekoTab is the stronger long-term platform.</p>
 
       <div class="mt-4">
-        <a href="{% url 'register-tournament' %}" class="btn btn-primary btn-lg">Create a Tournament Free</a>
-        <a href="{% url 'motions' %}" class="btn btn-outline-secondary btn-lg ml-2">Explore Motion Bank</a>
+        <a href="{% url 'home-import-calicotab' %}" class="btn btn-primary btn-lg">Migrate a Tournament Free</a>
+        <a href="{% url 'register-tournament' %}" class="btn btn-outline-secondary btn-lg ml-2">Create a Tournament</a>
       </div>
 
       <p class="small text-muted mt-4">CalicoTab is a third-party brand referenced here for factual comparison only. NekoTab is not affiliated with CalicoTab.</p>

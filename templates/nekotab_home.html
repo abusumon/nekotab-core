@@ -385,6 +385,42 @@
       .nk-pricing-cta { width: 100%; }
     }
 
+    /* ── Migration band ── */
+    /* Sits directly under pricing on purpose: "what happens to the tournaments
+       I already ran elsewhere?" is the next question after "what does it cost?" */
+    .nk-migrate {
+      background: #12121d;
+      padding: 56px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nk-migrate-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+    .nk-migrate-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #6ee7b7; margin-bottom: 10px;
+    }
+    .nk-migrate-heading {
+      font-size: clamp(22px, 4vw, 30px); font-weight: 800; color: #fff;
+      letter-spacing: -0.4px; line-height: 1.2; margin-bottom: 12px;
+    }
+    .nk-migrate-sub {
+      font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.66);
+      max-width: 54ch; margin: 0 auto 22px;
+    }
+    .nk-migrate-cta {
+      display: inline-block; padding: 13px 28px; border-radius: 10px;
+      background: #059669; color: #fff; font-size: 15px; font-weight: 600;
+      text-decoration: none;
+    }
+    .nk-migrate-cta:hover, .nk-migrate-cta:focus { background: #047857; }
+    .nk-migrate-note {
+      font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.42);
+      max-width: 58ch; margin: 22px auto 0;
+    }
+    @media (max-width: 640px) {
+      .nk-migrate { padding: 44px 16px; }
+      .nk-migrate-cta { display: block; width: 100%; }
+    }
+
     /* ── Public showcase ── */
     /* Mobile first: one column, whole card is the tap target. */
     .nk-showcase {
@@ -1157,6 +1193,30 @@
       <p class="nk-pricing-note">
         NekoTab ran free for six months and more than 550 tournaments, and earned nothing.
         This is what keeps it running. Tournaments created before the change stay free forever.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       MIGRATION — bring your history across, free
+       ════════════════════════════════════════════ -->
+  <section class="nk-migrate" aria-labelledby="migrate-heading">
+    <div class="nk-migrate-inner">
+      <p class="nk-migrate-eyebrow">Switching hosts</p>
+      <h2 id="migrate-heading" class="nk-migrate-heading">
+        Bring your old tournaments with you — free
+      </h2>
+      <p class="nk-migrate-sub">
+        Already run tournaments on CalicoTab or another Tabbycat host? Export the XML
+        archive and upload it here. Teams, speakers, adjudicators, venues, motions, the
+        draw and every ballot and speaker score come across. However many you have,
+        there is no charge for moving them.
+      </p>
+      <a href="{% url 'home-import-calicotab' %}" class="nk-migrate-cta">Migrate a tournament</a>
+      <p class="nk-migrate-note">
+        You export your own tournament with your own administrator account, using the
+        other site's own export feature — NekoTab never connects to it and never asks
+        for your password there. Not affiliated with or endorsed by CalicoTab.
       </p>
     </div>
   </section>

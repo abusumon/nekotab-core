@@ -249,7 +249,12 @@ urlpatterns = [
     path('archive/',
         include('importer.urls_archive')),
 
-    # Public tool pages (no tournament context required)
+    # Public tool pages (no tournament context required). /tools/ itself needs
+    # an index: the sub-paths existed but the parent 404'd, so the one URL people
+    # actually guess and link to led nowhere.
+    path('tools/',
+        TemplateView.as_view(template_name='pages/tools_index.html'),
+        name='tools-index'),
     path('tools/import/',
         include('importer.urls_tool')),
     path('tools/analyze/',

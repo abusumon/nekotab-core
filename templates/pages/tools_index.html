@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}Tools{% endblock %}
+{% block head-title %}<span class="emoji">🧰</span> Tools{% endblock %}
+
+{% block extra-head %}
+<meta name="description" content="Free debate tabulation tools from NekoTab: migrate a tournament from CalicoTab, bulk-import participants from CSV, and analyse a Tabbycat XML export.">
+<link rel="canonical" href="https://nekotab.app/tools/" />
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+
+      <h1 class="mb-2">Tools</h1>
+      <p class="lead text-muted mb-4">
+        Free utilities for tab directors. No account needed for the analyser; the
+        others just need you signed in.
+      </p>
+
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span style="font-size:1.5rem;">🔀</span>
+                <h2 class="h5 mb-0">Migrate from CalicoTab</h2>
+              </div>
+              <p class="small text-muted flex-grow-1 mb-3">
+                Bring a whole tournament across &mdash; teams, speakers, adjudicators,
+                venues, motions, the draw, and every ballot and speaker score. Export
+                the XML from CalicoTab, upload it here. Free, and there is no limit on
+                how many you move.
+              </p>
+              <a href="{% url 'home-import-calicotab' %}" class="btn btn-primary btn-sm align-self-start">
+                Migrate a tournament
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span style="font-size:1.5rem;">📥</span>
+                <h2 class="h5 mb-0">CSV importer</h2>
+              </div>
+              <p class="small text-muted flex-grow-1 mb-3">
+                Bulk-load institutions, teams, speakers, adjudicators, venues, rounds,
+                motions and categories into a tournament from spreadsheets.
+              </p>
+              <a href="{% url 'import-tool' %}" class="btn btn-outline-primary btn-sm align-self-start">
+                Open the importer
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span style="font-size:1.5rem;">📊</span>
+                <h2 class="h5 mb-0">Tournament analyser</h2>
+              </div>
+              <p class="small text-muted flex-grow-1 mb-3">
+                Drop in a Tabbycat XML export and get a breakdown of the tournament
+                &mdash; no sign-in, and nothing is kept.
+              </p>
+              <a href="{% url 'analyze-home' %}" class="btn btn-outline-primary btn-sm align-self-start">
+                Analyse an export
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span style="font-size:1.5rem;">📚</span>
+                <h2 class="h5 mb-0">Motion bank</h2>
+              </div>
+              <p class="small text-muted flex-grow-1 mb-3">
+                A searchable archive of debate motions from tournaments around the
+                world, free to browse and use.
+              </p>
+              <a href="{% url 'motions' %}" class="btn btn-outline-primary btn-sm align-self-start">
+                Browse motions
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="alert alert-light border mt-4 small mb-0">
+        <strong>Moving from another Tabbycat host?</strong>
+        The migration tool reads the standard Tabbycat XML archive, so it works with
+        any site running Tabbycat &mdash; not only CalicoTab. You export your own
+        tournament with your own administrator account; NekoTab never connects to the
+        other service or asks for your credentials there.
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock content %}
