@@ -7,6 +7,36 @@ from .models import Round
 
 logger = logging.getLogger(__name__)
 
+
+def personal_organization_for(user):
+    """Return the user's organization, creating a personal one if they have none.
+
+    Tournament.organization is NOT NULL (migration 0039), so *every* path that
+    creates a Tournament has to supply one. It lived in tournaments.views, which
+    meant the archive importer — a creation path in another app — could not
+    reach it and simply did not set the field at all. Uploading a valid archive
+    therefore died on an IntegrityError. It lives here so any app can use it.
+    """
+    from organizations.models import Organization, OrganizationMembership
+
+    membership = OrganizationMembership.objects.filter(
+        user=user,
+        role__in=[OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
+    ).select_related('organization').first()
+    if membership:
+        return membership.organization
+
+    org, created = Organization.objects.get_or_create(
+        slug=f"org-{user.username}"[:80],
+        defaults={'name': f"{user.username}'s Organization"},
+    )
+    if created:
+        OrganizationMembership.objects.create(
+            organization=org, user=user,
+            role=OrganizationMembership.Role.OWNER,
+        )
+    return org
+
 SIDE_NAMES = {
     'aff-neg': {
         "0_full": _("affirmative"),

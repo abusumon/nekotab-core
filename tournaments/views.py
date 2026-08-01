@@ -48,7 +48,7 @@ from .forms import (CongressTournamentStartForm, RoundWeightForm, ScheduleEventF
 from .mixins import PublicTournamentPageMixin, RoundMixin, TournamentMixin
 from .models import DemoTournamentLog, ScheduleEvent, Tournament
 
-from .utils import get_side_name
+from .utils import get_side_name, personal_organization_for
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
@@ -533,30 +533,12 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
     def form_valid(self, form):
         form.instance.owner = self.request.user
 
-        # Auto-assign organization: use user's existing org, or create one
-        from organizations.models import Organization, OrganizationMembership
-        user = self.request.user
-        org_membership = OrganizationMembership.objects.filter(
-            user=user,
-            role__in=[OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
-        ).select_related('organization').first()
-
-        if org_membership:
-            form.instance.organization = org_membership.organization
-        else:
-            # Create a personal org for first-time users
-            org_slug = f"org-{user.username}"[:80]
-            org, created = Organization.objects.get_or_create(
-                slug=org_slug,
-                defaults={'name': f"{user.username}'s Organization"},
-            )
-            if created:
-                OrganizationMembership.objects.create(
-                    organization=org,
-                    user=user,
-                    role=OrganizationMembership.Role.OWNER,
-                )
-            form.instance.organization = org
+        # Auto-assign organization: use the user's existing org, or create a
+        # personal one. This was an inline copy of what is now
+        # tournaments.utils.personal_organization_for; three creation paths had
+        # drifted apart around a NOT NULL field, and the one that never got a
+        # copy (the archive importer) crashed on every upload.
+        form.instance.organization = personal_organization_for(self.request.user)
 
         try:
             tournament = form.save()
@@ -760,7 +742,7 @@ class CreateDemoTournamentView(LoginRequiredMixin, View):
                                       "Please try again in a moment."))
             return redirect('tournament-create')
 
-        organization = _personal_organization_for(request.user)
+        organization = personal_organization_for(request.user)
         lifetime = int(getattr(settings, 'DEMO_TOURNAMENT_LIFETIME_HOURS', 3))
 
         form = TournamentStartForm(data={
@@ -913,33 +895,6 @@ class CreateDemoTournamentView(LoginRequiredMixin, View):
             if not Tournament.objects.filter(slug__iexact=candidate).exists():
                 return candidate
         return None
-
-
-def _personal_organization_for(user):
-    """Return the user's org, creating a personal one if they have none.
-
-    Same rule as CreateTournamentView — a Tournament's organization is
-    NOT NULL, so every creation path needs this.
-    """
-    from organizations.models import Organization, OrganizationMembership
-
-    membership = OrganizationMembership.objects.filter(
-        user=user,
-        role__in=[OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
-    ).select_related('organization').first()
-    if membership:
-        return membership.organization
-
-    org, created = Organization.objects.get_or_create(
-        slug=f"org-{user.username}"[:80],
-        defaults={'name': f"{user.username}'s Organization"},
-    )
-    if created:
-        OrganizationMembership.objects.create(
-            organization=org, user=user,
-            role=OrganizationMembership.Role.OWNER,
-        )
-    return org
 
 
 class CreateCongressTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, CreateView):

@@ -23,6 +23,7 @@ from participants.models import Adjudicator, Institution, Person, Team
 from participants.utils import populate_code_names
 from tournaments.mixins import TournamentMixin
 from tournaments.models import Tournament
+from tournaments.utils import personal_organization_for
 from users.permissions import Permission
 from utils.misc import redirect_tournament, reverse_tournament
 from utils.mixins import AdministratorMixin
@@ -265,7 +266,11 @@ class TournamentImportArchiveView(AdministratorMixin, FormView):
     view_role = ""
 
     def form_valid(self, form):
-        self.importer = Importer(fromstring(form.cleaned_data['xml']))
+        self.importer = Importer(
+            fromstring(form.cleaned_data['xml']),
+            organization=personal_organization_for(self.request.user),
+            owner=self.request.user,
+        )
         self.importer.import_tournament()
 
         messages.success(self.request, _("Tournament archive has been imported."))
@@ -340,7 +345,11 @@ class HomeImportCalICOTabView(LoginRequiredMixin, View):
             return redirect('tabbycat-index')
 
         try:
-            importer = Importer(root)
+            importer = Importer(
+                root,
+                organization=personal_organization_for(request.user),
+                owner=request.user,
+            )
             importer.import_tournament()
         except Exception as e:
             messages.error(request, _("Import failed: %s") % str(e))

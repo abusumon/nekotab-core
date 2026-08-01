@@ -36,6 +36,24 @@ INST_PREFIX = "I"
 QUESTION_PREFIX = "Q"
 
 
+def xml_bool(value):
+    """Parse a DebateXML boolean attribute, tolerating either case.
+
+    The exporter below is inconsistent: `elimination`, `minority` and `ignored`
+    are written lowercased, but `speech/@reply` went through `str(bool)` and
+    came out "True"/"False". The importer matched on lowercase only, so
+    `substantive_speakers` counted zero reply-less speeches, `positions` came
+    back empty, no speaker scores were set at all, and every scoresheet ended up
+    a 0-0 tie that HighPointWinsRequiredScoresheet rejected — so importing any
+    archive containing scores died on "Tried to save an invalid result".
+
+    The exporter is fixed too, but that only helps files written from here.
+    Archives are uploaded from other installations running their own version of
+    this same code, so the importer has to accept what they actually emit.
+    """
+    return str(value).strip().lower() == 'true'
+
+
 class Exporter:
 
     def __init__(self, tournament):
@@ -177,7 +195,11 @@ class Exporter:
             if speaker is not None:
                 speech_tag = SubElement(side_tag, 'speech', {
                     'speaker': SPEAKER_PREFIX + str(result.get_speaker(side, pos).id),
-                    'reply': str(pos > self.t.pref('substantive_speakers')),
+                    # .lower() to match every other boolean this exporter emits
+                    # (elimination, minority, ignored). Without it this attribute
+                    # alone came out "True"/"False" and the importer, which
+                    # matched lowercase, silently read zero substantive speakers.
+                    'reply': str(pos > self.t.pref('substantive_speakers')).lower(),
                 })
 
                 if result.is_voting:
@@ -326,11 +348,34 @@ class Exporter:
 
 class Importer:
 
-    def __init__(self, tournament):
-        self.root = tournament
+    def __init__(self, root, organization=None, owner=None):
+        """`root` is the parsed <tournament> element, not a Tournament.
+
+        `organization` is required: Tournament.organization is NOT NULL, and
+        importing is a tournament-creation path like any other. It used not to
+        be passed at all, so every archive upload died on an IntegrityError deep
+        inside save() — see tournaments.utils.personal_organization_for.
+
+        `owner` is optional but should be set for user-facing imports, or the
+        imported tournament belongs to nobody and never appears on its owner's
+        dashboard.
+        """
+        self.root = root
+        self.organization = organization
+        self.owner = owner
 
     def import_tournament(self):
-        self.tournament = Tournament(name=self.root.get('name'))
+        if self.organization is None:
+            # Fail with something a human can act on, rather than a NOT NULL
+            # violation from several frames down inside Django.
+            raise ValueError(
+                "Importer requires an organization: Tournament.organization is "
+                "NOT NULL. Pass organization=... (see "
+                "tournaments.utils.personal_organization_for).")
+
+        self.tournament = Tournament(name=self.root.get('name'),
+                                     organization=self.organization,
+                                     owner=self.owner)
 
         if self.root.get('short') is not None:
             self.tournament.short_name = self.root.get('short')
@@ -357,8 +402,20 @@ class Importer:
         self.import_feedback()
 
     def _is_consensus_ballot(self, elimination):
-        xpath = "round[@elimination='" + elimination + "']/debate/side"
-        return len(self.root.findall(xpath + "/ballot")) == len(self.root.findall(xpath))
+        """One ballot per side means a consensus ballot; more means per-adj.
+
+        Takes a bool and compares parsed attributes rather than building an
+        XPath predicate out of a literal string, so a capitalised
+        `elimination="False"` cannot silently match nothing.
+        """
+        sides = ballots = 0
+        for round in self.root.findall('round'):
+            if xml_bool(round.get('elimination')) != elimination:
+                continue
+            for side in round.findall('debate/side'):
+                sides += 1
+                ballots += len(side.findall('ballot'))
+        return ballots == sides
 
     def set_preferences(self):
         styles = {
@@ -379,7 +436,12 @@ class Importer:
             "wsdc": WSDCPreferences,
             "": None,
         }
-        if self.root.get('style') is not None and styles[self.root.get('style', '')] is not None:
+        # .get() rather than [] on the styles map: this file is uploaded by the
+        # public, and a style attribute we don't recognise (a newer Tabbycat, or
+        # another tool writing DebateXML) would otherwise be a KeyError and a
+        # 500. Falling through to the inference below is the right answer for an
+        # unknown style anyway.
+        if styles.get(self.root.get('style', '')) is not None:
             style = styles[self.root.get('style')]
             style.save(self.tournament)
             self.preliminary_consensus = style.debate_rules__ballots_per_debate_prelim == 'per-debate'
@@ -391,11 +453,21 @@ class Importer:
             self.elimination_consensus = True
             BritishParliamentaryPreferences.save(self.tournament)
         else:
-            self.preliminary_consensus = self._is_consensus_ballot('false')
-            self.elimination_consensus = self._is_consensus_ballot('true')
-            substantive_speakers = len(self.root.findall("round[1]/debate[1]/side[1]/speech[@reply='false']"))
-            reply_scores_enabled = len(self.root.findall("round/debate/side/speech[@reply='true']")) != 0
-            margin_includes_dissenters = len(self.root.findall("round/debate/side/ballot[@minority='true'][@ignored='true']")) == 0
+            self.preliminary_consensus = self._is_consensus_ballot(False)
+            self.elimination_consensus = self._is_consensus_ballot(True)
+            # Counted by parsing the attribute rather than matching it inside an
+            # XPath predicate, which is what made these silently return 0 for
+            # every archive ever exported. substantive_speakers=0 in particular
+            # empties Tournament.positions, which drops every speaker score.
+            substantive_speakers = sum(
+                1 for speech in self.root.findall("round[1]/debate[1]/side[1]/speech")
+                if not xml_bool(speech.get('reply')))
+            reply_scores_enabled = any(
+                xml_bool(speech.get('reply'))
+                for speech in self.root.findall("round/debate/side/speech"))
+            margin_includes_dissenters = not any(
+                xml_bool(ballot.get('minority')) and xml_bool(ballot.get('ignored'))
+                for ballot in self.root.findall("round/debate/side/ballot"))
 
             self.tournament.preferences['debate_rules__substantive_speakers'] = substantive_speakers
             self.tournament.preferences['debate_rules__reply_scores_enabled'] = reply_scores_enabled
@@ -620,7 +692,7 @@ class Importer:
 
     def import_results(self):
         for round in self.root.findall('round'):
-            consensus = self.preliminary_consensus if round.get('elimination') == 'false' else self.elimination_consensus
+            consensus = self.elimination_consensus if xml_bool(round.get('elimination')) else self.preliminary_consensus
 
             for debate in round.findall('debate'):
                 bs_obj = BallotSubmission(

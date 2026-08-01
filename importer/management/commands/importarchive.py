@@ -12,6 +12,11 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('file', help="File to import tournament data from")
+        parser.add_argument('--organization', required=True,
+            help="Slug of the organization to import the tournament into. "
+                 "Required because Tournament.organization is NOT NULL.")
+        parser.add_argument('--owner',
+            help="Username to record as the tournament's owner (optional).")
 
     def handle(self, *args, **options):
         self.options = options
@@ -26,7 +31,9 @@ class Command(BaseCommand):
         if the file doesn't appear to exist, or is not an XML file."""
 
         def _check_return(path):
-            if not os.path.isfile(path) or os.path.splitext[1] != '.xml':
+            # os.path.splitext[1] was subscripting the function itself, so this
+            # raised TypeError for every input and the command could never run.
+            if not os.path.isfile(path) or os.path.splitext(path)[1] != '.xml':
                 raise CommandError("The path '%s' is not a valid XML file" % path)
             self.stdout.write('Importing from file: ' + path)
             return path
@@ -41,6 +48,28 @@ class Command(BaseCommand):
 
     def create_tournament(self):
         """Given the path, does everything necessary to create the tournament."""
-        contents = open(self.filepath, 'r')
-        importer = Importer(ElementTree.fromstring(contents))
+        from organizations.models import Organization
+
+        try:
+            organization = Organization.objects.get(slug=self.options['organization'])
+        except Organization.DoesNotExist:
+            raise CommandError("No organization with slug '%s'" % self.options['organization'])
+
+        owner = None
+        if self.options.get('owner'):
+            from django.contrib.auth import get_user_model
+            try:
+                owner = get_user_model().objects.get(username=self.options['owner'])
+            except get_user_model().DoesNotExist:
+                raise CommandError("No user named '%s'" % self.options['owner'])
+
+        # fromstring() needs the file's text, not the file object — passing the
+        # handle raised TypeError, so this path had never worked either.
+        with open(self.filepath, 'r', encoding='utf-8') as handle:
+            contents = handle.read()
+
+        importer = Importer(ElementTree.fromstring(contents),
+                            organization=organization, owner=owner)
         importer.import_tournament()
+        self.stdout.write("Imported '%s' into organization '%s'"
+                          % (importer.tournament.name, organization.slug))
