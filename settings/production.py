@@ -161,6 +161,13 @@ _default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab
 DEFAULT_FROM_EMAIL = _default_from
 SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
 REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
+
+# Participant/tournament mail only — private URLs, ballots, draws, motions.
+# Restated here rather than left to core.py because everything else in this
+# block is, and a reader scanning production email settings would otherwise
+# conclude support@ is the only sender. Replies are unaffected: those go to
+# each tournament's own director.
+TOURNAMENT_FROM_EMAIL = environ.get('TOURNAMENT_FROM_EMAIL', 'tab-director@nekotab.app')
 EMAIL_TIMEOUT = _env_int('EMAIL_TIMEOUT', 10)
 
 _ses_smtp_user = (environ.get('AWS_SES_SMTP_USERNAME') or environ.get('SES_SMTP_USERNAME') or '').strip()

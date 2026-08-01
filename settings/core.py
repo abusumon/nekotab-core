@@ -764,8 +764,26 @@ if SUBDOMAIN_BASE_DOMAIN:
 # Email (defaults; can be overridden in environment-specific settings)
 # ==============================================================================
 
-# Default from email for outbound messages; include display name for branding
+# Default from email for outbound messages; include display name for branding.
+# This is the *platform* sender: password resets, receipts, payment reminders,
+# campaigns, contact-form mail — anything about someone's NekoTab account
+# rather than about a debate.
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@nekotab.app')
+
+# Sender for tournament participant mail — private URLs, ballots, draws,
+# motions, standings. Deliberately a *different* address from
+# DEFAULT_FROM_EMAIL, which is shared by roughly twenty unrelated senders:
+# splitting them is what keeps debate traffic (and its bounces and
+# auto-replies) out of the platform support inbox.
+#
+# Only the address is used; NotificationQueueConsumer replaces the display
+# name with the tournament's own short name, so participants see the
+# tournament they signed up for rather than "NekoTab".
+#
+# Note this is *not* where replies go — Reply-To is set per tournament to that
+# tournament's director, so a participant hitting reply reaches the person
+# running their competition. See NotificationQueueConsumer._get_from_fields.
+TOURNAMENT_FROM_EMAIL = os.environ.get('TOURNAMENT_FROM_EMAIL', 'tab-director@nekotab.app')
 
 # Server email for error emails; default to from email
 SERVER_EMAIL = os.environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)

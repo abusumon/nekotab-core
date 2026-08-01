@@ -77,12 +77,21 @@ class NotificationQueueConsumer(SyncConsumer):
 
     @staticmethod
     def _get_from_fields(t: Tournament) -> Tuple[str, Optional[List[str]]]:
-        # DEFAULT_FROM_EMAIL may already contain a display name. Parse it so we
-        # can safely replace only the display name with the tournament name.
-        default_name, default_addr = parseaddr(settings.DEFAULT_FROM_EMAIL)
-        sender_addr = default_addr or settings.DEFAULT_FROM_EMAIL
+        # Participant mail sends as TOURNAMENT_FROM_EMAIL, not DEFAULT_FROM_EMAIL.
+        # The latter is shared by ~20 unrelated senders (password resets,
+        # receipts, payment reminders, campaigns), and pointing debate traffic
+        # at it puts every bounce and out-of-office from every tournament into
+        # the platform support inbox. Falls back to DEFAULT_FROM_EMAIL so an
+        # environment that has not set the new variable still sends.
+        configured = getattr(settings, 'TOURNAMENT_FROM_EMAIL', '') or settings.DEFAULT_FROM_EMAIL
+        # The configured value may already carry a display name. Parse it so we
+        # replace only the display name with the tournament's.
+        default_name, default_addr = parseaddr(configured)
+        sender_addr = default_addr or configured
         sender_name = (t.short_name or '').strip() or default_name or 'NekoTab'
         from_email = formataddr((sender_name, sender_addr))
+        # Reply-To stays the tournament's own director: the From address is
+        # about where bounces land, not about who should answer a participant.
         if t.pref('reply_to_address'):
             return from_email, [formataddr((t.pref('reply_to_name').strip(), t.pref('reply_to_address')))]
         return from_email, None  # Shouldn't have array of None
