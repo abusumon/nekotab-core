@@ -70,10 +70,36 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
 # Postgres (self-hosted in Docker)
 # ==============================================================================
 
+# conn_max_age MUST stay 0 under UvicornWorker — see the outage of 2026-08-01,
+# where every page on the site returned 500 for want of a database connection.
+#
+# Persistent connections assume a request-shaped lifecycle: open, serve, and be
+# reaped at a known boundary. Channels has no such boundary. Every WebSocket
+# consumer hop runs through database_sync_to_async, which calls
+# close_old_connections() on the way in and out — but with a non-zero
+# CONN_MAX_AGE that call *keeps* the connection rather than closing it, so the
+# thread holds it for as long as the socket is open. The tournament screens hold
+# their sockets open for the length of a round.
+#
+# Nothing then takes those connections back. gunicorn-prod.conf deliberately
+# disables max_requests and timeout so that live sockets are never severed
+# mid-round, which means workers are never recycled either. At 60 seconds, two
+# workers accumulated all 100 of Postgres' connection slots in about 3.5 hours
+# and the site died — including static-ish pages like /robots.txt, since the
+# exhaustion is global rather than per-view.
+#
+# max_requests was hiding this leak by restarting the workers out from under it.
+# Removing it (correctly — it was cutting off live tournaments) removed the
+# accidental garbage collection along with it. The two settings are each right
+# on their own and fatal together.
+#
+# Raising max_connections does not fix this; the leak is unbounded, so it only
+# moves the outage a few hours out. Set DB_CONN_MAX_AGE only if this ever runs
+# under a sync/WSGI worker, where persistent connections are safe again.
 try:
-    _db_conn_max_age = int(environ.get('DB_CONN_MAX_AGE', '60'))
+    _db_conn_max_age = int(environ.get('DB_CONN_MAX_AGE', '0'))
 except ValueError:
-    _db_conn_max_age = 60
+    _db_conn_max_age = 0
 
 DATABASES = {
     'default': dj_database_url.config(
