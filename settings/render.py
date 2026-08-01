@@ -89,11 +89,23 @@ if SUBDOMAIN_BASE_DOMAIN:
 # ==============================================================================
 
 # Parse database configuration from $DATABASE_URL
+#
+# conn_max_age defaults to 0, not the 600 that shipped here originally. This
+# stack runs Channels under an ASGI worker, and persistent connections are never
+# reclaimed from WebSocket consumer threads: each one pins a connection for the
+# life of its socket until Postgres runs out of slots and the whole site 500s.
+# That outage happened on production on 2026-08-01 — settings/production.py
+# carries the full account. Only raise this above 0 under a sync/WSGI worker.
+try:
+    _conn_max_age = int(os.environ.get('DB_CONN_MAX_AGE', '0'))
+except ValueError:
+    _conn_max_age = 0
+
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
         default='postgresql://postgres:postgres@localhost:5432/mysite',
-        conn_max_age=600
+        conn_max_age=_conn_max_age,
     )
 }
 
