@@ -520,11 +520,14 @@ class ScoresMixin:
         debate. Making this its own function allows subclasses to extend this so
         that it can use the same DebateResult as the super class."""
         initial = {}
-        if all(result.teamscore_field_score(side) is None for side in self.sides) and result.get_winner():
-            forfeiter = next(iter(set(self.sides) - result.get_winner()))
+        try:
+            winner = result.get_winner()
+        except TypeError:
+            winner = None  # by-adjudicator results need an adjudicator arg; skip forfeit shortcut
+        if all(result.teamscore_field_score(side) is None for side in self.sides) and winner:
+            forfeiter = next(iter(set(self.sides) - winner))
             initial[self._fieldname_forfeit(forfeiter)] = True
             return initial
-
         for side, pos in product(self.sides, self.positions):
             initial[self._fieldname_speaker(side, pos)] = result.get_speaker(side, pos)
             initial[self._fieldname_ghost(side, pos)] = result.get_ghost(side, pos)
