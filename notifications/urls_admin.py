@@ -14,4 +14,5 @@ urlpatterns = [
     path('status/',
         views.EmailStatusView.as_view(),
         name='notifications-status'),
+    path('send-test-email/', views.TestEmailView.as_view(), name='notifications-test-email'),
 ]
