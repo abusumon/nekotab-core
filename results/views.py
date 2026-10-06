@@ -179,7 +179,9 @@ class PublicResultsForRoundView(RoundMixin, PublicTournamentPageMixin, VueTableT
 
         table = TabbycatTableBuilder(view=self, sort_key="venue")
         table.add_debate_venue_columns(debates)
-        table.add_debate_results_columns(debates, n_cols=debates.aggregate(n=Max('debateteam__side'))['n']+1)
+        max_side = debates.aggregate(n=Max('debateteam__side'))['n']
+        n_cols = (max_side + 1) if max_side is not None else 0
+        table.add_debate_results_columns(debates, n_cols=n_cols)
         if not (self.tournament.pref('teams_in_debate') == 4 and self.round.is_break_round):
             table.add_debate_ballot_link_column(debates)
         table.add_debate_adjudicators_column(debates, show_splits=True)
