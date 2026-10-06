@@ -256,14 +256,14 @@ class BaseCreateTeamFormView(LogActionMixin, PublicTournamentPageMixin, CustomQu
         return team.code_name
 
     @staticmethod
-def _emoji_code_name(team, speakers=None):
-    if team.emoji is None:
-        used = set(team.tournament.team_set.filter(emoji__isnull=False).values_list('emoji', flat=True))
-        available = [e[0] for e in EMOJI_RANDOM_FIELD_CHOICES if e[0] not in used]
-        if not available:
-            return ''
-        team.emoji = random.choice(available)
-    return EMOJI_NAMES[team.emoji]
+    def _emoji_code_name(team, speakers=None):
+        if team.emoji is None:
+            used = set(team.tournament.team_set.filter(emoji__isnull=False).values_list('emoji', flat=True))
+            available = [e[0] for e in EMOJI_RANDOM_FIELD_CHOICES if e[0] not in used]
+            if not available:
+                return ''
+            team.emoji = random.choice(available)
+        return EMOJI_NAMES[team.emoji]
 
     @staticmethod
     def _last_names_code_name(team, speakers=None):
