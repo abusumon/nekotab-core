@@ -59,7 +59,7 @@ class TeamMetricQuerySetMetricAnnotator(SpeakerScoreQuerySetMetricAnnotator):
             team__debateteam__debate__round__stage=Round.Stage.PRELIMINARY,
         )
         if self.where_value is not None:
-            annotation_filter &= Q(team__debateteam__teamscore__win=self.where_value)
+            annotation_filter &= Q(**{self.field: self.where_value})
 
         return self.function(self.field, filter=annotation_filter)
 
