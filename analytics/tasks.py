@@ -7,6 +7,7 @@ bulk_inserts them into the PageView table.  This keeps the HTTP path fast,
 survives worker restarts, and caps Redis memory with an LRU list.
 """
 
+import ipaddress
 import json
 import logging
 
@@ -130,6 +131,9 @@ def flush_analytics_buffer():
         # Strip unknown keys so PageView(**data) never raises TypeError
         data.pop('source', None)
         safe_data = {k: v for k, v in data.items() if k in _allowed}
+        
+        if 'ip_address' in safe_data:
+            safe_data['ip_address'] = _clean_ip(safe_data['ip_address'])
 
         page_views.append(PageView(
             user=user,
@@ -160,6 +164,15 @@ def flush_analytics_buffer():
         len(page_views), deleted,
     )
     return len(page_views)
+
+def _clean_ip(value):
+    """Return a normalized IP string, or None if it isn't a valid IP."""
+    if not value:
+        return None
+    try:
+        return str(ipaddress.ip_address(str(value).strip()))
+    except ValueError:
+        return None
 
 
 @shared_task(

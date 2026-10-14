@@ -1,3 +1,4 @@
+import ipaddress
 import hashlib
 import json
 import re
@@ -124,11 +125,13 @@ class AnalyticsMiddleware:
         return True
     
     def get_client_ip(self, request):
-        """Get the client's real IP address."""
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            return x_forwarded_for.split(',')[0].strip()
-        return request.META.get('REMOTE_ADDR')
+        """Get the client's real IP address, or None if it isn't a valid IP."""
+        xff = request.META.get('HTTP_X_FORWARDED_FOR')
+        candidate = xff.split(',')[0].strip() if xff else request.META.get('REMOTE_ADDR')
+        try:
+            return str(ipaddress.ip_address(candidate))
+        except (ValueError, TypeError):
+            return None
     
     def parse_user_agent(self, ua_string):
         """Simple user agent parsing."""
