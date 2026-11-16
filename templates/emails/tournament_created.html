@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>Your tournament is ready on NekoTab</title>
+<style>
+  body { margin:0; padding:0; background:#F2F2F2; }
+  a { color:#000000; }
+  @media (max-width:620px) {
+    .container { width:100% !important; }
+    .px { padding-left:24px !important; padding-right:24px !important; }
+    .h1 { font-size:26px !important; line-height:32px !important; }
+  }
+  @media (prefers-color-scheme: dark) {
+    body, .bg { background:#0D0D0D !important; }
+    .card { background:#1A1A1A !important; }
+    .ink { color:#F5F5F5 !important; }
+    .muted { color:#A0A0A0 !important; }
+    .slug { background:#262626 !important; border-color:#3A3A3A !important; }
+    .rule { border-color:#2E2E2E !important; }
+    a { color:#FFFFFF !important; }
+    .accent { background:#FFFFFF !important; }
+    .btn { color:#000000 !important; }
+  }
+</style>
+</head>
+<body class="bg" style="margin:0;padding:0;background:#F2F2F2;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;font-size:1px;line-height:1px;color:#F2F2F2;">
+  {{ tournament_name }} is live. Your admin dashboard is ready to configure.
+</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="bg" style="background:#F2F2F2;">
+<tr><td align="center" style="padding:32px 12px;">
+  <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;">
+    <tr><td class="px" style="padding:0 8px 16px 8px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+        <tr><td bgcolor="#FFFFFF" style="background:#FFFFFF;border-radius:10px;padding:10px 16px;">
+          <a href="https://nekotab.com/" style="text-decoration:none;">
+            <img src="https://nekotab.com/static/logo.png" alt="NekoTab" height="36" style="display:block;height:36px;width:auto;border:0;outline:none;font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:bold;color:#111111;">
+          </a>
+        </td></tr>
+      </table>
+    </td></tr>
+    <tr><td class="card" style="background:#FFFFFF;border-radius:14px;overflow:hidden;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr><td class="accent" style="height:6px;background:#000000;font-size:0;line-height:0;">&nbsp;</td></tr>
+        <tr><td class="px" style="padding:36px 40px 8px 40px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+          <p class="muted" style="margin:0 0 10px 0;font-size:15px;line-height:22px;color:#666666;">Hi {{ owner_name }}, your tournament is ready:</p>
+          <h1 class="h1 ink" style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:32px;line-height:38px;font-weight:bold;color:#111111;">{{ tournament_name }}</h1>
+        </td></tr>
+        <tr><td class="px" style="padding:24px 40px 8px 40px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+            <tr><td align="center" bgcolor="#000000" class="accent" style="border-radius:8px;">
+              <a href="{{ tournament_url }}" class="btn" style="display:inline-block;padding:14px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;font-weight:bold;color:#FFFFFF;text-decoration:none;border-radius:8px;">Open admin dashboard</a>
+            </td></tr>
+          </table>
+        </td></tr>
+        <tr><td class="px" style="padding:20px 40px 8px 40px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="slug" style="background:#F5F5F5;border:1px solid #E2E2E2;border-radius:10px;">
+            <tr><td style="padding:14px 18px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;">
+              <span class="muted" style="color:#666666;">Tournament URL</span><br>
+              <a href="{{ tournament_url }}" style="font-weight:bold;word-break:break-all;">{{ tournament_url }}</a><br>
+              <span class="muted" style="color:#666666;">Slug:</span> <span class="ink" style="color:#111111;font-family:Menlo,Consolas,monospace;">{{ tournament_slug }}</span>
+            </td></tr>
+          </table>
+        </td></tr>
+        <tr><td class="px" style="padding:28px 40px 4px 40px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+          <h2 class="ink" style="margin:0 0 14px 0;font-size:18px;line-height:24px;color:#111111;">Get set up in three steps</h2>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr><td width="36" valign="top" style="padding-bottom:14px;"><div class="accent btn" style="width:26px;height:26px;border-radius:13px;background:#000000;color:#FFFFFF;text-align:center;font-size:13px;line-height:26px;font-weight:bold;">1</div></td><td class="ink" style="padding-bottom:14px;font-size:15px;line-height:22px;color:#111111;"><strong>Configure your format.</strong><br><span class="muted" style="color:#666666;">Set rounds, break rules and tournament settings.</span></td></tr>
+            <tr><td width="36" valign="top" style="padding-bottom:14px;"><div class="accent btn" style="width:26px;height:26px;border-radius:13px;background:#000000;color:#FFFFFF;text-align:center;font-size:13px;line-height:26px;font-weight:bold;">2</div></td><td class="ink" style="padding-bottom:14px;font-size:15px;line-height:22px;color:#111111;"><strong>Add teams, adjudicators and venues.</strong><br><span class="muted" style="color:#666666;">Import them in bulk or add them one by one.</span></td></tr>
+            <tr><td width="36" valign="top"><div class="accent btn" style="width:26px;height:26px;border-radius:13px;background:#000000;color:#FFFFFF;text-align:center;font-size:13px;line-height:26px;font-weight:bold;">3</div></td><td class="ink" style="font-size:15px;line-height:22px;color:#111111;"><strong>Generate draws and start tabbing.</strong><br><span class="muted" style="color:#666666;">Release the first round when you are ready.</span></td></tr>
+          </table>
+        </td></tr>
+        <tr><td class="px" style="padding:28px 40px 36px 40px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="rule" style="border-top:1px solid #E2E2E2;font-size:0;line-height:0;">&nbsp;</td></tr></table>
+          <p class="muted" style="margin:20px 0 0 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:24px;color:#666666;">
+            Questions? <a href="https://nekotab.com/contact/">Contact us</a>, or ask the community on
+            <a href="https://discord.com/invite/NBny8hnwXr">Discord</a>.
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+    <tr><td class="px" align="center" style="padding:24px 24px 8px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#666666;">
+      <p class="muted" style="margin:0 0 8px 0;color:#666666;"><a href="https://discord.com/invite/NBny8hnwXr">Discord</a> &nbsp;|&nbsp; <a href="https://facebook.com/project.nekotab">Facebook</a> &nbsp;|&nbsp; <a href="https://nekotab.com/contact/">Contact</a></p>
+      <p class="muted" style="margin:0;color:#666666;">Happy tabbing,<br>The NekoTab Team</p>
+      <p class="muted" style="margin:12px 0 0 0;color:#8A8A8A;">You received this email because you created a tournament on NekoTab.</p>
+    </td></tr>
+  </table>
+</td></tr>
+</table>
+</body>
+</html>

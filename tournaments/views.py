@@ -11,7 +11,8 @@ from django.db import DatabaseError, models, transaction
 from django.db.models import Count, Q
 from django.shortcuts import redirect, resolve_url, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives, send_mail
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.html import format_html_join
 from django.utils import timezone
@@ -52,6 +53,39 @@ from .utils import get_side_name, personal_organization_for
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
+
+
+def _send_tournament_created_email(user, tournament, tournament_url):
+    """Send the HTML welcome email to a newly created tournament owner."""
+    owner_email = getattr(user, 'email', None)
+    if not owner_email:
+        return
+
+    owner_name = (user.get_full_name() or '').strip() or user.username
+    context = {
+        'owner_name': owner_name,
+        'tournament_name': tournament.name,
+        'tournament_slug': tournament.slug,
+        'tournament_url': tournament_url,
+    }
+
+    try:
+        message = EmailMultiAlternatives(
+            subject=f'Your NekoTab Tournament "{tournament.name}" is Ready!',
+            body=render_to_string('emails/tournament_created.txt', context),
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[owner_email],
+        )
+        message.attach_alternative(
+            render_to_string('emails/tournament_created.html', context),
+            'text/html',
+        )
+        message.send(fail_silently=True)
+        logger.info("Tournament creation owner email sent to '%s' for '%s'",
+                    owner_email, tournament.name)
+    except Exception as e:
+        logger.error("Failed to send tournament creation owner email: %s",
+                     e, exc_info=True)
 
 
 def _premium_gate_on():
@@ -585,35 +619,7 @@ class CreateTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin, Create
         except Exception as e:
             logger.error("Failed to send tournament creation admin email: %s", e, exc_info=True)
 
-        # Send welcome email to the creator/owner (non-blocking)
-        owner_email = getattr(self.request.user, 'email', None)
-        if owner_email:
-            try:
-                send_mail(
-                    subject=f"Your NekoTab Tournament \"{tournament.name}\" is Ready!",
-                    message=(
-                        f"Hi {self.request.user.username},\n\n"
-                        f"Your tournament \"{tournament.name}\" has been successfully created on NekoTab!\n\n"
-                        f"You can access your tournament dashboard here:\n"
-                        f"{tournament_url}\n\n"
-                        f"Quick Links:\n"
-                        f"- Admin Dashboard: {tournament_url}\n"
-                        f"- Tournament Slug: {tournament.slug}\n\n"
-                        f"Next Steps:\n"
-                        f"1. Configure your tournament format and settings\n"
-                        f"2. Add teams, adjudicators and venues\n"
-                        f"3. Generate draws and start tabbing!\n\n"
-                        f"If you have any questions, reply to this email or visit our documentation.\n\n"
-                        f"Happy tabbing!\n"
-                        f"The NekoTab Team\n"
-                    ),
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[owner_email],
-                    fail_silently=True,
-                )
-                logger.info("Tournament creation owner email sent to '%s' for '%s'", owner_email, tournament.name)
-            except Exception as e:
-                logger.error("Failed to send tournament creation owner email: %s", e, exc_info=True)
+        _send_tournament_created_email(self.request.user, tournament, tournament_url)
 
         # Warm the subdomain-exists cache so the redirect lands immediately
         from django.core.cache import cache
@@ -972,30 +978,7 @@ class CreateCongressTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin
         except Exception as e:
             logger.error("Failed to send Congress tournament creation admin email: %s", e, exc_info=True)
 
-        owner_email = getattr(self.request.user, 'email', None)
-        if owner_email:
-            try:
-                send_mail(
-                    subject=f'Your NekoTab Congress Tournament "{tournament.name}" is Ready!',
-                    message=(
-                        f"Hi {self.request.user.username},\n\n"
-                        f'Your Congress tournament "{tournament.name}" has been created on NekoTab!\n\n'
-                        f"You can access your tournament here:\n"
-                        f"{tournament_url}\n\n"
-                        f"Next Steps:\n"
-                        f"1. Complete the Congress setup wizard\n"
-                        f"2. Add legislators (students) and scorers\n"
-                        f"3. Set up your docket with legislation\n"
-                        f"4. Create chambers and start sessions!\n\n"
-                        f"Happy tabbing!\n"
-                        f"The NekoTab Team\n"
-                    ),
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[owner_email],
-                    fail_silently=True,
-                )
-            except Exception as e:
-                logger.error("Failed to send Congress tournament creation owner email: %s", e, exc_info=True)
+        _send_tournament_created_email(self.request.user, tournament, tournament_url)
 
         from django.core.cache import cache
         cache.set(f'subdom_tour_exists_{tournament.slug.lower()}', True, 300)
