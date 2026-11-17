@@ -26,37 +26,36 @@
 
   {{ block.super }}
 
-  <script>
-    $(document).ready( function() {
+  {# One list per constrainee type, shared by every row. #}
+  {% for type, choices in subject_lists %}
+    <datalist id="subjects-{{ type }}">
+      {% for value, label in choices %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+    </datalist>
+  {% endfor %}
 
-      function filterContentIDs(filteredList, filterToType) {
-        $(filteredList).children().each(function() {
-          // For each element in the data list check if contains the type
-          // This works as we suffixed the text; ie John Smith (Adjudicator)
-          if ($(this).text().toLowerCase().indexOf(filterToType) !== -1) {
-            $(this).prop('disabled', false);
-          } else {
-            $(this).prop('disabled', true);
-          }
-        });
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var TYPES = ['adjudicator', 'team', 'institution'];
+
+      function rowOf(el) { return el.closest('.list-group-item'); }
+
+      // Point the row's ID box at the list for the selected type.
+      function pointList(typeSelect, clear) {
+        var row = rowOf(typeSelect);
+        var idInput = row && row.querySelector('input[data-subject-id]');
+        if (!idInput) return;
+        var text = (typeSelect.options[typeSelect.selectedIndex] || {}).text || '';
+        text = text.toLowerCase();
+        var type = TYPES.filter(function (t) { return text.indexOf(t) !== -1; })[0];
+        if (type) idInput.setAttribute('list', 'subjects-' + type);
+        else idInput.removeAttribute('list');
+        if (clear) idInput.value = '';
       }
 
-      // Initial filtering of the options based on preset content type
-      $("select[data-filter]").each(function() {
-        var selectedType = $(this).find(":selected").text(); // Get selected type
-        var filteredList = $(this).parent().parent().parent().find("datalist")
-        filterContentIDs(filteredList, selectedType)
+      document.querySelectorAll('select[data-filter]').forEach(function (sel) {
+        pointList(sel, false);
+        sel.addEventListener('change', function () { pointList(sel, true); });
       });
-
-      // Update filters on change of selected content type
-      $("select[data-filter]").change(function() {
-        var subjectIDInput = $(this).parent().parent().parent().find("input[list]")
-        $(subjectIDInput).val(null); // Set ID to none when type changes
-        var filteredList = $(this).parent().parent().parent().find("datalist")
-        var selectedType = $(this).find(":selected").text(); // Get selected type
-        filterContentIDs(filteredList, selectedType)
-      });
-
     });
   </script>
 

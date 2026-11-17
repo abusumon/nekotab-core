@@ -1212,15 +1212,17 @@ class FixDebateTeamsView(AdministratorMixin, TournamentMixin, TemplateView):
     template_name = "fix_debate_teams.html"
 
     def get_incomplete_debates(self):
+        # Sides are integers (DebateSide), which can't be keyword names, so
+        # annotate as "side_<n>".
         annotations = {  # annotates with the number of DebateTeams on each side in the debate
-            side: Count('debateteam', filter=Q(debateteam__side=side), distinct=True)
+            'side_%d' % side: Count('debateteam', filter=Q(debateteam__side=side), distinct=True)
             for side in self.tournament.sides
         }
         debates = Debate.objects.filter(round__tournament=self.tournament)
         debates = debates.prefetch_related('debateteam_set__team').annotate(**annotations)
 
         # A debate is incomplete if there isn't exactly one team on each side
-        incomplete_debates = debates.filter(~Q(**{side: 1 for side in self.tournament.sides}))
+        incomplete_debates = debates.filter(~Q(**{'side_%d' % side: 1 for side in self.tournament.sides}))
 
         # Finally, go through and populate lists of teams on each side
         for debate in incomplete_debates:

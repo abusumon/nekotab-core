@@ -5,8 +5,9 @@ from defusedxml.ElementTree import fromstring
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core import management
+from django.db import transaction
 from django.forms import modelformset_factory
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
@@ -114,6 +115,57 @@ class ImportInstitutionsWizardView(BaseImportWizardView):
         return ngettext("Added %(count)d institution.", "Added %(count)d institutions.", count)
 
 
+def suggest_institution_code(name):
+    """Suggests a short code for an institution, e.g. "Dhaka University" ->
+    "Dhaka University", "University of Dhaka Debating Society" -> "University
+    of Dhaka". Codes prefix team names, so whole words read better than initials."""
+    max_length = Institution._meta.get_field('code').max_length
+    code = ""
+    for word in name.split():
+        candidate = (code + " " + word).strip()
+        if len(candidate) > max_length:
+            break
+        code = candidate
+    return code or name[:max_length]
+
+
+class QuickAddInstitutionView(AdministratorMixin, LogActionMixin, TournamentMixin, View):
+    """Adds an institution from the institution picker without leaving the
+    page. If an institution with the same name already exists (ignoring case),
+    returns that one instead, so the platform-wide list doesn't fill up with
+    duplicates."""
+
+    edit_permission = Permission.ADD_INSTITUTIONS
+    action_log_type = ActionLogEntry.ActionType.SIMPLE_IMPORT_INSTITUTIONS
+    http_method_names = ['post']
+
+    def post(self, request, *args, **kwargs):
+        name_field = Institution._meta.get_field('name')
+        code_field = Institution._meta.get_field('code')
+        name = " ".join(request.POST.get('name', '').split())
+        code = " ".join(request.POST.get('code', '').split())
+
+        if not name:
+            return JsonResponse({'error': _("Enter the institution's name.")}, status=400)
+        if len(name) > name_field.max_length:
+            return JsonResponse({'error': _("The name can be at most %(max)d characters.") % {'max': name_field.max_length}}, status=400)
+        if len(code) > code_field.max_length:
+            return JsonResponse({'error': _("The code can be at most %(max)d characters.") % {'max': code_field.max_length}}, status=400)
+
+        institution = Institution.objects.filter(name__iexact=name).order_by('id').first()
+        created = institution is None
+        if created:
+            institution = Institution.objects.create(name=name, code=code or suggest_institution_code(name))
+            self.log_action(content_object=institution)
+
+        return JsonResponse({
+            'id': institution.id,
+            'name': institution.name,
+            'code': institution.code,
+            'created': created,
+        })
+
+
 class ImportVenuesWizardView(BaseImportWizardView):
     model = Venue
     edit_permission = Permission.ADD_ROOMS
@@ -143,6 +195,7 @@ class BaseImportByInstitutionWizardView(BaseImportWizardView):
         if step == 'numbers':
             return {
                 'institutions': Institution.objects.all(),
+                'tournament': self.tournament,
             }
         elif step == 'details':
             return {'form_kwargs': {'tournament': self.tournament}}

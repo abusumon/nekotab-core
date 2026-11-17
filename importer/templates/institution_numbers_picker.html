@@ -1,0 +1,434 @@
+{% load i18n debate_tags %}
+{% comment %}
+Searchable "how many from each institution" picker, shared by the Add Teams and
+Add Adjudicators wizards. Every institution still has a (hidden) number input,
+so the form posts exactly as before; the visible list only shows institutions
+already in this tournament, plus whatever the user searches for or adds.
+
+Include with: noun_plural (e.g. "teams"), queued_label, max_allowed.
+{% endcomment %}
+{% tournamenturl 'importer-quick-add-institution' as quick_add_url %}
+
+<div id="inst-picker"
+     data-add-url="{{ quick_add_url }}"
+     data-prefix="{{ wizard.form.prefix|default_if_none:'' }}"
+     data-msg-more="{% trans '…and %(count)s more. Keep typing to narrow it down.' %}"
+     data-msg-add="{% trans 'Add “%(name)s” as a new institution' %}"
+     data-msg-added="{% trans 'Added' %}"
+     data-msg-exists="{% trans 'Already on NekoTab' %}"
+     data-msg-error="{% trans 'Could not add the institution. Check your connection and try again.' %}"
+     data-msg-in-tournament="{% trans 'Institutions in this tournament' %}"
+     data-msg-start-typing="{% trans 'Start typing to find your institution, or add a new one.' %}"
+     data-msg-no-match="{% trans 'No institution matches “%(query)s”.' %}"
+     data-msg-results="{% trans 'Search results' %}"
+     data-msg-remove="{% trans 'Remove' %}">
+
+  {% comment %}
+  Inputs exist only for "Unaffiliated", this tournament's institutions and
+     anything already given a number. Every other institution comes from the
+     JSON list below and gets an input only when the user sets a count, so the
+     page doesn't carry thousands of hidden inputs. Missing inputs post as
+     empty, which the form treats as 0.
+  {% endcomment %}
+  <div class="d-none" aria-hidden="true" id="inst-hidden-fields">
+    {% for field in wizard.form %}
+      {% if field.name == 'number_unaffiliated' or field.name in wizard.form.in_tournament_field_names or field.value %}
+        <input type="number" min="0"
+               id="{{ field.id_for_label }}"
+               name="{{ field.html_name }}"
+               value="{{ field.value|default_if_none:'' }}"
+               data-display="{{ field.label }}"
+               data-unaffiliated="{% if field.name == 'number_unaffiliated' %}1{% endif %}"
+               data-in-tournament="{% if field.name in wizard.form.in_tournament_field_names %}1{% endif %}"
+               class="inst-hidden-input">
+      {% endif %}
+    {% endfor %}
+  </div>
+  {{ wizard.form.picker_institutions|json_script:"inst-all" }}
+
+  <div class="card mb-3">
+    <div class="card-body p-3">
+      <label for="inst-search" class="inst-label">{% trans "Find an institution" %}</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text inst-search-icon"><i data-feather="search"></i></span>
+        </div>
+        <input type="search" id="inst-search" class="form-control"
+               placeholder="{% trans 'Type a name or code, e.g. Dhaka' %}"
+               autocomplete="off" spellcheck="false">
+      </div>
+      <div id="inst-chips" class="inst-chips" hidden></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="inst-section-title" id="inst-section-title"></div>
+    <ul class="list-group list-group-flush" id="inst-results"></ul>
+    <div class="inst-empty text-muted" id="inst-empty" hidden></div>
+
+    {# Shown at the bottom of every search, so a missing institution can be added in place. #}
+    <div class="inst-add" id="inst-add" hidden>
+      <button type="button" class="btn btn-link inst-add-toggle" id="inst-add-toggle">
+        <i data-feather="plus-circle"></i> <span id="inst-add-toggle-text"></span>
+      </button>
+      <div class="inst-add-form" id="inst-add-form" hidden>
+        <div class="form-row">
+          <div class="col-md-7 mb-2">
+            <label for="inst-add-name" class="inst-label">{% trans "Full name" %}</label>
+            <input type="text" id="inst-add-name" class="form-control" maxlength="100"
+                   placeholder="{% trans 'e.g. University of Dhaka' %}">
+          </div>
+          <div class="col-md-5 mb-2">
+            <label for="inst-add-code" class="inst-label">{% trans "Short name" %}</label>
+            <input type="text" id="inst-add-code" class="form-control" maxlength="20"
+                   placeholder="{% trans 'e.g. Dhaka' %}">
+          </div>
+        </div>
+        <p class="inst-hint">{% trans "The short name goes in front of team names, e.g. “Dhaka A”." %}</p>
+        <div class="inst-add-error text-danger" id="inst-add-error" hidden></div>
+        <button type="button" class="btn btn-primary btn-sm" id="inst-add-submit">{% trans "Add institution" %}</button>
+        <button type="button" class="btn btn-link btn-sm text-muted" id="inst-add-cancel">{% trans "Cancel" %}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-3">
+    <div class="list-group-item inst-footer">
+      <div>
+        <span class="badge badge-pill inst-total" id="inst-total-badge"><span id="inst-total">0</span> {{ queued_label }}</span>
+        <small class="text-muted ml-2">{% blocktrans trimmed with max=max_allowed %}Up to {{ max }} per import.{% endblocktrans %}</small>
+      </div>
+      <button type="submit" class="btn btn-success">
+        {% trans "Next Step" context "button" %} <i data-feather="arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  #inst-picker .inst-label { font-size: .8rem; font-weight: 600; color: #6c757d; margin-bottom: .25rem; }
+  #inst-picker .inst-search-icon { background: transparent; }
+  #inst-picker .inst-search-icon svg { width: 16px; height: 16px; color: #adb5bd; }
+  #inst-picker .inst-section-title { font-size: .75rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #6c757d; padding: .75rem 1.25rem .25rem; }
+  #inst-picker .inst-section-title:empty { display: none; }
+  #inst-picker .inst-empty { padding: 1.5rem 1.25rem; text-align: center; }
+  #inst-picker .inst-row { display: flex; align-items: center; padding: .5rem 1.25rem; }
+  #inst-picker .inst-row + .inst-row { border-top: 1px solid rgba(0,0,0,.06); }
+  #inst-picker .inst-row.has-count { background: rgba(99,102,241,.06); }
+  #inst-picker .inst-row.just-added { background: rgba(25,135,84,.08); }
+  #inst-picker .inst-name { flex: 1 1 auto; min-width: 0; margin-right: 1rem; overflow-wrap: anywhere; }
+  #inst-picker .inst-tag { display: inline-block; font-size: .7rem; font-weight: 600; color: #198754; margin-left: .4rem; }
+  #inst-picker .inst-stepper { display: flex; flex-shrink: 0; }
+  #inst-picker .inst-stepper button { border: 1px solid #ced4da; background: #fff; width: 34px; font-size: 1.1rem; line-height: 1; }
+  #inst-picker .inst-stepper button:hover { background: #f1f3f5; }
+  #inst-picker .inst-stepper button:first-child { border-radius: 6px 0 0 6px; border-right: 0; }
+  #inst-picker .inst-stepper button:last-child { border-radius: 0 6px 6px 0; border-left: 0; }
+  #inst-picker .inst-count { width: 52px; text-align: center; border: 1px solid #ced4da; padding: .3rem 0; font-weight: 600; -moz-appearance: textfield; }
+  #inst-picker .inst-count::-webkit-outer-spin-button, #inst-picker .inst-count::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  #inst-picker .inst-more { padding: .5rem 1.25rem; font-size: .85rem; color: #6c757d; }
+  #inst-picker .inst-add { border-top: 1px solid rgba(0,0,0,.08); padding: .5rem 1.25rem; }
+  #inst-picker .inst-add-toggle { padding-left: 0; text-align: left; white-space: normal; }
+  #inst-picker .inst-add-toggle svg { width: 16px; height: 16px; vertical-align: -3px; }
+  #inst-picker .inst-add-form { padding: .25rem 0 .75rem; }
+  #inst-picker .inst-hint { font-size: .8rem; color: #6c757d; margin-bottom: .5rem; }
+  #inst-picker .inst-add-error { font-size: .85rem; margin-bottom: .5rem; }
+  #inst-picker .inst-chips { display: flex; flex-wrap: wrap; margin: .5rem -.2rem 0; }
+  #inst-picker .inst-chip { display: inline-flex; align-items: center; margin: .2rem; padding: .2rem .4rem .2rem .7rem; border-radius: 100px; font-size: .8rem; background: rgba(99,102,241,.1); color: #4338ca; }
+  #inst-picker .inst-chip button { border: 0; background: none; color: inherit; font-size: 1rem; line-height: 1; padding: 0 .25rem; margin-left: .2rem; }
+  #inst-picker .inst-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  #inst-picker .inst-footer > * { margin: .25rem 0; }
+  #inst-picker .inst-footer svg { width: 15px; height: 15px; vertical-align: -2px; }
+  #inst-picker .inst-total { font-size: .9rem; padding: .45em .9em; background: #6c757d; color: #fff; }
+  #inst-picker .inst-total.has-count { background: #198754; }
+</style>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.getElementById('inst-picker');
+  if (!root) return;
+  var form = root.closest('form');
+  var hiddenWrap = document.getElementById('inst-hidden-fields');
+  var searchEl = document.getElementById('inst-search');
+  var resultsEl = document.getElementById('inst-results');
+  var titleEl = document.getElementById('inst-section-title');
+  var emptyEl = document.getElementById('inst-empty');
+  var chipsEl = document.getElementById('inst-chips');
+  var addWrap = document.getElementById('inst-add');
+  var addToggle = document.getElementById('inst-add-toggle');
+  var addToggleText = document.getElementById('inst-add-toggle-text');
+  var addForm = document.getElementById('inst-add-form');
+  var addName = document.getElementById('inst-add-name');
+  var addCode = document.getElementById('inst-add-code');
+  var addError = document.getElementById('inst-add-error');
+  var addSubmit = document.getElementById('inst-add-submit');
+  var MAX_RESULTS = 30;
+  var prefix = root.dataset.prefix;
+  var justAddedId = null;
+  var justAddedTag = '';
+
+  var text = {
+    inTournament: root.dataset.msgInTournament,
+    startTyping: root.dataset.msgStartTyping,
+    noMatch: root.dataset.msgNoMatch,
+    results: root.dataset.msgResults,
+    remove: root.dataset.msgRemove
+  };
+
+  function normalise(s) {
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim();
+  }
+  function fmt(template, params) {
+    return template.replace(/%\((\w+)\)s/g, function (_, key) { return params[key]; });
+  }
+  function fieldName(id) {
+    var name = 'number_institution_' + id;
+    return prefix ? prefix + '-' + name : name;
+  }
+
+  // Entries: one per institution (+ "Unaffiliated"). An entry gets an
+  // <input> only once it needs one (see ensureField).
+  var entries = [];
+  var byId = {};
+  function makeEntry(id, display, field) {
+    var e = {
+      id: id === null ? null : String(id),
+      display: display,
+      name: display.replace(/\s*\([^()]*\)\s*$/, ''),
+      search: normalise(display),
+      field: field || null,
+      unaffiliated: !!(field && field.dataset.unaffiliated),
+      inTournament: !!(field && field.dataset.inTournament)
+    };
+    entries.push(e);
+    if (e.id !== null) byId[e.id] = e;
+    return e;
+  }
+  Array.prototype.forEach.call(hiddenWrap.querySelectorAll('.inst-hidden-input'), function (f) {
+    var m = /number_institution_(\d+)$/.exec(f.name);
+    makeEntry(m ? m[1] : null, f.dataset.display, f);
+  });
+  try {
+    JSON.parse(document.getElementById('inst-all').textContent).forEach(function (row) {
+      if (!byId[String(row[0])]) makeEntry(row[0], row[1], null);
+    });
+  } catch (err) { /* the list is optional; rendered inputs still work */ }
+
+  function count(e) { return e.field ? Math.max(0, parseInt(e.field.value, 10) || 0) : 0; }
+  function ensureField(e) {
+    if (e.field) return e.field;
+    var f = document.createElement('input');
+    f.type = 'number'; f.min = '0';
+    f.name = fieldName(e.id); f.id = 'id_' + f.name;
+    f.className = 'inst-hidden-input';
+    hiddenWrap.appendChild(f);
+    e.field = f;
+    return f;
+  }
+  function setCount(e, value) {
+    value = Math.max(0, value || 0);
+    if (value > 0) ensureField(e).value = value;
+    else if (e.field) e.field.value = '';
+  }
+
+  function buildRow(e) {
+    var li = document.createElement('li');
+    li.className = 'inst-row';
+    var name = document.createElement('div');
+    name.className = 'inst-name';
+    name.textContent = e.display;
+    if (e.id !== null && e.id === String(justAddedId)) {
+      var tag = document.createElement('span');
+      tag.className = 'inst-tag';
+      tag.textContent = justAddedTag;
+      name.appendChild(tag);
+      li.classList.add('just-added');
+    }
+    var stepper = document.createElement('div');
+    stepper.className = 'inst-stepper';
+    var dec = document.createElement('button');
+    dec.type = 'button'; dec.textContent = '−'; dec.tabIndex = -1;
+    dec.setAttribute('aria-label', '−1 ' + e.display);
+    var input = document.createElement('input');
+    input.type = 'number'; input.min = '0'; input.placeholder = '0';
+    input.className = 'inst-count';
+    input.value = count(e) || '';
+    input.setAttribute('aria-label', e.display);
+    var inc = document.createElement('button');
+    inc.type = 'button'; inc.textContent = '+'; inc.tabIndex = -1;
+    inc.setAttribute('aria-label', '+1 ' + e.display);
+    stepper.appendChild(dec); stepper.appendChild(input); stepper.appendChild(inc);
+    li.appendChild(name); li.appendChild(stepper);
+
+    function set(value) {
+      setCount(e, value);
+      var n = count(e);
+      input.value = n > 0 ? n : '';
+      li.classList.toggle('has-count', n > 0);
+      refreshSummary();
+    }
+    dec.addEventListener('click', function () { set(count(e) - 1); });
+    inc.addEventListener('click', function () { set(count(e) + 1); });
+    input.addEventListener('input', function () { set(parseInt(input.value, 10)); });
+    input.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') ev.preventDefault(); });
+    li.classList.toggle('has-count', count(e) > 0);
+    li.countInput = input;
+    return li;
+  }
+
+  function render() {
+    var query = normalise(searchEl.value);
+    resultsEl.innerHTML = '';
+    emptyEl.hidden = true;
+
+    if (!query) {
+      // Before searching: this tournament's institutions, anything already
+      // given a number, and the "Unaffiliated" row.
+      var shown = entries.filter(function (e) {
+        return e.unaffiliated || e.inTournament || count(e) > 0 || (e.id !== null && e.id === String(justAddedId));
+      });
+      shown.sort(function (a, b) { return (b.unaffiliated ? 1 : 0) - (a.unaffiliated ? 1 : 0); });
+      var hasTournament = shown.some(function (e) { return e.inTournament; });
+      titleEl.textContent = hasTournament ? text.inTournament : '';
+      if (!hasTournament) {
+        emptyEl.textContent = text.startTyping;
+        emptyEl.hidden = false;
+      }
+      shown.forEach(function (e) { resultsEl.appendChild(buildRow(e)); });
+      addWrap.hidden = true;
+      return;
+    }
+
+    var words = query.split(' ');
+    var matches = entries.filter(function (e) {
+      return words.every(function (w) { return e.search.indexOf(w) !== -1; });
+    });
+    // Rank: this tournament first, then names starting with the query, then the rest.
+    matches.sort(function (a, b) {
+      var ta = a.inTournament ? 0 : 1, tb = b.inTournament ? 0 : 1;
+      if (ta !== tb) return ta - tb;
+      return (a.search.indexOf(query) === 0 ? 0 : 1) - (b.search.indexOf(query) === 0 ? 0 : 1);
+    });
+
+    titleEl.textContent = matches.length ? text.results : '';
+    if (!matches.length) {
+      emptyEl.textContent = fmt(text.noMatch, { query: searchEl.value.trim() });
+      emptyEl.hidden = false;
+    }
+    matches.slice(0, MAX_RESULTS).forEach(function (e) { resultsEl.appendChild(buildRow(e)); });
+    if (matches.length > MAX_RESULTS) {
+      var more = document.createElement('li');
+      more.className = 'inst-more';
+      more.textContent = fmt(root.dataset.msgMore, { count: matches.length - MAX_RESULTS });
+      resultsEl.appendChild(more);
+    }
+
+    // Offer to add it unless the exact name already exists.
+    var typed = searchEl.value.trim().replace(/\s+/g, ' ');
+    var exact = entries.some(function (e) { return normalise(e.name) === normalise(typed); });
+    addWrap.hidden = exact || typed.length < 2;
+    addToggleText.textContent = fmt(root.dataset.msgAdd, { name: typed });
+  }
+
+  function refreshSummary() {
+    var total = 0;
+    chipsEl.innerHTML = '';
+    entries.forEach(function (e) {
+      var n = count(e);
+      if (!n) return;
+      total += n;
+      var chip = document.createElement('span');
+      chip.className = 'inst-chip';
+      chip.appendChild(document.createTextNode(e.display + ' × ' + n));
+      var x = document.createElement('button');
+      x.type = 'button'; x.textContent = '×';
+      x.setAttribute('aria-label', text.remove + ' ' + e.display);
+      x.addEventListener('click', function () { setCount(e, 0); refreshSummary(); render(); });
+      chip.appendChild(x);
+      chipsEl.appendChild(chip);
+    });
+    chipsEl.hidden = total === 0;
+    document.getElementById('inst-total').textContent = total;
+    document.getElementById('inst-total-badge').classList.toggle('has-count', total > 0);
+  }
+
+  // Adding a new institution
+  function suggestCode(name) {
+    var code = '';
+    name.split(/\s+/).some(function (word) {
+      var next = (code + ' ' + word).trim();
+      if (next.length > 20) return true;
+      code = next;
+      return false;
+    });
+    return code || name.slice(0, 20);
+  }
+  function openAddForm() {
+    var typed = searchEl.value.trim().replace(/\s+/g, ' ');
+    addName.value = typed;
+    addCode.value = suggestCode(typed);
+    addError.hidden = true;
+    addForm.hidden = false;
+    addToggle.hidden = true;
+    addName.focus();
+  }
+  function closeAddForm() {
+    addForm.hidden = true;
+    addToggle.hidden = false;
+  }
+  function submitAdd() {
+    var name = addName.value.trim();
+    if (!name) { addName.focus(); return; }
+    addSubmit.disabled = true;
+    addError.hidden = true;
+    var body = new URLSearchParams();
+    body.append('name', name);
+    body.append('code', addCode.value.trim());
+    var csrf = form.querySelector('[name=csrfmiddlewaretoken]');
+    fetch(root.dataset.addUrl, {
+      method: 'POST',
+      headers: { 'X-CSRFToken': csrf ? csrf.value : '', 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+      credentials: 'same-origin'
+    }).then(function (response) {
+      return response.json().catch(function () { return {}; }).then(function (data) {
+        if (!response.ok || !data.id) throw new Error(data.error || root.dataset.msgError);
+        return data;
+      });
+    }).then(function (data) {
+      if (!byId[String(data.id)]) makeEntry(data.id, data.name + ' (' + data.code + ')', null);
+      justAddedId = data.id;
+      justAddedTag = data.created ? root.dataset.msgAdded : root.dataset.msgExists;
+      closeAddForm();
+      searchEl.value = data.name;
+      render();
+      var row = resultsEl.querySelector('.just-added');
+      if (row && row.countInput) row.countInput.focus();
+    }).catch(function (err) {
+      addError.textContent = err.message || root.dataset.msgError;
+      addError.hidden = false;
+    }).then(function () { addSubmit.disabled = false; });
+  }
+
+  addToggle.addEventListener('click', openAddForm);
+  document.getElementById('inst-add-cancel').addEventListener('click', closeAddForm);
+  addSubmit.addEventListener('click', submitAdd);
+  [addName, addCode].forEach(function (el) {
+    el.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter') { ev.preventDefault(); submitAdd(); }
+      if (ev.key === 'Escape') { closeAddForm(); searchEl.focus(); }
+    });
+  });
+
+  searchEl.addEventListener('input', function () { closeAddForm(); render(); });
+  searchEl.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Enter') return;
+    ev.preventDefault();  // never submit the wizard from the search box
+    var first = resultsEl.querySelector('.inst-count');
+    if (first) first.focus();
+  });
+
+  render();
+  refreshSummary();
+})();
+</script>

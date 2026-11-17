@@ -70,7 +70,7 @@ class RegistrationIndexView(TournamentMixin, TemplateView):
         t = self.tournament
         kwargs['institution_registration'] = t.pref('institution_registration')
         kwargs['open_team_registration'] = t.pref('open_team_registration')
-        kwargs['open_adjudicator_registration'] = t.pref('open_adjudicator_registration')
+        kwargs['open_adjudicator_registration'] = t.pref('open_adj_registration')
         return super().get_context_data(**kwargs)
 
 

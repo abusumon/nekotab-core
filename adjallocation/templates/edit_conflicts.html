@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% if institution_choices %}{{ institution_choices|json_script:"institution-choices" }}{% endif %}
   {% if can_edit %}
     {% include "components/formset.html" with triple=True %}
   {% else %}

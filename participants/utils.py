@@ -5,7 +5,18 @@ from django.db.models import Count, Q
 from tournaments.models import Round
 from utils.misc import generate_identifier_string
 
-from .models import Person, Region, Team
+from .models import Adjudicator, Person, Region, Team, TournamentInstitution
+
+
+def tournament_institution_ids(tournament):
+    """Returns the IDs of institutions that already appear in this tournament,
+    through its teams, adjudicators or registration slots. Used to list these
+    first when picking from the (platform-wide) institution list."""
+    ids = set(Team.objects.filter(tournament=tournament).values_list('institution_id', flat=True))
+    ids.update(Adjudicator.objects.filter(tournament=tournament).values_list('institution_id', flat=True))
+    ids.update(TournamentInstitution.objects.filter(tournament=tournament).values_list('institution_id', flat=True))
+    ids.discard(None)
+    return ids
 
 
 def regions_ordered(t):

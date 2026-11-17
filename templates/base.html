@@ -122,6 +122,7 @@
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/mobile-first.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/searchable-select.css' %}" />
   {% if ads_enabled or premium_purchase_url %}{% include "ads/styles.html" %}{% endif %}
   {% block extra-css %}{% endblock %}
   {% block extra-head %}{% endblock %}
@@ -132,6 +133,8 @@
 
   <!-- GA4 + Cookie Consent: shared module -->
   <script defer src="{% static 'js/cookie-consent.js' %}"></script>
+  <!-- Makes long dropdowns (teams, adjudicators, institutions) searchable -->
+  <script defer src="{% static 'js/searchable-select.js' %}"></script>
 
   {% if LANGUAGE_CODE == 'tzl' %}
   <!-- In-context translations; use Talossan -->

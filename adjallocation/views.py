@@ -3,7 +3,7 @@ import logging
 
 from django.contrib import messages
 from django.db.models import Prefetch
-from django.forms import ChoiceField, ModelChoiceField
+from django.forms import ChoiceField, ModelChoiceField, Select
 from django.forms.models import ModelChoiceIterator
 from django.utils.translation import gettext as _, gettext_lazy, ngettext
 from django.views.generic.base import TemplateView
@@ -14,6 +14,7 @@ from availability.utils import annotate_availability
 from options.utils import use_team_code_names
 from participants.models import Adjudicator, Institution, Region
 from participants.prefetch import populate_feedback_scores
+from participants.utils import tournament_institution_ids
 from tournaments.mixins import DebateDragAndDropMixin, TournamentMixin
 from users.permissions import has_permission, Permission
 from utils.misc import ranks_dictionary, redirect_tournament, reverse_tournament
@@ -172,6 +173,40 @@ class TeamChoiceField(DedupModelChoiceField):
         return obj.code_name if self.use_code_names else obj.short_name
 
 
+class InstitutionSearchSelect(Select):
+    """Renders only the blank and the selected institution. The full list of
+    institutions (over 2,000, platform-wide) is sent once per page as JSON
+    and searched in the browser (static/js/searchable-select.js), instead of
+    being repeated as <option>s in every conflict row."""
+
+    def __init__(self, attrs=None):
+        super().__init__(attrs)
+        self.attrs['data-choices-src'] = 'institution-choices'
+
+    def optgroups(self, name, value, attrs=None):
+        selected = {str(v) for v in value if v not in (None, '')}
+        groups = []
+        for index, (option_value, option_label) in enumerate(self.choices):
+            option_value = '' if option_value is None else option_value
+            is_selected = str(option_value) in selected
+            if option_value == '' or is_selected:
+                groups.append((None, [self.create_option(name, option_value, option_label, is_selected, index, attrs=attrs)], index))
+        return groups
+
+
+class InstitutionChoicesMixin:
+    """Supplies the JSON institution list read by InstitutionSearchSelect,
+    with this tournament's institutions flagged so they're listed first."""
+
+    def get_context_data(self, **kwargs):
+        in_tournament = tournament_institution_ids(self.tournament)
+        kwargs['institution_choices'] = [
+            [inst.id, inst.name, inst.code, inst.id in in_tournament]
+            for inst in Institution.objects.order_by('name').only('id', 'name', 'code')
+        ]
+        return super().get_context_data(**kwargs)
+
+
 class BaseAdjudicatorConflictsView(LogActionMixin, AdministratorMixin, TournamentMixin, ModelFormSetView):
 
     template_name = 'edit_conflicts.html'
@@ -307,7 +342,7 @@ class AdjudicatorAdjudicatorConflictsView(BaseAdjudicatorConflictsView):
             messages.success(self.request, _("No changes were made to adjudicator-adjudicator conflicts."))
 
 
-class AdjudicatorInstitutionConflictsView(BaseAdjudicatorConflictsView):
+class AdjudicatorInstitutionConflictsView(InstitutionChoicesMixin, BaseAdjudicatorConflictsView):
 
     view_permission = Permission.VIEW_ADJ_INST_CONFLICTS
     edit_permission = Permission.EDIT_ADJ_INST_CONFLICTS
@@ -321,6 +356,7 @@ class AdjudicatorInstitutionConflictsView(BaseAdjudicatorConflictsView):
     formset_factory_kwargs.update({
         'fields': ('adjudicator', 'institution'),
         'field_classes': {'adjudicator': DedupModelChoiceField, 'institution': DedupModelChoiceField},
+        'widgets': {'institution': InstitutionSearchSelect},
     })
 
     def get_formset(self):
@@ -354,7 +390,7 @@ class AdjudicatorInstitutionConflictsView(BaseAdjudicatorConflictsView):
             messages.success(self.request, _("No changes were made to adjudicator-institution conflicts."))
 
 
-class TeamInstitutionConflictsView(BaseAdjudicatorConflictsView):
+class TeamInstitutionConflictsView(InstitutionChoicesMixin, BaseAdjudicatorConflictsView):
 
     view_permission = Permission.VIEW_TEAM_INST_CONFLICTS
     edit_permission = Permission.EDIT_TEAM_INST_CONFLICTS
@@ -368,6 +404,7 @@ class TeamInstitutionConflictsView(BaseAdjudicatorConflictsView):
     formset_factory_kwargs.update({
         'fields': ('team', 'institution'),
         'field_classes': {'team': TeamChoiceField, 'institution': DedupModelChoiceField},
+        'widgets': {'institution': InstitutionSearchSelect},
     })
 
     def get_formset(self):

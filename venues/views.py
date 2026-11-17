@@ -2,7 +2,7 @@ import logging
 
 from django.contrib import messages
 from django.db.models import Max, Min, Q
-from django.forms import Select
+from django.forms import Select, TextInput
 from django.utils.translation import gettext as _, gettext_lazy, ngettext
 from django.views.generic import TemplateView
 
@@ -11,7 +11,6 @@ from actionlog.models import ActionLogEntry
 from availability.utils import annotate_availability
 from tournaments.mixins import DebateDragAndDropMixin, TournamentMixin
 from users.permissions import Permission
-from utils.forms import SelectPrepopulated
 from utils.misc import ranks_dictionary, redirect_tournament, reverse_tournament
 from utils.mixins import AdministratorMixin
 from utils.views import ModelFormSetView
@@ -122,7 +121,9 @@ class VenueConstraintsView(AdministratorMixin, LogActionMixin, TournamentMixin, 
             },
             'widgets': {
                 'subject_content_type': Select(attrs={'data-filter': True}),
-                'subject_id': SelectPrepopulated(data_list=self.subject_choices()),
+                # One shared <datalist> per subject type (in the template) instead of
+                # a full list of every team, adjudicator and institution per row.
+                'subject_id': TextInput(attrs={'data-subject-id': '1', 'autocomplete': 'off'}),
             },
             'extra': 8,
         }
@@ -136,21 +137,24 @@ class VenueConstraintsView(AdministratorMixin, LogActionMixin, TournamentMixin, 
 
         return VenueConstraint.objects.filter(q)
 
-    def subject_choices(self):
+    def subject_lists(self):
+        """Choices for the "Constrainee ID" box, one list per constrainee type.
+        Rendered once per page; each row's box is pointed at the list for its
+        selected type (see the template's script)."""
         from participants.models import Institution
 
-        options = []
+        adjudicators = self.tournament.relevant_adjudicators.order_by('name').values_list('id', 'name')
+        teams = self.tournament.team_set.order_by('short_name').values_list('id', 'short_name')
+        institutions = Institution.objects.order_by('name').values_list('id', 'name', 'code')
+        return [
+            ('adjudicator', [(i, n) for i, n in adjudicators]),
+            ('team', [(i, n) for i, n in teams]),
+            ('institution', [(i, '%s (%s)' % (n, c) if c else n) for i, n, c in institutions]),
+        ]
 
-        adjudicators = self.tournament.relevant_adjudicators.values('id', 'name')
-        options.extend([(a['id'], _('%s (Adjudicator)') % a['name']) for a in adjudicators])
-
-        teams = self.tournament.team_set.values('id', 'short_name')
-        options.extend([(t['id'], _('%s (Team)') % t['short_name']) for t in teams])
-
-        institutions = Institution.objects.values('id', 'name')
-        options.extend([(i['id'], _('%s (Institution)') % i['name']) for i in institutions])
-
-        return sorted(options, key=lambda x: x[1])
+    def get_context_data(self, **kwargs):
+        kwargs['subject_lists'] = self.subject_lists()
+        return super().get_context_data(**kwargs)
 
     def formset_valid(self, formset):
         result = super().formset_valid(formset)

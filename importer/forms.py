@@ -10,6 +10,7 @@ from django.utils.translation import gettext as _, ngettext, ngettext_lazy
 
 from checkins.models import PersonIdentifier, VenueIdentifier
 from participants.models import Adjudicator, Institution, Speaker, Team
+from participants.utils import tournament_institution_ids
 from privateurls.utils import populate_url_keys
 from venues.models import Venue
 
@@ -372,16 +373,30 @@ class BaseNumberForEachInstitutionForm(forms.Form):
         label=_("Unaffiliated (no institution)"),
         widget=forms.NumberInput(attrs={'placeholder': 0}))
 
-    def __init__(self, institutions, *args, **kwargs):
+    def __init__(self, institutions, *args, tournament=None, **kwargs):
         super().__init__(*args, **kwargs)
         self.institutions = institutions
         self._create_fields()
 
+        # Field names of institutions already in this tournament, which the
+        # template lists before the user has searched for anything.
+        in_tournament = tournament_institution_ids(tournament) if tournament is not None else set()
+        self.in_tournament_field_names = {'number_institution_%d' % i for i in in_tournament}
+
+    @property
+    def max_allowed(self):
+        return MAX_FORM_DATA_FIELDS // self.num_detail_fields
+
     def _create_fields(self):
         """Dynamically generate one integer field for each institution, for the
         user to indicate how many teams are from that institution."""
+        # [id, label] for every institution, sent to the picker once as JSON so
+        # the page doesn't render thousands of hidden inputs (see
+        # institution_numbers_picker.html, which creates inputs on demand).
+        self.picker_institutions = []
         for institution in self.institutions:
             label = _("%(name)s (%(code)s)") % {'name': institution.name, 'code': institution.code}
+            self.picker_institutions.append([institution.id, str(label)])
             self.fields['number_institution_%d' % institution.id] = forms.IntegerField(
                     min_value=0, label=label, required=False,
                     widget=forms.NumberInput(attrs={'placeholder': 0}))
@@ -392,7 +407,7 @@ class BaseNumberForEachInstitutionForm(forms.Form):
         given = self.cleaned_data.get('number_unaffiliated') or 0  # data might be None
         for institution in self.institutions:
             given += self.cleaned_data.get('number_institution_%d' % institution.id) or 0  # data might be None
-        max_allowed = MAX_FORM_DATA_FIELDS // self.num_detail_fields
+        max_allowed = self.max_allowed
         if given > max_allowed:
             raise ValidationError(self.too_many_error_message % {
                 'max_allowed': max_allowed, 'given': given})

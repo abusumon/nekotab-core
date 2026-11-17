@@ -7,62 +7,24 @@
 
 {% block content %}
 
-{% if wizard.form.fields|length == 0 %}
+{% blocktrans trimmed asvar p1 %}
+  Find each institution and set how many adjudicators to add from it.
+  Independent adjudicators go under "Unaffiliated". If an institution isn't on
+  NekoTab yet, add it from the search results. In the next step you can enter
+  their names and ratings.
+{% endblocktrans %}
+{% include "components/explainer-card.html" with type="info" %}
 
-  <div class="alert alert-warning" role="alert">
-    {% tournamenturl 'importer-simple-institutions' as import_institutions_url %}
-    {% blocktrans trimmed %}
-      You need to
-      <a href="{{ import_institutions_url }}" class="alert-link">add institutions</a>
-      before adding adjudicators.
-    {% endblocktrans %}
-  </div>
+<form method="POST">
+  {% csrf_token %}
+  {{ wizard.management_form }}
 
-{% else %}
+  {% if wizard.form.errors %}
+    {% include "components/form-errors.html" with errors=wizard.form.non_field_errors %}
+  {% endif %}
 
-  {% blocktrans trimmed asvar p1 %}
-    Specify the number of new adjudicators to add per institution.
-    In the next step you can specify their names and ratings.
-  {% endblocktrans %}
-  {% blocktrans trimmed asvar p2 %}
-    You can add up to 198 adjudicators at a time. If you have more than 198
-    adjudicators, split them into chunks. (Please don't try to add more than 198
-    in one go; the system will crash, and you will lose data.)
-  {% endblocktrans %}
-  {% include "components/explainer-card.html" with type="info" %}
-
-  <form method="POST">
-    {% csrf_token %}
-    {{ wizard.management_form }}
-
-    {% if wizard.form.errors %}
-      {% include "components/form-errors.html" with errors=wizard.form.non_field_errors %}
-    {% endif %}
-
-    <div class="card pt-3">
-      <ul class="list-group list-group-flush">
-
-        {% for field in wizard.form %}
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-sm-2">
-                {{ field|addcss:"form-control" }}
-                {{ field.errors }}
-              </div>
-              <label class="col-sm-10" for="{{ field.id_for_label }}">
-                {{ field.label }}
-              </label>
-            </div>
-          </li>
-        {% endfor %}
-
-        {% trans "Next Step" context "button" as title %}
-        {% include "components/form-submit.html" %}
-
-      </ul>
-    </div>
-  </form>
-
-{% endif %}
+  {% trans "adjudicators queued" as queued_label %}
+  {% include "institution_numbers_picker.html" with max_allowed=wizard.form.max_allowed %}
+</form>
 
 {% endblock content %}
