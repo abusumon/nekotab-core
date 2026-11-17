@@ -57,6 +57,10 @@ urlpatterns = [
 
         tournaments.views.PublicSiteIndexView.as_view(),
         name='tabbycat-index'),
+    # Private NekoTab dashboard (/me/, /emet/, /portal/) when installed; it
+    # takes over /me/ ahead of the stock dashboard below.
+    *([re_path(r'^(?=(?:me|emet|portal)(?:/|$))', include('portal.urls'))]
+      if 'portal' in settings.INSTALLED_APPS else []),
     path('me/',
         UserDashboardView.as_view(),
         name='user-dashboard'),

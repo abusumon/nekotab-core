@@ -207,7 +207,7 @@ TABBYCAT_APPS = (
 # only when importable, so this codebase runs without them.
 import importlib.util  # noqa: E402
 
-for _optional_app in ('agent_api',):
+for _optional_app in ('agent_api', 'portal'):
     if importlib.util.find_spec(_optional_app) is not None:
         TABBYCAT_APPS += (_optional_app,)
 
