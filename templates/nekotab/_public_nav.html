@@ -1,0 +1,93 @@
+{% load static %}{% comment %}
+  The public site's top bar: home, team, Emet and pricing pages all include it,
+  so the menu is the same everywhere. Black bar, white text, marine for the one
+  main action. Self-contained (own styles and script) because the pages that
+  include it each own their <head>.
+{% endcomment %}
+<style>
+  .nkp-nav { position: sticky; top: 0; z-index: 50; background: #000; color: #fff; border-bottom: 1px solid #1f1f23;
+             font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .nkp-nav * { box-sizing: border-box; }
+  .nkp-nav-in { max-width: 1180px; margin: 0 auto; padding: 0 16px; height: 64px; display: flex; align-items: center; gap: 8px; }
+  .nkp-logo { display: inline-flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 800; font-size: 1.12rem; margin-right: 18px; }
+  .nkp-logo img { width: 28px; height: 28px; }
+  .nkp-links { display: flex; align-items: center; gap: 4px; }
+  .nkp-links a, .nkp-end a, .nkp-end button { color: #d4d4d8; text-decoration: none; font: inherit; font-size: .94rem; font-weight: 500;
+             padding: 8px 12px; border-radius: 9px; background: none; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .nkp-links a:hover, .nkp-end a:hover, .nkp-end button:hover { color: #fff; background: #18181b; }
+  .nkp-links a[aria-current="page"] { color: #fff; background: #18181b; }
+  .nkp-soon { font-size: .66rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #9db8ff;
+              border: 1px solid #23407a; border-radius: 99px; padding: 1px 7px; }
+  .nkp-end { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+  .nkp-end form { margin: 0; }
+  .nkp-end a.nkp-cta { background: #0B3D91; color: #fff; font-weight: 600; padding: 9px 16px; margin-left: 6px; }
+  .nkp-end a.nkp-cta:hover { background: #0e4bb3; }
+  .nkp-burger { display: none; margin-left: auto; width: 44px; height: 44px; border-radius: 10px; border: 1px solid #27272a; background: #0a0a0a;
+                color: #fff; cursor: pointer; align-items: center; justify-content: center; }
+  .nkp-burger svg { width: 20px; height: 20px; }
+  .nkp-panel { display: none; }
+  @media (max-width: 920px) {
+    .nkp-links, .nkp-end { display: none; }
+    .nkp-burger { display: inline-flex; }
+    .nkp-panel { border-top: 1px solid #1f1f23; padding: 8px 16px 16px; }
+    .nkp-nav.open .nkp-panel { display: grid; gap: 2px; }
+    .nkp-panel a, .nkp-panel button { color: #e4e4e7; text-decoration: none; font: inherit; font-weight: 500; text-align: left; background: none; border: 0;
+                 padding: 12px 10px; border-radius: 10px; min-height: 46px; display: flex; align-items: center; gap: 8px; cursor: pointer; width: 100%; }
+    .nkp-panel a:hover, .nkp-panel button:hover { background: #18181b; }
+    .nkp-panel hr { border: 0; border-top: 1px solid #1f1f23; margin: 6px 0; }
+    .nkp-panel form { margin: 0; }
+    .nkp-panel a.nkp-cta { background: #0B3D91; color: #fff; justify-content: center; font-weight: 600; margin-top: 6px; }
+  }
+</style>
+<header class="nkp-nav" id="nkp-nav">
+  <div class="nkp-nav-in">
+    <a class="nkp-logo" href="/" aria-label="NekoTab home"><img src="{% static 'logo.png' %}" alt="" width="28" height="28">NekoTab</a>
+    <nav class="nkp-links" aria-label="Main">
+      <a href="{% url 'motions' %}" {% if nav_active == 'motions' %}aria-current="page"{% endif %}>Motion Bank</a>
+      <a href="/emet/about/" {% if nav_active == 'emet' %}aria-current="page"{% endif %}>Emet <span class="nkp-soon">Soon</span></a>
+      <a href="{% url 'pricing' %}" {% if nav_active == 'pricing' %}aria-current="page"{% endif %}>Pricing <span class="nkp-soon">Soon</span></a>
+      <a href="/team/" {% if nav_active == 'team' %}aria-current="page"{% endif %}>Behind NekoTab</a>
+    </nav>
+    <div class="nkp-end">
+      {% if user.is_authenticated %}
+        <a href="/me/">Dashboard</a>
+        <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form>
+        <a class="nkp-cta" href="{% url 'tournament-create' %}">Create tournament</a>
+      {% else %}
+        <a href="{% url 'login' %}">Log in</a>
+        <a class="nkp-cta" href="{% url 'register-tournament' %}">Create tournament</a>
+      {% endif %}
+    </div>
+    <button class="nkp-burger" type="button" aria-controls="nkp-panel" aria-expanded="false" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div class="nkp-panel" id="nkp-panel">
+    <a href="{% url 'motions' %}">Motion Bank</a>
+    <a href="/emet/about/">Emet <span class="nkp-soon">Soon</span></a>
+    <a href="{% url 'pricing' %}">Pricing <span class="nkp-soon">Soon</span></a>
+    <a href="/team/">Behind NekoTab</a>
+    <hr>
+    {% if user.is_authenticated %}
+      <a href="/me/">Dashboard</a>
+      <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Log out</button></form>
+      <a class="nkp-cta" href="{% url 'tournament-create' %}">Create tournament</a>
+    {% else %}
+      <a href="{% url 'login' %}">Log in</a>
+      <a class="nkp-cta" href="{% url 'register-tournament' %}">Create tournament</a>
+    {% endif %}
+  </div>
+</header>
+<script>
+(function () {
+  var nav = document.getElementById('nkp-nav'), btn = nav && nav.querySelector('.nkp-burger');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.focus(); }
+  });
+})();
+</script>

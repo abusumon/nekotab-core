@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index, follow">
   <title>{% trans "Pricing" %} — NekoTab</title>
-  <meta name="description" content="NekoTab costs {{ price_label }} per tournament, once. No subscription, no per-team fee, no ads. Public draw and results pages are always free.">
+  <meta name="description" content="NekoTab pricing is being updated. Public draw, tab and results pages are always free to read.">
   <link rel="canonical" href="{{ canonical_url }}">
   {# System fonts, no webfont request: this page is a conversion step and #}
   {# most of its traffic is on mobile networks in South and Southeast Asia. #}
@@ -65,131 +65,41 @@
       .plan .price{font-size:2.5rem;}
       .topbar nav{gap:12px;}
     }
+    /* 2026-11: pricing is being reworked; this page says so plainly. */
+    body { background: #fff; color: #000; }
+    .soon-wrap { max-width: 680px; margin: 0 auto; padding: clamp(48px, 10vw, 110px) 16px; text-align: center; }
+    .soon-tag { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #0B3D91;
+                border: 1px solid #0B3D91; border-radius: 99px; padding: 4px 12px; margin-bottom: 18px; }
+    .soon-wrap h1 { font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -.02em; line-height: 1.1; margin: 0 0 14px; }
+    .soon-wrap p { color: #52525b; font-size: 1.05rem; margin: 0 auto 12px; max-width: 520px; }
+    .soon-now { margin: 28px auto 0; padding: 18px 20px; border: 1px solid #e4e4e7; border-radius: 14px; text-align: left; max-width: 520px; }
+    .soon-now strong { display: block; margin-bottom: 4px; }
+    .soon-acts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
+    .soon-acts a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 12px; font-weight: 600; text-decoration: none; }
+    .soon-acts .p { background: #0B3D91; color: #fff; }
+    .soon-acts .s { border: 1px solid #000; color: #000; }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <a class="topbar-logo" href="/">NekoTab</a>
-    <nav>
-      <a href="/motions/">{% trans "Motions" %}</a>
-      <a href="/contact/">{% trans "Contact" %}</a>
-      <a href="/create/">{% trans "Create" %}</a>
-    </nav>
-  </div>
-
-  <div class="wrap">
-
-    <div class="hero">
-      <h1>{% trans "One price. One tournament. Paid once." %}</h1>
-      <p class="lede">
-        {% blocktrans trimmed %}
-          No subscription, no per-team fee, and no adverts anywhere on the site.
-        {% endblocktrans %}
-      </p>
+  {% include "nekotab/_public_nav.html" with nav_active="pricing" %}
+  <main class="soon-wrap">
+    <span class="soon-tag">{% trans "Updating soon" %}</span>
+    <h1>{% trans "Pricing is being updated" %}</h1>
+    <p>{% blocktrans trimmed %}We're reworking how NekoTab is priced. The new plans will be posted here soon.{% endblocktrans %}</p>
+    <div class="soon-now">
+      <strong>{% trans "Until then" %}</strong>
+      {% if premium_enabled %}
+        {% blocktrans trimmed %}Running a tournament costs {{ price_label }}, paid once, with no subscription. You'll see this before you pay.{% endblocktrans %}
+      {% else %}
+        {% trans "Running a tournament on NekoTab is free." %}
+      {% endif %}
+      {% trans "Public draws, tabs and results are always free for anyone to read." %}
     </div>
-
-    <div class="card plan">
-      <div class="price">{{ price_label }}</div>
-      <div class="per">{% trans "per tournament, one time" %}</div>
-      <a class="btn" href="/create/">{% trans "Create a tournament" %}</a>
-      <ul>
-        <li>{% trans "Unlimited teams, adjudicators, rounds and rooms" %}</li>
-        <li>{% trans "Draws, tabs, ballots, feedback, check-ins, break rounds" %}</li>
-        <li>{% trans "British Parliamentary, Asian, Australs, WSDC, Congress and more" %}</li>
-        <li>{% trans "Your own tournament subdomain and public results pages" %}</li>
-        <li>{% trans "Motion bank, registration forms and ticketing included" %}</li>
-        <li>{% trans "No advertising, for you or your audience" %}</li>
-        <li>{% trans "Export your data whenever you like" %}</li>
-      </ul>
+    <div class="soon-acts">
+      <a class="p" href="/create/">{% trans "Create a tournament" %}</a>
+      <a class="s" href="/contact/">{% trans "Ask us a question" %}</a>
     </div>
-
-    <div class="card free">
-      <h2>{% trans "What stays free" %}</h2>
-      <p>
-        {% blocktrans trimmed %}
-          Every public page of every tournament — the draw, the tab, results,
-          team and adjudicator pages — is free to read for anyone with the link,
-          whether or not the tournament has been paid for. Debaters and audiences
-          never hit a paywall.
-        {% endblocktrans %}
-      </p>
-      <p>
-        {% blocktrans trimmed %}
-          The motion bank is free. Every tournament created before Premium launched
-          stays free, forever.
-        {% endblocktrans %}
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>{% trans "Why we started charging" %}</h2>
-      <p>
-        {% blocktrans trimmed %}
-          NekoTab was free for its first six months. In that time more than 550
-          tournaments ran on it, and it made no money at all. We tried advertising;
-          it earned a rounding error and made the site worse to use.
-        {% endblocktrans %}
-      </p>
-      <p>
-        {% blocktrans trimmed with price=price_label %}
-          The choice was to let NekoTab rot, or to ask for something. {{ price }} per
-          tournament is what it takes to keep the servers running, the backups
-          honest, and someone available when a draw breaks an hour before round one.
-        {% endblocktrans %}
-      </p>
-      <p>
-        {% blocktrans trimmed %}
-          We have set it deliberately low — well under what comparable tab software
-          charges. It is a one-off, not a subscription, and it is per tournament,
-          not per team.
-        {% endblocktrans %}
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>{% trans "Questions" %}</h2>
-      <dl>
-        <dt>{% trans "Is this a subscription?" %}</dt>
-        <dd>{% trans "No. You pay once for a tournament and that tournament is unlocked for good." %}</dd>
-
-        <dt>{% trans "I already run a tournament on NekoTab. Do I have to pay now?" %}</dt>
-        <dd>{% trans "No. Everything created before Premium launched stays free forever, including tournaments that are mid-competition." %}</dd>
-
-        <dt>{% trans "Do my debaters and judges have to pay?" %}</dt>
-        <dd>{% trans "Never. Only the person setting up the tournament pays, once. Participants and the public use it free." %}</dd>
-
-        <dt>{% trans "What if I run several tournaments a year?" %}</dt>
-        <dd>{% trans "Each one is a separate payment. If you are running a circuit or a series, write to us — we would rather find an arrangement than lose you." %}</dd>
-
-        <dt>{% trans "We are a school society and genuinely cannot pay." %}</dt>
-        <dd>
-          {% blocktrans trimmed %}
-            Then get in touch and tell us about it. We would rather your tournament
-            ran than not.
-          {% endblocktrans %}
-          <a href="/contact/">{% trans "Contact us" %}</a>.
-        </dd>
-
-        <dt>{% trans "How do I pay?" %}</dt>
-        <dd>{% trans "Card or PayPal, through Lemon Squeezy. We never see or store your card details." %}</dd>
-
-        <dt>{% trans "Something went wrong with my payment." %}</dt>
-        <dd>
-          {% blocktrans trimmed %}
-            Email support@nekotab.com with your order number and we will unlock it
-            by hand, quickly.
-          {% endblocktrans %}
-        </dd>
-      </dl>
-    </div>
-
-    <footer>
-      <a href="/create/">{% trans "Create a tournament" %}</a> ·
-      <a href="/contact/">{% trans "Contact" %}</a> ·
-      <a href="/terms/">{% trans "Terms" %}</a> ·
-      <a href="/privacy/">{% trans "Privacy" %}</a>
-    </footer>
-
-  </div>
+  </main>
+  {% include "nekotab/_public_footer.html" %}
 </body>
 </html>

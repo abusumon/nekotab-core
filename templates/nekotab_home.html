@@ -43,782 +43,97 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo-16x16.png' %}">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'logo.png' %}">
   <link rel="mask-icon" href="{% static 'safari-tab.svg' %}" color="#6366f1">
-  <meta name="theme-color" content="#6366f1">
+  <meta name="theme-color" content="#000000">
 
-  <link rel="stylesheet" href="{% static 'css/landing.css' %}">
-
+  {% comment %}
+    2026-11 redesign: a short page — nav, a black hero, every public
+    tournament, footer. Black / white / marine (#0B3D91), roughly 50/30/20.
+    The menu and footer are shared partials (nekotab/_public_nav.html,
+    nekotab/_public_footer.html) so the team, Emet and pricing pages match.
+  {% endcomment %}
   <style>
-    /* ── Navbar ── */
-    .nk-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8, 12, 26, 0.97);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.04);
-    }
-    .nk-nav-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 58px;
-      display: flex;
-      align-items: center;
-    }
-    .nk-nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .nk-nav-logo img { height: 26px; width: auto; }
-    .nk-nav-logo-text {
-      font-size: 16px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.4px;
-    }
-    /* Thin vertical rule between logo and links */
-    .nk-nav-sep {
-      width: 1px;
-      height: 18px;
-      background: rgba(255,255,255,0.14);
-      margin: 0 20px;
-      flex-shrink: 0;
-    }
-    .nk-nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      flex: 1;
-    }
-    .nk-nav-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 6px 11px;
-      font-size: 13.5px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.65);
-      text-decoration: none;
-      border-radius: 7px;
-      letter-spacing: -0.01em;
-      transition: color 0.15s, background 0.15s;
-      white-space: nowrap;
-    }
-    .nk-nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
-    /* Ticket link — subtle accent */
-    .nk-nav-links a.nk-nav-ticket {
-      color: #a5b4fc;
-    }
-    .nk-nav-links a.nk-nav-ticket:hover { color: #c4b5fd; background: rgba(165,180,252,0.1); }
-    /* bKash pink, so the option is findable at a glance by the people who
-       need it — most of our users pay this way, not by card. */
-    .nk-nav-links a.nk-nav-bkash { color: #f9a8d4; font-weight: 600; }
-    .nk-nav-links a.nk-nav-bkash:hover { color: #fbcfe8; background: rgba(226,19,110,0.14); }
-    /* Icon-only link (Discord) */
-    .nk-nav-icon-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 7px;
-      color: rgba(255,255,255,0.55);
-      transition: color 0.15s, background 0.15s;
-    }
-    .nk-nav-icon-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
-    .nk-nav-icon-btn svg { width: 15px; height: 15px; fill: currentColor; display: block; }
-    .nk-nav-end {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-    .nk-nav-signin {
-      font-size: 13.5px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.65);
-      text-decoration: none;
-      padding: 6px 11px;
-      border-radius: 7px;
-      letter-spacing: -0.01em;
-      transition: color 0.15s, background 0.15s;
-    }
-    .nk-nav-signin:hover { color: #fff; background: rgba(255,255,255,0.08); }
-    /* Dashboard: same weight as Sign in, deliberately quieter than the
-       Workspace CTA next to it so the primary action still reads as primary. */
-    .nk-nav-dash {
-      font-size: 13.5px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.65);
-      text-decoration: none;
-      padding: 6px 11px;
-      border-radius: 7px;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      transition: color 0.15s, background 0.15s;
-    }
-    .nk-nav-dash:hover, .nk-nav-dash:focus { color: #fff; background: rgba(255,255,255,0.08); }
-    .nk-nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 6px 14px;
-      background: #6366f1;
-      color: #fff;
-      font-size: 13.5px;
-      font-weight: 600;
-      border-radius: 7px;
-      text-decoration: none;
-      letter-spacing: -0.01em;
-      transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
-      white-space: nowrap;
-      box-shadow: 0 0 0 1px rgba(99,102,241,0.5), 0 1px 3px rgba(99,102,241,0.3);
-    }
-    .nk-nav-cta:hover { background: #4f46e5; box-shadow: 0 0 0 1px rgba(79,70,229,0.6), 0 4px 12px rgba(99,102,241,0.35); transform: translateY(-1px); }
+    :root { --ink: #000; --paper: #fff; --marine: #0B3D91; --marine-hover: #0e4bb3; --marine-soft: #e8eefb;
+            --muted: #52525b; --line: #e4e4e7; --soft: #f4f4f5; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink);
+           font: 16px/1.55 Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Bengali", sans-serif; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .skip { position: absolute; left: 8px; top: -60px; background: var(--marine); color: #fff; padding: 10px 14px; border-radius: 8px; z-index: 100; }
+    .skip:focus { top: 8px; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
 
-    /* Mobile burger */
-    .nk-burger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 4px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      /* 44px, not 40. This is the only way into the nav on mobile, so it is
-         the one control on the page that must not be a near-miss. The bars
-         inside stay 20px wide — the extra 4px is hit area, not a bigger icon.
-         Fits the 58px nav row with 7px of clearance either side. */
-      padding: 9px;
-      margin-left: auto;
-      border-radius: 7px;
-      min-width: 44px;
-      min-height: 44px;
-      transition: background 0.15s;
-    }
-    .nk-burger:hover { background: rgba(255,255,255,0.07); }
-    .nk-burger:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 2px; }
-    .nk-burger span {
-      display: block;
-      width: 20px;
-      height: 1.5px;
-      background: rgba(255,255,255,0.8);
-      border-radius: 2px;
-      transition: transform 0.22s, opacity 0.22s;
+    /* Hero */
+    .hero { background: #000; color: #fff; padding: clamp(48px, 9vw, 104px) 0 clamp(44px, 7vw, 80px); position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: auto -20% -60% -20%; height: 120%;
+                    background: radial-gradient(50% 50% at 50% 50%, rgba(11,61,145,.55), transparent 70%); pointer-events: none; }
+    .hero .wrap { position: relative; text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 600; color: #c7d5f5;
+               border: 1px solid #23407a; border-radius: 99px; padding: 5px 14px; margin-bottom: 22px; }
+    .eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: #5b8cff; box-shadow: 0 0 0 4px rgba(91,140,255,.18); }
+    .hero h1 { font-size: clamp(2.1rem, 6.4vw, 4rem); line-height: 1.06; letter-spacing: -.025em; margin: 0 auto 18px; max-width: 860px; font-weight: 800; }
+    .hero h1 span { color: #9db8ff; }
+    .hero p.lede { color: #a1a1aa; font-size: clamp(1rem, 2.2vw, 1.18rem); max-width: 640px; margin: 0 auto 30px; }
+    .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 24px; border-radius: 12px;
+           font: inherit; font-weight: 600; text-decoration: none; border: 1px solid transparent; cursor: pointer; }
+    .btn svg { width: 18px; height: 18px; }
+    .btn-marine { background: var(--marine); color: #fff; }
+    .btn-marine:hover { background: var(--marine-hover); }
+    .btn-white { background: #fff; color: #000; }
+    .btn-white:hover { background: #e4e4e7; }
+    .stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 44px; }
+    .stat { min-width: 170px; padding: 16px 22px; border: 1px solid #27272a; border-radius: 14px; background: rgba(255,255,255,.03); }
+    .stat b { display: block; font-size: 1.9rem; line-height: 1.1; letter-spacing: -.02em; }
+    .stat span { color: #a1a1aa; font-size: .86rem; }
+    @media (max-width: 560px) {
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 34px; }
+      .stat { min-width: 0; padding: 12px 8px; }
+      .stat b { font-size: 1.35rem; }
+      .stat span { display: block; font-size: .72rem; line-height: 1.3; }
+      .ctas .btn { flex: 1 1 100%; }
     }
 
-    /* Mobile drawer */
-    .nk-mobile-drawer {
-      position: fixed;
-      inset: 0;
-      z-index: 1100;
-      pointer-events: none;
-    }
-    .nk-mobile-drawer-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,10,0.6);
-      opacity: 0;
-      transition: opacity 0.28s;
-      backdrop-filter: blur(2px);
-    }
-    .nk-mobile-drawer-panel {
-      position: absolute;
-      top: 0; right: 0; bottom: 0;
-      width: 288px;
-      max-width: 88vw;
-      background: #0c1122;
-      border-left: 1px solid rgba(255,255,255,0.07);
-      transform: translateX(100%);
-      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .nk-mobile-drawer.is-open { pointer-events: all; }
-    .nk-mobile-drawer.is-open .nk-mobile-drawer-backdrop { opacity: 1; }
-    .nk-mobile-drawer.is-open .nk-mobile-drawer-panel { transform: translateX(0); }
-
-    .nk-mobile-drawer-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      flex-shrink: 0;
-    }
-    .nk-mobile-close {
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.07);
-      border: none;
-      color: rgba(255,255,255,0.7);
-      cursor: pointer;
-      padding: 0;
-      /* 44px, up from 32. The 16px glyph is unchanged; only the hit area and
-         its tinted square grew. The drawer header is a two-item
-         space-between row, so the extra 12px is absorbed by the gap — the
-         logo does not move and the header grows from 60px to 72px, which the
-         drawer flexes to accommodate. */
-      width: 44px; height: 44px;
-      flex-shrink: 0;
-      border-radius: 9px;
-      transition: background 0.15s, color 0.15s;
-    }
-    .nk-mobile-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
-    .nk-mobile-close:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 2px; }
-
-    .nk-mobile-drawer-section-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
-      padding: 14px 0 6px;
-    }
-    .nk-mobile-drawer-body { padding: 8px 20px; flex: 1; }
-    .nk-mobile-drawer-body a {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 13px 0;
-      font-size: 15px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.72);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      min-height: 48px;
-      transition: color 0.15s;
-    }
-    .nk-mobile-drawer-body a:last-child { border-bottom: none; }
-    .nk-mobile-drawer-body a:hover { color: #fff; }
-    .nk-mob-icon {
-      width: 32px; height: 32px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; flex-shrink: 0;
-      background: rgba(255,255,255,0.06);
-    }
-    .nk-mob-icon--ticket { background: rgba(165,180,252,0.12); }
-    .nk-mob-label-group { display: flex; flex-direction: column; }
-    .nk-mob-label-sub { font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; margin-top: 1px; }
-
-    .nk-mobile-drawer-footer {
-      padding: 16px 20px calc(16px + env(safe-area-inset-bottom, 0px));
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      flex-shrink: 0;
-    }
-    .nk-mobile-drawer-footer a {
-      display: flex; align-items: center; justify-content: center;
-      padding: 13px;
-      text-align: center;
-      font-size: 15px;
-      font-weight: 600;
-      border-radius: 9px;
-      text-decoration: none;
-      min-height: 48px;
-    }
-    .nk-mob-cta { background: #6366f1; color: #fff; box-shadow: 0 1px 3px rgba(99,102,241,0.35); }
-    .nk-mob-cta:hover { background: #4f46e5; }
-    .nk-mob-secondary { border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.7); }
-    .nk-mob-secondary:hover { border-color: rgba(255,255,255,0.28); color: #fff; }
-
-    @media (max-width: 768px) {
-      .nk-nav-links, .nk-nav-end, .nk-nav-sep { display: none; }
-      .nk-burger { display: flex; }
-    }
-
-    /* ── Pricing band ── */
-    .nk-pricing {
-      background: #0b0b14;
-      padding: 72px 24px;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .nk-pricing-inner { max-width: 660px; margin: 0 auto; text-align: center; }
-    .nk-pricing-eyebrow {
-      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #a5b4fc; margin-bottom: 10px;
-    }
-    .nk-pricing-heading {
-      font-size: clamp(26px, 5vw, 40px); font-weight: 800; color: #fff;
-      letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 14px;
-    }
-    .nk-pricing-sub {
-      font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.66);
-      max-width: 52ch; margin: 0 auto 26px;
-    }
-    .nk-pricing-actions {
-      display: flex; gap: 14px; justify-content: center;
-      align-items: center; flex-wrap: wrap;
-    }
-    .nk-pricing-cta {
-      display: inline-block; padding: 13px 28px; border-radius: 10px;
-      background: #6366f1; color: #fff; font-size: 15px; font-weight: 600;
-      text-decoration: none;
-    }
-    .nk-pricing-cta:hover, .nk-pricing-cta:focus { background: #4f46e5; }
-    .nk-pricing-link {
-      font-size: 14px; font-weight: 600; color: #a5b4fc; text-decoration: none;
-      /* Measured at 22px tall before this — half the 44px minimum, and it sits
-         next to a full-size button where the size difference reads as a
-         mistake. Padding rather than height so it still centres on the button. */
-      display: inline-flex; align-items: center;
-      min-height: 44px; padding: 0 8px;
-    }
-    .nk-pricing-link:hover, .nk-pricing-link:focus { color: #c7d2fe; }
-    .nk-pricing-note {
-      font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.42);
-      max-width: 56ch; margin: 26px auto 0;
-    }
-    @media (max-width: 640px) {
-      .nk-pricing { padding: 52px 16px; }
-      .nk-pricing-actions { flex-direction: column; gap: 12px; }
-      .nk-pricing-cta { width: 100%; }
-    }
-
-    /* ── Migration band ── */
-    /* Sits directly under pricing on purpose: "what happens to the tournaments
-       I already ran elsewhere?" is the next question after "what does it cost?" */
-    .nk-migrate {
-      background: #12121d;
-      padding: 56px 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .nk-migrate-inner { max-width: 660px; margin: 0 auto; text-align: center; }
-    .nk-migrate-eyebrow {
-      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #6ee7b7; margin-bottom: 10px;
-    }
-    .nk-migrate-heading {
-      font-size: clamp(22px, 4vw, 30px); font-weight: 800; color: #fff;
-      letter-spacing: -0.4px; line-height: 1.2; margin-bottom: 12px;
-    }
-    .nk-migrate-sub {
-      font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.66);
-      max-width: 54ch; margin: 0 auto 22px;
-    }
-    .nk-migrate-cta {
-      display: inline-block; padding: 13px 28px; border-radius: 10px;
-      background: #059669; color: #fff; font-size: 15px; font-weight: 600;
-      text-decoration: none;
-    }
-    .nk-migrate-cta:hover, .nk-migrate-cta:focus { background: #047857; }
-    .nk-migrate-note {
-      font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.42);
-      max-width: 58ch; margin: 22px auto 0;
-    }
-    @media (max-width: 640px) {
-      .nk-migrate { padding: 44px 16px; }
-      .nk-migrate-cta { display: block; width: 100%; }
-    }
-
-    /* ── Public showcase ── */
-    /* Mobile first: one column, whole card is the tap target. */
-    .nk-showcase {
-      background: #f0f4ff;
-      padding: 56px 16px;
-      border-top: 1px solid rgba(15,23,42,0.06);
-    }
-    .nk-showcase-inner { max-width: 960px; margin: 0 auto; }
-    .nk-showcase-eyebrow {
-      text-align: center; font-size: 12px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: #6366f1; margin-bottom: 10px;
-    }
-    .nk-showcase-heading {
-      text-align: center; font-size: clamp(22px, 4vw, 32px); font-weight: 800;
-      color: #0f172a; letter-spacing: -0.5px; line-height: 1.18; margin-bottom: 10px;
-    }
-    .nk-showcase-sub {
-      text-align: center; font-size: 14.5px; line-height: 1.6; color: #475569;
-      max-width: 52ch; margin: 0 auto 28px;
-    }
-    /* ── Home-page counter ──
-       Sits between the heading and the list so the number introduces the
-       table rather than floating on its own. Tabular figures so the digits
-       line up, and a hairline rule under it to tie it to the section. */
-    .nk-stat {
-      text-align: center;
-      margin: 0 auto 22px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(15,23,42,0.08);
-      max-width: 30ch;
-    }
-    .nk-stat__num {
-      display: block;
-      font-size: clamp(40px, 11vw, 60px);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      font-variant-numeric: tabular-nums;
-      background: linear-gradient(135deg, #6366f1, #ec4899);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: #6366f1;              /* fallback where background-clip is unsupported */
-    }
-    .nk-stat__label {
-      display: block;
-      margin-top: 8px;
-      font-size: 14.5px;
-      font-weight: 600;
-      color: #334155;
-    }
-    .nk-stat__sub {
-      display: block;
-      margin-top: 4px;
-      font-size: 13px;
-      color: #64748b;
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* Mobile first: the table collapses to one card per row, each cell
-       labelled by its ::before. Becomes a real table at 768px. */
-    .nk-sr {
-      position: absolute; width: 1px; height: 1px; overflow: hidden;
-      clip: rect(0 0 0 0); white-space: nowrap;
-    }
-    .nk-showcase-table { width: 100%; border-collapse: collapse; }
-    .nk-showcase-table thead { display: none; }
-    .nk-showcase-table tr {
-      /* Flex column so the tournament name can be pulled to the top with
-         `order` — on a card the name is the title, not a labelled field. */
-      display: flex;
-      flex-direction: column;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin-bottom: 12px;
-    }
-    .nk-showcase-table td {
-      display: flex;
-      gap: 12px;
-      align-items: baseline;
-      padding: 3px 0;
-      font-size: 14px;
-      color: #334155;
-      min-width: 0;
-    }
-    .nk-showcase-table td::before {
-      content: attr(data-label);
-      flex: 0 0 68px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #94a3b8;
-    }
-    /* The name is the card's heading: no label, first in the card, full width.
-       Left as a labelled flex row it stranded the "TOURNAMENT" label on its own
-       line whenever the name wrapped, and pushed the organisation into the
-       label gutter where it read as an orphan. */
-    /* Qualified with the table class on purpose: the generic
-       `.nk-showcase-table td` / `td::before` rules above are more specific than
-       a bare `.nk-showcase-name`, so an unqualified override silently loses and
-       the label keeps rendering. */
-    .nk-showcase-table td.nk-showcase-name {
-      display: block;
-      order: -1;
-      margin-bottom: 8px;
-      padding-top: 0;
-    }
-    .nk-showcase-table td.nk-showcase-name::before { content: none; }
-    .nk-showcase-name a {
-      font-size: 15.5px; font-weight: 700; color: #0f172a;
-      text-decoration: none; overflow-wrap: anywhere; line-height: 1.35;
-    }
-    .nk-showcase-name a:hover, .nk-showcase-name a:focus { color: #4f46e5; }
-    .nk-showcase-org {
-      display: block;
-      margin-top: 3px;
-      font-size: 12.5px; color: #64748b;
-    }
-    .nk-showcase-dates { font-variant-numeric: tabular-nums; }
-    .nk-showcase-year { color: #94a3b8; }
-    .nk-showcase-venue { overflow-wrap: anywhere; }
-    .nk-showcase-tbc { color: #94a3b8; }
-    .nk-showcase-tab a {
-      display: inline-flex; align-items: center;
-      min-height: 44px;                 /* real tap target on mobile */
-      font-size: 14px; font-weight: 600; color: #4f46e5; text-decoration: none;
-    }
-    .nk-showcase-tab a:hover, .nk-showcase-tab a:focus { color: #4338ca; }
-
-    @media (min-width: 768px) {
-      .nk-showcase-table thead { display: table-header-group; }
-      .nk-showcase-table tr {
-        display: table-row;
-        background: none;
-        border: 0;
-        border-bottom: 1px solid #e2e8f0;
-        border-radius: 0;
-        padding: 0;
-        margin: 0;
-      }
-      .nk-showcase-table thead tr { border-bottom: 2px solid #cbd5e1; }
-      .nk-showcase-table tbody tr:hover { background: rgba(99,102,241,0.04); }
-      .nk-showcase-table th {
-        text-align: left;
-        padding: 10px 14px;
-        font-size: 11.5px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: #64748b;
-        white-space: nowrap;
-      }
-      .nk-showcase-table td {
-        display: table-cell;
-        padding: 14px;
-        vertical-align: top;
-      }
-      .nk-showcase-table td::before { content: none; }
-      .nk-showcase-table td.nk-showcase-name { display: table-cell; order: 0; margin-bottom: 0; }
-      .nk-showcase-org { display: block; margin-top: 3px; }
-      .nk-showcase-dates { white-space: nowrap; }
-      /* Dates and the tab link stay as narrow as their content so the
-         tournament name gets the remaining width. */
-      .nk-showcase-table th:first-child, .nk-showcase-dates { width: 1%; }
-      .nk-showcase-table th:last-child, .nk-showcase-tab { width: 1%; white-space: nowrap; }
-      .nk-showcase-tab a { min-height: 0; }
-    }
-
-    /* ── Showcase: cap the list on mobile ──
-       Twelve single-column cards is ~900px of solid scrolling between the
-       features and the footer. Below the nav breakpoint we show four and put
-       the rest behind a disclosure.
-
-       Gated on @supports selector(:has(*)) on purpose. The reveal needs :has()
-       to reach back up from the open <details> to its earlier siblings, and
-       where :has() is missing — older Android WebViews, which is a real slice
-       of this audience — the hide must not apply either, or the disclosure
-       would be a button that does nothing. Both branches end up showing
-       everything; only the supported one shows four. */
-    .nk-showcase-more { display: none; }
-
-    @media (max-width: 767.98px) {
-      @supports selector(:has(*)) {
-        .nk-showcase-table tbody tr:nth-child(n + 5) { display: none; }
-        .nk-showcase-inner:has(.nk-showcase-more[open])
-          .nk-showcase-table tbody tr:nth-child(n + 5) { display: flex; }
-
-        .nk-showcase-more { display: block; margin-top: 14px; }
-        .nk-showcase-more > summary {
-          /* A real tap target: 48px, full width, centred. */
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 48px;
-          padding: 0 18px;
-          background: #fff;
-          border: 1px solid #c7d2fe;
-          border-radius: 12px;
-          color: #4f46e5;
-          font-size: 14.5px;
-          font-weight: 600;
-          cursor: pointer;
-          list-style: none;          /* hide the default triangle */
-          -webkit-tap-highlight-color: transparent;
-        }
-        /* Safari/older Chrome use a shadow pseudo-element for the marker. */
-        .nk-showcase-more > summary::-webkit-details-marker { display: none; }
-        .nk-showcase-more > summary::marker { content: ''; }
-        .nk-showcase-more > summary:focus-visible {
-          outline: 2px solid #4f46e5;
-          outline-offset: 2px;
-        }
-        /* Swap the label without JS. */
-        .nk-showcase-more[open] > summary .nk-showcase-more__shut,
-        .nk-showcase-more:not([open]) > summary .nk-showcase-more__open { display: none; }
-      }
-    }
-
-    /* ── Footer ── */
-    .nk-foot {
-      background: #07070e;
-      padding: 44px 24px 96px; /* bottom clearance for .em-mobile-cta-bar */
-      border-top: 1px solid rgba(255,255,255,0.07);
-    }
-    .nk-foot-inner { max-width: 960px; margin: 0 auto; text-align: center; }
-    .nk-foot-links {
-      display: flex; flex-wrap: wrap; gap: 10px 24px;
-      justify-content: center; margin-bottom: 22px;
-    }
-    .nk-foot-links a {
-      font-size: 14px; color: rgba(255,255,255,0.62);
-      text-decoration: none;
-      /* Measured at 30px tall before this. Footer links are the most likely
-         thing on the page to be tapped one-handed while scrolling, and eight
-         of them 30px tall in a wrapped row is a mis-tap generator. */
-      display: inline-flex; align-items: center;
-      min-height: 44px; padding: 0 2px;
-    }
-    .nk-foot-links a:hover, .nk-foot-links a:focus { color: #a78bfa; }
-    .nk-foot-help {
-      font-size: 14px; color: rgba(255,255,255,0.52);
-      line-height: 1.6; margin-bottom: 12px;
-    }
-    .nk-foot-help a { color: #a5b4fc; }
-    .nk-foot-legal {
-      font-size: 12.5px; color: rgba(255,255,255,0.34); line-height: 1.6;
-    }
-    .nk-foot-legal a { color: rgba(255,255,255,0.5); }
-    @media (max-width: 640px) {
-      .nk-foot { padding: 36px 16px 96px; }
-      .nk-foot-links { gap: 8px 18px; }
-    }
-
-    /* ── Workspace Features Section ── */
-    .nk-features {
-      background: #f0f4ff;
-      padding: 80px 24px;
-    }
-    .nk-features-container {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .nk-features-eyebrow {
-      text-align: center;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #6366f1;
-      margin-bottom: 10px;
-    }
-    .nk-features-heading {
-      text-align: center;
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.5px;
-      margin-bottom: 44px;
-      line-height: 1.15;
-    }
-    .nk-features-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .nk-feature-card--featured {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
-      border-color: #c7d2fe;
-    }
-    .nk-feature-card--featured .nk-feature-card-body {
-      display: flex;
-      align-items: flex-start;
-      gap: 28px;
-      text-align: left;
-    }
-    .nk-feature-card--featured .nk-feature-card-icon {
-      margin: 0;
-      flex-shrink: 0;
-      background: #6366f1;
-      width: 56px;
-      height: 56px;
-      font-size: 24px;
-    }
-    .nk-feature-card--featured h2 {
-      text-align: left;
-      font-size: clamp(20px, 2.6vw, 26px);
-    }
-    .nk-feature-card--featured p { text-align: left; }
-    .nk-feature-badge {
-      display: inline-block;
-      background: #6366f1;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .nk-feature-cta-link {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 8px 18px;
-      background: #6366f1;
-      color: #fff;
-      border-radius: 7px;
-      font-size: 13.5px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.15s;
-    }
-    .nk-feature-cta-link:hover { background: #4f46e5; color: #fff; }
-    .nk-feature-card {
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .nk-feature-card:hover { box-shadow: 0 8px 24px rgba(99,102,241,0.1); transform: translateY(-2px); }
-    .nk-feature-card-body {
-      padding: 32px 36px 36px;
-    }
-    .nk-feature-card-icon {
-      width: 44px; height: 44px;
-      border-radius: 10px;
-      background: #eef2ff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      margin: 0 auto 18px;
-    }
-    .nk-feature-card h2 {
-      font-size: clamp(18px, 2.4vw, 24px);
-      font-weight: 700;
-      color: #0f172a;
-      letter-spacing: -0.3px;
-      margin-bottom: 12px;
-      line-height: 1.25;
-      text-align: center;
-    }
-    .nk-feature-card p {
-      font-size: 15px;
-      line-height: 1.65;
-      color: #475569;
-      text-align: center;
-      margin: 0;
-    }
-    @media (max-width: 640px) {
-      .nk-features-grid { grid-template-columns: 1fr; gap: 14px; }
-      .nk-feature-card-body { padding: 24px 22px 28px; }
-      .nk-features { padding: 56px 16px; }
-      .nk-features-heading { margin-bottom: 28px; }
-      .nk-feature-card--featured .nk-feature-card-body { flex-direction: column; gap: 16px; }
-    }
-
-    /* ── Footer tweak: add community links ── */
-    .nk-foot-community {
-      display: flex;
-      gap: 16px;
-      margin-top: 12px;
-    }
-    .nk-foot-community a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: #94a3b8;
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .nk-foot-community a:hover { color: #a78bfa; }
-    .nk-foot-community svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+    /* Tournaments */
+    .tours { padding: clamp(44px, 7vw, 80px) 0 clamp(56px, 8vw, 96px); }
+    .tours-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px; margin-bottom: 22px; }
+    .tours-head h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); letter-spacing: -.02em; margin: 0 0 4px; }
+    .tours-head p { margin: 0; color: var(--muted); }
+    .tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 22px; }
+    .search { flex: 1 1 280px; position: relative; }
+    .search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: #71717a; }
+    .search input { width: 100%; min-height: 48px; border: 1px solid #d4d4d8; border-radius: 12px; padding: 0 14px 0 42px; font: inherit; background: #fff; color: #000; }
+    .search input:focus { outline: none; border-color: var(--marine); box-shadow: 0 0 0 3px rgba(11,61,145,.15); }
+    .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+    .chip { min-height: 40px; padding: 0 14px; border-radius: 99px; border: 1px solid #d4d4d8; background: #fff; color: #000; font: inherit; font-size: .9rem; font-weight: 500; cursor: pointer; }
+    .chip:hover { border-color: #000; }
+    .chip[aria-pressed="true"] { background: #000; border-color: #000; color: #fff; }
+    .grid { display: grid; gap: 14px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
+    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1000px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+    .card { display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 18px; border: 1px solid var(--line); border-radius: 16px;
+            background: #fff; color: #000; text-decoration: none; transition: border-color .15s, box-shadow .15s, transform .15s; }
+    .card:hover { border-color: #000; box-shadow: 0 10px 30px -18px rgba(0,0,0,.35); transform: translateY(-2px); }
+    .card:focus-visible { outline: 3px solid var(--marine); outline-offset: 2px; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .date { font-size: .84rem; font-weight: 600; color: var(--marine); }
+    .date.tbc { color: #71717a; font-weight: 500; }
+    .badge { font-size: .72rem; font-weight: 700; border-radius: 99px; padding: 3px 9px; white-space: nowrap; }
+    .badge.live { background: var(--marine); color: #fff; }
+    .badge.upcoming { border: 1px solid var(--marine); color: var(--marine); }
+    .card h3 { margin: 0; font-size: 1.08rem; line-height: 1.3; overflow-wrap: anywhere;
+               display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .meta { display: grid; gap: 4px; color: var(--muted); font-size: .88rem; }
+    .meta span { display: flex; gap: 6px; align-items: flex-start; overflow-wrap: anywhere; }
+    .meta svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; }
+    .go { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--soft); font-weight: 600; font-size: .9rem; display: flex; justify-content: space-between; }
+    .card:hover .go { color: var(--marine); }
+    .more { display: flex; justify-content: center; margin-top: 26px; }
+    .btn-outline { background: #fff; color: #000; border-color: #000; }
+    .btn-outline:hover { background: #000; color: #fff; }
+    .none { text-align: center; color: var(--muted); padding: 40px 16px; border: 1px dashed #d4d4d8; border-radius: 16px; }
+    [hidden] { display: none !important; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card { transition: none; } .card:hover { transform: none; } }
   </style>
 
   {% if ads_enabled %}
@@ -929,543 +244,134 @@
   }
   </script>
 </head>
-<body class="em-body">
-  <a href="#main-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#6366f1;color:#fff;padding:8px 16px;z-index:10000;transition:top .3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
+<body>
+  <a class="skip" href="#main-content">Skip to main content</a>
+  {% include "nekotab/_public_nav.html" with nav_active="home" %}
 
-  <!-- ════════════════════════════════════════════
-       NAVBAR — Simple, clean
-       ════════════════════════════════════════════ -->
-  <header class="nk-nav" id="top">
-    <div class="nk-nav-inner">
-      <!-- Logo -->
-      <a href="/" class="nk-nav-logo" aria-label="NekoTab home">
-        <img src="{% static 'logo.png' %}" alt="" width="26" height="26">
-        <span class="nk-nav-logo-text">NekoTab</span>
-      </a>
-
-      <!-- Separator -->
-      <div class="nk-nav-sep" aria-hidden="true"></div>
-
-      <!-- Desktop links -->
-      <nav class="nk-nav-links" aria-label="Primary">
-        <a href="{% url 'tickets:index' %}">Events</a>
-        <a href="{% url 'tickets:index' %}" class="nk-nav-ticket">Buy Tickets</a>
-        <a href="/tools/import/">Importer</a>
-        <a href="/tools/analyze/">Analyzer</a>
-        <a href="{% url 'motions' %}">Motion Bank</a>
-        <a href="{% url 'pricing' %}">Pricing</a>
-        <a href="{% url 'bkash' %}" class="nk-nav-bkash">Pay via bKash</a>
-        <a href="{% url 'contact' %}">Contact</a>
-        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
-        <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener" class="nk-nav-icon-btn" aria-label="Discord community">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-        </a>
-      </nav>
-
-      <!-- Auth -->
-      <div class="nk-nav-end">
-        {% if user.is_authenticated %}
-          {# Logged-in only. The home page no longer bounces to /me, so this is #}
-          {# the way back to it. #}
-          <a href="{% url 'user-dashboard' %}" class="nk-nav-dash">Dashboard</a>
-          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="nk-nav-cta">Workspace</a>
-        {% else %}
-          <a href="{% url 'login' %}" class="nk-nav-signin">Sign in</a>
-          <a href="{% url 'register-organization' %}" class="nk-nav-cta">Create Workspace</a>
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="eyebrow"><i aria-hidden="true"></i>Debate tabulation, hosted for you</div>
+        <h1 id="hero-title">Run your debate tournament <span>on NekoTab.</span></h1>
+        <p class="lede">Draws, adjudicator allocation, ballots and live results for BP, WSDC, Australs and more. Built on Tabbycat, with nothing to install.</p>
+        <div class="ctas">
+          <a class="btn btn-marine" href="{% if user.is_authenticated %}{% url 'tournament-create' %}{% else %}{% url 'register-tournament' %}{% endif %}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Create tournament</a>
+          <a class="btn btn-white" href="#tournaments">Browse tournaments</a>
+        </div>
+        {% if homepage_stats.tournaments %}
+        <div class="stats">
+          <div class="stat"><b>{{ homepage_stats.tournaments }}</b><span>tournaments created</span></div>
+          {% if homepage_stats.tournaments_run %}<div class="stat"><b>{{ homepage_stats.tournaments_run }}</b><span>have run debates</span></div>{% endif %}
+          <div class="stat"><b>Free</b><span>draws, tabs and results to read</span></div>
+        </div>
         {% endif %}
       </div>
+    </section>
 
-      <!-- Mobile hamburger -->
-      <button class="nk-burger" id="nk-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nk-drawer">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Mobile drawer -->
-  <div class="nk-mobile-drawer" id="nk-drawer" role="dialog" aria-modal="true" aria-label="Navigation">
-    <div class="nk-mobile-drawer-backdrop" id="nk-drawer-backdrop"></div>
-    <div class="nk-mobile-drawer-panel">
-      <div class="nk-mobile-drawer-head">
-        <a href="/" class="nk-nav-logo" aria-hidden="true" tabindex="-1">
-          <img src="{% static 'logo.png' %}" alt="NekoTab" width="24" height="24">
-          <span class="nk-nav-logo-text">NekoTab</span>
-        </a>
-        <button class="nk-mobile-close" id="nk-drawer-close" aria-label="Close menu">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div class="nk-mobile-drawer-body">
-        <div class="nk-mobile-drawer-section-label">Events &amp; Tickets</div>
-        <a href="{% url 'tickets:index' %}">
-          <span class="nk-mob-icon">🗓</span>
-          <span class="nk-mob-label-group">
-            <span>Events</span>
-            <span class="nk-mob-label-sub">Upcoming debate events</span>
-          </span>
-        </a>
-        <a href="{% url 'tickets:index' %}">
-          <span class="nk-mob-icon nk-mob-icon--ticket">🎟</span>
-          <span class="nk-mob-label-group">
-            <span>Buy Tickets</span>
-            <span class="nk-mob-label-sub">Register &amp; purchase event tickets</span>
-          </span>
-        </a>
-        <div class="nk-mobile-drawer-section-label">Tools</div>
-        <a href="/tools/import/">
-          <span class="nk-mob-icon">📥</span>
-          <span class="nk-mob-label-group">
-            <span>Importer</span>
-            <span class="nk-mob-label-sub">Import teams &amp; participants</span>
-          </span>
-        </a>
-        <a href="/tools/analyze/">
-          <span class="nk-mob-icon">📊</span>
-          <span class="nk-mob-label-group">
-            <span>Analyzer</span>
-            <span class="nk-mob-label-sub">Analyze tournament results</span>
-          </span>
-        </a>
-        <a href="{% url 'motions' %}">
-          <span class="nk-mob-icon">📚</span>
-          <span class="nk-mob-label-group">
-            <span>Motion Bank</span>
-            <span class="nk-mob-label-sub">Global debate motion database</span>
-          </span>
-        </a>
-        <div class="nk-mobile-drawer-section-label">Resources</div>
-        <a href="{% url 'pricing' %}">
-          <span class="nk-mob-icon">💜</span>
-          <span class="nk-mob-label-group">
-            <span>Pricing</span>
-            <span class="nk-mob-label-sub">{{ premium_price_label|default:"$5" }} per tournament, once</span>
-          </span>
-        </a>
-        <a href="{% url 'bkash' %}">
-          <span class="nk-mob-icon">📱</span>
-          <span class="nk-mob-label-group">
-            <span>Pay via bKash</span>
-            <span class="nk-mob-label-sub">No card needed — send ৳510 by bKash</span>
-          </span>
-        </a>
-        <a href="{% url 'contact' %}">
-          <span class="nk-mob-icon">✉️</span>
-          <span class="nk-mob-label-group">
-            <span>Contact Us</span>
-            <span class="nk-mob-label-sub">Questions, problems, anything</span>
-          </span>
-        </a>
-        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">
-          <span class="nk-mob-icon">📖</span>
-          <span>Docs</span>
-        </a>
-        <a href="https://discord.gg/NBny8hnwXr" target="_blank" rel="noopener">
-          <span class="nk-mob-icon">
-            <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:rgba(255,255,255,0.6)"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          </span>
-          <span>Discord Community</span>
-        </a>
-      </div>
-      <div class="nk-mobile-drawer-footer">
-        {% if user.is_authenticated %}
-          <a href="{% url 'user-dashboard' %}" class="nk-mob-cta">Dashboard</a>
-          <a href="{% if primary_workspace_url %}{{ primary_workspace_url }}{% else %}{% url 'org-list' %}{% endif %}" class="nk-mob-secondary">Go to Workspace</a>
-        {% else %}
-          <a href="{% url 'register-organization' %}" class="nk-mob-cta">Create Workspace</a>
-          <a href="{% url 'register-tournament' %}" class="nk-mob-secondary">Single Tournament</a>
-          <a href="{% url 'login' %}" class="nk-mob-secondary">Sign in</a>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════
-       HERO — Dark gradient, updated headline
-       ════════════════════════════════════════════ -->
-  <section class="em-hero" id="main-content" aria-labelledby="hero-title">
-    <div class="em-container em-hero-inner">
-      <div class="em-badge" aria-label="Pricing">
-        <span class="em-badge-dot"></span>
-        {{ premium_price_label|default:"$5" }} per tournament &middot; No ads &middot; No subscription
-        
-      </div>
-
-      <h1 id="hero-title" class="em-hero-title">
-        Tabbycat debate tabulation<br><span class="em-gradient-text">as a service</span>
-      </h1>
-
-      <p class="em-hero-sub">
-        Hosted tournament management for BP, WSDC, Australs, and more. Draw, ballot, allocate, and publish live results.
-        Plus a global <a href="/motions/" style="color:rgba(255,255,255,0.9);text-decoration:underline;font-weight:600;">Motion Bank</a>, event ticketing, website builder, and schedule planner.
-        {# Price deliberately not repeated here: the badge above already states #}
-        {# it and the pricing band states it again a screen later. #}
-      </p>
-
-      <div class="em-hero-ctas">
-        <a href="{% url 'register-organization' %}" class="em-btn em-btn--white em-btn--lg">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          Create Workspace
-        </a>
-        <a href="{% if user.is_authenticated %}{% url 'tournament-create' %}{% else %}{% url 'register-tournament' %}{% endif %}" class="em-btn em-btn--outline-light em-btn--lg">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-          Single Tournament
-        </a>
-      </div>
-
-      {% if not user.is_authenticated %}
-      <p class="em-hero-login-hint">
-        Already have an account?
-        <a href="{% url 'login' %}" style="color:rgba(255,255,255,0.9);text-decoration:underline;">Sign in</a>
-      </p>
-      {% endif %}
-
-      <!-- Dashboard Preview -->
-      <div class="em-hero-visual">
-        <div class="em-browser-frame">
-          <div class="em-browser-dots">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="em-browser-content em-dashboard-preview">
-            <div class="em-dash-header">
-              <div class="em-dash-nav">
-                <span class="em-dash-logo-pill">NekoTab</span>
-                <span class="em-dash-nav-item em-dash-nav-item--active">Dashboard</span>
-                <span class="em-dash-nav-item">Draws</span>
-                <span class="em-dash-nav-item">Ballots</span>
-                <span class="em-dash-nav-item">Results</span>
-              </div>
-            </div>
-            <div class="em-dash-body">
-              <div class="em-dash-sidebar">
-                <div class="em-dash-sidebar-item em-dash-sidebar-item--active">📊 Overview</div>
-                <div class="em-dash-sidebar-item">🎲 Draws</div>
-                <div class="em-dash-sidebar-item">⚖️ Allocations</div>
-                <div class="em-dash-sidebar-item">📝 Ballots</div>
-                <div class="em-dash-sidebar-item">📈 Standings</div>
-                <div class="em-dash-sidebar-item">✅ Breaks</div>
-              </div>
-              <div class="em-dash-main">
-                <div class="em-dash-stats-row">
-                  <div class="em-dash-stat-card"><div class="em-dash-stat-num">24</div><div class="em-dash-stat-label">Teams</div></div>
-                  <div class="em-dash-stat-card"><div class="em-dash-stat-num">16</div><div class="em-dash-stat-label">Judges</div></div>
-                  <div class="em-dash-stat-card"><div class="em-dash-stat-num">5</div><div class="em-dash-stat-label">Rounds</div></div>
-                  <div class="em-dash-stat-card em-dash-stat-card--accent"><div class="em-dash-stat-num">R3</div><div class="em-dash-stat-label">Current</div></div>
-                </div>
-                <div class="em-dash-table">
-                  <div class="em-dash-table-head">
-                    <span>Room</span><span>OG</span><span>OO</span><span>CG</span><span>CO</span><span>Status</span>
-                  </div>
-                  <div class="em-dash-table-row"><span>Room 1</span><span>Oxford A</span><span>Cambridge B</span><span>Yale C</span><span>Harvard D</span><span class="em-dash-status em-dash-status--done">✓</span></div>
-                  <div class="em-dash-table-row"><span>Room 2</span><span>UNSW A</span><span>Monash B</span><span>NUS C</span><span>UQ D</span><span class="em-dash-status em-dash-status--pending">⏳</span></div>
-                  <div class="em-dash-table-row"><span>Room 3</span><span>KCL A</span><span>LSE B</span><span>UCL C</span><span>Durham D</span><span class="em-dash-status em-dash-status--done">✓</span></div>
-                </div>
-              </div>
-            </div>
+    <section class="tours" id="tournaments" aria-labelledby="tours-title">
+      <div class="wrap">
+        <div class="tours-head">
+          <div>
+            <h2 id="tours-title">Tournaments on NekoTab</h2>
+            <p>Every public draw, tab and result, free for anyone to read.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="nk-home-notice-wrap">{% include "ads/adblock_notice.html" %}</div>
-  {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="home" %}
-
-  <!-- ════════════════════════════════════════════
-       PRICING — replaced the home ad slot
-       ════════════════════════════════════════════ -->
-  <section class="nk-pricing" aria-labelledby="pricing-heading">
-    <div class="nk-pricing-inner">
-      <p class="nk-pricing-eyebrow">Pricing</p>
-      
-      <h2 id="pricing-heading" class="nk-pricing-heading">
-        {{ premium_price_label|default:"$5" }} per tournament. Paid once.
-      </h2>
-      <p class="nk-pricing-sub">
-        No subscription, no per-team fee, and not a single advert anywhere on the site.
-        Your debaters, judges and audience never pay — every public draw, tab and results
-        page is free to read.
-      </p>
-      
-      <div class="nk-pricing-actions">
-        <a href="{% url 'tournament-create' %}" class="nk-pricing-cta">Create a tournament</a>
-        <a href="{% url 'pricing' %}" class="nk-pricing-link">See what's included &rarr;</a>
-      </div>
-      <p class="nk-pricing-note">
-        NekoTab ran free for six months and more than 550 tournaments, and earned nothing.
-        This is what keeps it running. Tournaments created before the change stay free forever.
-      </p>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════
-       MIGRATION — bring your history across, free
-       ════════════════════════════════════════════ -->
-  <section class="nk-migrate" aria-labelledby="migrate-heading">
-    <div class="nk-migrate-inner">
-      <p class="nk-migrate-eyebrow">Switching hosts</p>
-      <h2 id="migrate-heading" class="nk-migrate-heading">
-        Bring your old tournaments with you — free
-      </h2>
-      <p class="nk-migrate-sub">
-        Already run tournaments on CalicoTab or another Tabbycat host? Export the XML
-        archive and upload it here. Teams, speakers, adjudicators, venues, motions, the
-        draw and every ballot and speaker score come across. However many you have,
-        there is no charge for moving them.
-      </p>
-      <a href="{% url 'home-import-calicotab' %}" class="nk-migrate-cta">Migrate a tournament</a>
-      <p class="nk-migrate-note">
-        You export your own tournament with your own administrator account, using the
-        other site's own export feature — NekoTab never connects to it and never asks
-        for your password there. Not affiliated with or endorsed by CalicoTab.
-      </p>
-    </div>
-  </section>
-
-  {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="home" %}
-
-  {% if showcase_tournaments %}
-  <!-- ════════════════════════════════════════════
-       PUBLIC SHOWCASE — featured tournaments
-       Server-side capped (SHOWCASE_MAX) and cached; never an unbounded list.
-       ════════════════════════════════════════════ -->
-  <section class="nk-showcase" aria-labelledby="showcase-heading">
-    <div class="nk-showcase-inner">
-      <p class="nk-showcase-eyebrow">Live on NekoTab</p>
-      <h2 id="showcase-heading" class="nk-showcase-heading">Tournaments on NekoTab</h2>
-
-      {% if homepage_stats.tournaments %}
-        <div class="nk-stat">
-          <span class="nk-stat__num">{{ homepage_stats.tournaments }}</span>
-          <span class="nk-stat__label">tournaments created on NekoTab</span>
-          {% if homepage_stats.tournaments_run %}
-            <span class="nk-stat__sub">{{ homepage_stats.tournaments_run }} of them have run debates</span>
-          {% endif %}
+        {% if showcase_tournaments %}
+        <div class="tools">
+          <div class="search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <label for="t-search" class="sr-only">Search tournaments</label>
+            <input id="t-search" type="search" placeholder="Search by name, organiser or venue" autocomplete="off">
+          </div>
+          <div class="chips" role="group" aria-label="Show">
+            <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-filter="now" aria-pressed="false">On now &amp; upcoming</button>
+            <button type="button" class="chip" data-filter="past" aria-pressed="false">Past</button>
+          </div>
         </div>
-      {% endif %}
-
-      <p class="nk-showcase-sub">
-        Competitions being tabbed on NekoTab. Draws, tabs and results are free
-        for anyone to read.
-      </p>
-      {% comment %}
-        One table, two presentations: a real table from 768px up, and stacked
-        cards below that, where each cell carries its own label via
-        ::before. A four-column table does not survive a 360px screen, and
-        making it scroll sideways hides the tab link — the one thing anybody
-        came here to click.
-
-        Every row is always in the DOM. On mobile, CSS hides all but the first
-        four and the <details> below reveals them, so a stylesheet that fails
-        to load shows all of them rather than hiding eight with no way to
-        reach them. Wrapping the overflow inside <details> would collapse it
-        natively, with no CSS involved, and fail *hidden*.
-      {% endcomment %}
-      <table class="nk-showcase-table">
-        <thead>
-          <tr>
-            <th scope="col">Dates</th>
-            <th scope="col">Tournament</th>
-            <th scope="col">Venue</th>
-            <th scope="col"><span class="nk-sr">Tab</span></th>
-          </tr>
-        </thead>
-        <tbody>
+        <ul class="grid" id="t-grid">
           {% for t in showcase_tournaments %}
-            <tr>
-              <td data-label="Dates" class="nk-showcase-dates">
+          <li data-status="{{ t.status|default:'none' }}" data-text="{{ t.name|lower }} {{ t.short_name|lower }} {{ t.organization|lower }} {{ t.venue|lower }}">
+            <a class="card" href="{{ t.url }}">
+              <div class="card-top">
                 {% if t.start_date %}
-                  {{ t.start_date|date:"j M" }}{% if t.end_date and t.end_date != t.start_date %} &ndash; {{ t.end_date|date:"j M" }}{% endif %}
-                  <span class="nk-showcase-year">{{ t.start_date|date:"Y" }}</span>
+                  <span class="date">{{ t.start_date|date:"j M" }}{% if t.end_date and t.end_date != t.start_date %} &ndash; {{ t.end_date|date:"j M" }}{% endif %} {{ t.start_date|date:"Y" }}</span>
                 {% else %}
-                  <span class="nk-showcase-tbc">Date TBC</span>
+                  <span class="date tbc">Date to be announced</span>
                 {% endif %}
-              </td>
-              <td data-label="Tournament" class="nk-showcase-name">
-                <a href="{{ t.url }}">{{ t.name }}</a>
-                {% if t.organization %}
-                  <span class="nk-showcase-org">{{ t.organization }}</span>
-                {% endif %}
-              </td>
-              <td data-label="Venue" class="nk-showcase-venue">
-                {% if t.venue %}{{ t.venue }}{% else %}<span class="nk-showcase-tbc">&mdash;</span>{% endif %}
-              </td>
-              <td data-label="Tab" class="nk-showcase-tab">
-                <a href="{{ t.url }}">View tab &rarr;</a>
-              </td>
-            </tr>
+                {% if t.status == 'live' %}<span class="badge live">On now</span>{% elif t.status == 'upcoming' %}<span class="badge upcoming">Upcoming</span>{% endif %}
+              </div>
+              <h3>{{ t.name }}</h3>
+              {% if t.organization or t.venue %}
+              <div class="meta">
+                {% if t.organization %}<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1M9 17h1M14 17h1"/></svg>{{ t.organization }}</span>{% endif %}
+                {% if t.venue %}<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>{{ t.venue }}</span>{% endif %}
+              </div>
+              {% endif %}
+              <span class="go">View tab <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </li>
           {% endfor %}
-        </tbody>
-      </table>
-      {% if showcase_tournaments|length > 4 %}
-        <details class="nk-showcase-more">
-          <summary>
-            <span class="nk-showcase-more__shut">Show all {{ showcase_tournaments|length }} tournaments</span>
-            <span class="nk-showcase-more__open">Show fewer</span>
-          </summary>
-        </details>
-      {% endif %}
-    </div>
-  </section>
-  {% endif %}
-
-  {% include "ads/ad_unit.html" with slot=adsense_slot_content placement="home" %}
-
-  <!-- ════════════════════════════════════════════
-       WORKSPACE FEATURES — Calicotab-style 4-box
-       ════════════════════════════════════════════ -->
-  <section class="nk-features" aria-labelledby="features-heading">
-    <div class="nk-features-container">
-      <p class="nk-features-eyebrow">Workspace Features</p>
-      <h2 id="features-heading" class="nk-features-heading">Everything your organization needs</h2>
-
-      <div class="nk-features-grid">
-
-        <!-- Motion Bank: full-width featured card -->
-        <div class="nk-feature-card nk-feature-card--featured">
-          <div class="nk-feature-card-body">
-            <div class="nk-feature-card-icon" aria-hidden="true">📚</div>
-            <div>
-              <span class="nk-feature-badge">Motion Bank</span>
-              <h2>Global Debate Motion Bank</h2>
-              <p>The world's largest searchable database of competitive debate motions — thousands of real motions from BP, WSDC, Asian Parliamentary, Public Forum, Lincoln-Douglas, and Policy tournaments worldwide. Filter by format, year, region, difficulty, and topic area. Get AI-powered motion analysis, community case outlines, difficulty ratings, and practice tracking — all completely free.</p>
-              <a href="/motions/" class="nk-feature-cta-link">Explore Motion Bank →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="nk-feature-card">
-          <div class="nk-feature-card-body">
-            <div class="nk-feature-card-icon">🌐</div>
-            <h2>Website Builder</h2>
-            <p>Build a professional public website for your debate organization. Showcase your events, share results, and attract participants — no coding required, multiple themes included.</p>
-          </div>
-        </div>
-
-        <div class="nk-feature-card">
-          <div class="nk-feature-card-body">
-            <div class="nk-feature-card-icon">🎟</div>
-            <h2>Event Ticketing</h2>
-            <p>Sell and manage tickets for your debate tournaments and events. Handle online registration, multiple ticket tiers, and payments — all in one place.</p>
-          </div>
-        </div>
-
-        <div class="nk-feature-card">
-          <div class="nk-feature-card-body">
-            <div class="nk-feature-card-icon">📅</div>
-            <h2>Schedule Planner</h2>
-            <p>Plan your tournament schedule from first round to finals. Organize rounds, breaks, and sessions with an intuitive planner built for parliamentary debate formats.</p>
-          </div>
-        </div>
-
-        <div class="nk-feature-card">
-          <div class="nk-feature-card-body">
-            <div class="nk-feature-card-icon">📝</div>
-            <h2>Registration Forms</h2>
-            <p>Create custom registration forms for team sign-ups, judge registrations, and participant surveys. Collect and manage submissions directly in your workspace dashboard.</p>
-          </div>
-        </div>
-
+        </ul>
+        <p class="none" id="t-none" hidden>No tournaments match that search.</p>
+        <div class="more"><button type="button" class="btn btn-outline" id="t-more" hidden>Show more tournaments</button></div>
+        {% else %}
+        <p class="none">Tournaments will appear here as they're created.</p>
+        {% endif %}
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-
-  {% include "ads/ad_unit.html" with slot=adsense_slot_footer placement="home" %}
-
-
-  <!-- ════════════════════════════════════════════
-       FOOTER
-       ════════════════════════════════════════════ -->
-  <footer class="nk-foot">
-    <div class="nk-foot-inner">
-      <nav class="nk-foot-links" aria-label="Footer">
-        <a href="{% url 'pricing' %}">Pricing</a>
-        <a href="{% url 'contact' %}">Contact Us</a>
-        <a href="{% url 'motions' %}">Motion Bank</a>
-        <a href="{% url 'tickets:index' %}">Events</a>
-        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
-        <a href="/about/">About</a>
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-      </nav>
-      <p class="nk-foot-help">
-        Something broken, or a question about billing?
-        <a href="{% url 'contact' %}">Tell us</a> — a real person reads every message.
-      </p>
-      <p class="nk-foot-legal">
-        NekoTab is built on <a href="https://github.com/TabbycatDebate/tabbycat" target="_blank" rel="noopener">Tabbycat</a>, which is open source under the AGPL.
-      </p>
-    </div>
-  </footer>
-
-  {% comment %}
-    Sticky anchor, desktop only. This used to be omitted entirely because
-    .em-mobile-cta-bar owns the bottom of the viewport and stacking two fixed
-    bars buries the primary call to action — but that bar is display:none
-    above 767px (landing.css), so the clash is mobile-only. The anchor runs
-    where there is no clash and is suppressed, before it is ever pushed,
-    where there is.
-  {% endcomment %}
-  {% include "ads/anchor.html" with anchor_desktop_only=1 %}
-
-  <!-- Mobile Fixed CTA -->
-  <div class="em-mobile-cta-bar">
-    {% if user.is_authenticated %}
-    <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right:6px;flex-shrink:0;"><path d="M12 5v14M5 12h14"/></svg>
-      Create a Tournament
-    </a>
-    {% else %}
-    <a href="{% url 'register-organization' %}" class="em-btn em-btn--primary">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right:6px;flex-shrink:0;"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-      Create Workspace
-    </a>
-    {% endif %}
-  </div>
-
-  {% include "ads/collapse_unfilled.html" %}
+  {% include "nekotab/_public_footer.html" %}
 
   <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1a1a2e;color:#e0e0e0;padding:16px 24px;z-index:9999;box-shadow:0 -2px 10px rgba(0,0,0,.3);font-size:14px;">
-    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-      <p style="margin:0;flex:1;min-width:280px;">We use cookies for authentication and, with your consent, analytics. <a href="/privacy/" style="color:#a78bfa;text-decoration:underline;">Privacy Policy</a></p>
+  <div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#000;color:#e4e4e7;padding:16px 24px;z-index:9999;border-top:1px solid #27272a;font-size:14px;">
+    <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <p style="margin:0;flex:1;min-width:260px;">We use cookies for authentication and, with your consent, analytics. <a href="/privacy/" style="color:#9db8ff;text-decoration:underline;">Privacy Policy</a></p>
       <div style="display:flex;gap:8px;flex-shrink:0;">
-        <button onclick="NekoConsent.acceptAll()" style="background:#6366f1;color:#fff;border:none;padding:8px 20px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;">Accept Analytics</button>
-        <button onclick="NekoConsent.acceptEssential()" style="background:transparent;color:#a78bfa;border:1px solid #a78bfa;padding:8px 20px;border-radius:6px;cursor:pointer;font-size:14px;">No Thanks</button>
+        <button onclick="NekoConsent.acceptAll()" style="background:#0B3D91;color:#fff;border:none;padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">Accept analytics</button>
+        <button onclick="NekoConsent.acceptEssential()" style="background:transparent;color:#fff;border:1px solid #52525b;padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;">No thanks</button>
       </div>
     </div>
   </div>
 
-  <!-- Back to Top -->
-  <button id="em-back-to-top" class="em-back-to-top" aria-label="Back to top" title="Back to top">
-    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
-  </button>
-
-  <script src="{% static 'js/landing.js' %}"></script>
   <script>
-    (function () {
-      var burger = document.getElementById('nk-burger');
-      var drawer = document.getElementById('nk-drawer');
-      var backdrop = document.getElementById('nk-drawer-backdrop');
-      var closeBtn = document.getElementById('nk-drawer-close');
-      if (!burger) return;
-
-      function openDrawer() {
-        drawer.classList.add('is-open');
-        burger.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-      }
-      function closeDrawer() {
-        drawer.classList.remove('is-open');
-        burger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
-
-      burger.addEventListener('click', openDrawer);
-      closeBtn.addEventListener('click', closeDrawer);
-      backdrop.addEventListener('click', closeDrawer);
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
-    })();
+  (function () {
+    var grid = document.getElementById('t-grid');
+    if (!grid) return;
+    var items = Array.prototype.slice.call(grid.children);
+    var search = document.getElementById('t-search'), more = document.getElementById('t-more'), none = document.getElementById('t-none');
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+    var PAGE = 12, shown = PAGE, filter = 'all';
+    function matches(li, q) {
+      var st = li.getAttribute('data-status');
+      if (filter === 'now' && st !== 'live' && st !== 'upcoming') return false;
+      if (filter === 'past' && (st === 'live' || st === 'upcoming')) return false;
+      return !q || li.getAttribute('data-text').indexOf(q) !== -1;
+    }
+    function render() {
+      var q = search.value.trim().toLowerCase(), n = 0, total = 0;
+      items.forEach(function (li) {
+        var ok = matches(li, q);
+        if (ok) total++;
+        li.hidden = !ok || (!q && n >= shown);
+        if (ok && !li.hidden) n++;
+      });
+      none.hidden = total !== 0;
+      more.hidden = !!q || n >= total;
+    }
+    search.addEventListener('input', render);
+    more.addEventListener('click', function () { shown += PAGE; render(); });
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        filter = c.getAttribute('data-filter'); shown = PAGE;
+        chips.forEach(function (o) { o.setAttribute('aria-pressed', o === c ? 'true' : 'false'); });
+        render();
+      });
+    });
+    render();
+  })();
   </script>
   <!-- 100% privacy-first analytics -->
   <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

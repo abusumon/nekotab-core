@@ -1,0 +1,29 @@
+{% load static %}
+<style>
+  .nkp-foot { background: #000; color: #a1a1aa; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: .9rem; }
+  .nkp-foot-in { max-width: 1180px; margin: 0 auto; padding: 36px 16px 28px; display: grid; gap: 18px; }
+  .nkp-foot-top { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; }
+  .nkp-foot-brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-weight: 800; text-decoration: none; }
+  .nkp-foot-brand img { width: 24px; height: 24px; }
+  .nkp-foot nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+  .nkp-foot a { color: #d4d4d8; text-decoration: none; }
+  .nkp-foot a:hover { color: #fff; text-decoration: underline; }
+  .nkp-foot small { color: #71717a; line-height: 1.6; }
+</style>
+<footer class="nkp-foot">
+  <div class="nkp-foot-in">
+    <div class="nkp-foot-top">
+      <a class="nkp-foot-brand" href="/"><img src="{% static 'logo.png' %}" alt="" width="24" height="24">NekoTab</a>
+      <nav aria-label="Footer">
+        <a href="/team/">Behind NekoTab</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Docs</a>
+        <a href="https://discord.com/invite/NBny8hnwXr" target="_blank" rel="noopener">Discord</a>
+        <a href="https://www.facebook.com/project.nekotab" target="_blank" rel="noopener">Facebook</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+    </div>
+    <small>NekoTab is built on <a href="https://github.com/TabbycatDebate/tabbycat" target="_blank" rel="noopener">Tabbycat</a>, open source under the AGPL. Draws, tabs and results on NekoTab are free for anyone to read.</small>
+  </div>
+</footer>

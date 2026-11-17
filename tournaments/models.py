@@ -33,7 +33,7 @@ PROHIBITED_TOURNAMENT_SLUGS = [
     '__debug__', 'static', 'style', 'i18n', 'jsi18n',  # Misc
     'forum', 'motions-bank',  # Global apps
     'analytics', 'campaigns',  # Admin apps
-    'mcp', 'oauth', 'agent', '.well-known', 'emet', 'portal',  # AI connector, OAuth, NekoTab portal
+    'mcp', 'oauth', 'agent', '.well-known', 'emet', 'portal', 'team',  # AI connector, OAuth, NekoTab portal
 ]
 
 
@@ -154,11 +154,16 @@ class TournamentQuerySet(models.QuerySet):
             return base.filter(is_publicly_listed=True)
         min_teams = int(getattr(_settings, 'SHOWCASE_MIN_TEAMS', 4) or 0)
         min_debates = int(getattr(_settings, 'SHOWCASE_MIN_DEBATES', 1) or 0)
+        # Every tournament created from SHOWCASE_LIST_ALL_SINCE on is listed by
+        # default, whether or not it has run yet. Older ones keep the bar above,
+        # so years of abandoned test tournaments don't flood the list.
+        since = _showcase_list_all_since(_settings)
         return (base
                 .annotate(_n_teams=Count('team', distinct=True),
                           _n_debates=Count('round__debate', distinct=True))
                 .filter(Q(is_publicly_listed=True)
-                        | Q(_n_teams__gte=min_teams, _n_debates__gte=min_debates)))
+                        | Q(_n_teams__gte=min_teams, _n_debates__gte=min_debates)
+                        | Q(created_at__gte=since)))
 
     def expired_demos(self, now=None):
         """Demo tournaments whose lifetime has run out."""
@@ -323,11 +328,27 @@ class TournamentManager(models.Manager.from_queryset(TournamentQuerySet)):
 
 #: Cache for the home-page showcase. The home page is the single most-visited
 #: page on the site, so this query must not run per request.
-SHOWCASE_CACHE_KEY = 'homepage:showcase:v1'
+SHOWCASE_CACHE_KEY = 'homepage:showcase:v2'
 SHOWCASE_CACHE_TTL = 300  # seconds
-#: Hard ceiling on how many tournaments the showcase will ever render, so the
-#: section cannot grow into an unbounded list as more get featured.
-SHOWCASE_MAX = 12
+#: Hard ceiling on how many tournaments the showcase will ever hold. The home
+#: page shows the first few and reveals the rest on request, with a search box.
+SHOWCASE_MAX = 300
+
+
+def _public_org_name(name):
+    name = (name or '').strip()
+    return '' if name.lower().endswith("'s organization") else name
+
+
+def _showcase_list_all_since(settings_obj):
+    import datetime
+    raw = getattr(settings_obj, 'SHOWCASE_LIST_ALL_SINCE', '2026-11-17')
+    try:
+        day = datetime.date.fromisoformat(str(raw))
+    except ValueError:
+        day = datetime.date(2026, 11, 17)
+    from django.utils import timezone as _tz
+    return _tz.make_aware(datetime.datetime.combine(day, datetime.time.min))
 
 
 def get_showcase_tournaments(limit=SHOWCASE_MAX):
@@ -357,21 +378,38 @@ def get_showcase_tournaments(limit=SHOWCASE_MAX):
         # Manually featured first, then soonest event, then newest. Almost
         # nothing has a date yet, so `-created_at` is doing most of the work
         # and keeps the list looking current rather than frozen.
+        import datetime
+        from django.utils import timezone as _tz
+        today = _tz.localdate()
+        # Newest first from the database (so the cap drops the oldest), then
+        # arranged for reading below: on now, then coming up (soonest first),
+        # then everything else (most recent first).
         qs = (Tournament.objects.showcase()
               .select_related('organization', 'metadata')
-              .order_by('-is_publicly_listed',
-                        F('metadata__event_start_date').asc(nulls_last=True),
-                        '-created_at', '-id')[:SHOWCASE_MAX])
+              .order_by('-created_at', '-id')[:SHOWCASE_MAX])
         for t in qs:
             meta = getattr(t, 'metadata', None)
+            start = getattr(meta, 'event_start_date', None)
+            end = getattr(meta, 'event_end_date', None) or start
+            if start and start <= today <= end:
+                status = 'live'
+            elif start and start > today:
+                status = 'upcoming'
+            elif start:
+                status = 'past'
+            else:
+                status = ''
             rows.append({
+                'status': status,
                 'name': t.name,
                 'short_name': t.short_name or t.name,
                 'slug': t.slug,
                 # view_url is subdomain-aware and already falls back to the
                 # path form for DNS-unsafe slugs.
                 'url': t.view_url,
-                'organization': getattr(t.organization, 'name', ''),
+                # Personal workspaces are auto-named "<username>'s Organization";
+                # that reads as noise on a public list, so only real names show.
+                'organization': _public_org_name(getattr(t.organization, 'name', '')),
                 'created_at': t.created_at,
                 'start_date': getattr(meta, 'event_start_date', None),
                 'end_date': getattr(meta, 'event_end_date', None),
@@ -380,6 +418,15 @@ def get_showcase_tournaments(limit=SHOWCASE_MAX):
     except Exception:
         logger.exception('Could not build the home-page showcase; rendering none')
         return []
+
+    def _key(r):
+        created = r['created_at'].date() if r['created_at'] else datetime.date.min
+        if r['status'] == 'live':
+            return (0, r['start_date'].toordinal())
+        if r['status'] == 'upcoming':
+            return (1, r['start_date'].toordinal())
+        return (2, -(r['start_date'] or created).toordinal())
+    rows.sort(key=_key)
 
     cache.set(SHOWCASE_CACHE_KEY, rows, SHOWCASE_CACHE_TTL)
     return rows[:limit]
