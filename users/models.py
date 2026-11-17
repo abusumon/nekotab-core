@@ -92,3 +92,23 @@ class Membership(models.Model):
         except Exception:
             pass
         return super().delete(*args, **kwargs)
+
+
+# Any change to who holds which role invalidates that user's cached permission
+# decisions (cache entries are keyed by a per-user version). Without this a
+# removed role kept working until the cache was cleared.
+def _bump_for_instance(sender, instance, **kwargs):
+    from .permissions import bump_permission_version
+    bump_permission_version(instance.user_id)
+
+
+def _bump_for_group(sender, instance, **kwargs):
+    from .permissions import bump_permission_version
+    for user_id in Membership.objects.filter(group=instance).values_list('user_id', flat=True):
+        bump_permission_version(user_id)
+
+
+for _sender in (Membership, UserPermission, 'tournaments.TournamentStaffMembership'):
+    models.signals.post_save.connect(_bump_for_instance, sender=_sender, weak=False)
+    models.signals.post_delete.connect(_bump_for_instance, sender=_sender, weak=False)
+models.signals.post_save.connect(_bump_for_group, sender=Group, weak=False)

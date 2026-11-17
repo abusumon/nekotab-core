@@ -1241,7 +1241,10 @@ class FixDebateTeamsView(AdministratorMixin, TournamentMixin, TemplateView):
         return super().get_context_data(**kwargs)
 
     def dispatch(self, request, *args, **kwargs):
-        # bypass the TournamentMixin checks, to avoid potential redirect loops
+        # Bypass the TournamentMixin checks, to avoid potential redirect loops,
+        # but not the permission check, which skipping dispatch() also skipped.
+        if not self.test_func():
+            return self.handle_no_permission()
         return TemplateView.dispatch(self, request, *args, **kwargs)
 
 

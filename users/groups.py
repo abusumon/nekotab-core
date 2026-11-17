@@ -149,3 +149,55 @@ class Registration(BaseGroup):
         Permission.VIEW_CUSTOM_ANSWERS,
         Permission.VIEW_REGISTRATION,
     ]
+
+
+def tab_director_group_names():
+    """The Tabulation Director group's name in every site language (the name is
+    stored translated, in whatever language the tournament was created in)."""
+    from django.conf import settings
+    from django.utils import translation
+    names = {"Tabulation Director"}
+    for code, _name in settings.LANGUAGES:
+        with translation.override(code):
+            names.add(str(TabDirector.name))
+    return names
+
+
+def ensure_role_groups(tournament):
+    """Create any missing standard roles and top up existing ones with
+    permissions added since they were created. Never removes a permission a
+    director granted by hand."""
+    from .models import Group
+    existing = {g.name: g for g in Group.objects.filter(tournament=tournament)}
+    for preset in all_groups():
+        name = str(preset.name)
+        group = existing.get(name)
+        if group is None:
+            Group.objects.create(name=name, permissions=list(preset.permissions), tournament=tournament)
+            continue
+        missing = [p for p in preset.permissions if p not in (group.permissions or [])]
+        if missing:
+            group.permissions = list(group.permissions or []) + missing
+            group.save(update_fields=['permissions'])
+
+
+ROLE_SUMMARIES = {
+    'TabDirector': _("Full access, the same as the owner: setup, draws, results, the break, "
+                     "settings, and inviting or removing people."),
+    'TabAssistant': _("Assistant pages only: enter ballots and feedback, check people in, "
+                      "show draws and motions. Cannot change setup or results."),
+    'AdjudicationCore': _("Allocate adjudicators and panels, read feedback, write and release "
+                          "motions, see standings and the break."),
+    'Equity': _("View and edit conflicts and room constraints, and see participants' "
+                "identity details."),
+    'Language': _("Set speaker categories (e.g. ESL/EFL) and break eligibility."),
+    'Registration': _("Add teams, adjudicators and institutions, and read registration answers."),
+}
+
+
+def describe_role(group):
+    """(summary, preset class name) for a tournament's role group."""
+    for preset in all_groups():
+        if str(preset.name) == group.name:
+            return ROLE_SUMMARIES.get(preset.__name__, ''), preset.__name__
+    return _("Custom role."), ''

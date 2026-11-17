@@ -233,6 +233,9 @@ class DebateMiddleware:
             return True
         if Membership.objects.filter(user=user, group__tournament=tournament).exists():
             return True
+        from tournaments.models import TournamentStaffMembership  # noqa: E402
+        if TournamentStaffMembership.objects.filter(user=user, tournament=tournament).exists():
+            return True
         return False
 
     @staticmethod

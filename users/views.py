@@ -29,6 +29,8 @@ from utils.misc import reverse_tournament
 from utils.mixins import AdministratorMixin
 
 from .forms import AcceptInvitationForm, InviteUserForm, PublicSignupForm, SuperuserCreationForm
+from .groups import ensure_role_groups
+from .permissions import has_full_access
 from .tokens import email_verification_token
 
 User = get_user_model()
@@ -151,34 +153,32 @@ class InviteUserView(LogActionMixin, AdministratorMixin, TournamentMixin, Passwo
     email_template_name = 'account_invitation_email.html'
 
     def test_func(self):
-        user = self.request.user
-        if not user.is_authenticated:
-            return False
-        if user.is_superuser:
-            return True
-        # Tournament owner
-        if hasattr(self.tournament, 'owner_id') and self.tournament.owner_id == user.pk:
-            return True
-        # Org OWNER/ADMIN
-        from organizations.models import OrganizationMembership
-        if hasattr(self.tournament, 'organization_id') and self.tournament.organization_id:
-            if OrganizationMembership.objects.filter(
-                user=user,
-                organization_id=self.tournament.organization_id,
-                role__in=[OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
-            ).exists():
-                return True
-        # Tab director (new staff membership system)
+        # Inviting can hand out any role, Tab Director included, so it needs
+        # full access: not merely membership of some role on this tournament.
+        return has_full_access(self.request.user, self.tournament)
+
+    def get(self, request, *args, **kwargs):
+        ensure_role_groups(self.tournament)
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
         from tournaments.models import TournamentStaffMembership
-        if TournamentStaffMembership.objects.filter(
-            tournament=self.tournament,
-            user=user,
-            role=TournamentStaffMembership.Role.TAB_DIRECTOR,
-        ).exists():
-            return True
-        # Tab director (old group/membership system) — any group membership for this tournament
-        from users.models import Membership
-        return Membership.objects.filter(user=user, group__tournament=self.tournament).exists()
+
+        from .models import Membership
+        kwargs = super().get_context_data(**kwargs)
+        people = {}
+
+        def person(user):
+            return people.setdefault(user.pk, {'user': user, 'roles': [], 'staff_roles': []})
+        for m in (Membership.objects.filter(group__tournament=self.tournament)
+                  .select_related('user', 'group').order_by('user__username')):
+            person(m.user)['roles'].append(m)
+        for sm in (TournamentStaffMembership.objects.filter(tournament=self.tournament)
+                   .select_related('user')):
+            person(sm.user)['staff_roles'].append(sm)
+        kwargs['owner'] = self.tournament.owner
+        kwargs['people'] = [p for uid, p in people.items() if uid != self.tournament.owner_id]
+        return kwargs
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -186,7 +186,8 @@ class InviteUserView(LogActionMixin, AdministratorMixin, TournamentMixin, Passwo
         return kwargs
 
     def get_success_url(self):
-        return reverse_tournament('options-tournament-index', self.tournament)
+        # Back to the same page, so the new person shows in "People with access".
+        return reverse_tournament('invite-user', self.tournament)
 
     def form_valid(self, form):
         form.save(
@@ -205,6 +206,34 @@ class InviteUserView(LogActionMixin, AdministratorMixin, TournamentMixin, Passwo
             messages.success(self.request, _("Successfully invited user to create an account for the tournament."))
 
         return super().form_valid(form)
+
+
+class RemoveAccessView(LogActionMixin, AdministratorMixin, TournamentMixin, View):
+    """Remove one role (group membership or staff role) from someone. The
+    owner's access is not a role and cannot be removed here."""
+
+    action_log_type = ActionLogEntry.ActionType.USER_INVITE
+
+    def test_func(self):
+        return has_full_access(self.request.user, self.tournament)
+
+    def post(self, request, *args, **kwargs):
+        from tournaments.models import TournamentStaffMembership
+
+        from .models import Membership
+        kind, pk = request.POST.get('kind'), request.POST.get('pk')
+        model = {'role': Membership, 'staff': TournamentStaffMembership}.get(kind)
+        if model is None or not str(pk).isdigit():
+            raise Http404
+        lookup = {'group__tournament': self.tournament} if model is Membership else {'tournament': self.tournament}
+        obj = model.objects.filter(pk=pk, **lookup).select_related('user').first()
+        if obj is None:
+            raise Http404
+        name = obj.user.get_full_name() or obj.user.get_username()
+        obj.delete()
+        self.log_action()
+        messages.success(request, _("Removed that role from %(name)s.") % {'name': name})
+        return redirect(reverse_tournament('invite-user', self.tournament))
 
 
 class AcceptInvitationView(TournamentMixin, PasswordResetConfirmView):

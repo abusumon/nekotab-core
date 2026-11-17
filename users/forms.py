@@ -23,12 +23,22 @@ class SuperuserCreationForm(UserCreationForm):
         return user
 
 
+class RoleChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, group):
+        return group.name
+
+
 class InviteUserForm(PasswordResetForm):
     def __init__(self, tournament, *args, **kwargs):
         self.tournament = tournament
         super().__init__(*args, **kwargs)
 
-        self.fields['role'] = forms.ModelChoiceField(queryset=tournament.group_set.all())
+        self.fields['role'] = RoleChoiceField(
+            queryset=tournament.group_set.all().order_by('id'), widget=forms.RadioSelect,
+            empty_label=None, label=_("Role"))
+        self.fields['email'].label = _("Email address")
+        self.fields['email'].help_text = _("They get an email link to join. Someone who already has "
+                                           "a NekoTab account gets access straight away.")
 
     def get_users(self, email):
         import uuid as _uuid

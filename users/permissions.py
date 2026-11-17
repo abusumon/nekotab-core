@@ -184,6 +184,12 @@ def has_permission(user: 'settings.AUTH_USER_MODEL', permission: permission_type
     if hasattr(tournament, 'owner_id') and tournament.owner_id == user.pk:
         return True
 
+    # So do Tab Directors, however they were added. Checked as a role rather
+    # than a permission list: role groups store a snapshot of permissions, so
+    # anything added to the codebase later would otherwise be missing for them.
+    if is_tab_director(user, tournament):
+        return True
+
     # Organization-level access: resolve org membership role against the
     # ROLE_PERMISSIONS mapping.  Owner/Admin get full access, other roles
     # get a defined permission set.  Cache the role lookup to avoid a DB
@@ -268,3 +274,54 @@ def get_permissions(user: 'settings.AUTH_USER_MODEL') -> List['Tournament']:
         tournament.permissions = getattr(tournament, 'permissions', set()) | {p.permission for p in perms}
 
     return list(user_perms.values())
+
+
+def bump_permission_version(user_id):
+    """Invalidate every cached permission decision for this user."""
+    key = "perm_version:%d" % user_id
+    cache.set(key, (cache.get(key) or 1) + 1, None)
+
+
+def is_tab_director(user, tournament) -> bool:
+    """A Tab Director on this tournament: the Tabulation Director role, or a
+    Tab Director staff membership. Cached per request and per permission version."""
+    if user.is_anonymous or tournament is None:
+        return False
+    memo = user.__dict__.setdefault('_tab_director', {})
+    if tournament.pk in memo:
+        return memo[tournament.pk]
+    key = PERM_CACHE_KEY % (user.pk, tournament.slug, 'tab_director', _get_perm_cache_version(user.pk))
+    result = cache.get(key)
+    if result is None:
+        from tournaments.models import TournamentStaffMembership
+        from .groups import tab_director_group_names
+        from .models import Membership
+        result = (
+            Membership.objects.filter(user=user, group__tournament=tournament,
+                                      group__name__in=tab_director_group_names()).exists()
+            or TournamentStaffMembership.objects.filter(
+                user=user, tournament=tournament, role=TournamentStaffMembership.Role.TAB_DIRECTOR).exists()
+        )
+        cache.set(key, result, 600)
+    memo[tournament.pk] = result
+    return result
+
+
+def has_full_access(user, tournament) -> bool:
+    """Everything on this tournament, including inviting and removing people:
+    superusers, the owner, organization owners/admins and Tab Directors."""
+    if user.is_anonymous:
+        return False
+    if user.is_superuser or (tournament is not None and tournament.owner_id == user.pk):
+        return True
+    if tournament is None:
+        return False
+    if is_tab_director(user, tournament):
+        return True
+    if tournament.organization_id:
+        from organizations.models import OrganizationMembership
+        from organizations.permissions import ROLE_PERMISSIONS
+        role = OrganizationMembership.objects.filter(
+            organization_id=tournament.organization_id, user=user).values_list('role', flat=True).first()
+        return ROLE_PERMISSIONS.get(role) == '__all__'
+    return False

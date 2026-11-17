@@ -1,25 +1,128 @@
 {% extends "base.html" %}
-{% load debate_tags i18n %}
+{% load debate_tags i18n role_tags %}
 
 {% block page-subnav-sections %}
-  {% if current_round %}
-    <a class="btn btn-primary "
-       href="{% tournamenturl 'options-tournament-index' %}">
-      <i data-feather="chevron-left"></i> {% trans "Back to Configuration" %}
-    </a>
-  {% endif %}
+  <a class="btn btn-outline-primary" href="{% tournamenturl 'options-tournament-index' %}">
+    <i data-feather="chevron-left"></i> {% trans "Back to Configuration" %}
+  </a>
 {% endblock %}
 
 {% block content %}
-<form action="." method="POST">
-  <div class="card">
-    {% csrf_token %}
+<style>
+  .nk-role { display: flex; gap: .75rem; align-items: flex-start; padding: .85rem 1rem; border: 1px solid rgba(0,0,0,.12);
+             border-radius: .6rem; margin-bottom: .5rem; cursor: pointer; }
+  .nk-role:hover { border-color: #0B3D91; }
+  .nk-role input { margin-top: .3rem; flex-shrink: 0; width: 1.1rem; height: 1.1rem; }
+  .nk-role.is-selected { border-color: #0B3D91; box-shadow: 0 0 0 2px rgba(11,61,145,.25); }
+  .nk-role strong { display: block; }
+  .nk-role .nk-sum { font-size: .9rem; opacity: .8; }
+  .nk-role details { font-size: .82rem; margin-top: .35rem; }
+  .nk-role details summary { cursor: pointer; color: #0B3D91; }
+  .nk-role details ul { columns: 2; margin: .4rem 0 0; padding-left: 1.1rem; }
+  .nk-full { font-size: .7rem; font-weight: 700; background: #0B3D91; color: #fff; border-radius: 99px; padding: .1rem .5rem; margin-left: .35rem; vertical-align: middle; }
+  .nk-person { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; justify-content: space-between; }
+  .nk-person .nk-who { min-width: 0; overflow-wrap: anywhere; }
+  .nk-chip { display: inline-flex; align-items: center; gap: .35rem; border: 1px solid rgba(0,0,0,.15); border-radius: 99px;
+             padding: .15rem .25rem .15rem .65rem; font-size: .85rem; margin: .15rem .25rem .15rem 0; }
+  .nk-chip button { border: 0; background: none; line-height: 1; padding: .2rem .4rem; border-radius: 99px; color: inherit; }
+  .nk-chip button:hover { background: rgba(0,0,0,.08); }
+  @media (max-width: 575.98px) { .nk-role details ul { columns: 1; } }
+</style>
 
-    {% include 'components/form-main.html' %}
+<div class="row">
+  <div class="col-lg-7">
+    <form action="." method="POST" class="card mb-3">
+      {% csrf_token %}
+      <div class="card-body">
+        <h4 class="card-title mb-1">{% trans "Invite someone" %}</h4>
+        <p class="text-muted mb-3">{% trans "Choose what they can do. You can remove a role at any time." %}</p>
+        {% include "components/form-errors.html" with errors=form.non_field_errors %}
 
-    {% trans "Invite User" context "button" as title %}
-    {% trans "Note: if you submit this multiple times, multiple invite emails will be sent." as subtitle %}
-    {% include "components/form-submit.html" %}
+        <div class="form-group">
+          <label for="{{ form.email.id_for_label }}"><strong>{{ form.email.label }}</strong></label>
+          <input type="email" name="email" id="{{ form.email.id_for_label }}" class="form-control form-control-lg"
+                 autocomplete="email" required value="{{ form.email.value|default:'' }}">
+          <small class="form-text text-muted">{{ form.email.help_text }}</small>
+          {% for e in form.email.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+        </div>
+
+        <fieldset class="form-group mb-0">
+          <legend class="h6 font-weight-bold">{% trans "Role" %}</legend>
+          {% for e in form.role.errors %}<div class="text-danger small mb-2">{{ e }}</div>{% endfor %}
+          {% for group in form.fields.role.queryset %}
+            {% role_info group as info %}
+            <label class="nk-role {% if form.role.value|stringformat:'s' == group.pk|stringformat:'s' %}is-selected{% endif %}">
+              <input type="radio" name="role" value="{{ group.pk }}" required
+                     {% if form.role.value|stringformat:'s' == group.pk|stringformat:'s' %}checked{% endif %}>
+              <span>
+                <strong>{{ group.name }}{% if info.full %}<span class="nk-full">{% trans "Full access" %}</span>{% endif %}</strong>
+                <span class="nk-sum">{{ info.summary }}</span>
+                {% if not info.full %}
+                <details><summary>{% blocktrans count n=info.labels|length %}{{ n }} permission{% plural %}{{ n }} permissions{% endblocktrans %}</summary>
+                  <ul>{% for label in info.labels %}<li>{{ label|capfirst }}</li>{% endfor %}</ul>
+                </details>
+                {% endif %}
+              </span>
+            </label>
+          {% endfor %}
+        </fieldset>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-success btn-block">{% trans "Send invite" %}</button>
+      </div>
+    </form>
   </div>
-</form>
+
+  <div class="col-lg-5">
+    <div class="card mb-3">
+      <div class="card-body pb-2">
+        <h4 class="card-title mb-1">{% trans "People with access" %}</h4>
+        <p class="text-muted small mb-0">{% trans "Removing a role takes effect immediately." %}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        {% if owner %}
+        <li class="list-group-item nk-person">
+          <span class="nk-who"><strong>{{ owner.get_full_name|default:owner.get_username }}</strong><br>
+            <small class="text-muted">{{ owner.email }}</small></span>
+          <span class="nk-chip" style="padding-right:.65rem">{% trans "Owner" %} · {% trans "Full access" %}</span>
+        </li>
+        {% endif %}
+        {% for p in people %}
+        <li class="list-group-item nk-person">
+          <span class="nk-who"><strong>{{ p.user.get_full_name|default:p.user.get_username }}</strong>
+            {% if not p.user.is_active %}<span class="badge badge-warning">{% trans "Invite pending" %}</span>{% endif %}<br>
+            <small class="text-muted">{{ p.user.email }}</small></span>
+          <span>
+            {% for m in p.roles %}
+            <form method="post" action="{% tournamenturl 'remove-user-access' %}" class="d-inline">{% csrf_token %}
+              <input type="hidden" name="kind" value="role"><input type="hidden" name="pk" value="{{ m.pk }}">
+              <span class="nk-chip">{{ m.group.name }}
+                <button type="submit" title="{% trans 'Remove this role' %}" aria-label="{% blocktrans with role=m.group.name %}Remove {{ role }}{% endblocktrans %}"
+                        onclick="return confirm('{% trans "Remove this role?" %}')">×</button></span>
+            </form>
+            {% endfor %}
+            {% for sm in p.staff_roles %}
+            <form method="post" action="{% tournamenturl 'remove-user-access' %}" class="d-inline">{% csrf_token %}
+              <input type="hidden" name="kind" value="staff"><input type="hidden" name="pk" value="{{ sm.pk }}">
+              <span class="nk-chip">{{ sm.get_role_display }}
+                <button type="submit" title="{% trans 'Remove this role' %}" onclick="return confirm('{% trans "Remove this role?" %}')">×</button></span>
+            </form>
+            {% endfor %}
+          </span>
+        </li>
+        {% empty %}
+        <li class="list-group-item text-muted">{% trans "Nobody else yet." %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.nk-role input').forEach(function (r) {
+  r.addEventListener('change', function () {
+    document.querySelectorAll('.nk-role').forEach(function (l) { l.classList.toggle('is-selected', l.contains(r) && r.checked); });
+  });
+});
+</script>
 {% endblock %}
