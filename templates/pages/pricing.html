@@ -12,7 +12,7 @@
   {# most of its traffic is on mobile networks in South and Southeast Asia. #}
   <style>
     :root{
-      --primary:#6366f1;--primary-dark:#4f46e5;
+      --primary:#0B3D91;--primary-dark:#0B3D91;
       --text:#18181f;--text-sec:#62626e;
       --bg:#f7f7fb;--surface:#fff;--border:#e5e7eb;
       --ok:#059669;--radius:16px;
@@ -79,6 +79,7 @@
     .soon-acts .p { background: #0B3D91; color: #fff; }
     .soon-acts .s { border: 1px solid #000; color: #000; }
   </style>
+{% include "nekotab/_org_jsonld.html" %}
 </head>
 <body>
   {% include "nekotab/_public_nav.html" with nav_active="pricing" %}
@@ -101,5 +102,6 @@
     </div>
   </main>
   {% include "nekotab/_public_footer.html" %}
+  {% include "nekotab/_site_scripts.html" %}
 </body>
 </html>

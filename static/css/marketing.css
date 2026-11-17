@@ -54,19 +54,19 @@
   transition: border-color .2s, box-shadow .2s;
 }
 .mk-decision-card:hover {
-  border-color: rgba(99,102,241,.4);
-  box-shadow: 0 0 40px rgba(99,102,241,.08);
+  border-color: rgba(61,108,196,.4);
+  box-shadow: 0 0 40px rgba(61,108,196,.08);
 }
 .mk-decision-card--featured {
-  background: linear-gradient(135deg, rgba(99,102,241,.12), rgba(139,92,246,.08));
-  border-color: rgba(99,102,241,.3);
+  background: linear-gradient(135deg, rgba(61,108,196,.12), rgba(61,108,196,.08));
+  border-color: rgba(61,108,196,.3);
 }
 .mk-card-badge {
   position: absolute;
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #0B3D91, #0B3D91);
   color: #fff;
   font-size: .75rem;
   font-weight: 700;
@@ -117,7 +117,7 @@
   padding: 2px 6px;
   border-radius: 4px;
   font-size: .82rem;
-  color: #a78bfa;
+  color: #9db8ee;
 }
 .mk-card-cta {
   margin-top: auto;
@@ -200,7 +200,7 @@
   width: 44px;
   height: 44px;
   margin: 0 auto 16px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #0B3D91, #0B3D91);
   color: #fff;
   font-size: 1.1rem;
   font-weight: 800;
@@ -224,7 +224,7 @@
 .mk-step-connector {
   flex: 0 0 32px;
   height: 2px;
-  background: linear-gradient(90deg, rgba(99,102,241,.4), rgba(139,92,246,.4));
+  background: linear-gradient(90deg, rgba(61,108,196,.4), rgba(61,108,196,.4));
   align-self: 22px;
   margin-top: 22px;
   border-radius: 2px;
@@ -250,7 +250,7 @@
   transition: border-color .2s, transform .2s;
 }
 .mk-uc-card:hover {
-  border-color: rgba(99,102,241,.3);
+  border-color: rgba(61,108,196,.3);
   transform: translateY(-3px);
 }
 .mk-uc-icon {
@@ -305,7 +305,7 @@
 }
 .mk-flow-arrow {
   flex: 0 0 auto;
-  color: rgba(99,102,241,.5);
+  color: rgba(61,108,196,.5);
   margin-top: 12px;
 }
 

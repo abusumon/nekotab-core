@@ -55,7 +55,7 @@
           <a href="#institution-{{ forloop.counter }}"
              class="badge rounded-pill institution-pill text-decoration-none"
              data-target="{{ forloop.counter }}"
-             style="background:rgba(99,102,241,.12);color:#4f46e5;font-size:.8rem;padding:5px 12px;border:1px solid rgba(99,102,241,.25);">
+             style="background:rgba(61,108,196,.12);color:#0B3D91;font-size:.8rem;padding:5px 12px;border:1px solid rgba(61,108,196,.25);">
             {% if forms.grouper.name %}{{ forms.grouper.name }}{% else %}{% trans "Unaffiliated" %}{% endif %}
             <span class="ms-1 opacity-75">({{ forms.list|length }})</span>
           </a>
@@ -76,7 +76,7 @@
       <div class="card-header d-flex align-items-center justify-content-between py-2">
         <h5 class="mb-0 d-flex align-items-center gap-2">
           <span class="institution-avatar rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
-                style="width:30px;height:30px;background:rgba(99,102,241,.15);color:#6366f1;font-size:12px;font-weight:700;">
+                style="width:30px;height:30px;background:rgba(61,108,196,.15);color:#0B3D91;font-size:12px;font-weight:700;">
             {% if forms.grouper.name %}{{ forms.grouper.name|first|upper }}{% else %}—{% endif %}
           </span>
           {% if forms.grouper.name %}
@@ -128,9 +128,9 @@
   .institution-group { scroll-margin-top: 110px; }
   .institution-pill { transition: all .12s; cursor: pointer; }
   .institution-pill:hover, .institution-pill.active {
-    background: #6366f1 !important;
+    background: #0B3D91 !important;
     color: #fff !important;
-    border-color: #6366f1 !important;
+    border-color: #0B3D91 !important;
   }
   .institution-group.dim { opacity: 0.35; transition: opacity .2s; }
   #institution-jump-search:focus { box-shadow: none; border-color: #86b7fe; }

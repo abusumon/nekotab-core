@@ -103,7 +103,12 @@
     init: function () {
       var consent = readConsent();
       var banner  = document.getElementById('cookie-consent');
-      if (!banner) return;
+      if (!banner) {
+        // Pages without a banner (e.g. the dashboard) still honour a choice
+        // already made, so queued tags and conversions run there too.
+        if (consent === 'all') this._loadGA4();
+        return;
+      }
 
       if (consent) {
         // Consent already given — keep banner hidden, load GA4 if accepted
@@ -157,7 +162,7 @@
 
     _loadGA4: function () {
       try {
-        if (window.__ga4_loaded) return;
+        if (window.__ga4_loaded) { this._runConsentQueue(); return; }
         window.__ga4_loaded = true;
 
         var s   = document.createElement('script');
@@ -174,6 +179,20 @@
       } catch (e) {
         // Blocked by adblock/ETP — fail silently
       }
+      this._runConsentQueue();
+    },
+
+    /**
+     * Run everything pages queued for "after analytics consent"
+     * (window.__nekoConsentQueue: marketing tags, attribution cookie), then
+     * make later pushes run immediately.
+     */
+    _runConsentQueue: function () {
+      var q = window.__nekoConsentQueue;
+      if (q && q.__drained) return;
+      var run = function (fn) { try { fn(); } catch (e) { /* a blocked tag must not stop the rest */ } };
+      (Array.isArray(q) ? q : []).forEach(run);
+      window.__nekoConsentQueue = { __drained: true, push: run };
     }
   };
 

@@ -1,156 +1,55 @@
+{% extends "analytics/_admin_base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motion Harvest — NekoTab Admin</title>
-    <style>
-        :root {
-            --bg-dark: #0f0f13;
-            --bg-card: #1a1a24;
-            --bg-hover: #22223a;
-            --border: #2a2a40;
-            --text-primary: #e8e8f0;
-            --text-secondary: #8888aa;
-            --accent: #7c3aed;
-            --accent-light: #a78bfa;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --info: #3b82f6;
-            --danger: #ef4444;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-dark); color: var(--text-primary); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: flex; min-height: 100vh; }
-
-        /* Sidebar */
-        .sidebar { width: 260px; background: var(--bg-card); border-right: 1px solid var(--border); padding: 24px 0; position: fixed; top: 0; left: 0; height: 100vh; overflow-y: auto; z-index: 100; }
-        .logo { padding: 0 24px 24px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
-        .logo h1 { font-size: 24px; font-weight: 700; background: linear-gradient(135deg, var(--accent), #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .logo span { font-size: 12px; color: var(--text-secondary); display: block; margin-top: 4px; }
-        .nav-section { padding: 0 12px; margin-bottom: 24px; }
-        .nav-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); padding: 0 12px; margin-bottom: 8px; }
-        .nav-link { display: flex; align-items: center; gap: 12px; padding: 12px; color: var(--text-secondary); text-decoration: none; border-radius: 8px; transition: all 0.2s; font-size: 14px; font-weight: 500; }
-        .nav-link:hover, .nav-link.active { background: var(--bg-hover); color: var(--text-primary); }
-        .nav-link.active { background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(236,72,153,0.1)); color: var(--accent-light); }
-        .nav-link svg { width: 20px; height: 20px; flex-shrink: 0; }
-
-        /* Main */
-        .main-content { margin-left: 260px; padding: 32px; min-height: 100vh; width: calc(100% - 260px); }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
-        .header h2 { font-size: 26px; font-weight: 700; }
-
-        /* Stats row */
-        .stats-row { display: flex; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
-        .stat-pill { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; display: flex; align-items: center; gap: 12px; }
-        .stat-pill .num { font-size: 22px; font-weight: 700; }
-        .stat-pill .lbl { font-size: 13px; color: var(--text-secondary); }
-        .pill-pending .num { color: var(--warning); }
-        .pill-banked .num { color: var(--success); }
-
-        /* Tournament group card */
-        .group-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
-        .group-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); gap: 12px; flex-wrap: wrap; }
-        .group-title { font-size: 15px; font-weight: 600; }
-        .group-meta { font-size: 12px; color: var(--text-secondary); }
-        .group-actions { display: flex; gap: 8px; align-items: center; }
-
-        /* Motion row */
-        .motion-row { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
-        .motion-row:last-child { border-bottom: none; }
-        .motion-row:hover { background: var(--bg-hover); }
-        .motion-row.in-bank { opacity: 0.6; }
-        .motion-text { font-size: 14px; line-height: 1.6; }
-        .motion-meta { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
-        .motion-infoslide { font-size: 12px; color: var(--text-secondary); margin-top: 6px; border-left: 2px solid var(--border); padding-left: 8px; font-style: italic; }
-        .motion-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; padding-top: 2px; }
-
-        /* Buttons */
-        .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border: none; border-radius: 7px; font-size: 13px; font-weight: 500; font-family: inherit; cursor: pointer; transition: all 0.2s; text-decoration: none; }
-        .btn-push { background: linear-gradient(135deg, var(--accent), #ec4899); color: white; }
-        .btn-push:hover { opacity: 0.88; transform: translateY(-1px); }
-        .btn-push:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-        .btn-push-all { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.4); color: var(--accent-light); }
-        .btn-push-all:hover { background: rgba(124,58,237,0.25); }
-        .btn-secondary { background: var(--bg-hover); color: var(--text-secondary); border: 1px solid var(--border); }
-        .btn-secondary:hover { color: var(--text-primary); }
-
-        /* Badges */
-        .badge { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; }
-        .badge-success { background: rgba(16,185,129,0.15); color: var(--success); }
-        .badge-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
-        .badge-count { background: rgba(124,58,237,0.2); color: var(--accent-light); }
-
-        /* Toast */
-        #toast { position: fixed; bottom: 24px; right: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; font-size: 14px; opacity: 0; transform: translateY(8px); transition: all 0.3s; z-index: 999; max-width: 340px; }
-        #toast.visible { opacity: 1; transform: translateY(0); }
-        #toast.success { border-color: var(--success); color: var(--success); }
-        #toast.error { border-color: var(--danger); color: var(--danger); }
-
-        /* Empty state */
-        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); }
-        .empty-state svg { width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.4; }
-        .empty-state p { font-size: 15px; }
-
-        @media (max-width: 768px) {
-            .sidebar { display: none; }
-            .main-content { margin-left: 0; padding: 20px 16px; width: 100%; }
-        }
-    </style>
-</head>
-<body>
+{% block title %}Motion Harvest — NekoTab Admin{% endblock %}
+{% block extra_css %}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
+.header h2 { font-size: 26px; font-weight: 700; }
+.stats-row { display: flex; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+.stat-pill { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; display: flex; align-items: center; gap: 12px; }
+.stat-pill .num { font-size: 22px; font-weight: 700; }
+.stat-pill .lbl { font-size: 13px; color: var(--text-secondary); }
+.pill-pending .num { color: var(--warning); }
+.pill-banked .num { color: var(--success); }
+.group-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
+.group-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); gap: 12px; flex-wrap: wrap; }
+.group-title { font-size: 15px; font-weight: 600; }
+.group-meta { font-size: 12px; color: var(--text-secondary); }
+.group-actions { display: flex; gap: 8px; align-items: center; }
+.motion-row { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+.motion-row:last-child { border-bottom: none; }
+.motion-row:hover { background: var(--bg-hover); }
+.motion-row.in-bank { opacity: 0.6; }
+.motion-text { font-size: 14px; line-height: 1.6; }
+.motion-meta { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+.motion-infoslide { font-size: 12px; color: var(--text-secondary); margin-top: 6px; border-left: 2px solid var(--border); padding-left: 8px; font-style: italic; }
+.motion-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; padding-top: 2px; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border: none; border-radius: 7px; font-size: 13px; font-weight: 500; font-family: inherit; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+.btn-push { background: linear-gradient(135deg, var(--accent), #3d6cc4); color: white; }
+.btn-push:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-push:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.btn-push-all { background: rgba(61,108,196,0.15); border: 1px solid rgba(61,108,196,0.4); color: var(--accent-light); }
+.btn-push-all:hover { background: rgba(61,108,196,0.25); }
+.btn-secondary { background: var(--bg-hover); color: var(--text-secondary); border: 1px solid var(--border); }
+.btn-secondary:hover { color: var(--text-primary); }
+.badge { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.badge-success { background: rgba(16,185,129,0.15); color: var(--success); }
+.badge-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
+.badge-count { background: rgba(61,108,196,0.2); color: var(--accent-light); }
+#toast { position: fixed; bottom: 24px; right: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; font-size: 14px; opacity: 0; transform: translateY(8px); transition: all 0.3s; z-index: 999; max-width: 340px; }
+#toast.visible { opacity: 1; transform: translateY(0); }
+#toast.success { border-color: var(--success); color: var(--success); }
+#toast.error { border-color: var(--danger); color: var(--danger); }
+.empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); }
+.empty-state svg { width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.4; }
+.empty-state p { font-size: 15px; }
+{% endblock %}
+{% block content %}
     <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="logo">
-            <h1><img src="{% static 'logo-32x32.png' %}" alt="" style="width:18px;height:18px;vertical-align:-3px;border-radius:4px;"> NekoTab</h1>
-            <span>Admin Dashboard</span>
-        </div>
-        <nav class="nav-section">
-            <div class="nav-label">Analytics</div>
-            <a href="{% url 'analytics:dashboard' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-                Dashboard
-            </a>
-            <a href="{% url 'analytics:users' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                All Users
-            </a>
-            <a href="{% url 'analytics:tournaments' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                Tournaments
-            </a>
-            <a href="{% url 'analytics:db_usage' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
-                DB Usage
-            </a>
-            <a href="{% url 'analytics:donations' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 .895-4 2s1.79 2 4 2 4 .895 4 2-1.79 2-4 2m0-10v12m0 0a9 9 0 100-18 9 9 0 000 18z"/></svg>
-                Donations
-            </a>
-            <a href="{% url 'analytics:tournament_motions' %}" class="nav-link active">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                Motion Harvest
-            </a>
-        </nav>
-        <nav class="nav-section">
-            <div class="nav-label">Manage</div>
-            <a href="{% url 'campaigns:list' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                Email Campaigns
-            </a>
-            <a href="/admin/" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                Django Admin
-            </a>
-            <a href="/" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                Back to Site
-            </a>
-        </nav>
-    </aside>
+    
 
     <!-- Main Content -->
-    <main class="main-content">
+    <div class="ad-page">
         <div class="header">
             <div>
                 <h2>🌾 Motion Harvest</h2>
@@ -243,7 +142,7 @@
             Motions appear here once tournament organisers add them to their rounds in Tabbycat.</p>
         </div>
         {% endif %}
-    </main>
+    </div>
 
     <div id="toast"></div>
 
@@ -317,5 +216,4 @@
             }
         }
     </script>
-</body>
-</html>
+{% endblock %}

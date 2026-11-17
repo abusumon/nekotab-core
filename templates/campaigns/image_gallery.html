@@ -4,7 +4,7 @@
 {% block title %}Image Gallery{% endblock %}
 
 {% block extra_css %}
-<style>
+
   .image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -78,7 +78,7 @@
     transition: background 0.15s;
     font-family: inherit;
   }
-  .copy-btn:hover { background: #dde4ff; }
+  .copy-btn:hover { background: #e8eefb; }
   .copy-btn.copied { background: var(--nt-success-light); color: #047857; }
   .delete-form { margin-top: auto; }
   .upload-zone {
@@ -94,7 +94,7 @@
   .upload-zone-text { font-weight: 600; color: var(--nt-text); margin-bottom: 4px; }
   .upload-zone-hint { font-size: 13px; color: var(--nt-text-muted); }
   #upload-progress { display: none; margin-top: 12px; }
-</style>
+
 {% endblock %}
 
 {% block content %}

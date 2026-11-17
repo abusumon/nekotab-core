@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "nekotab/marketing_base.html" %}
 {% load i18n static ad_tags %}
 
 {% block page-title %}Learn Debate — Free Guides & Resources{% endblock %}
@@ -8,7 +8,7 @@
 {# Learn hub is always indexable #}
 {% endblock %}
 
-{% block extra-head %}
+{% block extra-head %}{% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
 <meta name="description" content="Free, comprehensive guides on debate formats (BP, Australs, WSDC), adjudication, speaker training, and tournament organisation. Learn from beginner to advanced level." />
 <meta property="og:description" content="Free guides on debate formats, judging, speaker training, and tournament hosting. Learn debating from beginner to advanced." />
 
@@ -38,7 +38,7 @@
 </script>
 {% endblock %}
 
-{% block content %}
+{% block content-inner %}
 <div class="container py-4">
 
   {# ── Breadcrumbs ── #}

@@ -23,8 +23,8 @@
     color: #374151;
     text-decoration: none;
   }
-  .prereg-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
-  .prereg-tab:hover:not(.active) { border-color: #6366f1; color: #6366f1; }
+  .prereg-tab.active { background: #0B3D91; color: #fff; border-color: #0B3D91; }
+  .prereg-tab:hover:not(.active) { border-color: #0B3D91; color: #0B3D91; }
 
   /* Cards */
   .admin-card {
@@ -53,8 +53,8 @@
   .form-label-sm { font-size: .82rem; font-weight: 600; color: #4b5563; margin-bottom: .2rem; }
   .form-control-sm { font-size: .85rem; padding: .35rem .65rem; }
   .btn-sm { font-size: .82rem; padding: .35rem .8rem; }
-  .btn-indigo { background: #6366f1; color: #fff; border: none; border-radius: .4rem; }
-  .btn-indigo:hover { background: #4338ca; color: #fff; }
+  .btn-indigo { background: #0B3D91; color: #fff; border: none; border-radius: .4rem; }
+  .btn-indigo:hover { background: #0B3D91; color: #fff; }
   .btn-danger-outline { background: transparent; color: #dc2626; border: 1px solid #fca5a5; border-radius: .4rem; }
   .btn-danger-outline:hover { background: #fee2e2; }
   .btn-success { background: #059669; color: #fff; border: none; border-radius: .4rem; }
@@ -75,8 +75,8 @@
   }
   .field-row .field-label { flex: 1; font-weight: 600; }
   .field-row .field-type-tag {
-    background: #ede9fe;
-    color: #5b21b6;
+    background: #e8eefb;
+    color: #0B3D91;
     border-radius: .3rem;
     padding: .15rem .45rem;
     font-size: .75rem;
@@ -240,7 +240,7 @@
           </select>
           <small class="text-muted">Controls who can see the public slot results page.</small>
           {% if prereg_form.responses_visibility == 'private_link' %}
-          <div class="mt-2 p-2" style="background:#ede9fe;border-radius:.35rem;font-size:.8rem;">
+          <div class="mt-2 p-2" style="background:#e8eefb;border-radius:.35rem;font-size:.8rem;">
             🔗 <strong>Private link:</strong>
             <code>{% tournamenturl 'prereg-public-slots' %}?key={{ prereg_form.public_slug }}</code>
             <br><small class="text-muted">Share this URL with people you want to give access to.</small>
@@ -482,7 +482,7 @@
     <form method="post" action="{% tournamenturl 'prereg-save-allocations' %}" id="allocations-form">
       {% csrf_token %}
     </form>
-    <div class="action-bar" style="border-top: 2px solid #6366f1;">
+    <div class="action-bar" style="border-top: 2px solid #0B3D91;">
       <button type="submit" form="allocations-form" class="btn btn-sm btn-success">
         💾 Save Slot Allocations
       </button>

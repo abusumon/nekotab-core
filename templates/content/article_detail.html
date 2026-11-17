@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "nekotab/marketing_base.html" %}
 {% load i18n static ad_tags %}
 
 {% block page-title %}{{ article.seo_title }}{% endblock %}
@@ -8,8 +8,7 @@
   {% if noindex %}<meta name="robots" content="noindex, follow">{% endif %}
 {% endblock %}
 
-{% block extra-head %}
-<meta name="description" content="{{ article.seo_description }}" />
+{% block extra-head %}{% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{ article.seo_title }} — NekoTab Learn" />
 <meta property="og:description" content="{{ article.seo_description }}" />
@@ -42,7 +41,7 @@
 </script>
 {% endblock %}
 
-{% block content %}
+{% block content-inner %}
 <div class="container py-4" style="max-width: 800px;">
 
   {# ── Breadcrumbs ── #}

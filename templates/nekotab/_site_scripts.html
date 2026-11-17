@@ -1,0 +1,23 @@
+{% load static %}{% comment %}
+  End-of-body scripts shared by every public NekoTab page: the cookie banner,
+  privacy-first page counts, and the marketing tags.
+
+  Marketing tags (Meta Pixel, Google Ads / extra Google tags) and the
+  first-touch attribution cookie only run after analytics consent: they are
+  queued on window.__nekoConsentQueue, which cookie-consent.js drains once the
+  visitor has accepted (or isn't in a region that requires asking). IDs come
+  from the private portal app's marketing settings via the `tracking` context;
+  with no IDs set, nothing extra loads.
+{% endcomment %}
+<div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#000;color:#e4e4e7;padding:16px 24px;z-index:9999;border-top:1px solid #27272a;font-size:14px;">
+  <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <p style="margin:0;flex:1;min-width:260px;">We use cookies for sign-in and, with your consent, analytics and advertising measurement. <a href="/privacy/" style="color:#9db8ff;text-decoration:underline;">Privacy Policy</a></p>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button type="button" onclick="NekoConsent.acceptAll()" style="background:#0B3D91;color:#fff;border:none;padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">Accept</button>
+      <button type="button" onclick="NekoConsent.acceptEssential()" style="background:transparent;color:#fff;border:1px solid #52525b;padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;">Essential only</button>
+    </div>
+  </div>
+</div>
+{% include "nekotab/_tracking.html" %}
+<script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>

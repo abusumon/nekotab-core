@@ -1,0 +1,41 @@
+{% comment %}
+  One description of NekoTab for search engines and AI answer engines, the same
+  on every public page: who makes it, what it is, where else it lives. Keep the
+  facts here accurate; answer engines quote them.
+{% endcomment %}<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nekotab.com/#organization",
+      "name": "NekoTab",
+      "url": "https://nekotab.com/",
+      "logo": {"@type": "ImageObject", "url": "https://nekotab.com/static/logo.png", "width": 512, "height": 512},
+      "description": "NekoTab is a hosted debate tournament platform built on Tabbycat, with a free global debate motion bank.",
+      "founder": {"@id": "https://nekotab.com/team/#abu-bakkar-siddik"},
+      "sameAs": ["https://www.facebook.com/project.nekotab", "https://discord.com/invite/NBny8hnwXr", "https://github.com/abusumon/nekotab-app"],
+      "email": "support@nekotab.com",
+      "knowsAbout": ["Debate tabulation", "British Parliamentary debate", "World Schools debate", "Asian Parliamentary debate", "Debate motions", "Adjudicator allocation"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nekotab.com/team/#abu-bakkar-siddik",
+      "name": "Abu Bakkar Siddik",
+      "jobTitle": "Founder & Lead Developer",
+      "worksFor": {"@id": "https://nekotab.com/#organization"},
+      "alumniOf": {"@type": "CollegeOrUniversity", "name": "Khulna University"},
+      "url": "https://nekotab.com/team/",
+      "sameAs": ["https://www.linkedin.com/in/siddik-sumon/", "https://www.facebook.com/siddiksumon01"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nekotab.com/#website",
+      "name": "NekoTab",
+      "url": "https://nekotab.com/",
+      "publisher": {"@id": "https://nekotab.com/#organization"},
+      "potentialAction": {"@type": "SearchAction", "target": {"@type": "EntryPoint", "urlTemplate": "https://nekotab.com/motions/?q={search_term_string}"}, "query-input": "required name=search_term_string"}
+    }
+  ]
+}
+</script>

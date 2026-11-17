@@ -1,0 +1,47 @@
+{% load static %}{% comment %}
+  Marketing tags and the first-touch attribution cookie, queued until the
+  visitor accepts analytics cookies (see cookie-consent.js). Included by
+  _site_scripts.html on public pages and by the dashboard layout.
+{% endcomment %}
+<script>
+window.__nekoConsentQueue = window.__nekoConsentQueue || [];
+// First-touch attribution: where this visitor first came from (kept 90 days,
+// first-party only). Read at sign-up so marketing can see which channels bring
+// real users.
+window.__nekoConsentQueue.push(function () {
+  if (document.cookie.indexOf('nk_ft=') !== -1) return;
+  var p = new URLSearchParams(location.search), d = {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'].forEach(function (k) {
+    var v = p.get(k); if (v) d[k] = v.slice(0, 120);
+  });
+  d.landing = location.pathname.slice(0, 200);
+  if (document.referrer && document.referrer.indexOf(location.host) === -1) d.ref = document.referrer.slice(0, 200);
+  d.at = new Date().toISOString().slice(0, 10);
+  document.cookie = 'nk_ft=' + encodeURIComponent(JSON.stringify(d)) + '; path=/; max-age=' + (90 * 86400) + '; samesite=lax' + (location.protocol === 'https:' ? '; secure' : '');
+});
+{% if tracking.meta_pixel_id or tracking.google_ids %}
+window.__nekoConsentQueue.push(function () {
+  {% if tracking.meta_pixel_id %}
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '{{ tracking.meta_pixel_id }}');
+  fbq('track', 'PageView');
+  {% endif %}
+  {% if tracking.google_ids %}
+  // gtag.js is already loaded by cookie-consent.js (site analytics); extra
+  // Google IDs (GA4 property, Google Ads account) just add a config each.
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { dataLayer.push(arguments); };
+  {% for gid in tracking.google_ids %}gtag('config', '{{ gid }}');
+  {% endfor %}
+  {% endif %}
+  {% for ev in tracking.events %}
+  {% if tracking.meta_pixel_id and ev.fb %}fbq('{% if ev.fb_custom %}trackCustom{% else %}track{% endif %}', '{{ ev.fb|escapejs }}'{% if ev.value %}, {value: {{ ev.value }}, currency: '{{ ev.currency|default:"USD"|escapejs }}'}{% endif %});{% endif %}
+  {% if tracking.google_ids and ev.ga %}gtag('event', '{{ ev.ga|escapejs }}'{% if ev.value %}, {value: {{ ev.value }}, currency: '{{ ev.currency|default:"USD"|escapejs }}'}{% endif %});{% endif %}
+  {% if ev.ads_send_to %}gtag('event', 'conversion', {send_to: '{{ ev.ads_send_to }}'{% if ev.value %}, value: {{ ev.value }}, currency: '{{ ev.currency|default:"USD"|escapejs }}'{% endif %}});{% endif %}
+  {% endfor %}
+});
+{% endif %}
+</script>
+<script defer src="{% static 'js/cookie-consent.js' %}"></script>

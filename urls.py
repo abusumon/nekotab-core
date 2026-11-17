@@ -10,6 +10,7 @@ from django.urls import include, path, re_path
 from django.utils.translation import gettext as _
 from django.views.i18n import JavaScriptCatalog
 from django.contrib.sitemaps.views import sitemap
+from django.utils.module_loading import import_string
 from django.views.generic import RedirectView, TemplateView
 from django.views.decorators.cache import cache_page
 
@@ -54,7 +55,7 @@ urlpatterns = [
         name='tabbycat-index'),
     # Private NekoTab dashboard (/me/, /emet/, /portal/, /team/, /competitions/, /join/ and their /analytics/ editors) when installed; it
     # takes over /me/ ahead of the stock dashboard below.
-    *([re_path(r'^(?=(?:me|emet|portal|team|competitions|join)(?:/|$)|analytics/(?:team|featured|competitions|join)(?:/|$))',
+    *([re_path(r'^(?=(?:me|emet|portal|team|competitions|join)(?:/|$)|analytics/(?:team|featured|competitions|join|marketing)(?:/|$))',
              include('portal.urls'))]
       if 'portal' in settings.INSTALLED_APPS else []),
     path('me/',
@@ -126,8 +127,14 @@ urlpatterns = [
             'events': TicketEventSitemap,
             'articles': LearnArticleSitemap,
             'trust': TrustPagesSitemap,
+            **({'competitions': import_string('portal.sitemaps.CompetitionSitemap')}
+               if 'portal' in settings.INSTALLED_APPS else {}),
         }},
         name='sitemap'),
+    # A plain-language summary for AI assistants and answer engines (llmstxt.org).
+    path('llms.txt',
+        TemplateView.as_view(template_name='llms.txt', content_type='text/plain; charset=utf-8'),
+        name='llms-txt'),
     path('robots.txt',
         TemplateView.as_view(template_name='robots.txt', content_type='text/plain'),
         name='robots-txt'),

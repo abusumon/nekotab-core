@@ -179,7 +179,7 @@
 </div>
 {% endblock %}
 
-{% block extra_js %}
+{% block extra_js %}<script>
 // Select all / bulk actions
 const selectAll = document.getElementById('selectAll');
 const toolbar = document.getElementById('bulkToolbar');
@@ -229,4 +229,4 @@ document.getElementById('addTagBtn')?.addEventListener('click', function() {
             if (data.success) location.reload();
         });
 });
-{% endblock %}
+</script>{% endblock %}

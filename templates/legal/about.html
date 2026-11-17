@@ -4,7 +4,7 @@
 {% block page-title %}About NekoTab{% endblock %}
 {% block og-title %}About NekoTab{% endblock %}
 
-{% block extra-head %}
+{% block extra-head %}{% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

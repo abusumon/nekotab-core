@@ -34,6 +34,10 @@ class StaticViewSitemap(Sitemap):
         'contact': 0.7,
         'pricing': 0.8,
         'donate': 0.5,
+        'portal-competitions': 0.8,
+        'portal-emet-about': 0.8,
+        'portal-team': 0.6,
+        'portal-join': 0.6,
     }
 
     _changefreqs = {
@@ -57,6 +61,7 @@ class StaticViewSitemap(Sitemap):
         'contact': 'monthly',
         'pricing': 'monthly',
         'donate': 'monthly',
+        'portal-competitions': 'weekly',
     }
 
     def items(self):
@@ -82,6 +87,11 @@ class StaticViewSitemap(Sitemap):
             'contact',
             'pricing',
             'donate',
+            # Private portal pages; skipped automatically when the app isn't installed.
+            'portal-competitions',
+            'portal-emet-about',
+            'portal-team',
+            'portal-join',
         ]
 
         valid_items = []

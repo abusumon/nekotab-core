@@ -335,7 +335,9 @@ class SubdomainTournamentMiddleware:
         '/unsubscribe/', '/for-organizers/',
         '/free-debate-tab-software/', '/bp-debate-tabulation/', '/tabroom-alternative/',
         '/calicotab-alternative/', '/debate-data-alternative/', '/congress-debate-tabulation/',
-        '/sitemap.xml', '/robots.txt', '/ads.txt',
+        '/sitemap.xml', '/robots.txt', '/ads.txt', '/llms.txt', '/llms-full.txt',
+        # NekoTab portal pages (private app): dashboard, Emet, team, competitions, join.
+        '/portal/', '/emet/', '/team/', '/competitions/', '/join/',
         '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
         # NOTE: /admin/ is intentionally NOT listed here. On a tournament subdomain,
         # /admin/... means the tournament admin section and must be rewritten.
@@ -497,7 +499,9 @@ class SubdomainTenantMiddleware:
         '/unsubscribe/', '/for-organizers/',
         '/free-debate-tab-software/', '/bp-debate-tabulation/', '/tabroom-alternative/',
         '/calicotab-alternative/', '/debate-data-alternative/', '/congress-debate-tabulation/',
-        '/sitemap.xml', '/robots.txt', '/ads.txt',
+        '/sitemap.xml', '/robots.txt', '/ads.txt', '/llms.txt', '/llms-full.txt',
+        # NekoTab portal pages (private app): dashboard, Emet, team, competitions, join.
+        '/portal/', '/emet/', '/team/', '/competitions/', '/join/',
         '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
         # NOTE: /admin/ is intentionally NOT listed here. On a tournament subdomain,
         # /admin/... means the tournament admin section and must be rewritten.

@@ -121,7 +121,7 @@
 <div class="toast" id="toast"></div>
 {% endblock %}
 
-{% block extra_js %}
+{% block extra_js %}<script>
 function showToast(msg, type) {
     const t = document.getElementById('toast');
     t.textContent = msg;
@@ -154,4 +154,4 @@ function enableWorkspace(orgId, btn) {
     })
     .catch(err => { btn.disabled = false; btn.textContent = '⚡ Enable'; showToast('Request failed: ' + err, 'err'); });
 }
-{% endblock %}
+</script>{% endblock %}

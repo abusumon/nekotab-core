@@ -45,7 +45,7 @@
     font-size: 12px;
 }
 .period-filters .btn-active {
-    background: linear-gradient(135deg, var(--accent), #ec4899);
+    background: linear-gradient(135deg, var(--accent), #3d6cc4);
     color: #fff;
     border: none;
 }
@@ -100,18 +100,18 @@
 }
 .status-paid { background: rgba(16,185,129,.2); color: var(--success); }
 .status-refunded { background: rgba(245,158,11,.2); color: var(--warning); }
-.status-pending { background: rgba(59,130,246,.2); color: var(--info); }
+.status-pending { background: rgba(61,108,196,.2); color: var(--info); }
 .status-failed { background: rgba(239,68,68,.2); color: var(--danger); }
-.status-cancelled { background: rgba(148,163,184,.2); color: #94a3b8; }
+.status-cancelled { background: rgba(148,163,184,.2); color: #a1a1aa; }
 .status-subscription {
-    background: rgba(124,58,237,.2);
-    color: #a78bfa;
+    background: rgba(61,108,196,.2);
+    color: #9db8ee;
     font-size: 11px;
     padding: 3px 8px;
     border-radius: 10px;
 }
 .status-one_time {
-    background: rgba(59,130,246,.2);
+    background: rgba(61,108,196,.2);
     color: #93c5fd;
     font-size: 11px;
     padding: 3px 8px;
@@ -320,7 +320,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 {% endblock %}
 
-{% block extra_js %}
+{% block extra_js %}<script>
 const monthlyChartData = {{ monthly_chart_data|safe }};
 const monthlyCanvas = document.getElementById('monthlyDonationsChart');
 
@@ -335,8 +335,8 @@ if (monthlyCanvas && monthlyChartData?.labels?.length) {
                     label: 'Gross',
                     data: monthlyChartData.gross,
                     borderRadius: 6,
-                    backgroundColor: 'rgba(99, 102, 241, 0.55)',
-                    borderColor: 'rgba(99, 102, 241, 1)',
+                    backgroundColor: 'rgba(61,108,196, 0.55)',
+                    borderColor: 'rgba(61,108,196, 1)',
                     borderWidth: 1,
                 },
                 {
@@ -361,15 +361,15 @@ if (monthlyCanvas && monthlyChartData?.labels?.length) {
             },
             scales: {
                 x: {
-                    ticks: { color: '#94a3b8' },
+                    ticks: { color: '#a1a1aa' },
                     grid: { color: 'rgba(148, 163, 184, 0.15)' },
                 },
                 y: {
-                    ticks: { color: '#94a3b8' },
+                    ticks: { color: '#a1a1aa' },
                     grid: { color: 'rgba(148, 163, 184, 0.15)' },
                 },
             },
         },
     });
 }
-{% endblock %}
+</script>{% endblock %}

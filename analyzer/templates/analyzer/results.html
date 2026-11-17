@@ -7,7 +7,7 @@
 {% block content %}
 <style>
   .stat-card { border-radius:12px; border:1px solid #e5e7eb; padding:20px 24px; background:#fff; }
-  .stat-num { font-size:2rem; font-weight:800; color:#4f46e5; line-height:1; }
+  .stat-num { font-size:2rem; font-weight:800; color:#0B3D91; line-height:1; }
   .stat-label { font-size:.78rem; color:#6b7280; font-weight:500; margin-top:4px; text-transform:uppercase; letter-spacing:.05em; }
   .rank-badge { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; font-size:.78rem; font-weight:700; flex-shrink:0; }
   .rank-1 { background:#fef3c7; color:#92400e; }
@@ -18,14 +18,14 @@
   .result-loss { color:#dc2626; font-weight:700; }
   .result-draw { color:#d97706; font-weight:700; }
   .section-tabs .nav-link { color:#6b7280; font-weight:500; }
-  .section-tabs .nav-link.active { color:#4f46e5; border-bottom-color:#4f46e5; font-weight:700; }
-  .gender-M { color:#3b82f6; }
-  .gender-F { color:#ec4899; }
-  .gender-O { color:#8b5cf6; }
-  .adj-chip { display:inline-flex; align-items:center; gap:5px; background:#ede9fe; color:#4f46e5; border-radius:100px; padding:3px 10px; font-size:.78rem; font-weight:600; }
+  .section-tabs .nav-link.active { color:#0B3D91; border-bottom-color:#0B3D91; font-weight:700; }
+  .gender-M { color:#3d6cc4; }
+  .gender-F { color:#3d6cc4; }
+  .gender-O { color:#0B3D91; }
+  .adj-chip { display:inline-flex; align-items:center; gap:5px; background:#e8eefb; color:#0B3D91; border-radius:100px; padding:3px 10px; font-size:.78rem; font-weight:600; }
   .adj-chip.indep { background:#fef3c7; color:#92400e; }
   .progress-bar-custom { height:6px; border-radius:3px; background:#e5e7eb; overflow:hidden; }
-  .progress-bar-custom-inner { height:100%; background:linear-gradient(90deg,#6366f1,#8b5cf6); border-radius:3px; transition:width .4s; }
+  .progress-bar-custom-inner { height:100%; background:linear-gradient(90deg,#0B3D91,#0B3D91); border-radius:3px; transition:width .4s; }
 </style>
 
 <!-- Back + export -->
@@ -35,7 +35,7 @@
     Back
   </a>
   <div class="d-flex align-items-center gap-2">
-    <span class="badge" style="background:#ede9fe;color:#4f46e5;padding:6px 14px;border-radius:100px;">
+    <span class="badge" style="background:#e8eefb;color:#0B3D91;padding:6px 14px;border-radius:100px;">
       {{ data.style }}
     </span>
     <button onclick="window.print()" class="btn btn-outline-secondary btn-sm">
@@ -157,7 +157,7 @@
               </td>
               <td class="text-muted">{{ s.team|default:"—" }}</td>
               <td class="text-center">{{ s.rounds }}</td>
-              <td class="text-center fw-bold" style="color:#4f46e5;">{{ s.total }}</td>
+              <td class="text-center fw-bold" style="color:#0B3D91;">{{ s.total }}</td>
               <td class="text-center text-muted">{{ s.average }}</td>
             </tr>
             {% empty %}
@@ -191,7 +191,7 @@
             {% for a in data.adj_rankings %}
             <tr>
               <td class="fw-semibold">{{ a.name }}</td>
-              <td class="text-center" style="color:#4f46e5;font-weight:700;">{{ a.base_score|floatformat:1 }}</td>
+              <td class="text-center" style="color:#0B3D91;font-weight:700;">{{ a.base_score|floatformat:1 }}</td>
               <td class="text-center">{{ a.rounds_judged }}</td>
               <td class="text-center">{{ a.rounds_chaired }}</td>
               <td class="text-center">
@@ -220,7 +220,7 @@
         {% if round.elimination %}
           <span class="badge" style="background:#fee2e2;color:#991b1b;border-radius:100px;padding:3px 10px;font-size:.75rem;">Elimination</span>
         {% else %}
-          <span class="badge" style="background:#ede9fe;color:#4f46e5;border-radius:100px;padding:3px 10px;font-size:.75rem;">Preliminary</span>
+          <span class="badge" style="background:#e8eefb;color:#0B3D91;border-radius:100px;padding:3px 10px;font-size:.75rem;">Preliminary</span>
         {% endif %}
         <span class="text-muted small ms-auto">{{ round.debate_count }} debate{{ round.debate_count|pluralize }}</span>
       </div>

@@ -12,23 +12,23 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}" crossorigin="anonymous"></script>
   {% include "ads/styles.html" %}
   {% endif %}
-  <title>NekoTab — Debate Tab Software, $5 a Tournament | Motion Bank &amp; Events</title>
-  <meta name="description" content="NekoTab: hosted Tabbycat debate tabulation for BP, WSDC, Australs and more. $5 per tournament, paid once, with no ads and no subscription. Includes a free global Motion Bank with thousands of real debate motions, plus event ticketing, website builder, schedule planner and registration forms.">
-  <meta name="keywords" content="debate tournament software, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, australs debate, debate ticketing, debate schedule planner, debate registration forms, debate website builder, tabbycat hosting, open source debate software, cheap debate tab software, nekotab">
+  <title>NekoTab — Debate Tabulation Software &amp; Free Debate Motion Bank</title>
+  <meta name="description" content="NekoTab runs debate tournaments online: draws, adjudicator allocation, ballots and live results for BP, WSDC, Australs and Asian Parliamentary, built on Tabbycat. Plus a free motion bank of 36,000+ real tournament motions.">
+  <meta name="keywords" content="debate tabulation software, debate tab software, tabbycat hosting, debate motions, debate motion bank, BP motions, WSDC motions, british parliamentary debate, debate tournament software, adjudicator allocation, nekotab">
   <link rel="canonical" href="https://nekotab.com/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nekotab.com/" />
-  <meta property="og:title" content="NekoTab — Debate Tab Software, $5 a Tournament | Motion Bank &amp; Events" />
-  <meta property="og:description" content="Hosted Tabbycat for BP, WSDC, Australs. $5 per tournament, paid once — no ads, no subscription. Plus a free global Motion Bank, event ticketing, website builder and schedule planner." />
+  <meta property="og:title" content="NekoTab — Debate Tabulation Software &amp; Free Debate Motion Bank" />
+  <meta property="og:description" content="Run your debate tournament on NekoTab: draws, allocations, ballots and live results, built on Tabbycat. Plus a free bank of 36,000+ real debate motions." />
   <meta property="og:image" content="https://nekotab.com/static/logo-social.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="NekoTab" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NekoTab — Debate Tab Software, $5 a Tournament | Motion Bank &amp; Events" />
-  <meta name="twitter:description" content="Hosted Tabbycat plus a free Motion Bank, event ticketing, website builder, schedule planner and forms. $5 per tournament, once — no ads, no subscription." />
+  <meta name="twitter:title" content="NekoTab — Debate Tabulation Software &amp; Free Debate Motion Bank" />
+  <meta name="twitter:description" content="Debate tabulation built on Tabbycat, plus a free bank of 36,000+ real debate motions." />
   <meta name="twitter:image" content="https://nekotab.com/static/logo-social.png" />
   <meta name="twitter:site" content="@NekoTab" />
 
@@ -145,108 +145,22 @@
   {% if ads_enabled %}
   <script>window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.requestNonPersonalizedAds = 1;</script>
   {% endif %}
-  <script defer src="{% static 'js/cookie-consent.js' %}"></script>
 
+  {% include "nekotab/_org_jsonld.html" %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://nekotab.com/#organization",
-        "name": "NekoTab",
-        "url": "https://nekotab.com",
-        "logo": {"@type": "ImageObject", "url": "https://nekotab.com/static/logo.png", "width": 512, "height": 512},
-        "description": "Debate tournament platform with tabulation (BP, WSDC, Australs), a global Motion Bank, event ticketing, organization website builder, schedule planner, and registration forms. $5 per tournament; the Motion Bank and public results pages are free.",
-        "sameAs": ["https://github.com/abusumon/nekotab-app", "https://www.facebook.com/project.nekotab/"],
-        "knowsAbout": ["Debate Tabulation", "British Parliamentary Debate", "Debate Motion Bank", "Tournament Management"]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://nekotab.com/#website",
-        "name": "NekoTab",
-        "url": "https://nekotab.com",
-        "publisher": {"@id": "https://nekotab.com/#organization"},
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": {"@type": "EntryPoint", "urlTemplate": "https://nekotab.com/motions/?q={search_term_string}"},
-          "query-input": "required name=search_term_string"
-        }
-      },
-      {
-        "@type": "SoftwareApplication",
-        "@id": "https://nekotab.com/#software",
-        "name": "NekoTab Debate Platform",
-        "applicationCategory": "BusinessApplication",
-        "applicationSubCategory": "Sports Management Software",
-        "operatingSystem": "Any",
-        "description": "NekoTab is a comprehensive debate platform: Tabbycat tournament tabulation for BP, WSDC, Australs and more; a global Motion Bank with thousands of real tournament motions; event ticketing; organization website builder; schedule planner; and registration forms. Running a tournament costs a one-off $5.",
-        "url": "https://nekotab.com",
-        "image": "https://nekotab.com/static/logo-social.png",
-        
-        "offers": {"@type": "Offer", "price": "5", "priceCurrency": "USD",
-          "description": "One-off payment per tournament"},
-        
-        "featureList": [
-          "Tabbycat debate tournament tabulation",
-          "Global debate motion bank",
-          "AI-powered motion analysis and difficulty ratings",
-          "Event ticketing and online registration",
-          "Organization website builder with multiple themes",
-          "Schedule planner for tournaments and events",
-          "Custom registration forms builder",
-          "Adjudicator allocation with conflict detection",
-          "Live public standings and automated draws",
-          "British Parliamentary, WSDC, Australs, AP format support"
-        ],
-        "creator": {"@id": "https://nekotab.com/#organization"}
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is NekoTab?",
-            "acceptedAnswer": {"@type": "Answer", "text": "NekoTab is a hosted debate tournament platform built on Tabbycat. It provides tournament tabulation for BP, WSDC, Australs, and other parliamentary debate formats, plus a global Motion Bank, event ticketing, organization website builder, schedule planner, and registration forms. Running a tournament costs a one-off $5; the Motion Bank and all public tournament pages are free."}
-          },
-          {
-            "@type": "Question",
-            "name": "What is the NekoTab Motion Bank?",
-            "acceptedAnswer": {"@type": "Answer", "text": "The NekoTab Motion Bank at nekotab.com/motions/ is a searchable database of thousands of real debate motions from tournaments worldwide. Filter by format (BP, WSDC, AP, PF, LD, Policy), year, region, difficulty, and topic. Each motion includes AI-powered analysis, difficulty ratings, and community case outlines — all free."}
-          },
-          {
-            "@type": "Question",
-            "name": "How much does NekoTab cost?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Running a tournament on NekoTab costs $5, paid once, with no subscription and no per-team fee. Debaters, judges and the public never pay: every public tournament page — draw, tab, results and participants — is free to read. The Motion Bank is free, and tournaments created before NekoTab Premium launched remain free permanently. NekoTab carries no advertising."}
-          },
-          {
-            "@type": "Question",
-            "name": "What debate formats does NekoTab support?",
-            "acceptedAnswer": {"@type": "Answer", "text": "NekoTab supports British Parliamentary (BP), WSDC, Australasian (Australs), Asian Parliamentary (AP), and other parliamentary debate formats. Configure speaker counts, sides, scoring, and break structures to match your exact tournament requirements."}
-          },
-          {
-            "@type": "Question",
-            "name": "Can I sell tickets for debate events on NekoTab?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab has a built-in debate event ticketing system. Set up multiple ticket tiers, handle online registration and payments, and manage attendees — all from your NekoTab workspace at nekotab.com/tickets/."}
-          },
-          {
-            "@type": "Question",
-            "name": "Does NekoTab have a website builder for debate organizations?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every NekoTab workspace includes a public website builder for debate organizations and debate societies. Build a professional website to showcase events, share results, and attract participants — no coding required."}
-          },
-          {
-            "@type": "Question",
-            "name": "What is NekoTab and how does it relate to Tabbycat?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Tabbycat is a popular open-source debate tournament tabulation system. NekoTab is a hosted service that runs Tabbycat for you — all of Tabbycat's tabulation features without needing to set up or manage a server. NekoTab also adds a Motion Bank, ticketing, website builder, schedule planner, and forms that are not part of core Tabbycat."}
-          },
-          {
-            "@type": "Question",
-            "name": "Can I create registration forms for debate tournaments on NekoTab?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes. NekoTab's forms system lets you create custom registration forms for tournaments, team sign-ups, judge registrations, and participant surveys. Submissions are collected in your workspace dashboard and can be exported."}
-          }
-        ]
-      }
-    ]
+    "@type": "SoftwareApplication",
+    "@id": "https://nekotab.com/#software",
+    "name": "NekoTab",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "Debate tournament tabulation",
+    "operatingSystem": "Web",
+    "url": "https://nekotab.com/",
+    "image": "https://nekotab.com/static/logo-social.png",
+    "description": "Hosted debate tournament tabulation built on the open-source Tabbycat: draws, adjudicator allocation with conflicts, ballots, live standings, breaks and public results for British Parliamentary, World Schools, Australs, Asian Parliamentary and other formats. Includes a free motion bank of 36,000+ real tournament motions.",
+    "featureList": ["Automated draws for BP and two-team formats", "Adjudicator allocation with conflict detection", "Online ballots and live standings", "Break generation", "Public draw, tab and results pages", "Registration forms with import", "Free global debate motion bank"],
+    "publisher": {"@id": "https://nekotab.com/#organization"}
   }
   </script>
 </head>
@@ -339,17 +253,6 @@
 
   {% include "nekotab/_public_footer.html" %}
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#000;color:#e4e4e7;padding:16px 24px;z-index:9999;border-top:1px solid #27272a;font-size:14px;">
-    <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-      <p style="margin:0;flex:1;min-width:260px;">We use cookies for authentication and, with your consent, analytics. <a href="/privacy/" style="color:#9db8ff;text-decoration:underline;">Privacy Policy</a></p>
-      <div style="display:flex;gap:8px;flex-shrink:0;">
-        <button onclick="NekoConsent.acceptAll()" style="background:#0B3D91;color:#fff;border:none;padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;">Accept analytics</button>
-        <button onclick="NekoConsent.acceptEssential()" style="background:transparent;color:#fff;border:1px solid #52525b;padding:9px 20px;border-radius:8px;cursor:pointer;font-size:14px;">No thanks</button>
-      </div>
-    </div>
-  </div>
-
   <script>
   (function () {
     var grid = document.getElementById('t-grid');
@@ -387,9 +290,7 @@
     render();
   })();
   </script>
-  <!-- 100% privacy-first analytics -->
-  <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-  <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
+  {% include "nekotab/_site_scripts.html" %}
 
   {% if premium_enabled %}
     {% include 'components/limited_offer_ad.html' %}

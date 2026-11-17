@@ -29,7 +29,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'logo-16x16.png' %}">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'logo.png' %}">
-  <meta name="theme-color" content="#6366f1">
+  <meta name="theme-color" content="#0B3D91">
 
   <link rel="stylesheet" href="{% static 'css/landing.css' %}">
   <link rel="stylesheet" href="{% static 'css/marketing.css' %}">
@@ -48,52 +48,12 @@
 </head>
 <body class="em-body">
   <!-- Skip to content -->
-  <a href="#main-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#6366f1;color:#fff;padding:8px 16px;z-index:10000;transition:top .3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
+  <a href="#main-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#0B3D91;color:#fff;padding:8px 16px;z-index:10000;transition:top .3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
 
   <!-- ========================================================
        NAVBAR — Same as homepage for consistency
        ======================================================== -->
-  <header class="em-navbar em-navbar--dark" id="top">
-    <div class="em-container em-nav-inner">
-      <a class="em-logo" href="/">
-        <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img" width="120" height="32">
-      </a>
-      <nav class="em-nav-center" aria-label="Primary">
-        <a href="/" class="em-nav-link">Home</a>
-        <a href="{% url 'motions' %}" class="em-nav-link">Motion Bank</a>
-        <a href="{% url 'contact-forum' %}" class="em-nav-link">Community</a>
-        <a href="/learn/" class="em-nav-link">Resources</a>
-      </nav>
-      <div class="em-nav-end">
-        {% if user.is_authenticated %}
-          <a href="{% url 'org-list' %}" class="em-nav-link">My Orgs</a>
-          <form action="{% url 'logout' %}" method="post" style="display:inline-block;">
-            {% csrf_token %}
-            <button type="submit" class="em-btn--nav-signin">Logout</button>
-          </form>
-        {% else %}
-          <a href="{% url 'login' %}" class="em-btn--nav-signin">Sign in</a>
-        {% endif %}
-        <a href="{% url 'tournament-create' %}" class="em-btn em-btn--primary em-btn--sm">Get Started</a>
-        <button class="em-burger" id="em-burger" aria-label="Open menu" aria-expanded="false" aria-controls="em-mobile-menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-    <!-- Mobile Menu -->
-    <div id="em-mobile-menu" class="em-mobile-menu" hidden>
-      <div class="em-mobile-menu-section">
-        <a href="/">Home</a>
-        <a href="{% url 'motions' %}">Motion Bank</a>
-        <a href="{% url 'contact-forum' %}">Community</a>
-        <a href="/learn/">Resources</a>
-      </div>
-      <div class="em-mobile-menu-section" style="margin-top:16px;">
-        <a href="{% url 'register-tournament' %}" class="em-btn em-btn--primary em-btn--block">Create Tournament</a>
-        <a href="{% url 'register-organization' %}" class="em-btn em-btn--secondary em-btn--block">Create Workspace</a>
-      </div>
-    </div>
-  </header>
+  {% include "nekotab/_public_nav.html" %}
 
   <!-- ========================================================
        HERO — "Run Debate Tournaments at Any Scale"
@@ -397,59 +357,9 @@
   <!-- ========================================================
        FOOTER — Same as homepage
        ======================================================== -->
-  <footer class="em-footer" role="contentinfo">
-    <div class="em-container em-footer-grid">
-      <div>
-        <a href="/" class="em-logo">
-          <img src="{% static 'logo.png' %}" alt="NekoTab" class="em-logo-img">
-        </a>
-        <p class="em-foot-desc">The operating system for debate. Open-source tournament tabulation, motion resources, and a global debate community.</p>
-      </div>
-      <div>
-        <div class="em-foot-title">Product</div>
-        <ul class="em-foot-links">
-          <li><a href="/#features">Tournament Engine</a></li>
-          <li><a href="{% url 'motions' %}">Motion Bank</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="em-foot-title">Community</div>
-        <ul class="em-foot-links">
-          <li><a href="{% url 'contact-forum' %}">Contact</a></li>
-          <li><a href="/learn/">Learn Debate</a></li>
-          <li><a href="{% url 'org-list' %}">Organizations</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="em-foot-title">Resources</div>
-        <ul class="em-foot-links">
-          <li><a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Documentation</a></li>
-          <li><a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://github.com/abusumon/nekotab-app/wiki" target="_blank" rel="noopener">Documentation</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="em-foot-title">Company</div>
-        <ul class="em-foot-links">
-          <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/privacy/">Privacy Policy</a></li>
-          <li><a href="/terms/">Terms of Service</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="em-foot-bottom">
-      <div class="em-container em-foot-bottom-inner">
-        <div class="em-copy">&copy; <span id="em-year"></span> NekoTab. Open-source debate platform.</div>
-        <div class="em-foot-bottom-links">
-          <a href="/privacy/">Privacy</a>
-          <a href="/terms/">Terms</a>
-          <a href="https://github.com/abusumon/nekotab-app" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  {% include "nekotab/_public_footer.html" %}
 
   <script src="{% static 'js/landing.js' %}"></script>
+{% include "nekotab/_site_scripts.html" %}
 </body>
 </html>

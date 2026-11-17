@@ -1,0 +1,181 @@
+{% load static %}{% comment %}
+  The NekoTab admin shell: every page under /analytics/ (and the portal's
+  admin editors) extends this, so they share one sidebar, one palette and one
+  set of components. Black / white / marine (#0B3D91), roughly 50/30/20.
+
+  Structural classes are prefixed "ad-" so a page's own CSS (.main, .card,
+  .header, ...) can't collide with the shell. Older pages were written against
+  other variable names; those are aliased in :root below, so their styles pick
+  up the palette without being rewritten.
+
+  Blocks: title, extra_css, content, extra_js, messages (override with an
+  empty block if a page renders messages itself).
+{% endcomment %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{% block title %}Admin{% endblock %} · NekoTab Admin</title>
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
+<style>
+  :root {
+    /* NekoTab admin palette */
+    --plane: #000000; --surface: #0c0c0e; --raised: #141418; --hover: #1b1b20;
+    --line: #26262c; --line-soft: #1b1b20;
+    --ink: #ffffff; --ink-2: #a1a1aa; --ink-3: #71717a;
+    --marine: #0B3D91; --marine-hover: #0e4bb3; --marine-ink: #9db8ee; --marine-line: rgba(76,125,214,.55);
+    --marine-soft: rgba(11,61,145,.22);
+    --accent: #3d6cc4;           /* marine, lifted enough to read on black */
+    --good: #22c55e; --warn: #f5b83d; --crit: #ef4444;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --radius: 12px;
+
+    /* Aliases for older analytics pages */
+    --bg: var(--plane); --bg-dark: var(--plane); --bg-2: var(--surface); --bg-card: var(--surface);
+    --bg-hover: var(--hover); --bg-elevated: var(--raised); --card: var(--surface);
+    --border: var(--line); --border2: #33333a; --border-light: #33333a;
+    --text: var(--ink); --text-primary: var(--ink); --text-secondary: var(--ink-2); --text-muted: var(--ink-3);
+    --txt: var(--ink); --txt2: var(--ink-2); --muted: var(--ink-2);
+    --marine-text: var(--marine-ink); --accent-light: var(--marine-ink); --accent2: var(--marine-ink); --accent-hover: var(--marine-hover);
+    --primary: var(--accent); --blue: var(--marine-ink); --info: var(--marine-ink); --purple: var(--marine-ink);
+    --pink: var(--marine-ink); --indigo: var(--accent);
+    --success: var(--good); --green: var(--good); --danger: var(--crit); --red: var(--crit);
+    --warning: var(--warn); --amber: var(--warn);
+    /* Aliases for the email-campaign pages (once a light theme) */
+    --nt-bg: var(--plane); --nt-bg-card: var(--surface); --nt-border: var(--line); --nt-radius: 12px; --nt-shadow: none;
+    --nt-primary: var(--marine); --nt-primary-hover: var(--marine-hover); --nt-primary-light: var(--marine-soft);
+    --nt-success: var(--good); --nt-success-light: rgba(34,197,94,.14); --nt-warning: var(--warn); --nt-warning-light: rgba(245,184,61,.14);
+    --nt-danger: var(--crit); --nt-danger-light: rgba(239,68,68,.12);
+    --nt-text: var(--ink); --nt-text-primary: var(--ink); --nt-text-secondary: var(--ink-2); --nt-text-muted: var(--ink-3);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--plane); color: var(--ink); font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Bengali", sans-serif;
+         -webkit-font-smoothing: antialiased; }
+  a { color: var(--marine-ink); }
+  ::selection { background: var(--marine); color: #fff; }
+  :focus-visible { outline: 2px solid var(--marine-ink); outline-offset: 2px; }
+
+  /* Shell */
+  .ad-shell { display: flex; min-height: 100vh; }
+  .ad-side { width: 236px; flex: 0 0 236px; background: var(--surface); border-right: 1px solid var(--line); padding: 18px 0 24px;
+             position: sticky; top: 0; height: 100vh; overflow-y: auto; z-index: 60; }
+  .ad-brand { display: flex; align-items: center; gap: 10px; padding: 0 20px 16px; margin-bottom: 12px; border-bottom: 1px solid var(--line);
+              text-decoration: none; color: var(--ink); }
+  .ad-brand img { width: 28px; height: 28px; filter: invert(1); }
+  .ad-brand b { display: block; font-size: 15px; font-weight: 700; }
+  .ad-brand span { display: block; font-size: 11.5px; color: var(--ink-3); }
+  .ad-grp { padding: 0 12px; margin-bottom: 16px; }
+  .ad-grp h3 { margin: 0 0 6px; padding: 0 10px; font-size: 10.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
+  .ad-grp a { display: block; padding: 7px 10px; border-radius: 8px; font-size: 13.5px; color: var(--ink-2); text-decoration: none; }
+  .ad-grp a:hover { background: var(--hover); color: var(--ink); }
+  .ad-grp a.on { background: #fff; color: #000; font-weight: 600; }
+  .ad-main { flex: 1; min-width: 0; padding: 24px 28px 64px; }
+  .ad-top { display: none; }
+  .ad-scrim { display: none; }
+  @media (max-width: 900px) {
+    .ad-side { position: fixed; left: 0; top: 0; transform: translateX(-100%); transition: transform .2s; box-shadow: 0 0 40px rgba(0,0,0,.6); }
+    .ad-side.open { transform: none; }
+    .ad-scrim.open { display: block; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 55; }
+    .ad-top { display: flex; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 50; background: var(--plane);
+              border-bottom: 1px solid var(--line); padding: 10px 14px; }
+    .ad-top button { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+    .ad-top strong { font-size: 15px; }
+    .ad-main { padding: 16px 14px 48px; }
+  }
+
+  /* Messages */
+  .ad-msgs { margin-bottom: 16px; display: grid; gap: 8px; }
+  .ad-msg { padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); font-size: 13.5px; }
+  .ad-msg.success { border-color: var(--marine-line); background: var(--marine-soft); }
+  .ad-msg.error { border-color: rgba(239,68,68,.5); background: rgba(239,68,68,.1); }
+  .ad-msg.warning { border-color: rgba(245,184,61,.5); background: rgba(245,184,61,.1); }
+
+  /* Shared components for pages that want them (prefixed, so never clash) */
+  .ad-h { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+  .ad-h h1 { margin: 0; font-size: 22px; letter-spacing: -.02em; }
+  .ad-h p { margin: 4px 0 0; color: var(--ink-3); font-size: 13px; }
+
+  /* Old pages: normalise their recurring primary-button and accent-text looks */
+  .btn-primary, .btn.btn-primary, button.btn-primary { background: var(--marine) !important; border-color: var(--marine) !important; color: #fff !important; background-image: none !important; }
+  .btn-primary:hover { background: var(--marine-hover) !important; }
+  {% block extra_css %}{% endblock %}
+</style>
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+<div class="ad-top"><button type="button" id="ad-burger" aria-controls="ad-side" aria-expanded="false" aria-label="Menu">☰</button><strong>NekoTab Admin</strong></div>
+<div class="ad-scrim" id="ad-scrim"></div>
+<div class="ad-shell">
+  <aside class="ad-side" id="ad-side" aria-label="Admin">
+    <a class="ad-brand" href="{% url 'analytics:dashboard' %}"><img src="{% static 'logo.png' %}" alt=""><span><b>NekoTab</b><span>Admin</span></span></a>
+    <nav class="ad-grp">
+      <h3>Analytics</h3>
+      <a href="{% url 'analytics:dashboard' %}" data-exact>Overview</a>
+      <a href="{% url 'analytics:owner_dashboard' %}">Owner dashboard</a>
+      <a href="{% url 'analytics:tournaments' %}">Tournaments</a>
+      <a href="{% url 'analytics:users' %}">Users</a>
+      <a href="{% url 'analytics:db_usage' %}">Database</a>
+      <a href="{% url 'analytics:tournament_motions' %}">Motion harvest</a>
+    </nav>
+    <nav class="ad-grp">
+      <h3>Site</h3>
+      <a href="/analytics/featured/">Featured event</a>
+      <a href="/analytics/competitions/">Competitions</a>
+      <a href="/analytics/join/">Join NekoTab</a>
+      <a href="/analytics/team/">Team page</a>
+      <a href="/analytics/marketing/">Marketing</a>
+      <a href="{% url 'analytics:promo_ad' %}">Promo ad</a>
+    </nav>
+    <nav class="ad-grp">
+      <h3>Revenue</h3>
+      <a href="{% url 'analytics:donations' %}">Donations</a>
+      <a href="{% url 'analytics:paid_users' %}">Paid users</a>
+      <a href="{% url 'analytics:bkash_requests' %}">bKash requests</a>
+      <a href="{% url 'analytics:promo_codes' %}">Promo codes</a>
+      <a href="{% url 'analytics:monetization' %}">Monetization</a>
+    </nav>
+    <nav class="ad-grp">
+      <h3>Participants</h3>
+      <a href="{% url 'analytics:participants_all' %}" data-exact>All participants</a>
+      <a href="{% url 'analytics:participants_debaters' %}">Debaters</a>
+      <a href="{% url 'analytics:participants_adjudicators' %}">Adjudicators</a>
+      <a href="{% url 'analytics:participants_tab_directors' %}">Tab directors</a>
+    </nav>
+    <nav class="ad-grp">
+      <h3>Manage</h3>
+      <a href="{% url 'analytics:workspaces' %}">Workspaces</a>
+      <a href="{% url 'analytics:events' %}">Events</a>
+      <a href="{% url 'campaigns:list' %}">Email campaigns</a>
+      <a href="/database/">Django admin</a>
+      <a href="/me/">Your dashboard</a>
+      <a href="/">Back to site</a>
+    </nav>
+  </aside>
+  <main class="ad-main" id="ad-main">
+    {% block messages %}{% if messages %}<div class="ad-msgs" role="status">{% for m in messages %}<div class="ad-msg {{ m.tags }}">{{ m }}</div>{% endfor %}</div>{% endif %}{% endblock %}
+    {% block content %}{% endblock %}
+  </main>
+</div>
+<script>
+(function () {
+  // Highlight the current page: the longest matching link wins.
+  var path = location.pathname, best = null, bestLen = -1;
+  document.querySelectorAll('.ad-grp a').forEach(function (a) {
+    var href = a.getAttribute('href');
+    if (!href || href.charAt(0) !== '/' || href === '/') return;
+    var hit = a.hasAttribute('data-exact') ? path === href : path.indexOf(href) === 0;
+    if (hit && href.length > bestLen) { best = a; bestLen = href.length; }
+  });
+  if (best) { best.classList.add('on'); best.setAttribute('aria-current', 'page'); }
+  var side = document.getElementById('ad-side'), scrim = document.getElementById('ad-scrim'), burger = document.getElementById('ad-burger');
+  function set(open) { side.classList.toggle('open', open); scrim.classList.toggle('open', open); burger.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  burger.addEventListener('click', function () { set(!side.classList.contains('open')); });
+  scrim.addEventListener('click', function () { set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+})();
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

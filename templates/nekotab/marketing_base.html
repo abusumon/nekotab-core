@@ -1,0 +1,104 @@
+{% extends "nekotab/public_base.html" %}{% comment %}
+  For NekoTab's own content pages (feature and comparison pages, legal pages,
+  motion bank pages, tools). They were written against core Tabbycat's
+  base.html and its Bootstrap classes; this keeps their block names
+  (page-title, og-title, extra-head, noindex, content, js) and gives the
+  Bootstrap classes they use an on-brand look, so the pages themselves only
+  had to change their {% extends %} line.
+
+  Pages put their own <meta description> and canonical link in extra-head;
+  views can instead pass meta_description / canonical_url.
+{% endcomment %}
+{% block title %}{% if page_title %}{{ page_title }}{% else %}{% block page-title %}NekoTab{% endblock %}{% endif %} · NekoTab{% endblock %}
+{% block og_title %}{% block og-title %}NekoTab{% endblock %}{% endblock %}
+{% block description_meta %}{% if meta_description %}<meta name="description" content="{{ meta_description }}">{% endif %}{% endblock %}
+{% block canonical %}{# pages set their own canonical in extra-head #}{% endblock %}
+{% block extra_head %}{% block extra-head %}{% endblock %}{% endblock %}
+{% block extra_css %}
+  .mk { padding: clamp(32px, 6vw, 64px) 0 clamp(48px, 7vw, 80px); }
+  .mk .container { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  .mk h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 14px; font-weight: 800; }
+  .mk h2 { font-size: clamp(1.35rem, 3vw, 1.75rem); letter-spacing: -.01em; margin: 2em 0 .5em; line-height: 1.25; }
+  .mk h3, .mk .h4, .mk h4 { font-size: 1.15rem; margin: 1.4em 0 .4em; }
+  .mk .h5, .mk h5 { font-size: 1.05rem; margin: 0 0 .4em; font-weight: 700; }
+  .mk p, .mk li { color: #27272a; }
+  .mk a { color: var(--marine); }
+  .mk a.btn { text-decoration: none; }
+  .mk ul, .mk ol { padding-left: 22px; }
+  .mk li { margin: 4px 0; }
+  .mk .lead { font-size: 1.18rem; color: #3f3f46; }
+  .mk .text-muted, .mk .small.text-muted { color: var(--muted) !important; }
+  .mk .small, .mk small { font-size: .88rem; }
+  .mk .text-center { text-align: center; }
+  .mk .emoji { margin-right: 6px; }
+  /* grid */
+  .mk .row { display: flex; flex-wrap: wrap; margin: 0 -10px; }
+  .mk .row > * { padding: 0 10px; width: 100%; }
+  @media (min-width: 768px) { .mk .col-md-6 { width: 50%; } .mk .col-md-4 { width: 33.333%; } .mk .col-md-8 { width: 66.666%; } }
+  @media (min-width: 992px) { .mk .col-lg-8 { width: 66.666%; } .mk .col-lg-9 { width: 75%; } .mk .col-lg-6 { width: 50%; } .mk .col-lg-4 { width: 33.333%; } }
+  .mk .mx-auto { margin-left: auto; margin-right: auto; }
+  .mk .g-3 { gap: 0; }
+  /* cards */
+  .mk .card { border: 1px solid var(--line); border-radius: 16px; background: #fff; overflow: hidden; }
+  .mk .card + .card { }
+  .mk .card-header { padding: 14px 18px; background: #fafafa; border-bottom: 1px solid var(--line); font-weight: 600; }
+  .mk .card-body { padding: 18px; }
+  .mk .card-title { margin-top: 0; }
+  .mk .card-text { color: #3f3f46; margin: 0 0 .6em; }
+  .mk .h-100 { height: 100%; }
+  .mk .bg-light { background: #f4f4f5 !important; }
+  .mk .rounded { border-radius: 14px; }
+  .mk .p-4 { padding: 22px; }
+  .mk .border { border: 1px solid var(--line); }
+  /* buttons */
+  .mk .btn { min-height: 46px; padding: 0 20px; border-radius: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent; }
+  .mk .btn-lg { min-height: 52px; padding: 0 24px; font-size: 1.05rem; }
+  .mk .btn-sm { min-height: 36px; padding: 0 12px; font-size: .9rem; }
+  .mk .btn-primary { background: var(--marine); color: #fff; }
+  .mk .btn-primary:hover { background: var(--marine-hover); color: #fff; }
+  .mk .btn-outline-primary { border-color: var(--marine); color: var(--marine); background: #fff; }
+  .mk .btn-outline-primary:hover { background: var(--marine); color: #fff; }
+  .mk .btn-outline-secondary { border-color: #000; color: #000; background: #fff; }
+  .mk .btn-outline-secondary:hover { background: #000; color: #fff; }
+  /* breadcrumb */
+  .mk .breadcrumb { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0 0 18px; font-size: .88rem; color: var(--muted); }
+  .mk .breadcrumb-item + .breadcrumb-item::before { content: "/"; margin-right: 6px; color: #a1a1aa; }
+  .mk .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .mk .breadcrumb a:hover { color: #000; }
+  /* accordion / FAQ */
+  .mk .accordion { display: grid; gap: 10px; }
+  .mk .accordion .card-header { background: #fff; border-bottom: 0; padding-bottom: 0; }
+  /* tables, alerts */
+  .mk .table-responsive { overflow-x: auto; }
+  .mk table.table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  .mk .table th, .mk .table td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+  .mk .table thead th { background: #000; color: #fff; border-color: #000; }
+  .mk .alert { border-radius: 14px; padding: 14px 18px; border: 1px solid var(--line); background: #fafafa; }
+  /* spacing utilities */
+  .mk .mt-2 { margin-top: 8px; } .mk .mt-3 { margin-top: 16px; } .mk .mt-4 { margin-top: 24px; } .mk .mt-5 { margin-top: 40px; }
+  .mk .mb-0 { margin-bottom: 0; } .mk .mb-2 { margin-bottom: 8px; } .mk .mb-3 { margin-bottom: 16px; } .mk .mb-4 { margin-bottom: 24px; } .mk .mb-5 { margin-bottom: 40px; }
+  .mk .ml-2 { margin-left: 8px; } .mk .mr-2 { margin-right: 8px; }
+  .mk .d-flex { display: flex; } .mk .flex-column { flex-direction: column; } .mk .flex-grow-1 { flex-grow: 1; }
+  .mk .align-items-center { align-items: center; } .mk .align-self-start { align-self: flex-start; } .mk .gap-2 { gap: 8px; }
+  .mk .list-unstyled { list-style: none; padding-left: 0; }
+  .mk-cta { padding: clamp(40px, 6vw, 64px) 0; text-align: center; }
+  .mk-cta h2 { margin: 0 0 8px; font-size: clamp(1.5rem, 4vw, 2.1rem); letter-spacing: -.02em; }
+  .mk-cta p { color: #a1a1aa; margin: 0 auto 22px; max-width: 560px; }
+  .mk-cta .acts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  {% block page-css %}{% endblock %}
+{% endblock %}
+{% block content %}
+<div class="mk light">{% block page-content %}{% block content-inner %}{% endblock %}{% endblock %}</div>
+{% block cta %}
+<section class="dark mk-cta" aria-label="Get started">
+  <div class="wrap">
+    <h2>Run your next tournament on NekoTab</h2>
+    <p>Draws, allocations, ballots and live results, plus 36,000+ real motions to practise with.</p>
+    <div class="acts">
+      <a class="btn btn-marine" href="{% if user.is_authenticated %}{% url 'tournament-create' %}{% else %}{% url 'register-tournament' %}{% endif %}">Create tournament</a>
+      <a class="btn btn-white" href="{% url 'motions' %}">Browse motions</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% endblock %}

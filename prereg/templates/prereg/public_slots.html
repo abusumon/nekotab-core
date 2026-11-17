@@ -10,7 +10,7 @@
 
     /* ---- Hero ---- */
     .hero {
-      background: linear-gradient(135deg, #0f0e17 0%, #1e1b4b 35%, #312e81 70%, #4338ca 100%);
+      background: linear-gradient(135deg, #0f0e17 0%, #0b1a3d 35%, #0b1a3d 70%, #0B3D91 100%);
       padding: 5rem 1.5rem 4rem;
       text-align: center;
       position: relative;
@@ -24,14 +24,14 @@
       transform: translateX(-50%);
       width: 700px;
       height: 700px;
-      background: radial-gradient(circle, rgba(99,102,241,.25) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(61,108,196,.25) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(99,102,241,.25);
-      border: 1px solid rgba(99,102,241,.5);
-      color: #a5b4fc;
+      background: rgba(61,108,196,.25);
+      border: 1px solid rgba(61,108,196,.5);
+      color: #9db8ee;
       padding: .3rem .9rem;
       border-radius: 999px;
       font-size: .78rem;
@@ -43,14 +43,14 @@
     .hero h1 {
       font-size: clamp(1.8rem, 5vw, 3rem);
       font-weight: 800;
-      background: linear-gradient(135deg, #fff 30%, #a5b4fc);
+      background: linear-gradient(135deg, #fff 30%, #9db8ee);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1.2;
       margin-bottom: .75rem;
     }
-    .hero p { color: #94a3b8; font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+    .hero p { color: #a1a1aa; font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
     .hero-stats {
       display: flex;
       justify-content: center;
@@ -59,8 +59,8 @@
       flex-wrap: wrap;
     }
     .stat { text-align: center; }
-    .stat-num { font-size: 2rem; font-weight: 800; color: #a5b4fc; }
-    .stat-label { font-size: .78rem; color: #64748b; text-transform: uppercase; letter-spacing: .06em; margin-top: .15rem; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: #9db8ee; }
+    .stat-label { font-size: .78rem; color: #71717a; text-transform: uppercase; letter-spacing: .06em; margin-top: .15rem; }
 
     /* ---- Main content ---- */
     .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
@@ -73,42 +73,42 @@
     }
     .not-published .icon { font-size: 3.5rem; margin-bottom: 1rem; }
     .not-published h2 { color: #e2e8f0; font-size: 1.5rem; font-weight: 700; margin-bottom: .5rem; }
-    .not-published p { color: #64748b; }
+    .not-published p { color: #71717a; }
 
     /* ---- Table ---- */
     .table-wrap {
       background: #1e1b3a;
       border-radius: 1rem;
       overflow: hidden;
-      border: 1px solid #312e81;
+      border: 1px solid #0b1a3d;
     }
     .table-header {
       display: grid;
       grid-template-columns: 2fr 2fr 1fr 1fr;
-      background: #312e81;
+      background: #0b1a3d;
       padding: .75rem 1.25rem;
       font-size: .78rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .06em;
-      color: #a5b4fc;
+      color: #9db8ee;
     }
     .table-row {
       display: grid;
       grid-template-columns: 2fr 2fr 1fr 1fr;
       padding: .9rem 1.25rem;
-      border-bottom: 1px solid rgba(99,102,241,.12);
+      border-bottom: 1px solid rgba(61,108,196,.12);
       align-items: center;
       transition: background .15s;
     }
     .table-row:last-child { border-bottom: none; }
-    .table-row:hover { background: rgba(99,102,241,.08); }
+    .table-row:hover { background: rgba(61,108,196,.08); }
     .row-rank {
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: rgba(99,102,241,.2);
-      color: #a5b4fc;
+      background: rgba(61,108,196,.2);
+      color: #9db8ee;
       font-size: .78rem;
       font-weight: 700;
       display: flex;
@@ -118,7 +118,7 @@
     }
     .team-cell { display: flex; align-items: center; gap: .75rem; }
     .team-name { font-weight: 600; color: #e2e8f0; font-size: .95rem; }
-    .inst-name { color: #64748b; font-size: .82rem; margin-top: .1rem; }
+    .inst-name { color: #71717a; font-size: .82rem; margin-top: .1rem; }
     .slots-badge {
       display: inline-flex;
       align-items: center;
@@ -126,7 +126,7 @@
       width: 36px;
       height: 36px;
       border-radius: .45rem;
-      background: linear-gradient(135deg, #4338ca, #6366f1);
+      background: linear-gradient(135deg, #0B3D91, #0B3D91);
       color: #fff;
       font-weight: 800;
       font-size: 1rem;
@@ -158,10 +158,10 @@
     .page-footer {
       text-align: center;
       padding: 2rem 1.5rem;
-      color: #334155;
+      color: #33333a;
       font-size: .82rem;
     }
-    .page-footer a { color: #6366f1; text-decoration: none; }
+    .page-footer a { color: #0B3D91; text-decoration: none; }
   </style>
 </head>
 <body>
@@ -241,7 +241,7 @@
     {% endfor %}
   </div>
 
-  <p style="text-align:center; color:#475569; font-size:.85rem; margin-top:1.5rem;">
+  <p style="text-align:center; color:#52525b; font-size:.85rem; margin-top:1.5rem;">
     Selected teams will receive an email with payment instructions and next steps.
     <br>After payment confirmation, a final registration link will be sent.
   </p>

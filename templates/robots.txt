@@ -1,17 +1,17 @@
 User-agent: *
 Allow: /
-Allow: /learn/
-Allow: /about/
-Allow: /contact/
-Allow: /privacy/
-Allow: /terms/
-Allow: /disclaimer/
-Allow: /forum/
 Allow: /motions/
+Allow: /motions-bank/
+Allow: /learn/
 Allow: /debate-motions/
 Allow: /debate-topics/
+Allow: /competitions/
+Allow: /emet/about/
+Allow: /team/
+Allow: /join/
+Allow: /llms.txt
 
-# Block auth, admin, utility, and internal pages
+# Accounts, dashboards and admin
 Disallow: /start/
 Disallow: /load-demo/
 Disallow: /claim/
@@ -25,15 +25,44 @@ Disallow: /api/
 Disallow: /jsi18n/
 Disallow: /i18n/
 Disallow: /notifications/
+Disallow: /me/
+Disallow: /portal/
+Disallow: /accounts/
+Disallow: /mcp
+Disallow: /oauth/
 
-# Block tournament admin/assistant areas
+# Tournament admin/assistant areas
 Disallow: /*/admin/
 Disallow: /*/assistant/
 Disallow: /*/privateurls/
 
-# Block parameterized/filtered pages from creating duplicates
+# Parameterised/filtered duplicates
 Disallow: /*?sort=
 Disallow: /*?page=
 Disallow: /*?lang=
+
+# AI assistants and answer engines are welcome to read and cite public pages,
+# especially the motion bank (see /llms.txt). Same private areas as above.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+Disallow: /me/
+Disallow: /portal/
+Disallow: /analytics/
+Disallow: /accounts/
+Disallow: /api/
+Disallow: /database/
+Disallow: /*/admin/
+Disallow: /*/assistant/
+Disallow: /*/privateurls/
 
 Sitemap: {{ seo_base_url }}/sitemap.xml

@@ -7,22 +7,22 @@
 {% block content %}
 <style>
   .tool-card { border-radius:12px; border:1px solid #e5e7eb; }
-  .step-badge { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; background:#ede9fe; color:#4f46e5; font-size:.8rem; font-weight:800; flex-shrink:0; }
+  .step-badge { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; background:#e8eefb; color:#0B3D91; font-size:.8rem; font-weight:800; flex-shrink:0; }
   .csv-type-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:8px; }
   .csv-chip { padding:10px 12px; border:1px solid #e5e7eb; border-radius:8px; font-size:.82rem; cursor:pointer; display:flex; align-items:center; gap:8px; background:#fff; transition:all .1s; }
-  .csv-chip:hover { border-color:#a5b4fc; background:#f8f7ff; }
-  .csv-chip.selected { border-color:#6366f1; background:#ede9fe; color:#4f46e5; }
+  .csv-chip:hover { border-color:#9db8ee; background:#f8f7ff; }
+  .csv-chip.selected { border-color:#0B3D91; background:#e8eefb; color:#0B3D91; }
   .csv-chip input { display:none; }
   #activity-log { max-height:260px; overflow-y:auto; font-size:.82rem; font-family:monospace; }
   #activity-log li { padding:3px 0; border-bottom:1px solid #f3f4f6; }
   #activity-log li.ok { color:#059669; }
   #activity-log li.err { color:#dc2626; }
-  #activity-log li.info { color:#4f46e5; }
-  .calico-box { background:linear-gradient(135deg,#1e1b4b,#312e81); color:#fff; border-radius:12px; padding:24px 28px; }
+  #activity-log li.info { color:#0B3D91; }
+  .calico-box { background:linear-gradient(135deg,#0b1a3d,#0b1a3d); color:#fff; border-radius:12px; padding:24px 28px; }
 </style>
 
 <!-- Hero -->
-<div class="card tool-card mb-4" style="background:linear-gradient(135deg,#1e3a5f 0%,#4f46e5 100%);border:0;color:#fff;">
+<div class="card tool-card mb-4" style="background:linear-gradient(135deg,#1e3a5f 0%,#0B3D91 100%);border:0;color:#fff;">
   <div class="card-body px-4 py-4">
     <div class="d-flex align-items-center gap-3 mb-2">
       <span style="font-size:2rem;">📥</span>

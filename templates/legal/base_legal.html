@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "nekotab/marketing_base.html" %}
 {% load i18n static %}
 
 {# Base layout for all legal/trust pages — clean, readable, consistent #}
@@ -9,7 +9,8 @@
 {# Trust pages are always indexable #}
 {% endblock %}
 
-{% block content %}
+{% block extra-head %}{% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}{% endblock %}
+{% block content-inner %}
 <div class="container py-4" style="max-width: 800px;">
 
   {# ── Breadcrumbs ── #}

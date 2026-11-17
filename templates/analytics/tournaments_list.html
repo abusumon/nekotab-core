@@ -1,116 +1,9 @@
+{% extends "analytics/_admin_base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Tournaments - NekoTab Admin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --bg-hover: #1a1a25;
-            --border: #2a2a3a;
-            --text-primary: #ffffff;
-            --text-secondary: #8888aa;
-            --accent: #6366f1;
-            --accent-light: #818cf8;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --info: #3b82f6;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            min-height: 100vh;
-        }
-        
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 260px;
-            height: 100vh;
-            background: var(--bg-card);
-            border-right: 1px solid var(--border);
-            padding: 20px 0;
-            z-index: 100;
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-        }
-        
-        .logo {
-            padding: 0 24px 24px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 24px;
-        }
-        
-        .logo h1 {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .logo span {
-            font-size: 12px;
-            color: var(--text-secondary);
-            display: block;
-            margin-top: 4px;
-        }
-        
-        .nav-section { padding: 0 12px; margin-bottom: 24px; }
-        
-        .nav-label {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            padding: 0 12px;
-            margin-bottom: 8px;
-        }
-        
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.2s;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            background: var(--bg-hover);
-            color: var(--text-primary);
-        }
-        
-        .nav-link.active {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.1));
-            color: var(--accent-light);
-        }
-        
-        .nav-link svg { width: 20px; height: 20px; }
-        
-        .main-content {
-            margin-left: 260px;
-            padding: 32px;
-            min-height: 100vh;
-        }
-        
-        .header {
+{% block title %}All Tournaments{% endblock %}
+{% block extra_css %}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+.header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -118,43 +11,35 @@
             flex-wrap: wrap;
             gap: 16px;
         }
-        
-        .header h2 { font-size: 28px; font-weight: 700; }
-        
-        .header-stats {
+.header h2 { font-size: 28px; font-weight: 700; }
+.header-stats {
             display: flex;
             gap: 24px;
         }
-        
-        .header-stat {
+.header-stat {
             text-align: center;
         }
-        
-        .header-stat-value {
+.header-stat-value {
             font-size: 24px;
             font-weight: 700;
             color: var(--accent-light);
         }
-        
-        .header-stat-label {
+.header-stat-label {
             font-size: 12px;
             color: var(--text-secondary);
         }
-        
-        .filters {
+.filters {
             display: flex;
             gap: 12px;
             margin-bottom: 24px;
             flex-wrap: wrap;
         }
-        
-        .search-box {
+.search-box {
             flex: 1;
             min-width: 200px;
             position: relative;
         }
-        
-        .search-box input {
+.search-box input {
             width: 100%;
             padding: 12px 16px 12px 44px;
             background: var(--bg-card);
@@ -163,13 +48,11 @@
             color: var(--text-primary);
             font-size: 14px;
         }
-        
-        .search-box input:focus {
+.search-box input:focus {
             outline: none;
             border-color: var(--accent);
         }
-        
-        .search-box svg {
+.search-box svg {
             position: absolute;
             left: 16px;
             top: 50%;
@@ -178,8 +61,7 @@
             height: 18px;
             color: var(--text-secondary);
         }
-        
-        select {
+select {
             padding: 12px 16px;
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -189,13 +71,11 @@
             font-family: inherit;
             cursor: pointer;
         }
-        
-        select:focus {
+select:focus {
             outline: none;
             border-color: var(--accent);
         }
-        
-        .btn {
+.btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -209,31 +89,26 @@
             transition: all 0.2s;
             text-decoration: none;
         }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #ec4899);
+.btn-primary {
+            background: linear-gradient(135deg, var(--accent), #3d6cc4);
             color: white;
         }
-        
-        .card {
+.card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
             overflow: hidden;
         }
-        
-        table {
+table {
             width: 100%;
             border-collapse: collapse;
         }
-        
-        th, td {
+th, td {
             text-align: left;
             padding: 16px;
             border-bottom: 1px solid var(--border);
         }
-        
-        th {
+th {
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
@@ -241,14 +116,12 @@
             color: var(--text-secondary);
             background: var(--bg-hover);
         }
-        
-        tr:hover td { background: var(--bg-hover); }
-        
-        .avatar {
+tr:hover td { background: var(--bg-hover); }
+.avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #ec4899);
+            background: linear-gradient(135deg, var(--accent), #3d6cc4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -256,171 +129,147 @@
             font-weight: 600;
             color: white;
         }
-        
-        .user-info {
+.user-info {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
-        .tournament-info {
+.tournament-info {
             display: flex;
             flex-direction: column;
         }
-        
-        .tournament-name { font-weight: 600; }
-        
-        .tournament-short {
+.tournament-name { font-weight: 600; }
+.tournament-short {
             font-size: 12px;
             color: var(--text-secondary);
         }
-        
-        .badge {
+.badge {
             display: inline-flex;
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 500;
         }
-        
-        .badge-success { background: rgba(16, 185, 129, 0.2); color: var(--success); }
-        .badge-warning { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
-        
-        .pagination {
+.badge-success { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+.badge-warning { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+.pagination {
             display: flex;
             justify-content: center;
             gap: 8px;
             padding: 24px;
         }
-        
-        .pagination a, .pagination span {
+.pagination a, .pagination span {
             padding: 8px 14px;
             border-radius: 8px;
             text-decoration: none;
             font-size: 14px;
         }
-        
-        .pagination a {
+.pagination a {
             background: var(--bg-hover);
             color: var(--text-primary);
         }
-        
-        .pagination a:hover {
+.pagination a:hover {
             background: var(--accent);
         }
-        
-        .pagination .current {
+.pagination .current {
             background: var(--accent);
             color: white;
         }
-        
-        .empty-state {
+.empty-state {
             text-align: center;
             padding: 60px 20px;
             color: var(--text-secondary);
         }
-        
-        .empty-state-icon {
+.empty-state-icon {
             font-size: 48px;
             margin-bottom: 16px;
         }
-        
-        .badge-danger { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
-
-        /* Checkbox & Bulk Delete */
-        .row-checkbox, .select-all-checkbox {
+.badge-danger { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+.row-checkbox, .select-all-checkbox {
             width: 18px; height: 18px; cursor: pointer;
             accent-color: var(--accent);
         }
-        .bulk-bar {
+.bulk-bar {
             display: none;
             position: fixed; bottom: 0; left: 260px; right: 0;
             background: var(--bg-card); border-top: 2px solid var(--danger);
             padding: 14px 32px; z-index: 200;
             align-items: center; justify-content: space-between;
         }
-        .bulk-bar.visible { display: flex; }
-        .bulk-bar-info { font-size: 14px; color: var(--text-secondary); }
-        .bulk-bar-info strong { color: var(--text-primary); }
-        .btn-danger {
+.bulk-bar.visible { display: flex; }
+.bulk-bar-info { font-size: 14px; color: var(--text-secondary); }
+.bulk-bar-info strong { color: var(--text-primary); }
+.btn-danger {
             background: var(--danger); color: #fff;
             display: inline-flex; align-items: center; gap: 6px;
             padding: 10px 20px; border: none; border-radius: 8px;
             font-size: 14px; font-weight: 600; cursor: pointer;
         }
-        .btn-danger:hover { background: #dc2626; }
-        .btn-delete-row {
+.btn-danger:hover { background: #dc2626; }
+.btn-delete-row {
             background: none; border: 1px solid rgba(239,68,68,.3);
             color: var(--danger); padding: 6px 12px; border-radius: 6px;
             font-size: 12px; cursor: pointer; transition: all .2s;
         }
-        .btn-delete-row:hover { background: rgba(239,68,68,.15); }
-        /* Showcase toggle. States are labelled, not just coloured, so the
-           current state survives being read on a bad screen or by anyone who
-           does not distinguish the two greens. */
-        .btn-showcase {
+.btn-delete-row:hover { background: rgba(239,68,68,.15); }
+.btn-showcase {
             background: none; border: 1px solid var(--border);
             color: var(--text-secondary); padding: 6px 14px; border-radius: 6px;
             font-size: 12px; font-weight: 600; font-family: inherit;
             cursor: pointer; transition: all .2s; min-width: 74px;
         }
-        .btn-showcase:hover { background: var(--bg-hover); color: var(--text-primary); }
-        .btn-showcase--on {
+.btn-showcase:hover { background: var(--bg-hover); color: var(--text-primary); }
+.btn-showcase--on {
             border-color: rgba(16,185,129,.45); color: var(--success);
             background: rgba(16,185,129,.12);
         }
-        .btn-showcase--on:hover { background: rgba(16,185,129,.2); color: var(--success); }
-        .showcase-warn {
+.btn-showcase--on:hover { background: rgba(16,185,129,.2); color: var(--success); }
+.showcase-warn {
             display: inline-block; margin-top: 6px; font-size: 11px;
             font-weight: 600; color: var(--warning); white-space: nowrap;
         }
-        /* Modal */
-        .modal-overlay {
+.modal-overlay {
             display: none; position: fixed; inset: 0;
             background: rgba(0,0,0,.65); z-index: 1000;
             align-items: center; justify-content: center;
         }
-        .modal-overlay.visible { display: flex; }
-        .modal {
+.modal-overlay.visible { display: flex; }
+.modal {
             background: var(--bg-card); border: 1px solid var(--border);
             border-radius: 16px; padding: 32px; width: 480px; max-width: 90vw;
             max-height: 80vh; overflow-y: auto;
         }
-        .modal h3 { margin-bottom: 12px; font-size: 20px; }
-        .modal p { color: var(--text-secondary); font-size: 14px; margin-bottom: 16px; }
-        .modal-list {
+.modal h3 { margin-bottom: 12px; font-size: 20px; }
+.modal p { color: var(--text-secondary); font-size: 14px; margin-bottom: 16px; }
+.modal-list {
             list-style: none; margin-bottom: 20px; max-height: 200px;
             overflow-y: auto; padding: 0;
         }
-        .modal-list li {
+.modal-list li {
             padding: 8px 12px; border-bottom: 1px solid var(--border);
             font-size: 13px;
         }
-        .modal-list li:last-child { border-bottom: none; }
-        .modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
-        .btn-secondary {
+.modal-list li:last-child { border-bottom: none; }
+.modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+.btn-secondary {
             background: var(--bg-hover); color: var(--text-primary);
             border: 1px solid var(--border); padding: 10px 20px;
             border-radius: 8px; font-size: 14px; cursor: pointer;
         }
-
-        .tournament-link {
+.tournament-link {
             color: var(--accent-light);
             text-decoration: none;
         }
-        
-        .tournament-link:hover {
+.tournament-link:hover {
             text-decoration: underline;
         }
-        
-        .tournament-link-disabled {
+.tournament-link-disabled {
             color: var(--text-secondary);
             cursor: not-allowed;
             text-decoration: line-through;
             font-size: 12px;
         }
-        
-        .slug-warning {
+.slug-warning {
             display: inline-flex;
             align-items: center;
             gap: 4px;
@@ -428,190 +277,56 @@
             color: var(--warning);
             margin-top: 2px;
         }
-        
-        /* Mobile Header */
-        .mobile-header {
-            display: none; position: fixed;
-            top: 0; left: 0; right: 0; height: 56px;
-            background: var(--bg-card); border-bottom: 1px solid var(--border);
-            z-index: 99; align-items: center; padding: 0 16px; gap: 12px;
-        }
-        .hamburger {
-            background: none; border: none; color: var(--text-primary); cursor: pointer;
-            padding: 8px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-        }
-        .hamburger:hover { background: var(--bg-hover); }
-        .hamburger svg { width: 24px; height: 24px; }
-        .mobile-header .mobile-title {
-            font-size: 16px; font-weight: 600;
-            background: linear-gradient(135deg, var(--accent), #ec4899);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .sidebar-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0, 0, 0, 0.5); z-index: 99;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
-
-        /* Toast notifications */
-        .toast-container {
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+.toast-container {
             position: fixed; top: 24px; right: 24px; z-index: 2000;
             display: flex; flex-direction: column; gap: 8px;
         }
-        .toast {
+.toast {
             display: flex; align-items: center; gap: 12px;
             padding: 14px 20px; border-radius: 12px; font-size: 14px; font-weight: 500;
             box-shadow: 0 10px 40px rgba(0,0,0,0.4);
             animation: toastIn 0.3s ease; min-width: 280px;
         }
-        .toast.success { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--success); }
-        .toast.error { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: var(--danger); }
-        .toast.removing { animation: toastOut 0.3s ease forwards; }
-        @keyframes toastIn { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes toastOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(100px); } }
-
-        /* Selected row */
-        tr.selected td { background: rgba(124, 58, 237, 0.08) !important; }
-
-        /* Fade-in */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        .card { animation: fadeInUp 0.4s ease both; }
-
-        /* Modal animation */
-        .modal-overlay.visible .modal {
+.toast.success { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: var(--success); }
+.toast.error { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: var(--danger); }
+.toast.removing { animation: toastOut 0.3s ease forwards; }
+@keyframes toastIn { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes toastOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(100px); } }
+tr.selected td { background: rgba(61,108,196, 0.08) !important; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.card { animation: fadeInUp 0.4s ease both; }
+.modal-overlay.visible .modal {
             animation: modalIn 0.25s ease;
         }
-        @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-
-        @media (max-width: 768px) {
-            .mobile-header { display: flex; }
-            .sidebar-overlay.visible { display: block; }
-            .sidebar { transform: translateX(-100%); }
-            .sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.4); }
-            .main-content { margin-left: 0; padding: 72px 16px 16px; }
-            .header { flex-direction: column; align-items: flex-start; }
-            .header h2 { font-size: 22px; }
-            .filters { flex-direction: column; }
-            .search-box { min-width: unset; }
-            table { font-size: 13px; }
-            th, td { padding: 10px 8px; }
-            .avatar { width: 30px; height: 30px; font-size: 13px; }
-            .tournament-name { font-size: 13px; }
-            .bulk-bar { left: 0; }
-        }
-    </style>
-</head>
-<body>
+@keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@media (max-width: 768px) {
+.header { flex-direction: column; align-items: flex-start; }
+.header h2 { font-size: 22px; }
+.filters { flex-direction: column; }
+.search-box { min-width: unset; }
+table { font-size: 13px; }
+th, td { padding: 10px 8px; }
+.avatar { width: 30px; height: 30px; font-size: 13px; }
+.tournament-name { font-size: 13px; }
+.bulk-bar { left: 0; }
+}
+{% endblock %}
+{% block messages %}{% endblock %}
+{% block content %}
     <!-- Mobile Header -->
-    <header class="mobile-header">
-        <button class="hamburger" id="menuToggle" aria-label="Toggle menu">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-        </button>
-        <span class="mobile-title"><img src="{% static 'logo-32x32.png' %}" alt="" style="width:18px;height:18px;vertical-align:-3px;border-radius:4px;"> NekoTab</span>
-    </header>
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    
     <div class="toast-container" id="toastContainer"></div>
 
     <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <div class="logo">
-            <h1><img src="{% static 'logo-32x32.png' %}" alt="" style="width:18px;height:18px;vertical-align:-3px;border-radius:4px;"> NekoTab</h1>
-            <span>Admin Dashboard</span>
-        </div>
-        
-        <nav class="nav-section">
-            <div class="nav-label">Analytics</div>
-            <a href="{% url 'analytics:dashboard' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-                </svg>
-                Dashboard
-            </a>
-            <a href="{% url 'analytics:users' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                </svg>
-                All Users
-            </a>
-            <a href="{% url 'analytics:tournaments' %}" class="nav-link active">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                </svg>
-                Tournaments
-            </a>
-            <a href="{% url 'analytics:db_usage' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
-                </svg>
-                DB Usage
-            </a>
-            <a href="{% url 'analytics:donations' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 .895-4 2s1.79 2 4 2 4 .895 4 2-1.79 2-4 2m0-10v12m0 0a9 9 0 100-18 9 9 0 000 18z"/>
-                </svg>
-                Donations
-            </a>
-            <a href="{% url 'analytics:tournament_motions' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                </svg>
-                Motion Harvest
-            </a>
-        </nav>
-
-        <nav class="nav-section">
-            <div class="nav-label">Participant CRM</div>
-            <a href="{% url 'analytics:participants_all' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                All Participants
-            </a>
-            <a href="{% url 'analytics:participants_debaters' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                Debaters
-            </a>
-            <a href="{% url 'analytics:participants_adjudicators' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
-                Adjudicators
-            </a>
-            <a href="{% url 'analytics:participants_tab_directors' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                Tab Directors
-            </a>
-        </nav>
-        
-        <nav class="nav-section">
-            <div class="nav-label">Manage</div>
-            <a href="{% url 'campaigns:list' %}" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-                Email Campaigns
-            </a>
-            <a href="/admin/" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                Django Admin
-            </a>
-            <a href="/" class="nav-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                </svg>
-                Back to Site
-            </a>
-        </nav>
-    </aside>
+    
 
     <!-- Main Content -->
-    <main class="main-content">
+    <div class="ad-page">
         {% comment %}
           This template carries its own <head> and does not extend a base with
           the message framework in it, so it has to render messages itself —
@@ -812,7 +527,7 @@
             </div>
             {% endif %}
         </div>
-    </main>
+    </div>
 
     <!-- Bulk Action Bar -->
     <div class="bulk-bar" id="bulkBar">
@@ -1003,5 +718,4 @@
         }
     })();
     </script>
-</body>
-</html>
+{% endblock %}
