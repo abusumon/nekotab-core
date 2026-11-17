@@ -2509,7 +2509,6 @@ class WorkspacesListView(SuperuserRequiredMixin, ListView):
         qs = Organization.objects.annotate(
             membership_count=Count('memberships', distinct=True),
             tournament_count=Count('tournaments', distinct=True),
-            club_member_count=Count('club_members', distinct=True),
             form_count=Count('forms', distinct=True),
         ).order_by('-id')
         search = self.request.GET.get('search', '').strip()

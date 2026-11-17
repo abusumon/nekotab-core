@@ -68,7 +68,7 @@
             <thead>
                 <tr>
                     <th>ID</th><th>Org / Slug</th><th>Active</th><th>Workspace</th>
-                    <th>Members</th><th>Tournaments</th><th>Club Members</th><th>Forms</th>
+                    <th>Members</th><th>Tournaments</th><th>Forms</th>
                     <th>Created</th><th>Action</th>
                 </tr>
             </thead>
@@ -93,7 +93,6 @@
                     <td>{% if org.is_workspace_enabled %}<span class="ws-on" id="ws-status-{{ org.id }}">✓ Enabled</span>{% else %}<span class="ws-off" id="ws-status-{{ org.id }}">✗ Disabled</span>{% endif %}</td>
                     <td>{{ org.membership_count }}</td>
                     <td>{{ org.tournament_count }}</td>
-                    <td>{{ org.club_member_count }}</td>
                     <td>{{ org.form_count }}</td>
                     <td class="meta-small">{{ org.created_at|date:"Y-m-d" }}</td>
                     <td>
