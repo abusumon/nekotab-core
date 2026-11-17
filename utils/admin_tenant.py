@@ -43,7 +43,7 @@ def get_admin_tournaments_for_user(user):
     org_admin_org_ids = OrganizationMembership.objects.filter(
         user=user,
         role__in=[
-            OrganizationMembership.Role.OWNER,
+            OrganizationMembership.Role.CREATOR, OrganizationMembership.Role.OWNER,
             OrganizationMembership.Role.ADMIN,
         ],
     ).values_list('organization_id', flat=True)
@@ -287,7 +287,7 @@ class OrganizationScopedAdminMixin:
             OrganizationMembership.objects.filter(
                 user=request.user,
                 role__in=[
-                    OrganizationMembership.Role.OWNER,
+                    OrganizationMembership.Role.CREATOR, OrganizationMembership.Role.OWNER,
                     OrganizationMembership.Role.ADMIN,
                 ],
             ).values_list('organization_id', flat=True)

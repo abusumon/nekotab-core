@@ -43,7 +43,7 @@ from .forms import (broadcast_results, PerAdjudicatorBallotSetForm, PerAdjudicat
                     SingleBallotSetForm, SingleEliminationBallotSetForm)
 from .models import BallotSubmission, ScoreCriterion, TeamScore
 from .prefetch import populate_confirmed_ballots, populate_results
-from .result import DebateResult, get_class_name
+from .result import DebateResult, get_class_name, ResultError
 from .tables import ResultsTableBuilder
 from .utils import get_status_meta, populate_identical_ballotsub_lists
 
@@ -266,6 +266,21 @@ class BaseBallotSetView(LogActionMixin, TournamentMixin, FormView):
     tabroom = False
     for_admin = False
 
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            return super().dispatch(request, *args, **kwargs)
+        except ResultError as e:
+            # A debate whose teams don't match the format (a team missing, or
+            # the wrong number of teams) can't hold a ballot. Explain it rather
+            # than serving a 500.
+            logger.warning("Ballot page for debate %s unavailable: %s", getattr(getattr(self, 'debate', None), 'pk', '?'), e)
+            messages.error(request, _("This debate's teams don't match the tournament format (%(error)s). "
+                "Fix the debate's teams in the draw before entering a ballot.") % {'error': e})
+            debate = getattr(self, 'debate', None)
+            if self.tabroom and debate is not None:
+                return HttpResponseRedirect(reverse_round('results-round-list', debate.round))
+            return HttpResponseRedirect(reverse_tournament('tournament-public-index', self.tournament))
+
     def get_context_data(self, **kwargs):
         kwargs['ballotsub'] = self.ballotsub
         kwargs['debate'] = self.debate
@@ -388,8 +403,10 @@ class BaseBallotSetView(LogActionMixin, TournamentMixin, FormView):
         if error_response:
             return error_response
 
-        # Prevent ballot submissions on completed rounds.
-        if hasattr(self, 'debate') and self.debate.round.completed:
+        # Prevent participant ballot submissions on completed rounds. The tab
+        # room (directors and assistants) must still be able to correct results
+        # after a round is marked complete.
+        if not self.tabroom and hasattr(self, 'debate') and self.debate.round.completed:
             raise PermissionDenied(
                 _("This round is closed. Ballots can no longer be submitted.")
             )
@@ -1005,7 +1022,7 @@ class BaseMergeLatestBallotsView(BaseNewBallotSetView):
 
     def get_all_ballotsubs(self):
         q = super().get_all_ballotsubs()
-        merged = {b.id for b in self.merged_ballots}
+        merged = {b.id for b in getattr(self, "merged_ballots", [])}
         for b in q:
             b.merged = b.id in merged
         return q

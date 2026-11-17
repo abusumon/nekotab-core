@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.core.cache import cache
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models import Prefetch, Q
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.urls import NoReverseMatch, reverse
@@ -78,7 +79,7 @@ class TournamentFromUrlMixin:
                             slug, tournament.slug)
             except (Tournament.DoesNotExist, Tournament.MultipleObjectsReturned):
                 logger.warning("Tournament not found in TournamentFromUrlMixin: slug=%s", slug)
-                raise
+                raise Http404("No tournament with this slug")
         cache.set(key, tournament, 3600)
         self._tournament_from_url = tournament
         return tournament

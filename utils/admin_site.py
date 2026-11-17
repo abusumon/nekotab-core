@@ -64,7 +64,7 @@ def _user_can_admin_any_tournament(user):
 
     org_admin_ids = OrganizationMembership.objects.filter(
         user=user,
-        role__in=[OrganizationMembership.Role.OWNER,
+        role__in=[OrganizationMembership.Role.CREATOR, OrganizationMembership.Role.OWNER,
                   OrganizationMembership.Role.ADMIN],
     ).values_list('organization_id', flat=True)
 

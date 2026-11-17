@@ -278,14 +278,16 @@ class TournamentQuerySet(models.QuerySet):
         org_admin_sq = OrganizationMembership.objects.filter(
             user=user,
             organization_id=OuterRef('organization_id'),
-            role__in=[OrganizationMembership.Role.OWNER,
+            role__in=[OrganizationMembership.Role.CREATOR, OrganizationMembership.Role.OWNER,
                       OrganizationMembership.Role.ADMIN],
         )
         org_member_sq = OrganizationMembership.objects.filter(
             user=user,
             organization_id=OuterRef('organization_id'),
-            role__in=[OrganizationMembership.Role.OWNER,
+            role__in=[OrganizationMembership.Role.CREATOR, OrganizationMembership.Role.OWNER,
                       OrganizationMembership.Role.ADMIN,
+                      OrganizationMembership.Role.MODERATOR, OrganizationMembership.Role.TABMASTER,
+                      OrganizationMembership.Role.EDITOR,
                       OrganizationMembership.Role.MEMBER],
         )
         direct_perm_sq = UserPermission.objects.filter(

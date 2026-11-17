@@ -1,3 +1,4 @@
+import asyncio
 import os
 
 import django
@@ -5,6 +6,27 @@ from channels.auth import AuthMiddlewareStack
 from channels.routing import ChannelNameRouter, ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 from django.urls import re_path
+
+
+class LimitHttpConcurrency:
+    """Queue HTTP requests above a per-worker limit instead of running them all.
+
+    Under ASGI every in-flight request gets its own thread and so its own
+    Postgres connection. When a draw or results release sends a few hundred
+    people to the site in the same second, two workers opened more than
+    max_connections (100) and every request failed with "too many clients"
+    for about a minute (2026-10-14/15/17). Excess requests now wait their turn;
+    WebSockets are not limited.
+    """
+
+    def __init__(self, app, limit):
+        self.app = app
+        self.semaphore = asyncio.Semaphore(limit)
+
+    async def __call__(self, scope, receive, send):
+        async with self.semaphore:
+            await self.app(scope, receive, send)
+
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 django.setup()
@@ -21,7 +43,7 @@ from venues.consumers import VenuesWorkerConsumer # noqa: E402 (has to come afte
 application = ProtocolTypeRouter({
 
     # Django's ASGI application to handle traditional HTTP requests
-    "http": get_asgi_application(),
+    "http": LimitHttpConcurrency(get_asgi_application(), int(os.environ.get('WEB_MAX_CONCURRENT_REQUESTS') or 30)),
 
     # WebSocket handlers
     "websocket": AuthMiddlewareStack(

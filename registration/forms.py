@@ -136,7 +136,7 @@ class SpeakerForm(CustomQuestionsFormMixin, forms.ModelForm):
 
     key = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-    def __init__(self, team, key, *args, tournament=None, **kwargs):
+    def __init__(self, team, key=None, *args, tournament=None, **kwargs):
         self.team = team
         self.tournament = team.tournament
         super().__init__(*args, **kwargs)

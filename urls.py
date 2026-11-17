@@ -12,11 +12,6 @@ from django.views.i18n import JavaScriptCatalog
 from django.contrib.sitemaps.views import sitemap
 from django.views.generic import RedirectView, TemplateView
 from django.views.decorators.cache import cache_page
-from rest_framework_simplejwt.views import (
-    TokenRefreshView,
-    TokenBlacklistView,
-)
-from organizations.api.views import OrgTokenObtainPairView
 
 import tournaments.views
 from importer.views import LoadDemoView
@@ -239,17 +234,6 @@ urlpatterns = [
     path('api/',
         include('api.urls')),
 
-    # JWT Authentication endpoints — uses OrgTokenObtainPairView to inject org claims
-    path('api/v1/auth/token/',
-        OrgTokenObtainPairView.as_view(),
-        name='token_obtain_pair'),
-    path('api/v1/auth/token/refresh/',
-        TokenRefreshView.as_view(),
-        name='token_refresh'),
-    path('api/v1/auth/logout/',
-        TokenBlacklistView.as_view(),
-        name='token_blacklist'),
-
     # Archive import/export
     path('archive/',
         include('importer.urls_archive')),
@@ -286,10 +270,6 @@ urlpatterns = [
     # Global Motion Bank (legacy DB-backed) at /motions-bank/
     path('motions-bank/',
         include('motionbank.urls')),
-
-        # Workspace React SPA — served via Django template
-    path('workspace/', TemplateView.as_view(template_name='frontend/index.html'), name='workspace-index'),
-    path('workspace/<path:path>', TemplateView.as_view(template_name='frontend/index.html'), name='workspace-catchall'),
 
     # Content: Learn hub + Trust/Legal pages
     path('', include('content.urls')),
@@ -405,6 +385,11 @@ if settings.DEBUG:
 # ==============================================================================
 # Logout/Login Confirmations
 # ==============================================================================
+
+# Error pages that log and degrade instead of becoming a 500; see utils/error_views.py
+handler400 = 'utils.error_views.bad_request'
+handler403 = 'utils.error_views.permission_denied'
+handler404 = 'utils.error_views.page_not_found'
 
 # These messages don't always work properly with unit tests, so set fail_silently=True
 

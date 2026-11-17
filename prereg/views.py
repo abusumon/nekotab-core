@@ -317,7 +317,7 @@ class PreRegSaveAllocationsView(AdministratorMixin, TournamentMixin, View):
                 notes = request.POST.get(f'notes_{sub_pk}', '').strip()
                 include_public = f'public_{sub_pk}' in request.POST
 
-                slot, _ = SlotAllocation.objects.get_or_create(submission=sub)
+                slot, _created = SlotAllocation.objects.get_or_create(submission=sub)
                 slot.slots_granted = slots
                 slot.notes = notes
                 slot.include_in_public = include_public
@@ -419,7 +419,7 @@ class PreRegConfirmPaymentView(AdministratorMixin, TournamentMixin, View):
     def post(self, request, *args, **kwargs):
         t = self.tournament
         sub = get_object_or_404(PreRegSubmission, pk=kwargs['sub_pk'], form__tournament=t)
-        slot, _ = SlotAllocation.objects.get_or_create(submission=sub)
+        slot, _created = SlotAllocation.objects.get_or_create(submission=sub)
         slot.payment_confirmed = True
         slot.payment_confirmed_at = timezone.now()
         slot.save(update_fields=['payment_confirmed', 'payment_confirmed_at'])
@@ -455,7 +455,7 @@ class PreRegSendFinalEmailView(AdministratorMixin, TournamentMixin, View):
                 recipient_list=[sub.respondent_email],
                 fail_silently=False,
             )
-            slot, _ = SlotAllocation.objects.get_or_create(submission=sub)
+            slot, _created = SlotAllocation.objects.get_or_create(submission=sub)
             slot.final_reg_email_sent = True
             slot.final_reg_email_sent_at = timezone.now()
             slot.save(update_fields=['final_reg_email_sent', 'final_reg_email_sent_at'])

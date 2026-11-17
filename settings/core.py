@@ -311,7 +311,6 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'static', 'frontend'),  # Vite React SPA build output
     os.path.join(BASE_DIR, 'locale'),  # django-statici18n jsi18n compiled JS
 )
 
@@ -541,7 +540,6 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_HEADER_TYPES': ('Bearer',),
-    'TOKEN_OBTAIN_SERIALIZER': 'organizations.api.serializers.OrgTokenObtainPairSerializer',
 }
 
 # ----------------------------------------
@@ -601,7 +599,6 @@ CELERY_TASK_ROUTES = {
     # Media processing (thumbnail generation, S3 upload)
     'organizations.tasks.process_media_asset':        {'queue': 'media'},
     # Lifecycle (heavy, runs infrequently — isolated to avoid blocking others)
-    'organizations.run_leadership_transition':         {'queue': 'lifecycle'},
     # Cascade-deletes whole tournaments; belongs with the other heavy,
     # infrequent work rather than in front of anything latency-sensitive.
     'tournaments.tasks.cleanup_expired_demos':         {'queue': 'lifecycle'},

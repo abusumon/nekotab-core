@@ -319,7 +319,10 @@ class SubdomainTournamentMiddleware:
         '/static/', '/media/', '/database/', '/api/',
         '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
         '/summernote/', '/jet/', '/organizations/', '/archive/',
-        '/forum/', '/motions-bank/',
+        '/forum/', '/motions-bank/', '/support/', '/tickets/', '/tools/', '/me/', '/login/',
+        '/tournament/', '/donate/', '/uploads/', '/favicon.ico',
+        '/debate-motions/', '/debate-topics/', '/debate-motion-bank/', '/debate-schedule-planner/',
+        '/debate-registration-forms/', '/debate-website-builder/', '/debate-ticketing/',
         # Global, not tournament-scoped: the premium purchase page and the
         # Lemon Squeezy webhook. Without this the "Unlock" link 404s on every
         # subdomain-served tournament, because /premium/<pk>/ would be
@@ -478,7 +481,10 @@ class SubdomainTenantMiddleware:
         '/static/', '/media/', '/database/', '/api/',
         '/analytics/', '/accounts/', '/campaigns/', '/notifications/',
         '/summernote/', '/jet/', '/organizations/', '/archive/',
-        '/forum/', '/motions-bank/',
+        '/forum/', '/motions-bank/', '/support/', '/tickets/', '/tools/', '/me/', '/login/',
+        '/tournament/', '/donate/', '/uploads/', '/favicon.ico',
+        '/debate-motions/', '/debate-topics/', '/debate-motion-bank/', '/debate-schedule-planner/',
+        '/debate-registration-forms/', '/debate-website-builder/', '/debate-ticketing/',
         # Global, not tournament-scoped: the premium purchase page and the
         # Lemon Squeezy webhook. Without this the "Unlock" link 404s on every
         # subdomain-served tournament, because /premium/<pk>/ would be

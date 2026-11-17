@@ -72,7 +72,7 @@ class TournamentAdmin(ModelAdmin):
                 org_ids = OrganizationMembership.objects.filter(
                     user=request.user,
                     role__in=[
-                        OrganizationMembership.Role.OWNER,
+                        OrganizationMembership.Role.CREATOR, OrganizationMembership.Role.OWNER,
                         OrganizationMembership.Role.ADMIN,
                     ],
                 ).values_list('organization_id', flat=True)

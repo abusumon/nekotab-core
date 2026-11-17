@@ -355,7 +355,10 @@ class BaseStandingsGenerator:
             return self.generate_from_queryset(queryset_for_metrics, standings, round)
 
         # Otherwise (not all precedence metrics are SQL-based), need to sort Standings
-        non_qs_ranked_annotators = [annotator for annotator in self.non_queryset_annotators if annotator.key in self.precedence]
+        # The rank filter (e.g. 'count' for the missed-debates limit) is applied
+        # while sorting, so its metric must exist before the sort too.
+        pre_sort_keys = set(self.precedence) | {self.options["rank_filter"][0]}
+        non_qs_ranked_annotators = [annotator for annotator in self.non_queryset_annotators if annotator.key in pre_sort_keys]
         self._annotate_metrics(queryset_for_metrics, non_qs_ranked_annotators, standings, round)
 
         standings.sort(self.precedence, self._tiebreak_func)
@@ -366,7 +369,7 @@ class BaseStandingsGenerator:
         logger.debug("Ranking annotators done.")
 
         # Do Draw Strength by Rank annotator after ranking standings
-        non_qs_extra_annotators = [annotator for annotator in self.non_queryset_annotators if annotator.key not in self.precedence]
+        non_qs_extra_annotators = [annotator for annotator in self.non_queryset_annotators if annotator.key not in pre_sort_keys]
         self._annotate_metrics(queryset_for_metrics, non_qs_extra_annotators, standings, round)
 
         return standings

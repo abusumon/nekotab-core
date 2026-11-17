@@ -934,7 +934,7 @@ class CreateCongressTournamentView(LoginRequiredMixin, WarnAboutDatabaseUseMixin
         user = self.request.user
         org_membership = OrganizationMembership.objects.filter(
             user=user,
-            role__in=[OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
+            role__in=[OrganizationMembership.Role.CREATOR, OrganizationMembership.Role.OWNER, OrganizationMembership.Role.ADMIN],
         ).select_related('organization').first()
 
         if org_membership:

@@ -205,6 +205,9 @@ class BaseBreakGenerator:
         # we will mark the last `self.reserve_size` ranks as participants
         number_to_add = self.category.break_size + self.category.reserve_size - len(self.breaking_teams)
 
+        if not self.breaking_teams:
+            return  # nobody broke (e.g. no eligible teams yet), so there's nothing to be a reserve for
+
         last_rank = self.breaking_teams[-1].get_ranking("rank")
         for tsi in self.eligible_teams[self.break_size:]:
             if (cur_rank := tsi.get_ranking("rank")) < last_rank:

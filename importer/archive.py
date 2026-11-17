@@ -348,7 +348,14 @@ class Exporter:
 
 class Importer:
 
-    def __init__(self, root, organization=None, owner=None):
+    @staticmethod
+    def default_slug(root):
+        """The slug import_tournament() gives the tournament when none is passed."""
+        if root.get('short') is not None:
+            return slugify(root.get('short'))
+        return slugify((root.get('name') or '')[:50])
+
+    def __init__(self, root, organization=None, owner=None, slug=None):
         """`root` is the parsed <tournament> element, not a Tournament.
 
         `organization` is required: Tournament.organization is NOT NULL, and
@@ -363,6 +370,7 @@ class Importer:
         self.root = root
         self.organization = organization
         self.owner = owner
+        self.slug = slug
 
     def import_tournament(self):
         if self.organization is None:
@@ -379,10 +387,9 @@ class Importer:
 
         if self.root.get('short') is not None:
             self.tournament.short_name = self.root.get('short')
-            self.tournament.slug = slugify(self.root.get('short'))
         else:
             self.tournament.short_name = self.root.get('name')[:25]
-            self.tournament.slug = slugify(self.root.get('name')[:50])
+        self.tournament.slug = self.slug or self.default_slug(self.root)
         self.tournament.save()
 
         self.is_bp = self.root.get('style') == 'bp' or len(self.root.findall('round[1]/debate[1]/side')) == 4
@@ -689,6 +696,7 @@ class Importer:
                 if motion.get('id') in m_set:
                     rmotion_obj = RoundMotion(motion=motion_obj, seq=seq_by_round[r], round_id=r)
                     rmotion_obj.save()
+                    seq_by_round[r] += 1  # (round, seq) is unique; rounds can have several motions
 
     def import_results(self):
         for round in self.root.findall('round'):
@@ -710,7 +718,7 @@ class Importer:
                 for side, side_code in zip(debate.findall('side'), self.tournament.sides):
 
                     if side.get('motion-veto') is not None:
-                        bs_obj.debateteammotionpreference_set.add(
+                        bs_obj.debateteammotionpreference_set.create(
                             debate_team=self.debateteams.get((debate.get('id'), side.get('team'))),
                             motion=self.motions.get(side.get('motion-veto')), preference=3)
 

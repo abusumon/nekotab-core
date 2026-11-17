@@ -319,12 +319,20 @@ class TournamentImportArchiveView(AdministratorMixin, FormView):
     view_role = ""
 
     def form_valid(self, form):
+        root = fromstring(form.cleaned_data['xml'])
+        slug = Importer.default_slug(root)
+        if Tournament.objects.filter(slug=slug).exists():
+            form.add_error(None, _("A tournament with slug \"%(slug)s\" already exists. Change the "
+                "tournament's short name in the file and try again.") % {'slug': slug})
+            return self.form_invalid(form)
+
         self.importer = Importer(
-            fromstring(form.cleaned_data['xml']),
+            root,
             organization=personal_organization_for(self.request.user),
             owner=self.request.user,
         )
-        self.importer.import_tournament()
+        with transaction.atomic():
+            self.importer.import_tournament()
 
         messages.success(self.request, _("Tournament archive has been imported."))
         return super().form_valid(form)
@@ -380,14 +388,14 @@ class HomeImportCalICOTabView(LoginRequiredMixin, View):
             return redirect('tabbycat-index')
 
         # Determine intended slug
-        tournament_name = root.get('name', 'imported-tournament')
         if slug_override:
             intended_slug = django_slugify(slug_override)
             if not intended_slug:
                 messages.error(request, _("Invalid slug. Use letters, numbers and hyphens only."))
                 return redirect('tabbycat-index')
         else:
-            intended_slug = django_slugify(tournament_name)
+            # Must match the slug the importer actually saves with.
+            intended_slug = Importer.default_slug(root)
 
         # Pre-check slug conflict
         if Tournament.objects.filter(slug=intended_slug).exists():
@@ -402,17 +410,15 @@ class HomeImportCalICOTabView(LoginRequiredMixin, View):
                 root,
                 organization=personal_organization_for(request.user),
                 owner=request.user,
+                slug=intended_slug,
             )
-            importer.import_tournament()
+            # All or nothing: a failure part-way must not leave a half-imported tournament.
+            with transaction.atomic():
+                importer.import_tournament()
         except Exception as e:
             messages.error(request, _("Import failed: %s") % str(e))
             logger.exception("CalICOTab XML import error")
             return redirect('tabbycat-index')
-
-        # Apply slug override after creation
-        if slug_override and importer.tournament.slug != intended_slug:
-            importer.tournament.slug = intended_slug
-            importer.tournament.save(update_fields=['slug'])
 
         messages.success(request, _("Tournament imported successfully! Welcome to NekoTab."))
         return redirect_tournament('tournament-admin-home', importer.tournament)

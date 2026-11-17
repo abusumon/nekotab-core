@@ -546,7 +546,14 @@ class AdminDrawView(RoundMixin, AdministratorMixin, AdminDrawUtilitiesMixin, Vue
         elif self.tournament.pref('teams_in_debate') == 4 and \
                 r.draw_status == Round.Status.DRAFT and r.prev is not None and \
                 not r.is_break_round:
-            return self.get_bp_position_balance_table()
+            try:
+                return self.get_bp_position_balance_table()
+            except IndexError:
+                # A debate is missing a team, so a position can't be looked up.
+                # Show the plain draw rather than a 500.
+                messages.warning(self.request, _("The position balance report isn't available because "
+                    "at least one debate in this draw doesn't have all four teams."))
+                return self.get_standard_table()
         else:
             return self.get_standard_table()
 

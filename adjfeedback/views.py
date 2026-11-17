@@ -87,7 +87,8 @@ class BaseFeedbackOverview(TournamentMixin, VueTableTemplateView):
                 'min': band_min, 'max': band_max, 'class': threshold_class,
                 'count': [band_min <= x < band_max for x in scores].count(True),
             })
-        band_specs[0]['count'] += [x == max_score for x in scores].count(True)
+        if band_specs:  # empty when the min and max adjudicator scores are equal
+            band_specs[0]['count'] += [x == max_score for x in scores].count(True)
 
         noutside_range = [x < min_score or x > max_score for x in scores].count(True)
 
