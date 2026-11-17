@@ -59,7 +59,7 @@ class NotificationQueueConsumer(SyncConsumer):
         """A fixed 'need help?' block appended to every notification email,
         outside the director-editable body template. Participants who hit
         reply on these emails used to land in the site owner's personal
-        inbox (From defaults to support@nekotab.app when a tournament has no
+        inbox (From defaults to support@nekotab.com when a tournament has no
         reply_to_address set) — this gives them a real, routed alternative
         instead."""
         base = settings.SITE_BASE_URL

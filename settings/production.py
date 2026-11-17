@@ -29,11 +29,11 @@ if environ.get('TAB_DIRECTOR_EMAIL', ''):
 if environ.get('DJANGO_SECRET_KEY', ''):
     SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
-# Allow all *.nekotab.app subdomains and any extra hosts passed via
+# Allow all *.nekotab.com subdomains and any extra hosts passed via
 # ALLOWED_HOSTS (e.g., the box's raw IP during staging).
 # Always allow localhost/127.0.0.1 so internal docker health checks keep
 # working even when ALLOWED_HOSTS is explicitly set in .env.
-_default_hosts = '.nekotab.app,localhost,127.0.0.1'
+_default_hosts = '.nekotab.com,localhost,127.0.0.1'
 _configured_hosts = [
     host.strip() for host in environ.get('ALLOWED_HOSTS', _default_hosts).split(',') if host.strip()
 ]
@@ -183,7 +183,7 @@ def _env_int(name, default=None):
         raise ValueError(f"{name} must be an integer, got {raw!r}") from exc
 
 
-_default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.app>')
+_default_from = environ.get('DEFAULT_FROM_EMAIL', 'NekoTab Team <support@nekotab.com>')
 DEFAULT_FROM_EMAIL = _default_from
 SERVER_EMAIL = environ.get('SERVER_EMAIL', _default_from)
 REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
@@ -193,7 +193,7 @@ REPLY_TO_EMAIL = environ.get('REPLY_TO_EMAIL', DEFAULT_FROM_EMAIL)
 # block is, and a reader scanning production email settings would otherwise
 # conclude support@ is the only sender. Replies are unaffected: those go to
 # each tournament's own director.
-TOURNAMENT_FROM_EMAIL = environ.get('TOURNAMENT_FROM_EMAIL', 'tab-director@nekotab.app')
+TOURNAMENT_FROM_EMAIL = environ.get('TOURNAMENT_FROM_EMAIL', 'tab-director@nekotab.com')
 EMAIL_TIMEOUT = _env_int('EMAIL_TIMEOUT', 10)
 
 _ses_smtp_user = (environ.get('AWS_SES_SMTP_USERNAME') or environ.get('SES_SMTP_USERNAME') or '').strip()

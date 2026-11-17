@@ -1577,7 +1577,7 @@ def _email_promo_code(promo, bkash_request):
         from django.core.mail import EmailMultiAlternatives
         from django.template.loader import render_to_string
 
-        base = getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
+        base = getattr(settings, 'SITE_BASE_URL', 'https://nekotab.com').rstrip('/')
         context = {
             'promo': promo,
             'code': promo.code,
@@ -2581,4 +2581,4 @@ class EnsureWorkspaceView(SuperuserRequiredMixin, View):
         return JsonResponse({'ok': True, 'created': created, 'org_id': org.id, 'slug': org.slug,
                              'name': org.name, 'is_active': org.is_active,
                              'is_workspace_enabled': org.is_workspace_enabled,
-                             'workspace_url': f'https://{org.slug}.nekotab.app/'})
+                             'workspace_url': f'https://{org.slug}.nekotab.com/'})

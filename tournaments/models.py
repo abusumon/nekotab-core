@@ -33,6 +33,7 @@ PROHIBITED_TOURNAMENT_SLUGS = [
     '__debug__', 'static', 'style', 'i18n', 'jsi18n',  # Misc
     'forum', 'motions-bank',  # Global apps
     'analytics', 'campaigns',  # Admin apps
+    'mcp', 'oauth', 'agent', '.well-known',  # AI connector / OAuth endpoints
 ]
 
 

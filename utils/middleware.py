@@ -72,7 +72,7 @@ class DebateMiddleware:
         # path that matches no real route falls through to the tournament
         # catch-all, so `slug` here is frequently not a tournament at all —
         # /tools/, /docs/, /dashboard/, /profile/ and friends all land here.
-        # Redirecting those to <slug>.nekotab.app sends visitors to a
+        # Redirecting those to <slug>.nekotab.com sends visitors to a
         # subdomain that does not exist, and because the hop is a *permanent*
         # redirect their browser caches the dead destination indefinitely.
         # Resolve first; only a tournament that genuinely exists earns a
@@ -294,7 +294,7 @@ def get_subdomain_url(tournament_slug, path='/', scheme='https'):
 
 class SubdomainTournamentMiddleware:
     """Allows accessing tournaments via subdomains, e.g.
-    ``https://my-tournament.nekotab.app/motions/`` is internally rewritten so
+    ``https://my-tournament.nekotab.com/motions/`` is internally rewritten so
     Django sees ``/my-tournament/motions/``.
 
     Key invariants enforced here:
@@ -333,7 +333,7 @@ class SubdomainTournamentMiddleware:
         '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
         # NOTE: /admin/ is intentionally NOT listed here. On a tournament subdomain,
         # /admin/... means the tournament admin section and must be rewritten.
-        # The bare-domain Django admin (nekotab.app/admin/) is never affected
+        # The bare-domain Django admin (nekotab.com/admin/) is never affected
         # because BAD_PREFIXES is only checked after a tournament subdomain is confirmed.
     )
 
@@ -492,7 +492,7 @@ class SubdomainTenantMiddleware:
         '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
         # NOTE: /admin/ is intentionally NOT listed here. On a tournament subdomain,
         # /admin/... means the tournament admin section and must be rewritten.
-        # The bare-domain Django admin (nekotab.app/admin/) is never affected
+        # The bare-domain Django admin (nekotab.com/admin/) is never affected
         # because BAD_PREFIXES is only checked after a tournament subdomain is confirmed.
     )
 

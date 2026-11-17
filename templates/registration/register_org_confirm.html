@@ -15,7 +15,7 @@
         <h4 class="mb-3">{% trans "Your organization workspace is ready!" %}</h4>
         <p class="text-muted">
           {% blocktrans with name=organization.name slug=organization.slug %}
-            <strong>{{ name }}</strong> has been created. You will be redirected to your workspace at <code>{{ slug }}.nekotab.app</code>.
+            <strong>{{ name }}</strong> has been created. You will be redirected to your workspace at <code>{{ slug }}.nekotab.com</code>.
           {% endblocktrans %}
         </p>
         <a href="https://{{ organization.slug }}.{{ base_domain }}/" class="btn btn-primary btn-lg mt-2">

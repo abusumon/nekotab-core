@@ -80,7 +80,7 @@
                         <div style="font-weight:500;">{{ org.name }}</div>
                         <div class="org-slug">{{ org.slug }}</div>
                         {% if org.is_workspace_enabled %}
-                            <a class="workspace-url" href="https://{{ org.slug }}.nekotab.app/" target="_blank">🔗 {{ org.slug }}.nekotab.app</a>
+                            <a class="workspace-url" href="https://{{ org.slug }}.nekotab.com/" target="_blank">🔗 {{ org.slug }}.nekotab.com</a>
                         {% endif %}
                         {% if org.deactivation_reason %}
                             <div class="deact-reason" title="{{ org.deactivation_reason }}">⚠ {{ org.deactivation_reason }}</div>
@@ -146,7 +146,7 @@ function enableWorkspace(orgId, btn) {
             btn.textContent = '✓ Active';
             const s = document.getElementById('ws-status-' + orgId);
             if (s) { s.className = 'ws-on'; s.textContent = '✓ Enabled'; }
-            showToast('✓ ' + data.name + ' → ' + data.slug + '.nekotab.app', 'ok');
+            showToast('✓ ' + data.name + ' → ' + data.slug + '.nekotab.com', 'ok');
         } else {
             btn.disabled = false;
             btn.textContent = '⚡ Enable';

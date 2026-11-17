@@ -21,7 +21,7 @@ MEDIA_URL = '/media/'
 # Overwritten in environment-specific settings modules
 # ==============================================================================
 
-ADMINS = ('NekoTab', 'contact@nekotab.app'),
+ADMINS = ('NekoTab', 'contact@nekotab.com'),
 MANAGERS = ADMINS
 DEBUG = _env_bool('DEBUG')
 ENABLE_DEBUG_TOOLBAR = False # Must default to false; overriden in Dev config
@@ -202,6 +202,14 @@ TABBYCAT_APPS = (
     'tickets',
     'support',
 )
+
+# Optional private add-ons that live outside this repository. Each is loaded
+# only when importable, so this codebase runs without them.
+import importlib.util  # noqa: E402
+
+for _optional_app in ('agent_api',):
+    if importlib.util.find_spec(_optional_app) is not None:
+        TABBYCAT_APPS += (_optional_app,)
 
 INSTALLED_APPS = (
     'allauth',
@@ -517,7 +525,7 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.3.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'SCHEMA_PATH_PREFIX': r'api/v\d+',
-    'CONTACT': {'name': 'NekoTab', 'email': 'contact@nekotab.app'},
+    'CONTACT': {'name': 'NekoTab', 'email': 'contact@nekotab.com'},
     'LICENSE': {'name': 'AGPL 3', 'url': 'https://www.gnu.org/licenses/agpl-3.0.en.html'},
     'EXTENSIONS_INFO': {
         "x-logo": {
@@ -543,7 +551,7 @@ SIMPLE_JWT = {
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     o.strip() for o in
-    os.environ.get('CORS_ALLOWED_ORIGINS', 'https://nekotab.app,https://www.nekotab.app').split(',')
+    os.environ.get('CORS_ALLOWED_ORIGINS', 'https://nekotab.com,https://www.nekotab.com').split(',')
     if o.strip()
 ]
 CORS_URLS_REGEX = r'^/api(/.*)?$'
@@ -754,7 +762,7 @@ ORGANIZATION_WORKSPACES_ENABLED = _env_bool('ORGANIZATION_WORKSPACES_ENABLED')
 
 # Cross-subdomain session/CSRF cookies: when a base domain is configured,
 # set the cookie domain to the parent domain so that a session created at
-# nekotab.app is also valid at orgslug.nekotab.app.
+# nekotab.com is also valid at orgslug.nekotab.com.
 # Production configs may override these with stricter settings.
 if SUBDOMAIN_BASE_DOMAIN:
     SESSION_COOKIE_DOMAIN = f".{SUBDOMAIN_BASE_DOMAIN}"
@@ -768,7 +776,7 @@ if SUBDOMAIN_BASE_DOMAIN:
 # This is the *platform* sender: password resets, receipts, payment reminders,
 # campaigns, contact-form mail — anything about someone's NekoTab account
 # rather than about a debate.
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@nekotab.app')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@nekotab.com')
 
 # Sender for tournament participant mail — private URLs, ballots, draws,
 # motions, standings. Deliberately a *different* address from
@@ -783,7 +791,7 @@ DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@nekotab.app')
 # Note this is *not* where replies go — Reply-To is set per tournament to that
 # tournament's director, so a participant hitting reply reaches the person
 # running their competition. See NotificationQueueConsumer._get_from_fields.
-TOURNAMENT_FROM_EMAIL = os.environ.get('TOURNAMENT_FROM_EMAIL', 'tab-director@nekotab.app')
+TOURNAMENT_FROM_EMAIL = os.environ.get('TOURNAMENT_FROM_EMAIL', 'tab-director@nekotab.com')
 
 # Server email for error emails; default to from email
 SERVER_EMAIL = os.environ.get('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
@@ -793,7 +801,7 @@ _admin_emails = os.environ.get('ADMIN_NOTIFICATION_EMAILS', '').strip()
 ADMIN_NOTIFICATION_EMAILS = [e.strip() for e in _admin_emails.split(',') if e.strip()] if _admin_emails else []
 
 # Optional Reply-To header for outbound emails
-REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab.app>')
+REPLY_TO_EMAIL = os.environ.get('REPLY_TO_EMAIL', 'NekoTab Team <support@nekotab.com>')
 
 # ==============================================================================
 # Monetisation
@@ -993,7 +1001,7 @@ ADS_REMOVAL_PRICE_LABEL = os.environ.get('ADS_REMOVAL_PRICE_LABEL') or '$5'
 # ==============================================================================
 
 # Public site base URL for canonical tags and sitemap domain hints
-SITE_BASE_URL = os.environ.get('SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
+SITE_BASE_URL = os.environ.get('SITE_BASE_URL', 'https://nekotab.com').rstrip('/')
 
 # ==============================================================================
 # Tournament Retention / Auto-cleanup

@@ -7,7 +7,7 @@ class Command(BaseCommand):
         "One-time backfill: set the email__reply_to_address preference to the "
         "owner's email for every tournament that doesn't already have one set. "
         "Tournaments created before this preference was auto-populated at "
-        "creation time fall back to DEFAULT_FROM_EMAIL (support@nekotab.app) "
+        "creation time fall back to DEFAULT_FROM_EMAIL (support@nekotab.com) "
         "for every participant-facing email, so replies land in the site "
         "owner's inbox instead of the tournament director's."
     )

@@ -333,7 +333,7 @@ def debate_context(request):
         # SEO defaults
         'seo_site_name': 'NekoTab Debate Tabulation',
         'seo_keywords': 'debate tab, debate tabulation, debate motion bank, BP motions, british parliamentary debate, WSDC motions, parliamentary debating, adjudicator allocation, debate tournament software, asian parliamentary, australs debating, debate results live, debate ticketing, debate schedule planner, debate registration forms, debate website builder, nekotab, free debate tab software',
-        'seo_base_url': getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app'),
+        'seo_base_url': getattr(settings, 'SITE_BASE_URL', 'https://nekotab.com'),
         'request_country_code': _get_request_country_code(request),
     }
 
@@ -351,7 +351,7 @@ def debate_context(request):
                 clean_path = path
             context['canonical_url'] = f"https://{subdomain_slug}.{base_domain}{clean_path}"
         else:
-            base = getattr(settings, 'SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
+            base = getattr(settings, 'SITE_BASE_URL', 'https://nekotab.com').rstrip('/')
             context['canonical_url'] = f"{base}{path}"
     except Exception:
         context['canonical_url'] = None

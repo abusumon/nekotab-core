@@ -157,9 +157,9 @@ def build_tournament_absolute_uri(request, tournament, path=None):
     """Build a full absolute URL for a tournament page, subdomain-aware.
 
     When subdomain routing is enabled, returns e.g.
-        https://slug.nekotab.app/motions/
+        https://slug.nekotab.com/motions/
     When disabled, falls back to request.build_absolute_uri(path), e.g.
-        https://nekotab.app/slug/motions/
+        https://nekotab.com/slug/motions/
 
     ``path`` should be the result of reverse_tournament() or any path that
     starts with /<slug>/.  If *path* is None the tournament root is used.

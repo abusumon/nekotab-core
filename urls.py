@@ -6,7 +6,7 @@ from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.templatetags.static import static
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.utils.translation import gettext as _
 from django.views.i18n import JavaScriptCatalog
 from django.contrib.sitemaps.views import sitemap
@@ -71,7 +71,7 @@ urlpatterns = [
         name='tournament-delete-confirm'),
     path('support/', include('support.urls', namespace='support')),
     # Alias matching the URL other tab platforms use, so a link shared as
-    # "nekotab.app/tournaments/new/" lands somewhere real.
+    # "nekotab.com/tournaments/new/" lands somewhere real.
     path('tournaments/new/',
         RedirectView.as_view(pattern_name='tournament-create', permanent=False),
         name='tournament-new'),
@@ -224,7 +224,7 @@ urlpatterns = [
     path('organizations/',
         include('organizations.urls')),
 
-    # Event Ticketing — public-facing (hub.nekotab.app/tickets/...)
+    # Event Ticketing — public-facing (hub.nekotab.com/tickets/...)
     path('tickets/', include('tickets.urls_public', namespace='tickets')),
 
     # Event Ticketing API
@@ -336,7 +336,7 @@ urlpatterns = [
                 extra_context={
                     'meta_description': 'Search real debate motions across BP, WSDC, Public Forum, Lincoln-Douglas, Policy and Asians/Australs, then jump into the full Motion Bank.',
                     'seo_keywords': 'debate motions, motion bank, BP motions, WSDC motions, public forum motions, lincoln douglas topics, policy debate resolutions',
-                    'canonical_url': 'https://nekotab.app/debate-motions/',
+                    'canonical_url': 'https://nekotab.com/debate-motions/',
                 },
             )
         ),
@@ -347,7 +347,7 @@ urlpatterns = [
             extra_context={
                 'meta_description': 'Find debate topics for students and teams, then practice with real tournament motions across BP, WSDC, Public Forum, Lincoln-Douglas and Policy formats.',
                 'seo_keywords': 'debate topics, debate topics for students, debate prep topics, debate practice topics, tournament debate topics',
-                'canonical_url': 'https://nekotab.app/debate-topics/',
+                'canonical_url': 'https://nekotab.com/debate-topics/',
             },
         ),
         name='seo-debate-topics'),
@@ -368,6 +368,13 @@ urlpatterns = [
     path('debate-ticketing/',
         TemplateView.as_view(template_name='pages/debate-ticketing.html'),
         name='seo-debate-ticketing'),
+
+    # Optional private add-on (MCP/OAuth/agent API). Must precede the
+    # tournament-slug catch-all below. Absent in the public repo.
+    # One lookahead on the first path segment, so ordinary pages skip these
+    # routes with a single regex test instead of trying each of them.
+    *([re_path(r'^(?=(?:mcp|oauth|agent|\.well-known|api/agent)(?:/|$))', include('agent_api.urls'))]
+      if 'agent_api' in settings.INSTALLED_APPS else []),
 
     # Tournament URLs
     path('<slug:tournament_slug>/',

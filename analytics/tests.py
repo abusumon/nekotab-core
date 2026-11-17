@@ -77,20 +77,20 @@ class TournamentViewUrlTests(TestCase):
 
     # ── view_url with subdomain enabled ──────────────────────────────
 
-    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.com')
     def test_view_url_safe_slug_with_subdomain(self):
         t = self._make_tournament('test-tournament')
         url = t.view_url
-        self.assertEqual(url, 'https://test-tournament.nekotab.app/')
+        self.assertEqual(url, 'https://test-tournament.nekotab.com/')
 
-    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.com')
     def test_view_url_underscore_slug_with_subdomain_falls_back_to_path(self):
         """Underscore slugs can't be used as DNS labels, must fall back to path."""
         t = self._make_tournament('test_tournament')
         url = t.view_url
         # Should NOT return subdomain URL since underscore is DNS-unsafe
         self.assertEqual(url, f'/{t.slug}/')
-        self.assertNotIn('nekotab.app', url)
+        self.assertNotIn('nekotab.com', url)
 
 
 class DebateMiddlewareTests(TestCase):
@@ -155,7 +155,7 @@ class DebateMiddlewareTests(TestCase):
 
     @override_settings(
         SUBDOMAIN_TOURNAMENTS_ENABLED=True,
-        SUBDOMAIN_BASE_DOMAIN='nekotab.app',
+        SUBDOMAIN_BASE_DOMAIN='nekotab.com',
     )
     def test_subdomain_redirect_for_safe_slug(self):
         mw = self._get_middleware()
@@ -164,11 +164,11 @@ class DebateMiddlewareTests(TestCase):
         request.subdomain_tournament = None
         result = mw.process_view(request, None, [], {'tournament_slug': 'test-tournament'})
         self.assertEqual(result.status_code, 301)
-        self.assertIn('test-tournament.nekotab.app', result['Location'])
+        self.assertIn('test-tournament.nekotab.com', result['Location'])
 
     @override_settings(
         SUBDOMAIN_TOURNAMENTS_ENABLED=True,
-        SUBDOMAIN_BASE_DOMAIN='nekotab.app',
+        SUBDOMAIN_BASE_DOMAIN='nekotab.com',
     )
     def test_no_subdomain_redirect_for_unsafe_slug(self):
         """Slugs with underscores should NOT be redirected to subdomain."""
@@ -314,13 +314,13 @@ class TournamentSlugEdgeCaseTests(TestCase):
         t = Tournament.objects.create(name='Mixed Sep', slug='test_my-tournament', owner=self.user)
         self.assertFalse(t.is_subdomain_safe)
 
-    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.com')
     def test_view_url_single_underscore(self):
         t = Tournament.objects.create(name='Underscore', slug='a_b', owner=self.user)
         # Should fall back to path-based URL
         self.assertEqual(t.view_url, '/a_b/')
 
-    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.com')
     def test_view_url_leading_hyphen(self):
         t = Tournament.objects.create(name='Lead Hyphen', slug='-abc', owner=self.user)
         # Should fall back to path-based URL (not DNS-safe)
@@ -354,14 +354,14 @@ class RedirectLoopRegressionTests(TestCase):
         from utils.middleware import DebateMiddleware
         return DebateMiddleware(lambda req: None)
 
-    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.com')
     def test_mixed_case_slug_no_redirect_loop(self):
         """A mixed-case slug must NOT cause a redirect from subdomain middleware."""
         Tournament.objects.create(name='Mixed', slug='NDF-Nationals', owner=self.user)
         mw = self._get_subdomain_middleware()
 
         # Simulate browser hitting lowercase hostname
-        request = self.factory.get('/', HTTP_HOST='ndf-nationals.nekotab.app')
+        request = self.factory.get('/', HTTP_HOST='ndf-nationals.nekotab.com')
         result = mw(request)
 
         # Must NOT be a redirect (any redirect risks a loop)
@@ -372,7 +372,7 @@ class RedirectLoopRegressionTests(TestCase):
         # The subdomain label should be set on the request
         self.assertEqual(getattr(request, 'subdomain_tournament', None), 'ndf-nationals')
 
-    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.com')
     def test_underscore_slug_never_redirected_to_subdomain(self):
         """A tournament with underscores must NEVER be redirected to a subdomain."""
         Tournament.objects.create(name='Underscore', slug='my_tournament', owner=self.user)
@@ -389,7 +389,7 @@ class RedirectLoopRegressionTests(TestCase):
                 "Underscore slug must not be redirected to subdomain (invalid DNS label).")
         self.assertEqual(request.tournament.slug, 'my_tournament')
 
-    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.com')
     def test_subdomain_request_does_not_redirect_again(self):
         """When already on the subdomain, DebateMiddleware must not redirect back."""
         Tournament.objects.create(name='Test', slug='test-tournament', owner=self.user)
@@ -397,7 +397,7 @@ class RedirectLoopRegressionTests(TestCase):
         smw = self._get_subdomain_middleware()
         dmw = self._get_debate_middleware()
 
-        request = self.factory.get('/', HTTP_HOST='test-tournament.nekotab.app')
+        request = self.factory.get('/', HTTP_HOST='test-tournament.nekotab.com')
         request.user = self.user
 
         # First, SubdomainTournamentMiddleware sets the label
@@ -410,13 +410,13 @@ class RedirectLoopRegressionTests(TestCase):
         self.assertIsNone(result, "DebateMiddleware must not redirect when already on subdomain.")
         self.assertEqual(request.tournament.slug, 'test-tournament')
 
-    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.app')
+    @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=True, SUBDOMAIN_BASE_DOMAIN='nekotab.com')
     def test_base_domain_redirects_only_once(self):
         """A request to the base domain path should redirect exactly once to the subdomain."""
         Tournament.objects.create(name='Test', slug='test-tournament', owner=self.user)
         mw = self._get_debate_middleware()
 
-        request = self.factory.get('/test-tournament/', HTTP_HOST='nekotab.app')
+        request = self.factory.get('/test-tournament/', HTTP_HOST='nekotab.com')
         request.user = self.user
         request.subdomain_tournament = None
         result = mw.process_view(request, None, [], {'tournament_slug': 'test-tournament'})
@@ -424,7 +424,7 @@ class RedirectLoopRegressionTests(TestCase):
         self.assertIsNotNone(result)
         self.assertEqual(result.status_code, 301)
         location = result['Location']
-        self.assertIn('test-tournament.nekotab.app', location)
+        self.assertIn('test-tournament.nekotab.com', location)
         # Hostname in redirect MUST be lowercase
         import re
         hostname_match = re.search(r'://([^/]+)', location)

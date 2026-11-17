@@ -33,7 +33,7 @@ def _get_or_create_form(tournament, form_type, title):
     form, created = PreRegForm.objects.get_or_create(
         tournament=tournament,
         form_type=form_type,
-        defaults={'title': title, 'final_reg_url': 'https://kuddt.nekotab.app/'},
+        defaults={'title': title, 'final_reg_url': 'https://kuddt.nekotab.com/'},
     )
     if created:
         seed_default_fields(form)
@@ -394,7 +394,7 @@ class PreRegSendOffersView(AdministratorMixin, TournamentMixin, View):
                 send_mail(
                     subject=subject,
                     message=body,
-                    from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@nekotab.app'),
+                    from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@nekotab.com'),
                     recipient_list=[sub.respondent_email],
                     fail_silently=False,
                 )
@@ -442,7 +442,7 @@ class PreRegSendFinalEmailView(AdministratorMixin, TournamentMixin, View):
             return redirect('prereg-admin-dashboard', tournament_slug=t.slug)
 
         prereg_form = sub.form
-        final_url = prereg_form.final_reg_url or 'https://kuddt.nekotab.app/'
+        final_url = prereg_form.final_reg_url or 'https://kuddt.nekotab.com/'
 
         subject = f"[{t.short_name}] Complete your registration"
         body = _build_final_reg_email_body(sub, final_url, t)
@@ -451,7 +451,7 @@ class PreRegSendFinalEmailView(AdministratorMixin, TournamentMixin, View):
             send_mail(
                 subject=subject,
                 message=body,
-                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@nekotab.app'),
+                from_email=getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@nekotab.com'),
                 recipient_list=[sub.respondent_email],
                 fail_silently=False,
             )

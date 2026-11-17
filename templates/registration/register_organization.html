@@ -29,7 +29,7 @@
               <div>
                 <strong>{% trans "Your subdomain is permanent." %}</strong>
                 {% blocktrans %}
-                  Once you create your organization, the subdomain (<code>yourslug.nekotab.app</code>)
+                  Once you create your organization, the subdomain (<code>yourslug.nekotab.com</code>)
                   <strong>cannot be changed</strong>. Choose carefully — this becomes your permanent workspace URL.
                 {% endblocktrans %}
               </div>
@@ -45,7 +45,7 @@
                 {% if field.name == 'slug' %}
                   <div class="input-group">
                     {{ field|addcss:"form-control" }}
-                    <span class="input-group-text text-muted small">.nekotab.app</span>
+                    <span class="input-group-text text-muted small">.nekotab.com</span>
                   </div>
                   <div id="slug-availability" class="mt-1 small" style="min-height:1.2em;"></div>
                 {% else %}

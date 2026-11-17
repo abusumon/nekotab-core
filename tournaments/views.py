@@ -120,7 +120,7 @@ class PricingView(TemplateView):
         kwargs['premium_enabled'] = _premium_gate_on()
         kwargs['trial_days'] = getattr(settings, 'PREMIUM_TRIAL_DAYS', 0)
         kwargs['canonical_url'] = '%s/pricing/' % getattr(
-            settings, 'SITE_BASE_URL', 'https://nekotab.app').rstrip('/')
+            settings, 'SITE_BASE_URL', 'https://nekotab.com').rstrip('/')
         return super().get_context_data(**kwargs)
 
 
@@ -1056,7 +1056,7 @@ class RegisterTournamentView(LoginRequiredMixin, CreateView):
             form.add_error(None, _("We couldn't complete your registration right now. Please try again."))
             return self.form_invalid(form)
 
-        base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.app')
+        base = getattr(settings, 'SUBDOMAIN_BASE_DOMAIN', 'nekotab.com')
         if getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False) and base and is_slug_dns_safe(tournament.slug):
             return redirect(f"https://{tournament.slug.lower()}.{base}/admin/")
         return redirect(f"/{tournament.slug}/admin/")

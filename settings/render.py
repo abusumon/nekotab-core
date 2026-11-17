@@ -29,7 +29,7 @@ DEBUG = os.environ.get('DEBUG', 'false').lower() in ('1', 'true', 'yes')
 # https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = [
     host.strip()
-    for host in os.environ.get('ALLOWED_HOSTS', '.nekotab.app').split(',')
+    for host in os.environ.get('ALLOWED_HOSTS', '.nekotab.com').split(',')
     if host.strip()
 ]
 

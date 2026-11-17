@@ -7,14 +7,14 @@
 {% block extra-head %}
 <meta name="description" content="Sell and manage tickets for debate tournaments and events on NekoTab. Set up multiple ticket tiers, handle online registration, and manage attendees — all free for debate organizations. Integrated with the full debate management platform.">
 <meta name="keywords" content="debate event ticketing, debate tournament tickets, debate event registration, buy debate tickets, debate competition tickets, sell tickets debate tournament, online debate registration, debate event management, debate ticketing system">
-<link rel="canonical" href="https://nekotab.app/debate-ticketing/" />
+<link rel="canonical" href="https://nekotab.com/debate-ticketing/" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "NekoTab", "item": "https://nekotab.app/"},
-    {"@type": "ListItem", "position": 2, "name": "Debate Event Ticketing", "item": "https://nekotab.app/debate-ticketing/"}
+    {"@type": "ListItem", "position": 1, "name": "NekoTab", "item": "https://nekotab.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Debate Event Ticketing", "item": "https://nekotab.com/debate-ticketing/"}
   ]
 }
 </script>
@@ -46,7 +46,7 @@
     {
       "@type": "Question",
       "name": "Where can participants find and buy tickets for debate events on NekoTab?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Participants can browse all upcoming debate events at nekotab.app/tickets/ or visit your organization's specific event page at nekotab.app/tickets/yourorg/event-name/. Links can also be shared on social media, WhatsApp, or embedded on your organization website."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Participants can browse all upcoming debate events at nekotab.com/tickets/ or visit your organization's specific event page at nekotab.com/tickets/yourorg/event-name/. Links can also be shared on social media, WhatsApp, or embedded on your organization website."}
     },
     {
       "@type": "Question",
@@ -109,7 +109,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <h3 class="h5 card-title">📅 Event Management</h3>
-              <p class="card-text">Add event details: name, date, venue, cover image, and description. Each event gets a public page at <em>nekotab.app/tickets/yourorg/event-name/</em> that you can share with participants.</p>
+              <p class="card-text">Add event details: name, date, venue, cover image, and description. Each event gets a public page at <em>nekotab.com/tickets/yourorg/event-name/</em> that you can share with participants.</p>
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <h3 class="h5 card-title">🌐 Public Event Listing</h3>
-              <p class="card-text">Your events appear in the NekoTab global events directory at <a href="{% url 'tickets:index' %}">nekotab.app/tickets/</a> — giving your tournament visibility to the broader debate community beyond your own social media reach.</p>
+              <p class="card-text">Your events appear in the NekoTab global events directory at <a href="{% url 'tickets:index' %}">nekotab.com/tickets/</a> — giving your tournament visibility to the broader debate community beyond your own social media reach.</p>
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@
 
       <h2>How to Start Selling Tickets for Your Debate Event</h2>
       <ol>
-        <li><strong>Create a free workspace</strong> at <a href="{% url 'register-organization' %}">nekotab.app</a></li>
+        <li><strong>Create a free workspace</strong> at <a href="{% url 'register-organization' %}">nekotab.com</a></li>
         <li><strong>Go to Events</strong> in your workspace sidebar and click "Create Event"</li>
         <li><strong>Add event details</strong> — name, date, venue, cover image, description</li>
         <li><strong>Add ticket tiers</strong> — set prices, quantities, and descriptions for each tier</li>
@@ -192,7 +192,7 @@
         </div>
         <div class="card mt-2">
           <div class="card-header"><strong>Where do participants find debate events on NekoTab?</strong></div>
-          <div class="card-body">Participants can browse all events at <a href="{% url 'tickets:index' %}">nekotab.app/tickets/</a> or go directly to your organization's event page. You can also share the event URL directly.</div>
+          <div class="card-body">Participants can browse all events at <a href="{% url 'tickets:index' %}">nekotab.com/tickets/</a> or go directly to your organization's event page. You can also share the event URL directly.</div>
         </div>
       </div>
 

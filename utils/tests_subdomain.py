@@ -17,7 +17,7 @@ User = get_user_model()
 
 SUBDOMAIN_SETTINGS = {
     'SUBDOMAIN_TOURNAMENTS_ENABLED': True,
-    'SUBDOMAIN_BASE_DOMAIN': 'nekotab.app',
+    'SUBDOMAIN_BASE_DOMAIN': 'nekotab.com',
     'RESERVED_SUBDOMAINS': ['www', 'admin', 'api', 'static', 'media', 'jet', 'database'],
     'ALLOWED_HOSTS': ['*'],
     # Use plain storage so tests don't need collectstatic / manifest
@@ -53,51 +53,51 @@ class SubdomainMiddlewareTest(TestCase):
         )
 
     def test_subdomain_root_maps_to_tournament(self):
-        """GET https://test-tourney.nekotab.app/ should resolve the tournament."""
-        response = self.client.get('/', HTTP_HOST='test-tourney.nekotab.app')
+        """GET https://test-tourney.nekotab.com/ should resolve the tournament."""
+        response = self.client.get('/', HTTP_HOST='test-tourney.nekotab.com')
         # 302 expected: tournament index often redirects to current-round page
         self.assertIn(response.status_code, [200, 302])
 
     def test_subdomain_subpage_works(self):
-        """GET https://test-tourney.nekotab.app/motions/ should work."""
+        """GET https://test-tourney.nekotab.com/motions/ should work."""
         # The 302/200 depends on whether the tournament has rounds;
         # 403 can occur if the motions page requires specific permissions.
-        response = self.client.get('/motions/', HTTP_HOST='test-tourney.nekotab.app')
+        response = self.client.get('/motions/', HTTP_HOST='test-tourney.nekotab.com')
         self.assertIn(response.status_code, [200, 302, 403])
 
     def test_path_based_access_still_works(self):
-        """GET https://nekotab.app/test-tourney/ should still work."""
-        response = self.client.get('/test-tourney/', HTTP_HOST='nekotab.app')
+        """GET https://nekotab.com/test-tourney/ should still work."""
+        response = self.client.get('/test-tourney/', HTTP_HOST='nekotab.com')
         # 301 = canonical redirect to subdomain, 302 = tournament index redirect
         self.assertIn(response.status_code, [200, 301, 302])
 
     def test_path_based_subpage_still_works(self):
-        """GET https://nekotab.app/test-tourney/motions/ should still work."""
-        response = self.client.get('/test-tourney/motions/', HTTP_HOST='nekotab.app')
+        """GET https://nekotab.com/test-tourney/motions/ should still work."""
+        response = self.client.get('/test-tourney/motions/', HTTP_HOST='nekotab.com')
         # 301 = canonical redirect to subdomain
         self.assertIn(response.status_code, [200, 301, 302])
 
     def test_reserved_subdomain_not_tournament(self):
-        """GET https://admin.nekotab.app/ should NOT route as a tournament."""
-        response = self.client.get('/', HTTP_HOST='admin.nekotab.app')
+        """GET https://admin.nekotab.com/ should NOT route as a tournament."""
+        response = self.client.get('/', HTTP_HOST='admin.nekotab.com')
         # Should hit the site home page, not a tournament
         self.assertEqual(response.status_code, 200)
 
     def test_www_subdomain_ignored(self):
-        """GET https://www.nekotab.app/ should not route as tournament."""
-        response = self.client.get('/', HTTP_HOST='www.nekotab.app')
+        """GET https://www.nekotab.com/ should not route as tournament."""
+        response = self.client.get('/', HTTP_HOST='www.nekotab.com')
         self.assertEqual(response.status_code, 200)
 
     def test_nonexistent_subdomain_ignored(self):
-        """GET https://nonexistent.nekotab.app/ should not 500."""
-        response = self.client.get('/', HTTP_HOST='nonexistent.nekotab.app')
+        """GET https://nonexistent.nekotab.com/ should not 500."""
+        response = self.client.get('/', HTTP_HOST='nonexistent.nekotab.com')
         # 404 is correct: 'nonexistent' isn't a real tournament slug
         self.assertIn(response.status_code, [200, 404])
 
     def test_global_paths_not_rewritten(self):
         """Analytics/static/database paths should not be rewritten on subdomains."""
         for path in ['/analytics/', '/static/css/style.css', '/database/']:
-            response = self.client.get(path, HTTP_HOST='test-tourney.nekotab.app')
+            response = self.client.get(path, HTTP_HOST='test-tourney.nekotab.com')
             # Should not produce a 500 from double-prefixing
             self.assertNotEqual(response.status_code, 500,
                                 msg=f"Path {path} returned 500 on tournament subdomain")
@@ -111,7 +111,7 @@ class SubdomainMiddlewareTest(TestCase):
         """
         factory = RequestFactory()
         request = factory.get('/summernote/editor/id_tournament_staff/',
-                              HTTP_HOST='test-tourney.nekotab.app')
+                              HTTP_HOST='test-tourney.nekotab.com')
 
         def get_response(req):
             # Path must NOT be prefixed — should stay as-is
@@ -131,7 +131,7 @@ class SubdomainMiddlewareTest(TestCase):
             '/i18n/setlang/', '/jsi18n/',
         ]
         for path in excluded:
-            request = factory.get(path, HTTP_HOST='test-tourney.nekotab.app')
+            request = factory.get(path, HTTP_HOST='test-tourney.nekotab.com')
             captured_path = [None]
 
             def get_response(req, _p=path, _c=captured_path):
@@ -155,7 +155,7 @@ class SubdomainMiddlewareTest(TestCase):
         against <slug:tournament_slug>/admin/... patterns.
         """
         factory = RequestFactory()
-        request = factory.get('/admin/configure/', HTTP_HOST='test-tourney.nekotab.app')
+        request = factory.get('/admin/configure/', HTTP_HOST='test-tourney.nekotab.com')
 
         def get_response(req):
             # Path should be rewritten with slug prefix
@@ -169,16 +169,16 @@ class SubdomainMiddlewareTest(TestCase):
 
     def test_no_double_prefix_for_other_tournament(self):
         """If path already has another tournament's slug, don't double-prefix."""
-        # Visiting /other-tourney/ on test-tourney.nekotab.app
+        # Visiting /other-tourney/ on test-tourney.nekotab.com
         response = self.client.get('/other-tourney/',
-                                   HTTP_HOST='test-tourney.nekotab.app')
+                                   HTTP_HOST='test-tourney.nekotab.com')
         # Should render other-tourney's page, not 404/500
         self.assertIn(response.status_code, [200, 302])
 
     def test_subdomain_flag_set_on_request(self):
         """The middleware should set request.subdomain_tournament."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='test-tourney.nekotab.app')
+        request = factory.get('/', HTTP_HOST='test-tourney.nekotab.com')
 
         def get_response(req):
             # Verify the flag was set before the response
@@ -193,7 +193,7 @@ class SubdomainMiddlewareTest(TestCase):
     def test_subdomain_flag_none_for_root_domain(self):
         """Root domain requests should have subdomain_tournament = None."""
         factory = RequestFactory()
-        request = factory.get('/test-tourney/', HTTP_HOST='nekotab.app')
+        request = factory.get('/test-tourney/', HTTP_HOST='nekotab.com')
 
         def get_response(req):
             self.assertIsNone(req.subdomain_tournament)
@@ -207,7 +207,7 @@ class SubdomainMiddlewareTest(TestCase):
     def test_disabled_subdomain_routing(self):
         """When disabled, subdomains should not be rewritten."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='test-tourney.nekotab.app')
+        request = factory.get('/', HTTP_HOST='test-tourney.nekotab.com')
 
         def get_response(req):
             self.assertIsNone(req.subdomain_tournament)
@@ -225,15 +225,15 @@ class GetSubdomainUrlTest(TestCase):
 
     def test_basic_url(self):
         url = get_subdomain_url('my-tournament', '/')
-        self.assertEqual(url, 'https://my-tournament.nekotab.app/')
+        self.assertEqual(url, 'https://my-tournament.nekotab.com/')
 
     def test_with_path(self):
         url = get_subdomain_url('my-tournament', '/motions/')
-        self.assertEqual(url, 'https://my-tournament.nekotab.app/motions/')
+        self.assertEqual(url, 'https://my-tournament.nekotab.com/motions/')
 
     def test_path_without_leading_slash(self):
         url = get_subdomain_url('my-tournament', 'results/')
-        self.assertEqual(url, 'https://my-tournament.nekotab.app/results/')
+        self.assertEqual(url, 'https://my-tournament.nekotab.com/results/')
 
     @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=False)
     def test_returns_none_when_disabled(self):
@@ -264,21 +264,21 @@ class CanonicalUrlTest(TestCase):
 
     def test_canonical_url_on_subdomain(self):
         """Canonical URL should use subdomain form when on subdomain."""
-        response = self.client.get('/', HTTP_HOST='canonical-test.nekotab.app')
+        response = self.client.get('/', HTTP_HOST='canonical-test.nekotab.com')
         # 302 = tournament index redirects to current-round page
         self.assertIn(response.status_code, [200, 302])
         if response.status_code == 200:
             content = response.content.decode()
-            self.assertIn('https://canonical-test.nekotab.app/', content)
+            self.assertIn('https://canonical-test.nekotab.com/', content)
 
     def test_canonical_url_on_path(self):
         """Canonical URL should use path form when on root domain."""
-        response = self.client.get('/canonical-test/', HTTP_HOST='nekotab.app')
+        response = self.client.get('/canonical-test/', HTTP_HOST='nekotab.com')
         # 301 = canonical redirect to subdomain
         self.assertIn(response.status_code, [200, 301, 302])
         if response.status_code == 200:
             content = response.content.decode()
-            self.assertIn('https://nekotab.app/canonical-test/', content)
+            self.assertIn('https://nekotab.com/canonical-test/', content)
 
 
 @override_settings(**SUBDOMAIN_SETTINGS)
@@ -298,31 +298,31 @@ class BuildTournamentAbsoluteUriTest(TestCase):
         )
 
     def test_subdomain_strips_slug_prefix(self):
-        """Path /uri-test/motions/ should become https://uri-test.nekotab.app/motions/."""
+        """Path /uri-test/motions/ should become https://uri-test.nekotab.com/motions/."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='uri-test.nekotab.app', secure=True)
+        request = factory.get('/', HTTP_HOST='uri-test.nekotab.com', secure=True)
         url = build_tournament_absolute_uri(request, self.tournament, '/uri-test/motions/')
-        self.assertEqual(url, 'https://uri-test.nekotab.app/motions/')
+        self.assertEqual(url, 'https://uri-test.nekotab.com/motions/')
 
     def test_subdomain_root_path(self):
-        """None path should become https://uri-test.nekotab.app/uri-test/"""
+        """None path should become https://uri-test.nekotab.com/uri-test/"""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='uri-test.nekotab.app', secure=True)
+        request = factory.get('/', HTTP_HOST='uri-test.nekotab.com', secure=True)
         url = build_tournament_absolute_uri(request, self.tournament)
-        self.assertEqual(url, 'https://uri-test.nekotab.app/')
+        self.assertEqual(url, 'https://uri-test.nekotab.com/')
 
     def test_subdomain_path_without_slug_prefix(self):
         """Path /motions/ stays as /motions/ on subdomain."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='uri-test.nekotab.app', secure=True)
+        request = factory.get('/', HTTP_HOST='uri-test.nekotab.com', secure=True)
         url = build_tournament_absolute_uri(request, self.tournament, '/motions/')
-        self.assertEqual(url, 'https://uri-test.nekotab.app/motions/')
+        self.assertEqual(url, 'https://uri-test.nekotab.com/motions/')
 
     @override_settings(SUBDOMAIN_TOURNAMENTS_ENABLED=False)
     def test_fallback_to_build_absolute_uri(self):
         """When subdomain disabled, falls back to request.build_absolute_uri."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='nekotab.app')
+        request = factory.get('/', HTTP_HOST='nekotab.com')
         url = build_tournament_absolute_uri(request, self.tournament, '/uri-test/motions/')
         self.assertIn('/uri-test/motions/', url)
 
@@ -330,13 +330,13 @@ class BuildTournamentAbsoluteUriTest(TestCase):
         """Simulating a typical view call: reverse_tournament + build_tournament_absolute_uri."""
         from utils.misc import reverse_tournament
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='uri-test.nekotab.app', secure=True)
+        request = factory.get('/', HTTP_HOST='uri-test.nekotab.com', secure=True)
         path = reverse_tournament('tournament-admin-home', self.tournament)
         url = build_tournament_absolute_uri(request, self.tournament, path)
         # Should NOT contain /uri-test/uri-test/
         self.assertNotIn('/uri-test/uri-test/', url)
         # Should contain the slug exactly once in the domain
-        self.assertTrue(url.startswith('https://uri-test.nekotab.app/'))
+        self.assertTrue(url.startswith('https://uri-test.nekotab.com/'))
 
 
 @override_settings(**SUBDOMAIN_SETTINGS)
@@ -358,7 +358,7 @@ class TournamentCreationFlowTest(TestCase):
     def test_superuser_can_open_create_tournament_page(self):
         """Superuser can access /create/ on the base domain."""
         self.client.force_login(self.superuser)
-        response = self.client.get('/create/', HTTP_HOST='nekotab.app')
+        response = self.client.get('/create/', HTTP_HOST='nekotab.com')
         self.assertEqual(response.status_code, 200)
 
     def test_redirect_tournament_generates_correct_url(self):
@@ -375,7 +375,7 @@ class TournamentCreationFlowTest(TestCase):
         self.assertEqual(path, '/test-create/admin/configure/')
         subdomain_url = _to_subdomain_url(t.slug, path)
         self.assertEqual(subdomain_url,
-                         'https://test-create.nekotab.app/admin/configure/')
+                         'https://test-create.nekotab.com/admin/configure/')
 
     def test_configure_route_works_on_subdomain(self):
         """GET /admin/configure/ on the tournament subdomain should NOT 404."""
@@ -385,7 +385,7 @@ class TournamentCreationFlowTest(TestCase):
         )
         self.client.force_login(self.superuser)
         response = self.client.get('/admin/configure/',
-                                   HTTP_HOST='cfg-sub.nekotab.app')
+                                   HTTP_HOST='cfg-sub.nekotab.com')
         # Should resolve (200) or redirect (302), never 404
         self.assertIn(response.status_code, [200, 302],
                       msg=f"Expected 200/302, got {response.status_code}")
@@ -398,7 +398,7 @@ class TournamentCreationFlowTest(TestCase):
         )
         self.client.force_login(self.superuser)
         response = self.client.get('/cfg-path/admin/configure/',
-                                   HTTP_HOST='nekotab.app')
+                                   HTTP_HOST='nekotab.com')
         self.assertIn(response.status_code, [200, 301, 302])
 
     def test_tournament_admin_home_works_on_subdomain(self):
@@ -409,7 +409,7 @@ class TournamentCreationFlowTest(TestCase):
         )
         self.client.force_login(self.superuser)
         response = self.client.get('/admin/',
-                                   HTTP_HOST='admin-sub.nekotab.app')
+                                   HTTP_HOST='admin-sub.nekotab.com')
         self.assertIn(response.status_code, [200, 302])
 
     def test_visibility_gate_does_not_block_superuser(self):
@@ -420,7 +420,7 @@ class TournamentCreationFlowTest(TestCase):
         )
         self.client.force_login(self.superuser)
         response = self.client.get('/',
-                                   HTTP_HOST='hidden-su.nekotab.app')
+                                   HTTP_HOST='hidden-su.nekotab.com')
         self.assertNotEqual(response.status_code, 404,
                             msg="Superuser should not get 404 for unlisted tournament")
 
@@ -433,7 +433,7 @@ class TournamentCreationFlowTest(TestCase):
             is_listed=False, organization=self.org,
         )
         response = self.client.get('/',
-                                   HTTP_HOST='hidden-anon.nekotab.app')
+                                   HTTP_HOST='hidden-anon.nekotab.com')
         # 302 = tournament index redirect to current-round page
         self.assertIn(response.status_code, [200, 302])
 
@@ -444,7 +444,7 @@ class TournamentCreationFlowTest(TestCase):
             is_listed=False, organization=self.org,
         )
         response = self.client.get('/admin/',
-                                   HTTP_HOST='hidden-admin.nekotab.app')
+                                   HTTP_HOST='hidden-admin.nekotab.com')
         self.assertEqual(response.status_code, 404)
 
     def test_no_redirect_loop_in_create_flow(self):
@@ -456,7 +456,7 @@ class TournamentCreationFlowTest(TestCase):
             'short_name': 'Loop',
             'slug': 'loop-test',
             'num_prelim_rounds': 3,
-        }, HTTP_HOST='nekotab.app')
+        }, HTTP_HOST='nekotab.com')
         # Should redirect (302)
         self.assertEqual(response.status_code, 302)
         redirect_url = response['Location']
@@ -473,7 +473,7 @@ class TournamentCreationFlowTest(TestCase):
             'short_name': 'CW',
             'slug': 'cache-warm',
             'num_prelim_rounds': 3,
-        }, HTTP_HOST='nekotab.app')
+        }, HTTP_HOST='nekotab.com')
         cached = cache.get('subdom_tour_exists_cache-warm')
         self.assertTrue(cached,
                         msg="Subdomain cache should be True after creation")
@@ -541,31 +541,31 @@ class PublicAccessRegressionTest(TestCase):
 
     def test_anonymous_public_index_listed_subdomain(self):
         """Anonymous GET to / on a listed tournament subdomain -> 200/302."""
-        response = self.client.get('/', HTTP_HOST='listed-pub.nekotab.app')
+        response = self.client.get('/', HTTP_HOST='listed-pub.nekotab.com')
         # 302 = tournament index redirect to current-round page
         self.assertIn(response.status_code, [200, 302])
 
     def test_anonymous_public_index_unlisted_subdomain(self):
         """Anonymous GET to / on an unlisted tournament subdomain -> 200/302.
         ``is_listed`` only controls global lists, not direct access."""
-        response = self.client.get('/', HTTP_HOST='unlisted-pub.nekotab.app')
+        response = self.client.get('/', HTTP_HOST='unlisted-pub.nekotab.com')
         # 302 = tournament index redirect
         self.assertIn(response.status_code, [200, 302])
 
     def test_anonymous_public_index_path_mode(self):
         """Anonymous GET to /<slug>/ in path mode -> 200."""
-        response = self.client.get('/listed-pub/', HTTP_HOST='nekotab.app')
+        response = self.client.get('/listed-pub/', HTTP_HOST='nekotab.com')
         # May redirect to subdomain (301), which is fine
         self.assertIn(response.status_code, [200, 301])
 
     def test_anonymous_public_index_unlisted_path_mode(self):
         """Anonymous GET to /<slug>/ for unlisted tournament -> 200/301."""
-        response = self.client.get('/unlisted-pub/', HTTP_HOST='nekotab.app')
+        response = self.client.get('/unlisted-pub/', HTTP_HOST='nekotab.com')
         self.assertIn(response.status_code, [200, 301])
 
     def test_anonymous_public_subpage_subdomain(self):
         """Anonymous access to /motions/ on subdomain should work."""
-        response = self.client.get('/motions/', HTTP_HOST='listed-pub.nekotab.app')
+        response = self.client.get('/motions/', HTTP_HOST='listed-pub.nekotab.com')
         # 403 can occur if motions page requires specific permissions
         self.assertIn(response.status_code, [200, 302, 403])
 
@@ -573,17 +573,17 @@ class PublicAccessRegressionTest(TestCase):
 
     def test_anonymous_admin_home_subdomain_404(self):
         """Anonymous GET to /admin/ on subdomain -> 404."""
-        response = self.client.get('/admin/', HTTP_HOST='listed-pub.nekotab.app')
+        response = self.client.get('/admin/', HTTP_HOST='listed-pub.nekotab.com')
         self.assertEqual(response.status_code, 404)
 
     def test_anonymous_admin_configure_subdomain_404(self):
         """Anonymous GET to /admin/configure/ on subdomain -> 404."""
-        response = self.client.get('/admin/configure/', HTTP_HOST='listed-pub.nekotab.app')
+        response = self.client.get('/admin/configure/', HTTP_HOST='listed-pub.nekotab.com')
         self.assertEqual(response.status_code, 404)
 
     def test_anonymous_assistant_subdomain_404(self):
         """Anonymous GET to /assistant/ on subdomain -> 404."""
-        response = self.client.get('/assistant/', HTTP_HOST='listed-pub.nekotab.app')
+        response = self.client.get('/assistant/', HTTP_HOST='listed-pub.nekotab.com')
         self.assertEqual(response.status_code, 404)
 
     def test_anonymous_admin_path_mode_404(self):
@@ -598,13 +598,13 @@ class PublicAccessRegressionTest(TestCase):
     def test_unauthorized_user_admin_subdomain_404(self):
         """Authenticated user without permission to /admin/ -> 404."""
         self.client.force_login(self.regular_user)
-        response = self.client.get('/admin/', HTTP_HOST='unlisted-pub.nekotab.app')
+        response = self.client.get('/admin/', HTTP_HOST='unlisted-pub.nekotab.com')
         self.assertEqual(response.status_code, 404)
 
     def test_unauthorized_user_assistant_subdomain_404(self):
         """Authenticated user without permission to /assistant/ -> 404."""
         self.client.force_login(self.regular_user)
-        response = self.client.get('/assistant/', HTTP_HOST='unlisted-pub.nekotab.app')
+        response = self.client.get('/assistant/', HTTP_HOST='unlisted-pub.nekotab.com')
         self.assertEqual(response.status_code, 404)
 
     # ---- Authorized access to PRIVATE routes ----
@@ -612,31 +612,31 @@ class PublicAccessRegressionTest(TestCase):
     def test_owner_admin_subdomain_200(self):
         """Owner can access /admin/ on subdomain."""
         self.client.force_login(self.superuser)
-        response = self.client.get('/admin/', HTTP_HOST='unlisted-pub.nekotab.app')
+        response = self.client.get('/admin/', HTTP_HOST='unlisted-pub.nekotab.com')
         self.assertIn(response.status_code, [200, 302])
 
     def test_superuser_admin_subdomain_200(self):
         """Superuser can access /admin/ on any tournament."""
         self.client.force_login(self.superuser)
-        response = self.client.get('/admin/', HTTP_HOST='listed-pub.nekotab.app')
+        response = self.client.get('/admin/', HTTP_HOST='listed-pub.nekotab.com')
         self.assertIn(response.status_code, [200, 302])
 
     def test_org_editor_admin_subdomain_200(self):
         """Organization editor should access tournament admin routes."""
         self.client.force_login(self.org_editor)
-        response = self.client.get('/admin/participants/list/', HTTP_HOST='listed-pub.nekotab.app')
+        response = self.client.get('/admin/participants/list/', HTTP_HOST='listed-pub.nekotab.com')
         self.assertIn(response.status_code, [200, 302])
 
     def test_org_tabmaster_admin_subdomain_200(self):
         """Organization tabmaster should access tournament admin routes."""
         self.client.force_login(self.org_tabmaster)
-        response = self.client.get('/admin/participants/list/', HTTP_HOST='listed-pub.nekotab.app')
+        response = self.client.get('/admin/participants/list/', HTTP_HOST='listed-pub.nekotab.com')
         self.assertIn(response.status_code, [200, 302])
 
     def test_org_viewer_admin_subdomain_404(self):
         """Organization viewer should remain blocked from tournament admin routes."""
         self.client.force_login(self.org_viewer)
-        response = self.client.get('/admin/participants/list/', HTTP_HOST='listed-pub.nekotab.app')
+        response = self.client.get('/admin/participants/list/', HTTP_HOST='listed-pub.nekotab.com')
         self.assertEqual(response.status_code, 404)
 
     # ---- is_listed isolation in global lists ----
@@ -662,7 +662,7 @@ class PublicAccessRegressionTest(TestCase):
 class RouteClassifierTest(TestCase):
     """Unit tests for DebateMiddleware._is_private_route."""
 
-    def _make_request(self, path, host='test.nekotab.app'):
+    def _make_request(self, path, host='test.nekotab.com'):
         from django.test import RequestFactory
         factory = RequestFactory()
         return factory.get(path, HTTP_HOST=host)
@@ -759,7 +759,7 @@ class TenantMiddlewareLegacyModeTest(TestCase):
     def test_tournament_subdomain_resolves(self):
         """Tournament subdomains still work in legacy mode."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='tenant-t.nekotab.app')
+        request = factory.get('/', HTTP_HOST='tenant-t.nekotab.com')
 
         def get_response(req):
             self.assertEqual(req.tenant_type, 'tournament')
@@ -775,7 +775,7 @@ class TenantMiddlewareLegacyModeTest(TestCase):
     def test_org_workspace_disabled_ignores_org_subdomain(self):
         """Org subdomains are NOT resolved when workspaces disabled."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='tenant-org.nekotab.app')
+        request = factory.get('/', HTTP_HOST='tenant-org.nekotab.com')
 
         middleware = SubdomainTenantMiddleware(lambda req: None)
         response = middleware(request)
@@ -786,7 +786,7 @@ class TenantMiddlewareLegacyModeTest(TestCase):
     def test_request_attributes_set_on_root_domain(self):
         """Root domain requests should have all tenant attributes as None."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='nekotab.app')
+        request = factory.get('/', HTTP_HOST='nekotab.com')
 
         def get_response(req):
             self.assertIsNone(req.tenant_type)
@@ -802,7 +802,7 @@ class TenantMiddlewareLegacyModeTest(TestCase):
         """BAD_PREFIXES paths must not be rewritten on tournament subdomains."""
         factory = RequestFactory()
         for path in ['/static/css/style.css', '/database/', '/summernote/editor/x/']:
-            request = factory.get(path, HTTP_HOST='tenant-t.nekotab.app')
+            request = factory.get(path, HTTP_HOST='tenant-t.nekotab.com')
             captured_path = [None]
 
             def get_response(req, _c=captured_path):
@@ -819,7 +819,7 @@ class TenantMiddlewareLegacyModeTest(TestCase):
     def test_admin_paths_rewritten_on_tournament_subdomain(self):
         """Tournament admin paths like /admin/configure/ must be rewritten."""
         factory = RequestFactory()
-        request = factory.get('/admin/configure/', HTTP_HOST='tenant-t.nekotab.app')
+        request = factory.get('/admin/configure/', HTTP_HOST='tenant-t.nekotab.com')
 
         def get_response(req):
             self.assertEqual(req.path_info, '/tenant-t/admin/configure/')
@@ -834,7 +834,7 @@ class TenantMiddlewareLegacyModeTest(TestCase):
     def test_disabled_subdomain_routing(self):
         """When subdomain routing disabled, nothing is resolved."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='tenant-t.nekotab.app')
+        request = factory.get('/', HTTP_HOST='tenant-t.nekotab.com')
 
         def get_response(req):
             self.assertIsNone(req.tenant_type)
@@ -849,7 +849,7 @@ class TenantMiddlewareLegacyModeTest(TestCase):
     def test_reserved_subdomain_not_resolved(self):
         """Reserved subdomains should not resolve as any tenant."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='admin.nekotab.app')
+        request = factory.get('/', HTTP_HOST='admin.nekotab.com')
 
         def get_response(req):
             self.assertIsNone(req.tenant_type)
@@ -881,7 +881,7 @@ class TenantMiddlewareOrgEnabledTest(TestCase):
     def test_tournament_subdomain_still_works_when_org_enabled(self):
         """Tournament subdomains must still resolve correctly."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='ws-t.nekotab.app')
+        request = factory.get('/', HTTP_HOST='ws-t.nekotab.com')
 
         def get_response(req):
             self.assertEqual(req.tenant_type, 'tournament')
@@ -896,7 +896,7 @@ class TenantMiddlewareOrgEnabledTest(TestCase):
     def test_org_subdomain_resolves_when_enabled(self):
         """Workspace org subdomains should be resolved as organization tenant."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='ws-org.nekotab.app')
+        request = factory.get('/', HTTP_HOST='ws-org.nekotab.com')
 
         def get_response(req):
             self.assertEqual(req.tenant_type, 'organization')
@@ -913,7 +913,7 @@ class TenantMiddlewareOrgEnabledTest(TestCase):
     def test_org_urlconf_set_for_workspace(self):
         """Organization tenant should set request.urlconf."""
         factory = RequestFactory()
-        request = factory.get('/members/', HTTP_HOST='ws-org.nekotab.app')
+        request = factory.get('/members/', HTTP_HOST='ws-org.nekotab.com')
 
         def get_response(req):
             self.assertEqual(req.urlconf, 'organizations.workspace_urls')
@@ -926,7 +926,7 @@ class TenantMiddlewareOrgEnabledTest(TestCase):
     def test_disabled_workspace_org_not_resolved(self):
         """Non-workspace orgs should not resolve even when feature is on."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='plain-org.nekotab.app')
+        request = factory.get('/', HTTP_HOST='plain-org.nekotab.com')
 
         middleware = SubdomainTenantMiddleware(lambda req: None)
         response = middleware(request)
@@ -940,7 +940,7 @@ class TenantMiddlewareOrgEnabledTest(TestCase):
             name='Dup Org', slug='ws-t', is_workspace_enabled=True)
 
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='ws-t.nekotab.app')
+        request = factory.get('/', HTTP_HOST='ws-t.nekotab.com')
 
         def get_response(req):
             self.assertEqual(req.tenant_type, 'tournament')
@@ -958,7 +958,7 @@ class TenantMiddlewareOrgEnabledTest(TestCase):
     def test_request_attributes_set_correctly_tournament(self):
         """All three request attributes should be correct for tournament."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='ws-t.nekotab.app')
+        request = factory.get('/', HTTP_HOST='ws-t.nekotab.com')
 
         def get_response(req):
             self.assertEqual(req.tenant_type, 'tournament')
@@ -973,7 +973,7 @@ class TenantMiddlewareOrgEnabledTest(TestCase):
     def test_request_attributes_set_correctly_organization(self):
         """All three request attributes should be correct for organization."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='ws-org.nekotab.app')
+        request = factory.get('/', HTTP_HOST='ws-org.nekotab.com')
 
         def get_response(req):
             self.assertEqual(req.tenant_type, 'organization')
@@ -988,7 +988,7 @@ class TenantMiddlewareOrgEnabledTest(TestCase):
     def test_nonexistent_subdomain_returns_404(self):
         """Unknown subdomains should return 404."""
         factory = RequestFactory()
-        request = factory.get('/', HTTP_HOST='nonexistent.nekotab.app')
+        request = factory.get('/', HTTP_HOST='nonexistent.nekotab.com')
 
         middleware = SubdomainTenantMiddleware(lambda req: None)
         response = middleware(request)
