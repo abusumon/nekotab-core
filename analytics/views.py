@@ -901,6 +901,8 @@ class TournamentsListView(SuperuserRequiredMixin, ListView):
                 round__draw_status=Round.Status.RELEASED,
                 round__completed=False,
             ).distinct()
+        elif status == 'home_hidden':
+            queryset = queryset.filter(hidden_from_home=True)
         elif status == 'broken':
             # Filter to tournaments whose slugs are not DNS-safe
             # (these will have broken subdomain links)
@@ -1354,6 +1356,37 @@ class PromoAdSettingsView(SuperuserRequiredMixin, TemplateView):
         else:
             messages.success(request, 'Promo ad settings saved.')
         return redirect('analytics:promo_ad')
+
+
+class ToggleHomeHiddenView(SuperuserRequiredMixin, View):
+    """Hide a tournament from, or put it back on, the home page list.
+
+    Writes ``hidden_from_home`` only. The tournament's own pages are untouched.
+    Used by the Hide button on the home page cards (shown to superusers) and by
+    the tournaments list here.
+    """
+    http_method_names = ['post']
+
+    def post(self, request, *args, **kwargs):
+        from django.utils.http import url_has_allowed_host_and_scheme
+        nxt = request.POST.get('next') or '/analytics/tournaments/'
+        if not url_has_allowed_host_and_scheme(nxt, allowed_hosts={request.get_host()}, require_https=request.is_secure()):
+            nxt = '/analytics/tournaments/'
+        tournament = Tournament.objects.filter(pk=request.POST.get('tournament_id')).first()
+        if tournament is None:
+            messages.error(request, 'Tournament not found.')
+            return redirect(nxt)
+        hide = request.POST.get('hide') == '1'
+        tournament.hidden_from_home = hide
+        tournament.save(update_fields=['hidden_from_home'])
+        cache.delete(SHOWCASE_CACHE_KEY)
+        logger.info('Tournament %s hidden_from_home set to %s by %s', tournament.slug, hide, request.user)
+        if hide:
+            messages.success(request, f'"{tournament.name}" is hidden from the home page. '
+                                      f'Undo it under Analytics → Tournaments → "Hidden from home".')
+        else:
+            messages.success(request, f'"{tournament.name}" is back on the home page list.')
+        return redirect(nxt)
 
 
 class ToggleTournamentShowcaseView(SuperuserRequiredMixin, View):

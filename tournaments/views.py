@@ -249,6 +249,21 @@ class PublicSiteIndexView(WarnAboutDatabaseUseMixin, WarnAboutLegacySendgridConf
             logger.exception("Failed loading listed tournaments for homepage; using empty queryset.")
             kwargs['listed_tournaments'] = Tournament.objects.none()
 
+        # Site admins get a Hide button on each listed tournament.
+        kwargs['can_curate'] = bool(getattr(user, 'is_superuser', False))
+        # The featured-event band above the hero. It lives in the private
+        # portal app; without it, or with nothing published, nothing renders.
+        kwargs['home_feature'] = None
+        try:
+            from portal.home import home_feature
+        except ImportError:
+            pass
+        else:
+            try:
+                kwargs['home_feature'] = home_feature(self.request)
+            except Exception:
+                logger.exception('Featured event lookup failed; rendering the home page without it')
+
         # Retain legacy keys (filtered) in case other templates/components expect them
         kwargs['tournaments'] = kwargs['my_tournaments_active']
         kwargs['inactive'] = kwargs['my_tournaments_inactive']

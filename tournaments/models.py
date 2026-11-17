@@ -149,7 +149,7 @@ class TournamentQuerySet(models.QuerySet):
         flag never being set on a demo.
         """
         from django.conf import settings as _settings
-        base = self.filter(active=True, is_demo=False)
+        base = self.filter(active=True, is_demo=False, hidden_from_home=False)
         if not getattr(_settings, 'SHOWCASE_AUTO_REAL', True):
             return base.filter(is_publicly_listed=True)
         min_teams = int(getattr(_settings, 'SHOWCASE_MIN_TEAMS', 4) or 0)
@@ -328,7 +328,7 @@ class TournamentManager(models.Manager.from_queryset(TournamentQuerySet)):
 
 #: Cache for the home-page showcase. The home page is the single most-visited
 #: page on the site, so this query must not run per request.
-SHOWCASE_CACHE_KEY = 'homepage:showcase:v2'
+SHOWCASE_CACHE_KEY = 'homepage:showcase:v3'
 SHOWCASE_CACHE_TTL = 300  # seconds
 #: Hard ceiling on how many tournaments the showcase will ever hold. The home
 #: page shows the first few and reveals the rest on request, with a search box.
@@ -401,6 +401,7 @@ def get_showcase_tournaments(limit=SHOWCASE_MAX):
                 status = ''
             rows.append({
                 'status': status,
+                'id': t.pk,
                 'name': t.name,
                 'short_name': t.short_name or t.name,
                 'slug': t.slug,
@@ -534,6 +535,11 @@ class Tournament(models.Model):
         help_text=_("If enabled, this tournament appears in the public showcase "
                     "on the NekoTab home page. Demo tournaments are never "
                     "shown, whatever this says."))
+    hidden_from_home = models.BooleanField(default=False,
+        verbose_name=_("hidden from the home page"),
+        help_text=_("Keeps this tournament off the home page list, even if it "
+                    "would otherwise be listed or featured. Its pages stay "
+                    "exactly as visible as before."))
 
     # ── Isolation / visibility ──────────────────────────────────────────
     is_listed = models.BooleanField(default=False,

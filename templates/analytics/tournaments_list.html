@@ -664,6 +664,7 @@
                 <option value="active" {% if status == 'active' %}selected{% endif %}>Active</option>
                 <option value="inactive" {% if status == 'inactive' %}selected{% endif %}>Inactive</option>
                 <option value="live" {% if status == 'live' %}selected{% endif %}>🔴 Live Now</option>
+                <option value="home_hidden" {% if status == 'home_hidden' %}selected{% endif %}>Hidden from home</option>
                 {% if broken_slug_count %}<option value="broken" {% if status == 'broken' %}selected{% endif %}>⚠️ Broken Slugs</option>{% endif %}
             </select>
             <button type="submit" class="btn btn-primary">Filter</button>
@@ -753,7 +754,7 @@
                                 <input type="hidden" name="show" value="{% if tournament.is_publicly_listed %}0{% else %}1{% endif %}">
                                 <button type="submit" class="btn-showcase{% if tournament.is_publicly_listed %} btn-showcase--on{% endif %}"
                                         title="{% if tournament.is_publicly_listed %}Featured on the home page — click to hide{% else %}Not featured — click to show on the home page{% endif %}">
-                                  {% if tournament.is_publicly_listed %}Shown{% else %}Hidden{% endif %}
+                                  {% if tournament.is_publicly_listed %}Featured{% else %}Not featured{% endif %}
                                 </button>
                                 {% if tournament.is_publicly_listed and not tournament.is_listed %}
                                   {# Featured but not publicly readable: the #}
@@ -765,6 +766,16 @@
                                     ⚠ not public
                                   </span>
                                 {% endif %}
+                              </form>
+                              <form method="POST" action="{% url 'analytics:toggle_home_hidden' %}" style="margin:6px 0 0;">
+                                {% csrf_token %}
+                                <input type="hidden" name="tournament_id" value="{{ tournament.id }}">
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                <input type="hidden" name="hide" value="{% if tournament.hidden_from_home %}0{% else %}1{% endif %}">
+                                <button type="submit" class="btn-showcase"
+                                        title="{% if tournament.hidden_from_home %}Hidden from the home page list — click to allow it again{% else %}Keep this tournament off the home page list{% endif %}">
+                                  {% if tournament.hidden_from_home %}Hidden from home · undo{% else %}Hide from home{% endif %}
+                                </button>
                               </form>
                             {% endif %}
                         </td>

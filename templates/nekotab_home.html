@@ -128,6 +128,12 @@
     .meta svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; }
     .go { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--soft); font-weight: 600; font-size: .9rem; display: flex; justify-content: space-between; }
     .card:hover .go { color: var(--marine); }
+    .grid > li { position: relative; }
+    .curate { position: absolute; right: 14px; bottom: 17px; margin: 0; z-index: 2; }
+    .curate button { font: inherit; font-size: .76rem; font-weight: 600; color: #52525b; background: #fff; border: 1px dashed #a1a1aa;
+                     border-radius: 99px; padding: 4px 10px; cursor: pointer; }
+    .curate button:hover { color: #fff; background: #000; border-style: solid; border-color: #000; }
+    .grid > li:has(.curate) .go { padding-right: 70px; }
     .more { display: flex; justify-content: center; margin-top: 26px; }
     .btn-outline { background: #fff; color: #000; border-color: #000; }
     .btn-outline:hover { background: #000; color: #fff; }
@@ -249,6 +255,7 @@
   {% include "nekotab/_public_nav.html" with nav_active="home" %}
 
   <main id="main-content">
+    {% if home_feature %}{% include "portal/_home_feature.html" with feature=home_feature %}{% endif %}
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap">
         <div class="eyebrow"><i aria-hidden="true"></i>Debate tabulation, hosted for you</div>
@@ -293,6 +300,13 @@
         <ul class="grid" id="t-grid">
           {% for t in showcase_tournaments %}
           <li data-status="{{ t.status|default:'none' }}" data-text="{{ t.name|lower }} {{ t.short_name|lower }} {{ t.organization|lower }} {{ t.venue|lower }}">
+            {% if can_curate %}
+            <form class="curate" method="post" action="{% url 'analytics:toggle_home_hidden' %}"
+                  onsubmit="return confirm('Hide &quot;{{ t.name|escapejs }}&quot; from the home page? You can undo this in Analytics → Tournaments.')">
+              {% csrf_token %}<input type="hidden" name="tournament_id" value="{{ t.id }}"><input type="hidden" name="hide" value="1"><input type="hidden" name="next" value="/#tournaments">
+              <button type="submit" title="Hide from the home page (only site admins see this)">Hide</button>
+            </form>
+            {% endif %}
             <a class="card" href="{{ t.url }}">
               <div class="card-top">
                 {% if t.start_date %}

@@ -15,6 +15,8 @@ urlpatterns = [
     path('tournaments/', views.TournamentsListView.as_view(), name='tournaments'),
     path('events/', views.EventsModerationView.as_view(), name='events'),
     path('bkash/', views.BkashRequestsView.as_view(), name='bkash_requests'),
+    path('tournaments/home-hidden-toggle/',
+         views.ToggleHomeHiddenView.as_view(), name='toggle_home_hidden'),
     path('tournaments/showcase-toggle/',
          views.ToggleTournamentShowcaseView.as_view(), name='toggle_showcase'),
     path('tournaments/delete/', views.DeleteTournamentsView.as_view(), name='delete_tournaments'),
