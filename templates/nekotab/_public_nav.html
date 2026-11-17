@@ -18,6 +18,8 @@
   .nkp-links a[aria-current="page"] { color: #fff; background: #18181b; }
   .nkp-soon { font-size: .66rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #9db8ff;
               border: 1px solid #23407a; border-radius: 99px; padding: 1px 7px; }
+  .nkp-new { font-size: .66rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #fff;
+             background: #0B3D91; border-radius: 99px; padding: 2px 7px; }
   .nkp-end { margin-left: auto; display: flex; align-items: center; gap: 4px; }
   .nkp-end form { margin: 0; }
   .nkp-end a.nkp-cta { background: #0B3D91; color: #fff; font-weight: 600; padding: 9px 16px; margin-left: 6px; }
@@ -26,7 +28,7 @@
                 color: #fff; cursor: pointer; align-items: center; justify-content: center; }
   .nkp-burger svg { width: 20px; height: 20px; }
   .nkp-panel { display: none; }
-  @media (max-width: 920px) {
+  @media (max-width: 1080px) {
     .nkp-links, .nkp-end { display: none; }
     .nkp-burger { display: inline-flex; }
     .nkp-panel { border-top: 1px solid #1f1f23; padding: 8px 16px 16px; }
@@ -43,6 +45,7 @@
   <div class="nkp-nav-in">
     <a class="nkp-logo" href="/" aria-label="NekoTab home"><img src="{% static 'logo.png' %}" alt="" width="28" height="28">NekoTab</a>
     <nav class="nkp-links" aria-label="Main">
+      {% if nav_competitions %}<a href="/competitions/" {% if nav_active == 'competitions' %}aria-current="page"{% endif %}>Competitions{% if nav_competitions_new %} <span class="nkp-new">New</span>{% endif %}</a>{% endif %}
       <a href="{% url 'motions' %}" {% if nav_active == 'motions' %}aria-current="page"{% endif %}>Motion Bank</a>
       <a href="/emet/about/" {% if nav_active == 'emet' %}aria-current="page"{% endif %}>Emet <span class="nkp-soon">Soon</span></a>
       <a href="{% url 'pricing' %}" {% if nav_active == 'pricing' %}aria-current="page"{% endif %}>Pricing <span class="nkp-soon">Soon</span></a>
@@ -63,6 +66,7 @@
     </button>
   </div>
   <div class="nkp-panel" id="nkp-panel">
+    {% if nav_competitions %}<a href="/competitions/">Competitions{% if nav_competitions_new %} <span class="nkp-new">New</span>{% endif %}</a>{% endif %}
     <a href="{% url 'motions' %}">Motion Bank</a>
     <a href="/emet/about/">Emet <span class="nkp-soon">Soon</span></a>
     <a href="{% url 'pricing' %}">Pricing <span class="nkp-soon">Soon</span></a>

@@ -272,7 +272,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # for Jet
                 'utils.context_processors.debate_context',  # for tournament config vars
                 'dynamic_preferences.processors.global_preferences',
-            ],
+            ] + (['portal.context_processors.public_nav'] if 'portal' in TABBYCAT_APPS else []),
             'loaders': [
                 ('django.template.loaders.cached.Loader', [
                     'django.template.loaders.filesystem.Loader',

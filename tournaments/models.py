@@ -33,7 +33,7 @@ PROHIBITED_TOURNAMENT_SLUGS = [
     '__debug__', 'static', 'style', 'i18n', 'jsi18n',  # Misc
     'forum', 'motions-bank',  # Global apps
     'analytics', 'campaigns',  # Admin apps
-    'mcp', 'oauth', 'agent', '.well-known', 'emet', 'portal', 'team',  # AI connector, OAuth, NekoTab portal
+    'mcp', 'oauth', 'agent', '.well-known', 'emet', 'portal', 'team', 'competitions', 'join',  # AI connector, OAuth, NekoTab portal
 ]
 
 
