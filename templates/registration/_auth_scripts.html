@@ -1,0 +1,22 @@
+{% load i18n %}
+<script>
+  // Show / hide for every password field (button sits inside the field).
+  document.querySelectorAll('[data-pw-toggle]').forEach(function (btn) {
+    var input = document.getElementById(btn.getAttribute('data-pw-toggle'));
+    if (!input) return;
+    btn.addEventListener('click', function () {
+      var show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      btn.textContent = show ? '{% trans "Hide" %}' : '{% trans "Show" %}';
+      btn.setAttribute('aria-pressed', show ? 'true' : 'false');
+      input.focus();
+    });
+  });
+  // One click only: stop double submissions on slow phone connections.
+  document.querySelectorAll('form[data-once]').forEach(function (f) {
+    f.addEventListener('submit', function () {
+      var b = f.querySelector('.auth-submit');
+      if (b) { setTimeout(function () { b.disabled = true; b.textContent = b.getAttribute('data-busy') || b.textContent; }, 0); }
+    });
+  });
+</script>

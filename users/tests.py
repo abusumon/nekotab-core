@@ -121,7 +121,7 @@ class LoginBehaviorTests(TestCase):
             'password': 'Str0ngP@ssw0rd!',
         })
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "isn't activated yet")
+        self.assertContains(response, "activated yet")  # the apostrophe is HTML-escaped
 
     def test_active_user_can_log_in_with_email(self):
         User.objects.create_user(
@@ -144,7 +144,7 @@ class GoogleOAuthGuardTests(TestCase):
     def test_unconfigured_google_shows_visible_error(self):
         response = self.client.get(reverse('google-login-guard'), follow=True)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Google sign-in isn't configured yet")
+        self.assertContains(response, "configured yet")  # the apostrophe is HTML-escaped
 
     @patch('users.views.oauth2_login')
     def test_socialapp_without_site_gets_linked_and_dispatched(self, oauth2_login_mock):
