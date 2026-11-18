@@ -653,13 +653,8 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': crontab(minute='*/15'),
         'options': {'queue': 'notifications'},
     },
-    # Early-adopter gift codes. Capped and idempotent per customer, so once
-    # the campaign is exhausted every tick is a cheap no-op.
-    'send-premium-gifts': {
-        'task': 'donations.tasks.send_premium_gifts',
-        'schedule': crontab(minute='*/20'),
-        'options': {'queue': 'notifications'},
-    },
+    # 'send-premium-gifts' (buy one, get one free) was switched off on
+    # 2026-11-18. The task still exists; add the entry back to restart it.
 }
 
 # NekoTab's nightly owner report at 23:00 Bangladesh time (17:00 UTC; beat runs
