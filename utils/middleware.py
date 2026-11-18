@@ -337,7 +337,7 @@ class SubdomainTournamentMiddleware:
         '/calicotab-alternative/', '/debate-data-alternative/', '/congress-debate-tabulation/',
         '/sitemap.xml', '/robots.txt', '/ads.txt', '/llms.txt', '/llms-full.txt',
         # NekoTab portal pages (private app): dashboard, Emet, team, competitions, join.
-        '/portal/', '/emet/', '/team/', '/competitions/', '/join/',
+        '/portal/', '/emet/', '/team/', '/competitions/', '/join/', '/club/',
         '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
         # NOTE: /admin/ is intentionally NOT listed here. On a tournament subdomain,
         # /admin/... means the tournament admin section and must be rewritten.
@@ -501,7 +501,7 @@ class SubdomainTenantMiddleware:
         '/calicotab-alternative/', '/debate-data-alternative/', '/congress-debate-tabulation/',
         '/sitemap.xml', '/robots.txt', '/ads.txt', '/llms.txt', '/llms-full.txt',
         # NekoTab portal pages (private app): dashboard, Emet, team, competitions, join.
-        '/portal/', '/emet/', '/team/', '/competitions/', '/join/',
+        '/portal/', '/emet/', '/team/', '/competitions/', '/join/', '/club/',
         '/learn/', '/about/', '/contact/', '/privacy/', '/terms/', '/disclaimer/',
         # NOTE: /admin/ is intentionally NOT listed here. On a tournament subdomain,
         # /admin/... means the tournament admin section and must be rewritten.

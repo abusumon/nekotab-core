@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-from . import views
+from . import release_views, views
 
 urlpatterns = [
 
@@ -54,6 +54,26 @@ urlpatterns = [
         path('unrelease/',
             views.DrawUnreleaseView.as_view(),
             name='draw-unrelease'),
+
+        # Release panel on the draw page (NekoTab, from the plans launch)
+        path('panel/release-teams/',
+            release_views.DrawReleaseToTeamsView.as_view(),
+            name='draw-release-teams'),
+        path('panel/make-public/',
+            release_views.DrawMakePublicView.as_view(),
+            name='draw-make-public'),
+        path('panel/unrelease/',
+            release_views.DrawPanelUnreleaseView.as_view(),
+            name='draw-panel-unrelease'),
+        path('panel/motions/release/',
+            release_views.PanelReleaseMotionsView.as_view(),
+            name='draw-panel-motions-release'),
+        path('panel/motions/unrelease/',
+            release_views.PanelUnreleaseMotionsView.as_view(),
+            name='draw-panel-motions-unrelease'),
+        path('panel/self-checkin/',
+            release_views.SelfCheckinToggleView.as_view(),
+            name='draw-panel-self-checkin'),
 
         # Scheduling
         path('start-time/set/',

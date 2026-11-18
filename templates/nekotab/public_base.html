@@ -21,6 +21,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 {% include "nekotab/_org_jsonld.html" %}
+{% if ads_enabled %}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_publisher_id }}" crossorigin="anonymous"></script>
+{% if ads_extra_head %}{{ ads_extra_head|safe }}{% endif %}
+{% include "ads/styles.html" %}
+{% endif %}
 {% block extra_head %}{% endblock %}
 <style>
   :root { --marine: #0B3D91; --marine-hover: #0e4bb3; --marine-soft: #e8eefb; --muted: #52525b; --line: #e4e4e7; }

@@ -1,107 +1,168 @@
+{% extends "nekotab/public_base.html" %}
 {% load i18n %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="index, follow">
-  <title>{% trans "Pricing" %} — NekoTab</title>
-  <meta name="description" content="NekoTab pricing is being updated. Public draw, tab and results pages are always free to read.">
-  <link rel="canonical" href="{{ canonical_url }}">
-  {# System fonts, no webfont request: this page is a conversion step and #}
-  {# most of its traffic is on mobile networks in South and Southeast Asia. #}
-  <style>
-    :root{
-      --primary:#0B3D91;--primary-dark:#0B3D91;
-      --text:#18181f;--text-sec:#62626e;
-      --bg:#f7f7fb;--surface:#fff;--border:#e5e7eb;
-      --ok:#059669;--radius:16px;
-    }
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-      color:var(--text);background:var(--bg);line-height:1.55;-webkit-text-size-adjust:100%;
-    }
-    a{color:var(--primary);}
-    .topbar{background:#fff;border-bottom:1px solid var(--border);padding:14px 20px;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;}
-    .topbar-logo{font-weight:800;font-size:1.05rem;color:var(--primary);text-decoration:none;}
-    .topbar nav{display:flex;gap:16px;}
-    .topbar nav a{font-size:13.5px;color:var(--text-sec);text-decoration:none;}
-    .topbar nav a:hover{color:var(--primary);}
-    .wrap{max-width:760px;margin:0 auto;padding:44px 20px 72px;}
-    .hero{text-align:center;margin-bottom:34px;}
-    h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:12px;}
-    .lede{font-size:16px;color:var(--text-sec);max-width:52ch;margin:0 auto;}
-    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-      padding:30px 26px;}
-    .card + .card{margin-top:18px;}
-    .plan{text-align:center;border:2px solid var(--primary);}
-    .plan .price{font-size:3rem;font-weight:800;letter-spacing:-.03em;line-height:1;}
-    .plan .per{font-size:14px;color:var(--text-sec);margin-top:8px;}
-    .btn{display:inline-block;margin-top:22px;padding:14px 30px;border-radius:10px;
-      background:var(--primary);color:#fff;font-size:15px;font-weight:600;
-      text-decoration:none;}
-    .btn:hover,.btn:focus{background:var(--primary-dark);}
-    ul{list-style:none;text-align:left;max-width:420px;margin:26px auto 0;}
-    ul li{font-size:14.5px;padding:10px 0 10px 27px;position:relative;
-      border-bottom:1px solid var(--border);}
-    ul li:last-child{border-bottom:0;}
-    ul li::before{content:"\2713";position:absolute;left:0;color:var(--ok);font-weight:700;}
-    h2{font-size:1.15rem;font-weight:700;margin-bottom:12px;letter-spacing:-.01em;}
-    .card p{font-size:14.5px;color:var(--text-sec);}
-    .card p + p{margin-top:12px;}
-    .free{background:#ecfdf5;border-color:#a7f3d0;}
-    .free h2{color:#065f46;}
-    .free p{color:#047857;}
-    dl{margin-top:6px;}
-    dt{font-size:14.5px;font-weight:600;margin-top:18px;}
-    dd{font-size:14.5px;color:var(--text-sec);margin-top:5px;}
-    footer{text-align:center;font-size:13px;color:var(--text-sec);margin-top:34px;}
-    @media (max-width:520px){
-      .wrap{padding:28px 14px 56px;}
-      .card{padding:24px 18px;}
-      h1{font-size:1.6rem;}
-      .plan .price{font-size:2.5rem;}
-      .topbar nav{gap:12px;}
-    }
-    /* 2026-11: pricing is being reworked; this page says so plainly. */
-    body { background: #fff; color: #000; }
-    .soon-wrap { max-width: 680px; margin: 0 auto; padding: clamp(48px, 10vw, 110px) 16px; text-align: center; }
-    .soon-tag { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #0B3D91;
-                border: 1px solid #0B3D91; border-radius: 99px; padding: 4px 12px; margin-bottom: 18px; }
-    .soon-wrap h1 { font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -.02em; line-height: 1.1; margin: 0 0 14px; }
-    .soon-wrap p { color: #52525b; font-size: 1.05rem; margin: 0 auto 12px; max-width: 520px; }
-    .soon-now { margin: 28px auto 0; padding: 18px 20px; border: 1px solid #e4e4e7; border-radius: 14px; text-align: left; max-width: 520px; }
-    .soon-now strong { display: block; margin-bottom: 4px; }
-    .soon-acts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
-    .soon-acts a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 12px; font-weight: 600; text-decoration: none; }
-    .soon-acts .p { background: #0B3D91; color: #fff; }
-    .soon-acts .s { border: 1px solid #000; color: #000; }
-  </style>
-{% include "nekotab/_org_jsonld.html" %}
-</head>
-<body>
-  {% include "nekotab/_public_nav.html" with nav_active="pricing" %}
-  <main class="soon-wrap">
-    <span class="soon-tag">{% trans "Updating soon" %}</span>
-    <h1>{% trans "Pricing is being updated" %}</h1>
-    <p>{% blocktrans trimmed %}We're reworking how NekoTab is priced. The new plans will be posted here soon.{% endblocktrans %}</p>
-    <div class="soon-now">
-      <strong>{% trans "Until then" %}</strong>
-      {% if premium_enabled %}
-        {% blocktrans trimmed %}Running a tournament costs {{ price_label }}, paid once, with no subscription. You'll see this before you pay.{% endblocktrans %}
-      {% else %}
-        {% trans "Running a tournament on NekoTab is free." %}
-      {% endif %}
-      {% trans "Public draws, tabs and results are always free for anyone to read." %}
-    </div>
-    <div class="soon-acts">
-      <a class="p" href="/create/">{% trans "Create a tournament" %}</a>
-      <a class="s" href="/contact/">{% trans "Ask us a question" %}</a>
-    </div>
-  </main>
-  {% include "nekotab/_public_footer.html" %}
-  {% include "nekotab/_site_scripts.html" %}
-</body>
-</html>
+{% block title %}Pricing: Basic, NekoTab Pro and NekoTab Club · NekoTab{% endblock %}
+{% block description %}NekoTab plans: Basic is free, NekoTab Pro is {{ pro_price }} per tournament with emails, tab assistants, no ads and Emet AI, and NekoTab Club is {{ club_price }} a year for debate clubs. Public draws and results are always free to read.{% endblock %}
+{% block og_title %}NekoTab pricing{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://nekotab.com/pricing/">{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+  {"@type": "Question", "name": "Is NekoTab free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Basic plan is free: run a full tournament with unlimited teams and rounds. Basic tournaments show ads, can't send emails or add tab assistants, and are archived a week after they are created. Public draws, tabs and results are always free to read."}},
+  {"@type": "Question", "name": "How much is NekoTab Pro?", "acceptedAnswer": {"@type": "Answer", "text": "NekoTab Pro is {{ pro_price }} per tournament, paid once. It adds email to participants, tab assistants, releasing the draw privately by email, Discord and WhatsApp, Emet AI with 100 credits, no ads, and the tournament is never archived."}},
+  {"@type": "Question", "name": "What is NekoTab Club?", "acceptedAnswer": {"@type": "Answer", "text": "NekoTab Club is {{ club_price }} a year for a debate club or society. It includes 5 tournaments a year with everything in Pro (then {{ club_extra_price }} each), Emet as a full tab director that also works inside ChatGPT, Claude and Gemini, and the club's own @nekotab.com email address."}},
+  {"@type": "Question", "name": "What are Emet credits?", "acceptedAnswer": {"@type": "Answer", "text": "Emet is NekoTab's AI agent. Each Pro or Club tournament gets 100 credits. A quick question uses a fraction of a credit; longer, more careful answers use more."}}
+]}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+  .nk-dark { background: #000; color: #fff; }
+  .pr { max-width: 1120px; margin: 0 auto; padding: clamp(32px, 6vw, 72px) 16px 72px; }
+  .pr-hero { text-align: center; max-width: 720px; margin: 0 auto 30px; }
+  .pr-hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); letter-spacing: -.02em; line-height: 1.08; margin: 0 0 12px; }
+  .pr-hero p { color: #a1a1aa; font-size: 1.05rem; margin: 0; }
+  .plans { display: grid; gap: 16px; align-items: stretch; }
+  @media (min-width: 900px) { .plans { grid-template-columns: 1fr 1.08fr 1fr; } }
+  .plan { border-radius: 20px; padding: 26px 22px; display: flex; flex-direction: column; border: 1px solid #24242a; background: #0c0c0e; position: relative; }
+  .plan h2 { margin: 0; font-size: 1.15rem; }
+  .plan .for { color: #a1a1aa; font-size: .9rem; margin: 4px 0 0; }
+  .plan .price { font-size: 2.8rem; font-weight: 800; letter-spacing: -.03em; margin: 16px 0 2px; line-height: 1; }
+  .plan .price small { font-size: .9rem; font-weight: 600; color: #a1a1aa; letter-spacing: 0; margin-left: 4px; }
+  .plan ul { list-style: none; padding: 0; margin: 18px 0 22px; flex: 1; }
+  .plan li { padding: 8px 0 8px 26px; position: relative; font-size: .95rem; border-bottom: 1px solid #1c1c22; }
+  .plan li::before { content: "\2713"; position: absolute; left: 0; color: #4c7dd6; font-weight: 800; }
+  .plan li.no { color: #a1a1aa; } .plan li.no::before { content: "\2715"; color: #71717a; }
+  .plan .cta { display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 12px; font-weight: 700; text-decoration: none; }
+  .plan .fine { color: #a1a1aa; font-size: .8rem; margin: 10px 0 0; text-align: center; }
+  .plan--basic .cta { border: 1px solid #fff; color: #fff; } .plan--basic .cta:hover { background: #18181b; }
+  .plan--pro { border: 2px solid #0B3D91; background: radial-gradient(120% 70% at 50% 0%, rgba(11,61,145,.35), transparent 70%), #0c0c0e; }
+  .plan--pro .cta { background: #0B3D91; color: #fff; } .plan--pro .cta:hover { background: #0e4bb3; }
+  .plan--pro .ribbon { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0B3D91; color: #fff; font-size: .72rem;
+                       font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; white-space: nowrap; }
+  .plan--club { background: #fff; color: #000; border-color: #fff; }
+  .plan--club .for, .plan--club .price small, .plan--club .fine { color: #52525b; }
+  .plan--club li { border-color: #ececf0; } .plan--club li::before { color: #0B3D91; }
+  .plan--club .cta { background: #000; color: #fff; } .plan--club .cta:hover { background: #27272a; }
+  .value { margin: 8px 0 0; font-size: .85rem; color: #0B3D91; font-weight: 700; }
+
+  .cmp { margin: 48px 0 0; overflow-x: auto; }
+  .cmp h2, .faq h2 { font-size: 1.4rem; margin: 0 0 14px; }
+  .cmp table { width: 100%; border-collapse: collapse; min-width: 620px; font-size: .95rem; }
+  .cmp th, .cmp td { padding: 12px 10px; border-bottom: 1px solid #24242a; text-align: center; }
+  .cmp th:first-child, .cmp td:first-child { text-align: left; color: #e4e4e7; }
+  .cmp thead th { font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; color: #a1a1aa; }
+  .cmp thead th.pro { color: #9db8ee; }
+  .cmp .y { color: #4c7dd6; font-weight: 800; } .cmp .n { color: #52525b; }
+  .faq { margin: 48px 0 0; max-width: 820px; }
+  .faq details { border-bottom: 1px solid #24242a; padding: 14px 0; }
+  .faq summary { cursor: pointer; font-weight: 700; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; float: right; color: #4c7dd6; font-weight: 800; }
+  .faq details[open] summary::after { content: "\2212"; }
+  .faq p { color: #a1a1aa; margin: 8px 0 0; }
+  .now { margin: 22px auto 0; max-width: 720px; border: 1px solid #24242a; border-radius: 14px; padding: 14px 16px; color: #d4d4d8; font-size: .92rem; text-align: center; }
+  .now strong { color: #fff; }
+{% endblock %}
+
+{% block content %}
+<div class="nk-dark"><div class="pr">
+  {% include "nekotab/_launch_countdown.html" with heading="New plans start in" sub="Basic, NekoTab Pro and NekoTab Club start on 1 December 2026." %}
+
+  <div class="pr-hero">
+    <h1>Run any tournament.<br>Pay only for what helps.</h1>
+    <p>Start free. Upgrade one tournament when you need emails, assistants and Emet, or make your whole club a NekoTab Club.</p>
+  </div>
+
+  <div class="plans">
+    <section class="plan plan--basic" aria-labelledby="p-basic">
+      <h2 id="p-basic">Basic</h2>
+      <p class="for">To try NekoTab or run a small event</p>
+      <div class="price">$0</div>
+      <ul>
+        <li>Full tabbing: draws, allocations, ballots, standings, breaks</li>
+        <li>Unlimited teams, adjudicators and rounds</li>
+        <li>Public draw, tab and results pages</li>
+        <li class="no">No emails to participants</li>
+        <li class="no">No tab assistants or invited users</li>
+        <li class="no">No Emet</li>
+        <li class="no">Shows ads</li>
+        <li class="no">Archived a week after it's created</li>
+      </ul>
+      <a class="cta" href="/create/">Create a tournament</a>
+    </section>
+
+    <section class="plan plan--pro" aria-labelledby="p-pro">
+      <span class="ribbon">Per tournament</span>
+      <h2 id="p-pro">NekoTab Pro</h2>
+      <p class="for">Everything for one tournament</p>
+      <div class="price">{{ pro_price }}<small>once</small></div>
+      <ul>
+        <li>Everything in Basic</li>
+        <li>Email draws, ballots and private links</li>
+        <li>Tab assistants and co-directors</li>
+        <li>Release the draw to participants only, by email, Discord and WhatsApp</li>
+        <li>Emet AI assistant with 100 credits</li>
+        <li>No ads, for you or your participants</li>
+        <li>Never archived</li>
+      </ul>
+      <a class="cta" href="{% if user.is_authenticated %}/me/{% else %}/accounts/login/?next=/me/{% endif %}">Upgrade a tournament</a>
+      <p class="fine">From your dashboard: "Make Pro" on any tournament. Cards, PayPal or bKash.</p>
+    </section>
+
+    <section class="plan plan--club" aria-labelledby="p-club">
+      <h2 id="p-club">NekoTab Club</h2>
+      <p class="for">For debate clubs and societies</p>
+      <div class="price">{{ club_price }}<small>per year</small></div>
+      <p class="value">5 Pro-level tournaments for $10 each, and more.</p>
+      <ul>
+        <li>5 Club tournaments a year, then {{ club_extra_price }} each</li>
+        <li>Emet as a full tab director</li>
+        <li>Use Emet inside ChatGPT, Claude and Gemini</li>
+        <li>Your club's address: <strong>yourclub@nekotab.com</strong></li>
+        <li>A club dashboard for up to 10 committee members</li>
+      </ul>
+      <a class="cta" href="/club/apply/">Apply for NekoTab Club</a>
+      <p class="fine">Takes 3 minutes. Active as soon as you pay.</p>
+    </section>
+  </div>
+
+  {% if not plans_live %}
+  <div class="now"><strong>Until 1 December:</strong>
+    {% if premium_enabled %}running a tournament costs {{ price_label }}, paid once.{% else %}running a tournament on NekoTab is free.{% endif %}
+    Tournaments you already paid for become Pro, for good.</div>
+  {% endif %}
+
+  <section class="cmp" aria-labelledby="cmp-h">
+    <h2 id="cmp-h">Compare plans</h2>
+    <table>
+      <thead><tr><th scope="col">Feature</th><th scope="col">Basic</th><th scope="col" class="pro">Pro</th><th scope="col">Club</th></tr></thead>
+      <tbody>
+        <tr><td>Draws, results, standings, breaks</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Public tab pages</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Registration forms</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Emails to participants</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Tab assistants and invites</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Private draw release (email, Discord, WhatsApp)</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Emet AI (100 credits per tournament)</td><td class="n">✕</td><td>Assistant</td><td>Full tab director</td></tr>
+        <tr><td>Emet in ChatGPT, Claude, Gemini</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
+        <tr><td>Club @nekotab.com email</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
+        <tr><td>Ads</td><td>Shown</td><td class="y">None</td><td class="y">None</td></tr>
+        <tr><td>Kept online</td><td>7 days</td><td class="y">Forever</td><td class="y">Forever</td></tr>
+        <tr><td>Price</td><td>Free</td><td>{{ pro_price }} per tournament</td><td>{{ club_price }} per year</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">Questions</h2>
+    <details><summary>Is NekoTab free?</summary><p>Yes. Basic is free and runs a complete tournament. Public draws, tabs and results are always free for anyone to read, on every plan.</p></details>
+    <details><summary>What happens when a Basic tournament is archived?</summary><p>Its pages go offline, but nothing is deleted. Upgrade it to Pro at any time and it comes straight back.</p></details>
+    <details><summary>What are Emet credits?</summary><p>Emet is NekoTab's AI agent. Each Pro or Club tournament gets 100 credits. Quick questions use a fraction of a credit; "Deep" answers that think harder use more. You always see how many are left.</p></details>
+    <details><summary>What's the difference between Emet on Pro and on Club?</summary><p>On Pro, Emet is your assistant: it looks things up and makes changes that can be undone. On Club, it's a full tab director that can also generate draws, confirm results and run the break, with your approval for risky steps, and you can use it from ChatGPT, Claude or Gemini.</p></details>
+    <details><summary>I paid for a tournament before 1 December. What happens to it?</summary><p>It becomes NekoTab Pro, for good. Tournaments from before July 2026 stay free with everything included.</p></details>
+    <details><summary>Can I pay without a card?</summary><p>Yes. In Bangladesh you can pay by bKash from the upgrade page. Write to <a href="mailto:support@nekotab.com" style="color:#9db8ee">support@nekotab.com</a> if cost is a barrier for your school or society.</p></details>
+  </section>
+</div>
+</div>
+{% endblock %}

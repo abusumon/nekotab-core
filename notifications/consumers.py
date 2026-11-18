@@ -112,6 +112,13 @@ class NotificationQueueConsumer(SyncConsumer):
             t = Tournament.objects.get(pk=event['extra'].pop('tournament_id'))
             event['extra']['tournament'] = t
 
+        # NekoTab Basic tournaments send no email (utils.plans; always allowed in
+        # self-hosted copies and before the plans launch).
+        from utils.plans import tournament_allows
+        if not tournament_allows(t, 'email'):
+            logger.info("Skipped %s email for tournament %s: its plan has no email", event.get('message'), t.slug)
+            return
+
         from_email, reply_to = self._get_from_fields(t)
         help_footer = self._help_footer_html(t)
         notification_type = event['message']

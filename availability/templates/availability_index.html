@@ -216,6 +216,7 @@
 {% endblock %}
 
 {% block content %}
+  {% include "_self_checkin_toggle.html" %}
 
   <div class="row">
     {% for type, info in availability_info.items %}

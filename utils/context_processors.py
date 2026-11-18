@@ -178,6 +178,32 @@ def _ad_context(request, tournament):
     """
     off = {'ads_enabled': False, 'ads_anchor_only': False, 'ads_removal_url': ''}
 
+    # From the NekoTab plans launch, ads follow the tournament's plan (Basic
+    # only) instead of the site-wide switch. See donations/ad_rules.py.
+    try:
+        from utils.plans import plans_live
+        live = plans_live()
+    except Exception:
+        live = False
+    if live:
+        try:
+            from donations.ad_rules import plan_ad_decision
+        except ImportError:
+            return off
+        try:
+            decision = plan_ad_decision(request, tournament)
+        except Exception:
+            logger.exception('Plan ad decision failed; showing no ads')
+            return off
+        if not decision:
+            return off
+        path = getattr(request, 'path', '') or '/'
+        if _ADS_OFF_RE is not None and _ADS_OFF_RE.search(path):
+            return off
+        return dict(off, ads_enabled=True,
+                    ads_anchor_only=bool(_ANCHOR_ONLY_RE is not None and _ANCHOR_ONLY_RE.search(path)),
+                    **decision)
+
     if not _ads_switch_on():
         return off
 
@@ -300,6 +326,30 @@ def _get_request_country_code(request):
     return ''
 
 
+def _plan_banner(request, tournament, visible):
+    """Basic-plan notice for the director's workspace (archive countdown, upgrade link)."""
+    if tournament is None or not visible:
+        return None
+    path = getattr(request, 'path', '') or ''
+    if '/admin/' not in path:
+        return None
+    try:
+        from donations.plans import BASIC, plan_context
+        from donations.premium import premium_page_url
+    except ImportError:
+        return None
+    try:
+        info = plan_context(tournament)
+        if info['plan'] != BASIC:
+            return None
+        info['upgrade_url'] = getattr(settings, 'SITE_BASE_URL', '').rstrip('/') + premium_page_url(tournament.pk)
+        info['pro_price'] = getattr(settings, 'PRO_PRICE_LABEL', '$15')
+        return info
+    except Exception:
+        logger.exception('Plan banner failed')
+        return None
+
+
 def debate_context(request):
 
     subdomain_enabled = getattr(settings, 'SUBDOMAIN_TOURNAMENTS_ENABLED', False)
@@ -336,6 +386,13 @@ def debate_context(request):
         'seo_base_url': getattr(settings, 'SITE_BASE_URL', 'https://nekotab.com'),
         'request_country_code': _get_request_country_code(request),
     }
+    try:
+        from utils.plans import launch_at, new_features_visible, plans_live
+        context['plans_launch_iso'] = launch_at().isoformat()
+        context['plans_live'] = plans_live()
+        context['nk_new_features'] = new_features_visible(request)
+    except Exception:
+        logger.exception('Could not read the plans launch date')
 
     # Canonical URL: use subdomain form when tournament is served via subdomain
     try:
@@ -375,6 +432,7 @@ def debate_context(request):
 
     # Both must run after `tournament` is resolved above — premium is granted
     # per-tournament.
+    context['plan_banner'] = _plan_banner(request, context.get('tournament'), context.get('nk_new_features'))
     context.update(_premium_context(request, context.get('tournament')))
     context.update(_ad_context(request, context.get('tournament')))
 

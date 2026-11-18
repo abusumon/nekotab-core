@@ -831,6 +831,22 @@ PREMIUM_CHECKOUT_URL = os.environ.get('PREMIUM_CHECKOUT_URL') or (
     'https://nekotab.lemonsqueezy.com/checkout/buy/f3bd0a62-6291-44fb-98cb-e085f6be1afe'
 )
 
+# ------------------------------------------------------------------------------
+# NekoTab plans (Basic / Pro / Club) — switch on at PLANS_LAUNCH_AT
+# ------------------------------------------------------------------------------
+# Until this instant the site behaves exactly as before (the paywall above) and
+# every new plan feature is visible to superusers only, for previewing. From it
+# on, plans in donations.plans decide what each tournament can do. Self-hosted
+# copies without the donations app never restrict anything.
+PLANS_LAUNCH_AT = os.environ.get('PLANS_LAUNCH_AT') or '2026-12-01T00:00:00+06:00'
+PRO_CHECKOUT_URL = os.environ.get('PRO_CHECKOUT_URL') or (
+    'https://store.nekotab.com/checkout/buy/b5c8df72-2d3e-4f89-b0f4-07e85efa27fb')
+CLUB_CHECKOUT_URL = os.environ.get('CLUB_CHECKOUT_URL') or (
+    'https://store.nekotab.com/checkout/buy/84d55fbb-a83c-445d-a679-a790d0a6424a')
+PRO_PRICE_LABEL = os.environ.get('PRO_PRICE_LABEL') or '$15'
+CLUB_PRICE_LABEL = os.environ.get('CLUB_PRICE_LABEL') or '$50'
+CLUB_EXTRA_PRICE_LABEL = os.environ.get('CLUB_EXTRA_PRICE_LABEL') or '$5'
+
 # NOTE: there is deliberately no PREMIUM_LAUNCH_AT setting any more.
 #
 # Grandfathering used to be a date comparison against that value, which made a
@@ -868,6 +884,8 @@ BKASH_PERSONAL_NUMBER = os.environ.get('BKASH_PERSONAL_NUMBER') or '01324202591'
 # Above the $5 equivalent to absorb the bKash send-money fee, so the amount
 # that actually lands is not short.
 BKASH_AMOUNT_BDT = int(os.environ.get('BKASH_AMOUNT_BDT') or 510)
+# Pro ($15) by bKash from the plans launch: rate plus the send-money fee.
+BKASH_PRO_AMOUNT_BDT = int(os.environ.get('BKASH_PRO_AMOUNT_BDT') or 1850)
 
 # ------------------------------------------------------------------------------
 # Demo tournaments

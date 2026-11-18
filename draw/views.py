@@ -176,11 +176,11 @@ class PublicDrawMixin(PublicTournamentPageMixin):
 
     @cached_property
     def draws_available(self):
-        return any(r.draw_status == Round.Status.RELEASED for r in self.rounds)
+        return any(r.draw_public for r in self.rounds)
 
     @classmethod
     def get_debates_for_round(cls, round):
-        if round.draw_status != Round.Status.RELEASED:
+        if not round.draw_public:
             return Debate.objects.none()
         return super().get_debates_for_round(round)
 
@@ -239,7 +239,7 @@ class PublicAllDrawsAllTournamentsView(PublicTournamentPageMixin, BaseDisplayDra
 
     def get_draw(self):
         all_rounds = Round.objects.filter(tournament=self.tournament,
-                                          draw_status=Round.Status.RELEASED)
+                                          draw_status=Round.Status.RELEASED, draw_teams_only=False)
         draw = []
         for round in all_rounds:
             draw.extend(round.debate_set_with_prefetches())
@@ -571,6 +571,13 @@ class AdminDrawView(RoundMixin, AdministratorMixin, AdminDrawUtilitiesMixin, Vue
                 {'tooltip': tooltip, 'key': key, 'text': key},
                 [d.get_team(side).break_rank_for_category(category) for d in draw],
             )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.round.draw_status in [Round.Status.CONFIRMED, Round.Status.RELEASED]:
+            from .release_views import release_panel_context
+            context['release_panel'] = release_panel_context(self.request, self.round)
+        return context
 
     def get_template_names(self):
         if self.round.draw_status == Round.Status.NONE:

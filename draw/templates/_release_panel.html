@@ -1,0 +1,109 @@
+{% load debate_tags i18n %}
+{% if release_panel %}{% with p=release_panel %}
+<div class="card mb-4 nk-release">
+  <div class="card-body pb-2">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <h5 class="card-title mb-2">{% trans "Release" %}</h5>
+      <div class="mb-2 nk-release-status">
+        {% if round.draw_status == round.Status.RELEASED and round.draw_teams_only %}
+          <span class="badge badge-pill nk-badge-marine">{% trans "Draw: participants only" %}</span>
+        {% elif round.draw_status == round.Status.RELEASED %}
+          <span class="badge badge-pill badge-dark">{% trans "Draw: public" %}</span>
+        {% else %}
+          <span class="badge badge-pill badge-light border">{% trans "Draw: not released" %}</span>
+        {% endif %}
+        <span class="badge badge-pill {% if round.motions_released %}badge-dark{% else %}badge-light border{% endif %}">
+          {% if round.motions_released %}{% trans "Motions: released" %}{% else %}{% trans "Motions: hidden" %}{% endif %}</span>
+        <span class="badge badge-pill {% if p.self_checkin %}badge-dark{% else %}badge-light border{% endif %}">
+          {% if p.self_checkin %}{% trans "Self check-in: on" %}{% else %}{% trans "Self check-in: off" %}{% endif %}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-5 mb-3">
+        <div class="nk-release-label">{% trans "Draw" %}</div>
+        <div class="d-flex flex-wrap nk-gap">
+          {% if round.draw_status == round.Status.RELEASED and not round.draw_teams_only %}
+            <form method="POST" action="{% roundurl 'draw-panel-unrelease' %}">{% csrf_token %}
+              <button class="btn btn-outline-secondary btn-sm">{% trans "Unrelease" %}</button></form>
+          {% else %}
+            <form method="POST" action="{% roundurl 'draw-make-public' %}">{% csrf_token %}
+              <button class="btn btn-dark btn-sm">{% trans "Release to public" %}</button></form>
+            {% if round.draw_teams_only and round.draw_status == round.Status.RELEASED %}
+              <form method="POST" action="{% roundurl 'draw-panel-unrelease' %}">{% csrf_token %}
+                <button class="btn btn-outline-secondary btn-sm">{% trans "Unrelease" %}</button></form>
+            {% elif p.teams_allowed %}
+              <form method="POST" action="{% roundurl 'draw-release-teams' %}"
+                    onsubmit="return confirm('{% trans "Release this draw to participants only? Everyone with an email gets their room, and it is posted to your Discord channels." %}')">{% csrf_token %}
+                <button class="btn nk-btn-marine btn-sm">{% trans "Release to participants only" %}</button></form>
+            {% else %}
+              <a class="btn btn-outline-secondary btn-sm" href="{{ p.upgrade_url }}?need=release">
+                {% trans "Release to participants only" %} <span class="badge nk-badge-marine ml-1">Pro</span></a>
+            {% endif %}
+          {% endif %}
+        </div>
+        <small class="text-muted d-block mt-1">
+          {% if round.draw_teams_only and round.draw_status == round.Status.RELEASED %}
+            {% trans "Participants see it through their private URLs, ballots and feedback work, and the public draw page still says it isn't released." %}
+          {% else %}
+            {% trans "“Participants only” emails each speaker and adjudicator their room, posts the draw to your Discord, and keeps it off the public site." %}
+          {% endif %}
+        </small>
+        {% if p.share_text %}
+          <div class="mt-2 d-flex flex-wrap nk-gap">
+            <a class="btn btn-success btn-sm" href="{{ p.whatsapp_url }}" target="_blank" rel="noopener">{% trans "Share on WhatsApp" %}</a>
+            <button type="button" class="btn btn-outline-secondary btn-sm" id="nkCopyDraw">{% trans "Copy draw text" %}</button>
+            <textarea id="nkDrawText" class="d-none">{{ p.share_text }}</textarea>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="col-lg-4 mb-3">
+        <div class="nk-release-label">{% blocktrans trimmed count n=p.motion_count %}Motion{% plural %}Motions{% endblocktrans %}</div>
+        {% if not p.motion_count %}
+          <a class="btn btn-outline-secondary btn-sm" href="{% roundurl 'motions-edit' %}">{% trans "Add motions first" %}</a>
+        {% elif round.motions_released %}
+          <form method="POST" action="{% roundurl 'draw-panel-motions-unrelease' %}">{% csrf_token %}
+            <button class="btn btn-outline-secondary btn-sm">{% trans "Hide motions" %}</button></form>
+        {% else %}
+          <form method="POST" action="{% roundurl 'draw-panel-motions-release' %}"
+                onsubmit="return confirm('{% trans "Release the motions now? They show on the public site and in ballots." %}')">{% csrf_token %}
+            <button class="btn btn-dark btn-sm">{% trans "Release motions" %}</button></form>
+        {% endif %}
+        <small class="text-muted d-block mt-1">{% trans "Release when you announce them. Prep time starts counting from here if set." %}</small>
+      </div>
+
+      <div class="col-lg-3 mb-3">
+        <div class="nk-release-label">{% trans "Self check-in" %}</div>
+        <form method="POST" action="{% roundurl 'draw-panel-self-checkin' %}">{% csrf_token %}
+          <input type="hidden" name="state" value="{% if p.self_checkin %}off{% else %}on{% endif %}">
+          <button class="btn btn-sm {% if p.self_checkin %}btn-outline-secondary{% else %}btn-dark{% endif %}" role="switch"
+                  aria-checked="{% if p.self_checkin %}true{% else %}false{% endif %}">
+            {% if p.self_checkin %}{% trans "Turn off" %}{% else %}{% trans "Turn on" %}{% endif %}</button>
+        </form>
+        <small class="text-muted d-block mt-1">{% trans "Lets participants check themselves in from their private URLs." %}</small>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .nk-release { border-color: rgba(11,61,145,.35); }
+  .nk-release-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #6c757d; margin-bottom: 6px; }
+  .nk-gap { gap: 6px; }
+  .nk-btn-marine, .nk-btn-marine:hover { background: #0B3D91; border-color: #0B3D91; color: #fff; }
+  .nk-btn-marine:hover { background: #0e4bb3; }
+  .nk-badge-marine { background: #0B3D91; color: #fff; }
+  .nk-release-status .badge { font-weight: 600; margin-left: 4px; }
+</style>
+<script>
+  (function () {
+    var b = document.getElementById('nkCopyDraw'); if (!b) return;
+    b.addEventListener('click', function () {
+      var t = document.getElementById('nkDrawText').value;
+      (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () {
+        b.textContent = '{% trans "Copied" %}';
+      }, function () { window.prompt('{% trans "Copy the draw:" %}', t); });
+    });
+  })();
+</script>
+{% endwith %}{% endif %}

@@ -121,6 +121,9 @@ class PricingView(TemplateView):
         kwargs['trial_days'] = getattr(settings, 'PREMIUM_TRIAL_DAYS', 0)
         kwargs['canonical_url'] = '%s/pricing/' % getattr(
             settings, 'SITE_BASE_URL', 'https://nekotab.com').rstrip('/')
+        kwargs['pro_price'] = getattr(settings, 'PRO_PRICE_LABEL', '$15')
+        kwargs['club_price'] = getattr(settings, 'CLUB_PRICE_LABEL', '$50')
+        kwargs['club_extra_price'] = getattr(settings, 'CLUB_EXTRA_PRICE_LABEL', '$5')
         return super().get_context_data(**kwargs)
 
 

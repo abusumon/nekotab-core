@@ -1,0 +1,13 @@
+{% load debate_tags i18n %}{% if nk_new_features and current_round %}
+<form method="POST" action="{% roundurl 'draw-panel-self-checkin' current_round %}" class="d-inline-flex align-items-center mb-3 mr-2"
+      style="gap:8px;border:1px solid rgba(11,61,145,.35);border-radius:10px;padding:6px 10px">{% csrf_token %}
+  <input type="hidden" name="state" value="{% if pref.public_checkins_submit %}off{% else %}on{% endif %}">
+  <input type="hidden" name="next" value="{{ request.get_full_path }}">
+  <span class="small font-weight-bold">{% trans "Self check-in" %}</span>
+  <span class="badge badge-pill {% if pref.public_checkins_submit %}badge-dark{% else %}badge-light border{% endif %}">
+    {% if pref.public_checkins_submit %}{% trans "On" %}{% else %}{% trans "Off" %}{% endif %}</span>
+  <button class="btn btn-sm {% if pref.public_checkins_submit %}btn-outline-secondary{% else %}btn-dark{% endif %}" role="switch"
+          aria-checked="{% if pref.public_checkins_submit %}true{% else %}false{% endif %}">
+    {% if pref.public_checkins_submit %}{% trans "Turn off" %}{% else %}{% trans "Turn on" %}{% endif %}</button>
+</form>
+{% endif %}

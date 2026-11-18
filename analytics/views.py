@@ -1487,7 +1487,11 @@ class BkashRequestsView(SuperuserRequiredMixin, TemplateView):
         context['pending_count'] = BkashPaymentRequest.objects.filter(
             status=BkashPaymentRequest.Status.PENDING).count()
         context['bkash_number'] = getattr(settings, 'BKASH_PERSONAL_NUMBER', '')
-        context['amount_bdt'] = getattr(settings, 'BKASH_AMOUNT_BDT', 510)
+        try:
+            from donations.plans import bkash_amount_bdt
+            context['amount_bdt'] = bkash_amount_bdt()
+        except ImportError:
+            context['amount_bdt'] = getattr(settings, 'BKASH_AMOUNT_BDT', 510)
         return context
 
     def post(self, request, *args, **kwargs):

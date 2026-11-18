@@ -55,7 +55,7 @@ urlpatterns = [
         name='tabbycat-index'),
     # Private NekoTab dashboard (/me/, /emet/, /portal/, /team/, /competitions/, /join/ and their /analytics/ editors) when installed; it
     # takes over /me/ ahead of the stock dashboard below.
-    *([re_path(r'^(?=(?:me|emet|portal|team|competitions|join)(?:/|$)|analytics/(?:team|featured|competitions|join|marketing)(?:/|$))',
+    *([re_path(r'^(?=(?:me|emet|portal|team|competitions|join|club)(?:/|$)|analytics/(?:team|featured|competitions|join|marketing|clubs|adsense|emet)(?:/|$))',
              include('portal.urls'))]
       if 'portal' in settings.INSTALLED_APPS else []),
     path('me/',

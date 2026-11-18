@@ -33,7 +33,7 @@ PROHIBITED_TOURNAMENT_SLUGS = [
     '__debug__', 'static', 'style', 'i18n', 'jsi18n',  # Misc
     'forum', 'motions-bank',  # Global apps
     'analytics', 'campaigns',  # Admin apps
-    'mcp', 'oauth', 'agent', '.well-known', 'emet', 'portal', 'team', 'competitions', 'join',  # AI connector, OAuth, NekoTab portal
+    'mcp', 'oauth', 'agent', '.well-known', 'emet', 'portal', 'team', 'competitions', 'join', 'club',  # AI connector, OAuth, NekoTab portal
 ]
 
 
@@ -844,7 +844,7 @@ class Tournament(models.Model):
     def public_draws_available(self):
         """Returns True if draws are available for public viewing. Used in
         public navigation menus."""
-        return any(r.draw_status == Round.Status.RELEASED for r in self.current_rounds)
+        return any(r.draw_public for r in self.current_rounds)
 
 
 class RoundManager(LookupByNameFieldsMixin, models.Manager):
@@ -911,6 +911,10 @@ class Round(models.Model):
         # Translators: A silent round is a round for which results are not disclosed once the round is over.
         verbose_name=_("silent"),
         help_text=_("If marked silent, information about this round (such as its results) will not be shown publicly."))
+    draw_teams_only = models.BooleanField(default=False,
+        verbose_name=_("draw released to participants only"),
+        help_text=_("When the draw is released, keep it off the public pages: only participants see it, "
+                    "through their private URLs and the messages sent to them."))
     motions_released = models.BooleanField(default=False,
         verbose_name=_("motions released"),
         help_text=_("Whether motions will appear on the public website, assuming that feature is turned on"))
@@ -1156,6 +1160,11 @@ class Round(models.Model):
             else:
                 self._is_current = True
         return self._is_current
+
+    @property
+    def draw_public(self):
+        """Released to everyone, as opposed to released to participants only."""
+        return self.draw_status == Round.Status.RELEASED and not self.draw_teams_only
 
     @property
     def motions_good_for_public(self):

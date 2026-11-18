@@ -1,0 +1,59 @@
+{% comment %}
+  Digital countdown to the 1 December plans launch. Renders nothing once the
+  launch has passed. Optional: heading="…", sub="…", compact=True.
+{% endcomment %}{% if plans_launch_iso and not plans_live %}
+<div class="nk-count{% if compact %} nk-count--compact{% endif %}" data-nk-countdown="{{ plans_launch_iso }}" role="timer" aria-live="off">
+  <div class="nk-count__head">
+    <span class="nk-count__dot" aria-hidden="true"></span>
+    <span>{{ heading|default:"New NekoTab is coming" }}</span>
+  </div>
+  <div class="nk-count__clock" aria-label="Time until 1 December 2026">
+    <div class="nk-count__unit"><b data-u="d">--</b><small>days</small></div><i>:</i>
+    <div class="nk-count__unit"><b data-u="h">--</b><small>hours</small></div><i>:</i>
+    <div class="nk-count__unit"><b data-u="m">--</b><small>min</small></div><i>:</i>
+    <div class="nk-count__unit"><b data-u="s">--</b><small>sec</small></div>
+  </div>
+  <p class="nk-count__sub">{{ sub|default:"Plans, Emet chat and new tournament tools go live on 1 December 2026." }}</p>
+</div>
+<style>
+  .nk-count { --mc: #0B3D91; background: #000; color: #fff; border: 1px solid rgba(76,125,214,.55); border-radius: 16px;
+              padding: 18px 16px; text-align: center; margin: 0 auto 20px; max-width: 640px;
+              background-image: radial-gradient(120% 120% at 50% 0%, rgba(11,61,145,.35), transparent 65%); }
+  .nk-count__head { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; font-weight: 700;
+                    letter-spacing: .12em; text-transform: uppercase; color: #9db8ee; }
+  .nk-count__dot { width: 8px; height: 8px; border-radius: 50%; background: #4c7dd6; box-shadow: 0 0 0 0 rgba(76,125,214,.7);
+                   animation: nkPulse 1.6s infinite; }
+  @keyframes nkPulse { 70% { box-shadow: 0 0 0 9px rgba(76,125,214,0); } 100% { box-shadow: 0 0 0 0 rgba(76,125,214,0); } }
+  .nk-count__clock { display: flex; justify-content: center; align-items: flex-start; gap: 4px; margin: 12px 0 8px; }
+  .nk-count__clock i { font-style: normal; font-size: clamp(1.6rem, 7vw, 2.6rem); color: #4c7dd6; line-height: 1.1; padding-top: 4px; }
+  .nk-count__unit { display: flex; flex-direction: column; align-items: center; min-width: clamp(54px, 15vw, 82px); }
+  .nk-count__unit b { font: 700 clamp(1.9rem, 8.5vw, 3.1rem)/1.15 ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
+                      font-variant-numeric: tabular-nums; background: #0c0c0e; border: 1px solid #24242a; border-radius: 12px;
+                      padding: 6px 8px; width: 100%; color: #fff; text-shadow: 0 0 18px rgba(76,125,214,.45); }
+  .nk-count__unit small { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: #a1a1aa; margin-top: 6px; }
+  .nk-count__sub { margin: 4px 0 0; color: #a1a1aa; font-size: .9rem; }
+  .nk-count--compact { padding: 12px; margin-bottom: 14px; }
+  .nk-count--compact .nk-count__unit b { font-size: clamp(1.3rem, 6vw, 1.9rem); }
+  .nk-count--compact .nk-count__clock i { font-size: clamp(1.1rem, 5vw, 1.6rem); }
+  .nk-count--compact .nk-count__sub { font-size: .82rem; }
+</style>
+<script>
+(function () {
+  var nodes = document.querySelectorAll('[data-nk-countdown]:not([data-nk-on])');
+  Array.prototype.forEach.call(nodes, function (el) {
+    el.setAttribute('data-nk-on', '1');
+    var end = Date.parse(el.getAttribute('data-nk-countdown'));
+    if (isNaN(end)) return;
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function tick() {
+      var left = Math.max(0, Math.floor((end - Date.now()) / 1000));
+      var v = { d: Math.floor(left / 86400), h: Math.floor(left % 86400 / 3600), m: Math.floor(left % 3600 / 60), s: left % 60 };
+      ['d', 'h', 'm', 's'].forEach(function (u) { var b = el.querySelector('[data-u="' + u + '"]'); if (b) b.textContent = pad(v[u]); });
+      if (left === 0) { el.querySelector('.nk-count__sub').textContent = 'It’s live. Refresh the page.'; return; }
+      setTimeout(tick, 1000 - (Date.now() % 1000));
+    }
+    tick();
+  });
+})();
+</script>
+{% endif %}

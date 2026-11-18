@@ -3,6 +3,8 @@
 
 {% block content %}
 
+  {% if user_role == "admin" and speakers %}{% include "_self_checkin_toggle.html" %}{% endif %}
+
   <div id="vueMount">
     <check-in-status-container :initial-events="events"
                                :tournament-slug="tournamentSlug"
