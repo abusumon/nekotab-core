@@ -1,6 +1,6 @@
 {% extends "analytics/_base_crm.html" %}
 
-{% block title %}Donations Analytics{% endblock %}
+{% block title %}Earnings{% endblock %}
 
 {% block extra_css %}
 .kpi-grid {
@@ -146,7 +146,7 @@
 
 {% block content %}
 <div class="header">
-    <h2>💖 Donations Analytics</h2>
+    <h2>Earnings</h2>
     <div class="header-stats">
         <div class="header-stat">
             <div class="header-stat-value">{{ transaction_count }}</div>
@@ -154,7 +154,7 @@
         </div>
         <div class="header-stat">
             <div class="header-stat-value">{{ unique_donors }}</div>
-            <div class="header-stat-label">Unique Donors</div>
+            <div class="header-stat-label">Unique customers</div>
         </div>
         <div class="header-stat">
             <div class="header-stat-value">{{ active_supporters }}</div>
@@ -173,7 +173,7 @@
 
 <div class="kpi-grid">
     <div class="kpi-card">
-        <div class="kpi-label">Gross Donations</div>
+        <div class="kpi-label">Gross earnings</div>
         <div class="kpi-value">${{ gross_amount|floatformat:2 }}</div>
         <div class="kpi-note">Before refunds</div>
     </div>
@@ -183,7 +183,7 @@
         <div class="kpi-note">Total refunded amount</div>
     </div>
     <div class="kpi-card">
-        <div class="kpi-label">Net Donations</div>
+        <div class="kpi-label">Net earnings</div>
         <div class="kpi-value money-positive">${{ net_amount|floatformat:2 }}</div>
         <div class="kpi-note">Gross minus refunds</div>
     </div>
@@ -197,7 +197,7 @@
 <div class="split-grid">
     <div class="card" style="padding: 16px;">
         <div class="card-title-row">
-            <h3>Monthly Donation Trend</h3>
+            <h3>Monthly earnings</h3>
             <span style="color: var(--text-secondary); font-size: 12px;">Gross vs Net</span>
         </div>
         <div class="chart-wrap">
@@ -207,7 +207,7 @@
 
     <div class="card" style="padding: 16px;">
         <div class="card-title-row">
-            <h3>Top Donors</h3>
+            <h3>Top customers</h3>
         </div>
         <ul class="donor-list">
             {% for donor in top_donors %}
@@ -222,7 +222,7 @@
                 </div>
             </li>
             {% empty %}
-            <li style="color: var(--text-secondary);">No donor data yet.</li>
+            <li style="color: var(--text-secondary);">No customer data yet.</li>
             {% endfor %}
         </ul>
 
@@ -239,14 +239,14 @@
 
 <div class="card" style="padding: 16px; margin-bottom: 16px;">
     <div class="card-title-row">
-        <h3>Recent Donations</h3>
+        <h3>Recent payments</h3>
     </div>
     <div class="table-wrap">
         <table>
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th>Donor</th>
+                    <th>Customer</th>
                     <th>Email</th>
                     <th>Type</th>
                     <th>Status</th>
@@ -273,7 +273,7 @@
                 <tr>
                     <td colspan="7" class="empty-state">
                         <div class="empty-state-icon">💸</div>
-                        <h3>No donations tracked yet</h3>
+                        <h3>No payments yet</h3>
                         <p style="margin-top:8px;">Configure your Lemon webhook to start receiving transaction records.</p>
                     </td>
                 </tr>
