@@ -662,6 +662,15 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
+# NekoTab's nightly owner report at 23:00 Bangladesh time (17:00 UTC; beat runs
+# in UTC). Only when the private portal app is installed.
+if 'portal' in TABBYCAT_APPS:
+    CELERY_BEAT_SCHEDULE['portal-daily-digest'] = {
+        'task': 'portal.tasks.send_daily_digest',
+        'schedule': crontab(hour=17, minute=0),
+        'options': {'queue': 'notifications'},
+    }
+
 # ==============================================================================
 # Encryption
 # ==============================================================================
