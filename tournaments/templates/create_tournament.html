@@ -55,6 +55,10 @@
     .ct-field label .opt { color: var(--muted); font-weight: 500; }
     .ct-field input { width: 100%; min-height: 50px; border-radius: 12px; border: 1px solid var(--field); background: var(--white); color: var(--black);
                       padding: 12px 14px; font: inherit; font-size: 1rem; transition: border-color .15s, box-shadow .15s; }
+    .ct-grid > * { min-width: 0; }
+    /* iOS Safari sizes date inputs by their own intrinsic width and ignores width:100% unless the native look is dropped */
+    .ct-field input[type=date] { -webkit-appearance: none; appearance: none; display: block; min-width: 0; max-width: 100%; text-align: left; line-height: 1.5; }
+    .ct-field input[type=date]::-webkit-date-and-time-value { text-align: left; margin: 0; }
     .ct-field input::placeholder { color: #a1a1aa; }
     .ct-field input:hover { border-color: #a1a1aa; }
     .ct-field input:focus { outline: none; border-color: var(--marine); box-shadow: 0 0 0 4px var(--marine-soft); }
@@ -131,7 +135,7 @@
         <p class="ct-section-sub">{% trans "How your tournament appears to participants." %}</p>
         <div class="ct-lock" role="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-          <span>{% trans "The name, short name, web address and dates can't be changed after the tournament is created, so please check them before you continue." %}</span>
+          <span>{% trans "The name, short name and web address can't be changed after the tournament is created, so please check them before you continue. Dates can be changed later." %}</span>
         </div>
         <div class="ct-grid">
           <div class="ct-field{% if form.name.errors %} has-error{% endif %}">
