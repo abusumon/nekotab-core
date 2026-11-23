@@ -1,194 +1,270 @@
-{% extends "base.html" %}
-{% load add_field_css i18n %}
+{% load static i18n %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#000000">
+  <title>{% trans "Create a tournament" %} · NekoTab</title>
+  <link rel="icon" href="{% static 'favicon.ico' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'logo-32x32.png' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --black: #000; --ink: #0c0c0e; --line: #24242a; --white: #fff; --marine: #0B3D91; --marine-hover: #0e4bb3;
+            --marine-soft: rgba(11,61,145,.14); --marine-text: #9db8ee; --muted: #52525b; --muted-d: #a1a1aa; --field: #d4d4d8; --error: #b91c1c; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body { background: var(--black); color: var(--black); font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Bengali', sans-serif;
+           -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; }
+    a { color: inherit; }
 
-{% block noindex %}<meta name="robots" content="noindex, nofollow" />{% endblock %}
-{% block head-title %}<span class="emoji">🏆</span>{% trans "Create New Tournament"%}{% endblock %}
-{% block page-title %}{% trans "NekoTab" %}{% endblock %}
-{% block sidebar %}{% endblock %} {# Need to override sidebar manually it will crash when no tournaments are present. Ideally this would be handled with the Mixins but this is a relatively unique view as it is part of Tournaments but is admin-only and thus shown with the sidebar #}
+    /* Top bar */
+    .ct-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px clamp(16px, 4vw, 40px);
+              padding-top: max(14px, env(safe-area-inset-top)); border-bottom: 1px solid var(--line); color: var(--white); }
+    .ct-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 1.1rem; }
+    .ct-brand img { width: 32px; height: 32px; filter: invert(1); }
+    .ct-back { color: var(--muted-d); text-decoration: none; font-size: .92rem; display: inline-flex; align-items: center; gap: 6px; min-height: 40px; }
+    .ct-back:hover { color: var(--white); }
 
-{% block page-alerts %}
-  {% include 'errors/database_limit_warning.html' %}
-{% endblock %}
+    /* Hero */
+    .ct-hero { color: var(--white); padding: clamp(26px, 5vw, 48px) clamp(16px, 4vw, 40px) clamp(22px, 4vw, 34px);
+               background: radial-gradient(80% 120% at 0% 0%, rgba(11,61,145,.5), transparent 60%), var(--black); }
+    .ct-hero-in { max-width: 1120px; margin: 0 auto; }
+    .ct-kicker { display: inline-block; border: 1px solid rgba(76,125,214,.55); color: var(--marine-text); border-radius: 99px; padding: 4px 12px;
+                 font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .ct-hero h1 { font-size: clamp(1.9rem, 5vw, 2.8rem); line-height: 1.1; letter-spacing: -.02em; margin: 14px 0 10px; }
+    .ct-hero p { color: #c4c4cc; margin: 0; max-width: 640px; font-size: 1.02rem; line-height: 1.6; }
 
-{% block content %}
+    /* Layout */
+    .ct-main { max-width: calc(1120px + 2 * clamp(16px, 4vw, 40px)); margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 56px; padding-bottom: max(56px, env(safe-area-inset-bottom));
+               display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); }
+    @media (min-width: 980px) { .ct-main { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); align-items: start; } }
 
-  {% if premium_enabled %}
-    {# The charge is stated before the form, not after it. Finding out about #}
-    {# a price only once you have filled in eight fields is how you lose      #}
-    {# someone's trust as well as their tournament.                           #}
-    <div class="card border-primary mt-3">
-      <div class="card-body">
-        <h5 class="card-title mb-2">
-          {% blocktrans trimmed with price=price_label %}
-            NekoTab Premium — {{ price }} for this tournament
-          {% endblocktrans %}
-        </h5>
-        <p class="mb-2">
-          {% blocktrans trimmed with price=price_label %}
-            Setting up a tournament costs {{ price }}, paid once. No subscription, no
-            per-team fee, and no adverts anywhere. Fill in the details below and
-            you'll be taken to checkout.
-          {% endblocktrans %}
-        </p>
-        <p class="mb-2 text-muted small">
-          {% blocktrans trimmed %}
-            Your debaters, judges and audience never pay: public draw, tab and
-            results pages are free for everyone. Tournaments created before Premium
-            launched stay free forever.
-          {% endblocktrans %}
-        </p>
-        <a href="{% url 'pricing' %}" class="small">{% trans "Why we charge, and what it covers" %}</a>
-      </div>
-    </div>
-  {% else %}
-    {% blocktrans trimmed asvar donation %}
-      NekoTab is free and open-source. <a href="https://github.com/abusumon/nekotab-app">Star us on GitHub</a> if you find it useful!
-    {% endblocktrans %}
-    {% include "components/explainer-card.html" with type="primary" p1=donation %}
-  {% endif %}
+    /* Form card */
+    .ct-card { background: var(--white); border-radius: 20px; padding: clamp(20px, 4vw, 34px); box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+    .ct-section + .ct-section { margin-top: 26px; padding-top: 24px; border-top: 1px solid #e4e4e7; }
+    .ct-section-h { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; font-size: 1.08rem; }
+    .ct-num { width: 26px; height: 26px; border-radius: 50%; background: var(--marine); color: var(--white); font-size: .8rem; font-weight: 800;
+              display: grid; place-items: center; flex-shrink: 0; }
+    .ct-section-sub { color: var(--muted); font-size: .9rem; margin: 0 0 16px 36px; }
+    .ct-grid { display: grid; gap: 14px; }
+    @media (min-width: 640px) { .ct-grid.two { grid-template-columns: 1fr 1fr; } }
+    .ct-field label { display: block; font-size: .88rem; font-weight: 600; margin: 0 0 7px; }
+    .ct-field label .opt { color: var(--muted); font-weight: 500; }
+    .ct-field input { width: 100%; min-height: 50px; border-radius: 12px; border: 1px solid var(--field); background: var(--white); color: var(--black);
+                      padding: 12px 14px; font: inherit; font-size: 1rem; transition: border-color .15s, box-shadow .15s; }
+    .ct-field input::placeholder { color: #a1a1aa; }
+    .ct-field input:hover { border-color: #a1a1aa; }
+    .ct-field input:focus { outline: none; border-color: var(--marine); box-shadow: 0 0 0 4px var(--marine-soft); }
+    .ct-field.has-error input { border-color: var(--error); }
+    .ct-help { color: var(--muted); font-size: .83rem; margin-top: 6px; line-height: 1.45; }
+    .ct-err { color: var(--error); font-size: .85rem; margin-top: 6px; }
+    .ct-url { display: flex; align-items: stretch; border: 1px solid var(--field); border-radius: 12px; overflow: hidden; transition: border-color .15s, box-shadow .15s; }
+    .ct-url:focus-within { border-color: var(--marine); box-shadow: 0 0 0 4px var(--marine-soft); }
+    .ct-url input { border: 0; border-radius: 0; min-width: 0; flex: 1; box-shadow: none !important; }
+    .ct-url span { display: flex; align-items: center; padding: 0 14px; background: #f4f4f5; color: var(--muted); font-size: .95rem; white-space: nowrap; border-left: 1px solid var(--field); }
+    .ct-field.has-error .ct-url { border-color: var(--error); }
+    .ct-preview { margin-top: 8px; font-size: .86rem; color: var(--muted); overflow-wrap: anywhere; }
+    .ct-preview:empty { display: none; }
+    .ct-preview b { color: var(--marine); font-weight: 700; }
 
-  {% if demo_enabled %}
-    <div class="card border-success mt-3">
-      <div class="card-body">
-        <h5 class="card-title mb-2">{% trans "Want to try it first? Start a free demo." %}</h5>
-        <p class="mb-3">
-          {% blocktrans trimmed with hours=demo_lifetime_hours %}
-            A demo tournament costs nothing and needs no payment details. It has
-            every feature the paid version has — it just deletes itself
-            automatically after {{ hours }} hours.
-          {% endblocktrans %}
-          {% if demo_limit %}
-            {% blocktrans trimmed with limit=demo_limit %}
-              Each account gets {{ limit }} demos in total — the allowance is
-              one-off and doesn't reset when they expire.
-            {% endblocktrans %}
-          {% endif %}
-        </p>
-        {% if demo_exhausted %}
-          <p class="mb-0 text-muted small">
-            {% blocktrans trimmed with limit=demo_limit %}
-              You've used all {{ limit }} of your demo tournaments.
-            {% endblocktrans %}
-            <a href="{% url 'contact' %}">{% trans "Get in touch" %}</a>
-            {% trans "if you need another for a good reason." %}
-          </p>
-        {% else %}
-          {# POST, not a link: this creates a tournament, and a GET would be #}
-          {# fired by prefetchers and crawlers. #}
-          <form action="{% url 'tournament-create-demo' %}" method="POST" class="mb-0">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-success">
-              {% trans "Create Demo Tournament" %}
-            </button>
-            {% if demo_limit %}
-              <span class="text-muted small ml-2">
-                {% blocktrans trimmed with remaining=demo_remaining limit=demo_limit %}
-                  {{ remaining }} of {{ limit }} left
-                {% endblocktrans %}
-              </span>
-            {% endif %}
-          </form>
-        {% endif %}
-      </div>
-    </div>
-  {% endif %}
+    .ct-lock { display: flex; gap: 12px; align-items: flex-start; background: #eef2fb; border-left: 4px solid var(--marine); border-radius: 12px;
+               padding: 12px 14px; margin: 0 0 18px; font-size: .9rem; line-height: 1.5; }
+    .ct-lock svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--marine); margin-top: 2px; }
+    .ct-alert { border-radius: 12px; padding: 12px 14px; margin: 0 0 18px; font-size: .92rem; line-height: 1.5; background: #eef2fb; border-left: 4px solid var(--marine); }
+    .ct-alert.error { background: #fef2f2; border-left-color: var(--error); }
 
-  <div class="card border-info text-info mt-3">
-    <div class="card-body">
+    .ct-submit-row { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+    .ct-submit { min-height: 54px; padding: 0 28px; border: 0; border-radius: 12px; background: var(--marine); color: var(--white); font: inherit;
+                 font-weight: 700; font-size: 1.03rem; cursor: pointer; transition: background .15s; flex: 1 1 220px; max-width: 320px; }
+    .ct-submit:hover { background: var(--marine-hover); }
+    .ct-submit:disabled { opacity: .75; cursor: progress; }
+    .ct-submit:focus-visible { outline: 3px solid rgba(11,61,145,.35); outline-offset: 2px; }
+    .ct-submit-note { color: var(--muted); font-size: .86rem; flex: 1 1 220px; }
 
-      <strong>{% trans "Just trying out NekoTab?" %}</strong>
-      {% blocktrans trimmed %}
-        If you're learning or playing around with NekoTab, it's easiest to
-        create a demo tournament that is prepopulated with a fake (but typical)
-        set of teams, adjudicators, rooms, and the like. You can then delete
-        this demo tournament later on, or deploy a new instance for your real
-        tournament.
-      {% endblocktrans %}
+    /* Side panel */
+    .ct-side { color: var(--white); display: grid; gap: 16px; }
+    .ct-panel { border: 1px solid var(--line); background: var(--ink); border-radius: 18px; padding: 22px; }
+    .ct-panel h2 { font-size: 1rem; margin: 0 0 14px; }
+    .ct-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+    .ct-steps li { display: flex; gap: 12px; color: #d4d4d8; font-size: .92rem; line-height: 1.5; }
+    .ct-steps b { color: var(--white); display: block; }
+    .ct-steps .dot { width: 28px; height: 28px; border-radius: 9px; flex-shrink: 0; display: grid; place-items: center; background: var(--marine); color: var(--white); }
+    .ct-steps .dot svg { width: 16px; height: 16px; }
+    .ct-panel.marine { background: radial-gradient(120% 120% at 100% 0%, rgba(11,61,145,.55), transparent 65%), var(--ink); border-color: rgba(76,125,214,.45); }
+    .ct-panel p { color: #c4c4cc; font-size: .9rem; line-height: 1.55; margin: 0 0 12px; }
+    .ct-panel a.lnk { color: var(--marine-text); font-weight: 600; text-decoration: none; }
+    .ct-panel a.lnk:hover { text-decoration: underline; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
 
-      <div class="row mt-3">
-        {% for slug, demo in demo_datasets %}
-          <div class="col col-md-4">
-            <form action="{% url 'load-demo' %}" method="POST">
-              {% csrf_token %}
-              <input type="hidden" name="source" value="{{ slug }}">
-              <button type="submit" class="btn btn-info btn-block">
-                {% blocktrans trimmed %}
-                  Load {{ demo }}
-                {% endblocktrans %}
-              </button>
-            </form>
-            {% if slug in preexisting %}
-              <div class="alert alert-warning mt-3 mb-0 small">
-                {% blocktrans trimmed %}
-                  You already have a tournament set up using this data set. Reloading
-                  the data will delete <strong>all data</strong> from that tournament.
-                {% endblocktrans %}
-              </div>
-            {% endif %}
-          </div>
-        {% endfor %}
-      </div>
+<header class="ct-top">
+  <a class="ct-brand" href="/"><img src="{% static 'logo.png' %}" alt="" width="32" height="32">NekoTab</a>
+  <a class="ct-back" href="/me/" aria-label="{% trans 'Back to your dashboard' %}">← {% trans "Dashboard" %}</a>
+</header>
 
-    </div>
+<section class="ct-hero">
+  <div class="ct-hero-in">
+    <span class="ct-kicker">{% trans "New tournament" %}</span>
+    <h1>{% trans "Create your tournament" %}</h1>
+    <p>{% trans "A few details and your tab is ready: you can add teams, adjudicators, rooms and rounds right after." %}</p>
   </div>
+</section>
 
-  <div class="card mt-3">
-    <div class="list-group list-group-flush">
-    <form action="." method="POST">
+<main class="ct-main">
+  <div class="ct-card">
+    {% if messages %}{% for m in messages %}<div class="ct-alert{% if m.level_tag == 'error' %} error{% endif %}" role="status">{{ m }}</div>{% endfor %}{% endif %}
+    {% if form.non_field_errors %}<div class="ct-alert error" role="alert">{% for e in form.non_field_errors %}<div>{{ e }}</div>{% endfor %}</div>
+    {% elif form.errors %}<div class="ct-alert error" role="alert">{% trans "Please check the highlighted fields." %}</div>{% endif %}
+    {% if preset_name %}<div class="ct-alert" role="status">{% blocktrans trimmed with preset=preset_name %}Quick start: {{ preset }} will be preselected on the next step.{% endblocktrans %}</div>{% endif %}
+
+    <form method="POST" action="." novalidate id="createForm">
       {% csrf_token %}
+      {% if preset_slug %}<input type="hidden" name="preset" value="{{ preset_slug }}">{% endif %}
 
-      {% if preset_slug %}
-        <input type="hidden" name="preset" value="{{ preset_slug }}">
-      {% endif %}
-
-      {% if preset_name %}
-        <div class="alert alert-info mt-3 mb-0">
-          {% blocktrans trimmed with preset=preset_name %}
-            Quick start enabled: {{ preset }} will be preselected on the next step.
-          {% endblocktrans %}
+      <section class="ct-section" aria-labelledby="s1">
+        <h2 class="ct-section-h" id="s1"><span class="ct-num">1</span>{% trans "Name and web address" %}</h2>
+        <p class="ct-section-sub">{% trans "How your tournament appears to participants." %}</p>
+        <div class="ct-lock" role="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <span>{% trans "The name, short name, web address and dates can't be changed after the tournament is created, so please check them before you continue." %}</span>
         </div>
-      {% endif %}
+        <div class="ct-grid">
+          <div class="ct-field{% if form.name.errors %} has-error{% endif %}">
+            <label for="id_name">{% trans "Tournament name" %}</label>
+            <input type="text" name="name" id="id_name" maxlength="{{ form.name.field.max_length|default:100 }}" value="{{ form.name.value|default:'' }}"
+                   required autocomplete="off" placeholder="{% trans 'e.g. Dhaka Debate Open 2026' %}">
+            {% for e in form.name.errors %}<div class="ct-err">{{ e }}</div>{% endfor %}
+          </div>
+          <div class="ct-grid two">
+            <div class="ct-field{% if form.short_name.errors %} has-error{% endif %}">
+              <label for="id_short_name">{% trans "Short name" %}</label>
+              <input type="text" name="short_name" id="id_short_name" maxlength="25" value="{{ form.short_name.value|default:'' }}"
+                     autocomplete="off" placeholder="{% trans 'e.g. DDO 2026' %}">
+              <div class="ct-help">{% trans "Used in menus and on phones. Up to 25 characters." %}</div>
+              {% for e in form.short_name.errors %}<div class="ct-err">{{ e }}</div>{% endfor %}
+            </div>
+            <div class="ct-field{% if form.slug.errors %} has-error{% endif %}">
+              <label for="id_slug">{% trans "Web address" %}</label>
+              <div class="ct-url">
+                <input type="text" name="slug" id="id_slug" value="{{ form.slug.value|default:'' }}" required
+                       autocomplete="off" autocapitalize="none" spellcheck="false" inputmode="url" placeholder="ddo2026">
+                <span>.{{ subdomain_base_domain|default:"nekotab.com" }}</span>
+              </div>
+              <div class="ct-help">{% trans "Lowercase letters, numbers and hyphens." %}</div>
+              {% for e in form.slug.errors %}<div class="ct-err">{{ e }}</div>{% endfor %}
+            </div>
+          </div>
+          <div class="ct-preview" id="urlPreview" aria-live="polite"></div>
+        </div>
+      </section>
 
-      {% include "components/form-main.html" %}
+      <section class="ct-section" aria-labelledby="s2">
+        <h2 class="ct-section-h" id="s2"><span class="ct-num">2</span>{% trans "When and where" %}</h2>
+        <p class="ct-section-sub">{% trans "Shown on the public tournament list." %}</p>
+        <div class="ct-grid two">
+          <div class="ct-field{% if form.event_start_date.errors %} has-error{% endif %}">
+            <label for="id_event_start_date">{% trans "Start date" %}</label>
+            <input type="date" name="event_start_date" id="id_event_start_date" value="{{ form.event_start_date.value|default:''|date:'Y-m-d'|default:form.event_start_date.value|default:'' }}" required>
+            {% for e in form.event_start_date.errors %}<div class="ct-err">{{ e }}</div>{% endfor %}
+          </div>
+          <div class="ct-field{% if form.event_end_date.errors %} has-error{% endif %}">
+            <label for="id_event_end_date">{% trans "End date" %} <span class="opt">{% trans "(optional)" %}</span></label>
+            <input type="date" name="event_end_date" id="id_event_end_date" value="{{ form.event_end_date.value|default:''|date:'Y-m-d'|default:form.event_end_date.value|default:'' }}">
+            <div class="ct-help">{% trans "Leave empty for a one-day tournament." %}</div>
+            {% for e in form.event_end_date.errors %}<div class="ct-err">{{ e }}</div>{% endfor %}
+          </div>
+        </div>
+        <div class="ct-grid" style="margin-top:14px">
+          <div class="ct-field{% if form.venue.errors %} has-error{% endif %}">
+            <label for="id_venue">{% trans "Venue" %}</label>
+            <input type="text" name="venue" id="id_venue" maxlength="200" value="{{ form.venue.value|default:'' }}" required
+                   placeholder="{% trans 'e.g. University of Dhaka, or Online' %}">
+            {% for e in form.venue.errors %}<div class="ct-err">{{ e }}</div>{% endfor %}
+          </div>
+        </div>
+      </section>
 
-      {% trans "Create Tournament" as title %}
-      {% if premium_enabled %}
-        {% blocktrans trimmed asvar subtitle with price=price_label %}
-          Fill in the details above and click "Create Tournament". You'll go
-          straight to checkout to pay {{ price }}, once, and your tournament is
-          ready immediately after.
-        {% endblocktrans %}
-      {% else %}
-        {% blocktrans trimmed asvar subtitle %}
-          Fill in the details above and click "Create Tournament" to get started. Your tournament will be ready instantly.
-        {% endblocktrans %}
-      {% endif %}
-      {% url 'tabbycat-index' as suburl %}
-      {% include "components/form-submit.html" %}
+      <section class="ct-section" aria-labelledby="s3">
+        <h2 class="ct-section-h" id="s3"><span class="ct-num">3</span>{% trans "Rounds and break" %}</h2>
+        <p class="ct-section-sub">{% trans "You can add or change rounds later." %}</p>
+        <div class="ct-grid two">
+          <div class="ct-field{% if form.num_prelim_rounds.errors %} has-error{% endif %}">
+            <label for="id_num_prelim_rounds">{% trans "Preliminary rounds" %}</label>
+            <input type="number" name="num_prelim_rounds" id="id_num_prelim_rounds" min="1" inputmode="numeric" value="{{ form.num_prelim_rounds.value|default:'' }}" required placeholder="5">
+            {% for e in form.num_prelim_rounds.errors %}<div class="ct-err">{{ e }}</div>{% endfor %}
+          </div>
+          <div class="ct-field{% if form.break_size.errors %} has-error{% endif %}">
+            <label for="id_break_size">{% trans "Teams in the open break" %} <span class="opt">{% trans "(optional)" %}</span></label>
+            <input type="number" name="break_size" id="id_break_size" min="2" inputmode="numeric" value="{{ form.break_size.value|default:'' }}" placeholder="16">
+            <div class="ct-help">{% trans "Leave empty if there are no elimination rounds." %}</div>
+            {% for e in form.break_size.errors %}<div class="ct-err">{{ e }}</div>{% endfor %}
+          </div>
+        </div>
+      </section>
 
+      <div class="ct-submit-row">
+        <button type="submit" class="ct-submit" id="createBtn">{% trans "Create tournament" %}</button>
+        <span class="ct-submit-note">
+          {% if premium_enabled %}{% blocktrans trimmed with price=price_label %}Next you'll go to a one-time {{ price }} checkout, and your tournament is ready right after.{% endblocktrans %}
+          {% else %}{% trans "Free to create. Your tab is ready the moment you click." %}{% endif %}
+        </span>
+      </div>
     </form>
-    </div>
   </div>
+
+  <aside class="ct-side" aria-label="{% trans 'What happens next' %}">
+    <div class="ct-panel">
+      <h2>{% trans "What happens next" %}</h2>
+      <ol class="ct-steps">
+        <li><span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>
+          <span><b>{% trans "Choose your format" %}</b>{% trans "British Parliamentary, World Schools, Asians, Australs and more, with the right rules set for you." %}</span></li>
+        <li><span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span><b>{% trans "Add participants" %}</b>{% trans "Import teams and adjudicators, or collect them with a registration form." %}</span></li>
+        <li><span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg></span>
+          <span><b>{% trans "Run the rounds" %}</b>{% trans "Draws, allocations, ballots, live standings and the break, with public results pages." %}</span></li>
+      </ol>
+    </div>
+    <div class="ct-panel marine">
+      <h2>{% trans "Need a hand?" %}</h2>
+      <p>{% trans "Our guides walk you through setting up a tournament, and the team is a message away." %}</p>
+      <a class="lnk" href="/learn/">{% trans "Read the guides" %} →</a> &nbsp;·&nbsp; <a class="lnk" href="/contact/">{% trans "Contact support" %}</a>
+    </div>
+  </aside>
+</main>
 
 <script>
-// Prevent double-submit on all forms on this page
-document.querySelectorAll('form').forEach(function(form) {
-  form.addEventListener('submit', function() {
-    var btns = form.querySelectorAll('button[type="submit"]');
-    btns.forEach(function(btn) {
-      btn.disabled = true;
-      btn.textContent = btn.textContent.trim() + ' \u2026';
-    });
-    // Re-enable after 10s in case of network failure
-    setTimeout(function() {
-      btns.forEach(function(btn) { btn.disabled = false; });
-    }, 10000);
+(function () {
+  var name = document.getElementById('id_name'), shortName = document.getElementById('id_short_name'),
+      slug = document.getElementById('id_slug'), preview = document.getElementById('urlPreview'),
+      domain = '{{ subdomain_base_domain|default:"nekotab.com"|escapejs }}', slugTouched = !!slug.value;
+  function toSlug(s) {
+    return (s || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50);
+  }
+  function show() {
+    var v = toSlug(slug.value);
+    preview.innerHTML = v ? 'Your tournament will live at <b>' + v + '.' + domain + '</b>' : '';
+  }
+  function fill() { if (!slugTouched) { slug.value = toSlug(shortName.value || name.value); show(); } }
+  name.addEventListener('input', fill);
+  shortName.addEventListener('input', fill);
+  slug.addEventListener('input', function () { slugTouched = slug.value.length > 0; show(); });
+  slug.addEventListener('blur', function () { slug.value = toSlug(slug.value); show(); });
+  show();
+  var start = document.getElementById('id_event_start_date'), end = document.getElementById('id_event_end_date');
+  start.addEventListener('change', function () { end.min = start.value; });
+  if (start.value) end.min = start.value;
+  document.getElementById('createForm').addEventListener('submit', function () {
+    var b = document.getElementById('createBtn');
+    setTimeout(function () { b.disabled = true; b.textContent = '{% trans "Creating your tournament…" %}'; }, 0);
+    setTimeout(function () { b.disabled = false; b.textContent = '{% trans "Create tournament" %}'; }, 15000);
   });
-});
+})();
 </script>
-
-{% if premium_enabled %}
-  {% include 'components/limited_offer_ad.html' %}
-{% endif %}
-
-{% endblock %}
+</body>
+</html>
