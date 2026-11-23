@@ -1,10 +1,9 @@
 {% with b=plan_banner %}
 <div class="nk-plan-banner" role="note">
-  <span class="nk-plan-banner__tag">Basic</span>
+  <span class="nk-plan-banner__tag">{{ b.plan_label }}</span>
   <span class="nk-plan-banner__text">
     {% if not plans_live %}<strong>From 1 December:</strong> {% endif %}
-    This tournament is on the free plan: no private links or bulk emails, no tab assistants, ads shown{% if b.archive_in_days is not None %},
-    and it {% if b.archive_in_days == 0 %}is archived today{% else %}is archived in {{ b.archive_in_days }} day{{ b.archive_in_days|pluralize }}{% endif %}{% elif not plans_live %}, archived a week after creation{% endif %}.
+    This tournament has no private links (online ballots, feedback, check-in), no bulk emails, no tab assistants and no Emet{% if b.plan == 'basic' %}, and shows ads{% endif %}.
   </span>
   <a class="nk-plan-banner__btn" href="{{ b.upgrade_url }}">Go Pro · {{ b.pro_price }}</a>
 </div>

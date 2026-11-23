@@ -8,8 +8,8 @@
 {% block extra_head %}
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-  {"@type": "Question", "name": "Is NekoTab free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Basic plan is free: run a full tournament with unlimited teams and rounds. Basic tournaments show ads, have no private links for participants, can't send bulk emails or add tab assistants, and are archived a week after they are created. Public draws, tabs and results are always free to read."}},
-  {"@type": "Question", "name": "How much is NekoTab Pro?", "acceptedAnswer": {"@type": "Answer", "text": "NekoTab Pro is {{ pro_price }} per tournament, paid once. It adds email to participants, tab assistants, releasing the draw privately by email, Discord and WhatsApp, Emet AI with 100 credits, no ads, and the tournament is never archived."}},
+  {"@type": "Question", "name": "Is NekoTab free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Basic plan is free: run a full tournament with unlimited teams and rounds. Basic tournaments show ads, have no private links for participants, can't send bulk emails or add tab assistants, and don't include Emet. They are never archived. Public draws, tabs and results are always free to read."}},
+  {"@type": "Question", "name": "How much is NekoTab Pro?", "acceptedAnswer": {"@type": "Answer", "text": "NekoTab Pro is {{ pro_price }} per tournament, paid once. It adds private links for participants (online ballots, feedback, check-in), bulk email, tab assistants, releasing the draw privately by email, Discord and WhatsApp, Emet AI with 100 credits, and no ads."}},
   {"@type": "Question", "name": "What is NekoTab Club?", "acceptedAnswer": {"@type": "Answer", "text": "NekoTab Club is {{ club_price }} a year for a debate club or society. It includes 5 tournaments a year with everything in Pro (then {{ club_extra_price }} each), Emet as a full tab director that also works inside ChatGPT, Claude and Gemini, and the club's own @nekotab.com email address."}},
   {"@type": "Question", "name": "What are Emet credits?", "acceptedAnswer": {"@type": "Answer", "text": "Emet is NekoTab's AI agent. Each Pro or Club tournament gets 100 credits. A quick question uses a fraction of a credit; longer, more careful answers use more."}}
 ]}
@@ -82,13 +82,13 @@
       <ul>
         <li>Full tabbing: draws, allocations, ballots, standings, breaks</li>
         <li>Unlimited teams, adjudicators and rounds</li>
+        <li>Kept online for good, never archived</li>
         <li>Public draw, tab and results pages</li>
-        <li class="no">No private links for participants (online ballots, feedback)</li>
+        <li class="no">No private links for participants (online ballots, feedback, check-in)</li>
         <li class="no">No bulk emails from the tab director</li>
         <li class="no">No tab assistants or invited users</li>
-        <li class="no">No Emet</li>
+        <li class="no">No Emet, in NekoTab or in ChatGPT, Claude or Gemini</li>
         <li class="no">Not ad-free: ads appear on your tournament</li>
-        <li class="no">Not kept online: archived a week after it's created</li>
       </ul>
       <a class="cta" href="/create/">Create a tournament</a>
     </section>
@@ -100,13 +100,13 @@
       <div class="price">{{ pro_price }}<small>once</small></div>
       <ul>
         <li>Everything in Basic</li>
-        <li>Email draws, ballots and private links</li>
+        <li>Private links: online ballots, feedback and check-in</li>
+        <li>Email draws, motions and links to everyone</li>
         <li>Tab assistants and co-directors</li>
         <li>Release the draw to participants only, by email, Discord and WhatsApp</li>
         <li>Emet AI with 100 credits: edits data, settings, draws and results for you</li>
         <li>Allocate adjudicators the way you want with Emet: “these 5 in Room A, these 10 chair, the rest at random”</li>
         <li>No ads, for you or your participants</li>
-        <li>Never archived</li>
       </ul>
       <a class="cta" href="{% if user.is_authenticated %}/me/{% else %}/accounts/login/?next=/me/{% endif %}">Upgrade a tournament</a>
       <p class="fine">From your dashboard: "Make Pro" on any tournament. Cards, PayPal or bKash.</p>
@@ -133,7 +133,7 @@
   {% if not plans_live %}
   <div class="now"><strong>Until 1 December:</strong>
     {% if premium_enabled %}running a tournament costs {{ price_label }}, paid once.{% else %}running a tournament on NekoTab is free.{% endif %}
-    Tournaments that already exist keep everything they have today. Emet needs Pro or Club.</div>
+    From then, tournaments that already exist work like Basic (no private links, bulk emails, tab assistants or Emet); ones you paid for stay ad-free. Nothing is ever archived.</div>
   {% endif %}
 
   <section class="cmp" aria-labelledby="cmp-h">
@@ -156,7 +156,7 @@
         <tr><td>Emet in ChatGPT, Claude, Gemini</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
         <tr><td>Club @nekotab.com email</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
         <tr><td>Ads</td><td>Shown</td><td class="y">None</td><td class="y">None</td></tr>
-        <tr><td>Kept online</td><td>7 days</td><td class="y">Forever</td><td class="y">Forever</td></tr>
+        <tr><td>Kept online</td><td class="y">Forever</td><td class="y">Forever</td><td class="y">Forever</td></tr>
         <tr><td>Price</td><td>Free</td><td>{{ pro_price }} per tournament</td><td>{{ club_price }} per year</td></tr>
       </tbody>
     </table>
@@ -165,12 +165,11 @@
   <section class="faq" aria-labelledby="faq-h">
     <h2 id="faq-h">Questions</h2>
     <details><summary>Is NekoTab free?</summary><p>Yes. Basic is free and runs a complete tournament. Public draws, tabs and results are always free for anyone to read, on every plan.</p></details>
-    <details><summary>What happens when a Basic tournament is archived?</summary><p>Its pages go offline, but nothing is deleted. Upgrade it to Pro at any time and it comes straight back.</p></details>
     <details><summary>What are Emet credits?</summary><p>Emet is NekoTab's AI agent. Each Pro or Club tournament gets 100 credits. Quick questions use a fraction of a credit; "Deep" answers that think harder use more. You always see how many are left.</p></details>
     <details><summary>What's the difference between Emet on Pro and on Club?</summary><p>On Pro, Emet runs your tournament with you: it edits teams, adjudicators and rooms, changes settings, generates and releases draws and publishes results, with your approval for risky steps. On Club it can also create and delete tournaments, import a spreadsheet you attach or your registration-form responses in one go, and you can use it from ChatGPT, Claude or Gemini.</p></details>
     <details><summary>Can Emet allocate adjudicators the way I want?</summary><p>Yes, on Pro and Club. Tell Emet in plain words, for example “there are 30 adjudicators: Ana, Rafi and Tahmid go to Room 101, these 10 must chair, the rest at random”. Emet places them, avoids conflicts where it can, and you can undo it in one step.</p></details>
     <details><summary>What is the free tab director on Club?</summary><p>For a club event, someone from the NekoTab team can run the tab for you at no cost. It depends on our availability and the event, so ask us early at <a href="mailto:support@nekotab.com" style="color:#9db8ee">support@nekotab.com</a>.</p></details>
-    <details><summary>I already have a tournament on NekoTab. What happens to it on 1 December?</summary><p>Nothing is taken away: tournaments created or paid for before 1 December keep everything they can do today (Classic). Emet is new, so it isn't included: to use Emet on one of them, upgrade that tournament to Pro, or join NekoTab Club.</p></details>
+    <details><summary>I already have a tournament on NekoTab. What happens to it on 1 December?</summary><p>It stays online, with all its results, and keeps working, like a Basic tournament: no private links, no bulk emails, no tab assistants and no Emet. If you paid for it before 1 December, it stays ad-free. To use private links, bulk email, tab assistants or Emet on it, upgrade that tournament to Pro, or join NekoTab Club.</p></details>
     <details><summary>Can I pay without a card?</summary><p>Yes. In Bangladesh you can pay by bKash from the upgrade page. Write to <a href="mailto:support@nekotab.com" style="color:#9db8ee">support@nekotab.com</a> if cost is a barrier for your school or society.</p></details>
   </section>
 </div>

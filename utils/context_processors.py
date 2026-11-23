@@ -334,13 +334,13 @@ def _plan_banner(request, tournament, visible):
     if '/admin/' not in path:
         return None
     try:
-        from donations.plans import BASIC, plan_context
+        from donations.plans import CLUB, PRO, plan_context
         from donations.premium import premium_page_url
     except ImportError:
         return None
     try:
         info = plan_context(tournament)
-        if info['plan'] != BASIC:
+        if info['plan'] in (PRO, CLUB):
             return None
         info['upgrade_url'] = getattr(settings, 'SITE_BASE_URL', '').rstrip('/') + premium_page_url(tournament.pk)
         info['pro_price'] = getattr(settings, 'PRO_PRICE_LABEL', '$15')
