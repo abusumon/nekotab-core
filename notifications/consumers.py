@@ -101,6 +101,7 @@ class NotificationQueueConsumer(SyncConsumer):
         BulkNotification.EventType.BALLOT_URL, BulkNotification.EventType.URL,
         BulkNotification.EventType.ADJ_DRAW, BulkNotification.EventType.TEAM_DRAW,
         BulkNotification.EventType.MOTIONS, BulkNotification.EventType.CUSTOM,
+        BulkNotification.EventType.TEAM_REG, BulkNotification.EventType.ADJ_REG,
     }
 
     def email(self, event: Dict[str, Union[str, BulkNotification.EventType, List[int], Dict[str, Any]]]) -> None:
@@ -120,8 +121,9 @@ class NotificationQueueConsumer(SyncConsumer):
             event['extra']['tournament'] = t
 
         # NekoTab Basic tournaments can't send the director's bulk emails (draws,
-        # motions, private links, points, custom messages). Automatic emails,
-        # such as registration confirmations and ballot receipts, still go out.
+        # motions, private links, points, registration details, custom messages).
+        # The one automatic email, ballot receipts (off unless the director turns
+        # them on), still goes out.
         # Always allowed in self-hosted copies and before the plans launch.
         if event['message'] in self.BULK_EVENTS:
             from utils.plans import tournament_allows
