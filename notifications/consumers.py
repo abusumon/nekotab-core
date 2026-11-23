@@ -96,6 +96,13 @@ class NotificationQueueConsumer(SyncConsumer):
             return from_email, [formataddr((t.pref('reply_to_name').strip(), t.pref('reply_to_address')))]
         return from_email, None  # Shouldn't have array of None
 
+    BULK_EVENTS = {
+        BulkNotification.EventType.POINTS, BulkNotification.EventType.FEEDBACK_URL,
+        BulkNotification.EventType.BALLOT_URL, BulkNotification.EventType.URL,
+        BulkNotification.EventType.ADJ_DRAW, BulkNotification.EventType.TEAM_DRAW,
+        BulkNotification.EventType.MOTIONS, BulkNotification.EventType.CUSTOM,
+    }
+
     def email(self, event: Dict[str, Union[str, BulkNotification.EventType, List[int], Dict[str, Any]]]) -> None:
         # Get database objects
         if 'debate_id' in event['extra']:
@@ -112,12 +119,15 @@ class NotificationQueueConsumer(SyncConsumer):
             t = Tournament.objects.get(pk=event['extra'].pop('tournament_id'))
             event['extra']['tournament'] = t
 
-        # NekoTab Basic tournaments send no email (utils.plans; always allowed in
-        # self-hosted copies and before the plans launch).
-        from utils.plans import tournament_allows
-        if not tournament_allows(t, 'email'):
-            logger.info("Skipped %s email for tournament %s: its plan has no email", event.get('message'), t.slug)
-            return
+        # NekoTab Basic tournaments can't send the director's bulk emails (draws,
+        # motions, private links, points, custom messages). Automatic emails,
+        # such as registration confirmations and ballot receipts, still go out.
+        # Always allowed in self-hosted copies and before the plans launch.
+        if event['message'] in self.BULK_EVENTS:
+            from utils.plans import tournament_allows
+            if not tournament_allows(t, 'bulk_email'):
+                logger.info("Skipped %s email for tournament %s: its plan has no bulk email", event.get('message'), t.slug)
+                return
 
         from_email, reply_to = self._get_from_fields(t)
         help_footer = self._help_footer_html(t)

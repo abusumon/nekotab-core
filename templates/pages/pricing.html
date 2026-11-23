@@ -8,7 +8,7 @@
 {% block extra_head %}
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-  {"@type": "Question", "name": "Is NekoTab free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Basic plan is free: run a full tournament with unlimited teams and rounds. Basic tournaments show ads, can't send emails or add tab assistants, and are archived a week after they are created. Public draws, tabs and results are always free to read."}},
+  {"@type": "Question", "name": "Is NekoTab free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Basic plan is free: run a full tournament with unlimited teams and rounds. Basic tournaments show ads, have no private links for participants, can't send bulk emails or add tab assistants, and are archived a week after they are created. Public draws, tabs and results are always free to read."}},
   {"@type": "Question", "name": "How much is NekoTab Pro?", "acceptedAnswer": {"@type": "Answer", "text": "NekoTab Pro is {{ pro_price }} per tournament, paid once. It adds email to participants, tab assistants, releasing the draw privately by email, Discord and WhatsApp, Emet AI with 100 credits, no ads, and the tournament is never archived."}},
   {"@type": "Question", "name": "What is NekoTab Club?", "acceptedAnswer": {"@type": "Answer", "text": "NekoTab Club is {{ club_price }} a year for a debate club or society. It includes 5 tournaments a year with everything in Pro (then {{ club_extra_price }} each), Emet as a full tab director that also works inside ChatGPT, Claude and Gemini, and the club's own @nekotab.com email address."}},
   {"@type": "Question", "name": "What are Emet credits?", "acceptedAnswer": {"@type": "Answer", "text": "Emet is NekoTab's AI agent. Each Pro or Club tournament gets 100 credits. A quick question uses a fraction of a credit; longer, more careful answers use more."}}
@@ -83,7 +83,8 @@
         <li>Full tabbing: draws, allocations, ballots, standings, breaks</li>
         <li>Unlimited teams, adjudicators and rounds</li>
         <li>Public draw, tab and results pages</li>
-        <li class="no">No emails to participants</li>
+        <li class="no">No private links for participants (online ballots, feedback)</li>
+        <li class="no">No bulk emails from the tab director</li>
         <li class="no">No tab assistants or invited users</li>
         <li class="no">No Emet</li>
         <li class="no">Shows ads</li>
@@ -132,7 +133,7 @@
   {% if not plans_live %}
   <div class="now"><strong>Until 1 December:</strong>
     {% if premium_enabled %}running a tournament costs {{ price_label }}, paid once.{% else %}running a tournament on NekoTab is free.{% endif %}
-    Tournaments you already paid for become Pro, for good.</div>
+    Tournaments that already exist keep everything they have today. Emet needs Pro or Club.</div>
   {% endif %}
 
   <section class="cmp" aria-labelledby="cmp-h">
@@ -143,7 +144,8 @@
         <tr><td>Draws, results, standings, breaks</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
         <tr><td>Public tab pages</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
         <tr><td>Registration forms</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-        <tr><td>Emails to participants</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Private links for participants (online ballots, feedback, check-in)</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Bulk emails from the tab director (draws, motions, links)</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
         <tr><td>Tab assistants and invites</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
         <tr><td>Private draw release (email, Discord, WhatsApp)</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
         <tr><td>Emet AI (100 credits per tournament)</td><td class="n">✕</td><td>Runs the tournament</td><td>Full tab director</td></tr>
@@ -168,7 +170,7 @@
     <details><summary>What's the difference between Emet on Pro and on Club?</summary><p>On Pro, Emet runs your tournament with you: it edits teams, adjudicators and rooms, changes settings, generates and releases draws and publishes results, with your approval for risky steps. On Club it can also create and delete tournaments, import a spreadsheet you attach or your registration-form responses in one go, and you can use it from ChatGPT, Claude or Gemini.</p></details>
     <details><summary>Can Emet allocate adjudicators the way I want?</summary><p>Yes, on Pro and Club. Tell Emet in plain words, for example “there are 30 adjudicators: Ana, Rafi and Tahmid go to Room 101, these 10 must chair, the rest at random”. Emet places them, avoids conflicts where it can, and you can undo it in one step.</p></details>
     <details><summary>What is the free tab director on Club?</summary><p>For a club event, someone from the NekoTab team can run the tab for you at no cost. It depends on our availability and the event, so ask us early at <a href="mailto:support@nekotab.com" style="color:#9db8ee">support@nekotab.com</a>.</p></details>
-    <details><summary>I paid for a tournament before 1 December. What happens to it?</summary><p>It becomes NekoTab Pro, for good. Tournaments from before July 2026 stay free with everything included.</p></details>
+    <details><summary>I already have a tournament on NekoTab. What happens to it on 1 December?</summary><p>Nothing is taken away: tournaments created or paid for before 1 December keep everything they can do today (Classic). Emet is new, so it isn't included: to use Emet on one of them, upgrade that tournament to Pro, or join NekoTab Club.</p></details>
     <details><summary>Can I pay without a card?</summary><p>Yes. In Bangladesh you can pay by bKash from the upgrade page. Write to <a href="mailto:support@nekotab.com" style="color:#9db8ee">support@nekotab.com</a> if cost is a barrier for your school or society.</p></details>
   </section>
 </div>
